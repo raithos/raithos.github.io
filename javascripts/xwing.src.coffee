@@ -978,7 +978,7 @@ exportObj.isReleased = (data) ->
 String::canonicalize = ->
     this.toLowerCase()
         .replace(/[^a-z0-9]/g, '')
-        .replace(/\s+/g, '-')
+        .replace(/\s+/g, '-')		
 
 exportObj.hugeOnly = (ship) ->
     ship.data.huge ? false
@@ -992,33 +992,36 @@ exportObj.basicCardData = ->
             factions: [ "Rebel Alliance", ]
             attack: 3
             agility: 2
-            hull: 3
+            hull: 4
             shields: 2
             actions: [
                 "Focus"
                 "Target Lock"
+                "Barrel Roll"
             ]
             maneuvers: [
-              [ 0, 0, 0, 0, 0, 0]
-              [ 0, 2, 2, 2, 0, 0]
-              [ 1, 1, 2, 1, 1, 0]
-              [ 1, 1, 1, 1, 1, 0]
-              [ 0, 0, 1, 0, 0, 3]
+              [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+              [ 0, 2, 2, 2, 0, 0, 0, 0, 0, 0 ]
+              [ 1, 2, 2, 2, 1, 0, 0, 0, 0, 0 ]
+              [ 1, 1, 1, 1, 1, 0, 0, 0, 3, 3 ]
+              [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0 ]
             ]
         "Y-Wing":
             name: "Y-Wing"
             factions: [ "Rebel Alliance", "Scum and Villainy", ]
             attack: 2
             agility: 1
-            hull: 5
-            shields: 3
+            hull: 6
+            shields: 2
             actions: [
                 "Focus"
                 "Target Lock"
+                "Barrel Roll"
+                "Reload"
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0]
-              [ 0, 1, 2, 1, 0, 0]
+              [ 0, 2, 2, 2, 0, 0]
               [ 1, 1, 2, 1, 1, 0]
               [ 3, 1, 1, 1, 3, 0]
               [ 0, 0, 3, 0, 0, 3]
@@ -1035,14 +1038,15 @@ exportObj.basicCardData = ->
                 "Target Lock"
                 "Boost"
                 "Evade"
+                "Barrel Roll"
             ]
             maneuvers: [
-              [ 0, 0, 0, 0, 0, 0]
-              [ 1, 0, 0, 0, 1, 0]
-              [ 2, 2, 2, 2, 2, 0]
-              [ 1, 1, 2, 1, 1, 3]
-              [ 0, 0, 2, 0, 0, 0]
-              [ 0, 0, 2, 0, 0, 3]
+              [ 0, 0, 0, 0, 0, 0, 0, 0 ]
+              [ 1, 0, 0, 0, 1, 0, 0, 0 ]
+              [ 2, 2, 2, 2, 2, 0, 0, 0 ]
+              [ 1, 1, 2, 1, 1, 3, 3, 3 ]
+              [ 0, 0, 2, 0, 0, 0, 0, 0 ]
+              [ 0, 0, 2, 0, 0, 3, 0, 0 ]
             ]
         "YT-1300":
             name: "YT-1300"
@@ -1092,18 +1096,17 @@ exportObj.basicCardData = ->
             hull: 3
             shields: 2
             actions: [
-                "Focus"
+                "Focus > <c>Barrel Roll</c>"
                 "Target Lock"
                 "Barrel Roll"
-                "Evade"
             ]
             maneuvers: [
-              [ 0, 0, 0, 0, 0, 0]
-              [ 0, 2, 0, 2, 0, 0]
-              [ 1, 1, 2, 1, 1, 0]
-              [ 1, 1, 2, 1, 1, 0]
-              [ 0, 0, 1, 0, 0, 3]
-              [ 0, 0, 1, 0, 0, 0]
+              [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+              [ 0, 2, 1, 2, 0, 0, 0, 0, 0, 0]
+              [ 1, 1, 2, 1, 1, 0, 0, 0, 0, 0]
+              [ 1, 1, 2, 1, 1, 0, 0, 0, 3, 3]
+              [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0]
+              [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
             ]
         "TIE Interceptor":
             name: "TIE Interceptor"

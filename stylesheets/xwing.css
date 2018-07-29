@@ -270,3 +270,6 @@ li.squad-summary {
 
 svg > g.maneuver.backwards {
   transform: translate(200px, 200px) rotate(180deg); }
+
+c {
+  color: #EF232B; }
