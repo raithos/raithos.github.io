@@ -1,0 +1,306 @@
+$xwing_icons_png: '../images/xwing-icons.png'
+
+$pilot_skill_color: #CD6D2D
+$attack_color: #EF232B
+$energy_color: #C7B5E2
+$agility_color: #6BBE44
+$hull_color: #B6B335
+$shields_color: #7ED3E5
+
+@font-face
+  font-family: kimberley
+  src: url('../fonts/kimberley bl.ttf')
+
+@font-face
+  font-family: EurostileStandard
+  src: url('../fonts/EurostileLTStd.otf')
+
+@font-face
+  font-family: EurostileStandardBold
+  src: url('../fonts/EurostileLTStd-Bold.otf')
+
+@font-face
+  font-family: EurostileStandardOblique
+  src: url('../fonts/EurostileLTStd-Oblique.otf')
+
+@font-face
+  font-family: EurostileStandardBoldOblique
+  src: url('../fonts/EurostileLTStd-BoldOblique.otf')
+
+@font-face
+  font-family: BankGothicMediumBT
+  src: url('../fonts/Bank Gothic Medium BT.ttf')
+
+@font-face
+  font-family: BankGothicHD
+  src: url('../fonts/bankgthd.ttf')
+
+body, button
+  font-family: EurostileStandard
+
+strong
+  font-family: EurostileStandardBold
+  font-weight: normal
+
+em
+  font-family: EurostileStandardOblique
+  font-style: normal
+
+strong em, em strong
+  font-family: EurostileStandardBoldOblique
+  font-style: normal
+  font-weight: normal
+
+.nav-pills
+  border-bottom: thin solid darkgray
+
+.ship-container > .row-fluid
+  padding: 10px 0px
+
+.ship
+  border: medium solid black
+
+.card-stat
+  font-family: kimberley
+  font-size: 1.5em
+
+.info-data.info-skill
+  @extend .card-stat
+  color: $pilot_skill_color
+
+.card-icon
+  background: black
+  border-radius: 50%
+  padding: 3px
+  font-weight: normal
+
+td.info-header
+  padding: 3px
+
+i.xwing-miniatures-font
+  color: black
+
+i.xwing-miniatures-font-attack, i.xwing-miniatures-font-attack-turret, i.xwing-miniatures-font-attack-frontback, i.xwing-miniatures-font-attack-180, i.xwing-miniatures-font-attack-bullseye
+  @extend .card-icon
+  color: $attack_color
+
+i.xwing-miniatures-font-attack-frontback
+  padding-left: 5px
+  padding-right: 5px
+
+i.xwing-miniatures-font-energy
+  @extend .card-icon
+  color: $energy_color
+  padding: 2px 3px 5px 2px
+
+i.xwing-miniatures-font-agility
+  @extend .card-icon
+  color: $agility_color
+  padding: 1px
+
+i.xwing-miniatures-font-hull
+  @extend .card-icon
+  color: $hull_color
+
+i.xwing-miniatures-font-shield
+  @extend .card-icon
+  color: $shields_color
+  padding: 2px 3px 4px 3px
+
+.info-data.info-attack
+  @extend .card-stat
+  color: $attack_color
+
+.info-data.info-energy
+  @extend .card-stat
+  color: $energy_color
+
+.info-data.info-agility
+  @extend .card-stat
+  color: $agility_color
+
+.info-data.info-hull
+  @extend .card-stat
+  color: $hull_color
+
+.info-data.info-shields
+  @extend .card-stat
+  color: $shields_color
+  padding: 2px
+
+.info-maneuvers table
+  table-layout: fixed
+  width: 100%
+  max-width: 300px
+
+.info-maneuvers table > tbody > tr > td
+  border: 2px solid #d6c9d2
+
+.info-maneuvers table > tbody > tr > td:first-child
+  @extend .card-stat
+  color: white
+  text-align: center
+  padding: 3px
+  background-color: #888888
+  background-image: linear-gradient(rgba(45, 45, 45, .2) 50%, transparent 50%, transparent)
+  background-size: 5px 5px
+
+.info-maneuvers table > tbody > tr > td ~ td
+  background-color: #a29199
+
+.info-name
+  font-family: BankGothicHD
+  font-size: 1.5em
+
+.info-type, .info-sources
+  font-family: BankGothicHD
+  font-size: 1.2em
+
+.info-collection
+  font-family: BankGothicHD
+  font-style: italic
+
+.info-well
+  color: black
+  margin-top: 10px
+
+.info-well table > tbody > tr > td:first-child
+  font-weight: bold
+  vertical-align: top
+  padding-right: 5px
+
+.info-text
+  margin-top: 15px
+
+.squad-name-container
+  padding-top: 5px
+  font-size: 1.2em
+
+.display-name
+  cursor: pointer
+
+ul.squad-list
+  list-style-type: none
+  padding: 0
+  margin: 0
+
+.points-display-container
+  font-size: 1.2em
+  background-color: rgba(0, 0, 0, 0.5)
+  padding-top: 5px
+  text-align: center
+
+.points-display-container span
+  padding: 5px 0px
+
+.modal
+  color: black
+
+.icon
+  background-image: url($xwing_icons_png)
+  background-repeat: no-repeat
+  vertical-align: middle
+
+div.tab-content
+  overflow: visible
+
+.squad-list > li:hover
+  background-color: #ccc
+
+select.card-selector
+  width: 100%
+
+.fancy-list .info-data
+  vertical-align: middle
+  -webkit-text-stroke: 0.5px black
+
+.simple-list
+  font-family: Arial,Helvetica,sans-serif
+  font-size: 1.25em
+
+  table
+    width: 100%
+
+  .name
+    font-style: oblique
+
+  .points
+    text-align: right
+
+  .simple-pilot
+    .name
+      font-weight: bold
+
+  .simple-addon
+    .name
+      padding-left: 20px
+
+  .simple-ship-total
+    font-weight: bold
+    text-align: right
+
+ul.nav
+  li.dropdown
+    ul.dropdown-menu
+      li
+        color: #333
+        padding: 1px 5px
+        cursor: pointer
+      li:hover
+        color: white
+        background-color: #333
+
+input[type=number]
+  width: 3em
+
+.red
+  color: red
+
+.squad-notes
+  height: 8em
+  width: 100%
+  font-family: EurostileStandard
+
+.content-warning
+  color: white
+  font-size: 0.75em
+
+.game-type-selector
+  width: 8em
+
+.collection-content
+  .row:hover
+    background-color: lightgray
+
+.collection-status
+  color: green
+
+.select2-results
+  .select2-result-not-in-collection
+    color: #a00
+
+  .select2-disabled
+    color: gray
+    background-color: lightgray
+
+.card-restriction
+  font-style: italic
+  font-variant: small-caps
+
+li.squad-summary
+  cursor: pointer
+
+.nav-tabs a
+  color: black
+
+.nav-tabs > .active > a,
+.nav-tabs > .active > a:focus,
+.nav-tabs > .active > a:hover
+  background-color: lightgray
+
+.collection-inventory-content
+  ul
+    list-style-type: none
+
+svg > g.maneuver.backwards
+  transform: translate(200px, 200px) rotate(180deg)
