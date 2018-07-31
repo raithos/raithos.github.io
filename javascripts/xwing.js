@@ -857,7 +857,7 @@ exportObj.CardBrowser = (function() {
   }
 
   CardBrowser.prototype.setupUI = function() {
-    this.container.append($.trim("<div class=\"container-fluid xwing-card-browser\">\n    <div class=\"row-fluid\">\n        <div class=\"span12\">\n            <span class=\"translate sort-cards-by\">Sort cards by</span>: <select class=\"sort-by\">\n                <option value=\"name\">Name</option>\n                <option value=\"source\">Source</option>\n                <option value=\"type-by-points\">Type (by Points)</option>\n                <option value=\"type-by-name\" selected=\"1\">Type (by Name)</option>\n            </select>\n        </div>\n    </div>\n    <div class=\"row-fluid\">\n        <div class=\"span4 card-selector-container\">\n\n        </div>\n        <div class=\"span8\">\n            <div class=\"well card-viewer-placeholder info-well\">\n                <p class=\"translate select-a-card\">Select a card from the list at the left.</p>\n            </div>\n            <div class=\"well card-viewer-container info-well\">\n                <span class=\"info-name\"></span>\n                <br />\n                <span class=\"info-type\"></span>\n                <br />\n                <span class=\"info-sources\"></span>\n                <table>\n                    <tbody>\n                        <tr class=\"info-skill\">\n                            <td class=\"info-header\">Skill</td>\n                            <td class=\"info-data info-skill\"></td>\n                        </tr>\n                        <tr class=\"info-energy\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-energy\"></i></td>\n                            <td class=\"info-data info-energy\"></td>\n                        </tr>\n                        <tr class=\"info-attack\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-attack\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-range\">\n                            <td class=\"info-header\">Range</td>\n                            <td class=\"info-data info-range\"></td>\n                        </tr>\n                        <tr class=\"info-agility\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-agility\"></i></td>\n                            <td class=\"info-data info-agility\"></td>\n                        </tr>\n                        <tr class=\"info-hull\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-hull\"></i></td>\n                            <td class=\"info-data info-hull\"></td>\n                        </tr>\n                        <tr class=\"info-shields\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-shield\"></i></td>\n                            <td class=\"info-data info-shields\"></td>\n                        </tr>\n                        <tr class=\"info-actions\">\n                            <td class=\"info-header\">Actions</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                        <tr class=\"info-upgrades\">\n                            <td class=\"info-header\">Upgrades</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                    </tbody>\n                </table>\n                <p class=\"info-text\" />\n            </div>\n        </div>\n    </div>\n</div>"));
+    this.container.append($.trim("<div class=\"container-fluid xwing-card-browser\">\n    <div class=\"row-fluid\">\n        <div class=\"span12\">\n            <span class=\"translate sort-cards-by\">Sort cards by</span>: <select class=\"sort-by\">\n                <option value=\"name\">Name</option>\n                <option value=\"source\">Source</option>\n                <option value=\"type-by-points\">Type (by Points)</option>\n                <option value=\"type-by-name\" selected=\"1\">Type (by Name)</option>\n            </select>\n        </div>\n    </div>\n    <div class=\"row-fluid\">\n        <div class=\"span4 card-selector-container\">\n\n        </div>\n        <div class=\"span8\">\n            <div class=\"well card-viewer-placeholder info-well\">\n                <p class=\"translate select-a-card\">Select a card from the list at the left.</p>\n            </div>\n            <div class=\"well card-viewer-container info-well\">\n                <span class=\"info-name\"></span>\n                <br />\n                <span class=\"info-type\"></span>\n                <br />\n                <span class=\"info-sources\"></span>\n                <table>\n                    <tbody>\n                        <tr class=\"info-skill\">\n                            <td class=\"info-header\">Skill</td>\n                            <td class=\"info-data info-skill\"></td>\n                        </tr>\n                        <tr class=\"info-energy\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-energy\"></i></td>\n                            <td class=\"info-data info-energy\"></td>\n                        </tr>\n                        <tr class=\"info-attack\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-attack\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-range\">\n                            <td class=\"info-header\">Range</td>\n                            <td class=\"info-data info-range\"></td>\n                        </tr>\n                        <tr class=\"info-agility\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-agility\"></i></td>\n                            <td class=\"info-data info-agility\"></td>\n                        </tr>\n                        <tr class=\"info-hull\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-hull\"></i></td>\n                            <td class=\"info-data info-hull\"></td>\n                        </tr>\n                        <tr class=\"info-shields\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-shield\"></i></td>\n                            <td class=\"info-data info-shields\"></td>\n                        </tr>\n                        <tr class=\"info-actions\">\n                            <td class=\"info-header\">Actions</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                        <tr class=\"info-actions-red\">\n                            <td></td>\n                            <td class=\"info-data-red\"></td>\n                        </tr>\n                        <tr class=\"info-upgrades\">\n                            <td class=\"info-header\">Upgrades</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                    </tbody>\n                </table>\n                <p class=\"info-text\" />\n            </div>\n        </div>\n    </div>\n</div>"));
     this.card_selector_container = $(this.container.find('.xwing-card-browser .card-selector-container'));
     this.card_viewer_container = $(this.container.find('.xwing-card-browser .card-viewer-container'));
     this.card_viewer_container.hide();
@@ -1132,7 +1132,18 @@ exportObj.CardBrowser = (function() {
           }
           return _results;
         }).call(this)).join(', '));
+        this.card_viewer_container.find('tr.info-actions-red td.info-data-red').text(((function() {
+          var _j, _len1, _ref15, _results;
+          _ref15 = exportObj.ships[data.ship].actionsred;
+          _results = [];
+          for (_j = 0, _len1 = _ref15.length; _j < _len1; _j++) {
+            action = _ref15[_j];
+            _results.push(exportObj.translate(this.language, 'action', action));
+          }
+          return _results;
+        }).call(this)).join(', '));
         this.card_viewer_container.find('tr.info-actions').show();
+        this.card_viewer_container.find('tr.info-actions-red').toggle(ships[data.ship].actionsred != null);
         this.card_viewer_container.find('tr.info-upgrades').show();
         this.card_viewer_container.find('tr.info-upgrades td.info-data').text(((function() {
           var _j, _len1, _ref15, _results;
@@ -1174,6 +1185,7 @@ exportObj.CardBrowser = (function() {
         this.card_viewer_container.find('tr.info-hull').hide();
         this.card_viewer_container.find('tr.info-shields').hide();
         this.card_viewer_container.find('tr.info-actions').hide();
+        this.card_viewer_container.find('tr.info-actions-red').hide();
         this.card_viewer_container.find('tr.info-upgrades').hide();
     }
     this.card_viewer_container.show();
@@ -1240,7 +1252,8 @@ exportObj.basicCardData = function() {
         agility: 1,
         hull: 6,
         shields: 2,
-        actions: ["Focus", "Target Lock", "Barrel Roll", "Reload"],
+        actions: ["Focus", "Target Lock"],
+        actionsred: ["Barrel Roll", "Reload"],
         maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0], [1, 1, 2, 1, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 3, 0, 0, 3]]
       },
       "A-Wing": {
@@ -1250,19 +1263,20 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 2,
         shields: 2,
-        actions: ["Focus", "Target Lock", "Boost", "Evade", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0], [1, 1, 2, 1, 1, 3, 3, 3], [0, 0, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0]]
+        actions: ["Focus", "Evade", "Target Lock", "Barrel Roll", "Boost"],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 5, 0, 0]]
       },
       "YT-1300": {
         name: "YT-1300",
         factions: ["Rebel Alliance", "Resistance"],
-        attack: 2,
+        attackdt: 3,
         agility: 1,
-        hull: 6,
-        shields: 4,
-        actions: ["Focus", "Target Lock"],
+        hull: 8,
+        shields: 5,
+        actions: ["Focus", "Target Lock", "Rotate Arc"],
+        actionsred: ["Boost"],
         attack_icon: 'xwing-miniatures-font-attack-turret',
-        maneuvers: [[0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 0], [0, 1, 1, 1, 0, 3], [0, 0, 1, 0, 0, 3]],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0]],
         large: true
       },
       "TIE Fighter": {
@@ -1282,8 +1296,8 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 3,
         shields: 2,
-        actions: ["Focus > <c>Barrel Roll</c>", "Target Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
+        actions: ["Focus > Barrel Roll", "Target Lock", "Barrel Roll"],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
       "TIE Interceptor": {
         name: "TIE Interceptor",
@@ -1293,38 +1307,43 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 0,
         actions: ["Focus", "Barrel Roll", "Boost", "Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0], [2, 2, 2, 2, 2, 0], [1, 1, 2, 1, 1, 3], [0, 0, 2, 0, 0, 0], [0, 0, 1, 0, 0, 3]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
       },
       "Firespray-31": {
         name: "Firespray-31",
-        factions: ["Galactic Empire", "Scum and Villainy"],
+        factions: ["Scum and Villainy"],
         attack: 3,
+        attackb: 3,
         agility: 2,
         hull: 6,
         shields: 4,
-        actions: ["Focus", "Target Lock", "Evade"],
+        actions: ["Focus", "Target Lock", "Boost"],
+        actionsred: ["Reinforce"],
         attack_icon: 'xwing-miniatures-font-attack-frontback',
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0], [1, 1, 2, 1, 1, 0], [1, 1, 1, 1, 1, 3], [0, 0, 1, 0, 0, 3]],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]],
         large: true
       },
       "HWK-290": {
         name: "HWK-290",
         factions: ["Rebel Alliance", "Scum and Villainy"],
-        attack: 1,
+        attackt: 2,
         agility: 2,
-        hull: 4,
-        shields: 1,
-        actions: ["Focus", "Target Lock"],
-        maneuvers: [[0, 0, 0, 0, 0], [0, 2, 2, 2, 0], [1, 1, 2, 1, 1], [0, 3, 1, 3, 0], [0, 0, 3, 0, 0]]
+        hull: 3,
+        shields: 2,
+        actions: ["Focus > Rotate Arc", "Target Lock > Rotate Arc", "Rotate Arc"],
+        actionsred: ["Boost", "Jam"],
+        maneuvers: [[0, 0, 3, 0, 0], [0, 2, 2, 2, 0], [1, 1, 2, 1, 1], [3, 1, 1, 1, 3], [0, 0, 3, 0, 0]]
       },
       "Lambda-Class Shuttle": {
         name: "Lambda-Class Shuttle",
         factions: ["Galactic Empire"],
         attack: 3,
+        attackb: 2,
         agility: 1,
-        hull: 5,
-        shields: 5,
-        actions: ["Focus", "Target Lock"],
+        hull: 6,
+        shields: 4,
+        actions: ["Focus", "Coordinate", "Reinforce"],
+        actionsred: ["Jam"],
         maneuvers: [[0, 0, 3, 0, 0], [0, 2, 2, 2, 0], [3, 1, 2, 1, 3], [0, 3, 1, 3, 0]],
         large: true
       },
@@ -1333,10 +1352,10 @@ exportObj.basicCardData = function() {
         factions: ["Rebel Alliance"],
         attack: 3,
         agility: 1,
-        hull: 3,
-        shields: 5,
-        actions: ["Focus", "Target Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0], [1, 1, 2, 1, 1, 3], [0, 3, 1, 3, 0, 0], [0, 0, 3, 0, 0, 0]]
+        hull: 4,
+        shields: 4,
+        actions: ["Focus > Barrel Roll", "Target Lock", "Barrel Roll"],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 3, 0, 0, 0, 0], [0, 3, 1, 3, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
       },
       "TIE Bomber": {
         name: "TIE Bomber",
@@ -1345,20 +1364,9 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 6,
         shields: 0,
-        actions: ["Focus", "Target Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0], [3, 2, 2, 2, 3, 0], [1, 1, 2, 1, 1, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 3]]
-      },
-      "GR-75 Medium Transport": {
-        name: "GR-75 Medium Transport",
-        factions: ["Rebel Alliance"],
-        energy: 4,
-        agility: 0,
-        hull: 8,
-        shields: 4,
-        actions: ["Recover", "Reinforce", "Coordinate", "Jam"],
-        huge: true,
-        epic_points: 2,
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0], [0, 1, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0]]
+        actions: ["Focus", "Target Lock", "Barrel Roll > Target Lock"],
+        actionsred: ["Reload"],
+        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 3], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 3]]
       },
       "Z-95 Headhunter": {
         name: "Z-95 Headhunter",
@@ -1367,8 +1375,9 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 2,
         shields: 2,
-        actions: ["Focus", "Target Lock"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0], [1, 2, 2, 2, 1, 0], [1, 1, 1, 1, 1, 3], [0, 0, 1, 0, 0, 0]]
+        actions: ["Focus", "Target Lock", "Barrel Roll"],
+        actionsred: ["Barrel Roll"],
+        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0], [1, 2, 2, 2, 1, 0], [1, 1, 1, 1, 1, 3], [0, 0, 1, 0, 0, 3]]
       },
       "TIE Defender": {
         name: "TIE Defender",
@@ -1376,67 +1385,39 @@ exportObj.basicCardData = function() {
         attack: 3,
         agility: 3,
         hull: 3,
-        shields: 3,
-        actions: ["Focus", "Target Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 1, 0, 1, 3, 0], [3, 1, 2, 1, 3, 0], [1, 1, 2, 1, 1, 0], [0, 0, 2, 0, 0, 1], [0, 0, 2, 0, 0, 0]]
+        shields: 4,
+        actions: ["Focus", "Evade", "Target Lock", "Barrel Roll", "Boost"],
+        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 2, 0, 2, 3, 0], [3, 1, 2, 1, 3, 3], [1, 1, 2, 1, 1, 0], [0, 0, 2, 0, 0, 1], [0, 0, 2, 0, 0, 0]]
       },
       "E-Wing": {
         name: "E-Wing",
         factions: ["Rebel Alliance"],
         attack: 3,
         agility: 3,
-        hull: 2,
+        hull: 3,
         shields: 3,
-        actions: ["Focus", "Target Lock", "Barrel Roll", "Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 3], [0, 0, 1, 0, 0, 3], [0, 0, 1, 0, 0, 0]]
+        actions: ["Focus", "Evade", "Target Lock", "Barrel Roll > Target Lock", "Boost > Target Lock"],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
       },
       "TIE Phantom": {
         name: "TIE Phantom",
         factions: ["Galactic Empire"],
-        attack: 4,
+        attack: 3,
         agility: 2,
-        hull: 2,
+        hull: 3,
         shields: 2,
-        actions: ["Focus", "Barrel Roll", "Evade", "Cloak"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 3], [0, 0, 1, 0, 0, 3]]
-      },
-      "CR90 Corvette (Fore)": {
-        name: "CR90 Corvette (Fore)",
-        factions: ["Rebel Alliance"],
-        attack: 4,
-        agility: 0,
-        hull: 8,
-        shields: 5,
-        actions: ["Coordinate", "Target Lock"],
-        huge: true,
-        epic_points: 1.5,
-        attack_icon: 'xwing-miniatures-font-attack-turret',
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 0, 1, 0, 0], [0, 1, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0]],
-        multisection: ["CR90 Corvette (Aft)".canonicalize()],
-        canonical_name: "CR90 Corvette".canonicalize()
-      },
-      "CR90 Corvette (Aft)": {
-        name: "CR90 Corvette (Aft)",
-        factions: ["Rebel Alliance"],
-        energy: 5,
-        agility: 0,
-        hull: 8,
-        shields: 3,
-        actions: ["Reinforce", "Recover"],
-        huge: true,
-        epic_points: 1.5,
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 0, 1, 0, 0], [0, 1, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0]],
-        multisection: ["CR90 Corvette (Fore)".canonicalize()],
-        canonical_name: "CR90 Corvette".canonicalize()
+        actions: ["Focus", "Evade", "Barrel Roll", "Cloak"],
+        maneuvers: [[0, 0, 0, 0, 0, 0], [1, 1, 0, 1, 1, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 3], [0, 0, 1, 0, 0, 3]]
       },
       "YT-2400": {
         name: "YT-2400",
         factions: ["Rebel Alliance"],
-        attack: 2,
+        attackdt: 4,
         agility: 2,
-        hull: 5,
-        shields: 5,
-        actions: ["Focus", "Target Lock", "Barrel Roll"],
+        hull: 6,
+        shields: 4,
+        actions: ["Focus", "Target Lock", "Rotate Arc"],
+        actionsred: ["Barrel Roll"],
         large: true,
         attack_icon: 'xwing-miniatures-font-attack-turret',
         maneuvers: [[0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 0], [1, 1, 1, 1, 1, 0], [0, 0, 1, 0, 0, 3]]
@@ -1444,14 +1425,15 @@ exportObj.basicCardData = function() {
       "VT-49 Decimator": {
         name: "VT-49 Decimator",
         factions: ["Galactic Empire"],
-        attack: 3,
+        attackdt: 3,
         agility: 0,
         hull: 12,
         shields: 4,
-        actions: ["Focus", "Target Lock"],
+        actions: ["Focus", "Target Lock", "Reinforce", "Rotate Arc"],
+        actionsred: ["Coordinate"],
         large: true,
         attack_icon: 'xwing-miniatures-font-attack-turret',
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 0], [0, 0, 1, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0], [1, 1, 2, 1, 1, 0], [1, 1, 1, 1, 1, 0], [0, 0, 1, 0, 0, 0]]
       },
       "StarViper": {
         name: "StarViper",
@@ -1460,67 +1442,39 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 4,
         shields: 1,
-        actions: ["Focus", "Target Lock", "Barrel Roll", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [0, 1, 2, 1, 0, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0]]
+        actions: ["Focus", "Target Lock", "Barrel Roll > Focus", "Boost > Focus"],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [0, 1, 2, 1, 0, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0]]
       },
       "M3-A Interceptor": {
         name: "M3-A Interceptor",
         factions: ["Scum and Villainy"],
         attack: 2,
         agility: 3,
-        hull: 2,
+        hull: 3,
         shields: 1,
-        actions: ["Focus", "Target Lock", "Barrel Roll", "Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [1, 2, 0, 2, 1, 0], [1, 2, 2, 2, 1, 0], [0, 1, 2, 1, 0, 3], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 3]]
+        actions: ["Focus", "Evade", "Target Lock", "Barrel Roll"],
+        maneuvers: [[0, 0, 0, 0, 0, 0], [1, 2, 0, 2, 1, 0], [1, 1, 2, 1, 1, 0], [0, 1, 2, 1, 0, 3], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 3]]
       },
       "Aggressor": {
         name: "Aggressor",
         factions: ["Scum and Villainy"],
         attack: 3,
         agility: 3,
-        hull: 4,
-        shields: 4,
-        actions: ["Focus", "Target Lock", "Boost", "Evade"],
+        hull: 5,
+        shields: 3,
+        actions: ["Calculate", "Evade", "Target Lock", "Boost"],
         large: true,
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [0, 2, 2, 2, 0, 0, 3, 3], [0, 0, 0, 0, 0, 3, 0, 0]]
-      },
-      "Raider-class Corvette (Fore)": {
-        name: "Raider-class Corvette (Fore)",
-        factions: ["Galactic Empire"],
-        attack: 4,
-        agility: 0,
-        hull: 8,
-        shields: 6,
-        actions: ["Recover", "Reinforce"],
-        huge: true,
-        epic_points: 1.5,
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0], [0, 1, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0]],
-        multisection: ["Raider-class Corvette (Aft)".canonicalize()],
-        canonical_name: "Raider-class Corvette".canonicalize()
-      },
-      "Raider-class Corvette (Aft)": {
-        name: "Raider-class Corvette (Aft)",
-        factions: ["Galactic Empire"],
-        energy: 6,
-        agility: 0,
-        hull: 8,
-        shields: 4,
-        actions: ["Coordinate", "Target Lock"],
-        huge: true,
-        epic_points: 1.5,
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0], [0, 1, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0]],
-        multisection: ["Raider-class Corvette (Fore)".canonicalize()],
-        canonical_name: "Raider-class Corvette".canonicalize()
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [0, 2, 2, 2, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0]]
       },
       "YV-666": {
         name: "YV-666",
         factions: ["Scum and Villainy"],
         attack: 3,
         agility: 1,
-        hull: 6,
-        shields: 6,
+        hull: 9,
+        shields: 3,
         large: true,
-        actions: ["Focus", "Target Lock"],
+        actions: ["Focus", "Reinforce", "Target Lock"],
         attack_icon: 'xwing-miniatures-font-attack-180',
         maneuvers: [[0, 0, 3, 0, 0, 0], [0, 2, 2, 2, 0, 0], [3, 1, 2, 1, 3, 0], [1, 1, 2, 1, 1, 0], [0, 0, 1, 0, 0, 0]]
       },
@@ -1529,19 +1483,19 @@ exportObj.basicCardData = function() {
         factions: ["Scum and Villainy"],
         attack: 3,
         agility: 2,
-        hull: 4,
+        hull: 5,
         shields: 1,
-        actions: ["Focus", "Target Lock"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [1, 2, 0, 2, 1, 0], [1, 2, 2, 2, 1, 0], [0, 1, 1, 1, 0, 0], [0, 0, 1, 0, 0, 3], [0, 0, 0, 0, 0, 3]]
+        actions: ["Focus", "Target Lock", "Barrel Roll"],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 0, 2, 1, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 3, 3], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
       },
       "K-Wing": {
         name: "K-Wing",
         factions: ["Rebel Alliance"],
-        attack: 2,
+        attackdt: 2,
         agility: 1,
-        hull: 5,
-        shields: 4,
-        actions: ["Focus", "Target Lock", "SLAM"],
+        hull: 6,
+        shields: 3,
+        actions: ["Focus", "Target Lock", "Slam", "Rotate Arc", "Reload"],
         attack_icon: 'xwing-miniatures-font-attack-turret',
         maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0], [1, 1, 2, 1, 1, 0], [0, 1, 1, 1, 0, 0]]
       },
@@ -1552,20 +1506,9 @@ exportObj.basicCardData = function() {
         agility: 1,
         hull: 6,
         shields: 3,
-        actions: ["Focus", "Target Lock", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0], [3, 1, 2, 1, 3, 0], [1, 1, 1, 1, 1, 0], [0, 0, 0, 0, 0, 3]]
-      },
-      "Gozanti-class Cruiser": {
-        name: "Gozanti-class Cruiser",
-        factions: ["Galactic Empire"],
-        energy: 4,
-        agility: 0,
-        hull: 9,
-        shields: 5,
-        huge: true,
-        epic_points: 2,
-        actions: ["Recover", "Reinforce", "Coordinate", "Target Lock"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0], [0, 1, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0]]
+        actions: ["Focus", "Target Lock", "Boost > Target Lock", "Reload"],
+        actionsred: ["Barrel Roll"],
+        maneuvers: [[0, 0, 3, 0, 0, 0], [0, 2, 2, 2, 0, 0], [1, 1, 2, 1, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 0, 0, 0, 3]]
       },
       "VCX-100": {
         name: "VCX-100",
@@ -1573,19 +1516,19 @@ exportObj.basicCardData = function() {
         attack: 4,
         agility: 0,
         hull: 10,
-        shields: 6,
+        shields: 4,
         large: true,
-        actions: ["Focus", "Target Lock", "Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0], [1, 2, 2, 2, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 3]]
+        actions: ["Focus", "Target Lock", "Reinforce"],
+        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0], [1, 2, 2, 2, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 1, 0, 0, 3]]
       },
       "Attack Shuttle": {
         name: "Attack Shuttle",
         factions: ["Rebel Alliance"],
         attack: 3,
         agility: 2,
-        hull: 2,
-        shields: 2,
-        actions: ["Focus", "Barrel Roll", "Evade"],
+        hull: 3,
+        shields: 1,
+        actions: ["Focus", "Evade", "Barrel Roll > Evade"],
         maneuvers: [[0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0], [1, 1, 2, 1, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 1, 0, 0, 3]]
       },
       "TIE Advanced Prototype": {
@@ -1596,72 +1539,44 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 2,
         shields: 2,
-        actions: ["Focus", "Target Lock", "Barrel Roll", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [2, 2, 0, 2, 2, 0], [1, 1, 2, 1, 1, 0], [1, 1, 2, 1, 1, 0], [0, 0, 2, 0, 0, 3], [0, 0, 1, 0, 0, 0]]
+        actions: ["Focus", "Evade", "Target Lock", "Barrel Roll > Focus", "Boost > Focus"],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 2, 0, 2, 2, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
       "G-1A Starfighter": {
         name: "G-1A Starfighter",
         factions: ["Scum and Villainy"],
         attack: 3,
         agility: 1,
-        hull: 4,
+        hull: 5,
         shields: 4,
-        actions: ["Focus", "Target Lock", "Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0], [1, 1, 2, 1, 1, 0], [0, 3, 2, 3, 0, 3], [0, 0, 1, 0, 0, 3]]
+        actions: ["Focus", "Target Lock", "Jam"],
+        maneuvers: [[0, 0, 3, 0, 0, 0], [3, 2, 2, 2, 3, 0], [1, 1, 2, 1, 1, 3], [0, 3, 1, 3, 0, 0], [0, 0, 3, 0, 0, 3]]
       },
       "JumpMaster 5000": {
         name: "JumpMaster 5000",
         factions: ["Scum and Villainy"],
         large: true,
-        attack: 2,
+        attackt: 2,
         agility: 2,
-        hull: 5,
-        shields: 4,
-        actions: ["Focus", "Target Lock", "Barrel Roll"],
-        attack_icon: 'xwing-miniatures-font-attack-turret',
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 2, 2, 1, 1, 0, 0, 0], [2, 2, 2, 1, 1, 0, 1, 3], [0, 1, 1, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0]]
-      },
-      "T-70 X-Wing": {
-        name: "T-70 X-Wing",
-        factions: ["Resistance"],
-        attack: 3,
-        agility: 2,
-        hull: 3,
+        hull: 6,
         shields: 3,
-        actions: ["Focus", "Target Lock", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
-      },
-      "TIE/fo Fighter": {
-        name: "TIE/fo Fighter",
-        factions: ["First Order"],
-        attack: 2,
-        agility: 3,
-        hull: 3,
-        shields: 1,
-        actions: ["Focus", "Target Lock", "Barrel Roll", "Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0], [2, 2, 2, 2, 2, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
+        actions: ["Focus > Rotate Arc", "Target Lock > Rotate Arc"],
+        actionsred: ["Barrel Roll"],
+        attack_icon: 'xwing-miniatures-font-attack-turret',
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 1, 3, 0, 0, 0], [1, 2, 2, 1, 3, 0, 0, 0], [0, 2, 2, 1, 0, 0, 3, 0], [0, 0, 1, 0, 0, 3, 0, 0]]
       },
       'ARC-170': {
         name: 'ARC-170',
         factions: ["Rebel Alliance"],
-        attack: 2,
+        attack: 3,
+        attackb: 2,
         agility: 1,
         hull: 6,
         shields: 3,
         actions: ["Focus", "Target Lock"],
+        actionsred: ["Barrel Roll"],
         attack_icon: 'xwing-miniatures-font-attack-frontback',
         maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0], [1, 2, 2, 2, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 3, 0, 0, 3]]
-      },
-      'TIE/sf Fighter': {
-        name: 'TIE/sf Fighter',
-        factions: ["First Order"],
-        attack: 2,
-        agility: 2,
-        hull: 3,
-        shields: 3,
-        actions: ['Focus', 'Target Lock', 'Barrel Roll'],
-        attack_icon: 'xwing-miniatures-font-attack-frontback',
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [3, 1, 2, 1, 3, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0]]
       },
       'Protectorate Starfighter': {
         name: 'Protectorate Starfighter',
@@ -1670,7 +1585,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 4,
         shields: 0,
-        actions: ['Focus', 'Target Lock', 'Barrel Roll', 'Boost'],
+        actions: ["Focus", "Target Lock", "Barrel Roll > Focus", "Boost Focus"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
       'Lancer-class Pursuit Craft': {
@@ -1678,22 +1593,12 @@ exportObj.basicCardData = function() {
         factions: ["Scum and Villainy"],
         large: true,
         attack: 3,
+        attackt: 2,
         agility: 2,
-        hull: 7,
-        shields: 3,
-        actions: ['Focus', 'Target Lock', 'Evade', 'Rotate Arc'],
+        hull: 8,
+        shields: 2,
+        actions: ['Focus', 'Evade', 'Target Lock', 'Rotate Arc'],
         maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0], [1, 1, 2, 1, 1, 0], [2, 2, 2, 2, 2, 0], [0, 0, 2, 0, 0, 0], [0, 0, 1, 0, 0, 3]]
-      },
-      'Upsilon-class Shuttle': {
-        name: 'Upsilon-class Shuttle',
-        factions: ["First Order"],
-        large: true,
-        attack: 4,
-        agility: 1,
-        hull: 6,
-        shields: 6,
-        actions: ['Focus', 'Target Lock', 'Coordinate'],
-        maneuvers: [[0, 0, 3, 0, 0], [3, 1, 2, 1, 3], [1, 2, 2, 2, 1], [3, 1, 1, 1, 3]]
       },
       'Quadjumper': {
         name: 'Quadjumper',
@@ -1702,18 +1607,20 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 5,
         shields: 0,
-        actions: ['Barrel Roll', 'Focus'],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 3, 3, 3], [1, 2, 2, 2, 1, 0, 3, 3, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        actions: ["Barrel Roll", "Focus"],
+        actionsred: ["Evade"],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 3, 0, 3], [1, 2, 2, 2, 1, 0, 3, 3, 0, 0, 0, 3, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       },
       'U-Wing': {
         name: 'U-Wing',
         factions: ["Rebel Alliance"],
         large: true,
         attack: 3,
-        agility: 1,
-        hull: 4,
-        shields: 4,
-        actions: ['Focus', 'Target Lock'],
+        agility: 2,
+        hull: 5,
+        shields: 3,
+        actions: ["Focus", "Target Lock"],
+        actionsred: ["Coordinate"],
         maneuvers: [[0, 0, 3, 0, 0], [0, 2, 2, 2, 0], [1, 2, 2, 2, 1], [0, 1, 1, 1, 0], [0, 0, 1, 0, 0]]
       },
       'TIE Striker': {
@@ -1723,19 +1630,8 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 4,
         shields: 0,
-        actions: ['Focus', 'Barrel Roll', 'Evade'],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 1, 2, 1, 1, 3, 3, 3], [0, 1, 2, 1, 0, 0, 0, 0]]
-      },
-      "C-ROC Cruiser": {
-        name: "C-ROC Cruiser",
-        factions: ["Scum and Villainy"],
-        energy: 4,
-        agility: 0,
-        hull: 10,
-        shields: 4,
-        huge: true,
-        actions: ["Recover", "Reinforce", "Target Lock", "Jam"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0], [0, 1, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0]]
+        actions: ["Focus", "Evade", "Barrel Roll"],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 3, 0, 0], [1, 2, 2, 2, 1, 0, 3, 3], [0, 1, 2, 1, 0, 0, 0, 0]]
       },
       'Auzituck Gunship': {
         name: 'Auzituck Gunship',
@@ -1744,19 +1640,20 @@ exportObj.basicCardData = function() {
         agility: 1,
         hull: 6,
         shields: 3,
-        actions: ['Focus', 'Reinforce'],
+        actions: ["Focus", "Reinforce"],
         attack_icon: 'xwing-miniatures-font-attack-180',
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
       },
       'Scurrg H-6 Bomber': {
         name: 'Scurrg H-6 Bomber',
-        factions: ["Rebel Alliance", "Scum and Villainy"],
+        factions: ["Scum and Villainy"],
         attack: 3,
         agility: 1,
-        hull: 5,
-        shields: 5,
-        actions: ['Focus', 'Target Lock', 'Barrel Roll'],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
+        hull: 6,
+        shields: 4,
+        actions: ["Focus", "Target Lock", "Barrel Roll"],
+        actionsred: ["Barrel Roll"],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 3, 3], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
       },
       'TIE Aggressor': {
         name: 'TIE Aggressor',
@@ -1765,7 +1662,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 4,
         shields: 1,
-        actions: ['Focus', 'Target Lock', 'Barrel Roll'],
+        actions: ['Focus', 'Target Lock', 'Barrel Roll > Evade'],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
       },
       'Alpha-class Star Wing': {
@@ -1775,7 +1672,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 4,
         shields: 3,
-        actions: ['Target Lock', 'Focus', 'SLAM', 'Reload'],
+        actions: ['Focus', 'Target Lock', 'Slam', 'Reload'],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0]]
       },
       'M12-L Kimogila Fighter': {
@@ -1784,10 +1681,11 @@ exportObj.basicCardData = function() {
         attack_icon: 'xwing-miniatures-font-attack-bullseye',
         attack: 3,
         agility: 1,
-        hull: 6,
+        hull: 7,
         shields: 2,
         actions: ['Target Lock', 'Focus', 'Barrel Roll', 'Reload'],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0], [3, 2, 2, 2, 3, 0], [1, 1, 2, 1, 1, 0], [0, 0, 0, 0, 0, 3]]
+        actionsred: ['Target Lock', 'Focus', 'Reload'],
+        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 0], [0, 0, 0, 0, 0, 3]]
       },
       'Sheathipede-class Shuttle': {
         name: 'Sheathipede-class Shuttle',
@@ -1798,29 +1696,7 @@ exportObj.basicCardData = function() {
         shields: 1,
         actions: ['Focus', 'Target Lock', 'Coordinate'],
         attack_icon: 'xwing-miniatures-font-attack-frontback',
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0], [1, 2, 2, 2, 1, 0], [3, 1, 2, 1, 3, 3], [0, 0, 3, 0, 0, 0]]
-      },
-      'B/SF-17 Bomber': {
-        name: 'B/SF-17 Bomber',
-        factions: ["Resistance"],
-        large: true,
-        attack: 2,
-        agility: 1,
-        hull: 9,
-        shields: 3,
-        actions: ['Focus', 'Target Lock'],
-        attack_icon: 'xwing-miniatures-font-attack-turret',
-        maneuvers: [[0, 0, 3, 0, 0, 0], [3, 2, 2, 2, 3, 0], [1, 1, 2, 1, 1, 0], [0, 1, 1, 1, 0, 0]]
-      },
-      'TIE Silencer': {
-        name: 'TIE Silencer',
-        factions: ["First Order"],
-        attack: 3,
-        agility: 3,
-        hull: 4,
-        shields: 2,
-        actions: ['Focus', 'Barrel Roll', 'Boost', 'Target Lock'],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       },
       'TIE Reaper': {
         name: 'TIE Reaper',
@@ -1830,7 +1706,8 @@ exportObj.basicCardData = function() {
         hull: 6,
         shields: 2,
         actions: ['Focus', 'Evade', 'Jam'],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [3, 2, 2, 2, 3, 0, 0, 0], [0, 3, 2, 3, 0, 0, 0, 0]]
+        actionsred: ['Coordinate'],
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 3, 3], [3, 1, 2, 1, 3, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0]]
       }
     },
     pilotsById: [
@@ -1842,7 +1719,7 @@ exportObj.basicCardData = function() {
         ship: "X-Wing",
         skill: 9,
         points: 29,
-        slots: ["Elite", "Torpedo", "Astromech"]
+        slots: ["Elite", "Torpedo", "Astromech", "Configuration"]
       }, {
         name: "Garven Dreis",
         faction: "Rebel Alliance",
@@ -1851,7 +1728,7 @@ exportObj.basicCardData = function() {
         ship: "X-Wing",
         skill: 6,
         points: 26,
-        slots: ["Torpedo", "Astromech"]
+        slots: ["Torpedo", "Astromech", "Configuration"]
       }, {
         name: "Red Squadron Pilot",
         faction: "Rebel Alliance",
@@ -31341,7 +31218,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 29239
+                    lineno: 29034
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -31930,7 +31807,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 29869
+              lineno: 29664
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -31969,7 +31846,7 @@ exportObj.SquadBuilder = (function() {
     this.obstacles_container = content_container.find('.obstacles-container');
     this.notes_container = $(content_container.find('.notes-container'));
     this.notes = $(this.notes_container.find('textarea.squad-notes'));
-    this.info_container.append($.trim("<div class=\"well well-small info-well\">\n    <span class=\"info-name\"></span>\n    <br />\n    <span class=\"info-sources\"></span>\n    <br />\n    <span class=\"info-collection\"></span>\n    <table>\n        <tbody>\n            <tr class=\"info-ship\">\n                <td class=\"info-header\">Ship</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-skill\">\n                <td class=\"info-header\">Skill</td>\n                <td class=\"info-data info-skill\"></td>\n            </tr>\n            <tr class=\"info-energy\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-energy\"></i></td>\n                <td class=\"info-data info-energy\"></td>\n            </tr>\n            <tr class=\"info-attack\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-attack\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-range\">\n                <td class=\"info-header\">Range</td>\n                <td class=\"info-data info-range\"></td>\n            </tr>\n            <tr class=\"info-agility\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-agility\"></i></td>\n                <td class=\"info-data info-agility\"></td>\n            </tr>\n            <tr class=\"info-hull\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-hull\"></i></td>\n                <td class=\"info-data info-hull\"></td>\n            </tr>\n            <tr class=\"info-shields\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-shield\"></i></td>\n                <td class=\"info-data info-shields\"></td>\n            </tr>\n            <tr class=\"info-actions\">\n                <td class=\"info-header\">Actions</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-upgrades\">\n                <td class=\"info-header\">Upgrades</td>\n                <td class=\"info-data\"></td>\n            </tr>\n        </tbody>\n    </table>\n    <p class=\"info-text\" />\n    <p class=\"info-maneuvers\" />\n</div>"));
+    this.info_container.append($.trim("<div class=\"well well-small info-well\">\n    <span class=\"info-name\"></span>\n    <br />\n    <span class=\"info-sources\"></span>\n    <br />\n    <span class=\"info-collection\"></span>\n    <table>\n        <tbody>\n            <tr class=\"info-ship\">\n                <td class=\"info-header\">Ship</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-skill\">\n                <td class=\"info-header\">Skill</td>\n                <td class=\"info-data info-skill\"></td>\n            </tr>\n            <tr class=\"info-energy\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-energy\"></i></td>\n                <td class=\"info-data info-energy\"></td>\n            </tr>\n            <tr class=\"info-attack\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-attack\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-range\">\n                <td class=\"info-header\">Range</td>\n                <td class=\"info-data info-range\"></td>\n            </tr>\n            <tr class=\"info-agility\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-agility\"></i></td>\n                <td class=\"info-data info-agility\"></td>\n            </tr>\n            <tr class=\"info-hull\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-hull\"></i></td>\n                <td class=\"info-data info-hull\"></td>\n            </tr>\n            <tr class=\"info-shields\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-shield\"></i></td>\n                <td class=\"info-data info-shields\"></td>\n            </tr>\n            <tr class=\"info-actions\">\n                <td class=\"info-header\">Actions</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-actions-red\">\n                <td></td>\n                <td class=\"info-data-red\"></td>\n            </tr>\n            <tr class=\"info-upgrades\">\n                <td class=\"info-header\">Upgrades</td>\n                <td class=\"info-data\"></td>\n            </tr>\n        </tbody>\n    </table>\n    <p class=\"info-text\" />\n    <p class=\"info-maneuvers\" />\n</div>"));
     this.info_container.hide();
     this.print_list_button = $(this.container.find('button.print-list'));
     this.container.find('[rel=tooltip]').tooltip();
@@ -32674,7 +32551,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 30499
+          lineno: 30298
         }));
         __iced_deferrals._fulfill();
       });
@@ -32686,7 +32563,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 30500
+            lineno: 30299
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -33325,7 +33202,26 @@ exportObj.SquadBuilder = (function() {
             }
             return _results;
           }).call(this)).join(', '));
+          this.info_container.find('tr.info-actions-red td.info-data-red').html(((function() {
+            var _j, _len1, _ref22, _results;
+            _ref22 = data.data.actions.concat((function() {
+              var _k, _len1, _results1;
+              _results1 = [];
+              for (_k = 0, _len1 = extra_actions_red.length; _k < _len1; _k++) {
+                action = extra_actions_red[_k];
+                _results1.push("<strong>" + (exportObj.translate(this.language, 'action', actionsred)) + "</strong>");
+              }
+              return _results1;
+            }).call(this));
+            _results = [];
+            for (_j = 0, _len1 = _ref22.length; _j < _len1; _j++) {
+              a = _ref22[_j];
+              _results.push(exportObj.translate(this.language, 'action', a));
+            }
+            return _results;
+          }).call(this)).join(', '));
           this.info_container.find('tr.info-actions').show();
+          this.info_container.find('tr.info-actions-red').toggle(ships[data.ship].actionsred != null);
           this.info_container.find('tr.info-upgrades').show();
           this.info_container.find('tr.info-upgrades td.info-data').text(((function() {
             var _j, _len1, _ref22, _results;
@@ -33394,7 +33290,18 @@ exportObj.SquadBuilder = (function() {
             }
             return _results;
           }).call(this)).join(', '));
+          this.info_container.find('tr.info-actions-red td.info-data-red').text(((function() {
+            var _k, _len2, _ref43, _ref44, _ref45, _results;
+            _ref45 = (_ref43 = (_ref44 = data.ship_override) != null ? _ref44.actions : void 0) != null ? _ref43 : exportObj.ships[data.ship].actionsred;
+            _results = [];
+            for (_k = 0, _len2 = _ref45.length; _k < _len2; _k++) {
+              action = _ref45[_k];
+              _results.push(exportObj.translate(this.language, 'action', action));
+            }
+            return _results;
+          }).call(this)).join(', '));
           this.info_container.find('tr.info-actions').show();
+          this.info_container.find('tr.info-actions-red').toggle(ships[data.ship].actionsred != null);
           this.info_container.find('tr.info-upgrades').show();
           this.info_container.find('tr.info-upgrades td.info-data').text(((function() {
             var _k, _len2, _ref43, _results;
@@ -33460,6 +33367,7 @@ exportObj.SquadBuilder = (function() {
           this.info_container.find('tr.info-hull').hide();
           this.info_container.find('tr.info-shields').hide();
           this.info_container.find('tr.info-actions').hide();
+          this.info_container.find('tr.info-actions-red').hide();
           this.info_container.find('tr.info-upgrades').hide();
           this.info_container.find('p.info-maneuvers').hide();
       }
@@ -34297,7 +34205,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 31405
+                      lineno: 31209
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -34371,7 +34279,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 31431
+                lineno: 31235
               })
             ]);
             __iced_deferrals._fulfill();
@@ -34426,7 +34334,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 31454
+              lineno: 31258
             }));
           }
         }
@@ -34435,7 +34343,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 31456
+              lineno: 31260
             }));
           }
         }
@@ -34444,7 +34352,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 31458
+              lineno: 31262
             }));
           }
         }
@@ -35469,7 +35377,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 32144
+                lineno: 31948
               })
             ]);
             __iced_deferrals._fulfill();
@@ -35588,7 +35496,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 32203
+                  lineno: 32007
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -35610,7 +35518,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 32207
+                    lineno: 32011
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -35700,7 +35608,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 32250
+            lineno: 32054
           }));
         }
         __iced_deferrals._fulfill();
