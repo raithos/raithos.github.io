@@ -1972,7 +1972,7 @@ exportObj.basicCardData = ->
                 "Torpedo"
                 "Astromech"
                 "Modification"
-                "configuration"
+                "Configuration"
             ]
         }
         {
@@ -1986,7 +1986,7 @@ exportObj.basicCardData = ->
                 "Torpedo"
                 "Astromech"
                 "Modification"
-                "configuration"
+                "Configuration"
             ]
         }
         {
@@ -2001,7 +2001,7 @@ exportObj.basicCardData = ->
                 "Torpedo"
                 "Astromech"
                 "Modification"
-                "configuration"
+                "Configuration"
             ]
         }
         {
@@ -2017,7 +2017,7 @@ exportObj.basicCardData = ->
                 "Torpedo"
                 "Astromech"
                 "Modification"
-                "configuration"
+                "Configuration"
             ]
         }
         {
@@ -2033,7 +2033,7 @@ exportObj.basicCardData = ->
                 "Torpedo"
                 "Astromech"
                 "Modification"
-                "configuration"
+                "Configuration"
             ]
             ship_override:
                 force: 2
@@ -2051,7 +2051,7 @@ exportObj.basicCardData = ->
                 "Torpedo"
                 "Astromech"
                 "Modification"
-                "configuration"
+                "Configuration"
             ]
         }
         {
@@ -2067,7 +2067,7 @@ exportObj.basicCardData = ->
                 "Torpedo"
                 "Astromech"
                 "Modification"
-                "configuration"
+                "Configuration"
             ]
         }
         {
@@ -2082,7 +2082,7 @@ exportObj.basicCardData = ->
                 "Torpedo"
                 "Astromech"
                 "Modification"
-                "configuration"
+                "Configuration"
             ]
         }
         {
@@ -2444,7 +2444,7 @@ exportObj.basicCardData = ->
                 "Crew"
                 "Crew"
                 "Modification"
-                "configuration"
+                "Configuration"
             ]
         }
         {
@@ -2495,7 +2495,7 @@ exportObj.basicCardData = ->
                 "Crew"
                 "Crew"
                 "Modification"
-                "configuration"
+                "Configuration"
                 "Illicit"
             ]
         }
@@ -2513,7 +2513,7 @@ exportObj.basicCardData = ->
                 "Crew"
                 "Crew"
                 "Modification"
-                "configuration"
+                "Configuration"
                 "Illicit"
             ]
         }
@@ -5604,6 +5604,7 @@ exportObj.basicCardData = ->
            slot: "Astromech"
            points: 8
            charge: 3
+           faction: "Rebel Alliance"
        }
        {
            name: "R3 Astromech"
@@ -5627,9 +5628,11 @@ exportObj.basicCardData = ->
        {
            name: "R5-D8"
            id: 7
+           unique: true
            slot: "Astromech"
            points: 7
            charge: 3
+           faction: "Rebel Alliance"
        }
        {
            name: "R5-P8"
@@ -6723,7 +6726,7 @@ exportObj.basicCardData = ->
                 }
                 {
                     type: exportObj.Upgrade
-                    slot: 'Salvaged Astromech'
+                    slot: 'Astromech'
                 }
            ]
        }

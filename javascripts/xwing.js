@@ -1737,7 +1737,7 @@ exportObj.basicCardData = function() {
         ship: "X-Wing",
         skill: 1,
         points: 41,
-        slots: ["Illicit", "Torpedo", "Astromech", "Modification", "configuration"]
+        slots: ["Illicit", "Torpedo", "Astromech", "Modification", "Configuration"]
       }, {
         name: "Blue Squadron Escort",
         id: 1,
@@ -1745,7 +1745,7 @@ exportObj.basicCardData = function() {
         ship: "X-Wing",
         skill: 2,
         points: 41,
-        slots: ["Torpedo", "Astromech", "Modification", "configuration"]
+        slots: ["Torpedo", "Astromech", "Modification", "Configuration"]
       }, {
         name: "Red Squadron Veteran",
         id: 2,
@@ -1753,7 +1753,7 @@ exportObj.basicCardData = function() {
         ship: "X-Wing",
         skill: 3,
         points: 43,
-        slots: ["Talent", "Torpedo", "Astromech", "Modification", "configuration"]
+        slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
       }, {
         name: "Jek Porkins",
         id: 3,
@@ -1762,7 +1762,7 @@ exportObj.basicCardData = function() {
         ship: "X-Wing",
         skill: 4,
         points: 46,
-        slots: ["Talent", "Torpedo", "Astromech", "Modification", "configuration"]
+        slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
       }, {
         name: "Luke Skywalker",
         id: 4,
@@ -1771,7 +1771,7 @@ exportObj.basicCardData = function() {
         ship: "X-Wing",
         skill: 5,
         points: 62,
-        slots: ["Force", "Torpedo", "Astromech", "Modification", "configuration"],
+        slots: ["Force", "Torpedo", "Astromech", "Modification", "Configuration"],
         ship_override: {
           force: 2
         }
@@ -1783,7 +1783,7 @@ exportObj.basicCardData = function() {
         ship: "X-Wing",
         skill: 6,
         points: 52,
-        slots: ["Talent", "Torpedo", "Astromech", "Modification", "configuration"]
+        slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
       }, {
         name: "Garven Dreis (X-Wing)",
         id: 6,
@@ -1792,7 +1792,7 @@ exportObj.basicCardData = function() {
         ship: "X-Wing",
         skill: 4,
         points: 47,
-        slots: ["Talent", "Torpedo", "Astromech", "Modification", "configuration"]
+        slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
       }, {
         name: "Biggs Darklighter",
         id: 7,
@@ -1801,7 +1801,7 @@ exportObj.basicCardData = function() {
         ship: "X-Wing",
         skill: 3,
         points: 48,
-        slots: ["Torpedo", "Astromech", "Modification", "configuration"]
+        slots: ["Torpedo", "Astromech", "Modification", "Configuration"]
       }, {
         name: "Edrio Two-Tubes",
         id: 8,
@@ -2005,7 +2005,7 @@ exportObj.basicCardData = function() {
         ship: "U-Wing",
         skill: 4,
         points: 49,
-        slots: ["Talent", "System", "Crew", "Crew", "Modification", "configuration"]
+        slots: ["Talent", "System", "Crew", "Crew", "Modification", "Configuration"]
       }, {
         name: "Cassian Andor",
         id: 32,
@@ -2032,7 +2032,7 @@ exportObj.basicCardData = function() {
         ship: "U-Wing",
         skill: 3,
         points: 50,
-        slots: ["Talent", "System", "Crew", "Crew", "Modification", "configuration", "Illicit"]
+        slots: ["Talent", "System", "Crew", "Crew", "Modification", "Configuration", "Illicit"]
       }, {
         name: "Saw Gerrera",
         id: 35,
@@ -2041,7 +2041,7 @@ exportObj.basicCardData = function() {
         ship: "U-Wing",
         skill: 4,
         points: 52,
-        slots: ["Talent", "System", "Crew", "Crew", "Modification", "configuration", "Illicit"]
+        slots: ["Talent", "System", "Crew", "Crew", "Modification", "Configuration", "Illicit"]
       }, {
         name: "Benthic Two-Tubes",
         id: 36,
@@ -3773,7 +3773,8 @@ exportObj.basicCardData = function() {
         unique: true,
         slot: "Astromech",
         points: 8,
-        charge: 3
+        charge: 3,
+        faction: "Rebel Alliance"
       }, {
         name: "R3 Astromech",
         id: 4,
@@ -3793,9 +3794,11 @@ exportObj.basicCardData = function() {
       }, {
         name: "R5-D8",
         id: 7,
+        unique: true,
         slot: "Astromech",
         points: 7,
-        charge: 3
+        charge: 3,
+        faction: "Rebel Alliance"
       }, {
         name: "R5-P8",
         id: 8,
@@ -4755,7 +4758,7 @@ exportObj.basicCardData = function() {
             slot: 'System'
           }, {
             type: exportObj.Upgrade,
-            slot: 'Salvaged Astromech'
+            slot: 'Astromech'
           }
         ]
       }, {
@@ -24625,7 +24628,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 21891
+                    lineno: 21894
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -25214,7 +25217,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 22521
+              lineno: 22524
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -25958,7 +25961,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 23171
+          lineno: 23174
         }));
         __iced_deferrals._fulfill();
       });
@@ -25970,7 +25973,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 23172
+            lineno: 23175
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -27632,7 +27635,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 24133
+                      lineno: 24136
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -27706,7 +27709,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 24159
+                lineno: 24162
               })
             ]);
             __iced_deferrals._fulfill();
@@ -27761,7 +27764,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 24182
+              lineno: 24185
             }));
           }
         }
@@ -27770,7 +27773,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 24184
+              lineno: 24187
             }));
           }
         }
@@ -27779,7 +27782,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 24186
+              lineno: 24189
             }));
           }
         }
@@ -28804,7 +28807,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 24874
+                lineno: 24877
               })
             ]);
             __iced_deferrals._fulfill();
@@ -28923,7 +28926,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 24933
+                  lineno: 24936
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -28945,7 +28948,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 24937
+                    lineno: 24940
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -29035,7 +29038,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 24980
+            lineno: 24983
           }));
         }
         __iced_deferrals._fulfill();
