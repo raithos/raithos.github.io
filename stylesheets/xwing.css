@@ -51,7 +51,7 @@ strong em, em strong {
 .ship {
   border: medium solid black; }
 
-.card-stat, .info-data.info-skill, .info-data.info-attack, .info-data.info-energy, .info-data.info-agility, .info-data.info-hull, .info-data.info-shields, .info-maneuvers table > tbody > tr > td:first-child {
+.card-stat, .info-data.info-skill, .info-data.info-attack, .info-data.info-energy, .info-data.info-agility, .info-data.info-hull, .info-data.info-shields, .info-data.info-force, .info-maneuvers table > tbody > tr > td:first-child {
   font-family: kimberley;
   font-size: 1.5em; }
 
@@ -61,7 +61,7 @@ strong em, em strong {
 .info-data-red {
   color: #EF232B; }
 
-.card-icon, i.xwing-miniatures-font-attack, i.xwing-miniatures-font-attack-turret, i.xwing-miniatures-font-attack-frontback, i.xwing-miniatures-font-attack-180, i.xwing-miniatures-font-attack-bullseye, i.xwing-miniatures-font-energy, i.xwing-miniatures-font-agility, i.xwing-miniatures-font-hull, i.xwing-miniatures-font-shield {
+.card-icon, i.xwing-miniatures-font-attack, i.xwing-miniatures-font-attack-turret, i.xwing-miniatures-font-attack-frontback, i.xwing-miniatures-font-attack-180, i.xwing-miniatures-font-attack-bullseye, i.xwing-miniatures-font-doublearcturret, i.xwing-miniatures-font-singleturretarc, i.xwing-miniatures-font-frontarc, i.xwing-miniatures-font-reararc, i.xwing-miniatures-font-energy, i.xwing-miniatures-font-agility, i.xwing-miniatures-font-hull, i.xwing-miniatures-font-shield, i.xwing-miniatures-font-forcepower {
   background: black;
   border-radius: 50%;
   padding: 3px;
@@ -73,7 +73,7 @@ td.info-header {
 i.xwing-miniatures-font {
   color: black; }
 
-i.xwing-miniatures-font-attack, i.xwing-miniatures-font-attack-turret, i.xwing-miniatures-font-attack-frontback, i.xwing-miniatures-font-attack-180, i.xwing-miniatures-font-attack-bullseye {
+i.xwing-miniatures-font-attack, i.xwing-miniatures-font-attack-turret, i.xwing-miniatures-font-attack-frontback, i.xwing-miniatures-font-attack-180, i.xwing-miniatures-font-attack-bullseye, i.xwing-miniatures-font-doublearcturret, i.xwing-miniatures-font-singleturretarc, i.xwing-miniatures-font-frontarc, i.xwing-miniatures-font-reararc {
   color: #EF232B; }
 
 i.xwing-miniatures-font-attack-frontback {
@@ -95,6 +95,10 @@ i.xwing-miniatures-font-shield {
   color: #7ED3E5;
   padding: 2px 3px 4px 3px; }
 
+i.xwing-miniatures-font-forcepower {
+  color: #7ED3E5;
+  padding: 2px 3px 4px 3px; }
+
 .info-data.info-attack {
   color: #EF232B; }
 
@@ -108,6 +112,10 @@ i.xwing-miniatures-font-shield {
   color: #B6B335; }
 
 .info-data.info-shields {
+  color: #7ED3E5;
+  padding: 2px; }
+
+.info-data.info-force {
   color: #7ED3E5;
   padding: 2px; }
 

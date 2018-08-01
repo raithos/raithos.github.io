@@ -784,6 +784,10 @@ class exportObj.CardBrowser
                                         <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-shield"></i></td>
                                         <td class="info-data info-shields"></td>
                                     </tr>
+                                    <tr class="info-force">
+                                        <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-forcepower"></i></td>
+                                        <td class="info-data info-force"></td>
+                                    </tr>
                                     <tr class="info-actions">
                                         <td class="info-header">Actions</td>
                                         <td class="info-data"></td>
@@ -945,8 +949,8 @@ class exportObj.CardBrowser
                 @card_viewer_container.find('tr.info-shields td.info-data').text(data.ship_override?.shields ? ship.shields)
                 @card_viewer_container.find('tr.info-shields').show()
 
-                @card_viewer_container.find('tr.info-force td.info-data').text(data.ship_override?.shields)
-                @card_viewer_container.find('tr.info-force').toggle(data.ship_override?.shields?)
+                @card_viewer_container.find('tr.info-force td.info-data').text(data.ship_override?.force)
+                @card_viewer_container.find('tr.info-force').toggle(data.ship_override?.force?)
                 
                 @card_viewer_container.find('tr.info-actions td.info-data').text (exportObj.translate(@language, 'action', action) for action in exportObj.ships[data.ship].actions).join(', ')
 
@@ -1086,7 +1090,7 @@ exportObj.basicCardData = ->
             ]
         "YT-1300":
             name: "YT-1300"
-            factions: [ "Rebel Alliance", "Resistance" ]
+            factions: [ "Rebel Alliance", "Scum and Villainy" ]
             attackdt: 3
             agility: 1
             hull: 8
@@ -1099,7 +1103,6 @@ exportObj.basicCardData = ->
             actionsred: [
                 "Boost"
             ]
-            attack_icon: 'xwing-miniatures-font-attack-turret'
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0]
               [ 0, 1, 2, 1, 0, 0, 0, 0]
@@ -1185,7 +1188,6 @@ exportObj.basicCardData = ->
             actionsred: [
                 "Reinforce"
             ]
-            attack_icon: 'xwing-miniatures-font-attack-frontback'
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
               [ 0, 2, 2, 2, 0, 0, 0, 0, 0, 0]
@@ -1384,7 +1386,6 @@ exportObj.basicCardData = ->
                 "Barrel Roll"
             ]
             large: true
-            attack_icon: 'xwing-miniatures-font-attack-turret'
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0]
                 [ 1, 2, 2, 2, 1, 0]
@@ -1409,7 +1410,6 @@ exportObj.basicCardData = ->
                 "Coordinate"
             ]
             large: true
-            attack_icon: 'xwing-miniatures-font-attack-turret'
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0]
                 [ 3, 2, 2, 2, 3, 0]
@@ -1533,7 +1533,6 @@ exportObj.basicCardData = ->
                 "Rotate Arc"
                 "Reload"
             ]
-            attack_icon: 'xwing-miniatures-font-attack-turret'
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0 ]
                 [ 0, 2, 2, 2, 0, 0 ]
@@ -1604,7 +1603,6 @@ exportObj.basicCardData = ->
             ]
         "TIE Advanced Prototype":
             name: "TIE Advanced Prototype"
-            canonical_name: 'TIE Adv. Prototype'.canonicalize()
             factions: ["Galactic Empire"]
             attack: 2
             agility: 3
@@ -1659,7 +1657,6 @@ exportObj.basicCardData = ->
             actionsred: [
                 "Barrel Roll"
             ]
-            attack_icon: 'xwing-miniatures-font-attack-turret'
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 1, 2, 2, 1, 3, 0, 0, 0 ]
@@ -1667,8 +1664,8 @@ exportObj.basicCardData = ->
                 [ 0, 2, 2, 1, 0, 0, 3, 0 ]
                 [ 0, 0, 1, 0, 0, 3, 0, 0 ]
             ]
-        'ARC-170':
-            name: 'ARC-170'
+        "ARC-170":
+            name: "ARC-170"
             factions: ["Rebel Alliance"]
             attack: 3
             attackb: 2
@@ -1682,7 +1679,6 @@ exportObj.basicCardData = ->
             actionsred: [
                 "Barrel Roll"
             ]
-            attack_icon: 'xwing-miniatures-font-attack-frontback'
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0 ]
                 [ 0, 2, 2, 2, 0, 0 ]
@@ -1690,8 +1686,8 @@ exportObj.basicCardData = ->
                 [ 3, 1, 1, 1, 3, 0 ]
                 [ 0, 0, 3, 0, 0, 3 ]
             ]
-        'Protectorate Starfighter':
-            name: 'Protectorate Starfighter'
+        "Protectorate Starfighter":
+            name: "Protectorate Starfighter"
             factions: ["Scum and Villainy"]
             attack: 3
             agility: 3
@@ -1711,8 +1707,8 @@ exportObj.basicCardData = ->
                 [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0 ]
                 [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 ]
             ]
-        'Lancer-class Pursuit Craft':
-            name: 'Lancer-class Pursuit Craft'
+        "Lancer-class Pursuit Craft":
+            name: "Lancer-class Pursuit Craft"
             factions: ["Scum and Villainy"]
             large: true
             attack: 3
@@ -1721,10 +1717,10 @@ exportObj.basicCardData = ->
             hull: 8
             shields: 2
             actions: [
-                'Focus'
-                'Evade'
-                'Target Lock'
-                'Rotate Arc'
+                "Focus"
+                "Evade"
+                "Target Lock"
+                "Rotate Arc"
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0]
@@ -1734,8 +1730,8 @@ exportObj.basicCardData = ->
                 [ 0, 0, 2, 0, 0, 0]
                 [ 0, 0, 1, 0, 0, 3]
             ]
-        'Quadjumper':
-            name: 'Quadjumper'
+        "Quadjumper":
+            name: "Quadjumper"
             factions: ["Scum and Villainy"]
             attack: 2
             agility: 2
@@ -1754,8 +1750,8 @@ exportObj.basicCardData = ->
                 [ 1, 2, 2, 2, 1, 0, 3, 3, 0, 0, 0, 3, 0 ]
                 [ 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
             ]
-        'U-Wing':
-            name: 'U-Wing'
+        "U-Wing":
+            name: "U-Wing"
             factions: ["Rebel Alliance"]
             large: true
             attack: 3
@@ -1776,8 +1772,8 @@ exportObj.basicCardData = ->
                 [ 0, 1, 1, 1, 0 ]
                 [ 0, 0, 1, 0, 0 ]
             ]
-        'TIE Striker':
-            name: 'TIE Striker'
+        "TIE Striker":
+            name: "TIE Striker"
             factions: ["Galactic Empire"]
             attack: 3
             agility: 2
@@ -1794,8 +1790,8 @@ exportObj.basicCardData = ->
                 [ 1, 2, 2, 2, 1, 0, 3, 3 ]
                 [ 0, 1, 2, 1, 0, 0, 0, 0 ]
             ]
-        'Auzituck Gunship':
-            name: 'Auzituck Gunship'
+        "Auzituck Gunship":
+            name: "Auzituck Gunship"
             factions: ["Rebel Alliance"]
             attack: 3
             agility: 1
@@ -1813,8 +1809,8 @@ exportObj.basicCardData = ->
                 [ 1, 1, 2, 1, 1, 0, 0, 0 ]
                 [ 0, 0, 1, 0, 0, 0, 0, 0 ]
             ]
-        'Scurrg H-6 Bomber':
-            name: 'Scurrg H-6 Bomber'
+        "Scurrg H-6 Bomber":
+            name: "Scurrg H-6 Bomber"
             factions: ["Scum and Villainy"]
             attack: 3
             agility: 1
@@ -1835,17 +1831,17 @@ exportObj.basicCardData = ->
                 [ 3, 1, 1, 1, 3, 0, 0, 0, 3, 3 ]
                 [ 0, 0, 3, 0, 0, 0, 0, 0, 0, 0 ]
             ]
-        'TIE Aggressor':
-            name: 'TIE Aggressor'
+        "TIE Aggressor":
+            name: "TIE Aggressor"
             factions: ["Galactic Empire"]
             attack: 2
             agility: 2
             hull: 4
             shields: 1
             actions: [
-                'Focus'
-                'Target Lock'
-                'Barrel Roll > Evade'
+                "Focus"
+                "Target Lock"
+                "Barrel Roll > Evade"
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
@@ -1854,18 +1850,18 @@ exportObj.basicCardData = ->
                 [ 1, 1, 2, 1, 1, 0, 0, 0, 0, 0 ]
                 [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0 ]
             ]
-        'Alpha-class Star Wing':
-            name: 'Alpha-class Star Wing'
+        "Alpha-class Star Wing":
+            name: "Alpha-class Star Wing"
             factions: ["Galactic Empire"]
             attack: 2
             agility: 2
             hull: 4
             shields: 3
             actions: [
-                'Focus'
-                'Target Lock'
-                'Slam'
-                'Reload'
+                "Focus"
+                "Target Lock"
+                "Slam"
+                "Reload"
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0 ]
@@ -1874,24 +1870,20 @@ exportObj.basicCardData = ->
                 [ 1, 1, 1, 1, 1, 0, 0, 0 ]
                 [ 0, 0, 3, 0, 0, 0, 0, 0 ]
             ]
-        'M12-L Kimogila Fighter':
-            name: 'M12-L Kimogila Fighter'
+        "M12-L Kimogila Fighter":
+            name: "M12-L Kimogila Fighter"
             factions: ["Scum and Villainy"]
-            attack_icon: 'xwing-miniatures-font-attack-bullseye'
             attack: 3
             agility: 1
             hull: 7
             shields: 2
             actions: [
-                'Target Lock'
-                'Focus'
-                'Barrel Roll'
-                'Reload'
+                "Focus"
+                "Target Lock"
+                "Reload"
             ]
             actionsred: [
-                'Target Lock'
-                'Focus'
-                'Reload'
+                "Barrel Roll"
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0]
@@ -1900,19 +1892,18 @@ exportObj.basicCardData = ->
                 [ 1, 1, 2, 1, 1, 0]
                 [ 0, 0, 0, 0, 0, 3]
             ]
-        'Sheathipede-class Shuttle':
-            name: 'Sheathipede-class Shuttle'
+        "Sheathipede-class Shuttle":
+            name: "Sheathipede-class Shuttle"
             factions: ["Rebel Alliance"]
             attack: 2
             agility: 2
             hull: 4
             shields: 1
             actions: [
-                'Focus'
-                'Target Lock'
-                'Coordinate'
+                "Focus"
+                "Target Lock"
+                "Coordinate"
             ]
-            attack_icon: 'xwing-miniatures-font-attack-frontback'
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 [ 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0]
@@ -1920,20 +1911,20 @@ exportObj.basicCardData = ->
                 [ 3, 1, 2, 1, 3, 3, 0, 0, 0, 0, 0, 0, 0]
                 [ 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             ]
-        'TIE Reaper':
-            name: 'TIE Reaper'
+        "TIE Reaper":
+            name: "TIE Reaper"
             factions: ["Galactic Empire"]
             attack: 3
             agility: 1
             hull: 6
             shields: 2
             actions: [
-                'Focus'
-                'Evade'
-                'Jam'
+                "Focus"
+                "Evade"
+                "Jam"
             ]
             actionsred: [
-                'Coordinate'
+                "Coordinate"
             ]
             maneuvers: [
                 [ 0, 0, 3, 0, 0, 0, 0, 0 ]
@@ -1941,2720 +1932,3113 @@ exportObj.basicCardData = ->
                 [ 3, 1, 2, 1, 3, 0, 0, 0 ]
                 [ 0, 1, 2, 1, 0, 0, 0, 0 ]
             ]
+        "Escape Craft":
+            name: "Escape Craft"
+            factions: ["Scum and Villiany"]
+            attack: 2
+            agility: 2
+            hull: 2
+            shields: 2
+            charge: 3
+            actions: [
+                "Focus"
+                "Barrel Roll"
+            ]
+            actionsred: [
+                "Coordinate"
+            ]
+            maneuvers: [
+                [ 0, 0, 3, 0, 0, 0, 0, 0 ]
+                [ 0, 2, 2, 2, 0, 0, 0, 0 ]
+                [ 3, 1, 2, 1, 0, 0, 0, 0 ]
+                [ 0, 1, 1, 1, 3, 0, 0, 0 ]
+            ]
+        
 
     # name field is for convenience only
     pilotsById: [
         {
-            name: "Wedge Antilles"
-            faction: "Rebel Alliance"
+            name: "Cavern Angels Zealot"
             id: 0
-            unique: true
+            faction: "Rebel Alliance"
             ship: "X-Wing"
-            skill: 9
-            points: 29
+            skill: 1
+            points: 41
             slots: [
-                "Elite"
+                "illicit"
                 "Torpedo"
                 "Astromech"
-                "Configuration"
+                "Modification"
+                "configuration"
             ]
         }
         {
-            name: "Garven Dreis"
-            faction: "Rebel Alliance"
+            name: "Blue Squadron Escort"
             id: 1
-            unique: true
-            ship: "X-Wing"
-            skill: 6
-            points: 26
-            slots: [
-                "Torpedo"
-                "Astromech"
-                "Configuration"
-            ]
-        }
-        {
-            name: "Red Squadron Pilot"
             faction: "Rebel Alliance"
-            id: 2
-            ship: "X-Wing"
-            skill: 4
-            points: 23
-            slots: [
-                "Torpedo"
-                "Astromech"
-            ]
-        }
-        {
-            name: "Rookie Pilot"
-            faction: "Rebel Alliance"
-            id: 3
             ship: "X-Wing"
             skill: 2
-            points: 21
+            points: 41
             slots: [
                 "Torpedo"
                 "Astromech"
+                "Modification"
+                "configuration"
             ]
         }
         {
-            name: "Biggs Darklighter"
+            name: "Red Squadron Veteran"
+            id: 2
             faction: "Rebel Alliance"
-            id: 4
-            unique: true
             ship: "X-Wing"
-            skill: 5
-            points: 25
+            skill: 3
+            points: 43
             slots: [
+                "talent"
                 "Torpedo"
                 "Astromech"
+                "Modification"
+                "configuration"
+            ]
+        }
+        {
+            name: "Jek Porkins"
+            id: 3
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "X-Wing"
+            skill: 4
+            points: 46
+            slots: [
+                "talent"
+                "Torpedo"
+                "Astromech"
+                "Modification"
+                "configuration"
             ]
         }
         {
             name: "Luke Skywalker"
-            faction: "Rebel Alliance"
-            id: 5
+            id: 4
             unique: true
+            faction: "Rebel Alliance"
             ship: "X-Wing"
             skill: 5
             points: 62
             slots: [
+                "Force"
                 "Torpedo"
                 "Astromech"
-                "Configuration"
+                "Modification"
+                "configuration"
             ]
             ship_override:
                 force: 2
         }
         {
-            name: "Gray Squadron Pilot"
+            name: "Wedge Antilles"
+            id: 5
+            unique: true
             faction: "Rebel Alliance"
-            id: 6
-            ship: "Y-Wing"
-            skill: 4
-            points: 20
+            ship: "X-Wing"
+            skill: 6
+            points: 52
             slots: [
-                "Turret"
-                "Torpedo"
+                "Talent"
                 "Torpedo"
                 "Astromech"
+                "Modification"
+                "configuration"
             ]
         }
         {
-            name: '"Dutch" Vander'
-            faction: "Rebel Alliance"
-            id: 7
+            name: "Garven Dreis (X-Wing)"
+            id: 6
             unique: true
-            ship: "Y-Wing"
-            skill: 6
-            points: 23
+            faction: "Rebel Alliance"
+            ship: "X-Wing"
+            skill: 4
+            points: 47
             slots: [
-                "Turret"
-                "Torpedo"
+                "Talent"
                 "Torpedo"
                 "Astromech"
+                "Modification"
+                "configuration"
+            ]
+        }
+        {
+            name: "Biggs Darklighter"
+            id: 7
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "X-Wing"
+            skill: 3
+            points: 48
+            slots: [
+                "Torpedo"
+                "Astromech"
+                "Modification"
+                "configuration"
+            ]
+        }
+        {
+            name: "Edrio Two-Tubes"
+            id: 8
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "X-Wing"
+            skill: 2
+            points: 45
+            slots: [
+                "illicit"
+                "Torpedo"
+                "Astromech"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Thane Kyrell"
+            id: 9
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "X-Wing"
+            skill: 5
+            points: 48
+            slots: [
+                "talent"
+                "Torpedo"
+                "Astromech"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Leevan Tenza"
+            id: 10
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "X-Wing"
+            skill: 3
+            points: 46
+            slots: [
+                "talent"
+                "Torpedo"
+                "Astromech"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "whoops"
+            id: 11
+            skip: true
+        }
+        {
+            name: "Kullbee Sperado"
+            id: 12
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "X-Wing"
+            skill: 3
+            points: 48
+            slots: [
+                "talent"
+                "Torpedo"
+                "Astromech"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Sabine Wren (TIE Fighter)"
+            id: 13
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "TIE Fighter"
+            skill: 3
+            points: 28
+            slots: [
+                "Modification"
+            ]
+        }
+        {
+            name: "Ezra Bridger (TIE Fighter)"
+            id: 14
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "TIE Fighter"
+            skill: 3
+            points: 32
+            slots: [
+                "Force"
+                "Modification"
+            ]
+            ship_override:
+                force: 1
+        }
+        {
+            name: '"Zeb" Orrelios (TIE Fighter)'
+            id: 15
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "TIE Fighter"
+            skill: 2
+            points: 26
+            slots: [
+                "Modification"
+            ]
+        }
+        {
+            name: "Captain Rex"
+            id: 16
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "TIE Fighter"
+            skill: 2
+            points: 32
+            slots: [
+                "Modification"
+            ]
+        }
+        {
+            name: "Miranda Doni"
+            id: 17
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "K-Wing"
+            skill: 4
+            points: 50
+            slots: [
+                "Torpedo"
+                "Missile"
+                "Missile"
+                "Crew"
+                "Device"
+                "Device"
+                "Modification"
+            ]
+        }
+        {
+            name: "Esege Tuketu"
+            id: 18
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "K-Wing"
+            skill: 3
+            points: 50
+            slots: [
+                "Torpedo"
+                "Missile"
+                "Missile"
+                "Crew"
+                "Device"
+                "Device"
+                "Modification"
+            ]
+        }
+        {
+            name: "empty"
+            id: 19
+            skip: true
+        }
+        {
+            name: "Warden Squadron Pilot"
+            id: 20
+            faction: "Rebel Alliance"
+            ship: "K-Wing"
+            skill: 3
+            points: 40
+            slots: [
+                "Torpedo"
+                "Missile"
+                "Missile"
+                "Crew"
+                "Device"
+                "Device"
+                "Modification"
+            ]
+        }
+        {
+            name: "Corran Horn"
+            id: 21
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "E-Wing"
+            skill: 5
+            points: 74
+            slots: [
+                "Talent"
+                "System"
+                "Torpedo"
+                "Astromech"
+                "Modification"
+            ]
+        }
+        {
+            name: "Gavin Darklighter"
+            id: 22
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "E-Wing"
+            skill: 4
+            points: 68
+            slots: [
+                "Talent"
+                "System"
+                "Torpedo"
+                "Astromech"
+                "Modification"
+            ]
+        }
+        {
+            name: "Rogue Squadron Escort"
+            id: 23
+            faction: "Rebel Alliance"
+            ship: "E-Wing"
+            skill: 4
+            points: 63
+            slots: [
+                "Talent"
+                "System"
+                "Torpedo"
+                "Astromech"
+                "Modification"
+            ]
+        }
+        {
+            name: "Knave Squadron Escort"
+            id: 24
+            faction: "Rebel Alliance"
+            ship: "E-Wing"
+            skill: 2
+            points: 61
+            slots: [
+                "Talent"
+                "System"
+                "Torpedo"
+                "Astromech"
+                "Modification"
+            ]
+        }
+        {
+            name: "Norra Wexley (Y-Wing)"
+            id: 25
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "Y-Wing"
+            skill: 5
+            points: 43
+            slots: [
+                "Talent"
+                "Turret"
+                "Torpedo"
+                "Astromech"
+                "Modification"
+                "Astromech"
+                "Gunner"
             ]
         }
         {
             name: "Horton Salm"
-            faction: "Rebel Alliance"
-            id: 8
-            unique: true
-            ship: "Y-Wing"
-            skill: 8
-            points: 25
-            slots: [
-                "Turret"
-                "Torpedo"
-                "Torpedo"
-                "Astromech"
-            ]
-        }
-        {
-            name: "Gold Squadron Pilot"
-            faction: "Rebel Alliance"
-            id: 9
-            ship: "Y-Wing"
-            skill: 2
-            points: 18
-            slots: [
-                "Turret"
-                "Torpedo"
-                "Torpedo"
-                "Astromech"
-            ]
-        }
-        {
-            name: "Academy Pilot"
-            faction: "Galactic Empire"
-            id: 10
-            ship: "TIE Fighter"
-            skill: 1
-            points: 12
-            slots: []
-        }
-        {
-            name: "Obsidian Squadron Pilot"
-            faction: "Galactic Empire"
-            id: 11
-            ship: "TIE Fighter"
-            skill: 3
-            points: 13
-            slots: []
-        }
-        {
-            name: "Black Squadron Pilot"
-            faction: "Galactic Empire"
-            id: 12
-            ship: "TIE Fighter"
-            skill: 4
-            points: 14
-            slots: [
-                "Elite"
-            ]
-        }
-        {
-            name: '"Winged Gundark"'
-            faction: "Galactic Empire"
-            id: 13
-            unique: true
-            ship: "TIE Fighter"
-            skill: 5
-            points: 15
-            slots: [ ]
-        }
-        {
-            name: '"Night Beast"'
-            faction: "Galactic Empire"
-            id: 14
-            unique: true
-            ship: "TIE Fighter"
-            skill: 5
-            points: 15
-            slots: [ ]
-        }
-        {
-            name: '"Backstabber"'
-            faction: "Galactic Empire"
-            id: 15
-            unique: true
-            ship: "TIE Fighter"
-            skill: 6
-            points: 16
-            slots: [ ]
-        }
-        {
-            name: '"Dark Curse"'
-            faction: "Galactic Empire"
-            id: 16
-            unique: true
-            ship: "TIE Fighter"
-            skill: 6
-            points: 16
-            slots: [ ]
-        }
-        {
-            name: '"Mauler Mithel"'
-            faction: "Galactic Empire"
-            id: 17
-            unique: true
-            ship: "TIE Fighter"
-            skill: 7
-            points: 17
-            slots: [
-                "Elite"
-            ]
-        }
-        {
-            name: '"Howlrunner"'
-            faction: "Galactic Empire"
-            id: 18
-            unique: true
-            ship: "TIE Fighter"
-            skill: 8
-            points: 18
-            slots: [
-                "Elite"
-            ]
-        }
-        {
-            name: "Maarek Stele"
-            faction: "Galactic Empire"
-            id: 19
-            unique: true
-            ship: "TIE Advanced"
-            skill: 7
-            points: 27
-            slots: [
-                "Elite"
-                "Missile"
-            ]
-        }
-        {
-            name: "Tempest Squadron Pilot"
-            faction: "Galactic Empire"
-            id: 20
-            ship: "TIE Advanced"
-            skill: 2
-            points: 21
-            slots: [
-                "Missile"
-            ]
-        }
-        {
-            name: "Storm Squadron Pilot"
-            faction: "Galactic Empire"
-            id: 21
-            ship: "TIE Advanced"
-            skill: 4
-            points: 23
-            slots: [
-                "Missile"
-            ]
-        }
-        {
-            name: "Darth Vader"
-            faction: "Galactic Empire"
-            id: 22
-            unique: true
-            ship: "TIE Advanced"
-            skill: 9
-            points: 29
-            slots: [
-                "Elite"
-                "Missile"
-            ]
-        }
-        {
-            name: "Alpha Squadron Pilot"
-            faction: "Galactic Empire"
-            id: 23
-            ship: "TIE Interceptor"
-            skill: 1
-            points: 18
-            slots: [ ]
-        }
-        {
-            name: "Avenger Squadron Pilot"
-            faction: "Galactic Empire"
-            id: 24
-            ship: "TIE Interceptor"
-            skill: 3
-            points: 20
-            slots: [ ]
-        }
-        {
-            name: "Saber Squadron Pilot"
-            faction: "Galactic Empire"
-            id: 25
-            ship: "TIE Interceptor"
-            skill: 4
-            points: 21
-            slots: [
-                "Elite"
-            ]
-        }
-        {
-            name: "\"Fel's Wrath\""
-            faction: "Galactic Empire"
             id: 26
             unique: true
-            ship: "TIE Interceptor"
-            skill: 5
-            points: 23
-            slots: [ ]
+            faction: "Rebel Alliance"
+            ship: "Y-Wing"
+            skill: 4
+            points: 42
+            slots: [
+                "Talent"
+                "Turret"
+                "Torpedo"
+                "Astromech"
+                "Modification"
+                "Astromech"
+                "Gunner"
+            ]
         }
         {
-            name: "Turr Phennir"
-            faction: "Galactic Empire"
+            name: '"Dutch" Vander'
             id: 27
             unique: true
-            ship: "TIE Interceptor"
-            skill: 7
-            points: 25
+            faction: "Rebel Alliance"
+            ship: "Y-Wing"
+            skill: 4
+            points: 42
             slots: [
-                "Elite"
+                "Talent"
+                "Turret"
+                "Torpedo"
+                "Astromech"
+                "Modification"
+                "Astromech"
+                "Gunner"
             ]
         }
         {
-            name: "Soontir Fel"
-            faction: "Galactic Empire"
+            name: "Evaan Verlaine"
             id: 28
             unique: true
-            ship: "TIE Interceptor"
-            skill: 9
-            points: 27
+            faction: "Rebel Alliance"
+            ship: "Y-Wing"
+            skill: 4
+            points: 42
             slots: [
-                "Elite"
+                "Talent"
+                "Turret"
+                "Torpedo"
+                "Astromech"
+                "Modification"
+                "Astromech"
+                "Gunner"
             ]
         }
         {
-            name: "Tycho Celchu"
-            faction: "Rebel Alliance"
+            name: "Gold Squadron Veteran"
             id: 29
-            unique: true
-            ship: "A-Wing"
-            skill: 8
-            points: 26
+            faction: "Rebel Alliance"
+            ship: "Y-Wing"
+            skill: 4
+            points: 42
             slots: [
-                "Elite"
+                "Talent"
+                "Turret"
+                "Torpedo"
+                "Astromech"
+                "Modification"
+                "Astromech"
+                "Gunner"
+            ]
+        }
+        {
+            name: "Gray Squadron Bomber"
+            id: 30
+            faction: "Rebel Alliance"
+            ship: "Y-Wing"
+            skill: 4
+            points: 42
+            slots: [
+                "Turret"
+                "Torpedo"
+                "Astromech"
+                "Modification"
+                "Astromech"
+                "Gunner"
+            ]
+        }
+        {
+            name: "Bodhi Rook"
+            id: 31
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "U-Wing"
+            skill: 4
+            points: 49
+            slots: [
+                "Talent"
+                "System"
+                "Crew"
+                "Crew"
+                "Modification"
+                "configuration"
+            ]
+        }
+        {
+            name: "Cassian Andor"
+            id: 32
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "U-Wing"
+            skill: 3
+            points: 47
+            slots: [
+                "Talent"
+                "System"
+                "Crew"
+                "Crew"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Heff Tobber"
+            id: 33
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "U-Wing"
+            skill: 2
+            points: 45
+            slots: [
+                "Talent"
+                "System"
+                "Crew"
+                "Crew"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Magva Yarro"
+            id: 34
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "U-Wing"
+            skill: 3
+            points: 50
+            slots: [
+                "Talent"
+                "System"
+                "Crew"
+                "Crew"
+                "Modification"
+                "configuration"
+                "Illicit"
+            ]
+        }
+        {
+            name: "Saw Gerrera"
+            id: 35
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "U-Wing"
+            skill: 4
+            points: 52
+            slots: [
+                "Talent"
+                "System"
+                "Crew"
+                "Crew"
+                "Modification"
+                "configuration"
+                "Illicit"
+            ]
+        }
+        {
+            name: "Benthic Two-Tubes"
+            id: 36
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "U-Wing"
+            skill: 2
+            points: 47
+            slots: [
+                "illicit"
+                "System"
+                "Crew"
+                "Crew"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Blue Squadron Scout"
+            id: 37
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "U-Wing"
+            skill: 2
+            points: 43
+            slots: [
+                "System"
+                "Crew"
+                "Crew"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Partisan Renegade"
+            id: 38
+            faction: "Rebel Alliance"
+            ship: "U-Wing"
+            skill: 1
+            points: 43
+            slots: [
+                "illicit"
+                "System"
+                "Crew"
+                "Crew"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Dash Rendar"
+            id: 39
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "YT-2400"
+            skill: 5
+            points: 100
+            slots: [
+                "Talent"
+                "Missile"
+                "Gunner"
+                "Crew"
+                "Modification"
+                "title"
+                "Illicit"
+            ]
+        }
+        {
+            name: '"Leebo"'
+            id: 40
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "YT-2400"
+            skill: 3
+            points: 98
+            slots: [
+                "Missile"
+                "Gunner"
+                "Crew"
+                "Modification"
+                "title"
+                "illicit"
+            ]
+        }
+        {
+            name: "Wild Space Fringer"
+            id: 41
+            faction: "Rebel Alliance"
+            ship: "YT-2400"
+            skill: 1
+            points: 88
+            slots: [
+                "Missile"
+                "Gunner"
+                "Crew"
+                "Modification"
+                "title"
+                "illicit"
+            ]
+        }
+        {
+            name: "Han Solo (Rebel)"
+            id: 42
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "YT-1300"
+            skill: 6
+            points: 92
+            slots: [
+                "Talent"
+                "Missile"
+                "Gunner"
+                "Crew"
+                "Crew"
+                "Modification"
+                "title"
+                "illicit"
+            ]
+        }
+        {
+            name: "Lando Calrissian (Rebel)"
+            id: 43
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "YT-1300"
+            skill: 5
+            points: 92
+            slots: [
+                "Talent"
+                "Missile"
+                "Gunner"
+                "Crew"
+                "Crew"
+                "Modification"
+                "title"
+                "illicit"
+            ]
+        }
+        {
+            name: "Chewbacca"
+            id: 44
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "YT-1300"
+            skill: 4
+            points: 84
+            slots: [
+                "Talent"
+                "Missile"
+                "Gunner"
+                "Crew"
+                "Crew"
+                "Modification"
+                "title"
+                "illicit"
+            ]
+            ship_override:
+                charge: 1
+        }
+        {
+            name: "Outer Rim Smuggler"
+            id: 45
+            faction: "Rebel Alliance"
+            ship: "YT-1300"
+            skill: 5
+            points: 78
+            slots: [
+                "Missile"
+                "Gunner"
+                "Crew"
+                "Crew"
+                "Modification"
+                "title"
+                "illicit"
+            ]
+        }
+        {
+            name: "Jan Ors"
+            id: 46
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "HWK-290"
+            skill: 5
+            points: 42
+            slots: [
+                "Talent"
+                "Device"
+                "Crew"
+                "Modification"
+                "Modification"
+                "title"
+            ]
+        }
+        {
+            name: "Roark Garnet"
+            id: 47
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "HWK-290"
+            skill: 4
+            points: 38
+            slots: [
+                "Talent"
+                "Device"
+                "Crew"
+                "Modification"
+                "Modification"
+                "title"
+            ]
+        }
+        {
+            name: "Kyle Katarn"
+            id: 48
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "HWK-290"
+            skill: 3
+            points: 38
+            slots: [
+                "Talent"
+                "Device"
+                "Crew"
+                "Modification"
+                "Modification"
+                "title"
+            ]
+        }
+        {
+            name: "Rebel Scout"
+            id: 49
+            faction: "Rebel Alliance"
+            ship: "HWK-290"
+            skill: 2
+            points: 32
+            slots: [
+                "Device"
+                "Crew"
+                "Modification"
+                "Modification"
+                "title"
+            ]
+        }
+        {
+            name: "Jake Farrell"
+            id: 50
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "A-Wing"
+            skill: 3
+            points: 40
+            slots: [
+                "Talent"
                 "Missile"
             ]
         }
         {
             name: "Arvel Crynyd"
-            faction: "Rebel Alliance"
-            id: 30
+            id: 51
             unique: true
+            faction: "Rebel Alliance"
             ship: "A-Wing"
-            skill: 6
-            points: 23
+            skill: 3
+            points: 36
             slots: [
+                "Talent"
                 "Missile"
             ]
         }
         {
             name: "Green Squadron Pilot"
-            faction: "Rebel Alliance"
-            id: 31
-            ship: "A-Wing"
-            skill: 3
-            points: 19
-            slots: [
-                "Elite"
-                "Missile"
-            ]
-        }
-        {
-            name: "Prototype Pilot"
-            faction: "Rebel Alliance"
-            id: 32
-            ship: "A-Wing"
-            skill: 1
-            points: 17
-            slots: [
-                "Missile"
-            ]
-        }
-        {
-            name: "Outer Rim Smuggler"
-            faction: "Rebel Alliance"
-            id: 33
-            ship: "YT-1300"
-            skill: 1
-            points: 27
-            slots: [
-                "Crew"
-                "Crew"
-            ]
-        }
-        {
-            name: "Chewbacca"
-            faction: "Rebel Alliance"
-            id: 34
-            unique: true
-            ship: "YT-1300"
-            skill: 5
-            points: 42
-            slots: [
-                "Elite"
-                "Missile"
-                "Crew"
-                "Crew"
-            ]
-            ship_override:
-                attack: 3
-                agility: 1
-                hull: 8
-                shields: 5
-        }
-        {
-            name: "Lando Calrissian"
-            faction: "Rebel Alliance"
-            id: 35
-            unique: true
-            ship: "YT-1300"
-            skill: 7
-            points: 44
-            slots: [
-                "Elite"
-                "Missile"
-                "Crew"
-                "Crew"
-            ]
-            ship_override:
-                attack: 3
-                agility: 1
-                hull: 8
-                shields: 5
-        }
-        {
-            name: "Han Solo"
-            faction: "Rebel Alliance"
-            id: 36
-            unique: true
-            ship: "YT-1300"
-            skill: 9
-            points: 46
-            slots: [
-                "Elite"
-                "Missile"
-                "Crew"
-                "Crew"
-            ]
-            ship_override:
-                attack: 3
-                agility: 1
-                hull: 8
-                shields: 5
-        }
-        {
-            name: "Kath Scarlet"
-            faction: "Galactic Empire"
-            id: 37
-            unique: true
-            ship: "Firespray-31"
-            skill: 7
-            points: 38
-            slots: [
-                "Elite"
-                "Cannon"
-                "Bomb"
-                "Crew"
-                "Missile"
-            ]
-        }
-        {
-            name: "Boba Fett"
-            faction: "Galactic Empire"
-            id: 38
-            unique: true
-            ship: "Firespray-31"
-            skill: 8
-            points: 39
-            slots: [
-                "Elite"
-                "Cannon"
-                "Bomb"
-                "Crew"
-                "Missile"
-            ]
-        }
-        {
-            name: "Krassis Trelix"
-            faction: "Galactic Empire"
-            id: 39
-            unique: true
-            ship: "Firespray-31"
-            skill: 5
-            points: 36
-            slots: [
-                "Cannon"
-                "Bomb"
-                "Crew"
-                "Missile"
-            ]
-        }
-        {
-            name: "Bounty Hunter"
-            faction: "Galactic Empire"
-            id: 40
-            ship: "Firespray-31"
-            skill: 3
-            points: 33
-            slots: [
-                "Cannon"
-                "Bomb"
-                "Crew"
-                "Missile"
-            ]
-        }
-        {
-            name: "Ten Numb"
-            faction: "Rebel Alliance"
-            id: 41
-            unique: true
-            ship: "B-Wing"
-            skill: 8
-            points: 31
-            slots: [
-                "Elite"
-                "System"
-                "Cannon"
-                "Torpedo"
-                "Torpedo"
-            ]
-        }
-        {
-            name: "Ibtisam"
-            faction: "Rebel Alliance"
-            id: 42
-            unique: true
-            ship: "B-Wing"
-            skill: 6
-            points: 28
-            slots: [
-                "Elite"
-                "System"
-                "Cannon"
-                "Torpedo"
-                "Torpedo"
-            ]
-        }
-        {
-            name: "Dagger Squadron Pilot"
-            faction: "Rebel Alliance"
-            id: 43
-            ship: "B-Wing"
-            skill: 4
-            points: 24
-            slots: [
-                "System"
-                "Cannon"
-                "Torpedo"
-                "Torpedo"
-            ]
-        }
-        {
-            name: "Blue Squadron Pilot"
-            faction: "Rebel Alliance"
-            id: 44
-            ship: "B-Wing"
-            skill: 2
-            points: 22
-            slots: [
-                "System"
-                "Cannon"
-                "Torpedo"
-                "Torpedo"
-            ]
-        }
-        {
-            name: "Rebel Operative"
-            faction: "Rebel Alliance"
-            id: 45
-            ship: "HWK-290"
-            skill: 2
-            points: 16
-            slots: [
-                "Turret"
-                "Crew"
-            ]
-        }
-        {
-            name: "Roark Garnet"
-            faction: "Rebel Alliance"
-            id: 46
-            unique: true
-            ship: "HWK-290"
-            skill: 4
-            points: 19
-            slots: [
-                "Turret"
-                "Crew"
-            ]
-        }
-        {
-            name: "Kyle Katarn"
-            faction: "Rebel Alliance"
-            id: 47
-            unique: true
-            ship: "HWK-290"
-            skill: 6
-            points: 21
-            slots: [
-                "Elite"
-                "Turret"
-                "Crew"
-            ]
-        }
-        {
-            name: "Jan Ors"
-            faction: "Rebel Alliance"
-            id: 48
-            unique: true
-            ship: "HWK-290"
-            skill: 8
-            points: 25
-            slots: [
-                "Elite"
-                "Turret"
-                "Crew"
-            ]
-        }
-        {
-            name: "Scimitar Squadron Pilot"
-            faction: "Galactic Empire"
-            id: 49
-            ship: "TIE Bomber"
-            skill: 2
-            points: 16
-            slots: [
-                "Torpedo"
-                "Torpedo"
-                "Missile"
-                "Missile"
-                "Bomb"
-            ]
-        }
-        {
-            name: "Gamma Squadron Pilot"
-            faction: "Galactic Empire"
-            id: 50
-            ship: "TIE Bomber"
-            skill: 4
-            points: 18
-            slots: [
-                "Torpedo"
-                "Torpedo"
-                "Missile"
-                "Missile"
-                "Bomb"
-            ]
-        }
-        {
-            name: "Captain Jonus"
-            faction: "Galactic Empire"
-            id: 51
-            unique: true
-            ship: "TIE Bomber"
-            skill: 6
-            points: 22
-            slots: [
-                "Elite"
-                "Torpedo"
-                "Torpedo"
-                "Missile"
-                "Missile"
-                "Bomb"
-            ]
-        }
-        {
-            name: "Major Rhymer"
-            faction: "Galactic Empire"
             id: 52
-            unique: true
-            ship: "TIE Bomber"
-            skill: 7
-            points: 26
-            slots: [
-                "Elite"
-                "Torpedo"
-                "Torpedo"
-                "Missile"
-                "Missile"
-                "Bomb"
-            ]
-        }
-        {
-            name: "Captain Kagi"
-            faction: "Galactic Empire"
-            id: 53
-            unique: true
-            ship: "Lambda-Class Shuttle"
-            skill: 8
-            points: 27
-            slots: [
-                "System"
-                "Cannon"
-                "Crew"
-                "Crew"
-            ]
-        }
-        {
-            name: "Colonel Jendon"
-            faction: "Galactic Empire"
-            id: 54
-            unique: true
-            ship: "Lambda-Class Shuttle"
-            skill: 6
-            points: 26
-            slots: [
-                "System"
-                "Cannon"
-                "Crew"
-                "Crew"
-            ]
-        }
-        {
-            name: "Captain Yorr"
-            faction: "Galactic Empire"
-            id: 55
-            unique: true
-            ship: "Lambda-Class Shuttle"
-            skill: 4
-            points: 24
-            slots: [
-                "System"
-                "Cannon"
-                "Crew"
-                "Crew"
-            ]
-        }
-        {
-            name: "Omicron Group Pilot"
-            faction: "Galactic Empire"
-            id: 56
-            ship: "Lambda-Class Shuttle"
-            skill: 2
-            points: 21
-            slots: [
-                "System"
-                "Cannon"
-                "Crew"
-                "Crew"
-            ]
-        }
-        {
-            name: "Lieutenant Lorrir"
-            faction: "Galactic Empire"
-            id: 57
-            unique: true
-            ship: "TIE Interceptor"
-            skill: 5
-            points: 23
-            slots: [ ]
-        }
-        {
-            name: "Royal Guard Pilot"
-            faction: "Galactic Empire"
-            id: 58
-            ship: "TIE Interceptor"
-            skill: 6
-            points: 22
-            slots: [
-                "Elite"
-            ]
-        }
-        {
-            name: "Tetran Cowall"
-            faction: "Galactic Empire"
-            id: 59
-            unique: true
-            ship: "TIE Interceptor"
-            skill: 7
-            points: 24
-            slots: [
-                "Elite"
-            ]
-            modifier_func: (stats) ->
-                # add speed 1 k-turn to table (Interceptor already has 3/5)
-                stats.maneuvers[1][5] = 3
-        }
-        {
-            name: "I messed up this pilot, sorry"
-            id: 60
-            skip: true
-        }
-        {
-            name: "Kir Kanos"
-            faction: "Galactic Empire"
-            id: 61
-            unique: true
-            ship: "TIE Interceptor"
-            skill: 6
-            points: 24
-            slots: [ ]
-        }
-        {
-            name: "Carnor Jax"
-            faction: "Galactic Empire"
-            id: 62
-            unique: true
-            ship: "TIE Interceptor"
-            skill: 8
-            points: 26
-            slots: [
-                "Elite"
-            ]
-        }
-        {
-            name: "GR-75 Medium Transport"
             faction: "Rebel Alliance"
-            id: 63
-            epic: true
-            ship: "GR-75 Medium Transport"
+            ship: "A-Wing"
             skill: 3
+            points: 34
+            slots: [
+                "Talent"
+                "Missile"
+            ]
+        }
+        {
+            name: "Phoenix Squadron Pilot"
+            id: 53
+            faction: "Rebel Alliance"
+            ship: "A-Wing"
+            skill: 1
             points: 30
             slots: [
-                "Crew"
-                "Crew"
-                "Cargo"
-                "Cargo"
-                "Cargo"
-            ]
-        }
-        {
-            name: "Bandit Squadron Pilot"
-            faction: "Rebel Alliance"
-            id: 64
-            ship: "Z-95 Headhunter"
-            skill: 2
-            points: 12
-            slots: [
-                "Missile"
-            ]
-        }
-        {
-            name: "Tala Squadron Pilot"
-            faction: "Rebel Alliance"
-            id: 65
-            ship: "Z-95 Headhunter"
-            skill: 4
-            points: 13
-            slots: [
-                "Missile"
-            ]
-        }
-        {
-            name: "Lieutenant Blount"
-            faction: "Rebel Alliance"
-            id: 66
-            unique: true
-            ship: "Z-95 Headhunter"
-            skill: 6
-            points: 17
-            slots: [
-                "Elite"
                 "Missile"
             ]
         }
         {
             name: "Airen Cracken"
-            faction: "Rebel Alliance"
-            id: 67
+            id: 54
             unique: true
+            faction: "Rebel Alliance"
             ship: "Z-95 Headhunter"
-            skill: 8
-            points: 19
-            slots: [
-                "Elite"
-                "Missile"
-            ]
-        }
-        {
-            name: "Delta Squadron Pilot"
-            faction: "Galactic Empire"
-            id: 68
-            ship: "TIE Defender"
-            skill: 1
+            skill: 5
             points: 30
             slots: [
-                "Cannon"
+                "Talent"
                 "Missile"
+                "Modification"
             ]
         }
         {
-            name: "Onyx Squadron Pilot"
-            faction: "Galactic Empire"
-            id: 69
-            ship: "TIE Defender"
-            skill: 3
-            points: 32
+            name: "Lieutenant Blount"
+            id: 55
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "Z-95 Headhunter"
+            skill: 4
+            points: 30
             slots: [
-                "Cannon"
+                "Talent"
                 "Missile"
+                "Modification"
             ]
         }
         {
-            name: "Colonel Vessery"
-            faction: "Galactic Empire"
-            id: 70
-            unique: true
-            ship: "TIE Defender"
-            skill: 6
-            points: 35
-            slots: [
-                "Elite"
-                "Cannon"
-                "Missile"
-            ]
-        }
-        {
-            name: "Rexler Brath"
-            faction: "Galactic Empire"
-            id: 71
-            unique: true
-            ship: "TIE Defender"
-            skill: 8
-            points: 37
-            slots: [
-                "Elite"
-                "Cannon"
-                "Missile"
-            ]
-        }
-        {
-            name: "Knave Squadron Pilot"
+            name: "Tala Squadron Pilot"
+            id: 56
             faction: "Rebel Alliance"
-            id: 72
-            ship: "E-Wing"
-            skill: 1
-            points: 27
-            slots: [
-                "System"
-                "Torpedo"
-                "Astromech"
-            ]
-        }
-        {
-            name: "Blackmoon Squadron Pilot"
-            faction: "Rebel Alliance"
-            id: 73
-            ship: "E-Wing"
-            skill: 3
-            points: 29
-            slots: [
-                "System"
-                "Torpedo"
-                "Astromech"
-            ]
-        }
-        {
-            name: "Etahn A'baht"
-            faction: "Rebel Alliance"
-            id: 74
-            unique: true
-            ship: "E-Wing"
-            skill: 5
-            points: 32
-            slots: [
-                "Elite"
-                "System"
-                "Torpedo"
-                "Astromech"
-            ]
-        }
-        {
-            name: "Corran Horn"
-            faction: "Rebel Alliance"
-            id: 75
-            unique: true
-            ship: "E-Wing"
-            skill: 8
-            points: 35
-            slots: [
-                "Elite"
-                "System"
-                "Torpedo"
-                "Astromech"
-            ]
-        }
-        {
-            name: "Sigma Squadron Pilot"
-            faction: "Galactic Empire"
-            id: 76
-            ship: "TIE Phantom"
-            skill: 3
+            ship: "Z-95 Headhunter"
+            skill: 2
             points: 25
             slots: [
-                "System"
-                "Crew"
+                "Talent"
+                "Missile"
+                "Modification"
             ]
         }
         {
-            name: "Shadow Squadron Pilot"
-            faction: "Galactic Empire"
-            id: 77
-            ship: "TIE Phantom"
+            name: "Bandit Squadron Pilot"
+            id: 57
+            faction: "Rebel Alliance"
+            ship: "Z-95 Headhunter"
+            skill: 1
+            points: 23
+            slots: [
+                "Missile"
+                "Modification"
+            ]
+        }
+        {
+            name: "Wullffwarro"
+            id: 58
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "Auzituck Gunship"
+            skill: 4
+            points: 56
+            slots: [
+                "Talent"
+                "Crew"
+                "Crew"
+                "Modification"
+            ]
+        }
+        {
+            name: "Lowhhrick"
+            id: 59
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "Auzituck Gunship"
+            skill: 3
+            points: 52
+            slots: [
+                "Talent"
+                "Crew"
+                "Crew"
+                "Modification"
+            ]
+        }
+        {
+            name: "Kashyyyk Defender"
+            id: 60
+            faction: "Rebel Alliance"
+            ship: "Auzituck Gunship"
+            skill: 3
+            points: 46
+            slots: [
+                "Crew"
+                "Crew"
+                "Modification"
+            ]
+        }
+        {
+            name: "Hera Syndulla (VCX-100)"
+            id: 61
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "VCX-100"
             skill: 5
-            points: 27
+            points: 76
             slots: [
-                "System"
+                "talent"
+                "Torpedo"
                 "Crew"
+                "Crew"
+                "Modification"
+                "Gunner"
+                "Turret"
+                "title"
             ]
         }
         {
-            name: '"Echo"'
-            faction: "Galactic Empire"
-            id: 78
+            name: "Kanan Jarrus"
+            id: 62
             unique: true
-            ship: "TIE Phantom"
+            faction: "Rebel Alliance"
+            ship: "VCX-100"
+            skill: 3
+            points: 90
+            slots: [
+                "Force"
+                "Torpedo"
+                "Crew"
+                "Crew"
+                "Modification"
+                "Gunner"
+                "Turret"
+                "title"
+            ]
+            ship_override:
+                force: 2
+        }
+        {
+            name: '"Chopper"'
+            id: 63
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "VCX-100"
+            skill: 2
+            points: 72
+            slots: [
+                "Torpedo"
+                "Crew"
+                "Crew"
+                "Modification"
+                "Gunner"
+                "Turret"
+                "title"
+            ]
+        }
+        {
+            name: "Lothal Rebel"
+            id: 64
+            faction: "Rebel Alliance"
+            ship: "VCX-100"
+            skill: 2
+            points: 70
+            slots: [
+                "Torpedo"
+                "Crew"
+                "Crew"
+                "Modification"
+                "Gunner"
+                "Turret"
+                "title"
+            ]
+        }
+        {
+            name: "Hera Syndulla (Attack Shuttle)"
+            id: 65
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "Attack Shuttle"
+            skill: 5
+            points: 39
+            slots: [
+                "talent"
+                "Crew"
+                "Modification"
+                "Turret"
+                "title"
+            ]
+        }
+        {
+            name: "Sabine Wren (Attack Shuttle)"
+            id: 66
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "Attack Shuttle"
+            skill: 3
+            points: 38
+            slots: [
+                "talent"
+                "Crew"
+                "Modification"
+                "Turret"
+                "title"
+            ]
+        }
+        {
+            name: "Ezra Bridger (Attack Shuttle)"
+            id: 67
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "Attack Shuttle"
+            skill: 3
+            points: 41
+            slots: [
+                "Force"
+                "Crew"
+                "Modification"
+                "Turret"
+                "title"
+            ]
+            ship_override:
+                force: 1
+        }
+
+        {
+            name: '"Zeb" Orrelios (Attack Shuttle)'
+            id: 68
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "Attack Shuttle"
+            skill: 2
+            points: 34
+            slots: [
+                "Crew"
+                "Modification"
+                "Turret"
+                "title"
+            ]
+        }
+        {
+            name: "Fenn Rau (Sheathipede)"
+            id: 69
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "Sheathipede-class Shuttle"
             skill: 6
-            points: 30
+            points: 52
             slots: [
-                "Elite"
-                "System"
+                "talent"
                 "Crew"
+                "Modification"
+                "Astromech"
+                "title"
             ]
         }
         {
-            name: '"Whisper"'
-            faction: "Galactic Empire"
-            id: 79
+            name: "Ezra Bridger (Sheathipede)"
+            id: 70
             unique: true
-            ship: "TIE Phantom"
-            skill: 7
+            faction: "Rebel Alliance"
+            ship: "Sheathipede-class Shuttle"
+            skill: 3
+            points: 42
+            slots: [
+                "force"
+                "Crew"
+                "Modification"
+                "Astromech"
+                "title"
+            ]
+            ship_override:
+                force: 1
+        }
+        {
+            name: '"Zeb" Orrelios (Sheathipede)'
+            id: 71
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "Sheathipede-class Shuttle"
+            skill: 2
             points: 32
             slots: [
-                "Elite"
-                "System"
+                "talent"
                 "Crew"
+                "Modification"
+                "Astromech"
+                "title"
             ]
         }
         {
-            name: "CR90 Corvette (Fore)"
+            name: "AP-5"
+            id: 72
+            unique: true
             faction: "Rebel Alliance"
-            id: 80
-            epic: true
-            ship: "CR90 Corvette (Fore)"
+            ship: "Sheathipede-class Shuttle"
+            skill: 1
+            points:30
+            slots: [
+                "talent"
+                "Crew"
+                "Modification"
+                "Astromech"
+                "title"
+            ]
+        }
+        {
+             name: "Braylen Stramm"
+            id: 73
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "B-Wing"
             skill: 4
             points: 50
             slots: [
-                "Crew"
-                "Hardpoint"
-                "Hardpoint"
-                "Team"
-                "Team"
-                "Cargo"
-            ]
-        }
-        {
-            name: "CR90 Corvette (Aft)"
-            faction: "Rebel Alliance"
-            id: 81
-            epic: true
-            ship: "CR90 Corvette (Aft)"
-            skill: 4
-            points: 40
-            slots: [
-                "Crew"
-                "Hardpoint"
-                "Team"
-                "Cargo"
-            ]
-        }
-        {
-            name: "Wes Janson"
-            faction: "Rebel Alliance"
-            id: 82
-            unique: true
-            ship: "X-Wing"
-            skill: 8
-            points: 29
-            slots: [
-                "Elite"
-                "Torpedo"
-                "Astromech"
-            ]
-        }
-        {
-            name: "Jek Porkins"
-            faction: "Rebel Alliance"
-            id: 83
-            unique: true
-            ship: "X-Wing"
-            skill: 7
-            points: 26
-            slots: [
-                "Elite"
-                "Torpedo"
-                "Astromech"
-            ]
-        }
-        {
-            name: '"Hobbie" Klivian'
-            faction: "Rebel Alliance"
-            id: 84
-            unique: true
-            ship: "X-Wing"
-            skill: 5
-            points: 25
-            slots: [
-                "Torpedo"
-                "Astromech"
-            ]
-        }
-        {
-            name: "Tarn Mison"
-            faction: "Rebel Alliance"
-            id: 85
-            unique: true
-            ship: "X-Wing"
-            skill: 3
-            points: 23
-            slots: [
-                "Torpedo"
-                "Astromech"
-            ]
-        }
-        {
-            name: "Jake Farrell"
-            faction: "Rebel Alliance"
-            id: 86
-            unique: true
-            ship: "A-Wing"
-            skill: 7
-            points: 24
-            slots: [
-                "Elite"
-                "Missile"
-            ]
-        }
-        {
-            name: "Gemmer Sojan"
-            faction: "Rebel Alliance"
-            id: 87
-            unique: true
-            ship: "A-Wing"
-            skill: 5
-            points: 22
-            slots: [
-                "Missile"
-            ]
-        }
-        {
-            name: "Keyan Farlander"
-            faction: "Rebel Alliance"
-            id: 88
-            unique: true
-            ship: "B-Wing"
-            skill: 7
-            points: 29
-            slots: [
-                "Elite"
+                "talent"
                 "System"
                 "Cannon"
+                "Cannon"
                 "Torpedo"
-                "Torpedo"
+                "Modification"
             ]
         }
         {
-            name: "Nera Dantels"
-            faction: "Rebel Alliance"
-            id: 89
+            name: "Ten Numb"
+            id: 74
             unique: true
+            faction: "Rebel Alliance"
             ship: "B-Wing"
-            skill: 5
-            points: 26
+            skill: 4
+            points: 50
             slots: [
-                "Elite"
+                "talent"
                 "System"
                 "Cannon"
-                "Torpedo"
-                "Torpedo"
-            ]
-        }
-        {
-            name: "CR90 Corvette (Crippled Fore)"
-            skip: true
-            faction: "Rebel Alliance"
-            id: 90
-            ship: "CR90 Corvette (Fore)"
-            skill: 4
-            points: 0
-            epic: true
-            slots: [
-                "Crew"
-            ]
-            ship_override:
-                attack: 2
-                agility: 0
-                hull: 0
-                shields: 0
-                actions: []
-        }
-        {
-            name: "CR90 Corvette (Crippled Aft)"
-            skip: true
-            faction: "Rebel Alliance"
-            id: 91
-            ship: "CR90 Corvette (Aft)"
-            skill: 4
-            points: 0
-            epic: true
-            slots: [
-                "Cargo"
-            ]
-            ship_override:
-                energy: 1
-                agility: 0
-                hull: 0
-                shields: 0
-                actions: []
-            modifier_func: (stats) ->
-                stats.maneuvers[2][1] = 0
-                stats.maneuvers[2][3] = 0
-                stats.maneuvers[4][2] = 0
-        }
-        {
-            name: "Wild Space Fringer"
-            faction: "Rebel Alliance"
-            id: 92
-            ship: "YT-2400"
-            skill: 2
-            points: 30
-            slots: [
                 "Cannon"
-                "Missile"
-                "Crew"
+                "Torpedo"
+                "Modification"
             ]
         }
         {
-            name: "Eaden Vrill"
+            name: "Blade Squadron Veteran"
+            id: 75
             faction: "Rebel Alliance"
-            id: 93
-            ship: "YT-2400"
-            unique: true
+            ship: "B-Wing"
             skill: 3
-            points: 32
-            slots: [
-                "Cannon"
-                "Missile"
-                "Crew"
-            ]
-        }
-        {
-            name: '"Leebo"'
-            faction: "Rebel Alliance"
-            id: 94
-            ship: "YT-2400"
-            unique: true
-            skill: 5
-            points: 34
-            slots: [
-                "Elite"
-                "Cannon"
-                "Missile"
-                "Crew"
-            ]
-        }
-        {
-            name: "Dash Rendar"
-            faction: "Rebel Alliance"
-            id: 95
-            ship: "YT-2400"
-            unique: true
-            skill: 7
-            points: 36
-            slots: [
-                "Elite"
-                "Cannon"
-                "Missile"
-                "Crew"
-            ]
-        }
-        {
-            name: "Patrol Leader"
-            faction: "Galactic Empire"
-            id: 96
-            ship: "VT-49 Decimator"
-            skill: 3
-            points: 40
-            slots: [
-                "Torpedo"
-                "Crew"
-                "Crew"
-                "Crew"
-                "Bomb"
-            ]
-        }
-        {
-            name: "Captain Oicunn"
-            faction: "Galactic Empire"
-            id: 97
-            ship: "VT-49 Decimator"
-            skill: 4
-            points: 42
-            unique: true
-            slots: [
-                "Elite"
-                "Torpedo"
-                "Crew"
-                "Crew"
-                "Crew"
-                "Bomb"
-            ]
-        }
-        {
-            name: "Commander Kenkirk"
-            faction: "Galactic Empire"
-            id: 98
-            ship: "VT-49 Decimator"
-            skill: 6
             points: 44
-            unique: true
             slots: [
-                "Elite"
+                "talent"
+                "System"
+                "Cannon"
+                "Cannon"
                 "Torpedo"
-                "Crew"
-                "Crew"
-                "Crew"
-                "Bomb"
+                "Modification"
             ]
         }
         {
-            name: "Rear Admiral Chiraneau"
-            faction: "Galactic Empire"
-            id: 99
-            ship: "VT-49 Decimator"
-            skill: 8
-            points: 46
-            unique: true
-            slots: [
-                "Elite"
-                "Torpedo"
-                "Crew"
-                "Crew"
-                "Crew"
-                "Bomb"
-            ]
-        }
-        {
-            name: "Prince Xizor"
-            faction: "Scum and Villainy"
-            id: 100
-            unique: true
-            ship: "StarViper"
-            skill: 7
-            points: 31
-            slots: [
-                "Elite"
-                "Torpedo"
-            ]
-        }
-        {
-            name: "Guri"
-            faction: "Scum and Villainy"
-            id: 101
-            unique: true
-            ship: "StarViper"
-            skill: 5
-            points: 30
-            slots: [
-                "Elite"
-                "Torpedo"
-            ]
-        }
-        {
-            name: "Black Sun Vigo"
-            faction: "Scum and Villainy"
-            id: 102
-            ship: "StarViper"
-            skill: 3
-            points: 27
-            slots: [
-                "Torpedo"
-            ]
-        }
-        {
-            name: "Black Sun Enforcer"
-            faction: "Scum and Villainy"
-            id: 103
-            ship: "StarViper"
-            skill: 1
-            points: 25
-            slots: [
-                "Torpedo"
-            ]
-        }
-        {
-            name: "Serissu"
-            faction: "Scum and Villainy"
-            id: 104
-            ship: "M3-A Interceptor"
-            skill: 8
-            points: 20
-            unique: true
-            slots: [
-                "Elite"
-            ]
-        }
-        {
-            name: "Laetin A'shera"
-            faction: "Scum and Villainy"
-            id: 105
-            ship: "M3-A Interceptor"
-            skill: 6
-            points: 18
-            unique: true
-            slots: [ ]
-        }
-        {
-            name: "Tansarii Point Veteran"
-            faction: "Scum and Villainy"
-            id: 106
-            ship: "M3-A Interceptor"
-            skill: 5
-            points: 17
-            slots: [
-                "Elite"
-            ]
-        }
-        {
-            name: "Cartel Spacer"
-            faction: "Scum and Villainy"
-            id: 107
-            ship: "M3-A Interceptor"
+            name: "Blue Squadron Pilot"
+            id: 76
+            faction: "Rebel Alliance"
+            ship: "B-Wing"
             skill: 2
-            points: 14
-            slots: [ ]
+            points: 42
+            slots: [
+                "System"
+                "Cannon"
+                "Cannon"
+                "Torpedo"
+                "Modification"
+            ]
+        }
+        {
+            name: "Norra Wexley (ARC-170)"
+            id: 77
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "ARC-170"
+            skill: 5
+            points: 55
+            slots: [
+                "talent"
+                "Torpedo"
+                "Crew"
+                "Gunner"
+                "Astromech"
+                "Modification"
+            ]
+        }
+        {
+            name: "Shara Bey"
+            id: 78
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "ARC-170"
+            skill: 4
+            points: 53
+            slots: [
+                "talent"
+                "Torpedo"
+                "Crew"
+                "Gunner"
+                "Astromech"
+                "Modification"
+            ]
+        }
+        {
+            name: "Garven Dreis (ARC-170)"
+            id: 79
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "ARC-170"
+            skill: 4
+            points: 51
+            slots: [
+                "talent"
+                "Torpedo"
+                "Crew"
+                "Gunner"
+                "Astromech"
+                "Modification"
+            ]
+        }
+        {
+            name: "Ibtisam"
+            id: 80
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "ARC-170"
+            skill: 3
+            points: 50
+            slots: [
+                "talent"
+                "Torpedo"
+                "Crew"
+                "Gunner"
+                "Astromech"
+                "Modification"
+            ]
         }
         {
             name: "IG-88A"
+            id: 81
             faction: "Scum and Villainy"
-            id: 108
-            unique: true
             ship: "Aggressor"
-            skill: 6
-            points: 36
+            skill: 4
+            points: 70
             slots: [
-                "Elite"
+                "Talent"
                 "System"
                 "Cannon"
                 "Cannon"
                 "Bomb"
                 "Illicit"
+                "Modification"
+                "Title"
             ]
         }
         {
             name: "IG-88B"
+            id: 82
             faction: "Scum and Villainy"
-            id: 109
-            unique: true
             ship: "Aggressor"
-            skill: 6
-            points: 36
+            skill: 4
+            points: 70
             slots: [
-                "Elite"
+                "Talent"
                 "System"
                 "Cannon"
                 "Cannon"
                 "Bomb"
                 "Illicit"
-            ]
+                "Modification"
+                "Title"
+                ]
         }
         {
             name: "IG-88C"
+            id: 83
             faction: "Scum and Villainy"
-            id: 110
-            unique: true
             ship: "Aggressor"
-            skill: 6
-            points: 36
+            skill: 4
+            points: 70
             slots: [
-                "Elite"
+                "Talent"
                 "System"
                 "Cannon"
                 "Cannon"
                 "Bomb"
                 "Illicit"
-            ]
+                "Modification"
+                "Title"
+              ]
         }
         {
             name: "IG-88D"
+            id: 84
             faction: "Scum and Villainy"
-            id: 111
-            unique: true
             ship: "Aggressor"
-            skill: 6
-            points: 36
+            skill: 4
+            points: 70
             slots: [
-                "Elite"
+                "Talent"
                 "System"
                 "Cannon"
                 "Cannon"
                 "Bomb"
                 "Illicit"
-            ]
-        }
-        {
-            name: "N'Dru Suhlak"
-            unique: true
-            faction: "Scum and Villainy"
-            id: 112
-            ship: "Z-95 Headhunter"
-            skill: 7
-            points: 17
-            slots: [
-                "Elite"
-                "Missile"
-                "Illicit"
-            ]
-        }
-        {
-            name: "Kaa'to Leeachos"
-            unique: true
-            faction: "Scum and Villainy"
-            id: 113
-            ship: "Z-95 Headhunter"
-            skill: 5
-            points: 15
-            slots: [
-                "Elite"
-                "Missile"
-                "Illicit"
-            ]
-        }
-        {
-            name: "Black Sun Soldier"
-            faction: "Scum and Villainy"
-            id: 114
-            ship: "Z-95 Headhunter"
-            skill: 3
-            points: 13
-            slots: [
-                "Missile"
-                "Illicit"
-            ]
-        }
-        {
-            name: "Binayre Pirate"
-            faction: "Scum and Villainy"
-            id: 115
-            ship: "Z-95 Headhunter"
-            skill: 1
-            points: 12
-            slots: [
-                "Missile"
-                "Illicit"
-            ]
-        }
-        {
-            name: "Boba Fett (Scum)"
-            canonical_name: 'Boba Fett'.canonicalize()
-            faction: "Scum and Villainy"
-            id: 116
-            ship: "Firespray-31"
-            skill: 8
-            points: 39
-            unique: true
-            slots: [
-                "Elite"
-                "Cannon"
-                "Bomb"
-                "Crew"
-                "Missile"
-                "Illicit"
-            ]
-        }
-        {
-            name: "Kath Scarlet (Scum)"
-            canonical_name: 'Kath Scarlet'.canonicalize()
-            unique: true
-            faction: "Scum and Villainy"
-            id: 117
-            ship: "Firespray-31"
-            skill: 7
-            points: 38
-            slots: [
-                "Elite"
-                "Cannon"
-                "Bomb"
-                "Crew"
-                "Missile"
-                "Illicit"
-            ]
-        }
-        {
-            name: "Emon Azzameen"
-            unique: true
-            faction: "Scum and Villainy"
-            id: 118
-            ship: "Firespray-31"
-            skill: 6
-            points: 36
-            slots: [
-                "Cannon"
-                "Bomb"
-                "Crew"
-                "Missile"
-                "Illicit"
-            ]
-        }
-        {
-            name: "Mandalorian Mercenary"
-            faction: "Scum and Villainy"
-            id: 119
-            ship: "Firespray-31"
-            skill: 5
-            points: 35
-            slots: [
-                "Elite"
-                "Cannon"
-                "Bomb"
-                "Crew"
-                "Missile"
-                "Illicit"
-            ]
+                "Modification"
+                "Title"
+              ]
         }
         {
             name: "Kavil"
+            id: 85
             unique: true
             faction: "Scum and Villainy"
-            id: 120
-            ship: "Y-Wing"
-            skill: 7
-            points: 24
+            ship: "Y-wing"
+            skill: 5
+            points: 42
             slots: [
-                "Elite"
+                "Talent"
                 "Turret"
                 "Torpedo"
-                "Torpedo"
-                "Salvaged Astromech"
-            ]
+                "Gunner"
+                "Astromech"
+                "Bomb"
+                "Illicit"
+                "Modification"
+              ]
         }
         {
             name: "Drea Renthal"
+            id: 86
             unique: true
             faction: "Scum and Villainy"
-            id: 121
-            ship: "Y-Wing"
-            skill: 5
-            points: 22
+            ship: "Y-wing"
+            skill: 4
+            points: 40
             slots: [
+                "Talent"
                 "Turret"
                 "Torpedo"
-                "Torpedo"
-                "Salvaged Astromech"
-            ]
+                "Gunner"
+                "Astromech"
+                "Bomb"
+                "Illicit"
+                "Modification"
+              ]
         }
         {
             name: "Hired Gun"
+            id: 87
             faction: "Scum and Villainy"
-            id: 122
-            ship: "Y-Wing"
-            skill: 4
-            points: 20
-            slots: [
-                "Turret"
-                "Torpedo"
-                "Torpedo"
-                "Salvaged Astromech"
-            ]
-        }
-        {
-            name: "Syndicate Thug"
-            faction: "Scum and Villainy"
-            id: 123
-            ship: "Y-Wing"
+            ship: "Y-wing"
             skill: 2
-            points: 18
-            slots: [
-                "Turret"
-                "Torpedo"
-                "Torpedo"
-                "Salvaged Astromech"
-            ]
-        }
-        {
-            name: "Dace Bonearm"
-            unique: true
-            faction: "Scum and Villainy"
-            id: 124
-            ship: "HWK-290"
-            skill: 7
-            points: 23
-            slots: [
-                "Elite"
-                "Turret"
-                "Crew"
-                "Illicit"
-            ]
-        }
-        {
-            name: "Palob Godalhi"
-            unique: true
-            faction: "Scum and Villainy"
-            id: 125
-            ship: "HWK-290"
-            skill: 5
-            points: 20
-            slots: [
-                "Elite"
-                "Turret"
-                "Crew"
-                "Illicit"
-            ]
-        }
-        {
-            name: "Torkil Mux"
-            unique: true
-            faction: "Scum and Villainy"
-            id: 126
-            ship: "HWK-290"
-            skill: 3
-            points: 19
-            slots: [
-                "Turret"
-                "Crew"
-                "Illicit"
-            ]
-        }
-        {
-            name: "Spice Runner"
-            faction: "Scum and Villainy"
-            id: 127
-            ship: "HWK-290"
-            skill: 1
-            points: 16
-            slots: [
-                "Turret"
-                "Crew"
-                "Illicit"
-            ]
-        }
-        {
-            name: "Commander Alozen"
-            faction: "Galactic Empire"
-            id: 128
-            ship: "TIE Advanced"
-            unique: true
-            skill: 5
-            points: 25
-            slots: [
-                "Elite"
-                "Missile"
-            ]
-        }
-        {
-            name: "Raider-class Corvette (Fore)"
-            faction: "Galactic Empire"
-            id: 129
-            ship: "Raider-class Corvette (Fore)"
-            skill: 4
-            points: 50
-            epic: true
-            slots: [
-                "Hardpoint"
-                "Team"
-                "Cargo"
-            ]
-        }
-        {
-            name: "Raider-class Corvette (Aft)"
-            faction: "Galactic Empire"
-            id: 130
-            ship: "Raider-class Corvette (Aft)"
-            skill: 4
-            points: 50
-            epic: true
-            slots: [
-                "Crew"
-                "Crew"
-                "Hardpoint"
-                "Hardpoint"
-                "Team"
-                "Team"
-                "Cargo"
-            ]
-        }
-        {
-            name: "Bossk"
-            faction: "Scum and Villainy"
-            id: 131
-            ship: "YV-666"
-            unique: true
-            skill: 7
-            points: 35
-            slots: [
-                "Elite"
-                "Cannon"
-                "Missile"
-                "Crew"
-                "Crew"
-                "Crew"
-                "Illicit"
-            ]
-        }
-        {
-            name: "Moralo Eval"
-            faction: "Scum and Villainy"
-            id: 132
-            ship: "YV-666"
-            unique: true
-            skill: 6
             points: 34
             slots: [
-                "Cannon"
-                "Missile"
-                "Crew"
-                "Crew"
-                "Crew"
-                "Illicit"
-            ]
-        }
-        {
-            name: "Latts Razzi"
-            faction: "Scum and Villainy"
-            id: 133
-            ship: "YV-666"
-            unique: true
-            skill: 5
-            points: 33
-            slots: [
-                "Cannon"
-                "Missile"
-                "Crew"
-                "Crew"
-                "Crew"
-                "Illicit"
-            ]
-        }
-        {
-            name: "Trandoshan Slaver"
-            faction: "Scum and Villainy"
-            id: 134
-            ship: "YV-666"
-            skill: 2
-            points: 29
-            slots: [
-                "Cannon"
-                "Missile"
-                "Crew"
-                "Crew"
-                "Crew"
-                "Illicit"
-            ]
-        }
-        {
-            name: "Talonbane Cobra"
-            unique: true
-            id: 135
-            faction: "Scum and Villainy"
-            ship: "Kihraxz Fighter"
-            skill: 9
-            slots: [
-                "Elite"
-                "Missile"
-                "Illicit"
-            ]
-            points: 28
-        }
-        {
-            name: "Graz the Hunter"
-            unique: true
-            id: 136
-            faction: "Scum and Villainy"
-            ship: "Kihraxz Fighter"
-            skill: 6
-            slots: [
-                "Missile"
-                "Illicit"
-            ]
-            points: 25
-        }
-        {
-            name: "Black Sun Ace"
-            faction: "Scum and Villainy"
-            id: 137
-            ship: "Kihraxz Fighter"
-            skill: 5
-            slots: [
-                "Elite"
-                "Missile"
-                "Illicit"
-            ]
-            points: 23
-        }
-        {
-            name: "Cartel Marauder"
-            faction: "Scum and Villainy"
-            id: 138
-            ship: "Kihraxz Fighter"
-            skill: 2
-            slots: [
-                "Missile"
-                "Illicit"
-            ]
-            points: 20
-        }
-        {
-            name: "Miranda Doni"
-            unique: true
-            id: 139
-            faction: "Rebel Alliance"
-            ship: "K-Wing"
-            skill: 8
-            slots: [
+                "Talent"
                 "Turret"
                 "Torpedo"
-                "Torpedo"
-                "Missile"
-                "Crew"
+                "Gunner"
+                "Astromech"
                 "Bomb"
-                "Bomb"
-            ]
-            points: 29
+                "Illicit"
+                "Modification"
+              ]
         }
         {
-            name: "Esege Tuketu"
-            unique: true
-            id: 140
-            faction: "Rebel Alliance"
-            ship: "K-Wing"
-            skill: 6
-            slots: [
-                "Turret"
-                "Torpedo"
-                "Torpedo"
-                "Missile"
-                "Crew"
-                "Bomb"
-                "Bomb"
-            ]
-            points: 28
-        }
-        {
-            name: "Guardian Squadron Pilot"
-            faction: "Rebel Alliance"
-            id: 141
-            ship: "K-Wing"
+            name: "Crymorah Goon"
+            id: 88
+            faction: "Scum and Villainy"
+            ship: "Y-wing"
             skill: 4
+            points: 32
             slots: [
                 "Turret"
                 "Torpedo"
-                "Torpedo"
-                "Missile"
-                "Crew"
+                "Gunner"
+                "Astromech"
                 "Bomb"
-                "Bomb"
-            ]
-            points: 25
+                "Illicit"
+                "Modification"
+              ]
         }
         {
-            name: "Warden Squadron Pilot"
-            faction: "Rebel Alliance"
-            id: 142
-            ship: "K-Wing"
-            skill: 2
-            slots: [
-                "Turret"
-                "Torpedo"
-                "Torpedo"
-                "Missile"
-                "Crew"
-                "Bomb"
-                "Bomb"
-            ]
-            points: 23
-        }
-        {
-            name: '"Redline"'
+            name: "Han Solo (Scum)"
+            id: 89
             unique: true
-            id: 143
-            faction: "Galactic Empire"
-            ship: "TIE Punisher"
-            skill: 7
-            slots: [
-                "System"
-                "Torpedo"
-                "Torpedo"
-                "Missile"
-                "Missile"
-                "Bomb"
-                "Bomb"
-            ]
-            points: 27
-        }
-        {
-            name: '"Deathrain"'
-            unique: true
-            id: 144
-            faction: "Galactic Empire"
-            ship: "TIE Punisher"
+            faction: "Scum and Villainy"
+            ship: "YT-1300"
             skill: 6
+            points: 54
             slots: [
-                "System"
-                "Torpedo"
-                "Torpedo"
+                "Talent"
                 "Missile"
-                "Missile"
-                "Bomb"
-                "Bomb"
-            ]
-            points: 26
+                "Crew"
+                "Crew"
+                "Gunner"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
         }
         {
-            name: 'Black Eight Squadron Pilot'
-            canonical_name: 'Black Eight Sq. Pilot'.canonicalize()
-            faction: "Galactic Empire"
-            id: 145
-            ship: "TIE Punisher"
+            name: "Lando Calrissian (Scum)"
+            id: 90
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "YT-1300"
             skill: 4
+            points: 49
             slots: [
-                "System"
-                "Torpedo"
-                "Torpedo"
+                "Talent"
                 "Missile"
-                "Missile"
-                "Bomb"
-                "Bomb"
-            ]
-            points: 23
+                "Crew"
+                "Crew"
+                "Gunner"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
         }
         {
-            name: 'Cutlass Squadron Pilot'
-            faction: "Galactic Empire"
-            id: 146
-            ship: "TIE Punisher"
+            name: "L3-37 (YT-1300)"
+            id: 91
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "YT-1300"
             skill: 2
+            points: 47
             slots: [
-                "System"
-                "Torpedo"
-                "Torpedo"
                 "Missile"
-                "Missile"
-                "Bomb"
-                "Bomb"
-            ]
-            points: 21
+                "Crew"
+                "Crew"
+                "Gunner"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
         }
         {
-            name: "Juno Eclipse"
-            id: 147
-            faction: "Galactic Empire"
-            ship: "TIE Advanced"
-            unique: true
-            skill: 8
-            points: 28
+            name: "Freighter Captain"
+            id: 92
+            faction: "Scum and Villainy"
+            ship: "YT-1300"
+            skill: 1
+            points: 46
             slots: [
-                "Elite"
                 "Missile"
-            ]
+                "Crew"
+                "Crew"
+                "Gunner"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
         }
         {
-            name: "Zertik Strom"
-            id: 148
-            faction: "Galactic Empire"
-            ship: "TIE Advanced"
+            name: "Lando Calrissian (Scum) (Escape Craft)"
+            id: 93
             unique: true
-            skill: 6
+            faction: "Scum and Villainy"
+            ship: "Escape Craft"
+            skill: 4
             points: 26
             slots: [
-                "Elite"
-                "Missile"
-            ]
+                "Talent"
+                "Crew"
+                "Modification"
+              ]
         }
         {
-            name: "Lieutenant Colzet"
-            id: 149
-            faction: "Galactic Empire"
-            ship: "TIE Advanced"
-            unique: true
+            name: "Outer Rim Pioneer"
+            id: 94
+            faction: "Scum and Villainy"
+            ship: "Escape Craft"
             skill: 3
-            points: 23
+            points: 24
             slots: [
-                "Missile"
-            ]
+                "Talent"
+                "Crew"
+                "Modification"
+              ]
         }
         {
-            name: "Gozanti-class Cruiser"
-            id: 150
-            faction: "Galactic Empire"
-            ship: "Gozanti-class Cruiser"
-            skill: 2
-            slots: [
-                'Crew'
-                'Crew'
-                'Hardpoint'
-                'Team'
-                'Cargo'
-                'Cargo'
-            ]
-            points: 40
-        }
-        {
-            name: '"Scourge"'
-            id: 151
-            unique: true
-            faction: "Galactic Empire"
-            ship: "TIE Fighter"
-            skill: 7
-            slots: [
-                'Elite'
-            ]
-            points: 17
-        }
-        {
-            name: '"Youngster"'
-            id: 152
-            unique: true
-            faction: "Galactic Empire"
-            ship: "TIE Fighter"
-            skill: 6
-            slots: [
-                'Elite'
-            ]
-            points: 15
-        }
-        {
-            name: '"Wampa"'
-            id: 153
-            unique: true
-            faction: "Galactic Empire"
-            ship: "TIE Fighter"
-            skill: 4
-            slots: []
-            points: 14
-        }
-        {
-            name: '"Chaser"'
-            id: 154
-            unique: true
-            faction: "Galactic Empire"
-            ship: "TIE Fighter"
-            skill: 3
-            slots: []
-            points: 14
-        }
-        {
-            name: "Hera Syndulla"
-            id: 155
-            unique: true
-            faction: "Rebel Alliance"
-            ship: "VCX-100"
-            skill: 7
-            slots: [
-                'System'
-                'Turret'
-                'Torpedo'
-                'Torpedo'
-                'Crew'
-                'Crew'
-            ]
-            points: 40
-        }
-        {
-            name: "Kanan Jarrus"
-            id: 156
-            unique: true
-            faction: "Rebel Alliance"
-            ship: "VCX-100"
-            skill: 5
-            slots: [
-                'System'
-                'Turret'
-                'Torpedo'
-                'Torpedo'
-                'Crew'
-                'Crew'
-            ]
-            points: 38
-        }
-        {
-            name: '"Chopper"'
-            id: 157
-            unique: true
-            faction: "Rebel Alliance"
-            ship: "VCX-100"
-            skill: 4
-            slots: [
-                'System'
-                'Turret'
-                'Torpedo'
-                'Torpedo'
-                'Crew'
-                'Crew'
-            ]
-            points: 37
-        }
-        {
-            name: 'Lothal Rebel'
-            id: 158
-            faction: "Rebel Alliance"
-            ship: "VCX-100"
-            skill: 3
-            slots: [
-                'System'
-                'Turret'
-                'Torpedo'
-                'Torpedo'
-                'Crew'
-                'Crew'
-            ]
-            points: 35
-        }
-        {
-            name: 'Hera Syndulla (Attack Shuttle)'
-            id: 159
-            canonical_name: 'Hera Syndulla'.canonicalize()
-            unique: true
-            faction: "Rebel Alliance"
-            ship: "Attack Shuttle"
-            skill: 7
-            slots: [
-                'Elite'
-                'Turret'
-                'Crew'
-            ]
-            points: 22
-        }
-        {
-            name: 'Sabine Wren'
-            id: 160
-            unique: true
-            faction: "Rebel Alliance"
-            ship: "Attack Shuttle"
-            skill: 5
-            slots: [
-                'Elite'
-                'Turret'
-                'Crew'
-            ]
-            points: 21
-        }
-        {
-            name: 'Ezra Bridger'
-            id: 161
-            unique: true
-            faction: "Rebel Alliance"
-            ship: "Attack Shuttle"
-            skill: 4
-            slots: [
-                'Elite'
-                'Turret'
-                'Crew'
-            ]
-            points: 20
-        }
-        {
-            name: '"Zeb" Orrelios'
-            id: 162
-            unique: true
-            faction: "Rebel Alliance"
-            ship: "Attack Shuttle"
-            skill: 3
-            slots: [
-                'Turret'
-                'Crew'
-            ]
-            points: 18
-        }
-        {
-            name: "The Inquisitor"
-            id: 163
-            unique: true
-            faction: "Galactic Empire"
-            ship: "TIE Advanced Prototype"
-            skill: 8
-            slots: [
-                'Elite'
-                'Missile'
-            ]
-            points: 25
-        }
-        {
-            name: "Valen Rudor"
-            id: 164
-            unique: true
-            faction: "Galactic Empire"
-            ship: "TIE Advanced Prototype"
-            skill: 6
-            slots: [
-                'Elite'
-                'Missile'
-            ]
-            points: 22
-        }
-        {
-            name: "Baron of the Empire"
-            id: 165
-            faction: "Galactic Empire"
-            ship: "TIE Advanced Prototype"
-            skill: 4
-            slots: [
-                'Elite'
-                'Missile'
-            ]
-            points: 19
-        }
-        {
-            name: "Sienar Test Pilot"
-            id: 166
-            faction: "Galactic Empire"
-            ship: "TIE Advanced Prototype"
-            skill: 2
-            slots: [
-                'Missile'
-            ]
-            points: 16
-        }
-        {
-            name: "Zuckuss"
-            id: 167
+            name: "L3-37 (Escape Craft)"
+            id: 95
             unique: true
             faction: "Scum and Villainy"
-            ship: "G-1A Starfighter"
-            skill: 7
+            ship: "Escape Craft"
+            skill: 2
+            points: 22
             slots: [
-                'Elite'
-                'Crew'
-                'System'
-                'Illicit'
-            ]
-            points: 28
+                "Talent"
+                "Crew"
+                "Modification"
+              ]
+        }
+        {
+            name: "Autopilot Drone"
+            id: 96
+            faction: "Scum and Villainy"
+            ship: "Escape Craft"
+            skill: 1
+            points: 12
+            slots: [
+                "Talent"
+                "Crew"
+                "Modification"
+              ]
+        }
+        {
+            name: "Fenn Rau (Fang Fighter)"
+            id: 97
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Protectorate Starfighter"
+            skill: 6
+            points: 68
+            slots: [
+                "Talent"
+                "Torpedo"
+              ]
+        }
+        {
+            name: "Old Teroch"
+            id: 98
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Protectorate Starfighter"
+            skill: 5
+            points: 56
+            slots: [
+                "Talent"
+                "Torpedo"
+              ]
+        }
+        {
+            name: "Kad Solus"
+            id: 99
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Protectorate Starfighter"
+            skill: 4
+            points: 54
+            slots: [
+                "Talent"
+                "Torpedo"
+              ]
+        }
+        {
+            name: "Joy Rekkoff"
+            id: 100
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Protectorate Starfighter"
+            skill: 4
+            points: 52
+            slots: [
+                "Talent"
+                "Torpedo"
+              ]
+        }
+        {
+            name: "Skull Squadron Pilot"
+            id: 101
+            faction: "Scum and Villainy"
+            ship: "Protectorate Starfighter"
+            skill: 4
+            points: 50
+            slots: [
+                "Talent"
+                "Torpedo"
+              ]
+        }
+        {
+            name: "Zealous Recruit"
+            id: 102
+            faction: "Scum and Villainy"
+            ship: "Protectorate Starfighter"
+            skill: 1
+            points: 44
+            slots: [
+                "Torpedo"
+              ]
+        }
+        {
+            name: "Boba Fett"
+            id: 103
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Firespray-31"
+            skill: 5
+            points: 80
+            slots: [
+                "Talent"
+                "Cannon"
+                "Missile"
+                "Crew"
+                "Bomb"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Emon Azzameen"
+            id: 104
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Firespray-31"
+            skill: 4
+            points: 76
+            slots: [
+                "Talent"
+                "Cannon"
+                "Missile"
+                "Crew"
+                "Bomb"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Kath Scarlet"
+            id: 105
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Firespray-31"
+            skill: 4
+            points: 74
+            slots: [
+                "Talent"
+                "Cannon"
+                "Missile"
+                "Crew"
+                "Bomb"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Koshka Frost"
+            id: 106
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Firespray-31"
+            skill: 3
+            points: 71
+            slots: [
+                "Talent"
+                "Cannon"
+                "Missile"
+                "Crew"
+                "Bomb"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Krassis Trelix"
+            id: 107
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Firespray-31"
+            skill: 3
+            points: 70
+            slots: [
+                "Talent"
+                "Cannon"
+                "Missile"
+                "Crew"
+                "Bomb"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Bounty Hunter"
+            id: 108
+            faction: "Scum and Villainy"
+            ship: "Firespray-31"
+            skill: 2
+            points: 66
+            slots: [
+                "Talent"
+                "Cannon"
+                "Missile"
+                "Crew"
+                "Bomb"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
         }
         {
             name: "4-LOM"
-            id: 168
+            id: 109
             unique: true
             faction: "Scum and Villainy"
             ship: "G-1A Starfighter"
-            skill: 6
+            skill: 3
+            points: 49
             slots: [
-                'Elite'
-                'Crew'
-                'System'
-                'Illicit'
-            ]
-            points: 27
+                "Talent"
+                "System"
+                "Crew"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Zuckuss"
+            id: 110
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "G-1A Starfighter"
+            skill: 3
+            points: 47
+            slots: [
+                "Talent"
+                "System"
+                "Crew"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
         }
         {
             name: "Gand Findsman"
-            id: 169
+            id: 111
             faction: "Scum and Villainy"
             ship: "G-1A Starfighter"
-            skill: 5
+            skill: 1
+            points: 43
             slots: [
-                'Elite'
-                'Crew'
-                'System'
-                'Illicit'
-            ]
-            points: 25
+                "System"
+                "Crew"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
         }
         {
-            name: "Ruthless Freelancer"
-            id: 170
+            name: "Palob Godalhi"
+            id: 112
+            unique: true
             faction: "Scum and Villainy"
-            ship: "G-1A Starfighter"
+            ship: "HWK-290"
             skill: 3
+            points: 38
             slots: [
-                'Crew'
-                'System'
-                'Illicit'
-            ]
-            points: 23
+                "Talent"
+                "Crew"
+                "Bomb"
+                "Illicit"
+                "Modification"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Dace Bonearm"
+            id: 113
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "HWK-290"
+            skill: 4
+            points: 36
+            slots: [
+                "Talent"
+                "Crew"
+                "Bomb"
+                "Illicit"
+                "Modification"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Torkil Mux"
+            id: 114
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "HWK-290"
+            skill: 2
+            points: 36
+            slots: [
+                "Crew"
+                "Bomb"
+                "Illicit"
+                "Modification"
+                "Modification"
+                "Title"
+              ]
         }
         {
             name: "Dengar"
-            id: 171
+            id: 115
             unique: true
             faction: "Scum and Villainy"
             ship: "JumpMaster 5000"
-            skill: 9
+            skill: 6
+            points: 64
             slots: [
-                'Elite'
-                'Crew'
-                'Illicit'
-            ]
-            points: 33
+                "Talent"
+                "Torpedo"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
         }
         {
             name: "Tel Trevura"
-            id: 172
+            id: 116
             unique: true
             faction: "Scum and Villainy"
             ship: "JumpMaster 5000"
-            skill: 7
+            skill: 4
+            points: 60
             slots: [
-                'Elite'
-                'Crew'
-                'Illicit'
-            ]
-            points: 30
+                "Talent"
+                "Torpedo"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
         }
         {
             name: "Manaroo"
-            id: 173
+            id: 117
             unique: true
             faction: "Scum and Villainy"
             ship: "JumpMaster 5000"
-            skill: 4
+            skill: 3
+            points: 56
             slots: [
-                'Elite'
-                'Crew'
-                'Illicit'
-            ]
-            points: 27
+                "Talent"
+                "Torpedo"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
         }
         {
             name: "Contracted Scout"
-            id: 174
+            id: 118
             faction: "Scum and Villainy"
             ship: "JumpMaster 5000"
-            skill: 3
+            skill: 2
+            points: 52
             slots: [
-                'Elite'
-                'Crew'
-                'Illicit'
-            ]
-            points: 25
+                "Torpedo"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
         }
-        # T-70
         {
-            name: "Poe Dameron"
+            name: "Talonbane Cobra"
+            id: 119
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Kihraxz Fighter"
+            skill: 5
+            points: 50
+            slots: [
+                "Talent"
+                "Missile"
+                "Illicit"
+                "Modification"
+                "Modification"
+                "Modification"
+              ]
+        }
+        {
+            name: "Graz"
+            id: 120
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Kihraxz Fighter"
+            skill: 4
+            points: 47
+            slots: [
+                "Talent"
+                "Missile"
+                "Illicit"
+                "Modification"
+                "Modification"
+                "Modification"
+              ]
+        }
+        {
+            name: "Viktor Hel"
+            id: 121
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Kihraxz Fighter"
+            skill: 4
+            points: 45
+            slots: [
+                "Talent"
+                "Missile"
+                "Illicit"
+                "Modification"
+                "Modification"
+                "Modification"
+              ]
+        }
+        {
+            name: "Captain Jostero"
+            id: 122
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Kihraxz Fighter"
+            skill: 3
+            points: 43
+            slots: [
+                "Missile"
+                "Illicit"
+                "Modification"
+                "Modification"
+                "Modification"
+              ]
+        }
+        {
+            name: "Black Sun Ace"
+            id: 123
+            faction: "Scum and Villainy"
+            ship: "Kihraxz Fighter"
+            skill: 3
+            points: 42
+            slots: [
+                "Talent"
+                "Missile"
+                "Illicit"
+                "Modification"
+                "Modification"
+                "Modification"
+              ]
+        }
+        {
+            name: "Cartel Marauder"
+            id: 124
+            faction: "Scum and Villainy"
+            ship: "Kihraxz Fighter"
+            skill: 2
+            points: 40
+            slots: [
+                "Missile"
+                "Illicit"
+                "Modification"
+                "Modification"
+                "Modification"
+              ]
+        }
+        {
+            name: "Asajj Ventress"
+            id: 125
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Lancer-class Pursuit Craft"
+            skill: 4
+            points: 84
+            slots: [
+                "Force"
+                "Crew"
+                "Illicit"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Ketsu Onyo"
+            id: 126
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Lancer-class Pursuit Craft"
+            skill: 5
+            points: 74
+            slots: [
+                "Talent"
+                "Crew"
+                "Illicit"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Sabine Wren (Scum)"
+            id: 127
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Lancer-class Pursuit Craft"
+            skill: 3
+            points: 68
+            slots: [
+                "Talent"
+                "Crew"
+                "Illicit"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Shadowport Hunter"
+            id: 128
+            faction: "Scum and Villainy"
+            ship: "Lancer-class Pursuit Craft"
+            skill: 2
+            points: 64
+            slots: [
+                "Crew"
+                "Illicit"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Torani Kulda"
+            id: 129
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "M12-L Kimogila Fighter"
+            skill: 4
+            points: 50
+            slots: [
+                "Talent"
+                "Torpedo"
+                "Missile"
+                "Astromech"
+                "Illicit"
+                "Modification"
+              ]
+        }
+        {
+            name: "Dalan Oberos (Kimogila)"
+            id: 130
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "M12-L Kimogila Fighter"
+            skill: 3
+            points: 48
+            slots: [
+                "Talent"
+                "Torpedo"
+                "Missile"
+                "Astromech"
+                "Illicit"
+                "Modification"
+              ]
+        }
+        {
+            name: "Cartel Executioner"
+            id: 131
+            faction: "Scum and Villainy"
+            ship: "M12-L Kimogila Fighter"
+            skill: 3
+            points: 44
+            slots: [
+                "Talent"
+                "Torpedo"
+                "Missile"
+                "Astromech"
+                "Illicit"
+                "Modification"
+              ]
+        }
+        {
+            name: "Serissu"
+            id: 132
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "M3-A Interceptor"
+            skill: 5
+            points: 43
+            slots: [
+                "Talent"
+                "Modification"
+              ]
+        }
+        {
+            name: "Genesis Red"
+            id: 133
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "M3-A Interceptor"
+            skill: 4
+            points: 35
+            slots: [
+                "Talent"
+                "Modification"
+              ]
+        }
+        {
+            name: "Laetin A'shera"
+            id: 134
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "M3-A Interceptor"
+            skill: 3
+            points: 35
+            slots: [
+                "Talent"
+                "Modification"
+              ]
+        }
+        {
+            name: "Quinn Jast"
+            id: 135
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "M3-A Interceptor"
+            skill: 3
+            points: 35
+            slots: [
+                "Talent"
+                "Modification"
+              ]
+        }
+        {
+            name: "Tansarii Point Veteran"
+            id: 136
+            faction: "Scum and Villainy"
+            ship: "M3-A Interceptor"
+            skill: 3
+            points: 33
+            slots: [
+                "Talent"
+                "Modification"
+              ]
+        }
+        {
+            name: "Inaldra"
+            id: 137
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "M3-A Interceptor"
+            skill: 2
+            points: 32
+            slots: [
+                "Modification"
+              ]
+        }
+        {
+            name: "Sunny Bounder"
+            id: 138
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "M3-A Interceptor"
+            skill: 1
+            points: 31
+            slots: [
+                "Modification"
+              ]
+        }
+        {
+            name: "Cartel Spacer"
+            id: 139
+            faction: "Scum and Villainy"
+            ship: "M3-A Interceptor"
+            skill: 1
+            points: 29
+            slots: [
+                "Modification"
+              ]
+        }
+        {
+            name: "Constable Zuvio"
+            id: 140
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Quadjumper"
+            skill: 4
+            points: 33
+            slots: [
+                "Talent"
+                "Tech"
+                "Crew"
+                "Bomb"
+                "Illicit"
+                "Modification"
+              ]
+        }
+        {
+            name: "Sarco Plank"
+            id: 141
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Quadjumper"
+            skill: 2
+            points: 31
+            slots: [
+                "Tech"
+                "Crew"
+                "Bomb"
+                "Illicit"
+                "Modification"
+              ]
+        }
+        {
+            name: "Unkar Plutt"
+            id: 142
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Quadjumper"
+            skill: 2
+            points: 30
+            slots: [
+                "Tech"
+                "Crew"
+                "Bomb"
+                "Illicit"
+                "Modification"
+              ]
+        }
+        {
+            name: "Jakku Gunrunner"
+            id: 143
+            faction: "Scum and Villainy"
+            ship: "Quadjumper"
+            skill: 1
+            points: 28
+            slots: [
+                "Tech"
+                "Crew"
+                "Bomb"
+                "Illicit"
+                "Modification"
+              ]
+        }
+        {
+            name: "Captain Nym"
+            id: 144
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Scurrg H-6 bomber"
+            skill: 5
+            points: 52
+            slots: [
+                "Talent"
+                "Turret"
+                "Crew"
+                "Bomb"
+                "Bomb"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Sol Sixxa"
+            id: 145
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Scurrg H-6 bomber"
+            skill: 3
+            points: 49
+            slots: [
+                "Talent"
+                "Turret"
+                "Crew"
+                "Bomb"
+                "Bomb"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Lok Revenant"
+            id: 146
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Scurrg H-6 bomber"
+            skill: 2
+            points: 46
+            slots: [
+                "Turret"
+                "Crew"
+                "Bomb"
+                "Bomb"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Guri"
+            id: 147
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "StarViper"
+            skill: 5
+            points: 62
+            slots: [
+                "Talent"
+                "System"
+                "Torpedo"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Prince Xizor"
+            id: 148
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "StarViper"
+            skill: 4
+            points: 54
+            slots: [
+                "Talent"
+                "System"
+                "Torpedo"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Dalan Oberos (StarViper)"
+            id: 149
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "StarViper"
+            skill: 4
+            points: 54
+            slots: [
+                "Talent"
+                "System"
+                "Torpedo"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Black Sun Assassin"
+            id: 150
+            faction: "Scum and Villainy"
+            ship: "StarViper"
+            skill: 3
+            points: 48
+            slots: [
+                "Talent"
+                "System"
+                "Torpedo"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Black Sun Enforcer"
+            id: 151
+            faction: "Scum and Villainy"
+            ship: "StarViper"
+            skill: 2
+            points: 46
+            slots: [
+                "System"
+                "Torpedo"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Moralo Eval"
+            id: 152
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "YV-666"
+            skill: 4
+            points: 72
+            slots: [
+                "Talent"
+                "Cannon"
+                "Missile"
+                "Crew"
+                "Crew"
+                "Crew"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Bossk"
+            id: 153
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "YV-666"
+            skill: 4
+            points: 70
+            slots: [
+                "Talent"
+                "Cannon"
+                "Missile"
+                "Crew"
+                "Crew"
+                "Crew"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Latts Razzi"
+            id: 154
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "YV-666"
+            skill: 3
+            points: 66
+            slots: [
+                "Talent"
+                "Cannon"
+                "Missile"
+                "Crew"
+                "Crew"
+                "Crew"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Trandoshan Slaver"
+            id: 155
+            faction: "Scum and Villainy"
+            ship: "YV-666"
+            skill: 2
+            points: 58
+            slots: [
+                "Cannon"
+                "Missile"
+                "Crew"
+                "Crew"
+                "Crew"
+                "Illicit"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "N'dru Suhlak"
+            id: 156
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Z-95 Headhunter"
+            skill: 4
+            points: 31
+            slots: [
+                "Talent"
+                "Missile"
+                "Illicit"
+                "Modification"
+              ]
+        }
+        {
+            name: "Kaa'to Leeachos"
+            id: 157
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Z-95 Headhunter"
+            skill: 3
+            points: 29
+            slots: [
+                "Talent"
+                "Missile"
+                "Illicit"
+                "Modification"
+              ]
+        }
+        {
+            name: "Black Sun Soldier"
+            id: 158
+            faction: "Scum and Villainy"
+            ship: "Z-95 Headhunter"
+            skill: 3
+            points: 27
+            slots: [
+                "Talent"
+                "Missile"
+                "Illicit"
+                "Modification"
+              ]
+        }
+        {
+            name: "Binayre Pirate"
+            id: 159
+            faction: "Scum and Villainy"
+            ship: "Z-95 Headhunter"
+            skill: 1
+            points: 24
+            slots: [
+                "Missile"
+                "Illicit"
+                "Modification"
+              ]
+        }
+        {
+            name: "Nashtah Pup"
+            id: 160
+            unique: true
+            faction: "Scum and Villainy"
+            ship: "Z-95 Headhunter"
+            skill: 1
+            points: 6
+            slots: [
+                "Missile"
+                "Illicit"
+                "Modification"
+              ]
+        }
+        {
+            name: "Major Vynder"
+            id: 161
+            unique: true
+            faction: "Galactic Empire"
+            ship: "Alpha-Class Star Wing"
+            skill: 4
+            points: 41
+            slots: [
+                "Talent"         
+                "System"
+                "Torpedo"
+                "Missile"
+                "Modification"
+                "Configuration"
+              ]
+        }
+        {
+            name: "Lieutenant Karsabi"
+            id: 162
+            unique: true
+            faction: "Galactic Empire"
+            ship: "Alpha-Class Star Wing"
+            skill: 3
+            points: 39
+            slots: [
+                "Talent"         
+                "System"
+                "Torpedo"
+                "Missile"
+                "Modification"
+                "Configuration"
+              ]
+        }
+        {
+            name: "Rho Squadron Pilot"
+            id: 163
+            faction: "Galactic Empire"
+            ship: "Alpha-Class Star Wing"
+            skill: 3
+            points: 37
+            slots: [
+                "Talent"         
+                "System"
+                "Torpedo"
+                "Missile"
+                "Modification"
+                "Configuration"
+              ]
+        }
+        {
+            name: "Nu Squadron Pilot"
+            id: 164
+            faction: "Galactic Empire"
+            ship: "Alpha-Class Star Wing"
+            skill: 2
+            points: 35
+            slots: [      
+                "System"
+                "Torpedo"
+                "Missile"
+                "Modification"
+                "Configuration"
+              ]
+        }
+        {
+            name: "Captain Kagi"
+            id: 165
+            unique: true
+            faction: "Galactic Empire"
+            ship: "Lambda-Class Shuttle"
+            skill: 4
+            points: 48
+            slots: [       
+                "System"
+                "Cannon"
+                "Crew"
+                "Crew"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Lieutenant Sai"
+            id: 166
+            unique: true
+            faction: "Galactic Empire"
+            ship: "Lambda-Class Shuttle"
+            skill: 3
+            points: 47
+            slots: [       
+                "System"
+                "Cannon"
+                "Crew"
+                "Crew"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Colonel Jendon"
+            id: 167
+            unique: true
+            faction: "Galactic Empire"
+            ship: "Lambda-Class Shuttle"
+            skill: 3
+            points: 46
+            slots: [       
+                "System"
+                "Cannon"
+                "Crew"
+                "Crew"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Omicron Group Pilot"
+            id: 168
+            faction: "Galactic Empire"
+            ship: "Lambda-Class Shuttle"
+            skill: 1
+            points: 43
+            slots: [       
+                "System"
+                "Cannon"
+                "Crew"
+                "Crew"
+                "Modification"
+                "Title"
+              ]
+        }
+        {
+            name: "Grand Inquisitor"
+            id: 169
+            unique: true
+            faction: "Galactic Empire"
+            ship: "TIE Advanced Prototype"
+            skill: 5
+            points: 58
+            slots: [       
+                "Force"
+                "System"
+                "Missile"
+              ]
+        }
+        {
+            name: "Seventh Sister"
+            id: 170
+            unique: true
+            faction: "Galactic Empire"
+            ship: "TIE Advanced Prototype"
+            skill: 4
+            points: 48
+            slots: [       
+                "Force"
+                "System"
+                "Missile"
+              ]
+        }
+        {
+            name: "Inquisitor"
+            id: 171
+            faction: "Galactic Empire"
+            ship: "TIE Advanced Prototype"
+            skill: 5
+            points: 40
+            slots: [       
+                "Force"
+                "System"
+                "Missile"
+              ]
+        }
+        {
+            name: "Baron of the Empire"
+            id: 172
+            faction: "Galactic Empire"
+            ship: "TIE Advanced Prototype"
+            skill: 3
+            points: 34
+            slots: [       
+                "Talent"
+                "System"
+                "Missile"
+              ]
+        }
+        {
+            name: "Darth Vader"
+            id: 173
+            unique: true
+            faction: "Galactic Empire"
+            ship: "TIE Advanced"
+            skill: 6
+            points: 70
+            slots: [       
+                "Force"
+                "System"
+                "Missile"
+                "Modification"
+              ]
+        }
+        {
+            name: "Maarek Stele"
+            id: 174
+            unique: true
+            faction: "Galactic Empire"
+            ship: "TIE Advanced"
+            skill: 5
+            points: 50
+            slots: [       
+                "Talent"
+                "System"
+                "Missile"
+                "Modification"
+              ]
+        }
+        {
+            name: "Ved Foslo"
             id: 175
             unique: true
-            faction: "Resistance"
-            ship: "T-70 X-Wing"
-            skill: 8
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Astromech'
-                'Tech'
-            ]
-            points: 31
+            faction: "Galactic Empire"
+            ship: "TIE Advanced"
+            skill: 4
+            points: 47
+            slots: [       
+                "Talent"
+                "System"
+                "Missile"
+                "Modification"
+              ]
         }
         {
-            name: '"Blue Ace"'
+            name: "Zertik Strom"
             id: 176
             unique: true
-            faction: "Resistance"
-            ship: "T-70 X-Wing"
-            skill: 5
-            slots: [
-                'Torpedo'
-                'Astromech'
-                'Tech'
-            ]
-            points: 27
+            faction: "Galactic Empire"
+            ship: "TIE Advanced"
+            skill: 3
+            points: 45
+            slots: [       
+                "System"
+                "Missile"
+                "Modification"
+              ]
         }
         {
-            name: "Red Squadron Veteran"
+            name: "Storm Squadron Ace"
             id: 177
-            faction: "Resistance"
-            ship: "T-70 X-Wing"
-            skill: 4
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Astromech'
-                'Tech'
-            ]
-            points: 26
+            faction: "Galactic Empire"
+            ship: "TIE Advanced"
+            skill: 3
+            points: 43
+            slots: [       
+                "Talent"
+                "System"
+                "Missile"
+                "Modification"
+              ]
         }
         {
-            name: "Blue Squadron Novice"
+            name: "Tempest Squadron Pilot"
             id: 178
-            faction: "Resistance"
-            ship: "T-70 X-Wing"
+            faction: "Galactic Empire"
+            ship: "TIE Advanced"
             skill: 2
-            slots: [
-                'Torpedo'
-                'Astromech'
-                'Tech'
-            ]
-            points: 24
+            points: 41
+            slots: [  
+                "System"
+                "Missile"
+                "Modification"
+              ]
         }
-        # TIE/fo
         {
-            name: '"Omega Ace"'
+            name: "Soontir Fel"
             id: 179
             unique: true
-            faction: "First Order"
-            ship: "TIE/fo Fighter"
-            skill: 7
-            slots: [
-                'Elite'
-                'Tech'
-            ]
-            points: 20
+            faction: "Galactic Empire"
+            ship: "TIE Interceptor"
+            skill: 6
+            points: 52
+            slots: [       
+                "Talent"
+                "Modification"
+                "Modification"
+              ]
         }
         {
-            name: '"Epsilon Leader"'
+            name: "Turr Phennir"
             id: 180
             unique: true
-            faction: "First Order"
-            ship: "TIE/fo Fighter"
-            skill: 6
-            slots: [
-                'Tech'
-            ]
-            points: 19
-        }
-        {
-            name: '"Zeta Ace"'
-            id: 181
-            unique: true
-            faction: "First Order"
-            ship: "TIE/fo Fighter"
-            skill: 5
-            slots: [
-                'Elite'
-                'Tech'
-            ]
-            points: 18
-        }
-        {
-            name: "Omega Squadron Pilot"
-            id: 182
-            faction: "First Order"
-            ship: "TIE/fo Fighter"
+            faction: "Galactic Empire"
+            ship: "TIE Interceptor"
             skill: 4
-            slots: [
-                'Elite'
-                'Tech'
-            ]
-            points: 17
+            points: 44
+            slots: [       
+                "Talent"
+                "Modification"
+                "Modification"
+              ]
         }
         {
-            name: "Zeta Squadron Pilot"
-            id: 183
-            faction: "First Order"
-            ship: "TIE/fo Fighter"
-            skill: 3
-            slots: [
-                'Tech'
-            ]
-            points: 16
+            name: "Saber Squadron Ace"
+            id: 181
+            faction: "Galactic Empire"
+            ship: "TIE Interceptor"
+            skill: 4
+            points: 40
+            slots: [       
+                "Talent"
+                "Modification"
+                "Modification"
+              ]
         }
         {
-            name: "Epsilon Squadron Pilot"
-            id: 184
-            faction: "First Order"
-            ship: "TIE/fo Fighter"
+            name: "Alpha Squadron Pilot"
+            id: 182
+            faction: "Galactic Empire"
+            ship: "TIE Interceptor"
             skill: 1
-            slots: [
-                'Tech'
-            ]
-            points: 15
+            points: 34
+            slots: [       
+                "Modification"
+                "Modification"
+              ]
         }
         {
-            name: "Ello Asty"
+            name: "Major Vermeil"
+            id: 183
+            unique: true
+            faction: "Galactic Empire"
+            ship: "TIE Reaper"
+            skill: 4
+            points: 49
+            slots: [       
+                "Talent"
+                "Crew"
+                "Crew"
+                "Modification"
+              ]
+        }
+        {
+            name: "Captain Feroph"
+            id: 184
+            unique: true
+            faction: "Galactic Empire"
+            ship: "TIE Reaper"
+            skill: 3
+            points: 47
+            slots: [       
+                "Talent"
+                "Crew"
+                "Crew"
+                "Modification"
+              ]
+        }
+        {
+            name: '"Vizier"'
             id: 185
             unique: true
-            faction: "Resistance"
-            ship: "T-70 X-Wing"
-            skill: 7
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Astromech'
-                'Tech'
-            ]
-            points: 30
+            faction: "Galactic Empire"
+            ship: "TIE Reaper"
+            skill: 2
+            points: 45
+            slots: [       
+                "Talent"
+                "Crew"
+                "Crew"
+                "Modification"
+              ]
         }
         {
-            name: '"Red Ace"'
+            name: "Scarif Base Pilot"
             id: 186
-            unique: true
-            faction: "Resistance"
-            ship: "T-70 X-Wing"
-            skill: 6
-            slots: [
-                'Torpedo'
-                'Astromech'
-                'Tech'
-            ]
-            points: 29
+            faction: "Galactic Empire"
+            ship: "TIE Reaper"
+            skill: 1
+            points: 41
+            slots: [       
+                "Crew"
+                "Crew"
+                "Modification"
+              ]
         }
         {
-            name: '"Omega Leader"'
+            name: "Lieutenant Kestal"
             id: 187
             unique: true
-            faction: "First Order"
-            ship: "TIE/fo Fighter"
-            skill: 8
-            slots: [
-                'Elite'
-                'Tech'
-            ]
-            points: 21
+            faction: "Galactic Empire"
+            ship: "TIE Aggressor"
+            skill: 4
+            points: 36
+            slots: [       
+                "Talent"
+                "Turret"
+                "Missile"
+                "Missile"
+                "Gunner"
+                "Modification"
+              ]
         }
         {
-            name: '"Zeta Leader"'
+            name: '"Double Edge"'
             id: 188
             unique: true
-            faction: "First Order"
-            ship: "TIE/fo Fighter"
-            skill: 7
-            slots: [
-                'Elite'
-                'Tech'
-            ]
-            points: 20
+            faction: "Galactic Empire"
+            ship: "TIE Aggressor"
+            skill: 2
+            points: 33
+            slots: [       
+                "Talent"
+                "Turret"
+                "Missile"
+                "Missile"
+                "Gunner"
+                "Modification"
+              ]
         }
         {
-            name: '"Epsilon Ace"'
+            name: "Onyx Squadron Scout"
             id: 189
-            unique: true
-            faction: "First Order"
-            ship: "TIE/fo Fighter"
-            skill: 4
-            slots: [
-                'Tech'
-            ]
-            points: 17
+            faction: "Galactic Empire"
+            ship: "TIE Aggressor"
+            skill: 3
+            points: 32
+            slots: [       
+                "Talent"
+                "Turret"
+                "Missile"
+                "Missile"
+                "Gunner"
+                "Modification"
+              ]
         }
         {
-            name: "Tomax Bren"
+            name: "Sienar Specialist"
             id: 190
+            faction: "Galactic Empire"
+            ship: "TIE Aggressor"
+            skill: 2
+            points: 36
+            slots: [       
+                "Turret"
+                "Missile"
+                "Missile"
+                "Gunner"
+                "Modification"
+              ]
+        }
+        {
+            name: '"Redline"'
+            id: 191
             unique: true
             faction: "Galactic Empire"
-            ship: "TIE Bomber"
-            skill: 8
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Torpedo'
-                'Missile'
-                'Missile'
-                'Bomb'
-            ]
-            points: 24
-        }
-        {
-            name: "Gamma Squadron Veteran"
-            id: 191
-            faction: "Galactic Empire"
-            ship: "TIE Bomber"
+            ship: "TIE Punisher"
             skill: 5
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Torpedo'
-                'Missile'
-                'Missile'
-                'Bomb'
-            ]
-            points: 19
+            points: 44
+            slots: [       
+                "System"
+                "Torpedo"
+                "Missile"
+                "Missile"
+                "Gunner"
+                "Device"
+                "Device"
+                "Modification"
+              ]
         }
         {
-            name: '"Deathfire"'
+            name: '"Deathrain"'
             id: 192
             unique: true
             faction: "Galactic Empire"
-            ship: "TIE Bomber"
-            skill: 3
-            slots: [
-                'Torpedo'
-                'Torpedo'
-                'Missile'
-                'Missile'
-                'Bomb'
-            ]
-            points: 17
+            ship: "TIE Punisher"
+            skill: 4
+            points: 42
+            slots: [       
+                "System"
+                "Torpedo"
+                "Missile"
+                "Missile"
+                "Gunner"
+                "Device"
+                "Device"
+                "Modification"
+              ]
         }
         {
-            name: "Maarek Stele (TIE Defender)"
-            canonical_name: 'maarekstele'
+            name: "Cutlass Squadron Pilot"
             id: 193
+            faction: "Galactic Empire"
+            ship: "TIE Punisher"
+            skill: 2
+            points: 36
+            slots: [       
+                "System"
+                "Torpedo"
+                "Missile"
+                "Missile"
+                "Gunner"
+                "Device"
+                "Device"
+                "Modification"
+              ]
+        }
+        {
+            name: "Colonel Vessery"
+            id: 194
             unique: true
             faction: "Galactic Empire"
             ship: "TIE Defender"
-            skill: 7
-            slots: [
-                'Elite'
-                'Cannon'
-                'Missile'
-            ]
-            points: 35
-        }
-        {
-            name: "Glaive Squadron Pilot"
-            id: 194
-            faction: "Galactic Empire"
-            ship: "TIE Defender"
-            skill: 6
-            slots: [
-                'Elite'
-                'Cannon'
-                'Missile'
-            ]
-            points: 34
+            skill: 4
+            points: 88
+            slots: [       
+                "Talent"
+                "System"
+                "Cannon"
+                "Missile"
+              ]
         }
         {
             name: "Countess Ryad"
@@ -4662,4575 +5046,1798 @@ exportObj.basicCardData = ->
             unique: true
             faction: "Galactic Empire"
             ship: "TIE Defender"
-            skill: 5
-            slots: [
-                'Elite'
-                'Cannon'
-                'Missile'
-            ]
-            points: 34
+            skill: 4
+            points: 86
+            slots: [       
+                "Talent"
+                "System"
+                "Cannon"
+                "Missile"
+              ]
         }
         {
-            name: "Poe Dameron (PS9)"
-            canonical_name: "poedameron-swx57"
+            name: "Rexler Brath"
             id: 196
             unique: true
-            faction: "Resistance"
-            ship: "T-70 X-Wing"
-            skill: 9
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Astromech'
-                'Tech'
-            ]
-            points: 33
+            faction: "Galactic Empire"
+            ship: "TIE Defender"
+            skill: 5
+            points: 84
+            slots: [       
+                "Talent"
+                "System"
+                "Cannon"
+                "Missile"
+              ]
         }
         {
-            name: 'Nien Nunb'
+            name: "Onyx Squadron Ace"
             id: 197
-            unique: true
-            faction: "Resistance"
-            ship: "T-70 X-Wing"
-            skill: 7
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Astromech'
-                'Tech'
-            ]
-            points: 29
+            faction: "Galactic Empire"
+            ship: "TIE Defender"
+            skill: 4
+            points: 78
+            slots: [       
+                "Talent"
+                "System"
+                "Cannon"
+                "Missile"
+              ]
         }
         {
-            name: '''"Snap" Wexley'''
+            name: "Delta Squadron Pilot"
             id: 198
-            unique: true
-            faction: "Resistance"
-            ship: "T-70 X-Wing"
-            skill: 6
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Astromech'
-                'Tech'
-            ]
-            points: 28
+            faction: "Galactic Empire"
+            ship: "TIE Defender"
+            skill: 1
+            points: 72
+            slots: [       
+                "System"
+                "Cannon"
+                "Missile"
+              ]
         }
         {
-            name: 'Jess Pava'
+            name: '"Whisper"'
             id: 199
             unique: true
-            faction: "Resistance"
-            ship: "T-70 X-Wing"
-            skill: 3
-            slots: [
-                'Torpedo'
-                'Astromech'
-                'Tech'
-            ]
-            points: 25
+            faction: "Galactic Empire"
+            ship: "TIE Phantom"
+            skill: 5
+            points: 52
+            slots: [       
+                "Talent"
+                "System"
+                "Crew"
+                "Modification"
+              ]
         }
         {
-            name: "Han Solo (TFA)"
-            canonical_name: "hansolo-swx57"
+            name: '"Echo"'
             id: 200
             unique: true
-            faction: "Resistance"
-            ship: "YT-1300"
-            skill: 9
-            points: 46
-            slots: [
-                "Elite"
-                "Missile"
+            faction: "Galactic Empire"
+            ship: "TIE Phantom"
+            skill: 4
+            points: 50
+            slots: [       
+                "Talent"
+                "System"
                 "Crew"
-                "Crew"
-            ]
-            ship_override:
-                attack: 3
-                agility: 1
-                hull: 8
-                shields: 5
+                "Modification"
+              ]
         }
         {
-            name: "Rey"
+            name: '"Sigma Squadron Ace"'
             id: 201
-            unique: true
-            faction: "Resistance"
-            ship: "YT-1300"
-            skill: 8
-            points: 45
-            slots: [
-                "Elite"
-                "Missile"
+            faction: "Galactic Empire"
+            ship: "TIE Phantom"
+            skill: 4
+            points: 46
+            slots: [       
+                "Talent"
+                "System"
                 "Crew"
-                "Crew"
-            ]
-            ship_override:
-                attack: 3
-                agility: 1
-                hull: 8
-                shields: 5
+                "Modification"
+              ]
         }
         {
-            name: "Chewbacca (TFA)"
-            canonical_name: "chewbacca-swx57"
+            name: "Imdaar Test Pilot"
             id: 202
-            unique: true
-            faction: "Resistance"
-            ship: "YT-1300"
-            skill: 5
-            points: 42
-            slots: [
-                "Elite"
-                "Missile"
-                "Crew"
-                "Crew"
-            ]
-            ship_override:
-                attack: 3
-                agility: 1
-                hull: 8
-                shields: 5
-        }
-        {
-            name: "Resistance Sympathizer"
-            id: 203
-            faction: "Resistance"
-            ship: "YT-1300"
+            faction: "Galactic Empire"
+            ship: "TIE Phantom"
             skill: 3
-            points: 38
-            slots: [
-                "Missile"
+            points: 44
+            slots: [       
+                "System"
                 "Crew"
-                "Crew"
-            ]
-            ship_override:
-                attack: 3
-                agility: 1
-                hull: 8
-                shields: 5
+                "Modification"
+              ]
         }
         {
-            name: 'Norra Wexley'
+            name: "Captain Jonus"
+            id: 203
+            unique: true
+            faction: "Galactic Empire"
+            ship: "TIE Bomber"
+            skill: 4
+            points: 36
+            slots: [       
+                "Talent"
+                "Torpedo"
+                "Missile"
+                "Missile"
+                "Gunner"
+                "Device"
+                "Device"
+                "Modification"
+              ]
+        }
+        {
+            name: "Major Rhymer"
             id: 204
             unique: true
-            faction: 'Rebel Alliance'
-            ship: 'ARC-170'
-            skill: 7
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Crew'
-                'Astromech'
-            ]
-            points: 29
+            faction: "Galactic Empire"
+            ship: "TIE Bomber"
+            skill: 4
+            points: 34
+            slots: [       
+                "Talent"
+                "Torpedo"
+                "Missile"
+                "Missile"
+                "Gunner"
+                "Device"
+                "Device"
+                "Modification"
+              ]
         }
         {
-            name: 'Shara Bey'
+            name: "Tomax Bren"
             id: 205
             unique: true
-            faction: 'Rebel Alliance'
-            ship: 'ARC-170'
-            skill: 6
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Crew'
-                'Astromech'
-            ]
-            points: 28
+            faction: "Galactic Empire"
+            ship: "TIE Bomber"
+            skill: 5
+            points: 34
+            slots: [       
+                "Talent"
+                "Torpedo"
+                "Missile"
+                "Missile"
+                "Gunner"
+                "Device"
+                "Device"
+                "Modification"
+              ]
         }
         {
-            name: 'Thane Kyrell'
+            name: '"Deathfire"'
             id: 206
             unique: true
-            faction: 'Rebel Alliance'
-            ship: 'ARC-170'
-            skill: 4
-            slots: [
-                'Torpedo'
-                'Crew'
-                'Astromech'
-            ]
-            points: 26
-        }
-        {
-            name: 'Braylen Stramm'
-            id: 207
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'ARC-170'
-            skill: 3
-            slots: [
-                'Torpedo'
-                'Crew'
-                'Astromech'
-            ]
-            points: 25
-        }
-        {
-            name: '"Quickdraw"'
-            id: 208
-            unique: true
-            faction: 'Galactic Empire'
-            ship: 'TIE/sf Fighter'
-            skill: 9
-            slots: [
-                'Elite'
-                'System'
-                'Missile'
-                'Tech'
-            ]
-            points: 29
-        }
-        {
-            name: '"Backdraft"'
-            id: 209
-            unique: true
-            faction: 'Galactic Empire'
-            ship: 'TIE/sf Fighter'
-            skill: 7
-            slots: [
-                'Elite'
-                'System'
-                'Missile'
-                'Tech'
-            ]
-            points: 27
-        }
-        {
-            name: 'Omega Specialist'
-            id: 210
-            faction: 'Galactic Empire'
-            ship: 'TIE/sf Fighter'
-            skill: 5
-            slots: [
-                'Elite'
-                'System'
-                'Missile'
-                'Tech'
-            ]
-            points: 25
-        }
-        {
-            name: 'Zeta Specialist'
-            id: 211
-            faction: 'Galactic Empire'
-            ship: 'TIE/sf Fighter'
-            skill: 3
-            slots: [
-                'System'
-                'Missile'
-                'Tech'
-            ]
-            points: 23
-        }
-        {
-            name: 'Fenn Rau'
-            id: 212
-            unique: true
-            faction: 'Scum and Villainy'
-            ship: 'Protectorate Starfighter'
-            skill: 9
-            slots: [
-                'Elite'
-                'Torpedo'
-            ]
-            points: 28
-        }
-        {
-            name: 'Old Teroch'
-            id: 213
-            unique: true
-            faction: 'Scum and Villainy'
-            ship: 'Protectorate Starfighter'
-            skill: 7
-            slots: [
-                'Elite'
-                'Torpedo'
-            ]
-            points: 26
-        }
-        {
-            name: 'Kad Solus'
-            id: 214
-            unique: true
-            faction: 'Scum and Villainy'
-            ship: 'Protectorate Starfighter'
-            skill: 6
-            slots: [
-                'Elite'
-                'Torpedo'
-            ]
-            points: 25
-        }
-        {
-            name: 'Concord Dawn Ace'
-            id: 215
-            faction: 'Scum and Villainy'
-            ship: 'Protectorate Starfighter'
-            skill: 5
-            slots: [
-                'Elite'
-                'Torpedo'
-            ]
-            points: 23
-        }
-        {
-            name: 'Concord Dawn Veteran'
-            id: 216
-            faction: 'Scum and Villainy'
-            ship: 'Protectorate Starfighter'
-            skill: 3
-            slots: [
-                'Elite'
-                'Torpedo'
-            ]
-            points: 22
-        }
-        {
-            name: 'Zealous Recruit'
-            id: 217
-            faction: 'Scum and Villainy'
-            ship: 'Protectorate Starfighter'
-            skill: 1
-            slots: [
-                'Torpedo'
-            ]
-            points: 20
-        }
-        {
-            name: 'Ketsu Onyo'
-            id: 218
-            unique: true
-            faction: 'Scum and Villainy'
-            ship: 'Lancer-class Pursuit Craft'
-            skill: 7
-            slots: [
-                'Elite'
-                'Crew'
-                'Illicit'
-                'Illicit'
-            ]
-            points: 38
-        }
-        {
-            name: 'Asajj Ventress'
-            id: 219
-            unique: true
-            faction: 'Scum and Villainy'
-            ship: 'Lancer-class Pursuit Craft'
-            skill: 6
-            slots: [
-                'Elite'
-                'Crew'
-                'Illicit'
-                'Illicit'
-            ]
-            points: 37
-        }
-        {
-            name: 'Sabine Wren (Scum)'
-            canonical_name: "sabinewren"
-            id: 220
-            unique: true
-            faction: 'Scum and Villainy'
-            ship: 'Lancer-class Pursuit Craft'
-            skill: 5
-            slots: [
-                'Crew'
-                'Illicit'
-                'Illicit'
-            ]
-            points: 35
-        }
-        {
-            name: 'Shadowport Hunter'
-            id: 221
-            faction: 'Scum and Villainy'
-            ship: 'Lancer-class Pursuit Craft'
+            faction: "Galactic Empire"
+            ship: "TIE Bomber"
             skill: 2
-            slots: [
-                'Crew'
-                'Illicit'
-                'Illicit'
-            ]
-            points: 33
-        }
-        {
-            name: 'Ahsoka Tano'
-            id: 222
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'TIE Fighter'
-            skill: 7
-            slots: [
-                'Elite'
-            ]
-            points: 17
-        }
-        {
-            name: 'Sabine Wren (TIE Fighter)'
-            id: 223
-            canonical_name: "sabinewren"
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'TIE Fighter'
-            skill: 5
-            slots: [
-                'Elite'
-            ]
-            points: 15
-        }
-        {
-            name: 'Captain Rex'
-            id: 224
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'TIE Fighter'
-            skill: 4
-            slots: []
-            points: 14
-            applies_condition: 'Suppressive Fire'.canonicalize()
-        }
-        {
-            name: '"Zeb" Orrelios (TIE Fighter)'
-            id: 225
-            canonical_name: '"Zeb" Orrelios'.canonicalize()
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'TIE Fighter'
-            skill: 3
-            slots: []
-            points: 13
-        }
-        {
-            name: 'Kylo Ren'
-            id: 226
-            unique: true
-            faction: 'First Order'
-            ship: 'Upsilon-class Shuttle'
-            skill: 6
-            slots: [
-                'Elite'
-                'System'
-                'Crew'
-                'Crew'
-                'Tech'
-                'Tech'
-            ]
-            points: 34
-            applies_condition: '''I'll Show You the Dark Side'''.canonicalize()
-        }
-        {
-            name: 'Major Stridan'
-            id: 227
-            unique: true
-            faction: 'First Order'
-            ship: 'Upsilon-class Shuttle'
-            skill: 4
-            slots: [
-                'System'
-                'Crew'
-                'Crew'
-                'Tech'
-                'Tech'
-            ]
             points: 32
+            slots: [       
+                "Torpedo"
+                "Missile"
+                "Missile"
+                "Gunner"
+                "Device"
+                "Device"
+                "Modification"
+              ]
         }
         {
-            name: 'Lieutenant Dormitz'
-            id: 228
-            unique: true
-            faction: 'First Order'
-            ship: 'Upsilon-class Shuttle'
+            name: "Gamma Squadron Ace"
+            id: 207
+            faction: "Galactic Empire"
+            ship: "TIE Bomber"
             skill: 3
-            slots: [
-                'System'
-                'Crew'
-                'Crew'
-                'Tech'
-                'Tech'
-            ]
-            points: 31
-        }
-        {
-            name: 'Starkiller Base Pilot'
-            id: 229
-            faction: 'First Order'
-            ship: 'Upsilon-class Shuttle'
-            skill: 2
-            slots: [
-                'System'
-                'Crew'
-                'Crew'
-                'Tech'
-                'Tech'
-            ]
             points: 30
+            slots: [       
+                "Talent"
+                "Torpedo"
+                "Missile"
+                "Missile"
+                "Gunner"
+                "Device"
+                "Device"
+                "Modification"
+              ]
         }
         {
-            name: 'Constable Zuvio'
-            id: 230
-            unique: true
-            faction: 'Scum and Villainy'
-            ship: 'Quadjumper'
-            skill: 7
-            slots: [
-                'Elite'
-                'Crew'
-                'Bomb'
-                'Tech'
-                'Illicit'
-            ]
-            points: 19
-        }
-        {
-            name: 'Sarco Plank'
-            id: 231
-            unique: true
-            faction: 'Scum and Villainy'
-            ship: 'Quadjumper'
-            skill: 5
-            slots: [
-                'Elite'
-                'Crew'
-                'Bomb'
-                'Tech'
-                'Illicit'
-            ]
-            points: 18
-        }
-        {
-            name: 'Unkar Plutt'
-            id: 232
-            unique: true
-            faction: 'Scum and Villainy'
-            ship: 'Quadjumper'
-            skill: 3
-            slots: [
-                'Crew'
-                'Bomb'
-                'Tech'
-                'Illicit'
-            ]
-            points: 17
-        }
-        {
-            name: 'Jakku Gunrunner'
-            id: 233
-            faction: 'Scum and Villainy'
-            ship: 'Quadjumper'
-            skill: 1
-            slots: [
-                'Crew'
-                'Bomb'
-                'Tech'
-                'Illicit'
-            ]
-            points: 15
-        }
-        {
-            name: 'Cassian Andor'
-            id: 234
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'U-Wing'
-            skill: 6
-            slots: [
-                'Elite'
-                'System'
-                'Torpedo'
-                'Crew'
-                'Crew'
-            ]
-            points: 27
-        }
-        {
-            name: 'Bodhi Rook'
-            id: 235
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'U-Wing'
-            skill: 4
-            slots: [
-                'System'
-                'Torpedo'
-                'Crew'
-                'Crew'
-            ]
-            points: 25
-        }
-        {
-            name: 'Heff Tobber'
-            id: 236
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'U-Wing'
-            skill: 3
-            slots: [
-                'System'
-                'Torpedo'
-                'Crew'
-                'Crew'
-            ]
-            points: 24
-        }
-        {
-            name: 'Blue Squadron Pathfinder'
-            id: 237
-            faction: 'Rebel Alliance'
-            ship: 'U-Wing'
+            name: "Scimitar Squadron Pilot"
+            id: 208
+            faction: "Galactic Empire"
+            ship: "TIE Bomber"
             skill: 2
-            slots: [
-                'System'
-                'Torpedo'
-                'Crew'
-                'Crew'
-            ]
-            points: 23
-        }
-        {
-            name: '"Duchess"'
-            id: 238
-            unique: true
-            faction: 'Galactic Empire'
-            ship: 'TIE Striker'
-            skill: 8
-            slots: [
-                'Elite'
-            ]
-            points: 23
-        }
-        {
-            name: '"Pure Sabacc"'
-            id: 239
-            unique: true
-            faction: 'Galactic Empire'
-            ship: 'TIE Striker'
-            skill: 6
-            slots: [
-                'Elite'
-            ]
-            points: 22
+            points: 28
+            slots: [       
+                "Torpedo"
+                "Missile"
+                "Missile"
+                "Gunner"
+                "Device"
+                "Device"
+                "Modification"
+              ]
         }
         {
             name: '"Countdown"'
-            id: 240
-            unique: true
-            faction: 'Galactic Empire'
-            ship: 'TIE Striker'
-            skill: 5
-            slots: [
-            ]
-            points: 20
-        }
-        {
-            name: 'Black Squadron Scout'
-            id: 241
-            faction: 'Galactic Empire'
-            ship: 'TIE Striker'
-            skill: 4
-            slots: [
-                'Elite'
-            ]
-            points: 20
-        }
-        {
-            name: 'Scarif Defender'
-            id: 242
-            faction: 'Galactic Empire'
-            ship: 'TIE Striker'
-            skill: 3
-            slots: [
-            ]
-            points: 18
-        }
-        {
-            name: 'Imperial Trainee'
-            id: 243
-            faction: 'Galactic Empire'
-            ship: 'TIE Striker'
-            skill: 1
-            slots: [
-            ]
-            points: 17
-        }
-        {
-            name: 'C-ROC Cruiser'
-            id: 244
-            faction: 'Scum and Villainy'
-            ship: 'C-ROC Cruiser'
-            skill: 1
-            slots: [
-                'Crew'
-                'Crew'
-                'Hardpoint'
-                'Team'
-                'Cargo'
-                'Cargo'
-                'Cargo'
-            ]
-            points: 35
-        }
-        {
-            name: 'Genesis Red'
-            id: 245
-            unique: true
-            faction: 'Scum and Villainy'
-            ship: 'M3-A Interceptor'
-            skill: 7
-            slots: [
-                'Elite'
-            ]
-            points: 19
-        }
-        {
-            name: 'Quinn Jast'
-            id: 246
-            unique: true
-            faction: 'Scum and Villainy'
-            ship: 'M3-A Interceptor'
-            skill: 6
-            slots: [
-                'Elite'
-            ]
-            points: 18
-        }
-        {
-            name: 'Inaldra'
-            id: 247
-            unique: true
-            faction: 'Scum and Villainy'
-            ship: 'M3-A Interceptor'
-            skill: 3
-            slots: [
-                'Elite'
-            ]
-            points: 15
-        }
-        {
-            name: 'Sunny Bounder'
-            id: 248
-            unique: true
-            faction: 'Scum and Villainy'
-            ship: 'M3-A Interceptor'
-            skill: 1
-            slots: [ ]
-            points: 14
-        }
-        {
-            name: 'Kashyyyk Defender'
-            id: 249
-            faction: 'Rebel Alliance'
-            ship: 'Auzituck Gunship'
-            skill: 1
-            slots: [
-                'Crew'
-                'Crew'
-            ]
-            points: 24
-        }
-        {
-            name: 'Wookiee Liberator'
-            id: 250
-            faction: 'Rebel Alliance'
-            ship: 'Auzituck Gunship'
-            skill: 3
-            slots: [
-                'Elite'
-                'Crew'
-                'Crew'
-            ]
-            points: 26
-        }
-        {
-            name: 'Lowhhrick'
-            id: 251
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'Auzituck Gunship'
-            skill: 5
-            slots: [
-                'Elite'
-                'Crew'
-                'Crew'
-            ]
-            points: 28
-        }
-        {
-            name: 'Wullffwarro'
-            id: 252
-            faction: 'Rebel Alliance'
-            unique: true
-            ship: 'Auzituck Gunship'
-            skill: 7
-            slots: [
-                'Elite'
-                'Crew'
-                'Crew'
-            ]
-            points: 30
-        }
-        {
-            name: 'Captain Nym (Scum)'
-            id: 253
-            canonical_name: 'Captain Nym'.canonicalize()
-            unique: true
-            faction: 'Scum and Villainy'
-            ship: 'Scurrg H-6 Bomber'
-            skill: 8
-            slots: [
-                'Elite'
-                'Turret'
-                'Torpedo'
-                'Missile'
-                'Crew'
-                'Bomb'
-                'Bomb'
-            ]
-            points: 30
-        }
-        {
-            name: 'Captain Nym (Rebel)'
-            id: 254
-            canonical_name: 'Captain Nym'.canonicalize()
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'Scurrg H-6 Bomber'
-            skill: 8
-            slots: [
-                'Elite'
-                'Turret'
-                'Torpedo'
-                'Missile'
-                'Crew'
-                'Bomb'
-                'Bomb'
-            ]
-            points: 30
-        }
-        {
-            name: 'Sol Sixxa'
-            id: 255
-            faction: 'Scum and Villainy'
-            unique: true
-            ship: 'Scurrg H-6 Bomber'
-            skill: 6
-            slots: [
-                'Elite'
-                'Turret'
-                'Torpedo'
-                'Missile'
-                'Crew'
-                'Bomb'
-                'Bomb'
-            ]
-            points: 28
-        }
-        {
-            name: 'Lok Revenant'
-            id: 256
-            faction: 'Scum and Villainy'
-            ship: 'Scurrg H-6 Bomber'
-            skill: 3
-            slots: [
-                'Elite'
-                'Turret'
-                'Torpedo'
-                'Missile'
-                'Crew'
-                'Bomb'
-                'Bomb'
-            ]
-            points: 26
-        }
-        {
-            name: 'Karthakk Pirate'
-            id: 257
-            faction: 'Scum and Villainy'
-            ship: 'Scurrg H-6 Bomber'
-            skill: 1
-            slots: [
-                'Turret'
-                'Torpedo'
-                'Missile'
-                'Crew'
-                'Bomb'
-                'Bomb'
-            ]
-            points: 24
-        }
-        {
-            name: 'Sienar Specialist'
-            id: 258
-            faction: 'Galactic Empire'
-            ship: 'TIE Aggressor'
-            skill: 2
-            slots: [
-                'Turret'
-                'Missile'
-                'Missile'
-            ]
-            points: 17
-        }
-        {
-            name: 'Onyx Squadron Escort'
-            id: 259
-            faction: 'Galactic Empire'
-            ship: 'TIE Aggressor'
-            skill: 5
-            slots: [
-                'Turret'
-                'Missile'
-                'Missile'
-            ]
-            points: 19
-        }
-        {
-            name: '"Double Edge"'
-            id: 260
-            unique: true
-            faction: 'Galactic Empire'
-            ship: 'TIE Aggressor'
-            skill: 4
-            slots: [
-                'Elite'
-                'Turret'
-                'Missile'
-                'Missile'
-            ]
-            points: 19
-        }
-        {
-            name: 'Lieutenant Kestal'
-            id: 261
-            unique: true
-            faction: 'Galactic Empire'
-            ship: 'TIE Aggressor'
-            skill: 7
-            slots: [
-                'Elite'
-                'Turret'
-                'Missile'
-                'Missile'
-            ]
-            points: 22
-        }
-        {
-            name: 'Viktor Hel'
-            id: 262
-            faction: 'Scum and Villainy'
-            unique: true
-            ship: 'Kihraxz Fighter'
-            skill: 7
-            slots: [
-                'Elite'
-                'Missile'
-                'Illicit'
-            ]
-            points: 25
-        }
-        {
-            name: 'Captain Jostero'
-            id: 263
-            skill: 4
-            faction: 'Scum and Villainy'
-            unique: true
-            ship: 'Kihraxz Fighter'
-            slots: [
-                'Elite'
-                'Missile'
-                'Illicit'
-            ]
-            points: 24
-        }
-        {
-            name: 'Dalan Oberos'
-            id: 264
-            faction: 'Scum and Villainy'
-            unique: true
-            ship: 'StarViper'
-            skill: 6
-            slots: [
-                'Elite'
-                'Torpedo'
-            ]
-            points: 30
-        }
-        {
-            name: 'Thweek'
-            id: 265
-            faction: 'Scum and Villainy'
-            unique: true
-            ship: 'StarViper'
-            skill: 4
-            slots: [
-                'Torpedo'
-            ]
-            points: 28
-            applies_condition: ['Shadowed'.canonicalize(), 'Mimicked'.canonicalize()]
-        }
-        {
-            name: 'Black Sun Assassin'
-            id: 266
-            faction: 'Scum and Villainy'
-            ship: 'StarViper'
-            skill: 5
-            slots: [
-                'Elite'
-                'Torpedo'
-            ]
-            points: 28
-        }
-        {
-            name: 'Major Vynder'
-            id: 267
-            unique: true
-            faction: 'Galactic Empire'
-            ship: 'Alpha-class Star Wing'
-            skill: 7
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Missile'
-            ]
-            points: 26
-        }
-        {
-            name: 'Lieutenant Karsabi'
-            id: 268
-            unique: true
-            faction: 'Galactic Empire'
-            ship: 'Alpha-class Star Wing'
-            skill: 5
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Missile'
-            ]
-            points: 24
-        }
-        {
-            name: 'Rho Squadron Veteran'
-            id: 269
-            faction: 'Galactic Empire'
-            ship: 'Alpha-class Star Wing'
-            skill: 4
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Missile'
-            ]
-            points: 21
-        }
-        {
-            name: 'Nu Squadron Pilot'
-            id: 270
-            faction: 'Galactic Empire'
-            ship: 'Alpha-class Star Wing'
-            skill: 2
-            slots: [
-                'Torpedo'
-                'Missile'
-            ]
-            points: 18
-        }
-        {
-            name: 'Torani Kulda'
-            id: 271
-            unique: true
-            faction: 'Scum and Villainy'
-            ship: 'M12-L Kimogila Fighter'
-            skill: 8
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Missile'
-                'Salvaged Astromech'
-                'Illicit'
-            ]
-            points: 27
-        }
-        {
-            name: 'Dalan Oberos (Kimogila)'
-            canonical_name: "dalanoberos"
-            id: 272
-            unique: true
-            faction: 'Scum and Villainy'
-            ship: 'M12-L Kimogila Fighter'
-            skill: 7
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Missile'
-                'Salvaged Astromech'
-                'Illicit'
-            ]
-            points: 25
-        }
-        {
-            name: 'Cartel Executioner'
-            id: 273
-            faction: 'Scum and Villainy'
-            ship: 'M12-L Kimogila Fighter'
-            skill: 5
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Missile'
-                'Salvaged Astromech'
-                'Illicit'
-            ]
-            points: 24
-        }
-        {
-            name: 'Cartel Brute'
-            id: 274
-            faction: 'Scum and Villainy'
-            ship: 'M12-L Kimogila Fighter'
-            skill: 3
-            slots: [
-                'Torpedo'
-                'Missile'
-                'Salvaged Astromech'
-                'Illicit'
-            ]
-            points: 22
-        }
-        {
-            name: 'Fenn Rau (Sheathipede)'
-            id: 275
-            canonical_name: 'Fenn Rau'.canonicalize()
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'Sheathipede-class Shuttle'
-            skill: 9
-            slots: [
-                'Elite'
-                'Crew'
-                'Astromech'
-            ]
-            points: 20
-        }
-        {
-            name: '"Zeb" Orrelios (Sheathipede)'
-            id: 276
-            canonical_name: '"Zeb" Orrelios'.canonicalize()
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'Sheathipede-class Shuttle'
-            skill: 3
-            slots: [
-                'Crew'
-                'Astromech'
-            ]
-            points: 16
-        }
-        {
-            name: 'Ezra Bridger (Sheathipede)'
-            id: 277
-            canonical_name: 'Ezra Bridger'.canonicalize()
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'Sheathipede-class Shuttle'
-            skill: 5
-            slots: [
-                'Elite'
-                'Crew'
-                'Astromech'
-            ]
-            points: 17
-        }
-        {
-            name: 'AP-5'
-            id: 278
-            faction: 'Rebel Alliance'
-            unique: true
-            ship: 'Sheathipede-class Shuttle'
-            skill: 1
-            slots: [
-                'Crew'
-                'Astromech'
-            ]
-            points: 15
-        }
-        {
-            name: 'Crimson Squadron Pilot'
-            id: 279
-            faction: 'Resistance'
-            ship: 'B/SF-17 Bomber'
-            skill: 1
-            slots: [
-                'System'
-                'Bomb'
-                'Bomb'
-                'Tech'
-            ]
-            points: 25
-        }
-        {
-            name: '"Crimson Specialist"'
-            id: 280
-            faction: 'Resistance'
-            unique: true
-            ship: 'B/SF-17 Bomber'
-            skill: 4
-            slots: [
-                'System'
-                'Bomb'
-                'Bomb'
-                'Tech'
-            ]
-            points: 27
-        }
-        {
-            name: '"Cobalt Leader"'
-            id: 281
-            faction: 'Resistance'
-            unique: true
-            ship: 'B/SF-17 Bomber'
-            skill: 6
-            slots: [
-                'System'
-                'Bomb'
-                'Bomb'
-                'Tech'
-            ]
-            points: 28
-        }
-        {
-            name: '"Crimson Leader"'
-            id: 282
-            faction: 'Resistance'
-            unique: true
-            ship: 'B/SF-17 Bomber'
-            skill: 7
-            slots: [
-                'System'
-                'Bomb'
-                'Bomb'
-                'Tech'
-            ]
-            points: 29
-            applies_condition: 'Rattled'.canonicalize()
-        }
-        {
-            name: 'Sienar-Jaemus Analyst'
-            id: 283
-            faction: 'First Order'
-            ship: 'TIE Silencer'
-            skill: 4
-            slots: [
-                'System'
-                'Tech'
-            ]
-            points: 26
-        }
-        {
-            name: 'First Order Test Pilot'
-            id: 284
-            faction: 'First Order'
-            ship: 'TIE Silencer'
-            skill: 6
-            slots: [
-                'Elite'
-                'System'
-                'Tech'
-            ]
-            points: 29
-        }
-        {
-            name: 'Test Pilot "Blackout"'
-            id: 285
-            faction: 'First Order'
-            unique: true
-            ship: 'TIE Silencer'
-            skill: 7
-            slots: [
-                'Elite'
-                'System'
-                'Tech'
-            ]
-            points: 31
-        }
-        {
-            name: 'Kylo Ren (TIE Silencer)'
-            id: 286
-            canonical_name: 'Kylo Ren'.canonicalize()
-            faction: 'First Order'
-            unique: true
-            ship: 'TIE Silencer'
-            skill: 9
-            slots: [
-                'Elite'
-                'System'
-                'Tech'
-            ]
-            points: 35
-            applies_condition: '''I'll Show You the Dark Side'''.canonicalize()
-        }
-        {
-            name: 'Saw Gerrera'
-            id: 287
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'U-Wing'
-            skill: 6
-            slots: [
-                'Elite'
-                'System'
-                'Torpedo'
-                'Crew'
-                'Crew'
-            ]
-            points: 26
-        }
-        {
-            name: 'Magva Yarro'
-            id: 288
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'U-Wing'
-            skill: 5
-            slots: [
-                'System'
-                'Torpedo'
-                'Crew'
-                'Crew'
-            ]
-            points: 25
-        }
-        {
-            name: 'Edrio Two-Tubes'
-            id: 289
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'X-Wing'
-            skill: 4
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Astromech'
-            ]
-            points: 24
-        }
-        {
-            name: 'Leevan Tenza'
-            id: 290
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'X-Wing'
-            skill: 5
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Astromech'
-            ]
-            points: 25
-        }
-        {
-            name: 'Kullbee Sperado'
-            id: 291
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'X-Wing'
-            skill: 7
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Astromech'
-            ]
-            points: 26
-        }
-        {
-            name: 'Major Vermeil'
-            id: 292
-            unique: true
-            faction: 'Galactic Empire'
-            ship: 'TIE Reaper'
-            skill: 6
-            slots: [
-                'Elite'
-                'Crew'
-                'Crew'
-            ]
-            points: 26
-        }
-        {
-            name: 'Captain Feroph'
-            id: 293
-            unique: true
-            faction: 'Galactic Empire'
-            ship: 'TIE Reaper'
-            skill: 4
-            slots: [
-                'Elite'
-                'Crew'
-                'Crew'
-            ]
-            points: 24
-        }
-        {
-            name: '"Vizier"'
-            id: 294
-            unique: true
-            faction: 'Galactic Empire'
-            ship: 'TIE Reaper'
-            skill: 3
-            slots: [
-                'Crew'
-                'Crew'
-            ]
-            points: 23
-        }
-        {
-            name: 'Scarif Base Pilot'
-            id: 295
-            faction: 'Galactic Empire'
-            ship: 'TIE Reaper'
-            skill: 1
-            slots: [
-                'Crew'
-                'Crew'
-            ]
-            points: 22
-        }
-        {
-            name: 'Cavern Angels Zealot'
-            skip: true
-            id: 296
-            faction: 'Rebel Alliance'
-            ship: 'X-Wing'
-            skill: 1
-            slots: [
-                'Torpedo'
-                'Astromech'
-            ]
-            points: 0
-        }
-        {
-            name: 'Benthic Two-Tubes'
-            id: 297
-            unique: true
-            faction: 'Rebel Alliance'
-            ship: 'U-Wing'
-            skill: 4
-            slots: [
-                'System'
-                'Torpedo'
-                'Crew'
-                'Crew'
-            ]
-            points: 24
-        }
-        {
-            name: 'Cavern Angels Zealot'
-            id: 298
-            faction: 'Rebel Alliance'
-            ship: 'X-Wing'
-            skill: 1
-            slots: [
-                'Elite'
-                'Torpedo'
-                'Astromech'
-            ]
-            points: 22
-        }
-        {
-            name: 'Partisan Renegade'
-            id: 299
-            faction: 'Rebel Alliance'
-            ship: 'U-Wing'
-            skill: 1
-            slots: [
-                'System'
-                'Torpedo'
-                'Crew'
-                'Crew'
-            ]
-            points: 22
-        }
-    ]
-
-    upgradesById: [
-        {
-            name: "Ion Cannon Turret"
-            id: 0
-            slot: "Turret"
-            points: 5
-            attack: 3
-            range: "1-2"
-        }
-        {
-            name: "Proton Torpedoes"
-            id: 1
-            slot: "Torpedo"
-            points: 4
-            attack: 4
-            range: "2-3"
-        }
-        {
-            name: "R2 Astromech"
-            id: 2
-            slot: "Astromech"
-            points: 1
-            modifier_func: (stats) ->
-                if stats.maneuvers? and stats.maneuvers.length > 0
-                    for turn in [0 ... stats.maneuvers[1].length]
-                        if stats.maneuvers[1][turn] > 0
-                            stats.maneuvers[1][turn] = 2
-                        if stats.maneuvers[2][turn] > 0
-                            stats.maneuvers[2][turn] = 2
-        }
-        {
-            name: "R2-D2"
-            aka: [ "R2-D2 (Crew)" ]
-            canonical_name: 'r2d2'
-            id: 3
-            unique: true
-            slot: "Astromech"
-            points: 4
-        }
-        {
-            name: "R2-F2"
-            id: 4
-            unique: true
-            slot: "Astromech"
-            points: 3
-        }
-        {
-            name: "R5-D8"
-            id: 5
-            unique: true
-            slot: "Astromech"
-            points: 3
-        }
-        {
-            name: "R5-K6"
-            id: 6
-            unique: true
-            slot: "Astromech"
-            points: 2
-        }
-        {
-            name: "R5 Astromech"
-            id: 7
-            slot: "Astromech"
-            points: 1
-        }
-        {
-            name: "Determination"
-            id: 8
-            slot: "Elite"
-            points: 1
-        }
-        {
-            name: "Swarm Tactics"
-            id: 9
-            slot: "Elite"
-            points: 2
-        }
-        {
-            name: "Squad Leader"
-            id: 10
-            unique: true
-            slot: "Elite"
-            points: 2
-        }
-        {
-            name: "Expert Handling"
-            id: 11
-            slot: "Elite"
-            points: 2
-        }
-        {
-            name: "Marksmanship"
-            id: 12
-            slot: "Elite"
-            points: 3
-        }
-        {
-            name: "Concussion Missiles"
-            id: 13
-            slot: "Missile"
-            points: 4
-            attack: 4
-            range: "2-3"
-        }
-        {
-            name: "Cluster Missiles"
-            id: 14
-            slot: "Missile"
-            points: 4
-            attack: 3
-            range: "1-2"
-        }
-        {
-            name: "Daredevil"
-            id: 15
-            slot: "Elite"
-            points: 3
-        }
-        {
-            name: "Elusiveness"
-            id: 16
-            slot: "Elite"
-            points: 2
-        }
-        {
-            name: "Homing Missiles"
-            id: 17
-            slot: "Missile"
-            attack: 4
-            range: "2-3"
-            points: 5
-        }
-        {
-            name: "Push the Limit"
-            id: 18
-            slot: "Elite"
-            points: 3
-        }
-        {
-            name: "Deadeye"
-            id: 19
-            slot: "Elite"
-            points: 1
-            restriction_func: (ship) ->
-                not ((ship.data.large ? false) or (ship.data.huge ? false))
-        }
-        {
-            name: "Expose"
-            id: 20
-            slot: "Elite"
-            points: 4
-        }
-        {
-            name: "Gunner"
-            id: 21
-            slot: "Crew"
-            points: 5
-        }
-        {
-            name: "Ion Cannon"
-            id: 22
-            slot: "Cannon"
-            points: 3
-            attack: 3
-            range: "1-3"
-        }
-        {
-            name: "Heavy Laser Cannon"
-            id: 23
-            slot: "Cannon"
-            points: 7
-            attack: 4
-            range: "2-3"
-        }
-        {
-            name: "Seismic Charges"
-            id: 24
-            slot: "Bomb"
-            points: 2
-        }
-        {
-            name: "Mercenary Copilot"
-            id: 25
-            slot: "Crew"
-            points: 2
-        }
-        {
-            name: "Assault Missiles"
-            id: 26
-            slot: "Missile"
-            points: 5
-            attack: 4
-            range: "2-3"
-        }
-        {
-            name: "Veteran Instincts"
-            id: 27
-            slot: "Elite"
-            points: 1
-            modifier_func: (stats) ->
-                stats.skill += 2
-        }
-        {
-            name: "Proximity Mines"
-            id: 28
-            slot: "Bomb"
-            points: 3
-        }
-        {
-            name: "Weapons Engineer"
-            id: 29
-            slot: "Crew"
-            points: 3
-        }
-        {
-            name: "Draw Their Fire"
-            id: 30
-            slot: "Elite"
-            points: 1
-        }
-        {
-            name: "Luke Skywalker"
-            id: 31
-            unique: true
-            faction: "Rebel Alliance"
-            slot: "Crew"
-            points: 7
-        }
-        {
-            name: "Nien Nunb"
-            id: 32
-            unique: true
-            faction: "Rebel Alliance"
-            slot: "Crew"
-            points: 1
-            modifier_func: (stats) ->
-                for s, spd in (stats.maneuvers ? [])
-                    continue if spd == 0
-                    if s[2] > 0 # is there a straight (2) maneuver at this speed?
-                        s[2] = 2 # set it to green (2)
-        }
-        {
-            name: "Chewbacca"
-            id: 33
-            unique: true
-            faction: "Rebel Alliance"
-            slot: "Crew"
-            points: 4
-        }
-        {
-            name: "Advanced Proton Torpedoes"
-            canonical_name: 'Adv. Proton Torpedoes'.canonicalize()
-            id: 34
-            slot: "Torpedo"
-            attack: 5
-            range: "1"
-            points: 6
-        }
-        {
-            name: "Autoblaster"
-            id: 35
-            slot: "Cannon"
-            attack: 3
-            range: "1"
-            points: 5
-        }
-        {
-            name: "Fire-Control System"
-            id: 36
-            slot: "System"
-            points: 2
-        }
-        {
-            name: "Blaster Turret"
-            id: 37
-            slot: "Turret"
-            points: 4
-            attack: 3
-            range: "1-2"
-        }
-        {
-            name: "Recon Specialist"
-            id: 38
-            slot: "Crew"
-            points: 3
-        }
-        {
-            name: "Saboteur"
-            id: 39
-            slot: "Crew"
-            points: 2
-        }
-        {
-            name: "Intelligence Agent"
-            id: 40
-            slot: "Crew"
-            points: 1
-        }
-        {
-            name: "Proton Bombs"
-            id: 41
-            slot: "Bomb"
-            points: 5
-        }
-        {
-            name: "Adrenaline Rush"
-            id: 42
-            slot: "Elite"
-            points: 1
-        }
-        {
-            name: "Advanced Sensors"
-            id: 43
-            slot: "System"
-            points: 3
-        }
-        {
-            name: "Sensor Jammer"
-            id: 44
-            slot: "System"
-            points: 4
-        }
-        {
-            name: "Darth Vader"
-            id: 45
-            unique: true
-            faction: "Galactic Empire"
-            slot: "Crew"
-            points: 3
-        }
-        {
-            name: "Rebel Captive"
-            id: 46
-            unique: true
-            faction: "Galactic Empire"
-            slot: "Crew"
-            points: 3
-        }
-        {
-            name: "Flight Instructor"
-            id: 47
-            slot: "Crew"
-            points: 4
-        }
-        {
-            name: "Navigator"
-            id: 48
-            slot: "Crew"
-            points: 3
-            epic_restriction_func: (ship) ->
-                not (ship.huge ? false)
-        }
-        {
-            name: "Opportunist"
-            id: 49
-            slot: "Elite"
-            points: 4
-        }
-        {
-            name: "Comms Booster"
-            id: 50
-            slot: "Cargo"
-            points: 4
-        }
-        {
-            name: "Slicer Tools"
-            id: 51
-            slot: "Cargo"
-            points: 7
-        }
-        {
-            name: "Shield Projector"
-            id: 52
-            slot: "Cargo"
-            points: 4
-        }
-        {
-            name: "Ion Pulse Missiles"
-            id: 53
-            slot: "Missile"
-            points: 3
-            attack: 3
-            range: """2-3"""
-        }
-        {
-            name: "Wingman"
-            id: 54
-            slot: "Elite"
-            points: 2
-        }
-        {
-            name: "Decoy"
-            id: 55
-            slot: "Elite"
-            points: 2
-        }
-        {
-            name: "Outmaneuver"
-            id: 56
-            slot: "Elite"
-            points: 3
-        }
-        {
-            name: "Predator"
-            id: 57
-            slot: "Elite"
-            points: 3
-        }
-        {
-            name: "Flechette Torpedoes"
-            id: 58
-            slot: "Torpedo"
-            points: 2
-            attack: 3
-            range: """2-3"""
-        }
-        {
-            name: "R7 Astromech"
-            id: 59
-            slot: "Astromech"
-            points: 2
-        }
-        {
-            name: "R7-T1"
-            id: 60
-            unique: true
-            slot: "Astromech"
-            points: 3
-        }
-        {
-            name: "Tactician"
-            id: 61
-            slot: "Crew"
-            points: 2
-            limited: true
-        }
-        {
-            name: "R2-D2 (Crew)"
-            aka: [ "R2-D2" ]
-            canonical_name: 'r2d2-swx22'
-            id: 62
-            unique: true
-            slot: "Crew"
-            points: 4
-            faction: "Rebel Alliance"
-        }
-        {
-            name: "C-3PO"
-            unique: true
-            id: 63
-            slot: "Crew"
-            points: 3
-            faction: "Rebel Alliance"
-        }
-        {
-            name: "Single Turbolasers"
-            id: 64
-            slot: "Hardpoint"
-            points: 8
-            energy: 2
-            attack: 4
-            range: "3-5"
-        }
-        {
-            name: "Quad Laser Cannons"
-            id: 65
-            slot: "Hardpoint"
-            points: 6
-            energy: 2
-            attack: 3
-            range: "1-2"
-        }
-        {
-            name: "Tibanna Gas Supplies"
-            id: 66
-            slot: "Cargo"
-            points: 4
-            limited: true
-        }
-        {
-            name: "Ionization Reactor"
-            id: 67
-            slot: "Cargo"
-            points: 4
-            energy: 5
-            limited: true
-        }
-        {
-            name: "Engine Booster"
-            id: 68
-            slot: "Cargo"
-            points: 3
-            limited: true
-        }
-        {
-            name: "R3-A2"
-            id: 69
-            unique: true
-            slot: "Astromech"
-            points: 2
-        }
-        {
-            name: "R2-D6"
-            id: 70
-            unique: true
-            slot: "Astromech"
-            points: 1
-            restriction_func: (ship) ->
-                return false if (ship.effectiveStats().skill <= 2 or 'Elite' in ship.pilot.slots)
-                # Otherwise, if there's an Elite slot upgrade, it has to have
-                # been conferred, and it can't be conferred by another upgrade
-                for upgrade in ship.upgrades
-                    if upgrade? and upgrade.data?.name != 'R2-D6'
-                        for conferred_addon in upgrade.conferredAddons
-                            return false if conferred_addon.slot == 'Elite'
-                true
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Elite"
-                }
-            ]
-        }
-        {
-            name: "Enhanced Scopes"
-            id: 71
-            slot: "System"
-            points: 1
-        }
-        {
-            name: "Chardaan Refit"
-            id: 72
-            slot: "Missile"
-            points: -2
-            ship: "A-Wing"
-        }
-        {
-            name: "Proton Rockets"
-            id: 73
-            slot: "Missile"
-            points: 3
-            attack: 2
-            range: "1"
-        }
-        {
-            name: "Kyle Katarn"
-            id: 74
-            unique: true
-            slot: "Crew"
-            points: 3
-            faction: "Rebel Alliance"
-        }
-        {
-            name: "Jan Ors"
-            id: 75
-            unique: true
-            slot: "Crew"
-            points: 2
-            faction: "Rebel Alliance"
-        }
-        {
-            name: "Toryn Farr"
-            id: 76
-            unique: true
-            slot: "Crew"
-            points: 6
-            faction: "Rebel Alliance"
-            restriction_func: exportObj.hugeOnly
-        }
-        {
-            name: "R4-D6"
-            id: 77
-            unique: true
-            slot: "Astromech"
-            points: 1
-        }
-        {
-            name: "R5-P9"
-            id: 78
-            unique: true
-            slot: "Astromech"
-            points: 3
-        }
-        {
-            name: "WED-15 Repair Droid"
-            id: 79
-            slot: "Crew"
-            points: 2
-            restriction_func: exportObj.hugeOnly
-        }
-        {
-            name: "Carlist Rieekan"
-            id: 80
-            unique: true
-            slot: "Crew"
-            points: 3
-            faction: "Rebel Alliance"
-            restriction_func: exportObj.hugeOnly
-        }
-        {
-            name: "Jan Dodonna"
-            id: 81
-            unique: true
-            slot: "Crew"
-            points: 6
-            faction: "Rebel Alliance"
-            restriction_func: exportObj.hugeOnly
-        }
-        {
-            name: "Expanded Cargo Hold"
-            id: 82
-            slot: "Cargo"
-            points: 1
-            ship: "GR-75 Medium Transport"
-        }
-        {
-            name: "Backup Shield Generator"
-            id: 83
-            slot: "Cargo"
-            limited: true
-            points: 3
-        }
-        {
-            name: "EM Emitter"
-            id: 84
-            slot: "Cargo"
-            limited: true
-            points: 3
-        }
-        {
-            name: "Frequency Jammer"
-            id: 85
-            slot: "Cargo"
-            limited: true
-            points: 4
-        }
-        {
-            name: "Han Solo"
-            id: 86
-            slot: "Crew"
-            unique: true
-            faction: "Rebel Alliance"
-            points: 2
-        }
-        {
-            name: "Leia Organa"
-            id: 87
-            slot: "Crew"
-            unique: true
-            faction: "Rebel Alliance"
-            points: 4
-        }
-        {
-            name: "Targeting Coordinator"
-            id: 88
-            slot: "Crew"
-            limited: true
-            points: 4
-        }
-        {
-            name: "Raymus Antilles"
-            id: 89
-            slot: "Crew"
-            unique: true
-            faction: "Rebel Alliance"
-            points: 6
-            restriction_func: exportObj.hugeOnly
-        }
-        {
-            name: "Gunnery Team"
-            id: 90
-            slot: "Team"
-            limited: true
-            points: 4
-        }
-        {
-            name: "Sensor Team"
-            id: 91
-            slot: "Team"
-            points: 4
-        }
-        {
-            name: "Engineering Team"
-            id: 92
-            slot: "Team"
-            limited: true
-            points: 4
-        }
-        {
-            name: "Lando Calrissian"
-            id: 93
-            slot: "Crew"
-            unique: true
-            faction: "Rebel Alliance"
-            points: 3
-        }
-        {
-            name: "Mara Jade"
-            id: 94
-            slot: "Crew"
-            unique: true
-            faction: "Galactic Empire"
-            points: 3
-        }
-        {
-            name: "Fleet Officer"
-            id: 95
-            slot: "Crew"
-            faction: "Galactic Empire"
-            points: 3
-        }
-        {
-            name: "Stay On Target"
-            id: 96
-            slot: "Elite"
-            points: 2
-        }
-        {
-            name: "Dash Rendar"
-            id: 97
-            unique: true
-            slot: "Crew"
-            points: 2
-            faction: "Rebel Alliance"
-        }
-        {
-            name: "Lone Wolf"
-            id: 98
-            unique: true
-            slot: "Elite"
-            points: 2
-        }
-        {
-            name: '"Leebo"'
-            id: 99
-            unique: true
-            slot: "Crew"
-            points: 2
-            faction: "Rebel Alliance"
-        }
-        {
-            name: "Ruthlessness"
-            id: 100
-            slot: "Elite"
-            points: 3
-            faction: "Galactic Empire"
-        }
-        {
-            name: "Intimidation"
-            id: 101
-            slot: "Elite"
-            points: 2
-        }
-        {
-            name: "Ysanne Isard"
-            id: 102
-            unique: true
-            slot: "Crew"
-            points: 4
-            faction: "Galactic Empire"
-        }
-        {
-            name: "Moff Jerjerrod"
-            id: 103
-            unique: true
-            slot: "Crew"
-            points: 2
-            faction: "Galactic Empire"
-        }
-        {
-            name: "Ion Torpedoes"
-            id: 104
-            slot: "Torpedo"
-            points: 5
-            attack: 4
-            range: "2-3"
-        }
-        {
-            name: "Bodyguard"
-            id: 105
-            unique: true
-            slot: "Elite"
-            points: 2
-            faction: "Scum and Villainy"
-        }
-        {
-            name: "Calculation"
-            id: 106
-            slot: "Elite"
-            points: 1
-        }
-        {
-            name: "Accuracy Corrector"
-            id: 107
-            slot: "System"
-            points: 3
-        }
-        {
-            name: "Inertial Dampeners"
-            id: 108
-            slot: "Illicit"
-            points: 1
-        }
-        {
-            name: "Flechette Cannon"
-            id: 109
-            slot: "Cannon"
-            points: 2
-            attack: 3
-            range: "1-3"
-        }
-        {
-            name: '"Mangler" Cannon'
-            id: 110
-            slot: "Cannon"
-            points: 4
-            attack: 3
-            range: "1-3"
-        }
-        {
-            name: "Dead Man's Switch"
-            id: 111
-            slot: "Illicit"
-            points: 2
-        }
-        {
-            name: "Feedback Array"
-            id: 112
-            slot: "Illicit"
-            points: 2
-        }
-        {
-            name: '"Hot Shot" Blaster'
-            id: 113
-            slot: "Illicit"
-            points: 3
-            attack: 3
-            range: "1-2"
-        }
-        {
-            name: "Greedo"
-            id: 114
-            unique: true
-            slot: "Crew"
-            faction: "Scum and Villainy"
-            points: 1
-        }
-        {
-            name: "Salvaged Astromech"
-            id: 115
-            slot: "Salvaged Astromech"
-            points: 2
-        }
-        {
-            name: "Bomb Loadout"
-            id: 116
-            limited: true
-            slot: "Torpedo"
-            points: 0
-            ship: "Y-Wing"
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Bomb"
-                }
-            ]
-        }
-        {
-            name: '"Genius"'
-            id: 117
-            unique: true
-            slot: "Salvaged Astromech"
-            points: 0
-        }
-        {
-            name: "Unhinged Astromech"
-            id: 118
-            slot: "Salvaged Astromech"
-            points: 1
-            modifier_func: (stats) ->
-                if stats.maneuvers? and stats.maneuvers.length > 3
-                    for turn in [0 ... stats.maneuvers[3].length]
-                        if stats.maneuvers[3][turn] > 0
-                            stats.maneuvers[3][turn] = 2
-        }
-        {
-            name: "R4-B11"
-            id: 119
-            unique: true
-            slot: "Salvaged Astromech"
-            points: 3
-        }
-        {
-            name: "Autoblaster Turret"
-            id: 120
-            slot: "Turret"
-            points: 2
-            attack: 2
-            range: "1"
-        }
-        {
-            name: "R4 Agromech"
-            id: 121
-            slot: "Salvaged Astromech"
-            points: 2
-        }
-        {
-            name: "K4 Security Droid"
-            id: 122
-            slot: "Crew"
-            faction: "Scum and Villainy"
-            points: 3
-        }
-        {
-            name: "Outlaw Tech"
-            id: 123
-            limited: true
-            slot: "Crew"
-            faction: "Scum and Villainy"
-            points: 2
-        }
-        {
-            name: 'Advanced Targeting Computer'
-            canonical_name: 'Adv. Targeting Computer'.canonicalize()
-            id: 124
-            slot: "System"
-            points: 5
-            ship: "TIE Advanced"
-        }
-        {
-            name: 'Ion Cannon Battery'
-            id: 125
-            slot: "Hardpoint"
-            points: 6
-            energy: 2
-            attack: 4
-            range: "2-4"
-        }
-        {
-            name: "Extra Munitions"
-            id: 126
-            slot: "Torpedo"
-            limited: true
-            points: 2
-        }
-        {
-            name: "Cluster Mines"
-            id: 127
-            slot: "Bomb"
-            points: 4
-        }
-        {
-            name: 'Glitterstim'
-            id: 128
-            slot: "Illicit"
-            points: 2
-        }
-        {
-            name: 'Grand Moff Tarkin'
-            unique: true
-            id: 129
-            slot: "Crew"
-            points: 6
-            faction: "Galactic Empire"
-            restriction_func: (ship) ->
-                ship.data.huge ? false
-        }
-        {
-            name: 'Captain Needa'
-            unique: true
-            id: 130
-            slot: "Crew"
-            points: 2
-            faction: "Galactic Empire"
-            restriction_func: (ship) ->
-                ship.data.huge ? false
-        }
-        {
-            name: 'Admiral Ozzel'
-            unique: true
-            id: 131
-            slot: "Crew"
-            points: 2
-            faction: "Galactic Empire"
-            restriction_func: (ship) ->
-                ship.data.huge ? false
-        }
-        {
-            name: 'Emperor Palpatine'
-            unique: true
-            id: 132
-            slot: "Crew"
-            points: 8
-            faction: "Galactic Empire"
-            restriction_func: (ship, upgrade_obj) ->
-                ship.hasAnotherUnoccupiedSlotLike upgrade_obj
-            validation_func: (ship, upgrade_obj) ->
-                upgrade_obj.occupiesAnotherUpgradeSlot()
-            also_occupies_upgrades: [ "Crew" ]
-        }
-        {
-            name: 'Bossk'
-            unique: true
-            id: 133
-            faction: "Scum and Villainy"
-            slot: "Crew"
-            points: 2
-        }
-        {
-            name: "Lightning Reflexes"
-            id: 134
-            slot: "Elite"
-            points: 1
-            restriction_func: (ship) ->
-                not ((ship.data.large ? false) or (ship.data.huge ? false))
-        }
-        {
-            name: "Twin Laser Turret"
-            id: 135
-            slot: "Turret"
-            points: 6
-            attack: 3
-            range: "2-3"
-        }
-        {
-            name: "Plasma Torpedoes"
-            id: 136
-            slot: "Torpedo"
-            points: 3
-            attack: 4
-            range: "2-3"
-        }
-        {
-            name: "Ion Bombs"
-            id: 137
-            slot: "Bomb"
-            points: 2
-        }
-        {
-            name: "Conner Net"
-            id: 138
-            slot: "Bomb"
-            points: 4
-        }
-        {
-            name: "Bombardier"
-            id: 139
-            slot: "Crew"
-            points: 1
-        }
-        {
-            name: 'Crack Shot'
-            id: 140
-            slot: 'Elite'
-            points: 1
-        }
-        {
-            name: "Advanced Homing Missiles"
-            canonical_name: 'Adv. Homing Missiles'.canonicalize()
-            id: 141
-            slot: "Missile"
-            points: 3
-            attack: 3
-            range: "2"
-        }
-        {
-            name: 'Agent Kallus'
-            id: 142
-            unique: true
-            points: 2
-            slot: 'Crew'
-            faction: 'Galactic Empire'
-        }
-        {
-            name: 'XX-23 S-Thread Tracers'
-            id: 143
-            points: 1
-            slot: 'Missile'
-            attack: 3
-            range: '1-3'
-        }
-        {
-            name: "Tractor Beam"
-            id: 144
-            slot: "Cannon"
-            attack: 3
-            range: "1-3"
-            points: 1
-        }
-        {
-            name: "Cloaking Device"
-            id: 145
-            unique: true
-            slot: "Illicit"
-            points: 2
-            restriction_func: (ship) ->
-                not ((ship.data.large ? false) or (ship.data.huge ? false))
-        }
-        {
-            name: 'Shield Technician'
-            id: 146
-            slot: "Crew"
-            points: 1
-            restriction_func: (ship) ->
-                ship.data.huge ? false
-        }
-        {
-            name: 'Weapons Guidance'
-            id: 147
-            slot: "Tech"
-            points: 2
-        }
-        {
-            name: 'BB-8'
-            id: 148
-            unique: true
-            slot: "Astromech"
-            points: 2
-        }
-        {
-            name: 'R5-X3'
-            id: 149
-            unique: true
-            slot: "Astromech"
-            points: 1
-        }
-        {
-            name: 'Wired'
-            id: 150
-            slot: "Elite"
-            points: 1
-        }
-        {
-            name: 'Cool Hand'
-            id: 151
-            slot: 'Elite'
-            points: 1
-        }
-        {
-            name: 'Juke'
-            id: 152
-            slot: 'Elite'
-            points: 2
-            restriction_func: (ship) ->
-                not ((ship.data.large ? false) or (ship.data.huge ? false))
-        }
-        {
-            name: 'Comm Relay'
-            id: 153
-            slot: 'Tech'
-            points: 3
-        }
-        {
-            name: 'Dual Laser Turret'
-            id: 154
-            points: 5
-            slot: 'Hardpoint'
-            attack: 3
-            range: '1-3'
-            energy: 1
-            ship: 'Gozanti-class Cruiser'
-        }
-        {
-            name: 'Broadcast Array'
-            id: 155
-            ship: 'Gozanti-class Cruiser'
-            points: 2
-            slot: 'Cargo'
-            modifier_func: (stats) ->
-                stats.actions.push 'Jam' if 'Jam' not in stats.actions
-        }
-        {
-            name: 'Rear Admiral Chiraneau'
-            id: 156
-            unique: true
-            points: 3
-            slot: 'Crew'
-            faction: 'Galactic Empire'
-            restriction_func: (ship) ->
-                ship.data.huge ? false
-        }
-        {
-            name: 'Ordnance Experts'
-            id: 157
-            limited: true
-            points: 5
-            slot: 'Team'
-        }
-        {
-            name: 'Docking Clamps'
-            id: 158
-            points: 0
-            limited: true
-            slot: 'Cargo'
-            ship: 'Gozanti-class Cruiser'
-        }
-        {
-            name: 'Kanan Jarrus'
-            id: 159
-            unique: true
-            faction: 'Rebel Alliance'
-            points: 3
-            slot: 'Crew'
-        }
-        {
-            name: '"Zeb" Orrelios'
-            id: 160
-            unique: true
-            faction: 'Rebel Alliance'
-            points: 1
-            slot: 'Crew'
-        }
-        {
-            name: 'Reinforced Deflectors'
-            id: 161
-            points: 3
-            slot: 'System'
-            restriction_func: (ship) ->
-                ship.data.large ? false
-        }
-        {
-            name: 'Dorsal Turret'
-            id: 162
-            points: 3
-            slot: 'Turret'
-            attack: 2
-            range: '1-2'
-        }
-        {
-            name: 'Targeting Astromech'
-            id: 163
-            slot: 'Astromech'
-            points: 2
-        }
-        {
-            name: 'Hera Syndulla'
-            id: 164
-            unique: true
-            faction: 'Rebel Alliance'
-            points: 1
-            slot: 'Crew'
-        }
-        {
-            name: 'Ezra Bridger'
-            id: 165
-            unique: true
-            faction: 'Rebel Alliance'
-            points: 3
-            slot: 'Crew'
-        }
-        {
-            name: 'Sabine Wren'
-            id: 166
-            unique: true
-            faction: 'Rebel Alliance'
-            points: 2
-            slot: 'Crew'
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Bomb"
-                }
-            ]
-        }
-        {
-            name: '"Chopper"'
-            id: 167
-            unique: true
-            faction: 'Rebel Alliance'
-            points: 0
-            slot: 'Crew'
-        }
-        {
-            name: 'Construction Droid'
-            id: 168
-            points: 3
-            slot: 'Crew'
-            limited: true
-            restriction_func: (ship) ->
-                ship.data.huge ? false
-        }
-        {
-            name: 'Cluster Bombs'
-            id: 169
-            points: 4
-            slot: 'Cargo'
-        }
-        {
-            name: "Adaptability"
-            id: 170
-            slot: "Elite"
-            points: 0
-        }
-        {
-            name: "Adaptability (old)"
-            skip: true
-            id: 171
-            superseded_by_id: 170
-            slot: "Elite"
-            points: 0
-        }
-        {
-            name: "Electronic Baffle"
-            id: 172
-            slot: "System"
-            points: 1
-        }
-        {
-            name: "4-LOM"
-            id: 173
-            unique: true
-            slot: "Crew"
-            points: 1
-            faction: "Scum and Villainy"
-        }
-        {
-            name: "Zuckuss"
-            id: 174
-            unique: true
-            slot: "Crew"
-            points: 1
-            faction: "Scum and Villainy"
-        }
-        {
-            name: 'Rage'
-            id: 175
-            points: 1
-            slot: 'Elite'
-        }
-        {
-            name: "Attanni Mindlink"
-            id: 176
-            faction: "Scum and Villainy"
-            slot: "Elite"
-            points: 1
-            max_per_squad: 2
-        }
-        {
-            name: "Boba Fett"
-            id: 177
-            unique: true
-            slot: "Crew"
-            points: 1
-            faction: "Scum and Villainy"
-        }
-        {
-            name: "Dengar"
-            id: 178
-            unique: true
-            slot: "Crew"
-            points: 3
-            faction: "Scum and Villainy"
-        }
-        {
-            name: '"Gonk"'
-            id: 179
-            unique: true
-            slot: "Crew"
-            faction: "Scum and Villainy"
-            points: 2
-        }
-        {
-            name: "R5-P8"
-            id: 180
-            unique: true
-            slot: "Salvaged Astromech"
-            points: 3
-        }
-        {
-            name: 'Thermal Detonators'
-            id: 181
-            points: 3
-            slot: 'Bomb'
-        }
-        {
-            name: "Overclocked R4"
-            id: 182
-            slot: "Salvaged Astromech"
-            points: 1
-        }
-        {
-            name: 'Systems Officer'
-            id: 183
-            faction: 'Galactic Empire'
-            limited: true
-            points: 2
-            slot: 'Crew'
-        }
-        {
-            name: 'Tail Gunner'
-            id: 184
-            slot: 'Crew'
-            limited: true
-            points: 2
-        }
-        {
-            name: 'R3 Astromech'
-            id: 185
-            slot: 'Astromech'
-            points: 2
-        }
-        {
-            name: 'Collision Detector'
-            id: 186
-            slot: 'System'
-            points: 0
-        }
-        {
-            name: 'Sensor Cluster'
-            id: 187
-            slot: 'Tech'
-            points: 2
-        }
-        {
-            name: 'Fearlessness'
-            id: 188
-            slot: 'Elite'
-            faction: 'Scum and Villainy'
-            points: 1
-        }
-        {
-            name: 'Ketsu Onyo'
-            id: 189
-            slot: 'Crew'
-            faction: 'Scum and Villainy'
-            unique: true
-            points: 1
-        }
-        {
-            name: 'Latts Razzi'
-            id: 190
-            slot: 'Crew'
-            faction: 'Scum and Villainy'
-            unique: true
-            points: 2
-        }
-        {
-            name: 'IG-88D'
-            id: 191
-            slot: 'Crew'
-            faction: 'Scum and Villainy'
-            unique: true
-            points: 1
-        }
-        {
-            name: 'Rigged Cargo Chute'
-            id: 192
-            slot: 'Illicit'
-            points: 1
-            restriction_func: (ship) ->
-                ship.data.large ? false
-        }
-        {
-            name: 'Seismic Torpedo'
-            id: 193
-            slot: 'Torpedo'
-            points: 2
-        }
-        {
-            name: 'Black Market Slicer Tools'
-            id: 194
-            slot: 'Illicit'
-            points: 1
-        }
-        {
-            name: 'Kylo Ren'
-            id: 195
-            slot: 'Crew'
-            unique: true
-            faction: 'Galactic Empire'
-            points: 3
-            applies_condition: '''I'll Show You the Dark Side'''.canonicalize()
-        }
-        {
-            name: 'Unkar Plutt'
-            id: 196
-            faction: 'Scum and Villainy'
-            slot: 'Crew'
-            unique: true
-            points: 1
-        }
-        {
-            name: 'A Score to Settle'
-            id: 197
-            applies_condition: 'A Debt to Pay'.canonicalize()
-            slot: 'Elite'
-            unique: true
-            points: 0
-        }
-        {
-            name: 'Jyn Erso'
-            id: 198
-            faction: 'Rebel Alliance'
-            slot: 'Crew'
-            unique: true
-            points: 2
-        }
-        {
-            name: 'Cassian Andor'
-            id: 199
-            faction: 'Rebel Alliance'
-            slot: 'Crew'
-            unique: true
-            points: 2
-        }
-        {
-            name: 'Finn'
-            id: 200
-            faction: 'Rebel Alliance'
-            unique: true
-            slot: 'Crew'
-            points: 5
-        }
-        {
-            name: 'Rey'
-            id: 201
-            faction: 'Rebel Alliance'
-            unique: true
-            slot: 'Crew'
-            points: 2
-        }
-        {
-            name: 'Burnout SLAM'
-            id: 202
-            slot: 'Illicit'
-            points: 1
-            restriction_func: (ship) ->
-                ship.data.large ? false
-            modifier_func: (stats) ->
-                stats.actions.push 'SLAM' if 'SLAM' not in stats.actions
-        }
-        {
-            name: 'Primed Thrusters'
-            id: 203
-            slot: 'Tech'
-            points: 1
-            restriction_func: (ship) ->
-                not ((ship.data.large ? false) or (ship.data.huge ? false))
-        }
-        {
-            name: 'Pattern Analyzer'
-            id: 204
-            slot: 'Tech'
-            points: 2
-        }
-        {
-            name: 'Snap Shot'
-            id: 205
-            slot: 'Elite'
-            points: 2
-            attack: 2
-            range: 1
-        }
-        {
-            name: 'M9-G8'
-            id: 206
-            slot: 'Astromech'
-            unique: true
-            points: 3
-        }
-        {
-            name: 'EMP Device'
-            id: 207
-            slot: 'Illicit'
-            unique: true
-            points: 2
-        }
-        {
-            name: 'Captain Rex'
-            id: 208
-            slot: 'Crew'
-            faction: 'Rebel Alliance'
-            unique: true
-            points: 2
-        }
-        {
-            name: 'General Hux'
             id: 209
-            slot: 'Crew'
             unique: true
-            faction: 'Galactic Empire'
-            points: 5
-            applies_condition: '''Fanatical Devotion'''.canonicalize()
+            faction: "Galactic Empire"
+            ship: "TIE Striker"
+            skill: 4
+            points: 44
+            slots: [       
+                "Talent"
+                "Gunner"
+                "Device"
+                "Modification"
+              ]
         }
         {
-            name: 'Operations Specialist'
+            name: '"Pure Sabacc"'
             id: 210
-            slot: 'Crew'
-            limited: true
-            points: 3
+            unique: true
+            faction: "Galactic Empire"
+            ship: "TIE Striker"
+            skill: 4
+            points: 44
+            slots: [       
+                "Talent"
+                "Gunner"
+                "Device"
+                "Modification"
+              ]
         }
         {
-            name: 'Targeting Synchronizer'
+            name: '"Duchess"'
             id: 211
-            slot: 'Tech'
-            points: 3
+            unique: true
+            faction: "Galactic Empire"
+            ship: "TIE Striker"
+            skill: 5
+            points: 42
+            slots: [       
+                "Talent"
+                "Gunner"
+                "Device"
+                "Modification"
+              ]
         }
         {
-            name: 'Hyperwave Comm Scanner'
+            name: "Black Squadron Scout"
             id: 212
-            slot: 'Tech'
-            points: 1
+            faction: "Galactic Empire"
+            ship: "TIE Striker"
+            skill: 3
+            points: 38
+            slots: [       
+                "Talent"
+                "Gunner"
+                "Device"
+                "Modification"
+              ]
         }
         {
-            name: 'Hotshot Co-pilot'
+            name: "Planetary Sentinel"
             id: 213
-            slot: 'Crew'
-            points: 4
+            faction: "Galactic Empire"
+            ship: "TIE Striker"
+            skill: 1
+            points: 34
+            slots: [    
+                "Gunner"
+                "Device"
+                "Modification"
+              ]
         }
         {
-            name: 'Trick Shot'
+            name: "Rear Admiral Chiraneau"
             id: 214
-            slot: 'Elite'
-            points: 0
+            unique: true
+            faction: "Galactic Empire"
+            ship: "VT-49 Decimator"
+            skill: 5
+            points: 88
+            slots: [       
+                "Talent"
+                "Torpedo"
+                "Crew"
+                "Crew"
+                "Gunner"
+                "Device"
+                "Modification"
+                "Title"
+              ]
         }
         {
-            name: '''Scavenger Crane'''
+            name: "Captain Oicunn"
             id: 215
-            slot: 'Illicit'
-            points: 2
+            unique: true
+            faction: "Galactic Empire"
+            ship: "VT-49 Decimator"
+            skill: 3
+            points: 84
+            slots: [       
+                "Talent"
+                "Torpedo"
+                "Crew"
+                "Crew"
+                "Gunner"
+                "Device"
+                "Modification"
+                "Title"
+              ]
         }
         {
-            name: 'Bodhi Rook'
+            name: "Patrol Leader"
             id: 216
-            slot: 'Crew'
-            unique: true
-            faction: 'Rebel Alliance'
-            points: 1
+            faction: "Galactic Empire"
+            ship: "VT-49 Decimator"
+            skill: 2
+            points: 80
+            slots: [    
+                "Torpedo"
+                "Crew"
+                "Crew"
+                "Gunner"
+                "Device"
+                "Modification"
+                "Title"
+              ]
         }
         {
-            name: 'Baze Malbus'
+            name: '"Howlrunner"'
             id: 217
-            slot: 'Crew'
             unique: true
-            faction: 'Rebel Alliance'
-            points: 3
+            faction: "Galactic Empire"
+            ship: "TIE Fighter"
+            skill: 5
+            points: 40
+            slots: [       
+                "Talent"
+                "Modification"
+              ]
         }
         {
-            name: 'Inspiring Recruit'
+            name: "Iden Versio"
             id: 218
-            slot: 'Crew'
-            points: 1
+            unique: true
+            faction: "Galactic Empire"
+            ship: "TIE Fighter"
+            skill: 4
+            points: 40
+            slots: [       
+                "Talent"
+                "Modification"
+              ]
         }
         {
-            name: 'Swarm Leader'
+            name: '"Mauler" Mithel'
             id: 219
             unique: true
-            slot: 'Elite'
-            points: 3
+            faction: "Galactic Empire"
+            ship: "TIE Fighter"
+            skill: 5
+            points: 32
+            slots: [       
+                "Talent"
+                "Modification"
+              ]
         }
         {
-            name: 'Expertise'
+            name: '"Scourge" Skutu'
             id: 220
-            slot: 'Elite'
-            points: 4
+            unique: true
+            faction: "Galactic Empire"
+            ship: "TIE Fighter"
+            skill: 5
+            points: 32
+            slots: [       
+                "Talent"
+                "Modification"
+              ]
         }
         {
-            name: 'Bistan'
+            name: '"Wampa"'
             id: 221
-            slot: 'Crew'
             unique: true
-            faction: 'Rebel Alliance'
-            points: 2
+            faction: "Galactic Empire"
+            ship: "TIE Fighter"
+            skill: 1
+            points: 30
+            slots: [       
+                "Modification"
+              ]
         }
         {
-            name: 'BoShek'
+            name: "Del Meeko"
             id: 222
-            slot: 'Crew'
             unique: true
-            points: 2
+            faction: "Galactic Empire"
+            ship: "TIE Fighter"
+            skill: 4
+            points: 30
+            slots: [       
+                "Talent"
+                "Modification"
+              ]
         }
         {
-            name: 'Heavy Laser Turret'
+            name: "Gideon Hask"
             id: 223
-            ship: 'C-ROC Cruiser'
-            slot: 'Hardpoint'
-            points: 5
-            energy: 2
-            attack: 4
-            range: '2-3'
+            unique: true
+            faction: "Galactic Empire"
+            ship: "TIE Fighter"
+            skill: 4
+            points: 30
+            slots: [       
+                "Talent"
+                "Modification"
+              ]
         }
         {
-            name: 'Cikatro Vizago'
+            name: "Seyn Marana"
             id: 224
             unique: true
-            faction: 'Scum and Villainy'
-            slot: 'Crew'
-            points: 0
+            faction: "Galactic Empire"
+            ship: "TIE Fighter"
+            skill: 4
+            points: 30
+            slots: [       
+                "Talent"
+                "Modification"
+              ]
         }
         {
-            name: 'Azmorigan'
+            name: "Valen Rudor"
             id: 225
-            faction: 'Scum and Villainy'
-            slot: 'Crew'
-            points: 2
-            restriction_func: (ship) ->
-                ship.data.huge ? false
+            unique: true
+            faction: "Galactic Empire"
+            ship: "TIE Fighter"
+            skill: 3
+            points: 28
+            slots: [       
+                "Talent"
+                "Modification"
+              ]
         }
         {
-            name: 'Quick-release Cargo Locks'
+            name: '"Night Beast"'
             id: 226
-            slot: 'Cargo'
-            points: 2
-            restriction_func: (ship) ->
-                ship.data.canonical_name in [ 'C-ROC Cruiser'.canonicalize(), 'GR-75 Medium Transport'.canonicalize() ]
+            unique: true
+            faction: "Galactic Empire"
+            ship: "TIE Fighter"
+            skill: 2
+            points: 26
+            slots: [       
+                "Modification"
+              ]
         }
         {
-            name: 'Supercharged Power Cells'
+            name: "Black Squadron Ace"
             id: 227
-            limited: true
-            slot: 'Cargo'
-            points: 3
+            faction: "Galactic Empire"
+            ship: "TIE Fighter"
+            skill: 4
+            Points: 26
+            slots: [       
+                "Talent"
+                "Modification"
+              ]
         }
         {
-            name: 'ARC Caster'
+            name: "Obsidian Squadron Pilot"
             id: 228
-            faction: [ 'Rebel Alliance', 'Scum and Villainy' ]
-            slot: 'Cannon'
-            points: 2
-            attack: 4
-            range: '1'
+            faction: "Galactic Empire"
+            ship: "TIE Fighter"
+            skill: 2
+            points: 24
+            slots: [       
+                "Modification"
+              ]
         }
         {
-            name: 'Wookiee Commandos'
+            name: "Academy Pilot"
             id: 229
-            slot: 'Crew'
-            faction: 'Rebel Alliance'
-            points: 1
-            restriction_func: (ship, upgrade_obj) ->
-                ship.hasAnotherUnoccupiedSlotLike upgrade_obj
-            validation_func: (ship, upgrade_obj) ->
-                upgrade_obj.occupiesAnotherUpgradeSlot()
-            also_occupies_upgrades: [ "Crew" ]
+            faction: "Galactic Empire"
+            ship: "TIE Fighter"
+            skill: 1
+            points: 23
+            slots: [       
+                "Modification"
+              ]
         }
         {
-            name: 'Synced Turret'
+            name: "Spice Runner"
             id: 230
-            slot: 'Turret'
-            points: 4
-            attack: 3
-            range: '1-2'
-        }
-        {
-            name: 'Unguided Rockets'
-            id: 231
-            slot: 'Missile'
-            points: 2
-            attack: 3
-            range: '1-3'
-            restriction_func: (ship, upgrade_obj) ->
-                ship.hasAnotherUnoccupiedSlotLike upgrade_obj
-            validation_func: (ship, upgrade_obj) ->
-                upgrade_obj.occupiesAnotherUpgradeSlot()
-            also_occupies_upgrades: [ 'Missile' ]
-        }
-        {
-            name: 'Intensity'
-            id: 232
-            slot: 'Elite'
-            points: 2
-            restriction_func: (ship) ->
-                not ((ship.data.large ? false) or (ship.data.huge ? false))
-        }
-        {
-            name: 'Jabba the Hutt'
-            id: 233
-            unique: true
-            slot: 'Crew'
-            points: 5
-            faction: 'Scum and Villainy'
-            restriction_func: (ship, upgrade_obj) ->
-                ship.hasAnotherUnoccupiedSlotLike upgrade_obj
-            validation_func: (ship, upgrade_obj) ->
-                upgrade_obj.occupiesAnotherUpgradeSlot()
-            also_occupies_upgrades: [ "Crew" ]
-        }
-        {
-            name: 'IG-RM Thug Droids'
-            id: 234
-            slot: 'Team'
-            points: 1
-        }
-        {
-            name: 'Selflessness'
-            id: 235
-            slot: 'Elite'
-            unique: true
-            faction: 'Rebel Alliance'
-            points: 1
-            restriction_func: (ship) ->
-                not ((ship.data.large ? false) or (ship.data.huge ? false))
-        }
-        {
-            name: 'Breach Specialist'
-            id: 236
-            slot: 'Crew'
-            points: 1
-        }
-        {
-            name: 'Bomblet Generator'
-            id: 237
-            slot: 'Bomb'
-            unique: true
-            points: 3
-            restriction_func: (ship, upgrade_obj) ->
-                ship.hasAnotherUnoccupiedSlotLike upgrade_obj
-            validation_func: (ship, upgrade_obj) ->
-                upgrade_obj.occupiesAnotherUpgradeSlot()
-            also_occupies_upgrades: [ "Bomb" ]
-        }
-        {
-            name: 'Cad Bane'
-            id: 238
-            slot: 'Crew'
-            faction: 'Scum and Villainy'
-            unique: true
-            points: 2
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Bomb"
-                }
+            faction: "Scum and Villainy"
+            ship: "HWK-290"
+            skill: 4
+            points: 36
+            slots: [
+                "Crew"
+                "Bomb"
+                "Illicit"
+                "Modification"
+                "Modification"
+                "Title"
             ]
-        }
-        {
-            name: 'Minefield Mapper'
-            id: 239
-            slot: 'System'
-            points: 0
-        }
-        {
-            name: 'R4-E1'
-            id: 240
-            slot: 'Salvaged Astromech'
-            unique: true
-            points: 1
-        }
-        {
-            name: 'Cruise Missiles'
-            id: 241
-            slot: 'Missile'
-            points: 3
-            attack: 1
-            range: '2-3'
-        }
-        {
-            name: 'Ion Dischargers'
-            id: 242
-            slot: 'Illicit'
-            points: 2
-        }
-        {
-            name: 'Harpoon Missiles'
-            id: 243
-            slot: 'Missile'
-            points: 4
-            attack: 4
-            range: '2-3'
-            applies_condition: 'Harpooned!'.canonicalize()
-        }
-        {
-            name: 'Ordnance Silos'
-            id: 244
-            slot: 'Bomb'
-            points: 2
-            ship: 'B/SF-17 Bomber'
-        }
-        {
-            name: 'Trajectory Simulator'
-            id: 245
-            slot: 'System'
-            points: 1
-        }
-        {
-            name: 'Jamming Beam'
-            id: 246
-            slot: 'Cannon'
-            points: 1
-            attack: 3
-            range: '1-2'
-        }
-        {
-            name: 'Linked Battery'
-            id: 247
-            limited: true
-            slot: 'Cannon'
-            points: 2
-            restriction_func: (ship) ->
-                not ((ship.data.large ? false) or (ship.data.huge ? false))
-        }
-        {
-            name: 'Saturation Salvo'
-            id: 248
-            slot: 'Elite'
-            points: 1
-        }
-        {
-            name: 'Contraband Cybernetics'
-            id: 249
-            slot: 'Illicit'
-            points: 1
-        }
-        {
-            name: 'Maul'
-            id: 250
-            unique: true
-            slot: 'Crew'
-            points: 3
-            restriction_func: (ship) ->
-                builder = ship.builder
-                return true if builder.faction == "Scum and Villainy"
-                for t, things of builder.uniques_in_use
-                    return true if 'ezrabridger' in (thing.canonical_name.getXWSBaseName() for thing in things)
-                false
-        }
-        {
-            name: 'Courier Droid'
-            id: 251
-            slot: 'Crew'
-            limited: true
-            points: 0
-        }
-        {
-            name: '"Chopper" (Astromech)'
-            id: 252
-            canonical_name: 'chopper-swx72'
-            unique: true
-            slot: 'Astromech'
-            points: 1
-        }
-        {
-            name: 'Flight-Assist Astromech'
-            id: 253
-            slot: 'Astromech'
-            points: 1
-        }
-        {
-            name: 'Advanced Optics'
-            id: 254
-            slot: 'Tech'
-            points: 2
-        }
-        {
-            name: 'Scrambler Missiles'
-            id: 255
-            slot: 'Missile'
-            points: 2
-            attack: 3
-            range: '2-3'
-        }
-        {
-            name: 'R5-TK'
-            id: 256
-            unique: true
-            slot: 'Salvaged Astromech'
-            points: 0
-        }
-        {
-            name: 'Threat Tracker'
-            id: 257
-            slot: 'Tech'
-            points: 3
-            restriction_func: (ship) ->
-                not ((ship.data.large ? false) or (ship.data.huge ? false))
-        }
-        {
-            name: 'Debris Gambit'
-            id: 258
-            slot: 'Elite'
-            points: 2
-            restriction_func: (ship) ->
-                not ((ship.data.large ? false) or (ship.data.huge ? false))
-        }
-        {
-            name: 'Targeting Scrambler'
-            id: 259
-            unique: true
-            slot: 'System'
-            points: 0
-            applies_condition: 'Scrambled'.canonicalize()
-        }
-        {
-            name: 'Death Troopers'
-            unique: true
-            id: 260
-            slot: "Crew"
-            points: 2
-            faction: "Galactic Empire"
-            restriction_func: (ship, upgrade_obj) ->
-                ship.hasAnotherUnoccupiedSlotLike upgrade_obj
-            validation_func: (ship, upgrade_obj) ->
-                upgrade_obj.occupiesAnotherUpgradeSlot()
-            also_occupies_upgrades: [ "Crew" ]
-        }
-        {
-            name: 'Saw Gerrera'
-            unique: true
-            id: 261
-            slot: 'Crew'
-            faction: 'Rebel Alliance'
-            points: 1
-        }
-        {
-            name: 'Director Krennic'
-            unique: true
-            id: 262
-            slot: 'Crew'
-            faction: 'Galactic Empire'
-            points: 5
-            applies_condition: 'Optimized Prototype'.canonicalize()
-        }
-        {
-            name: 'Magva Yarro'
-            unique: true
-            id: 263
-            slot: 'Crew'
-            faction: 'Rebel Alliance'
-            points: 2
-        }
-        {
-            name: 'Renegade Refit'
-            id: 264
-            slot: 'Torpedo'
-            points: -2
-            restriction_func: (ship) ->
-                ship.data.canonical_name =='xwing' or ship.data.canonical_name.indexOf('uwing') != -1
-            confersAddons: [
-                {
-                    type: exportObj.Modification
-                }
-            ]
-            special_case: 'Royal Guard TIE'
-        }
-        {
-            name: 'Tactical Officer'
-            id: 265
-            slot: 'Crew'
-            faction: "Galactic Empire"
-            points: 2
-            modifier_func: (stats) ->
-                stats.actions.push 'Coordinate' if 'Coordinate' not in stats.actions
-        }
-        {
-            name: 'ISB Slicer'
-            id: 266
-            slot: 'Crew'
-            faction: "Galactic Empire"
-            points: 2
-        }
-        {
-            name: 'Thrust Corrector'
-            id: 267
-            slot: 'System'
-            points: 1
-            restriction_func: (ship) ->
-                ship.effectiveStats().hull <= 4
         }
     ]
-
+    upgradesById: [
+       {
+           name: '"Chopper" (Astromech)'
+           id: 0
+           slot: "Astromech"
+           points: 2
+           unique: true
+           faction: "Rebel"
+       }
+       {
+           name: '"Genius"'
+           id: 1
+           slot: "Astromech"
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: "R2 Astromech"
+           id: 2
+           slot: "Astromech"
+           points: 6
+           charge: 2
+       }
+       {
+           name: "R2-D2 (Astromech)"
+           id: 3
+           unique: true
+           slot: "Astromech"
+           points: 8
+           charge: 3
+       }
+       {
+           name: "R3 Astromech"
+           id: 4
+           slot: "Astromech"
+           points: 3
+       }
+       {
+           name: "R4 Astromech"
+           id: 5
+           slot: "Astromech"
+           points: 2
+       }
+       {
+           name: "R5 Astromech"
+           id: 6
+           slot: "Astromech"
+           points: 5
+           charge: 2
+       }
+       {
+           name: "R5-D8"
+           id: 7
+           slot: "Astromech"
+           points: 7
+           charge: 3
+       }
+       {
+           name: "R5-P8"
+           id: 8
+           slot: "Astromech"
+           points: 4
+           unique: true
+           faction: "Scum"
+           charge: 3
+       }
+       {
+           name: "R5-TK"
+           id: 9
+           slot: "Astromech"
+           points: 1
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: "Heavy Laser Cannon"
+           id: 10
+           slot: "Cannon"
+           points: 4
+           attack: 4
+           range: """2-3"""
+       }
+       {
+           name: "Ion Cannon"
+           id: 11
+           slot: "Cannon"
+           points: 5
+           attack: 3
+           range: """1-3"""
+       }
+       {
+           name: "Jamming Beam"
+           id: 12
+           slot: "Cannon"
+           points: 2
+           attack: 3
+           range: """1-2"""
+       }
+       {
+           name: "Tractor Beam"
+           id: 13
+           slot: "Cannon"
+           points: 3
+           attack: 3
+           range: """1-3"""
+       }
+       {
+           name: "Admiral Sloane"
+           id: 14
+           slot: "Crew"
+           points: 10
+           unique: true
+           faction: "Imperial"
+       }
+       {
+           name: "Agent Kallus"
+           id: 15
+           slot: "Crew"
+           points: 6
+           unique: true
+           faction: "Imperial"
+       }
+       {
+           name: "Boba Fett"
+           id: 16
+           slot: "Crew"
+           points: 4
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: "Baze Malbus"
+           id: 17
+           slot: "Crew"
+           points: 8
+           unique: true
+           faction: "Rebel"
+       }
+       {
+           name: "C-3PO"
+           id: 18
+           slot: "Crew"
+           points: 12
+           unique: true
+           faction: "Rebel"
+       }
+       {
+           name: "Cassian Andor"
+           id: 19
+           slot: "Crew"
+           points: 6
+           unique: true
+           faction: "Rebel"
+       }
+       {
+           name: "Cad Bane"
+           id: 20
+           slot: "Crew"
+           points: 4
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: "Chewbacca (Rebel)"
+           id: 21
+           slot: "Crew"
+           points: 5
+           unique: true
+           faction: "Rebel"
+           charge: 2
+       }
+       {
+           name: "Chewbacca (Scum)"
+           id: 22
+           slot: "Crew"
+           points: 4
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: '"Chopper" (Crew)'
+           id: 23
+           slot: "Crew"
+           points: 2
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: "Ciena Ree"
+           id: 24
+           slot: "Crew"
+           points: 10
+           unique: true
+           faction: "Imperial"
+       }
+       {
+           name: "Cikatro Vizago"
+           id: 25
+           slot: "Crew"
+           points: 2
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: "Darth Vader"
+           id: 26
+           slot: "Crew"
+           points: 14
+           unique: true
+           faction: "Imperial"
+           force: 1
+       }
+       {
+           name: "Death Troopers"
+           id: 27
+           slot: "Crew"
+           points: 6
+           unique: true
+           faction: "Imperial"
+       }
+       {
+           name: "Director Krennic"
+           id: 28
+           slot: "Crew"
+           points: 5
+           unique: true
+           faction: "Imperial"
+       }
+       {
+           name: "Emperor Palpatine"
+           id: 29
+           slot: "Crew"
+           points: 13
+           unique: true
+           faction: "Imperial"
+           force: 1
+       }
+       {
+           name: "Freelance Slicer"
+           id: 30
+           slot: "Crew"
+           points: 3
+       }
+       {
+           name: "4-LOM"
+           id: 31
+           slot: "Crew"
+           points: 3
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: 'GNK "Gonk" Droid'
+           id: 32
+           slot: "Crew"
+           points: 10
+           charge: 1
+       }
+       {
+           name: "Grand Inquisitor"
+           id: 33
+           slot: "Crew"
+           points: 16
+           unique: true
+           faction: "Imperial"
+           force: 1
+       }
+       {
+           name: "Grand Moff Tarkin"
+           id: 34
+           slot: "Crew"
+           points: 10
+           unique: true
+           faction: "Imperial"
+           charge: 2
+       }
+       {
+           name: "Hera Syndulla"
+           id: 35
+           slot: "Crew"
+           points: 4
+           unique: true
+           faction: "Rebel"
+       }
+       {
+           name: "IG-88D"
+           id: 36
+           slot: "Crew"
+           points: 4
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: "Informant"
+           id: 37
+           slot: "Crew"
+           points: 5
+           unique: true
+       }
+       {
+           name: "ISB Slicer"
+           id: 38
+           slot: "Crew"
+           points: 3
+           faction: "Imperial"
+       }
+       {
+           name: "Jabba the Hutt"
+           id: 39
+           slot: "Crew"
+           points: 8
+           unique: true
+           faction: "Scum"
+           charge: 4
+       }
+       {
+           name: "Jyn Erso"
+           id: 40
+           slot: "Crew"
+           points: 2
+           unique: true
+           faction: "Rebel"
+       }
+       {
+           name: "Kanan Jarrus"
+           id: 41
+           slot: "Crew"
+           points: 14
+           unique: true
+           faction: "Rebel"
+           force: 1
+       }
+       {
+           name: "Ketsu Onyo"
+           id: 42
+           slot: "Crew"
+           points: 5
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: "L3-37"
+           id: 43
+           slot: "Crew"
+           points: 4
+           unique: true
+           faction: "Scum"
+           force: 1
+       }
+       {
+           name: "Lando Calrissian (Rebel)"
+           id: 44
+           slot: "Crew"
+           points: 5
+           unique: true
+           faction: "Rebel"
+       }
+       {
+           name: "Lando Calrissian (Scum)"
+           id: 45
+           slot: "Crew"
+           points: 8
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: "Leia Organa"
+           id: 46
+           slot: "Crew"
+           points: 8
+           unique: true
+           faction: "Rebel"
+           charge: 3
+       }
+       {
+           name: "Latts Razzi"
+           id: 47
+           slot: "Crew"
+           points: 7
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: "Maul"
+           id: 48
+           slot: "Crew"
+           points: 13
+           unique: true
+           faction: "Scum"
+           charge: 1
+       }
+       {
+           name: "Minister Tua"
+           id: 49
+           slot: "Crew"
+           points: 7
+           unique: true
+           faction: "Imperial"
+       }
+       {
+           name: "Moff Jerjerrod"
+           id: 50
+           slot: "Crew"
+           points: 12
+           unique: true
+           faction: "Imperial"
+           charge: 2
+       }
+       {
+           name: "Magva Yarro"
+           id: 51
+           slot: "Crew"
+           points: 7
+           unique: true
+           faction: "Rebel"
+       }
+       {
+           name: "Nien Nunb"
+           id: 52
+           slot: "Crew"
+           points: 5
+           unique: true
+           faction: "Rebel"
+       }
+       {
+           name: "Novice Technician"
+           id: 53
+           slot: "Crew"
+           points: 4
+       }
+       {
+           name: "Perceptive Copilot"
+           id: 54
+           slot: "Crew"
+           points: 10
+       }
+       {
+           name: "Qi'ra"
+           id: 55
+           slot: "Crew"
+           points: 2
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: "R2-D2 (Crew)"
+           id: 56
+           slot: "Crew"
+           points: 8
+           unique: true
+           faction: "Rebel"
+       }
+       {
+           name: "Sabine Wren"
+           id: 57
+           slot: "Crew"
+           points: 3
+           unique: true
+           faction: "Rebel"
+       }
+       {
+           name: "Saw Gerrera"
+           id: 58
+           slot: "Crew"
+           points: 8
+           unique: true
+           faction: "Rebel"
+       }
+       {
+           name: "Seasoned Navigator"
+           id: 59
+           slot: "Crew"
+           points: 5
+       }
+       {
+           name: "Seventh Sister"
+           id: 60
+           slot: "Crew"
+           points: 12
+           unique: true
+           faction: "Imperial"
+           force: 1
+       }
+       {
+           name: "Tactical Officer"
+           id: 61
+           slot: "Crew"
+           points: 2
+       }
+       {
+           name: "Tobias Beckett"
+           id: 62
+           slot: "Crew"
+           points: 2
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: "0-0-0"
+           id: 63
+           slot: "Crew"
+           points: 3
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: "Unkar Plutt"
+           id: 64
+           slot: "Crew"
+           points: 2
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: '"Zeb" Orrelios'
+           id: 65
+           slot: "Crew"
+           points: 1
+           unique: true
+           faction: "Rebel"
+       }
+       {
+           name: "Zuckuss"
+           id: 66
+           slot: "Crew"
+           points: 3
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: "Bomblet Generator"
+           id: 67
+           slot: "Device"
+           points: 5
+           charge: 2
+       }
+       {
+           name: "Conner Nets"
+           id: 68
+           slot: "Device"
+           points: 6
+           charge: 1
+       }
+       {
+           name: "Proton Bombs"
+           id: 69
+           slot: "Device"
+           points: 5
+           charge: 2
+       }
+       {
+           name: "Proximity Mines"
+           id: 70
+           slot: "Device"
+           points: 6
+           charge: 2
+       }
+       {
+           name: "Seismic Charges"
+           id: 71
+           slot: "Device"
+           points: 3
+           charge: 2
+       }
+       {
+           name: "Heightened Perception"
+           id: 72
+           slot: "Force"
+           points: 3
+       }
+       {
+           name: "Instinctive Aim"
+           id: 73
+           slot: "Force"
+           points: 2
+       }
+       {
+           name: "Supernatural Reflexes"
+           id: 74
+           slot: "Force"
+           points: 12
+       }
+       {
+           name: "Sense"
+           id: 75
+           slot: "Force"
+           points: 6
+       }
+       {
+           name: "Agile Gunner"
+           id: 76
+           slot: "Gunner"
+           points: 10
+       }
+       {
+           name: "Bistan"
+           id: 77
+           slot: "Gunner"
+           points: 14
+           unique: true
+           faction: "Rebel"
+       }
+       {
+           name: "Bossk"
+           id: 78
+           slot: "Gunner"
+           points: 10
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: "BT-1"
+           id: 79
+           slot: "Gunner"
+           points: 2
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: "Dengar"
+           id: 80
+           slot: "Gunner"
+           points: 6
+           unique: true
+           faction: "Scum"
+           charge: 1
+       }
+       {
+           name: "Ezra Bridger"
+           id: 81
+           slot: "Gunner"
+           points: 18
+           unique: true
+           faction: "Rebel"
+           force: 1
+       }
+       {
+           name: "Fifth Brother"
+           id: 82
+           slot: "Gunner"
+           points: 12
+           unique: true
+           faction: "Imperial"
+           force: 1
+       }
+       {
+           name: "Greedo"
+           id: 83
+           slot: "Gunner"
+           points: 1
+           unique: true
+           faction: "Scum"
+           charge: 1
+       }
+       {
+           name: "Han Solo (Rebel)"
+           id: 84
+           slot: "Gunner"
+           points: 12
+           unique: true
+           faction: "Rebel"
+       }
+       {
+           name: "Han Solo (Scum)"
+           id: 85
+           slot: "Gunner"
+           points: 3
+           unique: true
+           faction: "Scum"
+       }
+       {
+           name: "Hotshot Gunner"
+           id: 86
+           slot: "Gunner"
+           points: 7
+       }
+       {
+           name: "Luke Skywalker"
+           id: 87
+           slot: "Gunner"
+           points: 30
+           unique: true
+           faction: "Rebel"
+           force: 1
+       }
+       {
+           name: "Skilled Bombardier"
+           id: 88
+           slot: "Gunner"
+           points: 2
+       }
+       {
+           name: "Veteran Tail Gunner"
+           id: 89
+           slot: "Gunner"
+           points: 4
+       }
+       {
+           name: "Veteran Turret Gunner"
+           id: 90
+           slot: "Gunner"
+           points: 8
+       }
+       {
+           name: "Cloaking Device"
+           id: 91
+           slot: "Illicit"
+           points: 5
+           unique: true
+           charge: 2
+       }
+       {
+           name: "Contraband Cybernetics"
+           id: 92
+           slot: "Illicit"
+           points: 5
+           charge: 1
+       }
+       {
+           name: "Deadman's Switch"
+           id: 93
+           slot: "Illicit"
+           points: 2
+       }
+       {
+           name: "Feedback Array"
+           id: 94
+           slot: "Illicit"
+           points: 4
+       }
+       {
+           name: "Inertial Dampeners"
+           id: 95
+           slot: "Illicit"
+           points: 1
+       }
+       {
+           name: "Rigged Cargo Chute"
+           id: 96
+           slot: "Illicit"
+           points: 4
+           charge: 1
+       }
+       {
+           name: "Barrage Rockets"
+           id: 97
+           slot: "Missile"
+           points: 6
+           attack: 3
+           range: """2-3"""
+           charge: 5
+       }
+       {
+           name: "Cluster Missiles"
+           id: 98
+           slot: "Missile"
+           points: 5
+           attack: 3
+           range: """1-2"""
+           charge: 4
+       }
+       {
+           name: "Concussion Missiles"
+           id: 99
+           slot: "Missile"
+           points: 6
+           attack: 3
+           range: """2-3"""
+           charge: 3
+       }
+       {
+           name: "Homing Missiles"
+           id: 100
+           slot: "Missile"
+           points: 3
+           attack: 4
+           range: """2-3"""
+           charge: 2
+       }
+       {
+           name: "Ion Missiles"
+           id: 101
+           slot: "Missile"
+           points: 4
+           attack: 3
+           range: """2-3"""
+           charge: 3
+       }
+       {
+           name: "Proton Rockets"
+           id: 102
+           slot: "Missile"
+           points: 7
+           attack: 5
+           range: """1-2"""
+           charge: 1
+       }
+       {
+           name: "Ablative Plating"
+           id: 103
+           slot: "Modification"
+           points: 4
+           charge: 2
+       }
+       {
+           name: "Advanced SLAM"
+           id: 104
+           slot: "Modification"
+           points: 3
+       }
+       {
+           name: "Afterburners"
+           id: 105
+           slot: "Modification"
+           points: 8
+           charge: 2
+       }
+       {
+           name: "Electronic Baffle"
+           id: 106
+           slot: "Modification"
+           points: 2
+       }
+       {
+           name: "Engine Upgrade"
+           id: 107
+           slot: "Modification"
+           points: 3,6,9
+       }
+       {
+           name: "Munitions Failsafe"
+           id: 108
+           slot: "Modification"
+           points: 2
+       }
+       {
+           name: "Static Discharge Vanes"
+           id: 109
+           slot: "Modification"
+           points: 6
+       }
+       {
+           name: "Tactical Scrambler"
+           id: 110
+           slot: "Modification"
+           points: 2
+       }
+       {
+           name: "Advanced Sensors"
+           id: 111
+           slot: "System"
+           points: 8
+       }
+       {
+           name: "Collision Detector"
+           id: 112
+           slot: "System"
+           points: 5
+           charge: 2
+       }
+       {
+           name: "Fire-Control System"
+           id: 113
+           slot: "System"
+           points: 3
+       }
+       {
+           name: "Trajectory Simulator"
+           id: 114
+           slot: "System"
+           points: 3
+       }
+       {
+           name: "Composure"
+           id: 115
+           slot: "Talent"
+           points: 2
+       }
+       {
+           name: "Crack Shot"
+           id: 116
+           slot: "Talent"
+           points: 1
+           charge: 1
+       }
+       {
+           name: "Daredevil"
+           id: 117
+           slot: "Talent"
+           points: 3
+       }
+       {
+           name: "Debris Gambit"
+           id: 118
+           slot: "Talent"
+           points: 2
+       }
+       {
+           name: "Elusive"
+           id: 119
+           slot: "Talent"
+           points: 3
+           charge: 1
+       }
+       {
+           name: "Expert Handling"
+           id: 120
+           slot: "Talent"
+           points: 2,4,6
+       }
+       {
+           name: "Fearless"
+           id: 121
+           slot: "Talent"
+           points: 3
+           faction: "Scum"
+       }
+       {
+           name: "Intimidation"
+           id: 122
+           slot: "Talent"
+           points: 3
+       }
+       {
+           name: "Juke"
+           id: 123
+           slot: "Talent"
+           points: 4
+       }
+       {
+           name: "Lone Wolf"
+           id: 124
+           slot: "Talent"
+           points: 4
+           unique: true
+           charge: 1
+       }
+       {
+           name: "Marksmanship"
+           id: 125
+           slot: "Talent"
+           points: 1
+       }
+       {
+           name: "Outmaneuver"
+           id: 126
+           slot: "Talent"
+           points: 6
+       }
+       {
+           name: "Predator"
+           id: 127
+           slot: "Talent"
+           points: 2
+       }
+       {
+           name: "Ruthless"
+           id: 128
+           slot: "Talent"
+           points: 1
+           faction: "Imperial"
+       }
+       {
+           name: "Saturation Salvo"
+           id: 129
+           slot: "Talent"
+           points: 6
+       }
+       {
+           name: "Selfless"
+           id: 130
+           slot: "Talent"
+           points: 3
+           faction: "Rebel"
+       }
+       {
+           name: "Squad Leader"
+           id: 131
+           slot: "Talent"
+           points: 4
+           unique: true
+       }
+       {
+           name: "Swarm Tactics"
+           id: 132
+           slot: "Talent"
+           points: 3
+       }
+       {
+           name: "Trick Shot"
+           id: 133
+           slot: "Talent"
+           points: 1
+       }
+       {
+           name: "Adv. Proton Torpedoes"
+           id: 134
+           slot: "Torpedo"
+           points: 6
+           attack: 5
+           range: """1"""
+           charge: 1
+       }
+       {
+           name: "Ion Torpedoes"
+           id: 135
+           slot: "Torpedo"
+           points: 6
+           attack: 4
+           range: """2-3"""
+           charge: 2
+       }
+       {
+           name: "Proton Torpedoes"
+           id: 136
+           slot: "Torpedo"
+           points: 9
+           attack: 4
+           range: """2-3"""
+           charge: 2
+       }
+       {
+           name: "Dorsal Turret"
+           id: 137
+           slot: "Turret"
+           points: 4
+           attack: 2
+           range: """1-2"""
+       }
+       {
+           name: "Ion Cannon Turret"
+           id: 138
+           slot: "Turret"
+           points: 6
+           attack: 3
+           range: """1-2"""
+       }
+       {
+           name: "Os-1 Arsenal Loadout"
+           id: 139
+           slot: "Configuration"
+           ship: "Alpha-Class Star Wing"
+       }
+       {
+           name: "Pivot Wing (Closed)"
+           id: 140
+           slot: "Configuration"
+           ship: "U-wing"
+       }
+       {
+           name: "Pivot Wing (Open)"
+           id: 141
+           slot: "Configuration"
+           ship: "U-wing"
+       }
+       {
+           name: "Servomotor S-foils (Closed)"
+           id: 142
+           slot: "Configuration"
+           ship: "X-Wing"
+       }
+       {
+           name: "Servomotor S-foils (Open)"
+           id: 143
+           slot: "Configuration"
+           ship: "X-Wing"
+       }
+       {
+           name: "Xg-1 Assault Configuration"
+           id: 144
+           slot: "Configuration"
+           ship: "Alpha-Class Star Wing"
+       }
+       {
+           name: "L3-37's Programming"
+           id: 145
+           slot: "Configuration"
+           faction: "Scum"
+       }
+       {
+           name: "Andrasta"
+           id: 146
+           slot: "Title"
+           points: 6
+           unique: true
+           faction: "Scum"
+           ship: "Firespray-31"
+       }
+       {
+           name: "Dauntless"
+           id: 147
+           slot: "Title"
+           points: 6
+           unique: true
+           faction: "Imperial"
+           ship: "VT-49 Decimator"
+       }
+       {
+           name: "Ghost"
+           id: 148
+           slot: "Title"
+           unique: true
+           faction: "Rebel"
+           ship: "VCX-100"
+       }
+       {
+           name: "Havoc"
+           id: 149
+           slot: "Title"
+           points: 4
+           unique: true
+           faction: "Scum"
+           ship: "Scurrg H-6 bomber"
+       }
+       {
+           name: "Hound's Tooth"
+           id: 150
+           slot: "Title"
+           points: 1
+           unique: true
+           faction: "Scum"
+           ship: "YV-666 Light Freighter"
+       }
+       {
+           name: "IG-2000"
+           id: 151
+           slot: "Title"
+           points: 2
+           faction: "Scum"
+           ship: "Aggressor Assault Fighter"
+       }
+       {
+           name: "Lando's Millennium Falcon"
+           id: 152
+           slot: "Title"
+           points: 6
+           unique: true
+           faction: "Scum"
+           ship: "Customized YT-1300 Light Freighter"
+       }
+       {
+           name: "Marauder"
+           id: 153
+           slot: "Title"
+           points: 3
+           unique: true
+           faction: "Scum"
+           ship: "Firespray-class Patrol Craft"
+       }
+       {
+           name: "Millennium Falcon"
+           id: 154
+           slot: "Title"
+           points: 6
+           unique: true
+           faction: "Rebel"
+           ship: "YT-1300"
+       }
+       {
+           name: "Mist Hunter"
+           id: 155
+           slot: "Title"
+           points: 2
+           unique: true
+           faction: "Scum"
+           ship: "G-1A Starfighter"
+       }
+       {
+           name: "Moldy Crow"
+           id: 156
+           slot: "Title"
+           points: 12
+           unique: true
+           faction: "Rebel"
+           ship: "HWK-290 Light Freighter"
+       }
+       {
+           name: "Outrider"
+           id: 157
+           slot: "Title"
+           points: 14
+           unique: true
+           faction: "Rebel"
+           ship: "YT-2400"
+       }
+       {
+           name: "Phantom"
+           id: 158
+           slot: "Title"
+           points: 2
+           unique: true
+           faction: "Rebel"
+           ship: "Sheathipede-class Shuttle"
+       }
+       {
+           name: "Punishing One"
+           id: 159
+           slot: "Title"
+           points: 8
+           unique: true
+           faction: "Scum"
+           ship: "JumpMaster 5000"
+       }
+       {
+           name: "Shadow Caster"
+           id: 160
+           slot: "Title"
+           points: 6
+           unique: true
+           faction: "Scum"
+           ship: "Lancer-class Pursuit Craft"
+       }
+       {
+           name: "Slave I"
+           id: 161
+           slot: "Title"
+           points: 5
+           unique: true
+           faction: "Scum"
+           ship: "Firespray-31"
+       }
+       {
+           name: "ST-321"
+           id: 162
+           slot: "Title"
+           points: 6
+           unique: true
+           faction: "Imperial"
+           ship: "Lambda-Class Shuttle"
+       }
+       {
+           name: "Virago"
+           id: 163
+           slot: "Title"
+           points: 10
+           unique: true
+           charge: 2
+           ship: "StarViper"
+       }
+       {
+           name: "Hull Upgrade"
+           id: 164
+           slot: "Modification"
+           points: 7
+       }
+       {
+           name: "Shield Upgrade"
+           id: 165
+           slot: "Modification"
+           points: 8
+       }
+       {
+           name: "Stealth Device"
+           id: 166
+           slot: "Modification"
+           points: 8
+           charge: 1
+       }
+    ]
     modificationsById: [
-        {
-            name: "Zero modification"
-            id: 0
-            skip: true
-        }
-        {
-            name: "Stealth Device"
-            id: 1
-            points: 3
-            modifier_func: (stats) ->
-                stats.agility += 1
-        }
-        {
-            name: "Shield Upgrade"
-            id: 2
-            points: 4
-            modifier_func: (stats) ->
-                stats.shields += 1
-        }
-        {
-            name: "Engine Upgrade"
-            id: 3
-            points: 4
-            modifier_func: (stats) ->
-                stats.actions.push 'Boost' if 'Boost' not in stats.actions
-        }
-        {
-            name: "Anti-Pursuit Lasers"
-            id: 4
-            points: 2
-            restriction_func: (ship) ->
-                ship.data.large ? false
-        }
-        {
-            name: "Targeting Computer"
-            id: 5
-            points: 2
-            modifier_func: (stats) ->
-                stats.actions.push 'Target Lock' if 'Target Lock' not in stats.actions
-        }
-        {
-            name: "Hull Upgrade"
-            id: 6
-            points: 3
-            modifier_func: (stats) ->
-                stats.hull += 1
-        }
-        {
-            name: "Munitions Failsafe"
-            id: 7
-            points: 1
-        }
-        {
-            name: "Stygium Particle Accelerator"
-            id: 8
-            points: 2
-        }
-        {
-            name: "Advanced Cloaking Device"
-            id: 9
-            points: 4
-            ship: "TIE Phantom"
-        }
-        {
-            name: "Combat Retrofit"
-            id: 10
-            points: 10
-            ship: "GR-75 Medium Transport"
-            huge: true
-            modifier_func: (stats) ->
-                stats.hull += 2
-                stats.shields += 1
-        }
-        {
-            name: "B-Wing/E2"
-            id: 11
-            points: 1
-            ship: "B-Wing"
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Crew"
-                }
-            ]
-        }
-        {
-            name: "Countermeasures"
-            id: 12
-            points: 3
-            restriction_func: (ship) ->
-                ship.data.large ? false
-        }
-        {
-            name: "Experimental Interface"
-            id: 13
-            unique: true
-            points: 3
-        }
-        {
-            name: "Tactical Jammer"
-            id: 14
-            points: 1
-            restriction_func: (ship) ->
-                ship.data.large ? false
-        }
-        {
-            name: "Autothrusters"
-            id: 15
-            points: 2
-            restriction_func: (ship) ->
-                "Boost" in ship.effectiveStats().actions
-        }
-        {
-            name: "Advanced SLAM"
-            id: 16
-            points: 2
-        }
-        {
-            name: "Twin Ion Engine Mk. II"
-            id: 17
-            points: 1
-            restriction_func: (ship) ->
-                ship.data.name.indexOf('TIE') != -1
-            modifier_func: (stats) ->
-                for s in (stats.maneuvers ? [])
-                    s[1] = 2 if s[1] != 0
-                    s[3] = 2 if s[3] != 0
-        }
-        {
-            name: "Maneuvering Fins"
-            id: 18
-            points: 1
-            ship: "YV-666"
-        }
-        {
-            name: "Ion Projector"
-            id: 19
-            points: 2
-            restriction_func: (ship) ->
-                ship.data.large ? false
-        }
-        {
-            name: 'Integrated Astromech'
-            id: 20
-            restriction_func: (ship) ->
-                ship.data.canonical_name.indexOf('xwing') != -1
-            points: 0
-        }
-        {
-            name: 'Optimized Generators'
-            id: 21
-            points: 5
-            restriction_func: (ship) ->
-                ship.data.huge ? false
-        }
-        {
-            name: 'Automated Protocols'
-            id: 22
-            points: 5
-            restriction_func: (ship) ->
-                ship.data.huge ? false
-        }
-        {
-            name: 'Ordnance Tubes'
-            id: 23
-            points: 5
-            slot: 'Hardpoint'
-            restriction_func: (ship) ->
-                ship.data.huge ? false
-        }
-        {
-            name: 'Long-Range Scanners'
-            id: 24
-            points: 0
-            restriction_func: (ship) ->
-                ((upgrade for upgrade in ship.upgrades when upgrade.slot == 'Torpedo' and not upgrade.occupied_by?).length >= 1) and ((upgrade for upgrade in ship.upgrades when upgrade.slot == 'Missile' and not upgrade.occupied_by?).length >= 1)
-        }
-        {
-            name: "Guidance Chips"
-            id: 25
-            points: 0
-        }
-        {
-            name: 'Vectored Thrusters'
-            id: 26
-            points: 2
-            restriction_func: (ship) ->
-                not ((ship.data.large ? false) or (ship.data.huge ? false))
-            modifier_func: (stats) ->
-                stats.actions.push 'Barrel Roll' if 'Barrel Roll' not in stats.actions
-        }
-        {
-            name: 'Smuggling Compartment'
-            id: 27
-            points: 0
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Illicit"
-                }
-                {
-                    type: exportObj.RestrictedModification
-                    filter_func: (mod) ->
-                        mod.points <= 3
-                }
-            ]
-            limited: true
-            restriction_func: (ship) ->
-                ship.data.name in ['YT-1300', 'YT-2400']
-        }
-        {
-            id: 28
-            name: 'Gyroscopic Targeting'
-            ship: 'Lancer-class Pursuit Craft'
-            points: 2
-        }
-        {
-            name: 'Captured TIE'
-            id: 29
-            unique: true
-            ship: 'TIE Fighter'
-            faction: 'Rebel Alliance'
-            points: 1
-        }
-        {
-            name: 'Spacetug Tractor Array'
-            id: 30
-            ship: 'Quadjumper'
-            points: 2
-        }
-        {
-            name: 'Lightweight Frame'
-            id: 31
-            points: 2
-            restriction_func: (ship) ->
-                ship.data.name.indexOf('TIE') != -1 and ship.effectiveStats().agility < 3
-        }
-        {
-            name: 'Pulsed Ray Shield'
-            id: 32
-            faction: ['Rebel Alliance', 'Scum and Villainy']
-            points: 2
-            restriction_func: (ship) ->
-                ship.effectiveStats().shields == 1
-        }
-        {
-            name: 'Deflective Plating'
-            ship: 'B/SF-17 Bomber'
-            id: 33
-            points: 1
-        }
-        {
-            name: 'Servomotor S-Foils'
-            id: 34
-            points: 0
-            restriction_func: (ship) ->
-                ship.data.canonical_name == 'X-Wing'.canonicalize() && ship.data.canonical_name != 'T-70 X-Wing'.canonicalize()
-        }
-        {
-            name: 'Multi-spectral Camouflage'
-            id: 35
-            unique: true,
-            points: 1
-            restriction_func: (ship) ->
-                not ((ship.data.large ? false) or (ship.data.huge ? false))
-        }
+
     ]
 
     titlesById: [
-        {
-            name: "Zero Title"
-            id: 0
-            skip: true
-        }
-        {
-            name: "Slave I"
-            id: 1
-            unique: true
-            points: 0
-            ship: "Firespray-31"
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Torpedo"
-                }
-            ]
-        }
-        {
-            name: "Millennium Falcon"
-            id: 2
-            unique: true
-            points: 1
-            ship: "YT-1300"
-            actions: "Evade"
-            modifier_func: (stats) ->
-                stats.actions.push 'Evade' if 'Evade' not in stats.actions
-        }
-        {
-            name: "Moldy Crow"
-            id: 3
-            unique: true
-            points: 3
-            ship: "HWK-290"
-        }
-        {
-            name: "ST-321"
-            id: 4
-            unique: true
-            points: 3
-            ship: "Lambda-Class Shuttle"
-        }
-        {
-            name: "Royal Guard TIE"
-            id: 5
-            points: 0
-            ship: "TIE Interceptor"
-            confersAddons: [
-                {
-                    type: exportObj.Modification
-                }
-            ]
-            restriction_func: (ship) ->
-                ship.effectiveStats().skill > 4
-            special_case: 'Royal Guard TIE'
-        }
-        {
-            name: "Dodonna's Pride"
-            id: 6
-            unique: true
-            points: 4
-            ship: "CR90 Corvette (Fore)"
-        }
-        {
-            name: "A-Wing Test Pilot"
-            id: 7
-            points: 0
-            ship: "A-Wing"
-            restriction_func: (ship) ->
-                ship.effectiveStats().skill > 1
-            validation_func: (ship, upgrade_obj) ->
-                # Still need to respect the restriction
-                return false unless ship.effectiveStats().skill > 1
-                # No two Elites are on fir^W^W^Wcan be the same
-                elites = (upgrade.data.canonical_name for upgrade in ship.upgrades when upgrade.slot == 'Elite' and upgrade.data?)
-                while elites.length > 0
-                    elite = elites.pop()
-                    if elite in elites
-                        return false
-                true
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Elite"
-                }
-            ]
-            special_case: "A-Wing Test Pilot"
-        }
-        # Apparently this is a modification, NOT a title
-        # Leaving this here to occupy the ID in case someone used it
-         {
-             name: "B-Wing/E"
-             id: 8
-             skip: true
-             points: 99
-             ship: "B-Wing"
-             confersAddons: [
-                 {
-                     type: exportObj.Upgrade
-                     slot: "Crew"
-                 }
-             ]
-         }
-        {
-            name: "Tantive IV"
-            id: 9
-            unique: true
-            points: 4
-            ship: "CR90 Corvette (Fore)"
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Crew"
-                }
-                {
-                    type: exportObj.Upgrade
-                    slot: "Team"
-                }
-            ]
-        }
-        {
-            name: "Bright Hope"
-            id: 10
-            energy: "+2"
-            unique: true
-            points: 5
-            ship: "GR-75 Medium Transport"
-            modifier_func: (stats) ->
-                stats.energy += 2
-        }
-        {
-            name: "Quantum Storm"
-            id: 11
-            energy: "+1"
-            unique: true
-            points: 4
-            ship: "GR-75 Medium Transport"
-            modifier_func: (stats) ->
-                stats.energy += 1
-        }
-        {
-            name: "Dutyfree"
-            id: 12
-            energy: "+0"
-            unique: true
-            points: 2
-            ship: "GR-75 Medium Transport"
-        }
-        {
-            name: "Jaina's Light"
-            id: 13
-            unique: true
-            points: 2
-            ship: "CR90 Corvette (Fore)"
-        }
-        {
-            name: "Outrider"
-            id: 14
-            unique: true
-            points: 5
-            ship: "YT-2400"
-        }
-        {
-            name: "Dauntless"
-            id: 15
-            unique: true
-            points: 2
-            ship: "VT-49 Decimator"
-        }
-        {
-            name: "Virago"
-            id: 16
-            unique: true
-            points: 1
-            ship: "StarViper"
-            restriction_func: (ship) ->
-                ship.pilot.skill > 3
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "System"
-                }
-                {
-                    type: exportObj.Upgrade
-                    slot: "Illicit"
-                }
-            ]
-        }
-        {
-            name: '"Heavy Scyk" Interceptor (Cannon)'
-            canonical_name: '"Heavy Scyk" Interceptor'.canonicalize()
-            id: 17
-            points: 2
-            ship: "M3-A Interceptor"
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Cannon"
-                }
-            ]
-            modifier_func: (stats) ->
-                stats.hull += 1
-        }
-        {
-            name: '"Heavy Scyk" Interceptor (Torpedo)'
-            canonical_name: '"Heavy Scyk" Interceptor'.canonicalize()
-            id: 18
-            points: 2
-            ship: "M3-A Interceptor"
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Torpedo"
-                }
-            ]
-            modifier_func: (stats) ->
-                stats.hull += 1
-        }
-        {
-            name: '"Heavy Scyk" Interceptor (Missile)'
-            canonical_name: '"Heavy Scyk" Interceptor'.canonicalize()
-            id: 19
-            points: 2
-            ship: "M3-A Interceptor"
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Missile"
-                }
-            ]
-            modifier_func: (stats) ->
-                stats.hull += 1
-        }
-        {
-            name: 'IG-2000'
-            faction: 'Scum and Villainy'
-            id: 20
-            points: 0
-            ship: "Aggressor"
-        }
-        {
-            name: "BTL-A4 Y-Wing"
-            id: 21
-            points: 0
-            ship: "Y-Wing"
-        }
-        {
-            name: "Andrasta"
-            id: 22
-            unique: true
-            points: 0
-            ship: "Firespray-31"
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Bomb"
-                }
-                {
-                    type: exportObj.Upgrade
-                    slot: "Bomb"
-                }
-            ]
-        }
-        {
-            name: 'TIE/x1'
-            id: 23
-            points: 0
-            ship: "TIE Advanced"
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "System"
-                    adjustment_func: (upgrade) ->
-                        copy = $.extend true, {}, upgrade
-                        copy.points = Math.max(0, copy.points - 4)
-                        copy
-                }
-            ]
-        }
-        {
-            name: "Hound's Tooth"
-            id: 24
-            points: 6
-            unique: true
-            ship: "YV-666"
-        }
-        {
-            name: "Ghost"
-            id: 25
-            unique: true
-            points: 0
-            ship: "VCX-100"
-        }
-        {
-            name: "Phantom"
-            id: 26
-            unique: true
-            points: 0
-            ship: "Attack Shuttle"
-        }
-        {
-            name: "TIE/v1"
-            id: 27
-            points: 1
-            ship: "TIE Advanced Prototype"
-        }
-        {
-            name: "Mist Hunter"
-            id: 28
-            unique: true
-            points: 0
-            ship: "G-1A Starfighter"
-            confersAddons: [
-                {
-                    type: exportObj.RestrictedUpgrade
-                    slot: "Cannon"
-                    filter_func: (upgrade) ->
-                        upgrade.english_name == 'Tractor Beam'
-                    auto_equip: 144
-                }
-            ]
-            modifier_func: (stats) ->
-                stats.actions.push 'Barrel Roll' if 'Barrel Roll' not in stats.actions
-        }
-        {
-            name: "Punishing One"
-            id: 29
-            unique: true
-            points: 12
-            ship: "JumpMaster 5000"
-            modifier_func: (stats) ->
-                stats.attack += 1
-        }
-        {
-            name: 'Assailer'
-            id: 30
-            points: 2
-            unique: true
-            ship: "Raider-class Corvette (Aft)"
-        }
-        {
-            name: 'Instigator'
-            id: 31
-            points: 4
-            unique: true
-            ship: "Raider-class Corvette (Aft)"
-        }
-        {
-            name: 'Impetuous'
-            id: 32
-            points: 3
-            unique: true
-            ship: "Raider-class Corvette (Aft)"
-        }
-        {
-            name: 'TIE/x7'
-            id: 33
-            ship: 'TIE Defender'
-            points: -2
-            unequips_upgrades: [
-                'Cannon'
-                'Missile'
-            ]
-            also_occupies_upgrades: [
-                'Cannon'
-                'Missile'
-            ]
-        }
-        {
-            name: 'TIE/D'
-            id: 34
-            ship: 'TIE Defender'
-            points: 0
-        }
-        {
-            name: 'TIE Shuttle'
-            id: 35
-            ship: 'TIE Bomber'
-            points: 0
-            unequips_upgrades: [
-                'Torpedo'
-                'Torpedo'
-                'Missile'
-                'Missile'
-                'Bomb'
-            ]
-            also_occupies_upgrades: [
-                'Torpedo'
-                'Torpedo'
-                'Missile'
-                'Missile'
-                'Bomb'
-            ]
-            confersAddons: [
-                {
-                    type: exportObj.RestrictedUpgrade
-                    slot: 'Crew'
-                    filter_func: (upgrade) ->
-                        upgrade.points <= 4
-                }
-                {
-                    type: exportObj.RestrictedUpgrade
-                    slot: 'Crew'
-                    filter_func: (upgrade) ->
-                        upgrade.points <= 4
-                }
-            ]
-        }
-        {
-            name: 'Requiem'
-            id: 36
-            unique: true
-            ship: 'Gozanti-class Cruiser'
-            energy: '+0'
-            points: 4
-        }
-        {
-            name: 'Vector'
-            id: 37
-            unique: true
-            ship: 'Gozanti-class Cruiser'
-            energy: '+1'
-            points: 2
-            modifier_func: (stats) ->
-                stats.energy += 1
-        }
-        {
-            name: 'Suppressor'
-            id: 38
-            unique: true
-            ship: 'Gozanti-class Cruiser'
-            energy: '+2'
-            points: 6
-            modifier_func: (stats) ->
-                stats.energy += 2
-        }
-        {
-            name: 'Black One'
-            id: 39
-            unique: true
-            ship: 'T-70 X-Wing'
-            points: 1
-            restriction_func: (ship) ->
-                ship.effectiveStats().skill > 6
-        }
-        {
-            name: "Millennium Falcon (TFA)"
-            canonical_name: "millenniumfalcon-swx57"
-            id: 40
-            unique: true
-            points: 1
-            ship: "YT-1300"
-        }
-        {
-            name: 'Alliance Overhaul'
-            id: 41
-            ship: 'ARC-170'
-            points: 0
-        }
-        {
-            name: 'Special Ops Training'
-            id: 42
-            ship: 'TIE/sf Fighter'
-            points: 0
-        }
-        {
-            name: 'Concord Dawn Protector'
-            id: 43
-            ship: 'Protectorate Starfighter'
-            points: 1
-        }
-        {
-            name: 'Shadow Caster'
-            id: 44
-            unique: true
-            ship: 'Lancer-class Pursuit Craft'
-            points: 3
-        }
-        {
-            name: '''Kylo Ren's Shuttle'''
-            id: 45
-            unique: true
-            ship: 'Upsilon-class Shuttle'
-            points: 2
-        }
-        {
-            name: '''Sabine's Masterpiece'''
-            id: 46
-            ship: 'TIE Fighter'
-            faction: 'Rebel Alliance'
-            unique: true
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Crew"
-                }
-                {
-                    type: exportObj.Upgrade
-                    slot: "Illicit"
-                }
-            ]
-            points: 1
-        }
-        {
-            name: '''Pivot Wing'''
-            id: 47
-            ship: 'U-Wing'
-            points: 0
-        }
-        {
-            name: '''Adaptive Ailerons'''
-            id: 48
-            ship: 'TIE Striker'
-            points: 0
-        }
-        {
-            name: '''Merchant One'''
-            id: 49
-            ship: 'C-ROC Cruiser'
-            points: 2
-            energy: '+1'
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Crew"
-                }
-                {
-                    type: exportObj.Upgrade
-                    slot: "Team"
-                }
-            ]
-            unequips_upgrades: [ "Cargo" ]
-            also_occupies_upgrades: [ "Cargo" ]
-            modifier_func: (stats) ->
-                stats.energy += 1
-        }
-        {
-            name: '''"Light Scyk" Interceptor'''
-            id: 50
-            ship: 'M3-A Interceptor'
-            points: -2
-            unequips_modifications: true
-            also_occupies_modifications: true
-            modifier_func: (stats) ->
-                for s in (stats.maneuvers ? [])
-                    s[1] = 2 if s[1] != 0
-                    s[3] = 2 if s[3] != 0
-        }
-        {
-            name: '''Insatiable Worrt'''
-            id: 51
-            ship: 'C-ROC Cruiser'
-            points: 1
-            energy: '-1'
-            modifier_func: (stats) ->
-                stats.energy -= 1
-        }
-        {
-            name: '''Broken Horn'''
-            id: 52
-            ship: 'C-ROC Cruiser'
-            points: 5
-            energy: '+2'
-            modifier_func: (stats) ->
-                stats.energy += 2
-        }
-        {
-            name: 'Havoc'
-            id: 53
-            ship: 'Scurrg H-6 Bomber'
-            unique: true
-            points: 0
-            unequips_upgrades: [
-                'Crew'
-            ]
-            also_occupies_upgrades: [
-                'Crew'
-            ]
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: 'System'
-                }
-                {
-                    type: exportObj.RestrictedUpgrade
-                    slot: 'Salvaged Astromech'
-                    filter_func: (upgrade) ->
-                        upgrade.unique
-                }
-            ]
-        }
-        {
-            name: 'Vaksai'
-            id: 54
-            points: 0
-            ship: 'Kihraxz Fighter'
-            confersAddons: [
-                {
-                    type: exportObj.Modification
-                }
-                {
-                    type: exportObj.Modification
-                }
-            ]
-            special_case: 'Royal Guard TIE'
-        }
-        {
-            name: 'StarViper Mk. II'
-            id: 55
-            limited: true
-            points: -3
-            ship: 'StarViper'
-            confersAddons: [
-                {
-                    type: exportObj.Title
-                }
-            ]
-        }
-        {
-            name: 'XG-1 Assault Configuration'
-            id: 56
-            points: 1
-            ship: 'Alpha-class Star Wing'
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Cannon"
-                }
-                {
-                    type: exportObj.Upgrade
-                    slot: "Cannon"
-                }
-            ]
-        }
-        {
-            name: 'Enforcer'
-            id: 57
-            unique: true
-            ship: 'M12-L Kimogila Fighter'
-            points: 1
-        }
-        {
-            name: 'Ghost (Phantom II)'
-            id: 58
-            canonical_name: 'ghost-swx72'
-            ship: 'VCX-100'
-            points: 0
-        }
-        {
-            name: 'Phantom II'
-            id: 59
-            ship: 'Sheathipede-class Shuttle'
-            points: 0
-        }
-        {
-            name: 'First Order Vanguard'
-            id: 60
-            ship: 'TIE Silencer'
-            unique: true
-            points: 2
-        }
-        {
-            name: 'Os-1 Arsenal Loadout'
-            id: 61
-            points: 2
-            ship: 'Alpha-class Star Wing'
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Torpedo"
-                }
-                {
-                    type: exportObj.Upgrade
-                    slot: "Missile"
-                }
-            ]
-        }
-        {
-            name: 'Crossfire Formation'
-            id: 62
-            ship: 'B/SF-17 Bomber'
-            points: 2
-        }
-        {
-            name: '''Advanced Ailerons'''
-            id: 63
-            ship: 'TIE Reaper'
-            points: 0
-            modifier_func: (stats) ->
-                for idx in [1..3]
-                    stats.maneuvers[3][idx] = 1 unless idx == 2
-        }
+
     ]
 
     conditionsById: [
-        {
-            name: '''Zero Condition'''
-            id: 0
-        }
-        {
-            name: '''I'll Show You the Dark Side'''
-            id: 1
-            unique: true
-        }
-        {
-            name: 'A Debt to Pay'
-            id: 2
-            unique: true
-        }
-        {
-            name: 'Suppressive Fire'
-            id: 3
-            unique: true
-        }
-        {
-            name: '''Fanatical Devotion'''
-            id: 4
-            unique: true
-        }
-        {
-            name: 'Shadowed'
-            id: 5
-            unique: true
-        }
-        {
-            name: 'Mimicked'
-            id: 6
-            unique: true
-        }
-        {
-            name: 'Harpooned!'
-            id: 7
-        }
-        {
-            name: 'Rattled'
-            id: 8
-            unique: true
-        }
-        {
-            name: 'Scrambled'
-            id: 9
-            unique: true
-        }
-        {
-            name: 'Optimized Prototype'
-            id: 10
-            unique: true
-        }
     ]
 
 exportObj.setupCardData = (basic_cards, pilot_translations, upgrade_translations, modification_translations, title_translations, condition_translations) ->
@@ -9479,6 +7086,8 @@ exportObj.fixIcons = (data) ->
     if data.text?
         data.text = data.text
             .replace(/%ASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>')
+            .replace(/%FORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>')
+            .replace(/%CHARGE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>')
             .replace(/%BANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankleft"></i>')
             .replace(/%BANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankright"></i>')
             .replace(/%BARRELROLL%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>')
@@ -11897,7 +9506,7 @@ exportObj.translations.English =
         "Jam": "Jam"
         "Coordinate": "Coordinate"
         "Cloak": "Cloak"
-        "SLAM": "SLAM"
+        "Slam": "Slam"
     slot:
         "Astromech": "Astromech"
         "Bomb": "Bomb"
@@ -11913,6 +9522,13 @@ exportObj.translations.English =
         "Team": "Team"
         "Illicit": "Illicit"
         "Salvaged Astromech": "Salvaged Astromech"
+        "Configuration": "Configuration"
+        "Talent": "Talent"
+        "Force": "Force"
+        "Modification": "Modification"
+        "Gunner": "Gunner"
+        "Device": "Device"
+        "Title": "TItle"
     sources: # needed?
         "Core": "Core"
         "A-Wing Expansion Pack": "A-Wing Expansion Pack"
@@ -12052,1169 +9668,802 @@ exportObj.cardLoaders.English = () ->
 
     # Names don't need updating, but text needs to be set
     pilot_translations =
-        "Wedge Antilles":
-            text: """When attacking, reduce the defender's agility value by 1 (to a minimum of "0")."""
-        "Garven Dreis":
-            text: """After spending a focus token, you may place that token on any other friendly ship at Range 1-2 (instead of discarding it)."""
-        "Biggs Darklighter":
-            text: """Once per game, at the start of the Combat phase, you may choose that until the end of the round, other friendly ships at Range 1 cannot be targeted by attacks if the attacker could target you instead."""
-        "Luke Skywalker":
-            text: """When defending, you may change 1 of your %FOCUS% results to a %EVADE% result."""
-        '"Dutch" Vander':
-            text: """After acquiring a target lock, choose another friendly ship at Range 1-2.  The chosen ship may immediately acquire a target lock."""
-        "Horton Salm":
-            text: """When attacking at Range 2-3, you may reroll any of your blank results."""
-        '"Winged Gundark"':
-            text: """When attacking at Range 1, you may change 1 of your %HIT% results to a %CRIT% result."""
-        '"Night Beast"':
-            text: """After executing a green maneuver, you may perform a free focus action."""
-        '"Backstabber"':
-            text: """When attacking from outside the defender's firing arc, roll 1 additional attack die."""
-        '"Dark Curse"':
-            text: """When defending, ships attacking you cannot spend focus tokens or reroll attack dice."""
-        '"Mauler Mithel"':
-            text: """When attacking at Range 1, roll 1 additional attack die."""
-        '"Howlrunner"':
-            text: """When another friendly ship at Range 1 is attacking with its primary weapon, it may reroll 1 attack die."""
-        "Maarek Stele":
-            text: """When your attack deals a faceup Damage card to the defender, instead draw 3 Damage cards, choose 1 to deal, and discard the others."""
-        "Darth Vader":
-            text: """During your "Perform Action" step, you may perform 2 actions."""
-        "\"Fel's Wrath\"":
-            text: """When the number of Damage cards assigned to you equals or exceeds your hull value, you are not destroyed until the end of the Combat phase."""
-        "Turr Phennir":
-            text: """After you perform an attack, you may perform a free boost or barrel roll action."""
-        "Soontir Fel":
-            text: """When you receive a stress token, you may assign 1 focus token to your ship."""
-        "Tycho Celchu":
-            text: """You may perform actions even while you have stress tokens."""
-        "Arvel Crynyd":
-            text: """You may declare an enemy ship inside your firing arc that you are touching as the target of your attack."""
-        "Chewbacca":
-            text: """When you are dealt a faceup Damage card, immediately flip it facedown (without resolving its ability)."""
-        "Lando Calrissian":
-            text: """After you execute a green maneuver, choose 1 other friendly ship at Range 1.  That ship may perform 1 free action shown on its action bar."""
-        "Han Solo":
-            text: """When attacking, you may reroll all of your dice.  If you choose to do so, you must reroll as many of your dice as possible."""
-        "Kath Scarlet":
-            text: """When attacking, the defender receives 1 stress token if he cancels at least 1 %CRIT% result."""
-        "Boba Fett":
-            text: """When you reveal a bank maneuver (%BANKLEFT% or %BANKRIGHT%), you may rotate your dial to the other bank maneuver of the same speed."""
-        "Krassis Trelix":
-            text: """When attacking with a secondary weapon, you may reroll 1 attack die."""
-        "Ten Numb":
-            text: """When attacking, 1 of your %CRIT% results cannot be canceled by defense dice."""
-        "Ibtisam":
-            text: """When attacking or defending, if you have at least 1 stress token, you may reroll 1 of your dice."""
-        "Roark Garnet":
-            text: '''At the start of the Combat phase, choose 1 other friendly ship at Range 1-3.  Until the end of the phase, treat that ship's pilot skill value as "12."'''
-        "Kyle Katarn":
-            text: """At the start of the Combat phase, you may assign 1 of your focus tokens to another friendly ship at Range 1-3."""
-        "Jan Ors":
-            text: """When another friendly ship at Range 1-3 is attacking, if you have no stress tokens, you may receive 1 stress token to allow that ship to roll 1 additional attack die."""
-        "Captain Jonus":
-            text: """When another friendly ship at Range 1 attacks with a secondary weapon, it may reroll up to 2 attack dice."""
-        "Major Rhymer":
-            text: """When attacking with a secondary weapon, you may increase or decrease the weapon range by 1 to a limit of Range 1-3."""
-        "Captain Kagi":
-            text: """When an enemy ship acquires a target lock, it must lock onto your ship if able."""
-        "Colonel Jendon":
-            text: """At the start of the Combat phase, you may assign 1 of your blue target lock tokens to a friendly ship at Range 1 if it does not have a blue target lock token."""
-        "Captain Yorr":
-            text: """When another friendly ship at Range 1-2 would receive a stress token, if you have 2 or fewer stress tokens, you may receive that token instead."""
-        "Lieutenant Lorrir":
-            text: """When performing a barrel roll action, you may receive 1 stress token to use the (%BANKLEFT% 1) or (%BANKRIGHT% 1) template instead of the (%STRAIGHT% 1) template."""
-        "Tetran Cowall":
-            text: """When you reveal a %UTURN% maneuver, you may treat the speed of that maneuver as "1," "3," or "5"."""
-        "Kir Kanos":
-            text: """When attacking at Range 2-3, you may spend 1 evade token to add 1 %HIT% result to your roll."""
-        "Carnor Jax":
-            text: """Enemy ships at Range 1 cannot perform focus or evade actions and cannot spend focus or evade tokens."""
-        "Lieutenant Blount":
-            text: """When attacking, the defender is hit by your attack, even if he does not suffer any damage."""
-        "Airen Cracken":
-            text: """After you perform an attack, you may choose another friendly ship at Range 1.  That ship may perform 1 free action."""
-        "Colonel Vessery":
-            text: """When attacking, immediately after you roll attack dice, you may acquire a target lock on the defender if it already has a red target lock token."""
-        "Rexler Brath":
-            text: """After you perform an attack that deals at least 1 Damage card to the defender, you may spend a focus token to flip those cards faceup."""
-        "Etahn A'baht":
-            text: """When an enemy ship inside your firing arc at Range 1-3 is defending, the attacker may change 1 of its %HIT% results to a %CRIT% result."""
-        "Corran Horn":
-            text: """At the start of the End phase, you may perform one attack.  You cannot attack during the next round."""
-        '"Echo"':
-            text: """When you decloak, you must use the (%BANKLEFT% 2) or (%BANKRIGHT% 2) template instead of the (%STRAIGHT% 2) template."""
-        '"Whisper"':
-            text: """After you perform an attack that hits, you may assign 1 focus to your ship."""
-        "Wes Janson":
-            text: """After you perform an attack, you may remove 1 focus, evade, or blue target lock token from the defender."""
-        "Jek Porkins":
-            text: """When you receive a stress token, you may remove it and roll 1 attack die.  On a %HIT% result, deal 1 facedown Damage card to this ship."""
-        '"Hobbie" Klivian':
-            text: """When you acquire or spend a target lock, you may remove 1 stress token from your ship."""
-        "Tarn Mison":
-            text: """When an enemy ship declares you as the target of an attack, you may acquire a target lock on that ship."""
-        "Jake Farrell":
-            text: """After you perform a focus action or are assigned a focus token, you may perform a free boost or barrel roll action."""
-        "Gemmer Sojan":
-            text: """While you are at Range 1 of at least 1 enemy ship, increase your agility value by 1."""
-        "Keyan Farlander":
-            text: """When attacking, you may remove 1 stress token to change all of your %FOCUS% results to %HIT%results."""
-        "Nera Dantels":
-            text: """You can perform %TORPEDO% secondary weapon attacks against enemy ships outside your firing arc."""
-        "CR90 Corvette (Fore)":
-            text: """When attacking with your primary weapon, you may spend 1 energy to roll 1 additional attack die."""
-        # "CR90 Corvette (Crippled Aft)":
-        #     text: """You cannot choose or execute (%STRAIGHT% 4), (%BANKLEFT% 2), or (%BANKRIGHT% 2) maneuvers."""
-        "Dash Rendar":
-            text: """You may ignore obstacles during the Activation phase and when performing actions."""
-        '"Leebo"':
-            text: """When you are dealt a faceup Damage card, draw 1 additional Damage card, choose 1 to resolve, and discard the other."""
-        "Eaden Vrill":
-            text: """When performing a primary weapon attack against a stressed ship, roll 1 additional attack die."""
-        "Rear Admiral Chiraneau":
-            text: """When attacking at Range 1-2, you may change 1 of your %FOCUS% results to a %CRIT% result."""
-        "Commander Kenkirk":
-            text: """If you have no shields and at least 1 Damage card assigned to you, increase your agility value by 1."""
-        "Captain Oicunn":
-            text: """After executing a maneuver, each enemy ship you are touching suffers 1 damage."""
-        "Prince Xizor":
-            text: """When defending, a friendly ship at Range 1 may suffer 1 uncanceled %HIT% or %CRIT% result instead of you."""
-        "Guri":
-            text: """At the start of the Combat phase, if you are at Range 1 of an enemy ship, you may assign 1 focus token to your ship."""
-        "Serissu":
-            text: """When another friendly ship at Range 1 is defending, it may reroll 1 defense die."""
-        "Laetin A'shera":
-            text: """After you defend against an attack, if the attack did not hit, you may assign 1 evade token to your ship."""
-        "IG-88A":
-            text: """After you perform an attack that destroys the defender, you may recover 1 shield."""
-        "IG-88B":
-            text: """Once per round, after you perform an attack that does not hit, you may perform an attack with an equipped %CANNON% secondary weapon."""
-        "IG-88C":
-            text: """After you perform a boost action, you may perform a free evade action."""
-        "IG-88D":
-            text: """You may execute the (%SLOOPLEFT% 3) or (%SLOOPRIGHT% 3) maneuver using the corresponding (%TURNLEFT% 3) or (%TURNRIGHT% 3) template."""
-        "Boba Fett (Scum)":
-            text: """When attacking or defending, you may reroll 1 of your dice for each enemy ship at Range 1."""
-        "Kath Scarlet (Scum)":
-            text: """When attacking a ship inside your auxiliary firing arc, roll 1 additional attack die."""
-        "Emon Azzameen":
-            text: """When dropping a bomb, you may use the (%TURNLEFT% 3), (%STRAIGHT% 3), or (%TURNRIGHT% 3) template instead of the (%STRAIGHT% 1) template."""
-        "Kavil":
-            text: """When attacking a ship outside your firing arc, roll 1 additional attack die."""
-        "Drea Renthal":
-            text: """After you spend a target lock, you may receive 1 stress token to acquire a target lock."""
-        "Dace Bonearm":
-            text: """When an enemy ship at Range 1-3 receives at least 1 ion token, if you are not stressed, you may receive 1 stress token to cause that ship to suffer 1 damage."""
-        "Palob Godalhi":
-            text: """At the start of the Combat phase, you may remove 1 focus or evade token from an enemy ship at Range 1-2 and assign it to yourself."""
-        "Torkil Mux":
-            text: """At the end of the Activation phase, choose 1 enemy ship at Range 1-2. Until the end of the Combat phase, treat that ship's pilot skill value as "0"."""
-        "N'Dru Suhlak":
-            text: """When attacking, if there are no other friendly ships at Range 1-2, roll 1 additional attack die."""
-        "Kaa'to Leeachos":
-            text: """At the start of the Combat phase, you may remove 1 focus or evade token from another friendly ship at Range 1-2 and assign it to yourself."""
-        "Commander Alozen":
-            text: """At the start of the Combat phase, you may acquire a target lock on an enemy ship at Range 1."""
-        "Raider-class Corvette (Fore)":
-            text: """Once per round, after you perform a primary weapon attack, you may spend 2 energy to perform another primary weapon attack."""
-        "Bossk":
-            text: """When you perform an attack that hits, before dealing damage, you may cancel 1 of your %CRIT% results to add 2 %HIT% results."""
-        "Talonbane Cobra":
-            text: """When attacking or defending, double the effect of your range combat bonuses."""
-        "Miranda Doni":
-            text: """Once per round when attacking, you may either spend 1 shield to roll 1 additional attack die <strong>or</strong> roll 1 fewer attack die to recover 1 shield."""
-        '"Redline"':
-            text: """You may maintain 2 target locks on the same ship.  When you acquire a target lock, you may acquire a second lock on that ship."""
-        '"Deathrain"':
-            text: """When dropping a bomb, you may use the front guides of your ship.  After dropping a bomb, you may perform a free barrel roll action."""
-        "Juno Eclipse":
-            text: """When you reveal your maneuver, you may increase or decrease its speed by 1 (to a minimum of 1)."""
-        "Zertik Strom":
-            text: """Enemy ships at Range 1 cannot add their range combat bonus when attacking."""
-        "Lieutenant Colzet":
-            text: """At the start of the End phase, you may spend a target lock you have on an enemy ship to flip 1 random facedown Damage card assigned to it faceup."""
-        "Latts Razzi":
-            text: """When a friendly ship declares an attack, you may spend a target lock you have on the defender to reduce its agility by 1 for that attack."""
-        "Graz the Hunter":
-            text: """When defending, if the attacker is inside your firing arc, roll 1 additional defense die."""
-        "Esege Tuketu":
-            text: """When another friendly ship at Range 1-2 is attacking, it may treat your focus tokens as its own."""
-        "Moralo Eval":
-            text: """You can perform %CANNON% secondary attacks against ships inside your auxiliary firing arc."""
-        'Gozanti-class Cruiser':
-            text: """After you execute a maneuver, you may deploy up to 2 attached ships."""
-        '"Scourge"':
-            text: """When attacking a defender that has 1 or more Damage cards, roll 1 additional attack die."""
-        "The Inquisitor":
-            text: """When attacking with your primary weapon at Range 2-3, treat the range of the attack as Range 1."""
-        "Zuckuss":
-            text: """When attacking, you may roll 1 additional attack die.  If you do, the defender rolls 1 additional defense die."""
-        "Dengar":
-            text: """Once per round after defending, if the attacker is inside your firing arc, you may perform an attack against that ship."""
-        # T-70
-        "Poe Dameron":
-            text: """When attacking or defending, if you have a focus token, you may change 1 of your %FOCUS% results to a %HIT% or %EVADE% result."""
-        '"Blue Ace"':
-            text: """When performing a boost action, you may use the (%TURNLEFT% 1) or (%TURNRIGHT% 1) template."""
-        # TIE/fo
-        '"Omega Ace"':
-            text: """When attacking, you may spend a focus token and a target lock you have on the defender to change all of your results to %CRIT% results."""
-        '"Epsilon Leader"':
-            text: """At the start of the Combat phase, remove 1 stress token from each friendly ship at Range 1."""
-        '"Zeta Ace"':
-            text: """When performing a barrel roll you may use the (%STRAIGHT% 2) template instead of the (%STRAIGHT% 1) template."""
-        '"Red Ace"':
-            text: '''The first time you remove a shield token from your ship each round, assign 1 evade token to your ship.'''
-        '"Omega Leader"':
-            text: '''Enemy ships that you have locked cannot modify any dice when attacking you or defending against your attacks.'''
-        'Hera Syndulla':
-            text: '''When you reveal a green or red maneuver, you may rotate your dial to another maneuver of the same difficulty.'''
-        '"Youngster"':
-            text: """Friendly TIE fighters at Range 1-3 may perform the action on your equipped %ELITE% Upgrade card."""
-        '"Wampa"':
-            text: """When attacking, you may cancel all die results.  If you cancel a %CRIT% result, deal 1 facedown Damage card to the defender."""
-        '"Chaser"':
-            text: """When another friendly ship at Range 1 spends a focus token, assign a focus token to your ship."""
-        'Ezra Bridger':
-            text: """When defending, if you are stressed, you may change up to 2 of your %FOCUS% results to %EVADE% results."""
-        '"Zeta Leader"':
-            text: '''When attacking, if you are not stressed, you may receive 1 stress token to roll 1 additional die.'''
-        '"Epsilon Ace"':
-            text: '''While you do not have any Damage cards, treat your pilot skill value as "12."'''
-        "Kanan Jarrus":
-            text: """When an enemy ship at Range 1-2 is attacking, you may spend a focus token.  If you do, the attacker rolls 1 fewer attack die."""
-        '"Chopper"':
-            text: """At the start of the Combat phase, each enemy ship you are touching receives 1 stress token."""
-        'Hera Syndulla (Attack Shuttle)':
-            text: """When you reveal a green or red maneuver, you may rotate your dial to another maneuver of the same difficulty."""
-        'Sabine Wren':
-            text: """Immediately before you reveal your maneuver, you may perform a free boost or barrel roll action."""
-        '"Zeb" Orrelios':
-            text: '''When defending, you may cancel %CRIT% results before %HIT% results.'''
-        'Tomax Bren':
-            text: '''Once per round, after you discard an %ELITE% Upgrade card, flip that card faceup.'''
-        'Ello Asty':
-            text: '''While you are not stressed, you may treat your %TROLLLEFT% and %TROLLRIGHT% maneuvers as white maneuvers.'''
-        "Valen Rudor":
-            text: """After defending, you may perform a free action."""
         "4-LOM":
-            text: """At the start of the End phase, you may assign 1 of your stress tokens to another ship at Range 1."""
-        "Tel Trevura":
-            text: """The first time you would be destroyed, instead cancel any remaining damage, discard all Damage cards, and deal 4 facedown Damage cards to this ship."""
-        "Manaroo":
-            text: """At the start of the Combat phase, you may assign all focus, evade, and target lock tokens assigned to you to another friendly ship at Range 1."""
-        '"Deathfire"':
-            text: '''When you reveal your maneuver dial or after you perform an action, you may perform a %BOMB% Upgrade card action as a free action.'''
-        "Maarek Stele (TIE Defender)":
-            text: """When your attack deals a faceup Damage card to the defender, instead draw 3 Damage cards, choose 1 to deal, and discard the others."""
+           text: """After you fully execute a red maneuver, gain 1 calculate token. At the start of the End Phase, you may choose 1 ship at range 0-1. If you do, transfer 1 of your stress tokens to that ship."""
+        "Academy Pilot":
+           text: """The Galactic Empire uses the fast and agile TIE/ln, developed by Sienar Fleet Systems and produced in staggering quantity, as its primary starfighter."""
+        "Airen Cracken":
+           text: """After you perform an attack, you may choose 1 friendly ship at range 1. That ship may perform an action, treating it as red."""
+        "Alpha Squadron Pilot":
+           text: """Sienar Fleet Systems designed the TIE interceptor with four wing-mounted laser cannons, a dramatic increase in firepower over its predecessors."""
+        "AP-5":
+           text: """While you coordinate, if you chose a ship with exactly 1 stress token, it can perform actions."""
+        "Arvel Crynyd":
+           text: """You can perform primary attacks at range 0. If you would fail a %BOOST% action by overlapping another ship, resolve it as though you were partially executing a maneuver instead."""
+        "Asajj Ventress":
+           text: """At the start of the Engagement Phase, you may choose 1 enemy ship in your %SINGLETURRETARC% at range 0-2 and spend 1 %FORCE% token. If you do, that ship gains 1 stress token unless it removes 1 green token."""
+        "Autopilot Drone":
+           text: """Sometimes, manufacturer's warnings are made to be broken."""
+        "Bandit Squadron Pilot":
+           text: """The Z-95 Headhunter was the primary inspiration for Incom Corporation's exemplary T-65 X-wing starfighter. Though it is considered outdated by modern standards, it remains a versatile and potent snub fighter."""
+        "Baron of the Empire":
+           text: """Sienar Fleet System's TIE Advanced v1 is a groundbreaking starfighter design, featuring upgraded engines, a missile launcher, and folding s-foils."""
+        "Benthic Two-Tubes":
+           text: """After you perform a %FOCUS% action, you may transfer 1 of your focus tokens to a friendly ship at range 1-2."""
+        "Biggs Darklighter":
+           text: """While another friendly ship at range 0-1 defends, before the Neutralize Results step, if you are in the attack arc, you may suffer 1 %HIT% or %CRIT% damage to cancel 1 matching result."""
+        "Binayre Pirate":
+           text: """Operating from the Double Worlds, Talus and Tralus, Kath Scarlet's gang of smugglers and pirates would never be described as reputable or dependable - even by other criminals."""
+        "Black Squadron Ace":
+           text: """The elite TIE/ln pilots of Black Squadron accompanied Darth Vader on a devastating strike against the Rebel forces at the Battle of Yavin."""
+        "Black Squadron Scout":
+           text: """These heavily armed atmospheric craft employ their specialized moveable wings to gain additional speed and maneuverability."""
+        "Black Sun Ace":
+           text: """The Kihraxz assault fighter was developed specifically for the Black Sun crime syndicate, whose highly paid ace pilots demanded a nimble, powerful ship to match their skills."""
+        "Black Sun Assassin":
+           text: """Although assassinations can be handled with a shot in the dark or a dire substance added to a drink, a flaming shuttle tumbling from the sky sends a special kind of message."""
+        "Black Sun Enforcer":
+           text: """Prince Xizor himself collaborated with MandalMotors to design the StarViper-class attack platform, one of the most formidable starfighters in the galaxy."""
+        "Black Sun Soldier":
+           text: """The vast and influential Black Sun crime syndicate can always find a use for talented pilots, provided they aren't particular about how they earn their credits."""
+        "Blade Squadron Veteran":
+           text: """A unique gyrostabilization system surrounds the B-wing's cockpit, ensuring that the pilot always remains stationary during flight."""
+        "Blue Squadron Escort":
+           text: """Designed by Incom Corporation, the T-65 X-wing quickly proved to be one of the most effective and versatile military vehicles in the galaxy and a boon to the Rebellion."""
+        "Blue Squadron Pilot":
+           text: """Due to its heavy weapons array and resilient shielding, the B-wing has solidified itself as the Rebel Alliance's most innovative assault fighter."""
+        "Blue Squadron Scout":
+           text: """Used for deploying troops under the cover of darkness or into the heat of battle, the UT-60D U-wing fulfills the Rebellion's need for a swift and hardy troop transport."""
+        "Boba Fett":
+           text: """While you defend or perform an attack, you may reroll 1 of your dice for each enemy ship at range 0-1."""
+        "Bodhi Rook":
+           text: """Friendly ships can acquire locks onto objects at range 0-3 of any friendly ship."""
+        "Bossk":
+           text: """While you perform a primary attack, after the Neutralize Results step, you may spend 1 %CRIT% result to add 2 %HIT% results."""
+        "Bounty Hunter":
+           text: """The Firespray-class patrol craft is infamous for its association with the deadly bounty hunters Jango Fett and Boba Fett, who packed their craft with countless deadly armaments."""
+        "Braylen Stramm":
+           text: """While you defend or perform an attack, if you are stressed, you may reroll up to 2 of your dice."""
+        "Captain Feroph":
+           text: """While you defend, if the attacker does not have any green tokens, you may change 1 of your %FOCUS%/blank results to an %EVADE% result."""
+        "Captain Jonus":
+           text: """While a friendly ship at range 0-1 performs a %TORPEDO% or %MISSILE% attack, that ship may reroll up to 2 attack dice."""
+        "Captain Jostero":
+           text: """After an enemy ship suffers damage, if it is not defending, you may perform a bonus attack against that ship."""
+        "Captain Kagi":
+           text: """At the start of the Engagement Phase, you may choose 1 or more friendly ships at range 0-3. If you do, transfer all enemy lock tokens from the chosen ships to you."""
+        "Captain Nym":
+           text: """Before a friendly bomb or mine would detonate, you may spend 1 %CHARGE% to prevent it from detonating. While you defend against an attack obstructed by a bomb or mine, roll 1 additional defense die."""
+        "Captain Oicunn":
+           text: """You can perform primary attacks at range 0."""
+        "Captain Rex":
+           text: """After you perform an attack, assign the Suppressive Fire condition to the defender."""
+        "Cartel Executioner":
+           text: """Many veteran pilots in the service of the Hutt kajidics and other criminal operations choose the M12-L Kimogila for its firepower and dreaded reputation alike."""
+        "Cartel Marauder":
+           text: """The versatile Kihraxz was modeled after Incom's popular X-wing starfighter, but an array of aftermarket modification kits ensure a wide variety of designs."""
+        "Cartel Spacer":
+           text: """MandalMotors' M3-A 'Scyk' Inteceptor is purchased in large quantities by the Hutt Cartel and the Car'das smugglers due to its low cost and customizability."""
+        "Cassian Andor":
+           text: """At the start of the Activation Phase, you may choose 1 friendly ship at range 1-3. If you do, that ship removes 1 stress token."""
+        "Cavern Angels Zealot":
+           text: """Unlike most Rebel cells, Saw Gerrera's partisans are willing to use extreme methods to undermine the Galactic Empire's objectives in brutal battles that raged from Geonosis to Jedha."""
+        "Chewbacca":
+           text: """Before you would be dealt a faceup damage card, you may spend 1 %CHARGE% to be dealt the card facedown instead."""
+        '"Chopper"':
+           text: """At the start of the Engagement Phase, each enemy ship at range 0 gains 2 jam tokens."""
+        "Colonel Jendon":
+           text: """At the start of the Activation Phase, you may spend 1 %CHARGE%. If you do, while friendly ships acquire lock this round, they must acquire locks beyond range 3 instead of at range 0-3."""
+        "Colonel Vessery":
+           text: """While you perform an attack against a locked ship, after you roll attack dice, you may acquire a lock on the defender."""
+        "Constable Zuvio":
+           text: """If you would drop a device, you may launch it using a [1 %STRAIGHT%] template instead."""
+        "Contracted Scout":
+           text: """Built for long-distance reconnaissance and plotting new hyperspace routes, the lightly armed JumpMaster 5000 is often extensively retrofitted with custom upgrades."""
+        "Corran Horn":
+           text: """At initiative 0, you may perform a bonus primary attack against an enemy ship in your %BULLSEYEARC%. If you do, at the start of the next Planning Phase, gain 1 disarm token."""
+        '"Countdown"':
+           text: """While you defend, after the Neutralize Results step, if you are not stressed, you may suffer 1 %HIT% damage and gain 1 stress token. If you do, cancel all dice results."""
         "Countess Ryad":
-            text: """When you reveal a %STRAIGHT% maneuver, you may treat it as a %KTURN% maneuver."""
-        "Poe Dameron (PS9)":
-            text: """When attacking or defending, if you have a focus token, you may change 1 of your %FOCUS% results to a %HIT% or %EVADE% result."""
-        "Rey":
-            text: """When attacking or defending, if the enemy ship is inside of your firing arc, you may reroll up to 2 of your blank results."""
-        'Han Solo (TFA)':
-            text: '''When you are placed during setup, you can be placed anywhere in the play area beyond Range 3 of enemy ships.'''
-        'Chewbacca (TFA)':
-            text: '''After another friendly ship at Range 1-3 is destroyed (but has not fled the battlefield), you may perform an attack.'''
-        'Norra Wexley':
-            text: '''When attacking or defending, you may spend a target lock you have on the enemy ship to add 1 %FOCUS% result to your roll.'''
-        'Shara Bey':
-            text: '''When another friendly ship at Range 1-2 is attacking, it may treat your blue target lock tokens as its own.'''
-        'Thane Kyrell':
-            text: '''After an enemy ship in your firing arc at Range 1-3 attacks another friendly ship, you may perform a free action.'''
-        'Braylen Stramm':
-            text: '''After you execute a maneuver, you may roll an attack die.  On a %HIT% or %CRIT% result, remove 1 stress token from your ship.'''
-        '"Quickdraw"':
-            text: '''Once per round, when you lose a shield token, you may perform a primary weapon attack.'''
-        '"Backdraft"':
-            text: '''When attacking a ship inside your auxiliary firing arc, you may add 1 %CRIT% result.'''
-        'Fenn Rau':
-            text: '''When attacking or defending, if the enemy ship is at Range 1, you may roll 1 additional die.'''
-        'Old Teroch':
-            text: '''At the start of the Combat phase, you may choose 1 enemy ship at Range 1.  If you are inside its firing arc, it discards all focus and evade tokens.'''
-        'Kad Solus':
-            text: '''After you execute a red maneuver, assign 2 focus tokens to your ship.'''
-        'Ketsu Onyo':
-            text: '''At the start of the Combat phase, you may choose a ship at Range 1.  If it is inside your primary <strong>and</strong> mobile firing arcs, assign 1 tractor beam token to it.'''
-        'Asajj Ventress':
-            text: '''At the start of the Combat phase, you may choose a ship at Range 1-2.  If it is inside your mobile firing arc, assign 1 stress token to it.'''
-        'Sabine Wren (Scum)':
-            text: '''When defending against an enemy ship inside your mobile firing arc at Range 1-2, you may add 1 %FOCUS% result to your roll.'''
-        # Wave X
-        'Sabine Wren (TIE Fighter)':
-            text: '''Immediately before you reveal your maneuver, you may perform a free boost or barrel roll action.'''
-        '"Zeb" Orrelios (TIE Fighter)':
-            text: '''When defending, you may cancel %CRIT% results before %HIT% results.'''
-        'Kylo Ren':
-            text: '''The first time you are hit by an attack each round, deal the "I'll Show You the Dark Side" Condition card to the attacker.'''
-        'Unkar Plutt':
-            text: '''At the end of the Activation phase, you <strong>must</strong> assign a tractor beam token to each ship you are touching.'''
-        'Cassian Andor':
-            text: '''At the start of the Activation phase, you may remove 1 stress token from 1 other friendly ship at Range 1-2.'''
-        'Bodhi Rook':
-            text: '''When a friendly ship acquires a target lock, that ship can lock onto an enemy ship at Range 1-3 of any friendly ship.'''
-        'Heff Tobber':
-            text: '''After an enemy ship executes a maneuver that causes it to overlap your ship, you may perform a free action.'''
-        '''"Duchess"''':
-            text: '''While you have the "Adaptive Ailerons" Upgrade card equipped, you may choose to ignore its card ability.'''
-        '''"Pure Sabacc"''':
-            text: '''When attacking, if you have 1 or fewer Damage cards, roll 1 additional attack die.'''
-        '''"Countdown"''':
-            text: '''When defending, if you are not stressed, during the "Compare Results" step, you may suffer 1 damage to cancel all dice results.  If you do, receive 1 stress token.'''
-        'Nien Nunb':
-            text: '''When you receive a stress token, if there is an enemy ship inside your firing arc at Range 1, you may discard that stress token.'''
-        '"Snap" Wexley':
-            text: '''After you execute a 2-, 3-, or 4-speed maneuver, if you are not touching a ship, you may perform a free boost action.'''
-        'Jess Pava':
-            text: '''When attacking or defending, you may reroll 1 of your dice for each other friendly ship at Range 1.'''
-        'Ahsoka Tano':
-            text: '''At the start of the Combat phase, you may spend 1 focus token to choose a friendly ship at Range 1.  It may perform 1 free action.'''
-        'Captain Rex':
-            text: '''After you perform an attack, assign the "Suppressive Fire" Condition card to the defender.'''
-        'Major Stridan':
-            text: '''For the purpose of your actions and Upgrade cards, you may treat friendly ships at Range 2-3 as being at Range 1.'''
-        'Lieutenant Dormitz':
-            text: '''During setup, friendly ships may placed anywhere in the play area at Range 1-2 of you.'''
-        'Constable Zuvio':
-            text: '''When you reveal a reverse maneuver, you may drop a bomb using your front guides (including a bomb with the "<strong>Action:</strong>" header).'''
-        'Sarco Plank':
-            text: '''When defending, instead of using your agility value, you may roll a number of defense dice equal to the speed of the maneuver you executed this round.'''
-        'Genesis Red':
-            text: '''After you acquire a target lock, assign focus and evade tokens to your ship until you have the same number of each token as the locked ship.'''
-        'Quinn Jast':
-            text: '''At the start of the Combat phase, you may receive a weapons disabled token to flip one of your discarded %TORPEDO% or %MISSILE% Upgrade cards faceup.'''
-        'Inaldra':
-            text: '''When attacking or defending, you may spend 1 shield to reroll any number of your dice.'''
-        'Sunny Bounder':
-            text: '''Once per round, after you roll or reroll dice, if you have the same result on each of your dice, add 1 matching result.'''
-        'Lieutenant Kestal':
-            text: '''When attacking, you may spend 1 focus token to cancel all of the defender's blank and %FOCUS% results.'''
+           text: """While you would execute a %STRAIGHT% maneuver, you may increase the difficulty of the maneuver. If you do, execute it as a %KTURN% maneuver instead."""
+        "Crymorah Goon":
+           text: """Though far from nimble, the Y-wing's heavy hull, substantial shielding, and turret-mounted cannons make it an excellent patrol craft."""
+        "Cutlass Squadron Pilot":
+           text: """The TIE punisher's design builds upon the success of the TIE bomber, adding shielding, a second bomb chute, and three additional ordnance pods, each equipped with a twin ion engine."""
+        "Dace Bonearm":
+           text: """After an enemy ship at range 0-3 receives at least 1 ion token, you may spend 3 %CHARGE%. If you do, that ship gains 2 additional ion tokens."""
+        "Dalan Oberos (Kimogila)":
+           text: """At the start of the Engagement Phase, you may choose 1 shielded ship in your %BULLSEYEARC% and spend 1 %CHARGE%. If you do, that ship loses 1 shield and you recover 1 shield."""
+        "Dalan Oberos (StarViper)":
+           text: """After you fully execute a maneuver, you ay gain 1 stress token to rotate your ship 90˚."""
+        "Darth Vader":
+           text: """After you perform an action, you may spend 1 %FORCE% to perform an action."""
+        "Dash Rendar":
+           text: """While you move, you ignore obstacles."""
+        '"Deathfire"':
+           text: """After you are destroyed, before you are removed, you may perform an attack and drop or launch 1 device."""
+        '"Deathrain"':
+           text: """After you drop or launch a device, you may perform an action."""
+        "Del Meeko":
+           text: """While a friendly ship at range 0-2 defends against a damaged attacker, the defender may reroll 1 defense die."""
+        "Delta Squadron Pilot":
+           text: """In addition to its missile launchers and six wingtip laser cannons, the formidable TIE defender is equipped with deflector shields and a hyperdrive."""
+        "Dengar":
+           text: """After you defend, if the attcker is in your %FRONTARC%, you may spend 1 %CHARGE% to perform a bonus attack against the attacker."""
         '"Double Edge"':
-            text: '''Once per round, after you perform a secondary weapon attack that does not hit, you may perform an attack with a different weapon.'''
-        'Viktor Hel':
-            text: '''After defending, if you did not roll exactly 2 defense dice, the attacker receives 1 stress token.'''
-        'Lowhhrick':
-            text: '''When another friendly ship at Range 1 is defending, you may spend 1 reinforce token. If you do, the defender adds 1 %EVADE% result.'''
-        'Wullffwarro':
-            text: '''When attacking, if you have no shields and at least 1 Damage card assigned to you, roll 1 additional attack die.'''
-        'Captain Nym (Scum)':
-            text: '''You may ignore friendly bombs. When a friendly ship is defending, if the attacker measures range through a friendly bomb token, the defender may add 1 %EVADE% result.'''
-        'Captain Nym (Rebel)':
-            text: '''Once per round, you may prevent a friendly bomb from detonating.'''
-        'Sol Sixxa':
-            text: '''When dropping a bomb, you may use the (%TURNLEFT% 1) or (%TURNRIGHT% 1) template instead of the (%STRAIGHT% 1) template.'''
-        'Dalan Oberos':
-            text: '''If you are not stressed, when you reveal a turn, bank, or Segnor's Loop maneuver, you may instead treat it as a red Tallon Roll maneuver of the same direction (left or right) using the template of the original revealed maneuver.'''
-        'Thweek':
-            text: '''During setup, before the "Place Forces" step, you may choose 1 enemy ship and assign the "Shadowed" or "Mimicked" Condition card to it.'''
-        'Captain Jostero':
-            text: '''Once per round, after an enemy ship that is not defending against an attack suffers damage or critical damage, you may perform an attack against that ship.'''
-        'Major Vynder':
-            text: '''When defending, if you have a weapons disabled token, roll 1 additional defense die.'''
-        'Lieutenant Karsabi':
-            text: '''When you receive a weapons disabled token, if you are not stressed, you may receive 1 stress token to remove it.'''
-        'Torani Kulda':
-            text: '''After you perform an attack, each enemy ship inside your bullseye firing arc at Range 1-3 must choose to suffer 1 damage or remove all of its focus and evade tokens.'''
-        'Dalan Oberos (Kimogila)':
-            text: '''At the start of the Combat phase, you may acquire a target lock on an enemy ship inside your bullseye firing arc at Range 1-3 .'''
-        'Fenn Rau (Sheathipede)':
-            text: '''When an enemy ship inside your firing arc at Range 1-3 becomes the active ship during the Combat phase, if you are not stressed, you may receive 1 stress token.  If you do, that ship cannot spend tokens to modify its dice when attacking this round.'''
-        'Ezra Bridger (Sheathipede)':
-            text: """When defending, if you are stressed, you may change up to 2 of your %FOCUS% results to %EVADE% results."""
-        '"Zeb" Orrelios (Sheathipede)':
-            text: '''When defending, you may cancel %CRIT% results before %HIT% results.'''
-        'AP-5':
-            text: '''When you perform the coordinate action, after you choose a friendly ship and before it performs a free action, you may receive 2 stress tokens to remove 1 stress token from it.'''
-        '"Crimson Leader"':
-            text: '''When attacking, if the defender is inside your firing arc, you may spend 1 %HIT% or %CRIT% result to assign the "Rattled" Condition to the defender.'''
-        '"Crimson Specialist"':
-            text: '''When placing a bomb token you dropped after revealing your maneuver dial, you may place the bomb token anywhere on the play area touching your ship.'''
-        '"Cobalt Leader"':
-            text: '''When attacking, if the defender is at range 1 of a bomb token, the defender rolls 1 fewer defense die, to a minimum of 0.'''
-        'Kylo Ren (TIE Silencer)':
-            text: '''The first time you are hit by an attack each round, deal the "I'll Show You the Dark Side" Condition card to the attacker.'''
-        'Test Pilot "Blackout"':
-            text: '''When attacking, if the attack is obstructed, the defender rolls 2 fewer defense dice (to a minimum of 0).'''
-        'Kullbee Sperado':
-            text: '''After you perform a boost or barrel roll action, you may flip your equipped "Servomotor S-foils" upgrade card.'''
-        'Major Vermeil':
-            text: '''When attacking, if the defender does not have a focus or evade token, you may change one of your blank or %FOCUS% results to a %HIT% result.'''
-        'Leevan Tenza':
-            text: '''After you perform a boost action, you may receive 1 stress token to receive 1 evade token.'''
-        'Saw Gerrera':
-            text: '''When a friendly ship at Range 1-2 attacks, if it is stressed or has at least 1 Damage card, it may reroll 1 attack die.'''
-        'Benthic Two-Tubes':
-            text: '''After you perform a focus action, you may remove 1 of your focus tokens to assign it to a friendly ship at Range 1-2.'''
-        'Captain Feroph':
-            text: '''When defending, if the attacker is jammed, add 1 %EVADE% result to your roll.'''
+           text: """After you perform a %TURRET% or %MISSILE% attack that misses, you may perform a bonus attack using a different weapon."""
+        "Drea Renthal":
+           text: """While a friendly non-limited ship performs an attack, if the defender is in your firing arc, the attacker may reroll 1 attack die."""
+        '"Duchess"':
+           text: """You may choose not to use your Adaptive Ailerons. You may use your Adaptive Ailerons even while stressed."""
+        '"Dutch" Vander':
+           text: """After you perform the %LOCK% action, you may choose 1 friendly ship at range 1-3. That ship may acquire a lock on the object you locked, ignoring range restrictions."""
+        '"Echo"':
+           text: """While you decloak, you must use the (2 %LBANK%) or (2 %RBANK%) template instead of the (2 %STRAIGHT%) template."""
+        "Edrio Two-Tubes":
+           text: """Before you activate, if you are focused, you may perform an action."""
+        "Emon Azzameen":
+           text: """If you would drop a device using a [1 %STRAIGHT%] template, you may use the [3 %LTURN%], [3 %STRAIGHT%], or [3 %RTURN%] template instead."""
+        "Esege Tuketu":
+           text: """While a friendly ship at range 0-2 defends or performs an attack, it may spend your focus tokens as if that ship has them."""
+        "Evaan Verlaine":
+           text: """At the start of the Engagement Phase, you may spend 1 focus token to choose a friendly ship at range 0-1. If you do, that ship rolls 1 additional defense die while defending until the end of the round."""
+        "Ezra Bridger (Attack Shuttle)":
+           text: """While you defend or perform an attack, if you are stressed, you may spend 1 %FORCE% to change up to 2 of your %FOCUS% results to %EVADE% or %HIT% results."""
+        "Ezra Bridger (Sheathipede)":
+           text: """While you defend or perform an attack, if you are stressed, you may spend 1 %FORCE% to change up to 2 of your %FOCUS% results to %EVADE%/%HIT% results."""
+        "Ezra Bridger (TIE Fighter)":
+           text: """While you defend or perform an attack, if you are stressed, you may spend 1 %FORCE% to change up to 2 of your %FOCUS% results to %EVADE% or %HIT% results."""
+        "Fenn Rau (Fang Fighter)":
+           text: """While you defend or perform an attack, if the attack range is 1, you may roll 1 additional die."""
+        "Fenn Rau (Sheathipede)":
+           text: """After an enemy ship in your firing arc engages, if you are not stressed, you may gain 1 stress token. If you do, that ship cannot spend tokens to modify dice while it performs an attack during this phase."""
+        "Freighter Captain":
+           text: """ """
+        "Gamma Squadron Ace":
+           text: """Though it sacrifices a degree of speed and maneuverability compared to a TIE/ln, the TIE bomber's increased payload can carry enough firepower to destroy virtually any enemy target."""
+        "Gand Findsman":
+           text: """The legendary Findsmen of Gand worship enshrouding mists of their home planet, using signs, augurs, and mystical rituals to track their quarry."""
+        "Garven Dreis (ARC-170)":
+           text: """After you spend a focus token, you may choose 1 friendly ship at range 1-3. That ship gains 1 focus token."""
+        "Garven Dreis (X-Wing)":
+           text: """After you spend a focus token, you may choose 1 friendly ship at range 1-3. That ship gains 1 focus token."""
+        "Gavin Darklighter":
+           text: """While a friendly ship performs an attack, if the defender is in your %FRONTARC%, the attacker may change 1 %HIT% result to a %CRIT% result."""
+        "Genesis Red":
+           text: """After you acquire a lock, you must remove all of your focus and evade tokens. Then gain the same number of focus and evade tokens that the locked ship has."""
+        "Gideon Hask":
+           text: """While you perform an attack against a damaged defender, roll 1 additional attack die."""
+        "Gold Squadron Veteran":
+           text: """Commanded by Jon \"Dutch\" Vander, Gold Squadron played an instrumental role in the Battles of Scarif and Yavin."""
+        "Grand Inquisitor":
+           text: """While you defend at attack range 1, you may spend 1 %FORCE% to prevent the range 1 bonus. While you perform an attack against a defender at attack range 2-3, you may spend 1 %FORCE% to apply the range 1 bonus."""
+        "Gray Squadron Bomber":
+           text: """Long after the Y-wing was phased out by the Galactic Empire, its durability, dependability, and heavy armament help it remain a staple in the Rebel fleet."""
+        "Graz":
+           text: """While you defend, if you are behind the attacker, roll 1 additional defense die. While you perform an attack, if you are behind the defender roll 1 additional attack die."""
+        "Green Squadron Pilot":
+           text: """Due to its sensitive controls and high maneuverability, only the most talented pilots belong in an A-wing cockpit."""
+        "Guri":
+           text: """At the start of the Engagement Phase, if there is at least 1 enemy ship at range 0-1, you may gain 1 focus token."""
+        "Han Solo (Scum)":
+           text: """Whlie you defend or perform a primary attack, if the attack is obstructed by an obstacle, you may roll 1 additional die."""
+        "Han Solo (Rebel)":
+           text: """After you roll dice, if you are at range 0-1 of an obstacle, you may reroll all of your dice. This does not count as rerolling for the purpose of other effects."""
+        "Heff Tobber":
+           text: """After an enemy ship executes a maneuver, if it is at range 0, you may perform an action."""
+        "Hera Syndulla (Attack Shuttle)":
+           text: """After you reveal a red or blue maneuver, you may set your dial to another maneuver of the same difficulty."""
+        "Hera Syndulla (VCX-100)":
+           text: """After you reveal a red or blue maneuver, you may set your dial to another maneuver of the same difficulty."""
+        "Hired Gun":
+           text: """Just the mention of Imperial credits can bring a host of less-than-trustworthy individuals to your side."""
+        "Horton Salm":
+           text: """While you perform an attack, you may reroll 1 attack die for each other friendly ship at range 0-1 of the defender."""
+        '"Howlrunner"':
+           text: """While a friendly ship at range 0-1 performs a primary attack, that ship may reroll 1 attack die."""
+        "Ibtisam":
+           text: """After you fully execute a maneuver, if you are stressed, you may roll 1 attack die. On a %HIT% or %CRIT% result, remove 1 stress token."""
+        "Iden Versio":
+           text: """Before a friendly TIE/ln fighter at range 0-1 would suffer 1 or more damage, you may spend 1 %CHARGE%. If you do, prevent that damage."""
+        "IG-88A":
+           text: """At the start of the Engagement Phase, you may choose 1 friendly ship with %CALCULATE% on its action bar at range 1-3. If you do, transfer 1 of your calculate tokens to it."""
+        "IG-88B":
+           text: """After you perform an attack that misses, you may perform a bonus %CANNON% attack."""
+        "IG-88C":
+           text: """After you perform a %BOOST% action, you may perform an %EVADE% action."""
+        "IG-88D":
+           text: """While you execute a Segnor's Loop (%LSLOOP% or %RSLOOP%) maneuver, you may use another template of the same speed instead: either the turn (%LTURN% or %RTURN%) of the same direction or the straight (%STRAIGHT%) template."""
+        "Imdaar Test Pilot":
+           text: """The primary result of a hidden research facility on Imdaar Alpha, the TIE phantom achieves what many thought was impossible: a small starfighter equipped with an advanced cloaking device."""
+        "Inaldra":
+           text: """While you defend or perform an attack, you may suffer 1 %HIT% damage to reroll any number of your dice."""
+        "Inquisitor":
+           text: """The fearsome Inquisitors are given a great deal of autonomy and access to the Empire's latest technology, like the prototype TIE Advanced v1."""
+        "Jake Farrell":
+           text: """After you perform a %BARRELROLL% or %BOOST% action, you may choose a friendly ship at range 0-1. That ship may perform a %FOCUS% action."""
+        "Jakku Gunrunner":
+           text: """The Quadrijet transfer spacetug, commonly called a \"Quadjumper\" is nimble in space and atmosphere alike, making it popular among both smugglers and explorers."""
+        "Jan Ors":
+           text: """While a friendly ship in your firing arc performs a primary attack, if you are not stressed, you may gain 1 stress token. If you do, that ship may roll 1 additional attack die."""
+        "Jek Porkins":
+           text: """After you receive a stress token, you may roll 1 attack die to remove it. On a %HIT% result, suffer 1 %HIT% damage."""
+        "Joy Rekkoff":
+           text: """While you perform an attack, you may spend 1 %CHARGE% from an equipped %TORPEDO% upgrade. If you do, the defender rolls 1 fewer defense die."""
+        "Kaa'to Leeachos":
+           text: """At the start of the Engagement Phase, you may choose 1 friendly ship at range 0-2. If you do, transfer 1 focus or evade token from that ship to yourself."""
+        "Kad Solus":
+           text: """After you fully execute a red maneuver, gain 2 focus tokens."""
+        "Kanan Jarrus":
+           text: """While a friendly ship in your firing arc defends, you may spend 1 %FORCE%. If you do, the attacker rolls 1 fewer attack die."""
+        "Kashyyyk Defender":
+           text: """Equipped with three wide-range Sureggi twin laser cannons, the Auzituck gunship acts as a powerful deterrent to slaver operations in the Kashyyyk system."""
+        "Kath Scarlet":
+           text: """While you perform a primary attack, if there is at least 1 friendly non-limited ship at range 0 of the defender, roll 1 additional attack die."""
+        "Kavil":
+           text: """While you perform a non-%FRONTARC% attack, roll 1 additional attack die."""
+        "Ketsu Onyo":
+           text: """At the start of the Engagement Phase, you may choose 1 ship in both your %FRONTARC% and %SINGLETURRETARC% at range 0-1. If you do, that ship gains 1 tractor token."""
+        "Knave Squadron Escort":
+           text: """Designed to combine the best features of the X-wing series with the A-wing series, the E-wing boasts superior firepower, speed, and maneuverability."""
+        "Koshka Frost":
+           text: """While you defend or perform an attack, if the enemy ship is stressed, you may reroll 1 of your dice."""
+        "Krassis Trelix":
+           text: """You can perform %FRONTARC% special attacks from your %REARARC%. While you perform a special attack, you may reroll 1 attack die."""
+        "Kullbee Sperado":
+           text: """After you perform a %BARRELROLL% or %BOOST% action, you may flip your equipped %CONFIG% upgrade card."""
+        "Kyle Katarn":
+           text: """At the start of the Engagement Phase, you may transfer 1 of your focus tokens to a friendly ship in your firing arc."""
+        "L3-37 (Escape Craft)":
+           text: """If you are not shielded, decrease the difficulty of your bank (%LBANK% and %RBANK%) maneuvers."""
+        "L3-37 (YT-1300)":
+           text: """If you are not shielded, decrease the difficulty of your bank (%LBANK% and %RBANK%) maneuvers."""
+        "Laetin A'shera":
+           text: """After you defend or perform an attack, if the attack missed, gain 1 evade token."""
+        "Lando Calrissian (Scum) (Escape Craft)":
+           text: """??"""
+        "Lando Calrissian (Rebel)":
+           text: """After you fully execute a blue maneuver, you may choose a friendly ship at range 0-3. That ship may perform an action."""
+        "Lando Calrissian (Scum)":
+           text: """After you roll dice, if you are not stressed, you may gain 1 stress token to reroll all of your blank results."""
+        "Latts Razzi":
+           text: """At the start of the Engagement Phase, you may choose a ship at range 1 and spend a lock you have on that ship. If you do, that ship gains 1 tractor token."""
+        '"Leebo"':
+           text: """After you defend or perform an attack, if you spent a calculate token, gain 1 calculate token."""
+        "Leevan Tenza":
+           text: """After you perform a %BARRELROLL% or %BOOST% action, you may perform a red %EVADE% action."""
+        "Lieutenant Blount":
+           text: """While you perform a primary attack, if there is at least 1 other friendly ship at range 0-1 of the defender, you may roll 1 additional attack die."""
+        "Lieutenant Karsabi":
+           text: """After you gain a disarm token, if you are not stressed, you may gain 1 stress token to remove 1 disarm token."""
+        "Lieutenant Kestal":
+           text: """While you perform an attack, after the defender rolls defense dice, you may spend 1 focus token to cancel all of the defender's blank/%FOCUS% results."""
+        "Lieutenant Sai":
+           text: """After you a perform a %COORDINATE% action, if the ship you chose performed an action on your action bar, you may perform that action."""
+        "Lok Revenant":
+           text: """The Nubian Design Collective crafted the Scurrg H-6 Bomber with combat versatility in mind, arming it with powerful shields and a bristling array of destructive weaponry."""
+        "Lothal Rebel":
+           text: """Another successful Corellian Engineering Corporation freighter design, the VCX-100 is larger than the ubiquitous YT-series, boasting more living space and customizability."""
+        "Lowhhrick":
+           text: """After a friendly ship at range 0-1 becomes the defender, you may spend 1 reinforce token. If you do, that ship gains 1 evade token."""
+        "Luke Skywalker":
+           text: """After you become the defender (before dice are rolled), you may recover 1 %FORCE%."""
+        "Maarek Stele":
+           text: """While you perform an attack, if the defender would be dealt a faceup damage card, instead draw 3 damage cards, choose 1, and discard the rest."""
+        "Magva Yarro":
+           text: """While a friendly ship at range 0-2 defends, the attacker cannot reroll more than 1 attack die."""
+        "Major Rhymer":
+           text: """While you perform a %TORPEDO% or %MISSILE% attack, you may increase or decrease the range requirement by 1, to a limit of 0-3."""
+        "Major Vermeil":
+           text: """While you perform an attack, if the defender does not have any green tokens, you may change 1 of your %FOCUS%/blank results to a %HIT% result."""
+        "Major Vynder":
+           text: """While you defend, if you are disarmed, roll 1 additional defense die."""
+        "Manaroo":
+           text: """At the start of the Engagement Phase, you may choose a friendly ship at range 0-1. If you do, transfer all green tokens assigned to you to that ship."""
+        '"Mauler" Mithel':
+           text: """While you perform an attack at attack range 1, roll 1 additional attack die."""
+        "Miranda Doni":
+           text: """While you perform a primary attack, you may either spend 1 shield to roll 1 additional attack die or, if you are not shielded, you may roll 1 fewer attack die to recover 1 shield."""
+        "Moralo Eval":
+           text: """If you would flee, you may spend 1 %CHARGE%. If you do, place yourself in reserves instead. At the start of the next Planning Phase, place youself within range 1 of the edge of the play area that you fled from."""
+        "Nashtah Pup":
+           text: """You can deploy only via emergency deployment, and you have the name, initiative, pilot ability, and ship %CHARGE% of the friendly, destroyed Hound's Tooth."""
+        "N'dru Suhlak":
+           text: """While you perform a primary attack, if there are no other friendly ships at range 0-2, roll 1 additional attack die."""
+        '"Night Beast"':
+           text: """After you fully execute a blue maneuver, you may perform a %FOCUS% action."""
+        "Norra Wexley (ARC-170)":
+           text: """While you defend, if there is an enemy ship at range 0-1, you may add 1 %EVADE% result to your dice results."""
+        "Norra Wexley (Y-Wing)":
+           text: """While you defend, if there is an enemy ship at range 0-1, you may add 1 %EVADE% result to your dice results."""
+        "Nu Squadron Pilot":
+           text: """With a design inspired by other Cygnus Spaceworks vessels, the Alpha-class star wing is a versatile craft assigned to Imperial Navy specialist units that need a starfighter they can outfit for multiple roles."""
+        "Obsidian Squadron Pilot":
+           text: """The TIE fighter's Twin Ion Engine system was designed for speed, making the TIE/ln one of the most maneuverable starships ever mass-produced."""
+        "Old Teroch":
+           text: """At the start of the Engagement Phase, you may choose 1 enemy ship at range 1. If you do and you are in its %FRONTARC%, it removes all of its green tokens."""
+        "Omicron Group Pilot":
+           text: """Noted for its tri-wing design and advanced sensor suite, the Lambda-class shuttle serves a critical role as a light utility craft in the Imperial Navy."""
+        "Onyx Squadron Ace":
+           text: """The experimental TIE defender outclasses all other contemporary starfighters, though its size, speed, and array of weapons come at a tremendous cost in credits."""
+        "Onyx Squadron Scout":
+           text: """Designed for extended engagements, the TIE/ag is flown primarily by elite pilots trained to leverage both its unique weapons loadout and its maneuverability to full effect."""
+        "Outer Rim Pioneer":
+           text: """Friendly ships at range 0-1 can perform attacks at range 0 of obstacles."""
+        "Outer Rim Smuggler":
+           text: """Known for its durability and modular design, the YT-1300 is one of the most popular, widely used, and extensively customized freighters in the galaxy."""
+        "Palob Godalhi":
+           text: """At the start of the Engagement Phase, you may choose 1 enemy ship in your firing arc at range 0-2. If you do, transfer 1 focus or evade token from that ship to yourself."""
+        "Partisan Renegade":
+           text: """Saw Gerrera's partisans were first established to oppose Separatist forces on Onderon during the Clone Wars and continued to wage war against galactic tyranny as the Empire rose to power."""
+        "Patrol Leader":
+           text: """To be granted command of a VT-49 Decimator is seen as a significant promotion for a middling officer of the Imperial Navy."""
+        "Phoenix Squadron Pilot":
+           text: """Led by Commander Jun Sato, the brave but inexperienced pilots of Phoenix Squadron face staggering odds in their battle against the Galactic Empire."""
+        "Planetary Sentinel":
+           text: """To protect its many military installations, the Empire requires a swift and vigilant defense force."""
+        "Prince Xizor":
+           text: """While you defend, after the Neutralize Results step, another friendly ship at range 0-1 and in the attack arc may suffer 1 %HIT% or %CRIT% damage. If it does, cancel 1 matching result."""
+        '"Pure Sabacc"':
+           text: """While you perform an attack, if you have 1 or fewer damage cards, you may roll 1 additional attack die."""
+        "Quinn Jast":
+           text: """At the start of the Engagement Phase, you may gain 1 disarm token to recover 1 %CHARGE% on 1 of your equipped upgrades."""
+        "Rear Admiral Chiraneau":
+           text: """While you perform an attack, if you are reinforced and the defender is in the %FULLFRONTARC% or %FULLREARARC% matching your reinforce token, you may change 1 of your %FOCUS% results to a %CRIT% result."""
+        "Rebel Scout":
+           text: """Designed to look like a bird in flight by the Corellian Engineering Corporation, \"hawk\" series ships are exemplary transport craft. Swift and rugged, the HWK-290 is often employed by Rebel agents as a mobile base of operations."""
+        "Red Squadron Veteran":
+           text: """Created as an elite starfighter squad, Red Squadron includes some of the best pilots in the Rebel Alliance."""
+        '"Redline"':
+           text: """You can maintain up to 2 locks. After you perform an action, you may acquire a lock."""
+        "Rexler Brath":
+           text: """After you perform an attack that hits, if you are evading, expose 1 of the defender's damage cards."""
+        "Rho Squadron Pilot":
+           text: """The elite pilots of Rho Squadron instill terror in the Rebellion, using both the Xg-1 assault configuration and Os-1 arsenal loadout of the Alpha-class star wing to devastating effect."""
+        "Roark Garnet":
+           text: """At the start of the Engagement Phase, you may choose 1 ship in your firing arc. If you do, it engages at initiative 7 instead of its standard initiative value this phase."""
+        "Rogue Squadron Escort":
+           text: """The elite pilots of Rogue Squadron are among the Rebellion's very best."""
+        "Saber Squadron Ace":
+           text: """Led by Baron Soontir Fel, the pilots of Saber Squadron are among the Empire's best. Their TIE interceptors are marked with red stripes to designate pilots with at least ten confirmed kills."""
+        "Sabine Wren (Attack Shuttle)":
+           text: """Before you activate, you may perform a %BARRELROLL% or %BOOST% action."""
+        "Sabine Wren (Scum)":
+           text: """While you defend, if the attacker is in your %SINGLETURRETARC% at range 0-2, you may add 1 %FOCUS% result to your dice results."""
+        "Sabine Wren (TIE Fighter)":
+           text: """Before you activate, you may perform a %BARRELROLL% or %BOOST% action."""
+        "Sarco Plank":
+           text: """While you defend, you may treat your agility value as equal to the speed of the maneuver you executed this round."""
+        "Saw Gerrera":
+           text: """While a damaged friendly ship at range 0-3 performs an attack, it may reroll 1 attack die."""
+        "Scarif Base Pilot":
+           text: """The TIE reaper was designed to ferry elite troops to flashpoints on the battlefield, notably carrying Director Krennic's dreaded death troopers at the Battle of Scarif."""
+        "Scimitar Squadron Pilot":
+           text: """The TIE/sa is exceptionally nimble for a bomber, allowing it to pinpoint its target while avoiding excessive collateral damage to the surrounding area."""
+        '"Scourge" Skutu':
+           text: """While you perform an attack against a defender in your %BULLSEYEARC%, roll 1 additional attack die."""
+        "Serissu":
+           text: """While a friendly ship at range 0-1 defends, it may reroll 1 of its dice."""
+        "Seventh Sister":
+           text: """While you perform a primary attack, before the Neutralize Results step, you may spend 2 %FORCE% to cancel 1 %EVADE% result."""
+        "Seyn Marana":
+           text: """While you perform an attack, you may spend 1 %CRIT% result. If you do, deal 1 facedown damage card to the defender, then cancel you remaining results."""
+        "Shadowport Hunter":
+           text: """Crime syndicates augment the lethal skills of their loyal contractors with the best technology available, like the fast and formidable Lancer-class pursuit craft."""
+        "Shara Bey":
+           text: """While you defend or perform a primary attack, you may spend 1 lock you have on the enemy ship to add 1 %FOCUS% result to your dice results."""
+        "Sienar Specialist":
+           text: """During the development of the TIE aggressor, Sienar Fleet Systems valued performance and versatility over raw cost efficiency."""
+        '"Sigma Squadron Ace"':
+           text: """Featuring a hyperdrive and shields, the TIE phantom is also equipped with five laser cannons, giving it substantial firepower for an Imperial fighter."""
+        "Skull Squadron Pilot":
+           text: """The aces of Skull Squadron favor an aggressive approach, using their craft's pivot wing technology to achieve unmatched agility in the pursuit of their quarry."""
+        "Sol Sixxa":
+           text: """If you would drop a device using a [1 %STRAIGHT%] template, you may drop it using any other speed 1 template instead."""
+        "Soontir Fel":
+           text: """At the start of the Engagement Phase, if there is an enemy ship in your %BULLSEYEARC%, gain 1 focus token."""
+        "Spice Runner":
+           text: """Though its cargo space is limited compared to other light freighters, the small, swift HWK-290 is a favorite choice of smugglers who specialize in discreetly transporting precious goods."""
+        "Storm Squadron Ace":
+           text: """The TIE Advanced x1 was produced in limited quantities, but Sienar engineers incorporated many of its best qualities into their next TIE model, the TIE Interceptor."""
+        "Sunny Bounder":
+           text: """While you defend or perform an attack, after you roll or reroll your dice, if you have the same result on each of your dice, you may add 1 matching result."""
+        "Tala Squadron Pilot":
+           text: """The AF4 series is the latest in a long line of Headhunter designs. Cheap and relatively durable, it is a favorite among independent outfits like the Rebellion."""
+        "Talonbane Cobra":
+           text: """While you defend at attack range 3 or perform an attack at range 1, roll 1 additional die."""
+        "Tansarii Point Veteran":
+           text: """The defeat of Black Sun ace Talonbane Cobra by Car'das smugglers turned the tide of the Battle of Tansarii Point Station. Survivors of the clash are respected throughout the sector."""
+        "Tel Trevura":
+           text: """If you would be destroyed, you may spend 1 %CHARGE%. If you do, discard all of your damage cards, suffer 5 %HIT% damage, and place yourself in reserves instead. At the start of the next planning phase, place yourself within range 1 of your player edge."""
+        "Tempest Squadron Pilot":
+           text: """The TIE Advanced improved on the popular TIE/ln design by adding shielding, better weapons systems, curved solar panels, and a hyperdrive."""
+        "Ten Numb":
+           text: """While you defend or perform an attack, you may spend 1 stress token to change all of your %FOCUS% results to %EVADE% or %HIT% results."""
+        "Thane Kyrell":
+           text: """While you perform an attack, you may spend 1 %FOCUS%, %HIT%, or %CRIT% result to look at the defender's facedown damage cards, choose 1, and expose it."""
+        "Tomax Bren":
+           text: """After you perform a %RELOAD% action, you may revocer 1 %CHARGE% token on 1 of your equipped %TALENT% upgrade cards."""
+        "Torani Kulda":
+           text: """After you perform an attack, each enemy ship in your %BULLSEYEARC% suffers 1 %HIT% damage unless it removes 1 green token."""
+        "Torkil Mux":
+           text: """At the start of the Engagement Phase, you may choose 1 ship in your firing arc. If you do, that ship engages at initiative 0 instead of its normal initiative value this round."""
+        "Trandoshan Slaver":
+           text: """The spacious triple-decker design of the YV-666 makes it popular among bounty hunters and slavers, who often retrofit an entire deck for prisoner transport."""
+        "Turr Phennir":
+           text: """After you perform an attack, you may perform a %BARRELROLL% or %BOOST% action, even if you are stressed."""
+        "Unkar Plutt":
+           text: """At the start of the Engagement Phase, if there are one or more other ships at range 0, you and each other ship at range 0 gain 1 tractor token."""
+        "Valen Rudor":
+           text: """After a friendly ship at range 0-1 defends (after damage is resolved, if any), you may perform an action."""
+        "Ved Foslo":
+           text: """While you execute a maneuver, you may execute a maneuver of the same bearing and difficulty of a speed 1 higher or lower instead."""
+        "Viktor Hel":
+           text: """After you defend, if you did not roll exactly 2 defense dice, the attack gains 1 stress token."""
         '"Vizier"':
-            text: '''After a friendly ship executes a 1-speed maneuver, if it is at Range 1 and did not overlap a ship, you may assign 1 of your focus or evade tokens to it.'''
-        'Magva Yarro':
-            text: '''When another friendly ship at Range 1-2 is defending, the attacker cannot reroll more than 1 attack die.'''
-        'Edrio Two-Tubes':
-            text: '''When you become the active ship during the Activation phase, if you have 1 or more focus tokens, you may perform a free action.'''
+           text: """After you fully execute a speed 1 maneuver using your Adaptive Ailerons ship ability, you may perform a %COORDINATE% action. If you do, skip your Perform Action step."""
+        '"Wampa"':
+           text: """While you perform an attack, you may spend 1 %CHARGE% to roll 1 additional attack die. After defending, lose 1 %CHARGE%."""
+        "Warden Squadron Pilot":
+           text: """Koensayr Manufacturing's K-wing boasts an advanced SubLight Acceleration Motor and an unprecedented 18 hard points, granting it unrivaled speed and firepower."""
+        "Wedge Antilles":
+           text: """While you perform an attack, the defender rolls 1 fewer defense die."""
+        '"Whisper"':
+           text: """After you perform an attack that hits, gain 1 evade token."""
+        "Wild Space Fringer":
+           text: """Although stock YT-2400 light freighters have plenty of room for cargo, that space is often annexed to support modified weapon systems and oversized engines."""
+        "Wullffwarro":
+           text: """While you perform a primary attack, if you are damaged, you may roll 1 additional attack die."""
+        "Zealous Recruit":
+           text: """Mandalorian Fang Fighter pilots must master the Concordia Faceoff maneuver, leveraging their ships' narrow attack profile to execute deadly head-on charges."""
+        '"Zeb" Orrelios (Attack Shuttle)':
+           text: """While you defend, %CRIT% results are neutralized before %HIT% results."""
+        '"Zeb" Orrelios (Sheathipede)':
+           text: """While you defend, %CRIT% results are neutralized before %HIT% results."""
+        '"Zeb" Orrelios (TIE Fighter)':
+           text: """While you defend, %CRIT% results are neutralized before %HIT% results."""
+        "Zertik Strom":
+           text: """During the End Phase, you may spend a lock you have on an enemy ship to expose 1 of that ship's damage cards."""
+        "Zuckuss":
+           text: """While you perform a primary attack, you may roll 1 additional attack die. If you do, the defender rolls 1 additional defense die."""
 
     upgrade_translations =
-        "Ion Cannon Turret":
-            text: """<strong>Attack:</strong> Attack 1 ship (even a ship outside your firing arc).%LINEBREAK%If this attack hits the target ship, the ship suffers 1 damage and receives 1 ion token.  Then cancel all dice results."""
-        "Proton Torpedoes":
-            text: """<strong>Attack (target lock):</strong> Spend your target lock and discard this card to perform this attack.%LINEBREAK%You may change 1 of your %FOCUS% results to a %CRIT% result."""
-        "R2 Astromech":
-            text: """You may treat all 1- and 2-speed maneuvers as green maneuvers."""
-        "R2-D2":
-            text: """After executing a green maneuver, you may recover 1 shield (up to your shield value)."""
-        "R2-F2":
-            text: """<strong>Action:</strong> Increase your agility value by 1 until the end of this game round."""
-        "R5-D8":
-            text: """<strong>Action:</strong> Roll 1 defense die.%LINEBREAK%On a %EVADE% or %FOCUS% result, discard 1 of your facedown Damage cards."""
-        "R5-K6":
-            text: """After spending your target lock, roll 1 defense die.%LINEBREAK%On a %EVADE% result, immediately acquire a target lock on that same ship.  You cannot spend this target lock during this attack."""
-        "R5 Astromech":
-            text: """During the End phase, you may choose 1 of your faceup Damage cards with the Ship trait and flip it facedown."""
-        "Determination":
-            text: """When you are dealt a faceup Damage card with the Pilot trait, discard it immediately without resolving its effect."""
-        "Swarm Tactics":
-            text: """At the start of the Combat phase, you may choose 1 friendly ship at Range 1.%LINEBREAK%Until the end of this phase, treat the chosen ship as if its pilot skill were equal to your pilot skill."""
-        "Squad Leader":
-            text: """<strong>Action:</strong> Choose 1 ship at Range 1-2 that has a lower pilot skill than you.%LINEBREAK%The chosen ship may immediately perform 1 free action."""
-        "Expert Handling":
-            text: """<strong>Action:</strong> Perform a free barrel roll action.  If you do not have the %BARRELROLL% action icon, receive 1 stress token.%LINEBREAK%You may then remove 1 enemy target lock from your ship."""
-        "Marksmanship":
-            text: """<strong>Action:</strong> When attacking this round, you may change 1 of your %FOCUS% results to a %CRIT% result and all of your other %FOCUS% results to %HIT% results."""
-        "Concussion Missiles":
-            text: """<strong>Attack (target lock):</strong>  Spend your target lock and discard this card to perform this attack.%LINEBREAK%You may change 1 of your blank results to a %HIT% result."""
-        "Cluster Missiles":
-            text: """<strong>Attack (target lock):</strong> Spend your target lock and discard this card to perform this attack twice."""
-        "Daredevil":
-            text: """<strong>Action:</strong> Execute a white (%TURNLEFT% 1) or (%TURNRIGHT% 1) maneuver.  Then, receive 1 stress token.%LINEBREAK%Then, if you do not have the %BOOST% action icon, roll 2 attack dice.  Suffer any damage (%HIT%) and any critical damage (%CRIT%) rolled."""
-        "Elusiveness":
-            text: """When defending, you may receive 1 stress token to choose 1 attack die.  The attacker must reroll that die.%LINEBREAK%If you have at least 1 stress token, you cannot use this ability."""
-        "Homing Missiles":
-            text: """<strong>Attack (target lock):</strong> Discard this card to perform this attack.%LINEBREAK%The defender cannot spend evade tokens during this attack."""
-        "Push the Limit":
-            text: """Once per round, after you perform an action, you may perform 1 free action shown in your action bar.%LINEBREAK%Then receive 1 stress token."""
-        "Deadeye":
-            text: """%SMALLSHIPONLY%%LINEBREAK%You may treat the <strong>Attack (target lock):</strong> header as <strong>Attack (focus):</strong>.%LINEBREAK%When an attack instructs you to spend a target lock, you may spend a focus token instead."""
-        "Expose":
-            text: """<strong>Action:</strong> Until the end of the round, increase your primary weapon value by 1 and decrease your agility value by 1."""
-        "Gunner":
-            text: """After you perform an attack that does not hit, you may immediately perform a primary weapon attack.  You cannot perform another attack this round."""
-        "Ion Cannon":
-            text: """<strong>Attack:</strong> Attack 1 ship.%LINEBREAK%If this attack hits, the defender suffers 1 damage and receives 1 ion token.  Then cancel all dice results."""
-        "Heavy Laser Cannon":
-            text: """<strong>Attack:</strong> Attack 1 ship.%LINEBREAK%Immediately after rolling your attack dice, you must change all of your %CRIT% results to %HIT% results."""
-        "Seismic Charges":
-            text: """When you reveal your maneuver dial, you may discard this card to drop 1 seismic charge token.%LINEBREAK%This token detonates at the end of the Activation phase.%LINEBREAK%<strong>Seismic Charge Token:</strong> When this bomb token detonates, each ship at Range 1 of the token suffers 1 damage.  Then discard this token."""
-        "Mercenary Copilot":
-            text: """When attacking at Range 3, you may change 1 of your %HIT% results to a %CRIT% result."""
-        "Assault Missiles":
-            text: """<strong>Attack (target lock):</strong> Spend your target lock and discard this card to perform this attack.%LINEBREAK%If this attack hits, each other ship at Range 1 of the defender suffers 1 damage."""
-        "Veteran Instincts":
-            text: """Increase your pilot skill value by 2."""
-        "Proximity Mines":
-            text: """<strong>Action:</strong> Discard this card to <strong>drop</strong> 1 proximity mine token.%LINEBREAK%When a ship's base or maneuver template overlaps this token, this token <strong>detonates</strong>.%LINEBREAK%<strong>Proximity Mine Token:</strong> When this bomb token detonates, the ship that moved through or overlapped this token rolls 3 attack dice and suffers all damage (%HIT%) and critical damage (%CRIT%) rolled.  Then discard this token."""
-        "Weapons Engineer":
-            text: """You may maintain 2 target locks (only 1 per enemy ship).%LINEBREAK%When you acquire a target lock, you may lock onto 2 different ships."""
-        "Draw Their Fire":
-            text: """When a friendly ship at Range 1 is hit by an attack, you may suffer 1 of the uncanceled %CRIT% results instead of the target ship."""
-        "Luke Skywalker":
-            text: """%REBELONLY%%LINEBREAK%After you perform an attack that does not hit, you may immediately perform a primary weapon attack.  You may change 1 %FOCUS% result to a %HIT% result.  You cannot perform another attack this round."""
-        "Nien Nunb":
-            text: """%REBELONLY%%LINEBREAK%You may treat all %STRAIGHT% maneuvers as green maneuvers."""
-        "Chewbacca":
-            text: """%REBELONLY%%LINEBREAK%When you are dealt a Damage card, you may immediately discard that card and recover 1 shield.%LINEBREAK%Then, discard this Upgrade card."""
-        "Advanced Proton Torpedoes":
-            text: """<strong>Attack (target lock):</strong> Spend your target lock and discard this card to perform this attack.%LINEBREAK%You may change up to 3 of your blank results to %FOCUS% results."""
-        "Autoblaster":
-            text: """<strong>Attack:</strong> Attack 1 ship.%LINEBREAK%Your %HIT% results cannot be canceled by defense dice.%LINEBREAK%The defender may cancel %CRIT% results before %HIT% results."""
-        "Fire-Control System":
-            text: """After you perform an attack, you may acquire a target lock on the defender."""
-        "Blaster Turret":
-            text: """<strong>Attack (focus):</strong> Spend 1 focus token to perform this attack against 1 ship (even a ship outside your firing arc)."""
-        "Recon Specialist":
-            text: """When you perform a focus action, assign 1 additional focus token to your ship."""
-        "Saboteur":
-            text: """<strong>Action:</strong> Choose 1 enemy ship at Range 1 and roll 1 attack die.  On a %HIT% or %CRIT% result, choose 1 random facedown Damage card assigned to that ship, flip it faceup, and resolve it."""
-        "Intelligence Agent":
-            text: """At the start of the Activation phase, choose 1 enemy ship at Range 1-2.  You may look at that ship's chosen maneuver."""
-        "Proton Bombs":
-            text: """When you reveal your maneuver dial, you may discard this card to <strong>drop</strong> 1 proton bomb token.%LINEBREAK%This token <strong>detonates</strong> at the end of the Activation phase.%LINEBREAK%<strong>Proton Bomb Token:</strong> When this bomb token detonates, deal 1 <strong>faceup</strong> Damage card to each ship at Range 1 of the token.  Then discard this token."""
-        "Adrenaline Rush":
-            text: """When you reveal a red maneuver, you may discard this card to treat that maneuver as a white maneuver until the end of the Activation phase."""
-        "Advanced Sensors":
-            text: """Immediately before you reveal your maneuver, you may perform 1 free action.%LINEBREAK%If you use this ability, you must skip your "Perform Action" step during this round."""
-        "Sensor Jammer":
-            text: """When defending, you may change 1 of the attacker's %HIT% results into a %FOCUS% result.%LINEBREAK%The attacker cannot reroll the die with the changed result."""
-        "Darth Vader":
-            text: """%IMPERIALONLY%%LINEBREAK%After you perform an attack against an enemy ship, you may suffer 2 damage to cause that ship to suffer 1 critical damage."""
-        "Rebel Captive":
-            text: """%IMPERIALONLY%%LINEBREAK%Once per round, the first ship that declares you as the target of an attack immediately receives 1 stress token."""
-        "Flight Instructor":
-            text: """When defending, you may reroll 1 of your %FOCUS% results.  If the attacker's pilot skill value is "2" or lower, you may reroll 1 of your blank results instead."""
-        "Navigator":
-            text: """When you reveal a maneuver, you may rotate your dial to another maneuver with the same bearing.%LINEBREAK%You cannot rotate to a red maneuver if you have any stress tokens."""
-        "Opportunist":
-            text: """When attacking, if the defender does not have any focus or evade tokens, you may receive 1 stress token to roll 1 additional attack die.%LINEBREAK%You cannot use this ability if you have any stress tokens."""
-        "Comms Booster":
-            text: """<strong>Energy:</strong> Spend 1 energy to remove all stress tokens from a friendly ship at Range 1-3.  Then assign 1 focus token to that ship."""
-        "Slicer Tools":
-            text: """<strong>Action:</strong> Choose 1 or more ships at Range 1-3 that have a stress token.  For each ship chosen, you may spend 1 energy to cause that ship to suffer 1 damage."""
-        "Shield Projector":
-            text: """When an enemy ship is declaring either a small or large ship as the target of its attack, you may spend 3 energy to force that ship to target you if possible."""
-        "Ion Pulse Missiles":
-            text: """<strong>Attack (target lock):</strong> Discard this card to perform this attack.%LINEBREAK%If this attack hits, the defender suffers 1 damage and receives 2 ion tokens.  Then cancel <strong>all</strong> dice results."""
-        "Wingman":
-            text: """At the start of the Combat phase, remove 1 stress token from another friendly ship at Range 1."""
-        "Decoy":
-            text: """At the start of the Combat phase, you may choose 1 friendly ship at Range 1-2.  Exchange your pilot skill with that ship's pilot skill until the end of the phase."""
-        "Outmaneuver":
-            text: """When attacking a ship inside your firing arc, if you are not inside that ship's firing arc, reduce its agility value by 1 (to a minimum of 0)."""
-        "Predator":
-            text: """When attacking, you may reroll 1 attack die.  If the defender's pilot skill value is "2" or lower, you may instead reroll up to 2 attack dice."""
-        "Flechette Torpedoes":
-            text: """<strong>Attack (target lock):</strong> Discard this card and spend your target lock to perform this attack.%LINEBREAK%After you perform this attack, the defender receives 1 stress token if its hull value is "4" or lower."""
-        "R7 Astromech":
-            text: """Once per round when defending, if you have a target lock on the attacker, you may spend the target lock to choose any or all attack dice.  The attacker must reroll the chosen dice."""
-        "R7-T1":
-            text: """<strong>Action:</strong> Choose an enemy ship at Range 1-2.  If you are inside that ship's firing arc, you may acquire a target lock on that ship.  Then, you may perform a free boost action."""
-        "Tactician":
-            text: """After you perform an attack against a ship inside your firing arc at Range 2, that ship receives 1 stress token."""
-        "R2-D2 (Crew)":
-            text: """%REBELONLY%%LINEBREAK%At the end of the End phase, if you have no shields, you may recover 1 shield and roll 1 attack die.  On a %HIT% result, randomly flip 1 of your facedown Damage cards faceup and resolve it."""
-        "C-3PO":
-            text: """%REBELONLY%%LINEBREAK%Once per round, before you roll 1 or more defense dice, you may guess aloud a number of %EVADE% results.  If you roll that many %EVADE% results (before modifying dice), add 1 %EVADE% result."""
-        "Single Turbolasers":
-            text: """<strong>Attack (Energy):</strong> Spend 2 energy from this card to perform this attack.  The defender doubles his agility value against this attack.  You may change 1 of your %FOCUS% results to a %HIT% result."""
-        "Quad Laser Cannons":
-            text: """<strong>Attack (Energy):</strong> Spend 1 energy from this card to perform this attack.  If this attack does not hit, you may immediately spend 1 energy from this card to perform this attack again."""
-        "Tibanna Gas Supplies":
-            text: """<strong>Energy:</strong> You may discard this card to gain 3 energy."""
-        "Ionization Reactor":
-            text: """<strong>Energy:</strong> Spend 5 energy from this card and discard this card to cause each other ship at Range 1 to suffer 1 damage and receive 1 ion token."""
-        "Engine Booster":
-            text: """Immediately before you reveal your maneuver dial, you may spend 1 energy to execute a white (%STRAIGHT% 1) maneuver.  You cannot use this ability if you would overlap another ship."""
-        "R3-A2":
-            text: """When you declare the target of your attack, if the defender is inside your firing arc, you may receive 1 stress token to cause the defender to receive 1 stress token."""
-        "R2-D6":
-            text: """Your upgrade bar gains the %ELITE% upgrade icon.%LINEBREAK%You cannot equip this upgrade if you already have a %ELITE% upgrade icon or if your pilot skill value is "2" or lower."""
-        "Enhanced Scopes":
-            text: """During the Activation phase, treat your pilot skill value as "0"."""
-        "Chardaan Refit":
-            text: """<span class="card-restriction">A-Wing only.</span>%LINEBREAK%This card has a negative squad point cost."""
-        "Proton Rockets":
-            text: """<strong>Attack (Focus):</strong> Discard this card to perform this attack.%LINEBREAK%You may roll additional attack dice equal to your agility value, to a maximum of 3 additional dice."""
-        "Kyle Katarn":
-            text: """%REBELONLY%%LINEBREAK%After you remove a stress token from your ship, you may assign a focus token to your ship."""
-        "Jan Ors":
-            text: """%REBELONLY%%LINEBREAK%Once per round, when a friendly ship at Range 1-3 performs a focus action or would be assigned a focus token, you may assign it an evade token instead."""
-        "Toryn Farr":
-            text: """%HUGESHIPONLY% %REBELONLY%%LINEBREAK%<strong>Action:</strong> Spend any amount of energy to choose that many enemy ships at Range 1-2.  Remove all focus, evade, and blue target lock tokens from those ships."""
-        "R4-D6":
-            text: """When you are hit by an attack and there are at least 3 uncanceled %HIT% results, you may choose to cancel those results until there are 2 remaining.  For each result canceled this way, receive 1 stress token."""
-        "R5-P9":
-            text: """At the end of the Combat phase, you may spend 1 of your focus tokens to recover 1 shield (up to your shield value)."""
-        "WED-15 Repair Droid":
-            text: """%HUGESHIPONLY%%LINEBREAK%<strong>Action:</strong> Spend 1 energy to discard 1 of your facedown Damage cards, or spend 3 energy to discard 1 of your faceup Damage cards."""
-        "Carlist Rieekan":
-            text: """%HUGESHIPONLY% %REBELONLY%%LINEBREAK%At the start of the Activation phase, you may discard this card to treat each friendly ship's pilot skill value as "12" until the end of the phase."""
-        "Jan Dodonna":
-            text: """%HUGESHIPONLY% %REBELONLY%%LINEBREAK%When another friendly ship at Range 1 is attacking, it may change 1 of its %HIT% results to a %CRIT%."""
-        "Expanded Cargo Hold":
-            text: """<span class="card-restriction">GR-75 only.</span>%LINEBREAK%Once per round, when you would be dealt a faceup Damage card, you may draw that card from either the fore or aft Damage deck."""
-        "Backup Shield Generator":
-            text: """At the end of each round, you may spend 1 energy to recover 1 shield (up to your shield value)."""
-        "EM Emitter":
-            text: """When you obstruct an attack, the defender rolls 3 additional defense dice (instead of 1)."""
-        "Frequency Jammer":
-            text: """When you perform a jam action, choose 1 enemy ship that does not have a stress token and is at Range 1 of the jammed ship.  The chosen ship receives 1 stress token."""
-        "Han Solo":
-            text: """%REBELONLY%%LINEBREAK%When attacking, if you have a target lock on the defender, you may spend that target lock to change all of your %FOCUS% results to %HIT% results."""
-        "Leia Organa":
-            text: """%REBELONLY%%LINEBREAK%At the start of the Activation phase, you may discard this card to allow all friendly ships that reveal a red maneuver to treat that maneuver as a white maneuver until the end of the phase."""
-        "Targeting Coordinator":
-            text: """<strong>Energy:</strong> You may spend 1 energy to choose 1 friendly ship at Range 1-2.  Acquire a target lock, then assign the blue target lock token to the chosen ship."""
-        "Raymus Antilles":
-            text: """%HUGESHIPONLY% %REBELONLY%%LINEBREAK%At the start of the Activation phase, choose 1 enemy ship at Range 1-3.  You may look at that ship's chosen maneuver.  If the maneuver is white, assign that ship 1 stress token."""
-        "Gunnery Team":
-            text: """Once per round, when attacking with a secondary weapon, you may spend 1 energy to change 1 of your blank results to a %HIT% result."""
-        "Sensor Team":
-            text: """When acquiring a target lock, you may lock onto an enemy ship at Range 1-5 instead of 1-3."""
-        "Engineering Team":
-            text: """During the Activation phase, when you reveal a %STRAIGHT% maneuver, gain 1 additional energy during the "Gain Energy" step."""
-        "Lando Calrissian":
-            text: """%REBELONLY%%LINEBREAK%<strong>Action:</strong> Roll 2 defense dice.  For each %FOCUS% result, assign 1 focus token to your ship.  For each %EVADE% result, assign 1 evade token to your ship."""
-        "Mara Jade":
-            text: """%IMPERIALONLY%%LINEBREAK%At the end of the Combat phase, each enemy ship at Range 1 that does not have a stress token receives 1 stress token."""
-        "Fleet Officer":
-            text: """%IMPERIALONLY%%LINEBREAK%<strong>Action:</strong> Choose up to 2 friendly ships at Range 1-2 and assign 1 focus token to each of those ships.  Then receive 1 stress token."""
-        "Lone Wolf":
-            text: """When attacking or defending, if there are no other friendly ships at Range 1-2, you may reroll 1 of your blank results."""
-        "Stay On Target":
-            text: """When you reveal a maneuver, you may rotate your dial to another maneuver with the same speed.%LINEBREAK%Treat that maneuver as a red maneuver."""
-        "Dash Rendar":
-            text: """%REBELONLY%%LINEBREAK%You may perform attacks while overlapping an obstacle.%LINEBREAK%Your attacks cannot be obstructed."""
-        '"Leebo"':
-            text: """%REBELONLY%%LINEBREAK%<strong>Action:</strong> Perform a free boost action.  Then receive 1 ion token."""
-        "Ruthlessness":
-            text: """%IMPERIALONLY%%LINEBREAK%After you perform an attack that hits, you <strong>must</strong> choose 1 other ship at Range 1 of the defender (other than yourself).  That ship suffers 1 damage."""
-        "Intimidation":
-            text: """While you are touching an enemy ship, reduce that ship's agility value by 1."""
-        "Ysanne Isard":
-            text: """%IMPERIALONLY%%LINEBREAK%At the start of the Combat phase, if you have no shields and at least 1 Damage card assigned to your ship, you may perform a free evade action."""
-        "Moff Jerjerrod":
-            text: """%IMPERIALONLY%%LINEBREAK%When you are dealt a faceup Damage card, you may discard this Upgrade card or another %CREW% Upgrade card to flip that Damage card facedown (without resolving its effect)."""
-        "Ion Torpedoes":
-            text: """<strong>Attack (target lock):</strong> Spend your target lock and discard this card to perform this attack.%LINEBREAK%If this attack hits, the defender and each ship at Range 1 of it receives 1 ion token."""
-        "Bodyguard":
-            text: """%SCUMONLY%%LINEBREAK%At the start of the Combat phase, you may spend a focus token to choose a friendly ship at Range 1 with higher pilot skill than you. Increase its agility value by 1 until the end of the round."""
-        "Calculation":
-            text: """When attacking, you may spend a focus token to change 1 of your %FOCUS% results to a %CRIT% result."""
-        "Accuracy Corrector":
-            text: """When attacking, during the "Modify Attack Dice" step, you may cancel all of your dice results. Then, you may add 2 %HIT% results to your roll.%LINEBREAK%Your dice cannot be modified again during this attack."""
-        "Inertial Dampeners":
-            text: """When you reveal your maneuver, you may discard this card to instead perform a white (0 %STOP%) maneuver. Then receive 1 stress token."""
-        "Flechette Cannon":
-            text: """<strong>Attack:</strong> Attack 1 ship.%LINEBREAK%If this attack hits, the defender suffers 1 damage and, if the defender is not stressed, it also receives 1 stress token.  Then cancel <strong>all</strong> dice results."""
-        '"Mangler" Cannon':
-            text: """<strong>Attack:</strong> Attack 1 ship.%LINEBREAK%When attacking, you may change 1 of your %HIT% results to a %CRIT% result."""
-        "Dead Man's Switch":
-            text: """When you are destroyed, each ship at Range 1 suffers 1 damage."""
-        "Feedback Array":
-            text: """During the Combat phase, instead of performing any attacks, you may receive 1 ion token and suffer 1 damage to choose 1 enemy ship at Range 1.  That ship suffers 1 damage."""
-        '"Hot Shot" Blaster':
-            text: """<strong>Attack:</strong> Discard this card to attack 1 ship (even a ship outside your firing arc)."""
-        "Greedo":
-            text: """%SCUMONLY%%LINEBREAK%The first time you attack each round and the first time you defend each round, the first Damage card dealt is dealt faceup."""
-        "Salvaged Astromech":
-            text: """When you are dealt a faceup Damage card with the <strong>Ship</strong> trait, you may immediately discard that card (before resolving its effect).%LINEBREAK%Then, discard this Upgrade card."""
-        "Bomb Loadout":
-            text: """<span class="card-restriction">Y-Wing only.</span>%LINEBREAK%Your upgrade bar gains the %BOMB% icon."""
-        '"Genius"':
-            text: """After you reveal and execute a maneuver, if you did not overlap a ship, you may discard 1 of your equipped %BOMB% Upgrade cards without the "<strong>Action:</strong>" header to drop the corresponding bomb token."""
-        "Unhinged Astromech":
-            text: """You may treat all 3-speed maneuvers as green maneuvers."""
-        "R4-B11":
-            text: """When attacking, if you have a target lock on the defender, you may spend the target lock to choose any or all defense dice. The defender must reroll the chosen dice."""
-        "Autoblaster Turret":
-            text: """<strong>Attack:</strong> Attack 1 ship (even a ship outside your firing arc).%LINEBREAK%Your %HIT% results cannot be canceled by defense dice. The defender may cancel %CRIT% results before %HIT% results."""
-        "R4 Agromech":
-            text: """When attacking, after you spend a focus token, you may acquire a target lock on the defender."""
-        "K4 Security Droid":
-            text: """%SCUMONLY%%LINEBREAK%After executing a green maneuver, you may acquire a target lock."""
-        "Outlaw Tech":
-            text: """%SCUMONLY%%LINEBREAK%After you execute a red maneuver, you may assign 1 focus token to your ship."""
-        "Advanced Targeting Computer":
-            text: """<span class="card-restriction">TIE Advanced only.</span>%LINEBREAK%When attacking with your primary weapon, if you have a target lock on the defender, you may add 1 %CRIT% result to your roll.  If you do, you cannot spend target locks during this attack."""
-        "Ion Cannon Battery":
-            text: """<strong>Attack (energy):</strong> Spend 2 energy from this card to perform this attack.  If this attack hits, the defender suffers 1 critical damage and receives 1 ion token.  Then cancel <strong>all</strong> dice results."""
-        "Extra Munitions":
-            text: """When you equip this card, place 1 ordnance token on each equipped %TORPEDO%, %MISSILE%, and %BOMB% Upgrade card.  When you are instructed to discard an Upgrade card, you may discard 1 ordnance token on that card instead."""
-        "Cluster Mines":
-            text: """<strong>Action:</strong> Discard this card to <strong>drop</strong> 3 cluster mine tokens.<br /><br />When a ship's base or maneuver template overlaps a cluster mine token, that token <strong>detonates</strong>.<br /><br /><strong>Cluster Mines Tokens:</strong> When one of these bomb tokens detonates, the ship that moved through or overlapped this token rolls 2 attack dice and suffers 1 damage for each %HIT% and %CRIT% rolled.  Then discard that token."""
-        "Glitterstim":
-            text: """At the start of the Combat phase, you may discard this card and receive 1 stress token.  If you do, until the end of the round, when attacking  or defending, you may change all of your %FOCUS% results to %HIT% or %EVADE% results."""
-        "Grand Moff Tarkin":
-            text: """%HUGESHIPONLY% %IMPERIALONLY%%LINEBREAK%At the start of the Combat phase, you may choose another ship at Range 1-4.  Either remove 1 focus token from the chosen ship or assign 1 focus token to that ship."""
-        "Captain Needa":
-            text: """%HUGESHIPONLY% %IMPERIALONLY%%LINEBREAK%If you overlap an obstacle during the Activation phase, do not suffer 1 faceup damage card.  Instead, roll 1 attack die.  On a %HIT% or %CRIT% result, suffer 1 damage."""
-        "Admiral Ozzel":
-            text: """%HUGESHIPONLY% %IMPERIALONLY%%LINEBREAK%<strong>Energy:</strong> You may remove up to 3 shields from your ship.  For each shield removed, gain 1 energy."""
-        "Emperor Palpatine":
-            text: """%IMPERIALONLY%%LINEBREAK%Once per round, before a friendly ship rolls dice, you may name a die result. After rolling, you must change 1 of your dice results to the named result. That die result cannot be modified again."""
-        "Bossk":
-            text: """%SCUMONLY%%LINEBREAK%After you perform an attack that does not hit, if you are not stressed, you <strong>must</strong> receive 1 stress token. Then assign 1 focus token to your ship and acquire a target lock on the defender."""
-        "Lightning Reflexes":
-            text: """%SMALLSHIPONLY%%LINEBREAK%After you execute a white or green maneuver on your dial, you may discard this card to rotate your ship 180&deg;.  Then receive 1 stress token <strong>after</strong> the "Check Pilot Stress" step."""
-        "Twin Laser Turret":
-            text: """<strong>Attack:</strong> Perform this attack <strong>twice</strong> (even against a ship outside your firing arc).<br /><br />Each time this attack hits, the defender suffers 1 damage.  Then cancel <strong>all</strong> dice results."""
-        "Plasma Torpedoes":
-            text: """<strong>Attack (target lock):</strong> Spend your target lock and discard this card to perform this attack.<br /><br />If this attack hits, after dealing damage, remove 1 shield token from the defender."""
-        "Ion Bombs":
-            text: """When you reveal your maneuver dial, you may discard this card to <strong>drop</strong> 1 ion bomb token.<br /><br />This token <strong>detonates</strong> at the end of the Activation phase.<br /><br /><strong>Ion Bombs Token:</strong> When this bomb token detonates, each ship at Range 1 of the token receives 2 ion tokens.  Then discard this token."""
-        "Conner Net":
-            text: """<strong>Action:</strong> Discard this card to <strong>drop</strong> 1 Conner Net token.<br /><br />When a ship's base or maneuver template overlaps this token, this token <strong>detonates</strong>.<br /><br /><strong>Conner Net Token:</strong> When this bomb token detonates, the ship that moved through or overlapped this token suffers 1 damage, receives 2 ion tokens, and skips its "Perform Action" step.  Then discard this token."""
-        "Bombardier":
-            text: """When dropping a bomb, you may use the (%STRAIGHT% 2) template instead of the (%STRAIGHT% 1) template."""
-        'Crack Shot':
-            text: '''When attacking a ship inside your firing arc, at the start of the "Compare Results" step, you may discard this card to cancel 1 of the defender's %EVADE% results.'''
-        "Advanced Homing Missiles":
-            text: """<strong>Attack (target lock):</strong> Discard this card to perform this attack.%LINEBREAK%If this attack hits, deal 1 faceup Damage card to the defender.  Then cancel <strong>all</strong> dice results."""
-        'Agent Kallus':
-            text: '''%IMPERIALONLY%%LINEBREAK%At the start of the first round, choose 1 enemy small or large ship.  When attacking or defending against that ship, you may change 1 of your %FOCUS% results to a %HIT% or %EVADE% result.'''
-        'XX-23 S-Thread Tracers':
-            text: """<strong>Attack (focus):</strong> Discard this card to perform this attack.  If this attack hits, each friendly ship at Range 1-2 of you may acquire a target lock on the defender.  Then cancel <strong>all</strong> dice results."""
-        "Tractor Beam":
-            text: """<strong>Attack:</strong> Attack 1 ship.%LINEBREAK%If this attack hits, the defender receives 1 tractor beam token.  Then cancel <strong>all</strong> dice results."""
-        "Cloaking Device":
-            text: """%SMALLSHIPONLY%%LINEBREAK%<strong>Action:</strong> Perform a free cloak action.%LINEBREAK%At the end of each round, if you are cloaked, roll 1 attack die.  On a %FOCUS% result, discard this card, then decloak or discard your cloak token."""
-        "Shield Technician":
-            text: """%HUGESHIPONLY%%LINEBREAK%When you perform a recover action, instead of spending all of your energy, you can choose any amount of energy to spend."""
-        "Weapons Guidance":
-            text: """When attacking, you may spend a focus token to change 1 of your blank results to a %HIT% result."""
-        "BB-8":
-            text: """When you reveal a green maneuver, you may perform a free barrel roll action."""
-        "R5-X3":
-            text: """Before you reveal your maneuver, you may discard this card to ignore obstacles until the end of the round."""
-        "Wired":
-            text: """When attacking or defending, if you are stressed, you may reroll 1 or more of your %FOCUS% results."""
-        'Cool Hand':
-            text: '''When you receive a stress token, you may discard this card to assign 1 focus or evade token to your ship.'''
-        'Juke':
-            text: '''%SMALLSHIPONLY%%LINEBREAK%When attacking, if you have an evade token, you may change 1 of the defender's %EVADE% results into a %FOCUS% result.'''
-        'Comm Relay':
-            text: '''You cannot have more than 1 evade token.%LINEBREAK%During the End phase, do not remove an unused evade token from your ship.'''
-        'Dual Laser Turret':
-            text: '''%GOZANTIONLY%%LINEBREAK%<strong>Attack (energy):</strong> Spend 1 energy from this card to perform this attack against 1 ship (even a ship outside your firing arc).'''
-        'Broadcast Array':
-            text: '''%GOZANTIONLY%%LINEBREAK%Your action bar gains the %JAM% action icon.'''
-        'Rear Admiral Chiraneau':
-            text: '''%HUGESHIPONLY% %IMPERIALONLY%%LINEBREAK%<strong>Action:</strong> Execute a white (%STRAIGHT% 1) maneuver.'''
-        'Ordnance Experts':
-            text: '''Once per round, when a friendly ship at Range 1-3 performs an attack with a %TORPEDO% or %MISSILE% secondary weapon, it may change 1 of its blank results to a %HIT% result.'''
-        'Docking Clamps':
-            text: '''%GOZANTIONLY% %LIMITED%%LINEBREAK%You may attach up to 4 TIE fighters, TIE interceptors, TIE bombers, or TIE Advanced to this ship.  All attached ships must have the same ship type.'''
-        '"Zeb" Orrelios':
-            text: """%REBELONLY%%LINEBREAK%Enemy ships inside your firing arc that you are touching are not considered to be touching you when either you or they activate during the Combat phase."""
-        'Kanan Jarrus':
-            text: """%REBELONLY%%LINEBREAK%Once per round, after a friendly ship at Range 1-2 executes a white maneuver, you may remove 1 stress token from that ship."""
-        'Reinforced Deflectors':
-            text: """%LARGESHIPONLY%%LINEBREAK%After defending, if you suffered a combination of 3 or more damage and critical damage during the attack, recover 1 shield (up to your shield value)."""
-        'Dorsal Turret':
-            text: """<strong>Attack:</strong> Attack 1 ship (even a ship outside your firing arc).%LINEBREAK%If the target of this attack is at Range 1, roll 1 additional attack die."""
-        'Targeting Astromech':
-            text: '''After you execute a red maneuver, you may acquire a target lock.'''
-        'Hera Syndulla':
-            text: """%REBELONLY%%LINEBREAK%You can reveal and execute red maneuvers even while you are stressed."""
-        'Ezra Bridger':
-            text: """%REBELONLY%%LINEBREAK%When attacking, if you are stressed, you may change 1 of your %FOCUS% results to a %CRIT% result."""
-        'Sabine Wren':
-            text: """%REBELONLY%%LINEBREAK%Your upgrade bar gains the %BOMB% upgrade icon.  Once per round, before a friendly bomb token is removed, choose 1 enemy ship at Range 1 of that token. That ship suffers 1 damage."""
-        '"Chopper"':
-            text: """%REBELONLY%%LINEBREAK%You may perform actions even while you are stressed.%LINEBREAK%After you perform an action while you are stressed, suffer 1 damage."""
-        'Construction Droid':
-            text: '''%HUGESHIPONLY% %LIMITED%%LINEBREAK%When you perform a recover action, you may spend 1 energy to discard 1 facedown Damage card.'''
-        'Cluster Bombs':
-            text: '''After defending, you may discard this card.  If you do, each other ship at Range 1 of the defending section rolls 2 attack dice, suffering all damage (%HIT%) and critical damage (%CRIT%) rolled.'''
-        "Adaptability":
-            text: """<span class="card-restriction">Dual card.</span>%LINEBREAK%<strong>Side A:</strong> Increase your pilot skill value by 1.%LINEBREAK%<strong>Side B:</strong> Decrease your pilot skill value by 1."""
-        "Electronic Baffle":
-            text: """When you receive a stress token or an ion token, you may suffer 1 damage to discard that token."""
+        "0-0-0":
+           text: """At the start of the Engagement Phase, you may choose 1 enemy ship at range 0-1. If you do, you gain 1 calculate token unless that ship chooses to gain 1 stress token."""
         "4-LOM":
-            text: """%SCUMONLY%%LINEBREAK%When attacking, during the "Modify Attack Dice" step, you may receive 1 ion token to choose 1 of the defender's focus or evade tokens.  That token cannot be spent during this attack."""
-        "Zuckuss":
-            text: """%SCUMONLY%%LINEBREAK%When attacking, if you are not stressed, you may receive any number of stress tokens to choose an equal number of defense dice.  The defender must reroll those dice."""
-        'Rage':
-            text: """<strong>Action:</strong> Assign 1 focus token to your ship and receive 2 stress tokens.  Until the end of the round, when attacking, you may reroll up to 3 attack dice."""
-        "Attanni Mindlink":
-            text: """<span class="card-restriction">Limit 2 per squad.</span> %SCUMONLY%%LINEBREAK%Each time you are assigned a focus or stress token, each other friendly ship with Attanni Mindlink must also be assigned the same type of token if it does not already have one."""
+           text: """While you perform an attack, after rolling attack dice, you may name a type of green token. If you do, gain 2 ion tokens and, during this attack, the defender cannot spend tokens of the named type."""
+        "Ablative Plating":
+           text: """Before you would suffer damage from an obstacle or from a friendly bomb detonating, you may spend 1 %CHARGE%. If you do, prevent 1 damage."""
+        "Admiral Sloane":
+           text: """After another friendly ship at range 0-3 defends, if it is destroyed, the attacker gains 2 stress tokens. While a friendly ship at range 0-3 performs an attack against a stressed ship, it may reroll 1 attack die."""
+        "Adv. Proton Torpedoes":
+           text: """Attack (%LOCK%): Spend 1 %CHARGE%. Change 1 %HIT% result to a %CRIT% result."""
+        "Advanced Sensors":
+           text: """After you reveal your dial, you may perform 1 action. If you do, you cannot perform another action during your activation."""
+        "Advanced SLAM":
+           text: """After you perform a %SLAM% action, if you fully executed that maneuver, you may perform a white action on your action bar, treating that action as red."""
+        "Afterburners":
+           text: """After you fully execute a speed 3-5 maneuver, you may spend 1 %CHARGE% to perform a %BOOST% action, even while stressed."""
+        "Agent Kallus":
+           text: """Setup: Assign the Hunted condition to 1 enemy ship. While you perform an attack against th eship with the Hunted condition, you may change 1 of your %FOCUS% results to a %HIT% result."""
+        "Agile Gunner":
+           text: """In the End Phase you may rotate your %TURRET% indi﻿cator﻿"""
+        "Andrasta":
+           text: """Add %DEVICE% slot."""
+        "Barrage Rockets":
+           text: """Attack (%FOCUS%): Spend 1 %CHARGE%. If the defender is in your %BULLSEYEARC%, you may spend 1 or mroe %CHARGE% to reroll that many attack dice."""
+        "Baze Malbus":
+           text: """While you perform a %FOCUS% action, you may treat it as red. If you do, gain 1 additional focus token for each enemy ship at range 0-1 to a mazimum of 2."""
+        "Bistan":
+           text: """After you perform a primary attack, if you are focused, you may perform a bonus %TURRET% attack against a shipe you have not already attacked this round."""
         "Boba Fett":
-            text: """%SCUMONLY%%LINEBREAK%After performing an attack, if the defender was dealt a faceup Damage card, you may discard this card to choose and discard 1 of the defender's Upgrade cards."""
-        "Dengar":
-            text: """%SCUMONLY%%LINEBREAK%When attacking, you may reroll 1 attack die.  If the defender is a unique pilot, you may instead reroll up to 2 attack dice."""
-        '"Gonk"':
-            text: """%SCUMONLY%%LINEBREAK%<strong>Action:</strong> Place 1 shield token on this card.%LINEBREAK%<strong>Action:</strong> Remove 1 shield token from this card to recover 1 shield (up to your shield value)."""
-        "R5-P8":
-            text: """Once per round, after defending, you may roll 1 attack die.  On a %HIT% result, the attacker suffers 1 damage.  On a %CRIT% result, you and the attacker each suffer 1 damage."""
-        'Thermal Detonators':
-            text: """When you reveal your maneuver dial, you may discard this card to <strong>drop</strong> 1 thermal detonator token.%LINEBREAK%This token <strong>detonates</strong> at the end of the Activation phase.%LINEBREAK%<strong>Thermal Detonator Token:</strong> When this bomb token detonates, each ship at Range 1 of the token suffers 1 damage and receives 1 stress token.  Then discard this token."""
-        "Overclocked R4":
-            text: """During the Combat phase, when you spend a focus token, you may receive 1 stress token to assign 1 focus token to your ship."""
-        'Systems Officer':
-            text: '''%IMPERIALONLY%%LINEBREAK%After you execute a green maneuver, choose another friendly ship at Range 1.  That ship may acquire a target lock.'''
-        'Tail Gunner':
-            text: '''When attacking from your rear-facing auxiliary firing arc, reduce the defender's agility by 1 (to a minimum of "0").'''
-        'R3 Astromech':
-            text: '''Once per round, when attacking with a primary weapon, you may cancel 1 of your %FOCUS% results during the "Modify Attack Dice" step to assign 1 evade token to your ship.'''
-        'Collision Detector':
-            text: '''When performing a boost, barrel roll, or decloak, your ship and maneuver template can overlap obstacles.%LINEBREAK%When rolling for obstacle damage, ignore all %CRIT% results.'''
-        'Sensor Cluster':
-            text: '''When defending, you may spend a focus token to change 1 of your blank results to an %EVADE% result.'''
-        'Fearlessness':
-            text: '''%SCUMONLY%%LINEBREAK%When attacking, if you are inside the defender's firing arc at Range 1 and the defender is inside your firing arc, you may add 1 %HIT% result to your roll.'''
-        'Ketsu Onyo':
-            text: '''%SCUMONLY%%LINEBREAK%At the start of the End phase, you may choose 1 ship in your firing arc at Range 1-2.  That ship does not remove its tractor beam tokens.'''
-        'Latts Razzi':
-            text: '''%SCUMONLY%%LINEBREAK%When defending, you may remove 1 stress token from the attacker to add 1 %EVADE% result to your roll.'''
-        'IG-88D':
-            text: '''%SCUMONLY%%LINEBREAK%You have the pilot ability of each other friendly ship with the <em>IG-2000</em> Upgrade card (in addition to your own pilot ability).'''
-        'Rigged Cargo Chute':
-            text: '''%LARGESHIPONLY%%LINEBREAK%<strong>Action:</strong> Discard this card to <strong>drop</strong> one cargo token.'''
-        'Seismic Torpedo':
-            text: '''<strong>Action:</strong> Discard this card to choose an obstacle at Range 1-2 and inside your primary firing arc.  Each ship at Range 1 of the obstacle rolls 1 attack die and suffers any damage (%HIT%) or critical damage (%CRIT%) rolled.  Then remove the obstacle.'''
-        'Black Market Slicer Tools':
-            text: '''<strong>Action:</strong> Choose a stressed enemy ship at Range 1-2 and roll 1 attack die. On a (%HIT%) or (%CRIT%) result, remove 1 stress token and deal it 1 facedown Damage card.'''
-        # Wave X
-        'Kylo Ren':
-            text: '''%IMPERIALONLY%%LINEBREAK%<strong>Action:</strong> Assign the "I'll Show You the Dark Side" Condition card to an enemy ship at Range 1-3.'''
-        'Unkar Plutt':
-            text: '''%SCUMONLY%%LINEBREAK%After executing a maneuver that causes you to overlap an enemy ship, you may suffer 1 damage to perform 1 free action.'''
-        'A Score to Settle':
-            text: '''During setup, before the "Place Forces" step, choose 1 enemy ship and deal the "A Debt to Pay" Condition card to it.%LINEBREAK%When attacking a ship that has the "A Debt to Pay" Condition card, you may change 1 %FOCUS% result to a %CRIT% result.'''
-        'Jyn Erso':
-            text: '''%REBELONLY%%LINEBREAK%<strong>Action:</strong> Choose 1 friendly ship at Range 1-2. Assign 1 focus token to that ship for each enemy ship inside your firing arc at Range 1-3.  You cannot assign more than 3 focus tokens in this way.'''
-        'Cassian Andor':
-            text: '''%REBELONLY%%LINEBREAK%At the end of the Planning phase, you may choose an enemy ship at Range 1-2.  Guess aloud that ship's bearing and speed, then look at its dial.  If you are correct, you may rotate your dial to another maneuver.'''
-        'Finn':
-            text: '''%REBELONLY%%LINEBREAK%When attacking with a primary weapon or defending, if the enemy ship is inside your firing arc, you may add 1 blank result to your roll.'''
-        'Rey':
-            text: '''%REBELONLY%%LINEBREAK%At the start of the End phase, you may place 1 of your ship's focus tokens on this card.  At the start of the Combat phase, you may assign 1 of those tokens to your ship.'''
-        'Burnout SLAM':
-            text: '''%LARGESHIPONLY%%LINEBREAK%Your action bar gains the %SLAM% action icon.%LINEBREAK%After you perform a SLAM action, discard this card.'''
-        'Primed Thrusters':
-            text: '''%SMALLSHIPONLY%%LINEBREAK%Stress tokens do not prevent you from performing boost or barrel roll actions unless you have 3 or more stress tokens.'''
-        'Pattern Analyzer':
-            text: '''When executing a maneuver, you may resolve the "Check Pilot Stress" step after the "Perform Action" step (instead of before that step).'''
-        'Snap Shot':
-            text: '''After an enemy ship executes a maneuver, you may perform this attack against that ship.  <strong>Attack:</strong> Attack 1 ship.  You cannot modify your attack dice and cannot attack again this phase.'''
-        'M9-G8':
-            text: '''%REBELONLY%%LINEBREAK%When a ship you have locked is attacking, you may choose 1 attack die.  The attacker must reroll that die.%LINEBREAK%You can acquire target locks on other friendly ships.'''
-        'EMP Device':
-            text: '''During the Combat phase, instead of performing any attacks, you may discard this card to assign 2 ion tokens to each ship at Range 1.'''
-        'Captain Rex':
-            text: '''%REBELONLY%%LINEBREAK%After you perform an attack that does not hit, you may assign 1 focus token to your ship.'''
-        'General Hux':
-            text: '''%IMPERIALONLY%%LINEBREAK%<strong>Action:</strong> Choose up to 3 friendly ships at Range 1-2.  Assign 1 focus token to each and assign the "Fanatical Devotion" Condition card to 1 of them.  Then receive 1 stress token.'''
-        'Operations Specialist':
-            text: '''%LIMITED%%LINEBREAK%After a friendly ship at Range 1-2 performs an attack that does not hit, you may assign 1 focus token to a friendly ship at Range 1-3 of the attacker.'''
-        'Targeting Synchronizer':
-            text: '''When a friendly ship at Range 1-2 is attacking a ship you have locked, the friendly ship treats the "<strong>Attack (target lock):</strong> header as "<strong>Attack:</strong>."  If a game effect instructs that ship to spend a target lock, it may spend your target lock instead.'''
-        'Hyperwave Comm Scanner':
-            text: '''At the start of the "Place Forces" step, you may choose to treat your pilot skill value as "0," "6," or "12" until the end of the step.%LINEBREAK%During setup, after another friendly ship is placed at Range 1-2, you may assign 1 focus or evade token to it.'''
-        'Trick Shot':
-            text: '''When attacking, if the attack is obstructed, you may roll 1 additional attack die.'''
-        'Hotshot Co-pilot':
-            text: '''When attacking with a primary weapon, the defender must spend 1 focus token if able.%LINEBREAK%When defending, the attacker must spend 1 focus token if able.'''
-        '''Scavenger Crane''':
-            text: '''After a ship at Range 1-2 is destroyed, you may choose a discarded %TORPEDO%, %MISSILE%, %BOMB%, %CANNON%, %TURRET%, or Modification Upgrade card that was equipped to your ship and flip it faceup.  Then roll 1 attack die.  On a blank result, discard Scavenger Crane.'''
-        'Bodhi Rook':
-            text: '''%REBELONLY%%LINEBREAK%When you acquire a target lock, you can lock onto an enemy ship at Range 1-3 of any friendly ship.'''
-        'Baze Malbus':
-            text: '''%REBELONLY%%LINEBREAK%After you perform an attack that does not hit, you may immediately perform a primary weapon attack against a different ship.  You cannot perform another attack this round.'''
-        'Inspiring Recruit':
-            text: '''Once per round, when a friendly ship at Range 1-2 removes a stress token, it may remove 1 additional stress token.'''
-        'Swarm Leader':
-            text: '''When performing a primary weapon attack, choose up to 2 other friendly ships that have the defender inside their firing arcs at Range 1-3. Remove 1 evade token from each chosen ship to roll 1 additional attack die for each token removed.'''
-        'Bistan':
-            text: '''%REBELONLY%%LINEBREAK%When attacking Range 1-2, you may change 1 of your %HIT% results to a %CRIT% result.'''
-        'Expertise':
-            text: '''When attacking, if you are not stressed, you may change all of your %FOCUS% results to %HIT% results.'''
-        'BoShek':
-            text: '''When a ship you are touching activates, you may look at its chosen maneuver.  If you do, its owner <strong>must</strong> rotate the dial to an adjacent maneuver.  The ship can reveal and execute that maneuver even while stressed.'''
-        # C-ROC
-        'Heavy Laser Turret':
-            text: '''<span class="card-restriction">C-ROC Cruiser only.</span>%LINEBREAK%<strong>Attack (energy):</strong> Spend 2 energy from this card to perform this attack against 1 ship (even a ship outside of your firing arc).'''
-        'Cikatro Vizago':
-            text: '''%SCUMONLY%%LINEBREAK%At the start of the End phase, you may discard this card to replace a faceup %ILLICIT% or %CARGO% Upgrade card you have equipped with another Upgrade card of the same type of equal or fewer squad points.'''
-        'Azmorigan':
-            text: '''%HUGESHIPONLY% %SCUMONLY%%LINEBREAK%At the start of the End phase, you may spend 1 energy to replace a faceup %CREW% or %TEAM% Upgrade card you have equipped with another Upgrade card of the same type of equal or fewer squad points.'''
-        'Quick-release Cargo Locks':
-            text: '''<span class="card-restriction">C-ROC Cruiser and GR-75 Medium Transport only.</span>%LINEBREAK%At the end of the Activation phase, you may discard this card to <strong>place</strong> 1 container token.'''
-        'Supercharged Power Cells':
-            text: '''When attacking, you may discard this card to roll 2 additional attack dice.'''
-        'ARC Caster':
-            text: '''<span class="card-restriction">Rebel and Scum only.</span>%DUALCARD%%LINEBREAK%<strong>Side A:</strong>%LINEBREAK%<strong>Attack:</strong> Attack 1 ship.  If this attack hits, you must choose 1 other ship at Range 1 of the defender to suffer 1 damage.%LINEBREAK%Then flip this card.%LINEBREAK%<strong>Side B:</strong>%LINEBREAK%(Recharging) At the start of the Combat phase, you may receive a weapons disabled token to flip this card.'''
-        'Wookiee Commandos':
-            text: '''When attacking, you may reroll your %FOCUS% results.'''
-        'Synced Turret':
-            text: '''<strong>Attack (Target Lock):</strong> Attack 1 ship (even a ship outside your firing arc).%LINEBREAK%If the defender is inside your primary firing arc, you may reroll a number of attack dice up to your primary weapon value.'''
-        'Unguided Rockets':
-            text: '''<strong>Attack (focus):</strong> Attack 1 Ship.%LINEBREAK%Your attack dice can be modified only by spending a focus token for its standard effect.'''
-        'Intensity':
-            text: '''%SMALLSHIPONLY% %DUALCARD%%LINEBREAK%<strong>Side A:</strong> After you perform a boost or barrel roll action, you may assign 1 focus or evade token to your ship. If you do, flip this card.%LINEBREAK%<strong>Side B:</strong> (Exhausted) At the end of the Combat phase, you may spend 1 focus or evade token to flip this card.'''
-        'Jabba the Hutt':
-            text: '''%SCUMONLY%%LINEBREAK%When you equip this card, place 1 illicit token on each %ILLICIT% Upgrade card in your squad.  When you are instructed to discard an Upgrade card, you may discard 1 illicit token on that card instead.'''
-        'IG-RM Thug Droids':
-            text: '''When attacking, you may change 1 of your %HIT% results to a %CRIT% result.'''
-        'Selflessness':
-            text: '''%SMALLSHIPONLY% %REBELONLY%%LINEBREAK%When a friendly ship at Range 1 is hit by an attack, you may discard this card to suffer all uncanceled %HIT% results instead of the target ship.'''
-        'Breach Specialist':
-            text: '''When you are dealt a faceup Damage card, you may spend 1 reinforce token to flip it facedown (without resolving its effect).  If you do, until the end of the round, when you are dealt a faceup Damage card, flip it facedown (without resolving its effect).'''
-        'Bomblet Generator':
-            text: '''When you reveal your maneuver, you may drop 1 Bomblet token.%LINEBREAK%This token <strong>detonates</strong> at the end of the Activation phase.%LINEBREAK%<strong>Bomblet Token:</strong> When this token detonates, each ship at Range 1 rolls 2 attack dice and suffers all damage (%HIT%) and critical damage (%CRIT%) rolled. Then discard this token.'''
-        'Cad Bane':
-            text: '''%SCUMONLY%%LINEBREAK%Your upgrade bar gains the %BOMB% icon. Once per round, when an enemy ship rolls attack dice due to a friendly bomb detonating, you may choose any number of %FOCUS% and blank results.  It must reroll those results.'''
-        'Minefield Mapper':
-            text: '''During Setup, after the "Place Forces" step, you may discard any number of your equipped %BOMB% Upgrade cards.  Place all corresponding bomb tokens in the play area beyond Range 3 of enemy ships.'''
-        'R4-E1':
-            text: '''You can perform actions on your %TORPEDO% and %BOMB% Upgrade cards even if you are stressed. After you perform an action in this way, you may discard this card to remove 1 stress token from your ship.'''
-        'Cruise Missiles':
-            text: '''<strong>Attack (Target Lock):</strong> Discard this card to perform this attack.%LINEBREAK%You may roll additional attack dice equal to the speed of the manuever you performed this round, to a maximum of 4 additional dice.'''
-        'Ion Dischargers':
-            text: '''After you receive an ion token, you may choose an enemy ship at Range 1.  If you do, remove that ion token. Then that ship may choose to receive 1 ion token. If it does, discard this card.'''
-        'Harpoon Missiles':
-            text: '''<strong>Attack (target lock):</strong> Discard this card to perform this attack.%LINEBREAK%If this attack hits, after the attack resolves, assign the "Harpooned!" Condition to the defender.'''
-        'Ordnance Silos':
-            text: '''<span class="card-restriction">B/SF-17 Bomber only.</span>%LINEBREAK%When you equip this card, place 3 ordnance tokens on each other equipped %BOMB% Upgrade card. When you are instructed to discard an Upgrade card, you may discard 1 ordnance token on that card instead.'''
-        'Trajectory Simulator':
-            text: '''You may launch bombs using the (%STRAIGHT% 5) template instead of dropping them.  You cannot launch bombs with the "<strong>Action:</strong>" header in this way.'''
-        'Jamming Beam':
-            text: '''<strong>Attack:</strong> Attack 1 ship.%LINEBREAK%If this attack hits, assign the defender 1 jam token.  Then cancel <strong>all</strong> dice results.'''
-        'Linked Battery':
-            text: '''%SMALLSHIPONLY%%LINEBREAK%When attacking with a primary or %CANNON% secondary weapon, you may reroll 1 attack die.'''
-        'Saturation Salvo':
-            text: '''After you perform an attack with a %TORPEDO% or %MISSILE% secondary weapon that does not hit, each ship at Range 1 of the defender with an agility value lower than the squad point cost of the %TORPEDO% or %MISSILE% Upgrade card must roll 1 attack die and suffer any damage (%HIT%) or critical damage (%CRIT%) rolled.'''
-        'Contraband Cybernetics':
-            text: '''When you become the active ship during the Activation phase, you may discard this card and receive 1 stress token. If you do, until the end of the round, you may perform actions and red maneuvers even while you are stressed.'''
-        'Maul':
-            text: '''%SCUMONLY% <span class="card-restriction">Ignore this restriction if your squad contains "Ezra Bridger."</span>%LINEBREAK%When attacking, if you are not stressed, you may receive any number of stress tokens to reroll that many attack dice.%LINEBREAK%After performing an attack that hits, you may remove 1 of your stress tokens.'''
-        'Courier Droid':
-            text: '''At the start of the "Place Forces" step, you may choose to treat your pilot skill value as "0" or "8" until the end of the step.'''
+           text: """Setup: Start in reserve. At the end of Setup, place yourself at range 0 of an obstacle and beyond range 3 of an enemy ship."""
+        "Bomblet Generator":
+           text: """Bomb During the System Phase, you may spend 1 %CHARGE% to drop a Bomblet with the [1 %STRAIGHT%] templete. At the start of the Activation Phase, you may spend 1 shield to recover 2 %CHARGE%."""
+        "Bossk":
+           text: """After you perform a primary attack that misses, if you are not stressedm you must receive 1 stress token to perform a bonus primary attack against the same target."""
+        "BT-1":
+           text: """While you perform an attack, you may change 1 %HIT% result to a %CRIT% result for each stress token the defender has."""
+        "C-3PO":
+           text: """Before rolling defense dice, you may spend 1 calculate token to guess aloud a number 1 or higher. If you do, and you roll exactly that many %EVADE% results, add 1 %EVADE% result. Adter you perform the %CALCULATE% action, gain 1 calculate token."""
+        "Cad Bane":
+           text: """After you drop or launch a device, you may perform a red %BOOST% action."""
+        "Cassian Andor":
+           text: """During the System Phase, you may choose 1 enemy ship at range 1-2 and guess aloud a bearing and speed, then look at that ship's dial. If the chosen ship's bearing and speed match your guess, you may set your dial to another maneuver."""
+        "Chewbacca (Rebel)":
+           text: """At the start of the Engagement Phase, you may spend 2 %CHARGE% to repair 1 faceup damage card."""
+        "Chewbacca (Scum)":
+           text: """At the start of the End Phase, you may spend 1 focus token to repair 1 of your faceup damage cards."""
         '"Chopper" (Astromech)':
-            text: '''<strong>Action: </strong>Discard 1 other equipped Upgrade card to recover 1 shield.'''
-        'Flight-Assist Astromech':
-            text: '''You cannot attack ships outside your firing arc.%LINEBREAK%After you execute a maneuver, if you did not overlap a ship or obstacle and there are no enemy ships inside your firing arc at Range 1-3, you may perform a free boost or barrel roll action.'''
-        'Advanced Optics':
-            text: '''You cannot have more than 1 focus token.%LINEBREAK%During the End phase, do not remove an unused focus token from your ship.'''
-        'Scrambler Missiles':
-            text: '''<strong>Attack (target lock):</strong> Discard this card to perform this attack.%LINEBREAK%If this attack hits, the defender and each other ship at Range 1 receives 1 jam token.  Then cancel <strong>all</strong> results.'''
-        'R5-TK':
-            text: '''You can acquire target locks on friendly ships.%LINEBREAK%You can attack friendly ships.'''
-        'Threat Tracker':
-            text: '''%SMALLSHIPONLY%%LINEBREAK%When an enemy ship inside your firing arc at Range 1-2 becomes the active ship during the Combat phase, you may spend your target lock on that ship to perform a free boost or barrel roll action if that action is on your action bar.'''
-        'Debris Gambit':
-            text: '''%SMALLSHIPONLY%%LINEBREAK%<strong>Action:</strong> Assign 1 evade token to your ship for each obstacle at Range 1, to a maximum of 2 evade tokens.'''
-        'Targeting Scrambler':
-            text: '''At the start of the Planning phase, you may receive a weapons disabled token to choose a ship at Range 1-3 and assign it the "Scrambled" Condition.'''
-        'Death Troopers':
-            text: '''After another friendly ship at range 1 becomes the defender, if you are inside the attacker's firing arc at range 1-3, the attacker receives 1 stress token.'''
-        'Saw Gerrera':
-            text: '''%REBELONLY%%LINEBREAK%When attacking, you may suffer 1 damage to change all of your %FOCUS% results to %CRIT% results.'''
-        'Director Krennic':
-            text: '''During setup, before the "Place Forces" step, assign the "Optimized Prototype" condition to a friendly Galactic Empire ship with 3 or fewer shields.'''
-        'Magva Yarro':
-            text: '''%REBELONLY%%LINEBREAK%After defending, you may acquire a target lock on the attacker.'''
-        'Renegade Refit':
-            text: '''<span class="card-restriction">T-65 X-Wing and U-Wing only.</span>%LINEBREAK%You can equip up to two different Modification upgrades.%LINEBREAK%The squad point cost of each of your equipped %ELITE% upgrades is reduced by 1 (to a minimum of 0).'''
-        'Tactical Officer':
-            text: '''%IMPERIALONLY%%LINEBREAK%Your action bar gains %COORDINATE%.'''
-        'ISB Slicer':
-            text: '''After you perform a jam action against an enemy ship, you may choose a ship at Range 1 of that ship that is not jammed and assign it 1 jam token.'''
-        'Thrust Corrector':
-            text: '''When defending, if you have 3 or fewer stress tokens, you may receive 1 stress token to cancel all of your dice results.  If you do, add 1 %EVADE% result to your roll.  Your dice cannot be modified again during this attack.%LINEBREAK%You can equip this Upgrade only if your hull value is "4" or lower.'''
+           text: """Action: Spend 1 non-recurring %CHARGE% from another equipped upgrade to recover 1 shield. Action: Spend 2 shields to recover 1 non-recurring %CHARGE% on an equipped upgrade."""
+        '"Chopper" (Crew)':
+           text: """During the Perform Action step, you may perofrm 1 action, even while stressed. Adter you perform an action while stressed, suffer 1 %HIT% damage unless you expose 1 of your damage cards."""
+        "Ciena Ree":
+           text: """After you perform a %COORDINATE% action, if the ship you coordinated performed a %BARRELROLL% or %BOOST% action, it may gain 1 stress token to rotate 90˚."""
+        "Cikatro Vizago":
+           text: """During the End Phase, you may choose 2 %ILLICIT% upgrades equipped to friendly ships at range 0-1. If you do, you may exchange these upgrades. End of Game: Return all %ILLICIT% upgrades to their original ships."""
+        "Cloaking Device":
+           text: """Action: Spend 1 %CHARGE% to perform a %CLOAK% action. At the start of the Planning Phase, roll 1 attack die. On a %FOCUS% result, decloak or discard your cloak token."""
+        "Cluster Missiles":
+           text: """Attack (%LOCK%): Spend 1 %CHARGE%. After this attack, you may perform this attack as a bonus attack against a different target at range 0-1 of the defender, ignoring the %LOCK% requirement."""
+        "Collision Detector":
+           text: """While you boost or barrel roll, you can move through and overlap obstacles. After you move through or overlap an obstacle, you may spend 1 %CHARGE% to ignore its effects ntie the end of the round."""
+        "Composure":
+           text: """Requires a %FOCUS% action. If you fail an action and don't have any green tokens you may perform a %FOCUS% action.﻿﻿"""
+        "Concussion Missiles":
+           text: """Attack (%LOCK%): Spend 1 %CHARGE%. After this attack hits, each ship at range 0-1 of the defender exposes 1 of its damage cards."""
+        "Conner Nets":
+           text: """Mine During the System Phase, you may spend 1 %CHARGE% to drop a Conner Net using the [1 %STRAIGHT%] template. This card's %CHARGE% cannot be recovered."""
+        "Contraband Cybernetics":
+           text: """Before you activate, you may spend 1 %CHARGE%. If you do, until the end of the round, you can perform actions and execute red maneuvers, even while stressed."""
+        "Crack Shot":
+           text: """While you perform a primary attack, if the defender is in your %BULLSEYEARC%, before the Neutralize Results step, you may spend 1 %CHARGE% to cancel 1 %EVADE% result."""
+        "Daredevil":
+           text: """While you perform a while %BOOST% action, you may treat it as red to use the [1%LTURN%] or [1 %RTURN%] template instead."""
+        "Darth Vader":
+           text: """At the start of the Engagement Phase, you may choose 1 ship in your firing arc at range 0-2 and spend 1 %FORCE%. If you do, that ship suffers 1 %HIT% damage unless it chooses to remove 1 green token."""
+        "Dauntless":
+           text: """After you partially execute a maneuver, you may perform 1 white action, treating that action as red."""
+        "Deadman's Switch":
+           text: """After you are destroyed, each other ship at range 0-1 suffers 1 %HIT% damage."""
+        "Death Troopers":
+           text: """During the Activation Phase, enemy ships at range 0-1 cannot remove stress tokens."""
+        "Debris Gambit":
+           text: """While you perform a red %EVADE% action, if there is an obstacle at range 0-1, treat the action as white instead."""
+        "Dengar":
+           text: """After you defend, if the attacker is in your firing arc, you may spend 1 %CHARGE%. If you do, roll 1 attack die unless the attacker chooses to remove 1 green token. On a %HIT% or %CRIT% result, the attacker suffers 1 %HIT% damage."""
+        "Director Krennic":
+           text: """Setup: Before placing forces, assign the Optimized Prototype condition to another friendly ship."""
+        "Dorsal Turret":
+           text: """Attack"""
+        "Electronic Baffle":
+           text: """During the End Phase, you may suffer 1 %HIT% damage to remove 1 red token."""
+        "Elusive":
+           text: """While you defend, you may spend 1 %CHARGE% to reroll 1 defense die. After you fully execute a red maneuver, recover 1 %CHARGE%."""
+        "Emperor Palpatine":
+           text: """While another friendly ship defends or performs an attack, you may spend 1 %FORCE% to modify 1 of its dice as though that ship had spent 1 %FORCE%."""
+        "Engine Upgrade":
+           text: """Large military forces such as the Galactic Empire have standardized engines, but individual pilots and small organizations often replace the power couplings add thrusters, or use high-performance fuel to get extra push out of their engines."""
+        "Expert Handling":
+           text: """While heavy fighters can often be coaxed into a barrel roll, seasoned pilots know how to do it without putting undue stress on their craft or leaving themselves open to attack."""
+        "Ezra Bridger":
+           text: """After you perform a primary attack, you may spend 1 %FORCE% to perform a bonus %TURRET% attack from a %TURRET% you have not attacked from this round. If you do and you are stressed, you may reroll 1 attack die."""
+        "Fearless":
+           text: """While you perform a %FRONTARC% primary attack, if the attack range is 1 and you are in the defender's %FRONTARC%, you may change 1 of your results to a %HIT% result."""
+        "Feedback Array":
+           text: """Before you engage, you may gain 1 ion token and 1 disarm token. If you do, each ship at range 0 suffers 1 %HIT% damage."""
+        "Fifth Brother":
+           text: """While you perform an attack, you may spend 1 %FORCE% to change 1 of your %FOCUS% results to a %CRIT% result."""
+        "Fire-Control System":
+           text: """While you perform an attack, if you have a lock on the defender, you may reroll 1 attack die. If you do, you cannot spend your lock during this attack."""
+        "Freelance Slicer":
+           text: """While you defend, before attack dice are rolled, you may spend a lock you have on the attacker to roll 1 attack die. If you do, the attacker gains 1 %JAM% token. Then, on a %HIT% or %CRIT% result, gain 1 %JAM% token."""
+        '"Genius"':
+           text: """After you fully execute a maneuver, if you have not dropped or launched a device this round, you may drop 1 bomb."""
+        "Ghost":
+           text: """You can dock 1 attack shuttle or Sheathipede-class shuttle. Your docked ships can deploy only from your rear guides."""
+        "Grand Inquisitor":
+           text: """After an enemy ship at range 0-2 reveals its dial, you may spend 1 %FORCE% to perform 1 white action on your action bar, treating that action as red."""
+        "Grand Moff Tarkin":
+           text: """During the System Phase, you may spend 2 %CHARGE%. If you do, each friendly ship may acquire a lock on a ship that you have locked."""
+        "Greedo":
+           text: """While you perform an attack, you may spend 1 %CHARGE% to change 1 %HIT% result to a %CRIT% result. While you defend, if your %CHARGE% is active, the attacker may change 1 %HIT% result to a %CRIT% result."""
+        "Han Solo (Rebel)":
+           text: """During the Engagement Phase, at initiative 7, you may perform a %TURRET% attack. You cannot attack from that %TURRET% again this round."""
+        "Han Solo (Scum)":
+           text: """Before you engage, you may perform a red %FOCUS% action."""
+        "Havoc":
+           text: """Remove %CREW% slot. Add %SYSTEM% and %ASTROMECH% slots."""
+        "Heavy Laser Cannon":
+           text: """Attack: After the Modify Attack Dice step, change all %CRIT% results to %HIT% results."""
+        "Heightened Perception":
+           text: """At the start of the Engagement Phase, you may spend 1 %FORCE%. If you do, engage at initiative 7 instead of your standard initiative value this phase."""
+        "Hera Syndulla":
+           text: """You can execute red maneuvers even while stressed. After you fully execute a red maneuver, if you ahve 3 or more stress tokens, remove 1 stress token and suffer 1 %HIT% damage."""
+        "Homing Missiles":
+           text: """Attack (%LOCK%): Spend 1 %CHARGE%. After you declare the defender, the defender may choose to suffer 1 %HIT% damage. If it does, skip the Attack and Defense Dice steps and the attack is treated as hitting."""
+        "Hotshot Gunner":
+           text: """While you perform a %TURRET% attack, after the Modify Defense Dice step, the defender removes 1 focus or calculate token."""
+        "Hound's Tooth":
+           text: """1 Z-95 AF4 headhunter can dock with you."""
+        "Hull Upgrade":
+           text: """For those who cannot afford an enhanced shield generator, bolting additional plates onto the hull of a ship can serve as an adequate substitute."""
+        "IG-2000":
+           text: """You have the pilot ability of each other friendly ship with the IG-2000 upgrade."""
+        "IG-88D":
+           text: """You have the pilot ability of each other friendly ship with the IG-2000 upgrade. After you perform a %CALCULATE% action, gain 1 calculate token."""
+        "Inertial Dampeners":
+           text: """Before you would execute a maneuver, you may spend 1 shield. If you do, execute a white [0 %STATIONARY%] instead of the maneuver you revealed, then gain 1 stress token."""
+        "Informant":
+           text: """Setup: After placing forces, choose 1 enemy ship and assign the Listening Device condition to it."""
+        "Instinctive Aim":
+           text: """While you perform a special attack, you may spend 1 %FORCE% to ignore the %FOCUS% or %LOCK% requirement."""
+        "Intimidation":
+           text: """While an enemy ship at range 0 defends, it rolls 1 fewer defense die."""
+        "Ion Cannon Turret":
+           text: """Attack: If this attack hits, spend 1 %HIT% or %CRIT% result to cause the defender to suffer 1 %HIT% damage. All remaining %HIT%/%CRIT% results inflict ion tokens instead of damage."""
+        "Ion Cannon":
+           text: """Attack: If this attack hits, spend 1 %HIT% or %CRIT% result to cause the defender to suffer 1 %HIT% damage. All remaining %HIT%/%CRIT% results inflict ion tokens instead of damage."""
+        "Ion Missiles":
+           text: """Attack (%LOCK%): Spend 1 %CHARGE%. If this attack hits, spend 1 %HIT% or %CRIT% result to cause the defender to suffer 1 %HIT% damage. All remaining %HIT%/%CRIT% results inflict ion tokens instead of damage."""
+        "Ion Torpedoes":
+           text: """Attack (%LOCK%): Spend 1 %CHARGE%. If this attack hits, spend 1 %HIT% or %CRIT% result to cause the defender to suffer 1 %HIT% damage. All remaining %HIT%/%CRIT% results inflict ion tokens instead of damage."""
+        "ISB Slicer":
+           text: """During the End Phase, enemy ships at range 1-2 cannot remove jam tokens."""
+        "Jabba the Hutt":
+           text: """During the End Phase, you may choose 1 friendly ship at range 0-2 and spend 1 %CHARGE%. If you do, that ship recovers 1 %CHARGE% on 1 of its equipped %ILLICIT% upgrades."""
+        "Jamming Beam":
+           text: """Attack: If this attack hits, all %HIT%/%CRIT% results inflict jam tokens instead of damage."""
+        "Juke":
+           text: """While you perform an attack, if you are evading, you may change 1 of the defender's %EVADE% results to a %FOCUS% result."""
+        "Jyn Erso":
+           text: """If a friendly ship at range 0-3 would gain a focus token, it may gain 1 evade token instead."""
+        "Kanan Jarrus":
+           text: """After a friendly ship at range 0-2 fully executes a white maneuver, you may spend 1 %FORCE% to remove 1 stress token from that ship."""
+        "Ketsu Onyo":
+           text: """At the start of the End Phase, you may choose 1 enemy ship at range 0-2 in your firing arc. If you do, that ship does not remove its tractor tokens."""
+        "L3-37":
+           text: """Setup: Equip this side faceup. While you defend, you may flip this card. If you do, the attack must reroll all attack dice"""
+        "L3-37's Programming":
+           text: """If you are not shielded, decrease the difficulty of your bank (%LBANK% and %RBANK%) maneuvers."""
+        "Lando Calrissian (Rebel)":
+           text: """Action: Roll 2 defense dice. For each %FOCUS% result, gain 1 focus token. For each %EVADE% result, gain 1 evade token. If both results are blank, the opposing player chooses focus or evade. You gain 1 token of that type."""
+        "Lando Calrissian (Scum)":
+           text: """After you roll dice, you may spend 1 green token to reroll up to 2 of your results."""
+        "Lando's Millennium Falcon":
+           text: """1 Escape Craft may dock with you. While you have an Escape Craft docked, you may spend its shields as if they were on your ship card. While you perform a primary attack against a stressed ship, roll 1 additional attack die."""
+        "Latts Razzi":
+           text: """While you defend, if the attacker is stressed, you may remove 1 stress from the attacker to change 1 of your blank/%FOCUS% results to an %EVADE% result."""
+        "Leia Organa":
+           text: """At the start of the Activation Phase, you may spend 3 %CHARGE%. During this phase, each friendly ship reduces the difficulty of its red maneuvers."""
+        "Lone Wolf":
+           text: """While you defend or perform an attack, if there are no other friendly ships at range 0-2, you may spend 1 %CHARGE% to reroll 1 of your dice."""
+        "Luke Skywalker":
+           text: """At the start of the Engagement Phase, you may spend 1 %FORCE% to rotate your %TURRET% indicator."""
+        "Magva Yarro":
+           text: """After you defend, if the attack hit, you may acquire a lock on the attacker."""
+        "Marauder":
+           text: """While you perform a primary %REARARC% attack,, you may reroll 1 attack die. Add %GUNNER% slot."""
+        "Marksmanship":
+           text: """While you perform an attack, if the defender is in your %BULLSEYEARC%, you may change 1 %HIT% result to a %CRIT% result."""
+        "Maul":
+           text: """After you suffer damage, you may gain 1 stress token to recover 1 %FORCE%. You can equip \"Dark Side\" upgades."""
+        "Millennium Falcon":
+           text: """While you defend, if you are evading, you may reroll 1 defense die."""
+        "Minister Tua":
+           text: """At the start of the Engagement Phase, if you are damaged, you may perform a red %REINFORCE% action."""
+        "Mist Hunter":
+           text: """Add %CANNON% slot."""
+        "Moff Jerjerrod":
+           text: """During the System Phase, you may spend 2 %CHARGE%. If you do, choose the (1 %LBANK%), (1 %STRAIGHT%), or (1 %RBANK%) template. Each friendly ship may perform a red %BOOST% action using that template."""
+        "Moldy Crow":
+           text: """Gain a %FRONTARC% primary weapon with a value of \"3.\" During the End Phase, do not remove up to 2 focus tokens."""
+        "Munitions Failsafe":
+           text: """While you perform a %TORPEDO% or %MISSILE% attack, after rolling attack dice, you may cancel all dice results to recover 1 %CHARGE% you spent as a cost for the attack."""
+        "Nien Nunb":
+           text: """Decrease the difficulty of your bank maneuvers [%LBANK% and %RBANK%]."""
+        "Novice Technician":
+           text: """At the end of the round, you may roll 1 attack die to repair 1 faceup damage card. Then, on a %HIT% result, expose 1 damage card."""
+        "Os-1 Arsenal Loadout":
+           text: """While you have exactly 1 disarm token, you can still perform %TORPEDO% and %MISSILE% attacks against targets you have locked. If you do, you cannot spend you lock during the attack. Add %TORPEDO% and %MISSILE% slots."""
+        "Outmaneuver":
+           text: """While you perform a %FRONTARC% arrack, if you are not in the defender's firing arc, the defender rolls 1 fewer defense die."""
+        "Outrider":
+           text: """While you perform an obstructed attack, the defender rolls 1 fewer defense die. After you fully execute a maneuver, if you moved through or overlapped an obstacle, you may remove 1 of your red or orange tokens."""
+        "Perceptive Copilot":
+           text: """After you perform a %FOCUS% action, gain 1 focus token."""
+        "Phantom":
+           text: """You can dock at range 0-1."""
+        "Pivot Wing (Closed)":
+           text: """While you defend, roll 1 fewer defense die. After you execute a [0 %STATIONARY%] maneuver, you may rotate your ship 90˚ or 180˚. Before you activate, you may flip this card"""
+        "Predator":
+           text: """While you perform a primary attack, if the defender is in your %BULLSEYEARC%, you may reroll 1 attack die."""
+        "Proton Bombs":
+           text: """Bomb During the System Phase, you may spend 1 %CHARGE% to drop a Proton Bomb using the [1 %STRAIGHT%] template."""
+        "Proton Rockets":
+           text: """Attack (%FOCUS%): Spend 1 %CHARGE%."""
+        "Proton Torpedoes":
+           text: """Attack (%LOCK%): Spend 1 %CHARGE%. Change 1 %HIT% result to a %CRIT% result."""
+        "Proximity Mines":
+           text: """Mine During the System Phase, you may spend 1 %CHARGE% to drop a Proximity Mine using the [1 %STRAIGHT%] template. This card's %CHARGE% cannot be recovered."""
+        "Punishing One":
+           text: """When you perform a primary attack, if the defender is in your %FRONTARC%, roll 1 additional attack die. Remove %CREW% slot. Add %ASTROMECH% slot."""
+        "Qi'ra":
+           text: """While you move and perform attacks, you ignore all obstacles that you are locking."""
+        "R2 Astromech":
+           text: """After you reveal your dial, you may spend 1 %CHARGE% and gain 1 disarm token to recover 1 shield."""
+        "R2-D2 (Astromech)":
+           text: """After you reveal your dial, you may spend 1 %CHARGE% and gain 1 disarm token to recover 1 shield."""
+        "R2-D2 (Crew)":
+           text: """During the End Phase, if you are damaged and not shielded, you may roll 1 attack die to recover 1 shield. On a %HIT% result, expose 1 of your damage cards."""
+        "R3 Astromech":
+           text: """You can maintain up to 2 locks. Each lock must be on a different object. After you perform a %LOCK% action, you may acquire a lock."""
+        "R4 Astromech":
+           text: """Decrease the difficulty of your speed 1-2 basic maneuvers (%LTURN%, %LBANK%, %STRAIGHT%, %RBANK%, %RTURN%)."""
+        "R5 Astromech":
+           text: """Action: Spend 1 %CHARGE% to repair 1 facedown damage card. Action: Repair 1 faceup Ship damage card."""
+        "R5-D8":
+           text: """Action: Spend 1 %CHARGE% to repair 1 facedown damage card. Action: Repair 1 faceup Ship damage card."""
+        "R5-P8":
+           text: """While you perform an attack against a defender in your %FRONTARC%, you may spend 1 %CHARGE% to reroll 1 attack die. If the rerolled results is a %CRIT%, suffer 1 %CRIT% damage."""
+        "R5-TK":
+           text: """You can perform attacks against friendly ships."""
+        "Rigged Cargo Chute":
+           text: """Action: Spend 1 %CHARGE%. Drop 1 loose cargo using the [1 %STRAIGHT%] template."""
+        "Ruthless":
+           text: """While you perform an attack, you may choose another friendly ship at range 0-1 of the defender. If you do, that ship suffers 1 %HIT% damage and you may change 1 of your die results to a %HIT% result."""
+        "Sabine Wren":
+           text: """Setup: Place 1 ion, 1 jam, 1 stress, and 1 tractor token on this card. After a ship suffers the effect of a friendly bomb, you may remove 1 ion, jam, stress, or tractor token from this card. If you do, that ship gains a matching token."""
+        "Saturation Salvo":
+           text: """While you perform a %TORPEDO% or %MISSILE% attack, you may spend 1 charge from that upgrade. If you do, choose two defence dice. The defender must reroll those dice."""
+        "Saw Gerrera":
+           text: """While you perform an attack, you may suffer 1 %HIT% damage to change all of your %FOCUS% results to %CRIT% results."""
+        "Seasoned Navigator":
+           text: """After you reveal your dial, you may set your dial to another non-red maneuver of the same speed. While you execute that maneuver, increase its difficulty."""
+        "Seismic Charges":
+           text: """Bomb During the System Phase, you may spend 1 %CHARGE% to drop a Seismic Charge with the [1 %STRAIGHT%] template."""
+        "Selfless":
+           text: """Whlie another friendly ship at range 0-1 defends, before the Neutralize Results step, if you are in the attack arc, you may suffer 1 %CRIT% damage to cancel 1 %CRIT% result."""
+        "Sense":
+           text: """During the System Phase, you may choose 1 ship at range 0-1 and look at its dial. If you spend 1 %FORCE%, you may choose a ship at range 0-3 instead."""
+        "Servomotor S-foils (Closed)":
+           text: """While you perform a primary attack, roll 1 fewer attack die. Before you activate, you may flip this card"""
+        "Seventh Sister":
+           text: """If an enemy ship at range 0-1 would gain a stress token, you may spend 1 %FORCE% to have it gain 1 jam or tractor token instead."""
+        "Shadow Caster":
+           text: """After you perform an attack that hits, if the defender is in your %SINGLETURRETARC% and your %FRONTARC%, the defender gains 1 tractor token."""
+        "Shield Upgrade":
+           text: """Deflector shields are a substantial line of defense on most starships beyond the lightest fighters. While enhancing a ship's shield capacity can be costly, all but the most confident or reckless pilots see the value in this sort of investment."""
+        "Skilled Bombardier":
+           text: """If you would drop or launch a device, you may use a template of the same bearing with a speed 1 higher or lower."""
+        "Slave I":
+           text: """After you reveal a turn, (%LTURN% or %RTURN%) or bank (%LBANK% or %RBANK%) maneuver, you may gain 1 stress token. If you do, set your dial to the maneuver of the same speed and bearing in the other direction. Add %TORPEDO% slot."""
+        "Squad Leader":
+           text: """While you coordinate, the ship you choose can perform an action only if that action is also on your action bar."""
+        "ST-321":
+           text: """After you perform a %COORDINATE% action, you may choose an enemy ship at range 0-3 of the ship you coordinated. If you do, acquire a lock on that enemy ship, ignoring range restrictions."""
+        "Static Discharge Vanes":
+           text: """If you would gain an ion or jam token, you may choose a ship at range 0-1. If you do, gain 1 stress token and transfer 1 ion or jam token to that ship."""
+        "Stealth Device":
+           text: """While you defend, if your %CHARGE% is active, roll 1 additional defense die. After you suffer damage, lost 1 %CHARGE%."""
+        "Supernatural Reflexes":
+           text: """Before you activate, you may spend 1 %FORCE% to perform a %BARRELROLL% or %BOOST% action. Then, if you performed an action you do not have on your action bar, suffer 1 %HIT% damage."""
+        "Swarm Tactics":
+           text: """At the start of the Engagement Phase, you may choose 1 friendly ship at range 1. If you do, that ship treats its initiative as equal to yours until the end of the round."""
+        "Tactical Officer":
+           text: """In the chaos of a starfighter battle, a single order can mean the difference between a victory and a massacre."""
+        "Tactical Scrambler":
+           text: """While you obstruct an enemy ship's attack, the defender rolls 1 additional defense die."""
+        "Tobias Beckett":
+           text: """Setup: After placing forces, you may choose 1 obstacle in the play area. If you do, place it anywhere in the play area beyond range 2 of any board edge or ship and beyond range 1 of other obstacles."""
+        "Tractor Beam":
+           text: """Attack: If this attack hits, all %HIT%/%CRIT% results inflict tractor tokens instead of damage."""
+        "Trajectory Simulator":
+           text: """During the System Phase, if you would drop or launch a bomb, you may launch it using the (5 %STRAIGHT%) tempplate instead."""
+        "Trick Shot":
+           text: """While you perform an attack that is obstructed by an obstacle, roll 1 additional attack die."""
+        "Unkar Plutt":
+           text: """After you partially excute a maneuver, you may suffer 1 %HIT% damage to perform 1 white action."""
+        "Veteran Tail Gunner":
+           text: """After you perform a primary %FRONTARC% attack, you may perform a bonus primary %REARARC% attack."""
+        "Veteran Turret Gunner":
+           text: """After you perform a primary attack, you may perform a bonus %TURRET% attack using a %TURRET% you did not already attack from this round."""
+        "Virago":
+           text: """During the End Phase, you may spend 1 %CHARGE% to perform a red %BOOST% action. Add %MODIFICATION% slot."""
+        "Xg-1 Assault Configuration":
+           text: """While you have exactly 1 disarm token, uou can still perform %CANNON% attacks. While you perform a %CANNON% attack while disarmed, roll a maximum of 3 attack dice. Add %CANNON% slot."""
+        '"Zeb" Orrelios':
+           text: """You can perform primary attacks at range 0. Enemy ships at range 0 can perform primary attacks against you."""
+        "Zuckuss":
+           text: """While you perform an attack, if ou are not stressed, you may choose 1 defense die and gain 1 stress token. If you do, the defender must reroll that die."""
+        'GNK "Gonk" Droid':
+           text: """Setup: Lose 1 %CHARGE%. Action: Recover 1 %CHARGE%. Action: Spend 1 %CHARGE% to recover 1 shield."""
 
     modification_translations =
-        "Stealth Device":
-            text: """Increase your agility value by 1.  If you are hit by an attack, discard this card."""
-        "Shield Upgrade":
-            text: """Increase your shield value by 1."""
-        "Engine Upgrade":
-            text: """Your action bar gains the %BOOST% action icon."""
-        "Anti-Pursuit Lasers":
-            text: """%LARGESHIPONLY%%LINEBREAK%After an enemy ship executes a maneuver that causes it to overlap your ship, roll 1 attack die.  On a %HIT% or %CRIT% result, the enemy ship suffers 1 damage."""
-        "Targeting Computer":
-            text: """Your action bar gains the %TARGETLOCK% action icon."""
-        "Hull Upgrade":
-            text: """Increase your hull value by 1."""
-        "Munitions Failsafe":
-            text: """When attacking with a secondary weapon that instructs you to discard it to perform the attack, do not discard it unless the attack hits."""
-        "Stygium Particle Accelerator":
-            text: """When you either decloak or perform a cloak action, you may perform a free evade action."""
-        "Advanced Cloaking Device":
-            text: """<span class="card-restriction">TIE Phantom only.</span>%LINEBREAK%After you perform an attack, you may perform a free cloak action."""
-        "Combat Retrofit":
-            text: """<span class="card-restriction">GR-75 only.</span>%LINEBREAK%Increase your hull value by 2 and your shield value by 1."""
-        "B-Wing/E2":
-            text: """<span class="card-restriction">B-Wing only.</span>%LINEBREAK%Your upgrade bar gains the %CREW% upgrade icon."""
-        "Countermeasures":
-            text: """%LARGESHIPONLY%%LINEBREAK%At the start of the Combat phase, you may discard this card to increase your agility value by 1 until the end of the round.  Then you may remove 1 enemy target lock from your ship."""
-        "Experimental Interface":
-            text: """Once per round, after you perform an action, you may perform 1 free action from an equipped Upgrade card with the "<strong>Action:</strong>" header.  Then receive 1 stress token."""
-        "Tactical Jammer":
-            text: """%LARGESHIPONLY%%LINEBREAK%Your ship can obstruct enemy attacks."""
-        "Autothrusters":
-            text: """When defending, if you are beyond Range 2 or outside the attacker's firing arc, you may change 1 of your blank results to a %EVADE% result. You can equip this card only if you have the %BOOST% action icon."""
-        "Advanced SLAM":
-            text: """After performing a SLAM action, if you did not overlap an obstacle or another ship, you may perform a free action on your action bar."""
-        "Twin Ion Engine Mk. II":
-            text: """<span class="card-restriction">TIE only.</span>%LINEBREAK%You may treat all bank maneuvers (%BANKLEFT% and %BANKRIGHT%) as green maneuvers."""
-        "Maneuvering Fins":
-            text: """<span class="card-restriction">YV-666 only.</span>%LINEBREAK%When you reveal a turn maneuver (%TURNLEFT% or %TURNRIGHT%), you may rotate your dial to the corresponding bank maneuver (%BANKLEFT% or %BANKRIGHT%) of the same speed."""
-        "Ion Projector":
-            text: """%LARGESHIPONLY%%LINEBREAK%After an enemy ship executes a maneuver that causes it to overlap your ship, roll 1 attack die.  On a %HIT% or %CRIT% result, the enemy ship receives 1 ion token."""
-        'Integrated Astromech':
-            text: '''<span class="card-restriction">X-wing only.</span>%LINEBREAK%When you are dealt a Damage card, you may discard 1 of your %ASTROMECH% Upgrade cards to discard that Damage card.'''
-        'Optimized Generators':
-            text: '''%HUGESHIPONLY%%LINEBREAK%Once per round, when you assign energy to an equipped Upgrade card, gain 2 energy.'''
-        'Automated Protocols':
-            text: '''%HUGESHIPONLY%%LINEBREAK%Once per round, after you perform an action that is not a recover or reinforce action, you may spend 1 energy to perform a free recover or reinforce action.'''
-        'Ordnance Tubes':
-            text: '''%HUGESHIPONLY%%LINEBREAK%You may treat each of your %HARDPOINT% upgrade icons as a %TORPEDO% or %MISSILE% icon.%LINEBREAK%When you are instructed to discard a %TORPEDO% or %MISSILE% Upgrade card, do not discard it.'''
-        'Long-Range Scanners':
-            text: '''You can acquire target locks on ships at Range 3 and beyond.  You cannot acquire target locks on ships at Range 1-2.  You can equip this card only if you have %TORPEDO% and %MISSILE% in your upgrade bar.'''
-        "Guidance Chips":
-            text: """Once per round, when attacking with a %TORPEDO% or %MISSILE% secondary weapon, you may change 1 die result to a %HIT% result (or a %CRIT% result if your primary weapon value is "3" or higher)."""
-        'Vectored Thrusters':
-            text: '''%SMALLSHIPONLY%%LINEBREAK%Your action bar gains the %BARRELROLL% action icon.'''
-        'Smuggling Compartment':
-            text: '''<span class="card-restriction">YT-1300 and YT-2400 only.</span>%LINEBREAK%Your upgrade bar gains the %ILLICIT% upgrade icon.%LINEBREAK%You may equip 1 additional Modification upgrade that costs 3 or fewer squad points.'''
-        'Gyroscopic Targeting':
-            text: '''<span class="card-restriction">Lancer-class Pursuit Craft only.</span>%LINEBREAK%At the end of the Combat phase, if you executed a 3-, 4-, or 5-speed maneuver this round, you may rotate your mobile firing arc.'''
-        'Captured TIE':
-            text: '''<span class="card-restriction">TIE Fighter only.</span> %REBELONLY%%LINEBREAK%Enemy ships with a pilot skill value lower than yours cannot declare you as the target of an attack.  After you perform an attack or when you are the only remaining friendly ship, discard this card.'''
-        'Spacetug Tractor Array':
-            text: '''<span class="card-restriction">Quadjumper only.</span>%LINEBREAK%<strong>Action:</strong> Choose a ship inside your firing arc at Range 1 and assign a tractor beam token to it.  If it is a friendly ship, resolve the effect of the tractor beam token as though it were an enemy ship.'''
-        'Lightweight Frame':
-            text: '''<span class="card-restriction">TIE only.</span>%LINEBREAK%When defending, after rolling defense dice, if there are more attack dice than defense dice, roll 1 additional defense die.%LINEBREAK%You cannot equip this card if your agility value is "3" or higher.'''
-        'Pulsed Ray Shield':
-            text: '''<span class="card-restriction">Rebel and Scum only.</span>%LINEBREAK%During the End phase, you may receive 1 ion token to recover 1 shield (up to your shield value). You can equip this card only if your shield value is "1."'''
-        'Deflective Plating':
-            text: '''<span class="card-restriction">B/SF-17 Bomber only.</span>%LINEBREAK%When a friendly bomb token detonates, you may choose not to suffer its effects.  If you do, roll an attack die.  On a %HIT% result, discard this card.'''
-        'Servomotor S-Foils':
-            text: '''<span class="card-restriction">T-65 X-Wing only.</span> %DUALCARD%%LINEBREAK%<strong>Side A (Attack):</strong>Your action bar gains %BARRELROLL%.  If you are not stressed, when you reveal a (%TURNLEFT% 3) or (3 %TURNRIGHT%) maneuver, you may treat it as a red (%TROLLLEFT% 3) or (%TROLLRIGHT% 3) in the same direction.%LINEBREAK%At the start of the Activation phase, you may flip this card.%LINEBREAK%<strong>Side B (Closed):</strong>Reduce your primary attack value by 1.  Your action bar gains %BOOST%.  Treat your (%BANKLEFT% 2) and (%BANKRIGHT% 2 ) as green.%LINEBREAK%At the start of the Activation phase, you may flip this card.'''
-        'Multi-spectral Camouflage':
-            text: '''%SMALLSHIPONLY%%LINEBREAK%After you receive a red target lock token, if you have only 1 red target lock token, roll 1 defense die.  On an %EVADE% result, remove 1 red target lock token.'''
 
     title_translations =
-        "Slave I":
-            text: """<span class="card-restriction">Firespray-31 only.</span>%LINEBREAK%Your upgrade bar gains the %TORPEDO% upgrade icon."""
-        "Millennium Falcon":
-            text: """<span class="card-restriction">YT-1300 only.</span>%LINEBREAK%Your action bar gains the %EVADE% action icon."""
-        "Moldy Crow":
-            text: """<span class="card-restriction">HWK-290 only.</span>%LINEBREAK%During the End phase, do not remove unused focus tokens from your ship."""
-        "ST-321":
-            text: """<span class="card-restriction"><em>Lambda</em>-class Shuttle only.</span>%LINEBREAK%When acquiring a target lock, you may lock onto any enemy ship in the play area."""
-        "Royal Guard TIE":
-            text: """<span class="card-restriction">TIE Interceptor only.</span>%LINEBREAK%You may equip up to 2 different Modification upgrades (instead of 1).%LINEBREAK%You cannot equip this card if your pilot skill value is "4" or lower."""
-        "Dodonna's Pride":
-            text: """<span class="card-restriction">CR90 fore section only.</span>%LINEBREAK%When you perform a coordinate action, you may choose 2 friendly ships (instead of 1).  Those ships may each perform 1 free action."""
-        "A-Wing Test Pilot":
-            text: """<span class="card-restriction">A-Wing only.</span>%LINEBREAK%Your upgrade bar gains 1 %ELITE% upgrade icon.%LINEBREAK%You cannot equip 2 of the same %ELITE% Upgrade cards.  You cannot equip this if your pilot skill value is "1" or lower."""
-        "Tantive IV":
-            text: """<span class="card-restriction">CR90 fore section only.</span>%LINEBREAK%Your fore section upgrade bar gains 1 additional %CREW% and 1 additional %TEAM% upgrade icon."""
-        "Bright Hope":
-            text: """<span class="card-restriction">GR-75 only.</span>%LINEBREAK%A reinforce action assigned to your fore section adds 2 %EVADE% results (instead of 1)."""
-        "Quantum Storm":
-            text: """<span class="card-restriction">GR-75 only.</span>%LINEBREAK%At the start of the End phase, if you have 1 or fewer energy tokens, gain 1 energy token."""
-        "Dutyfree":
-            text: """<span class="card-restriction">GR-75 only.</span>%LINEBREAK%When performing a jam action, you may choose an enemy ship at Range 1-3 (instead of at Range 1-2)."""
-        "Jaina's Light":
-            text: """<span class="card-restriction">CR90 fore section only.</span>%LINEBREAK%When defending, once per attack, if you are dealt a faceup Damage card, you may discard it and draw another faceup Damage card."""
-        "Outrider":
-            text: """<span class="card-restriction">YT-2400 only.</span>%LINEBREAK%While you have a %CANNON% Upgrade card equipped, you <strong>cannot</strong> perform primary weapon attacks and you may perform %CANNON% secondary weapon attacks against ships outside your firing arc."""
-        "Dauntless":
-            text: """<span class="card-restriction">VT-49 Decimator only.</span>%LINEBREAK%After you execute a maneuver that causes you to overlap another ship, you may perform 1 free action.  Then receive 1 stress token."""
-        "Virago":
-            text: """<span class="card-restriction">StarViper only.</span>%LINEBREAK%Your upgrade bar gains the %SYSTEM% and %ILLICIT% upgrade icons.%LINEBREAK%You cannot equip this card if your pilot skill value is "3" or lower."""
-        '"Heavy Scyk" Interceptor (Cannon)':
-            text: """<span class="card-restriction">M3-A Interceptor only.</span>%LINEBREAK%Your upgrade bar gains the %CANNON%, %TORPEDO%, or %MISSILE% upgrade icon.%LINEBREAK%Increase your hull value by 1."""
-        '"Heavy Scyk" Interceptor (Torpedo)':
-            text: """<span class="card-restriction">M3-A Interceptor only.</span>%LINEBREAK%Your upgrade bar gains the %CANNON%, %TORPEDO%, or %MISSILE% upgrade icon.%LINEBREAK%Increase your hull value by 1."""
-        '"Heavy Scyk" Interceptor (Missile)':
-            text: """<span class="card-restriction">M3-A Interceptor only.</span>%LINEBREAK%Your upgrade bar gains the %CANNON%, %TORPEDO%, or %MISSILE% upgrade icon.%LINEBREAK%Increase your hull value by 1."""
-        "IG-2000":
-            text: """<span class="card-restriction">Aggressor only.</span> %SCUMONLY%%LINEBREAK%You have the pilot ability of each other friendly ship with the <em>IG-2000</em> Upgrade card (in addition to your own pilot ability)."""
-        "BTL-A4 Y-Wing":
-            text: """<span class="card-restriction">Y-Wing only.</span>%LINEBREAK%You cannot attack ships outside your firing arc. After you perform a primary weapon attack, you may immediately perform an attack with a %TURRET% secondary weapon."""
-        "Andrasta":
-            text: """Your upgrade bar gains two additional %BOMB% upgrade icons."""
-        "TIE/x1":
-            text: """<span class="card-restriction">TIE Advanced only.</span>%LINEBREAK%Your upgrade bar gains the %SYSTEM% upgrade icon.%LINEBREAK%If you equip a %SYSTEM% upgrade, its squad point cost is reduced by 4 (to a minimum of 0)."""
-        "Hound's Tooth":
-            text: """<span class="card-restriction">YV-666 only.</span>%LINEBREAK%After you are destroyed, before you are removed from the play area, you may <strong>deploy</strong> the <em>Nashtah Pup</em> ship.%LINEBREAK%It cannot attack this round."""
-        "Ghost":
-            text: """<span class="card-restriction">VCX-100 only.</span>%LINEBREAK%Equip the <em>Phantom</em> title card to a friendly Attack Shuttle and dock it to this ship.%LINEBREAK%After you execute a maneuver, you may deploy it from your rear guides."""
-        "Phantom":
-            text: """While you are docked, the <em>Ghost</em> can perform primary weapon attacks from its special firing arc, and, at the end of the Combat phase, it may perform an additional attack with an equipped %TURRET%. If it performs this attack, it cannot attack again this round."""
-        "TIE/v1":
-            text: """<span class="card-restriction">TIE Advanced Prototype only.</span>%LINEBREAK%After you acquire a target lock, you may perform a free evade action."""
-        "Mist Hunter":
-            text: """<span class="card-restriction">G-1A starfighter only.</span>%LINEBREAK%Your action bar gains the %BARRELROLL% action icon.%LINEBREAK%You <strong>must</strong> equip 1 "Tractor Beam" Upgrade card (paying its squad point cost as normal)."""
-        "Punishing One":
-            text: """<span class="card-restriction">JumpMaster 5000 only.</span>%LINEBREAK%Increase your primary weapon value by 1."""
-        "Assailer":
-            text: """<span class="card-restriction"><em>Raider</em>-class corvette aft section only.</span>%LINEBREAK%When defending, if the targeted section has a reinforce token, you may change 1 %FOCUS% result to a %EVADE% result."""
-        "Instigator":
-            text: """<span class="card-restriction"><em>Raider</em>-class corvette aft section only.</span>%LINEBREAK%After you perform a recover action, recover 1 additional shield."""
-        "Impetuous":
-            text: """<span class="card-restriction"><em>Raider</em>-class corvette aft section only.</span>%LINEBREAK%After you perform an attack that destroys an enemy ship, you may acquire a target lock."""
-        'TIE/x7':
-            text: '''<span class="card-restriction">TIE Defender only.</span>%LINEBREAK%Your upgrade bar loses the %CANNON% and %MISSILE% upgrade icons.%LINEBREAK%After executing a 3-, 4-, or 5-speed maneuver, if you did not overlap an obstacle or ship, you may perform a free evade action.'''
-        'TIE/D':
-            text: '''<span class="card-restriction">TIE Defender only.</span>%LINEBREAK%Once per round, after you perform an attack with a %CANNON% secondary weapon that costs 3 or fewer squad points, you may perform a primary weapon attack.'''
-        'TIE Shuttle':
-            text: '''<span class="card-restriction">TIE Bomber only.</span>%LINEBREAK%Your upgrade bar loses all %TORPEDO%, %MISSILE%, and %BOMB% upgrade icons and gains 2 %CREW% upgrade icons.  You cannot equip a %CREW% Upgrade card that costs more than 4 squad points.'''
-        'Requiem':
-            text: '''%GOZANTIONLY%%LINEBREAK%When you deploy a ship, treat its pilot skill value as "8" until the end of the round.'''
-        'Vector':
-            text: '''%GOZANTIONLY%%LINEBREAK%After you execute a maneuver, you may deploy up to 4 attached ships (instead of 2).'''
-        'Suppressor':
-            text: '''%GOZANTIONLY%%LINEBREAK%Once per round, after you acquire a target lock, you may remove 1 focus, evade, or blue target lock token from that ship.'''
-        'Black One':
-            text: '''After you perform a boost or barrel roll action, you may remove 1 enemy target lock from a friendly ship at Range 1.  You cannot equip this card if your pilot skill is "6" or lower.'''
-        'Millennium Falcon (TFA)':
-            text: '''After you execute a 3-speed bank maneuver (%BANKLEFT% or %BANKRIGHT%), if you are not touching another ship and you are not stressed, you may receive 1 stress token to rotate your ship 180&deg;.'''
-        'Alliance Overhaul':
-            text: '''<span class="card-restriction">ARC-170 only.</span>%LINEBREAK%When attacking with a primary weapon from your primary firing arc, you may roll 1 additional attack die.  When attacking from your auxiliary firing arc, you may change 1 of your %FOCUS% results to a %CRIT% result.'''
-        'Special Ops Training':
-            text: '''<span class="card-restriction">TIE/sf only.</span>%LINEBREAK%When attacking with a primary weapon from your primary firing arc, you may roll 1 additional attack die.  If you do not, you may perform an additional attack from your auxiliary firing arc.'''
-        'Concord Dawn Protector':
-            text: '''<span class="card-restriction">Protectorate Starfighter only.</span>%LINEBREAK%When defending, if you are inside the attacker's firing arc and at Range 1 and the attacker is inside your firing arc, add 1 %EVADE% result.'''
-        'Shadow Caster':
-            text: '''<span class="card-restriction">Lancer-class Pursuit Craft only.</span>%LINEBREAK%After you perform an attack that hits, if the defender is inside your mobile firing arc and at Range 1-2, you may assign the defender 1 tractor beam token.'''
-        # Wave X
-        '''Sabine's Masterpiece''':
-            text: '''<span class="card-restriction">TIE Fighter only.</span>%REBELONLY%%LINEBREAK%Your upgrade bar gains the %CREW% and %ILLICIT% upgrade icons.'''
-        '''Kylo Ren's Shuttle''':
-            text: '''<span class="card-restriction">Upsilon-class Shuttle only.</span>%LINEBREAK%At the end of the Combat phase, choose an unstressed enemy ship at Range 1-2.  Its owner must assign a stress token to it or assign a stress token to another ship at Range 1-2 of you that that player controls.'''
-        '''Pivot Wing''':
-            text: '''<span class="card-restriction">U-Wing only.</span> %DUALCARD%%LINEBREAK%<strong>Side A (Attack):</strong> Increase your agility by 1.%LINEBREAK%After you execute a maneuver, you may flip this card.%LINEBREAK%<strong>Side B (Landing):</strong> When you reveal a (0 %STOP%) maneuver, you may rotate your ship 180&deg;.%LINEBREAK%After you execute a maneuver, you may flip this card.'''
-        '''Adaptive Ailerons''':
-            text: '''<span class="card-restriction">TIE Striker only.</span>%LINEBREAK%Immediately before you reveal your dial, if you are not stressed, you <strong>must</strong> execute a white (%BANKLEFT% 1), (%STRAIGHT% 1), or (%BANKRIGHT% 1) maneuver.'''
-        # C-ROC
-        '''Merchant One''':
-            text: '''<span class="card-restriction">C-ROC Cruiser only.</span>%LINEBREAK%Your upgrade bar 1 gains additional %CREW% upgrade icon and 1 additional %TEAM% upgrade icon and loses 1 %CARGO% upgrade icon.'''
-        '''"Light Scyk" Interceptor''':
-            text: '''<span class="card-restriction">M3-A Interceptor only.</span>%LINEBREAK%All Damage cards dealt to you are dealt faceup.  You may treat all bank maneuvers (%BANKLEFT% or %BANKRIGHT%) as green maneuvers.  You cannot equip Modification upgrades.'''
-        '''Insatiable Worrt''':
-            text: '''After you perform the recover action, gain 3 energy.'''
-        '''Broken Horn''':
-            text: '''When defending, if you have a reinforce token, you may add 1 additional %EVADE% result.  If you do, after defending, discard your reinforce token.'''
-        'Havoc':
-            text: '''<span class="card-restriction">Scurrg H-6 Bomber only.</span>%LINEBREAK%Your upgrade bar gains the %SYSTEM% and %SALVAGEDASTROMECH% icons and loses the %CREW% upgrade icon.%LINEBREAK%You cannot equip non-unique %SALVAGEDASTROMECH% Upgrade cards.'''
-        'Vaksai':
-            text: '''<span class="card-restriction">Kihraxz Fighter only.</span>%LINEBREAK%The squad point cost of each of your equipped upgrades is reduced by 1 (to a minimum of 0).%LINEBREAK%You may equip up to 3 different Modification upgrades.'''
-        'StarViper Mk. II':
-            text: '''<span class="card-restriction">StarViper only.</span>%LINEBREAK%You may equip up to 2 different title Upgrades.%LINEBREAK%When performing a barrel roll action, you <strong>must</strong> use the (%BANKLEFT% 1) or (%BANKRIGHT% 1) template instead of the (%STRAIGHT% 1) template.'''
-        'XG-1 Assault Configuration':
-            text: '''<span class="card-restriction">Alpha-class Star Wing only.</span>%LINEBREAK%Your upgrade bar gains 2 %CANNON% icons.%LINEBREAK%You may perform attacks with %CANNON% secondary weapons that cost 2 or fewer points even while you have a weapons disabled token.'''
-        'Enforcer':
-            text: '''<span class="card-restriction">M12-L Kimogila Fighter only.</span>%LINEBREAK%After defending, if the attacker is inside your bullseye firing arc, the attacker receives 1 stress token.'''
-        'Ghost (Phantom II)':
-            text: '''<span class="card-restriction">VCX-100 only.</span>%LINEBREAK%Equip the <em>Phantom II</em> title card to a friendly <em>Sheathipede</em>-class shuttle and dock it to this ship.%LINEBREAK%After you execute a maneuver, you may deploy it from your rear guides.'''
-        'Phantom II':
-            text: '''While you are docked, the <em>Ghost</em> can perform primary weapon attacks from its special firing arc.%LINEBREAK%While you are docked, at the end of the Activation phase, the <em>Ghost</em> may perform a free coordinate action.'''
-        'First Order Vanguard':
-            text: '''<span class="card-restriction">TIE Silencer only.</span>%LINEBREAK%When attacking, if the defender is the only ship in your firing arc at Range 1-3, you may reroll 1 attack die.%LINEBREAK%When defending, you may discard this card to reroll all of your defense dice.'''
-        'Os-1 Arsenal Loadout':
-            text: '''<span class="card-restriction">Alpha-class Star Wing only.</span>%LINEBREAK%Your upgrade bar gains the %TORPEDO% and %MISSILE% icons.%LINEBREAK%You may perform attacks with %TORPEDO% and %MISSILE% secondary weapons against ships you have locked even while you have a weapons disabled token.'''
-        'Crossfire Formation':
-            text: '''<span class="card-restriction">B/SF-17 Bomber only.</span>%LINEBREAK%When defending, if there is at least 1 other friendly Resistance ship at Range 1-2 of the attacker, you may add 1 %FOCUS% result to your roll.'''
-        'Advanced Ailerons':
-            text: '''<span class="card-restriction">TIE Reaper only.</span>%LINEBREAK%Treat your (%BANKLEFT% 3) and (%BANKRIGHT% 3) maneuvers as white.%LINEBREAK%Immediately before you reveal your dial, if you are not stressed, you must execute a white (%BANKLEFT% 1), (%STRAIGHT% 1), or (%BANKRIGHT% 1) maneuver.'''
 
     condition_translations =
-        '''I'll Show You the Dark Side''':
-            text: '''When this card is assigned, if it is not already in play, the player who assigned it searches the Damage deck for 1 Damage card with the <strong><em>Pilot</em></strong> trait and may place it faceup on this card. Then shuffle the damage deck.%LINEBREAK%When you suffer critical damage during an attack, you are instead dealt the chosen faceup Damage card.%LINEBREAK%When there is no Damage card on this card, remove it.'''
-        'Suppressive Fire':
-            text: '''When attacking a ship other than "Captain Rex," roll 1 fewer attack die.%LINEBREAK% When you declare an attack targeting "Captain Rex" or when "Captain Rex" is destroyed, remove this card.%LINEBREAK%At the end of the Combat phase, if "Captain Rex" did not perform an attack this phase, remove this card.'''
-        'Fanatical Devotion':
-            text: '''When defending, you cannot spend focus tokens.%LINEBREAK%When attacking, if you spend a focus token to change all %FOCUS% results to %HIT% results, set aside the first %FOCUS% result that you change. The set-aside %HIT% result cannot be canceled by defense dice, but the defender may cancel %CRIT% results before it.%LINEBREAK%During the End phase, remove this card.'''
-        'A Debt to Pay':
-            text: '''When attacking a ship that has the "A Score to Settle" Upgrade card equipped, you may change 1 %FOCUS% result to a %CRIT% result.'''
-        'Shadowed':
-            text: '''"Thweek" is treated as having the pilot skill value you had after setup.%LINEBREAK%The pilot skill value of "Thweek" does not change if your pilot skill value changes or you are destroyed.'''
-        'Mimicked':
-            text: '''"Thweek" is treated as having your pilot ability.%LINEBREAK%"Thweek" cannot apply a Condition card by using your pilot ability.%LINEBREAK%"Thweek" does not lose your pilot ability if you are destroyed.'''
-        'Harpooned!':
-            text: '''When you are hit by an attack, if there is at least 1 uncanceled %CRIT% result, each other ship at Range 1 suffers 1 damage.  Then discard this card and receive 1 facedown Damage card.%LINEBREAK%When you are destroyed, each ship at Range 1 suffers 1 damage.%LINEBREAK%<strong>Action:</strong> Discard this card.  Then roll 1 attack die.  On a %HIT% or %CRIT% result, suffer 1 damage.'''
-        'Rattled':
-            text: '''When you suffer damage from a bomb, you suffer 1 additional critical damage. Then, remove this card.%LINEBREAK%<strong>Action:</strong> Roll 1 attack die. On a %FOCUS% or %HIT% result, remove this card.'''
-        'Scrambled':
-            text: '''When attacking a ship at Range 1 that is equipped with the "Targeting Scrambler" upgrade, you cannot modify attack dice.%LINEBREAK%At the end of the combat phase, remove this card.'''
-        'Optimized Prototype':
-            text: '''Increase your shield value by 1.%LINEBREAK%Once per round, when performing a primary weapon attack, you may spend 1 die result to remove 1 shield from the defender.%LINEBREAK%After you perform a primary weapon attack, a friendly ship at Range 1-2 equipped with the "Director Krennic" Upgrade card may acquire a target lock on the defender.'''
 
     exportObj.setupCardData basic_cards, pilot_translations, upgrade_translations, modification_translations, title_translations, condition_translations
 
@@ -29769,19 +27018,19 @@ class exportObj.SquadBuilder
                             <td class="info-data info-energy"></td>
                         </tr>
                         <tr class="info-attack">
-                            <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-attack"></i></td>
+                            <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i></td>
                             <td class="info-data info-attack"></td>
                         </tr>
                         <tr class="info-attack-back">
-                            <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-attack"></i></td>
+                            <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-reararc"></i></td>
                             <td class="info-data info-attack"></td>
                         </tr>
                         <tr class="info-attack-turret">
-                            <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-attack"></i></td>
+                            <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i></td>
                             <td class="info-data info-attack"></td>
                         </tr>
                         <tr class="info-attack-doubleturret">
-                            <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-attack"></i></td>
+                            <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-doubleturretarc"></i></td>
                             <td class="info-data info-attack"></td>
                         </tr>
                         <tr class="info-range">
@@ -29801,7 +27050,7 @@ class exportObj.SquadBuilder
                             <td class="info-data info-shields"></td>
                         </tr>
                         <tr class="info-force">
-                            <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-shield"></i></td>
+                            <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-forcepower"></i></td>
                             <td class="info-data info-force"></td>
                         </tr>
                         <tr class="info-actions">
@@ -30622,8 +27871,8 @@ class exportObj.SquadBuilder
                     @info_container.find('tr.info-skill').show()
 
                     for cls in @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
-                        @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-attack')
-                    @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass(data.data.attack_icon ? 'xwing-miniatures-font-attack')
+                        @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-frontarc')
+                    @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass(data.data.attack_icon ? 'xwing-miniatures-font-frontarc')
 
                     @info_container.find('tr.info-attack td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.attack ? data.data.attack), effective_stats, 'attack')
                     @info_container.find('tr.info-attack').toggle(data.pilot.ship_override?.attack? or data.data.attack?)
@@ -30692,8 +27941,8 @@ class exportObj.SquadBuilder
                     @info_container.find('tr.info-attack-doubleturret').toggle(ship.attackdt?)
                     
                     for cls in @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
-                        @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-attack')
-                    @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass(ship.attack_icon ? 'xwing-miniatures-font-attack')
+                        @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-frontarc')
+                    @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass(ship.attack_icon ? 'xwing-miniatures-font-frontarc')
 
                     @info_container.find('tr.info-energy td.info-data').text(data.ship_override?.energy ? ship.energy)
                     @info_container.find('tr.info-energy').toggle(data.ship_override?.energy? or ship.energy?)
@@ -30740,8 +27989,8 @@ class exportObj.SquadBuilder
                     if data.attack?
                         # Attack icons on upgrade cards don't get special icons
                         for cls in @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
-                            @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-attack')
-                        @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass('xwing-miniatures-font-attack')
+                            @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-frontarc')
+                        @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass('xwing-miniatures-font-frontarc')
                         @info_container.find('tr.info-attack td.info-data').text data.attack
                         @info_container.find('tr.info-attack').show()
                     else
@@ -30751,6 +28000,10 @@ class exportObj.SquadBuilder
                         @info_container.find('tr.info-range').show()
                     else
                         @info_container.find('tr.info-range').hide()
+                    
+                    @info_container.find('tr.info-force td.info-data').text(data.ship_override?.force)
+                    @info_container.find('tr.info-force').toggle(data.ship_override?.force?)
+                    
                     @info_container.find('tr.info-agility').hide()
                     @info_container.find('tr.info-hull').hide()
                     @info_container.find('tr.info-shields').hide()
@@ -30803,9 +28056,9 @@ class exportObj.SquadBuilder
                         when 'Title'
                             available_titles = (title for title in @getAvailableTitlesIncluding(addon.ship) when exportObj.titlesById[title.id].sources.intersects(data.allowed_sources))
                             addon.setById available_titles[$.randomInt available_titles.length].id if available_titles.length > 0
-                        when 'Modification'
-                            available_modifications = (modification for modification in @getAvailableModificationsIncluding(null, addon.ship) when exportObj.modificationsById[modification.id].sources.intersects(data.allowed_sources))
-                            addon.setById available_modifications[$.randomInt available_modifications.length].id if available_modifications.length > 0
+                        #when 'Modification'
+                        #    available_modifications = (modification for modification in @getAvailableModificationsIncluding(null, addon.ship) when exportObj.modificationsById[modification.id].sources.intersects(data.allowed_sources))
+                        #    addon.setById available_modifications[$.randomInt available_modifications.length].id if available_modifications.length > 0
                         else
                             throw new Error("Invalid addon type #{addon.type}")
 
@@ -31539,7 +28792,7 @@ class Ship
                     """<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i>"""
                 when 'Cloak'
                     """<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>"""
-                when 'SLAM'
+                when 'Slam'
                     """<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>"""
                 when 'Rotate Arc'
                     """<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>"""
@@ -31549,7 +28802,7 @@ class Ship
                     """<span>&nbsp;#{action}<span>"""
         action_bar = action_icons.join ' '
 
-        attack_icon = @data.attack_icon ? 'xwing-miniatures-font-attack'
+        attack_icon = @data.attack_icon ? 'xwing-miniatures-font-frontarc'
         attackHTML = if (@pilot.ship_override?.attack? or @data.attack?) then $.trim """
             <i class="xwing-miniatures-font #{attack_icon}"></i>
             <span class="info-data info-attack">#{statAndEffectiveStat((@pilot.ship_override?.attack ? @data.attack), effective_stats, 'attack')}</span>
@@ -31580,6 +28833,8 @@ class Ship
                     <span class="info-data info-hull">#{statAndEffectiveStat((@pilot.ship_override?.hull ? @data.hull), effective_stats, 'hull')}</span>
                     <i class="xwing-miniatures-font xwing-miniatures-font-shield"></i>
                     <span class="info-data info-shields">#{statAndEffectiveStat((@pilot.ship_override?.shields ? @data.shields), effective_stats, 'shields')}</span>
+                    <i class="xwing-miniatures-font xwing-miniatures-font-forcepower"></i>
+                    <span class="info-data info-force">#{statAndEffectiveStat((@pilot.ship_override?.force ? @data.force), effective_stats, 'force')}</span>
                     &nbsp;
                     #{action_bar}
                 </div>
@@ -32188,7 +29443,7 @@ class GenericAddon
                 <div class="upgrade-attack">
                     <span class="upgrade-attack-range">#{@data.range}</span>
                     <span class="info-data info-attack">#{@data.attack}</span>
-                    <i class="xwing-miniatures-font xwing-miniatures-font-attack"></i>
+                    <i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>
                 </div>
             """ else ''
 
@@ -32321,26 +29576,27 @@ class exportObj.Upgrade extends GenericAddon
                     more: false
                     results: @ship.builder.getAvailableUpgradesIncluding(@slot, @data, @ship, this, query.term, @filter_func)
 
-class exportObj.Modification extends GenericAddon
-    constructor: (args) ->
-        super args
-        @type = 'Modification'
-        @dataById = exportObj.modificationsById
-        @dataByName = exportObj.modificationsByLocalizedName
-        @serialization_code = 'M'
+#Temporarily removed modifications as they are now upgrades                    
+#class exportObj.Modification extends GenericAddon
+#    constructor: (args) ->
+#        super args
+#        @type = 'Modification'
+#        @dataById = exportObj.modificationsById
+#        @dataByName = exportObj.modificationsByLocalizedName
+#        @serialization_code = 'M'
 
-        @setupSelector()
+#        @setupSelector()
 
-    setupSelector: ->
-        super
-            width: '50%'
-            placeholder: @placeholderMod_func(exportObj.translate @ship.builder.language, 'ui', 'modificationPlaceholder')
-            allowClear: true
-            query: (query) =>
-                @ship.builder.checkCollection()
-                query.callback
-                    more: false
-                    results: @ship.builder.getAvailableModificationsIncluding(@data, @ship, query.term, @filter_func)
+#    setupSelector: ->
+#        super
+#            width: '50%'
+#            placeholder: @placeholderMod_func(exportObj.translate @ship.builder.language, 'ui', 'modificationPlaceholder')
+#            allowClear: true
+#            query: (query) =>
+#                @ship.builder.checkCollection()
+#                query.callback
+#                    more: false
+#                    results: @ship.builder.getAvailableModificationsIncluding(@data, @ship, query.term, @filter_func)
 
 class exportObj.Title extends GenericAddon
     constructor: (args) ->
