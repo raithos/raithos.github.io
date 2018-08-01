@@ -1128,8 +1128,13 @@ exportObj.CardBrowser = (function() {
         this.card_viewer_container.find('tr.info-hull').show();
         this.card_viewer_container.find('tr.info-shields td.info-data').text((_ref13 = (_ref14 = data.ship_override) != null ? _ref14.shields : void 0) != null ? _ref13 : ship.shields);
         this.card_viewer_container.find('tr.info-shields').show();
-        this.card_viewer_container.find('tr.info-force td.info-data').text((_ref15 = data.ship_override) != null ? _ref15.force : void 0);
-        this.card_viewer_container.find('tr.info-force').toggle(((_ref16 = data.ship_override) != null ? _ref16.force : void 0) != null);
+        if (((_ref15 = data.ship_override) != null ? _ref15.force : void 0) != null) {
+          this.info_container.find('tr.info-force td.info-data').text((_ref16 = data.ship_override) != null ? _ref16.force : void 0);
+          this.info_container.find('tr.info-force td.info-header').show();
+          this.info_container.find('tr.info-force').show();
+        } else {
+          this.info_container.find('tr.info-force').hide();
+        }
         this.card_viewer_container.find('tr.info-actions td.info-data').text(((function() {
           var _j, _len1, _ref17, _results;
           _ref17 = exportObj.ships[data.ship].actions;
@@ -1483,7 +1488,7 @@ exportObj.basicCardData = function() {
         shields: 3,
         large: true,
         actions: ["Focus", "Reinforce", "Target Lock"],
-        attack_icon: 'xwing-miniatures-font-attack-180',
+        attack_icon: 'xwing-miniatures-font-fullfrontarc',
         maneuvers: [[0, 0, 3, 0, 0, 0], [0, 2, 2, 2, 0, 0], [3, 1, 2, 1, 3, 0], [1, 1, 2, 1, 1, 0], [0, 0, 1, 0, 0, 0]]
       },
       "Kihraxz Fighter": {
@@ -1645,7 +1650,7 @@ exportObj.basicCardData = function() {
         hull: 6,
         shields: 3,
         actions: ["Focus", "Reinforce"],
-        attack_icon: 'xwing-miniatures-font-attack-180',
+        attack_icon: 'xwing-miniatures-font-fullfrontarc',
         maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
       },
       "Scurrg H-6 Bomber": {
@@ -1655,7 +1660,7 @@ exportObj.basicCardData = function() {
         agility: 1,
         hull: 6,
         shields: 4,
-        actions: ["Focus", "Target Lock", "Barrel Roll"],
+        actions: ["Focus", "Target Lock"],
         actionsred: ["Barrel Roll"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 3, 3], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
       },
@@ -1732,7 +1737,7 @@ exportObj.basicCardData = function() {
         ship: "X-Wing",
         skill: 1,
         points: 41,
-        slots: ["illicit", "Torpedo", "Astromech", "Modification", "configuration"]
+        slots: ["Illicit", "Torpedo", "Astromech", "Modification", "configuration"]
       }, {
         name: "Blue Squadron Escort",
         id: 1,
@@ -1748,7 +1753,7 @@ exportObj.basicCardData = function() {
         ship: "X-Wing",
         skill: 3,
         points: 43,
-        slots: ["talent", "Torpedo", "Astromech", "Modification", "configuration"]
+        slots: ["Talent", "Torpedo", "Astromech", "Modification", "configuration"]
       }, {
         name: "Jek Porkins",
         id: 3,
@@ -1757,7 +1762,7 @@ exportObj.basicCardData = function() {
         ship: "X-Wing",
         skill: 4,
         points: 46,
-        slots: ["talent", "Torpedo", "Astromech", "Modification", "configuration"]
+        slots: ["Talent", "Torpedo", "Astromech", "Modification", "configuration"]
       }, {
         name: "Luke Skywalker",
         id: 4,
@@ -1805,7 +1810,7 @@ exportObj.basicCardData = function() {
         ship: "X-Wing",
         skill: 2,
         points: 45,
-        slots: ["illicit", "Torpedo", "Astromech", "Modification", "Configuration"]
+        slots: ["Illicit", "Torpedo", "Astromech", "Modification", "Configuration"]
       }, {
         name: "Thane Kyrell",
         id: 9,
@@ -1814,7 +1819,7 @@ exportObj.basicCardData = function() {
         ship: "X-Wing",
         skill: 5,
         points: 48,
-        slots: ["talent", "Torpedo", "Astromech", "Modification", "Configuration"]
+        slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
       }, {
         name: "Leevan Tenza",
         id: 10,
@@ -1823,7 +1828,7 @@ exportObj.basicCardData = function() {
         ship: "X-Wing",
         skill: 3,
         points: 46,
-        slots: ["talent", "Torpedo", "Astromech", "Modification", "Configuration"]
+        slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
       }, {
         name: "whoops",
         id: 11,
@@ -1836,7 +1841,7 @@ exportObj.basicCardData = function() {
         ship: "X-Wing",
         skill: 3,
         points: 48,
-        slots: ["talent", "Torpedo", "Astromech", "Modification", "Configuration"]
+        slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
       }, {
         name: "Sabine Wren (TIE Fighter)",
         id: 13,
@@ -2045,7 +2050,7 @@ exportObj.basicCardData = function() {
         ship: "U-Wing",
         skill: 2,
         points: 47,
-        slots: ["illicit", "System", "Crew", "Crew", "Modification", "Configuration"]
+        slots: ["Illicit", "System", "Crew", "Crew", "Modification", "Configuration"]
       }, {
         name: "Blue Squadron Scout",
         id: 37,
@@ -2062,7 +2067,7 @@ exportObj.basicCardData = function() {
         ship: "U-Wing",
         skill: 1,
         points: 43,
-        slots: ["illicit", "System", "Crew", "Crew", "Modification", "Configuration"]
+        slots: ["Illicit", "System", "Crew", "Crew", "Modification", "Configuration"]
       }, {
         name: "Dash Rendar",
         id: 39,
@@ -2071,7 +2076,7 @@ exportObj.basicCardData = function() {
         ship: "YT-2400",
         skill: 5,
         points: 100,
-        slots: ["Talent", "Missile", "Gunner", "Crew", "Modification", "title", "Illicit"]
+        slots: ["Talent", "Missile", "Gunner", "Crew", "Modification", "Title", "Illicit"]
       }, {
         name: '"Leebo"',
         id: 40,
@@ -2080,7 +2085,7 @@ exportObj.basicCardData = function() {
         ship: "YT-2400",
         skill: 3,
         points: 98,
-        slots: ["Missile", "Gunner", "Crew", "Modification", "title", "illicit"]
+        slots: ["Missile", "Gunner", "Crew", "Modification", "Title", "Illicit"]
       }, {
         name: "Wild Space Fringer",
         id: 41,
@@ -2088,7 +2093,7 @@ exportObj.basicCardData = function() {
         ship: "YT-2400",
         skill: 1,
         points: 88,
-        slots: ["Missile", "Gunner", "Crew", "Modification", "title", "illicit"]
+        slots: ["Missile", "Gunner", "Crew", "Modification", "Title", "Illicit"]
       }, {
         name: "Han Solo (Rebel)",
         id: 42,
@@ -2097,7 +2102,7 @@ exportObj.basicCardData = function() {
         ship: "YT-1300",
         skill: 6,
         points: 92,
-        slots: ["Talent", "Missile", "Gunner", "Crew", "Crew", "Modification", "title", "illicit"]
+        slots: ["Talent", "Missile", "Gunner", "Crew", "Crew", "Modification", "Title", "Illicit"]
       }, {
         name: "Lando Calrissian (Rebel)",
         id: 43,
@@ -2106,7 +2111,7 @@ exportObj.basicCardData = function() {
         ship: "YT-1300",
         skill: 5,
         points: 92,
-        slots: ["Talent", "Missile", "Gunner", "Crew", "Crew", "Modification", "title", "illicit"]
+        slots: ["Talent", "Missile", "Gunner", "Crew", "Crew", "Modification", "Title", "Illicit"]
       }, {
         name: "Chewbacca",
         id: 44,
@@ -2115,7 +2120,7 @@ exportObj.basicCardData = function() {
         ship: "YT-1300",
         skill: 4,
         points: 84,
-        slots: ["Talent", "Missile", "Gunner", "Crew", "Crew", "Modification", "title", "illicit"],
+        slots: ["Talent", "Missile", "Gunner", "Crew", "Crew", "Modification", "Title", "Illicit"],
         ship_override: {
           charge: 1
         }
@@ -2126,7 +2131,7 @@ exportObj.basicCardData = function() {
         ship: "YT-1300",
         skill: 5,
         points: 78,
-        slots: ["Missile", "Gunner", "Crew", "Crew", "Modification", "title", "illicit"]
+        slots: ["Missile", "Gunner", "Crew", "Crew", "Modification", "Title", "Illicit"]
       }, {
         name: "Jan Ors",
         id: 46,
@@ -2135,7 +2140,7 @@ exportObj.basicCardData = function() {
         ship: "HWK-290",
         skill: 5,
         points: 42,
-        slots: ["Talent", "Device", "Crew", "Modification", "Modification", "title"]
+        slots: ["Talent", "Device", "Crew", "Modification", "Modification", "Title"]
       }, {
         name: "Roark Garnet",
         id: 47,
@@ -2144,7 +2149,7 @@ exportObj.basicCardData = function() {
         ship: "HWK-290",
         skill: 4,
         points: 38,
-        slots: ["Talent", "Device", "Crew", "Modification", "Modification", "title"]
+        slots: ["Talent", "Device", "Crew", "Modification", "Modification", "Title"]
       }, {
         name: "Kyle Katarn",
         id: 48,
@@ -2153,7 +2158,7 @@ exportObj.basicCardData = function() {
         ship: "HWK-290",
         skill: 3,
         points: 38,
-        slots: ["Talent", "Device", "Crew", "Modification", "Modification", "title"]
+        slots: ["Talent", "Device", "Crew", "Modification", "Modification", "Title"]
       }, {
         name: "Rebel Scout",
         id: 49,
@@ -2161,7 +2166,7 @@ exportObj.basicCardData = function() {
         ship: "HWK-290",
         skill: 2,
         points: 32,
-        slots: ["Device", "Crew", "Modification", "Modification", "title"]
+        slots: ["Device", "Crew", "Modification", "Modification", "Title"]
       }, {
         name: "Jake Farrell",
         id: 50,
@@ -2264,7 +2269,7 @@ exportObj.basicCardData = function() {
         ship: "VCX-100",
         skill: 5,
         points: 76,
-        slots: ["talent", "Torpedo", "Crew", "Crew", "Modification", "Gunner", "Turret", "title"]
+        slots: ["Talent", "Torpedo", "Crew", "Crew", "Modification", "Gunner", "Turret", "Title"]
       }, {
         name: "Kanan Jarrus",
         id: 62,
@@ -2273,7 +2278,7 @@ exportObj.basicCardData = function() {
         ship: "VCX-100",
         skill: 3,
         points: 90,
-        slots: ["Force", "Torpedo", "Crew", "Crew", "Modification", "Gunner", "Turret", "title"],
+        slots: ["Force", "Torpedo", "Crew", "Crew", "Modification", "Gunner", "Turret", "Title"],
         ship_override: {
           force: 2
         }
@@ -2285,7 +2290,7 @@ exportObj.basicCardData = function() {
         ship: "VCX-100",
         skill: 2,
         points: 72,
-        slots: ["Torpedo", "Crew", "Crew", "Modification", "Gunner", "Turret", "title"]
+        slots: ["Torpedo", "Crew", "Crew", "Modification", "Gunner", "Turret", "Title"]
       }, {
         name: "Lothal Rebel",
         id: 64,
@@ -2293,7 +2298,7 @@ exportObj.basicCardData = function() {
         ship: "VCX-100",
         skill: 2,
         points: 70,
-        slots: ["Torpedo", "Crew", "Crew", "Modification", "Gunner", "Turret", "title"]
+        slots: ["Torpedo", "Crew", "Crew", "Modification", "Gunner", "Turret", "Title"]
       }, {
         name: "Hera Syndulla (Attack Shuttle)",
         id: 65,
@@ -2302,7 +2307,7 @@ exportObj.basicCardData = function() {
         ship: "Attack Shuttle",
         skill: 5,
         points: 39,
-        slots: ["talent", "Crew", "Modification", "Turret", "title"]
+        slots: ["Talent", "Crew", "Modification", "Turret", "Title"]
       }, {
         name: "Sabine Wren (Attack Shuttle)",
         id: 66,
@@ -2311,7 +2316,7 @@ exportObj.basicCardData = function() {
         ship: "Attack Shuttle",
         skill: 3,
         points: 38,
-        slots: ["talent", "Crew", "Modification", "Turret", "title"]
+        slots: ["Talent", "Crew", "Modification", "Turret", "Title"]
       }, {
         name: "Ezra Bridger (Attack Shuttle)",
         id: 67,
@@ -2320,7 +2325,7 @@ exportObj.basicCardData = function() {
         ship: "Attack Shuttle",
         skill: 3,
         points: 41,
-        slots: ["Force", "Crew", "Modification", "Turret", "title"],
+        slots: ["Force", "Crew", "Modification", "Turret", "Title"],
         ship_override: {
           force: 1
         }
@@ -2332,7 +2337,7 @@ exportObj.basicCardData = function() {
         ship: "Attack Shuttle",
         skill: 2,
         points: 34,
-        slots: ["Crew", "Modification", "Turret", "title"]
+        slots: ["Crew", "Modification", "Turret", "Title"]
       }, {
         name: "Fenn Rau (Sheathipede)",
         id: 69,
@@ -2341,7 +2346,7 @@ exportObj.basicCardData = function() {
         ship: "Sheathipede-class Shuttle",
         skill: 6,
         points: 52,
-        slots: ["talent", "Crew", "Modification", "Astromech", "title"]
+        slots: ["Talent", "Crew", "Modification", "Astromech", "Title"]
       }, {
         name: "Ezra Bridger (Sheathipede)",
         id: 70,
@@ -2350,7 +2355,7 @@ exportObj.basicCardData = function() {
         ship: "Sheathipede-class Shuttle",
         skill: 3,
         points: 42,
-        slots: ["force", "Crew", "Modification", "Astromech", "title"],
+        slots: ["force", "Crew", "Modification", "Astromech", "Title"],
         ship_override: {
           force: 1
         }
@@ -2362,7 +2367,7 @@ exportObj.basicCardData = function() {
         ship: "Sheathipede-class Shuttle",
         skill: 2,
         points: 32,
-        slots: ["talent", "Crew", "Modification", "Astromech", "title"]
+        slots: ["Talent", "Crew", "Modification", "Astromech", "Title"]
       }, {
         name: "AP-5",
         id: 72,
@@ -2371,7 +2376,7 @@ exportObj.basicCardData = function() {
         ship: "Sheathipede-class Shuttle",
         skill: 1,
         points: 30,
-        slots: ["talent", "Crew", "Modification", "Astromech", "title"]
+        slots: ["Talent", "Crew", "Modification", "Astromech", "Title"]
       }, {
         name: "Braylen Stramm",
         id: 73,
@@ -2380,7 +2385,7 @@ exportObj.basicCardData = function() {
         ship: "B-Wing",
         skill: 4,
         points: 50,
-        slots: ["talent", "System", "Cannon", "Cannon", "Torpedo", "Modification"]
+        slots: ["Talent", "System", "Cannon", "Cannon", "Torpedo", "Modification"]
       }, {
         name: "Ten Numb",
         id: 74,
@@ -2389,7 +2394,7 @@ exportObj.basicCardData = function() {
         ship: "B-Wing",
         skill: 4,
         points: 50,
-        slots: ["talent", "System", "Cannon", "Cannon", "Torpedo", "Modification"]
+        slots: ["Talent", "System", "Cannon", "Cannon", "Torpedo", "Modification"]
       }, {
         name: "Blade Squadron Veteran",
         id: 75,
@@ -2397,7 +2402,7 @@ exportObj.basicCardData = function() {
         ship: "B-Wing",
         skill: 3,
         points: 44,
-        slots: ["talent", "System", "Cannon", "Cannon", "Torpedo", "Modification"]
+        slots: ["Talent", "System", "Cannon", "Cannon", "Torpedo", "Modification"]
       }, {
         name: "Blue Squadron Pilot",
         id: 76,
@@ -2414,7 +2419,7 @@ exportObj.basicCardData = function() {
         ship: "ARC-170",
         skill: 5,
         points: 55,
-        slots: ["talent", "Torpedo", "Crew", "Gunner", "Astromech", "Modification"]
+        slots: ["Talent", "Torpedo", "Crew", "Gunner", "Astromech", "Modification"]
       }, {
         name: "Shara Bey",
         id: 78,
@@ -2423,7 +2428,7 @@ exportObj.basicCardData = function() {
         ship: "ARC-170",
         skill: 4,
         points: 53,
-        slots: ["talent", "Torpedo", "Crew", "Gunner", "Astromech", "Modification"]
+        slots: ["Talent", "Torpedo", "Crew", "Gunner", "Astromech", "Modification"]
       }, {
         name: "Garven Dreis (ARC-170)",
         id: 79,
@@ -2432,7 +2437,7 @@ exportObj.basicCardData = function() {
         ship: "ARC-170",
         skill: 4,
         points: 51,
-        slots: ["talent", "Torpedo", "Crew", "Gunner", "Astromech", "Modification"]
+        slots: ["Talent", "Torpedo", "Crew", "Gunner", "Astromech", "Modification"]
       }, {
         name: "Ibtisam",
         id: 80,
@@ -2441,7 +2446,7 @@ exportObj.basicCardData = function() {
         ship: "ARC-170",
         skill: 3,
         points: 50,
-        slots: ["talent", "Torpedo", "Crew", "Gunner", "Astromech", "Modification"]
+        slots: ["Talent", "Torpedo", "Crew", "Gunner", "Astromech", "Modification"]
       }, {
         name: "IG-88A",
         id: 81,
@@ -2449,7 +2454,7 @@ exportObj.basicCardData = function() {
         ship: "Aggressor",
         skill: 4,
         points: 70,
-        slots: ["Talent", "System", "Cannon", "Cannon", "Bomb", "Illicit", "Modification", "Title"]
+        slots: ["Talent", "System", "Cannon", "Cannon", "Device", "Illicit", "Modification", "Title"]
       }, {
         name: "IG-88B",
         id: 82,
@@ -2457,7 +2462,7 @@ exportObj.basicCardData = function() {
         ship: "Aggressor",
         skill: 4,
         points: 70,
-        slots: ["Talent", "System", "Cannon", "Cannon", "Bomb", "Illicit", "Modification", "Title"]
+        slots: ["Talent", "System", "Cannon", "Cannon", "Device", "Illicit", "Modification", "Title"]
       }, {
         name: "IG-88C",
         id: 83,
@@ -2465,7 +2470,7 @@ exportObj.basicCardData = function() {
         ship: "Aggressor",
         skill: 4,
         points: 70,
-        slots: ["Talent", "System", "Cannon", "Cannon", "Bomb", "Illicit", "Modification", "Title"]
+        slots: ["Talent", "System", "Cannon", "Cannon", "Device", "Illicit", "Modification", "Title"]
       }, {
         name: "IG-88D",
         id: 84,
@@ -2473,7 +2478,7 @@ exportObj.basicCardData = function() {
         ship: "Aggressor",
         skill: 4,
         points: 70,
-        slots: ["Talent", "System", "Cannon", "Cannon", "Bomb", "Illicit", "Modification", "Title"]
+        slots: ["Talent", "System", "Cannon", "Cannon", "Device", "Illicit", "Modification", "Title"]
       }, {
         name: "Kavil",
         id: 85,
@@ -2482,7 +2487,7 @@ exportObj.basicCardData = function() {
         ship: "Y-wing",
         skill: 5,
         points: 42,
-        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Bomb", "Illicit", "Modification"]
+        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
       }, {
         name: "Drea Renthal",
         id: 86,
@@ -2491,7 +2496,7 @@ exportObj.basicCardData = function() {
         ship: "Y-wing",
         skill: 4,
         points: 40,
-        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Bomb", "Illicit", "Modification"]
+        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
       }, {
         name: "Hired Gun",
         id: 87,
@@ -2499,7 +2504,7 @@ exportObj.basicCardData = function() {
         ship: "Y-wing",
         skill: 2,
         points: 34,
-        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Bomb", "Illicit", "Modification"]
+        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
       }, {
         name: "Crymorah Goon",
         id: 88,
@@ -2507,7 +2512,7 @@ exportObj.basicCardData = function() {
         ship: "Y-wing",
         skill: 4,
         points: 32,
-        slots: ["Turret", "Torpedo", "Gunner", "Astromech", "Bomb", "Illicit", "Modification"]
+        slots: ["Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
       }, {
         name: "Han Solo (Scum)",
         id: 89,
@@ -2637,7 +2642,7 @@ exportObj.basicCardData = function() {
         ship: "Firespray-31",
         skill: 5,
         points: 80,
-        slots: ["Talent", "Cannon", "Missile", "Crew", "Bomb", "Illicit", "Modification", "Title"]
+        slots: ["Talent", "Cannon", "Missile", "Crew", "Device", "Illicit", "Modification", "Title"]
       }, {
         name: "Emon Azzameen",
         id: 104,
@@ -2646,7 +2651,7 @@ exportObj.basicCardData = function() {
         ship: "Firespray-31",
         skill: 4,
         points: 76,
-        slots: ["Talent", "Cannon", "Missile", "Crew", "Bomb", "Illicit", "Modification", "Title"]
+        slots: ["Talent", "Cannon", "Missile", "Crew", "Device", "Illicit", "Modification", "Title"]
       }, {
         name: "Kath Scarlet",
         id: 105,
@@ -2655,7 +2660,7 @@ exportObj.basicCardData = function() {
         ship: "Firespray-31",
         skill: 4,
         points: 74,
-        slots: ["Talent", "Cannon", "Missile", "Crew", "Bomb", "Illicit", "Modification", "Title"]
+        slots: ["Talent", "Cannon", "Missile", "Crew", "Device", "Illicit", "Modification", "Title"]
       }, {
         name: "Koshka Frost",
         id: 106,
@@ -2664,7 +2669,7 @@ exportObj.basicCardData = function() {
         ship: "Firespray-31",
         skill: 3,
         points: 71,
-        slots: ["Talent", "Cannon", "Missile", "Crew", "Bomb", "Illicit", "Modification", "Title"]
+        slots: ["Talent", "Cannon", "Missile", "Crew", "Device", "Illicit", "Modification", "Title"]
       }, {
         name: "Krassis Trelix",
         id: 107,
@@ -2673,7 +2678,7 @@ exportObj.basicCardData = function() {
         ship: "Firespray-31",
         skill: 3,
         points: 70,
-        slots: ["Talent", "Cannon", "Missile", "Crew", "Bomb", "Illicit", "Modification", "Title"]
+        slots: ["Talent", "Cannon", "Missile", "Crew", "Device", "Illicit", "Modification", "Title"]
       }, {
         name: "Bounty Hunter",
         id: 108,
@@ -2681,7 +2686,7 @@ exportObj.basicCardData = function() {
         ship: "Firespray-31",
         skill: 2,
         points: 66,
-        slots: ["Talent", "Cannon", "Missile", "Crew", "Bomb", "Illicit", "Modification", "Title"]
+        slots: ["Talent", "Cannon", "Missile", "Crew", "Device", "Illicit", "Modification", "Title"]
       }, {
         name: "4-LOM",
         id: 109,
@@ -2716,7 +2721,7 @@ exportObj.basicCardData = function() {
         ship: "HWK-290",
         skill: 3,
         points: 38,
-        slots: ["Talent", "Crew", "Bomb", "Illicit", "Modification", "Modification", "Title"]
+        slots: ["Talent", "Crew", "Device", "Illicit", "Modification", "Modification", "Title"]
       }, {
         name: "Dace Bonearm",
         id: 113,
@@ -2725,7 +2730,7 @@ exportObj.basicCardData = function() {
         ship: "HWK-290",
         skill: 4,
         points: 36,
-        slots: ["Talent", "Crew", "Bomb", "Illicit", "Modification", "Modification", "Title"]
+        slots: ["Talent", "Crew", "Device", "Illicit", "Modification", "Modification", "Title"]
       }, {
         name: "Torkil Mux",
         id: 114,
@@ -2734,7 +2739,7 @@ exportObj.basicCardData = function() {
         ship: "HWK-290",
         skill: 2,
         points: 36,
-        slots: ["Crew", "Bomb", "Illicit", "Modification", "Modification", "Title"]
+        slots: ["Crew", "Device", "Illicit", "Modification", "Modification", "Title"]
       }, {
         name: "Dengar",
         id: 115,
@@ -2961,7 +2966,7 @@ exportObj.basicCardData = function() {
         ship: "Quadjumper",
         skill: 4,
         points: 33,
-        slots: ["Talent", "Tech", "Crew", "Bomb", "Illicit", "Modification"]
+        slots: ["Talent", "Tech", "Crew", "Device", "Illicit", "Modification"]
       }, {
         name: "Sarco Plank",
         id: 141,
@@ -2970,7 +2975,7 @@ exportObj.basicCardData = function() {
         ship: "Quadjumper",
         skill: 2,
         points: 31,
-        slots: ["Tech", "Crew", "Bomb", "Illicit", "Modification"]
+        slots: ["Tech", "Crew", "Device", "Illicit", "Modification"]
       }, {
         name: "Unkar Plutt",
         id: 142,
@@ -2979,7 +2984,7 @@ exportObj.basicCardData = function() {
         ship: "Quadjumper",
         skill: 2,
         points: 30,
-        slots: ["Tech", "Crew", "Bomb", "Illicit", "Modification"]
+        slots: ["Tech", "Crew", "Device", "Illicit", "Modification"]
       }, {
         name: "Jakku Gunrunner",
         id: 143,
@@ -2987,34 +2992,34 @@ exportObj.basicCardData = function() {
         ship: "Quadjumper",
         skill: 1,
         points: 28,
-        slots: ["Tech", "Crew", "Bomb", "Illicit", "Modification"]
+        slots: ["Tech", "Crew", "Device", "Illicit", "Modification"]
       }, {
         name: "Captain Nym",
         id: 144,
         unique: true,
         faction: "Scum and Villainy",
-        ship: "Scurrg H-6 bomber",
+        ship: "Scurrg H-6 Bomber",
         skill: 5,
         points: 52,
-        slots: ["Talent", "Turret", "Crew", "Bomb", "Bomb", "Modification", "Title"]
+        slots: ["Talent", "Turret", "Crew", "Device", "Device", "Modification", "Title"]
       }, {
         name: "Sol Sixxa",
         id: 145,
         unique: true,
         faction: "Scum and Villainy",
-        ship: "Scurrg H-6 bomber",
+        ship: "Scurrg H-6 Bomber",
         skill: 3,
         points: 49,
-        slots: ["Talent", "Turret", "Crew", "Bomb", "Bomb", "Modification", "Title"]
+        slots: ["Talent", "Turret", "Crew", "Device", "Device", "Modification", "Title"]
       }, {
         name: "Lok Revenant",
         id: 146,
         unique: true,
         faction: "Scum and Villainy",
-        ship: "Scurrg H-6 bomber",
+        ship: "Scurrg H-6 Bomber",
         skill: 2,
         points: 46,
-        slots: ["Turret", "Crew", "Bomb", "Bomb", "Modification", "Title"]
+        slots: ["Turret", "Crew", "Device", "Device", "Modification", "Title"]
       }, {
         name: "Guri",
         id: 147,
@@ -3141,7 +3146,7 @@ exportObj.basicCardData = function() {
         id: 161,
         unique: true,
         faction: "Galactic Empire",
-        ship: "Alpha-Class Star Wing",
+        ship: "Alpha-class Star Wing",
         skill: 4,
         points: 41,
         slots: ["Talent", "System", "Torpedo", "Missile", "Modification", "Configuration"]
@@ -3150,7 +3155,7 @@ exportObj.basicCardData = function() {
         id: 162,
         unique: true,
         faction: "Galactic Empire",
-        ship: "Alpha-Class Star Wing",
+        ship: "Alpha-class Star Wing",
         skill: 3,
         points: 39,
         slots: ["Talent", "System", "Torpedo", "Missile", "Modification", "Configuration"]
@@ -3158,7 +3163,7 @@ exportObj.basicCardData = function() {
         name: "Rho Squadron Pilot",
         id: 163,
         faction: "Galactic Empire",
-        ship: "Alpha-Class Star Wing",
+        ship: "Alpha-class Star Wing",
         skill: 3,
         points: 37,
         slots: ["Talent", "System", "Torpedo", "Missile", "Modification", "Configuration"]
@@ -3166,7 +3171,7 @@ exportObj.basicCardData = function() {
         name: "Nu Squadron Pilot",
         id: 164,
         faction: "Galactic Empire",
-        ship: "Alpha-Class Star Wing",
+        ship: "Alpha-class Star Wing",
         skill: 2,
         points: 35,
         slots: ["System", "Torpedo", "Missile", "Modification", "Configuration"]
@@ -3739,7 +3744,7 @@ exportObj.basicCardData = function() {
         ship: "HWK-290",
         skill: 4,
         points: 36,
-        slots: ["Crew", "Bomb", "Illicit", "Modification", "Modification", "Title"]
+        slots: ["Crew", "Device", "Illicit", "Modification", "Modification", "Title"]
       }
     ],
     upgradesById: [
@@ -3749,13 +3754,13 @@ exportObj.basicCardData = function() {
         slot: "Astromech",
         points: 2,
         unique: true,
-        faction: "Rebel"
+        faction: "Rebel Alliance"
       }, {
         name: '"Genius"',
         id: 1,
         slot: "Astromech",
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "R2 Astromech",
         id: 2,
@@ -3797,7 +3802,7 @@ exportObj.basicCardData = function() {
         slot: "Astromech",
         points: 4,
         unique: true,
-        faction: "Scum",
+        faction: "Scum and Villainy",
         charge: 3
       }, {
         name: "R5-TK",
@@ -3805,7 +3810,7 @@ exportObj.basicCardData = function() {
         slot: "Astromech",
         points: 1,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "Heavy Laser Cannon",
         id: 10,
@@ -3840,56 +3845,56 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 10,
         unique: true,
-        faction: "Imperial"
+        faction: "Galactic Empire"
       }, {
         name: "Agent Kallus",
         id: 15,
         slot: "Crew",
         points: 6,
         unique: true,
-        faction: "Imperial"
+        faction: "Galactic Empire"
       }, {
         name: "Boba Fett",
         id: 16,
         slot: "Crew",
         points: 4,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "Baze Malbus",
         id: 17,
         slot: "Crew",
         points: 8,
         unique: true,
-        faction: "Rebel"
+        faction: "Rebel Alliance"
       }, {
         name: "C-3PO",
         id: 18,
         slot: "Crew",
         points: 12,
         unique: true,
-        faction: "Rebel"
+        faction: "Rebel Alliance"
       }, {
         name: "Cassian Andor",
         id: 19,
         slot: "Crew",
         points: 6,
         unique: true,
-        faction: "Rebel"
+        faction: "Rebel Alliance"
       }, {
         name: "Cad Bane",
         id: 20,
         slot: "Crew",
         points: 4,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "Chewbacca (Rebel)",
         id: 21,
         slot: "Crew",
         points: 5,
         unique: true,
-        faction: "Rebel",
+        faction: "Rebel Alliance",
         charge: 2
       }, {
         name: "Chewbacca (Scum)",
@@ -3897,58 +3902,62 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 4,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: '"Chopper" (Crew)',
         id: 23,
         slot: "Crew",
         points: 2,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "Ciena Ree",
         id: 24,
         slot: "Crew",
         points: 10,
         unique: true,
-        faction: "Imperial"
+        faction: "Galactic Empire"
       }, {
         name: "Cikatro Vizago",
         id: 25,
         slot: "Crew",
         points: 2,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "Darth Vader",
         id: 26,
         slot: "Crew",
         points: 14,
         unique: true,
-        faction: "Imperial",
-        force: 1
+        faction: "Galactic Empire",
+        modifier_func: function(stats) {
+          return stats.force += 1;
+        }
       }, {
         name: "Death Troopers",
         id: 27,
         slot: "Crew",
         points: 6,
         unique: true,
-        faction: "Imperial"
+        faction: "Galactic Empire"
       }, {
         name: "Director Krennic",
         id: 28,
         slot: "Crew",
         points: 5,
         unique: true,
-        faction: "Imperial"
+        faction: "Galactic Empire"
       }, {
         name: "Emperor Palpatine",
         id: 29,
         slot: "Crew",
         points: 13,
         unique: true,
-        faction: "Imperial",
-        force: 1
+        faction: "Galactic Empire",
+        modifier_func: function(stats) {
+          return stats.force += 1;
+        }
       }, {
         name: "Freelance Slicer",
         id: 30,
@@ -3960,7 +3969,7 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 3,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: 'GNK "Gonk" Droid',
         id: 32,
@@ -3973,15 +3982,17 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 16,
         unique: true,
-        faction: "Imperial",
-        force: 1
+        faction: "Galactic Empire",
+        modifier_func: function(stats) {
+          return stats.attack += 1;
+        }
       }, {
         name: "Grand Moff Tarkin",
         id: 34,
         slot: "Crew",
         points: 10,
         unique: true,
-        faction: "Imperial",
+        faction: "Galactic Empire",
         charge: 2
       }, {
         name: "Hera Syndulla",
@@ -3989,14 +4000,14 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 4,
         unique: true,
-        faction: "Rebel"
+        faction: "Rebel Alliance"
       }, {
         name: "IG-88D",
         id: 36,
         slot: "Crew",
         points: 4,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "Informant",
         id: 37,
@@ -4008,14 +4019,14 @@ exportObj.basicCardData = function() {
         id: 38,
         slot: "Crew",
         points: 3,
-        faction: "Imperial"
+        faction: "Galactic Empire"
       }, {
         name: "Jabba the Hutt",
         id: 39,
         slot: "Crew",
         points: 8,
         unique: true,
-        faction: "Scum",
+        faction: "Scum and Villainy",
         charge: 4
       }, {
         name: "Jyn Erso",
@@ -4023,51 +4034,55 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 2,
         unique: true,
-        faction: "Rebel"
+        faction: "Rebel Alliance"
       }, {
         name: "Kanan Jarrus",
         id: 41,
         slot: "Crew",
         points: 14,
         unique: true,
-        faction: "Rebel",
-        force: 1
+        faction: "Rebel Alliance",
+        modifier_func: function(stats) {
+          return stats.force += 1;
+        }
       }, {
         name: "Ketsu Onyo",
         id: 42,
         slot: "Crew",
         points: 5,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "L3-37",
         id: 43,
         slot: "Crew",
         points: 4,
         unique: true,
-        faction: "Scum",
-        force: 1
+        faction: "Scum and Villainy",
+        modifier_func: function(stats) {
+          return stats.charge += 1;
+        }
       }, {
         name: "Lando Calrissian (Rebel)",
         id: 44,
         slot: "Crew",
         points: 5,
         unique: true,
-        faction: "Rebel"
+        faction: "Rebel Alliance"
       }, {
         name: "Lando Calrissian (Scum)",
         id: 45,
         slot: "Crew",
         points: 8,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "Leia Organa",
         id: 46,
         slot: "Crew",
         points: 8,
         unique: true,
-        faction: "Rebel",
+        faction: "Rebel Alliance",
         charge: 3
       }, {
         name: "Latts Razzi",
@@ -4075,14 +4090,14 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 7,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "Maul",
         id: 48,
         slot: "Crew",
         points: 13,
         unique: true,
-        faction: "Scum",
+        faction: "Scum and Villainy",
         charge: 1
       }, {
         name: "Minister Tua",
@@ -4090,14 +4105,14 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 7,
         unique: true,
-        faction: "Imperial"
+        faction: "Galactic Empire"
       }, {
         name: "Moff Jerjerrod",
         id: 50,
         slot: "Crew",
         points: 12,
         unique: true,
-        faction: "Imperial",
+        faction: "Galactic Empire",
         charge: 2
       }, {
         name: "Magva Yarro",
@@ -4105,14 +4120,14 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 7,
         unique: true,
-        faction: "Rebel"
+        faction: "Rebel Alliance"
       }, {
         name: "Nien Nunb",
         id: 52,
         slot: "Crew",
         points: 5,
         unique: true,
-        faction: "Rebel"
+        faction: "Rebel Alliance"
       }, {
         name: "Novice Technician",
         id: 53,
@@ -4129,28 +4144,28 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 2,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "R2-D2 (Crew)",
         id: 56,
         slot: "Crew",
         points: 8,
         unique: true,
-        faction: "Rebel"
+        faction: "Rebel Alliance"
       }, {
         name: "Sabine Wren",
         id: 57,
         slot: "Crew",
         points: 3,
         unique: true,
-        faction: "Rebel"
+        faction: "Rebel Alliance"
       }, {
         name: "Saw Gerrera",
         id: 58,
         slot: "Crew",
         points: 8,
         unique: true,
-        faction: "Rebel"
+        faction: "Rebel Alliance"
       }, {
         name: "Seasoned Navigator",
         id: 59,
@@ -4162,8 +4177,10 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 12,
         unique: true,
-        faction: "Imperial",
-        force: 1
+        faction: "Galactic Empire",
+        modifier_func: function(stats) {
+          return stats.force += 1;
+        }
       }, {
         name: "Tactical Officer",
         id: 61,
@@ -4175,35 +4192,35 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 2,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "0-0-0",
         id: 63,
         slot: "Crew",
         points: 3,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "Unkar Plutt",
         id: 64,
         slot: "Crew",
         points: 2,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: '"Zeb" Orrelios',
         id: 65,
         slot: "Crew",
         points: 1,
         unique: true,
-        faction: "Rebel"
+        faction: "Rebel Alliance"
       }, {
         name: "Zuckuss",
         id: 66,
         slot: "Crew",
         points: 3,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "Bomblet Generator",
         id: 67,
@@ -4265,28 +4282,28 @@ exportObj.basicCardData = function() {
         slot: "Gunner",
         points: 14,
         unique: true,
-        faction: "Rebel"
+        faction: "Rebel Alliance"
       }, {
         name: "Bossk",
         id: 78,
         slot: "Gunner",
         points: 10,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "BT-1",
         id: 79,
         slot: "Gunner",
         points: 2,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "Dengar",
         id: 80,
         slot: "Gunner",
         points: 6,
         unique: true,
-        faction: "Scum",
+        faction: "Scum and Villainy",
         charge: 1
       }, {
         name: "Ezra Bridger",
@@ -4294,23 +4311,27 @@ exportObj.basicCardData = function() {
         slot: "Gunner",
         points: 18,
         unique: true,
-        faction: "Rebel",
-        force: 1
+        faction: "Rebel Alliance",
+        modifier_func: function(stats) {
+          return stats.force += 1;
+        }
       }, {
         name: "Fifth Brother",
         id: 82,
         slot: "Gunner",
         points: 12,
         unique: true,
-        faction: "Imperial",
-        force: 1
+        faction: "Galactic Empire",
+        modifier_func: function(stats) {
+          return stats.force += 1;
+        }
       }, {
         name: "Greedo",
         id: 83,
         slot: "Gunner",
         points: 1,
         unique: true,
-        faction: "Scum",
+        faction: "Scum and Villainy",
         charge: 1
       }, {
         name: "Han Solo (Rebel)",
@@ -4318,14 +4339,14 @@ exportObj.basicCardData = function() {
         slot: "Gunner",
         points: 12,
         unique: true,
-        faction: "Rebel"
+        faction: "Rebel Alliance"
       }, {
         name: "Han Solo (Scum)",
         id: 85,
         slot: "Gunner",
         points: 3,
         unique: true,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "Hotshot Gunner",
         id: 86,
@@ -4337,8 +4358,10 @@ exportObj.basicCardData = function() {
         slot: "Gunner",
         points: 30,
         unique: true,
-        faction: "Rebel",
-        force: 1
+        faction: "Rebel Alliance",
+        modifier_func: function(stats) {
+          return stats.force += 1;
+        }
       }, {
         name: "Skilled Bombardier",
         id: 88,
@@ -4540,7 +4563,7 @@ exportObj.basicCardData = function() {
         id: 121,
         slot: "Talent",
         points: 3,
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "Intimidation",
         id: 122,
@@ -4578,7 +4601,7 @@ exportObj.basicCardData = function() {
         id: 128,
         slot: "Talent",
         points: 1,
-        faction: "Imperial"
+        faction: "Galactic Empire"
       }, {
         name: "Saturation Salvo",
         id: 129,
@@ -4589,7 +4612,7 @@ exportObj.basicCardData = function() {
         id: 130,
         slot: "Talent",
         points: 3,
-        faction: "Rebel"
+        faction: "Rebel Alliance"
       }, {
         name: "Squad Leader",
         id: 131,
@@ -4647,60 +4670,74 @@ exportObj.basicCardData = function() {
       }, {
         name: "Os-1 Arsenal Loadout",
         id: 139,
+        points: 0,
         slot: "Configuration",
-        ship: "Alpha-Class Star Wing"
+        ship: "Alpha-class Star Wing"
       }, {
         name: "Pivot Wing (Closed)",
         id: 140,
+        points: 0,
         slot: "Configuration",
-        ship: "U-wing"
+        ship: "U-Wing"
       }, {
         name: "Pivot Wing (Open)",
         id: 141,
+        points: 0,
         slot: "Configuration",
-        ship: "U-wing"
+        ship: "U-Wing"
       }, {
         name: "Servomotor S-foils (Closed)",
         id: 142,
+        points: 0,
         slot: "Configuration",
         ship: "X-Wing"
       }, {
         name: "Servomotor S-foils (Open)",
         id: 143,
         slot: "Configuration",
+        points: 0,
         ship: "X-Wing"
       }, {
         name: "Xg-1 Assault Configuration",
         id: 144,
+        points: 0,
         slot: "Configuration",
-        ship: "Alpha-Class Star Wing"
+        ship: "Alpha-class Star Wing"
       }, {
         name: "L3-37's Programming",
         id: 145,
+        points: 0,
         slot: "Configuration",
-        faction: "Scum"
+        faction: "Scum and Villainy"
       }, {
         name: "Andrasta",
         id: 146,
         slot: "Title",
         points: 6,
         unique: true,
-        faction: "Scum",
-        ship: "Firespray-31"
+        faction: "Scum and Villainy",
+        ship: "Firespray-31",
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: "Device"
+          }
+        ]
       }, {
         name: "Dauntless",
         id: 147,
         slot: "Title",
         points: 6,
         unique: true,
-        faction: "Imperial",
+        faction: "Galactic Empire",
         ship: "VT-49 Decimator"
       }, {
         name: "Ghost",
         id: 148,
         slot: "Title",
         unique: true,
-        faction: "Rebel",
+        points: 0,
+        faction: "Rebel Alliance",
         ship: "VCX-100"
       }, {
         name: "Havoc",
@@ -4708,46 +4745,63 @@ exportObj.basicCardData = function() {
         slot: "Title",
         points: 4,
         unique: true,
-        faction: "Scum",
-        ship: "Scurrg H-6 bomber"
+        faction: "Scum and Villainy",
+        ship: "Scurrg H-6 Bomber",
+        unequips_upgrades: ['Crew'],
+        also_occupies_upgrades: ['Crew'],
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: 'System'
+          }, {
+            type: exportObj.Upgrade,
+            slot: 'Salvaged Astromech'
+          }
+        ]
       }, {
         name: "Hound's Tooth",
         id: 150,
         slot: "Title",
         points: 1,
         unique: true,
-        faction: "Scum",
-        ship: "YV-666 Light Freighter"
+        faction: "Scum and Villainy",
+        ship: "YV-666"
       }, {
         name: "IG-2000",
         id: 151,
         slot: "Title",
         points: 2,
-        faction: "Scum",
-        ship: "Aggressor Assault Fighter"
+        faction: "Scum and Villainy",
+        ship: "Aggressor"
       }, {
         name: "Lando's Millennium Falcon",
         id: 152,
         slot: "Title",
         points: 6,
         unique: true,
-        faction: "Scum",
-        ship: "Customized YT-1300 Light Freighter"
+        faction: "Scum and Villainy",
+        ship: "YT-1300"
       }, {
         name: "Marauder",
         id: 153,
         slot: "Title",
         points: 3,
         unique: true,
-        faction: "Scum",
-        ship: "Firespray-class Patrol Craft"
+        faction: "Scum and Villainy",
+        ship: "Firespray-31",
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: "Device"
+          }
+        ]
       }, {
         name: "Millennium Falcon",
         id: 154,
         slot: "Title",
         points: 6,
         unique: true,
-        faction: "Rebel",
+        faction: "Rebel Alliance",
         ship: "YT-1300"
       }, {
         name: "Mist Hunter",
@@ -4755,23 +4809,29 @@ exportObj.basicCardData = function() {
         slot: "Title",
         points: 2,
         unique: true,
-        faction: "Scum",
-        ship: "G-1A Starfighter"
+        faction: "Scum and Villainy",
+        ship: "G-1A Starfighter",
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: "Cannon"
+          }
+        ]
       }, {
         name: "Moldy Crow",
         id: 156,
         slot: "Title",
         points: 12,
         unique: true,
-        faction: "Rebel",
-        ship: "HWK-290 Light Freighter"
+        faction: "Rebel Alliance",
+        ship: "HWK-290"
       }, {
         name: "Outrider",
         id: 157,
         slot: "Title",
         points: 14,
         unique: true,
-        faction: "Rebel",
+        faction: "Rebel Alliance",
         ship: "YT-2400"
       }, {
         name: "Phantom",
@@ -4779,7 +4839,7 @@ exportObj.basicCardData = function() {
         slot: "Title",
         points: 2,
         unique: true,
-        faction: "Rebel",
+        faction: "Rebel Alliance",
         ship: "Sheathipede-class Shuttle"
       }, {
         name: "Punishing One",
@@ -4787,15 +4847,23 @@ exportObj.basicCardData = function() {
         slot: "Title",
         points: 8,
         unique: true,
-        faction: "Scum",
-        ship: "JumpMaster 5000"
+        faction: "Scum and Villainy",
+        ship: "JumpMaster 5000",
+        unequips_upgrades: ['Crew'],
+        also_occupies_upgrades: ['Crew'],
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: 'Salvaged Astromech'
+          }
+        ]
       }, {
         name: "Shadow Caster",
         id: 160,
         slot: "Title",
         points: 6,
         unique: true,
-        faction: "Scum",
+        faction: "Scum and Villainy",
         ship: "Lancer-class Pursuit Craft"
       }, {
         name: "Slave I",
@@ -4803,15 +4871,21 @@ exportObj.basicCardData = function() {
         slot: "Title",
         points: 5,
         unique: true,
-        faction: "Scum",
-        ship: "Firespray-31"
+        faction: "Scum and Villainy",
+        ship: "Firespray-31",
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: "Torpedo"
+          }
+        ]
       }, {
         name: "ST-321",
         id: 162,
         slot: "Title",
         points: 6,
         unique: true,
-        faction: "Imperial",
+        faction: "Galactic Empire",
         ship: "Lambda-Class Shuttle"
       }, {
         name: "Virago",
@@ -4846,7 +4920,7 @@ exportObj.basicCardData = function() {
 };
 
 exportObj.setupCardData = function(basic_cards, pilot_translations, upgrade_translations, modification_translations, title_translations, condition_translations) {
-  var card, cards, condition, condition_data, condition_name, e, expansion, field, i, modification, modification_data, modification_name, name, pilot, pilot_data, pilot_name, ship_data, ship_name, source, title, title_data, title_name, translation, translations, upgrade, upgrade_data, upgrade_name, _base, _base1, _base10, _base2, _base3, _base4, _base5, _base6, _base7, _base8, _base9, _i, _j, _k, _l, _len, _len1, _len10, _len11, _len12, _len13, _len14, _len15, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _len9, _m, _n, _name, _name1, _name2, _name3, _name4, _name5, _name6, _name7, _name8, _o, _p, _q, _r, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _s, _t, _u, _v, _w, _x;
+  var card, cards, condition, condition_data, condition_name, e, expansion, field, i, modification, modification_data, modification_name, name, pilot, pilot_data, pilot_name, ship_data, ship_name, source, title, title_data, title_name, translation, translations, upgrade, upgrade_data, upgrade_name, _base, _base1, _base2, _base3, _base4, _base5, _base6, _i, _j, _k, _l, _len, _len1, _len10, _len11, _len12, _len13, _len14, _len15, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _len9, _m, _n, _name, _name1, _name2, _name3, _name4, _name5, _name6, _o, _p, _q, _r, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _s, _t, _u, _v, _w, _x;
   _ref = basic_cards.pilotsById;
   for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
     pilot_data = _ref[i];
@@ -5104,13 +5178,6 @@ exportObj.setupCardData = function(basic_cards, pilot_translations, upgrade_tran
     pilot = _ref18[pilot_name];
     ((_base = ((_base1 = exportObj.pilotsByFactionCanonicalName)[_name1 = pilot.faction] != null ? _base1[_name1] : _base1[_name1] = {}))[_name = pilot.canonical_name] != null ? _base[_name] : _base[_name] = []).push(pilot);
     ((_base2 = exportObj.pilotsByUniqueName)[_name2 = pilot.canonical_name.getXWSBaseName()] != null ? _base2[_name2] : _base2[_name2] = []).push(pilot);
-    switch (pilot.faction) {
-      case 'Resistance':
-        ((_base3 = ((_base4 = exportObj.pilotsByFactionCanonicalName)['Rebel Alliance'] != null ? _base4['Rebel Alliance'] : _base4['Rebel Alliance'] = {}))[_name3 = pilot.canonical_name] != null ? _base3[_name3] : _base3[_name3] = []).push(pilot);
-        break;
-      case 'First Order':
-        ((_base5 = ((_base6 = exportObj.pilotsByFactionCanonicalName)['Galactic Empire'] != null ? _base6['Galactic Empire'] : _base6['Galactic Empire'] = {}))[_name4 = pilot.canonical_name] != null ? _base5[_name4] : _base5[_name4] = []).push(pilot);
-    }
   }
   exportObj.upgradesById = {};
   exportObj.upgradesByLocalizedName = {};
@@ -5136,8 +5203,8 @@ exportObj.setupCardData = function(basic_cards, pilot_translations, upgrade_tran
   _ref21 = exportObj.upgrades;
   for (upgrade_name in _ref21) {
     upgrade = _ref21[upgrade_name];
-    ((_base7 = exportObj.upgradesBySlotCanonicalName)[_name5 = upgrade.slot] != null ? _base7[_name5] : _base7[_name5] = {})[upgrade.canonical_name] = upgrade;
-    ((_base8 = exportObj.upgradesBySlotUniqueName)[_name6 = upgrade.slot] != null ? _base8[_name6] : _base8[_name6] = {})[upgrade.canonical_name.getXWSBaseName()] = upgrade;
+    ((_base3 = exportObj.upgradesBySlotCanonicalName)[_name3 = upgrade.slot] != null ? _base3[_name3] : _base3[_name3] = {})[upgrade.canonical_name] = upgrade;
+    ((_base4 = exportObj.upgradesBySlotUniqueName)[_name4 = upgrade.slot] != null ? _base4[_name4] : _base4[_name4] = {})[upgrade.canonical_name.getXWSBaseName()] = upgrade;
   }
   exportObj.modificationsById = {};
   exportObj.modificationsByLocalizedName = {};
@@ -5227,8 +5294,8 @@ exportObj.setupCardData = function(basic_cards, pilot_translations, upgrade_tran
   for (title_name in _ref30) {
     title = _ref30[title_name];
     if (title.canonical_name === '"Heavy Scyk" Interceptor'.canonicalize()) {
-      ((_base9 = (exportObj.titlesByCanonicalName != null ? exportObj.titlesByCanonicalName : exportObj.titlesByCanonicalName = {}))[_name7 = title.canonical_name] != null ? _base9[_name7] : _base9[_name7] = []).push(title);
-      ((_base10 = (exportObj.titlesByUniqueName != null ? exportObj.titlesByUniqueName : exportObj.titlesByUniqueName = {}))[_name8 = title.canonical_name.getXWSBaseName()] != null ? _base10[_name8] : _base10[_name8] = []).push(title);
+      ((_base5 = (exportObj.titlesByCanonicalName != null ? exportObj.titlesByCanonicalName : exportObj.titlesByCanonicalName = {}))[_name5 = title.canonical_name] != null ? _base5[_name5] : _base5[_name5] = []).push(title);
+      ((_base6 = (exportObj.titlesByUniqueName != null ? exportObj.titlesByUniqueName : exportObj.titlesByUniqueName = {}))[_name6 = title.canonical_name.getXWSBaseName()] != null ? _base6[_name6] : _base6[_name6] = []).push(title);
     } else {
       (exportObj.titlesByCanonicalName != null ? exportObj.titlesByCanonicalName : exportObj.titlesByCanonicalName = {})[title.canonical_name] = title;
       (exportObj.titlesByUniqueName != null ? exportObj.titlesByUniqueName : exportObj.titlesByUniqueName = {})[title.canonical_name.getXWSBaseName()] = title;
@@ -5245,7 +5312,7 @@ exportObj.setupCardData = function(basic_cards, pilot_translations, upgrade_tran
 
 exportObj.fixIcons = function(data) {
   if (data.text != null) {
-    return data.text = data.text.replace(/%ASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>').replace(/%FORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>').replace(/%CHARGE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>').replace(/%BANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankleft"></i>').replace(/%BANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankright"></i>').replace(/%BARRELROLL%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>').replace(/%BOMB%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bomb"></i>').replace(/%BOOST%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>').replace(/%CANNON%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cannon"></i>').replace(/%CARGO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cargo"></i>').replace(/%CLOAK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>').replace(/%COORDINATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>').replace(/%CRIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crit"></i>').replace(/%CREW%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crew"></i>').replace(/%DUALCARD%/g, '<span class="card-restriction">Dual card.</span>').replace(/%ELITE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-elite"></i>').replace(/%EVADE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>').replace(/%FOCUS%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>').replace(/%HARDPOINT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>').replace(/%HIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hit"></i>').replace(/%ILLICIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-illicit"></i>').replace(/%JAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i>').replace(/%KTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%MISSILE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-missile"></i>').replace(/%RECOVER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-recover"></i>').replace(/%REINFORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i>').replace(/%SALVAGEDASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-salvagedastromech"></i>').replace(/%SLAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>').replace(/%SLOOPLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopleft"></i>').replace(/%SLOOPRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopright"></i>').replace(/%STRAIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-straight"></i>').replace(/%STOP%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-stop"></i>').replace(/%SYSTEM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-system"></i>').replace(/%TARGETLOCK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-targetlock"></i>').replace(/%TEAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-team"></i>').replace(/%TECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>').replace(/%TORPEDO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-torpedo"></i>').replace(/%TROLLLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollleft"></i>').replace(/%TROLLRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollright"></i>').replace(/%TURNLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnleft"></i>').replace(/%TURNRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnright"></i>').replace(/%TURRET%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turret"></i>').replace(/%UTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%HUGESHIPONLY%/g, '<span class="card-restriction">Huge ship only.</span>').replace(/%LARGESHIPONLY%/g, '<span class="card-restriction">Large ship only.</span>').replace(/%SMALLSHIPONLY%/g, '<span class="card-restriction">Small ship only.</span>').replace(/%REBELONLY%/g, '<span class="card-restriction">Rebel only.</span>').replace(/%IMPERIALONLY%/g, '<span class="card-restriction">Imperial only.</span>').replace(/%SCUMONLY%/g, '<span class="card-restriction">Scum only.</span>').replace(/%LIMITED%/g, '<span class="card-restriction">Limited.</span>').replace(/%LINEBREAK%/g, '<br /><br />').replace(/%DE_HUGESHIPONLY%/g, '<span class="card-restriction">Nur für riesige Schiffe.</span>').replace(/%DE_LARGESHIPONLY%/g, '<span class="card-restriction">Nur für grosse Schiffe.</span>').replace(/%DE_REBELONLY%/g, '<span class="card-restriction">Nur für Rebellen.</span>').replace(/%DE_IMPERIALONLY%/g, '<span class="card-restriction">Nur für das Imperium.</span>').replace(/%DE_SCUMONLY%/g, '<span class="card-restriction">Nur für Abschaum & Kriminelle.</span>').replace(/%DE_GOZANTIONLY%/g, '<span class="card-restriction">Nur für Kreuzer der <em>Gozanti</em>-Klasse.</span>').replace(/%DE_LIMITED%/g, '<span class="card-restriction">Limitiert.</span>').replace(/%DE_SMALLSHIPONLY%/g, '<span class="card-restriction">Nur für kleine Schiffe.</span>').replace(/%DE_DUALCARD%/g, '<span class="card-restriction">Doppelseiteige Karte.</span>').replace(/%FR_HUGESHIPONLY%/g, '<span class="card-restriction">Vaisseau immense uniquement.</span>').replace(/%FR_LARGESHIPONLY%/g, '<span class="card-restriction">Grand vaisseau uniquement.</span>').replace(/%FR_REBELONLY%/g, '<span class="card-restriction">Rebelle uniquement.</span>').replace(/%FR_IMPERIALONLY%/g, '<span class="card-restriction">Impérial uniquement.</span>').replace(/%FR_SCUMONLY%/g, '<span class="card-restriction">Racailles uniquement.</span>').replace(/%GOZANTIONLY%/g, '<span class="card-restriction"><em>Gozanti</em>-class cruiser only.</span>');
+    return data.text = data.text.replace(/%ASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>').replace(/%BULLSEYEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bullseyearc"></i>').replace(/%GUNNER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>').replace(/%SINGLETURRETARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>').replace(/%FRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>').replace(/%REARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reararc"></i>').replace(/%DEVICE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>').replace(/%FORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>').replace(/%CHARGE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>').replace(/%CALCULATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>').replace(/%BANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankleft"></i>').replace(/%BANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankright"></i>').replace(/%BARRELROLL%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>').replace(/%BOMB%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bomb"></i>').replace(/%BOOST%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>').replace(/%CANNON%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cannon"></i>').replace(/%CARGO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cargo"></i>').replace(/%CLOAK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>').replace(/%COORDINATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>').replace(/%CRIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crit"></i>').replace(/%CREW%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crew"></i>').replace(/%DUALCARD%/g, '<span class="card-restriction">Dual card.</span>').replace(/%ELITE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-elite"></i>').replace(/%EVADE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>').replace(/%FOCUS%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>').replace(/%HARDPOINT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>').replace(/%HIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hit"></i>').replace(/%ILLICIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-illicit"></i>').replace(/%JAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i>').replace(/%KTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%MISSILE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-missile"></i>').replace(/%RECOVER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-recover"></i>').replace(/%REINFORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i>').replace(/%SALVAGEDASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-salvagedastromech"></i>').replace(/%SLAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>').replace(/%SLOOPLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopleft"></i>').replace(/%SLOOPRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopright"></i>').replace(/%STRAIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-straight"></i>').replace(/%STOP%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-stop"></i>').replace(/%SYSTEM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-system"></i>').replace(/%LOCK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>').replace(/%TEAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-team"></i>').replace(/%TECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>').replace(/%TORPEDO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-torpedo"></i>').replace(/%TROLLLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollleft"></i>').replace(/%TROLLRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollright"></i>').replace(/%TURNLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnleft"></i>').replace(/%TURNRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnright"></i>').replace(/%TURRET%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turret"></i>').replace(/%UTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%HUGESHIPONLY%/g, '<span class="card-restriction">Huge ship only.</span>').replace(/%LARGESHIPONLY%/g, '<span class="card-restriction">Large ship only.</span>').replace(/%SMALLSHIPONLY%/g, '<span class="card-restriction">Small ship only.</span>').replace(/%REBELONLY%/g, '<span class="card-restriction">Rebel only.</span>').replace(/%IMPERIALONLY%/g, '<span class="card-restriction">Imperial only.</span>').replace(/%SCUMONLY%/g, '<span class="card-restriction">Scum only.</span>').replace(/%LIMITED%/g, '<span class="card-restriction">Limited.</span>').replace(/%LINEBREAK%/g, '<br /><br />').replace(/%DE_HUGESHIPONLY%/g, '<span class="card-restriction">Nur für riesige Schiffe.</span>').replace(/%DE_LARGESHIPONLY%/g, '<span class="card-restriction">Nur für grosse Schiffe.</span>').replace(/%DE_REBELONLY%/g, '<span class="card-restriction">Nur für Rebellen.</span>').replace(/%DE_IMPERIALONLY%/g, '<span class="card-restriction">Nur für das Imperium.</span>').replace(/%DE_SCUMONLY%/g, '<span class="card-restriction">Nur für Abschaum & Kriminelle.</span>').replace(/%DE_GOZANTIONLY%/g, '<span class="card-restriction">Nur für Kreuzer der <em>Gozanti</em>-Klasse.</span>').replace(/%DE_LIMITED%/g, '<span class="card-restriction">Limitiert.</span>').replace(/%DE_SMALLSHIPONLY%/g, '<span class="card-restriction">Nur für kleine Schiffe.</span>').replace(/%DE_DUALCARD%/g, '<span class="card-restriction">Doppelseiteige Karte.</span>').replace(/%FR_HUGESHIPONLY%/g, '<span class="card-restriction">Vaisseau immense uniquement.</span>').replace(/%FR_LARGESHIPONLY%/g, '<span class="card-restriction">Grand vaisseau uniquement.</span>').replace(/%FR_REBELONLY%/g, '<span class="card-restriction">Rebelle uniquement.</span>').replace(/%FR_IMPERIALONLY%/g, '<span class="card-restriction">Impérial uniquement.</span>').replace(/%FR_SCUMONLY%/g, '<span class="card-restriction">Racailles uniquement.</span>').replace(/%GOZANTIONLY%/g, '<span class="card-restriction"><em>Gozanti</em>-class cruiser only.</span>');
   }
 };
 
@@ -8293,7 +8360,7 @@ exportObj.translations.English = {
     "Modification": "Modification",
     "Gunner": "Gunner",
     "Device": "Device",
-    "Title": "TItle"
+    "Title": "Title"
   },
   sources: {
     "Core": "Core",
@@ -8626,13 +8693,13 @@ exportObj.cardLoaders.English = function() {
       text: "After you perform the %LOCK% action, you may choose 1 friendly ship at range 1-3. That ship may acquire a lock on the object you locked, ignoring range restrictions."
     },
     '"Echo"': {
-      text: "While you decloak, you must use the (2 %LBANK%) or (2 %RBANK%) template instead of the (2 %STRAIGHT%) template."
+      text: "While you decloak, you must use the (2 %BANKLEFT%) or (2 %BANKRIGHT%) template instead of the (2 %STRAIGHT%) template."
     },
     "Edrio Two-Tubes": {
       text: "Before you activate, if you are focused, you may perform an action."
     },
     "Emon Azzameen": {
-      text: "If you would drop a device using a [1 %STRAIGHT%] template, you may use the [3 %LTURN%], [3 %STRAIGHT%], or [3 %RTURN%] template instead."
+      text: "If you would drop a device using a [1 %STRAIGHT%] template, you may use the [3 %TURNLEFT%], [3 %STRAIGHT%], or [3 %TURNRIGHT%] template instead."
     },
     "Esege Tuketu": {
       text: "While a friendly ship at range 0-2 defends or performs an attack, it may spend your focus tokens as if that ship has them."
@@ -8737,7 +8804,7 @@ exportObj.cardLoaders.English = function() {
       text: "After you perform a %BOOST% action, you may perform an %EVADE% action."
     },
     "IG-88D": {
-      text: "While you execute a Segnor's Loop (%LSLOOP% or %RSLOOP%) maneuver, you may use another template of the same speed instead: either the turn (%LTURN% or %RTURN%) of the same direction or the straight (%STRAIGHT%) template."
+      text: "While you execute a Segnor's Loop (%LSLOOP% or %RSLOOP%) maneuver, you may use another template of the same speed instead: either the turn (%TURNLEFT% or %TURNRIGHT%) of the same direction or the straight (%STRAIGHT%) template."
     },
     "Imdaar Test Pilot": {
       text: "The primary result of a hidden research facility on Imdaar Alpha, the TIE phantom achieves what many thought was impossible: a small starfighter equipped with an advanced cloaking device."
@@ -8800,10 +8867,10 @@ exportObj.cardLoaders.English = function() {
       text: "At the start of the Engagement Phase, you may transfer 1 of your focus tokens to a friendly ship in your firing arc."
     },
     "L3-37 (Escape Craft)": {
-      text: "If you are not shielded, decrease the difficulty of your bank (%LBANK% and %RBANK%) maneuvers."
+      text: "If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."
     },
     "L3-37 (YT-1300)": {
-      text: "If you are not shielded, decrease the difficulty of your bank (%LBANK% and %RBANK%) maneuvers."
+      text: "If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."
     },
     "Laetin A'shera": {
       text: "After you defend or perform an attack, if the attack missed, gain 1 evade token."
@@ -9225,7 +9292,7 @@ exportObj.cardLoaders.English = function() {
       text: "While you perform a primary attack, if the defender is in your %BULLSEYEARC%, before the Neutralize Results step, you may spend 1 %CHARGE% to cancel 1 %EVADE% result."
     },
     "Daredevil": {
-      text: "While you perform a while %BOOST% action, you may treat it as red to use the [1%LTURN%] or [1 %RTURN%] template instead."
+      text: "While you perform a while %BOOST% action, you may treat it as red to use the [1%TURNLEFT%] or [1 %TURNRIGHT%] template instead."
     },
     "Darth Vader": {
       text: "At the start of the Engagement Phase, you may choose 1 ship in your firing arc at range 0-2 and spend 1 %FORCE%. If you do, that ship suffers 1 %HIT% damage unless it chooses to remove 1 green token."
@@ -9336,7 +9403,7 @@ exportObj.cardLoaders.English = function() {
       text: "You have the pilot ability of each other friendly ship with the IG-2000 upgrade. After you perform a %CALCULATE% action, gain 1 calculate token."
     },
     "Inertial Dampeners": {
-      text: "Before you would execute a maneuver, you may spend 1 shield. If you do, execute a white [0 %STATIONARY%] instead of the maneuver you revealed, then gain 1 stress token."
+      text: "Before you would execute a maneuver, you may spend 1 shield. If you do, execute a white [0 %STOP%] instead of the maneuver you revealed, then gain 1 stress token."
     },
     "Informant": {
       text: "Setup: After placing forces, choose 1 enemy ship and assign the Listening Device condition to it."
@@ -9384,7 +9451,7 @@ exportObj.cardLoaders.English = function() {
       text: "Setup: Equip this side faceup. While you defend, you may flip this card. If you do, the attack must reroll all attack dice"
     },
     "L3-37's Programming": {
-      text: "If you are not shielded, decrease the difficulty of your bank (%LBANK% and %RBANK%) maneuvers."
+      text: "If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."
     },
     "Lando Calrissian (Rebel)": {
       text: "Action: Roll 2 defense dice. For each %FOCUS% result, gain 1 focus token. For each %EVADE% result, gain 1 evade token. If both results are blank, the opposing player chooses focus or evade. You gain 1 token of that type."
@@ -9429,7 +9496,7 @@ exportObj.cardLoaders.English = function() {
       text: "Add %CANNON% slot."
     },
     "Moff Jerjerrod": {
-      text: "During the System Phase, you may spend 2 %CHARGE%. If you do, choose the (1 %LBANK%), (1 %STRAIGHT%), or (1 %RBANK%) template. Each friendly ship may perform a red %BOOST% action using that template."
+      text: "During the System Phase, you may spend 2 %CHARGE%. If you do, choose the (1 %BANKLEFT%), (1 %STRAIGHT%), or (1 %BANKRIGHT%) template. Each friendly ship may perform a red %BOOST% action using that template."
     },
     "Moldy Crow": {
       text: "Gain a %FRONTARC% primary weapon with a value of \"3.\" During the End Phase, do not remove up to 2 focus tokens."
@@ -9438,7 +9505,7 @@ exportObj.cardLoaders.English = function() {
       text: "While you perform a %TORPEDO% or %MISSILE% attack, after rolling attack dice, you may cancel all dice results to recover 1 %CHARGE% you spent as a cost for the attack."
     },
     "Nien Nunb": {
-      text: "Decrease the difficulty of your bank maneuvers [%LBANK% and %RBANK%]."
+      text: "Decrease the difficulty of your bank maneuvers [%BANKLEFT% and %BANKRIGHT%]."
     },
     "Novice Technician": {
       text: "At the end of the round, you may roll 1 attack die to repair 1 faceup damage card. Then, on a %HIT% result, expose 1 damage card."
@@ -9459,7 +9526,7 @@ exportObj.cardLoaders.English = function() {
       text: "You can dock at range 0-1."
     },
     "Pivot Wing (Closed)": {
-      text: "While you defend, roll 1 fewer defense die. After you execute a [0 %STATIONARY%] maneuver, you may rotate your ship 90˚ or 180˚. Before you activate, you may flip this card"
+      text: "While you defend, roll 1 fewer defense die. After you execute a [0 %STOP%] maneuver, you may rotate your ship 90˚ or 180˚. Before you activate, you may flip this card"
     },
     "Predator": {
       text: "While you perform a primary attack, if the defender is in your %BULLSEYEARC%, you may reroll 1 attack die."
@@ -9495,7 +9562,7 @@ exportObj.cardLoaders.English = function() {
       text: "You can maintain up to 2 locks. Each lock must be on a different object. After you perform a %LOCK% action, you may acquire a lock."
     },
     "R4 Astromech": {
-      text: "Decrease the difficulty of your speed 1-2 basic maneuvers (%LTURN%, %LBANK%, %STRAIGHT%, %RBANK%, %RTURN%)."
+      text: "Decrease the difficulty of your speed 1-2 basic maneuvers (%TURNLEFT%, %BANKLEFT%, %STRAIGHT%, %BANKRIGHT%, %TURNRIGHT%)."
     },
     "R5 Astromech": {
       text: "Action: Spend 1 %CHARGE% to repair 1 facedown damage card. Action: Repair 1 faceup Ship damage card."
@@ -9552,7 +9619,7 @@ exportObj.cardLoaders.English = function() {
       text: "If you would drop or launch a device, you may use a template of the same bearing with a speed 1 higher or lower."
     },
     "Slave I": {
-      text: "After you reveal a turn, (%LTURN% or %RTURN%) or bank (%LBANK% or %RBANK%) maneuver, you may gain 1 stress token. If you do, set your dial to the maneuver of the same speed and bearing in the other direction. Add %TORPEDO% slot."
+      text: "After you reveal a turn, (%TURNLEFT% or %TURNRIGHT%) or bank (%BANKLEFT% or %BANKRIGHT%) maneuver, you may gain 1 stress token. If you do, set your dial to the maneuver of the same speed and bearing in the other direction. Add %TORPEDO% slot."
     },
     "Squad Leader": {
       text: "While you coordinate, the ship you choose can perform an action only if that action is also on your action bar."
@@ -23926,112 +23993,12 @@ exportObj.manifestByExpansion = {
       name: 'X-Wing',
       type: 'ship',
       count: 1
-    }, {
-      name: 'TIE Fighter',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Luke Skywalker',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Biggs Darklighter',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Red Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Rookie Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Mauler Mithel"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Dark Curse"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Night Beast"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Obsidian Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Academy Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Proton Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R2-F2',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R2-D2',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Determination',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Marksmanship',
-      type: 'upgrade',
-      count: 1
     }
   ],
   'X-Wing Expansion Pack': [
     {
       name: 'X-Wing',
       type: 'ship',
-      count: 1
-    }, {
-      name: 'Wedge Antilles',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Garven Dreis',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Red Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Rookie Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Proton Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R5-K6',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R5 Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Expert Handling',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Marksmanship',
-      type: 'upgrade',
       count: 1
     }
   ],
@@ -24040,76 +24007,12 @@ exportObj.manifestByExpansion = {
       name: 'Y-Wing',
       type: 'ship',
       count: 1
-    }, {
-      name: 'Horton Salm',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Dutch" Vander',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Gray Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Gold Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Proton Torpedoes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Cannon Turret',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R5-D8',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R2 Astromech',
-      type: 'upgrade',
-      count: 1
     }
   ],
   'TIE Fighter Expansion Pack': [
     {
       name: 'TIE Fighter',
       type: 'ship',
-      count: 1
-    }, {
-      name: '"Howlrunner"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Backstabber"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Winged Gundark"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Obsidian Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Academy Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Determination',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Swarm Tactics',
-      type: 'upgrade',
       count: 1
     }
   ],
@@ -24118,84 +24021,12 @@ exportObj.manifestByExpansion = {
       name: 'TIE Advanced',
       type: 'ship',
       count: 1
-    }, {
-      name: 'Darth Vader',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Maarek Stele',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Storm Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Tempest Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cluster Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Squad Leader',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Swarm Tactics',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Expert Handling',
-      type: 'upgrade',
-      count: 1
     }
   ],
   'A-Wing Expansion Pack': [
     {
       name: 'A-Wing',
       type: 'ship',
-      count: 1
-    }, {
-      name: 'Tycho Celchu',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Arvel Crynyd',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Green Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Prototype Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Homing Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cluster Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Push the Limit',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Deadeye',
-      type: 'upgrade',
       count: 1
     }
   ],
@@ -24204,108 +24035,12 @@ exportObj.manifestByExpansion = {
       name: 'YT-1300',
       type: 'ship',
       count: 1
-    }, {
-      name: 'Han Solo',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lando Calrissian',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Chewbacca',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Outer Rim Smuggler',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Assault Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Elusiveness',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Draw Their Fire',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Veteran Instincts',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Luke Skywalker',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Nien Nunb',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Chewbacca',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Weapons Engineer',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Shield Upgrade',
-      type: 'modification',
-      count: 2
-    }, {
-      name: 'Engine Upgrade',
-      type: 'modification',
-      count: 2
-    }, {
-      name: 'Millennium Falcon',
-      type: 'title',
-      count: 1
     }
   ],
   'TIE Interceptor Expansion Pack': [
     {
       name: 'TIE Interceptor',
       type: 'ship',
-      count: 1
-    }, {
-      name: 'Soontir Fel',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Turr Phennir',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Fel\'s Wrath"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Saber Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Avenger Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Alpha Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Daredevil',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Elusiveness',
-      type: 'upgrade',
       count: 1
     }
   ],
@@ -24314,112 +24049,12 @@ exportObj.manifestByExpansion = {
       name: 'Firespray-31',
       type: 'ship',
       count: 1
-    }, {
-      name: 'Boba Fett',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kath Scarlet',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Krassis Trelix',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Bounty Hunter',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Homing Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Assault Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Cannon',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Heavy Laser Cannon',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Veteran Instincts',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Expose',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Seismic Charges',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proximity Mines',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Gunner',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Mercenary Copilot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Stealth Device',
-      type: 'modification',
-      count: 2
-    }, {
-      name: 'Slave I',
-      type: 'title',
-      count: 1
     }
   ],
   'B-Wing Expansion Pack': [
     {
       name: 'B-Wing',
       type: 'ship',
-      count: 1
-    }, {
-      name: 'Ten Numb',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ibtisam',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Dagger Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Blue Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Fire-Control System',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Advanced Proton Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proton Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Cannon',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Autoblaster',
-      type: 'upgrade',
       count: 1
     }
   ],
@@ -24428,88 +24063,12 @@ exportObj.manifestByExpansion = {
       name: 'HWK-290',
       type: 'ship',
       count: 1
-    }, {
-      name: 'Jan Ors',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kyle Katarn',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Roark Garnet',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Rebel Operative',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ion Cannon Turret',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Recon Specialist',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Moldy Crow',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Blaster Turret',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Saboteur',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Intelligence Agent',
-      type: 'upgrade',
-      count: 1
     }
   ],
   "TIE Bomber Expansion Pack": [
     {
       name: 'TIE Bomber',
       type: 'ship',
-      count: 1
-    }, {
-      name: 'Major Rhymer',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Captain Jonus',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Gamma Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Scimitar Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Proton Bombs',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Assault Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Advanced Proton Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Seismic Charges',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Adrenaline Rush',
-      type: 'upgrade',
       count: 1
     }
   ],
@@ -24518,108 +24077,12 @@ exportObj.manifestByExpansion = {
       name: 'Lambda-Class Shuttle',
       type: 'ship',
       count: 1
-    }, {
-      name: 'Captain Kagi',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Colonel Jendon',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Captain Yorr',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Omicron Group Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sensor Jammer',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Rebel Captive',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Advanced Sensors',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'ST-321',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Heavy Laser Cannon',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Weapons Engineer',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Darth Vader',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Intelligence Agent',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Navigator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Flight Instructor',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Anti-Pursuit Lasers',
-      type: 'modification',
-      count: 2
     }
   ],
   "Z-95 Headhunter Expansion Pack": [
     {
       name: 'Z-95 Headhunter',
       type: 'ship',
-      count: 1
-    }, {
-      name: 'Airen Cracken',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lieutenant Blount',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Tala Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Bandit Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Munitions Failsafe',
-      type: 'modification',
-      count: 1
-    }, {
-      name: 'Decoy',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Wingman',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Pulse Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Assault Missiles',
-      type: 'upgrade',
       count: 1
     }
   ],
@@ -24628,84 +24091,12 @@ exportObj.manifestByExpansion = {
       name: 'E-Wing',
       type: 'ship',
       count: 1
-    }, {
-      name: 'Corran Horn',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Etahn A'baht",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Blackmoon Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Knave Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Advanced Sensors',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Outmaneuver',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R7-T1',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R7 Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Flechette Torpedoes',
-      type: 'upgrade',
-      count: 1
     }
   ],
   'TIE Defender Expansion Pack': [
     {
       name: 'TIE Defender',
       type: 'ship',
-      count: 1
-    }, {
-      name: 'Rexler Brath',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Colonel Vessery',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Onyx Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Delta Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Munitions Failsafe',
-      type: 'modification',
-      count: 1
-    }, {
-      name: 'Predator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Outmaneuver',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Cannon',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Pulse Missiles',
-      type: 'upgrade',
       count: 1
     }
   ],
@@ -24714,112 +24105,12 @@ exportObj.manifestByExpansion = {
       name: 'TIE Phantom',
       type: 'ship',
       count: 1
-    }, {
-      name: '"Whisper"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Echo"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Shadow Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sigma Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Fire-Control System',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tactician',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Recon Specialist',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Advanced Cloaking Device',
-      type: 'modification',
-      count: 1
-    }, {
-      name: 'Stygium Particle Accelerator',
-      type: 'modification',
-      count: 1
     }
   ],
   'YT-2400 Freighter Expansion Pack': [
     {
       name: 'YT-2400',
       type: 'ship',
-      count: 1
-    }, {
-      name: 'Dash Rendar',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Eaden Vrill',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Leebo"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Wild Space Fringer',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Experimental Interface',
-      type: 'modification',
-      count: 1
-    }, {
-      name: 'Countermeasures',
-      type: 'modification',
-      count: 2
-    }, {
-      name: 'Outrider',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Lone Wolf',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: '"Leebo"',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Lando Calrissian',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Stay On Target',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Dash Rendar',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Gunner',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Mercenary Copilot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proton Rockets',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Heavy Laser Cannon',
-      type: 'upgrade',
       count: 1
     }
   ],
@@ -24828,116 +24119,12 @@ exportObj.manifestByExpansion = {
       name: 'VT-49 Decimator',
       type: 'ship',
       count: 1
-    }, {
-      name: 'Captain Oicunn',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Rear Admiral Chiraneau',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Commander Kenkirk',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Patrol Leader',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ruthlessness',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Dauntless',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Ysanne Isard',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Moff Jerjerrod',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Intimidation',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tactical Jammer',
-      type: 'modification',
-      count: 2
-    }, {
-      name: 'Proton Bombs',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Mara Jade',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Fleet Officer',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Torpedoes',
-      type: 'upgrade',
-      count: 2
     }
   ],
   'Imperial Aces Expansion Pack': [
     {
       name: 'TIE Interceptor',
       type: 'ship',
-      count: 2
-    }, {
-      name: 'Carnor Jax',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kir Kanos',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Royal Guard Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Tetran Cowall',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lieutenant Lorrir',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Saber Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Royal Guard TIE',
-      type: 'title',
-      count: 2
-    }, {
-      name: 'Targeting Computer',
-      type: 'modification',
-      count: 2
-    }, {
-      name: 'Hull Upgrade',
-      type: 'modification',
-      count: 2
-    }, {
-      name: 'Push the Limit',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Opportunist',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Shield Upgrade',
-      type: 'modification',
       count: 2
     }
   ],
@@ -24946,346 +24133,12 @@ exportObj.manifestByExpansion = {
       name: 'A-Wing',
       type: 'ship',
       count: 1
-    }, {
-      name: 'B-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Jake Farrell',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Gemmer Sojan',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Green Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Prototype Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Keyan Farlander',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Nera Dantels',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Dagger Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Blue Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Chardaan Refit',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'A-Wing Test Pilot',
-      type: 'title',
-      count: 2
-    }, {
-      name: 'Enhanced Scopes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proton Rockets',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'B-Wing/E2',
-      type: 'modification',
-      count: 2
-    }, {
-      name: 'Kyle Katarn',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Jan Ors',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Rebel Transport Expansion Pack': [
-    {
-      name: 'X-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'GR-75 Medium Transport',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'GR-75 Medium Transport',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Wes Janson',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Jek Porkins',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Hobbie" Klivian',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Tarn Mison',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Red Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Rookie Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Dutyfree',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Quantum Storm',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Bright Hope',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Expanded Cargo Hold',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R2-D6',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R4-D6',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Flechette Torpedoes',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'R3-A2',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'WED-15 Repair Droid',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Backup Shield Generator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Carlist Rieekan',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'EM Emitter',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Engine Booster',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R5-P9',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Comms Booster',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Frequency Jammer',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Shield Projector',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tibanna Gas Supplies',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Jan Dodonna',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Toryn Farr',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Slicer Tools',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Combat Retrofit',
-      type: 'modification',
-      count: 1
-    }
-  ],
-  'Tantive IV Expansion Pack': [
-    {
-      name: 'CR90 Corvette (Fore)',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'CR90 Corvette (Aft)',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'CR90 Corvette (Fore)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'CR90 Corvette (Aft)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Jaina's Light",
-      type: 'title',
-      count: 1
-    }, {
-      name: "Dodonna's Pride",
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Tantive IV',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Backup Shield Generator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Han Solo',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'C-3PO',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Engine Booster',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Comms Booster',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Engineering Team',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Gunnery Team',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ionization Reactor',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Leia Organa',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R2-D2 (Crew)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Sensor Team',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Targeting Coordinator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tibanna Gas Supplies',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Raymus Antilles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Quad Laser Cannons',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Single Turbolasers',
-      type: 'upgrade',
-      count: 3
     }
   ],
   'StarViper Expansion Pack': [
     {
       name: 'StarViper',
       type: 'ship',
-      count: 1
-    }, {
-      name: 'Prince Xizor',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Guri',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Sun Vigo',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Sun Enforcer',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Virago',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Bodyguard',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Accuracy Corrector',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Inertial Dampeners',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Autothrusters',
-      type: 'modification',
-      count: 2
-    }, {
-      name: 'Calculation',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Hull Upgrade',
-      type: 'modification',
       count: 1
     }
   ],
@@ -25294,117 +24147,12 @@ exportObj.manifestByExpansion = {
       name: 'M3-A Interceptor',
       type: 'ship',
       count: 1
-    }, {
-      name: 'Serissu',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Laetin A'shera",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Tansarii Point Veteran",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Cartel Spacer",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Heavy Scyk" Interceptor',
-      type: 'title',
-      count: 1,
-      skipForSource: true
-    }, {
-      name: '"Heavy Scyk" Interceptor (Cannon)',
-      type: 'title',
-      count: 0
-    }, {
-      name: '"Heavy Scyk" Interceptor (Missile)',
-      type: 'title',
-      count: 0
-    }, {
-      name: '"Heavy Scyk" Interceptor (Torpedo)',
-      type: 'title',
-      count: 0
-    }, {
-      name: 'Flechette Cannon',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Cannon',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: '"Mangler" Cannon',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Stealth Device',
-      type: 'modification',
-      count: 1
     }
   ],
   "IG-2000 Expansion Pack": [
     {
       name: 'Aggressor',
       type: 'ship',
-      count: 1
-    }, {
-      name: 'IG-88A',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'IG-88B',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'IG-88C',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'IG-88D',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'IG-2000',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Accuracy Corrector',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Autoblaster',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: '"Mangler" Cannon',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proximity Mines',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Seismic Charges',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Dead Man's Switch",
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Feedback Array',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: '"Hot Shot" Blaster',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Inertial Dampeners',
-      type: 'upgrade',
       count: 1
     }
   ],
@@ -25413,196 +24161,12 @@ exportObj.manifestByExpansion = {
       name: 'Z-95 Headhunter',
       type: 'ship',
       count: 2
-    }, {
-      name: 'Y-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: "N'Dru Suhlak",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Kaa'to Leeachos",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Black Sun Soldier",
-      type: 'pilot',
-      count: 2
-    }, {
-      name: "Binayre Pirate",
-      type: 'pilot',
-      count: 2
-    }, {
-      name: "Kavil",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Drea Renthal",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Hired Gun",
-      type: 'pilot',
-      count: 2
-    }, {
-      name: "Syndicate Thug",
-      type: 'pilot',
-      count: 2
-    }, {
-      name: "Boba Fett (Scum)",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Kath Scarlet (Scum)",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Emon Azzameen",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Mandalorian Mercenary",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Dace Bonearm",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Palob Godalhi",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Torkil Mux",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Spice Runner",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Greedo",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "K4 Security Droid",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Outlaw Tech",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Autoblaster Turret",
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: "Bomb Loadout",
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: "R4-B11",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: '"Genius"',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "R4 Agromech",
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: "Salvaged Astromech",
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: "Unhinged Astromech",
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: "BTL-A4 Y-Wing",
-      type: 'title',
-      count: 2
-    }, {
-      name: "Andrasta",
-      type: 'title',
-      count: 1
-    }, {
-      name: '"Hot Shot" Blaster',
-      type: 'upgrade',
-      count: 1
     }
   ],
   "Hound's Tooth Expansion Pack": [
     {
       name: 'YV-666',
       type: 'ship',
-      count: 1
-    }, {
-      name: 'Bossk',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Moralo Eval',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Latts Razzi',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Trandoshan Slaver',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lone Wolf',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Crack Shot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Stay On Target',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Heavy Laser Cannon',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Bossk',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'K4 Security Droid',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Outlaw Tech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Glitterstim',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Engine Upgrade',
-      type: 'modification',
-      count: 1
-    }, {
-      name: 'Ion Projector',
-      type: 'modification',
-      count: 2
-    }, {
-      name: 'Maneuvering Fins',
-      type: 'modification',
-      count: 1
-    }, {
-      name: "Hound's Tooth",
-      type: 'title',
       count: 1
     }
   ],
@@ -25611,96 +24175,12 @@ exportObj.manifestByExpansion = {
       name: 'Kihraxz Fighter',
       type: 'ship',
       count: 1
-    }, {
-      name: 'Talonbane Cobra',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Graz the Hunter',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Sun Ace',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Cartel Marauder',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Crack Shot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Lightning Reflexes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Predator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Homing Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Glitterstim',
-      type: 'upgrade',
-      count: 1
     }
   ],
   'K-Wing Expansion Pack': [
     {
       name: 'K-Wing',
       type: 'ship',
-      count: 1
-    }, {
-      name: 'Miranda Doni',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Esege Tuketu',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Guardian Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Warden Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Twin Laser Turret',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Plasma Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Advanced Homing Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Bombardier',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Conner Net',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Extra Munitions',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Bombs',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Advanced SLAM',
-      type: 'modification',
       count: 1
     }
   ],
@@ -25709,567 +24189,12 @@ exportObj.manifestByExpansion = {
       name: 'TIE Punisher',
       type: 'ship',
       count: 1
-    }, {
-      name: '"Redline"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Deathrain"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Eight Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Cutlass Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Enhanced Scopes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Extra Munitions',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Flechette Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Plasma Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Advanced Homing Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cluster Mines',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Bombs',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Twin Ion Engine Mk. II',
-      type: 'modification',
-      count: 2
-    }
-  ],
-  "Imperial Raider Expansion Pack": [
-    {
-      name: "Raider-class Corvette (Fore)",
-      type: 'ship',
-      count: 1
-    }, {
-      name: "Raider-class Corvette (Aft)",
-      type: 'ship',
-      count: 1
-    }, {
-      name: "TIE Advanced",
-      type: 'ship',
-      count: 1
-    }, {
-      name: "Raider-class Corvette (Fore)",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Raider-class Corvette (Aft)",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Juno Eclipse",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Zertik Strom",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Commander Alozen",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Lieutenant Colzet",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Storm Squadron Pilot",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Tempest Squadron Pilot",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Advanced Targeting Computer",
-      type: 'upgrade',
-      count: 4
-    }, {
-      name: "TIE/x1",
-      type: 'title',
-      count: 4
-    }, {
-      name: "Cluster Missiles",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Proton Rockets",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Captain Needa",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Grand Moff Tarkin",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Emperor Palpatine",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Admiral Ozzel",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Shield Technician",
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: "Gunnery Team",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Engineering Team",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Sensor Team",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Single Turbolasers",
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: "Ion Cannon Battery",
-      type: 'upgrade',
-      count: 4
-    }, {
-      name: "Quad Laser Cannons",
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: "Tibanna Gas Supplies",
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: "Engine Booster",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Backup Shield Generator",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Comms Booster",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Assailer",
-      type: 'title',
-      count: 1
-    }, {
-      name: "Instigator",
-      type: 'title',
-      count: 1
-    }, {
-      name: "Impetuous",
-      type: 'title',
-      count: 1
-    }
-  ],
-  'The Force Awakens Core Set': [
-    {
-      name: 'T-70 X-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'TIE/fo Fighter',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Poe Dameron',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Blue Ace"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Red Squadron Veteran',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Blue Squadron Novice',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Omega Ace"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Epsilon Leader"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Zeta Ace"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Omega Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Zeta Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Epsilon Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Wired',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'BB-8',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R5-X3',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proton Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Weapons Guidance',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Imperial Assault Carrier Expansion Pack': [
-    {
-      name: 'TIE Fighter',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Gozanti-class Cruiser',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Gozanti-class Cruiser',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Scourge"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Wampa"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Youngster"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Chaser"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Academy Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Black Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Obsidian Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Marksmanship',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Expert Handling',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Expose',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cluster Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Homing Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Dual Laser Turret',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Broadcast Array',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Construction Droid',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Agent Kallus',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Rear Admiral Chiraneau',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ordnance Experts',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Docking Clamps',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cluster Bombs',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Automated Protocols',
-      type: 'modification',
-      count: 3
-    }, {
-      name: 'Optimized Generators',
-      type: 'modification',
-      count: 3
-    }, {
-      name: 'Ordnance Tubes',
-      type: 'modification',
-      count: 2
-    }, {
-      name: 'Requiem',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Vector',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Suppressor',
-      type: 'title',
-      count: 1
-    }
-  ],
-  'T-70 X-Wing Expansion Pack': [
-    {
-      name: 'T-70 X-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Ello Asty',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Red Ace"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Red Squadron Veteran',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Blue Squadron Novice',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Cool Hand',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Targeting Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Weapons Guidance',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Integrated Astromech',
-      type: 'modification',
-      count: 1
-    }, {
-      name: 'Advanced Proton Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'TIE/fo Fighter Expansion Pack': [
-    {
-      name: 'TIE/fo Fighter',
-      type: 'ship',
-      count: 1
-    }, {
-      name: '"Omega Leader"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Zeta Leader"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Epsilon Ace"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Omega Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Zeta Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Epsilon Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Juke',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Comm Relay',
-      type: 'upgrade',
-      count: 1
     }
   ],
   'Ghost Expansion Pack': [
     {
       name: 'VCX-100',
       type: 'ship',
-      count: 1
-    }, {
-      name: 'Attack Shuttle',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Hera Syndulla',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kanan Jarrus',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Chopper"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lothal Rebel',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Hera Syndulla (Attack Shuttle)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sabine Wren',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ezra Bridger',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Zeb" Orrelios',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Predator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Reinforced Deflectors',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Dorsal Turret',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Advanced Proton Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Hera Syndulla',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: '"Zeb" Orrelios',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Kanan Jarrus',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ezra Bridger',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Sabine Wren',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: '"Chopper"',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Conner Net',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cluster Mines',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Thermal Detonators',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ghost',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Phantom',
-      type: 'title',
       count: 1
     }
   ],
@@ -26278,1500 +24203,12 @@ exportObj.manifestByExpansion = {
       name: 'JumpMaster 5000',
       type: 'ship',
       count: 1
-    }, {
-      name: 'Dengar',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Tel Trevura',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Manaroo',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Contracted Scout',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Rage',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Attanni Mindlink',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Plasma Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Dengar',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Boba Fett',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: '"Gonk"',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R5-P8',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Overclocked R4',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Feedback Array',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Punishing One',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Guidance Chips',
-      type: 'modification',
-      count: 2
     }
   ],
   'Mist Hunter Expansion Pack': [
     {
       name: 'G-1A Starfighter',
       type: 'ship',
-      count: 1
-    }, {
-      name: 'Zuckuss',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '4-LOM',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Gand Findsman',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ruthless Freelancer',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Adaptability',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Tractor Beam',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Electronic Baffle',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: '4-LOM',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Zuckuss',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cloaking Device',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Mist Hunter',
-      type: 'title',
-      count: 1
-    }
-  ],
-  "Inquisitor's TIE Expansion Pack": [
-    {
-      name: 'TIE Advanced Prototype',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'The Inquisitor',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Valen Rudor',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Baron of the Empire',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sienar Test Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Deadeye',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Homing Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'XX-23 S-Thread Tracers',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Guidance Chips',
-      type: 'modification',
-      count: 1
-    }, {
-      name: 'TIE/v1',
-      type: 'title',
-      count: 1
-    }
-  ],
-  "Imperial Veterans Expansion Pack": [
-    {
-      name: 'TIE Bomber',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'TIE Defender',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Tomax Bren',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Deathfire"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Gamma Squadron Veteran',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Maarek Stele (TIE Defender)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Countess Ryad',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Glaive Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Crack Shot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tractor Beam',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Systems Officer',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cluster Mines',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proximity Mines',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Long-Range Scanners',
-      type: 'modification',
-      count: 2
-    }, {
-      name: 'TIE/x7',
-      type: 'title',
-      count: 2
-    }, {
-      name: 'TIE/D',
-      type: 'title',
-      count: 2
-    }, {
-      name: 'TIE Shuttle',
-      type: 'title',
-      count: 2
-    }
-  ],
-  'ARC-170 Expansion Pack': [
-    {
-      name: 'ARC-170',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Norra Wexley',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Shara Bey',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Thane Kyrell',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Braylen Stramm',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Adrenaline Rush',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Recon Specialist',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tail Gunner',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R3 Astromech',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Seismic Torpedo',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Vectored Thrusters',
-      type: 'modification',
-      count: 2
-    }, {
-      name: 'Alliance Overhaul',
-      type: 'title',
-      count: 1
-    }
-  ],
-  'Special Forces TIE Expansion Pack': [
-    {
-      name: 'TIE/sf Fighter',
-      type: 'ship',
-      count: 1
-    }, {
-      name: '"Quickdraw"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Backdraft"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Omega Specialist',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Zeta Specialist',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Wired',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Collision Detector',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Sensor Cluster',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Special Ops Training',
-      type: 'title',
-      count: 1
-    }
-  ],
-  'Protectorate Starfighter Expansion Pack': [
-    {
-      name: 'Protectorate Starfighter',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Fenn Rau',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Old Teroch',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kad Solus',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Concord Dawn Ace',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Concord Dawn Veteran',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Zealous Recruit',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Fearlessness',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Concord Dawn Protector',
-      type: 'title',
-      count: 1
-    }
-  ],
-  'Shadow Caster Expansion Pack': [
-    {
-      name: 'Lancer-class Pursuit Craft',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Ketsu Onyo',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Asajj Ventress',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sabine Wren (Scum)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Shadowport Hunter',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Veteran Instincts',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'IG-88D',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ketsu Onyo',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Latts Razzi',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Black Market Slicer Tools',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Rigged Cargo Chute',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Countermeasures',
-      type: 'modification',
-      count: 1
-    }, {
-      name: 'Gyroscopic Targeting',
-      type: 'modification',
-      count: 1
-    }, {
-      name: 'Tactical Jammer',
-      type: 'modification',
-      count: 2
-    }, {
-      name: 'Shadow Caster',
-      type: 'title',
-      count: 1
-    }
-  ],
-  'Heroes of the Resistance Expansion Pack': [
-    {
-      name: 'YT-1300',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'T-70 X-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Han Solo (TFA)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Rey',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Chewbacca (TFA)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Resistance Sympathizer',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Poe Dameron (PS9)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Nien Nunb',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Snap" Wexley',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Jess Pava',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Red Squadron Veteran',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Blue Squadron Novice',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Snap Shot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Trick Shot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Finn',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Hotshot Co-pilot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Rey',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'M9-G8',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Burnout SLAM',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Primed Thrusters',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Pattern Analyzer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Millennium Falcon (TFA)',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Black One',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Integrated Astromech',
-      type: 'modification',
-      count: 2
-    }, {
-      name: 'Smuggling Compartment',
-      type: 'modification',
-      count: 1
-    }
-  ],
-  "U-Wing Expansion Pack": [
-    {
-      name: 'U-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Cassian Andor',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Bodhi Rook',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Heff Tobber',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Blue Squadron Pathfinder',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Inspiring Recruit',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Cassian Andor',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Bistan',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Jyn Erso',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Baze Malbus',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Bodhi Rook',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Expertise',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Pivot Wing',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Stealth Device',
-      type: 'modification',
-      count: 2
-    }, {
-      name: 'Flechette Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Sensor Jammer',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  "TIE Striker Expansion Pack": [
-    {
-      name: 'TIE Striker',
-      type: 'ship',
-      count: 1
-    }, {
-      name: '"Duchess"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Pure Sabacc"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Countdown"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Squadron Scout',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Scarif Defender',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Imperial Trainee',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Swarm Leader',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Lightweight Frame',
-      type: 'modification',
-      count: 1
-    }, {
-      name: 'Adaptive Ailerons',
-      type: 'title',
-      count: 1
-    }
-  ],
-  "Sabine's TIE Fighter Expansion Pack": [
-    {
-      name: 'TIE Fighter',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Ahsoka Tano',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sabine Wren (TIE Fighter)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Captain Rex',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Zeb" Orrelios (TIE Fighter)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Veteran Instincts',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Captain Rex',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'EMP Device',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Sabine\'s Masterpiece',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Captured TIE',
-      type: 'modification',
-      count: 1
-    }
-  ],
-  "Upsilon-class Shuttle Expansion Pack": [
-    {
-      name: 'Upsilon-class Shuttle',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Kylo Ren',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Major Stridan',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lieutenant Dormitz',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Starkiller Base Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Snap Shot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Kylo Ren',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'General Hux',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Operations Specialist',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Targeting Synchronizer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Hyperwave Comm Scanner',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Projector',
-      type: 'modification',
-      count: 2
-    }, {
-      name: 'Kylo Ren\'s Shuttle',
-      type: 'title',
-      count: 1
-    }
-  ],
-  "Quadjumper Expansion Pack": [
-    {
-      name: 'Quadjumper',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Constable Zuvio',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sarco Plank',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Unkar Plutt',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Jakku Gunrunner',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'A Score to Settle',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Unkar Plutt',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'BoShek',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Thermal Detonators',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Hyperwave Comm Scanner',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Scavenger Crane',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Spacetug Tractor Array',
-      type: 'modification',
-      count: 1
-    }
-  ],
-  'C-ROC Cruiser Expansion Pack': [
-    {
-      name: 'C-ROC Cruiser',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'M3-A Interceptor',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'C-ROC Cruiser',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Genesis Red',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Quinn Jast',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Inaldra',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sunny Bounder',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Tansarii Point Veteran',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Cartel Spacer',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Azmorigan',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cikatro Vizago',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Jabba the Hutt',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'IG-RM Thug Droids',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'ARC Caster',
-      type: 'upgrade',
-      count: 5
-    }, {
-      name: 'Heavy Laser Turret',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Supercharged Power Cells',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Quick-release Cargo Locks',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Merchant One',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Broken Horn',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Insatiable Worrt',
-      type: 'title',
-      count: 1
-    }, {
-      name: '"Light Scyk" Interceptor',
-      type: 'title',
-      count: 6
-    }, {
-      name: '"Heavy Scyk" Interceptor',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Automated Protocols',
-      type: 'modification',
-      count: 1
-    }, {
-      name: 'Optimized Generators',
-      type: 'modification',
-      count: 1
-    }, {
-      name: 'Pulsed Ray Shield',
-      type: 'modification',
-      count: 5
-    }
-  ],
-  "Auzituck Gunship Expansion Pack": [
-    {
-      name: 'Auzituck Gunship',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Wullffwarro',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lowhhrick',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Wookiee Liberator',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kashyyyk Defender',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Intimidation',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Selflessness',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Wookiee Commandos',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tactician',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Breach Specialist',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Hull Upgrade',
-      type: 'modification',
-      count: 1
-    }
-  ],
-  "Scurrg H-6 Bomber Expansion Pack": [
-    {
-      name: 'Scurrg H-6 Bomber',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Captain Nym (Rebel)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Captain Nym (Scum)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sol Sixxa',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lok Revenant',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Karthakk Pirate',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lightning Reflexes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Seismic Torpedo',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cruise Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Bomblet Generator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Minefield Mapper',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Synced Turret',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cad Bane',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R4-E1',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Havoc',
-      type: 'title',
-      count: 1
-    }
-  ],
-  "TIE Aggressor Expansion Pack": [
-    {
-      name: 'TIE Aggressor',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Lieutenant Kestal',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Double Edge"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Onyx Squadron Escort',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sienar Specialist',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Intensity',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Unguided Rockets',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Twin Laser Turret',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Synced Turret',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Lightweight Frame',
-      type: 'modification',
-      count: 1
-    }
-  ],
-  'Guns for Hire Expansion Pack': [
-    {
-      name: 'Kihraxz Fighter',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'StarViper',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Viktor Hel',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Captain Jostero',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Sun Ace',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Cartel Marauder',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Dalan Oberos',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Thweek',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Sun Assassin',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Harpoon Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Dischargers',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'StarViper Mk. II',
-      type: 'title',
-      count: 2
-    }, {
-      name: 'Vaksai',
-      type: 'title',
-      count: 2
-    }, {
-      name: 'Pulsed Ray Shield',
-      type: 'modification',
-      count: 2
-    }, {
-      name: 'Stealth Device',
-      type: 'modification',
-      count: 1
-    }, {
-      name: 'Vectored Thrusters',
-      type: 'modification',
-      count: 1
-    }
-  ],
-  'Phantom II Expansion Pack': [
-    {
-      name: 'Sheathipede-class Shuttle',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Fenn Rau (Sheathipede)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ezra Bridger (Sheathipede)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Zeb" Orrelios (Sheathipede)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'AP-5',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Maul',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Courier Droid',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: '"Chopper" (Astromech)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Flight-Assist Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ghost (Phantom II)',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Phantom II',
-      type: 'title',
-      count: 1
-    }
-  ],
-  'Kimogila Fighter Expansion Pack': [
-    {
-      name: 'M12-L Kimogila Fighter',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Torani Kulda',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Dalan Oberos (Kimogila)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Cartel Executioner',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Cartel Brute',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Saturation Salvo',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Plasma Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Scrambler Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'R5-TK',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Dead Man's Switch",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Contraband Cybernetics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Enforcer',
-      type: 'title',
-      count: 1
-    }
-  ],
-  'Alpha-class Star Wing Expansion Pack': [
-    {
-      name: 'Alpha-class Star Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Major Vynder',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lieutenant Karsabi',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Rho Squadron Veteran',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Nu Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Saturation Salvo',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Linked Battery',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Jamming Beam',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cruise Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'XG-1 Assault Configuration',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Os-1 Arsenal Loadout',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Advanced SLAM',
-      type: 'modification',
-      count: 1
-    }
-  ],
-  'Resistance Bomber Expansion Pack': [
-    {
-      name: 'B/SF-17 Bomber',
-      type: 'ship',
-      count: 1
-    }, {
-      name: '"Crimson Leader"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Cobalt Leader"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Crimson Specialist"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Crimson Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Conner Net',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ordnance Silos',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Seismic Charges',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Thermal Detonators',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Trajectory Simulator',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Targeting Synchronizer',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Advanced Optics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Crossfire Formation',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Deflective Plating',
-      type: 'modification',
-      count: 1
-    }
-  ],
-  'TIE Silencer Expansion Pack': [
-    {
-      name: 'TIE Silencer',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Kylo Ren (TIE Silencer)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Test Pilot "Blackout"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'First Order Test Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sienar-Jaemus Analyst',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Debris Gambit',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Sensor Jammer',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Primed Thrusters',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Advanced Optics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Threat Tracker',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'First Order Vanguard',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Autothrusters',
-      type: 'modification',
-      count: 2
-    }
-  ],
-  "Saw's Renegades Expansion Pack": [
-    {
-      name: 'U-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'X-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Saw Gerrera',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Magva Yarro',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Partisan Renegade',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Benthic Two-Tubes',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kullbee Sperado',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Leevan Tenza',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Edrio Two-Tubes',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Cavern Angels Zealot',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: 'Crack Shot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Saw Gerrera',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Magva Yarro',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Flight-Assist Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Targeting Scrambler',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Thrust Corrector',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Renegade Refit',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Servomotor S-Foils',
-      type: 'modification',
-      count: 3
-    }, {
-      name: 'Pivot Wing',
-      type: 'title',
-      count: 1
-    }
-  ],
-  'TIE Reaper Expansion Pack': [
-    {
-      name: 'TIE Reaper',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Major Vermeil',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Captain Feroph',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Vizier"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Scarif Base Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Decoy',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Systems Officer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Death Troopers',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Director Krennic',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'ISB Slicer',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tactical Officer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Advanced Ailerons',
-      type: 'title',
-      count: 1
-    }, {
-      name: 'Multi-spectral Camouflage',
-      type: 'modification',
       count: 1
     }
   ]
@@ -28188,7 +24625,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 26312
+                    lineno: 21891
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -28777,7 +25214,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 26942
+              lineno: 22521
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -29521,7 +25958,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 27592
+          lineno: 23171
         }));
         __iced_deferrals._fulfill();
       });
@@ -29533,7 +25970,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 27593
+            lineno: 23172
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -30104,7 +26541,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.showTooltip = function(type, data, additional_opts) {
-    var a, action, addon_count, cls, effective_stats, extra_actions, pilot_count, ship, ship_count, slot, source, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref40, _ref41, _ref42, _ref43, _ref44, _ref45, _ref46, _ref47, _ref48, _ref49, _ref5, _ref50, _ref51, _ref52, _ref53, _ref54, _ref6, _ref7, _ref8, _ref9;
+    var a, action, addon_count, cls, effective_stats, extra_actions, pilot_count, ship, ship_count, slot, source, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref40, _ref41, _ref42, _ref43, _ref44, _ref45, _ref46, _ref47, _ref48, _ref49, _ref5, _ref50, _ref51, _ref52, _ref53, _ref54, _ref55, _ref56, _ref57, _ref58, _ref59, _ref6, _ref60, _ref61, _ref7, _ref8, _ref9;
     if (data !== this.tooltip_currently_displaying) {
       switch (type) {
         case 'Ship':
@@ -30144,27 +26581,25 @@ exportObj.SquadBuilder = (function() {
           }
           this.info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass((_ref9 = data.data.attack_icon) != null ? _ref9 : 'xwing-miniatures-font-frontarc');
           this.info_container.find('tr.info-attack td.info-data').text(statAndEffectiveStat((_ref10 = (_ref11 = data.pilot.ship_override) != null ? _ref11.attack : void 0) != null ? _ref10 : data.data.attack, effective_stats, 'attack'));
-          this.info_container.find('tr.info-attack').toggle((((_ref12 = data.pilot.ship_override) != null ? _ref12.attack : void 0) != null) || (data.data.attack != null));
-          this.info_container.find('tr.info-attack-back td.info-data').text(statAndEffectiveStat(data.data.attackb, effective_stats, 'attack'));
-          this.info_container.find('tr.info-attack-back').toggle(data.data.attackb != null);
-          this.info_container.find('tr.info-attack-turret td.info-data').text(statAndEffectiveStat(data.data.attackt, effective_stats, 'attack'));
-          this.info_container.find('tr.info-attack-turret').toggle(data.data.attackt != null);
-          this.info_container.find('tr.info-attack-doubleturret td.info-data').text(statAndEffectiveStat(data.data.attackdt, effective_stats, 'attack'));
-          this.info_container.find('tr.info-attack-turret').toggle(data.data.attackdt != null);
-          this.info_container.find('tr.info-energy td.info-data').text(statAndEffectiveStat((_ref13 = (_ref14 = data.pilot.ship_override) != null ? _ref14.energy : void 0) != null ? _ref13 : data.data.energy, effective_stats, 'energy'));
-          this.info_container.find('tr.info-energy').toggle((((_ref15 = data.pilot.ship_override) != null ? _ref15.energy : void 0) != null) || (data.data.energy != null));
+          this.info_container.find('tr.info-attack').toggle((((_ref12 = data.ship_override) != null ? _ref12.attack : void 0) != null) || (ship.attack != null));
+          this.info_container.find('tr.info-attack-back td.info-data').text(statAndEffectiveStat((_ref13 = (_ref14 = data.pilot.ship_override) != null ? _ref14.attackb : void 0) != null ? _ref13 : data.data.attackb, effective_stats, 'attackb'));
+          this.info_container.find('tr.info-attack-back').toggle((((_ref15 = data.ship_override) != null ? _ref15.attackb : void 0) != null) || (ship.attackb != null));
+          this.info_container.find('tr.info-attack-turret td.info-data').text(statAndEffectiveStat((_ref16 = (_ref17 = data.pilot.ship_override) != null ? _ref17.attackt : void 0) != null ? _ref16 : data.data.attackt, effective_stats, 'attackt'));
+          this.info_container.find('tr.info-attack-turret').toggle((((_ref18 = data.ship_override) != null ? _ref18.attackt : void 0) != null) || (ship.attackt != null));
+          this.info_container.find('tr.info-attack-doubleturret td.info-data').text(statAndEffectiveStat((_ref19 = (_ref20 = data.pilot.ship_override) != null ? _ref20.attackdt : void 0) != null ? _ref19 : data.data.attackdt, effective_stats, 'attackdt'));
+          this.info_container.find('tr.info-attack-turret').toggle((((_ref21 = data.ship_override) != null ? _ref21.attackdt : void 0) != null) || (ship.attackdt != null));
+          this.info_container.find('tr.info-energy td.info-data').text(statAndEffectiveStat((_ref22 = (_ref23 = data.pilot.ship_override) != null ? _ref23.energy : void 0) != null ? _ref22 : data.data.energy, effective_stats, 'energy'));
+          this.info_container.find('tr.info-energy').toggle((((_ref24 = data.pilot.ship_override) != null ? _ref24.energy : void 0) != null) || (data.data.energy != null));
           this.info_container.find('tr.info-range').hide();
-          this.info_container.find('tr.info-agility td.info-data').text(statAndEffectiveStat((_ref16 = (_ref17 = data.pilot.ship_override) != null ? _ref17.agility : void 0) != null ? _ref16 : data.data.agility, effective_stats, 'agility'));
+          this.info_container.find('tr.info-agility td.info-data').text(statAndEffectiveStat((_ref25 = (_ref26 = data.pilot.ship_override) != null ? _ref26.agility : void 0) != null ? _ref25 : data.data.agility, effective_stats, 'agility'));
           this.info_container.find('tr.info-agility').show();
-          this.info_container.find('tr.info-hull td.info-data').text(statAndEffectiveStat((_ref18 = (_ref19 = data.pilot.ship_override) != null ? _ref19.hull : void 0) != null ? _ref18 : data.data.hull, effective_stats, 'hull'));
+          this.info_container.find('tr.info-hull td.info-data').text(statAndEffectiveStat((_ref27 = (_ref28 = data.pilot.ship_override) != null ? _ref28.hull : void 0) != null ? _ref27 : data.data.hull, effective_stats, 'hull'));
           this.info_container.find('tr.info-hull').show();
-          this.info_container.find('tr.info-shields td.info-data').text(statAndEffectiveStat((_ref20 = (_ref21 = data.pilot.ship_override) != null ? _ref21.shields : void 0) != null ? _ref20 : data.data.shields, effective_stats, 'shields'));
+          this.info_container.find('tr.info-shields td.info-data').text(statAndEffectiveStat((_ref29 = (_ref30 = data.pilot.ship_override) != null ? _ref30.shields : void 0) != null ? _ref29 : data.data.shields, effective_stats, 'shields'));
           this.info_container.find('tr.info-shields').show();
-          this.info_container.find('tr.info-force td.info-data').text(statAndEffectiveStat(((_ref22 = data.pilot.ship_override) != null ? _ref22.force : void 0), effective_stats, 'shields'));
-          this.info_container.find('tr.info-force').toggle(((_ref23 = data.pilot.ship_override) != null ? _ref23.force : void 0) != null);
           this.info_container.find('tr.info-actions td.info-data').html(((function() {
-            var _j, _len1, _ref24, _results;
-            _ref24 = data.data.actions.concat((function() {
+            var _j, _len1, _ref31, _results;
+            _ref31 = data.data.actions.concat((function() {
               var _k, _len1, _results1;
               _results1 = [];
               for (_k = 0, _len1 = extra_actions.length; _k < _len1; _k++) {
@@ -30174,16 +26609,16 @@ exportObj.SquadBuilder = (function() {
               return _results1;
             }).call(this));
             _results = [];
-            for (_j = 0, _len1 = _ref24.length; _j < _len1; _j++) {
-              a = _ref24[_j];
+            for (_j = 0, _len1 = _ref31.length; _j < _len1; _j++) {
+              a = _ref31[_j];
               _results.push(exportObj.translate(this.language, 'action', a));
             }
             return _results;
           }).call(this)).join(', '));
           if (ships[data.ship].actionsred != null) {
             this.info_container.find('tr.info-actions-red td.info-data-red').html(((function() {
-              var _j, _len1, _ref24, _results;
-              _ref24 = data.data.actions.concat((function() {
+              var _j, _len1, _ref31, _results;
+              _ref31 = data.data.actions.concat((function() {
                 var _k, _len1, _results1;
                 _results1 = [];
                 for (_k = 0, _len1 = extra_actions_red.length; _k < _len1; _k++) {
@@ -30193,24 +26628,24 @@ exportObj.SquadBuilder = (function() {
                 return _results1;
               }).call(this));
               _results = [];
-              for (_j = 0, _len1 = _ref24.length; _j < _len1; _j++) {
-                a = _ref24[_j];
+              for (_j = 0, _len1 = _ref31.length; _j < _len1; _j++) {
+                a = _ref31[_j];
                 _results.push(exportObj.translate(this.language, 'action', a));
               }
               return _results;
             }).call(this)).join(', '));
             this.info_container.find('tr.info-actions-red').show();
           } else {
-            this.info_container.find('tr.info-actions-red').show();
+            this.info_container.find('tr.info-actions-red').hide();
           }
           this.info_container.find('tr.info-actions').show();
           this.info_container.find('tr.info-upgrades').show();
           this.info_container.find('tr.info-upgrades td.info-data').text(((function() {
-            var _j, _len1, _ref24, _results;
-            _ref24 = data.pilot.slots;
+            var _j, _len1, _ref31, _results;
+            _ref31 = data.pilot.slots;
             _results = [];
-            for (_j = 0, _len1 = _ref24.length; _j < _len1; _j++) {
-              slot = _ref24[_j];
+            for (_j = 0, _len1 = _ref31.length; _j < _len1; _j++) {
+              slot = _ref31[_j];
               _results.push(exportObj.translate(this.language, 'slot', slot));
             }
             return _results;
@@ -30220,73 +26655,78 @@ exportObj.SquadBuilder = (function() {
           break;
         case 'Pilot':
           this.info_container.find('.info-sources').text(((function() {
-            var _j, _len1, _ref24, _results;
-            _ref24 = data.sources;
+            var _j, _len1, _ref31, _results;
+            _ref31 = data.sources;
             _results = [];
-            for (_j = 0, _len1 = _ref24.length; _j < _len1; _j++) {
-              source = _ref24[_j];
+            for (_j = 0, _len1 = _ref31.length; _j < _len1; _j++) {
+              source = _ref31[_j];
               _results.push(exportObj.translate(this.language, 'sources', source));
             }
             return _results;
           }).call(this)).sort().join(', '));
-          if (((_ref24 = this.collection) != null ? _ref24.counts : void 0) != null) {
-            pilot_count = (_ref25 = (_ref26 = this.collection.counts) != null ? (_ref27 = _ref26.pilot) != null ? _ref27[data.english_name] : void 0 : void 0) != null ? _ref25 : 0;
-            ship_count = (_ref28 = (_ref29 = this.collection.counts.ship) != null ? _ref29[additional_opts.ship] : void 0) != null ? _ref28 : 0;
+          if (((_ref31 = this.collection) != null ? _ref31.counts : void 0) != null) {
+            pilot_count = (_ref32 = (_ref33 = this.collection.counts) != null ? (_ref34 = _ref33.pilot) != null ? _ref34[data.english_name] : void 0 : void 0) != null ? _ref32 : 0;
+            ship_count = (_ref35 = (_ref36 = this.collection.counts.ship) != null ? _ref36[additional_opts.ship] : void 0) != null ? _ref35 : 0;
             this.info_container.find('.info-collection').text("You have " + ship_count + " ship model" + (ship_count > 1 ? 's' : '') + " and " + pilot_count + " pilot card" + (pilot_count > 1 ? 's' : '') + " in your collection.");
           } else {
             this.info_container.find('.info-collection').text('');
           }
           this.info_container.find('.info-name').html("" + (data.unique ? "&middot;&nbsp;" : "") + data.name + (data.epic != null ? " (" + (exportObj.translate(this.language, 'ui', 'epic')) + ")" : "") + (exportObj.isReleased(data) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
-          this.info_container.find('p.info-text').html((_ref30 = data.text) != null ? _ref30 : '');
+          this.info_container.find('p.info-text').html((_ref37 = data.text) != null ? _ref37 : '');
           ship = exportObj.ships[data.ship];
           this.info_container.find('tr.info-ship td.info-data').text(data.ship);
           this.info_container.find('tr.info-ship').show();
           this.info_container.find('tr.info-skill td.info-data').text(data.skill);
           this.info_container.find('tr.info-skill').show();
-          this.info_container.find('tr.info-attack td.info-data').text((_ref31 = (_ref32 = data.ship_override) != null ? _ref32.attack : void 0) != null ? _ref31 : ship.attack);
-          this.info_container.find('tr.info-attack').toggle((((_ref33 = data.ship_override) != null ? _ref33.attack : void 0) != null) || (ship.attack != null));
+          this.info_container.find('tr.info-attack td.info-data').text((_ref38 = (_ref39 = data.ship_override) != null ? _ref39.attack : void 0) != null ? _ref38 : ship.attack);
+          this.info_container.find('tr.info-attack').toggle((((_ref40 = data.ship_override) != null ? _ref40.attack : void 0) != null) || (ship.attack != null));
           this.info_container.find('tr.info-attack-back td.info-data').text(ship.attackb);
           this.info_container.find('tr.info-attack-back').toggle(ship.attackb != null);
           this.info_container.find('tr.info-attack-turret td.info-data').text(ship.attackt);
           this.info_container.find('tr.info-attack-turret').toggle(ship.attackt != null);
           this.info_container.find('tr.info-attack-doubleturret td.info-data').text(ship.attackdt);
           this.info_container.find('tr.info-attack-doubleturret').toggle(ship.attackdt != null);
-          _ref34 = this.info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList;
-          for (_j = 0, _len1 = _ref34.length; _j < _len1; _j++) {
-            cls = _ref34[_j];
+          _ref41 = this.info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList;
+          for (_j = 0, _len1 = _ref41.length; _j < _len1; _j++) {
+            cls = _ref41[_j];
             if (cls.startsWith('xwing-miniatures-font-frontarc')) {
               this.info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls);
             }
           }
-          this.info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass((_ref35 = ship.attack_icon) != null ? _ref35 : 'xwing-miniatures-font-frontarc');
-          this.info_container.find('tr.info-energy td.info-data').text((_ref36 = (_ref37 = data.ship_override) != null ? _ref37.energy : void 0) != null ? _ref36 : ship.energy);
-          this.info_container.find('tr.info-energy').toggle((((_ref38 = data.ship_override) != null ? _ref38.energy : void 0) != null) || (ship.energy != null));
+          this.info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass((_ref42 = ship.attack_icon) != null ? _ref42 : 'xwing-miniatures-font-frontarc');
+          this.info_container.find('tr.info-energy td.info-data').text((_ref43 = (_ref44 = data.ship_override) != null ? _ref44.energy : void 0) != null ? _ref43 : ship.energy);
+          this.info_container.find('tr.info-energy').toggle((((_ref45 = data.ship_override) != null ? _ref45.energy : void 0) != null) || (ship.energy != null));
           this.info_container.find('tr.info-range').hide();
-          this.info_container.find('tr.info-agility td.info-data').text((_ref39 = (_ref40 = data.ship_override) != null ? _ref40.agility : void 0) != null ? _ref39 : ship.agility);
+          this.info_container.find('tr.info-agility td.info-data').text((_ref46 = (_ref47 = data.ship_override) != null ? _ref47.agility : void 0) != null ? _ref46 : ship.agility);
           this.info_container.find('tr.info-agility').show();
-          this.info_container.find('tr.info-hull td.info-data').text((_ref41 = (_ref42 = data.ship_override) != null ? _ref42.hull : void 0) != null ? _ref41 : ship.hull);
+          this.info_container.find('tr.info-hull td.info-data').text((_ref48 = (_ref49 = data.ship_override) != null ? _ref49.hull : void 0) != null ? _ref48 : ship.hull);
           this.info_container.find('tr.info-hull').show();
-          this.info_container.find('tr.info-shields td.info-data').text((_ref43 = (_ref44 = data.ship_override) != null ? _ref44.shields : void 0) != null ? _ref43 : ship.shields);
+          this.info_container.find('tr.info-shields td.info-data').text((_ref50 = (_ref51 = data.ship_override) != null ? _ref51.shields : void 0) != null ? _ref50 : ship.shields);
           this.info_container.find('tr.info-shields').show();
-          this.info_container.find('tr.info-force td.info-data').text((_ref45 = data.ship_override) != null ? _ref45.force : void 0);
-          this.info_container.find('tr.info-force').toggle(((_ref46 = data.ship_override) != null ? _ref46.force : void 0) != null);
+          if (((_ref52 = data.ship_override) != null ? _ref52.force : void 0) != null) {
+            this.info_container.find('tr.info-force td.info-data').text((_ref53 = data.ship_override) != null ? _ref53.force : void 0);
+            this.info_container.find('tr.info-force td.info-header').show();
+            this.info_container.find('tr.info-force').show();
+          } else {
+            this.info_container.find('tr.info-force').hide();
+          }
           this.info_container.find('tr.info-actions td.info-data').text(((function() {
-            var _k, _len2, _ref47, _ref48, _ref49, _results;
-            _ref49 = (_ref47 = (_ref48 = data.ship_override) != null ? _ref48.actions : void 0) != null ? _ref47 : exportObj.ships[data.ship].actions;
+            var _k, _len2, _ref54, _ref55, _ref56, _results;
+            _ref56 = (_ref54 = (_ref55 = data.ship_override) != null ? _ref55.actions : void 0) != null ? _ref54 : exportObj.ships[data.ship].actions;
             _results = [];
-            for (_k = 0, _len2 = _ref49.length; _k < _len2; _k++) {
-              action = _ref49[_k];
+            for (_k = 0, _len2 = _ref56.length; _k < _len2; _k++) {
+              action = _ref56[_k];
               _results.push(exportObj.translate(this.language, 'action', action));
             }
             return _results;
           }).call(this)).join(', '));
           if (ships[data.ship].actionsred != null) {
             this.info_container.find('tr.info-actions-red td.info-data-red').text(((function() {
-              var _k, _len2, _ref47, _ref48, _ref49, _results;
-              _ref49 = (_ref47 = (_ref48 = data.ship_override) != null ? _ref48.actions : void 0) != null ? _ref47 : exportObj.ships[data.ship].actionsred;
+              var _k, _len2, _ref54, _ref55, _ref56, _results;
+              _ref56 = (_ref54 = (_ref55 = data.ship_override) != null ? _ref55.actions : void 0) != null ? _ref54 : exportObj.ships[data.ship].actionsred;
               _results = [];
-              for (_k = 0, _len2 = _ref49.length; _k < _len2; _k++) {
-                action = _ref49[_k];
+              for (_k = 0, _len2 = _ref56.length; _k < _len2; _k++) {
+                action = _ref56[_k];
                 _results.push(exportObj.translate(this.language, 'action', action));
               }
               return _results;
@@ -30298,11 +26738,11 @@ exportObj.SquadBuilder = (function() {
           this.info_container.find('tr.info-actions').show();
           this.info_container.find('tr.info-upgrades').show();
           this.info_container.find('tr.info-upgrades td.info-data').text(((function() {
-            var _k, _len2, _ref47, _results;
-            _ref47 = data.slots;
+            var _k, _len2, _ref54, _results;
+            _ref54 = data.slots;
             _results = [];
-            for (_k = 0, _len2 = _ref47.length; _k < _len2; _k++) {
-              slot = _ref47[_k];
+            for (_k = 0, _len2 = _ref54.length; _k < _len2; _k++) {
+              slot = _ref54[_k];
               _results.push(exportObj.translate(this.language, 'slot', slot));
             }
             return _results;
@@ -30312,23 +26752,23 @@ exportObj.SquadBuilder = (function() {
           break;
         case 'Addon':
           this.info_container.find('.info-sources').text(((function() {
-            var _k, _len2, _ref47, _results;
-            _ref47 = data.sources;
+            var _k, _len2, _ref54, _results;
+            _ref54 = data.sources;
             _results = [];
-            for (_k = 0, _len2 = _ref47.length; _k < _len2; _k++) {
-              source = _ref47[_k];
+            for (_k = 0, _len2 = _ref54.length; _k < _len2; _k++) {
+              source = _ref54[_k];
               _results.push(exportObj.translate(this.language, 'sources', source));
             }
             return _results;
           }).call(this)).sort().join(', '));
-          if (((_ref47 = this.collection) != null ? _ref47.counts : void 0) != null) {
-            addon_count = (_ref48 = (_ref49 = this.collection.counts) != null ? (_ref50 = _ref49[additional_opts.addon_type.toLowerCase()]) != null ? _ref50[data.english_name] : void 0 : void 0) != null ? _ref48 : 0;
+          if (((_ref54 = this.collection) != null ? _ref54.counts : void 0) != null) {
+            addon_count = (_ref55 = (_ref56 = this.collection.counts) != null ? (_ref57 = _ref56[additional_opts.addon_type.toLowerCase()]) != null ? _ref57[data.english_name] : void 0 : void 0) != null ? _ref55 : 0;
             this.info_container.find('.info-collection').text("You have " + addon_count + " in your collection.");
           } else {
             this.info_container.find('.info-collection').text('');
           }
           this.info_container.find('.info-name').html("" + (data.unique ? "&middot;&nbsp;" : "") + data.name + (data.limited != null ? " (" + (exportObj.translate(this.language, 'ui', 'limited')) + ")" : "") + (data.epic != null ? " (" + (exportObj.translate(this.language, 'ui', 'epic')) + ")" : "") + (exportObj.isReleased(data) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
-          this.info_container.find('p.info-text').html((_ref51 = data.text) != null ? _ref51 : '');
+          this.info_container.find('p.info-text').html((_ref58 = data.text) != null ? _ref58 : '');
           this.info_container.find('tr.info-ship').hide();
           this.info_container.find('tr.info-skill').hide();
           if (data.energy != null) {
@@ -30338,9 +26778,9 @@ exportObj.SquadBuilder = (function() {
             this.info_container.find('tr.info-energy').hide();
           }
           if (data.attack != null) {
-            _ref52 = this.info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList;
-            for (_k = 0, _len2 = _ref52.length; _k < _len2; _k++) {
-              cls = _ref52[_k];
+            _ref59 = this.info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList;
+            for (_k = 0, _len2 = _ref59.length; _k < _len2; _k++) {
+              cls = _ref59[_k];
               if (cls.startsWith('xwing-miniatures-font-frontarc')) {
                 this.info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls);
               }
@@ -30357,8 +26797,16 @@ exportObj.SquadBuilder = (function() {
           } else {
             this.info_container.find('tr.info-range').hide();
           }
-          this.info_container.find('tr.info-force td.info-data').text((_ref53 = data.ship_override) != null ? _ref53.force : void 0);
-          this.info_container.find('tr.info-force').toggle(((_ref54 = data.ship_override) != null ? _ref54.force : void 0) != null);
+          if (((_ref60 = data.ship_override) != null ? _ref60.force : void 0) != null) {
+            this.info_container.find('tr.info-force td.info-data').text((_ref61 = data.ship_override) != null ? _ref61.force : void 0);
+            this.info_container.find('tr.info-force td.info-header').show();
+            this.info_container.find('tr.info-force').show();
+          } else {
+            this.info_container.find('tr.info-force').hide();
+          }
+          this.info_container.find('tr.info-attack-back').hide();
+          this.info_container.find('tr.info-attack-turret').hide();
+          this.info_container.find('tr.info-attack-doubleturret').hide();
           this.info_container.find('tr.info-agility').hide();
           this.info_container.find('tr.info-hull').hide();
           this.info_container.find('tr.info-shields').hide();
@@ -31184,7 +27632,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 28545
+                      lineno: 24133
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -31258,7 +27706,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 28571
+                lineno: 24159
               })
             ]);
             __iced_deferrals._fulfill();
@@ -31313,7 +27761,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 28594
+              lineno: 24182
             }));
           }
         }
@@ -31322,7 +27770,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 28596
+              lineno: 24184
             }));
           }
         }
@@ -31331,7 +27779,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 28598
+              lineno: 24186
             }));
           }
         }
@@ -32356,7 +28804,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 29286
+                lineno: 24874
               })
             ]);
             __iced_deferrals._fulfill();
@@ -32475,7 +28923,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 29345
+                  lineno: 24933
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -32497,7 +28945,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 29349
+                    lineno: 24937
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -32587,7 +29035,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 29392
+            lineno: 24980
           }));
         }
         __iced_deferrals._fulfill();
