@@ -1199,7 +1199,7 @@ exportObj.basicCardData = ->
               [ 0, 1, 2, 1, 0, 0, 0, 0, 3, 3]
               [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0]
             ]
-            large: true
+            medium: true
         "HWK-290":
             name: "HWK-290"
             factions: [ "Rebel Alliance", "Scum and Villainy", ]
@@ -1475,7 +1475,7 @@ exportObj.basicCardData = ->
                 "Target Lock"
                 "Boost"
             ]
-            large: true
+            medium: true
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 1, 2, 2, 2, 1, 0, 0, 0 ]
@@ -1530,6 +1530,7 @@ exportObj.basicCardData = ->
             agility: 1
             hull: 6
             shields: 3
+            medium: true
             actions: [
                 "Focus"
                 "Target Lock"
@@ -1550,6 +1551,7 @@ exportObj.basicCardData = ->
             agility: 1
             hull: 6
             shields: 3
+            medium: true
             actions: [
                 "Focus"
                 "Target Lock"
@@ -1634,6 +1636,7 @@ exportObj.basicCardData = ->
             agility: 1
             hull: 5
             shields: 4
+            medium: true
             actions: [
                 "Focus"
                 "Target Lock"
@@ -1676,6 +1679,7 @@ exportObj.basicCardData = ->
             agility: 1
             hull: 6
             shields: 3
+            medium: true
             actions: [
                 "Focus"
                 "Target Lock"
@@ -1757,7 +1761,7 @@ exportObj.basicCardData = ->
         "U-Wing":
             name: "U-Wing"
             factions: ["Rebel Alliance"]
-            large: true
+            medium: true
             attack: 3
             agility: 2
             hull: 5
@@ -1820,6 +1824,7 @@ exportObj.basicCardData = ->
             agility: 1
             hull: 6
             shields: 4
+            medium: true
             actions: [
                 "Focus"
                 "Target Lock"
@@ -1921,6 +1926,7 @@ exportObj.basicCardData = ->
             agility: 1
             hull: 6
             shields: 2
+            medium: true
             actions: [
                 "Focus"
                 "Evade"
@@ -2027,6 +2033,7 @@ exportObj.basicCardData = ->
             faction: "Rebel Alliance"
             ship: "X-Wing"
             skill: 5
+            force: 2
             points: 62
             slots: [
                 "Force"
@@ -2035,8 +2042,6 @@ exportObj.basicCardData = ->
                 "Modification"
                 "Configuration"
             ]
-            ship_override:
-                force: 2
         }
         {
             name: "Wedge Antilles"
@@ -2173,13 +2178,12 @@ exportObj.basicCardData = ->
             faction: "Rebel Alliance"
             ship: "TIE Fighter"
             skill: 3
+            force: 1
             points: 32
             slots: [
                 "Force"
                 "Modification"
             ]
-            ship_override:
-                force: 1
         }
         {
             name: '"Zeb" Orrelios (TIE Fighter)'
@@ -2930,6 +2934,7 @@ exportObj.basicCardData = ->
             faction: "Rebel Alliance"
             ship: "VCX-100"
             skill: 3
+            force: 2
             points: 90
             slots: [
                 "Force"
@@ -2941,8 +2946,6 @@ exportObj.basicCardData = ->
                 "Turret"
                 "Title"
             ]
-            ship_override:
-                force: 2
         }
         {
             name: '"Chopper"'
@@ -3018,6 +3021,7 @@ exportObj.basicCardData = ->
             faction: "Rebel Alliance"
             ship: "Attack Shuttle"
             skill: 3
+            force: 1
             points: 41
             slots: [
                 "Force"
@@ -3026,8 +3030,6 @@ exportObj.basicCardData = ->
                 "Turret"
                 "Title"
             ]
-            ship_override:
-                force: 1
         }
 
         {
@@ -3068,6 +3070,7 @@ exportObj.basicCardData = ->
             faction: "Rebel Alliance"
             ship: "Sheathipede-class Shuttle"
             skill: 3
+            force: 1
             points: 42
             slots: [
                 "force"
@@ -3076,8 +3079,6 @@ exportObj.basicCardData = ->
                 "Astromech"
                 "Title"
             ]
-            ship_override:
-                force: 1
         }
         {
             name: '"Zeb" Orrelios (Sheathipede)'
@@ -5785,6 +5786,7 @@ exportObj.basicCardData = ->
            id: 26
            slot: "Crew"
            points: 14
+           force: 1
            unique: true
            faction: "Galactic Empire"
            modifier_func: (stats) ->
@@ -5811,6 +5813,7 @@ exportObj.basicCardData = ->
            id: 29
            slot: "Crew"
            points: 13
+           force: 1
            unique: true
            faction: "Galactic Empire"
            modifier_func: (stats) ->
@@ -5908,6 +5911,7 @@ exportObj.basicCardData = ->
            id: 41
            slot: "Crew"
            points: 14
+           force: 1
            unique: true
            faction: "Rebel Alliance"
            modifier_func: (stats) ->
@@ -6061,6 +6065,7 @@ exportObj.basicCardData = ->
            id: 60
            slot: "Crew"
            points: 12
+           force: 1
            unique: true
            faction: "Galactic Empire"
            modifier_func: (stats) ->
@@ -6215,6 +6220,7 @@ exportObj.basicCardData = ->
            id: 81
            slot: "Gunner"
            points: 18
+           force: 1
            unique: true
            faction: "Rebel Alliance"
            modifier_func: (stats) ->
@@ -6225,6 +6231,7 @@ exportObj.basicCardData = ->
            id: 82
            slot: "Gunner"
            points: 12
+           force: 1
            unique: true
            faction: "Galactic Empire"
            modifier_func: (stats) ->
@@ -6266,6 +6273,7 @@ exportObj.basicCardData = ->
            id: 87
            slot: "Gunner"
            points: 30
+           force: 1
            unique: true
            faction: "Rebel Alliance"
            modifier_func: (stats) ->
@@ -6413,7 +6421,8 @@ exportObj.basicCardData = ->
            name: "Engine Upgrade"
            id: 107
            slot: "Modification"
-           points: 3,6,9
+           points: 3
+           variablebase: true
        }
        {
            name: "Munitions Failsafe"
@@ -6494,7 +6503,8 @@ exportObj.basicCardData = ->
            name: "Expert Handling"
            id: 120
            slot: "Talent"
-           points: 2,4,6
+           points: 2
+           variablebase: true
        }
        {
            name: "Fearless"
@@ -6887,20 +6897,29 @@ exportObj.basicCardData = ->
            name: "Hull Upgrade"
            id: 164
            slot: "Modification"
-           points: 7
+           points: 2
+           variableagility: true
+           modifier_func: (stats) ->
+                stats.hull += 1       
        }
        {
            name: "Shield Upgrade"
            id: 165
            slot: "Modification"
-           points: 8
+           points: 3
+           variableagility: true
+           modifier_func: (stats) ->
+                stats.shields += 1       
        }
        {
            name: "Stealth Device"
            id: 166
            slot: "Modification"
-           points: 8
+           points: 3
+           variableagility: true
            charge: 1
+           modifier_func: (stats) ->
+                stats.agility += 1       
        }
     ]
     modificationsById: [
@@ -23435,7 +23454,7 @@ class exportObj.SquadBuilder
         if data != @tooltip_currently_displaying
             switch type
                 when 'Ship'
-                    @info_container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.pilot.sources).sort().join(', ')
+#                    @info_container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.pilot.sources).sort().join(', ')
                     if @collection?.counts?
                         ship_count = @collection.counts?.ship?[data.data.english_name] ? 0
                         pilot_count = @collection.counts?.pilot?[data.pilot.english_name] ? 0
@@ -23454,8 +23473,8 @@ class exportObj.SquadBuilder
                     @info_container.find('tr.info-skill td.info-data').text statAndEffectiveStat(data.pilot.skill, effective_stats, 'skill')
                     @info_container.find('tr.info-skill').show()
 
-                    for cls in @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
-                        @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-attack')
+#                    for cls in @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
+#                        @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-attack')
                     @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass(data.data.attack_icon ? 'xwing-miniatures-font-attack')
 
                     @info_container.find('tr.info-attack td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.attack ? data.data.attack), effective_stats, 'attack')
@@ -23479,19 +23498,25 @@ class exportObj.SquadBuilder
                     @info_container.find('tr.info-hull').show()
                     @info_container.find('tr.info-shields td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.shields ? data.data.shields), effective_stats, 'shields')
                     @info_container.find('tr.info-shields').show()
+                    @info_container.find('tr.info-force td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.force ? data.pilot.force), effective_stats, 'force')
                     
+                    if data.pilot.ship_override?.force? or data.pilot.force?
+                        @info_container.find('tr.info-force').show()
+                    else
+                        @info_container.find('tr.info-force').hide()
+                        
                     @info_container.find('tr.info-actions td.info-data').html (exportObj.translate(@language, 'action', a) for a in data.data.actions.concat( ("<strong>#{exportObj.translate @language, 'action', action}</strong>" for action in extra_actions))).join ', '
 
                     @info_container.find('tr.info-actions-red td.info-data').html (exportObj.translate(@language, 'action', a) for a in data.data.actions.concat( ("<strong>#{exportObj.translate @language, 'action', actionsred}</strong>" for action in extra_actions_red))).join ', '
-                    @info_container.find('tr.info-actions-red').show()
 
+                    @info_container.find('tr.info-actions-red').show()
                     @info_container.find('tr.info-actions').show()
                     @info_container.find('tr.info-upgrades').show()
                     @info_container.find('tr.info-upgrades td.info-data').text((exportObj.translate(@language, 'slot', slot) for slot in data.pilot.slots).join(', ') or 'None')
                     @info_container.find('p.info-maneuvers').show()
                     @info_container.find('p.info-maneuvers').html(@getManeuverTableHTML(effective_stats.maneuvers, data.data.maneuvers))
                 when 'Pilot'
-                    @info_container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
+#                    @info_container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
                     if @collection?.counts?
                         pilot_count = @collection.counts?.pilot?[data.english_name] ? 0
                         ship_count = @collection.counts.ship?[additional_opts.ship] ? 0
@@ -23505,7 +23530,6 @@ class exportObj.SquadBuilder
                     @info_container.find('tr.info-ship').show()
                     @info_container.find('tr.info-skill td.info-data').text data.skill
                     @info_container.find('tr.info-skill').show()
-
                     
                     @info_container.find('tr.info-attack td.info-data').text(data.ship_override?.attack ? ship.attack)
                     @info_container.find('tr.info-attack').toggle(data.ship_override?.attack? or ship.attack?)
@@ -23517,8 +23541,8 @@ class exportObj.SquadBuilder
                     @info_container.find('tr.info-attack-doubleturret td.info-data').text(ship.attackdt)
                     @info_container.find('tr.info-attack-doubleturret').toggle(ship.attackdt?)
                     
-                    for cls in @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
-                        @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-frontarc')
+#                    for cls in @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
+#                        @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-frontarc')
                     @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass(ship.attack_icon ? 'xwing-miniatures-font-frontarc')
 
                     @info_container.find('tr.info-energy td.info-data').text(data.ship_override?.energy ? ship.energy)
@@ -23531,18 +23555,16 @@ class exportObj.SquadBuilder
                     @info_container.find('tr.info-shields td.info-data').text(data.ship_override?.shields ? ship.shields)
                     @info_container.find('tr.info-shields').show()
 
-                    if data.ship_override?.force?
-                        @info_container.find('tr.info-force td.info-data').text(data.ship_override?.force)
-                        @info_container.find('tr.info-force td.info-header').show()
+                    if data.ship_override?.force or data.force?
+                        @info_container.find('tr.info-force td.info-data').text (data.ship_override?.force ? data.force)
                         @info_container.find('tr.info-force').show()
                     else
                         @info_container.find('tr.info-force').hide()
-                        
                     
                     @info_container.find('tr.info-actions td.info-data').text (exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actions ? exportObj.ships[data.ship].actions)).join(', ')
                     
                     if ships[data.ship].actionsred?
-                        @info_container.find('tr.info-actions-red td.info-data-red').text (exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actions ? exportObj.ships[data.ship].actionsred)).join(', ')
+                        @info_container.find('tr.info-actions-red td.info-data-red').text (exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actionsred ? exportObj.ships[data.ship].actionsred)).join(', ')
                         @info_container.find('tr.info-actions-red').show()
                     else
                         @info_container.find('tr.info-actions-red').hide()
@@ -23553,7 +23575,7 @@ class exportObj.SquadBuilder
                     @info_container.find('p.info-maneuvers').show()
                     @info_container.find('p.info-maneuvers').html(@getManeuverTableHTML(ship.maneuvers, ship.maneuvers))
                 when 'Addon'
-                    @info_container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
+#                    @info_container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
                     if @collection?.counts?
                         addon_count = @collection.counts?[additional_opts.addon_type.toLowerCase()]?[data.english_name] ? 0
                         @info_container.find('.info-collection').text """You have #{addon_count} in your collection."""
@@ -23583,12 +23605,8 @@ class exportObj.SquadBuilder
                     else
                         @info_container.find('tr.info-range').hide()
                     
-                    if data.ship_override?.force?
-                        @info_container.find('tr.info-force td.info-data').text(data.ship_override?.force)
-                        @info_container.find('tr.info-force td.info-header').show()
-                        @info_container.find('tr.info-force').show()
-                    else
-                        @info_container.find('tr.info-force').hide()
+                    @info_container.find('tr.info-force td.info-data').text (data.force)
+                    @info_container.find('tr.info-force').toggle(data.force?)                        
                     
                     @info_container.find('tr.info-attack-back').hide()
                     @info_container.find('tr.info-attack-turret').hide()
@@ -24698,16 +24716,16 @@ class Ship
         stats =
             skill: @pilot.skill
             attack: @pilot.ship_override?.attack ? @data.attack
-            attackb: @pilot.ship_override?.attack ? @data.attack
-            attackt: @pilot.ship_override?.attack ? @data.attack
-            attackdt: @pilot.ship_override?.attack ? @data.attack
+            attackb: @pilot.ship_override?.attackb ? @data.attackb
+            attackt: @pilot.ship_override?.attackt ? @data.attackt
+            attackdt: @pilot.ship_override?.attackdt ? @data.attackdt
             energy: @pilot.ship_override?.energy ? @data.energy
             agility: @pilot.ship_override?.agility ? @data.agility
             hull: @pilot.ship_override?.hull ? @data.hull
             shields: @pilot.ship_override?.shields ? @data.shields
-            force: @pilot.ship_override?.force ? @data.force
+            force: @pilot.ship_override?.force ? @pilot.force
             actions: (@pilot.ship_override?.actions ? @data.actions).slice 0
-            actionsred: (@pilot.ship_override?.actionsred ? @data.actionsred).slice 0
+            actionsred: ((@pilot.ship_override?.actionsred ? @data.actionsred) ? "").slice 1
 
         # need a deep copy of maneuvers array
         stats.maneuvers = []
@@ -24998,11 +25016,12 @@ class GenericAddon
 
     getPoints: ->
         # Moar special case jankiness
-        if 'vaksai' in (title.data?.canonical_name for title in @ship?.titles ? []) and @data?.canonical_name != 'vaksai'
-            Math.max(0, (@data?.points ? 0) - 1)
-        # And more
-        else if @slot == 'Elite' and 'renegaderefit' in (upgrade.data?.canonical_name for upgrade in @ship?.upgrades ? [])
-            Math.max(0, (@data?.points ? 0) - 1)
+        if @data?.variableagility == true and @ship?
+            Math.max(0, (@data?.points ? 0) + ((@ship?.data.agility - 1)*2) + 1)
+        else if @data?.variablebase == true and @ship?.data.medium == true
+            Math.max(0, (@data?.points ? 0) + (@data?.points))
+        else if @data?.variablebase == true and @ship?.data.large == true
+            Math.max(0, (@data?.points ? 0) + (@data?.points * 2))
         else
             @data?.points ? 0
 
