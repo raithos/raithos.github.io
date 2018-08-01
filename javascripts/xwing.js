@@ -1281,7 +1281,7 @@ exportObj.basicCardData = function() {
         hull: 2,
         shields: 2,
         actions: ["Focus", "Evade", "Target Lock", "Barrel Roll", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 5, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0]]
       },
       "YT-1300": {
         name: "YT-1300",
@@ -1312,7 +1312,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 3,
         shields: 2,
-        actions: ["Focus > Barrel Roll", "Target Lock", "Barrel Roll"],
+        actions: ["Focus > <b>Barrel Roll</b>", "Target Lock", "Barrel Roll"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
       "TIE Interceptor": {
@@ -3715,7 +3715,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         ship: "TIE Fighter",
         skill: 4,
-        Points: 26,
+        points: 26,
         slots: ["Talent", "Modification"]
       }, {
         name: "Obsidian Squadron Pilot",
@@ -24922,7 +24922,7 @@ exportObj.SquadBuilder = (function() {
     DEFAULT_RANDOMIZER_ITERATIONS = 1000;
     this.status_container = $(document.createElement('DIV'));
     this.status_container.addClass('container-fluid');
-    this.status_container.append($.trim('<div class="row-fluid">\n    <div class="span3 squad-name-container">\n        <div class="display-name">\n            <span class="squad-name"></span>\n            <i class="fa fa-pencil"></i>\n        </div>\n        <div class="input-append">\n            <input type="text" maxlength="64" placeholder="Name your squad..." />\n            <button class="btn save"><i class="fa fa-pencil-square-o"></i></button>\n        </div>\n    </div>\n    <div class="span4 points-display-container">\n        Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="100">\n        <select class="game-type-selector">\n            <option value="standard">Standard</option>\n            <option value="epic">Epic</option>\n            <option value="team-epic">Team Epic</option>\n            <option value="custom">Custom</option>\n        </select>\n        <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left)</span>\n        <span class="total-epic-points-container hidden"><br /><span class="total-epic-points">0</span> / <span class="max-epic-points">5</span> Epic Points</span>\n        <span class="content-warning unreleased-content-used hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning epic-content-used hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning illegal-epic-upgrades hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;Navigator cannot be equipped onto Huge ships in Epic tournament play!</span>\n        <span class="content-warning illegal-epic-too-many-small-ships hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning illegal-epic-too-many-large-ships hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning collection-invalid hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n    </div>\n    <div class="span5 pull-right button-container">\n        <div class="btn-group pull-right">\n\n            <button class="btn btn-primary view-as-text"><span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text</button>\n            <!-- <button class="btn btn-primary print-list hidden-phone hidden-tablet"><i class="fa fa-print"></i>&nbsp;Print</button> -->\n            <a class="btn btn-primary hidden collection"><i class="fa fa-folder-open hidden-phone hidden-tabler"></i>&nbsp;Your Collection</a>\n\n            <!--\n            <button class="btn btn-primary randomize" ><i class="fa fa-random hidden-phone hidden-tablet"></i>&nbsp;Random!</button>\n            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">\n                <span class="caret"></span>\n            </button>\n            <ul class="dropdown-menu">\n                <li><a class="randomize-options">Randomizer Options...</a></li>\n            </ul>\n            -->\n\n        </div>\n    </div>\n</div>\n\n<div class="row-fluid">\n    <div class="span12">\n        <button class="show-authenticated btn btn-primary save-list"><i class="fa fa-floppy-o"></i>&nbsp;Save</button>\n        <button class="show-authenticated btn btn-primary save-list-as"><i class="fa fa-files-o"></i>&nbsp;Save As...</button>\n        <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>\n        <button class="show-authenticated btn btn-primary backend-list-my-squads show-authenticated">Load Squad</button>\n        <button class="btn btn-danger clear-squad">New Squad</button>\n        <span class="show-authenticated backend-status"></span>\n    </div>\n</div>'));
+    this.status_container.append($.trim('<div class="row-fluid">\n    <div class="span3 squad-name-container">\n        <div class="display-name">\n            <span class="squad-name"></span>\n            <i class="fa fa-pencil"></i>\n        </div>\n        <div class="input-append">\n            <input type="text" maxlength="64" placeholder="Name your squad..." />\n            <button class="btn save"><i class="fa fa-pencil-square-o"></i></button>\n        </div>\n    </div>\n    <div class="span4 points-display-container">\n        Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="100">\n        <select class="game-type-selector">\n            <option value="standard">Standard</option>\n            <option value="custom">Custom</option>\n        </select>\n        <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left)</span>\n        <span class="total-epic-points-container hidden"><br /><span class="total-epic-points">0</span> / <span class="max-epic-points">5</span> Epic Points</span>\n        <span class="content-warning unreleased-content-used hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning epic-content-used hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning illegal-epic-upgrades hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;Navigator cannot be equipped onto Huge ships in Epic tournament play!</span>\n        <span class="content-warning illegal-epic-too-many-small-ships hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning illegal-epic-too-many-large-ships hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning collection-invalid hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n    </div>\n    <div class="span5 pull-right button-container">\n        <div class="btn-group pull-right">\n\n            <button class="btn btn-primary view-as-text"><span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text</button>\n            <!-- <button class="btn btn-primary print-list hidden-phone hidden-tablet"><i class="fa fa-print"></i>&nbsp;Print</button> -->\n            <a class="btn btn-primary hidden collection"><i class="fa fa-folder-open hidden-phone hidden-tabler"></i>&nbsp;Your Collection</a>\n\n            <!--\n            <button class="btn btn-primary randomize" ><i class="fa fa-random hidden-phone hidden-tablet"></i>&nbsp;Random!</button>\n            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">\n                <span class="caret"></span>\n            </button>\n            <ul class="dropdown-menu">\n                <li><a class="randomize-options">Randomizer Options...</a></li>\n            </ul>\n            -->\n\n        </div>\n    </div>\n</div>\n\n<div class="row-fluid">\n    <div class="span12">\n        <button class="show-authenticated btn btn-primary save-list"><i class="fa fa-floppy-o"></i>&nbsp;Save</button>\n        <button class="show-authenticated btn btn-primary save-list-as"><i class="fa fa-files-o"></i>&nbsp;Save As...</button>\n        <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>\n        <button class="show-authenticated btn btn-primary backend-list-my-squads show-authenticated">Load Squad</button>\n        <button class="btn btn-danger clear-squad">New Squad</button>\n        <span class="show-authenticated backend-status"></span>\n    </div>\n</div>'));
     this.container.append(this.status_container);
     this.list_modal = $(document.createElement('DIV'));
     this.list_modal.addClass('modal hide fade text-list-modal');
@@ -25230,7 +25230,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 22543
+              lineno: 22541
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -25579,25 +25579,9 @@ exportObj.SquadBuilder = (function() {
       case 'standard':
         this.isEpic = false;
         this.isCustom = false;
-        this.desired_points_input.val(100);
+        this.desired_points_input.val(200);
         this.maxSmallShipsOfOneType = null;
         this.maxLargeShipsOfOneType = null;
-        break;
-      case 'epic':
-        this.isEpic = true;
-        this.isCustom = false;
-        this.maxEpicPointsAllowed = 5;
-        this.desired_points_input.val(300);
-        this.maxSmallShipsOfOneType = 12;
-        this.maxLargeShipsOfOneType = 6;
-        break;
-      case 'team-epic':
-        this.isEpic = true;
-        this.isCustom = false;
-        this.maxEpicPointsAllowed = 3;
-        this.desired_points_input.val(200);
-        this.maxSmallShipsOfOneType = 8;
-        this.maxLargeShipsOfOneType = 4;
         break;
       case 'custom':
         this.isEpic = false;
@@ -25807,10 +25791,6 @@ exportObj.SquadBuilder = (function() {
       switch (this.game_type_selector.val()) {
         case 'standard':
           return 's';
-        case 'epic':
-          return 'e';
-        case 'team-epic':
-          return 't';
         case 'custom':
           return "c=" + ($.trim(this.desired_points_input.val()));
       }
@@ -25844,14 +25824,6 @@ exportObj.SquadBuilder = (function() {
           switch (game_type_abbrev) {
             case 's':
               this.game_type_selector.val('standard');
-              this.game_type_selector.change();
-              break;
-            case 'e':
-              this.game_type_selector.val('epic');
-              this.game_type_selector.change();
-              break;
-            case 't':
-              this.game_type_selector.val('team-epic');
               this.game_type_selector.change();
               break;
             default:
@@ -25974,7 +25946,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 23193
+          lineno: 23167
         }));
         __iced_deferrals._fulfill();
       });
@@ -25986,7 +25958,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 23194
+            lineno: 23168
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -26467,7 +26439,7 @@ exportObj.SquadBuilder = (function() {
               case 1:
                 return "white";
               case 2:
-                return "green";
+                return "blue";
               case 3:
                 return "red";
             }
@@ -27620,7 +27592,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 24152
+                      lineno: 24126
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -27694,7 +27666,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 24178
+                lineno: 24152
               })
             ]);
             __iced_deferrals._fulfill();
@@ -27741,7 +27713,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 24201
+              lineno: 24175
             }));
           }
         }
@@ -27750,7 +27722,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 24203
+              lineno: 24177
             }));
           }
         }
@@ -27759,7 +27731,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 24205
+              lineno: 24179
             }));
           }
         }
@@ -28008,7 +27980,7 @@ Ship = (function() {
   };
 
   Ship.prototype.toHTML = function() {
-    var action, action_bar, action_icons, attackHTML, attack_icon, effective_stats, energyHTML, html, modification, slotted_upgrades, title, upgrade, _i, _j, _len, _len1, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var action, action_bar, action_icons, attackHTML, attack_icon, effective_stats, energyHTML, forceHTML, html, modification, slotted_upgrades, title, upgrade, _i, _j, _len, _len1, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     effective_stats = this.effectiveStats();
     action_icons = [];
     _ref = effective_stats.actions;
@@ -28051,7 +28023,8 @@ Ship = (function() {
     attack_icon = (_ref1 = this.data.attack_icon) != null ? _ref1 : 'xwing-miniatures-font-frontarc';
     attackHTML = (((_ref2 = this.pilot.ship_override) != null ? _ref2.attack : void 0) != null) || (this.data.attack != null) ? $.trim("<i class=\"xwing-miniatures-font " + attack_icon + "\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref3 = (_ref4 = this.pilot.ship_override) != null ? _ref4.attack : void 0) != null ? _ref3 : this.data.attack, effective_stats, 'attack')) + "</span>") : '';
     energyHTML = (((_ref5 = this.pilot.ship_override) != null ? _ref5.energy : void 0) != null) || (this.data.energy != null) ? $.trim("<i class=\"xwing-miniatures-font xwing-miniatures-font-energy\"></i>\n<span class=\"info-data info-energy\">" + (statAndEffectiveStat((_ref6 = (_ref7 = this.pilot.ship_override) != null ? _ref7.energy : void 0) != null ? _ref6 : this.data.energy, effective_stats, 'energy')) + "</span>") : '';
-    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + this.pilot.name + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.canonical_name + "\"></i><span class=\"fancy-ship-type\"> " + this.data.name + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + this.pilot.points + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">PS " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + attackHTML + "\n        " + energyHTML + "\n        <i class=\"xwing-miniatures-font xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref8 = (_ref9 = this.pilot.ship_override) != null ? _ref9.agility : void 0) != null ? _ref8 : this.data.agility, effective_stats, 'agility')) + "</span>\n        <i class=\"xwing-miniatures-font xwing-miniatures-font-hull\"></i>\n        <span class=\"info-data info-hull\">" + (statAndEffectiveStat((_ref10 = (_ref11 = this.pilot.ship_override) != null ? _ref11.hull : void 0) != null ? _ref10 : this.data.hull, effective_stats, 'hull')) + "</span>\n        <i class=\"xwing-miniatures-font xwing-miniatures-font-shield\"></i>\n        <span class=\"info-data info-shields\">" + (statAndEffectiveStat((_ref12 = (_ref13 = this.pilot.ship_override) != null ? _ref13.shields : void 0) != null ? _ref12 : this.data.shields, effective_stats, 'shields')) + "</span>\n        <i class=\"xwing-miniatures-font xwing-miniatures-font-forcepower\"></i>\n        <span class=\"info-data info-force\">" + (statAndEffectiveStat((_ref14 = (_ref15 = this.pilot.ship_override) != null ? _ref15.force : void 0) != null ? _ref14 : this.data.force, effective_stats, 'force')) + "</span>\n        &nbsp;\n        " + action_bar + "\n    </div>\n</div>");
+    forceHTML = (this.pilot.force != null) ? $.trim("<i class=\"xwing-miniatures-font xwing-miniatures-font-forcepower\"></i>\n<span class=\"info-data info-force\">" + (statAndEffectiveStat((_ref8 = (_ref9 = this.pilot.ship_override) != null ? _ref9.force : void 0) != null ? _ref8 : this.pilot.force, effective_stats, 'force')) + "</span>") : '';
+    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + this.pilot.name + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.canonical_name + "\"></i><span class=\"fancy-ship-type\"> " + this.data.name + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + this.pilot.points + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">PS " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + attackHTML + "\n        " + energyHTML + "\n        <i class=\"xwing-miniatures-font xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref10 = (_ref11 = this.pilot.ship_override) != null ? _ref11.agility : void 0) != null ? _ref10 : this.data.agility, effective_stats, 'agility')) + "</span>\n        <i class=\"xwing-miniatures-font xwing-miniatures-font-hull\"></i>\n        <span class=\"info-data info-hull\">" + (statAndEffectiveStat((_ref12 = (_ref13 = this.pilot.ship_override) != null ? _ref13.hull : void 0) != null ? _ref12 : this.data.hull, effective_stats, 'hull')) + "</span>\n        <i class=\"xwing-miniatures-font xwing-miniatures-font-shield\"></i>\n        <span class=\"info-data info-shields\">" + (statAndEffectiveStat((_ref14 = (_ref15 = this.pilot.ship_override) != null ? _ref15.shields : void 0) != null ? _ref14 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + forceHTML + "\n        &nbsp;\n        " + action_bar + "\n    </div>\n</div>");
     if (this.pilot.text) {
       html += $.trim("<div class=\"fancy-pilot-text\">" + this.pilot.text + "</div>");
     }
@@ -28789,7 +28762,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 24898
+                lineno: 24876
               })
             ]);
             __iced_deferrals._fulfill();
@@ -28908,7 +28881,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 24957
+                  lineno: 24935
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -28930,7 +28903,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 24961
+                    lineno: 24939
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -29020,7 +28993,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 25004
+            lineno: 24982
           }));
         }
         __iced_deferrals._fulfill();
