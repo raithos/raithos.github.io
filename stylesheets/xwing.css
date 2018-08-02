@@ -26,7 +26,11 @@
   font-family: BankGothicHD;
   src: url("../fonts/bankgthd.ttf"); }
 
-body, button {
+body {
+  background-color: #202020;
+  font-family: EurostileStandard; }
+
+button {
   font-family: EurostileStandard; }
 
 strong {
@@ -42,14 +46,8 @@ strong em, em strong {
   font-style: normal;
   font-weight: normal; }
 
-.nav-pills {
-  border-bottom: thin solid darkgray; }
-
 .ship-container > .row-fluid {
   padding: 10px 0px; }
-
-.ship {
-  border: medium solid black; }
 
 .card-stat, .info-data.info-skill, .info-data.info-attack, .info-data.info-energy, .info-data.info-agility, .info-data.info-hull, .info-data.info-shields, .info-data.info-force, .info-maneuvers table > tbody > tr > td:first-child {
   font-family: kimberley;
@@ -72,6 +70,9 @@ td.info-header {
 
 i.xwing-miniatures-font {
   color: black; }
+
+i.red {
+  color: #EF232B; }
 
 i.xwing-miniatures-font-attack, i.xwing-miniatures-font-attack-turret, i.xwing-miniatures-font-attack-frontback, i.xwing-miniatures-font-attack-180 {
   color: #EF232B; }
@@ -178,7 +179,6 @@ ul.squad-list {
 
 .points-display-container {
   font-size: 1.2em;
-  background-color: rgba(0, 0, 0, 0.5);
   padding-top: 5px;
   text-align: center; }
 
