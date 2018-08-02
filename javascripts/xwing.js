@@ -1334,7 +1334,7 @@ exportObj.basicCardData = function() {
         hull: 6,
         shields: 4,
         actions: ["Focus", "Target Lock", "Boost"],
-        actionsred: ["Reinforce"],
+        actionsred: ["Coordinate"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]],
         medium: true
       },
@@ -1963,7 +1963,7 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         ship: "Y-Wing",
         skill: 4,
-        points: 42,
+        points: 38,
         slots: ["Talent", "Turret", "Torpedo", "Astromech", "Modification", "Astromech", "Gunner"]
       }, {
         name: '"Dutch" Vander',
@@ -1981,7 +1981,7 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         ship: "Y-Wing",
         skill: 4,
-        points: 42,
+        points: 36,
         slots: ["Talent", "Turret", "Torpedo", "Astromech", "Modification", "Astromech", "Gunner"]
       }, {
         name: "Gold Squadron Veteran",
@@ -1989,7 +1989,7 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         ship: "Y-Wing",
         skill: 4,
-        points: 42,
+        points: 34,
         slots: ["Talent", "Turret", "Torpedo", "Astromech", "Modification", "Astromech", "Gunner"]
       }, {
         name: "Gray Squadron Bomber",
@@ -1997,7 +1997,7 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         ship: "Y-Wing",
         skill: 4,
-        points: 42,
+        points: 32,
         slots: ["Turret", "Torpedo", "Astromech", "Modification", "Astromech", "Gunner"]
       }, {
         name: "Bodhi Rook",
@@ -3947,7 +3947,14 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 6,
         unique: true,
-        faction: "Galactic Empire"
+        faction: "Galactic Empire",
+        restriction_func: function(ship, upgrade_obj) {
+          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj);
+        },
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnotherUpgradeSlot();
+        },
+        also_occupies_upgrades: ["Crew"]
       }, {
         name: "Director Krennic",
         id: 28,
@@ -3963,6 +3970,13 @@ exportObj.basicCardData = function() {
         force: 1,
         unique: true,
         faction: "Galactic Empire",
+        restriction_func: function(ship, upgrade_obj) {
+          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj);
+        },
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnotherUpgradeSlot();
+        },
+        also_occupies_upgrades: ["Crew"],
         modifier_func: function(stats) {
           return stats.force += 1;
         }
@@ -4439,7 +4453,7 @@ exportObj.basicCardData = function() {
         name: "Han Solo (Scum)",
         id: 85,
         slot: "Gunner",
-        points: 3,
+        points: 4,
         unique: true,
         faction: "Scum and Villainy"
       }, {
@@ -4526,7 +4540,14 @@ exportObj.basicCardData = function() {
         points: 6,
         attack: 3,
         range: "2-3",
-        charge: 5
+        charge: 5,
+        restriction_func: function(ship, upgrade_obj) {
+          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj);
+        },
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnotherUpgradeSlot();
+        },
+        also_occupies_upgrades: ['Missile']
       }, {
         name: "Cluster Missiles",
         id: 98,
@@ -4988,7 +5009,6 @@ exportObj.basicCardData = function() {
         slot: "Title",
         points: 12,
         unique: true,
-        faction: "Rebel Alliance",
         ship: "HWK-290"
       }, {
         name: "Outrider",
@@ -4999,7 +5019,7 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         ship: "YT-2400"
       }, {
-        name: "Phantom",
+        name: "Phantom (Sheathipede)",
         id: 158,
         slot: "Title",
         points: 2,
@@ -5019,7 +5039,7 @@ exportObj.basicCardData = function() {
         confersAddons: [
           {
             type: exportObj.Upgrade,
-            slot: 'Salvaged Astromech'
+            slot: 'Astromech'
           }
         ]
       }, {
@@ -5094,6 +5114,14 @@ exportObj.basicCardData = function() {
         modifier_func: function(stats) {
           return stats.agility += 1;
         }
+      }, {
+        name: "Phantom",
+        id: 167,
+        slot: "Title",
+        points: 2,
+        unique: true,
+        faction: "Rebel Alliance",
+        ship: "Attack Shuttle"
       }
     ],
     modificationsById: [],
@@ -8696,7 +8724,7 @@ exportObj.cardLoaders.English = function() {
       text: "While you coordinate, if you chose a ship with exactly 1 stress token, it can perform actions. COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier shpi activates, it may perform a %COORDINATE% action."
     },
     "Arvel Crynyd": {
-      text: "You can perform primary attacks at range 0. If you would fail a %BOOST% action by overlapping another ship, resolve it as though you were partially executing a maneuver instead. VECTORED THRUSTERS: After you perform an action, you may perform a red %BOOST% action."
+      text: "You can perform primary attacks at range 0. If you would fail a %BOOST% action by overlapping another ship, resolve it as though you were partially executing a maneuver instead. <br> VECTORED THRUSTERS: After you perform an action, you may perform a red %BOOST% action."
     },
     "Asajj Ventress": {
       text: "At the start of the Engagement Phase, you may choose 1 enemy ship in your %SINGLETURRETARC% at range 0-2 and spend 1 %FORCE% token. If you do, that ship gains 1 stress token unless it removes 1 green token."
@@ -8765,10 +8793,10 @@ exportObj.cardLoaders.English = function() {
       text: "While you defend or perform an attack, if you are stressed, you may reroll up to 2 of your dice."
     },
     "Captain Feroph": {
-      text: "While you defend, if the attacker does not have any green tokens, you may change 1 of your %FOCUS%/blank results to an %EVADE% result. ADAPTIVE AILERONS: Before you reveal your dial, if you are not stressed, you MUST execute a white (1 %BANKLEFT%), (1 %STRAIGHT%) or (1 %BANKRIGHT%)"
+      text: "While you defend, if the attacker does not have any green tokens, you may change 1 of your %FOCUS%/blank results to an %EVADE% result. <br> ADAPTIVE AILERONS: Before you reveal your dial, if you are not stressed, you MUST execute a white (1 %BANKLEFT%), (1 %STRAIGHT%) or (1 %BANKRIGHT%)"
     },
     "Captain Jonus": {
-      text: "While a friendly ship at range 0-1 performs a %TORPEDO% or %MISSILE% attack, that ship may reroll up to 2 attack dice. NIMBLE BOMBER: If you would drop a device using a %STRAIGHT% template, you may use %BANKLEFT% a or %BANKRIGHT% tempate of the same speed instead."
+      text: "While a friendly ship at range 0-1 performs a %TORPEDO% or %MISSILE% attack, that ship may reroll up to 2 attack dice. <br> NIMBLE BOMBER: If you would drop a device using a %STRAIGHT% template, you may use %BANKLEFT% a or %BANKRIGHT% tempate of the same speed instead."
     },
     "Captain Jostero": {
       text: "After an enemy ship suffers damage, if it is not defending, you may perform a bonus attack against that ship."
@@ -8810,22 +8838,22 @@ exportObj.cardLoaders.English = function() {
       text: "At the start of the Activation Phase, you may spend 1 %CHARGE%. If you do, while friendly ships acquire lock this round, they must acquire locks beyond range 3 instead of at range 0-3."
     },
     "Colonel Vessery": {
-      text: "While you perform an attack against a locked ship, after you roll attack dice, you may acquire a lock on the defender. FULL THROTTLE: After you FULLY execute a speed 3-5 manouver, you may perform an %EVADE% action."
+      text: "While you perform an attack against a locked ship, after you roll attack dice, you may acquire a lock on the defender. <br> FULL THROTTLE: After you FULLY execute a speed 3-5 manouver, you may perform an %EVADE% action."
     },
     "Constable Zuvio": {
-      text: "If you would drop a device, you may launch it using a [1 %STRAIGHT%] template instead. SPACETUG TRACTOR ARRAY: ACTION: Choose a ship in your %FRONTARC% at range 1. That ship gains one tractor token, or 2 tractor tokens if it is in your %BULLSEYEARC% at range 1"
+      text: "If you would drop a device, you may launch it using a [1 %STRAIGHT%] template instead. <br> SPACETUG TRACTOR ARRAY: ACTION: Choose a ship in your %FRONTARC% at range 1. That ship gains one tractor token, or 2 tractor tokens if it is in your %BULLSEYEARC% at range 1"
     },
     "Contracted Scout": {
       text: " "
     },
     "Corran Horn": {
-      text: "At initiative 0, you may perform a bonus primary attack against an enemy ship in your %BULLSEYEARC%. If you do, at the start of the next Planning Phase, gain 1 disarm token. EXPERIMENTAL SCANNERS: You can acquire locks beyond range 3. You cannot acquite locks at range 1."
+      text: "At initiative 0, you may perform a bonus primary attack against an enemy ship in your %BULLSEYEARC%. If you do, at the start of the next Planning Phase, gain 1 disarm token. <br> EXPERIMENTAL SCANNERS: You can acquire locks beyond range 3. You cannot acquite locks at range 1."
     },
     '"Countdown"': {
-      text: "While you defend, after the Neutralize Results step, if you are not stressed, you may suffer 1 %HIT% damage and gain 1 stress token. If you do, cancel all dice results. ADAPTIVE AILERONS: Before you reveal your dial, if you are not stressed, you MUST execute a white (1 %BANKLEFT%), (1 %STRAIGHT%) or (1 %BANKRIGHT%)"
+      text: "While you defend, after the Neutralize Results step, if you are not stressed, you may suffer 1 %HIT% damage and gain 1 stress token. If you do, cancel all dice results. <br> ADAPTIVE AILERONS: Before you reveal your dial, if you are not stressed, you MUST execute a white (1 %BANKLEFT%), (1 %STRAIGHT%) or (1 %BANKRIGHT%)"
     },
     "Countess Ryad": {
-      text: "While you would execute a %STRAIGHT% maneuver, you may increase the difficulty of the maneuver. If you do, execute it as a %KTURN% maneuver instead. FULL THROTTLE: After you FULLY execute a speed 3-5 manouver, you may perform an %EVADE% action."
+      text: "While you would execute a %STRAIGHT% maneuver, you may increase the difficulty of the maneuver. If you do, execute it as a %KTURN% maneuver instead. <br> FULL THROTTLE: After you FULLY execute a speed 3-5 manouver, you may perform an %EVADE% action."
     },
     "Crymorah Goon": {
       text: " "
@@ -8837,19 +8865,19 @@ exportObj.cardLoaders.English = function() {
       text: "After an enemy ship at range 0-3 receives at least 1 ion token, you may spend 3 %CHARGE%. If you do, that ship gains 2 additional ion tokens."
     },
     "Dalan Oberos (Kimogila)": {
-      text: "At the start of the Engagement Phase, you may choose 1 shielded ship in your %BULLSEYEARC% and spend 1 %CHARGE%. If you do, that ship loses 1 shield and you recover 1 shield. DEAD TO RIGHTS: While you perform an attack, if the defender is in your %BULLSEYEARC%, defense dice cannot be modified using green tokens."
+      text: "At the start of the Engagement Phase, you may choose 1 shielded ship in your %BULLSEYEARC% and spend 1 %CHARGE%. If you do, that ship loses 1 shield and you recover 1 shield. <br> DEAD TO RIGHTS: While you perform an attack, if the defender is in your %BULLSEYEARC%, defense dice cannot be modified using green tokens."
     },
     "Dalan Oberos (StarViper)": {
-      text: "After you fully execute a maneuver, you ay gain 1 stress token to rotate your ship 90˚.  MICROTHRUSTERS: While you perform a barrel roll, you MUST use the (1 %BANKLEFT%) or (1 %BANKRIGHT%) template instead of the [1 %STRAIGHT%] template."
+      text: "After you fully execute a maneuver, you ay gain 1 stress token to rotate your ship 90˚.  <br> MICROTHRUSTERS: While you perform a barrel roll, you MUST use the (1 %BANKLEFT%) or (1 %BANKRIGHT%) template instead of the [1 %STRAIGHT%] template."
     },
     "Darth Vader": {
-      text: "After you perform an action, you may spend 1 %FORCE% to perform an action. ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, ro;; 1 additional attack die and change 1 %HIT% result to a %CRIT% result."
+      text: "After you perform an action, you may spend 1 %FORCE% to perform an action. <br> ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, ro;; 1 additional attack die and change 1 %HIT% result to a %CRIT% result."
     },
     "Dash Rendar": {
-      text: "While you move, you ignore obstacles. SENSOR BLINDSPOT: While you perform a primary attack at range 0-1, do not apply the range 0-1 bonus and roll 1 fewer attack die."
+      text: "While you move, you ignore obstacles. <br> SENSOR BLINDSPOT: While you perform a primary attack at range 0-1, do not apply the range 0-1 bonus and roll 1 fewer attack die."
     },
     '"Deathfire"': {
-      text: "After you are destroyed, before you are removed, you may perform an attack and drop or launch 1 device. NIMBLE BOMBER: If you would drop a device using a %STRAIGHT% template, you may use %BANKLEFT% a or %BANKRIGHT% tempate of the same speed instead."
+      text: "After you are destroyed, before you are removed, you may perform an attack and drop or launch 1 device. <br> NIMBLE BOMBER: If you would drop a device using a %STRAIGHT% template, you may use %BANKLEFT% a or %BANKRIGHT% tempate of the same speed instead."
     },
     '"Deathrain"': {
       text: "After you drop or launch a device, you may perform an action."
@@ -8870,7 +8898,7 @@ exportObj.cardLoaders.English = function() {
       text: "While a friendly non-limited ship performs an attack, if the defender is in your firing arc, the attacker may reroll 1 attack die."
     },
     '"Duchess"': {
-      text: "You may choose not to use your Adaptive Ailerons. You may use your Adaptive Ailerons even while stressed. ADAPTIVE AILERONS: Before you reveal your dial, if you are not stressed, you MUST execute a white (1 %BANKLEFT%), (1 %STRAIGHT%) or (1 %BANKRIGHT%)"
+      text: "You may choose not to use your Adaptive Ailerons. You may use your Adaptive Ailerons even while stressed. <br> ADAPTIVE AILERONS: Before you reveal your dial, if you are not stressed, you MUST execute a white (1 %BANKLEFT%), (1 %STRAIGHT%) or (1 %BANKRIGHT%)"
     },
     '"Dutch" Vander': {
       text: "After you perform the %LOCK% action, you may choose 1 friendly ship at range 1-3. That ship may acquire a lock on the object you locked, ignoring range restrictions."
@@ -8891,16 +8919,16 @@ exportObj.cardLoaders.English = function() {
       text: "At the start of the Engagement Phase, you may spend 1 focus token to choose a friendly ship at range 0-1. If you do, that ship rolls 1 additional defense die while defending until the end of the round."
     },
     "Ezra Bridger (Attack Shuttle)": {
-      text: "While you defend or perform an attack, if you are stressed, you may spend 1 %FORCE% to change up to 2 of your %FOCUS% results to %EVADE% or %HIT% results. LOCKED AND LOADED: While you are docked, after your carrier ship performes a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"
+      text: "While you defend or perform an attack, if you are stressed, you may spend 1 %FORCE% to change up to 2 of your %FOCUS% results to %EVADE% or %HIT% results. <br> LOCKED AND LOADED: While you are docked, after your carrier ship performes a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"
     },
     "Ezra Bridger (Sheathipede)": {
-      text: "While you defend or perform an attack, if you are stressed, you may spend 1 %FORCE% to change up to 2 of your %FOCUS% results to %EVADE%/%HIT% results. LOCKED AND LOADED: While you are docked, after your carrier ship performes a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"
+      text: "While you defend or perform an attack, if you are stressed, you may spend 1 %FORCE% to change up to 2 of your %FOCUS% results to %EVADE%/%HIT% results. <br> LOCKED AND LOADED: While you are docked, after your carrier ship performes a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"
     },
     "Ezra Bridger (TIE Fighter)": {
       text: "While you defend or perform an attack, if you are stressed, you may spend 1 %FORCE% to change up to 2 of your %FOCUS% results to %EVADE% or %HIT% results."
     },
     "Fenn Rau (Fang Fighter)": {
-      text: "While you defend or perform an attack, if the attack range is 1, you may roll 1 additional die. Concordia Faceoff: While you defend, if the attack range is 1 and you are in the attackers %FRONTARC%, change 1 result to an %EVADE% result"
+      text: "While you defend or perform an attack, if the attack range is 1, you may roll 1 additional die. <br> CONCORDIA FACEOFF: While you defend, if the attack range is 1 and you are in the attackers %FRONTARC%, change 1 result to an %EVADE% result"
     },
     "Fenn Rau (Sheathipede)": {
       text: "After an enemy ship in your firing arc engages, if you are not stressed, you may gain 1 stress token. If you do, that ship cannot spend tokens to modify dice while it performs an attack during this phase. COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier shpi activates, it may perform a %COORDINATE% action."
@@ -8921,10 +8949,10 @@ exportObj.cardLoaders.English = function() {
       text: "After you spend a focus token, you may choose 1 friendly ship at range 1-3. That ship gains 1 focus token."
     },
     "Gavin Darklighter": {
-      text: "While a friendly ship performs an attack, if the defender is in your %FRONTARC%, the attacker may change 1 %HIT% result to a %CRIT% result. EXPERIMENTAL SCANNERS: You can acquire locks beyond range 3. You cannot acquite locks at range 1."
+      text: "While a friendly ship performs an attack, if the defender is in your %FRONTARC%, the attacker may change 1 %HIT% result to a %CRIT% result. <br> EXPERIMENTAL SCANNERS: You can acquire locks beyond range 3. You cannot acquite locks at range 1."
     },
     "Genesis Red": {
-      text: "After you acquire a lock, you must remove all of your focus and evade tokens. Then gain the same number of focus and evade tokens that the locked ship has. WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
+      text: "After you acquire a lock, you must remove all of your focus and evade tokens. Then gain the same number of focus and evade tokens that the locked ship has. <br> WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
     },
     "Gideon Hask": {
       text: "While you perform an attack against a damaged defender, roll 1 additional attack die."
@@ -8945,7 +8973,7 @@ exportObj.cardLoaders.English = function() {
       text: "VECTORED THRUSTERS: After you perform an action, you may perform a red %BOOST% action."
     },
     "Guri": {
-      text: "At the start of the Engagement Phase, if there is at least 1 enemy ship at range 0-1, you may gain 1 focus token.  MICROTHRUSTERS: While you perform a barrel roll, you MUST use the (1 %BANKLEFT%) or (1 %BANKRIGHT%) template instead of the [1 %STRAIGHT%] template."
+      text: "At the start of the Engagement Phase, if there is at least 1 enemy ship at range 0-1, you may gain 1 focus token.  <br> MICROTHRUSTERS: While you perform a barrel roll, you MUST use the (1 %BANKLEFT%) or (1 %BANKRIGHT%) template instead of the [1 %STRAIGHT%] template."
     },
     "Han Solo (Scum)": {
       text: "Whlie you defend or perform a primary attack, if the attack is obstructed by an obstacle, you may roll 1 additional die."
@@ -8957,7 +8985,7 @@ exportObj.cardLoaders.English = function() {
       text: "After an enemy ship executes a maneuver, if it is at range 0, you may perform an action."
     },
     "Hera Syndulla (Attack Shuttle)": {
-      text: "After you reveal a red or blue maneuver, you may set your dial to another maneuver of the same difficulty. LOCKED AND LOADED: While you are docked, after your carrier ship performes a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"
+      text: "After you reveal a red or blue maneuver, you may set your dial to another maneuver of the same difficulty. <br> LOCKED AND LOADED: While you are docked, after your carrier ship performes a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"
     },
     "Hera Syndulla (VCX-100)": {
       text: "After you reveal a red or blue maneuver, you may set your dial to another maneuver of the same difficulty. TAIL GUN: While you have a docked ship, you have a primary %REARARC% weapon with an attack value equal to your docked ship's Primary %FRONTARC% attack value."
@@ -8993,13 +9021,13 @@ exportObj.cardLoaders.English = function() {
       text: "STYGUM ARRAY: After you decloak, you may perform an %EVADE% action. At the Start of the End Phase, you may spend 1 evade token to gain one cloak token."
     },
     "Inaldra": {
-      text: "While you defend or perform an attack, you may suffer 1 %HIT% damage to reroll any number of your dice. WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
+      text: "While you defend or perform an attack, you may suffer 1 %HIT% damage to reroll any number of your dice. <br> WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
     },
     "Inquisitor": {
       text: "The fearsome Inquisitors are given a great deal of autonomy and access to the Empire's latest technology, like the prototype TIE Advanced v1."
     },
     "Jake Farrell": {
-      text: "After you perform a %BARRELROLL% or %BOOST% action, you may choose a friendly ship at range 0-1. That ship may perform a %FOCUS% action. VECTORED THRUSTERS: After you perform an action, you may perform a red %BOOST% action."
+      text: "After you perform a %BARRELROLL% or %BOOST% action, you may choose a friendly ship at range 0-1. That ship may perform a %FOCUS% action. <br> VECTORED THRUSTERS: After you perform an action, you may perform a red %BOOST% action."
     },
     "Jakku Gunrunner": {
       text: "SPACETUG TRACTOR ARRAY: ACTION: Choose a ship in your %FRONTARC% at range 1. That ship gains one tractor token, or 2 tractor tokens if it is in your %BULLSEYEARC% at range 1"
@@ -9011,7 +9039,7 @@ exportObj.cardLoaders.English = function() {
       text: "After you receive a stress token, you may roll 1 attack die to remove it. On a %HIT% result, suffer 1 %HIT% damage."
     },
     "Joy Rekkoff": {
-      text: "While you perform an attack, you may spend 1 %CHARGE% from an equipped %TORPEDO% upgrade. If you do, the defender rolls 1 fewer defense die. Concordia Faceoff: While you defend, if the attack range is 1 and you are in the attackers %FRONTARC%, change 1 result to an %EVADE% result"
+      text: "While you perform an attack, you may spend 1 %CHARGE% from an equipped %TORPEDO% upgrade. If you do, the defender rolls 1 fewer defense die. <br> CONCORDIA FACEOFF: While you defend, if the attack range is 1 and you are in the attackers %FRONTARC%, change 1 result to an %EVADE% result"
     },
     "Kaa'to Leeachos": {
       text: "At the start of the Engagement Phase, you may choose 1 friendly ship at range 0-2. If you do, transfer 1 focus or evade token from that ship to yourself."
@@ -9053,10 +9081,10 @@ exportObj.cardLoaders.English = function() {
       text: "If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."
     },
     "L3-37 (YT-1300)": {
-      text: "If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers. CO-PILOT: While you are docked, your carried ship has your pilot ability in addition it's own."
+      text: "If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers. <br> CO-PILOT: While you are docked, your carried ship has your pilot ability in addition it's own."
     },
     "Laetin A'shera": {
-      text: "After you defend or perform an attack, if the attack missed, gain 1 evade token. WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
+      text: "After you defend or perform an attack, if the attack missed, gain 1 evade token. <br> WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
     },
     "Lando Calrissian (Scum) (Escape Craft)": {
       text: "??"
@@ -9071,7 +9099,7 @@ exportObj.cardLoaders.English = function() {
       text: "At the start of the Engagement Phase, you may choose a ship at range 1 and spend a lock you have on that ship. If you do, that ship gains 1 tractor token."
     },
     '"Leebo"': {
-      text: "After you defend or perform an attack, if you spent a calculate token, gain 1 calculate token. SENSOR BLINDSPOT: While you perform a primary attack at range 0-1, do not apply the range 0-1 bonus and roll 1 fewer attack die."
+      text: "After you defend or perform an attack, if you spent a calculate token, gain 1 calculate token. <br> SENSOR BLINDSPOT: While you perform a primary attack at range 0-1, do not apply the range 0-1 bonus and roll 1 fewer attack die."
     },
     "Leevan Tenza": {
       text: "After you perform a %BARRELROLL% or %BOOST% action, you may perform a red %EVADE% action."
@@ -9101,16 +9129,16 @@ exportObj.cardLoaders.English = function() {
       text: "After you become the defender (before dice are rolled), you may recover 1 %FORCE%."
     },
     "Maarek Stele": {
-      text: "While you perform an attack, if the defender would be dealt a faceup damage card, instead draw 3 damage cards, choose 1, and discard the rest. ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, ro;; 1 additional attack die and change 1 %HIT% result to a %CRIT% result."
+      text: "While you perform an attack, if the defender would be dealt a faceup damage card, instead draw 3 damage cards, choose 1, and discard the rest. <br> ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, ro;; 1 additional attack die and change 1 %HIT% result to a %CRIT% result."
     },
     "Magva Yarro": {
       text: "While a friendly ship at range 0-2 defends, the attacker cannot reroll more than 1 attack die."
     },
     "Major Rhymer": {
-      text: "While you perform a %TORPEDO% or %MISSILE% attack, you may increase or decrease the range requirement by 1, to a limit of 0-3. NIMBLE BOMBER: If you would drop a device using a %STRAIGHT% template, you may use %BANKLEFT% a or %BANKRIGHT% tempate of the same speed instead."
+      text: "While you perform a %TORPEDO% or %MISSILE% attack, you may increase or decrease the range requirement by 1, to a limit of 0-3. <br> NIMBLE BOMBER: If you would drop a device using a %STRAIGHT% template, you may use %BANKLEFT% a or %BANKRIGHT% tempate of the same speed instead."
     },
     "Major Vermeil": {
-      text: "While you perform an attack, if the defender does not have any green tokens, you may change 1 of your %FOCUS%/blank results to a %HIT% result. ADAPTIVE AILERONS: Before you reveal your dial, if you are not stressed, you MUST execute a white (1 %BANKLEFT%), (1 %STRAIGHT%) or (1 %BANKRIGHT%)"
+      text: "While you perform an attack, if the defender does not have any green tokens, you may change 1 of your %FOCUS%/blank results to a %HIT% result. <br> ADAPTIVE AILERONS: Before you reveal your dial, if you are not stressed, you MUST execute a white (1 %BANKLEFT%), (1 %STRAIGHT%) or (1 %BANKRIGHT%)"
     },
     "Major Vynder": {
       text: "While you defend, if you are disarmed, roll 1 additional defense die."
@@ -9128,7 +9156,7 @@ exportObj.cardLoaders.English = function() {
       text: "If you would flee, you may spend 1 %CHARGE%. If you do, place yourself in reserves instead. At the start of the next Planning Phase, place youself within range 1 of the edge of the play area that you fled from."
     },
     "Nashtah Pup": {
-      text: "You can deploy only via emergency deployment, and you have the name, initiative, pilot ability, and ship %CHARGE% of the friendly, destroyed Hound's Tooth. ESCAPE CRAFT SETUP: Requires the HOUND'S TOOTH. You MUST begin the game docked with the HOUND'S TOOTH"
+      text: "You can deploy only via emergency deployment, and you have the name, initiative, pilot ability, and ship %CHARGE% of the friendly, destroyed Hound's Tooth. <br> ESCAPE CRAFT SETUP: Requires the HOUND'S TOOTH. You MUST begin the game docked with the HOUND'S TOOTH"
     },
     "N'dru Suhlak": {
       text: "While you perform a primary attack, if there are no other friendly ships at range 0-2, roll 1 additional attack die."
@@ -9149,7 +9177,7 @@ exportObj.cardLoaders.English = function() {
       text: " "
     },
     "Old Teroch": {
-      text: "At the start of the Engagement Phase, you may choose 1 enemy ship at range 1. If you do and you are in its %FRONTARC%, it removes all of its green tokens. Concordia Faceoff: While you defend, if the attack range is 1 and you are in the attackers %FRONTARC%, change 1 result to an %EVADE% result."
+      text: "At the start of the Engagement Phase, you may choose 1 enemy ship at range 1. If you do and you are in its %FRONTARC%, it removes all of its green tokens. <br> CONCORDIA FACEOFF: While you defend, if the attack range is 1 and you are in the attackers %FRONTARC%, change 1 result to an %EVADE% result."
     },
     "Omicron Group Pilot": {
       text: " "
@@ -9161,7 +9189,7 @@ exportObj.cardLoaders.English = function() {
       text: " "
     },
     "Outer Rim Pioneer": {
-      text: "Friendly ships at range 0-1 can perform attacks at range 0 of obstacles. CO-PILOT: While you are docked, your carried ship has your pilot ability in addition it's own."
+      text: "Friendly ships at range 0-1 can perform attacks at range 0 of obstacles. <br> CO-PILOT: While you are docked, your carried ship has your pilot ability in addition it's own."
     },
     "Outer Rim Smuggler": {
       text: " "
@@ -9182,13 +9210,13 @@ exportObj.cardLoaders.English = function() {
       text: "ADAPTIVE AILERONS: Before you reveal your dial, if you are not stressed, you MUST execute a white (1 %BANKLEFT%), (1 %STRAIGHT%) or (1 %BANKRIGHT%)"
     },
     "Prince Xizor": {
-      text: "While you defend, after the Neutralize Results step, another friendly ship at range 0-1 and in the attack arc may suffer 1 %HIT% or %CRIT% damage. If it does, cancel 1 matching result.  MICROTHRUSTERS: While you perform a barrel roll, you MUST use the (1 %BANKLEFT%) or (1 %BANKRIGHT%) template instead of the [1 %STRAIGHT%] template."
+      text: "While you defend, after the Neutralize Results step, another friendly ship at range 0-1 and in the attack arc may suffer 1 %HIT% or %CRIT% damage. If it does, cancel 1 matching result.  <br> MICROTHRUSTERS: While you perform a barrel roll, you MUST use the (1 %BANKLEFT%) or (1 %BANKRIGHT%) template instead of the [1 %STRAIGHT%] template."
     },
     '"Pure Sabacc"': {
-      text: "While you perform an attack, if you have 1 or fewer damage cards, you may roll 1 additional attack die. ADAPTIVE AILERONS: Before you reveal your dial, if you are not stressed, you MUST execute a white (1 %BANKLEFT%), (1 %STRAIGHT%) or (1 %BANKRIGHT%)"
+      text: "While you perform an attack, if you have 1 or fewer damage cards, you may roll 1 additional attack die. <br> ADAPTIVE AILERONS: Before you reveal your dial, if you are not stressed, you MUST execute a white (1 %BANKLEFT%), (1 %STRAIGHT%) or (1 %BANKRIGHT%)"
     },
     "Quinn Jast": {
-      text: "At the start of the Engagement Phase, you may gain 1 disarm token to recover 1 %CHARGE% on 1 of your equipped upgrades. WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
+      text: "At the start of the Engagement Phase, you may gain 1 disarm token to recover 1 %CHARGE% on 1 of your equipped upgrades. <br> WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
     },
     "Rear Admiral Chiraneau": {
       text: "While you perform an attack, if you are reinforced and the defender is in the %FULLFRONTARC% or %FULLREARARC% matching your reinforce token, you may change 1 of your %FOCUS% results to a %CRIT% result."
@@ -9203,7 +9231,7 @@ exportObj.cardLoaders.English = function() {
       text: "You can maintain up to 2 locks. After you perform an action, you may acquire a lock."
     },
     "Rexler Brath": {
-      text: "After you perform an attack that hits, if you are evading, expose 1 of the defender's damage cards. FULL THROTTLE: After you FULLY execute a speed 3-5 manouver, you may perform an %EVADE% action."
+      text: "After you perform an attack that hits, if you are evading, expose 1 of the defender's damage cards. <br> FULL THROTTLE: After you FULLY execute a speed 3-5 manouver, you may perform an %EVADE% action."
     },
     "Rho Squadron Pilot": {
       text: " "
@@ -9218,7 +9246,7 @@ exportObj.cardLoaders.English = function() {
       text: "AUTOTHRUSTERS: After you perform an actino. you may perform a red %BARRELROLL% or a red %BOOST% action."
     },
     "Sabine Wren (Attack Shuttle)": {
-      text: "Before you activate, you may perform a %BARRELROLL% or %BOOST% action. LOCKED AND LOADED: While you are docked, after your carrier ship performes a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"
+      text: "Before you activate, you may perform a %BARRELROLL% or %BOOST% action. <br> LOCKED AND LOADED: While you are docked, after your carrier ship performes a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"
     },
     "Sabine Wren (Scum)": {
       text: "While you defend, if the attacker is in your %SINGLETURRETARC% at range 0-2, you may add 1 %FOCUS% result to your dice results."
@@ -9227,7 +9255,7 @@ exportObj.cardLoaders.English = function() {
       text: "Before you activate, you may perform a %BARRELROLL% or %BOOST% action."
     },
     "Sarco Plank": {
-      text: "While you defend, you may treat your agility value as equal to the speed of the maneuver you executed this round. SPACETUG TRACTOR ARRAY: ACTION: Choose a ship in your %FRONTARC% at range 1. That ship gains one tractor token, or 2 tractor tokens if it is in your %BULLSEYEARC% at range 1"
+      text: "While you defend, you may treat your agility value as equal to the speed of the maneuver you executed this round. <br> SPACETUG TRACTOR ARRAY: ACTION: Choose a ship in your %FRONTARC% at range 1. That ship gains one tractor token, or 2 tractor tokens if it is in your %BULLSEYEARC% at range 1"
     },
     "Saw Gerrera": {
       text: "While a damaged friendly ship at range 0-3 performs an attack, it may reroll 1 attack die."
@@ -9242,7 +9270,7 @@ exportObj.cardLoaders.English = function() {
       text: "While you perform an attack against a defender in your %BULLSEYEARC%, roll 1 additional attack die."
     },
     "Serissu": {
-      text: "While a friendly ship at range 0-1 defends, it may reroll 1 of its dice. WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
+      text: "While a friendly ship at range 0-1 defends, it may reroll 1 of its dice. <br> WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
     },
     "Seventh Sister": {
       text: "While you perform a primary attack, before the Neutralize Results step, you may spend 2 %FORCE% to cancel 1 %EVADE% result."
@@ -9263,13 +9291,13 @@ exportObj.cardLoaders.English = function() {
       text: "STYGUM ARRAY: After you decloak, you may perform an %EVADE% action. At the Start of the End Phase, you may spend 1 evade token to gain one cloak token."
     },
     "Skull Squadron Pilot": {
-      text: "Concordia Faceoff: While you defend, if the attack range is 1 and you are in the attackers %FRONTARC%, change 1 result to an %EVADE% result."
+      text: "CONCORDIA FACEOFF: While you defend, if the attack range is 1 and you are in the attackers %FRONTARC%, change 1 result to an %EVADE% result."
     },
     "Sol Sixxa": {
       text: "If you would drop a device using a [1 %STRAIGHT%] template, you may drop it using any other speed 1 template instead."
     },
     "Soontir Fel": {
-      text: "At the start of the Engagement Phase, if there is an enemy ship in your %BULLSEYEARC%, gain 1 focus token. AUTOTHRUSTERS: After you perform an actino. you may perform a red %BARRELROLL% or a red %BOOST% action."
+      text: "At the start of the Engagement Phase, if there is an enemy ship in your %BULLSEYEARC%, gain 1 focus token. <br> AUTOTHRUSTERS: After you perform an actino. you may perform a red %BARRELROLL% or a red %BOOST% action."
     },
     "Spice Runner": {
       text: " "
@@ -9278,7 +9306,7 @@ exportObj.cardLoaders.English = function() {
       text: "ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, ro;; 1 additional attack die and change 1 %HIT% result to a %CRIT% result."
     },
     "Sunny Bounder": {
-      text: "While you defend or perform an attack, after you roll or reroll your dice, if you have the same result on each of your dice, you may add 1 matching result. WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
+      text: "While you defend or perform an attack, after you roll or reroll your dice, if you have the same result on each of your dice, you may add 1 matching result. <br> WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
     },
     "Tala Squadron Pilot": {
       text: " "
@@ -9293,7 +9321,7 @@ exportObj.cardLoaders.English = function() {
       text: "If you would be destroyed, you may spend 1 %CHARGE%. If you do, discard all of your damage cards, suffer 5 %HIT% damage, and place yourself in reserves instead. At the start of the next planning phase, place yourself within range 1 of your player edge."
     },
     "Tempest Squadron Pilot": {
-      text: "ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, ro;; 1 additional attack die and change 1 %HIT% result to a %CRIT% result."
+      text: "ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, roll 1 additional attack die and change 1 %HIT% result to a %CRIT% result."
     },
     "Ten Numb": {
       text: "While you defend or perform an attack, you may spend 1 stress token to change all of your %FOCUS% results to %EVADE% or %HIT% results."
@@ -9302,10 +9330,10 @@ exportObj.cardLoaders.English = function() {
       text: "While you perform an attack, you may spend 1 %FOCUS%, %HIT%, or %CRIT% result to look at the defender's facedown damage cards, choose 1, and expose it."
     },
     "Tomax Bren": {
-      text: "After you perform a %RELOAD% action, you may revocer 1 %CHARGE% token on 1 of your equipped %TALENT% upgrade cards. NIMBLE BOMBER: If you would drop a device using a %STRAIGHT% template, you may use %BANKLEFT% a or %BANKRIGHT% tempate of the same speed instead."
+      text: "After you perform a %RELOAD% action, you may revocer 1 %CHARGE% token on 1 of your equipped %TALENT% upgrade cards. <br> NIMBLE BOMBER: If you would drop a device using a %STRAIGHT% template, you may use %BANKLEFT% a or %BANKRIGHT% tempate of the same speed instead."
     },
     "Torani Kulda": {
-      text: "After you perform an attack, each enemy ship in your %BULLSEYEARC% suffers 1 %HIT% damage unless it removes 1 green token. DEAD TO RIGHTS: While you perform an attack, if the defender is in your %BULLSEYEARC%, defense dice cannot be modified using green tokens."
+      text: "After you perform an attack, each enemy ship in your %BULLSEYEARC% suffers 1 %HIT% damage unless it removes 1 green token. <br> DEAD TO RIGHTS: While you perform an attack, if the defender is in your %BULLSEYEARC%, defense dice cannot be modified using green tokens."
     },
     "Torkil Mux": {
       text: "At the start of the Engagement Phase, you may choose 1 ship in your firing arc. If you do, that ship engages at initiative 0 instead of its normal initiative value this round."
@@ -9314,22 +9342,22 @@ exportObj.cardLoaders.English = function() {
       text: " "
     },
     "Turr Phennir": {
-      text: "After you perform an attack, you may perform a %BARRELROLL% or %BOOST% action, even if you are stressed. AUTOTHRUSTERS: After you perform an actino. you may perform a red %BARRELROLL% or a red %BOOST% action."
+      text: "After you perform an attack, you may perform a %BARRELROLL% or %BOOST% action, even if you are stressed. <br> AUTOTHRUSTERS: After you perform an actino. you may perform a red %BARRELROLL% or a red %BOOST% action."
     },
     "Unkar Plutt": {
-      text: "At the start of the Engagement Phase, if there are one or more other ships at range 0, you and each other ship at range 0 gain 1 tractor token. SPACETUG TRACTOR ARRAY: ACTION: Choose a ship in your %FRONTARC% at range 1. That ship gains one tractor token, or 2 tractor tokens if it is in your %BULLSEYEARC% at range 1"
+      text: "At the start of the Engagement Phase, if there are one or more other ships at range 0, you and each other ship at range 0 gain 1 tractor token. <br> SPACETUG TRACTOR ARRAY: ACTION: Choose a ship in your %FRONTARC% at range 1. That ship gains one tractor token, or 2 tractor tokens if it is in your %BULLSEYEARC% at range 1"
     },
     "Valen Rudor": {
       text: "After a friendly ship at range 0-1 defends (after damage is resolved, if any), you may perform an action."
     },
     "Ved Foslo": {
-      text: "While you execute a maneuver, you may execute a maneuver of the same bearing and difficulty of a speed 1 higher or lower instead. ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, ro;; 1 additional attack die and change 1 %HIT% result to a %CRIT% result."
+      text: "While you execute a maneuver, you may execute a maneuver of the same bearing and difficulty of a speed 1 higher or lower instead. <br> ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, ro;; 1 additional attack die and change 1 %HIT% result to a %CRIT% result."
     },
     "Viktor Hel": {
       text: "After you defend, if you did not roll exactly 2 defense dice, the attack gains 1 stress token."
     },
     '"Vizier"': {
-      text: "After you fully execute a speed 1 maneuver using your Adaptive Ailerons ship ability, you may perform a %COORDINATE% action. If you do, skip your Perform Action step. ADAPTIVE AILERONS: Before you reveal your dial, if you are not stressed, you MUST execute a white (1 %BANKLEFT%), (1 %STRAIGHT%) or (1 %BANKRIGHT%)"
+      text: "After you fully execute a speed 1 maneuver using your Adaptive Ailerons ship ability, you may perform a %COORDINATE% action. If you do, skip your Perform Action step. <br> ADAPTIVE AILERONS: Before you reveal your dial, if you are not stressed, you MUST execute a white (1 %BANKLEFT%), (1 %STRAIGHT%) or (1 %BANKRIGHT%)"
     },
     '"Wampa"': {
       text: "While you perform an attack, you may spend 1 %CHARGE% to roll 1 additional attack die. After defending, lose 1 %CHARGE%."
@@ -9350,10 +9378,10 @@ exportObj.cardLoaders.English = function() {
       text: "While you perform a primary attack, if you are damaged, you may roll 1 additional attack die."
     },
     "Zealous Recruit": {
-      text: "Concordia Faceoff: While you defend, if the attack range is 1 and you are in the attackers %FRONTARC%, change 1 result to an %EVADE% result"
+      text: "CONCORDIA FACEOFF: While you defend, if the attack range is 1 and you are in the attackers %FRONTARC%, change 1 result to an %EVADE% result"
     },
     '"Zeb" Orrelios (Attack Shuttle)': {
-      text: "While you defend, %CRIT% results are neutralized before %HIT% results. LOCKED AND LOADED: While you are docked, after your carrier ship performes a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"
+      text: "While you defend, %CRIT% results are neutralized before %HIT% results. <br> LOCKED AND LOADED: While you are docked, after your carrier ship performes a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"
     },
     '"Zeb" Orrelios (Sheathipede)': {
       text: "While you defend, %CRIT% results are neutralized before %HIT% results. COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier shpi activates, it may perform a %COORDINATE% action."
@@ -9362,7 +9390,7 @@ exportObj.cardLoaders.English = function() {
       text: "While you defend, %CRIT% results are neutralized before %HIT% results."
     },
     "Zertik Strom": {
-      text: "During the End Phase, you may spend a lock you have on an enemy ship to expose 1 of that ship's damage cards. ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, ro;; 1 additional attack die and change 1 %HIT% result to a %CRIT% result."
+      text: "During the End Phase, you may spend a lock you have on an enemy ship to expose 1 of that ship's damage cards. <br> ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, ro;; 1 additional attack die and change 1 %HIT% result to a %CRIT% result."
     },
     "Zuckuss": {
       text: "While you perform a primary attack, you may roll 1 additional attack die. If you do, the defender rolls 1 additional defense die."
@@ -9511,10 +9539,10 @@ exportObj.cardLoaders.English = function() {
       text: "While another friendly ship defends or performs an attack, you may spend 1 %FORCE% to modify 1 of its dice as though that ship had spent 1 %FORCE%."
     },
     "Engine Upgrade": {
-      text: "Large military forces such as the Galactic Empire have standardized engines, but individual pilots and small organizations often replace the power couplings add thrusters, or use high-performance fuel to get extra push out of their engines."
+      text: "Add a white %BOOST%"
     },
     "Expert Handling": {
-      text: "While heavy fighters can often be coaxed into a barrel roll, seasoned pilots know how to do it without putting undue stress on their craft or leaving themselves open to attack."
+      text: "Add a white %BARRELROLL%"
     },
     "Ezra Bridger": {
       text: "After you perform a primary attack, you may spend 1 %FORCE% to perform a bonus %TURRET% attack from a %TURRET% you have not attacked from this round. If you do and you are stressed, you may reroll 1 attack die."
@@ -9577,7 +9605,7 @@ exportObj.cardLoaders.English = function() {
       text: "1 Z-95 AF4 headhunter can dock with you."
     },
     "Hull Upgrade": {
-      text: "For those who cannot afford an enhanced shield generator, bolting additional plates onto the hull of a ship can serve as an adequate substitute."
+      text: "Add 1 Hull Point"
     },
     "IG-2000": {
       text: "You have the pilot ability of each other friendly ship with the IG-2000 upgrade."
@@ -9708,6 +9736,9 @@ exportObj.cardLoaders.English = function() {
     "Phantom": {
       text: "You can dock at range 0-1."
     },
+    "Phantom (Sheathipede)": {
+      text: "You can dock at range 0-1."
+    },
     "Pivot Wing (Closed)": {
       text: "While you defend, roll 1 fewer defense die. After you execute a [0 %STOP%] maneuver, you may rotate your ship 90˚ or 180˚. Before you activate, you may flip this card"
     },
@@ -9796,7 +9827,7 @@ exportObj.cardLoaders.English = function() {
       text: "After you perform an attack that hits, if the defender is in your %SINGLETURRETARC% and your %FRONTARC%, the defender gains 1 tractor token."
     },
     "Shield Upgrade": {
-      text: "Deflector shields are a substantial line of defense on most starships beyond the lightest fighters. While enhancing a ship's shield capacity can be costly, all but the most confident or reckless pilots see the value in this sort of investment."
+      text: "Add 1 Hull Point"
     },
     "Skilled Bombardier": {
       text: "If you would drop or launch a device, you may use a template of the same bearing with a speed 1 higher or lower."
@@ -9823,7 +9854,7 @@ exportObj.cardLoaders.English = function() {
       text: "At the start of the Engagement Phase, you may choose 1 friendly ship at range 1. If you do, that ship treats its initiative as equal to yours until the end of the round."
     },
     "Tactical Officer": {
-      text: "In the chaos of a starfighter battle, a single order can mean the difference between a victory and a massacre."
+      text: "Add a white %BOOST%"
     },
     "Tactical Scrambler": {
       text: "While you obstruct an enemy ship's attack, the defender rolls 1 additional defense die."
@@ -24808,7 +24839,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 21998
+                    lineno: 22022
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -25397,7 +25428,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 22626
+              lineno: 22650
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -26113,7 +26144,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 23252
+          lineno: 23276
         }));
         __iced_deferrals._fulfill();
       });
@@ -26125,7 +26156,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 23253
+            lineno: 23277
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -27759,7 +27790,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 24213
+                      lineno: 24237
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -27833,7 +27864,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 24239
+                lineno: 24263
               })
             ]);
             __iced_deferrals._fulfill();
@@ -27880,7 +27911,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 24262
+              lineno: 24286
             }));
           }
         }
@@ -27889,7 +27920,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 24264
+              lineno: 24288
             }));
           }
         }
@@ -27898,7 +27929,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 24266
+              lineno: 24290
             }));
           }
         }
@@ -28967,7 +28998,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 25000
+                lineno: 25024
               })
             ]);
             __iced_deferrals._fulfill();
@@ -29086,7 +29117,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 25059
+                  lineno: 25083
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -29108,7 +29139,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 25063
+                    lineno: 25087
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -29198,7 +29229,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 25106
+            lineno: 25130
           }));
         }
         __iced_deferrals._fulfill();
