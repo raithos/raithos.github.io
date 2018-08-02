@@ -1312,7 +1312,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 3,
         shields: 2,
-        actions: ["Focus > <b>Barrel Roll</b>", "Target Lock", "Barrel Roll"],
+        actions: ["Focus > Barrel Roll", "Target Lock", "Barrel Roll"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
       "TIE Interceptor": {
@@ -3780,7 +3780,11 @@ exportObj.basicCardData = function() {
         name: "R4 Astromech",
         id: 5,
         slot: "Astromech",
-        points: 2
+        points: 2,
+        restriction_func: function(ship) {
+          var _ref, _ref1;
+          return !((_ref = ship.data.large) != null ? _ref : false) || ((_ref1 = ship.data.medium) != null ? _ref1 : false);
+        }
       }, {
         name: "R5 Astromech",
         id: 6,
@@ -3915,7 +3919,10 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 10,
         unique: true,
-        faction: "Galactic Empire"
+        faction: "Galactic Empire",
+        restriction_func: function(ship) {
+          return __indexOf.call(ship.effectiveStats().actions, "Coordinate") >= 0;
+        }
       }, {
         name: "Cikatro Vizago",
         id: 25,
@@ -3994,7 +4001,10 @@ exportObj.basicCardData = function() {
         points: 10,
         unique: true,
         faction: "Galactic Empire",
-        charge: 2
+        charge: 2,
+        restriction_func: function(ship) {
+          return __indexOf.call(ship.effectiveStats().actions, "Target Lock") >= 0;
+        }
       }, {
         name: "Hera Syndulla",
         id: 35,
@@ -4100,7 +4110,30 @@ exportObj.basicCardData = function() {
         points: 13,
         unique: true,
         faction: "Scum and Villainy",
-        charge: 1
+        charge: 1,
+        restriction_func: function(ship) {
+          var builder, t, thing, things, _ref;
+          builder = ship.builder;
+          if (builder.faction === "Scum and Villainy") {
+            return true;
+          }
+          _ref = builder.uniques_in_use;
+          for (t in _ref) {
+            things = _ref[t];
+            if (__indexOf.call((function() {
+              var _i, _len, _results;
+              _results = [];
+              for (_i = 0, _len = things.length; _i < _len; _i++) {
+                thing = things[_i];
+                _results.push(thing.canonical_name.getXWSBaseName());
+              }
+              return _results;
+            })(), 'ezrabridger') >= 0) {
+              return true;
+            }
+          }
+          return false;
+        }
       }, {
         name: "Minister Tua",
         id: 49,
@@ -4115,7 +4148,10 @@ exportObj.basicCardData = function() {
         points: 12,
         unique: true,
         faction: "Galactic Empire",
-        charge: 2
+        charge: 2,
+        restriction_func: function(ship) {
+          return __indexOf.call(ship.effectiveStats().actions, "Coordinate") >= 0;
+        }
       }, {
         name: "Magva Yarro",
         id: 51,
@@ -4188,7 +4224,15 @@ exportObj.basicCardData = function() {
         name: "Tactical Officer",
         id: 61,
         slot: "Crew",
-        points: 2
+        points: 2,
+        restriction_func: function(ship) {
+          return __indexOf.call(ship.data.actionsred, "Coordinate") >= 0;
+        },
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'Coordinate') < 0) {
+            return stats.actions.push('Coordinate');
+          }
+        }
       }, {
         name: "Tobias Beckett",
         id: 62,
@@ -4202,7 +4246,30 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 3,
         unique: true,
-        faction: "Scum and Villainy"
+        faction: "Scum and Villainy",
+        restriction_func: function(ship) {
+          var builder, t, thing, things, _ref;
+          builder = ship.builder;
+          if (builder.faction === "Scum and Villainy") {
+            return true;
+          }
+          _ref = builder.uniques_in_use;
+          for (t in _ref) {
+            things = _ref[t];
+            if (__indexOf.call((function() {
+              var _i, _len, _results;
+              _results = [];
+              for (_i = 0, _len = things.length; _i < _len; _i++) {
+                thing = things[_i];
+                _results.push(thing.canonical_name.getXWSBaseName());
+              }
+              return _results;
+            })(), 'darthvader') >= 0) {
+              return true;
+            }
+          }
+          return false;
+        }
       }, {
         name: "Unkar Plutt",
         id: 64,
@@ -4299,7 +4366,30 @@ exportObj.basicCardData = function() {
         slot: "Gunner",
         points: 2,
         unique: true,
-        faction: "Scum and Villainy"
+        faction: "Scum and Villainy",
+        restriction_func: function(ship) {
+          var builder, t, thing, things, _ref;
+          builder = ship.builder;
+          if (builder.faction === "Scum and Villainy") {
+            return true;
+          }
+          _ref = builder.uniques_in_use;
+          for (t in _ref) {
+            things = _ref[t];
+            if (__indexOf.call((function() {
+              var _i, _len, _results;
+              _results = [];
+              for (_i = 0, _len = things.length; _i < _len; _i++) {
+                thing = things[_i];
+                _results.push(thing.canonical_name.getXWSBaseName());
+              }
+              return _results;
+            })(), 'darthvader') >= 0) {
+              return true;
+            }
+          }
+          return false;
+        }
       }, {
         name: "Dengar",
         id: 80,
@@ -4377,19 +4467,29 @@ exportObj.basicCardData = function() {
         name: "Veteran Tail Gunner",
         id: 89,
         slot: "Gunner",
-        points: 4
+        points: 4,
+        restriction_func: function(ship) {
+          return ship.effectiveStats().actions;
+        }
       }, {
         name: "Veteran Turret Gunner",
         id: 90,
         slot: "Gunner",
-        points: 8
+        points: 8,
+        restriction_func: function(ship) {
+          return ship.data.attackb != null;
+        }
       }, {
         name: "Cloaking Device",
         id: 91,
         slot: "Illicit",
         points: 5,
         unique: true,
-        charge: 2
+        charge: 2,
+        restriction_func: function(ship) {
+          var _ref;
+          return (_ref = ship.data.large) != null ? _ref : false;
+        }
       }, {
         name: "Contraband Cybernetics",
         id: 92,
@@ -4416,7 +4516,10 @@ exportObj.basicCardData = function() {
         id: 96,
         slot: "Illicit",
         points: 4,
-        charge: 1
+        charge: 1,
+        restriction_func: function(ship) {
+          return (ship.data.medium != null) || (ship.data.large != null);
+        }
       }, {
         name: "Barrage Rockets",
         id: 97,
@@ -4470,18 +4573,28 @@ exportObj.basicCardData = function() {
         id: 103,
         slot: "Modification",
         points: 4,
-        charge: 2
+        charge: 2,
+        restriction_func: function(ship) {
+          return (ship.data.medium != null) || (ship.data.large != null);
+        }
       }, {
         name: "Advanced SLAM",
         id: 104,
         slot: "Modification",
-        points: 3
+        points: 3,
+        restriction_func: function(ship) {
+          return __indexOf.call(ship.effectiveStats().actions, "Slam") >= 0;
+        }
       }, {
         name: "Afterburners",
         id: 105,
         slot: "Modification",
         points: 8,
-        charge: 2
+        charge: 2,
+        restriction_func: function(ship) {
+          var _ref, _ref1;
+          return !(((_ref = ship.data.large) != null ? _ref : false) || ((_ref1 = ship.data.medium) != null ? _ref1 : false));
+        }
       }, {
         name: "Electronic Baffle",
         id: 106,
@@ -4492,7 +4605,15 @@ exportObj.basicCardData = function() {
         id: 107,
         slot: "Modification",
         points: 3,
-        variablebase: true
+        variablebase: true,
+        restriction_func: function(ship) {
+          return __indexOf.call(ship.data.actionsred, "Boost") >= 0;
+        },
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'Boost') < 0) {
+            return stats.actions.push('Boost');
+          }
+        }
       }, {
         name: "Munitions Failsafe",
         id: 108,
@@ -4507,7 +4628,10 @@ exportObj.basicCardData = function() {
         name: "Tactical Scrambler",
         id: 110,
         slot: "Modification",
-        points: 2
+        points: 2,
+        restriction_func: function(ship) {
+          return (ship.data.medium != null) || (ship.data.large != null);
+        }
       }, {
         name: "Advanced Sensors",
         id: 111,
@@ -4533,7 +4657,10 @@ exportObj.basicCardData = function() {
         name: "Composure",
         id: 115,
         slot: "Talent",
-        points: 2
+        points: 2,
+        restriction_func: function(ship) {
+          return __indexOf.call(ship.effectiveStats().actions, "Boost") >= 0;
+        }
       }, {
         name: "Crack Shot",
         id: 116,
@@ -4544,12 +4671,18 @@ exportObj.basicCardData = function() {
         name: "Daredevil",
         id: 117,
         slot: "Talent",
-        points: 3
+        points: 3,
+        restriction_func: function(ship) {
+          return __indexOf.call(ship.effectiveStats().actions, "Boost") >= 0;
+        }
       }, {
         name: "Debris Gambit",
         id: 118,
         slot: "Talent",
-        points: 2
+        points: 2,
+        restriction_func: function(ship) {
+          return __indexOf.call(ship.data.actionsred, "Evade") >= 0;
+        }
       }, {
         name: "Elusive",
         id: 119,
@@ -4561,7 +4694,15 @@ exportObj.basicCardData = function() {
         id: 120,
         slot: "Talent",
         points: 2,
-        variablebase: true
+        variablebase: true,
+        restriction_func: function(ship) {
+          return __indexOf.call(ship.data.actionsred, "Barrel Roll") >= 0;
+        },
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'Barrel Roll') < 0) {
+            return stats.actions.push('Barrel Roll');
+          }
+        }
       }, {
         name: "Fearless",
         id: 121,
@@ -4577,7 +4718,11 @@ exportObj.basicCardData = function() {
         name: "Juke",
         id: 123,
         slot: "Talent",
-        points: 4
+        points: 4,
+        restriction_func: function(ship) {
+          var _ref;
+          return (_ref = ship.data.large) != null ? _ref : false;
+        }
       }, {
         name: "Lone Wolf",
         id: 124,
@@ -4610,7 +4755,10 @@ exportObj.basicCardData = function() {
         name: "Saturation Salvo",
         id: 129,
         slot: "Talent",
-        points: 6
+        points: 6,
+        restriction_func: function(ship) {
+          return __indexOf.call(ship.effectiveStats().actions, "Reload") >= 0;
+        }
       }, {
         name: "Selfless",
         id: 130,
@@ -4676,7 +4824,16 @@ exportObj.basicCardData = function() {
         id: 139,
         points: 0,
         slot: "Configuration",
-        ship: "Alpha-class Star Wing"
+        ship: "Alpha-class Star Wing",
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: "Torpedo"
+          }, {
+            type: exportObj.Upgrade,
+            slot: "Missile"
+          }
+        ]
       }, {
         name: "Pivot Wing (Closed)",
         id: 140,
@@ -4706,7 +4863,13 @@ exportObj.basicCardData = function() {
         id: 144,
         points: 0,
         slot: "Configuration",
-        ship: "Alpha-class Star Wing"
+        ship: "Alpha-class Star Wing",
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: "Cannon"
+          }
+        ]
       }, {
         name: "L3-37's Programming",
         id: 145,
@@ -4796,7 +4959,7 @@ exportObj.basicCardData = function() {
         confersAddons: [
           {
             type: exportObj.Upgrade,
-            slot: "Device"
+            slot: "Gunner"
           }
         ]
       }, {
@@ -4898,7 +5061,13 @@ exportObj.basicCardData = function() {
         points: 10,
         unique: true,
         charge: 2,
-        ship: "StarViper"
+        ship: "StarViper",
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: "Modification"
+          }
+        ]
       }, {
         name: "Hull Upgrade",
         id: 164,
@@ -24641,7 +24810,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 21913
+                    lineno: 21999
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -25230,7 +25399,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 22541
+              lineno: 22627
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -25946,7 +26115,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 23167
+          lineno: 23253
         }));
         __iced_deferrals._fulfill();
       });
@@ -25958,7 +26127,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 23168
+            lineno: 23254
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -26439,7 +26608,7 @@ exportObj.SquadBuilder = (function() {
               case 1:
                 return "white";
               case 2:
-                return "blue";
+                return "aqua";
               case 3:
                 return "red";
             }
@@ -26613,7 +26782,7 @@ exportObj.SquadBuilder = (function() {
             }
             return _results;
           }).call(this)).join(', '));
-          this.info_container.find('tr.info-actions-red').show();
+          this.info_container.find('tr.info-actions-red').toggle(data.data.actionsred != null);
           this.info_container.find('tr.info-actions').show();
           this.info_container.find('tr.info-upgrades').show();
           this.info_container.find('tr.info-upgrades td.info-data').text(((function() {
@@ -27592,7 +27761,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 24126
+                      lineno: 24213
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -27666,7 +27835,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 24152
+                lineno: 24239
               })
             ]);
             __iced_deferrals._fulfill();
@@ -27713,7 +27882,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 24175
+              lineno: 24262
             }));
           }
         }
@@ -27722,7 +27891,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 24177
+              lineno: 24264
             }));
           }
         }
@@ -27731,7 +27900,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 24179
+              lineno: 24266
             }));
           }
         }
@@ -28762,7 +28931,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 24876
+                lineno: 24963
               })
             ]);
             __iced_deferrals._fulfill();
@@ -28881,7 +29050,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 24935
+                  lineno: 25022
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -28903,7 +29072,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 24939
+                    lineno: 25026
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -28993,7 +29162,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 24982
+            lineno: 25069
           }));
         }
         __iced_deferrals._fulfill();
