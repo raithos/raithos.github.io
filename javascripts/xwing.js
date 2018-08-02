@@ -4487,8 +4487,7 @@ exportObj.basicCardData = function() {
         unique: true,
         charge: 2,
         restriction_func: function(ship) {
-          var _ref;
-          return (_ref = ship.data.large) != null ? _ref : false;
+          return !(ship.data.large != null);
         }
       }, {
         name: "Contraband Cybernetics",

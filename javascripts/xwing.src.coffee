@@ -6339,7 +6339,7 @@ exportObj.basicCardData = ->
            unique: true
            charge: 2
            restriction_func: (ship) ->
-                ship.data.large ? false
+                not(ship.data.large?)
        }
        {
            name: "Contraband Cybernetics"
