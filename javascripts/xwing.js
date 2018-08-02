@@ -4720,8 +4720,7 @@ exportObj.basicCardData = function() {
         slot: "Talent",
         points: 4,
         restriction_func: function(ship) {
-          var _ref;
-          return (_ref = ship.data.large) != null ? _ref : false;
+          return !(ship.data.large != null);
         }
       }, {
         name: "Lone Wolf",
