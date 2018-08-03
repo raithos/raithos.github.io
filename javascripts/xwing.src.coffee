@@ -2238,6 +2238,7 @@ exportObj.basicCardData = ->
         }
         {
             name: "Sabine Wren (TIE Fighter)"
+            canonical_name: 'Sabine Wren'.canonicalize()
             id: 13
             unique: true
             faction: "Rebel Alliance"
@@ -3079,6 +3080,7 @@ exportObj.basicCardData = ->
         }
         {
             name: "Sabine Wren (Attack Shuttle)"
+            canonical_name: 'Sabine Wren'.canonicalize()
             id: 66
             unique: true
             faction: "Rebel Alliance"
