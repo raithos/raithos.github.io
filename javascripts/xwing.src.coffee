@@ -752,41 +752,56 @@ class exportObj.CardBrowser
                                         <td class="info-data info-skill"></td>
                                     </tr>
                                     <tr class="info-energy">
-                                        <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-energy"></i></td>
+                                        <td class="info-header"><i class="xwing-miniatures-font header-energy xwing-miniatures-font-energy"></i></td>
                                         <td class="info-data info-energy"></td>
                                     </tr>
                                     <tr class="info-attack">
-                                        <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-attack"></i></td>
+                                        <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-frontarc"></i></td>
                                         <td class="info-data info-attack"></td>
+                                    </tr>
+                                    <tr class="info-attack-fullfront">
+                                        <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc"></i></td>
+                                        <td class="info-data info-attack"></td>
+                                    </tr>
+                                    <tr class="info-attack-bullseye">
+                                        <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc"></i></td>
+                                        <td class="info-data info-attack"></td>
+                                    </tr>
                                     <tr class="info-attack-back">
-                                        <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-attack"></i></td>
+                                        <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-reararc"></i></td>
                                         <td class="info-data info-attack"></td>
+                                    </tr>
                                     <tr class="info-attack-turret">
-                                        <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-attack"></i></td>
+                                        <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc"></i></td>
                                         <td class="info-data info-attack"></td>
+                                    </tr>
                                     <tr class="info-attack-doubleturret">
-                                        <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-attack"></i></td>
+                                        <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc"></i></td>
                                         <td class="info-data info-attack"></td>
+                                    </tr>
+                                    <tr class="info-agility">
+                                        <td class="info-header"><i class="xwing-miniatures-font header-agility xwing-miniatures-font-agility"></i></td>
+                                        <td class="info-data info-agility"></td>
+                                    </tr>
+                                    <tr class="info-hull">
+                                        <td class="info-header"><i class="xwing-miniatures-font header-hull xwing-miniatures-font-hull"></i></td>
+                                        <td class="info-data info-hull"></td>
+                                    </tr>
+                                    <tr class="info-shields">
+                                        <td class="info-header"><i class="xwing-miniatures-font header-shield xwing-miniatures-font-shield"></i></td>
+                                        <td class="info-data info-shields"></td>
+                                    </tr>
+                                    <tr class="info-force">
+                                        <td class="info-header"><i class="xwing-miniatures-font header-force xwing-miniatures-font-forcecharge"></i></td>
+                                        <td class="info-data info-force"></td>
+                                    </tr>
+                                    <tr class="info-charge">
+                                        <td class="info-header"><i class="xwing-miniatures-font header-charge xwing-miniatures-font-charge"></i></td>
+                                        <td class="info-data info-charge"></td>
                                     </tr>
                                     <tr class="info-range">
                                         <td class="info-header">Range</td>
                                         <td class="info-data info-range"></td>
-                                    </tr>
-                                    <tr class="info-agility">
-                                        <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-agility"></i></td>
-                                        <td class="info-data info-agility"></td>
-                                    </tr>
-                                    <tr class="info-hull">
-                                        <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-hull"></i></td>
-                                        <td class="info-data info-hull"></td>
-                                    </tr>
-                                    <tr class="info-shields">
-                                        <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-shield"></i></td>
-                                        <td class="info-data info-shields"></td>
-                                    </tr>
-                                    <tr class="info-force">
-                                        <td class="info-header"><i class="xwing-miniatures-font xwing-miniatures-font-forcepower"></i></td>
-                                        <td class="info-data info-force"></td>
                                     </tr>
                                     <tr class="info-actions">
                                         <td class="info-header">Actions</td>
@@ -923,17 +938,22 @@ class exportObj.CardBrowser
                 @card_viewer_container.find('.info-type').text "#{data.ship} Pilot (#{data.faction})"
                 @card_viewer_container.find('tr.info-skill td.info-data').text data.skill
                 @card_viewer_container.find('tr.info-skill').show()
+
                 @card_viewer_container.find('tr.info-attack td.info-data').text(data.ship_override?.attack ? ship.attack)
-                @card_viewer_container.find('tr.info-attack').toggle(data.ship_override?.attack? or ship.attack?)
-                
+                @card_viewer_container.find('tr.info-attack-bullseye td.info-data').text(ship.attackbull)
+                @card_viewer_container.find('tr.info-attack-fullfront td.info-data').text(ship.attackf)
                 @card_viewer_container.find('tr.info-attack-back td.info-data').text(ship.attackb)
                 @card_viewer_container.find('tr.info-attack-turret td.info-data').text(ship.attackt)
                 @card_viewer_container.find('tr.info-attack-doubleturret td.info-data').text(ship.attackdt)
 
-                @card_viewer_container.find('tr.info-attack-back td.info-data').toggle(ship.attackb?)
-                @card_viewer_container.find('tr.info-attack-turret td.info-data').toggle(ship.attackt?)
-                @card_viewer_container.find('tr.info-attack-doubleturret td.info-data').toggle(ship.attackdt?)
-            
+                @card_viewer_container.find('tr.info-attack').toggle(ship.attack?)
+                @card_viewer_container.find('tr.info-attack-bullseye').toggle(ship.attackbull?)
+                @card_viewer_container.find('tr.info-attack-fullfront').toggle(ship.attackf?)
+                @card_viewer_container.find('tr.info-attack-back').toggle(ship.attackb?)
+                @card_viewer_container.find('tr.info-attack-turret').toggle(ship.attackt?)
+                @card_viewer_container.find('tr.info-attack-doubleturret').toggle(ship.attackdt?)
+                
+                
                 
                 for cls in @card_viewer_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
                     @card_viewer_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-attack')
@@ -949,22 +969,31 @@ class exportObj.CardBrowser
                 @card_viewer_container.find('tr.info-shields td.info-data').text(data.ship_override?.shields ? ship.shields)
                 @card_viewer_container.find('tr.info-shields').show()
 
-                if data.ship_override?.force?
-                    @info_container.find('tr.info-force td.info-data').text(data.ship_override?.force)
-                    @info_container.find('tr.info-force td.info-header').show()
-                    @info_container.find('tr.info-force').show()
+                if ship.force?
+                    @card_viewer_container.find('tr.info-force td.info-data').html (ship.force + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>') 
+                    @card_viewer_container.find('tr.info-force td.info-header').show()
+                    @card_viewer_container.find('tr.info-force').show()
                 else
-                    @info_container.find('tr.info-force').hide() 
-                        
-                @card_viewer_container.find('tr.info-actions td.info-data').text (exportObj.translate(@language, 'action', action) for action in exportObj.ships[data.ship].actions).join(', ')
+                    @card_viewer_container.find('tr.info-force').hide() 
+
+                if ship.charge?
+                    if data.recurring?
+                        @card_viewer_container.find('tr.info-charge td.info-data').html (ship.charge + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
+                    else
+                        @card_viewer_container.find('tr.info-charge td.info-data').text ship.charge
+                    @card_viewer_container.find('tr.info-charge').show()
+                else
+                    @card_viewer_container.find('tr.info-charge').hide()
+
+                @card_viewer_container.find('tr.info-actions td.info-data').html (exportObj.translate(@language, 'action', action) for action in exportObj.ships[data.ship].actions).join(' ')
+                @card_viewer_container.find('tr.info-actions').show()
 
                 if ships[data.ship].actionsred?
-                    @card_viewer_container.find('tr.info-actions-red td.info-data-red').text (exportObj.translate(@language, 'action', action) for action in exportObj.ships[data.ship].actionsred).join(', ')
+                    @card_viewer_container.find('tr.info-actions-red td.info-data').html (exportObj.translate(@language, 'action', action) for action in exportObj.ships[data.ship].actionsred).join(' ')
                     @card_viewer_container.find('tr.info-actions-red').show()
                 else
                     @card_viewer_container.find('tr.info-actions-red').hide()
 
-                @card_viewer_container.find('tr.info-actions').show()
                 @card_viewer_container.find('tr.info-upgrades').show()
                 @card_viewer_container.find('tr.info-upgrades td.info-data').text((exportObj.translate(@language, 'slot', slot) for slot in data.slots).join(', ') or 'None')
             else
@@ -982,11 +1011,42 @@ class exportObj.CardBrowser
                     @card_viewer_container.find('tr.info-attack').show()
                 else
                     @card_viewer_container.find('tr.info-attack').hide()
+                if data.attackbull?
+                    @card_viewer_container.find('tr.info-attack-bullseye td.info-data').text data.attackbull
+                    @card_viewer_container.find('tr.info-attack-bullseye').show()
+                else
+                    @card_viewer_container.find('tr.info-attack-bullseye').hide()
+                if data.attackt?
+                    @card_viewer_container.find('tr.info-attack-turret td.info-data').text data.attackt
+                    @card_viewer_container.find('tr.info-attack-turret').show()
+                else
+                    @card_viewer_container.find('tr.info-attack-turret').hide()
                 if data.range?
                     @card_viewer_container.find('tr.info-range td.info-data').text data.range
                     @card_viewer_container.find('tr.info-range').show()
                 else
                     @card_viewer_container.find('tr.info-range').hide()
+
+                if data.force?
+                    @card_viewer_container.find('tr.info-force td.info-data').html (data.force + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>') 
+                    @card_viewer_container.find('tr.info-force td.info-header').show()
+                    @card_viewer_container.find('tr.info-force').show()
+                else
+                    @card_viewer_container.find('tr.info-force').hide() 
+
+                if data.charge?
+                    if data.recurring?
+                        @card_viewer_container.find('tr.info-charge td.info-data').html (data.charge + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
+                    else
+                        @card_viewer_container.find('tr.info-charge td.info-data').text data.charge
+                    @card_viewer_container.find('tr.info-charge').show()
+                else
+                    @card_viewer_container.find('tr.info-charge').hide()
+                    
+                    
+                @card_viewer_container.find('tr.info-attack-fullfront').hide()
+                @card_viewer_container.find('tr.info-attack-back').hide()
+                @card_viewer_container.find('tr.info-attack-doubleturret').hide()
                 @card_viewer_container.find('tr.info-agility').hide()
                 @card_viewer_container.find('tr.info-hull').hide()
                 @card_viewer_container.find('tr.info-shields').hide()
@@ -2190,6 +2250,7 @@ exportObj.basicCardData = ->
         }
         {
             name: "Ezra Bridger (TIE Fighter)"
+            canonical_name: 'Ezra Bridger'.canonicalize()
             id: 14
             unique: true
             faction: "Rebel Alliance"
@@ -2204,6 +2265,7 @@ exportObj.basicCardData = ->
         }
         {
             name: '"Zeb" Orrelios (TIE Fighter)'
+            canonical_name: '"Zeb" Orrelios'.canonicalize()
             id: 15
             unique: true
             faction: "Rebel Alliance"
@@ -2684,6 +2746,7 @@ exportObj.basicCardData = ->
             ship: "YT-1300"
             skill: 4
             charge: 1
+            recurring: true
             points: 84
             slots: [
                 "Talent"
@@ -3032,6 +3095,7 @@ exportObj.basicCardData = ->
         }
         {
             name: "Ezra Bridger (Attack Shuttle)"
+            canonical_name: 'Ezra Bridger'.canonicalize()
             id: 67
             unique: true
             faction: "Rebel Alliance"
@@ -3050,6 +3114,7 @@ exportObj.basicCardData = ->
 
         {
             name: '"Zeb" Orrelios (Attack Shuttle)'
+            canonical_name: '"Zeb" Orrelios'.canonicalize()
             id: 68
             unique: true
             faction: "Rebel Alliance"
@@ -3081,6 +3146,7 @@ exportObj.basicCardData = ->
         }
         {
             name: "Ezra Bridger (Sheathipede)"
+            canonical_name: 'Ezra Bridger'.canonicalize()
             id: 70
             unique: true
             faction: "Rebel Alliance"
@@ -3098,6 +3164,7 @@ exportObj.basicCardData = ->
         }
         {
             name: '"Zeb" Orrelios (Sheathipede)'
+            canonical_name: '"Zeb" Orrelios'.canonicalize()
             id: 71
             unique: true
             faction: "Rebel Alliance"
@@ -3456,6 +3523,7 @@ exportObj.basicCardData = ->
         }
         {
             name: "L3-37 (YT-1300)"
+            canonical_name: 'L3-37'.canonicalize()
             id: 91
             unique: true
             faction: "Scum and Villainy"
@@ -3501,6 +3569,7 @@ exportObj.basicCardData = ->
         }
         {
             name: "Lando Calrissian (Scum) (Escape Craft)"
+            canonical_name: 'Lando Calrissian (Scum)'.canonicalize()
             id: 93
             unique: true
             faction: "Scum and Villainy"
@@ -3516,6 +3585,7 @@ exportObj.basicCardData = ->
         {
             name: "Outer Rim Pioneer"
             id: 94
+            unique: true
             faction: "Scum and Villainy"
             ship: "Escape Craft"
             skill: 3
@@ -3528,6 +3598,7 @@ exportObj.basicCardData = ->
         }
         {
             name: "L3-37 (Escape Craft)"
+            canonical_name: 'L3-37'.canonicalize()
             id: 95
             unique: true
             faction: "Scum and Villainy"
@@ -3543,9 +3614,11 @@ exportObj.basicCardData = ->
         {
             name: "Autopilot Drone"
             id: 96
+            unique: true        
             faction: "Scum and Villainy"
             ship: "Escape Craft"
             skill: 1
+            charge: 3
             points: 12
             slots: [
                 "Talent"
@@ -3815,6 +3888,8 @@ exportObj.basicCardData = ->
             faction: "Scum and Villainy"
             ship: "HWK-290"
             skill: 4
+            charge: 3
+            recurring: true
             points: 36
             slots: [
                 "Talent"
@@ -3850,6 +3925,8 @@ exportObj.basicCardData = ->
             faction: "Scum and Villainy"
             ship: "JumpMaster 5000"
             skill: 6
+            charge: 1
+            recurring: true
             points: 64
             slots: [
                 "Talent"
@@ -3867,6 +3944,7 @@ exportObj.basicCardData = ->
             faction: "Scum and Villainy"
             ship: "JumpMaster 5000"
             skill: 4
+            charge: 1        
             points: 60
             slots: [
                 "Talent"
@@ -4097,6 +4175,7 @@ exportObj.basicCardData = ->
             faction: "Scum and Villainy"
             ship: "M12-L Kimogila Fighter"
             skill: 3
+            charge: 2
             points: 48
             slots: [
                 "Talent"
@@ -4301,6 +4380,8 @@ exportObj.basicCardData = ->
             faction: "Scum and Villainy"
             ship: "Scurrg H-6 Bomber"
             skill: 5
+            charge: 1
+            recurring: true
             points: 52
             slots: [
                 "Talent"
@@ -4430,6 +4511,7 @@ exportObj.basicCardData = ->
             faction: "Scum and Villainy"
             ship: "YV-666"
             skill: 4
+            charge: 2
             points: 72
             slots: [
                 "Talent"
@@ -4679,6 +4761,7 @@ exportObj.basicCardData = ->
             faction: "Galactic Empire"
             ship: "Lambda-Class Shuttle"
             skill: 3
+            charge: 2
             points: 46
             slots: [       
                 "System"
@@ -5463,6 +5546,7 @@ exportObj.basicCardData = ->
             faction: "Galactic Empire"
             ship: "TIE Fighter"
             skill: 4
+            charge: 1
             points: 40
             slots: [       
                 "Talent"
@@ -5502,6 +5586,8 @@ exportObj.basicCardData = ->
             faction: "Galactic Empire"
             ship: "TIE Fighter"
             skill: 1
+            recurring: true
+            charge: 1
             points: 30
             slots: [       
                 "Modification"
@@ -5809,6 +5895,7 @@ exportObj.basicCardData = ->
            unique: true
            faction: "Rebel Alliance"
            charge: 2
+           recurring: true 
        }
        {
            name: "Chewbacca (Scum)"
@@ -5824,7 +5911,7 @@ exportObj.basicCardData = ->
            slot: "Crew"
            points: 2
            unique: true
-           faction: "Scum and Villainy"
+           faction: "Rebel Alliance"
        }
        {
            name: "Ciena Ree"
@@ -5930,6 +6017,7 @@ exportObj.basicCardData = ->
            unique: true
            faction: "Galactic Empire"
            charge: 2
+           recurring: true
            restriction_func: (ship) ->
                 "Target Lock" in ship.effectiveStats().actions
        }
@@ -6008,11 +6096,10 @@ exportObj.basicCardData = ->
            name: "L3-37"
            id: 43
            slot: "Crew"
+           charge: 1 
            points: 4
            unique: true
            faction: "Scum and Villainy"
-           modifier_func: (stats) ->
-                stats.charge += 1
        }
        {
            name: "Lando Calrissian (Rebel)"
@@ -6038,6 +6125,7 @@ exportObj.basicCardData = ->
            unique: true
            faction: "Rebel Alliance"
            charge: 3
+           recurring: true 
        }
        {
            name: "Latts Razzi"
@@ -6053,7 +6141,9 @@ exportObj.basicCardData = ->
            slot: "Crew"
            points: 13
            unique: true
-           charge: 1
+           force: 1
+           modifier_func: (stats) ->
+                stats.force += 1
            restriction_func: (ship) ->
                 builder = ship.builder
                 return true if builder.faction == "Scum and Villainy"
@@ -6077,6 +6167,7 @@ exportObj.basicCardData = ->
            unique: true
            faction: "Galactic Empire"
            charge: 2
+           recurring: true
            restriction_func: (ship) ->
                 "Coordinate" in ship.effectiveStats().actions
        }
@@ -6197,7 +6288,7 @@ exportObj.basicCardData = ->
            faction: "Scum and Villainy"
        }
        {
-           name: '"Zeb" Orrelios'
+           name: '"Zeb" Orrelios' 
            id: 65
            slot: "Crew"
            points: 1
@@ -6318,7 +6409,6 @@ exportObj.basicCardData = ->
            points: 6
            unique: true
            faction: "Scum and Villainy"
-           charge: 1
        }
        {
            name: "Ezra Bridger"
@@ -7051,6 +7141,8 @@ exportObj.basicCardData = ->
            unique: true
            charge: 2
            ship: "StarViper"
+           modifier_func: (stats) ->
+                stats.shields += 1       
            confersAddons: [
                 {
                     type: exportObj.Upgrade
@@ -23698,7 +23790,6 @@ class exportObj.SquadBuilder
                     @info_container.find('tr.info-attack-fullfront').toggle(data.pilot.ship_override?.attackf? or data.data.attackf?)
 
                     @info_container.find('tr.info-attack-bullseye').hide()
-
                     
                     @info_container.find('tr.info-attack-back td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.attackb ? data.data.attackb), effective_stats, 'attackb')
                     @info_container.find('tr.info-attack-back').toggle(data.pilot.ship_override?.attackb? or data.data.attackb?)
@@ -23719,14 +23810,20 @@ class exportObj.SquadBuilder
                     @info_container.find('tr.info-shields td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.shields ? data.data.shields), effective_stats, 'shields')
                     @info_container.find('tr.info-shields').show()
 
-                    @info_container.find('tr.info-force td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.force ? data.pilot.force), effective_stats, 'force')
+                    @info_container.find('tr.info-force td.info-data').html (statAndEffectiveStat((data.pilot.ship_override?.force ? data.pilot.force), effective_stats, 'force') + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
                     if data.pilot.ship_override?.force? or data.pilot.force?
                         @info_container.find('tr.info-force').show()
                     else
                         @info_container.find('tr.info-force').hide()
 
-                    @info_container.find('tr.info-charge td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.charge ? data.pilot.charge), effective_stats, 'charge')
-                    @info_container.find('tr.info-charge').toggle(data.pilot.ship_override?.charge? or data.pilot.charge?)
+                    if data.pilot.charge?
+                        if data.pilot.recurring?
+                            @info_container.find('tr.info-charge td.info-data').html (data.pilot.charge + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
+                        else
+                            @info_container.find('tr.info-charge td.info-data').text data.pilot.charge
+                        @info_container.find('tr.info-charge').show()
+                    else
+                        @info_container.find('tr.info-charge').hide()
                         
                     @info_container.find('tr.info-actions td.info-data').html (exportObj.translate(@language, 'action', a) for a in data.data.actions.concat( ("<strong>#{exportObj.translate @language, 'action', action}</strong>" for action in extra_actions))).join ' '
 
@@ -23735,7 +23832,6 @@ class exportObj.SquadBuilder
                     @info_container.find('tr.info-actions-red').toggle(data.data.actionsred?)
                     
                     @info_container.find('tr.info-actions').show()
-                    @info_container.find('tr.info-charge').hide()
                     @info_container.find('tr.info-upgrades').show()
                     @info_container.find('tr.info-upgrades td.info-data').text((exportObj.translate(@language, 'slot', slot) for slot in data.pilot.slots).join(' ') or 'None')
                     @info_container.find('p.info-maneuvers').show()
@@ -23760,7 +23856,7 @@ class exportObj.SquadBuilder
                     @info_container.find('tr.info-attack').toggle(data.ship_override?.attack? or ship.attack?)
 
                     @info_container.find('tr.info-attack-fullfront td.info-data').text(ship.attackf)
-                    @info_container.find('tr.info-attack-fullfront').toggle(ship.attackb?)
+                    @info_container.find('tr.info-attack-fullfront').toggle(ship.attackf?)
                     
                     @info_container.find('tr.info-attack-bullseye').hide()
                     
@@ -23786,13 +23882,16 @@ class exportObj.SquadBuilder
                     @info_container.find('tr.info-shields').show()
 
                     if data.ship_override?.force or data.force?
-                        @info_container.find('tr.info-force td.info-data').text (data.ship_override?.force ? data.force)
+                        @info_container.find('tr.info-force td.info-data').html ((data.ship_override?.force ? data.force)+ '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
                         @info_container.find('tr.info-force').show()
                     else
                         @info_container.find('tr.info-force').hide()
 
-                    if data.ship_override?.charge or data.charge?
-                        @info_container.find('tr.info-charge td.info-data').text (data.ship_override?.force ? data.force)
+                    if data.charge?
+                        if data.recurring?
+                            @info_container.find('tr.info-charge td.info-data').html (data.charge + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
+                        else
+                            @info_container.find('tr.info-charge td.info-data').text data.charge
                         @info_container.find('tr.info-charge').show()
                     else
                         @info_container.find('tr.info-charge').hide()
@@ -23852,7 +23951,10 @@ class exportObj.SquadBuilder
                     @info_container.find('tr.info-attack-back').hide()
                     @info_container.find('tr.info-attack-doubleturret').hide()
 
-                    @info_container.find('tr.info-charge td.info-data').text (data.charge)
+                    if data.recurring?
+                        @info_container.find('tr.info-charge td.info-data').html (data.charge + """<i class="xwing-miniatures-font header-charge xwing-miniatures-font-recurring"></i>""")
+                    else                
+                        @info_container.find('tr.info-charge td.info-data').text data.charge
                     @info_container.find('tr.info-charge').toggle(data.charge?)                        
                     
                     if data.range?
@@ -23861,7 +23963,7 @@ class exportObj.SquadBuilder
                     else
                         @info_container.find('tr.info-range').hide()
                     
-                    @info_container.find('tr.info-force td.info-data').text (data.force)
+                    @info_container.find('tr.info-force td.info-data').html (data.force + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
                     @info_container.find('tr.info-force').toggle(data.force?)                        
 
                     @info_container.find('tr.info-agility').hide()
