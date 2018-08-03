@@ -4268,7 +4268,7 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 2,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.data.actionsred, "Coordinate") >= 0;
+          return __indexOf.call(ship.effectiveStats().actionsred, "Coordinate") >= 0;
         },
         modifier_func: function(stats) {
           if (__indexOf.call(stats.actions, 'Coordinate') < 0) {
@@ -4660,7 +4660,7 @@ exportObj.basicCardData = function() {
         points: 3,
         variablebase: true,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.data.actionsred, "Boost") >= 0;
+          return __indexOf.call(ship.effectiveStats().actionsred, "Boost") >= 0;
         },
         modifier_func: function(stats) {
           if (__indexOf.call(stats.actions, 'Boost') < 0) {
@@ -4734,7 +4734,7 @@ exportObj.basicCardData = function() {
         slot: "Talent",
         points: 2,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.data.actionsred, "Evade") >= 0;
+          return __indexOf.call(ship.effectiveStats().actionsred, "Evade") >= 0;
         }
       }, {
         name: "Elusive",
@@ -4749,7 +4749,7 @@ exportObj.basicCardData = function() {
         points: 2,
         variablebase: true,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.data.actionsred, "Barrel Roll") >= 0;
+          return __indexOf.call(ship.effectiveStats().actionsred, "Barrel Roll") >= 0;
         },
         modifier_func: function(stats) {
           if (__indexOf.call(stats.actions, 'Barrel Roll') < 0) {
