@@ -5663,6 +5663,18 @@ exportObj.basicCardData = ->
            points: 2
            restriction_func: (ship) ->
                 not (ship.data.large ? false) or (ship.data.medium ? false) 
+           modifier_func: (stats) ->
+                for turn in [0 ... stats.maneuvers[1].length]
+                    if stats.maneuvers[1][turn] > 0 
+                        if stats.maneuvers[1][turn] == 3
+                            stats.maneuvers[1][turn] = 1
+                        else 
+                            stats.maneuvers[1][turn] = 2
+                    if stats.maneuvers[2][turn] > 0 
+                        if stats.maneuvers[2][turn] == 3
+                            stats.maneuvers[2][turn] = 1
+                        else 
+                            stats.maneuvers[2][turn] = 2
        }
        {
            name: "R5 Astromech"
@@ -6380,7 +6392,7 @@ exportObj.basicCardData = ->
            slot: "Gunner"
            points: 4
            restriction_func: (ship) ->
-                ship.effectiveStats().actions
+                ship.data.attackb?
        }
        {
            name: "Veteran Turret Gunner"
@@ -6388,7 +6400,7 @@ exportObj.basicCardData = ->
            slot: "Gunner"
            points: 8
            restriction_func: (ship) ->
-                ship.data.attackb?
+                "Rotate Arc" in ship.effectiveStats().actions or ship.effectiveStats().actionsred
        }
        {
            name: "Cloaking Device"
@@ -6690,7 +6702,7 @@ exportObj.basicCardData = ->
            slot: "Talent"
            points: 6
            restriction_func: (ship) ->
-                "Reload" in ship.effectiveStats().actions
+                "Reload" in ship.effectiveStats().actions or ship.effectiveStats().actionsred
        }
        {
            name: "Selfless"
@@ -23538,7 +23550,7 @@ class exportObj.SquadBuilder
 
                     color = switch maneuvers[speed][turn]
                         when 1 then "white"
-                        when 2 then "#7ED3E5"
+                        when 2 then "dodgerblue"
                         when 3 then "red"
 
                     outTable += """<svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 200 200">"""
@@ -23549,7 +23561,7 @@ class exportObj.SquadBuilder
 
                         outlineColor = "black"
                         if maneuvers[speed][turn] != baseManeuvers[speed][turn]
-                            outlineColor = "gold" # highlight manuevers modified by another card (e.g. R2 Astromech makes all 1 & 2 speed maneuvers green)
+                            outlineColor = "mediumblue" # highlight manuevers modified by another card (e.g. R2 Astromech makes all 1 & 2 speed maneuvers green)
 
                         transform = ""
                         className = ""
@@ -23687,7 +23699,7 @@ class exportObj.SquadBuilder
                         
                     @info_container.find('tr.info-actions td.info-data').html (exportObj.translate(@language, 'action', a) for a in data.data.actions.concat( ("<strong>#{exportObj.translate @language, 'action', action}</strong>" for action in extra_actions))).join ' '
 
-                    @info_container.find('tr.info-actions-red td.info-data').html (exportObj.translate(@language, 'action', a) for a in data.data.actions.concat( ("<strong>#{exportObj.translate @language, 'action', action}</strong>" for action in extra_actions_red))).join ' '
+                    @info_container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', a) for a in data.data.actionsred.concat( ("<strong>#{exportObj.translate @language, 'action', action}</strong>" for action in extra_actions_red))).join ' '
 
                     @info_container.find('tr.info-actions-red').toggle(data.data.actionsred?)
                     
@@ -23745,7 +23757,7 @@ class exportObj.SquadBuilder
                     @info_container.find('tr.info-actions td.info-data').html (exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actions ? exportObj.ships[data.ship].actions)).join(' ')
     
                     if ships[data.ship].actionsred?
-                        @info_container.find('tr.info-actions-red td.info-data').html (exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actionsred ? exportObj.ships[data.ship].actionsred)).join(' ')
+                        @info_container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actionsred ? exportObj.ships[data.ship].actionsred)).join(' ')
                         @info_container.find('tr.info-actions-red').show()
                     else
                         @info_container.find('tr.info-actions-red').hide()
@@ -23801,26 +23813,6 @@ class exportObj.SquadBuilder
                     @info_container.find('p.info-maneuvers').hide()
             @info_container.show()
             @tooltip_currently_displaying = data
-            
-    parseActions: (actions) ->
-        actiontext = (exportObj.translate(@language, 'action', action) for action in (actions).join ' ')
-
-        actionhtml = actiontext
-            .replace(/%ASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>')
-            .replace(/%BULLSEYEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bullseyearc"></i>')
-            .replace(/%GUNNER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>')
-            .replace(/%SINGLETURRETARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>')
-            .replace(/%FRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>')
-            .replace(/%REARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reararc"></i>')
-            .replace(/%DEVICE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>')
-            .replace(/%FORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>')
-            .replace(/%CHARGE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>')
-            .replace(/%CALCULATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>')
-            .replace(/%BANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankleft"></i>')
-            .replace(/%BANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankright"></i>')
-            .replace(/%BARRELROLL%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>')
-
-        return actionhtml
         
     _randomizerLoopBody: (data) =>
         if data.keep_running and data.iterations < data.max_iterations
