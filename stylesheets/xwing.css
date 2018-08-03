@@ -71,9 +71,6 @@ td.info-header {
 i.xwing-miniatures-font {
   color: black; }
 
-i.red {
-  color: #EF232B; }
-
 i.xwing-miniatures-font-attack, i.xwing-miniatures-font-attack-turret, i.xwing-miniatures-font-attack-frontback, i.xwing-miniatures-font-attack-180 {
   color: #EF232B; }
 
@@ -121,6 +118,9 @@ i.xwing-miniatures-font-forcepower {
 
 .info-data.info-force {
   color: #9D899D; }
+
+r {
+  color: #EF232B; }
 
 .info-maneuvers table {
   table-layout: fixed;

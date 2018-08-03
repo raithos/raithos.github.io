@@ -1143,7 +1143,8 @@ exportObj.basicCardData = ->
             hull: 3
             shields: 2
             actions: [
-                "Focus > Barrel Roll"
+                "Focus" 
+                "<r>> Barrel Roll</r>"
                 "Target Lock"
                 "Barrel Roll"
             ]
@@ -1208,8 +1209,10 @@ exportObj.basicCardData = ->
             hull: 3
             shields: 2
             actions: [
-                "Focus > Rotate Arc"
-                "Target Lock > Rotate Arc"
+                "Focus"
+                "<r>> Rotate Arc</r>"
+                "Target Lock" 
+                "<r>> Rotate Arc</r>"
                 "Rotate Arc"
             ]
             actionsred: [
@@ -1254,7 +1257,8 @@ exportObj.basicCardData = ->
             hull: 4
             shields: 4
             actions: [
-                "Focus > Barrel Roll"
+                "Focus"
+                "<r>> Barrel Roll</r>"
                 "Target Lock"
                 "Barrel Roll"
             ]
@@ -1275,7 +1279,8 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Target Lock"
-                "Barrel Roll > Target Lock"
+                "Barrel Roll"
+                "<r>> Target Lock</r>"
             ]
             actionsred: [
                 "Reload"
@@ -1343,8 +1348,10 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Evade"
                 "Target Lock"
-                "Barrel Roll > Target Lock"
-                "Boost > Target Lock"
+                "Barrel Roll"
+                "<r>> Target Lock</r>"
+                "Boost"
+                "<r>> Target Lock</r>"
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0 ]
@@ -1431,8 +1438,10 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Target Lock"
-                "Barrel Roll > Focus"
-                "Boost > Focus"
+                "Barrel Roll"
+                "<r>> Focus</r>"
+                "Boost"
+                "<r>> Focus</r>"
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0]
@@ -1555,7 +1564,8 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Target Lock"
-                "Boost > Target Lock"
+                "Boost" 
+                "<r>> Target Lock</r>"
                 "Reload"
             ]
             actionsred: [
@@ -1598,7 +1608,8 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Evade"
-                "Barrel Roll > Evade"
+                "Barrel Roll"
+                "<r>> Evade</r>"
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0 ]
@@ -1618,8 +1629,10 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Evade"
                 "Target Lock"
-                "Barrel Roll > Focus"
-                "Boost > Focus"
+                "Barrel Roll"
+                "<r>> Focus</r>"
+                "Boost"
+                "<r>> Focus</r>"
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
@@ -1658,8 +1671,10 @@ exportObj.basicCardData = ->
             hull: 6
             shields: 3
             actions: [
-                "Focus > Rotate Arc"
-                "Target Lock > Rotate Arc"
+                "Focus"
+                "<r>> Rotate Arc</r>"
+                "Target Lock"
+                "<r>> Rotate Arc</r>"
             ]
             actionsred: [
                 "Barrel Roll"
@@ -1704,8 +1719,10 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Target Lock"
-                "Barrel Roll > Focus"
-                "Boost Focus"
+                "Barrel Roll"
+                "<r>> Focus</r>"
+                "Boost"
+                "<r>> Focus</r>"
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
@@ -1849,7 +1866,8 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Target Lock"
-                "Barrel Roll > Evade"
+                "Barrel Roll" 
+                "<r>> Evade</r>"
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
@@ -4112,6 +4130,7 @@ exportObj.basicCardData = ->
             slots: [
                 "Talent"
                 "Modification"
+                "Hardpoint"
               ]
         }
         {
@@ -4125,6 +4144,7 @@ exportObj.basicCardData = ->
             slots: [
                 "Talent"
                 "Modification"
+                "Hardpoint"
               ]
         }
         {
@@ -4138,6 +4158,7 @@ exportObj.basicCardData = ->
             slots: [
                 "Talent"
                 "Modification"
+                "Hardpoint"
               ]
         }
         {
@@ -4151,6 +4172,7 @@ exportObj.basicCardData = ->
             slots: [
                 "Talent"
                 "Modification"
+                "Hardpoint"
               ]
         }
         {
@@ -4163,6 +4185,7 @@ exportObj.basicCardData = ->
             slots: [
                 "Talent"
                 "Modification"
+                "Hardpoint"
               ]
         }
         {
@@ -4175,6 +4198,7 @@ exportObj.basicCardData = ->
             points: 32
             slots: [
                 "Modification"
+                "Hardpoint"
               ]
         }
         {
@@ -4187,6 +4211,7 @@ exportObj.basicCardData = ->
             points: 31
             slots: [
                 "Modification"
+                "Hardpoint"
               ]
         }
         {
@@ -4198,6 +4223,7 @@ exportObj.basicCardData = ->
             points: 29
             slots: [
                 "Modification"
+                "Hardpoint"
               ]
         }
         {
@@ -7053,6 +7079,42 @@ exportObj.basicCardData = ->
            faction: "Rebel Alliance"
            ship: "Attack Shuttle"
        }
+       {
+            name: "Hardpoint: Cannon"
+            id: 168
+            slot: "Hardpoint"
+            points: 0
+            confersAddons: [
+                {
+                    type: exportObj.Upgrade
+                    slot: "Cannon"
+                }
+            ]
+       }
+       {
+            name: "Hardpoint: Torpedo"
+            id: 169
+            slot: "Hardpoint"
+            points: 0
+            confersAddons: [
+                {
+                    type: exportObj.Upgrade
+                    slot: "Torpedo"
+                }
+            ]
+        }
+       {
+            name: "Hardpoint: Missle"
+            id: 170
+            slot: "Hardpoint"
+            points: 0
+            confersAddons: [
+                {
+                    type: exportObj.Upgrade
+                    slot: "Missle"
+                }
+            ]
+        }
     ]
     modificationsById: [
 
@@ -10583,6 +10645,8 @@ exportObj.cardLoaders.English = () ->
            text: """You can dock at range 0-1."""
         "Pivot Wing (Closed)":
            text: """While you defend, roll 1 fewer defense die. After you execute a [0 %STOP%] maneuver, you may rotate your ship 90˚ or 180˚. Before you activate, you may flip this card"""
+        "Pivot Wing (Open)":
+           text: """Before you activate, you may flip this card"""
         "Predator":
            text: """While you perform a primary attack, if the defender is in your %BULLSEYEARC%, you may reroll 1 attack die."""
         "Proton Bombs":
@@ -10635,6 +10699,8 @@ exportObj.cardLoaders.English = () ->
            text: """During the System Phase, you may choose 1 ship at range 0-1 and look at its dial. If you spend 1 %FORCE%, you may choose a ship at range 0-3 instead."""
         "Servomotor S-foils (Closed)":
            text: """While you perform a primary attack, roll 1 fewer attack die. Before you activate, you may flip this card"""
+        "Servomotor S-foils (Open)":
+           text: """Before you activate, you may flip this card"""
         "Seventh Sister":
            text: """If an enemy ship at range 0-1 would gain a stress token, you may spend 1 %FORCE% to have it gain 1 jam or tractor token instead."""
         "Shadow Caster":
@@ -23619,16 +23685,15 @@ class exportObj.SquadBuilder
                     else
                         @info_container.find('tr.info-force').hide()
                         
-                    @info_container.find('tr.info-actions td.info-data').html (exportObj.translate(@language, 'action', a) for a in data.data.actions.concat( ("<strong>#{exportObj.translate @language, 'action', action}</strong>" for action in extra_actions))).join ', '
+                    @info_container.find('tr.info-actions td.info-data').html (exportObj.translate(@language, 'action', a) for a in data.data.actions.concat( ("<strong>#{exportObj.translate @language, 'action', action}</strong>" for action in extra_actions))).join ' '
 
-                    
-                    @info_container.find('tr.info-actions-red td.info-data').html (exportObj.translate(@language, 'action', a) for a in data.data.actions.concat( ("<strong>#{exportObj.translate @language, 'action', actionsred}</strong>" for action in extra_actions_red))).join ', '
+                    @info_container.find('tr.info-actions-red td.info-data').html (exportObj.translate(@language, 'action', a) for a in data.data.actions.concat( ("<strong>#{exportObj.translate @language, 'action', action}</strong>" for action in extra_actions_red))).join ' '
 
                     @info_container.find('tr.info-actions-red').toggle(data.data.actionsred?)
                     
                     @info_container.find('tr.info-actions').show()
                     @info_container.find('tr.info-upgrades').show()
-                    @info_container.find('tr.info-upgrades td.info-data').text((exportObj.translate(@language, 'slot', slot) for slot in data.pilot.slots).join(', ') or 'None')
+                    @info_container.find('tr.info-upgrades td.info-data').text((exportObj.translate(@language, 'slot', slot) for slot in data.pilot.slots).join(' ') or 'None')
                     @info_container.find('p.info-maneuvers').show()
                     @info_container.find('p.info-maneuvers').html(@getManeuverTableHTML(effective_stats.maneuvers, data.data.maneuvers))
                 when 'Pilot'
@@ -23677,17 +23742,17 @@ class exportObj.SquadBuilder
                     else
                         @info_container.find('tr.info-force').hide()
                     
-                    @info_container.find('tr.info-actions td.info-data').text (exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actions ? exportObj.ships[data.ship].actions)).join(', ')
-                    
+                    @info_container.find('tr.info-actions td.info-data').html (exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actions ? exportObj.ships[data.ship].actions)).join(' ')
+    
                     if ships[data.ship].actionsred?
-                        @info_container.find('tr.info-actions-red td.info-data-red').text (exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actionsred ? exportObj.ships[data.ship].actionsred)).join(', ')
+                        @info_container.find('tr.info-actions-red td.info-data').html (exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actionsred ? exportObj.ships[data.ship].actionsred)).join(' ')
                         @info_container.find('tr.info-actions-red').show()
                     else
                         @info_container.find('tr.info-actions-red').hide()
 
                     @info_container.find('tr.info-actions').show()
                     @info_container.find('tr.info-upgrades').show()
-                    @info_container.find('tr.info-upgrades td.info-data').text((exportObj.translate(@language, 'slot', slot) for slot in data.slots).join(', ') or 'None')
+                    @info_container.find('tr.info-upgrades td.info-data').text((exportObj.translate(@language, 'slot', slot) for slot in data.slots).join(' ') or 'None')
                     @info_container.find('p.info-maneuvers').show()
                     @info_container.find('p.info-maneuvers').html(@getManeuverTableHTML(ship.maneuvers, ship.maneuvers))
                 when 'Addon'
@@ -23708,8 +23773,8 @@ class exportObj.SquadBuilder
                         @info_container.find('tr.info-energy').hide()
                     if data.attack?
                         # Attack icons on upgrade cards don't get special icons
-                        for cls in @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
-                            @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-frontarc')
+                    #    for cls in @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
+                    #        @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-frontarc')
                         @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass('xwing-miniatures-font-frontarc')
                         @info_container.find('tr.info-attack td.info-data').text data.attack
                         @info_container.find('tr.info-attack').show()
@@ -23737,6 +23802,26 @@ class exportObj.SquadBuilder
             @info_container.show()
             @tooltip_currently_displaying = data
             
+    parseActions: (actions) ->
+        actiontext = (exportObj.translate(@language, 'action', action) for action in (actions).join ' ')
+
+        actionhtml = actiontext
+            .replace(/%ASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>')
+            .replace(/%BULLSEYEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bullseyearc"></i>')
+            .replace(/%GUNNER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>')
+            .replace(/%SINGLETURRETARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>')
+            .replace(/%FRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>')
+            .replace(/%REARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reararc"></i>')
+            .replace(/%DEVICE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>')
+            .replace(/%FORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>')
+            .replace(/%CHARGE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>')
+            .replace(/%CALCULATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>')
+            .replace(/%BANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankleft"></i>')
+            .replace(/%BANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankright"></i>')
+            .replace(/%BARRELROLL%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>')
+
+        return actionhtml
+        
     _randomizerLoopBody: (data) =>
         if data.keep_running and data.iterations < data.max_iterations
             data.iterations++

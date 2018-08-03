@@ -1312,7 +1312,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 3,
         shields: 2,
-        actions: ["Focus > Barrel Roll", "Target Lock", "Barrel Roll"],
+        actions: ["Focus", "<r>> Barrel Roll</r>", "Target Lock", "Barrel Roll"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
       "TIE Interceptor": {
@@ -1345,7 +1345,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 3,
         shields: 2,
-        actions: ["Focus > Rotate Arc", "Target Lock > Rotate Arc", "Rotate Arc"],
+        actions: ["Focus", "<r>> Rotate Arc</r>", "Target Lock", "<r>> Rotate Arc</r>", "Rotate Arc"],
         actionsred: ["Boost", "Jam"],
         maneuvers: [[0, 0, 3, 0, 0], [0, 2, 2, 2, 0], [1, 1, 2, 1, 1], [3, 1, 1, 1, 3], [0, 0, 3, 0, 0]]
       },
@@ -1369,7 +1369,7 @@ exportObj.basicCardData = function() {
         agility: 1,
         hull: 4,
         shields: 4,
-        actions: ["Focus > Barrel Roll", "Target Lock", "Barrel Roll"],
+        actions: ["Focus", "<r>> Barrel Roll</r>", "Target Lock", "Barrel Roll"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 3, 0, 0, 0, 0], [0, 3, 1, 3, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
       },
       "TIE Bomber": {
@@ -1379,7 +1379,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 6,
         shields: 0,
-        actions: ["Focus", "Target Lock", "Barrel Roll > Target Lock"],
+        actions: ["Focus", "Target Lock", "Barrel Roll", "<r>> Target Lock</r>"],
         actionsred: ["Reload"],
         maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 3], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 3]]
       },
@@ -1411,7 +1411,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 3,
         shields: 3,
-        actions: ["Focus", "Evade", "Target Lock", "Barrel Roll > Target Lock", "Boost > Target Lock"],
+        actions: ["Focus", "Evade", "Target Lock", "Barrel Roll", "<r>> Target Lock</r>", "Boost", "<r>> Target Lock</r>"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
       },
       "TIE Phantom": {
@@ -1455,7 +1455,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 4,
         shields: 1,
-        actions: ["Focus", "Target Lock", "Barrel Roll > Focus", "Boost > Focus"],
+        actions: ["Focus", "Target Lock", "Barrel Roll", "<r>> Focus</r>", "Boost", "<r>> Focus</r>"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [0, 1, 2, 1, 0, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0]]
       },
       "M3-A Interceptor": {
@@ -1520,7 +1520,7 @@ exportObj.basicCardData = function() {
         hull: 6,
         shields: 3,
         medium: true,
-        actions: ["Focus", "Target Lock", "Boost > Target Lock", "Reload"],
+        actions: ["Focus", "Target Lock", "Boost", "<r>> Target Lock</r>", "Reload"],
         actionsred: ["Barrel Roll"],
         maneuvers: [[0, 0, 3, 0, 0, 0], [0, 2, 2, 2, 0, 0], [1, 1, 2, 1, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 0, 0, 0, 3]]
       },
@@ -1542,7 +1542,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 3,
         shields: 1,
-        actions: ["Focus", "Evade", "Barrel Roll > Evade"],
+        actions: ["Focus", "Evade", "Barrel Roll", "<r>> Evade</r>"],
         maneuvers: [[0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0], [1, 1, 2, 1, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 1, 0, 0, 3]]
       },
       "TIE Advanced Prototype": {
@@ -1552,7 +1552,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 2,
         shields: 2,
-        actions: ["Focus", "Evade", "Target Lock", "Barrel Roll > Focus", "Boost > Focus"],
+        actions: ["Focus", "Evade", "Target Lock", "Barrel Roll", "<r>> Focus</r>", "Boost", "<r>> Focus</r>"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 2, 0, 2, 2, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
       "G-1A Starfighter": {
@@ -1574,7 +1574,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 6,
         shields: 3,
-        actions: ["Focus > Rotate Arc", "Target Lock > Rotate Arc"],
+        actions: ["Focus", "<r>> Rotate Arc</r>", "Target Lock", "<r>> Rotate Arc</r>"],
         actionsred: ["Barrel Roll"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 1, 3, 0, 0, 0], [1, 2, 2, 1, 3, 0, 0, 0], [0, 2, 2, 1, 0, 0, 3, 0], [0, 0, 1, 0, 0, 3, 0, 0]]
       },
@@ -1598,7 +1598,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 4,
         shields: 0,
-        actions: ["Focus", "Target Lock", "Barrel Roll > Focus", "Boost Focus"],
+        actions: ["Focus", "Target Lock", "Barrel Roll", "<r>> Focus</r>", "Boost", "<r>> Focus</r>"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
       "Lancer-class Pursuit Craft": {
@@ -1676,7 +1676,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 4,
         shields: 1,
-        actions: ["Focus", "Target Lock", "Barrel Roll > Evade"],
+        actions: ["Focus", "Target Lock", "Barrel Roll", "<r>> Evade</r>"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
       },
       "Alpha-class Star Wing": {
@@ -2915,7 +2915,7 @@ exportObj.basicCardData = function() {
         ship: "M3-A Interceptor",
         skill: 5,
         points: 43,
-        slots: ["Talent", "Modification"]
+        slots: ["Talent", "Modification", "Hardpoint"]
       }, {
         name: "Genesis Red",
         id: 133,
@@ -2924,7 +2924,7 @@ exportObj.basicCardData = function() {
         ship: "M3-A Interceptor",
         skill: 4,
         points: 35,
-        slots: ["Talent", "Modification"]
+        slots: ["Talent", "Modification", "Hardpoint"]
       }, {
         name: "Laetin A'shera",
         id: 134,
@@ -2933,7 +2933,7 @@ exportObj.basicCardData = function() {
         ship: "M3-A Interceptor",
         skill: 3,
         points: 35,
-        slots: ["Talent", "Modification"]
+        slots: ["Talent", "Modification", "Hardpoint"]
       }, {
         name: "Quinn Jast",
         id: 135,
@@ -2942,7 +2942,7 @@ exportObj.basicCardData = function() {
         ship: "M3-A Interceptor",
         skill: 3,
         points: 35,
-        slots: ["Talent", "Modification"]
+        slots: ["Talent", "Modification", "Hardpoint"]
       }, {
         name: "Tansarii Point Veteran",
         id: 136,
@@ -2950,7 +2950,7 @@ exportObj.basicCardData = function() {
         ship: "M3-A Interceptor",
         skill: 3,
         points: 33,
-        slots: ["Talent", "Modification"]
+        slots: ["Talent", "Modification", "Hardpoint"]
       }, {
         name: "Inaldra",
         id: 137,
@@ -2959,7 +2959,7 @@ exportObj.basicCardData = function() {
         ship: "M3-A Interceptor",
         skill: 2,
         points: 32,
-        slots: ["Modification"]
+        slots: ["Modification", "Hardpoint"]
       }, {
         name: "Sunny Bounder",
         id: 138,
@@ -2968,7 +2968,7 @@ exportObj.basicCardData = function() {
         ship: "M3-A Interceptor",
         skill: 1,
         points: 31,
-        slots: ["Modification"]
+        slots: ["Modification", "Hardpoint"]
       }, {
         name: "Cartel Spacer",
         id: 139,
@@ -2976,7 +2976,7 @@ exportObj.basicCardData = function() {
         ship: "M3-A Interceptor",
         skill: 1,
         points: 29,
-        slots: ["Modification"]
+        slots: ["Modification", "Hardpoint"]
       }, {
         name: "Constable Zuvio",
         id: 140,
@@ -5155,6 +5155,39 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "Rebel Alliance",
         ship: "Attack Shuttle"
+      }, {
+        name: "Hardpoint: Cannon",
+        id: 168,
+        slot: "Hardpoint",
+        points: 0,
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: "Cannon"
+          }
+        ]
+      }, {
+        name: "Hardpoint: Torpedo",
+        id: 169,
+        slot: "Hardpoint",
+        points: 0,
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: "Torpedo"
+          }
+        ]
+      }, {
+        name: "Hardpoint: Missle",
+        id: 170,
+        slot: "Hardpoint",
+        points: 0,
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: "Missle"
+          }
+        ]
       }
     ],
     modificationsById: [],
@@ -9775,6 +9808,9 @@ exportObj.cardLoaders.English = function() {
     "Pivot Wing (Closed)": {
       text: "While you defend, roll 1 fewer defense die. After you execute a [0 %STOP%] maneuver, you may rotate your ship 90˚ or 180˚. Before you activate, you may flip this card"
     },
+    "Pivot Wing (Open)": {
+      text: "Before you activate, you may flip this card"
+    },
     "Predator": {
       text: "While you perform a primary attack, if the defender is in your %BULLSEYEARC%, you may reroll 1 attack die."
     },
@@ -9852,6 +9888,9 @@ exportObj.cardLoaders.English = function() {
     },
     "Servomotor S-foils (Closed)": {
       text: "While you perform a primary attack, roll 1 fewer attack die. Before you activate, you may flip this card"
+    },
+    "Servomotor S-foils (Open)": {
+      text: "Before you activate, you may flip this card"
     },
     "Seventh Sister": {
       text: "If an enemy ship at range 0-1 would gain a stress token, you may spend 1 %FORCE% to have it gain 1 jam or tractor token instead."
@@ -24879,7 +24918,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 22053
+                    lineno: 22119
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -25468,7 +25507,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 22681
+              lineno: 22747
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -26184,7 +26223,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 23307
+          lineno: 23373
         }));
         __iced_deferrals._fulfill();
       });
@@ -26196,7 +26235,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 23308
+            lineno: 23374
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -26767,7 +26806,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.showTooltip = function(type, data, additional_opts) {
-    var a, action, addon_count, cls, effective_stats, extra_actions, extra_actions_red, pilot_count, ship, ship_count, slot, _i, _len, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref40, _ref41, _ref42, _ref43, _ref44, _ref45, _ref46, _ref47, _ref48, _ref49, _ref5, _ref50, _ref51, _ref52, _ref53, _ref54, _ref55, _ref56, _ref57, _ref58, _ref59, _ref6, _ref60, _ref61, _ref7, _ref8, _ref9;
+    var a, action, addon_count, effective_stats, extra_actions, extra_actions_red, pilot_count, ship, ship_count, slot, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref40, _ref41, _ref42, _ref43, _ref44, _ref45, _ref46, _ref47, _ref48, _ref49, _ref5, _ref50, _ref51, _ref52, _ref53, _ref54, _ref55, _ref56, _ref57, _ref58, _ref59, _ref6, _ref60, _ref7, _ref8, _ref9;
     if (data !== this.tooltip_currently_displaying) {
       switch (type) {
         case 'Ship':
@@ -26832,7 +26871,7 @@ exportObj.SquadBuilder = (function() {
               _results.push(exportObj.translate(this.language, 'action', a));
             }
             return _results;
-          }).call(this)).join(', '));
+          }).call(this)).join(' '));
           this.info_container.find('tr.info-actions-red td.info-data').html(((function() {
             var _i, _len, _ref33, _results;
             _ref33 = data.data.actions.concat((function() {
@@ -26840,7 +26879,7 @@ exportObj.SquadBuilder = (function() {
               _results1 = [];
               for (_j = 0, _len = extra_actions_red.length; _j < _len; _j++) {
                 action = extra_actions_red[_j];
-                _results1.push("<strong>" + (exportObj.translate(this.language, 'action', actionsred)) + "</strong>");
+                _results1.push("<strong>" + (exportObj.translate(this.language, 'action', action)) + "</strong>");
               }
               return _results1;
             }).call(this));
@@ -26850,7 +26889,7 @@ exportObj.SquadBuilder = (function() {
               _results.push(exportObj.translate(this.language, 'action', a));
             }
             return _results;
-          }).call(this)).join(', '));
+          }).call(this)).join(' '));
           this.info_container.find('tr.info-actions-red').toggle(data.data.actionsred != null);
           this.info_container.find('tr.info-actions').show();
           this.info_container.find('tr.info-upgrades').show();
@@ -26863,7 +26902,7 @@ exportObj.SquadBuilder = (function() {
               _results.push(exportObj.translate(this.language, 'slot', slot));
             }
             return _results;
-          }).call(this)).join(', ') || 'None');
+          }).call(this)).join(' ') || 'None');
           this.info_container.find('p.info-maneuvers').show();
           this.info_container.find('p.info-maneuvers').html(this.getManeuverTableHTML(effective_stats.maneuvers, data.data.maneuvers));
           break;
@@ -26906,7 +26945,7 @@ exportObj.SquadBuilder = (function() {
           } else {
             this.info_container.find('tr.info-force').hide();
           }
-          this.info_container.find('tr.info-actions td.info-data').text(((function() {
+          this.info_container.find('tr.info-actions td.info-data').html(((function() {
             var _i, _len, _ref56, _ref57, _ref58, _results;
             _ref58 = (_ref56 = (_ref57 = data.ship_override) != null ? _ref57.actions : void 0) != null ? _ref56 : exportObj.ships[data.ship].actions;
             _results = [];
@@ -26915,9 +26954,9 @@ exportObj.SquadBuilder = (function() {
               _results.push(exportObj.translate(this.language, 'action', action));
             }
             return _results;
-          }).call(this)).join(', '));
+          }).call(this)).join(' '));
           if (ships[data.ship].actionsred != null) {
-            this.info_container.find('tr.info-actions-red td.info-data-red').text(((function() {
+            this.info_container.find('tr.info-actions-red td.info-data').html(((function() {
               var _i, _len, _ref56, _ref57, _ref58, _results;
               _ref58 = (_ref56 = (_ref57 = data.ship_override) != null ? _ref57.actionsred : void 0) != null ? _ref56 : exportObj.ships[data.ship].actionsred;
               _results = [];
@@ -26926,7 +26965,7 @@ exportObj.SquadBuilder = (function() {
                 _results.push(exportObj.translate(this.language, 'action', action));
               }
               return _results;
-            }).call(this)).join(', '));
+            }).call(this)).join(' '));
             this.info_container.find('tr.info-actions-red').show();
           } else {
             this.info_container.find('tr.info-actions-red').hide();
@@ -26942,7 +26981,7 @@ exportObj.SquadBuilder = (function() {
               _results.push(exportObj.translate(this.language, 'slot', slot));
             }
             return _results;
-          }).call(this)).join(', ') || 'None');
+          }).call(this)).join(' ') || 'None');
           this.info_container.find('p.info-maneuvers').show();
           this.info_container.find('p.info-maneuvers').html(this.getManeuverTableHTML(ship.maneuvers, ship.maneuvers));
           break;
@@ -26964,13 +27003,6 @@ exportObj.SquadBuilder = (function() {
             this.info_container.find('tr.info-energy').hide();
           }
           if (data.attack != null) {
-            _ref61 = this.info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList;
-            for (_i = 0, _len = _ref61.length; _i < _len; _i++) {
-              cls = _ref61[_i];
-              if (cls.startsWith('xwing-miniatures-font-frontarc')) {
-                this.info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls);
-              }
-            }
             this.info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass('xwing-miniatures-font-frontarc');
             this.info_container.find('tr.info-attack td.info-data').text(data.attack);
             this.info_container.find('tr.info-attack').show();
@@ -26999,6 +27031,22 @@ exportObj.SquadBuilder = (function() {
       this.info_container.show();
       return this.tooltip_currently_displaying = data;
     }
+  };
+
+  SquadBuilder.prototype.parseActions = function(actions) {
+    var action, actionhtml, actiontext;
+    actiontext = (function() {
+      var _i, _len, _ref, _results;
+      _ref = actions.join(' ');
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        action = _ref[_i];
+        _results.push(exportObj.translate(this.language, 'action', action));
+      }
+      return _results;
+    }).call(this);
+    actionhtml = actiontext.replace(/%ASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>').replace(/%BULLSEYEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bullseyearc"></i>').replace(/%GUNNER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>').replace(/%SINGLETURRETARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>').replace(/%FRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>').replace(/%REARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reararc"></i>').replace(/%DEVICE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>').replace(/%FORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>').replace(/%CHARGE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>').replace(/%CALCULATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>').replace(/%BANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankleft"></i>').replace(/%BANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankright"></i>').replace(/%BARRELROLL%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>');
+    return actionhtml;
   };
 
   SquadBuilder.prototype._randomizerLoopBody = function(data) {
@@ -27830,7 +27878,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 24268
+                      lineno: 24353
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -27904,7 +27952,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 24294
+                lineno: 24379
               })
             ]);
             __iced_deferrals._fulfill();
@@ -27951,7 +27999,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 24317
+              lineno: 24402
             }));
           }
         }
@@ -27960,7 +28008,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 24319
+              lineno: 24404
             }));
           }
         }
@@ -27969,7 +28017,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 24321
+              lineno: 24406
             }));
           }
         }
@@ -29038,7 +29086,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 25055
+                lineno: 25140
               })
             ]);
             __iced_deferrals._fulfill();
@@ -29157,7 +29205,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 25114
+                  lineno: 25199
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -29179,7 +29227,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 25118
+                    lineno: 25203
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -29269,7 +29317,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 25161
+            lineno: 25246
           }));
         }
         __iced_deferrals._fulfill();
