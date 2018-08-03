@@ -1335,7 +1335,7 @@ exportObj.basicCardData = function() {
         shields: 4,
         actions: ["Focus", "Target Lock", "Boost"],
         actionsred: ["Coordinate"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]],
         medium: true
       },
       "HWK-290": {
@@ -1724,12 +1724,11 @@ exportObj.basicCardData = function() {
       },
       "Escape Craft": {
         name: "Escape Craft",
-        factions: ["Scum and Villiany"],
+        factions: ["Scum and Villainy"],
         attack: 2,
         agility: 2,
         hull: 2,
         shields: 2,
-        charge: 3,
         actions: ["Focus", "Barrel Roll"],
         actionsred: ["Coordinate"],
         maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0], [3, 1, 2, 1, 0, 0, 0, 0], [0, 1, 1, 1, 3, 0, 0, 0]]
@@ -1955,7 +1954,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 5,
         points: 43,
-        slots: ["Talent", "Turret", "Torpedo", "Astromech", "Modification", "Astromech", "Gunner"]
+        slots: ["Talent", "Turret", "Torpedo", "Astromech", "Modification", "Device", "Gunner"]
       }, {
         name: "Horton Salm",
         id: 26,
@@ -1964,7 +1963,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 4,
         points: 38,
-        slots: ["Talent", "Turret", "Torpedo", "Astromech", "Modification", "Astromech", "Gunner"]
+        slots: ["Talent", "Turret", "Torpedo", "Astromech", "Modification", "Device", "Gunner"]
       }, {
         name: '"Dutch" Vander',
         id: 27,
@@ -1973,7 +1972,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 4,
         points: 42,
-        slots: ["Talent", "Turret", "Torpedo", "Astromech", "Modification", "Astromech", "Gunner"]
+        slots: ["Talent", "Turret", "Torpedo", "Astromech", "Modification", "Device", "Gunner"]
       }, {
         name: "Evaan Verlaine",
         id: 28,
@@ -1982,7 +1981,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 4,
         points: 36,
-        slots: ["Talent", "Turret", "Torpedo", "Astromech", "Modification", "Astromech", "Gunner"]
+        slots: ["Talent", "Turret", "Torpedo", "Astromech", "Modification", "Device", "Gunner"]
       }, {
         name: "Gold Squadron Veteran",
         id: 29,
@@ -1990,7 +1989,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 4,
         points: 34,
-        slots: ["Talent", "Turret", "Torpedo", "Astromech", "Modification", "Astromech", "Gunner"]
+        slots: ["Talent", "Turret", "Torpedo", "Astromech", "Modification", "Device", "Gunner"]
       }, {
         name: "Gray Squadron Bomber",
         id: 30,
@@ -1998,7 +1997,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 4,
         points: 32,
-        slots: ["Turret", "Torpedo", "Astromech", "Modification", "Astromech", "Gunner"]
+        slots: ["Turret", "Torpedo", "Astromech", "Modification", "Device", "Gunner"]
       }, {
         name: "Bodhi Rook",
         id: 31,
@@ -2175,7 +2174,7 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "Rebel Alliance",
         ship: "A-Wing",
-        skill: 3,
+        skill: 4,
         points: 40,
         slots: ["Talent", "Missile"]
       }, {
@@ -2210,7 +2209,7 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         ship: "Z-95 Headhunter",
         skill: 5,
-        points: 30,
+        points: 36,
         slots: ["Talent", "Missile", "Modification"]
       }, {
         name: "Lieutenant Blount",
@@ -2480,7 +2479,7 @@ exportObj.basicCardData = function() {
         id: 85,
         unique: true,
         faction: "Scum and Villainy",
-        ship: "Y-wing",
+        ship: "Y-Wing",
         skill: 5,
         points: 42,
         slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
@@ -2489,7 +2488,7 @@ exportObj.basicCardData = function() {
         id: 86,
         unique: true,
         faction: "Scum and Villainy",
-        ship: "Y-wing",
+        ship: "Y-Wing",
         skill: 4,
         points: 40,
         slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
@@ -2497,7 +2496,7 @@ exportObj.basicCardData = function() {
         name: "Hired Gun",
         id: 87,
         faction: "Scum and Villainy",
-        ship: "Y-wing",
+        ship: "Y-Wing",
         skill: 2,
         points: 34,
         slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
@@ -2505,7 +2504,7 @@ exportObj.basicCardData = function() {
         name: "Crymorah Goon",
         id: 88,
         faction: "Scum and Villainy",
-        ship: "Y-wing",
+        ship: "Y-Wing",
         skill: 4,
         points: 32,
         slots: ["Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
@@ -2517,7 +2516,13 @@ exportObj.basicCardData = function() {
         ship: "YT-1300",
         skill: 6,
         points: 54,
-        slots: ["Talent", "Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"]
+        slots: ["Talent", "Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"],
+        ship_override: {
+          attackdt: 2,
+          agility: 1,
+          hull: 8,
+          shields: 3
+        }
       }, {
         name: "Lando Calrissian (Scum)",
         id: 90,
@@ -2526,7 +2531,13 @@ exportObj.basicCardData = function() {
         ship: "YT-1300",
         skill: 4,
         points: 49,
-        slots: ["Talent", "Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"]
+        slots: ["Talent", "Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"],
+        ship_override: {
+          attackdt: 2,
+          agility: 1,
+          hull: 8,
+          shields: 3
+        }
       }, {
         name: "L3-37 (YT-1300)",
         id: 91,
@@ -2535,7 +2546,13 @@ exportObj.basicCardData = function() {
         ship: "YT-1300",
         skill: 2,
         points: 47,
-        slots: ["Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"]
+        slots: ["Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"],
+        ship_override: {
+          attackdt: 2,
+          agility: 1,
+          hull: 8,
+          shields: 3
+        }
       }, {
         name: "Freighter Captain",
         id: 92,
@@ -2543,7 +2560,13 @@ exportObj.basicCardData = function() {
         ship: "YT-1300",
         skill: 1,
         points: 46,
-        slots: ["Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"]
+        slots: ["Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"],
+        ship_override: {
+          attackdt: 2,
+          agility: 1,
+          hull: 8,
+          shields: 3
+        }
       }, {
         name: "Lando Calrissian (Scum) (Escape Craft)",
         id: 93,
@@ -4052,7 +4075,14 @@ exportObj.basicCardData = function() {
         points: 8,
         unique: true,
         faction: "Scum and Villainy",
-        charge: 4
+        charge: 4,
+        restriction_func: function(ship, upgrade_obj) {
+          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj);
+        },
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnotherUpgradeSlot();
+        },
+        also_occupies_upgrades: ["Crew"]
       }, {
         name: "Jyn Erso",
         id: 40,
@@ -4123,7 +4153,6 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 13,
         unique: true,
-        faction: "Scum and Villainy",
         charge: 1,
         restriction_func: function(ship) {
           var builder, t, thing, things, _ref;
@@ -4240,7 +4269,7 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 2,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.effectiveStats().actionsred, "Coordinate") >= 0;
+          return __indexOf.call(ship.data.actionsred, "Coordinate") >= 0;
         },
         modifier_func: function(stats) {
           if (__indexOf.call(stats.actions, 'Coordinate') < 0) {
@@ -4260,7 +4289,6 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 3,
         unique: true,
-        faction: "Scum and Villainy",
         restriction_func: function(ship) {
           var builder, t, thing, things, _ref;
           builder = ship.builder;
@@ -4310,7 +4338,14 @@ exportObj.basicCardData = function() {
         id: 67,
         slot: "Device",
         points: 5,
-        charge: 2
+        charge: 2,
+        restriction_func: function(ship, upgrade_obj) {
+          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj);
+        },
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnotherUpgradeSlot();
+        },
+        also_occupies_upgrades: ["Device"]
       }, {
         name: "Conner Nets",
         id: 68,
@@ -4380,7 +4415,6 @@ exportObj.basicCardData = function() {
         slot: "Gunner",
         points: 2,
         unique: true,
-        faction: "Scum and Villainy",
         restriction_func: function(ship) {
           var builder, t, thing, things, _ref;
           builder = ship.builder;
@@ -4627,7 +4661,7 @@ exportObj.basicCardData = function() {
         points: 3,
         variablebase: true,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.effectiveStats().actionsred, "Boost") >= 0;
+          return __indexOf.call(ship.data.actionsred, "Boost") >= 0;
         },
         modifier_func: function(stats) {
           if (__indexOf.call(stats.actions, 'Boost') < 0) {
@@ -4701,7 +4735,7 @@ exportObj.basicCardData = function() {
         slot: "Talent",
         points: 2,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.effectiveStats().actionsred, "Evade") >= 0;
+          return __indexOf.call(ship.data.actionsred, "Evade") >= 0;
         }
       }, {
         name: "Elusive",
@@ -4716,7 +4750,7 @@ exportObj.basicCardData = function() {
         points: 2,
         variablebase: true,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.effectiveStats().actionsred, "Barrel Roll") >= 0;
+          return __indexOf.call(ship.data.actionsred, "Barrel Roll") >= 0;
         },
         modifier_func: function(stats) {
           if (__indexOf.call(stats.actions, 'Barrel Roll') < 0) {
@@ -24425,6 +24459,13 @@ exportObj.manifestByExpansion = {
       type: 'ship',
       count: 1
     }
+  ],
+  "Lando Calrissian's Millenium Falcon": [
+    {
+      name: 'Escape Craft',
+      type: 'ship',
+      count: 1
+    }
   ]
 };
 
@@ -24839,7 +24880,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 22022
+                    lineno: 22054
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -25428,7 +25469,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 22650
+              lineno: 22682
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -26144,7 +26185,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 23276
+          lineno: 23308
         }));
         __iced_deferrals._fulfill();
       });
@@ -26156,7 +26197,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 23277
+            lineno: 23309
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -26637,7 +26678,7 @@ exportObj.SquadBuilder = (function() {
               case 1:
                 return "white";
               case 2:
-                return "aqua";
+                return "#7ED3E5";
               case 3:
                 return "red";
             }
@@ -27790,7 +27831,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 24237
+                      lineno: 24269
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -27864,7 +27905,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 24263
+                lineno: 24295
               })
             ]);
             __iced_deferrals._fulfill();
@@ -27911,7 +27952,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 24286
+              lineno: 24318
             }));
           }
         }
@@ -27920,7 +27961,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 24288
+              lineno: 24320
             }));
           }
         }
@@ -27929,7 +27970,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 24290
+              lineno: 24322
             }));
           }
         }
@@ -28998,7 +29039,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 25024
+                lineno: 25056
               })
             ]);
             __iced_deferrals._fulfill();
@@ -29117,7 +29158,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 25083
+                  lineno: 25115
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -29139,7 +29180,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 25087
+                    lineno: 25119
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -29229,7 +29270,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 25130
+            lineno: 25162
           }));
         }
         __iced_deferrals._fulfill();
