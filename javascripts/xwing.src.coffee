@@ -1191,7 +1191,7 @@ exportObj.basicCardData = ->
                 "Boost"
             ]
             actionsred: [
-                "Coordinate"
+                "Reinforce"
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -3852,6 +3852,7 @@ exportObj.basicCardData = ->
             points: 64
             slots: [
                 "Talent"
+                "Crew"
                 "Torpedo"
                 "Illicit"
                 "Modification"
@@ -3868,6 +3869,7 @@ exportObj.basicCardData = ->
             points: 60
             slots: [
                 "Talent"
+                "Crew"
                 "Torpedo"
                 "Illicit"
                 "Modification"
@@ -3884,6 +3886,7 @@ exportObj.basicCardData = ->
             points: 56
             slots: [
                 "Talent"
+                "Crew"
                 "Torpedo"
                 "Illicit"
                 "Modification"
@@ -3899,6 +3902,7 @@ exportObj.basicCardData = ->
             points: 52
             slots: [
                 "Torpedo"
+                "Crew"
                 "Illicit"
                 "Modification"
                 "Title"
@@ -5606,7 +5610,7 @@ exportObj.basicCardData = ->
             faction: "Scum and Villainy"
             ship: "HWK-290"
             skill: 4
-            points: 36
+            points: 32
             slots: [
                 "Crew"
                 "Device"
