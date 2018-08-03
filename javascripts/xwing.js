@@ -9838,7 +9838,7 @@ exportObj.cardLoaders.English = function() {
       text: "Bomb During the System Phase, you may spend 1 %CHARGE% to drop a Proton Bomb using the [1 %STRAIGHT%] template."
     },
     "Proton Rockets": {
-      text: "%BULLSEYEARC% only. Attack (%FOCUS%): Spend 1 %CHARGE%."
+      text: "Attack (%FOCUS%): Spend 1 %CHARGE%."
     },
     "Proton Torpedoes": {
       text: "Attack (%LOCK%): Spend 1 %CHARGE%. Change 1 %HIT% result to a %CRIT% result."
@@ -28345,13 +28345,15 @@ Ship = (function() {
           case 'Reload':
             return "<i class=\"xwing-miniatures-font xwing-miniatures-font-reload\"></i>";
           case "<r>> Target Lock</r>":
-            return "<r>> <i class=\"xwing-miniatures-font r xwing-miniatures-font-lock\"></i></r>";
+            return "<r>> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-lock\"></i></r>";
+          case "<r>> Barrel Roll</r>":
+            return "<r>> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-barrelroll\"></i></r>";
           case "<r>> Focus</r>":
-            return "<r>> <i class=\"xwing-miniatures-font r xwing-miniatures-font-focus\"></i></r>";
+            return "<r>> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-focus\"></i></r>";
           case "<r>> Rotate Arc</r>":
-            return "<r>> <i class=\"xwing-miniatures-font r xwing-miniatures-font-rotatearc\"></i></r>";
+            return "<r>> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-rotatearc\"></i></r>";
           case "<r>> Evade</r>":
-            return "<r>> <i class=\"xwing-miniatures-font r xwing-miniatures-font-evade\"></i></r>";
+            return "<r>> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-evade\"></i></r>";
           default:
             return "<span>&nbsp;" + action + "<span>";
         }
@@ -29139,7 +29141,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 25202
+                lineno: 25204
               })
             ]);
             __iced_deferrals._fulfill();
@@ -29259,7 +29261,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 25264
+                  lineno: 25266
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -29281,7 +29283,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 25268
+                    lineno: 25270
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -29371,7 +29373,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 25311
+            lineno: 25313
           }));
         }
         __iced_deferrals._fulfill();
@@ -29441,7 +29443,7 @@ GenericAddon = (function() {
         restriction_html = '';
         text_str = this.data.text;
       }
-      attackHTML = (this.data.attack != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attack + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-frontarc\"></i>\n</div>") : '';
+      attackHTML = (this.data.attack != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attack + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-frontarc\"></i>\n</div>") : (this.data.attackt != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attackt + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-singleturretarc\"></i>\n</div>") : (this.data.attackbull != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attackbull + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-bullseyearc\"></i>\n</div>") : '';
       energyHTML = (this.data.energy != null) ? $.trim("<div class=\"upgrade-energy\">\n    <span class=\"info-data info-energy\">" + this.data.energy + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-energy\"></i>\n</div>") : '';
       return $.trim("<div class=\"upgrade-container\">\n    <div class=\"upgrade-stats\">\n        <div class=\"upgrade-name\"><i class=\"xwing-miniatures-font xwing-miniatures-font-" + upgrade_slot_font + "\"></i>" + this.data.name + "</div>\n        <div class=\"mask\">\n            <div class=\"outer-circle\">\n                <div class=\"inner-circle upgrade-points\">" + this.data.points + "</div>\n            </div>\n        </div>\n        " + restriction_html + "\n    </div>\n    " + attackHTML + "\n    " + energyHTML + "\n    <div class=\"upgrade-text\">" + text_str + "</div>\n    <div style=\"clear: both;\"></div>\n</div>");
     } else {
