@@ -9860,7 +9860,7 @@ exportObj.cardLoaders.English = function() {
       text: "After you perform an attack that hits, if the defender is in your %SINGLETURRETARC% and your %FRONTARC%, the defender gains 1 tractor token."
     },
     "Shield Upgrade": {
-      text: "Add 1 Hull Point"
+      text: "Add 1 Shield Point"
     },
     "Skilled Bombardier": {
       text: "If you would drop or launch a device, you may use a template of the same bearing with a speed 1 higher or lower."
@@ -9887,7 +9887,7 @@ exportObj.cardLoaders.English = function() {
       text: "At the start of the Engagement Phase, you may choose 1 friendly ship at range 1. If you do, that ship treats its initiative as equal to yours until the end of the round."
     },
     "Tactical Officer": {
-      text: "Add a white %BOOST%"
+      text: "Add a white %COORDINATE%"
     },
     "Tactical Scrambler": {
       text: "While you obstruct an enemy ship's attack, the defender rolls 1 additional defense die."
@@ -28765,7 +28765,7 @@ Ship = (function() {
       shields: (_ref14 = (_ref15 = this.pilot.ship_override) != null ? _ref15.shields : void 0) != null ? _ref14 : this.data.shields,
       force: (_ref16 = (_ref17 = this.pilot.ship_override) != null ? _ref17.force : void 0) != null ? _ref16 : this.pilot.force,
       actions: ((_ref18 = (_ref19 = this.pilot.ship_override) != null ? _ref19.actions : void 0) != null ? _ref18 : this.data.actions).slice(0),
-      actionsred: ((_ref20 = (_ref21 = (_ref22 = this.pilot.ship_override) != null ? _ref22.actionsred : void 0) != null ? _ref21 : this.data.actionsred) != null ? _ref20 : "").slice(1)
+      actionsred: ((_ref20 = (_ref21 = (_ref22 = this.pilot.ship_override) != null ? _ref22.actionsred : void 0) != null ? _ref21 : this.data.actionsred) != null ? _ref20 : []).slice(0)
     };
     stats.maneuvers = [];
     for (s = _i = 0, _ref23 = ((_ref24 = this.data.maneuvers) != null ? _ref24 : []).length; 0 <= _ref23 ? _i < _ref23 : _i > _ref23; s = 0 <= _ref23 ? ++_i : --_i) {
