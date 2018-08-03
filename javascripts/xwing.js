@@ -9860,7 +9860,7 @@ exportObj.cardLoaders.English = function() {
       text: "After you perform an attack that hits, if the defender is in your %SINGLETURRETARC% and your %FRONTARC%, the defender gains 1 tractor token."
     },
     "Shield Upgrade": {
-      text: "Add 1 Shield Point"
+      text: "Add 1 Hull Point"
     },
     "Skilled Bombardier": {
       text: "If you would drop or launch a device, you may use a template of the same bearing with a speed 1 higher or lower."
@@ -9887,7 +9887,7 @@ exportObj.cardLoaders.English = function() {
       text: "At the start of the Engagement Phase, you may choose 1 friendly ship at range 1. If you do, that ship treats its initiative as equal to yours until the end of the round."
     },
     "Tactical Officer": {
-      text: "Add a white %COORDINATE%"
+      text: "Add a white %BOOST%"
     },
     "Tactical Scrambler": {
       text: "While you obstruct an enemy ship's attack, the defender rolls 1 additional defense die."
@@ -28752,7 +28752,7 @@ Ship = (function() {
   };
 
   Ship.prototype.effectiveStats = function() {
-    var modification, s, stats, title, upgrade, _i, _j, _k, _l, _len, _len1, _len2, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var modification, s, stats, title, upgrade, _i, _j, _k, _l, _len, _len1, _len2, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     stats = {
       skill: this.pilot.skill,
       attack: (_ref = (_ref1 = this.pilot.ship_override) != null ? _ref1.attack : void 0) != null ? _ref : this.data.attack,
@@ -28765,34 +28765,34 @@ Ship = (function() {
       shields: (_ref14 = (_ref15 = this.pilot.ship_override) != null ? _ref15.shields : void 0) != null ? _ref14 : this.data.shields,
       force: (_ref16 = (_ref17 = this.pilot.ship_override) != null ? _ref17.force : void 0) != null ? _ref16 : this.pilot.force,
       actions: ((_ref18 = (_ref19 = this.pilot.ship_override) != null ? _ref19.actions : void 0) != null ? _ref18 : this.data.actions).slice(0),
-      actionsred: ((_ref20 = (_ref21 = this.pilot.ship_override) != null ? _ref21.actionsred : void 0) != null ? _ref20 : this.data.actionsred).slice(0)
+      actionsred: ((_ref20 = (_ref21 = (_ref22 = this.pilot.ship_override) != null ? _ref22.actionsred : void 0) != null ? _ref21 : this.data.actionsred) != null ? _ref20 : "").slice(1)
     };
     stats.maneuvers = [];
-    for (s = _i = 0, _ref22 = ((_ref23 = this.data.maneuvers) != null ? _ref23 : []).length; 0 <= _ref22 ? _i < _ref22 : _i > _ref22; s = 0 <= _ref22 ? ++_i : --_i) {
+    for (s = _i = 0, _ref23 = ((_ref24 = this.data.maneuvers) != null ? _ref24 : []).length; 0 <= _ref23 ? _i < _ref23 : _i > _ref23; s = 0 <= _ref23 ? ++_i : --_i) {
       stats.maneuvers[s] = this.data.maneuvers[s].slice(0);
     }
-    _ref24 = this.upgrades;
-    for (_j = 0, _len = _ref24.length; _j < _len; _j++) {
-      upgrade = _ref24[_j];
-      if ((upgrade != null ? (_ref25 = upgrade.data) != null ? _ref25.modifier_func : void 0 : void 0) != null) {
+    _ref25 = this.upgrades;
+    for (_j = 0, _len = _ref25.length; _j < _len; _j++) {
+      upgrade = _ref25[_j];
+      if ((upgrade != null ? (_ref26 = upgrade.data) != null ? _ref26.modifier_func : void 0 : void 0) != null) {
         upgrade.data.modifier_func(stats);
       }
     }
-    _ref26 = this.titles;
-    for (_k = 0, _len1 = _ref26.length; _k < _len1; _k++) {
-      title = _ref26[_k];
-      if ((title != null ? (_ref27 = title.data) != null ? _ref27.modifier_func : void 0 : void 0) != null) {
+    _ref27 = this.titles;
+    for (_k = 0, _len1 = _ref27.length; _k < _len1; _k++) {
+      title = _ref27[_k];
+      if ((title != null ? (_ref28 = title.data) != null ? _ref28.modifier_func : void 0 : void 0) != null) {
         title.data.modifier_func(stats);
       }
     }
-    _ref28 = this.modifications;
-    for (_l = 0, _len2 = _ref28.length; _l < _len2; _l++) {
-      modification = _ref28[_l];
-      if ((modification != null ? (_ref29 = modification.data) != null ? _ref29.modifier_func : void 0 : void 0) != null) {
+    _ref29 = this.modifications;
+    for (_l = 0, _len2 = _ref29.length; _l < _len2; _l++) {
+      modification = _ref29[_l];
+      if ((modification != null ? (_ref30 = modification.data) != null ? _ref30.modifier_func : void 0 : void 0) != null) {
         modification.data.modifier_func(stats);
       }
     }
-    if (((_ref30 = this.pilot) != null ? _ref30.modifier_func : void 0) != null) {
+    if (((_ref31 = this.pilot) != null ? _ref31.modifier_func : void 0) != null) {
       this.pilot.modifier_func(stats);
     }
     return stats;
