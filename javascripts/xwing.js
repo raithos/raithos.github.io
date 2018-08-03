@@ -2120,11 +2120,9 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         ship: "YT-1300",
         skill: 4,
+        charge: 1,
         points: 84,
-        slots: ["Talent", "Missile", "Gunner", "Crew", "Crew", "Modification", "Title", "Illicit"],
-        ship_override: {
-          charge: 1
-        }
+        slots: ["Talent", "Missile", "Gunner", "Crew", "Crew", "Modification", "Title", "Illicit"]
       }, {
         name: "Outer Rim Smuggler",
         id: 45,
@@ -5201,14 +5199,14 @@ exportObj.basicCardData = function() {
           }
         ]
       }, {
-        name: "Hardpoint: Missle",
+        name: "Hardpoint: Missile",
         id: 170,
         slot: "Hardpoint",
         points: 0,
         confersAddons: [
           {
             type: exportObj.Upgrade,
-            slot: "Missle"
+            slot: "Missile"
           }
         ]
       }
@@ -9989,6 +9987,15 @@ exportObj.cardLoaders.English = function() {
     },
     'GNK "Gonk" Droid': {
       text: "Setup: Lose 1 %CHARGE%. Action: Recover 1 %CHARGE%. Action: Spend 1 %CHARGE% to recover 1 shield."
+    },
+    "Hardpoint: Cannon": {
+      text: "Adds a %CANNON% slot"
+    },
+    "Hardpoint: Missile": {
+      text: "Adds a %MISSILE% slot"
+    },
+    "Hardpoint: Torpedo": {
+      text: "Adds a %TORPEDO% slot"
     }
   };
   return modification_translations = title_translations = condition_translations = exportObj.setupCardData(basic_cards, pilot_translations, upgrade_translations, modification_translations, title_translations, condition_translations);
@@ -24941,7 +24948,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 22131
+                    lineno: 22136
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -25530,7 +25537,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 22759
+              lineno: 22764
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -25569,7 +25576,7 @@ exportObj.SquadBuilder = (function() {
     this.obstacles_container = content_container.find('.obstacles-container');
     this.notes_container = $(content_container.find('.notes-container'));
     this.notes = $(this.notes_container.find('textarea.squad-notes'));
-    this.info_container.append($.trim("<div class=\"well well-small info-well\">\n    <span class=\"info-name\"></span>\n    <br />\n    <span class=\"info-sources\"></span>\n    <br />\n    <span class=\"info-collection\"></span>\n    <table>\n        <tbody>\n            <tr class=\"info-ship\">\n                <td class=\"info-header\">Ship</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-skill\">\n                <td class=\"info-header\">Skill</td>\n                <td class=\"info-data info-skill\"></td>\n            </tr>\n            <tr class=\"info-energy\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-energy\"></i></td>\n                <td class=\"info-data info-energy\"></td>\n            </tr>\n            <tr class=\"info-attack\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-frontarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-back\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-reararc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-turret\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-singleturretarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-doubleturret\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-doubleturretarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-range\">\n                <td class=\"info-header\">Range</td>\n                <td class=\"info-data info-range\"></td>\n            </tr>\n            <tr class=\"info-agility\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-agility\"></i></td>\n                <td class=\"info-data info-agility\"></td>\n            </tr>\n            <tr class=\"info-hull\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-hull\"></i></td>\n                <td class=\"info-data info-hull\"></td>\n            </tr>\n            <tr class=\"info-shields\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-shield\"></i></td>\n                <td class=\"info-data info-shields\"></td>\n            </tr>\n            <tr class=\"info-force\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font xwing-miniatures-font-forcepower\"></i></td>\n                <td class=\"info-data info-force\"></td>\n            </tr>\n            <tr class=\"info-actions\">\n                <td class=\"info-header\">Actions</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-actions-red\">\n                <td></td>\n                <td class=\"info-data-red\"></td>\n            </tr>\n            <tr class=\"info-upgrades\">\n                <td class=\"info-header\">Upgrades</td>\n                <td class=\"info-data\"></td>\n            </tr>\n        </tbody>\n    </table>\n    <p class=\"info-text\" />\n    <p class=\"info-maneuvers\" />\n</div>"));
+    this.info_container.append($.trim("<div class=\"well well-small info-well\">\n    <span class=\"info-name\"></span>\n    <br />\n    <span class=\"info-sources\"></span>\n    <br />\n    <span class=\"info-collection\"></span>\n    <table>\n        <tbody>\n            <tr class=\"info-ship\">\n                <td class=\"info-header\">Ship</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-skill\">\n                <td class=\"info-header\">Skill</td>\n                <td class=\"info-data info-skill\"></td>\n            </tr>\n            <tr class=\"info-energy\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                <td class=\"info-data info-energy\"></td>\n            </tr>\n            <tr class=\"info-attack\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-back\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-turret\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-doubleturret\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-range\">\n                <td class=\"info-header\">Range</td>\n                <td class=\"info-data info-range\"></td>\n            </tr>\n            <tr class=\"info-agility\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                <td class=\"info-data info-agility\"></td>\n            </tr>\n            <tr class=\"info-hull\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                <td class=\"info-data info-hull\"></td>\n            </tr>\n            <tr class=\"info-shields\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                <td class=\"info-data info-shields\"></td>\n            </tr>\n            <tr class=\"info-force\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcepower\"></i></td>\n                <td class=\"info-data info-force\"></td>\n            </tr>\n            <tr class=\"info-charge\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                <td class=\"info-data info-charge\"></td>\n            </tr>\n            <tr class=\"info-actions\">\n                <td class=\"info-header\">Actions</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-actions-red\">\n                <td></td>\n                <td class=\"info-data-red\"></td>\n            </tr>\n            <tr class=\"info-upgrades\">\n                <td class=\"info-header\">Upgrades</td>\n                <td class=\"info-data\"></td>\n            </tr>\n        </tbody>\n    </table>\n    <p class=\"info-text\" />\n    <p class=\"info-maneuvers\" />\n</div>"));
     this.info_container.hide();
     this.print_list_button = $(this.container.find('button.print-list'));
     this.container.find('[rel=tooltip]').tooltip();
@@ -26246,7 +26253,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 23385
+          lineno: 23394
         }));
         __iced_deferrals._fulfill();
       });
@@ -26258,7 +26265,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 23386
+            lineno: 23395
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -26829,7 +26836,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.showTooltip = function(type, data, additional_opts) {
-    var a, action, addon_count, effective_stats, extra_actions, extra_actions_red, pilot_count, ship, ship_count, slot, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref40, _ref41, _ref42, _ref43, _ref44, _ref45, _ref46, _ref47, _ref48, _ref49, _ref5, _ref50, _ref51, _ref52, _ref53, _ref54, _ref55, _ref56, _ref57, _ref58, _ref59, _ref6, _ref60, _ref7, _ref8, _ref9;
+    var a, action, addon_count, effective_stats, extra_actions, extra_actions_red, pilot_count, ship, ship_count, slot, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref40, _ref41, _ref42, _ref43, _ref44, _ref45, _ref46, _ref47, _ref48, _ref49, _ref5, _ref50, _ref51, _ref52, _ref53, _ref54, _ref55, _ref56, _ref57, _ref58, _ref59, _ref6, _ref60, _ref61, _ref62, _ref63, _ref64, _ref65, _ref66, _ref7, _ref8, _ref9;
     if (data !== this.tooltip_currently_displaying) {
       switch (type) {
         case 'Ship':
@@ -26877,9 +26884,11 @@ exportObj.SquadBuilder = (function() {
           } else {
             this.info_container.find('tr.info-force').hide();
           }
+          this.info_container.find('tr.info-charge td.info-data').text(statAndEffectiveStat((_ref33 = (_ref34 = data.pilot.ship_override) != null ? _ref34.charge : void 0) != null ? _ref33 : data.pilot.charge, effective_stats, 'charge'));
+          this.info_container.find('tr.info-charge').toggle((((_ref35 = data.pilot.ship_override) != null ? _ref35.charge : void 0) != null) || (data.pilot.charge != null));
           this.info_container.find('tr.info-actions td.info-data').html(((function() {
-            var _i, _len, _ref33, _results;
-            _ref33 = data.data.actions.concat((function() {
+            var _i, _len, _ref36, _results;
+            _ref36 = data.data.actions.concat((function() {
               var _j, _len, _results1;
               _results1 = [];
               for (_j = 0, _len = extra_actions.length; _j < _len; _j++) {
@@ -26889,39 +26898,42 @@ exportObj.SquadBuilder = (function() {
               return _results1;
             }).call(this));
             _results = [];
-            for (_i = 0, _len = _ref33.length; _i < _len; _i++) {
-              a = _ref33[_i];
+            for (_i = 0, _len = _ref36.length; _i < _len; _i++) {
+              a = _ref36[_i];
               _results.push(exportObj.translate(this.language, 'action', a));
             }
             return _results;
           }).call(this)).join(' '));
-          this.info_container.find('tr.info-actions-red td.info-data-red').html(((function() {
-            var _i, _len, _ref33, _results;
-            _ref33 = data.data.actionsred.concat((function() {
-              var _j, _len, _results1;
-              _results1 = [];
-              for (_j = 0, _len = extra_actions_red.length; _j < _len; _j++) {
-                action = extra_actions_red[_j];
-                _results1.push("<strong>" + (exportObj.translate(this.language, 'action', action)) + "</strong>");
+          if (data.data.actionsred != null) {
+            this.info_container.find('tr.info-actions-red td.info-data-red').html(((function() {
+              var _i, _len, _ref36, _results;
+              _ref36 = data.data.actionsred.concat((function() {
+                var _j, _len, _results1;
+                _results1 = [];
+                for (_j = 0, _len = extra_actions_red.length; _j < _len; _j++) {
+                  action = extra_actions_red[_j];
+                  _results1.push("<strong>" + (exportObj.translate(this.language, 'action', action)) + "</strong>");
+                }
+                return _results1;
+              }).call(this));
+              _results = [];
+              for (_i = 0, _len = _ref36.length; _i < _len; _i++) {
+                a = _ref36[_i];
+                _results.push(exportObj.translate(this.language, 'action', a));
               }
-              return _results1;
-            }).call(this));
-            _results = [];
-            for (_i = 0, _len = _ref33.length; _i < _len; _i++) {
-              a = _ref33[_i];
-              _results.push(exportObj.translate(this.language, 'action', a));
-            }
-            return _results;
-          }).call(this)).join(' '));
+              return _results;
+            }).call(this)).join(' '));
+          }
           this.info_container.find('tr.info-actions-red').toggle(data.data.actionsred != null);
           this.info_container.find('tr.info-actions').show();
+          this.info_container.find('tr.info-charge').hide();
           this.info_container.find('tr.info-upgrades').show();
           this.info_container.find('tr.info-upgrades td.info-data').text(((function() {
-            var _i, _len, _ref33, _results;
-            _ref33 = data.pilot.slots;
+            var _i, _len, _ref36, _results;
+            _ref36 = data.pilot.slots;
             _results = [];
-            for (_i = 0, _len = _ref33.length; _i < _len; _i++) {
-              slot = _ref33[_i];
+            for (_i = 0, _len = _ref36.length; _i < _len; _i++) {
+              slot = _ref36[_i];
               _results.push(exportObj.translate(this.language, 'slot', slot));
             }
             return _results;
@@ -26930,61 +26942,67 @@ exportObj.SquadBuilder = (function() {
           this.info_container.find('p.info-maneuvers').html(this.getManeuverTableHTML(effective_stats.maneuvers, data.data.maneuvers));
           break;
         case 'Pilot':
-          if (((_ref33 = this.collection) != null ? _ref33.counts : void 0) != null) {
-            pilot_count = (_ref34 = (_ref35 = this.collection.counts) != null ? (_ref36 = _ref35.pilot) != null ? _ref36[data.english_name] : void 0 : void 0) != null ? _ref34 : 0;
-            ship_count = (_ref37 = (_ref38 = this.collection.counts.ship) != null ? _ref38[additional_opts.ship] : void 0) != null ? _ref37 : 0;
+          if (((_ref36 = this.collection) != null ? _ref36.counts : void 0) != null) {
+            pilot_count = (_ref37 = (_ref38 = this.collection.counts) != null ? (_ref39 = _ref38.pilot) != null ? _ref39[data.english_name] : void 0 : void 0) != null ? _ref37 : 0;
+            ship_count = (_ref40 = (_ref41 = this.collection.counts.ship) != null ? _ref41[additional_opts.ship] : void 0) != null ? _ref40 : 0;
             this.info_container.find('.info-collection').text("You have " + ship_count + " ship model" + (ship_count > 1 ? 's' : '') + " and " + pilot_count + " pilot card" + (pilot_count > 1 ? 's' : '') + " in your collection.");
           } else {
             this.info_container.find('.info-collection').text('');
           }
           this.info_container.find('.info-name').html("" + (data.unique ? "&middot;&nbsp;" : "") + data.name + (data.epic != null ? " (" + (exportObj.translate(this.language, 'ui', 'epic')) + ")" : "") + (exportObj.isReleased(data) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
-          this.info_container.find('p.info-text').html((_ref39 = data.text) != null ? _ref39 : '');
+          this.info_container.find('p.info-text').html((_ref42 = data.text) != null ? _ref42 : '');
           ship = exportObj.ships[data.ship];
           this.info_container.find('tr.info-ship td.info-data').text(data.ship);
           this.info_container.find('tr.info-ship').show();
           this.info_container.find('tr.info-skill td.info-data').text(data.skill);
           this.info_container.find('tr.info-skill').show();
-          this.info_container.find('tr.info-attack td.info-data').text((_ref40 = (_ref41 = data.ship_override) != null ? _ref41.attack : void 0) != null ? _ref40 : ship.attack);
-          this.info_container.find('tr.info-attack').toggle((((_ref42 = data.ship_override) != null ? _ref42.attack : void 0) != null) || (ship.attack != null));
+          this.info_container.find('tr.info-attack td.info-data').text((_ref43 = (_ref44 = data.ship_override) != null ? _ref44.attack : void 0) != null ? _ref43 : ship.attack);
+          this.info_container.find('tr.info-attack').toggle((((_ref45 = data.ship_override) != null ? _ref45.attack : void 0) != null) || (ship.attack != null));
           this.info_container.find('tr.info-attack-back td.info-data').text(ship.attackb);
           this.info_container.find('tr.info-attack-back').toggle(ship.attackb != null);
           this.info_container.find('tr.info-attack-turret td.info-data').text(ship.attackt);
           this.info_container.find('tr.info-attack-turret').toggle(ship.attackt != null);
           this.info_container.find('tr.info-attack-doubleturret td.info-data').text(ship.attackdt);
           this.info_container.find('tr.info-attack-doubleturret').toggle(ship.attackdt != null);
-          this.info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass((_ref43 = ship.attack_icon) != null ? _ref43 : 'xwing-miniatures-font-frontarc');
-          this.info_container.find('tr.info-energy td.info-data').text((_ref44 = (_ref45 = data.ship_override) != null ? _ref45.energy : void 0) != null ? _ref44 : ship.energy);
-          this.info_container.find('tr.info-energy').toggle((((_ref46 = data.ship_override) != null ? _ref46.energy : void 0) != null) || (ship.energy != null));
+          this.info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass((_ref46 = ship.attack_icon) != null ? _ref46 : 'xwing-miniatures-font-frontarc');
+          this.info_container.find('tr.info-energy td.info-data').text((_ref47 = (_ref48 = data.ship_override) != null ? _ref48.energy : void 0) != null ? _ref47 : ship.energy);
+          this.info_container.find('tr.info-energy').toggle((((_ref49 = data.ship_override) != null ? _ref49.energy : void 0) != null) || (ship.energy != null));
           this.info_container.find('tr.info-range').hide();
-          this.info_container.find('tr.info-agility td.info-data').text((_ref47 = (_ref48 = data.ship_override) != null ? _ref48.agility : void 0) != null ? _ref47 : ship.agility);
+          this.info_container.find('tr.info-agility td.info-data').text((_ref50 = (_ref51 = data.ship_override) != null ? _ref51.agility : void 0) != null ? _ref50 : ship.agility);
           this.info_container.find('tr.info-agility').show();
-          this.info_container.find('tr.info-hull td.info-data').text((_ref49 = (_ref50 = data.ship_override) != null ? _ref50.hull : void 0) != null ? _ref49 : ship.hull);
+          this.info_container.find('tr.info-hull td.info-data').text((_ref52 = (_ref53 = data.ship_override) != null ? _ref53.hull : void 0) != null ? _ref52 : ship.hull);
           this.info_container.find('tr.info-hull').show();
-          this.info_container.find('tr.info-shields td.info-data').text((_ref51 = (_ref52 = data.ship_override) != null ? _ref52.shields : void 0) != null ? _ref51 : ship.shields);
+          this.info_container.find('tr.info-shields td.info-data').text((_ref54 = (_ref55 = data.ship_override) != null ? _ref55.shields : void 0) != null ? _ref54 : ship.shields);
           this.info_container.find('tr.info-shields').show();
-          if (((_ref53 = data.ship_override) != null ? _ref53.force : void 0) || (data.force != null)) {
-            this.info_container.find('tr.info-force td.info-data').text((_ref54 = (_ref55 = data.ship_override) != null ? _ref55.force : void 0) != null ? _ref54 : data.force);
+          if (((_ref56 = data.ship_override) != null ? _ref56.force : void 0) || (data.force != null)) {
+            this.info_container.find('tr.info-force td.info-data').text((_ref57 = (_ref58 = data.ship_override) != null ? _ref58.force : void 0) != null ? _ref57 : data.force);
             this.info_container.find('tr.info-force').show();
           } else {
             this.info_container.find('tr.info-force').hide();
           }
+          if (((_ref59 = data.ship_override) != null ? _ref59.charge : void 0) || (data.charge != null)) {
+            this.info_container.find('tr.info-charge td.info-data').text((_ref60 = (_ref61 = data.ship_override) != null ? _ref61.force : void 0) != null ? _ref60 : data.force);
+            this.info_container.find('tr.info-charge').show();
+          } else {
+            this.info_container.find('tr.info-charge').hide();
+          }
           this.info_container.find('tr.info-actions td.info-data').html(((function() {
-            var _i, _len, _ref56, _ref57, _ref58, _results;
-            _ref58 = (_ref56 = (_ref57 = data.ship_override) != null ? _ref57.actions : void 0) != null ? _ref56 : exportObj.ships[data.ship].actions;
+            var _i, _len, _ref62, _ref63, _ref64, _results;
+            _ref64 = (_ref62 = (_ref63 = data.ship_override) != null ? _ref63.actions : void 0) != null ? _ref62 : exportObj.ships[data.ship].actions;
             _results = [];
-            for (_i = 0, _len = _ref58.length; _i < _len; _i++) {
-              action = _ref58[_i];
+            for (_i = 0, _len = _ref64.length; _i < _len; _i++) {
+              action = _ref64[_i];
               _results.push(exportObj.translate(this.language, 'action', action));
             }
             return _results;
           }).call(this)).join(' '));
           if (ships[data.ship].actionsred != null) {
             this.info_container.find('tr.info-actions-red td.info-data-red').html(((function() {
-              var _i, _len, _ref56, _ref57, _ref58, _results;
-              _ref58 = (_ref56 = (_ref57 = data.ship_override) != null ? _ref57.actionsred : void 0) != null ? _ref56 : exportObj.ships[data.ship].actionsred;
+              var _i, _len, _ref62, _ref63, _ref64, _results;
+              _ref64 = (_ref62 = (_ref63 = data.ship_override) != null ? _ref63.actionsred : void 0) != null ? _ref62 : exportObj.ships[data.ship].actionsred;
               _results = [];
-              for (_i = 0, _len = _ref58.length; _i < _len; _i++) {
-                action = _ref58[_i];
+              for (_i = 0, _len = _ref64.length; _i < _len; _i++) {
+                action = _ref64[_i];
                 _results.push(exportObj.translate(this.language, 'action', action));
               }
               return _results;
@@ -26996,11 +27014,11 @@ exportObj.SquadBuilder = (function() {
           this.info_container.find('tr.info-actions').show();
           this.info_container.find('tr.info-upgrades').show();
           this.info_container.find('tr.info-upgrades td.info-data').text(((function() {
-            var _i, _len, _ref56, _results;
-            _ref56 = data.slots;
+            var _i, _len, _ref62, _results;
+            _ref62 = data.slots;
             _results = [];
-            for (_i = 0, _len = _ref56.length; _i < _len; _i++) {
-              slot = _ref56[_i];
+            for (_i = 0, _len = _ref62.length; _i < _len; _i++) {
+              slot = _ref62[_i];
               _results.push(exportObj.translate(this.language, 'slot', slot));
             }
             return _results;
@@ -27009,14 +27027,14 @@ exportObj.SquadBuilder = (function() {
           this.info_container.find('p.info-maneuvers').html(this.getManeuverTableHTML(ship.maneuvers, ship.maneuvers));
           break;
         case 'Addon':
-          if (((_ref56 = this.collection) != null ? _ref56.counts : void 0) != null) {
-            addon_count = (_ref57 = (_ref58 = this.collection.counts) != null ? (_ref59 = _ref58[additional_opts.addon_type.toLowerCase()]) != null ? _ref59[data.english_name] : void 0 : void 0) != null ? _ref57 : 0;
+          if (((_ref62 = this.collection) != null ? _ref62.counts : void 0) != null) {
+            addon_count = (_ref63 = (_ref64 = this.collection.counts) != null ? (_ref65 = _ref64[additional_opts.addon_type.toLowerCase()]) != null ? _ref65[data.english_name] : void 0 : void 0) != null ? _ref63 : 0;
             this.info_container.find('.info-collection').text("You have " + addon_count + " in your collection.");
           } else {
             this.info_container.find('.info-collection').text('');
           }
           this.info_container.find('.info-name').html("" + (data.unique ? "&middot;&nbsp;" : "") + data.name + (data.limited != null ? " (" + (exportObj.translate(this.language, 'ui', 'limited')) + ")" : "") + (data.epic != null ? " (" + (exportObj.translate(this.language, 'ui', 'epic')) + ")" : "") + (exportObj.isReleased(data) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
-          this.info_container.find('p.info-text').html((_ref60 = data.text) != null ? _ref60 : '');
+          this.info_container.find('p.info-text').html((_ref66 = data.text) != null ? _ref66 : '');
           this.info_container.find('tr.info-ship').hide();
           this.info_container.find('tr.info-skill').hide();
           if (data.energy != null) {
@@ -27032,6 +27050,8 @@ exportObj.SquadBuilder = (function() {
           } else {
             this.info_container.find('tr.info-attack').hide();
           }
+          this.info_container.find('tr.info-charge td.info-data').text(data.charge);
+          this.info_container.find('tr.info-charge').toggle(data.charge != null);
           if (data.range != null) {
             this.info_container.find('tr.info-range td.info-data').text(data.range);
             this.info_container.find('tr.info-range').show();
@@ -27885,7 +27905,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 24345
+                      lineno: 24368
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -27959,7 +27979,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 24371
+                lineno: 24394
               })
             ]);
             __iced_deferrals._fulfill();
@@ -28006,7 +28026,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 24394
+              lineno: 24417
             }));
           }
         }
@@ -28015,7 +28035,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 24396
+              lineno: 24419
             }));
           }
         }
@@ -28024,7 +28044,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 24398
+              lineno: 24421
             }));
           }
         }
@@ -28807,7 +28827,7 @@ Ship = (function() {
   };
 
   Ship.prototype.effectiveStats = function() {
-    var modification, s, stats, title, upgrade, _i, _j, _k, _l, _len, _len1, _len2, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var modification, s, stats, title, upgrade, _i, _j, _k, _l, _len, _len1, _len2, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     stats = {
       skill: this.pilot.skill,
       attack: (_ref = (_ref1 = this.pilot.ship_override) != null ? _ref1.attack : void 0) != null ? _ref : this.data.attack,
@@ -28819,35 +28839,36 @@ Ship = (function() {
       hull: (_ref12 = (_ref13 = this.pilot.ship_override) != null ? _ref13.hull : void 0) != null ? _ref12 : this.data.hull,
       shields: (_ref14 = (_ref15 = this.pilot.ship_override) != null ? _ref15.shields : void 0) != null ? _ref14 : this.data.shields,
       force: (_ref16 = (_ref17 = this.pilot.ship_override) != null ? _ref17.force : void 0) != null ? _ref16 : this.pilot.force,
-      actions: ((_ref18 = (_ref19 = this.pilot.ship_override) != null ? _ref19.actions : void 0) != null ? _ref18 : this.data.actions).slice(0),
-      actionsred: ((_ref20 = (_ref21 = (_ref22 = this.pilot.ship_override) != null ? _ref22.actionsred : void 0) != null ? _ref21 : this.data.actionsred) != null ? _ref20 : []).slice(0)
+      charge: (_ref18 = (_ref19 = this.pilot.ship_override) != null ? _ref19.charge : void 0) != null ? _ref18 : this.pilot.charge,
+      actions: ((_ref20 = (_ref21 = this.pilot.ship_override) != null ? _ref21.actions : void 0) != null ? _ref20 : this.data.actions).slice(0),
+      actionsred: ((_ref22 = (_ref23 = (_ref24 = this.pilot.ship_override) != null ? _ref24.actionsred : void 0) != null ? _ref23 : this.data.actionsred) != null ? _ref22 : []).slice(0)
     };
     stats.maneuvers = [];
-    for (s = _i = 0, _ref23 = ((_ref24 = this.data.maneuvers) != null ? _ref24 : []).length; 0 <= _ref23 ? _i < _ref23 : _i > _ref23; s = 0 <= _ref23 ? ++_i : --_i) {
+    for (s = _i = 0, _ref25 = ((_ref26 = this.data.maneuvers) != null ? _ref26 : []).length; 0 <= _ref25 ? _i < _ref25 : _i > _ref25; s = 0 <= _ref25 ? ++_i : --_i) {
       stats.maneuvers[s] = this.data.maneuvers[s].slice(0);
     }
-    _ref25 = this.upgrades;
-    for (_j = 0, _len = _ref25.length; _j < _len; _j++) {
-      upgrade = _ref25[_j];
-      if ((upgrade != null ? (_ref26 = upgrade.data) != null ? _ref26.modifier_func : void 0 : void 0) != null) {
+    _ref27 = this.upgrades;
+    for (_j = 0, _len = _ref27.length; _j < _len; _j++) {
+      upgrade = _ref27[_j];
+      if ((upgrade != null ? (_ref28 = upgrade.data) != null ? _ref28.modifier_func : void 0 : void 0) != null) {
         upgrade.data.modifier_func(stats);
       }
     }
-    _ref27 = this.titles;
-    for (_k = 0, _len1 = _ref27.length; _k < _len1; _k++) {
-      title = _ref27[_k];
-      if ((title != null ? (_ref28 = title.data) != null ? _ref28.modifier_func : void 0 : void 0) != null) {
+    _ref29 = this.titles;
+    for (_k = 0, _len1 = _ref29.length; _k < _len1; _k++) {
+      title = _ref29[_k];
+      if ((title != null ? (_ref30 = title.data) != null ? _ref30.modifier_func : void 0 : void 0) != null) {
         title.data.modifier_func(stats);
       }
     }
-    _ref29 = this.modifications;
-    for (_l = 0, _len2 = _ref29.length; _l < _len2; _l++) {
-      modification = _ref29[_l];
-      if ((modification != null ? (_ref30 = modification.data) != null ? _ref30.modifier_func : void 0 : void 0) != null) {
+    _ref31 = this.modifications;
+    for (_l = 0, _len2 = _ref31.length; _l < _len2; _l++) {
+      modification = _ref31[_l];
+      if ((modification != null ? (_ref32 = modification.data) != null ? _ref32.modifier_func : void 0 : void 0) != null) {
         modification.data.modifier_func(stats);
       }
     }
-    if (((_ref31 = this.pilot) != null ? _ref31.modifier_func : void 0) != null) {
+    if (((_ref33 = this.pilot) != null ? _ref33.modifier_func : void 0) != null) {
       this.pilot.modifier_func(stats);
     }
     return stats;
@@ -29093,7 +29114,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 25132
+                lineno: 25156
               })
             ]);
             __iced_deferrals._fulfill();
@@ -29212,7 +29233,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 25191
+                  lineno: 25215
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -29234,7 +29255,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 25195
+                    lineno: 25219
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -29324,7 +29345,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 25238
+            lineno: 25262
           }));
         }
         __iced_deferrals._fulfill();

@@ -49,7 +49,7 @@ strong em, em strong {
 .ship-container > .row-fluid {
   padding: 10px 0px; }
 
-.card-stat, .info-data.info-skill, .info-data.info-attack, .info-data.info-energy, .info-data.info-agility, .info-data.info-hull, .info-data.info-shields, .info-data.info-force, .info-maneuvers table > tbody > tr > td:first-child {
+.card-stat, .info-data.info-skill, .info-data.info-attack, .info-data.info-energy, .info-data.info-agility, .info-data.info-hull, .info-data.info-shields, .info-data.info-force, .info-data.info-charge, .info-maneuvers table > tbody > tr > td:first-child {
   font-family: kimberley;
   font-size: 1.5em; }
 
@@ -59,7 +59,7 @@ strong em, em strong {
 .info-data-red {
   color: #EF232B; }
 
-.card-icon, i.xwing-miniatures-font-attack, i.xwing-miniatures-font-attack-turret, i.xwing-miniatures-font-attack-frontback, i.xwing-miniatures-font-attack-180, i.xwing-miniatures-font-attack-bullseye, i.xwing-miniatures-font-doubleturretarc, i.xwing-miniatures-font-singleturretarc, i.xwing-miniatures-font-frontarc, i.xwing-miniatures-font-reararc, i.xwing-miniatures-font-fullfrontarc, i.xwing-miniatures-font-energy, i.xwing-miniatures-font-agility, i.xwing-miniatures-font-hull, i.xwing-miniatures-font-shield, i.xwing-miniatures-font-forcepower {
+.card-icon, i.xwing-miniatures-font-attack, i.xwing-miniatures-font-attack-turret, i.xwing-miniatures-font-attack-frontback, i.xwing-miniatures-font-attack-180, i.header-attack, i.header-energy, i.header-agility, i.header-hull, i.header-shield, i.header-force, i.header-charge {
   background: black;
   border-radius: 50%;
   padding: 3px;
@@ -74,30 +74,34 @@ i.xwing-miniatures-font {
 i.xwing-miniatures-font-attack, i.xwing-miniatures-font-attack-turret, i.xwing-miniatures-font-attack-frontback, i.xwing-miniatures-font-attack-180 {
   color: #EF232B; }
 
-i.xwing-miniatures-font-attack-bullseye, i.xwing-miniatures-font-doubleturretarc, i.xwing-miniatures-font-singleturretarc, i.xwing-miniatures-font-frontarc, i.xwing-miniatures-font-reararc, i.xwing-miniatures-font-fullfrontarc {
+i.header-attack {
   color: #EF232B; }
 
 i.xwing-miniatures-font-attack-frontback {
   padding-left: 5px;
   padding-right: 5px; }
 
-i.xwing-miniatures-font-energy {
+i.header-energy {
   color: #C7B5E2;
   padding: 2px 3px 5px 2px; }
 
-i.xwing-miniatures-font-agility {
+i.header-agility {
   color: #6BBE44;
   padding: 1px; }
 
-i.xwing-miniatures-font-hull {
+i.header-hull {
   color: #B6B335; }
 
-i.xwing-miniatures-font-shield {
+i.header-shield {
   color: #7ED3E5;
   padding: 2px 3px 4px 3px; }
 
-i.xwing-miniatures-font-forcepower {
+i.header-force {
   color: #9D899D;
+  padding: 2px 3px 4px 3px; }
+
+i.header-charge {
+  color: #C2B230;
   padding: 2px 3px 4px 3px; }
 
 .info-data.info-attack {
@@ -118,6 +122,9 @@ i.xwing-miniatures-font-forcepower {
 
 .info-data.info-force {
   color: #9D899D; }
+
+.info-data.info-charge {
+  color: #C2B230; }
 
 r {
   color: #EF232B; }
