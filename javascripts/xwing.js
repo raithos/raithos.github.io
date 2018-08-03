@@ -1979,7 +1979,7 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "Rebel Alliance",
         ship: "Y-Wing",
-        skill: 4,
+        skill: 3,
         points: 36,
         slots: ["Talent", "Turret", "Torpedo", "Astromech", "Modification", "Device", "Gunner"]
       }, {
@@ -1987,7 +1987,7 @@ exportObj.basicCardData = function() {
         id: 29,
         faction: "Rebel Alliance",
         ship: "Y-Wing",
-        skill: 4,
+        skill: 3,
         points: 34,
         slots: ["Talent", "Turret", "Torpedo", "Astromech", "Modification", "Device", "Gunner"]
       }, {
@@ -1995,7 +1995,7 @@ exportObj.basicCardData = function() {
         id: 30,
         faction: "Rebel Alliance",
         ship: "Y-Wing",
-        skill: 4,
+        skill: 2,
         points: 32,
         slots: ["Turret", "Torpedo", "Astromech", "Modification", "Device", "Gunner"]
       }, {
