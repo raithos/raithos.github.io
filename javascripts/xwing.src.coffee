@@ -4303,7 +4303,6 @@ exportObj.basicCardData = ->
         {
             name: "Lok Revenant"
             id: 146
-            unique: true
             faction: "Scum and Villainy"
             ship: "Scurrg H-6 Bomber"
             skill: 2
