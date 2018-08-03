@@ -7417,7 +7417,7 @@ exportObj.fixIcons = (data) ->
             .replace(/%STRAIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-straight"></i>')
             .replace(/%STOP%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-stop"></i>')
             .replace(/%SYSTEM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-system"></i>')
-            .replace(/%LOCK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>')
+            .replace(/%LOCK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-targetlock"></i>')
             .replace(/%TEAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-team"></i>')
             .replace(/%TECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>')
             .replace(/%TORPEDO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-torpedo"></i>')
@@ -22848,7 +22848,7 @@ class exportObj.SquadBuilder
                             <td class="info-data info-attack"></td>
                         </tr>
                         <tr class="info-attack-turret">
-                            <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc"></i></td>
+                            <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-turret"></i></td>
                             <td class="info-data info-attack"></td>
                         </tr>
                         <tr class="info-attack-doubleturret">
@@ -22868,7 +22868,7 @@ class exportObj.SquadBuilder
                             <td class="info-data info-shields"></td>
                         </tr>
                         <tr class="info-force">
-                            <td class="info-header"><i class="xwing-miniatures-font header-force xwing-miniatures-font-forcepower"></i></td>
+                            <td class="info-header"><i class="xwing-miniatures-font header-force xwing-miniatures-font-forcecharge"></i></td>
                             <td class="info-data info-force"></td>
                         </tr>
                         <tr class="info-charge">
@@ -24672,7 +24672,7 @@ class Ship
         """ else ''
             
         forceHTML = if (@pilot.force?) then $.trim """
-            <i class="xwing-miniatures-font xwing-miniatures-font-forcepower"></i>
+            <i class="xwing-miniatures-font xwing-miniatures-font-force"></i>
             <span class="info-data info-force">#{statAndEffectiveStat((@pilot.ship_override?.force ? @pilot.force), effective_stats, 'force')}</span>
         """ else ''
 
@@ -25186,7 +25186,12 @@ class GenericAddon
                     @slot.toLowerCase().replace(/[^0-9a-z]/gi, '')
                 else
                     @type.toLowerCase().replace(/[^0-9a-z]/gi, '')
-
+                    
+            icon = icon.replace("configuration", "config")
+                        .replace("talent", "elite")
+                        .replace("force", "forcepower")
+                        .replace("device", "bomb")
+                
             # Append directly so we don't have to disable markup escaping
             $(container).append """<i class="xwing-miniatures-font xwing-miniatures-font-#{icon}"></i> #{obj.text}"""
             # If you return a string, Select2 will render it

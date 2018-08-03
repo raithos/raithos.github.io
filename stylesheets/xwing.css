@@ -77,6 +77,9 @@ i.xwing-miniatures-font-attack, i.xwing-miniatures-font-attack-turret, i.xwing-m
 i.header-attack {
   color: #EF232B; }
 
+i.header-attack-turret {
+  padding: 2px 3px 5px 2px; }
+
 i.xwing-miniatures-font-attack-frontback {
   padding-left: 5px;
   padding-right: 5px; }
@@ -98,11 +101,11 @@ i.header-shield {
 
 i.header-force {
   color: #9D899D;
-  padding: 2px 3px 4px 3px; }
+  padding: 3px 4px 4px 3px; }
 
 i.header-charge {
   color: #C2B230;
-  padding: 2px 3px 4px 3px; }
+  padding: 2px 0px 2px 3px; }
 
 .info-data.info-attack {
   color: #EF232B; }
