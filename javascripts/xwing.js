@@ -3849,6 +3849,7 @@ exportObj.basicCardData = function() {
         name: '"Genius"',
         id: 1,
         slot: "Astromech",
+        points: 0,
         unique: true,
         faction: "Scum and Villainy"
       }, {
@@ -4782,7 +4783,8 @@ exportObj.basicCardData = function() {
         name: "Engine Upgrade",
         id: 107,
         slot: "Modification",
-        points: 3,
+        points: '*',
+        basepoints: 3,
         variablebase: true,
         restriction_func: function(ship) {
           return __indexOf.call(ship.effectiveStats().actionsred, "Boost") >= 0;
@@ -4871,7 +4873,8 @@ exportObj.basicCardData = function() {
         name: "Expert Handling",
         id: 120,
         slot: "Talent",
-        points: 2,
+        points: '*',
+        basepoints: 2,
         variablebase: true,
         restriction_func: function(ship) {
           return __indexOf.call(ship.effectiveStats().actionsred, "Barrel Roll") >= 0;
@@ -5256,7 +5259,8 @@ exportObj.basicCardData = function() {
         name: "Hull Upgrade",
         id: 164,
         slot: "Modification",
-        points: 2,
+        points: '*',
+        basepoints: 2,
         variableagility: true,
         modifier_func: function(stats) {
           return stats.hull += 1;
@@ -5265,7 +5269,8 @@ exportObj.basicCardData = function() {
         name: "Shield Upgrade",
         id: 165,
         slot: "Modification",
-        points: 3,
+        points: '*',
+        basepoints: 3,
         variableagility: true,
         modifier_func: function(stats) {
           return stats.shields += 1;
@@ -5274,7 +5279,8 @@ exportObj.basicCardData = function() {
         name: "Stealth Device",
         id: 166,
         slot: "Modification",
-        points: 3,
+        points: '*',
+        basepoints: 3,
         variableagility: true,
         charge: 1,
         modifier_func: function(stats) {
@@ -9759,10 +9765,10 @@ exportObj.cardLoaders.English = function() {
       text: "While another friendly ship defends or performs an attack, you may spend 1 %FORCE% to modify 1 of its dice as though that ship had spent 1 %FORCE%."
     },
     "Engine Upgrade": {
-      text: "Add a white %BOOST%"
+      text: "Add a white %BOOST% %LINEBREAK%<i>This upgrade has a variable cost, worth 3, 6, or 9 points depending on if the ship base is small, medium or large respectively.</i>"
     },
     "Expert Handling": {
-      text: "Add a white %BARRELROLL%"
+      text: "Add a white %BARRELROLL% %LINEBREAK%<i>This upgrade has a variable cost, worth 3, 6, or 9 points depending on if the ship base is small, medium or large respectively.</i>"
     },
     "Ezra Bridger": {
       text: "After you perform a primary attack, you may spend 1 %FORCE% to perform a bonus %TURRET% attack from a %TURRET% you have not attacked from this round. If you do and you are stressed, you may reroll 1 attack die."
@@ -9825,7 +9831,7 @@ exportObj.cardLoaders.English = function() {
       text: "1 Z-95 AF4 headhunter can dock with you."
     },
     "Hull Upgrade": {
-      text: "Add 1 Hull Point"
+      text: "Add 1 Hull Point %LINEBREAK%<i>This upgrade has a variable cost, worth 2, 3, 5, or 7 points depending on if the ship agility is 0, 1, 2, or 3 respectively.</i>"
     },
     "IG-2000": {
       text: "You have the pilot ability of each other friendly ship with the IG-2000 upgrade."
@@ -10053,7 +10059,7 @@ exportObj.cardLoaders.English = function() {
       text: "After you perform an attack that hits, if the defender is in your %SINGLETURRETARC% and your %FRONTARC%, the defender gains 1 tractor token."
     },
     "Shield Upgrade": {
-      text: "Add 1 Shield Point"
+      text: "Add 1 Shield Point %LINEBREAK%<i>This upgrade has a variable cost, worth 3, 4, 6, or 8 points depending on if the ship agility is 0, 1, 2, or 3 respectively.</i>"
     },
     "Skilled Bombardier": {
       text: "If you would drop or launch a device, you may use a template of the same bearing with a speed 1 higher or lower."
@@ -10071,7 +10077,7 @@ exportObj.cardLoaders.English = function() {
       text: "If you would gain an ion or jam token, you may choose a ship at range 0-1. If you do, gain 1 stress token and transfer 1 ion or jam token to that ship."
     },
     "Stealth Device": {
-      text: "While you defend, if your %CHARGE% is active, roll 1 additional defense die. After you suffer damage, lost 1 %CHARGE%."
+      text: "While you defend, if your %CHARGE% is active, roll 1 additional defense die. After you suffer damage, lost 1 %CHARGE%. %LINEBREAK%<i>This upgrade has a variable cost, worth 3, 4, 6, or 8 points depending on if the ship agility is 0, 1, 2, or 3 respectively.</i>"
     },
     "Supernatural Reflexes": {
       text: "Before you activate, you may spend 1 %FORCE% to perform a %BARRELROLL% or %BOOST% action. Then, if you performed an action you do not have on your action bar, suffer 1 %HIT% damage."
@@ -25095,7 +25101,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 22281
+                    lineno: 22287
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -25684,7 +25690,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 22909
+              lineno: 22915
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -26400,7 +26406,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 23547
+          lineno: 23553
         }));
         __iced_deferrals._fulfill();
       });
@@ -26412,7 +26418,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 23548
+            lineno: 23554
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -28084,7 +28090,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 24555
+                      lineno: 24563
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -28158,7 +28164,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 24581
+                lineno: 24589
               })
             ]);
             __iced_deferrals._fulfill();
@@ -28205,7 +28211,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 24604
+              lineno: 24612
             }));
           }
         }
@@ -28214,7 +28220,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 24606
+              lineno: 24614
             }));
           }
         }
@@ -28223,7 +28229,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 24608
+              lineno: 24616
             }));
           }
         }
@@ -29304,7 +29310,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 25354
+                lineno: 25362
               })
             ]);
             __iced_deferrals._fulfill();
@@ -29424,7 +29430,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 25416
+                  lineno: 25424
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -29446,7 +29452,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 25420
+                    lineno: 25428
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -29536,7 +29542,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 25463
+            lineno: 25471
           }));
         }
         __iced_deferrals._fulfill();
@@ -29565,11 +29571,11 @@ GenericAddon = (function() {
   GenericAddon.prototype.getPoints = function() {
     var _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     if (((_ref = this.data) != null ? _ref.variableagility : void 0) === true && (this.ship != null)) {
-      return Math.max((_ref1 = (_ref2 = this.data) != null ? _ref2.points : void 0) != null ? _ref1 : 0, ((_ref3 = (_ref4 = this.data) != null ? _ref4.points : void 0) != null ? _ref3 : 0) + ((((_ref5 = this.ship) != null ? _ref5.data.agility : void 0) - 1) * 2) + 1);
+      return Math.max((_ref1 = (_ref2 = this.data) != null ? _ref2.basepoints : void 0) != null ? _ref1 : 0, ((_ref3 = (_ref4 = this.data) != null ? _ref4.basepoints : void 0) != null ? _ref3 : 0) + ((((_ref5 = this.ship) != null ? _ref5.data.agility : void 0) - 1) * 2) + 1);
     } else if (((_ref6 = this.data) != null ? _ref6.variablebase : void 0) === true && ((_ref7 = this.ship) != null ? _ref7.data.medium : void 0) === true) {
-      return Math.max(0, ((_ref8 = (_ref9 = this.data) != null ? _ref9.points : void 0) != null ? _ref8 : 0) + ((_ref10 = this.data) != null ? _ref10.points : void 0));
+      return Math.max(0, ((_ref8 = (_ref9 = this.data) != null ? _ref9.basepoints : void 0) != null ? _ref8 : 0) + ((_ref10 = this.data) != null ? _ref10.basepoints : void 0));
     } else if (((_ref11 = this.data) != null ? _ref11.variablebase : void 0) === true && ((_ref12 = this.ship) != null ? _ref12.data.large : void 0) === true) {
-      return Math.max(0, ((_ref13 = (_ref14 = this.data) != null ? _ref14.points : void 0) != null ? _ref13 : 0) + (((_ref15 = this.data) != null ? _ref15.points : void 0) * 2));
+      return Math.max(0, ((_ref13 = (_ref14 = this.data) != null ? _ref14.basepoints : void 0) != null ? _ref13 : 0) + (((_ref15 = this.data) != null ? _ref15.basepoints : void 0) * 2));
     } else {
       return (_ref16 = (_ref17 = this.data) != null ? _ref17.points : void 0) != null ? _ref16 : 0;
     }
