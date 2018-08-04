@@ -1298,8 +1298,8 @@ exportObj.hugeOnly = function(ship) {
 exportObj.basicCardData = function() {
   return {
     ships: {
-      "X-Wing": {
-        name: "X-Wing",
+      "T-65 X-Wing": {
+        name: "T-65 X-Wing",
         factions: ["Rebel Alliance"],
         attack: 3,
         agility: 2,
@@ -1784,7 +1784,7 @@ exportObj.basicCardData = function() {
         name: "Cavern Angels Zealot",
         id: 0,
         faction: "Rebel Alliance",
-        ship: "X-Wing",
+        ship: "T-65 X-Wing",
         skill: 1,
         points: 41,
         slots: ["Illicit", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1792,7 +1792,7 @@ exportObj.basicCardData = function() {
         name: "Blue Squadron Escort",
         id: 1,
         faction: "Rebel Alliance",
-        ship: "X-Wing",
+        ship: "T-65 X-Wing",
         skill: 2,
         points: 41,
         slots: ["Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1800,7 +1800,7 @@ exportObj.basicCardData = function() {
         name: "Red Squadron Veteran",
         id: 2,
         faction: "Rebel Alliance",
-        ship: "X-Wing",
+        ship: "T-65 X-Wing",
         skill: 3,
         points: 43,
         slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1809,7 +1809,7 @@ exportObj.basicCardData = function() {
         id: 3,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "X-Wing",
+        ship: "T-65 X-Wing",
         skill: 4,
         points: 46,
         slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1818,7 +1818,7 @@ exportObj.basicCardData = function() {
         id: 4,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "X-Wing",
+        ship: "T-65 X-Wing",
         skill: 5,
         force: 2,
         points: 62,
@@ -1828,7 +1828,7 @@ exportObj.basicCardData = function() {
         id: 5,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "X-Wing",
+        ship: "T-65 X-Wing",
         skill: 6,
         points: 52,
         slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1837,7 +1837,7 @@ exportObj.basicCardData = function() {
         id: 6,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "X-Wing",
+        ship: "T-65 X-Wing",
         skill: 4,
         points: 47,
         slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1846,7 +1846,7 @@ exportObj.basicCardData = function() {
         id: 7,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "X-Wing",
+        ship: "T-65 X-Wing",
         skill: 3,
         points: 48,
         slots: ["Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1855,7 +1855,7 @@ exportObj.basicCardData = function() {
         id: 8,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "X-Wing",
+        ship: "T-65 X-Wing",
         skill: 2,
         points: 45,
         slots: ["Illicit", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1864,7 +1864,7 @@ exportObj.basicCardData = function() {
         id: 9,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "X-Wing",
+        ship: "T-65 X-Wing",
         skill: 5,
         points: 48,
         slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1873,7 +1873,7 @@ exportObj.basicCardData = function() {
         id: 10,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "X-Wing",
+        ship: "T-65 X-Wing",
         skill: 3,
         points: 46,
         slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1886,7 +1886,7 @@ exportObj.basicCardData = function() {
         id: 12,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "X-Wing",
+        ship: "T-65 X-Wing",
         skill: 3,
         points: 48,
         slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -5031,13 +5031,13 @@ exportObj.basicCardData = function() {
         id: 142,
         points: 0,
         slot: "Configuration",
-        ship: "X-Wing"
+        ship: "T-65 X-Wing"
       }, {
         name: "Servomotor S-foils (Open)",
         id: 143,
         slot: "Configuration",
         points: 0,
-        ship: "X-Wing"
+        ship: "T-65 X-Wing"
       }, {
         name: "Xg-1 Assault Configuration",
         id: 144,
@@ -29569,15 +29569,17 @@ GenericAddon = (function() {
   };
 
   GenericAddon.prototype.getPoints = function() {
-    var _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
-    if (((_ref = this.data) != null ? _ref.variableagility : void 0) === true && (this.ship != null)) {
+    var _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    if ((((_ref = this.data) != null ? _ref.variableagility : void 0) != null) && (this.ship != null)) {
       return Math.max((_ref1 = (_ref2 = this.data) != null ? _ref2.basepoints : void 0) != null ? _ref1 : 0, ((_ref3 = (_ref4 = this.data) != null ? _ref4.basepoints : void 0) != null ? _ref3 : 0) + ((((_ref5 = this.ship) != null ? _ref5.data.agility : void 0) - 1) * 2) + 1);
-    } else if (((_ref6 = this.data) != null ? _ref6.variablebase : void 0) === true && ((_ref7 = this.ship) != null ? _ref7.data.medium : void 0) === true) {
-      return Math.max(0, ((_ref8 = (_ref9 = this.data) != null ? _ref9.basepoints : void 0) != null ? _ref8 : 0) + ((_ref10 = this.data) != null ? _ref10.basepoints : void 0));
-    } else if (((_ref11 = this.data) != null ? _ref11.variablebase : void 0) === true && ((_ref12 = this.ship) != null ? _ref12.data.large : void 0) === true) {
-      return Math.max(0, ((_ref13 = (_ref14 = this.data) != null ? _ref14.basepoints : void 0) != null ? _ref13 : 0) + (((_ref15 = this.data) != null ? _ref15.basepoints : void 0) * 2));
+    } else if ((((_ref6 = this.data) != null ? _ref6.variablebase : void 0) != null) && !((this.ship.data.medium != null) || (this.ship.data.large != null))) {
+      return Math.max(0, (_ref7 = this.data) != null ? _ref7.basepoints : void 0);
+    } else if ((((_ref8 = this.data) != null ? _ref8.variablebase : void 0) != null) && (((_ref9 = this.ship) != null ? _ref9.data.medium : void 0) != null)) {
+      return Math.max(0, ((_ref10 = (_ref11 = this.data) != null ? _ref11.basepoints : void 0) != null ? _ref10 : 0) + ((_ref12 = this.data) != null ? _ref12.basepoints : void 0));
+    } else if ((((_ref13 = this.data) != null ? _ref13.variablebase : void 0) != null) && (((_ref14 = this.ship) != null ? _ref14.data.large : void 0) != null)) {
+      return Math.max(0, ((_ref15 = (_ref16 = this.data) != null ? _ref16.basepoints : void 0) != null ? _ref15 : 0) + (((_ref17 = this.data) != null ? _ref17.basepoints : void 0) * 2));
     } else {
-      return (_ref16 = (_ref17 = this.data) != null ? _ref17.points : void 0) != null ? _ref16 : 0;
+      return (_ref18 = (_ref19 = this.data) != null ? _ref19.points : void 0) != null ? _ref18 : 0;
     }
   };
 
