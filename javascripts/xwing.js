@@ -27614,7 +27614,7 @@ exportObj.SquadBuilder = (function() {
     var candidate, last_id, match, matches, multisection_id_to_pilots, obstacles, pilot, ship, unmatched, unmatched_pilot, xws, _, _i, _j, _k, _l, _len, _len1, _len2, _len3, _m, _name, _ref, _ref1, _ref2, _ref3;
     xws = {
       description: this.getNotes(),
-      faction: exportObj.toXWSFaction[this.faction],
+      faction: this.faction.canonicalize(),
       name: this.current_squad.name,
       pilots: [],
       points: this.total_points,
