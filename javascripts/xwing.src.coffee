@@ -1091,6 +1091,7 @@ exportObj.basicCardData = ->
     ships:
         "X-Wing":
             name: "X-Wing"
+            xws: "T-65 X-Wing".canonicalize()
             factions: [ "Rebel Alliance", ]
             attack: 3
             agility: 2
@@ -24642,7 +24643,7 @@ class Ship
             @ship_selector.select2 'data',
                 id: @pilot.ship
                 text: @pilot.ship
-                canonical_name: exportObj.ships[@pilot.ship].cannonical_name
+                canonical_name: exportObj.ships[@pilot.ship].canonical_name
             @pilot_selector.select2 'data',
                 id: @pilot.id
                 text: "#{@pilot.name} (#{@pilot.points})"
@@ -25289,6 +25290,7 @@ class Ship
             name: @pilot.canonical_name
             points: @getPoints()
             ship: @data.canonical_name
+#            ship: @data.xws.canonicalize()
 
         if @data.multisection
             xws.multisection = @data.multisection.slice 0
