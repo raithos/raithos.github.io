@@ -1311,6 +1311,7 @@ exportObj.basicCardData = function() {
       },
       "Y-Wing": {
         name: "Y-Wing",
+        xws: "BTL-A4 Y-Wing".canonicalize(),
         factions: ["Rebel Alliance", "Scum and Villainy"],
         attack: 2,
         agility: 1,
@@ -1322,6 +1323,7 @@ exportObj.basicCardData = function() {
       },
       "A-Wing": {
         name: "A-Wing",
+        xws: "RZ-1 A-Wing".canonicalize(),
         factions: ["Rebel Alliance"],
         attack: 2,
         agility: 3,
@@ -1332,7 +1334,8 @@ exportObj.basicCardData = function() {
       },
       "YT-1300": {
         name: "YT-1300",
-        factions: ["Rebel Alliance", "Scum and Villainy"],
+        xws: "Modified YT-1300 Light Freighter".canonicalize(),
+        factions: ["Rebel Alliance"],
         attackdt: 3,
         agility: 1,
         hull: 8,
@@ -1342,8 +1345,23 @@ exportObj.basicCardData = function() {
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0]],
         large: true
       },
+      "YT-1300 (Scum)": {
+        name: "YT-1300 (Scum)",
+        canonical_name: 'YT-1300'.canonicalize(),
+        xws: "Customized YT-1300 Light Freighter".canonicalize(),
+        factions: ["Scum and Villainy"],
+        attackdt: 2,
+        agility: 1,
+        hull: 8,
+        shields: 3,
+        actions: ["Focus", "Target Lock", "Rotate Arc"],
+        actionsred: ["Boost"],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0]],
+        large: true
+      },
       "TIE Fighter": {
         name: "TIE Fighter",
+        xws: "TIE/LN Fighter".canonicalize(),
         factions: ["Rebel Alliance", "Galactic Empire"],
         attack: 2,
         agility: 3,
@@ -1354,6 +1372,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Advanced": {
         name: "TIE Advanced",
+        xws: "TIE Advanced X1".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 2,
         agility: 3,
@@ -1364,6 +1383,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Interceptor": {
         name: "TIE Interceptor",
+        xws: "TIE Interceptor".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 3,
         agility: 3,
@@ -1374,6 +1394,7 @@ exportObj.basicCardData = function() {
       },
       "Firespray-31": {
         name: "Firespray-31",
+        xws: "Firespray-Class Patrol Craft".canonicalize(),
         factions: ["Scum and Villainy"],
         attack: 3,
         attackb: 3,
@@ -1387,6 +1408,7 @@ exportObj.basicCardData = function() {
       },
       "HWK-290": {
         name: "HWK-290",
+        xws: "Hwk-290 Light Freighter".canonicalize(),
         factions: ["Rebel Alliance", "Scum and Villainy"],
         attackt: 2,
         agility: 2,
@@ -1398,6 +1420,7 @@ exportObj.basicCardData = function() {
       },
       "Lambda-Class Shuttle": {
         name: "Lambda-Class Shuttle",
+        xws: "Lambda-Class T-4a Shuttle".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 3,
         attackb: 2,
@@ -1411,6 +1434,7 @@ exportObj.basicCardData = function() {
       },
       "B-Wing": {
         name: "B-Wing",
+        xws: "A/SF-01 B-Wing".canonicalize(),
         factions: ["Rebel Alliance"],
         attack: 3,
         agility: 1,
@@ -1421,6 +1445,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Bomber": {
         name: "TIE Bomber",
+        xws: "TIE/SA Bomber".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 2,
         agility: 2,
@@ -1432,6 +1457,7 @@ exportObj.basicCardData = function() {
       },
       "Z-95 Headhunter": {
         name: "Z-95 Headhunter",
+        xws: "Z-95-AF4 Headhunter".canonicalize(),
         factions: ["Rebel Alliance", "Scum and Villainy"],
         attack: 2,
         agility: 2,
@@ -1443,6 +1469,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Defender": {
         name: "TIE Defender",
+        xws: "TIE Defender".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 3,
         agility: 3,
@@ -1453,6 +1480,7 @@ exportObj.basicCardData = function() {
       },
       "E-Wing": {
         name: "E-Wing",
+        xws: "E-Wing".canonicalize(),
         factions: ["Rebel Alliance"],
         attack: 3,
         agility: 3,
@@ -1463,6 +1491,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Phantom": {
         name: "TIE Phantom",
+        xws: "TIE/PH Phantom".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 3,
         agility: 2,
@@ -1473,6 +1502,7 @@ exportObj.basicCardData = function() {
       },
       "YT-2400": {
         name: "YT-2400",
+        xws: "YT-2400 Light Freighter".canonicalize(),
         factions: ["Rebel Alliance"],
         attackdt: 4,
         agility: 2,
@@ -1485,6 +1515,7 @@ exportObj.basicCardData = function() {
       },
       "VT-49 Decimator": {
         name: "VT-49 Decimator",
+        xws: "VT-49 Decimator".canonicalize(),
         factions: ["Galactic Empire"],
         attackdt: 3,
         agility: 0,
@@ -1497,6 +1528,7 @@ exportObj.basicCardData = function() {
       },
       "StarViper": {
         name: "StarViper",
+        xws: "Starviper-class Attack Platform".canonicalize(),
         factions: ["Scum and Villainy"],
         attack: 3,
         agility: 3,
@@ -1507,6 +1539,7 @@ exportObj.basicCardData = function() {
       },
       "M3-A Interceptor": {
         name: "M3-A Interceptor",
+        xws: "M3-A Interceptor".canonicalize(),
         factions: ["Scum and Villainy"],
         attack: 2,
         agility: 3,
@@ -1517,6 +1550,7 @@ exportObj.basicCardData = function() {
       },
       "Aggressor": {
         name: "Aggressor",
+        xws: "Aggressor Assault Fighter".canonicalize(),
         factions: ["Scum and Villainy"],
         attack: 3,
         agility: 3,
@@ -1528,6 +1562,7 @@ exportObj.basicCardData = function() {
       },
       "YV-666": {
         name: "YV-666",
+        xws: "YV-666 Light Freighter".canonicalize(),
         factions: ["Scum and Villainy"],
         attackf: 3,
         agility: 1,
@@ -1539,6 +1574,7 @@ exportObj.basicCardData = function() {
       },
       "Kihraxz Fighter": {
         name: "Kihraxz Fighter",
+        xws: "Kihraxz Fighter".canonicalize(),
         factions: ["Scum and Villainy"],
         attack: 3,
         agility: 2,
@@ -1549,6 +1585,7 @@ exportObj.basicCardData = function() {
       },
       "K-Wing": {
         name: "K-Wing",
+        xws: "BTL-S8 K-Wing".canonicalize(),
         factions: ["Rebel Alliance"],
         attackdt: 2,
         agility: 1,
@@ -1560,6 +1597,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Punisher": {
         name: "TIE Punisher",
+        xws: "TIE/CA Punisher".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 2,
         agility: 1,
@@ -1572,6 +1610,7 @@ exportObj.basicCardData = function() {
       },
       "VCX-100": {
         name: "VCX-100",
+        xws: "VCX-100 Light Freighter".canonicalize(),
         factions: ["Rebel Alliance"],
         attack: 4,
         agility: 0,
@@ -1583,6 +1622,7 @@ exportObj.basicCardData = function() {
       },
       "Attack Shuttle": {
         name: "Attack Shuttle",
+        xws: "Attack Shuttle".canonicalize(),
         factions: ["Rebel Alliance"],
         attack: 3,
         agility: 2,
@@ -1593,6 +1633,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Advanced Prototype": {
         name: "TIE Advanced Prototype",
+        xws: "TIE Advanced V1".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 2,
         agility: 3,
@@ -1603,6 +1644,7 @@ exportObj.basicCardData = function() {
       },
       "G-1A Starfighter": {
         name: "G-1A Starfighter",
+        xws: "G-1A Starfighter".canonicalize(),
         factions: ["Scum and Villainy"],
         attack: 3,
         agility: 1,
@@ -1614,6 +1656,7 @@ exportObj.basicCardData = function() {
       },
       "JumpMaster 5000": {
         name: "JumpMaster 5000",
+        xws: "JumpMaster 5000".canonicalize(),
         factions: ["Scum and Villainy"],
         large: true,
         attackt: 2,
@@ -1626,6 +1669,7 @@ exportObj.basicCardData = function() {
       },
       "ARC-170": {
         name: "ARC-170",
+        xws: "Arc-170 Starfighter".canonicalize(),
         factions: ["Rebel Alliance"],
         attack: 3,
         attackb: 2,
@@ -1637,8 +1681,10 @@ exportObj.basicCardData = function() {
         actionsred: ["Barrel Roll"],
         maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0], [1, 2, 2, 2, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 3, 0, 0, 3]]
       },
-      "Protectorate Starfighter": {
-        name: "Protectorate Starfighter",
+      "Fang Fighter": {
+        name: "Fang Fighter",
+        canonical_name: 'Protectorate Starfighter'.canonicalize(),
+        xws: "Fang fighter".canonicalize(),
         factions: ["Scum and Villainy"],
         attack: 3,
         agility: 3,
@@ -1649,6 +1695,7 @@ exportObj.basicCardData = function() {
       },
       "Lancer-class Pursuit Craft": {
         name: "Lancer-class Pursuit Craft",
+        xws: "Lancer-class Pursuit Craft".canonicalize(),
         factions: ["Scum and Villainy"],
         large: true,
         attack: 3,
@@ -1661,6 +1708,7 @@ exportObj.basicCardData = function() {
       },
       "Quadjumper": {
         name: "Quadjumper",
+        xws: "Quadrijet Transfer Spacetug".canonicalize(),
         factions: ["Scum and Villainy"],
         attack: 2,
         agility: 2,
@@ -1672,6 +1720,7 @@ exportObj.basicCardData = function() {
       },
       "U-Wing": {
         name: "U-Wing",
+        xws: "UT-60D U-Wing".canonicalize(),
         factions: ["Rebel Alliance"],
         medium: true,
         attack: 3,
@@ -1684,6 +1733,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Striker": {
         name: "TIE Striker",
+        xws: "TIE/SK Striker".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 3,
         agility: 2,
@@ -1694,6 +1744,7 @@ exportObj.basicCardData = function() {
       },
       "Auzituck Gunship": {
         name: "Auzituck Gunship",
+        xws: "Auzituck Gunship".canonicalize(),
         factions: ["Rebel Alliance"],
         attackf: 3,
         agility: 1,
@@ -1705,6 +1756,7 @@ exportObj.basicCardData = function() {
       },
       "Scurrg H-6 Bomber": {
         name: "Scurrg H-6 Bomber",
+        xws: "Scurrg H-6 Bomber".canonicalize(),
         factions: ["Scum and Villainy"],
         attack: 3,
         agility: 1,
@@ -1717,6 +1769,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Aggressor": {
         name: "TIE Aggressor",
+        xws: "TIE/AG Aggressor".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 2,
         agility: 2,
@@ -1725,8 +1778,9 @@ exportObj.basicCardData = function() {
         actions: ["Focus", "Target Lock", "Barrel Roll", "<r>> Evade</r>"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
       },
-      "Alpha-class Star Wing": {
-        name: "Alpha-class Star Wing",
+      "Alpha-Class Star Wing": {
+        name: "Alpha-Class Star Wing",
+        xws: "Alpha-Class Star Wing".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 2,
         agility: 2,
@@ -1737,6 +1791,7 @@ exportObj.basicCardData = function() {
       },
       "M12-L Kimogila Fighter": {
         name: "M12-L Kimogila Fighter",
+        xws: "M12-L Kimogila Fighter".canonicalize(),
         factions: ["Scum and Villainy"],
         attack: 3,
         agility: 1,
@@ -1746,8 +1801,9 @@ exportObj.basicCardData = function() {
         actionsred: ["Barrel Roll"],
         maneuvers: [[0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 0], [0, 0, 0, 0, 0, 3]]
       },
-      "Sheathipede-class Shuttle": {
-        name: "Sheathipede-class Shuttle",
+      "Sheathipede-Class Shuttle": {
+        name: "Sheathipede-Class Shuttle",
+        xws: "Sheathipede-Class Shuttle".canonicalize(),
         factions: ["Rebel Alliance"],
         attack: 2,
         agility: 2,
@@ -1758,6 +1814,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Reaper": {
         name: "TIE Reaper",
+        xws: "TIE Reaper".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 3,
         agility: 1,
@@ -1770,6 +1827,7 @@ exportObj.basicCardData = function() {
       },
       "Escape Craft": {
         name: "Escape Craft",
+        xws: "Escape Craft".canonicalize(),
         factions: ["Scum and Villainy"],
         attack: 2,
         agility: 2,
@@ -2392,7 +2450,7 @@ exportObj.basicCardData = function() {
         id: 69,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "Sheathipede-class Shuttle",
+        ship: "Sheathipede-Class Shuttle",
         skill: 6,
         points: 52,
         slots: ["Talent", "Crew", "Modification", "Astromech", "Title"]
@@ -2402,7 +2460,7 @@ exportObj.basicCardData = function() {
         id: 70,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "Sheathipede-class Shuttle",
+        ship: "Sheathipede-Class Shuttle",
         skill: 3,
         force: 1,
         points: 42,
@@ -2413,7 +2471,7 @@ exportObj.basicCardData = function() {
         id: 71,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "Sheathipede-class Shuttle",
+        ship: "Sheathipede-Class Shuttle",
         skill: 2,
         points: 32,
         slots: ["Talent", "Crew", "Modification", "Astromech", "Title"]
@@ -2422,7 +2480,7 @@ exportObj.basicCardData = function() {
         id: 72,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "Sheathipede-class Shuttle",
+        ship: "Sheathipede-Class Shuttle",
         skill: 1,
         points: 30,
         slots: ["Talent", "Crew", "Modification", "Astromech", "Title"]
@@ -2567,61 +2625,37 @@ exportObj.basicCardData = function() {
         id: 89,
         unique: true,
         faction: "Scum and Villainy",
-        ship: "YT-1300",
+        ship: "YT-1300 (Scum)",
         skill: 6,
         points: 54,
-        slots: ["Talent", "Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"],
-        ship_override: {
-          attackdt: 2,
-          agility: 1,
-          hull: 8,
-          shields: 3
-        }
+        slots: ["Talent", "Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"]
       }, {
         name: "Lando Calrissian (Scum)",
         id: 90,
         unique: true,
         faction: "Scum and Villainy",
-        ship: "YT-1300",
+        ship: "YT-1300 (Scum)",
         skill: 4,
         points: 49,
-        slots: ["Talent", "Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"],
-        ship_override: {
-          attackdt: 2,
-          agility: 1,
-          hull: 8,
-          shields: 3
-        }
+        slots: ["Talent", "Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"]
       }, {
         name: "L3-37 (YT-1300)",
         canonical_name: 'L3-37'.canonicalize(),
         id: 91,
         unique: true,
         faction: "Scum and Villainy",
-        ship: "YT-1300",
+        ship: "YT-1300 (Scum)",
         skill: 2,
         points: 47,
-        slots: ["Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"],
-        ship_override: {
-          attackdt: 2,
-          agility: 1,
-          hull: 8,
-          shields: 3
-        }
+        slots: ["Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"]
       }, {
         name: "Freighter Captain",
         id: 92,
         faction: "Scum and Villainy",
-        ship: "YT-1300",
+        ship: "YT-1300 (Scum)",
         skill: 1,
         points: 46,
-        slots: ["Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"],
-        ship_override: {
-          attackdt: 2,
-          agility: 1,
-          hull: 8,
-          shields: 3
-        }
+        slots: ["Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"]
       }, {
         name: "Lando Calrissian (Scum) (Escape Craft)",
         canonical_name: 'Lando Calrissian (Scum)'.canonicalize(),
@@ -2666,7 +2700,7 @@ exportObj.basicCardData = function() {
         id: 97,
         unique: true,
         faction: "Scum and Villainy",
-        ship: "Protectorate Starfighter",
+        ship: "Fang Fighter",
         skill: 6,
         points: 68,
         slots: ["Talent", "Torpedo"]
@@ -2675,7 +2709,7 @@ exportObj.basicCardData = function() {
         id: 98,
         unique: true,
         faction: "Scum and Villainy",
-        ship: "Protectorate Starfighter",
+        ship: "Fang Fighter",
         skill: 5,
         points: 56,
         slots: ["Talent", "Torpedo"]
@@ -2684,7 +2718,7 @@ exportObj.basicCardData = function() {
         id: 99,
         unique: true,
         faction: "Scum and Villainy",
-        ship: "Protectorate Starfighter",
+        ship: "Fang Fighter",
         skill: 4,
         points: 54,
         slots: ["Talent", "Torpedo"]
@@ -2693,7 +2727,7 @@ exportObj.basicCardData = function() {
         id: 100,
         unique: true,
         faction: "Scum and Villainy",
-        ship: "Protectorate Starfighter",
+        ship: "Fang Fighter",
         skill: 4,
         points: 52,
         slots: ["Talent", "Torpedo"]
@@ -2701,7 +2735,7 @@ exportObj.basicCardData = function() {
         name: "Skull Squadron Pilot",
         id: 101,
         faction: "Scum and Villainy",
-        ship: "Protectorate Starfighter",
+        ship: "Fang Fighter",
         skill: 4,
         points: 50,
         slots: ["Talent", "Torpedo"]
@@ -2709,7 +2743,7 @@ exportObj.basicCardData = function() {
         name: "Zealous Recruit",
         id: 102,
         faction: "Scum and Villainy",
-        ship: "Protectorate Starfighter",
+        ship: "Fang Fighter",
         skill: 1,
         points: 44,
         slots: ["Torpedo"]
@@ -3233,7 +3267,7 @@ exportObj.basicCardData = function() {
         id: 161,
         unique: true,
         faction: "Galactic Empire",
-        ship: "Alpha-class Star Wing",
+        ship: "Alpha-Class Star Wing",
         skill: 4,
         points: 41,
         slots: ["Talent", "System", "Torpedo", "Missile", "Modification", "Configuration"]
@@ -3242,7 +3276,7 @@ exportObj.basicCardData = function() {
         id: 162,
         unique: true,
         faction: "Galactic Empire",
-        ship: "Alpha-class Star Wing",
+        ship: "Alpha-Class Star Wing",
         skill: 3,
         points: 39,
         slots: ["Talent", "System", "Torpedo", "Missile", "Modification", "Configuration"]
@@ -3250,7 +3284,7 @@ exportObj.basicCardData = function() {
         name: "Rho Squadron Pilot",
         id: 163,
         faction: "Galactic Empire",
-        ship: "Alpha-class Star Wing",
+        ship: "Alpha-Class Star Wing",
         skill: 3,
         points: 37,
         slots: ["Talent", "System", "Torpedo", "Missile", "Modification", "Configuration"]
@@ -3258,7 +3292,7 @@ exportObj.basicCardData = function() {
         name: "Nu Squadron Pilot",
         id: 164,
         faction: "Galactic Empire",
-        ship: "Alpha-class Star Wing",
+        ship: "Alpha-Class Star Wing",
         skill: 2,
         points: 35,
         slots: ["System", "Torpedo", "Missile", "Modification", "Configuration"]
@@ -5005,7 +5039,7 @@ exportObj.basicCardData = function() {
         id: 139,
         points: 0,
         slot: "Configuration",
-        ship: "Alpha-class Star Wing",
+        ship: "Alpha-Class Star Wing",
         confersAddons: [
           {
             type: exportObj.Upgrade,
@@ -5044,7 +5078,7 @@ exportObj.basicCardData = function() {
         id: 144,
         points: 0,
         slot: "Configuration",
-        ship: "Alpha-class Star Wing",
+        ship: "Alpha-Class Star Wing",
         confersAddons: [
           {
             type: exportObj.Upgrade,
@@ -5192,7 +5226,7 @@ exportObj.basicCardData = function() {
         points: 2,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "Sheathipede-class Shuttle"
+        ship: "Sheathipede-Class Shuttle"
       }, {
         name: "Punishing One",
         id: 159,
@@ -25102,7 +25136,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 22288
+                    lineno: 22337
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -25691,7 +25725,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 22916
+              lineno: 22965
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -26407,7 +26441,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 23554
+          lineno: 23603
         }));
         __iced_deferrals._fulfill();
       });
@@ -26419,7 +26453,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 23555
+            lineno: 23604
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -28091,7 +28125,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 24564
+                      lineno: 24613
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -28165,7 +28199,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 24590
+                lineno: 24639
               })
             ]);
             __iced_deferrals._fulfill();
@@ -28212,7 +28246,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 24613
+              lineno: 24662
             }));
           }
         }
@@ -28221,7 +28255,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 24615
+              lineno: 24664
             }));
           }
         }
@@ -28230,7 +28264,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 24617
+              lineno: 24666
             }));
           }
         }
@@ -29191,7 +29225,7 @@ Ship = (function() {
     xws = {
       name: this.pilot.canonical_name,
       points: this.getPoints(),
-      ship: this.data.canonical_name
+      ship: this.data.xws.canonicalize()
     };
     if (this.data.multisection) {
       xws.multisection = this.data.multisection.slice(0);
@@ -29311,7 +29345,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 25364
+                lineno: 25413
               })
             ]);
             __iced_deferrals._fulfill();
@@ -29431,7 +29465,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 25426
+                  lineno: 25475
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -29453,7 +29487,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 25430
+                    lineno: 25479
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -29543,7 +29577,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 25473
+            lineno: 25522
           }));
         }
         __iced_deferrals._fulfill();

@@ -1111,6 +1111,7 @@ exportObj.basicCardData = ->
             ]
         "Y-Wing":
             name: "Y-Wing"
+            xws: "BTL-A4 Y-Wing".canonicalize()
             factions: [ "Rebel Alliance", "Scum and Villainy" ]
             attack: 2
             agility: 1
@@ -1133,6 +1134,7 @@ exportObj.basicCardData = ->
             ]
         "A-Wing":
             name: "A-Wing"
+            xws: "RZ-1 A-Wing".canonicalize()
             factions: [ "Rebel Alliance" ]
             attack: 2
             agility: 3
@@ -1155,7 +1157,8 @@ exportObj.basicCardData = ->
             ]
         "YT-1300":
             name: "YT-1300"
-            factions: [ "Rebel Alliance", "Scum and Villainy" ]
+            xws: "Modified YT-1300 Light Freighter".canonicalize()
+            factions: [ "Rebel Alliance" ]
             attackdt: 3
             agility: 1
             hull: 8
@@ -1176,8 +1179,34 @@ exportObj.basicCardData = ->
               [ 0, 0, 1, 0, 0, 3, 0, 0]
             ]
             large: true
+        "YT-1300 (Scum)":
+            name: "YT-1300 (Scum)"
+            canonical_name: 'YT-1300'.canonicalize()
+            xws: "Customized YT-1300 Light Freighter".canonicalize()
+            factions: [ "Scum and Villainy" ]
+            attackdt: 2
+            agility: 1
+            hull: 8
+            shields: 3
+            actions: [
+                "Focus"
+                "Target Lock"
+                "Rotate Arc"
+            ]
+            actionsred: [
+                "Boost"
+            ]
+            maneuvers: [
+              [ 0, 0, 0, 0, 0, 0, 0, 0]
+              [ 0, 1, 2, 1, 0, 0, 0, 0]
+              [ 1, 2, 2, 2, 1, 0, 0, 0]
+              [ 1, 1, 2, 1, 1, 0, 3, 3]
+              [ 0, 0, 1, 0, 0, 3, 0, 0]
+            ]
+            large: true
         "TIE Fighter":
             name: "TIE Fighter"
+            xws: "TIE/LN Fighter".canonicalize()
             factions: ["Rebel Alliance", "Galactic Empire"]
             attack: 2
             agility: 3
@@ -1198,6 +1227,7 @@ exportObj.basicCardData = ->
             ]
         "TIE Advanced":
             name: "TIE Advanced"
+            xws: "TIE Advanced X1".canonicalize()
             factions: [ "Galactic Empire" ]
             attack: 2
             agility: 3
@@ -1219,6 +1249,7 @@ exportObj.basicCardData = ->
             ]
         "TIE Interceptor":
             name: "TIE Interceptor"
+            xws: "TIE Interceptor".canonicalize()
             factions: [ "Galactic Empire" ]
             attack: 3
             agility: 3
@@ -1240,6 +1271,7 @@ exportObj.basicCardData = ->
             ]
         "Firespray-31":
             name: "Firespray-31"
+            xws: "Firespray-Class Patrol Craft".canonicalize()
             factions: [ "Scum and Villainy", ]
             attack: 3
             attackb: 3
@@ -1264,6 +1296,7 @@ exportObj.basicCardData = ->
             medium: true
         "HWK-290":
             name: "HWK-290"
+            xws: "Hwk-290 Light Freighter".canonicalize()
             factions: [ "Rebel Alliance", "Scum and Villainy" ]
             attackt: 2
             agility: 2
@@ -1289,6 +1322,7 @@ exportObj.basicCardData = ->
             ]
         "Lambda-Class Shuttle":
             name: "Lambda-Class Shuttle"
+            xws: "Lambda-Class T-4a Shuttle".canonicalize()
             factions: [ "Galactic Empire", ]
             attack: 3
             attackb: 2
@@ -1312,6 +1346,7 @@ exportObj.basicCardData = ->
             large: true
         "B-Wing":
             name: "B-Wing"
+            xws: "A/SF-01 B-Wing".canonicalize()
             factions: [ "Rebel Alliance", ]
             attack: 3
             agility: 1
@@ -1332,6 +1367,7 @@ exportObj.basicCardData = ->
             ]
         "TIE Bomber":
             name: "TIE Bomber"
+            xws: "TIE/SA Bomber".canonicalize()
             factions: [ "Galactic Empire", ]
             attack: 2
             agility: 2
@@ -1356,6 +1392,7 @@ exportObj.basicCardData = ->
             ]
         "Z-95 Headhunter":
             name: "Z-95 Headhunter"
+            xws: "Z-95-AF4 Headhunter".canonicalize()
             factions: [ "Rebel Alliance", "Scum and Villainy", ]
             attack: 2
             agility: 2
@@ -1378,6 +1415,7 @@ exportObj.basicCardData = ->
             ]
         "TIE Defender":
             name: "TIE Defender"
+            xws: "TIE Defender".canonicalize()
             factions: [ "Galactic Empire", ]
             attack: 3
             agility: 3
@@ -1400,6 +1438,7 @@ exportObj.basicCardData = ->
             ]
         "E-Wing":
             name: "E-Wing"
+            xws: "E-Wing".canonicalize()
             factions: [ "Rebel Alliance", ]
             attack: 3
             agility: 3
@@ -1424,6 +1463,7 @@ exportObj.basicCardData = ->
             ]
         "TIE Phantom":
             name: "TIE Phantom"
+            xws: "TIE/PH Phantom".canonicalize()
             factions: [ "Galactic Empire", ]
             attack: 3
             agility: 2
@@ -1444,6 +1484,7 @@ exportObj.basicCardData = ->
             ]
         "YT-2400":
             name: "YT-2400"
+            xws: "YT-2400 Light Freighter".canonicalize()
             factions: [ "Rebel Alliance", ]
             attackdt: 4
             agility: 2
@@ -1467,6 +1508,7 @@ exportObj.basicCardData = ->
             ]
         "VT-49 Decimator":
             name: "VT-49 Decimator"
+            xws: "VT-49 Decimator".canonicalize()
             factions: [ "Galactic Empire", ]
             attackdt: 3
             agility: 0
@@ -1491,6 +1533,7 @@ exportObj.basicCardData = ->
             ]
         "StarViper":
             name: "StarViper"
+            xws: "Starviper-class Attack Platform".canonicalize()
             factions: ["Scum and Villainy"]
             attack: 3
             agility: 3
@@ -1513,6 +1556,7 @@ exportObj.basicCardData = ->
             ]
         "M3-A Interceptor":
             name: "M3-A Interceptor"
+            xws: "M3-A Interceptor".canonicalize()
             factions: [ "Scum and Villainy" ]
             attack: 2
             agility: 3
@@ -1534,6 +1578,7 @@ exportObj.basicCardData = ->
             ]
         "Aggressor":
             name: "Aggressor"
+            xws: "Aggressor Assault Fighter".canonicalize()
             factions: [ "Scum and Villainy" ]
             attack: 3
             agility: 3
@@ -1555,6 +1600,7 @@ exportObj.basicCardData = ->
             ]
         "YV-666":
             name: "YV-666"
+            xws: "YV-666 Light Freighter".canonicalize()
             factions: [ "Scum and Villainy" ]
             attackf: 3
             agility: 1
@@ -1575,6 +1621,7 @@ exportObj.basicCardData = ->
             ]
         "Kihraxz Fighter":
             name: "Kihraxz Fighter"
+            xws: "Kihraxz Fighter".canonicalize()
             factions: ["Scum and Villainy"]
             attack: 3
             agility: 2
@@ -1594,6 +1641,7 @@ exportObj.basicCardData = ->
             ]
         "K-Wing":
             name: "K-Wing"
+            xws: "BTL-S8 K-Wing".canonicalize()
             factions: ["Rebel Alliance"]
             attackdt: 2
             agility: 1
@@ -1615,6 +1663,7 @@ exportObj.basicCardData = ->
             ]
         "TIE Punisher":
             name: "TIE Punisher"
+            xws: "TIE/CA Punisher".canonicalize()
             factions: ["Galactic Empire"]
             attack: 2
             agility: 1
@@ -1640,6 +1689,7 @@ exportObj.basicCardData = ->
             ]
         "VCX-100":
             name: "VCX-100"
+            xws: "VCX-100 Light Freighter".canonicalize()
             factions: ["Rebel Alliance"]
             attack: 4
             agility: 0
@@ -1660,6 +1710,7 @@ exportObj.basicCardData = ->
             ]
         "Attack Shuttle":
             name: "Attack Shuttle"
+            xws: "Attack Shuttle".canonicalize()
             factions: ["Rebel Alliance"]
             attack: 3
             agility: 2
@@ -1680,6 +1731,7 @@ exportObj.basicCardData = ->
             ]
         "TIE Advanced Prototype":
             name: "TIE Advanced Prototype"
+            xws: "TIE Advanced V1".canonicalize()
             factions: ["Galactic Empire"]
             attack: 2
             agility: 3
@@ -1704,6 +1756,7 @@ exportObj.basicCardData = ->
             ]
         "G-1A Starfighter":
             name: "G-1A Starfighter"
+            xws: "G-1A Starfighter".canonicalize()
             factions: ["Scum and Villainy"]
             attack: 3
             agility: 1
@@ -1724,6 +1777,7 @@ exportObj.basicCardData = ->
             ]
         "JumpMaster 5000":
             name: "JumpMaster 5000"
+            xws: "JumpMaster 5000".canonicalize()
             factions: ["Scum and Villainy"]
             large: true
             attackt: 2
@@ -1748,6 +1802,7 @@ exportObj.basicCardData = ->
             ]
         "ARC-170":
             name: "ARC-170"
+            xws: "Arc-170 Starfighter".canonicalize()
             factions: ["Rebel Alliance"]
             attack: 3
             attackb: 2
@@ -1769,8 +1824,10 @@ exportObj.basicCardData = ->
                 [ 3, 1, 1, 1, 3, 0 ]
                 [ 0, 0, 3, 0, 0, 3 ]
             ]
-        "Protectorate Starfighter":
-            name: "Protectorate Starfighter"
+        "Fang Fighter":
+            name: "Fang Fighter"
+            canonical_name: 'Protectorate Starfighter'.canonicalize()
+            xws: "Fang fighter".canonicalize()
             factions: ["Scum and Villainy"]
             attack: 3
             agility: 3
@@ -1794,6 +1851,7 @@ exportObj.basicCardData = ->
             ]
         "Lancer-class Pursuit Craft":
             name: "Lancer-class Pursuit Craft"
+            xws: "Lancer-class Pursuit Craft".canonicalize()
             factions: ["Scum and Villainy"]
             large: true
             attack: 3
@@ -1817,6 +1875,7 @@ exportObj.basicCardData = ->
             ]
         "Quadjumper":
             name: "Quadjumper"
+            xws: "Quadrijet Transfer Spacetug".canonicalize()
             factions: ["Scum and Villainy"]
             attack: 2
             agility: 2
@@ -1837,6 +1896,7 @@ exportObj.basicCardData = ->
             ]
         "U-Wing":
             name: "U-Wing"
+            xws: "UT-60D U-Wing".canonicalize()
             factions: ["Rebel Alliance"]
             medium: true
             attack: 3
@@ -1859,6 +1919,7 @@ exportObj.basicCardData = ->
             ]
         "TIE Striker":
             name: "TIE Striker"
+            xws: "TIE/SK Striker".canonicalize()
             factions: ["Galactic Empire"]
             attack: 3
             agility: 2
@@ -1877,6 +1938,7 @@ exportObj.basicCardData = ->
             ]
         "Auzituck Gunship":
             name: "Auzituck Gunship"
+            xws: "Auzituck Gunship".canonicalize()
             factions: ["Rebel Alliance"]
             attackf: 3
             agility: 1
@@ -1898,6 +1960,7 @@ exportObj.basicCardData = ->
             ]
         "Scurrg H-6 Bomber":
             name: "Scurrg H-6 Bomber"
+            xws: "Scurrg H-6 Bomber".canonicalize()
             factions: ["Scum and Villainy"]
             attack: 3
             agility: 1
@@ -1920,6 +1983,7 @@ exportObj.basicCardData = ->
             ]
         "TIE Aggressor":
             name: "TIE Aggressor"
+            xws: "TIE/AG Aggressor".canonicalize()
             factions: ["Galactic Empire"]
             attack: 2
             agility: 2
@@ -1938,8 +2002,9 @@ exportObj.basicCardData = ->
                 [ 1, 1, 2, 1, 1, 0, 0, 0, 0, 0 ]
                 [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0 ]
             ]
-        "Alpha-class Star Wing":
-            name: "Alpha-class Star Wing"
+        "Alpha-Class Star Wing":
+            name: "Alpha-Class Star Wing"
+            xws: "Alpha-Class Star Wing".canonicalize()
             factions: ["Galactic Empire"]
             attack: 2
             agility: 2
@@ -1960,6 +2025,7 @@ exportObj.basicCardData = ->
             ]
         "M12-L Kimogila Fighter":
             name: "M12-L Kimogila Fighter"
+            xws: "M12-L Kimogila Fighter".canonicalize()
             factions: ["Scum and Villainy"]
             attack: 3
             agility: 1
@@ -1980,8 +2046,9 @@ exportObj.basicCardData = ->
                 [ 1, 1, 2, 1, 1, 0]
                 [ 0, 0, 0, 0, 0, 3]
             ]
-        "Sheathipede-class Shuttle":
-            name: "Sheathipede-class Shuttle"
+        "Sheathipede-Class Shuttle":
+            name: "Sheathipede-Class Shuttle"
+            xws: "Sheathipede-Class Shuttle".canonicalize()
             factions: ["Rebel Alliance"]
             attack: 2
             agility: 2
@@ -2001,6 +2068,7 @@ exportObj.basicCardData = ->
             ]
         "TIE Reaper":
             name: "TIE Reaper"
+            xws: "TIE Reaper".canonicalize()
             factions: ["Galactic Empire"]
             attack: 3
             agility: 1
@@ -2023,6 +2091,7 @@ exportObj.basicCardData = ->
             ]
         "Escape Craft":
             name: "Escape Craft"
+            xws: "Escape Craft".canonicalize()
             factions: ["Scum and Villainy"]
             attack: 2
             agility: 2
@@ -3137,7 +3206,7 @@ exportObj.basicCardData = ->
             id: 69
             unique: true
             faction: "Rebel Alliance"
-            ship: "Sheathipede-class Shuttle"
+            ship: "Sheathipede-Class Shuttle"
             skill: 6
             points: 52
             slots: [
@@ -3154,7 +3223,7 @@ exportObj.basicCardData = ->
             id: 70
             unique: true
             faction: "Rebel Alliance"
-            ship: "Sheathipede-class Shuttle"
+            ship: "Sheathipede-Class Shuttle"
             skill: 3
             force: 1
             points: 42
@@ -3172,7 +3241,7 @@ exportObj.basicCardData = ->
             id: 71
             unique: true
             faction: "Rebel Alliance"
-            ship: "Sheathipede-class Shuttle"
+            ship: "Sheathipede-Class Shuttle"
             skill: 2
             points: 32
             slots: [
@@ -3188,7 +3257,7 @@ exportObj.basicCardData = ->
             id: 72
             unique: true
             faction: "Rebel Alliance"
-            ship: "Sheathipede-class Shuttle"
+            ship: "Sheathipede-Class Shuttle"
             skill: 1
             points:30
             slots: [
@@ -3482,7 +3551,7 @@ exportObj.basicCardData = ->
             id: 89
             unique: true
             faction: "Scum and Villainy"
-            ship: "YT-1300"
+            ship: "YT-1300 (Scum)"
             skill: 6
             points: 54
             slots: [
@@ -3495,18 +3564,13 @@ exportObj.basicCardData = ->
                 "Modification"
                 "Title"
             ]
-            ship_override:
-                attackdt: 2
-                agility: 1
-                hull: 8
-                shields: 3
         }
         {
             name: "Lando Calrissian (Scum)"
             id: 90
             unique: true
             faction: "Scum and Villainy"
-            ship: "YT-1300"
+            ship: "YT-1300 (Scum)"
             skill: 4
             points: 49
             slots: [
@@ -3519,11 +3583,6 @@ exportObj.basicCardData = ->
                 "Modification"
                 "Title"
             ]
-            ship_override:
-                attackdt: 2
-                agility: 1
-                hull: 8
-                shields: 3
         }
         {
             name: "L3-37 (YT-1300)"
@@ -3531,7 +3590,7 @@ exportObj.basicCardData = ->
             id: 91
             unique: true
             faction: "Scum and Villainy"
-            ship: "YT-1300"
+            ship: "YT-1300 (Scum)"
             skill: 2
             points: 47
             slots: [
@@ -3543,17 +3602,12 @@ exportObj.basicCardData = ->
                 "Modification"
                 "Title"
             ]
-            ship_override:
-                attackdt: 2
-                agility: 1
-                hull: 8
-                shields: 3
         }
         {
             name: "Freighter Captain"
             id: 92
             faction: "Scum and Villainy"
-            ship: "YT-1300"
+            ship: "YT-1300 (Scum)"
             skill: 1
             points: 46
             slots: [
@@ -3565,11 +3619,6 @@ exportObj.basicCardData = ->
                 "Modification"
                 "Title"
             ]
-            ship_override:
-                attackdt: 2
-                agility: 1
-                hull: 8
-                shields: 3
         }
         {
             name: "Lando Calrissian (Scum) (Escape Craft)"
@@ -3635,7 +3684,7 @@ exportObj.basicCardData = ->
             id: 97
             unique: true
             faction: "Scum and Villainy"
-            ship: "Protectorate Starfighter"
+            ship: "Fang Fighter"
             skill: 6
             points: 68
             slots: [
@@ -3648,7 +3697,7 @@ exportObj.basicCardData = ->
             id: 98
             unique: true
             faction: "Scum and Villainy"
-            ship: "Protectorate Starfighter"
+            ship: "Fang Fighter"
             skill: 5
             points: 56
             slots: [
@@ -3661,7 +3710,7 @@ exportObj.basicCardData = ->
             id: 99
             unique: true
             faction: "Scum and Villainy"
-            ship: "Protectorate Starfighter"
+            ship: "Fang Fighter"
             skill: 4
             points: 54
             slots: [
@@ -3674,7 +3723,7 @@ exportObj.basicCardData = ->
             id: 100
             unique: true
             faction: "Scum and Villainy"
-            ship: "Protectorate Starfighter"
+            ship: "Fang Fighter"
             skill: 4
             points: 52
             slots: [
@@ -3686,7 +3735,7 @@ exportObj.basicCardData = ->
             name: "Skull Squadron Pilot"
             id: 101
             faction: "Scum and Villainy"
-            ship: "Protectorate Starfighter"
+            ship: "Fang Fighter"
             skill: 4
             points: 50
             slots: [
@@ -3698,7 +3747,7 @@ exportObj.basicCardData = ->
             name: "Zealous Recruit"
             id: 102
             faction: "Scum and Villainy"
-            ship: "Protectorate Starfighter"
+            ship: "Fang Fighter"
             skill: 1
             points: 44
             slots: [
@@ -4664,7 +4713,7 @@ exportObj.basicCardData = ->
             id: 161
             unique: true
             faction: "Galactic Empire"
-            ship: "Alpha-class Star Wing"
+            ship: "Alpha-Class Star Wing"
             skill: 4
             points: 41
             slots: [
@@ -4681,7 +4730,7 @@ exportObj.basicCardData = ->
             id: 162
             unique: true
             faction: "Galactic Empire"
-            ship: "Alpha-class Star Wing"
+            ship: "Alpha-Class Star Wing"
             skill: 3
             points: 39
             slots: [
@@ -4697,7 +4746,7 @@ exportObj.basicCardData = ->
             name: "Rho Squadron Pilot"
             id: 163
             faction: "Galactic Empire"
-            ship: "Alpha-class Star Wing"
+            ship: "Alpha-Class Star Wing"
             skill: 3
             points: 37
             slots: [
@@ -4713,7 +4762,7 @@ exportObj.basicCardData = ->
             name: "Nu Squadron Pilot"
             id: 164
             faction: "Galactic Empire"
-            ship: "Alpha-class Star Wing"
+            ship: "Alpha-Class Star Wing"
             skill: 2
             points: 35
             slots: [      
@@ -6890,7 +6939,7 @@ exportObj.basicCardData = ->
            id: 139
            points: 0
            slot: "Configuration"
-           ship: "Alpha-class Star Wing"
+           ship: "Alpha-Class Star Wing"
            confersAddons: [
                 {
                     type: exportObj.Upgrade
@@ -6935,7 +6984,7 @@ exportObj.basicCardData = ->
            id: 144
            points: 0
            slot: "Configuration"
-           ship: "Alpha-class Star Wing"
+           ship: "Alpha-Class Star Wing"
            confersAddons: [
                 {
                     type: exportObj.Upgrade
@@ -7098,7 +7147,7 @@ exportObj.basicCardData = ->
            points: 2
            unique: true
            faction: "Rebel Alliance"
-           ship: "Sheathipede-class Shuttle"
+           ship: "Sheathipede-Class Shuttle"
        }
        {
            name: "Punishing One"
@@ -25289,8 +25338,8 @@ class Ship
         xws =
             name: @pilot.canonical_name
             points: @getPoints()
-            ship: @data.canonical_name
-#            ship: @data.xws.canonicalize()
+#            ship: @data.canonical_name
+            ship: @data.xws.canonicalize()
 
         if @data.multisection
             xws.multisection = @data.multisection.slice 0
