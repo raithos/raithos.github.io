@@ -1089,8 +1089,8 @@ exportObj.hugeOnly = (ship) ->
 # modules.
 exportObj.basicCardData = ->
     ships:
-        "T-65 X-Wing":
-            name: "T-65 X-Wing"
+        "X-Wing":
+            name: "X-Wing"
             factions: [ "Rebel Alliance", ]
             attack: 3
             agility: 2
@@ -2047,7 +2047,7 @@ exportObj.basicCardData = ->
             name: "Cavern Angels Zealot"
             id: 0
             faction: "Rebel Alliance"
-            ship: "T-65 X-Wing"
+            ship: "X-Wing"
             skill: 1
             points: 41
             slots: [
@@ -2062,7 +2062,7 @@ exportObj.basicCardData = ->
             name: "Blue Squadron Escort"
             id: 1
             faction: "Rebel Alliance"
-            ship: "T-65 X-Wing"
+            ship: "X-Wing"
             skill: 2
             points: 41
             slots: [
@@ -2076,7 +2076,7 @@ exportObj.basicCardData = ->
             name: "Red Squadron Veteran"
             id: 2
             faction: "Rebel Alliance"
-            ship: "T-65 X-Wing"
+            ship: "X-Wing"
             skill: 3
             points: 43
             slots: [
@@ -2092,7 +2092,7 @@ exportObj.basicCardData = ->
             id: 3
             unique: true
             faction: "Rebel Alliance"
-            ship: "T-65 X-Wing"
+            ship: "X-Wing"
             skill: 4
             points: 46
             slots: [
@@ -2108,7 +2108,7 @@ exportObj.basicCardData = ->
             id: 4
             unique: true
             faction: "Rebel Alliance"
-            ship: "T-65 X-Wing"
+            ship: "X-Wing"
             skill: 5
             force: 2
             points: 62
@@ -2125,7 +2125,7 @@ exportObj.basicCardData = ->
             id: 5
             unique: true
             faction: "Rebel Alliance"
-            ship: "T-65 X-Wing"
+            ship: "X-Wing"
             skill: 6
             points: 52
             slots: [
@@ -2141,7 +2141,7 @@ exportObj.basicCardData = ->
             id: 6
             unique: true
             faction: "Rebel Alliance"
-            ship: "T-65 X-Wing"
+            ship: "X-Wing"
             skill: 4
             points: 47
             slots: [
@@ -2157,7 +2157,7 @@ exportObj.basicCardData = ->
             id: 7
             unique: true
             faction: "Rebel Alliance"
-            ship: "T-65 X-Wing"
+            ship: "X-Wing"
             skill: 3
             points: 48
             slots: [
@@ -2172,7 +2172,7 @@ exportObj.basicCardData = ->
             id: 8
             unique: true
             faction: "Rebel Alliance"
-            ship: "T-65 X-Wing"
+            ship: "X-Wing"
             skill: 2
             points: 45
             slots: [
@@ -2188,7 +2188,7 @@ exportObj.basicCardData = ->
             id: 9
             unique: true
             faction: "Rebel Alliance"
-            ship: "T-65 X-Wing"
+            ship: "X-Wing"
             skill: 5
             points: 48
             slots: [
@@ -2204,7 +2204,7 @@ exportObj.basicCardData = ->
             id: 10
             unique: true
             faction: "Rebel Alliance"
-            ship: "T-65 X-Wing"
+            ship: "X-Wing"
             skill: 3
             points: 46
             slots: [
@@ -2225,7 +2225,7 @@ exportObj.basicCardData = ->
             id: 12
             unique: true
             faction: "Rebel Alliance"
-            ship: "T-65 X-Wing"
+            ship: "X-Wing"
             skill: 3
             points: 48
             slots: [
@@ -6920,14 +6920,14 @@ exportObj.basicCardData = ->
            id: 142
            points: 0
            slot: "Configuration"
-           ship: "T-65 X-Wing"
+           ship: "X-Wing"
        }
        {
            name: "Servomotor S-foils (Open)"
            id: 143
            slot: "Configuration"
            points: 0
-           ship: "T-65 X-Wing"
+           ship: "X-Wing"
        }
        {
            name: "Xg-1 Assault Configuration"
@@ -24642,7 +24642,7 @@ class Ship
             @ship_selector.select2 'data',
                 id: @pilot.ship
                 text: @pilot.ship
-                canonical_name: exportObj.ships[@pilot.ship].canonical_name
+                canonical_name: exportObj.ships[@pilot.ship].cannonical_name
             @pilot_selector.select2 'data',
                 id: @pilot.id
                 text: "#{@pilot.name} (#{@pilot.points})"

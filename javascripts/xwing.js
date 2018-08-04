@@ -1298,8 +1298,8 @@ exportObj.hugeOnly = function(ship) {
 exportObj.basicCardData = function() {
   return {
     ships: {
-      "T-65 X-Wing": {
-        name: "T-65 X-Wing",
+      "X-Wing": {
+        name: "X-Wing",
         factions: ["Rebel Alliance"],
         attack: 3,
         agility: 2,
@@ -1784,7 +1784,7 @@ exportObj.basicCardData = function() {
         name: "Cavern Angels Zealot",
         id: 0,
         faction: "Rebel Alliance",
-        ship: "T-65 X-Wing",
+        ship: "X-Wing",
         skill: 1,
         points: 41,
         slots: ["Illicit", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1792,7 +1792,7 @@ exportObj.basicCardData = function() {
         name: "Blue Squadron Escort",
         id: 1,
         faction: "Rebel Alliance",
-        ship: "T-65 X-Wing",
+        ship: "X-Wing",
         skill: 2,
         points: 41,
         slots: ["Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1800,7 +1800,7 @@ exportObj.basicCardData = function() {
         name: "Red Squadron Veteran",
         id: 2,
         faction: "Rebel Alliance",
-        ship: "T-65 X-Wing",
+        ship: "X-Wing",
         skill: 3,
         points: 43,
         slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1809,7 +1809,7 @@ exportObj.basicCardData = function() {
         id: 3,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "T-65 X-Wing",
+        ship: "X-Wing",
         skill: 4,
         points: 46,
         slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1818,7 +1818,7 @@ exportObj.basicCardData = function() {
         id: 4,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "T-65 X-Wing",
+        ship: "X-Wing",
         skill: 5,
         force: 2,
         points: 62,
@@ -1828,7 +1828,7 @@ exportObj.basicCardData = function() {
         id: 5,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "T-65 X-Wing",
+        ship: "X-Wing",
         skill: 6,
         points: 52,
         slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1837,7 +1837,7 @@ exportObj.basicCardData = function() {
         id: 6,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "T-65 X-Wing",
+        ship: "X-Wing",
         skill: 4,
         points: 47,
         slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1846,7 +1846,7 @@ exportObj.basicCardData = function() {
         id: 7,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "T-65 X-Wing",
+        ship: "X-Wing",
         skill: 3,
         points: 48,
         slots: ["Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1855,7 +1855,7 @@ exportObj.basicCardData = function() {
         id: 8,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "T-65 X-Wing",
+        ship: "X-Wing",
         skill: 2,
         points: 45,
         slots: ["Illicit", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1864,7 +1864,7 @@ exportObj.basicCardData = function() {
         id: 9,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "T-65 X-Wing",
+        ship: "X-Wing",
         skill: 5,
         points: 48,
         slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1873,7 +1873,7 @@ exportObj.basicCardData = function() {
         id: 10,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "T-65 X-Wing",
+        ship: "X-Wing",
         skill: 3,
         points: 46,
         slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1886,7 +1886,7 @@ exportObj.basicCardData = function() {
         id: 12,
         unique: true,
         faction: "Rebel Alliance",
-        ship: "T-65 X-Wing",
+        ship: "X-Wing",
         skill: 3,
         points: 48,
         slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -5031,13 +5031,13 @@ exportObj.basicCardData = function() {
         id: 142,
         points: 0,
         slot: "Configuration",
-        ship: "T-65 X-Wing"
+        ship: "X-Wing"
       }, {
         name: "Servomotor S-foils (Open)",
         id: 143,
         slot: "Configuration",
         points: 0,
-        ship: "T-65 X-Wing"
+        ship: "X-Wing"
       }, {
         name: "Xg-1 Assault Configuration",
         id: 144,
@@ -28282,7 +28282,7 @@ Ship = (function() {
       this.ship_selector.select2('data', {
         id: this.pilot.ship,
         text: this.pilot.ship,
-        canonical_name: exportObj.ships[this.pilot.ship].canonical_name
+        canonical_name: exportObj.ships[this.pilot.ship].cannonical_name
       });
       this.pilot_selector.select2('data', {
         id: this.pilot.id,
