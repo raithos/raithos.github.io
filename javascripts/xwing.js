@@ -1469,7 +1469,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Defender": {
         name: "TIE Defender",
-        xws: "TIE Defender".canonicalize(),
+        xws: "TIE/D Defender".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 3,
         agility: 3,
@@ -4076,7 +4076,7 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "Galactic Empire",
         restriction_func: function(ship) {
-          return __indexOf.call(ship.effectiveStats().actions, "Coordinate") >= 0;
+          return __indexOf.call(ship.effectiveStats().actions, "Coordinate") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Coordinate") >= 0;
         }
       }, {
         name: "Cikatro Vizago",
@@ -4117,7 +4117,12 @@ exportObj.basicCardData = function() {
         points: 5,
         unique: true,
         faction: "Galactic Empire",
-        applies_condition: 'Optimized Prototype'.canonicalize()
+        applies_condition: 'Optimized Prototype'.canonicalize(),
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'Target Lock') < 0) {
+            return stats.actions.push('Target Lock');
+          }
+        }
       }, {
         name: "Emperor Palpatine",
         id: 29,
@@ -4174,7 +4179,7 @@ exportObj.basicCardData = function() {
         charge: 2,
         recurring: true,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.effectiveStats().actions, "Target Lock") >= 0;
+          return __indexOf.call(ship.effectiveStats().actions, "Target Lock") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Target Lock") >= 0;
         }
       }, {
         name: "Hera Syndulla",
@@ -4331,7 +4336,7 @@ exportObj.basicCardData = function() {
         charge: 2,
         recurring: true,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.effectiveStats().actions, "Coordinate") >= 0;
+          return __indexOf.call(ship.effectiveStats().actions, "Coordinate") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Coordinate") >= 0;
         }
       }, {
         name: "Magva Yarro",
@@ -4692,7 +4697,7 @@ exportObj.basicCardData = function() {
         slot: "Gunner",
         points: 8,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.effectiveStats().actions, "Rotate Arc") >= 0 || ship.effectiveStats().actionsred;
+          return __indexOf.call(ship.effectiveStats().actions, "Rotate Arc") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Rotate Arc") >= 0;
         }
       }, {
         name: "Cloaking Device",
@@ -4804,7 +4809,7 @@ exportObj.basicCardData = function() {
         slot: "Modification",
         points: 3,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.effectiveStats().actions, "Slam") >= 0;
+          return __indexOf.call(ship.effectiveStats().actions, "Slam") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Slam") >= 0;
         }
       }, {
         name: "Afterburners",
@@ -4881,7 +4886,7 @@ exportObj.basicCardData = function() {
         slot: "Talent",
         points: 2,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.effectiveStats().actions, "Boost") >= 0;
+          return __indexOf.call(ship.effectiveStats().actions, "Boost") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Boost") >= 0;
         }
       }, {
         name: "Crack Shot",
@@ -4916,6 +4921,7 @@ exportObj.basicCardData = function() {
         id: 120,
         slot: "Talent",
         points: '*',
+        basepoints: 2,
         basepoints: 2,
         variablebase: true,
         restriction_func: function(ship) {
@@ -4979,7 +4985,7 @@ exportObj.basicCardData = function() {
         slot: "Talent",
         points: 6,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.effectiveStats().actions, "Reload") >= 0 || ship.effectiveStats().actionsred;
+          return __indexOf.call(ship.effectiveStats().actions, "Reload") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Reload") >= 0;
         }
       }, {
         name: "Selfless",
@@ -25143,7 +25149,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 22342
+                    lineno: 22344
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -25732,7 +25738,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 22970
+              lineno: 22972
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -26448,7 +26454,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 23608
+          lineno: 23610
         }));
         __iced_deferrals._fulfill();
       });
@@ -26460,7 +26466,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 23609
+            lineno: 23611
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -27277,7 +27283,7 @@ exportObj.SquadBuilder = (function() {
           this.info_container.find('tr.info-attack-back').hide();
           this.info_container.find('tr.info-attack-doubleturret').hide();
           if (data.recurring != null) {
-            this.info_container.find('tr.info-charge td.info-data').html(data.charge + "<i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-recurring\"></i>");
+            this.info_container.find('tr.info-charge td.info-data').html(data.charge + "<i class=\"xwing-miniatures-font xwing-miniatures-font-recurring\"></i>");
           } else {
             this.info_container.find('tr.info-charge td.info-data').text(data.charge);
           }
@@ -28132,7 +28138,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 24618
+                      lineno: 24620
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -28206,7 +28212,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 24644
+                lineno: 24646
               })
             ]);
             __iced_deferrals._fulfill();
@@ -28253,7 +28259,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 24667
+              lineno: 24669
             }));
           }
         }
@@ -28262,7 +28268,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 24669
+              lineno: 24671
             }));
           }
         }
@@ -28271,7 +28277,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 24671
+              lineno: 24673
             }));
           }
         }
@@ -29352,7 +29358,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 25418
+                lineno: 25420
               })
             ]);
             __iced_deferrals._fulfill();
@@ -29472,7 +29478,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 25480
+                  lineno: 25482
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -29494,7 +29500,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 25484
+                    lineno: 25486
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -29584,7 +29590,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 25527
+            lineno: 25529
           }));
         }
         __iced_deferrals._fulfill();
