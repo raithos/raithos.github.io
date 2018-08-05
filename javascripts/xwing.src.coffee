@@ -3534,7 +3534,7 @@ exportObj.basicCardData = ->
             id: 88
             faction: "Scum and Villainy"
             ship: "Y-Wing"
-            skill: 4
+            skill: 1
             points: 32
             slots: [
                 "Turret"
@@ -5806,7 +5806,7 @@ exportObj.basicCardData = ->
            slot: "Astromech"
            points: 2
            restriction_func: (ship) ->
-                not (ship.data.large? or (ship.data.medium?))
+                not (ship.data.large? or ship.data.medium?)
            modifier_func: (stats) ->
            modifier_func: (stats) ->
                 for turn in [0 ... stats.maneuvers[1].length]
@@ -10095,7 +10095,7 @@ exportObj.translations.English =
         '.xwing-card-browser .translate.sort-cards-by': 'Sort cards by'
         # Info well
         '.info-well .info-ship td.info-header': 'Ship'
-        '.info-well .info-skill td.info-header': 'Skill'
+        '.info-well .info-skill td.info-header': 'Initiative'
         '.info-well .info-actions td.info-header': 'Actions'
         '.info-well .info-upgrades td.info-header': 'Upgrades'
         '.info-well .info-range td.info-header': 'Range'
@@ -23041,7 +23041,7 @@ class exportObj.SquadBuilder
                             <td class="info-data"></td>
                         </tr>
                         <tr class="info-skill">
-                            <td class="info-header">Skill</td>
+                            <td class="info-header">Initiative</td>
                             <td class="info-data info-skill"></td>
                         </tr>
                         <tr class="info-energy">
