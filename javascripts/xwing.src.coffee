@@ -2372,6 +2372,7 @@ exportObj.basicCardData = ->
                 "Torpedo"
                 "Missile"
                 "Missile"
+                "Gunner"
                 "Crew"
                 "Device"
                 "Device"
@@ -2385,11 +2386,12 @@ exportObj.basicCardData = ->
             faction: "Rebel Alliance"
             ship: "K-Wing"
             skill: 3
-            points: 50
+            points: 48
             slots: [
                 "Torpedo"
                 "Missile"
                 "Missile"
+                "Gunner"
                 "Crew"
                 "Device"
                 "Device"
@@ -2412,6 +2414,7 @@ exportObj.basicCardData = ->
                 "Torpedo"
                 "Missile"
                 "Missile"
+                "Gunner"
                 "Crew"
                 "Device"
                 "Device"
@@ -24264,7 +24267,7 @@ class exportObj.SquadBuilder
         # Often you will want JSON.stringify(builder.toXWS())
         xws =
             description: @getNotes()
-            faction: @faction.canonicalize()
+            faction: exportObj.toXWSFaction[@faction]
             name: @current_squad.name
             pilots: []
             points: @total_points
@@ -24362,7 +24365,7 @@ class exportObj.SquadBuilder
                     try
                         new_ship.setPilot (p for p in exportObj.pilotsByFactionCanonicalName[@faction][pilot.name] when p.ship.canonicalize() == pilot.ship)[0]
                     catch err
-                        # console.error err.message
+                        console.error err.message 
                         continue
                     # Turn all the upgrades into a flat list so we can keep trying to add them
                     addons = []
@@ -25802,30 +25805,28 @@ SERIALIZATION_CODE_TO_CLASS =
 exportObj = exports ? this
 
 exportObj.fromXWSFaction =
-    'rebel': 'Rebel Alliance'
+    'rebelalliance': 'Rebel Alliance'
     'rebels': 'Rebel Alliance'
-    'empire': 'Galactic Empire'
+    'galacticempire': 'Galactic Empire'
     'imperial': 'Galactic Empire'
-    'scum': 'Scum and Villainy'
+    'scumandvillainy': 'Scum and Villainy'
 
 exportObj.toXWSFaction =
-    'Rebel Alliance': 'rebel'
-    'Galactic Empire': 'imperial'
-    'Scum and Villainy': 'scum'
+    'Rebel Alliance': 'rebelalliance'
+    'Galactic Empire': 'galacticempire'
+    'Scum and Villainy': 'scumandvillainy'
 
 exportObj.toXWSUpgrade =
     'Astromech': 'amd'
-    'Elite': 'ept'
+    'Talent': 'ept'
     'Modification': 'mod'
-    'Salvaged Astromech': 'samd'
 
 exportObj.fromXWSUpgrade =
     'amd': 'Astromech'
     'astromechdroid': 'Astromech'
-    'ept': 'Elite'
-    'elitepilottalent': 'Elite'
+    'ept': 'Talent'
+    'elitepilottalent': 'Talent'
     'mod': 'Modification'
-    'samd': 'Salvaged Astromech'
 
 SPEC_URL = 'https://github.com/elistevens/xws-spec'
 
