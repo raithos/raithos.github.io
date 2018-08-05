@@ -7088,7 +7088,7 @@ exportObj.basicCardData = ->
            points: 6
            unique: true
            faction: "Scum and Villainy"
-           ship: "YT-1300"
+           ship: "YT-1300 (Scum)"
        }
        {
            name: "Marauder"
