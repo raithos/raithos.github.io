@@ -26605,7 +26605,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.getAvailableUpgradesIncluding = function(slot, include_upgrade, ship, this_upgrade_obj, term, filter_func) {
-    var available_upgrades, eligible_upgrades, equipped_upgrade, limited_upgrades_in_use, m, retval, title, upgrade, upgrade_name, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _ref3, _ref4, _results;
+    var available_upgrades, eligible_upgrades, equipped_upgrade, limited_upgrades_in_use, retval, upgrade, upgrade_name, _i, _j, _len, _len1, _ref, _results;
     if (term == null) {
       term = '';
     }
@@ -26630,7 +26630,7 @@ exportObj.SquadBuilder = (function() {
       _results = [];
       for (upgrade_name in _ref) {
         upgrade = _ref[upgrade_name];
-        if (upgrade.slot === slot && this.matcher(upgrade_name, term) && ((upgrade.ship == null) || upgrade.ship === ship.data.name) && ((upgrade.faction == null) || this.isOurFaction(upgrade.faction)) && ((this.isEpic || this.isCustom) || upgrade.restriction_func !== exportObj.hugeOnly)) {
+        if (upgrade.slot === slot && this.matcher(upgrade_name, term) && ((upgrade.ship == null) || upgrade.ship === ship.data.name) && ((upgrade.faction == null) || this.isOurFaction(upgrade.faction))) {
           _results.push(upgrade);
         }
       }
@@ -26649,31 +26649,6 @@ exportObj.SquadBuilder = (function() {
         return _results;
       })();
     }
-    if ((this.isEpic || this.isCustom) && slot === 'Hardpoint' && (_ref = 'Ordnance Tubes'.canonicalize(), __indexOf.call((function() {
-      var _i, _len, _ref1, _results;
-      _ref1 = ship.modifications;
-      _results = [];
-      for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
-        m = _ref1[_i];
-        if (m.data != null) {
-          _results.push(m.data.canonical_name.getXWSBaseName());
-        }
-      }
-      return _results;
-    })(), _ref) >= 0)) {
-      available_upgrades = available_upgrades.concat((function() {
-        var _ref1, _ref2, _results;
-        _ref1 = exportObj.upgradesByLocalizedName;
-        _results = [];
-        for (upgrade_name in _ref1) {
-          upgrade = _ref1[upgrade_name];
-          if (((_ref2 = upgrade.slot) === 'Missile' || _ref2 === 'Torpedo') && this.matcher(upgrade_name, term) && ((upgrade.ship == null) || upgrade.ship === ship.data.name) && ((upgrade.faction == null) || this.isOurFaction(upgrade.faction)) && ((this.isEpic || this.isCustom) || upgrade.restriction_func !== exportObj.hugeOnly)) {
-            _results.push(upgrade);
-          }
-        }
-        return _results;
-      }).call(this));
-    }
     eligible_upgrades = (function() {
       var _results;
       _results = [];
@@ -26685,36 +26660,30 @@ exportObj.SquadBuilder = (function() {
       }
       return _results;
     }).call(this);
-    _ref2 = (_ref1 = ship != null ? ship.titles : void 0) != null ? _ref1 : [];
-    for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
-      title = _ref2[_i];
-      if ((title != null ? (_ref3 = title.data) != null ? _ref3.special_case : void 0 : void 0) === 'A-Wing Test Pilot') {
-        _ref4 = (function() {
-          var _k, _len1, _ref4, _results;
-          _ref4 = ship.upgrades;
-          _results = [];
-          for (_k = 0, _len1 = _ref4.length; _k < _len1; _k++) {
-            upgrade = _ref4[_k];
-            if ((upgrade != null ? upgrade.data : void 0) != null) {
-              _results.push(upgrade.data);
-            }
-          }
-          return _results;
-        })();
-        for (_j = 0, _len1 = _ref4.length; _j < _len1; _j++) {
-          equipped_upgrade = _ref4[_j];
-          eligible_upgrades.removeItem(equipped_upgrade);
+    _ref = (function() {
+      var _j, _len, _ref, _results;
+      _ref = ship.upgrades;
+      _results = [];
+      for (_j = 0, _len = _ref.length; _j < _len; _j++) {
+        upgrade = _ref[_j];
+        if ((upgrade != null ? upgrade.data : void 0) != null) {
+          _results.push(upgrade.data);
         }
       }
+      return _results;
+    })();
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      equipped_upgrade = _ref[_i];
+      eligible_upgrades.removeItem(equipped_upgrade);
     }
     if ((include_upgrade != null) && (((include_upgrade.unique != null) || (include_upgrade.limited != null) || (include_upgrade.max_per_squad != null)) && this.matcher(include_upgrade.name, term))) {
       eligible_upgrades.push(include_upgrade);
     }
     retval = ((function() {
-      var _k, _len2, _results;
+      var _j, _len1, _results;
       _results = [];
-      for (_k = 0, _len2 = available_upgrades.length; _k < _len2; _k++) {
-        upgrade = available_upgrades[_k];
+      for (_j = 0, _len1 = available_upgrades.length; _j < _len1; _j++) {
+        upgrade = available_upgrades[_j];
         _results.push({
           id: upgrade.id,
           text: "" + upgrade.name + " (" + upgrade.points + ")",
@@ -26727,8 +26696,8 @@ exportObj.SquadBuilder = (function() {
     })()).sort(exportObj.sortHelper);
     if (this_upgrade_obj.adjustment_func != null) {
       _results = [];
-      for (_k = 0, _len2 = retval.length; _k < _len2; _k++) {
-        upgrade = retval[_k];
+      for (_j = 0, _len1 = retval.length; _j < _len1; _j++) {
+        upgrade = retval[_j];
         _results.push(this_upgrade_obj.adjustment_func(upgrade));
       }
       return _results;
