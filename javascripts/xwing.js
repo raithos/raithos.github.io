@@ -1307,6 +1307,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 2,
         actions: ["Focus", "Target Lock", "Barrel Roll"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
       },
       "Y-Wing": {
@@ -1330,6 +1331,7 @@ exportObj.basicCardData = function() {
         hull: 2,
         shields: 2,
         actions: ["Focus", "Evade", "Target Lock", "Barrel Roll", "Boost"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0]]
       },
       "YT-1300": {
@@ -1368,6 +1370,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 0,
         actions: ["Focus", "Barrel Roll", "Evade"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 3], [0, 0, 1, 0, 0, 3], [0, 0, 1, 0, 0, 0]]
       },
       "TIE Advanced": {
@@ -1379,6 +1382,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 2,
         actions: ["Focus", "<r>> Barrel Roll</r>", "Target Lock", "Barrel Roll"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
       "TIE Interceptor": {
@@ -1390,6 +1394,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 0,
         actions: ["Focus", "Barrel Roll", "Boost", "Evade"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
       },
       "Firespray-31": {
@@ -1441,6 +1446,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 4,
         actions: ["Focus", "<r>> Barrel Roll</r>", "Target Lock", "Barrel Roll"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 3, 0, 0, 0, 0], [0, 3, 1, 3, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
       },
       "TIE Bomber": {
@@ -1476,6 +1482,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 4,
         actions: ["Focus", "Evade", "Target Lock", "Barrel Roll", "Boost"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0], [3, 2, 0, 2, 3, 0], [3, 1, 2, 1, 3, 3], [1, 1, 2, 1, 1, 0], [0, 0, 2, 0, 0, 1], [0, 0, 2, 0, 0, 0]]
       },
       "E-Wing": {
@@ -1487,6 +1494,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 3,
         actions: ["Focus", "Evade", "Target Lock", "Barrel Roll", "<r>> Target Lock</r>", "Boost", "<r>> Target Lock</r>"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
       },
       "TIE Phantom": {
@@ -1498,6 +1506,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 2,
         actions: ["Focus", "Evade", "Barrel Roll", "Cloak"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0], [1, 1, 0, 1, 1, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 3], [0, 0, 1, 0, 0, 3]]
       },
       "YT-2400": {
@@ -1535,6 +1544,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 1,
         actions: ["Focus", "Target Lock", "Barrel Roll", "<r>> Focus</r>", "Boost", "<r>> Focus</r>"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [0, 1, 2, 1, 0, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0]]
       },
       "M3-A Interceptor": {
@@ -1546,6 +1556,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 1,
         actions: ["Focus", "Evade", "Target Lock", "Barrel Roll"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0], [1, 2, 0, 2, 1, 0], [1, 1, 2, 1, 1, 0], [0, 1, 2, 1, 0, 3], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 3]]
       },
       "Aggressor": {
@@ -1557,6 +1568,7 @@ exportObj.basicCardData = function() {
         hull: 5,
         shields: 3,
         actions: ["Calculate", "Evade", "Target Lock", "Boost"],
+        actionsred: [],
         medium: true,
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [0, 2, 2, 2, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0]]
       },
@@ -1570,6 +1582,7 @@ exportObj.basicCardData = function() {
         shields: 3,
         large: true,
         actions: ["Focus", "Reinforce", "Target Lock"],
+        actionsred: [],
         maneuvers: [[0, 0, 3, 0, 0, 0], [0, 2, 2, 2, 0, 0], [3, 1, 2, 1, 3, 0], [1, 1, 2, 1, 1, 0], [0, 0, 1, 0, 0, 0]]
       },
       "Kihraxz Fighter": {
@@ -1581,6 +1594,7 @@ exportObj.basicCardData = function() {
         hull: 5,
         shields: 1,
         actions: ["Focus", "Target Lock", "Barrel Roll"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 0, 2, 1, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 3, 3], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
       },
       "K-Wing": {
@@ -1593,6 +1607,7 @@ exportObj.basicCardData = function() {
         shields: 3,
         medium: true,
         actions: ["Focus", "Target Lock", "Slam", "Rotate Arc", "Reload"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0], [1, 1, 2, 1, 1, 0], [0, 1, 1, 1, 0, 0]]
       },
       "TIE Punisher": {
@@ -1618,6 +1633,7 @@ exportObj.basicCardData = function() {
         shields: 4,
         large: true,
         actions: ["Focus", "Target Lock", "Reinforce"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0], [1, 2, 2, 2, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 1, 0, 0, 3]]
       },
       "Attack Shuttle": {
@@ -1629,6 +1645,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 1,
         actions: ["Focus", "Evade", "Barrel Roll", "<r>> Evade</r>"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0], [1, 1, 2, 1, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 1, 0, 0, 3]]
       },
       "TIE Advanced Prototype": {
@@ -1640,6 +1657,7 @@ exportObj.basicCardData = function() {
         hull: 2,
         shields: 2,
         actions: ["Focus", "Evade", "Target Lock", "Barrel Roll", "<r>> Focus</r>", "Boost", "<r>> Focus</r>"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 2, 0, 2, 2, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
       "G-1A Starfighter": {
@@ -1652,6 +1670,7 @@ exportObj.basicCardData = function() {
         shields: 4,
         medium: true,
         actions: ["Focus", "Target Lock", "Jam"],
+        actionsred: [],
         maneuvers: [[0, 0, 3, 0, 0, 0], [3, 2, 2, 2, 3, 0], [1, 1, 2, 1, 1, 3], [0, 3, 1, 3, 0, 0], [0, 0, 3, 0, 0, 3]]
       },
       "JumpMaster 5000": {
@@ -1691,6 +1710,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 0,
         actions: ["Focus", "Target Lock", "Barrel Roll", "<r>> Focus</r>", "Boost", "<r>> Focus</r>"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
       "Lancer-class Pursuit Craft": {
@@ -1704,6 +1724,7 @@ exportObj.basicCardData = function() {
         hull: 8,
         shields: 2,
         actions: ["Focus", "Evade", "Target Lock", "Rotate Arc"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0], [1, 1, 2, 1, 1, 0], [2, 2, 2, 2, 2, 0], [0, 0, 2, 0, 0, 0], [0, 0, 1, 0, 0, 3]]
       },
       "Quadjumper": {
@@ -1740,6 +1761,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 0,
         actions: ["Focus", "Evade", "Barrel Roll"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 3, 0, 0], [1, 2, 2, 2, 1, 0, 3, 3], [0, 1, 2, 1, 0, 0, 0, 0]]
       },
       "Auzituck Gunship": {
@@ -1776,6 +1798,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 1,
         actions: ["Focus", "Target Lock", "Barrel Roll", "<r>> Evade</r>"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
       },
       "Alpha-Class Star Wing": {
@@ -1787,6 +1810,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 3,
         actions: ["Focus", "Target Lock", "Slam", "Reload"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0]]
       },
       "M12-L Kimogila Fighter": {
@@ -1810,6 +1834,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 1,
         actions: ["Focus", "Target Lock", "Coordinate"],
+        actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       },
       "TIE Reaper": {
@@ -5000,8 +5025,10 @@ exportObj.basicCardData = function() {
         points: 4,
         unique: true,
         modifier_func: function(stats) {
-          if (__indexOf.call(stats.actionsred, 'Coordinate') < 0) {
-            return stats.actionsred.push('Coordinate');
+          if (stats.actionsred != null) {
+            if (__indexOf.call(stats.actionsred, 'Coordinate') < 0) {
+              return stats.actionsred.push('Coordinate');
+            }
           }
         }
       }, {
@@ -25164,7 +25191,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 22354
+                    lineno: 22405
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -25753,7 +25780,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 22982
+              lineno: 23033
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -26469,7 +26496,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 23620
+          lineno: 23671
         }));
         __iced_deferrals._fulfill();
       });
@@ -26481,7 +26508,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 23621
+            lineno: 23672
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -28123,7 +28150,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 24630
+                      lineno: 24681
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -28197,7 +28224,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 24656
+                lineno: 24707
               })
             ]);
             __iced_deferrals._fulfill();
@@ -28244,7 +28271,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 24679
+              lineno: 24730
             }));
           }
         }
@@ -28253,7 +28280,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 24681
+              lineno: 24732
             }));
           }
         }
@@ -28262,7 +28289,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 24683
+              lineno: 24734
             }));
           }
         }
@@ -29343,7 +29370,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 25430
+                lineno: 25481
               })
             ]);
             __iced_deferrals._fulfill();
@@ -29463,7 +29490,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 25492
+                  lineno: 25543
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -29485,7 +29512,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 25496
+                    lineno: 25547
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -29575,7 +29602,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 25539
+            lineno: 25590
           }));
         }
         __iced_deferrals._fulfill();

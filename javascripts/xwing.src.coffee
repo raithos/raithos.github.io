@@ -1102,6 +1102,8 @@ exportObj.basicCardData = ->
                 "Target Lock"
                 "Barrel Roll"
             ]
+            actionsred: [
+            ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
               [ 0, 2, 2, 2, 0, 0, 0, 0, 0, 0]
@@ -1146,6 +1148,8 @@ exportObj.basicCardData = ->
                 "Target Lock"
                 "Barrel Roll"
                 "Boost"
+            ]
+            actionsred: [
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0]
@@ -1217,6 +1221,8 @@ exportObj.basicCardData = ->
                 "Barrel Roll"
                 "Evade"
             ]
+            actionsred: [
+            ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0]
               [ 1, 0, 0, 0, 1, 0]
@@ -1239,6 +1245,8 @@ exportObj.basicCardData = ->
                 "Target Lock"
                 "Barrel Roll"
             ]
+            actionsred: [
+            ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
               [ 0, 2, 1, 2, 0, 0, 0, 0, 0, 0]
@@ -1260,6 +1268,8 @@ exportObj.basicCardData = ->
                 "Barrel Roll"
                 "Boost"
                 "Evade"
+            ]
+            actionsred: [
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0]
@@ -1358,6 +1368,8 @@ exportObj.basicCardData = ->
                 "Target Lock"
                 "Barrel Roll"
             ]
+            actionsred: [
+            ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
               [ 3, 2, 2, 2, 3, 0, 0, 0, 3, 3]
@@ -1428,6 +1440,8 @@ exportObj.basicCardData = ->
                 "Barrel Roll"
                 "Boost"
             ]
+            actionsred: [
+            ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0]
               [ 3, 2, 0, 2, 3, 0]
@@ -1453,6 +1467,8 @@ exportObj.basicCardData = ->
                 "Boost"
                 "<r>> Target Lock</r>"
             ]
+            actionsred: [
+            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 3, 2, 2, 2, 3, 0, 0, 0 ]
@@ -1474,6 +1490,8 @@ exportObj.basicCardData = ->
                 "Evade"
                 "Barrel Roll"
                 "Cloak"
+            ]
+            actionsred: [
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0]
@@ -1547,6 +1565,8 @@ exportObj.basicCardData = ->
                 "Boost"
                 "<r>> Focus</r>"
             ]
+            actionsred: [
+            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0]
                 [ 1, 2, 2, 2, 1, 0, 0, 0]
@@ -1567,6 +1587,8 @@ exportObj.basicCardData = ->
                 "Evade"
                 "Target Lock"
                 "Barrel Roll"
+            ]
+            actionsred: [
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0 ]
@@ -1590,6 +1612,8 @@ exportObj.basicCardData = ->
                 "Target Lock"
                 "Boost"
             ]
+            actionsred: [
+            ]
             medium: true
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0 ]
@@ -1612,6 +1636,8 @@ exportObj.basicCardData = ->
                 "Reinforce"
                 "Target Lock"
             ]
+            actionsred: [
+            ]
             maneuvers: [
                 [ 0, 0, 3, 0, 0, 0 ]
                 [ 0, 2, 2, 2, 0, 0 ]
@@ -1631,6 +1657,8 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Target Lock"
                 "Barrel Roll"
+            ]
+            actionsred: [
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
@@ -1654,6 +1682,8 @@ exportObj.basicCardData = ->
                 "Slam"
                 "Rotate Arc"
                 "Reload"
+            ]
+            actionsred: [
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0 ]
@@ -1701,6 +1731,8 @@ exportObj.basicCardData = ->
                 "Target Lock"
                 "Reinforce"
             ]
+            actionsred: [
+            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0 ]
                 [ 3, 1, 2, 1, 3, 0 ]
@@ -1721,6 +1753,8 @@ exportObj.basicCardData = ->
                 "Evade"
                 "Barrel Roll"
                 "<r>> Evade</r>"
+            ]
+            actionsred: [
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0 ]
@@ -1746,6 +1780,8 @@ exportObj.basicCardData = ->
                 "Boost"
                 "<r>> Focus</r>"
             ]
+            actionsred: [
+            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 2, 2, 0, 2, 2, 0, 0, 0, 0, 0 ]
@@ -1767,6 +1803,8 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Target Lock"
                 "Jam"
+            ]
+            actionsred: [
             ]
             maneuvers: [
                 [ 0, 0, 3, 0, 0, 0 ]
@@ -1841,6 +1879,8 @@ exportObj.basicCardData = ->
                 "Boost"
                 "<r>> Focus</r>"
             ]
+            actionsred: [
+            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 1, 0, 0, 0, 1, 0, 0, 0, 0, 0 ]
@@ -1864,6 +1904,8 @@ exportObj.basicCardData = ->
                 "Evade"
                 "Target Lock"
                 "Rotate Arc"
+            ]
+            actionsred: [
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0]
@@ -1930,6 +1972,8 @@ exportObj.basicCardData = ->
                 "Evade"
                 "Barrel Roll"
             ]
+            actionsred: [
+            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 1, 2, 2, 2, 1, 3, 0, 0 ]
@@ -1995,6 +2039,8 @@ exportObj.basicCardData = ->
                 "Barrel Roll" 
                 "<r>> Evade</r>"
             ]
+            actionsred: [
+            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 0, 1, 2, 1, 0, 0, 0, 0, 0, 0 ]
@@ -2015,6 +2061,8 @@ exportObj.basicCardData = ->
                 "Target Lock"
                 "Slam"
                 "Reload"
+            ]
+            actionsred: [
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0 ]
@@ -2058,6 +2106,8 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Target Lock"
                 "Coordinate"
+            ]
+            actionsred: [
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -6890,7 +6940,8 @@ exportObj.basicCardData = ->
            points: 4
            unique: true
            modifier_func: (stats) ->
-                stats.actionsred.push 'Coordinate' if 'Coordinate' not in stats.actionsred
+                if stats.actionsred?
+                    stats.actionsred.push 'Coordinate' if 'Coordinate' not in stats.actionsred
        }
        {
            name: "Swarm Tactics"
