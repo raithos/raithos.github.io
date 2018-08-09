@@ -2490,7 +2490,7 @@ exportObj.basicCardData = function() {
         skill: 3,
         force: 1,
         points: 42,
-        slots: ["force", "Crew", "Modification", "Astromech", "Title"]
+        slots: ["Force", "Crew", "Modification", "Astromech", "Title"]
       }, {
         name: '"Zeb" Orrelios (Sheathipede)',
         canonical_name: '"Zeb" Orrelios'.canonicalize(),
