@@ -5904,7 +5904,6 @@ exportObj.basicCardData = ->
            restriction_func: (ship) ->
                 not (ship.data.large? or ship.data.medium?)
            modifier_func: (stats) ->
-           modifier_func: (stats) ->
                 for turn in [0 ... stats.maneuvers[1].length]
                     if stats.maneuvers[1][turn] > 0 
                         if stats.maneuvers[1][turn] == 3
@@ -6022,6 +6021,8 @@ exportObj.basicCardData = ->
            points: 12
            unique: true
            faction: "Rebel Alliance"
+           modifier_func: (stats) ->
+                stats.actions.push 'Calculate' if 'Calculate' not in stats.actions
        }
        {
            name: "Cassian Andor"
@@ -6105,7 +6106,8 @@ exportObj.basicCardData = ->
                 ship.hasAnotherUnoccupiedSlotLike upgrade_obj
            validation_func: (ship, upgrade_obj) ->
                 upgrade_obj.occupiesAnotherUpgradeSlot()
-           also_occupies_upgrades: [ "Crew" ]       }
+           also_occupies_upgrades: [ "Crew" ]
+       }
        {
            name: "Director Krennic"
            id: 28
@@ -6115,7 +6117,8 @@ exportObj.basicCardData = ->
            faction: "Galactic Empire"
            applies_condition: 'Optimized Prototype'.canonicalize()
            modifier_func: (stats) ->
-                stats.actions.push 'Target Lock' if 'Target Lock' not in stats.actions       }
+                stats.actions.push 'Target Lock' if 'Target Lock' not in stats.actions
+       }
        {
            name: "Emperor Palpatine"
            id: 29
@@ -11005,7 +11008,7 @@ class exportObj.SquadBuilder
                     
                     @info_container.find('tr.info-actions').show()
                     @info_container.find('tr.info-upgrades').show()
-                    @info_container.find('tr.info-upgrades td.info-data').text((exportObj.translate(@language, 'slot', slot) for slot in data.pilot.slots).join(' ') or 'None')
+                    @info_container.find('tr.info-upgrades td.info-data').text((exportObj.translate(@language, 'slot', slot) for slot in data.pilot.slots).join(', ') or 'None')
                     @info_container.find('p.info-maneuvers').show()
                     @info_container.find('p.info-maneuvers').html(@getManeuverTableHTML(effective_stats.maneuvers, data.data.maneuvers))
                 when 'Pilot'
@@ -11078,7 +11081,7 @@ class exportObj.SquadBuilder
 
                     @info_container.find('tr.info-actions').show()
                     @info_container.find('tr.info-upgrades').show()
-                    @info_container.find('tr.info-upgrades td.info-data').text((exportObj.translate(@language, 'slot', slot) for slot in data.slots).join(' ') or 'None')
+                    @info_container.find('tr.info-upgrades td.info-data').text((exportObj.translate(@language, 'slot', slot) for slot in data.slots).join(', ') or 'None')
                     @info_container.find('p.info-maneuvers').show()
                     @info_container.find('p.info-maneuvers').html(@getManeuverTableHTML(ship.maneuvers, ship.maneuvers))
                 when 'Addon'
