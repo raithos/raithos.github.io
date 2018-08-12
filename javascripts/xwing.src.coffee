@@ -2329,6 +2329,7 @@ exportObj.basicCardData = ->
             skill: 3
             points: 46
             slots: [
+                "Illicit"
                 "Talent"
                 "Torpedo"
                 "Astromech"
@@ -2350,6 +2351,7 @@ exportObj.basicCardData = ->
             skill: 3
             points: 48
             slots: [
+                "Illicit"
                 "Talent"
                 "Torpedo"
                 "Astromech"
@@ -6864,7 +6866,7 @@ exportObj.basicCardData = ->
            slot: "Talent"
            points: 2
            restriction_func: (ship) ->
-                "Boost" in ship.effectiveStats().actions or "Boost" in ship.effectiveStats().actionsred
+                "Focus" in ship.effectiveStats().actions or "Focus" in ship.effectiveStats().actionsred
        }
        {
            name: "Crack Shot"
@@ -6903,7 +6905,7 @@ exportObj.basicCardData = ->
            id: 120
            slot: "Talent"
            points: '*'
-           basepoints: 3
+           basepoints: 2
            variablebase: true
            restriction_func: (ship) ->
                 "Barrel Roll" in ship.effectiveStats().actionsred
@@ -7003,7 +7005,7 @@ exportObj.basicCardData = ->
            points: 1
        }
        {
-           name: "Adv. Proton Torpedoes"
+           name: "Advanced Proton Torpedoes"
            id: 134
            slot: "Torpedo"
            points: 6
@@ -7957,9 +7959,9 @@ exportObj.cardLoaders.English = () ->
         "Airen Cracken":
            text: """After you perform an attack, you may choose 1 friendly ship at range 1. That ship may perform an action, treating it as red."""
         "Alpha Squadron Pilot":
-           text: """AUTOTHRUSTERS: After you perform an actino. you may perform a red %BARRELROLL% or a red %BOOST% action."""
+           text: """AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."""
         "AP-5":
-           text: """While you coordinate, if you chose a ship with exactly 1 stress token, it can perform actions. COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier shpi activates, it may perform a %COORDINATE% action."""
+           text: """While you coordinate, if you chose a ship with exactly 1 stress token, it can perform actions. COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier ship activates, it may perform a %COORDINATE% action."""
         "Arvel Crynyd":
            text: """You can perform primary attacks at range 0. If you would fail a %BOOST% action by overlapping another ship, resolve it as though you were partially executing a maneuver instead. %LINEBREAK% VECTORED THRUSTERS: After you perform an action, you may perform a red %BOOST% action."""
         "Asajj Ventress":
@@ -8037,7 +8039,7 @@ exportObj.cardLoaders.English = () ->
         "Colonel Jendon":
            text: """At the start of the Activation Phase, you may spend 1 %CHARGE%. If you do, while friendly ships acquire lock this round, they must acquire locks beyond range 3 instead of at range 0-3."""
         "Colonel Vessery":
-           text: """While you perform an attack against a locked ship, after you roll attack dice, you may acquire a lock on the defender. %LINEBREAK% FULL THROTTLE: After you FULLY execute a speed 3-5 manouver, you may perform an %EVADE% action."""
+           text: """While you perform an attack against a locked ship, after you roll attack dice, you may acquire a lock on the defender. %LINEBREAK% FULL THROTTLE: After you FULLY execute a speed 3-5 maneuver, you may perform an %EVADE% action."""
         "Constable Zuvio":
            text: """If you would drop a device, you may launch it using a [1 %STRAIGHT%] template instead. %LINEBREAK% SPACETUG TRACTOR ARRAY: ACTION: Choose a ship in your %FRONTARC% at range 1. That ship gains one tractor token, or 2 tractor tokens if it is in your %BULLSEYEARC% at range 1"""
         "Contracted Scout":
@@ -8047,7 +8049,7 @@ exportObj.cardLoaders.English = () ->
         '"Countdown"':
            text: """While you defend, after the Neutralize Results step, if you are not stressed, you may suffer 1 %HIT% damage and gain 1 stress token. If you do, cancel all dice results. %LINEBREAK% ADAPTIVE AILERONS: Before you reveal your dial, if you are not stressed, you MUST execute a white (1 %BANKLEFT%), (1 %STRAIGHT%) or (1 %BANKRIGHT%)"""
         "Countess Ryad":
-           text: """While you would execute a %STRAIGHT% maneuver, you may increase the difficulty of the maneuver. If you do, execute it as a %KTURN% maneuver instead. %LINEBREAK% FULL THROTTLE: After you FULLY execute a speed 3-5 manouver, you may perform an %EVADE% action."""
+           text: """While you would execute a %STRAIGHT% maneuver, you may increase the difficulty of the maneuver. If you do, execute it as a %KTURN% maneuver instead. %LINEBREAK% FULL THROTTLE: After you FULLY execute a speed 3-5 maneuver, you may perform an %EVADE% action."""
         "Crymorah Goon":
            text: """ """
         "Cutlass Squadron Pilot":
@@ -8069,7 +8071,7 @@ exportObj.cardLoaders.English = () ->
         "Del Meeko":
            text: """While a friendly ship at range 0-2 defends against a damaged attacker, the defender may reroll 1 defense die."""
         "Delta Squadron Pilot":
-           text: """FULL THROTTLE: After you FULLY execute a speed 3-5 manouver, you may perform an %EVADE% action."""
+           text: """FULL THROTTLE: After you FULLY execute a speed 3-5 maneuver, you may perform an %EVADE% action."""
         "Dengar":
            text: """After you defend, if the attcker is in your %FRONTARC%, you may spend 1 %CHARGE% to perform a bonus attack against the attacker."""
         '"Double Edge"':
@@ -8091,9 +8093,9 @@ exportObj.cardLoaders.English = () ->
         "Evaan Verlaine":
            text: """At the start of the Engagement Phase, you may spend 1 focus token to choose a friendly ship at range 0-1. If you do, that ship rolls 1 additional defense die while defending until the end of the round."""
         "Ezra Bridger (Attack Shuttle)":
-           text: """While you defend or perform an attack, if you are stressed, you may spend 1 %FORCE% to change up to 2 of your %FOCUS% results to %EVADE% or %HIT% results. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performes a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"""
+           text: """While you defend or perform an attack, if you are stressed, you may spend 1 %FORCE% to change up to 2 of your %FOCUS% results to %EVADE% or %HIT% results. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"""
         "Ezra Bridger (Sheathipede)":
-           text: """While you defend or perform an attack, if you are stressed, you may spend 1 %FORCE% to change up to 2 of your %FOCUS% results to %EVADE%/%HIT% results. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performes a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"""
+           text: """While you defend or perform an attack, if you are stressed, you may spend 1 %FORCE% to change up to 2 of your %FOCUS% results to %EVADE%/%HIT% results. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"""
         "Ezra Bridger (TIE Fighter)":
            text: """While you defend or perform an attack, if you are stressed, you may spend 1 %FORCE% to change up to 2 of your %FOCUS% results to %EVADE% or %HIT% results."""
         "Fenn Rau (Fang Fighter)":
@@ -8135,7 +8137,7 @@ exportObj.cardLoaders.English = () ->
         "Heff Tobber":
            text: """After an enemy ship executes a maneuver, if it is at range 0, you may perform an action."""
         "Hera Syndulla (Attack Shuttle)":
-           text: """After you reveal a red or blue maneuver, you may set your dial to another maneuver of the same difficulty. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performes a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"""
+           text: """After you reveal a red or blue maneuver, you may set your dial to another maneuver of the same difficulty. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"""
         "Hera Syndulla (VCX-100)":
            text: """After you reveal a red or blue maneuver, you may set your dial to another maneuver of the same difficulty. TAIL GUN: While you have a docked ship, you have a primary %REARARC% weapon with an attack value equal to your docked ship's Primary %FRONTARC% attack value."""
         "Hired Gun":
@@ -8231,7 +8233,7 @@ exportObj.cardLoaders.English = () ->
         "Luke Skywalker":
            text: """After you become the defender (before dice are rolled), you may recover 1 %FORCE%."""
         "Maarek Stele":
-           text: """While you perform an attack, if the defender would be dealt a faceup damage card, instead draw 3 damage cards, choose 1, and discard the rest. %LINEBREAK% ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, ro;; 1 additional attack die and change 1 %HIT% result to a %CRIT% result."""
+           text: """While you perform an attack, if the defender would be dealt a faceup damage card, instead draw 3 damage cards, choose 1, and discard the rest. %LINEBREAK% ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, roll 1 additional attack die and change 1 %HIT% result to a %CRIT% result."""
         "Magva Yarro":
            text: """While a friendly ship at range 0-2 defends, the attacker cannot reroll more than 1 attack die."""
         "Major Rhymer":
@@ -8267,7 +8269,7 @@ exportObj.cardLoaders.English = () ->
         "Omicron Group Pilot":
            text: """ """
         "Onyx Squadron Ace":
-           text: """FULL THROTTLE: After you FULLY execute a speed 3-5 manouver, you may perform an %EVADE% action."""
+           text: """FULL THROTTLE: After you FULLY execute a speed 3-5 maneuver, you may perform an %EVADE% action."""
         "Onyx Squadron Scout":
            text: """ """
         "Outer Rim Pioneer":
@@ -8299,17 +8301,17 @@ exportObj.cardLoaders.English = () ->
         '"Redline"':
            text: """You can maintain up to 2 locks. After you perform an action, you may acquire a lock."""
         "Rexler Brath":
-           text: """After you perform an attack that hits, if you are evading, expose 1 of the defender's damage cards. %LINEBREAK% FULL THROTTLE: After you FULLY execute a speed 3-5 manouver, you may perform an %EVADE% action."""
+           text: """After you perform an attack that hits, if you are evading, expose 1 of the defender's damage cards. %LINEBREAK% FULL THROTTLE: After you FULLY execute a speed 3-5 maneuver, you may perform an %EVADE% action."""
         "Rho Squadron Pilot":
            text: """ """
         "Roark Garnet":
            text: """At the start of the Engagement Phase, you may choose 1 ship in your firing arc. If you do, it engages at initiative 7 instead of its standard initiative value this phase."""
         "Rogue Squadron Escort":
-           text: """EXPERIMENTAL SCANNERS: You can acquire locks beyond range 3. You cannot acquite locks at range 1."""
+           text: """EXPERIMENTAL SCANNERS: You can acquire locks beyond range 3. You cannot acquire locks at range 1."""
         "Saber Squadron Ace":
-           text: """AUTOTHRUSTERS: After you perform an actino. you may perform a red %BARRELROLL% or a red %BOOST% action."""
+           text: """AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."""
         "Sabine Wren (Attack Shuttle)":
-           text: """Before you activate, you may perform a %BARRELROLL% or %BOOST% action. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performes a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"""
+           text: """Before you activate, you may perform a %BARRELROLL% or %BOOST% action. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"""
         "Sabine Wren (Scum)":
            text: """While you defend, if the attacker is in your %SINGLETURRETARC% at range 0-2, you may add 1 %FOCUS% result to your dice results."""
         "Sabine Wren (TIE Fighter)":
@@ -8321,7 +8323,7 @@ exportObj.cardLoaders.English = () ->
         "Scarif Base Pilot":
            text: """ADAPTIVE AILERONS: Before you reveal your dial, if you are not stressed, you MUST execute a white (1 %BANKLEFT%), (1 %STRAIGHT%) or (1 %BANKRIGHT%)"""
         "Scimitar Squadron Pilot":
-           text: """NIMBLE BOMBER: If you would drop a device using a %STRAIGHT% template, you may use %BANKLEFT% a or %BANKRIGHT% tempate of the same speed instead."""
+           text: """NIMBLE BOMBER: If you would drop a device using a %STRAIGHT% template, you may use %BANKLEFT% a or %BANKRIGHT% template of the same speed instead."""
         '"Scourge" Skutu':
            text: """While you perform an attack against a defender in your %BULLSEYEARC%, roll 1 additional attack die."""
         "Serissu":
@@ -8343,11 +8345,11 @@ exportObj.cardLoaders.English = () ->
         "Sol Sixxa":
            text: """If you would drop a device using a [1 %STRAIGHT%] template, you may drop it using any other speed 1 template instead."""
         "Soontir Fel":
-           text: """At the start of the Engagement Phase, if there is an enemy ship in your %BULLSEYEARC%, gain 1 focus token. %LINEBREAK% AUTOTHRUSTERS: After you perform an actino. you may perform a red %BARRELROLL% or a red %BOOST% action."""
+           text: """At the start of the Engagement Phase, if there is an enemy ship in your %BULLSEYEARC%, gain 1 focus token. %LINEBREAK% AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."""
         "Spice Runner":
            text: """ """
         "Storm Squadron Ace":
-           text: """ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, ro;; 1 additional attack die and change 1 %HIT% result to a %CRIT% result."""
+           text: """ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, roll 1 additional attack die and change 1 %HIT% result to a %CRIT% result."""
         "Sunny Bounder":
            text: """While you defend or perform an attack, after you roll or reroll your dice, if you have the same result on each of your dice, you may add 1 matching result. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."""
         "Tala Squadron Pilot":
@@ -8365,7 +8367,7 @@ exportObj.cardLoaders.English = () ->
         "Thane Kyrell":
            text: """While you perform an attack, you may spend 1 %FOCUS%, %HIT%, or %CRIT% result to look at the defender's facedown damage cards, choose 1, and expose it."""
         "Tomax Bren":
-           text: """After you perform a %RELOAD% action, you may revocer 1 %CHARGE% token on 1 of your equipped %TALENT% upgrade cards. %LINEBREAK% NIMBLE BOMBER: If you would drop a device using a %STRAIGHT% template, you may use %BANKLEFT% a or %BANKRIGHT% tempate of the same speed instead."""
+           text: """After you perform a %RELOAD% action, you may recover 1 %CHARGE% token on 1 of your equipped %TALENT% upgrade cards. %LINEBREAK% NIMBLE BOMBER: If you would drop a device using a %STRAIGHT% template, you may use %BANKLEFT% a or %BANKRIGHT% tempate of the same speed instead."""
         "Torani Kulda":
            text: """After you perform an attack, each enemy ship in your %BULLSEYEARC% suffers 1 %HIT% damage unless it removes 1 green token. %LINEBREAK% DEAD TO RIGHTS: While you perform an attack, if the defender is in your %BULLSEYEARC%, defense dice cannot be modified using green tokens."""
         "Torkil Mux":
@@ -8373,13 +8375,13 @@ exportObj.cardLoaders.English = () ->
         "Trandoshan Slaver":
            text: """ """
         "Turr Phennir":
-           text: """After you perform an attack, you may perform a %BARRELROLL% or %BOOST% action, even if you are stressed. %LINEBREAK% AUTOTHRUSTERS: After you perform an actino. you may perform a red %BARRELROLL% or a red %BOOST% action."""
+           text: """After you perform an attack, you may perform a %BARRELROLL% or %BOOST% action, even if you are stressed. %LINEBREAK% AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."""
         "Unkar Plutt":
            text: """At the start of the Engagement Phase, if there are one or more other ships at range 0, you and each other ship at range 0 gain 1 tractor token. %LINEBREAK% SPACETUG TRACTOR ARRAY: ACTION: Choose a ship in your %FRONTARC% at range 1. That ship gains one tractor token, or 2 tractor tokens if it is in your %BULLSEYEARC% at range 1"""
         "Valen Rudor":
            text: """After a friendly ship at range 0-1 defends (after damage is resolved, if any), you may perform an action."""
         "Ved Foslo":
-           text: """While you execute a maneuver, you may execute a maneuver of the same bearing and difficulty of a speed 1 higher or lower instead. %LINEBREAK% ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, ro;; 1 additional attack die and change 1 %HIT% result to a %CRIT% result."""
+           text: """While you execute a maneuver, you may execute a maneuver of the same bearing and difficulty of a speed 1 higher or lower instead. %LINEBREAK% ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, roll 1 additional attack die and change 1 %HIT% result to a %CRIT% result."""
         "Viktor Hel":
            text: """After you defend, if you did not roll exactly 2 defense dice, the attack gains 1 stress token."""
         '"Vizier"':
@@ -8399,13 +8401,13 @@ exportObj.cardLoaders.English = () ->
         "Zealous Recruit":
            text: """CONCORDIA FACEOFF: While you defend, if the attack range is 1 and you are in the attackers %FRONTARC%, change 1 result to an %EVADE% result"""
         '"Zeb" Orrelios (Attack Shuttle)':
-           text: """While you defend, %CRIT% results are neutralized before %HIT% results. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performes a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"""
+           text: """While you defend, %CRIT% results are neutralized before %HIT% results. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"""
         '"Zeb" Orrelios (Sheathipede)':
            text: """While you defend, %CRIT% results are neutralized before %HIT% results. COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier shpi activates, it may perform a %COORDINATE% action."""
         '"Zeb" Orrelios (TIE Fighter)':
            text: """While you defend, %CRIT% results are neutralized before %HIT% results."""
         "Zertik Strom":
-           text: """During the End Phase, you may spend a lock you have on an enemy ship to expose 1 of that ship's damage cards. %LINEBREAK% ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, ro;; 1 additional attack die and change 1 %HIT% result to a %CRIT% result."""
+           text: """During the End Phase, you may spend a lock you have on an enemy ship to expose 1 of that ship's damage cards. %LINEBREAK% ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, roll 1 additional attack die and change 1 %HIT% result to a %CRIT% result."""
         "Zuckuss":
            text: """While you perform a primary attack, you may roll 1 additional attack die. If you do, the defender rolls 1 additional defense die."""
 
@@ -8418,7 +8420,7 @@ exportObj.cardLoaders.English = () ->
            text: """Before you would suffer damage from an obstacle or from a friendly bomb detonating, you may spend 1 %CHARGE%. If you do, prevent 1 damage."""
         "Admiral Sloane":
            text: """After another friendly ship at range 0-3 defends, if it is destroyed, the attacker gains 2 stress tokens. While a friendly ship at range 0-3 performs an attack against a stressed ship, it may reroll 1 attack die."""
-        "Adv. Proton Torpedoes":
+        "Advanced Proton Torpedoes":
            text: """Attack (%LOCK%): Spend 1 %CHARGE%. Change 1 %HIT% result to a %CRIT% result."""
         "Advanced Sensors":
            text: """After you reveal your dial, you may perform 1 action. If you do, you cannot perform another action during your activation."""
@@ -8433,21 +8435,21 @@ exportObj.cardLoaders.English = () ->
         "Andrasta":
            text: """Add %DEVICE% slot."""
         "Barrage Rockets":
-           text: """Attack (%FOCUS%): Spend 1 %CHARGE%. If the defender is in your %BULLSEYEARC%, you may spend 1 or mroe %CHARGE% to reroll that many attack dice."""
+           text: """Attack (%FOCUS%): Spend 1 %CHARGE%. If the defender is in your %BULLSEYEARC%, you may spend 1 or more %CHARGE% to reroll that many attack dice."""
         "Baze Malbus":
-           text: """While you perform a %FOCUS% action, you may treat it as red. If you do, gain 1 additional focus token for each enemy ship at range 0-1 to a mazimum of 2."""
+           text: """While you perform a %FOCUS% action, you may treat it as red. If you do, gain 1 additional focus token for each enemy ship at range 0-1 to a maximum of 2."""
         "Bistan":
-           text: """After you perform a primary attack, if you are focused, you may perform a bonus %TURRET% attack against a shipe you have not already attacked this round."""
+           text: """After you perform a primary attack, if you are focused, you may perform a bonus %TURRET% attack against a ship you have not already attacked this round."""
         "Boba Fett":
            text: """Setup: Start in reserve. At the end of Setup, place yourself at range 0 of an obstacle and beyond range 3 of an enemy ship."""
         "Bomblet Generator":
-           text: """Bomb During the System Phase, you may spend 1 %CHARGE% to drop a Bomblet with the [1 %STRAIGHT%] templete. At the start of the Activation Phase, you may spend 1 shield to recover 2 %CHARGE%."""
+           text: """Bomb During the System Phase, you may spend 1 %CHARGE% to drop a Bomblet with the [1 %STRAIGHT%] template. At the start of the Activation Phase, you may spend 1 shield to recover 2 %CHARGE%."""
         "Bossk":
-           text: """After you perform a primary attack that misses, if you are not stressedm you must receive 1 stress token to perform a bonus primary attack against the same target."""
+           text: """After you perform a primary attack that misses, if you are not stressed you must receive 1 stress token to perform a bonus primary attack against the same target."""
         "BT-1":
            text: """While you perform an attack, you may change 1 %HIT% result to a %CRIT% result for each stress token the defender has."""
         "C-3PO":
-           text: """Before rolling defense dice, you may spend 1 calculate token to guess aloud a number 1 or higher. If you do, and you roll exactly that many %EVADE% results, add 1 %EVADE% result. Adter you perform the %CALCULATE% action, gain 1 calculate token."""
+           text: """Before rolling defense dice, you may spend 1 calculate token to guess aloud a number 1 or higher. If you do, and you roll exactly that many %EVADE% results, add 1 %EVADE% result. After you perform the %CALCULATE% action, gain 1 calculate token."""
         "Cad Bane":
            text: """After you drop or launch a device, you may perform a red %BOOST% action."""
         "Cassian Andor":
@@ -8459,7 +8461,7 @@ exportObj.cardLoaders.English = () ->
         '"Chopper" (Astromech)':
            text: """Action: Spend 1 non-recurring %CHARGE% from another equipped upgrade to recover 1 shield. Action: Spend 2 shields to recover 1 non-recurring %CHARGE% on an equipped upgrade."""
         '"Chopper" (Crew)':
-           text: """During the Perform Action step, you may perofrm 1 action, even while stressed. Adter you perform an action while stressed, suffer 1 %HIT% damage unless you expose 1 of your damage cards."""
+           text: """During the Perform Action step, you may perform 1 action, even while stressed. After you perform an action while stressed, suffer 1 %HIT% damage unless you expose 1 of your damage cards."""
         "Ciena Ree":
            text: """After you perform a %COORDINATE% action, if the ship you coordinated performed a %BARRELROLL% or %BOOST% action, it may gain 1 stress token to rotate 90˚."""
         "Cikatro Vizago":
@@ -8469,9 +8471,9 @@ exportObj.cardLoaders.English = () ->
         "Cluster Missiles":
            text: """Attack (%LOCK%): Spend 1 %CHARGE%. After this attack, you may perform this attack as a bonus attack against a different target at range 0-1 of the defender, ignoring the %LOCK% requirement."""
         "Collision Detector":
-           text: """While you boost or barrel roll, you can move through and overlap obstacles. After you move through or overlap an obstacle, you may spend 1 %CHARGE% to ignore its effects ntie the end of the round."""
+           text: """While you boost or barrel roll, you can move through and overlap obstacles. After you move through or overlap an obstacle, you may spend 1 %CHARGE% to ignore its effects until the end of the round."""
         "Composure":
-           text: """Requires a %FOCUS% action. If you fail an action and don't have any green tokens you may perform a %FOCUS% action.﻿﻿"""
+           text: """If you fail an action and don't have any green tokens you may perform a %FOCUS% action.﻿﻿"""
         "Concussion Missiles":
            text: """Attack (%LOCK%): Spend 1 %CHARGE%. After this attack hits, each ship at range 0-1 of the defender exposes 1 of its damage cards."""
         "Conner Nets":
@@ -8507,7 +8509,7 @@ exportObj.cardLoaders.English = () ->
         "Engine Upgrade":
            text: """Add a white %BOOST% %LINEBREAK%<i>This upgrade has a variable cost, worth 3, 6, or 9 points depending on if the ship base is small, medium or large respectively.</i>"""
         "Expert Handling":
-           text: """Add a white %BARRELROLL% %LINEBREAK%<i>This upgrade has a variable cost, worth 3, 6, or 9 points depending on if the ship base is small, medium or large respectively.</i>"""
+           text: """Add a white %BARRELROLL% %LINEBREAK%<i>This upgrade has a variable cost, worth 2, 4, or 6 points depending on if the ship base is small, medium or large respectively.</i>"""
         "Ezra Bridger":
            text: """After you perform a primary attack, you may spend 1 %FORCE% to perform a bonus %TURRET% attack from a %TURRET% you have not attacked from this round. If you do and you are stressed, you may reroll 1 attack die."""
         "Fearless":
@@ -8541,7 +8543,7 @@ exportObj.cardLoaders.English = () ->
         "Heightened Perception":
            text: """At the start of the Engagement Phase, you may spend 1 %FORCE%. If you do, engage at initiative 7 instead of your standard initiative value this phase."""
         "Hera Syndulla":
-           text: """You can execute red maneuvers even while stressed. After you fully execute a red maneuver, if you ahve 3 or more stress tokens, remove 1 stress token and suffer 1 %HIT% damage."""
+           text: """You can execute red maneuvers even while stressed. After you fully execute a red maneuver, if you have 3 or more stress tokens, remove 1 stress token and suffer 1 %HIT% damage."""
         "Homing Missiles":
            text: """Attack (%LOCK%): Spend 1 %CHARGE%. After you declare the defender, the defender may choose to suffer 1 %HIT% damage. If it does, skip the Attack and Defense Dice steps and the attack is treated as hitting."""
         "Hotshot Gunner":
@@ -8609,7 +8611,7 @@ exportObj.cardLoaders.English = () ->
         "Marksmanship":
            text: """While you perform an attack, if the defender is in your %BULLSEYEARC%, you may change 1 %HIT% result to a %CRIT% result."""
         "Maul":
-           text: """After you suffer damage, you may gain 1 stress token to recover 1 %FORCE%. You can equip \"Dark Side\" upgades."""
+           text: """After you suffer damage, you may gain 1 stress token to recover 1 %FORCE%. You can equip \"Dark Side\" upgrades."""
         "Millennium Falcon":
            text: """While you defend, if you are evading, you may reroll 1 defense die."""
         "Minister Tua":
@@ -8681,7 +8683,7 @@ exportObj.cardLoaders.English = () ->
         "Sabine Wren":
            text: """Setup: Place 1 ion, 1 jam, 1 stress, and 1 tractor token on this card. After a ship suffers the effect of a friendly bomb, you may remove 1 ion, jam, stress, or tractor token from this card. If you do, that ship gains a matching token."""
         "Saturation Salvo":
-           text: """While you perform a %TORPEDO% or %MISSILE% attack, you may spend 1 charge from that upgrade. If you do, choose two defence dice. The defender must reroll those dice."""
+           text: """While you perform a %TORPEDO% or %MISSILE% attack, you may spend 1 charge from that upgrade. If you do, choose two defense dice. The defender must reroll those dice."""
         "Saw Gerrera":
            text: """While you perform an attack, you may suffer 1 %HIT% damage to change all of your %FOCUS% results to %CRIT% results."""
         "Seasoned Navigator":
@@ -8739,11 +8741,11 @@ exportObj.cardLoaders.English = () ->
         "Virago":
            text: """During the End Phase, you may spend 1 %CHARGE% to perform a red %BOOST% action. Add %MODIFICATION% slot."""
         "Xg-1 Assault Configuration":
-           text: """While you have exactly 1 disarm token, uou can still perform %CANNON% attacks. While you perform a %CANNON% attack while disarmed, roll a maximum of 3 attack dice. Add %CANNON% slot."""
+           text: """While you have exactly 1 disarm token, you can still perform %CANNON% attacks. While you perform a %CANNON% attack while disarmed, roll a maximum of 3 attack dice. Add %CANNON% slot."""
         '"Zeb" Orrelios':
            text: """You can perform primary attacks at range 0. Enemy ships at range 0 can perform primary attacks against you."""
         "Zuckuss":
-           text: """While you perform an attack, if ou are not stressed, you may choose 1 defense die and gain 1 stress token. If you do, the defender must reroll that die."""
+           text: """While you perform an attack, if you are not stressed, you may choose 1 defense die and gain 1 stress token. If you do, the defender must reroll that die."""
         'GNK "Gonk" Droid':
            text: """Setup: Lose 1 %CHARGE%. Action: Recover 1 %CHARGE%. Action: Spend 1 %CHARGE% to recover 1 shield."""
         "Hardpoint: Cannon":
@@ -9009,14 +9011,3247 @@ exportObj.manifestByExpansion =
             count: 1
         }
     ]
-    "Lando Calrissian's Millenium Falcon": [
+    'Second Edition Core Set': [
+        {
+            name: 'X-Wing'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'TIE Fighter'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'Luke Skywalker'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Jek Porkins'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Red Squadron Veteran'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Blue Squadron Escort'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Iden Versio'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Valen Rudor'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Black Squadron Ace'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: '"Night Beast"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Obsidian Squadron Pilot'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Academy Pilot'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Elusive'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Outmaneuver'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Predator'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Heightened Perception'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Instinctive Aim'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Sense'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Supernatural Reflexes'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Proton Torpedoes'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R2 Astromech'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R2-D2 (Astromech)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R3 Astromech'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R5 Astromech'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R5-D8'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Servomotor S-foils (Open)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Servomotor S-foils (Closed)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Afterburners'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Hull Upgrade'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Shield Upgrade'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+    "Saw's Renegades Expansion Pack" : [
+        {
+            name: 'U-Wing'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'X-Wing'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Saw Gerrera'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Magva Yarro'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Benthic Two-Tubes'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Partisan Renegade'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Kullbee Sperado'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Leevan Tenza'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Edrio Two-Tubes'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Cavern Angels Zealot'
+            type: 'pilot'
+            count: 3
+        }
+        {
+            name: 'R3 Astromech'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R4 Astromech'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Saw Gerrera'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Magva Yarro'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Pivot Wing (Open)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Pivot Wing (Closed)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Servomotor S-foils (Open)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Servomotor S-foils (Closed)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: "Deadman's Switch"
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Advanced Sensors'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Trick Shot'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Proton Torpedoes'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+    'TIE Reaper Expansion Pack' : [
+        {
+            name: 'TIE Reaper'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Major Vermeil'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Captain Feroph'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Vizier"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Scarif Base Pilot'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Director Krennic'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Death Troopers'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'ISB Slicer'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Tactical Officer'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Swarm Tactics'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Juke'
+            type: 'upgrade'
+            count: 2
+        }
+    ]
+    'Rebel Alliance Conversion Kit': [
+        {
+            name: 'Thane Kyrell'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Norra Wexley (Y-Wing)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Evaan Verlaine'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Biggs Darklighter'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Garven Dreis (X-Wing)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Wedge Antilles'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Blue Squadron Escort'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Red Squadron Veteran'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: '"Dutch" Vander'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Horton Salm'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Gold Squadron Veteran'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Gray Squadron Bomber'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Arvel Crynyd'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Jake Farrell'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Green Squadron Pilot'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Phoenix Squadron Pilot'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Braylen Stramm'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Ten Numb'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Blue Squadron Pilot'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Blade Squadron Veteran'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Airen Cracken'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Lieutenant Blount'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Bandit Squadron Pilot'
+            type: 'pilot'
+            count: 3
+        }
+        {
+            name: 'Tala Squadron Pilot'
+            type: 'pilot'
+            count: 3
+        }
+        {
+            name: 'Lowhhrick'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Wullffwarro'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Kashyyyk Defender'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Ezra Bridger (Attack Shuttle)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Hera Syndulla (Attack Shuttle)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Sabine Wren (Attack Shuttle)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Zeb" Orrelios (Attack Shuttle)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'AP-5'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Ezra Bridger (Sheathipede)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Fenn Rau (Sheathipede)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Zeb" Orrelios (Sheathipede)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Jan Ors'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Kyle Katarn'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Roark Garnet'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Rebel Scout'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Captain Rex'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Ezra Bridger (TIE Fighter)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Sabine Wren (TIE Fighter)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Zeb" Orrelios (TIE Fighter)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Corran Horn'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Gavin Darklighter'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Knave Squadron Escort'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Rogue Squadron Escort'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Bodhi Rook'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Cassian Andor'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Heff Tobber'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Blue Squadron Scout'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Esege Tuketu'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Miranda Doni'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Warden Squadron Pilot'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Garven Dreis (ARC-170)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Ibtisam'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Norra Wexley (ARC-170)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Shara Bey'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Chewbacca'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Han Solo (Rebel)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Lando Calrissian (Rebel)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Outer Rim Smuggler'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Chopper"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Hera Syndulla (VCX-100)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Kanan Jarrus'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Lothal Rebel'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Dash Rendar'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Leebo"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Wild Space Fringer'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Crack Shot'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Daredevil'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Debris Gambit'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Elusive'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Expert Handling'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Intimidation'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Juke'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Lone Wolf'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Marksmanship'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Outmaneuver'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Predator'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Saturation Salvo'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Selfless'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Squad Leader'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Swarm Tactics'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Trick Shot'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Advanced Sensors'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Collision Detector'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Fire-Control System'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Cloaking Device'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Contraband Cybernetics'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: "Deadman's Switch"
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Feedback Array'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Inertial Dampeners'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Rigged Cargo Chute'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Heavy Laser Cannon'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Ion Cannon'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Jamming Beam'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Tractor Beam'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Dorsal Turret'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Ion Cannon Turret'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Advanced Proton Torpedoes'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Ion Torpedoes'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Proton Torpedoes'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Baze Malbus'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'C-3PO'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Cassian Andor'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Chewbacca (Rebel)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: '"Chopper" (Crew)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Freelance Slicer'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'GNK "Gonk" Droid'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Hera Syndulla'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Informant'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Jyn Erso'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Kanan Jarrus'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Lando Calrissian (Rebel)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Leia Organa'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Nien Nunb'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Novice Technician'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Perceptive Copilot'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'R2-D2 (Crew)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Sabine Wren'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Seasoned Navigator'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Tactical Officer'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: '"Zeb" Orrelios'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Cluster Missiles'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Concussion Missiles'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Homing Missiles'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Ion Missiles'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Proton Rockets'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Bomblet Generator'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Conner Nets'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Proton Bombs'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Proximity Mines'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Seismic Charges'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Ghost'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Millennium Falcon'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Moldy Crow'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Outrider'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Phantom'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Pivot Wing (Open)'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Pivot Wing (Closed)'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Servomotor S-foils (Open)'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Servomotor S-foils (Closed)'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Bistan'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ezra Bridger'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Han Solo (Rebel)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Hotshot Gunner'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Luke Skywalker'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Skilled Bombardier'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Veteran Tail Gunner'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Veteran Turret Gunner'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: '"Chopper" (Astromech)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R2 Astromech'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'R3 Astromech'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'R4 Astromech'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'R5 Astromech'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Ablative Plating'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Advanced SLAM'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Electronic Baffle'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Engine Upgrade'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Hull Upgrade'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Munitions Failsafe'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Shield Upgrade'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Static Discharge Vanes'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Stealth Device'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Tactical Scrambler'
+            type: 'upgrade'
+            count: 2
+        }
+    ]
+    'Galactic Empire Conversion Kit': [
+        {
+            name: 'Ved Foslo'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Del Meeko'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Gideon Hask'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Seyn Marana'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Howlrunner"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Mauler" Mithel'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Scourge" Skutu'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Wampa"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Black Squadron Ace'
+            type: 'pilot'
+            count: 4
+        }
+        {
+            name: 'Obsidian Squadron Pilot'
+            type: 'pilot'
+            count: 4
+        }
+        {
+            name: 'Academy Pilot'
+            type: 'pilot'
+            count: 4
+        }
+        {
+            name: 'Darth Vader'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Maarek Stele'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Zertik Strom'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Storm Squadron Ace'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Tempest Squadron Pilot'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Grand Inquisitor'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Seventh Sister'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Baron of the Empire'
+            type: 'pilot'
+            count: 3
+        }
+        {
+            name: 'Inquisitor'
+            type: 'pilot'
+            count: 3
+        }
+        {
+            name: 'Soontir Fel'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Turr Phennir'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Alpha Squadron Pilot'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Saber Squadron Ace'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Tomax Bren'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Captain Jonus'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Major Rhymer'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Deathfire"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Gamma Squadron Ace'
+            type: 'pilot'
+            count: 3
+        }
+        {
+            name: 'Scimitar Squadron Pilot'
+            type: 'pilot'
+            count: 3
+        }
+        {
+            name: '"Duchess"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Countdown"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Pure Sabacc"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Black Squadron Scout'
+            type: 'pilot'
+            count: 3
+        }
+        {
+            name: 'Planetary Sentinel'
+            type: 'pilot'
+            count: 3
+        }
+        {
+            name: 'Rexler Brath'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Colonel Vessery'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Countess Ryad'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Onyx Squadron Ace'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Delta Squadron Pilot'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: '"Double Edge"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Lieutenant Kestal'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Onyx Squadron Scout'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Sienar Specialist'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: '"Echo"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Whisper"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Imdaar Test Pilot'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: '"Sigma Squadron Ace"'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Major Vynder'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Lieutenant Karsabi'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Rho Squadron Pilot'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Nu Squadron Pilot'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: '"Redline"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Deathrain"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Cutlass Squadron Pilot'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Captain Kagi'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Colonel Jendon'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Lieutenant Sai'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Omicron Group Pilot'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Rear Admiral Chiraneau'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Captain Oicunn'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Patrol Leader'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Crack Shot'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Daredevil'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Debris Gambit'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Elusive'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Expert Handling'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Intimidation'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Juke'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Lone Wolf'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Marksmanship'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Outmaneuver'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Predator'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Ruthless'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Saturation Salvo'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Squad Leader'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Swarm Tactics'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Trick Shot'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Advanced Sensors'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Collision Detector'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Fire-Control System'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Trajectory Simulator'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Heavy Laser Cannon'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Ion Cannon'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Jamming Beam'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Tractor Beam'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Dorsal Turret'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Ion Cannon Turret'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Advanced Proton Torpedoes'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Ion Torpedoes'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Proton Torpedoes'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Barrage Rockets'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Cluster Missiles'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Concussion Missiles'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Homing Missiles'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Ion Missiles'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Proton Rockets'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Admiral Sloane'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Agent Kallus'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ciena Ree'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Darth Vader'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Emperor Palpatine'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Freelance Slicer'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'GNK "Gonk" Droid'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Grand Inquisitor'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Grand Moff Tarkin'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Informant'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Minister Tua'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Moff Jerjerrod'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Novice Technician'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Perceptive Copilot'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Seasoned Navigator'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Seventh Sister'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Tactical Officer'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Fifth Brother'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Hotshot Gunner'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Skilled Bombardier'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Veteran Turret Gunner'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Bomblet Generator'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Conner Nets'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Proton Bombs'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Proximity Mines'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Seismic Charges'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Dauntless'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'ST-321'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Os-1 Arsenal Loadout'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Xg-1 Assault Configuration'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Ablative Plating'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Advanced SLAM'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Electronic Baffle'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Hull Upgrade'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Munitions Failsafe'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Shield Upgrade'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Static Discharge Vanes'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Stealth Device'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Tactical Scrambler'
+            type: 'upgrade'
+            count: 2
+        }
+    ]
+    'Scum and Villainy Conversion Kit': [
+        {
+            name: 'Joy Rekkoff'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Koshka Frost'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Marauder'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Fenn Rau (Fang Fighter)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Kad Solus'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Old Teroch'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Skull Squadron Pilot'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Zealous Recruit'
+            type: 'pilot'
+            count: 3
+        }
+        {
+            name: 'Constable Zuvio'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Sarco Plank'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Unkar Plutt'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Jakku Gunrunner'
+            type: 'pilot'
+            count: 3
+        }
+        {
+            name: 'Drea Renthal'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Kavil'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Crymorah Goon'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Hired Gun'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: "Kaa'to Leeachos"
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Nashtah Pup'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: "N'dru Suhlak"
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Black Sun Soldier'
+            type: 'pilot'
+            count: 3
+        }
+        {
+            name: 'Binayre Pirate'
+            type: 'pilot'
+            count: 3
+        }
+        {
+            name: 'Dace Bonearm'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Palob Godalhi'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Torkil Mux'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Spice Runner'
+            type: 'pilot'
+            count: 3
+        }
+        {
+            name: 'Dalan Oberos (StarViper)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Guri'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Prince Xizor'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Black Sun Assassin'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Black Sun Enforcer'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Genesis Red'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Inaldra'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: "Laetin A'shera"
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Quinn Jast'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Serissu'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Sunny Bounder'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Tansarii Point Veteran'
+            type: 'pilot'
+            count: 4
+        }
+        {
+            name: 'Cartel Spacer'
+            type: 'pilot'
+            count: 4
+        }
+        {
+            name: 'Captain Jostero'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Graz'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Talonbane Cobra'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Viktor Hel'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Black Sun Ace'
+            type: 'pilot'
+            count: 3
+        }
+        {
+            name: 'Cartel Marauder'
+            type: 'pilot'
+            count: 3
+        }
+        {
+            name: 'Boba Fett'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Emon Azzameen'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Kath Scarlet'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Krassis Trelix'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Bounty Hunter'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'IG-88A'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'IG-88B'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'IG-88C'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'IG-88D'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '4-LOM'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Zuckuss'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Gand Findsman'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Captain Nym'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Sol Sixxa'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Lok Revenant'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Dalan Oberos (Kimogila)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Torani Kulda'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Cartel Executioner'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Bossk'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Latts Razzi'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Moralo Eval'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Trandoshan Slaver'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Dengar'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Manaroo'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Tel Trevura'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Contracted Scout'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Asajj Ventress'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Ketsu Onyo'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Sabine Wren (Scum)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Shadowport Hunter'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Crack Shot'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Daredevil'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Debris Gambit'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Elusive'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Expert Handling'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Fearless'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Intimidation'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Juke'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Lone Wolf'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Marksmanship'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Outmaneuver'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Predator'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Saturation Salvo'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Squad Leader'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Swarm Tactics'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Trick Shot'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Advanced Sensors'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Collision Detector'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Fire-Control System'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Trajectory Simulator'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Cloaking Device'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Contraband Cybernetics'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: "Deadman's Switch"
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Feedback Array'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Inertial Dampeners'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Rigged Cargo Chute'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Heavy Laser Cannon'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Ion Cannon'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Jamming Beam'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Tractor Beam'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Dorsal Turret'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Ion Cannon Turret'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Advanced Proton Torpedoes'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Ion Torpedoes'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Proton Torpedoes'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: '0-0-0'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: '4-LOM'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Boba Fett'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Cad Bane'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Cikatro Vizago'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Freelance Slicer'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'GNK "Gonk" Droid'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'IG-88D'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Informant'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Jabba the Hutt'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ketsu Onyo'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Latts Razzi'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Maul'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Novice Technician'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Perceptive Copilot'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Seasoned Navigator'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Tactical Officer'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Unkar Plutt'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Zuckuss'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Bossk'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'BT-1'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Dengar'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Greedo'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Hotshot Gunner'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Skilled Bombardier'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Veteran Tail Gunner'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Veteran Turret Gunner'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Cluster Missiles'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Concussion Missiles'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Homing Missiles'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Ion Missiles'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Proton Rockets'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Bomblet Generator'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Conner Nets'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Proton Bombs'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Proximity Mines'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Seismic Charges'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Andrasta'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Havoc'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: "Hound's Tooth"
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'IG-2000'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Mist Hunter'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Punishing One'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Shadow Caster'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Slave I'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Virago'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ablative Plating'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Electronic Baffle'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Engine Upgrade'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Hull Upgrade'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Munitions Failsafe'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Shield Upgrade'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Static Discharge Vanes'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Stealth Device'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Tactical Scrambler'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: '"Genius"'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R2 Astromech'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'R3 Astromech'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'R4 Astromech'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'R5 Astromech'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'R5-P8'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R5-TK'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+    'T-65 X-Wing Expansion Pack' : [
+        {
+            name: 'X-Wing'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Wedge Antilles'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Thane Kyrell'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Garven Dreis (X-Wing)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Biggs Darklighter'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Red Squadron Veteran'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Blue Squadron Escort'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Selfless'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ion Torpedoes'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R2 Astromech'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R4 Astromech'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Servomotor S-foils (Open)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Servomotor S-foils (Closed)'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+    'BTL-A4 Y-Wing Expansion Pack' : [
+        {
+            name: 'Y-Wing'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Horton Salm'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Norra Wexley (Y-Wing)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Dutch" Vander'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Evaan Verlaine'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Gold Squadron Veteran'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Gray Squadron Bomber'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'R5 Astromech'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Expert Handling'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ion Cannon Turret'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Proton Bombs'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Seismic Charges'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Veteran Turret Gunner'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+    'TIE/ln Fighter Expansion Pack': [
+        {
+            name: 'TIE Fighter'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: '"Howlrunner"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Mauler" Mithel'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Gideon Hask'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Scourge" Skutu'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Seyn Marana'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Del Meeko'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Wampa"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Black Squadron Ace'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Obsidian Squadron Pilot'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Academy Pilot'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Crack Shot'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Juke'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Marksmanship'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Stealth Device'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+    'TIE Advanced x1 Expansion Pack': [
+        {
+            name: 'TIE Advanced'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Darth Vader'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Maarek Stele'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Ved Foslo'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Zertik Strom'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Storm Squadron Ace'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Tempest Squadron Pilot'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Heightened Perception'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Supernatural Reflexes'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ruthless'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Squad Leader'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Cluster Missiles'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Fire-Control System'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+    'Slave I Expansion Pack': [
+        {
+            name: 'Firespray-31'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Boba Fett'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Kath Scarlet'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Emon Azzameen'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Koshka Frost'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Krassis Trelix'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Bounty Hunter'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Heavy Laser Cannon'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Boba Fett'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Perceptive Copilot'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Proximity Mines'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Seismic Charges'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Veteran Tail Gunner'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Inertial Dampeners'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Concussion Missiles'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Lone Wolf'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Andrasta'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Marauder'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Slave I'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+    'Fang Fighter Expansion Pack': [
+        {
+            name: 'Fang Fighter'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Fenn Rau (Fang Fighter)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Old Teroch'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Kad Solus'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Joy Rekkoff'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Skull Squadron Pilot'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Zealous Recruit'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Afterburners'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Fearless'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Daredevil'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ion Torpedoes'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+    "Lando's Millennium Falcon Expansion Pack": [
+        {
+            name: 'YT-1300 (Scum)'
+            type: 'ship'
+            count: 1
+        }
         {
             name: 'Escape Craft'
             type: 'ship'
             count: 1
         }
+        {
+            name: 'Han Solo (Scum)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Lando Calrissian (Scum)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'L3-37 (YT-1300)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Freighter Captain'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Lando Calrissian (Scum) (Escape Craft)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Outer Rim Pioneer'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'L3-37 (Escape Craft)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Autopilot Drone'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'L3-37'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Chewbacca (Scum)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Lando Calrissian (Scum)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: "Qi'ra"
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Tobias Beckett'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Seasoned Navigator'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Han Solo (Scum)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Agile Gunner'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Composure'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Intimidation'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: "Lando's Millennium Falcon"
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Rigged Cargo Chute'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Tactical Scrambler'
+            type: 'upgrade'
+            count: 1
+        }
     ]
-
 
 class exportObj.Collection
     # collection = new exportObj.Collection
@@ -9273,7 +12508,7 @@ class exportObj.Collection
             $(row).find('.upgrade-name').data 'english_name', expansion
             upgradecollection_content.append row
 
-        modificationcollection_content = $ @modal.find('.collection-modification-content')
+        ###modificationcollection_content = $ @modal.find('.collection-modification-content')
         for modification in singletonsByType.modification
             count = parseInt(@singletons.modification?[modification] ? 0)
             row = $.parseHTML $.trim """
@@ -9291,9 +12526,9 @@ class exportObj.Collection
             input.data 'singletonName', modification
             input.closest('div').css 'background-color', @countToBackgroundColor(input.val())
             $(row).find('.modification-name').data 'english_name', expansion
-            modificationcollection_content.append row
+            modificationcollection_content.append row ###
 
-        titlecollection_content = $ @modal.find('.collection-title-content')
+        ###titlecollection_content = $ @modal.find('.collection-title-content')
         for title in singletonsByType.title
             count = parseInt(@singletons.title?[title] ? 0)
             row = $.parseHTML $.trim """
@@ -9311,7 +12546,7 @@ class exportObj.Collection
             input.data 'singletonName', title
             input.closest('div').css 'background-color', @countToBackgroundColor(input.val())
             $(row).find('.title-name').data 'english_name', expansion
-            titlecollection_content.append row
+            titlecollection_content.append row###
 
     destroyUI: ->
         @modal.modal 'hide'
@@ -10935,7 +14170,7 @@ class exportObj.SquadBuilder
         if data != @tooltip_currently_displaying
             switch type
                 when 'Ship'
-#                    @info_container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.pilot.sources).sort().join(', ')
+                    @info_container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.pilot.sources).sort().join(', ')
                     if @collection?.counts?
                         ship_count = @collection.counts?.ship?[data.data.english_name] ? 0
                         pilot_count = @collection.counts?.pilot?[data.pilot.english_name] ? 0
@@ -11012,7 +14247,7 @@ class exportObj.SquadBuilder
                     @info_container.find('p.info-maneuvers').show()
                     @info_container.find('p.info-maneuvers').html(@getManeuverTableHTML(effective_stats.maneuvers, data.data.maneuvers))
                 when 'Pilot'
-#                    @info_container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
+                    @info_container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
                     if @collection?.counts?
                         pilot_count = @collection.counts?.pilot?[data.english_name] ? 0
                         ship_count = @collection.counts.ship?[additional_opts.ship] ? 0
@@ -11085,7 +14320,7 @@ class exportObj.SquadBuilder
                     @info_container.find('p.info-maneuvers').show()
                     @info_container.find('p.info-maneuvers').html(@getManeuverTableHTML(ship.maneuvers, ship.maneuvers))
                 when 'Addon'
-#                    @info_container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
+                    @info_container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
                     if @collection?.counts?
                         addon_count = @collection.counts?[additional_opts.addon_type.toLowerCase()]?[data.english_name] ? 0
                         @info_container.find('.info-collection').text """You have #{addon_count} in your collection."""
