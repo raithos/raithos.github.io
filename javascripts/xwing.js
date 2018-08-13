@@ -1919,8 +1919,10 @@ exportObj.basicCardData = function() {
         slots: ["Talent", "Torpedo", "Astromech", "Modification", "Configuration"]
       }, {
         name: "Garven Dreis (X-Wing)",
+        canonical_name: 'Garven Dreis'.canonicalize(),
         id: 6,
         unique: true,
+        xws: "garvendreis-t65xwing",
         faction: "Rebel Alliance",
         ship: "X-Wing",
         skill: 4,
@@ -1980,6 +1982,7 @@ exportObj.basicCardData = function() {
         canonical_name: 'Sabine Wren'.canonicalize(),
         id: 13,
         unique: true,
+        xws: "sabinewren-tielnfighter",
         faction: "Rebel Alliance",
         ship: "TIE Fighter",
         skill: 3,
@@ -1990,6 +1993,7 @@ exportObj.basicCardData = function() {
         canonical_name: 'Ezra Bridger'.canonicalize(),
         id: 14,
         unique: true,
+        xws: "ezrabridger-tielnfighter",
         faction: "Rebel Alliance",
         ship: "TIE Fighter",
         skill: 3,
@@ -2001,6 +2005,7 @@ exportObj.basicCardData = function() {
         canonical_name: '"Zeb" Orrelios'.canonicalize(),
         id: 15,
         unique: true,
+        xws: "zeborrelios-tielnfighter",
         faction: "Rebel Alliance",
         ship: "TIE Fighter",
         skill: 2,
@@ -2084,6 +2089,7 @@ exportObj.basicCardData = function() {
         name: "Norra Wexley (Y-Wing)",
         id: 25,
         unique: true,
+        xws: "norrawexley-btla4ywing",
         faction: "Rebel Alliance",
         ship: "Y-Wing",
         skill: 5,
@@ -2236,6 +2242,7 @@ exportObj.basicCardData = function() {
         name: "Han Solo (Rebel)",
         id: 42,
         unique: true,
+        xws: "hansolo-modifiedyt1300lightfreighter",
         faction: "Rebel Alliance",
         ship: "YT-1300",
         skill: 6,
@@ -2245,6 +2252,7 @@ exportObj.basicCardData = function() {
         name: "Lando Calrissian (Rebel)",
         id: 43,
         unique: true,
+        xws: "landocalrissian-modifiedyt1300lightfreighter",
         faction: "Rebel Alliance",
         ship: "YT-1300",
         skill: 5,
@@ -2402,6 +2410,7 @@ exportObj.basicCardData = function() {
         name: "Hera Syndulla (VCX-100)",
         id: 61,
         unique: true,
+        xws: "herasyndulla-vcx100lightfreighter",
         faction: "Rebel Alliance",
         ship: "VCX-100",
         skill: 5,
@@ -2438,7 +2447,7 @@ exportObj.basicCardData = function() {
         points: 70,
         slots: ["Torpedo", "Crew", "Crew", "Modification", "Gunner", "Turret", "Title"]
       }, {
-        name: "Hera Syndulla (Attack Shuttle)",
+        name: "Hera Syndulla",
         id: 65,
         unique: true,
         faction: "Rebel Alliance",
@@ -2447,7 +2456,7 @@ exportObj.basicCardData = function() {
         points: 39,
         slots: ["Talent", "Crew", "Modification", "Turret", "Title"]
       }, {
-        name: "Sabine Wren (Attack Shuttle)",
+        name: "Sabine Wren",
         canonical_name: 'Sabine Wren'.canonicalize(),
         id: 66,
         unique: true,
@@ -2457,8 +2466,7 @@ exportObj.basicCardData = function() {
         points: 38,
         slots: ["Talent", "Crew", "Modification", "Turret", "Title"]
       }, {
-        name: "Ezra Bridger (Attack Shuttle)",
-        canonical_name: 'Ezra Bridger'.canonicalize(),
+        name: "Ezra Bridger",
         id: 67,
         unique: true,
         faction: "Rebel Alliance",
@@ -2468,8 +2476,7 @@ exportObj.basicCardData = function() {
         points: 41,
         slots: ["Force", "Crew", "Modification", "Turret", "Title"]
       }, {
-        name: '"Zeb" Orrelios (Attack Shuttle)',
-        canonical_name: '"Zeb" Orrelios'.canonicalize(),
+        name: '"Zeb" Orrelios',
         id: 68,
         unique: true,
         faction: "Rebel Alliance",
@@ -2481,6 +2488,7 @@ exportObj.basicCardData = function() {
         name: "Fenn Rau (Sheathipede)",
         id: 69,
         unique: true,
+        xws: "fennrau-sheathipedeclassshuttle",
         faction: "Rebel Alliance",
         ship: "Sheathipede-Class Shuttle",
         skill: 6,
@@ -2491,6 +2499,7 @@ exportObj.basicCardData = function() {
         canonical_name: 'Ezra Bridger'.canonicalize(),
         id: 70,
         unique: true,
+        xws: "ezrabridger-sheathipedeclassshuttle",
         faction: "Rebel Alliance",
         ship: "Sheathipede-Class Shuttle",
         skill: 3,
@@ -2502,6 +2511,7 @@ exportObj.basicCardData = function() {
         canonical_name: '"Zeb" Orrelios'.canonicalize(),
         id: 71,
         unique: true,
+        xws: "zeborrelios-sheathipedeclassshuttle",
         faction: "Rebel Alliance",
         ship: "Sheathipede-Class Shuttle",
         skill: 2,
@@ -2551,7 +2561,7 @@ exportObj.basicCardData = function() {
         points: 42,
         slots: ["System", "Cannon", "Cannon", "Torpedo", "Modification"]
       }, {
-        name: "Norra Wexley (ARC-170)",
+        name: "Norra Wexley",
         id: 77,
         unique: true,
         faction: "Rebel Alliance",
@@ -2569,7 +2579,7 @@ exportObj.basicCardData = function() {
         points: 53,
         slots: ["Talent", "Torpedo", "Crew", "Gunner", "Astromech", "Modification"]
       }, {
-        name: "Garven Dreis (ARC-170)",
+        name: "Garven Dreis",
         id: 79,
         unique: true,
         faction: "Rebel Alliance",
@@ -2656,6 +2666,7 @@ exportObj.basicCardData = function() {
         name: "Han Solo (Scum)",
         id: 89,
         unique: true,
+        xws: "hansolo",
         faction: "Scum and Villainy",
         ship: "YT-1300 (Scum)",
         skill: 6,
@@ -2665,14 +2676,14 @@ exportObj.basicCardData = function() {
         name: "Lando Calrissian (Scum)",
         id: 90,
         unique: true,
+        xws: "landocalrissian",
         faction: "Scum and Villainy",
         ship: "YT-1300 (Scum)",
         skill: 4,
         points: 49,
         slots: ["Talent", "Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"]
       }, {
-        name: "L3-37 (YT-1300)",
-        canonical_name: 'L3-37'.canonicalize(),
+        name: "L3-37",
         id: 91,
         unique: true,
         faction: "Scum and Villainy",
@@ -2696,6 +2707,7 @@ exportObj.basicCardData = function() {
         canonical_name: 'Lando Calrissian (Scum)'.canonicalize(),
         id: 93,
         unique: true,
+        xws: "landocalrissian-escapecraft",
         faction: "Scum and Villainy",
         ship: "Escape Craft",
         skill: 4,
@@ -2715,6 +2727,7 @@ exportObj.basicCardData = function() {
         canonical_name: 'L3-37'.canonicalize(),
         id: 95,
         unique: true,
+        xws: "l337-escapecraft",
         faction: "Scum and Villainy",
         ship: "Escape Craft",
         skill: 2,
@@ -2737,7 +2750,7 @@ exportObj.basicCardData = function() {
           actions: ["Calculate", "Barrel Roll"]
         }
       }, {
-        name: "Fenn Rau (Fang Fighter)",
+        name: "Fenn Rau",
         id: 97,
         unique: true,
         faction: "Scum and Villainy",
@@ -3011,6 +3024,7 @@ exportObj.basicCardData = function() {
         name: "Sabine Wren (Scum)",
         id: 127,
         unique: true,
+        xws: "sabinewren-lancerclasspursuitcraft",
         faction: "Scum and Villainy",
         ship: "Lancer-class Pursuit Craft",
         skill: 3,
@@ -3034,7 +3048,7 @@ exportObj.basicCardData = function() {
         points: 50,
         slots: ["Talent", "Torpedo", "Missile", "Astromech", "Illicit", "Modification"]
       }, {
-        name: "Dalan Oberos (Kimogila)",
+        name: "Dalan Oberos",
         id: 130,
         unique: true,
         faction: "Scum and Villainy",
@@ -3209,6 +3223,7 @@ exportObj.basicCardData = function() {
         name: "Dalan Oberos (StarViper)",
         id: 149,
         unique: true,
+        xws: "dalanoberos-starviperclassattackplatform",
         faction: "Scum and Villainy",
         ship: "StarViper",
         skill: 4,
@@ -4101,6 +4116,7 @@ exportObj.basicCardData = function() {
         name: "Chewbacca (Rebel)",
         id: 21,
         slot: "Crew",
+        xws: "chewbacca",
         points: 5,
         unique: true,
         faction: "Rebel Alliance",
@@ -4110,12 +4126,14 @@ exportObj.basicCardData = function() {
         name: "Chewbacca (Scum)",
         id: 22,
         slot: "Crew",
+        xws: "chewbacca-crew",
         points: 4,
         unique: true,
         faction: "Scum and Villainy"
       }, {
         name: '"Chopper" (Crew)',
         id: 23,
+        xws: "chopper-crew",
         slot: "Crew",
         points: 2,
         unique: true,
@@ -4311,6 +4329,7 @@ exportObj.basicCardData = function() {
         name: "Lando Calrissian (Rebel)",
         id: 44,
         slot: "Crew",
+        xws: "landocalrissian",
         points: 5,
         unique: true,
         faction: "Rebel Alliance"
@@ -4318,6 +4337,7 @@ exportObj.basicCardData = function() {
         name: "Lando Calrissian (Scum)",
         id: 45,
         slot: "Crew",
+        xws: "landocalrissian-crew",
         points: 8,
         unique: true,
         faction: "Scum and Villainy"
@@ -4454,6 +4474,7 @@ exportObj.basicCardData = function() {
         name: "R2-D2 (Crew)",
         id: 56,
         slot: "Crew",
+        xws: "r2d2-crew",
         points: 8,
         unique: true,
         faction: "Rebel Alliance"
@@ -4703,6 +4724,7 @@ exportObj.basicCardData = function() {
         name: "Han Solo (Rebel)",
         id: 84,
         slot: "Gunner",
+        xws: "hansolo",
         points: 12,
         unique: true,
         faction: "Rebel Alliance"
@@ -4710,6 +4732,7 @@ exportObj.basicCardData = function() {
         name: "Han Solo (Scum)",
         id: 85,
         slot: "Gunner",
+        xws: "hansolo-gunner",
         points: 4,
         unique: true,
         faction: "Scum and Villainy"
@@ -5073,7 +5096,7 @@ exportObj.basicCardData = function() {
         slot: "Talent",
         points: 1
       }, {
-        name: "Advanced Proton Torpedoes",
+        name: "Adv. Proton Torpedoes",
         id: 134,
         slot: "Torpedo",
         points: 6,
@@ -5478,7 +5501,7 @@ exportObj.basicCardData = function() {
 };
 
 exportObj.setupCardData = function(basic_cards, pilot_translations, upgrade_translations, condition_translations, modification_translations, title_translations) {
-  var card, cards, condition, condition_data, condition_name, e, expansion, field, i, modification, modification_data, modification_name, name, pilot, pilot_data, pilot_name, ship_data, ship_name, source, title, title_data, title_name, translation, translations, upgrade, upgrade_data, upgrade_name, _base, _base1, _base2, _base3, _base4, _base5, _base6, _i, _j, _k, _l, _len, _len1, _len10, _len11, _len12, _len13, _len14, _len15, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _len9, _m, _n, _name, _name1, _name2, _name3, _name4, _name5, _name6, _o, _p, _q, _r, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _s, _t, _u, _v, _w, _x;
+  var card, cards, condition, condition_data, condition_name, e, expansion, field, i, modification, modification_data, modification_name, name, pilot, pilot_data, pilot_name, ship_data, ship_name, source, title, title_data, title_name, translation, translations, upgrade, upgrade_data, upgrade_name, _base, _base1, _base2, _base3, _base4, _base5, _base6, _base7, _base8, _base9, _i, _j, _k, _l, _len, _len1, _len10, _len11, _len12, _len13, _len14, _len15, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _len9, _m, _n, _name, _name1, _name2, _name3, _name4, _name5, _name6, _name7, _name8, _name9, _o, _p, _q, _r, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _s, _t, _u, _v, _w, _x;
   _ref = basic_cards.pilotsById;
   for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
     pilot_data = _ref[i];
@@ -5737,17 +5760,23 @@ exportObj.setupCardData = function(basic_cards, pilot_translations, upgrade_tran
     ((_base = ((_base1 = exportObj.pilotsByFactionCanonicalName)[_name1 = pilot.faction] != null ? _base1[_name1] : _base1[_name1] = {}))[_name = pilot.canonical_name] != null ? _base[_name] : _base[_name] = []).push(pilot);
     ((_base2 = exportObj.pilotsByUniqueName)[_name2 = pilot.canonical_name.getXWSBaseName()] != null ? _base2[_name2] : _base2[_name2] = []).push(pilot);
   }
+  exportObj.pilotsByFactionXWS = {};
+  _ref19 = exportObj.pilots;
+  for (pilot_name in _ref19) {
+    pilot = _ref19[pilot_name];
+    ((_base3 = ((_base4 = exportObj.pilotsByFactionXWS)[_name4 = pilot.faction] != null ? _base4[_name4] : _base4[_name4] = {}))[_name3 = pilot.xws] != null ? _base3[_name3] : _base3[_name3] = []).push(pilot);
+  }
   exportObj.upgradesById = {};
   exportObj.upgradesByLocalizedName = {};
-  _ref19 = exportObj.upgrades;
-  for (upgrade_name in _ref19) {
-    upgrade = _ref19[upgrade_name];
+  _ref20 = exportObj.upgrades;
+  for (upgrade_name in _ref20) {
+    upgrade = _ref20[upgrade_name];
     exportObj.fixIcons(upgrade);
     exportObj.upgradesById[upgrade.id] = upgrade;
     exportObj.upgradesByLocalizedName[upgrade.name] = upgrade;
-    _ref20 = upgrade.sources;
-    for (_u = 0, _len12 = _ref20.length; _u < _len12; _u++) {
-      source = _ref20[_u];
+    _ref21 = upgrade.sources;
+    for (_u = 0, _len12 = _ref21.length; _u < _len12; _u++) {
+      source = _ref21[_u];
       if (!(source in exportObj.expansions)) {
         exportObj.expansions[source] = 1;
       }
@@ -5757,18 +5786,20 @@ exportObj.setupCardData = function(basic_cards, pilot_translations, upgrade_tran
     throw new Error("At least one upgrade shares an ID with another");
   }
   exportObj.upgradesBySlotCanonicalName = {};
+  exportObj.upgradesBySlotXWSName = {};
   exportObj.upgradesBySlotUniqueName = {};
-  _ref21 = exportObj.upgrades;
-  for (upgrade_name in _ref21) {
-    upgrade = _ref21[upgrade_name];
-    ((_base3 = exportObj.upgradesBySlotCanonicalName)[_name3 = upgrade.slot] != null ? _base3[_name3] : _base3[_name3] = {})[upgrade.canonical_name] = upgrade;
-    ((_base4 = exportObj.upgradesBySlotUniqueName)[_name4 = upgrade.slot] != null ? _base4[_name4] : _base4[_name4] = {})[upgrade.canonical_name.getXWSBaseName()] = upgrade;
+  _ref22 = exportObj.upgrades;
+  for (upgrade_name in _ref22) {
+    upgrade = _ref22[upgrade_name];
+    ((_base5 = exportObj.upgradesBySlotCanonicalName)[_name5 = upgrade.slot] != null ? _base5[_name5] : _base5[_name5] = {})[upgrade.canonical_name] = upgrade;
+    ((_base6 = exportObj.upgradesBySlotXWSName)[_name6 = upgrade.slot] != null ? _base6[_name6] : _base6[_name6] = {})[upgrade.xws] = upgrade;
+    ((_base7 = exportObj.upgradesBySlotUniqueName)[_name7 = upgrade.slot] != null ? _base7[_name7] : _base7[_name7] = {})[upgrade.canonical_name.getXWSBaseName()] = upgrade;
   }
   exportObj.modificationsById = {};
   exportObj.modificationsByLocalizedName = {};
-  _ref22 = exportObj.modifications;
-  for (modification_name in _ref22) {
-    modification = _ref22[modification_name];
+  _ref23 = exportObj.modifications;
+  for (modification_name in _ref23) {
+    modification = _ref23[modification_name];
     exportObj.fixIcons(modification);
     if (modification.huge != null) {
       if (modification.restriction_func == null) {
@@ -5776,15 +5807,15 @@ exportObj.setupCardData = function(basic_cards, pilot_translations, upgrade_tran
       }
     } else if (modification.restriction_func == null) {
       modification.restriction_func = function(ship) {
-        var _ref23;
-        return !((_ref23 = ship.data.huge) != null ? _ref23 : false);
+        var _ref24;
+        return !((_ref24 = ship.data.huge) != null ? _ref24 : false);
       };
     }
     exportObj.modificationsById[modification.id] = modification;
     exportObj.modificationsByLocalizedName[modification.name] = modification;
-    _ref23 = modification.sources;
-    for (_v = 0, _len13 = _ref23.length; _v < _len13; _v++) {
-      source = _ref23[_v];
+    _ref24 = modification.sources;
+    for (_v = 0, _len13 = _ref24.length; _v < _len13; _v++) {
+      source = _ref24[_v];
       if (!(source in exportObj.expansions)) {
         exportObj.expansions[source] = 1;
       }
@@ -5795,23 +5826,23 @@ exportObj.setupCardData = function(basic_cards, pilot_translations, upgrade_tran
   }
   exportObj.modificationsByCanonicalName = {};
   exportObj.modificationsByUniqueName = {};
-  _ref24 = exportObj.modifications;
-  for (modification_name in _ref24) {
-    modification = _ref24[modification_name];
+  _ref25 = exportObj.modifications;
+  for (modification_name in _ref25) {
+    modification = _ref25[modification_name];
     (exportObj.modificationsByCanonicalName != null ? exportObj.modificationsByCanonicalName : exportObj.modificationsByCanonicalName = {})[modification.canonical_name] = modification;
     (exportObj.modificationsByUniqueName != null ? exportObj.modificationsByUniqueName : exportObj.modificationsByUniqueName = {})[modification.canonical_name.getXWSBaseName()] = modification;
   }
   exportObj.titlesById = {};
   exportObj.titlesByLocalizedName = {};
-  _ref25 = exportObj.titles;
-  for (title_name in _ref25) {
-    title = _ref25[title_name];
+  _ref26 = exportObj.titles;
+  for (title_name in _ref26) {
+    title = _ref26[title_name];
     exportObj.fixIcons(title);
     exportObj.titlesById[title.id] = title;
     exportObj.titlesByLocalizedName[title.name] = title;
-    _ref26 = title.sources;
-    for (_w = 0, _len14 = _ref26.length; _w < _len14; _w++) {
-      source = _ref26[_w];
+    _ref27 = title.sources;
+    for (_w = 0, _len14 = _ref27.length; _w < _len14; _w++) {
+      source = _ref27[_w];
       if (!(source in exportObj.expansions)) {
         exportObj.expansions[source] = 1;
       }
@@ -5821,14 +5852,14 @@ exportObj.setupCardData = function(basic_cards, pilot_translations, upgrade_tran
     throw new Error("At least one title shares an ID with another");
   }
   exportObj.conditionsById = {};
-  _ref27 = exportObj.conditions;
-  for (condition_name in _ref27) {
-    condition = _ref27[condition_name];
+  _ref28 = exportObj.conditions;
+  for (condition_name in _ref28) {
+    condition = _ref28[condition_name];
     exportObj.fixIcons(condition);
     exportObj.conditionsById[condition.id] = condition;
-    _ref28 = condition.sources;
-    for (_x = 0, _len15 = _ref28.length; _x < _len15; _x++) {
-      source = _ref28[_x];
+    _ref29 = condition.sources;
+    for (_x = 0, _len15 = _ref29.length; _x < _len15; _x++) {
+      source = _ref29[_x];
       if (!(source in exportObj.expansions)) {
         exportObj.expansions[source] = 1;
       }
@@ -5838,9 +5869,9 @@ exportObj.setupCardData = function(basic_cards, pilot_translations, upgrade_tran
     throw new Error("At least one condition shares an ID with another");
   }
   exportObj.titlesByShip = {};
-  _ref29 = exportObj.titles;
-  for (title_name in _ref29) {
-    title = _ref29[title_name];
+  _ref30 = exportObj.titles;
+  for (title_name in _ref30) {
+    title = _ref30[title_name];
     if (!(title.ship in exportObj.titlesByShip)) {
       exportObj.titlesByShip[title.ship] = [];
     }
@@ -5848,21 +5879,21 @@ exportObj.setupCardData = function(basic_cards, pilot_translations, upgrade_tran
   }
   exportObj.titlesByCanonicalName = {};
   exportObj.titlesByUniqueName = {};
-  _ref30 = exportObj.titles;
-  for (title_name in _ref30) {
-    title = _ref30[title_name];
+  _ref31 = exportObj.titles;
+  for (title_name in _ref31) {
+    title = _ref31[title_name];
     if (title.canonical_name === '"Heavy Scyk" Interceptor'.canonicalize()) {
-      ((_base5 = (exportObj.titlesByCanonicalName != null ? exportObj.titlesByCanonicalName : exportObj.titlesByCanonicalName = {}))[_name5 = title.canonical_name] != null ? _base5[_name5] : _base5[_name5] = []).push(title);
-      ((_base6 = (exportObj.titlesByUniqueName != null ? exportObj.titlesByUniqueName : exportObj.titlesByUniqueName = {}))[_name6 = title.canonical_name.getXWSBaseName()] != null ? _base6[_name6] : _base6[_name6] = []).push(title);
+      ((_base8 = (exportObj.titlesByCanonicalName != null ? exportObj.titlesByCanonicalName : exportObj.titlesByCanonicalName = {}))[_name8 = title.canonical_name] != null ? _base8[_name8] : _base8[_name8] = []).push(title);
+      ((_base9 = (exportObj.titlesByUniqueName != null ? exportObj.titlesByUniqueName : exportObj.titlesByUniqueName = {}))[_name9 = title.canonical_name.getXWSBaseName()] != null ? _base9[_name9] : _base9[_name9] = []).push(title);
     } else {
       (exportObj.titlesByCanonicalName != null ? exportObj.titlesByCanonicalName : exportObj.titlesByCanonicalName = {})[title.canonical_name] = title;
       (exportObj.titlesByUniqueName != null ? exportObj.titlesByUniqueName : exportObj.titlesByUniqueName = {})[title.canonical_name.getXWSBaseName()] = title;
     }
   }
   exportObj.conditionsByCanonicalName = {};
-  _ref31 = exportObj.conditions;
-  for (condition_name in _ref31) {
-    condition = _ref31[condition_name];
+  _ref32 = exportObj.conditions;
+  for (condition_name in _ref32) {
+    condition = _ref32[condition_name];
     (exportObj.conditionsByCanonicalName != null ? exportObj.conditionsByCanonicalName : exportObj.conditionsByCanonicalName = {})[condition.canonical_name] = condition;
   }
   return exportObj.expansions = Object.keys(exportObj.expansions).sort();
@@ -6233,7 +6264,7 @@ exportObj.cardLoaders.English = function() {
     "Dace Bonearm": {
       text: "After an enemy ship at range 0-3 receives at least 1 ion token, you may spend 3 %CHARGE%. If you do, that ship gains 2 additional ion tokens."
     },
-    "Dalan Oberos (Kimogila)": {
+    "Dalan Oberos": {
       text: "At the start of the Engagement Phase, you may choose 1 shielded ship in your %BULLSEYEARC% and spend 1 %CHARGE%. If you do, that ship loses 1 shield and you recover 1 shield. %LINEBREAK% DEAD TO RIGHTS: While you perform an attack, if the defender is in your %BULLSEYEARC%, defense dice cannot be modified using green tokens."
     },
     "Dalan Oberos (StarViper)": {
@@ -6287,7 +6318,7 @@ exportObj.cardLoaders.English = function() {
     "Evaan Verlaine": {
       text: "At the start of the Engagement Phase, you may spend 1 focus token to choose a friendly ship at range 0-1. If you do, that ship rolls 1 additional defense die while defending until the end of the round."
     },
-    "Ezra Bridger (Attack Shuttle)": {
+    "Ezra Bridger": {
       text: "While you defend or perform an attack, if you are stressed, you may spend 1 %FORCE% to change up to 2 of your %FOCUS% results to %EVADE% or %HIT% results. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"
     },
     "Ezra Bridger (Sheathipede)": {
@@ -6296,7 +6327,7 @@ exportObj.cardLoaders.English = function() {
     "Ezra Bridger (TIE Fighter)": {
       text: "While you defend or perform an attack, if you are stressed, you may spend 1 %FORCE% to change up to 2 of your %FOCUS% results to %EVADE% or %HIT% results."
     },
-    "Fenn Rau (Fang Fighter)": {
+    "Fenn Rau": {
       text: "While you defend or perform an attack, if the attack range is 1, you may roll 1 additional die. %LINEBREAK% CONCORDIA FACEOFF: While you defend, if the attack range is 1 and you are in the attackers %FRONTARC%, change 1 result to an %EVADE% result"
     },
     "Fenn Rau (Sheathipede)": {
@@ -6311,7 +6342,7 @@ exportObj.cardLoaders.English = function() {
     "Gand Findsman": {
       text: "The legendary Findsmen of Gand worship enshrouding mists of their home planet, using signs, augurs, and mystical rituals to track their quarry."
     },
-    "Garven Dreis (ARC-170)": {
+    "Garven Dreis": {
       text: "After you spend a focus token, you may choose 1 friendly ship at range 1-3. That ship gains 1 focus token."
     },
     "Garven Dreis (X-Wing)": {
@@ -6353,7 +6384,7 @@ exportObj.cardLoaders.English = function() {
     "Heff Tobber": {
       text: "After an enemy ship executes a maneuver, if it is at range 0, you may perform an action."
     },
-    "Hera Syndulla (Attack Shuttle)": {
+    "Hera Syndulla": {
       text: "After you reveal a red or blue maneuver, you may set your dial to another maneuver of the same difficulty. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"
     },
     "Hera Syndulla (VCX-100)": {
@@ -6449,7 +6480,7 @@ exportObj.cardLoaders.English = function() {
     "L3-37 (Escape Craft)": {
       text: "If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."
     },
-    "L3-37 (YT-1300)": {
+    "L3-37": {
       text: "If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers. %LINEBREAK% CO-PILOT: While you are docked, your carried ship has your pilot ability in addition it's own."
     },
     "Laetin A'shera": {
@@ -6533,7 +6564,7 @@ exportObj.cardLoaders.English = function() {
     '"Night Beast"': {
       text: "After you fully execute a blue maneuver, you may perform a %FOCUS% action."
     },
-    "Norra Wexley (ARC-170)": {
+    "Norra Wexley": {
       text: "While you defend, if there is an enemy ship at range 0-1, add 1 %EVADE% result to your dice results."
     },
     "Norra Wexley (Y-Wing)": {
@@ -6614,7 +6645,7 @@ exportObj.cardLoaders.English = function() {
     "Saber Squadron Ace": {
       text: "AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."
     },
-    "Sabine Wren (Attack Shuttle)": {
+    "Sabine Wren": {
       text: "Before you activate, you may perform a %BARRELROLL% or %BOOST% action. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"
     },
     "Sabine Wren (Scum)": {
@@ -6749,7 +6780,7 @@ exportObj.cardLoaders.English = function() {
     "Zealous Recruit": {
       text: "CONCORDIA FACEOFF: While you defend, if the attack range is 1 and you are in the attackers %FRONTARC%, change 1 result to an %EVADE% result"
     },
-    '"Zeb" Orrelios (Attack Shuttle)': {
+    '"Zeb" Orrelios': {
       text: "While you defend, %CRIT% results are neutralized before %HIT% results. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"
     },
     '"Zeb" Orrelios (Sheathipede)': {
@@ -6778,7 +6809,7 @@ exportObj.cardLoaders.English = function() {
     "Admiral Sloane": {
       text: "After another friendly ship at range 0-3 defends, if it is destroyed, the attacker gains 2 stress tokens. While a friendly ship at range 0-3 performs an attack against a stressed ship, it may reroll 1 attack die."
     },
-    "Advanced Proton Torpedoes": {
+    "Adv. Proton Torpedoes": {
       text: "Attack (%LOCK%): Spend 1 %CHARGE%. Change 1 %HIT% result to a %CRIT% result."
     },
     "Advanced Sensors": {
@@ -7914,19 +7945,19 @@ exportObj.manifestByExpansion = {
       type: 'pilot',
       count: 2
     }, {
-      name: 'Ezra Bridger (Attack Shuttle)',
+      name: 'Ezra Bridger',
       type: 'pilot',
       count: 1
     }, {
-      name: 'Hera Syndulla (Attack Shuttle)',
+      name: 'Hera Syndulla',
       type: 'pilot',
       count: 1
     }, {
-      name: 'Sabine Wren (Attack Shuttle)',
+      name: 'Sabine Wren',
       type: 'pilot',
       count: 1
     }, {
-      name: '"Zeb" Orrelios (Attack Shuttle)',
+      name: '"Zeb" Orrelios',
       type: 'pilot',
       count: 1
     }, {
@@ -8022,7 +8053,7 @@ exportObj.manifestByExpansion = {
       type: 'pilot',
       count: 2
     }, {
-      name: 'Garven Dreis (ARC-170)',
+      name: 'Garven Dreis',
       type: 'pilot',
       count: 1
     }, {
@@ -8030,7 +8061,7 @@ exportObj.manifestByExpansion = {
       type: 'pilot',
       count: 1
     }, {
-      name: 'Norra Wexley (ARC-170)',
+      name: 'Norra Wexley',
       type: 'pilot',
       count: 1
     }, {
@@ -8206,7 +8237,7 @@ exportObj.manifestByExpansion = {
       type: 'upgrade',
       count: 2
     }, {
-      name: 'Advanced Proton Torpedoes',
+      name: 'Adv. Proton Torpedoes',
       type: 'upgrade',
       count: 2
     }, {
@@ -8825,7 +8856,7 @@ exportObj.manifestByExpansion = {
       type: 'upgrade',
       count: 2
     }, {
-      name: 'Advanced Proton Torpedoes',
+      name: 'Adv. Proton Torpedoes',
       type: 'upgrade',
       count: 3
     }, {
@@ -9032,7 +9063,7 @@ exportObj.manifestByExpansion = {
       type: 'upgrade',
       count: 1
     }, {
-      name: 'Fenn Rau (Fang Fighter)',
+      name: 'Fenn Rau',
       type: 'pilot',
       count: 1
     }, {
@@ -9256,7 +9287,7 @@ exportObj.manifestByExpansion = {
       type: 'pilot',
       count: 2
     }, {
-      name: 'Dalan Oberos (Kimogila)',
+      name: 'Dalan Oberos',
       type: 'pilot',
       count: 1
     }, {
@@ -9444,7 +9475,7 @@ exportObj.manifestByExpansion = {
       type: 'upgrade',
       count: 2
     }, {
-      name: 'Advanced Proton Torpedoes',
+      name: 'Adv. Proton Torpedoes',
       type: 'upgrade',
       count: 2
     }, {
@@ -10018,7 +10049,7 @@ exportObj.manifestByExpansion = {
       type: 'ship',
       count: 1
     }, {
-      name: 'Fenn Rau (Fang Fighter)',
+      name: 'Fenn Rau',
       type: 'pilot',
       count: 1
     }, {
@@ -10077,7 +10108,7 @@ exportObj.manifestByExpansion = {
       type: 'pilot',
       count: 1
     }, {
-      name: 'L3-37 (YT-1300)',
+      name: 'L3-37',
       type: 'pilot',
       count: 1
     }, {
@@ -10583,7 +10614,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 12641
+                    lineno: 12671
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -11172,7 +11203,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 13269
+              lineno: 13299
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -11888,7 +11919,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 13907
+          lineno: 13937
         }));
         __iced_deferrals._fulfill();
       });
@@ -11900,7 +11931,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 13908
+            lineno: 13938
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -13154,7 +13185,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.loadFromXWS = function(xws, cb) {
-    var a, addon, addon_added, addons, err, error, i, modification, new_ship, p, pilot, slot, slot_guesses, success, title, upgrade, upgrade_canonical, upgrade_canonicals, upgrade_type, version_list, x, xws_faction, yasb_upgrade_type, _, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _m, _n, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6;
+    var a, addon, addon_added, addons, err, error, i, modification, new_ship, p, pilot, ship_data, ship_name, shipnameXWS, slot, slot_guesses, success, title, upgrade, upgrade_canonical, upgrade_canonicals, upgrade_type, version_list, x, xws_faction, _, _base1, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _m, _n, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
     success = null;
     error = null;
     version_list = (function() {
@@ -13188,14 +13219,25 @@ exportObj.SquadBuilder = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           pilot = _ref[_i];
           new_ship = this.addShip();
+          _ref1 = exportObj.ships;
+          for (ship_name in _ref1) {
+            ship_data = _ref1[ship_name];
+            if (this.matcher(ship_data.xws, pilot.ship)) {
+              shipnameXWS = {
+                id: ship_data.name,
+                xws: ship_data.xws
+              };
+            }
+          }
+          console.log("" + pilot.xws);
           try {
             new_ship.setPilot(((function() {
-              var _j, _len1, _ref1, _results;
-              _ref1 = exportObj.pilotsByFactionCanonicalName[this.faction][pilot.name];
+              var _base1, _j, _len1, _name, _ref2, _results;
+              _ref2 = ((_base1 = exportObj.pilotsByFactionXWS[this.faction])[_name = pilot.name] != null ? _base1[_name] : _base1[_name] = exportObj.pilotsByFactionCanonicalName[this.faction][pilot.name]);
               _results = [];
-              for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-                p = _ref1[_j];
-                if (p.ship.canonicalize() === pilot.ship) {
+              for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
+                p = _ref2[_j];
+                if (p.ship === shipnameXWS.id) {
                   _results.push(p);
                 }
               }
@@ -13207,27 +13249,17 @@ exportObj.SquadBuilder = (function() {
             continue;
           }
           addons = [];
-          _ref2 = (_ref1 = pilot.upgrades) != null ? _ref1 : {};
-          for (upgrade_type in _ref2) {
-            upgrade_canonicals = _ref2[upgrade_type];
+          _ref3 = (_ref2 = pilot.upgrades) != null ? _ref2 : {};
+          for (upgrade_type in _ref3) {
+            upgrade_canonicals = _ref3[upgrade_type];
             for (_j = 0, _len1 = upgrade_canonicals.length; _j < _len1; _j++) {
               upgrade_canonical = upgrade_canonicals[_j];
               slot = null;
-              yasb_upgrade_type = (_ref3 = exportObj.fromXWSUpgrade[upgrade_type]) != null ? _ref3 : upgrade_type.capitalize();
-              addon = (function() {
-                switch (yasb_upgrade_type) {
-                  case 'Modification':
-                    return exportObj.modificationsByCanonicalName[upgrade_canonical];
-                  case 'Title':
-                    return exportObj.titlesByCanonicalName[upgrade_canonical];
-                  default:
-                    slot = yasb_upgrade_type;
-                    return exportObj.upgradesBySlotCanonicalName[slot][upgrade_canonical];
-                }
-              })();
+              slot = (_ref4 = exportObj.fromXWSUpgrade[upgrade_type]) != null ? _ref4 : upgrade_type.capitalize();
+              addon = (_base1 = exportObj.upgradesBySlotXWSName[slot])[upgrade_canonical] != null ? _base1[upgrade_canonical] : _base1[upgrade_canonical] = exportObj.upgradesBySlotCanonicalName[slot][upgrade_canonical];
               if (addon != null) {
                 addons.push({
-                  type: yasb_upgrade_type,
+                  type: slot,
                   data: addon,
                   slot: slot
                 });
@@ -13240,9 +13272,9 @@ exportObj.SquadBuilder = (function() {
               addon_added = false;
               switch (addon.type) {
                 case 'Modification':
-                  _ref4 = new_ship.modifications;
-                  for (_l = 0, _len2 = _ref4.length; _l < _len2; _l++) {
-                    modification = _ref4[_l];
+                  _ref5 = new_ship.modifications;
+                  for (_l = 0, _len2 = _ref5.length; _l < _len2; _l++) {
+                    modification = _ref5[_l];
                     if (modification.data != null) {
                       continue;
                     }
@@ -13252,19 +13284,19 @@ exportObj.SquadBuilder = (function() {
                   }
                   break;
                 case 'Title':
-                  _ref5 = new_ship.titles;
-                  for (_m = 0, _len3 = _ref5.length; _m < _len3; _m++) {
-                    title = _ref5[_m];
+                  _ref6 = new_ship.titles;
+                  for (_m = 0, _len3 = _ref6.length; _m < _len3; _m++) {
+                    title = _ref6[_m];
                     if (title.data != null) {
                       continue;
                     }
                     if (addon.data instanceof Array) {
                       slot_guesses = (function() {
-                        var _len4, _n, _ref6, _results;
+                        var _len4, _n, _ref7, _results;
                         _results = [];
                         for (_n = 0, _len4 = addons.length; _n < _len4; _n++) {
                           a = addons[_n];
-                          if ((_ref6 = a.data.slot) === 'Cannon' || _ref6 === 'Missile' || _ref6 === 'Torpedo') {
+                          if ((_ref7 = a.data.slot) === 'Cannon' || _ref7 === 'Missile' || _ref7 === 'Torpedo') {
                             _results.push(a.data.slot);
                           }
                         }
@@ -13282,9 +13314,9 @@ exportObj.SquadBuilder = (function() {
                   }
                   break;
                 default:
-                  _ref6 = new_ship.upgrades;
-                  for (i = _n = 0, _len4 = _ref6.length; _n < _len4; i = ++_n) {
-                    upgrade = _ref6[i];
+                  _ref7 = new_ship.upgrades;
+                  for (i = _n = 0, _len4 = _ref7.length; _n < _len4; i = ++_n) {
+                    upgrade = _ref7[i];
                     if (upgrade.slot !== addon.slot || (upgrade.data != null)) {
                       continue;
                     }
@@ -13574,7 +13606,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 14917
+                      lineno: 14948
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -13648,7 +13680,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 14943
+                lineno: 14974
               })
             ]);
             __iced_deferrals._fulfill();
@@ -13695,7 +13727,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 14966
+              lineno: 14997
             }));
           }
         }
@@ -13704,7 +13736,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 14968
+              lineno: 14999
             }));
           }
         }
@@ -13713,7 +13745,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 14970
+              lineno: 15001
             }));
           }
         }
@@ -14676,9 +14708,9 @@ Ship = (function() {
   };
 
   Ship.prototype.toXWS = function() {
-    var modification, title, upgrade, upgrade_obj, xws, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2;
+    var modification, title, upgrade, upgrade_obj, xws, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _ref3;
     xws = {
-      name: this.pilot.canonical_name,
+      name: (_ref = this.pilot.xws) != null ? _ref : this.pilot.canonical_name,
       points: this.getPoints(),
       ship: this.data.xws.canonicalize()
     };
@@ -14686,23 +14718,23 @@ Ship = (function() {
       xws.multisection = this.data.multisection.slice(0);
     }
     upgrade_obj = {};
-    _ref = this.upgrades;
-    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      upgrade = _ref[_i];
+    _ref1 = this.upgrades;
+    for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+      upgrade = _ref1[_i];
       if ((upgrade != null ? upgrade.data : void 0) != null) {
         upgrade.toXWS(upgrade_obj);
       }
     }
-    _ref1 = this.modifications;
-    for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-      modification = _ref1[_j];
+    _ref2 = this.modifications;
+    for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
+      modification = _ref2[_j];
       if ((modification != null ? modification.data : void 0) != null) {
         modification.toXWS(upgrade_obj);
       }
     }
-    _ref2 = this.titles;
-    for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-      title = _ref2[_k];
+    _ref3 = this.titles;
+    for (_k = 0, _len2 = _ref3.length; _k < _len2; _k++) {
+      title = _ref3[_k];
       if ((title != null ? title.data : void 0) != null) {
         title.toXWS(upgrade_obj);
       }
@@ -14800,7 +14832,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 15723
+                lineno: 15754
               })
             ]);
             __iced_deferrals._fulfill();
@@ -14920,7 +14952,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 15785
+                  lineno: 15816
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -14942,7 +14974,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 15789
+                    lineno: 15820
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -15032,7 +15064,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 15832
+            lineno: 15863
           }));
         }
         __iced_deferrals._fulfill();
@@ -15241,7 +15273,7 @@ GenericAddon = (function() {
   };
 
   GenericAddon.prototype.toXWS = function(upgrade_dict) {
-    var upgrade_type;
+    var upgrade_type, _ref;
     upgrade_type = (function() {
       var _ref, _ref1;
       switch (this.type) {
@@ -15251,7 +15283,7 @@ GenericAddon = (function() {
           return (_ref1 = exportObj.toXWSUpgrade[this.type]) != null ? _ref1 : this.type.canonicalize();
       }
     }).call(this);
-    return (upgrade_dict[upgrade_type] != null ? upgrade_dict[upgrade_type] : upgrade_dict[upgrade_type] = []).push(this.data.canonical_name);
+    return (upgrade_dict[upgrade_type] != null ? upgrade_dict[upgrade_type] : upgrade_dict[upgrade_type] = []).push((_ref = this.data.xws) != null ? _ref : this.data.canonical_name);
   };
 
   return GenericAddon;

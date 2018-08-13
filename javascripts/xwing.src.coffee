@@ -2259,8 +2259,10 @@ exportObj.basicCardData = ->
         }
         {
             name: "Garven Dreis (X-Wing)"
+            canonical_name: 'Garven Dreis'.canonicalize()
             id: 6
             unique: true
+            xws: "garvendreis-t65xwing"
             faction: "Rebel Alliance"
             ship: "X-Wing"
             skill: 4
@@ -2364,6 +2366,7 @@ exportObj.basicCardData = ->
             canonical_name: 'Sabine Wren'.canonicalize()
             id: 13
             unique: true
+            xws: "sabinewren-tielnfighter"
             faction: "Rebel Alliance"
             ship: "TIE Fighter"
             skill: 3
@@ -2377,6 +2380,7 @@ exportObj.basicCardData = ->
             canonical_name: 'Ezra Bridger'.canonicalize()
             id: 14
             unique: true
+            xws: "ezrabridger-tielnfighter"
             faction: "Rebel Alliance"
             ship: "TIE Fighter"
             skill: 3
@@ -2392,6 +2396,7 @@ exportObj.basicCardData = ->
             canonical_name: '"Zeb" Orrelios'.canonicalize()
             id: 15
             unique: true
+            xws: "zeborrelios-tielnfighter"
             faction: "Rebel Alliance"
             ship: "TIE Fighter"
             skill: 2
@@ -2539,6 +2544,7 @@ exportObj.basicCardData = ->
             name: "Norra Wexley (Y-Wing)"
             id: 25
             unique: true
+            xws: "norrawexley-btla4ywing"
             faction: "Rebel Alliance"
             ship: "Y-Wing"
             skill: 5
@@ -2837,6 +2843,7 @@ exportObj.basicCardData = ->
             name: "Han Solo (Rebel)"
             id: 42
             unique: true
+            xws: "hansolo-modifiedyt1300lightfreighter"
             faction: "Rebel Alliance"
             ship: "YT-1300"
             skill: 6
@@ -2856,6 +2863,7 @@ exportObj.basicCardData = ->
             name: "Lando Calrissian (Rebel)"
             id: 43
             unique: true
+            xws: "landocalrissian-modifiedyt1300lightfreighter"
             faction: "Rebel Alliance"
             ship: "YT-1300"
             skill: 5
@@ -3124,6 +3132,7 @@ exportObj.basicCardData = ->
             name: "Hera Syndulla (VCX-100)"
             id: 61
             unique: true
+            xws: "herasyndulla-vcx100lightfreighter"
             faction: "Rebel Alliance"
             ship: "VCX-100"
             skill: 5
@@ -3201,7 +3210,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Hera Syndulla (Attack Shuttle)"
+            name: "Hera Syndulla"
             id: 65
             unique: true
             faction: "Rebel Alliance"
@@ -3217,7 +3226,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Sabine Wren (Attack Shuttle)"
+            name: "Sabine Wren"
             canonical_name: 'Sabine Wren'.canonicalize()
             id: 66
             unique: true
@@ -3234,8 +3243,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Ezra Bridger (Attack Shuttle)"
-            canonical_name: 'Ezra Bridger'.canonicalize()
+            name: "Ezra Bridger"
             id: 67
             unique: true
             faction: "Rebel Alliance"
@@ -3253,8 +3261,7 @@ exportObj.basicCardData = ->
         }
 
         {
-            name: '"Zeb" Orrelios (Attack Shuttle)'
-            canonical_name: '"Zeb" Orrelios'.canonicalize()
+            name: '"Zeb" Orrelios'
             id: 68
             unique: true
             faction: "Rebel Alliance"
@@ -3272,6 +3279,7 @@ exportObj.basicCardData = ->
             name: "Fenn Rau (Sheathipede)"
             id: 69
             unique: true
+            xws: "fennrau-sheathipedeclassshuttle"
             faction: "Rebel Alliance"
             ship: "Sheathipede-Class Shuttle"
             skill: 6
@@ -3289,6 +3297,7 @@ exportObj.basicCardData = ->
             canonical_name: 'Ezra Bridger'.canonicalize()
             id: 70
             unique: true
+            xws: "ezrabridger-sheathipedeclassshuttle"
             faction: "Rebel Alliance"
             ship: "Sheathipede-Class Shuttle"
             skill: 3
@@ -3307,6 +3316,7 @@ exportObj.basicCardData = ->
             canonical_name: '"Zeb" Orrelios'.canonicalize()
             id: 71
             unique: true
+            xws: "zeborrelios-sheathipedeclassshuttle"
             faction: "Rebel Alliance"
             ship: "Sheathipede-Class Shuttle"
             skill: 2
@@ -3401,7 +3411,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Norra Wexley (ARC-170)"
+            name: "Norra Wexley"
             id: 77
             unique: true
             faction: "Rebel Alliance"
@@ -3435,7 +3445,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Garven Dreis (ARC-170)"
+            name: "Garven Dreis"
             id: 79
             unique: true
             faction: "Rebel Alliance"
@@ -3617,6 +3627,7 @@ exportObj.basicCardData = ->
             name: "Han Solo (Scum)"
             id: 89
             unique: true
+            xws: "hansolo"
             faction: "Scum and Villainy"
             ship: "YT-1300 (Scum)"
             skill: 6
@@ -3636,6 +3647,7 @@ exportObj.basicCardData = ->
             name: "Lando Calrissian (Scum)"
             id: 90
             unique: true
+            xws: "landocalrissian"
             faction: "Scum and Villainy"
             ship: "YT-1300 (Scum)"
             skill: 4
@@ -3652,8 +3664,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "L3-37 (YT-1300)"
-            canonical_name: 'L3-37'.canonicalize()
+            name: "L3-37"
             id: 91
             unique: true
             faction: "Scum and Villainy"
@@ -3698,6 +3709,7 @@ exportObj.basicCardData = ->
             canonical_name: 'Lando Calrissian (Scum)'.canonicalize()
             id: 93
             unique: true
+            xws: "landocalrissian-escapecraft"
             faction: "Scum and Villainy"
             ship: "Escape Craft"
             skill: 4
@@ -3727,6 +3739,7 @@ exportObj.basicCardData = ->
             canonical_name: 'L3-37'.canonicalize()
             id: 95
             unique: true
+            xws: "l337-escapecraft"
             faction: "Scum and Villainy"
             ship: "Escape Craft"
             skill: 2
@@ -3761,7 +3774,7 @@ exportObj.basicCardData = ->
 
         }
         {
-            name: "Fenn Rau (Fang Fighter)"
+            name: "Fenn Rau"
             id: 97
             unique: true
             faction: "Scum and Villainy"
@@ -4264,6 +4277,7 @@ exportObj.basicCardData = ->
             name: "Sabine Wren (Scum)"
             id: 127
             unique: true
+            xws: "sabinewren-lancerclasspursuitcraft"
             faction: "Scum and Villainy"
             ship: "Lancer-class Pursuit Craft"
             skill: 3
@@ -4310,7 +4324,7 @@ exportObj.basicCardData = ->
               ]
         }
         {
-            name: "Dalan Oberos (Kimogila)"
+            name: "Dalan Oberos"
             id: 130
             unique: true
             faction: "Scum and Villainy"
@@ -4613,6 +4627,7 @@ exportObj.basicCardData = ->
             name: "Dalan Oberos (StarViper)"
             id: 149
             unique: true
+            xws: "dalanoberos-starviperclassattackplatform"
             faction: "Scum and Villainy"
             ship: "StarViper"
             skill: 4
@@ -6046,6 +6061,7 @@ exportObj.basicCardData = ->
            name: "Chewbacca (Rebel)"
            id: 21
            slot: "Crew"
+           xws: "chewbacca" 
            points: 5
            unique: true
            faction: "Rebel Alliance"
@@ -6056,6 +6072,7 @@ exportObj.basicCardData = ->
            name: "Chewbacca (Scum)"
            id: 22
            slot: "Crew"
+           xws: "chewbacca-crew" 
            points: 4
            unique: true
            faction: "Scum and Villainy"
@@ -6063,6 +6080,7 @@ exportObj.basicCardData = ->
        {
            name: '"Chopper" (Crew)'
            id: 23
+           xws: "chopper-crew" 
            slot: "Crew"
            points: 2
            unique: true
@@ -6264,6 +6282,7 @@ exportObj.basicCardData = ->
            name: "Lando Calrissian (Rebel)"
            id: 44
            slot: "Crew"
+           xws: "landocalrissian" 
            points: 5
            unique: true
            faction: "Rebel Alliance"
@@ -6272,6 +6291,7 @@ exportObj.basicCardData = ->
            name: "Lando Calrissian (Scum)"
            id: 45
            slot: "Crew"
+           xws: "landocalrissian-crew" 
            points: 8
            unique: true
            faction: "Scum and Villainy"
@@ -6383,6 +6403,7 @@ exportObj.basicCardData = ->
            name: "R2-D2 (Crew)"
            id: 56
            slot: "Crew"
+           xws: "r2d2-crew"
            points: 8
            unique: true
            faction: "Rebel Alliance"
@@ -6617,6 +6638,7 @@ exportObj.basicCardData = ->
            name: "Han Solo (Rebel)"
            id: 84
            slot: "Gunner"
+           xws: "hansolo" 
            points: 12
            unique: true
            faction: "Rebel Alliance"
@@ -6625,6 +6647,7 @@ exportObj.basicCardData = ->
            name: "Han Solo (Scum)"
            id: 85
            slot: "Gunner"
+           xws: "hansolo-gunner"
            points: 4
            unique: true
            faction: "Scum and Villainy"
@@ -7005,7 +7028,7 @@ exportObj.basicCardData = ->
            points: 1
        }
        {
-           name: "Advanced Proton Torpedoes"
+           name: "Adv. Proton Torpedoes"
            id: 134
            slot: "Torpedo"
            points: 6
@@ -7484,7 +7507,7 @@ exportObj.setupCardData = (basic_cards, pilot_translations, upgrade_translations
             catch e
                 console.error "Cannot find translation for attribute #{field} for pilot #{pilot_name}"
                 throw e
-
+                
     exportObj.upgrades = {}
     for upgrade_data in basic_cards.upgradesById
         unless upgrade_data.skip?
@@ -7600,6 +7623,11 @@ exportObj.setupCardData = (basic_cards, pilot_translations, upgrade_translations
         ((exportObj.pilotsByFactionCanonicalName[pilot.faction] ?= {})[pilot.canonical_name] ?= []).push pilot
         (exportObj.pilotsByUniqueName[pilot.canonical_name.getXWSBaseName()] ?= []).push pilot
 
+    exportObj.pilotsByFactionXWS = {}
+    for pilot_name, pilot of exportObj.pilots
+        ((exportObj.pilotsByFactionXWS[pilot.faction] ?= {})[pilot.xws] ?= []).push pilot
+        
+
     exportObj.upgradesById = {}
     exportObj.upgradesByLocalizedName = {}
     for upgrade_name, upgrade of exportObj.upgrades
@@ -7612,9 +7640,11 @@ exportObj.setupCardData = (basic_cards, pilot_translations, upgrade_translations
         throw new Error("At least one upgrade shares an ID with another")
 
     exportObj.upgradesBySlotCanonicalName = {}
+    exportObj.upgradesBySlotXWSName = {}
     exportObj.upgradesBySlotUniqueName = {}
     for upgrade_name, upgrade of exportObj.upgrades
         (exportObj.upgradesBySlotCanonicalName[upgrade.slot] ?= {})[upgrade.canonical_name] = upgrade
+        (exportObj.upgradesBySlotXWSName[upgrade.slot] ?= {})[upgrade.xws] = upgrade
         (exportObj.upgradesBySlotUniqueName[upgrade.slot] ?= {})[upgrade.canonical_name.getXWSBaseName()] = upgrade
 
     exportObj.modificationsById = {}
@@ -8056,7 +8086,7 @@ exportObj.cardLoaders.English = () ->
            text: """ """
         "Dace Bonearm":
            text: """After an enemy ship at range 0-3 receives at least 1 ion token, you may spend 3 %CHARGE%. If you do, that ship gains 2 additional ion tokens."""
-        "Dalan Oberos (Kimogila)":
+        "Dalan Oberos":
            text: """At the start of the Engagement Phase, you may choose 1 shielded ship in your %BULLSEYEARC% and spend 1 %CHARGE%. If you do, that ship loses 1 shield and you recover 1 shield. %LINEBREAK% DEAD TO RIGHTS: While you perform an attack, if the defender is in your %BULLSEYEARC%, defense dice cannot be modified using green tokens."""
         "Dalan Oberos (StarViper)":
            text: """After you fully execute a maneuver, you ay gain 1 stress token to rotate your ship 90˚.  %LINEBREAK% MICROTHRUSTERS: While you perform a barrel roll, you MUST use the (1 %BANKLEFT%) or (1 %BANKRIGHT%) template instead of the [1 %STRAIGHT%] template."""
@@ -8092,13 +8122,13 @@ exportObj.cardLoaders.English = () ->
            text: """While a friendly ship at range 0-2 defends or performs an attack, it may spend your focus tokens as if that ship has them."""
         "Evaan Verlaine":
            text: """At the start of the Engagement Phase, you may spend 1 focus token to choose a friendly ship at range 0-1. If you do, that ship rolls 1 additional defense die while defending until the end of the round."""
-        "Ezra Bridger (Attack Shuttle)":
+        "Ezra Bridger":
            text: """While you defend or perform an attack, if you are stressed, you may spend 1 %FORCE% to change up to 2 of your %FOCUS% results to %EVADE% or %HIT% results. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"""
         "Ezra Bridger (Sheathipede)":
            text: """While you defend or perform an attack, if you are stressed, you may spend 1 %FORCE% to change up to 2 of your %FOCUS% results to %EVADE%/%HIT% results. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"""
         "Ezra Bridger (TIE Fighter)":
            text: """While you defend or perform an attack, if you are stressed, you may spend 1 %FORCE% to change up to 2 of your %FOCUS% results to %EVADE% or %HIT% results."""
-        "Fenn Rau (Fang Fighter)":
+        "Fenn Rau":
            text: """While you defend or perform an attack, if the attack range is 1, you may roll 1 additional die. %LINEBREAK% CONCORDIA FACEOFF: While you defend, if the attack range is 1 and you are in the attackers %FRONTARC%, change 1 result to an %EVADE% result"""
         "Fenn Rau (Sheathipede)":
            text: """After an enemy ship in your firing arc engages, if you are not stressed, you may gain 1 stress token. If you do, that ship cannot spend tokens to modify dice while it performs an attack during this phase. COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier shpi activates, it may perform a %COORDINATE% action."""
@@ -8108,7 +8138,7 @@ exportObj.cardLoaders.English = () ->
            text: """NIMBLE BOMBER: If you would drop a device using a %STRAIGHT% template, you may use %BANKLEFT% a or %BANKRIGHT% tempate of the same speed instead."""
         "Gand Findsman":
            text: """The legendary Findsmen of Gand worship enshrouding mists of their home planet, using signs, augurs, and mystical rituals to track their quarry."""
-        "Garven Dreis (ARC-170)":
+        "Garven Dreis":
            text: """After you spend a focus token, you may choose 1 friendly ship at range 1-3. That ship gains 1 focus token."""
         "Garven Dreis (X-Wing)":
            text: """After you spend a focus token, you may choose 1 friendly ship at range 1-3. That ship gains 1 focus token."""
@@ -8136,7 +8166,7 @@ exportObj.cardLoaders.English = () ->
            text: """After you roll dice, if you are at range 0-1 of an obstacle, you may reroll all of your dice. This does not count as rerolling for the purpose of other effects."""
         "Heff Tobber":
            text: """After an enemy ship executes a maneuver, if it is at range 0, you may perform an action."""
-        "Hera Syndulla (Attack Shuttle)":
+        "Hera Syndulla":
            text: """After you reveal a red or blue maneuver, you may set your dial to another maneuver of the same difficulty. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"""
         "Hera Syndulla (VCX-100)":
            text: """After you reveal a red or blue maneuver, you may set your dial to another maneuver of the same difficulty. TAIL GUN: While you have a docked ship, you have a primary %REARARC% weapon with an attack value equal to your docked ship's Primary %FRONTARC% attack value."""
@@ -8200,7 +8230,7 @@ exportObj.cardLoaders.English = () ->
            text: """At the start of the Engagement Phase, you may transfer 1 of your focus tokens to a friendly ship in your firing arc."""
         "L3-37 (Escape Craft)":
            text: """If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."""
-        "L3-37 (YT-1300)":
+        "L3-37":
            text: """If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers. %LINEBREAK% CO-PILOT: While you are docked, your carried ship has your pilot ability in addition it's own."""
         "Laetin A'shera":
            text: """After you defend or perform an attack, if the attack missed, gain 1 evade token. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."""
@@ -8256,7 +8286,7 @@ exportObj.cardLoaders.English = () ->
            text: """While you perform a primary attack, if there are no other friendly ships at range 0-2, roll 1 additional attack die."""
         '"Night Beast"':
            text: """After you fully execute a blue maneuver, you may perform a %FOCUS% action."""
-        "Norra Wexley (ARC-170)":
+        "Norra Wexley":
            text: """While you defend, if there is an enemy ship at range 0-1, add 1 %EVADE% result to your dice results."""
         "Norra Wexley (Y-Wing)":
            text: """While you defend, if there is an enemy ship at range 0-1, you may add 1 %EVADE% result to your dice results."""
@@ -8310,7 +8340,7 @@ exportObj.cardLoaders.English = () ->
            text: """EXPERIMENTAL SCANNERS: You can acquire locks beyond range 3. You cannot acquire locks at range 1."""
         "Saber Squadron Ace":
            text: """AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."""
-        "Sabine Wren (Attack Shuttle)":
+        "Sabine Wren":
            text: """Before you activate, you may perform a %BARRELROLL% or %BOOST% action. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"""
         "Sabine Wren (Scum)":
            text: """While you defend, if the attacker is in your %SINGLETURRETARC% at range 0-2, you may add 1 %FOCUS% result to your dice results."""
@@ -8400,7 +8430,7 @@ exportObj.cardLoaders.English = () ->
            text: """While you perform a primary attack, if you are damaged, you may roll 1 additional attack die."""
         "Zealous Recruit":
            text: """CONCORDIA FACEOFF: While you defend, if the attack range is 1 and you are in the attackers %FRONTARC%, change 1 result to an %EVADE% result"""
-        '"Zeb" Orrelios (Attack Shuttle)':
+        '"Zeb" Orrelios':
            text: """While you defend, %CRIT% results are neutralized before %HIT% results. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"""
         '"Zeb" Orrelios (Sheathipede)':
            text: """While you defend, %CRIT% results are neutralized before %HIT% results. COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier shpi activates, it may perform a %COORDINATE% action."""
@@ -8420,7 +8450,7 @@ exportObj.cardLoaders.English = () ->
            text: """Before you would suffer damage from an obstacle or from a friendly bomb detonating, you may spend 1 %CHARGE%. If you do, prevent 1 damage."""
         "Admiral Sloane":
            text: """After another friendly ship at range 0-3 defends, if it is destroyed, the attacker gains 2 stress tokens. While a friendly ship at range 0-3 performs an attack against a stressed ship, it may reroll 1 attack die."""
-        "Advanced Proton Torpedoes":
+        "Adv. Proton Torpedoes":
            text: """Attack (%LOCK%): Spend 1 %CHARGE%. Change 1 %HIT% result to a %CRIT% result."""
         "Advanced Sensors":
            text: """After you reveal your dial, you may perform 1 action. If you do, you cannot perform another action during your activation."""
@@ -9469,22 +9499,22 @@ exportObj.manifestByExpansion =
             count: 2
         }
         {
-            name: 'Ezra Bridger (Attack Shuttle)'
+            name: 'Ezra Bridger'
             type: 'pilot'
             count: 1
         }
         {
-            name: 'Hera Syndulla (Attack Shuttle)'
+            name: 'Hera Syndulla'
             type: 'pilot'
             count: 1
         }
         {
-            name: 'Sabine Wren (Attack Shuttle)'
+            name: 'Sabine Wren'
             type: 'pilot'
             count: 1
         }
         {
-            name: '"Zeb" Orrelios (Attack Shuttle)'
+            name: '"Zeb" Orrelios'
             type: 'pilot'
             count: 1
         }
@@ -9604,7 +9634,7 @@ exportObj.manifestByExpansion =
             count: 2
         }
         {
-            name: 'Garven Dreis (ARC-170)'
+            name: 'Garven Dreis'
             type: 'pilot'
             count: 1
         }
@@ -9614,7 +9644,7 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'Norra Wexley (ARC-170)'
+            name: 'Norra Wexley'
             type: 'pilot'
             count: 1
         }
@@ -9834,7 +9864,7 @@ exportObj.manifestByExpansion =
             count: 2
         }
         {
-            name: 'Advanced Proton Torpedoes'
+            name: 'Adv. Proton Torpedoes'
             type: 'upgrade'
             count: 2
         }
@@ -10606,7 +10636,7 @@ exportObj.manifestByExpansion =
             count: 2
         }
         {
-            name: 'Advanced Proton Torpedoes'
+            name: 'Adv. Proton Torpedoes'
             type: 'upgrade'
             count: 3
         }
@@ -10863,7 +10893,7 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'Fenn Rau (Fang Fighter)'
+            name: 'Fenn Rau'
             type: 'pilot'
             count: 1
         }
@@ -11143,7 +11173,7 @@ exportObj.manifestByExpansion =
             count: 2
         }
         {
-            name: 'Dalan Oberos (Kimogila)'
+            name: 'Dalan Oberos'
             type: 'pilot'
             count: 1
         }
@@ -11378,7 +11408,7 @@ exportObj.manifestByExpansion =
             count: 2
         }
         {
-            name: 'Advanced Proton Torpedoes'
+            name: 'Adv. Proton Torpedoes'
             type: 'upgrade'
             count: 2
         }
@@ -12085,7 +12115,7 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'Fenn Rau (Fang Fighter)'
+            name: 'Fenn Rau'
             type: 'pilot'
             count: 1
         }
@@ -12157,7 +12187,7 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'L3-37 (YT-1300)'
+            name: 'L3-37'
             type: 'pilot'
             count: 1
         }
@@ -13934,6 +13964,8 @@ class exportObj.SquadBuilder
                         canonical_name: ship_data.canonical_name
         ships.sort exportObj.sortHelper
 
+        
+        
     getAvailablePilotsForShipIncluding: (ship, include_pilot, term='') ->
         # Returns data formatted for Select2
         available_faction_pilots = (pilot for pilot_name, pilot of exportObj.pilotsByLocalizedName when (not ship? or pilot.ship == ship) and @isOurFaction(pilot.faction) and @matcher(pilot_name, term))
@@ -14651,8 +14683,14 @@ class exportObj.SquadBuilder
 
                 for pilot in xws.pilots
                     new_ship = @addShip()
+                    for ship_name, ship_data of exportObj.ships
+                        if @matcher(ship_data.xws, pilot.ship)
+                            shipnameXWS =
+                                id: ship_data.name
+                                xws: ship_data.xws
+                    console.log "#{pilot.xws}"
                     try
-                        new_ship.setPilot (p for p in exportObj.pilotsByFactionCanonicalName[@faction][pilot.name] when p.ship.canonicalize() == pilot.ship)[0]
+                        new_ship.setPilot (p for p in (exportObj.pilotsByFactionXWS[@faction][pilot.name] ?= exportObj.pilotsByFactionCanonicalName[@faction][pilot.name]) when p.ship == shipnameXWS.id)[0]
                     catch err
                         console.error err.message 
                         continue
@@ -14662,19 +14700,12 @@ class exportObj.SquadBuilder
                         for upgrade_canonical in upgrade_canonicals
                             # console.log upgrade_type, upgrade_canonical
                             slot = null
-                            yasb_upgrade_type = exportObj.fromXWSUpgrade[upgrade_type] ? upgrade_type.capitalize()
-                            addon = switch yasb_upgrade_type
-                                when 'Modification'
-                                    exportObj.modificationsByCanonicalName[upgrade_canonical]
-                                when 'Title'
-                                    exportObj.titlesByCanonicalName[upgrade_canonical]
-                                else
-                                    slot = yasb_upgrade_type
-                                    exportObj.upgradesBySlotCanonicalName[slot][upgrade_canonical]
+                            slot = exportObj.fromXWSUpgrade[upgrade_type] ? upgrade_type.capitalize()
+                            addon = exportObj.upgradesBySlotXWSName[slot][upgrade_canonical] ?= exportObj.upgradesBySlotCanonicalName[slot][upgrade_canonical]
                             if addon?
                                 # console.log "-> #{upgrade_type} #{addon.name} #{slot}"
                                 addons.push
-                                    type: yasb_upgrade_type
+                                    type: slot
                                     data: addon
                                     slot: slot
 
@@ -15646,9 +15677,9 @@ class Ship
 
     toXWS: ->
         xws =
-            name: @pilot.canonical_name
+            name: (@pilot.xws ? @pilot.canonical_name)
             points: @getPoints()
-#            ship: @data.canonical_name
+            #ship: @data.canonical_name
             ship: @data.xws.canonicalize()
 
         if @data.multisection
@@ -16006,7 +16037,7 @@ class GenericAddon
                 exportObj.toXWSUpgrade[@slot] ? @slot.canonicalize()
             else
                 exportObj.toXWSUpgrade[@type] ?  @type.canonicalize()
-        (upgrade_dict[upgrade_type] ?= []).push @data.canonical_name
+        (upgrade_dict[upgrade_type] ?= []).push (@data.xws ? @data.canonical_name)
 
 class exportObj.Upgrade extends GenericAddon
     constructor: (args) ->
