@@ -13233,7 +13233,7 @@ exportObj.SquadBuilder = (function() {
           try {
             new_ship.setPilot(((function() {
               var _base1, _j, _len1, _name, _ref2, _results;
-              _ref2 = ((_base1 = exportObj.pilotsByFactionXWS[this.faction])[_name = pilot.name] != null ? _base1[_name] : _base1[_name] = exportObj.pilotsByFactionCanonicalName[this.faction][pilot.name]);
+              _ref2 = ((_base1 = exportObj.pilotsByFactionXWS[this.faction])[_name = pilot.id] != null ? _base1[_name] : _base1[_name] = exportObj.pilotsByFactionCanonicalName[this.faction][pilot.id]);
               _results = [];
               for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
                 p = _ref2[_j];
@@ -14710,7 +14710,7 @@ Ship = (function() {
   Ship.prototype.toXWS = function() {
     var modification, title, upgrade, upgrade_obj, xws, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _ref3;
     xws = {
-      name: (_ref = this.pilot.xws) != null ? _ref : this.pilot.canonical_name,
+      id: (_ref = this.pilot.xws) != null ? _ref : this.pilot.canonical_name,
       points: this.getPoints(),
       ship: this.data.xws.canonicalize()
     };
