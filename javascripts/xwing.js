@@ -3915,7 +3915,7 @@ exportObj.basicCardData = function() {
         id: 230,
         faction: "Scum and Villainy",
         ship: "HWK-290",
-        skill: 4,
+        skill: 1,
         points: 32,
         slots: ["Crew", "Device", "Illicit", "Modification", "Modification", "Title"]
       }
