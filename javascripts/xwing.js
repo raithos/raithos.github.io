@@ -1771,7 +1771,7 @@ exportObj.basicCardData = function() {
         attackf: 3,
         agility: 1,
         hull: 6,
-        shields: 3,
+        shields: 2,
         actions: ["Focus", "Reinforce"],
         actionsred: ["Barrel Roll"],
         maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
