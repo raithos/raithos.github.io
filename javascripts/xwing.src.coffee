@@ -2100,6 +2100,7 @@ exportObj.basicCardData = ->
             xws: "Sheathipede-Class Shuttle".canonicalize()
             factions: ["Rebel Alliance"]
             attack: 2
+            attackb: 2
             agility: 2
             hull: 4
             shields: 1
@@ -2160,6 +2161,76 @@ exportObj.basicCardData = ->
                 [ 0, 2, 2, 2, 0, 0, 0, 0 ]
                 [ 3, 1, 2, 1, 3, 0, 0, 0 ]
                 [ 0, 1, 1, 1, 0, 0, 0, 0 ]
+            ]
+        "T-70 X-Wing":
+            name: "T-70 X-Wing"
+            xws: "T-70 X-Wing".canonicalize()
+            factions: [ "Resistance"]
+            attack: 3
+            agility: 2
+            hull: 4
+            shields: 3
+            actions: [
+                "Focus"
+                "Target Lock"
+                "Boost"
+            ]
+            actionsred: [
+            ]
+            maneuvers: [
+              [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+              [ 0, 2, 2, 2, 0, 0, 0, 0, 0, 0]
+              [ 1, 2, 2, 2, 1, 0, 0, 0, 0, 0]
+              [ 1, 1, 2, 1, 1, 0, 0, 0, 3, 3]
+              [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0]
+            ]
+        "RZ-2 A-Wing":
+            name: "RZ-2 A-Wing"
+            xws: "RZ-2 A-Wing".canonicalize()
+            factions: ["Resistance"]
+            attack: 2
+            agility: 3
+            hull: 3
+            shields: 2
+            actions: [
+                "Focus"
+                "Evade"
+                "Target Lock"
+                "Barrel Roll"
+            ]
+            actionsred: [
+            ]
+            maneuvers: [
+              [ 0, 0, 0, 0, 0, 0, 0, 0]
+              [ 1, 0, 0, 0, 1, 0, 0, 0]
+              [ 2, 2, 2, 2, 2, 0, 3, 3]
+              [ 1, 1, 2, 1, 1, 0, 0, 0]
+              [ 0, 0, 1, 0, 0, 3, 0, 0]
+              [ 0, 0, 1, 0, 0, 0, 0, 0]
+            ]
+        "TIE/FO Fighter":
+            name: "TIE/FO Fighter"
+            xws: "TIE/FO Fighter".canonicalize()
+            factions: ["First Order"]
+            attack: 2
+            agility: 3
+            hull: 3
+            shields: 1
+            actions: [
+                "Focus"
+                "Evade"
+                "Target Lock"
+                "Barrel Roll"
+            ]
+            actionsred: [
+            ]
+            maneuvers: [
+              [ 0, 0, 0, 0, 0, 0, 0, 0]
+              [ 1, 0, 0, 0, 1, 0, 0, 0]
+              [ 2, 2, 2, 2, 2, 0, 3, 3]
+              [ 1, 1, 2, 1, 1, 0, 0, 0]
+              [ 0, 0, 1, 0, 0, 3, 0, 0]
+              [ 0, 0, 1, 0, 0, 0, 0, 0]
             ]
 
     # name field is for convenience only
@@ -5873,6 +5944,77 @@ exportObj.basicCardData = ->
                 "Title"
             ]
         }
+        {
+            name: "Poe Dameron"
+            id: 231
+            unique: true
+            faction: "Resistance"
+            ship: "T-70 X-Wing"
+            skill: 6
+            points: 100
+            charge: 1
+            recurring: true 
+            slots: [
+                "Torpedo"
+                "Astromech"
+                "Modification"
+                "Configuration"
+                "Tech"
+                "Title"
+            ]
+        }
+        {
+            name: "Lieutenant Bastian"
+            id: 232
+            unique: true
+            faction: "Resistance"
+            ship: "T-70 X-Wing"
+            skill: 6
+            points: 1
+            slots: [
+                "Torpedo"
+                "Astromech"
+                "Modification"
+                "Configuration"
+                "Tech"
+            ]
+        }
+        {
+            name: '"Midnight"'
+            id: 233
+            unique: true
+            faction: "First Order"
+            ship: "TIE/FO Fighter"
+            skill: 6
+            points: 100
+            slots: [
+                "Modification"
+            ]
+        }
+        {
+            name: '"Longshot"'
+            id: 234
+            unique: true
+            faction: "First Order"
+            ship: "TIE/FO Fighter"
+            skill: 3
+            points: 100
+            slots: [
+                "Modification"
+            ]
+        }
+        {
+            name: '"Muse"'
+            id: 235
+            unique: true
+            faction: "First Order"
+            ship: "TIE/FO Fighter"
+            skill: 2
+            points: 100
+            slots: [
+                "Modification"
+            ]
+        }
     ]
     upgradesById: [
        {
@@ -7422,7 +7564,7 @@ exportObj.basicCardData = ->
                     slot: "Torpedo"
                 }
             ]
-        }
+       }
        {
             name: "Hardpoint: Missile"
             id: 170
@@ -7434,7 +7576,16 @@ exportObj.basicCardData = ->
                     slot: "Missile"
                 }
             ]
-        }
+       }
+       {
+            name: "Black One"
+            id: 171
+            slot: "Title"
+            charge: 1
+            points: 0
+            modifier_func: (stats) ->
+                stats.actions.push 'Slam' if 'Slam' not in stats.actions
+       }
     ]
     conditionsById: [
         {
@@ -7933,9 +8084,6 @@ exportObj.translations.English =
         # Randomizer options
         '.do-randomize' : 'Randomize!'
         # Top tab bar
-        '#empireTab' : 'Galactic Empire'
-        '#rebelTab' : 'Rebel Alliance'
-        '#scumTab' : 'Scum and Villainy'
         '#browserTab' : 'Card Browser'
         '#aboutTab' : 'About'
         # Obstacles
@@ -7991,7 +8139,7 @@ exportObj.cardLoaders.English = () ->
         "Alpha Squadron Pilot":
            text: """AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."""
         "AP-5":
-           text: """While you coordinate, if you chose a ship with exactly 1 stress token, it can perform actions. COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier ship activates, it may perform a %COORDINATE% action."""
+           text: """While you coordinate, if you chose a ship with exactly 1 stress token, it can perform actions. %LINEBREAK% COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier ship activates, it may perform a %COORDINATE% action."""
         "Arvel Crynyd":
            text: """You can perform primary attacks at range 0. If you would fail a %BOOST% action by overlapping another ship, resolve it as though you were partially executing a maneuver instead. %LINEBREAK% VECTORED THRUSTERS: After you perform an action, you may perform a red %BOOST% action."""
         "Asajj Ventress":
@@ -8131,7 +8279,7 @@ exportObj.cardLoaders.English = () ->
         "Fenn Rau":
            text: """While you defend or perform an attack, if the attack range is 1, you may roll 1 additional die. %LINEBREAK% CONCORDIA FACEOFF: While you defend, if the attack range is 1 and you are in the attackers %FRONTARC%, change 1 result to an %EVADE% result"""
         "Fenn Rau (Sheathipede)":
-           text: """After an enemy ship in your firing arc engages, if you are not stressed, you may gain 1 stress token. If you do, that ship cannot spend tokens to modify dice while it performs an attack during this phase. COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier shpi activates, it may perform a %COORDINATE% action."""
+           text: """After an enemy ship in your firing arc engages, if you are not stressed, you may gain 1 stress token. If you do, that ship cannot spend tokens to modify dice while it performs an attack during this phase. %LINEBREAK% COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier shpi activates, it may perform a %COORDINATE% action."""
         "Freighter Captain":
            text: """ """
         "Gamma Squadron Ace":
@@ -8433,14 +8581,24 @@ exportObj.cardLoaders.English = () ->
         '"Zeb" Orrelios':
            text: """While you defend, %CRIT% results are neutralized before %HIT% results. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"""
         '"Zeb" Orrelios (Sheathipede)':
-           text: """While you defend, %CRIT% results are neutralized before %HIT% results. COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier shpi activates, it may perform a %COORDINATE% action."""
+           text: """While you defend, %CRIT% results are neutralized before %HIT% results. %LINEBREAK% COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier shpi activates, it may perform a %COORDINATE% action."""
         '"Zeb" Orrelios (TIE Fighter)':
            text: """While you defend, %CRIT% results are neutralized before %HIT% results."""
         "Zertik Strom":
            text: """During the End Phase, you may spend a lock you have on an enemy ship to expose 1 of that ship's damage cards. %LINEBREAK% ADVANCED TARGETING COPMUTER: While you perform a primary attack against a defender you have locked, roll 1 additional attack die and change 1 %HIT% result to a %CRIT% result."""
         "Zuckuss":
            text: """While you perform a primary attack, you may roll 1 additional attack die. If you do, the defender rolls 1 additional defense die."""
-
+        "Poe Dameron":
+           text: """After you perform an action, you may spend 1 %CHARGE% to perform a white action, treating it as red. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."""
+        "Lieutenant Bastian":
+           text: """After a ship at range 1-2 is dealt a damage card, you may acquire a lock on that ship. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."""
+        '"Midnight"':
+           text: """While you defend or perform an attack, if you have a lock on the enemy ship, that ship's dice cannot be modified."""
+        '"Longshot"':
+           text: """While you perform a primary attack at attack range 3, roll 1 additional attack die."""
+        '"Muse"':
+           text: """At the start of the Engagement Phase, you may choose a friendly ship at range 0-1. If you do, that ship removes 1 stress token."""
+            
     upgrade_translations =
         "0-0-0":
            text: """At the start of the Engagement Phase, you may choose 1 enemy ship at range 0-1. If you do, you gain 1 calculate token unless that ship chooses to gain 1 stress token."""
@@ -8661,7 +8819,7 @@ exportObj.cardLoaders.English = () ->
         "Os-1 Arsenal Loadout":
            text: """While you have exactly 1 disarm token, you can still perform %TORPEDO% and %MISSILE% attacks against targets you have locked. If you do, you cannot spend you lock during the attack. Add %TORPEDO% and %MISSILE% slots."""
         "Outmaneuver":
-           text: """While you perform a %FRONTARC% arrack, if you are not in the defender's firing arc, the defender rolls 1 fewer defense die."""
+           text: """While you perform a %FRONTARC% attack, if you are not in the defender's firing arc, the defender rolls 1 fewer defense die."""
         "Outrider":
            text: """While you perform an attack that is obstructed by an obstacle, the defender rolls 1 fewer defense die. After you fully execute a maneuver, if you moved through or overlapped an obstacle, you may remove 1 of your red or orange tokens."""
         "Perceptive Copilot":
@@ -8784,7 +8942,9 @@ exportObj.cardLoaders.English = () ->
            text: """Adds a %MISSILE% slot"""
         "Hardpoint: Torpedo":
            text: """Adds a %TORPEDO% slot"""
-
+        "Black One":
+           text: """After you perform a %SLAM% action, lose 1 %CHARGE%. Then you may gain 1 ion token to remove 1 disarm token. %LINEBREAK% If your charge is inactive, you cannot perform the %SLAM% action."""
+            
     condition_translations =
         'Suppressive Fire':
            text: '''While you perform an attack against a ship other than <strong>Captain Rex</strong>, roll 1 fewer attack die. %LINEBREAK% After <strong>Captain Rex</strong> defends, remove this card.  %LINEBREAK% At the end of the Combat Phase, if <strong>Captain Rex</strong> did not perform an attack this phase, remove this card. %LINEBREAK% After <strong>Captain Rex</strong> is destroyed, remove this card.'''
@@ -12748,9 +12908,9 @@ statAndEffectiveStat = (base_stat, effective_stats, key) ->
 
 getPrimaryFaction = (faction) ->
     switch faction
-        when 'Rebel Alliance', 'Resistance'
+        when 'Rebel Alliance'
             'Rebel Alliance'
-        when 'Galactic Empire', 'First Order'
+        when 'Galactic Empire'
             'Galactic Empire'
         else
             faction

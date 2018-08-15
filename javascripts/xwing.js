@@ -1831,6 +1831,7 @@ exportObj.basicCardData = function() {
         xws: "Sheathipede-Class Shuttle".canonicalize(),
         factions: ["Rebel Alliance"],
         attack: 2,
+        attackb: 2,
         agility: 2,
         hull: 4,
         shields: 1,
@@ -1862,6 +1863,42 @@ exportObj.basicCardData = function() {
         actions: ["Focus", "Barrel Roll"],
         actionsred: ["Coordinate"],
         maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0]]
+      },
+      "T-70 X-Wing": {
+        name: "T-70 X-Wing",
+        xws: "T-70 X-Wing".canonicalize(),
+        factions: ["Resistance"],
+        attack: 3,
+        agility: 2,
+        hull: 4,
+        shields: 3,
+        actions: ["Focus", "Target Lock", "Boost"],
+        actionsred: [],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
+      },
+      "RZ-2 A-Wing": {
+        name: "RZ-2 A-Wing",
+        xws: "RZ-2 A-Wing".canonicalize(),
+        factions: ["Resistance"],
+        attack: 2,
+        agility: 3,
+        hull: 3,
+        shields: 2,
+        actions: ["Focus", "Evade", "Target Lock", "Barrel Roll"],
+        actionsred: [],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0], [2, 2, 2, 2, 2, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
+      },
+      "TIE/FO Fighter": {
+        name: "TIE/FO Fighter",
+        xws: "TIE/FO Fighter".canonicalize(),
+        factions: ["First Order"],
+        attack: 2,
+        agility: 3,
+        hull: 3,
+        shields: 1,
+        actions: ["Focus", "Evade", "Target Lock", "Barrel Roll"],
+        actionsred: [],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0], [2, 2, 2, 2, 2, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
       }
     },
     pilotsById: [
@@ -3933,6 +3970,53 @@ exportObj.basicCardData = function() {
         skill: 1,
         points: 32,
         slots: ["Crew", "Device", "Illicit", "Modification", "Modification", "Title"]
+      }, {
+        name: "Poe Dameron",
+        id: 231,
+        unique: true,
+        faction: "Resistance",
+        ship: "T-70 X-Wing",
+        skill: 6,
+        points: 100,
+        charge: 1,
+        recurring: true,
+        slots: ["Torpedo", "Astromech", "Modification", "Configuration", "Tech", "Title"]
+      }, {
+        name: "Lieutenant Bastian",
+        id: 232,
+        unique: true,
+        faction: "Resistance",
+        ship: "T-70 X-Wing",
+        skill: 6,
+        points: 1,
+        slots: ["Torpedo", "Astromech", "Modification", "Configuration", "Tech"]
+      }, {
+        name: '"Midnight"',
+        id: 233,
+        unique: true,
+        faction: "First Order",
+        ship: "TIE/FO Fighter",
+        skill: 6,
+        points: 100,
+        slots: ["Modification"]
+      }, {
+        name: '"Longshot"',
+        id: 234,
+        unique: true,
+        faction: "First Order",
+        ship: "TIE/FO Fighter",
+        skill: 3,
+        points: 100,
+        slots: ["Modification"]
+      }, {
+        name: '"Muse"',
+        id: 235,
+        unique: true,
+        faction: "First Order",
+        ship: "TIE/FO Fighter",
+        skill: 2,
+        points: 100,
+        slots: ["Modification"]
       }
     ],
     upgradesById: [
@@ -5471,6 +5555,17 @@ exportObj.basicCardData = function() {
             slot: "Missile"
           }
         ]
+      }, {
+        name: "Black One",
+        id: 171,
+        slot: "Title",
+        charge: 1,
+        points: 0,
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'Slam') < 0) {
+            return stats.actions.push('Slam');
+          }
+        }
       }
     ],
     conditionsById: [
@@ -6059,9 +6154,6 @@ exportObj.translations.English = {
     '.color-print-checkbox': "Print color <input type=\"checkbox\" class=\"toggle-color-print\" />",
     '.print-list': '<i class="fa fa-print"></i>&nbsp;Print',
     '.do-randomize': 'Randomize!',
-    '#empireTab': 'Galactic Empire',
-    '#rebelTab': 'Rebel Alliance',
-    '#scumTab': 'Scum and Villainy',
     '#browserTab': 'Card Browser',
     '#aboutTab': 'About',
     '.choose-obstacles': 'Choose Obstacles',
@@ -6121,7 +6213,7 @@ exportObj.cardLoaders.English = function() {
       text: "AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."
     },
     "AP-5": {
-      text: "While you coordinate, if you chose a ship with exactly 1 stress token, it can perform actions. COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier ship activates, it may perform a %COORDINATE% action."
+      text: "While you coordinate, if you chose a ship with exactly 1 stress token, it can perform actions. %LINEBREAK% COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier ship activates, it may perform a %COORDINATE% action."
     },
     "Arvel Crynyd": {
       text: "You can perform primary attacks at range 0. If you would fail a %BOOST% action by overlapping another ship, resolve it as though you were partially executing a maneuver instead. %LINEBREAK% VECTORED THRUSTERS: After you perform an action, you may perform a red %BOOST% action."
@@ -6331,7 +6423,7 @@ exportObj.cardLoaders.English = function() {
       text: "While you defend or perform an attack, if the attack range is 1, you may roll 1 additional die. %LINEBREAK% CONCORDIA FACEOFF: While you defend, if the attack range is 1 and you are in the attackers %FRONTARC%, change 1 result to an %EVADE% result"
     },
     "Fenn Rau (Sheathipede)": {
-      text: "After an enemy ship in your firing arc engages, if you are not stressed, you may gain 1 stress token. If you do, that ship cannot spend tokens to modify dice while it performs an attack during this phase. COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier shpi activates, it may perform a %COORDINATE% action."
+      text: "After an enemy ship in your firing arc engages, if you are not stressed, you may gain 1 stress token. If you do, that ship cannot spend tokens to modify dice while it performs an attack during this phase. %LINEBREAK% COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier shpi activates, it may perform a %COORDINATE% action."
     },
     "Freighter Captain": {
       text: " "
@@ -6784,7 +6876,7 @@ exportObj.cardLoaders.English = function() {
       text: "While you defend, %CRIT% results are neutralized before %HIT% results. %LINEBREAK% LOCKED AND LOADED: While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus %REARARC% attack"
     },
     '"Zeb" Orrelios (Sheathipede)': {
-      text: "While you defend, %CRIT% results are neutralized before %HIT% results. COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier shpi activates, it may perform a %COORDINATE% action."
+      text: "While you defend, %CRIT% results are neutralized before %HIT% results. %LINEBREAK% COMMS SHUTTLE: While you are docked, your carrier ship gains %COORDINATE%. Before your carrier shpi activates, it may perform a %COORDINATE% action."
     },
     '"Zeb" Orrelios (TIE Fighter)': {
       text: "While you defend, %CRIT% results are neutralized before %HIT% results."
@@ -6794,6 +6886,21 @@ exportObj.cardLoaders.English = function() {
     },
     "Zuckuss": {
       text: "While you perform a primary attack, you may roll 1 additional attack die. If you do, the defender rolls 1 additional defense die."
+    },
+    "Poe Dameron": {
+      text: "After you perform an action, you may spend 1 %CHARGE% to perform a white action, treating it as red. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
+    },
+    "Lieutenant Bastian": {
+      text: "After a ship at range 1-2 is dealt a damage card, you may acquire a lock on that ship. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
+    },
+    '"Midnight"': {
+      text: "While you defend or perform an attack, if you have a lock on the enemy ship, that ship's dice cannot be modified."
+    },
+    '"Longshot"': {
+      text: "While you perform a primary attack at attack range 3, roll 1 additional attack die."
+    },
+    '"Muse"': {
+      text: "At the start of the Engagement Phase, you may choose a friendly ship at range 0-1. If you do, that ship removes 1 stress token."
     }
   };
   upgrade_translations = {
@@ -7125,7 +7232,7 @@ exportObj.cardLoaders.English = function() {
       text: "While you have exactly 1 disarm token, you can still perform %TORPEDO% and %MISSILE% attacks against targets you have locked. If you do, you cannot spend you lock during the attack. Add %TORPEDO% and %MISSILE% slots."
     },
     "Outmaneuver": {
-      text: "While you perform a %FRONTARC% arrack, if you are not in the defender's firing arc, the defender rolls 1 fewer defense die."
+      text: "While you perform a %FRONTARC% attack, if you are not in the defender's firing arc, the defender rolls 1 fewer defense die."
     },
     "Outrider": {
       text: "While you perform an attack that is obstructed by an obstacle, the defender rolls 1 fewer defense die. After you fully execute a maneuver, if you moved through or overlapped an obstacle, you may remove 1 of your red or orange tokens."
@@ -7309,6 +7416,9 @@ exportObj.cardLoaders.English = function() {
     },
     "Hardpoint: Torpedo": {
       text: "Adds a %TORPEDO% slot"
+    },
+    "Black One": {
+      text: "After you perform a %SLAM% action, lose 1 %CHARGE%. Then you may gain 1 ion token to remove 1 disarm token. %LINEBREAK% If your charge is inactive, you cannot perform the %SLAM% action."
     }
   };
   condition_translations = {
@@ -10566,7 +10676,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 12667
+                    lineno: 12827
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -10718,10 +10828,8 @@ statAndEffectiveStat = function(base_stat, effective_stats, key) {
 getPrimaryFaction = function(faction) {
   switch (faction) {
     case 'Rebel Alliance':
-    case 'Resistance':
       return 'Rebel Alliance';
     case 'Galactic Empire':
-    case 'First Order':
       return 'Galactic Empire';
     default:
       return faction;
@@ -11155,7 +11263,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 13295
+              lineno: 13455
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -11871,7 +11979,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 13933
+          lineno: 14093
         }));
         __iced_deferrals._fulfill();
       });
@@ -11883,7 +11991,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 13934
+            lineno: 14094
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -13558,7 +13666,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 14944
+                      lineno: 15104
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -13632,7 +13740,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 14970
+                lineno: 15130
               })
             ]);
             __iced_deferrals._fulfill();
@@ -13679,7 +13787,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 14993
+              lineno: 15153
             }));
           }
         }
@@ -13688,7 +13796,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 14995
+              lineno: 15155
             }));
           }
         }
@@ -13697,7 +13805,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 14997
+              lineno: 15157
             }));
           }
         }
@@ -14784,7 +14892,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 15750
+                lineno: 15910
               })
             ]);
             __iced_deferrals._fulfill();
@@ -14904,7 +15012,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 15812
+                  lineno: 15972
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -14926,7 +15034,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 15816
+                    lineno: 15976
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -15016,7 +15124,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 15859
+            lineno: 16019
           }));
         }
         __iced_deferrals._fulfill();
