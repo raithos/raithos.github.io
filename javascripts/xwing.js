@@ -1936,7 +1936,8 @@ exportObj.basicCardData = function() {
         shields: 6,
         actions: ["Focus", "Reinforce", "Target Lock", "Coordinate", "Jam"],
         actionsred: [],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
+        large: true
       },
       "B/SF-17 Bomber": {
         name: "B/SF-17 Bomber",
@@ -1944,11 +1945,37 @@ exportObj.basicCardData = function() {
         factions: ["Resistance"],
         attack: 0,
         agility: 0,
-        hull: 0,
-        shields: 0,
-        actions: [],
+        hull: 9,
+        shields: 3,
+        actions: ["Focus", "Target Lock", "Rotate Arc", "Reload"],
         actionsred: [],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
+        large: true
+      },
+      "YT-1300 (Resistance)": {
+        name: "YT-1300 (Resistance)",
+        xws: "??? YT-1300 Light Freighter".canonicalize(),
+        factions: ["Resistance"],
+        attackdt: 0,
+        agility: 0,
+        hull: 0,
+        shields: 3,
+        actions: ["Focus", "Target Lock"],
+        actionsred: ["Boost", "Rotate Arc"],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0]],
+        large: true
+      },
+      "Mining Guild TIE Fighter": {
+        name: "Mining Guild TIE Fighter",
+        xws: "Modified TIE/LN Fighter".canonicalize(),
+        factions: ["Scum and Villainy"],
+        attack: 2,
+        agility: 3,
+        hull: 3,
+        shields: 0,
+        actions: ["Focus", "Barrel Roll", "Evade"],
+        actionsred: [],
+        maneuvers: [[0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 3], [0, 0, 1, 0, 0, 0], [0, 0, 3, 0, 0, 0]]
       }
     },
     pilotsById: [
@@ -4076,6 +4103,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         force: 2,
         points: 100,
+        applies_condition: 'I\'ll Show You the Dark Side'.canonicalize(),
         slots: ["Force", "Tech", "Modification"]
       }, {
         name: '"Blackout"',
@@ -4094,7 +4122,7 @@ exportObj.basicCardData = function() {
         ship: "Upsilon-class Shuttle",
         skill: 0,
         points: 100,
-        slots: ["Tech", "Tech", "Cannon", "System", "Modification"]
+        slots: ["Tech", "Tech", "Crew", "Crew", "Cannon", "System", "Modification"]
       }, {
         name: "Lulo Lampar",
         id: 239,
@@ -4132,7 +4160,7 @@ exportObj.basicCardData = function() {
         ship: "TIE/sf Fighter",
         skill: 4,
         points: 100,
-        slots: ["Talent", "Tech", "System", "Modification"]
+        slots: ["Talent", "Tech", "Gunner", "System", "Modification"]
       }, {
         name: '"Quickdraw"',
         id: 243,
@@ -4141,7 +4169,72 @@ exportObj.basicCardData = function() {
         ship: "TIE/sf Fighter",
         skill: 0,
         points: 100,
-        slots: ["Talent", "Tech", "System", "Modification"]
+        slots: ["Talent", "Tech", "Gunner", "System", "Modification"]
+      }, {
+        name: "Rey",
+        id: 244,
+        unique: true,
+        faction: "Resistance",
+        ship: "YT-1300 (Resistance)",
+        skill: 0,
+        points: 100,
+        force: 2,
+        slots: ["Force", "Crew", "Crew", "Gunner", "Modification"]
+      }, {
+        name: "Han Solo (Resistance)",
+        id: 245,
+        unique: true,
+        faction: "Resistance",
+        ship: "YT-1300 (Resistance)",
+        skill: 6,
+        points: 100,
+        slots: ["Talent", "Crew", "Crew", "Gunner", "Modification"]
+      }, {
+        name: "Chewbacca (Resistance)",
+        id: 246,
+        unique: true,
+        faction: "Resistance",
+        ship: "YT-1300 (Resistance)",
+        skill: 4,
+        points: 100,
+        slots: ["Talent", "Crew", "Crew", "Gunner", "Modification"]
+      }, {
+        name: "Captain Seevor",
+        id: 247,
+        unique: true,
+        faction: "Scum and Villainy",
+        ship: "Mining Guild Tie Fighter",
+        skill: 3,
+        charge: 1,
+        Recurring: true,
+        points: 100,
+        slots: ["Talent", "Modification"]
+      }, {
+        name: "Mining Guild Surveyor",
+        id: 248,
+        faction: "Scum and Villainy",
+        ship: "Mining Guild Tie Fighter",
+        skill: 2,
+        points: 100,
+        slots: ["Modification"]
+      }, {
+        name: "Ahhav",
+        id: 249,
+        unique: true,
+        faction: "Scum and Villainy",
+        ship: "Mining Guild Tie Fighter",
+        skill: 0,
+        points: 100,
+        slots: ["Talent", "Modification"]
+      }, {
+        name: "Finch Dallow",
+        id: 250,
+        unique: true,
+        faction: "Resistance",
+        ship: "B/SF-17 Bomber",
+        skill: 0,
+        points: 100,
+        slots: ["Talent", "Modification"]
       }
     ],
     upgradesById: [
@@ -4793,6 +4886,7 @@ exportObj.basicCardData = function() {
         slot: "Device",
         points: 5,
         charge: 2,
+        applies_condition: 'Bomblet'.canonicalize(),
         restriction_func: function(ship, upgrade_obj) {
           return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj);
         },
@@ -4805,25 +4899,29 @@ exportObj.basicCardData = function() {
         id: 68,
         slot: "Device",
         points: 6,
-        charge: 1
+        charge: 1,
+        applies_condition: 'Conner Net'.canonicalize()
       }, {
         name: "Proton Bombs",
         id: 69,
         slot: "Device",
         points: 5,
-        charge: 2
+        charge: 2,
+        applies_condition: 'Proton Bomb'.canonicalize()
       }, {
         name: "Proximity Mines",
         id: 70,
         slot: "Device",
         points: 6,
-        charge: 2
+        charge: 2,
+        applies_condition: 'Proximity Mine'.canonicalize()
       }, {
         name: "Seismic Charges",
         id: 71,
         slot: "Device",
         points: 3,
-        charge: 2
+        charge: 2,
+        applies_condition: 'Seismic Charge'.canonicalize()
       }, {
         name: "Heightened Perception",
         id: 72,
@@ -5696,6 +5794,123 @@ exportObj.basicCardData = function() {
             return stats.actions.push('Slam');
           }
         }
+      }, {
+        name: "Heroic",
+        id: 172,
+        slot: "Talent",
+        points: 0,
+        faction: "Resistance"
+      }, {
+        name: "Rose Tico",
+        id: 173,
+        slot: "Crew",
+        points: 0,
+        faction: "Resistance"
+      }, {
+        name: "Finn",
+        id: 174,
+        slot: "Gunner",
+        points: 0,
+        faction: "Resistance"
+      }, {
+        name: "Integrated S-Foils (Closed)",
+        id: 175,
+        slot: "Configuration",
+        points: 0,
+        faction: "Resistance",
+        ship: "T-70 X-Wing"
+      }, {
+        name: "Integrated S-Foils (Open)",
+        id: 176,
+        slot: "Configuration",
+        points: 0,
+        faction: "Resistance",
+        ship: "T-70 X-Wing"
+      }, {
+        name: "Targeting Synchronizer",
+        id: 177,
+        slot: "Tech",
+        points: 0,
+        restriction_func: function(ship) {
+          return __indexOf.call(ship.effectiveStats().actions, "Target Lock") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Target Lock") >= 0;
+        }
+      }, {
+        name: "Primed Thrusters",
+        id: 178,
+        slot: "Tech",
+        points: 0
+      }, {
+        name: "Kylo Ren (Crew)",
+        id: 179,
+        slot: "Crew",
+        points: 0,
+        force: 1,
+        faction: "First Order",
+        applies_condition: 'I\'ll Show You the Dark Side'.canonicalize(),
+        modifier_func: function(stats) {
+          return stats.force += 1;
+        }
+      }, {
+        name: "General Hux",
+        id: 180,
+        slot: "Crew",
+        points: 0,
+        faction: "First Order"
+      }, {
+        name: "Fanatical",
+        id: 181,
+        slot: "Talent",
+        points: 0,
+        faction: "First Order"
+      }, {
+        name: "Special Forces Gunner",
+        id: 182,
+        slot: "Gunner",
+        points: 0,
+        faction: "First Order"
+      }, {
+        name: "Captain Phasma",
+        id: 183,
+        slot: "Crew",
+        points: 0,
+        faction: "First Order"
+      }, {
+        name: "Supreme Leader Snoke",
+        id: 184,
+        slot: "Crew",
+        points: 0,
+        force: 1,
+        faction: "First Order",
+        restriction_func: function(ship, upgrade_obj) {
+          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj);
+        },
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnotherUpgradeSlot();
+        },
+        also_occupies_upgrades: ["Crew"],
+        modifier_func: function(stats) {
+          return stats.force += 1;
+        }
+      }, {
+        name: "Hyperspace Tracking Data",
+        id: 185,
+        slot: "Tech",
+        points: 0
+      }, {
+        name: "Advanced Optics",
+        id: 186,
+        slot: "Tech",
+        points: 0
+      }, {
+        name: "Rey (Gunner)",
+        id: 187,
+        slot: "Gunner",
+        points: 0,
+        force: 1,
+        faction: "Resistance",
+        modifier_func: function(stats) {
+          return stats.force += 1;
+        }
       }
     ],
     conditionsById: [
@@ -5718,6 +5933,28 @@ exportObj.basicCardData = function() {
         name: 'Optimized Prototype',
         id: 4,
         unique: true
+      }, {
+        name: 'I\'ll Show You the Dark Side',
+        id: 5,
+        unique: true
+      }, {
+        name: 'Proton Bomb',
+        id: 6
+      }, {
+        name: 'Seismic Charge',
+        id: 7
+      }, {
+        name: 'Bomblet',
+        id: 8
+      }, {
+        name: 'Loose Cargo',
+        id: 9
+      }, {
+        name: 'Conner Net',
+        id: 10
+      }, {
+        name: 'Proximity Mine',
+        id: 11
       }
     ],
     modificationsById: [],
@@ -7039,7 +7276,7 @@ exportObj.cardLoaders.English = function() {
       text: " ??? %LINEBREAK% AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."
     },
     "Lieutenant Dormitz": {
-      text: " ??? "
+      text: " ... are placed, other ... be placed anywhere in ... range 0-2 of you. %LINEBREAK% ... : while you perform a %CANNON% ... additional die. "
     },
     "Tallissan Lintra": {
       text: "While an enemy ship in your %BULLSEYEARC% performs an attack, you may spend 1 %CHARGE%.  If you do, the defender rolls 1 additional die."
@@ -7048,10 +7285,31 @@ exportObj.cardLoaders.English = function() {
       text: "While you defend or perform a primary attack, if you are stressed, you must roll 1 fewer defense die or 1 additional attack die."
     },
     '"Backdraft"': {
-      text: " ??? "
+      text: " ... perform a %TURRET% primary ... defender is in your %BACKARC% ... additional dice. %LINEBREAK% ... TURRET: You can... indicator only to your ... must treat the %FRONTARC% ... your equipped %MISSILE% ... as %TURRET%. "
     },
     '"Quickdraw"': {
+      text: " ??? %LINEBREAK% ... TURRET: You can... indicator only to your ... must treat the %FRONTARC% ... your equipped %MISSILE% ... as %TURRET%. "
+    },
+    "Rey": {
+      text: " ... perform an attack, ... in your %FRONTARC%, you may ... change 1 of your blank ... or %HIT% result. "
+    },
+    "Han Solo (Resistance)": {
       text: " ??? "
+    },
+    "Chewbacca (Resistance)": {
+      text: " ??? "
+    },
+    "Captain Seevor": {
+      text: " While you defend or perform an attack, before the attack dice are rolled, if you are not in the enemy ship's %BULLSEYEARC%, you may spend 1 %CHARGE%. If you do, the enemy ship gains one jam token. "
+    },
+    "Mining Guild Surveyor": {
+      text: " "
+    },
+    "Ahhav": {
+      text: " ??? "
+    },
+    "Finch Dallow": {
+      text: " ... drop a bomb, you ... play area touching ... instead. "
     }
   };
   upgrade_translations = {
@@ -7197,10 +7455,10 @@ exportObj.cardLoaders.English = function() {
       text: "While another friendly ship defends or performs an attack, you may spend 1 %FORCE% to modify 1 of its dice as though that ship had spent 1 %FORCE%."
     },
     "Engine Upgrade": {
-      text: "Add a white %BOOST% %LINEBREAK%<i>This upgrade has a variable cost, worth 3, 6, or 9 points depending on if the ship base is small, medium or large respectively.</i>"
+      text: "<i>Requires: <r>%BOOST%</r> Adds: %BOOST% %LINEBREAK% This upgrade has a variable cost, worth 3, 6, or 9 points depending on if the ship base is small, medium or large respectively.</i>"
     },
     "Expert Handling": {
-      text: "Add a white %BARRELROLL% %LINEBREAK%<i>This upgrade has a variable cost, worth 2, 4, or 6 points depending on if the ship base is small, medium or large respectively.</i>"
+      text: "<i>Requires: <r>%BARRELROLL%</r> Adds: %BARRELROLL% %LINEBREAK% This upgrade has a variable cost, worth 2, 4, or 6 points depending on if the ship base is small, medium or large respectively.</i>"
     },
     "Ezra Bridger": {
       text: "After you perform a primary attack, you may spend 1 %FORCE% to perform a bonus %TURRET% attack from a %TURRET% you have not attacked from this round. If you do and you are stressed, you may reroll 1 attack die."
@@ -7570,6 +7828,54 @@ exportObj.cardLoaders.English = function() {
     },
     "Black One": {
       text: "After you perform a %SLAM% action, lose 1 %CHARGE%. Then you may gain 1 ion token to remove 1 disarm token. %LINEBREAK% If your charge is inactive, you cannot perform the %SLAM% action."
+    },
+    "Heroic": {
+      text: " While you defend or perform an attack, if you have only blank results and have 2 or more results, you may reroll any number of your dice. "
+    },
+    "Rose Tico": {
+      text: " ??? "
+    },
+    "Finn": {
+      text: " While you defend or perform a primary attack, if the enemy ship is in your %FRONTARC%, you may add 1 blank result to your roll ... can be rerolled or otherwise ...  "
+    },
+    "Integrated S-Foils (Closed)": {
+      text: " While you perform a primary attack, if the defender is not in your %BULLSEYEARC%, roll 1 fewer attack die. Before you activate, you may flip this card. (Adds %BARRELLROLL% and %FOCUS% > (red)%BARRELROLL%) "
+    },
+    "Integrated S-Foils (Open)": {
+      text: " ??? "
+    },
+    "Targeting Synchronizer": {
+      text: " While a friendly ship at range 1-2 performs an attack against a target you have locked, that ship ignores the %LOCK% attack requirement. "
+    },
+    "Primed Thrusters": {
+      text: " While you have 2 or fewer stress tokens, you can perform %BARRELROLL% and %BOOST% actions even while stressed. "
+    },
+    "Kylo Ren (Crew)": {
+      text: " Action: Choose 1 enemy ship at range 1-3. If you do, spend 1 %FORCE% to assign the I'll Show You the Dark Side condition to that ship. "
+    },
+    "General Hux": {
+      text: " ... perform a white %COORDINATE% action ... it as red. If you do, you ... up to 2 additional ships ... ship type, and each ship you coordinate must perform the same action, treating that action as red. "
+    },
+    "Fanatical": {
+      text: " While you perform a primary attack, if you are not shielded, you may change 1 %FOCUS% result to a %HIT% result. "
+    },
+    "Special Forces Gunner": {
+      text: " ... you perform a primary %FRONTARC% attack, ... your %TURRET% is in your %FRONTARC%, you may roll 1 additional attack die. After you perform a primary %FRONTARC% attack, ... your %TURRET% is in your %BACKARC%, you may perform a bonus primary %TURRET% attack. "
+    },
+    "Captain Phasma": {
+      text: " ??? "
+    },
+    "Supreme Leader Snoke": {
+      text: " ??? "
+    },
+    "Hyperspace Tracking Data": {
+      text: " Setup: Before placing forces, you may ... 0 and 6 ... "
+    },
+    "Advanced Optics": {
+      text: " While you perform an attack, you may spend 1 focus to change 1 of your blank results to a %HIT% result. "
+    },
+    "Rey (Gunner)": {
+      text: " ... defend or ... If the ... in your %TURRET% ... 1 %FORCE% to ... 1 of your blank results to a %EVADE% or %HIT% result. "
     }
   };
   condition_translations = {
@@ -7584,6 +7890,27 @@ exportObj.cardLoaders.English = function() {
     },
     'Optimized Prototype': {
       text: 'While you perform a %FRONTARC% primary attack against a ship locked by a friendly ship with the <strong>Director Krennic</strong> upgrade, you may spend 1 %HIT%/%CRIT%/%FOCUS% result. If you do, choose one: the defender loses 1 shield or the defender flips 1 of its facedown damage cards.'
+    },
+    'I\'ll Show You the Dark Side': {
+      text: ' ??? '
+    },
+    'Proton Bomb': {
+      text: '(Bomb Token) - At the end of the Activation Phase, this device detonates. When this device detonates, each ship at range 0–1 suffers 1 %CRIT% damage.'
+    },
+    'Seismic Charge': {
+      text: '(Bomb Token) - At the end of the Activation Phase this device detonates. When this device detonates, choose 1 obstacle at range 0–1. Each ship at range 0–1 of the obstacle suffers 1 %HIT% damage. Then remove that obstacle. '
+    },
+    'Bomblet': {
+      text: '(Bomb Token) - At the end of the Activation Phase this device detonates. When this device detonates, each ship at range 0–1 rolls 2 attack dice. Each ship suffers 1 %HIT% damage for each %HIT%/%CRIT% result.'
+    },
+    'Loose Cargo': {
+      text: '(Debris Token) - Loose cargo is a debris cloud.'
+    },
+    'Conner Net': {
+      text: '(Mine Token) - After a ship overlaps or moves through this device, it detonates. When this device detonates, the ship suffers 1 %HIT% damage and gains 3 ion tokens.'
+    },
+    'Proximity Mine': {
+      text: '(Mine Token) - After a ship overlaps or moves through this device, it detonates. When this device detonates, that ship rolls 2 attack dice. That ship then suffers 1 %HIT% plus 1 %HIT%/%CRIT% damage for each matching result.'
     }
   };
   return modification_translations = title_translations = exportObj.setupCardData(basic_cards, pilot_translations, upgrade_translations, condition_translations, modification_translations, title_translations);
@@ -10827,7 +11154,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 13060
+                    lineno: 13448
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -11414,7 +11741,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 13688
+              lineno: 14076
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -12130,7 +12457,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 14326
+          lineno: 14714
         }));
         __iced_deferrals._fulfill();
       });
@@ -12142,7 +12469,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 14327
+            lineno: 14715
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -13817,7 +14144,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 15337
+                      lineno: 15725
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -13891,7 +14218,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 15363
+                lineno: 15751
               })
             ]);
             __iced_deferrals._fulfill();
@@ -13938,7 +14265,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 15386
+              lineno: 15774
             }));
           }
         }
@@ -13947,7 +14274,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 15388
+              lineno: 15776
             }));
           }
         }
@@ -13956,7 +14283,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 15390
+              lineno: 15778
             }));
           }
         }
@@ -15043,7 +15370,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 16143
+                lineno: 16531
               })
             ]);
             __iced_deferrals._fulfill();
@@ -15163,7 +15490,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 16205
+                  lineno: 16593
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -15185,7 +15512,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 16209
+                    lineno: 16597
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -15275,7 +15602,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 16252
+            lineno: 16640
           }));
         }
         __iced_deferrals._fulfill();
