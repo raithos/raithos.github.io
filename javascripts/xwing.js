@@ -1922,7 +1922,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 3,
         shields: 3,
-        actions: ["Focus", "<r>> Rotate Arc</r>", "Evade", "<r>> Rotate Arc</r>", "Target Lock", "<r>> Rotate Arc</r>", "Barrel Roll", "<r>> Rotate Arc</r>"],
+        actions: ["Focus", "> Rotate Arc", "Evade", "> Rotate Arc", "Target Lock", "> Rotate Arc", "Barrel Roll", "> Rotate Arc"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 3, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       },
@@ -1954,6 +1954,7 @@ exportObj.basicCardData = function() {
       },
       "YT-1300 (Resistance)": {
         name: "YT-1300 (Resistance)",
+        canonical_name: 'YT-1300'.canonicalize(),
         xws: "??? YT-1300 Light Freighter".canonicalize(),
         factions: ["Resistance"],
         attackdt: 0,
@@ -5469,7 +5470,7 @@ exportObj.basicCardData = function() {
           }
         ]
       }, {
-        name: "Pivot Wing (Closed)",
+        name: "Pivot Wing",
         id: 140,
         points: 0,
         slot: "Configuration",
@@ -5478,20 +5479,17 @@ exportObj.basicCardData = function() {
         name: "Pivot Wing (Open)",
         id: 141,
         points: 0,
-        slot: "Configuration",
-        ship: "U-Wing"
+        skip: true
       }, {
-        name: "Servomotor S-foils (Closed)",
+        name: "Servomotor S-Foils",
         id: 142,
         points: 0,
         slot: "Configuration",
         ship: "X-Wing"
       }, {
-        name: "Servomotor S-foils (Open)",
+        name: "Blank",
         id: 143,
-        slot: "Configuration",
-        points: 0,
-        ship: "X-Wing"
+        skip: true
       }, {
         name: "Xg-1 Assault Configuration",
         id: 144,
@@ -5813,7 +5811,7 @@ exportObj.basicCardData = function() {
         points: 0,
         faction: "Resistance"
       }, {
-        name: "Integrated S-Foils (Closed)",
+        name: "Integrated S-Foils",
         id: 175,
         slot: "Configuration",
         points: 0,
@@ -5822,10 +5820,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Integrated S-Foils (Open)",
         id: 176,
-        slot: "Configuration",
-        points: 0,
-        faction: "Resistance",
-        ship: "T-70 X-Wing"
+        skip: true
       }, {
         name: "Targeting Synchronizer",
         id: 177,
@@ -6363,7 +6358,7 @@ exportObj.setupCardData = function(basic_cards, pilot_translations, upgrade_tran
 
 exportObj.fixIcons = function(data) {
   if (data.text != null) {
-    return data.text = data.text.replace(/%ASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>').replace(/%BULLSEYEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bullseyearc"></i>').replace(/%GUNNER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>').replace(/%SINGLETURRETARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>').replace(/%FRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>').replace(/%REARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reararc"></i>').replace(/%FULLFRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullfrontarc"></i>').replace(/%FULLREARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullreararc"></i>').replace(/%DEVICE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>').replace(/%FORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>').replace(/%CHARGE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>').replace(/%CALCULATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>').replace(/%BANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankleft"></i>').replace(/%BANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankright"></i>').replace(/%BARRELROLL%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>').replace(/%BOMB%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bomb"></i>').replace(/%BOOST%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>').replace(/%CANNON%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cannon"></i>').replace(/%CARGO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cargo"></i>').replace(/%CLOAK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>').replace(/%COORDINATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>').replace(/%CRIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crit"></i>').replace(/%CREW%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crew"></i>').replace(/%DUALCARD%/g, '<span class="card-restriction">Dual card.</span>').replace(/%ELITE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-elite"></i>').replace(/%EVADE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>').replace(/%FOCUS%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>').replace(/%HARDPOINT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>').replace(/%HIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hit"></i>').replace(/%ILLICIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-illicit"></i>').replace(/%JAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i>').replace(/%KTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%MISSILE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-missile"></i>').replace(/%RECOVER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-recover"></i>').replace(/%REINFORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i>').replace(/%SALVAGEDASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-salvagedastromech"></i>').replace(/%SLAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>').replace(/%SLOOPLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopleft"></i>').replace(/%SLOOPRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopright"></i>').replace(/%STRAIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-straight"></i>').replace(/%STOP%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-stop"></i>').replace(/%SYSTEM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-system"></i>').replace(/%LOCK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>').replace(/%TEAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-team"></i>').replace(/%TECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>').replace(/%TORPEDO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-torpedo"></i>').replace(/%TROLLLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollleft"></i>').replace(/%TROLLRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollright"></i>').replace(/%TURNLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnleft"></i>').replace(/%TURNRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnright"></i>').replace(/%TURRET%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turret"></i>').replace(/%UTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%HUGESHIPONLY%/g, '<span class="card-restriction">Huge ship only.</span>').replace(/%LARGESHIPONLY%/g, '<span class="card-restriction">Large ship only.</span>').replace(/%SMALLSHIPONLY%/g, '<span class="card-restriction">Small ship only.</span>').replace(/%REBELONLY%/g, '<span class="card-restriction">Rebel only.</span>').replace(/%IMPERIALONLY%/g, '<span class="card-restriction">Imperial only.</span>').replace(/%SCUMONLY%/g, '<span class="card-restriction">Scum only.</span>').replace(/%LIMITED%/g, '<span class="card-restriction">Limited.</span>').replace(/%LINEBREAK%/g, '<br /><br />').replace(/%DE_HUGESHIPONLY%/g, '<span class="card-restriction">Nur für riesige Schiffe.</span>').replace(/%DE_LARGESHIPONLY%/g, '<span class="card-restriction">Nur für grosse Schiffe.</span>').replace(/%DE_REBELONLY%/g, '<span class="card-restriction">Nur für Rebellen.</span>').replace(/%DE_IMPERIALONLY%/g, '<span class="card-restriction">Nur für das Imperium.</span>').replace(/%DE_SCUMONLY%/g, '<span class="card-restriction">Nur für Abschaum & Kriminelle.</span>').replace(/%DE_GOZANTIONLY%/g, '<span class="card-restriction">Nur für Kreuzer der <em>Gozanti</em>-Klasse.</span>').replace(/%DE_LIMITED%/g, '<span class="card-restriction">Limitiert.</span>').replace(/%DE_SMALLSHIPONLY%/g, '<span class="card-restriction">Nur für kleine Schiffe.</span>').replace(/%DE_DUALCARD%/g, '<span class="card-restriction">Doppelseiteige Karte.</span>').replace(/%FR_HUGESHIPONLY%/g, '<span class="card-restriction">Vaisseau immense uniquement.</span>').replace(/%FR_LARGESHIPONLY%/g, '<span class="card-restriction">Grand vaisseau uniquement.</span>').replace(/%FR_REBELONLY%/g, '<span class="card-restriction">Rebelle uniquement.</span>').replace(/%FR_IMPERIALONLY%/g, '<span class="card-restriction">Impérial uniquement.</span>').replace(/%FR_SCUMONLY%/g, '<span class="card-restriction">Racailles uniquement.</span>');
+    return data.text = data.text.replace(/%ASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>').replace(/%BULLSEYEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bullseyearc"></i>').replace(/%GUNNER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>').replace(/%SINGLETURRETARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>').replace(/%FRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>').replace(/%REARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reararc"></i>').replace(/%ROTATEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>').replace(/%FULLFRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullfrontarc"></i>').replace(/%FULLREARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullreararc"></i>').replace(/%DEVICE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>').replace(/%FORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>').replace(/%CHARGE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>').replace(/%CALCULATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>').replace(/%BANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankleft"></i>').replace(/%BANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankright"></i>').replace(/%BARRELROLL%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>').replace(/%BOMB%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bomb"></i>').replace(/%BOOST%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>').replace(/%CANNON%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cannon"></i>').replace(/%CARGO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cargo"></i>').replace(/%CLOAK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>').replace(/%COORDINATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>').replace(/%CRIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crit"></i>').replace(/%CREW%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crew"></i>').replace(/%DUALCARD%/g, '<span class="card-restriction">Dual card.</span>').replace(/%ELITE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-elite"></i>').replace(/%EVADE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>').replace(/%FOCUS%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>').replace(/%HARDPOINT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>').replace(/%HIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hit"></i>').replace(/%ILLICIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-illicit"></i>').replace(/%JAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i>').replace(/%KTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%MISSILE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-missile"></i>').replace(/%RECOVER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-recover"></i>').replace(/%REINFORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i>').replace(/%SALVAGEDASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-salvagedastromech"></i>').replace(/%SLAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>').replace(/%SLOOPLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopleft"></i>').replace(/%SLOOPRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopright"></i>').replace(/%STRAIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-straight"></i>').replace(/%STOP%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-stop"></i>').replace(/%SYSTEM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-system"></i>').replace(/%LOCK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>').replace(/%TEAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-team"></i>').replace(/%TECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>').replace(/%TORPEDO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-torpedo"></i>').replace(/%TROLLLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollleft"></i>').replace(/%TROLLRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollright"></i>').replace(/%TURNLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnleft"></i>').replace(/%TURNRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnright"></i>').replace(/%TURRET%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turret"></i>').replace(/%UTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%HUGESHIPONLY%/g, '<span class="card-restriction">Huge ship only.</span>').replace(/%LARGESHIPONLY%/g, '<span class="card-restriction">Large ship only.</span>').replace(/%SMALLSHIPONLY%/g, '<span class="card-restriction">Small ship only.</span>').replace(/%REBELONLY%/g, '<span class="card-restriction">Rebel only.</span>').replace(/%IMPERIALONLY%/g, '<span class="card-restriction">Imperial only.</span>').replace(/%SCUMONLY%/g, '<span class="card-restriction">Scum only.</span>').replace(/%LIMITED%/g, '<span class="card-restriction">Limited.</span>').replace(/%LINEBREAK%/g, '<br /><br />').replace(/%DE_HUGESHIPONLY%/g, '<span class="card-restriction">Nur für riesige Schiffe.</span>').replace(/%DE_LARGESHIPONLY%/g, '<span class="card-restriction">Nur für grosse Schiffe.</span>').replace(/%DE_REBELONLY%/g, '<span class="card-restriction">Nur für Rebellen.</span>').replace(/%DE_IMPERIALONLY%/g, '<span class="card-restriction">Nur für das Imperium.</span>').replace(/%DE_SCUMONLY%/g, '<span class="card-restriction">Nur für Abschaum & Kriminelle.</span>').replace(/%DE_GOZANTIONLY%/g, '<span class="card-restriction">Nur für Kreuzer der <em>Gozanti</em>-Klasse.</span>').replace(/%DE_LIMITED%/g, '<span class="card-restriction">Limitiert.</span>').replace(/%DE_SMALLSHIPONLY%/g, '<span class="card-restriction">Nur für kleine Schiffe.</span>').replace(/%DE_DUALCARD%/g, '<span class="card-restriction">Doppelseiteige Karte.</span>').replace(/%FR_HUGESHIPONLY%/g, '<span class="card-restriction">Vaisseau immense uniquement.</span>').replace(/%FR_LARGESHIPONLY%/g, '<span class="card-restriction">Grand vaisseau uniquement.</span>').replace(/%FR_REBELONLY%/g, '<span class="card-restriction">Rebelle uniquement.</span>').replace(/%FR_IMPERIALONLY%/g, '<span class="card-restriction">Impérial uniquement.</span>').replace(/%FR_SCUMONLY%/g, '<span class="card-restriction">Racailles uniquement.</span>');
   }
 };
 
@@ -7320,7 +7315,7 @@ exportObj.cardLoaders.English = function() {
       text: "While you perform an attack, after rolling attack dice, you may name a type of green token. If you do, gain 2 ion tokens and, during this attack, the defender cannot spend tokens of the named type."
     },
     "Ablative Plating": {
-      text: "Before you would suffer damage from an obstacle or from a friendly bomb detonating, you may spend 1 %CHARGE%. If you do, prevent 1 damage."
+      text: "<i>Requires: Medium or Large Base</i> %LINEBREAK% Before you would suffer damage from an obstacle or from a friendly bomb detonating, you may spend 1 %CHARGE%. If you do, prevent 1 damage."
     },
     "Admiral Sloane": {
       text: "After another friendly ship at range 0-3 defends, if it is destroyed, the attacker gains 2 stress tokens. While a friendly ship at range 0-3 performs an attack against a stressed ship, it may reroll 1 attack die."
@@ -7332,10 +7327,10 @@ exportObj.cardLoaders.English = function() {
       text: "After you reveal your dial, you may perform 1 action. If you do, you cannot perform another action during your activation."
     },
     "Advanced SLAM": {
-      text: "After you perform a %SLAM% action, if you fully executed that maneuver, you may perform a white action on your action bar, treating that action as red."
+      text: "<i>Requires: %SLAM%</i> %LINEBREAK% After you perform a %SLAM% action, if you fully executed that maneuver, you may perform a white action on your action bar, treating that action as red."
     },
     "Afterburners": {
-      text: "After you fully execute a speed 3-5 maneuver, you may spend 1 %CHARGE% to perform a %BOOST% action, even while stressed."
+      text: "<i>Requires: Small Base</i> %LINEBREAK% After you fully execute a speed 3-5 maneuver, you may spend 1 %CHARGE% to perform a %BOOST% action, even while stressed."
     },
     "Agent Kallus": {
       text: "Setup: Assign the Hunted condition to 1 enemy ship. While you perform an attack against th eship with the Hunted condition, you may change 1 of your %FOCUS% results to a %HIT% result."
@@ -7368,7 +7363,7 @@ exportObj.cardLoaders.English = function() {
       text: "While you perform an attack, you may change 1 %HIT% result to a %CRIT% result for each stress token the defender has."
     },
     "C-3PO": {
-      text: "Before rolling defense dice, you may spend 1 calculate token to guess aloud a number 1 or higher. If you do, and you roll exactly that many %EVADE% results, add 1 %EVADE% result. After you perform the %CALCULATE% action, gain 1 calculate token."
+      text: "<i>Adds: %CALCULATE%</i> %LINEBREAK% Before rolling defense dice, you may spend 1 calculate token to guess aloud a number 1 or higher. If you do, and you roll exactly that many %EVADE% results, add 1 %EVADE% result. After you perform the %CALCULATE% action, gain 1 calculate token."
     },
     "Cad Bane": {
       text: "After you drop or launch a device, you may perform a red %BOOST% action."
@@ -7389,13 +7384,13 @@ exportObj.cardLoaders.English = function() {
       text: "During the Perform Action step, you may perform 1 action, even while stressed. After you perform an action while stressed, suffer 1 %HIT% damage unless you expose 1 of your damage cards."
     },
     "Ciena Ree": {
-      text: "After you perform a %COORDINATE% action, if the ship you coordinated performed a %BARRELROLL% or %BOOST% action, it may gain 1 stress token to rotate 90˚."
+      text: "<i>Requires: %COORDINATE%</i> %LINEBREAK% After you perform a %COORDINATE% action, if the ship you coordinated performed a %BARRELROLL% or %BOOST% action, it may gain 1 stress token to rotate 90˚."
     },
     "Cikatro Vizago": {
       text: "During the End Phase, you may choose 2 %ILLICIT% upgrades equipped to friendly ships at range 0-1. If you do, you may exchange these upgrades. End of Game: Return all %ILLICIT% upgrades to their original ships."
     },
     "Cloaking Device": {
-      text: "Action: Spend 1 %CHARGE% to perform a %CLOAK% action. At the start of the Planning Phase, roll 1 attack die. On a %FOCUS% result, decloak or discard your cloak token."
+      text: "<i>Requires: Small or Medium Base</i> %LINEBREAK% Action: Spend 1 %CHARGE% to perform a %CLOAK% action. At the start of the Planning Phase, roll 1 attack die. On a %FOCUS% result, decloak or discard your cloak token."
     },
     "Cluster Missiles": {
       text: "Attack (%LOCK%): Spend 1 %CHARGE%. After this attack, you may perform this attack as a bonus attack against a different target at range 0-1 of the defender, ignoring the %LOCK% requirement."
@@ -7404,7 +7399,7 @@ exportObj.cardLoaders.English = function() {
       text: "While you boost or barrel roll, you can move through and overlap obstacles. After you move through or overlap an obstacle, you may spend 1 %CHARGE% to ignore its effects until the end of the round."
     },
     "Composure": {
-      text: "If you fail an action and don't have any green tokens you may perform a %FOCUS% action.﻿﻿"
+      text: "<i>Requires: %FOCUS%</i> %LINEBREAK% If you fail an action and don't have any green tokens you may perform a %FOCUS% action.﻿﻿"
     },
     "Concussion Missiles": {
       text: "Attack (%LOCK%): Spend 1 %CHARGE%. After this attack hits, each ship at range 0-1 of the defender exposes 1 of its damage cards."
@@ -7419,7 +7414,7 @@ exportObj.cardLoaders.English = function() {
       text: "While you perform a primary attack, if the defender is in your %BULLSEYEARC%, before the Neutralize Results step, you may spend 1 %CHARGE% to cancel 1 %EVADE% result."
     },
     "Daredevil": {
-      text: "While you perform a while %BOOST% action, you may treat it as red to use the [1%TURNLEFT%] or [1 %TURNRIGHT%] template instead."
+      text: "<i>Requires: White %BOOST% and Small Base</i> %LINEBREAK% While you perform a while %BOOST% action, you may treat it as red to use the [1%TURNLEFT%] or [1 %TURNRIGHT%] template instead."
     },
     "Darth Vader": {
       text: "At the start of the Engagement Phase, you may choose 1 ship in your firing arc at range 0-2 and spend 1 %FORCE%. If you do, that ship suffers 1 %HIT% damage unless it chooses to remove 1 green token."
@@ -7434,31 +7429,31 @@ exportObj.cardLoaders.English = function() {
       text: "During the Activation Phase, enemy ships at range 0-1 cannot remove stress tokens."
     },
     "Debris Gambit": {
-      text: "While you perform a red %EVADE% action, if there is an obstacle at range 0-1, treat the action as white instead."
+      text: "<i>Requires: Small or Medium Base. Adds: <r>%EVADE%</r></i> %LINEBREAK% While you perform a red %EVADE% action, if there is an obstacle at range 0-1, treat the action as white instead."
     },
     "Dengar": {
       text: "After you defend, if the attacker is in your firing arc, you may spend 1 %CHARGE%. If you do, roll 1 attack die unless the attacker chooses to remove 1 green token. On a %HIT% or %CRIT% result, the attacker suffers 1 %HIT% damage."
     },
     "Director Krennic": {
-      text: "Setup: Before placing forces, assign the Optimized Prototype condition to another friendly ship."
+      text: "<i>Adds: %LOCK%</i> %LINEBREAK% Setup: Before placing forces, assign the Optimized Prototype condition to another friendly ship."
     },
     "Dorsal Turret": {
-      text: "Attack"
+      text: "<i>Adds: %ROTATEARC%</i> %LINEBREAK%"
     },
     "Electronic Baffle": {
       text: "During the End Phase, you may suffer 1 %HIT% damage to remove 1 red token."
     },
     "Elusive": {
-      text: "While you defend, you may spend 1 %CHARGE% to reroll 1 defense die. After you fully execute a red maneuver, recover 1 %CHARGE%."
+      text: "<i>Requires: Small or Medium Base</i> %LINEBREAK% While you defend, you may spend 1 %CHARGE% to reroll 1 defense die. After you fully execute a red maneuver, recover 1 %CHARGE%."
     },
     "Emperor Palpatine": {
       text: "While another friendly ship defends or performs an attack, you may spend 1 %FORCE% to modify 1 of its dice as though that ship had spent 1 %FORCE%."
     },
     "Engine Upgrade": {
-      text: "<i>Requires: <r>%BOOST%</r> Adds: %BOOST% %LINEBREAK% This upgrade has a variable cost, worth 3, 6, or 9 points depending on if the ship base is small, medium or large respectively.</i>"
+      text: "<i>Requires: <r>%BOOST%</r>. Adds: %BOOST% %LINEBREAK% This upgrade has a variable cost, worth 3, 6, or 9 points depending on if the ship base is small, medium or large respectively.</i>"
     },
     "Expert Handling": {
-      text: "<i>Requires: <r>%BARRELROLL%</r> Adds: %BARRELROLL% %LINEBREAK% This upgrade has a variable cost, worth 2, 4, or 6 points depending on if the ship base is small, medium or large respectively.</i>"
+      text: "<i>Requires: <r>%BARRELROLL%</r>. Adds: %BARRELROLL% %LINEBREAK% This upgrade has a variable cost, worth 2, 4, or 6 points depending on if the ship base is small, medium or large respectively.</i>"
     },
     "Ezra Bridger": {
       text: "After you perform a primary attack, you may spend 1 %FORCE% to perform a bonus %TURRET% attack from a %TURRET% you have not attacked from this round. If you do and you are stressed, you may reroll 1 attack die."
@@ -7488,7 +7483,7 @@ exportObj.cardLoaders.English = function() {
       text: "After an enemy ship at range 0-2 reveals its dial, you may spend 1 %FORCE% to perform 1 white action on your action bar, treating that action as red."
     },
     "Grand Moff Tarkin": {
-      text: "During the System Phase, you may spend 2 %CHARGE%. If you do, each friendly ship may acquire a lock on a ship that you have locked."
+      text: "<i>Requires: %LOCK%</i> %LINEBREAK% During the System Phase, you may spend 2 %CHARGE%. If you do, each friendly ship may acquire a lock on a ship that you have locked."
     },
     "Greedo": {
       text: "While you perform an attack, you may spend 1 %CHARGE% to change 1 %HIT% result to a %CRIT% result. While you defend, if your %CHARGE% is active, the attacker may change 1 %HIT% result to a %CRIT% result."
@@ -7527,7 +7522,7 @@ exportObj.cardLoaders.English = function() {
       text: "You have the pilot ability of each other friendly ship with the IG-2000 upgrade."
     },
     "IG-88D": {
-      text: "You have the pilot ability of each other friendly ship with the IG-2000 upgrade. After you perform a %CALCULATE% action, gain 1 calculate token. ADVANCED DROID BRAIN: After you perform a %CALCULATE% action, gain 1 calculate token."
+      text: "<i>Adds: %CALCULATE%</i> %LINEBREAK% You have the pilot ability of each other friendly ship with the IG-2000 upgrade. After you perform a %CALCULATE% action, gain 1 calculate token. ADVANCED DROID BRAIN: After you perform a %CALCULATE% action, gain 1 calculate token."
     },
     "Inertial Dampeners": {
       text: "Before you would execute a maneuver, you may spend 1 shield. If you do, execute a white [0 %STOP%] instead of the maneuver you revealed, then gain 1 stress token."
@@ -7542,7 +7537,7 @@ exportObj.cardLoaders.English = function() {
       text: "While an enemy ship at range 0 defends, it rolls 1 fewer defense die."
     },
     "Ion Cannon Turret": {
-      text: "Attack: If this attack hits, spend 1 %HIT% or %CRIT% result to cause the defender to suffer 1 %HIT% damage. All remaining %HIT%/%CRIT% results inflict ion tokens instead of damage."
+      text: "<i>Adds: %ROTATEARC%</i> %LINEBREAK% Attack: If this attack hits, spend 1 %HIT% or %CRIT% result to cause the defender to suffer 1 %HIT% damage. All remaining %HIT%/%CRIT% results inflict ion tokens instead of damage."
     },
     "Ion Cannon": {
       text: "Attack: If this attack hits, spend 1 %HIT% or %CRIT% result to cause the defender to suffer 1 %HIT% damage. All remaining %HIT%/%CRIT% results inflict ion tokens instead of damage."
@@ -7563,7 +7558,7 @@ exportObj.cardLoaders.English = function() {
       text: "Attack: If this attack hits, all %HIT%/%CRIT% results inflict jam tokens instead of damage."
     },
     "Juke": {
-      text: "While you perform an attack, if you are evading, you may change 1 of the defender's %EVADE% results to a %FOCUS% result."
+      text: "<i>Requires: Small or Medium Base</i> %LINEBREAK% While you perform an attack, if you are evading, you may change 1 of the defender's %EVADE% results to a %FOCUS% result."
     },
     "Jyn Erso": {
       text: "If a friendly ship at range 0-3 would gain a focus token, it may gain 1 evade token instead."
@@ -7614,7 +7609,7 @@ exportObj.cardLoaders.English = function() {
       text: "After you suffer damage, you may gain 1 stress token to recover 1 %FORCE%. You can equip \"Dark Side\" upgrades."
     },
     "Millennium Falcon": {
-      text: "While you defend, if you are evading, you may reroll 1 defense die."
+      text: "<i>Adds: %EVADE%</i> %LINEBREAK% While you defend, if you are evading, you may reroll 1 defense die."
     },
     "Minister Tua": {
       text: "At the start of the Engagement Phase, if you are damaged, you may perform a red %REINFORCE% action."
@@ -7623,7 +7618,7 @@ exportObj.cardLoaders.English = function() {
       text: "Add %CANNON% slot."
     },
     "Moff Jerjerrod": {
-      text: "During the System Phase, you may spend 2 %CHARGE%. If you do, choose the (1 %BANKLEFT%), (1 %STRAIGHT%), or (1 %BANKRIGHT%) template. Each friendly ship may perform a red %BOOST% action using that template."
+      text: "<i>Requires: %COORDINATE%</i> %LINEBREAK% During the System Phase, you may spend 2 %CHARGE%. If you do, choose the (1 %BANKLEFT%), (1 %STRAIGHT%), or (1 %BANKRIGHT%) template. Each friendly ship may perform a red %BOOST% action using that template."
     },
     "Moldy Crow": {
       text: "Gain a %FRONTARC% primary weapon with a value of \"3.\" During the End Phase, do not remove up to 2 focus tokens."
@@ -7655,11 +7650,8 @@ exportObj.cardLoaders.English = function() {
     "Phantom (Sheathipede)": {
       text: "You can dock at range 0-1."
     },
-    "Pivot Wing (Closed)": {
-      text: "While you defend, roll 1 fewer defense die. After you execute a [0 %STOP%] maneuver, you may rotate your ship 90˚ or 180˚. Before you activate, you may flip this card"
-    },
-    "Pivot Wing (Open)": {
-      text: "Before you activate, you may flip this card"
+    "Pivot Wing": {
+      text: "<b>Closed:</b> While you defend, roll 1 fewer defense die. After you execute a [0 %STOP%] maneuver, you may rotate your ship 90˚ or 180˚. Before you activate, you may flip this card %LINEBREAK% <b>Open:</b> Before you activate, you may flip this card"
     },
     "Predator": {
       text: "While you perform a primary attack, if the defender is in your %BULLSEYEARC%, you may reroll 1 attack die."
@@ -7695,7 +7687,7 @@ exportObj.cardLoaders.English = function() {
       text: "You can maintain up to 2 locks. Each lock must be on a different object. After you perform a %LOCK% action, you may acquire a lock."
     },
     "R4 Astromech": {
-      text: "Decrease the difficulty of your speed 1-2 basic maneuvers (%TURNLEFT%, %BANKLEFT%, %STRAIGHT%, %BANKRIGHT%, %TURNRIGHT%)."
+      text: "<i>Requires: Small Base</i> %LINEBREAK% Decrease the difficulty of your speed 1-2 basic maneuvers (%TURNLEFT%, %BANKLEFT%, %STRAIGHT%, %BANKRIGHT%, %TURNRIGHT%)."
     },
     "R5 Astromech": {
       text: "Action: Spend 1 %CHARGE% to repair 1 facedown damage card. Action: Repair 1 faceup Ship damage card."
@@ -7710,7 +7702,7 @@ exportObj.cardLoaders.English = function() {
       text: "You can perform attacks against friendly ships."
     },
     "Rigged Cargo Chute": {
-      text: "Action: Spend 1 %CHARGE%. Drop 1 loose cargo using the [1 %STRAIGHT%] template."
+      text: "<i>Requires: Medium or Large Base</i> %LINEBREAK% Action: Spend 1 %CHARGE%. Drop 1 loose cargo using the [1 %STRAIGHT%] template."
     },
     "Ruthless": {
       text: "While you perform an attack, you may choose another friendly ship at range 0-1 of the defender. If you do, that ship suffers 1 %HIT% damage and you may change 1 of your die results to a %HIT% result."
@@ -7719,7 +7711,7 @@ exportObj.cardLoaders.English = function() {
       text: "Setup: Place 1 ion, 1 jam, 1 stress, and 1 tractor token on this card. After a ship suffers the effect of a friendly bomb, you may remove 1 ion, jam, stress, or tractor token from this card. If you do, that ship gains a matching token."
     },
     "Saturation Salvo": {
-      text: "While you perform a %TORPEDO% or %MISSILE% attack, you may spend 1 charge from that upgrade. If you do, choose two defense dice. The defender must reroll those dice."
+      text: "<i>Requires: %RELOAD%</i> %LINEBREAK% While you perform a %TORPEDO% or %MISSILE% attack, you may spend 1 charge from that upgrade. If you do, choose two defense dice. The defender must reroll those dice."
     },
     "Saw Gerrera": {
       text: "While you perform an attack, you may suffer 1 %HIT% damage to change all of your %FOCUS% results to %CRIT% results."
@@ -7736,11 +7728,8 @@ exportObj.cardLoaders.English = function() {
     "Sense": {
       text: "During the System Phase, you may choose 1 ship at range 0-1 and look at its dial. If you spend 1 %FORCE%, you may choose a ship at range 0-3 instead."
     },
-    "Servomotor S-foils (Closed)": {
-      text: "While you perform a primary attack, roll 1 fewer attack die. Before you activate, you may flip this card"
-    },
-    "Servomotor S-foils (Open)": {
-      text: "Before you activate, you may flip this card"
+    "Servomotor S-Foils": {
+      text: "<b>Closed:</b> While you perform a primary attack, roll 1 fewer attack die. Before you activate, you may flip this card %LINEBREAK% <i>Adds: %BOOST%, %FOCUS% > <r>%BOOST%</r></i> %LINEBREAK% <b>Open:</b> Before you activate, you may flip this card"
     },
     "Seventh Sister": {
       text: "If an enemy ship at range 0-1 would gain a stress token, you may spend 1 %FORCE% to have it gain 1 jam or tractor token instead."
@@ -7758,7 +7747,7 @@ exportObj.cardLoaders.English = function() {
       text: "After you reveal a turn, (%TURNLEFT% or %TURNRIGHT%) or bank (%BANKLEFT% or %BANKRIGHT%) maneuver you may set your dial to the maneuver of the same speed and bearing in the other direction. Add %TORPEDO% slot."
     },
     "Squad Leader": {
-      text: "While you coordinate, the ship you choose can perform an action only if that action is also on your action bar."
+      text: "<i>Adds: <r>%COORDINATE%</r></i> %LINEBREAK% While you coordinate, the ship you choose can perform an action only if that action is also on your action bar."
     },
     "ST-321": {
       text: "After you perform a %COORDINATE% action, you may choose an enemy ship at range 0-3 of the ship you coordinated. If you do, acquire a lock on that enemy ship, ignoring range restrictions."
@@ -7770,16 +7759,16 @@ exportObj.cardLoaders.English = function() {
       text: "While you defend, if your %CHARGE% is active, roll 1 additional defense die. After you suffer damage, lost 1 %CHARGE%. %LINEBREAK%<i>This upgrade has a variable cost, worth 3, 4, 6, or 8 points depending on if the ship agility is 0, 1, 2, or 3 respectively.</i>"
     },
     "Supernatural Reflexes": {
-      text: "Before you activate, you may spend 1 %FORCE% to perform a %BARRELROLL% or %BOOST% action. Then, if you performed an action you do not have on your action bar, suffer 1 %HIT% damage."
+      text: "<i>Requires: Small Base</i> %LINEBREAK% Before you activate, you may spend 1 %FORCE% to perform a %BARRELROLL% or %BOOST% action. Then, if you performed an action you do not have on your action bar, suffer 1 %HIT% damage."
     },
     "Swarm Tactics": {
       text: "At the start of the Engagement Phase, you may choose 1 friendly ship at range 1. If you do, that ship treats its initiative as equal to yours until the end of the round."
     },
     "Tactical Officer": {
-      text: "Add a white %COORDINATE%"
+      text: "<i>Requires: <r>%COORDINATE%</r>. Adds: %COORDINATE%</i>"
     },
     "Tactical Scrambler": {
-      text: "While you obstruct an enemy ship's attack, the defender rolls 1 additional defense die."
+      text: "<i>Requires: Medium or Large Base</i> %LINEBREAK% While you obstruct an enemy ship's attack, the defender rolls 1 additional defense die."
     },
     "Tobias Beckett": {
       text: "Setup: After placing forces, you may choose 1 obstacle in the play area. If you do, place it anywhere in the play area beyond range 2 of any board edge or ship and beyond range 1 of other obstacles."
@@ -7797,10 +7786,10 @@ exportObj.cardLoaders.English = function() {
       text: "After you partially excute a maneuver, you may suffer 1 %HIT% damage to perform 1 white action."
     },
     "Veteran Tail Gunner": {
-      text: "After you perform a primary %FRONTARC% attack, you may perform a bonus primary %REARARC% attack."
+      text: "<i>Requires: %REARARC%</i> %LINEBREAK% After you perform a primary %FRONTARC% attack, you may perform a bonus primary %REARARC% attack."
     },
     "Veteran Turret Gunner": {
-      text: "After you perform a primary attack, you may perform a bonus %TURRET% attack using a %TURRET% you did not already attack from this round."
+      text: "<i>Requires: %TURRET%</i> %LINEBREAK% After you perform a primary attack, you may perform a bonus %TURRET% attack using a %TURRET% you did not already attack from this round."
     },
     "Virago": {
       text: "During the End Phase, you may spend 1 %CHARGE% to perform a red %BOOST% action. Add %MODIFICATION% slot."
@@ -7827,7 +7816,7 @@ exportObj.cardLoaders.English = function() {
       text: "Adds a %TORPEDO% slot"
     },
     "Black One": {
-      text: "After you perform a %SLAM% action, lose 1 %CHARGE%. Then you may gain 1 ion token to remove 1 disarm token. %LINEBREAK% If your charge is inactive, you cannot perform the %SLAM% action."
+      text: "<i>Adds: %SLAM%</i> %LINEBREAK% After you perform a %SLAM% action, lose 1 %CHARGE%. Then you may gain 1 ion token to remove 1 disarm token. %LINEBREAK% If your charge is inactive, you cannot perform the %SLAM% action."
     },
     "Heroic": {
       text: " While you defend or perform an attack, if you have only blank results and have 2 or more results, you may reroll any number of your dice. "
@@ -7838,17 +7827,14 @@ exportObj.cardLoaders.English = function() {
     "Finn": {
       text: " While you defend or perform a primary attack, if the enemy ship is in your %FRONTARC%, you may add 1 blank result to your roll ... can be rerolled or otherwise ...  "
     },
-    "Integrated S-Foils (Closed)": {
-      text: " While you perform a primary attack, if the defender is not in your %BULLSEYEARC%, roll 1 fewer attack die. Before you activate, you may flip this card. (Adds %BARRELLROLL% and %FOCUS% > (red)%BARRELROLL%) "
-    },
-    "Integrated S-Foils (Open)": {
-      text: " ??? "
+    "Integrated S-Foils": {
+      text: "<b>Closed:</b> While you perform a primary attack, if the defender is not in your %BULLSEYEARC%, roll 1 fewer attack die. Before you activate, you may flip this card. %LINEBREAK% <i>Adds: %BARRELROLL%, %FOCUS% > <r>%BARRELROLL%</r></i> %LINEBREAK% <b>Open:</b> ???"
     },
     "Targeting Synchronizer": {
-      text: " While a friendly ship at range 1-2 performs an attack against a target you have locked, that ship ignores the %LOCK% attack requirement. "
+      text: "<i>Requires: %LOCK%</i> %LINEBREAK% While a friendly ship at range 1-2 performs an attack against a target you have locked, that ship ignores the %LOCK% attack requirement. "
     },
     "Primed Thrusters": {
-      text: " While you have 2 or fewer stress tokens, you can perform %BARRELROLL% and %BOOST% actions even while stressed. "
+      text: "<i>Requires: Small Base</i> %LINEBREAK% While you have 2 or fewer stress tokens, you can perform %BARRELROLL% and %BOOST% actions even while stressed. "
     },
     "Kylo Ren (Crew)": {
       text: " Action: Choose 1 enemy ship at range 1-3. If you do, spend 1 %FORCE% to assign the I'll Show You the Dark Side condition to that ship. "
@@ -8040,11 +8026,7 @@ exportObj.manifestByExpansion = {
       type: 'upgrade',
       count: 1
     }, {
-      name: 'Servomotor S-foils (Open)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Servomotor S-foils (Closed)',
+      name: 'Servomotor S-Foils',
       type: 'upgrade',
       count: 1
     }, {
@@ -8119,19 +8101,11 @@ exportObj.manifestByExpansion = {
       type: 'upgrade',
       count: 1
     }, {
-      name: 'Pivot Wing (Open)',
+      name: 'Pivot Wing',
       type: 'upgrade',
       count: 1
     }, {
-      name: 'Pivot Wing (Closed)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Servomotor S-foils (Open)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Servomotor S-foils (Closed)',
+      name: 'Servomotor S-Foils',
       type: 'upgrade',
       count: 1
     }, {
@@ -8825,19 +8799,11 @@ exportObj.manifestByExpansion = {
       type: 'upgrade',
       count: 1
     }, {
-      name: 'Pivot Wing (Open)',
+      name: 'Pivot Wing',
       type: 'upgrade',
       count: 2
     }, {
-      name: 'Pivot Wing (Closed)',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Servomotor S-foils (Open)',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Servomotor S-foils (Closed)',
+      name: 'Servomotor S-Foils',
       type: 'upgrade',
       count: 2
     }, {
@@ -10322,11 +10288,7 @@ exportObj.manifestByExpansion = {
       type: 'upgrade',
       count: 1
     }, {
-      name: 'Servomotor S-foils (Open)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Servomotor S-foils (Closed)',
+      name: 'Servomotor S-Foils',
       type: 'upgrade',
       count: 1
     }
@@ -11154,7 +11116,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 13448
+                    lineno: 13408
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -11741,7 +11703,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 14076
+              lineno: 14036
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -12457,7 +12419,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 14714
+          lineno: 14674
         }));
         __iced_deferrals._fulfill();
       });
@@ -12469,7 +12431,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 14715
+            lineno: 14675
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -14144,7 +14106,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 15725
+                      lineno: 15685
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -14218,7 +14180,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 15751
+                lineno: 15711
               })
             ]);
             __iced_deferrals._fulfill();
@@ -14265,7 +14227,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 15774
+              lineno: 15734
             }));
           }
         }
@@ -14274,7 +14236,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 15776
+              lineno: 15736
             }));
           }
         }
@@ -14283,7 +14245,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 15778
+              lineno: 15738
             }));
           }
         }
@@ -15370,7 +15332,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 16531
+                lineno: 16491
               })
             ]);
             __iced_deferrals._fulfill();
@@ -15490,7 +15452,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 16593
+                  lineno: 16553
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -15512,7 +15474,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 16597
+                    lineno: 16557
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -15602,7 +15564,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 16640
+            lineno: 16600
           }));
         }
         __iced_deferrals._fulfill();
