@@ -4204,7 +4204,7 @@ exportObj.basicCardData = function() {
         id: 247,
         unique: true,
         faction: "Scum and Villainy",
-        ship: "Mining Guild Tie Fighter",
+        ship: "Mining Guild TIE Fighter",
         skill: 3,
         charge: 1,
         Recurring: true,
@@ -4214,7 +4214,7 @@ exportObj.basicCardData = function() {
         name: "Mining Guild Surveyor",
         id: 248,
         faction: "Scum and Villainy",
-        ship: "Mining Guild Tie Fighter",
+        ship: "Mining Guild TIE Fighter",
         skill: 2,
         points: 100,
         slots: ["Modification"]
@@ -4223,7 +4223,7 @@ exportObj.basicCardData = function() {
         id: 249,
         unique: true,
         faction: "Scum and Villainy",
-        ship: "Mining Guild Tie Fighter",
+        ship: "Mining Guild TIE Fighter",
         skill: 0,
         points: 100,
         slots: ["Talent", "Modification"]

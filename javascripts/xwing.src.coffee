@@ -6342,7 +6342,7 @@ exportObj.basicCardData = ->
             id: 247
             unique: true
             faction: "Scum and Villainy"
-            ship: "Mining Guild Tie Fighter"
+            ship: "Mining Guild TIE Fighter"
             skill: 3
             charge: 1
             Recurring: true
@@ -6356,7 +6356,7 @@ exportObj.basicCardData = ->
             name: "Mining Guild Surveyor"
             id: 248
             faction: "Scum and Villainy"
-            ship: "Mining Guild Tie Fighter"
+            ship: "Mining Guild TIE Fighter"
             skill: 2
             points: 100
             slots: [
@@ -6368,7 +6368,7 @@ exportObj.basicCardData = ->
             id: 249
             unique: true
             faction: "Scum and Villainy"
-            ship: "Mining Guild Tie Fighter"
+            ship: "Mining Guild TIE Fighter"
             skill: 0
             points: 100
             slots: [
@@ -6389,9 +6389,9 @@ exportObj.basicCardData = ->
                 "Modification"
             ]
         }
-        
-        
     ]
+
+
     upgradesById: [
        {
            name: '"Chopper" (Astromech)'
