@@ -1881,6 +1881,7 @@ exportObj.basicCardData = function() {
         xws: "RZ-2 A-Wing".canonicalize(),
         factions: ["Resistance"],
         attack: 2,
+        attackt: 2,
         agility: 3,
         hull: 3,
         shields: 2,
@@ -1899,6 +1900,55 @@ exportObj.basicCardData = function() {
         actions: ["Focus", "Evade", "Target Lock", "Barrel Roll"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0], [2, 2, 2, 2, 2, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
+      },
+      "TIE Silencer": {
+        name: "TIE Silencer",
+        xws: "TIE Silencer".canonicalize(),
+        factions: ["First Order"],
+        attack: 3,
+        agility: 3,
+        hull: 4,
+        shields: 2,
+        actions: ["Focus", "Boost", "Target Lock", "Barrel Roll"],
+        actionsred: [],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
+      },
+      "TIE/sf Fighter": {
+        name: "TIE/sf Fighter",
+        xws: "TIE/sf Fighter".canonicalize(),
+        factions: ["First Order"],
+        attack: 0,
+        attackt: 0,
+        agility: 2,
+        hull: 3,
+        shields: 3,
+        actions: ["Focus", "<r>> Rotate Arc</r>", "Evade", "<r>> Rotate Arc</r>", "Target Lock", "<r>> Rotate Arc</r>", "Barrel Roll", "<r>> Rotate Arc</r>"],
+        actionsred: [],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 3, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+      },
+      "Upsilon-class Shuttle": {
+        name: "Upsilon-class Shuttle",
+        xws: "Upsilon-class Shuttle".canonicalize(),
+        factions: ["First Order"],
+        attack: 0,
+        agility: 0,
+        hull: 0,
+        shields: 6,
+        actions: ["Focus", "Reinforce", "Target Lock", "Coordinate", "Jam"],
+        actionsred: [],
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+      },
+      "B/SF-17 Bomber": {
+        name: "B/SF-17 Bomber",
+        xws: "B/SF-17 Bomber".canonicalize(),
+        factions: ["Resistance"],
+        attack: 0,
+        agility: 0,
+        hull: 0,
+        shields: 0,
+        actions: [],
+        actionsred: [],
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       }
     },
     pilotsById: [
@@ -4017,6 +4067,81 @@ exportObj.basicCardData = function() {
         skill: 2,
         points: 100,
         slots: ["Modification"]
+      }, {
+        name: "Kylo Ren",
+        id: 236,
+        unique: true,
+        faction: "First Order",
+        ship: "TIE Silencer",
+        skill: 5,
+        force: 2,
+        points: 100,
+        slots: ["Force", "Tech", "Modification"]
+      }, {
+        name: '"Blackout"',
+        id: 237,
+        unique: true,
+        faction: "First Order",
+        ship: "TIE Silencer",
+        skill: 5,
+        points: 100,
+        slots: ["Talent", "Tech", "Modification"]
+      }, {
+        name: "Lieutenant Dormitz",
+        id: 238,
+        unique: true,
+        faction: "First Order",
+        ship: "Upsilon-class Shuttle",
+        skill: 0,
+        points: 100,
+        slots: ["Tech", "Tech", "Cannon", "System", "Modification"]
+      }, {
+        name: "Lulo Lampar",
+        id: 239,
+        unique: true,
+        faction: "Resistance",
+        ship: "RZ-2 A-Wing",
+        skill: 5,
+        points: 100,
+        slots: ["Talent", "Missile"]
+      }, {
+        name: "Tallissan Lintra",
+        id: 240,
+        unique: true,
+        faction: "Resistance",
+        ship: "RZ-2 A-Wing",
+        skill: 5,
+        charge: 1,
+        recurring: true,
+        points: 100,
+        slots: ["Talent", "Missile"]
+      }, {
+        name: "Lulo Lampar",
+        id: 241,
+        unique: true,
+        faction: "Resistance",
+        ship: "RZ-2 A-Wing",
+        skill: 5,
+        points: 100,
+        slots: ["Talent", "Missile"]
+      }, {
+        name: '"Backdraft"',
+        id: 242,
+        unique: true,
+        faction: "First Order",
+        ship: "TIE/sf Fighter",
+        skill: 4,
+        points: 100,
+        slots: ["Talent", "Tech", "System", "Modification"]
+      }, {
+        name: '"Quickdraw"',
+        id: 243,
+        unique: true,
+        faction: "First Order",
+        ship: "TIE/sf Fighter",
+        skill: 0,
+        points: 100,
+        slots: ["Talent", "Tech", "System", "Modification"]
       }
     ],
     upgradesById: [
@@ -6903,6 +7028,27 @@ exportObj.cardLoaders.English = function() {
     },
     '"Muse"': {
       text: "At the start of the Engagement Phase, you may choose a friendly ship at range 0-1. If you do, that ship removes 1 stress token."
+    },
+    "Kylo Ren": {
+      text: " After you defend, you may spend 1 %FORCE% to assign the I'll Show You the Dark Side condition to the attacker. %LINEBREAK% AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."
+    },
+    '"Blackout"': {
+      text: " ??? %LINEBREAK% AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."
+    },
+    "Lieutenant Dormitz": {
+      text: " ??? "
+    },
+    "Tallissan Lintra": {
+      text: "While an enemy ship in your %BULLSEYEARC% performs an attack, you may spend 1 %CHARGE%.  If you do, the defender rolls 1 additional die."
+    },
+    "Lulo Lampar": {
+      text: "While you defend or perform a primary attack, if you are stressed, you must roll 1 fewer defense die or 1 additional attack die."
+    },
+    '"Backdraft"': {
+      text: " ??? "
+    },
+    '"Quickdraw"': {
+      text: " ??? "
     }
   };
   upgrade_translations = {
@@ -10678,7 +10824,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 12829
+                    lineno: 13056
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -11265,7 +11411,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 13457
+              lineno: 13684
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -11981,7 +12127,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 14095
+          lineno: 14322
         }));
         __iced_deferrals._fulfill();
       });
@@ -11993,7 +12139,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 14096
+            lineno: 14323
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -13668,7 +13814,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 15106
+                      lineno: 15333
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -13742,7 +13888,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 15132
+                lineno: 15359
               })
             ]);
             __iced_deferrals._fulfill();
@@ -13789,7 +13935,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 15155
+              lineno: 15382
             }));
           }
         }
@@ -13798,7 +13944,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 15157
+              lineno: 15384
             }));
           }
         }
@@ -13807,7 +13953,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 15159
+              lineno: 15386
             }));
           }
         }
@@ -14894,7 +15040,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 15912
+                lineno: 16139
               })
             ]);
             __iced_deferrals._fulfill();
@@ -15014,7 +15160,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 15974
+                  lineno: 16201
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -15036,7 +15182,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 15978
+                    lineno: 16205
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -15126,7 +15272,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 16021
+            lineno: 16248
           }));
         }
         __iced_deferrals._fulfill();
