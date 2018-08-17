@@ -5285,7 +5285,7 @@ exportObj.basicCardData = function() {
         slot: "Talent",
         points: 3,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.effectiveStats().actions, "Boost") >= 0;
+          return __indexOf.call(ship.effectiveStats().actions, "Boost") >= 0 && !((ship.data.large != null) || (ship.data.medium != null));
         }
       }, {
         name: "Debris Gambit",
