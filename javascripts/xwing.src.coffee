@@ -1328,7 +1328,7 @@ exportObj.basicCardData = ->
               [ 0, 2, 2, 2, 0]
               [ 1, 1, 2, 1, 1]
               [ 3, 1, 1, 1, 3]
-              [ 0, 0, 3, 0, 0]
+              [ 0, 0, 1, 0, 0]
             ]
         "Lambda-Class Shuttle":
             name: "Lambda-Class Shuttle"
@@ -6700,9 +6700,10 @@ exportObj.basicCardData = ->
            slot: "Crew"
            points: 16
            unique: true
+           force: 1 
            faction: "Galactic Empire"
            modifier_func: (stats) ->
-                stats.attack += 1
+                stats.force += 1
        }
        {
            name: "Grand Moff Tarkin"
@@ -7780,6 +7781,8 @@ exportObj.basicCardData = ->
            unique: true
            faction: "Scum and Villainy"
            ship: "G-1A Starfighter"
+           modifier_func: (stats) ->
+                stats.actions.push 'Barrel Roll' if 'Barrel Roll' not in stats.actions
            confersAddons: [
                 {
                     type: exportObj.Upgrade
@@ -11558,6 +11561,11 @@ exportObj.manifestByExpansion =
             count: 2
         }
         {
+            name: 'Aggressor'
+            type: 'ship'
+            count: 2
+        }
+        {
             name: 'HWK-290'
             type: 'ship'
             count: 2
@@ -14997,10 +15005,7 @@ class exportObj.SquadBuilder
                     @info_container.find('tr.info-shields').show()
 
                     @info_container.find('tr.info-force td.info-data').html (statAndEffectiveStat((data.pilot.ship_override?.force ? data.pilot.force), effective_stats, 'force') + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
-                    if data.pilot.ship_override?.force? or data.pilot.force?
-                        @info_container.find('tr.info-force').show()
-                    else
-                        @info_container.find('tr.info-force').hide()
+                    @info_container.find('tr.info-force').toggle(data.pilot.ship_override?.force? or data.pilot.force?)
 
                     if data.pilot.charge?
                         if data.pilot.recurring?
@@ -15069,9 +15074,7 @@ class exportObj.SquadBuilder
 
                     if data.ship_override?.force or data.force?
                         @info_container.find('tr.info-force td.info-data').html ((data.ship_override?.force ? data.force)+ '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
-                        @info_container.find('tr.info-force').show()
-                    else
-                        @info_container.find('tr.info-force').hide()
+                    @info_container.find('tr.info-force').toggle(data.pilot.ship_override?.force? or data.pilot.force?)
 
                     if data.charge?
                         if data.recurring?
