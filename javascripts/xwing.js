@@ -7626,7 +7626,7 @@ exportObj.cardLoaders.English = function() {
       text: "At the start of the Engagement Phase, if you are damaged, you may perform a red %REINFORCE% action."
     },
     "Mist Hunter": {
-      text: "Add %CANNON% slot."
+      text: "<i>Adds: %BARRELROLL% </i> %LINEBREAK% Add %CANNON% slot."
     },
     "Moff Jerjerrod": {
       text: "<i>Requires: %COORDINATE%</i> %LINEBREAK% During the System Phase, you may spend 2 %CHARGE%. If you do, choose the (1 %BANKLEFT%), (1 %STRAIGHT%), or (1 %BANKRIGHT%) template. Each friendly ship may perform a red %BOOST% action using that template."
