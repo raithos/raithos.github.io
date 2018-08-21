@@ -9546,7 +9546,7 @@ exportObj.cardLoaders.English = () ->
         "Advanced Optics":
            text: """ While you perform an attack, you may spend 1 focus to change 1 of your blank results to a %HIT% result. """
         "Rey (Gunner)":
-           text: """ ... defend or ... If the ... in your %DOUBLETURRETARC% ... 1 %FORCE% to ... 1 of your blank results to a %EVADE% or %HIT% result. """
+           text: """ ... defend or ... If the ... in your %SINGLETURRETARC% ... 1 %FORCE% to ... 1 of your blank results to a %EVADE% or %HIT% result. """
             
     condition_translations =
         'Suppressive Fire':
@@ -15007,8 +15007,8 @@ class exportObj.SquadBuilder
                     @info_container.find('tr.info-shields td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.shields ? data.data.shields), effective_stats, 'shields')
                     @info_container.find('tr.info-shields').show()
 
-                    @info_container.find('tr.info-force td.info-data').html (statAndEffectiveStat((data.pilot.ship_override?.force ? data.pilot.force), effective_stats, 'force') + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
-                    if effective_stats?.force? or data.pilot.force?
+                    if (effective_stats.force > 0) or data.pilot.force?
+                        @info_container.find('tr.info-force td.info-data').html (statAndEffectiveStat((data.pilot.ship_override?.force ? data.pilot.force), effective_stats, 'force') + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
                         @info_container.find('tr.info-force').show()
                     else
                         @info_container.find('tr.info-force').hide()

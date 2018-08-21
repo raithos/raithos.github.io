@@ -7872,7 +7872,7 @@ exportObj.cardLoaders.English = function() {
       text: " While you perform an attack, you may spend 1 focus to change 1 of your blank results to a %HIT% result. "
     },
     "Rey (Gunner)": {
-      text: " ... defend or ... If the ... in your %DOUBLETURRETARC% ... 1 %FORCE% to ... 1 of your blank results to a %EVADE% or %HIT% result. "
+      text: " ... defend or ... If the ... in your %SINGLETURRETARC% ... 1 %FORCE% to ... 1 of your blank results to a %EVADE% or %HIT% result. "
     }
   };
   condition_translations = {
@@ -13051,8 +13051,8 @@ exportObj.SquadBuilder = (function() {
           this.info_container.find('tr.info-hull').show();
           this.info_container.find('tr.info-shields td.info-data').text(statAndEffectiveStat((_ref31 = (_ref32 = data.pilot.ship_override) != null ? _ref32.shields : void 0) != null ? _ref31 : data.data.shields, effective_stats, 'shields'));
           this.info_container.find('tr.info-shields').show();
-          this.info_container.find('tr.info-force td.info-data').html(statAndEffectiveStat((_ref33 = (_ref34 = data.pilot.ship_override) != null ? _ref34.force : void 0) != null ? _ref33 : data.pilot.force, effective_stats, 'force') + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>');
-          if (((effective_stats != null ? effective_stats.force : void 0) != null) || (data.pilot.force != null)) {
+          if ((effective_stats.force > 0) || (data.pilot.force != null)) {
+            this.info_container.find('tr.info-force td.info-data').html(statAndEffectiveStat((_ref33 = (_ref34 = data.pilot.ship_override) != null ? _ref34.force : void 0) != null ? _ref33 : data.pilot.force, effective_stats, 'force') + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>');
             this.info_container.find('tr.info-force').show();
           } else {
             this.info_container.find('tr.info-force').hide();
