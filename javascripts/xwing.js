@@ -3518,6 +3518,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Advanced Prototype",
         skill: 5,
         points: 58,
+        force: 2,
         slots: ["Force", "System", "Missile"]
       }, {
         name: "Seventh Sister",
@@ -3527,6 +3528,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Advanced Prototype",
         skill: 4,
         points: 48,
+        force: 2,
         slots: ["Force", "System", "Missile"]
       }, {
         name: "Inquisitor",
@@ -3535,6 +3537,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Advanced Prototype",
         skill: 3,
         points: 40,
+        force: 1,
         slots: ["Force", "System", "Missile"]
       }, {
         name: "Baron of the Empire",
@@ -11132,7 +11135,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 13420
+                    lineno: 13423
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -11723,7 +11726,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 14051
+              lineno: 14054
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -12443,7 +12446,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 14693
+          lineno: 14696
         }));
         __iced_deferrals._fulfill();
       });
@@ -12455,7 +12458,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 14694
+            lineno: 14697
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -14130,7 +14133,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 15704
+                      lineno: 15707
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -14204,7 +14207,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 15730
+                lineno: 15733
               })
             ]);
             __iced_deferrals._fulfill();
@@ -14251,7 +14254,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 15753
+              lineno: 15756
             }));
           }
         }
@@ -14260,7 +14263,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 15755
+              lineno: 15758
             }));
           }
         }
@@ -14269,7 +14272,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 15757
+              lineno: 15760
             }));
           }
         }
@@ -15356,7 +15359,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 16510
+                lineno: 16513
               })
             ]);
             __iced_deferrals._fulfill();
@@ -15476,7 +15479,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 16572
+                  lineno: 16575
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -15498,7 +15501,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 16576
+                    lineno: 16579
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -15588,7 +15591,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 16619
+            lineno: 16622
           }));
         }
         __iced_deferrals._fulfill();
@@ -15946,7 +15949,7 @@ exportObj.XWSManager = (function() {
 
   XWSManager.prototype.setupUI = function() {
     this.container.addClass('hidden-print');
-    this.container.html($.trim("<div class=\"row-fluid\">\n    <div class=\"span9\">\n        <button class=\"btn btn-primary from-xws\">Import from XWS (beta)</button>\n        <button class=\"btn btn-primary to-xws\">Export to XWS (beta)</button>\n    </div>\n</div>"));
+    this.container.html($.trim("<div class=\"row-fluid\">\n    <div class=\"span9 indent\">\n        <button class=\"btn btn-primary from-xws\">Import from XWS (beta)</button>\n        <button class=\"btn btn-primary to-xws\">Export to XWS (beta)</button>\n    </div>\n</div>"));
     this.xws_export_modal = $(document.createElement('DIV'));
     this.xws_export_modal.addClass('modal hide fade xws-modal hidden-print');
     this.container.append(this.xws_export_modal);

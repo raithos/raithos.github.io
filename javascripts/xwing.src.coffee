@@ -5185,6 +5185,7 @@ exportObj.basicCardData = ->
             ship: "TIE Advanced Prototype"
             skill: 5
             points: 58
+            force: 2
             slots: [       
                 "Force"
                 "System"
@@ -5199,6 +5200,7 @@ exportObj.basicCardData = ->
             ship: "TIE Advanced Prototype"
             skill: 4
             points: 48
+            force: 2
             slots: [       
                 "Force"
                 "System"
@@ -5212,6 +5214,7 @@ exportObj.basicCardData = ->
             ship: "TIE Advanced Prototype"
             skill: 3
             points: 40
+            force: 1
             slots: [       
                 "Force"
                 "System"
@@ -16923,7 +16926,7 @@ class exportObj.XWSManager
         @container.addClass 'hidden-print'
         @container.html $.trim """
             <div class="row-fluid">
-                <div class="span9">
+                <div class="span9 indent">
                     <button class="btn btn-primary from-xws">Import from XWS (beta)</button>
                     <button class="btn btn-primary to-xws">Export to XWS (beta)</button>
                 </div>
