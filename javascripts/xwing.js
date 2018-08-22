@@ -2163,7 +2163,7 @@ exportObj.basicCardData = function() {
         id: 20,
         faction: "Rebel Alliance",
         ship: "K-Wing",
-        skill: 3,
+        skill: 2,
         points: 40,
         slots: ["Torpedo", "Missile", "Missile", "Gunner", "Crew", "Device", "Device", "Modification"]
       }, {
