@@ -1,162 +1,137 @@
 .ship-xwing0, .ship-alax0 {
-  background-image: url("../images/xwing1.jpg");
-  background-repeat: no-repeat;
-  background-position: 0px -40px; }
-
-.ship-xwing1, .ship-alax1 {
   background-image: url("../images/xwing0.png");
   background-repeat: no-repeat;
-  background-position: 200px -65px; }
+  background-position: 0px -30px; }
 
 .ship-ywing0, .ship-alay0 {
   background-image: url("../images/ywing1.png");
   background-repeat: no-repeat;
-  background-position: 0px -20px; }
+  background-position: 0px -30px; }
 
 .ship-awing0, .ship-alaa0 {
   background-image: url("../images/awing0.png");
   background-repeat: no-repeat;
-  background-position: 147px -60px; }
+  background-position: 0px -30px; }
 
 .ship-tiefighter0, .ship-cazatie0 {
   background-image: url("../images/tiefighter0.png");
   background-repeat: no-repeat;
-  background-position: 35px -80px; }
-
-.ship-tiefighter1 {
-  background-image: url("../images/tiefighter1.png");
-  background-repeat: no-repeat;
-  background-position: 350px -60px; }
+  background-position: 0px -30px; }
 
 .ship-tieadvanced0, .ship-tieavanzado0 {
   background-image: url("../images/tieadvanced0.png");
   background-repeat: no-repeat;
-  background-position: 120px -50px; }
+  background-position: 0px -30px; }
 
 .ship-tieinterceptor0, .ship-tieabfangjger0, .ship-interceptortie0 {
   background-image: url("../images/tieinterceptor0.png");
   background-repeat: no-repeat;
-  background-position: 194px -70px; }
+  background-position: 0px -30px; }
 
 .ship-yt13000 {
   background-image: url("../images/millennium_falcon.png");
   background-repeat: no-repeat;
-  background-position: 0px -45px; }
+  background-position: 0px -30px; }
+
+.ship-yt13000-scum {
+  background-image: url("../images/millennium_falcon.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
 
 .ship-firespray310 {
   background-image: url("../images/slave_i1.png");
   background-repeat: no-repeat;
-  background-position: 0px -80px; }
+  background-position: 0px -30px; }
 
 .ship-bwing0, .ship-alab0 {
   background-image: url("../images/bwing.png");
   background-repeat: no-repeat;
-  background-position: 10px -31px; }
+  background-position: 0px -30px; }
 
 .ship-tiebomber0, .ship-bombarderotie0 {
   background-image: url("../images/tie_bomber.png");
   background-repeat: no-repeat;
-  background-position: -32px -27px; }
+  background-position: 0px -30px; }
 
 .ship-lambdaclassshuttle0, .ship-raumfhrederlambdaklasse0, .ship-lanzaderaclaselambda0 {
   background-image: url("../images/lambda_shuttle.png");
   background-repeat: no-repeat;
-  background-position: -5px -65px; }
-
-.ship-cr90corvettefore0, .ship-corbetacr90proa0 {
-  background-image: url("../images/cr90_corvette_fore.png");
-  background-repeat: no-repeat;
-  background-position: -90px 0px; }
-
-.ship-cr90corvetteaft0, .ship-corbetacr90popa0 {
-  background-image: url("../images/cr90_corvette_aft.png");
-  background-repeat: no-repeat;
-  background-position: 77px -12px; }
-
-.ship-gr75mediumtransport0, .ship-mediumtransportergr750, .ship-transportemedianogr750 {
-  background-image: url("../images/gr_75_medium_transport.png");
-  background-repeat: no-repeat;
   background-position: 0px -30px; }
-
-.ship-cr90corvetteaft0, .ship-corbetacr90popa0 {
-  background-image: url("../images/cr90_corvette_aft.png");
-  background-repeat: no-repeat;
-  background-position: 77px -12px; }
 
 .ship-hwk2900 {
   background-image: url("../images/hwk290.png");
   background-repeat: no-repeat;
-  background-position: 0px -149px; }
+  background-position: 0px -30px; }
 
 .ship-starviper0 {
   background-image: url("../images/starviper0.png");
   background-repeat: no-repeat;
-  background-position: 150px -261px; }
+  background-position: 0px -30px; }
 
 .ship-z95headhunter0 {
   background-image: url("../images/z95headhunter0.png");
   background-repeat: no-repeat;
-  background-position: 0px -189px; }
+  background-position: 0px -30px; }
 
 .ship-m3ainterceptor0 {
   background-image: url("../images/m3ainterceptor0.png");
   background-repeat: no-repeat;
-  background-position: 0px -119px; }
+  background-position: 0px -30px; }
 
 .ship-ewing0 {
   background-image: url("../images/ewing0.png");
   background-repeat: no-repeat;
-  background-position: 0px -89px; }
+  background-position: 0px -30px; }
 
 .ship-yt24000 {
   background-image: url("../images/yt2400.png");
   background-repeat: no-repeat;
-  background-position: 0px -226px; }
+  background-position: 0px -30px; }
 
 .ship-vt49decimator0 {
   background-image: url("../images/vt49decimator0.png");
   background-repeat: no-repeat;
-  background-position: 0px -35px; }
+  background-position: 0px -30px; }
 
 .ship-tiedefender0 {
   background-image: url("../images/tiedefender0.png");
   background-repeat: no-repeat;
-  background-position: 0px -141px; }
+  background-position: 0px -30px; }
 
 .ship-tiephantom0 {
   background-image: url("../images/tiephantom0.png");
   background-repeat: no-repeat;
-  background-position: 96px -35px; }
+  background-position: 0px -30px; }
 
 .ship-aggressor0 {
   background-image: url("../images/aggressor0.png");
   background-repeat: no-repeat;
-  background-position: 186px -19px; }
+  background-position: 0px -30px; }
 
 .ship-tiefofighter0 {
   background-image: url("../images/tiefofighter0.png");
   background-repeat: no-repeat;
-  background-position: -55px -130px; }
+  background-position: 0px -30px; }
 
 .ship-t70xwing0 {
   background-image: url("../images/t70xwing0.png");
   background-repeat: no-repeat;
-  background-position: 0px -98px; }
+  background-position: 0px -30px; }
 
 .ship-tieadvancedprototype0 {
   background-image: url("../images/tieadvancedprototype0.png");
   background-repeat: no-repeat;
-  background-position: 0px -148px; }
+  background-position: 0px -30px; }
 
 .ship-vcx1000 {
   background-image: url("../images/vcx1000.png");
   background-repeat: no-repeat;
-  background-position: 0px -33px; }
+  background-position: 0px -30px; }
 
 .ship-attackshuttle0 {
   background-image: url("../images/attackshuttle0.png");
   background-repeat: no-repeat;
-  background-position: 0px -89px; }
+  background-position: 0px -30px; }
 
 .ship-arc1700 {
   background-image: url("../images/arc170.png");
@@ -166,22 +141,137 @@
 .ship-lancerclasspursuitcraft0 {
   background-image: url("../images/lancerclasspursuitcraft.png");
   background-repeat: no-repeat;
-  background-position: 0px -63px; }
+  background-position: 0px -30px; }
 
-.ship-protectoratestarfighter0 {
+.ship-fangfighter0 {
   background-image: url("../images/protectoratestarfighter.png");
   background-repeat: no-repeat;
-  background-position: 0px -126px; }
+  background-position: 0px -30px; }
 
 .ship-tiesffighter0 {
   background-image: url("../images/tiesffighter.png");
   background-repeat: no-repeat;
-  background-position: 0px -86px; }
+  background-position: 0px -30px; }
 
 .ship-upsilonclassshuttle0 {
   background-image: url("../images/upsilonclassshuttle.png");
   background-repeat: no-repeat;
-  background-position: 0px -112px; }
+  background-position: 0px -30px; }
+
+.ship-tieaggressor0 {
+  background-image: url("../images/tieaggressor.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-kwing0 {
+  background-image: url("../images/kwing0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-sheathipedeclassshuttle0 {
+  background-image: url("../images/phantom20.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-auzituckgunship0 {
+  background-image: url("../images/auzituckgunship.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-uwing0 {
+  background-image: url("../images/uwing.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-alphaclassstarwing0 {
+  background-image: url("../images/starwing.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-tiepunisher0 {
+  background-image: url("../images/tiepunisher.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-tiereaper0 {
+  background-image: url("../images/tiereaper.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-tiestriker0 {
+  background-image: url("../images/tiestriker.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-g1astarfighter0 {
+  background-image: url("../images/g1astarfighter.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-jumpmaster50000 {
+  background-image: url("../images/jumpmaster5000.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-kihraxzfighter0 {
+  background-image: url("../images/kihraxzfighter.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-m12lkimogilafighter0 {
+  background-image: url("../images/m12lkimogilafighter.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-yt1300scum0 {
+  background-image: url("../images/landos_millennium_falcon.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-miningguildtiefighter0 {
+  background-image: url("../images/miningguildtie.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-quadjumper0 {
+  background-image: url("../images/quadjumper.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-scurrgh6bomber0 {
+  background-image: url("../images/scurrgh6bomber.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-yv6660 {
+  background-image: url("../images/houndstooth.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-tiesffighter0 {
+  background-image: url("../images/tiesf.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-tiesilencer0 {
+  background-image: url("../images/tiesilencer.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-yt1300resistance0 {
+  background-image: url("../images/millennium_falcon_resistance.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-bsf17bomber0 {
+  background-image: url("../images/resistancebomber.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-rz2awing0 {
+  background-image: url("../images/rz2awing.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
 
 .its-working {
   background-image: url("../images/its_working.png");
