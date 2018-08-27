@@ -4267,10 +4267,9 @@ exportObj.basicCardData = function() {
         points: 6,
         charge: 2
       }, {
-        name: "R2-D2 (Astromech)",
+        name: "R2-D2",
         id: 3,
         unique: true,
-        canonical_name: 'R2-D2'.canonicalize(),
         slot: "Astromech",
         points: 8,
         charge: 3,
@@ -4786,6 +4785,7 @@ exportObj.basicCardData = function() {
         name: "R2-D2 (Crew)",
         id: 56,
         slot: "Crew",
+        canonical_name: 'r2d2-crew',
         xws: "r2d2-crew",
         points: 8,
         unique: true,
@@ -7665,7 +7665,7 @@ exportObj.cardLoaders.English = function() {
     "R2 Astromech": {
       text: "After you reveal your dial, you may spend 1 %CHARGE% and gain 1 disarm token to recover 1 shield."
     },
-    "R2-D2 (Astromech)": {
+    "R2-D2": {
       text: "After you reveal your dial, you may spend 1 %CHARGE% and gain 1 disarm token to recover 1 shield."
     },
     "R2-D2 (Crew)": {
@@ -7998,7 +7998,7 @@ exportObj.manifestByExpansion = {
       type: 'upgrade',
       count: 1
     }, {
-      name: 'R2-D2 (Astromech)',
+      name: 'R2-D2',
       type: 'upgrade',
       count: 1
     }, {
