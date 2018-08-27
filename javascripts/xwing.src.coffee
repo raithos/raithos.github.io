@@ -1099,7 +1099,7 @@ exportObj.basicCardData = ->
             shields: 2
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Barrel Roll"
             ]
             actionsred: [
@@ -1121,7 +1121,7 @@ exportObj.basicCardData = ->
             shields: 2
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
             ]
             actionsred: [
                 "Barrel Roll"
@@ -1145,7 +1145,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Evade"
-                "Target Lock"
+                "Lock"
                 "Barrel Roll"
                 "Boost"
             ]
@@ -1169,7 +1169,7 @@ exportObj.basicCardData = ->
             shields: 5
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Rotate Arc"
             ]
             actionsred: [
@@ -1194,7 +1194,7 @@ exportObj.basicCardData = ->
             shields: 3
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Rotate Arc"
             ]
             actionsred: [
@@ -1242,7 +1242,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus" 
                 "<r>> Barrel Roll</r>"
-                "Target Lock"
+                "Lock"
                 "Barrel Roll"
             ]
             actionsred: [
@@ -1290,7 +1290,7 @@ exportObj.basicCardData = ->
             shields: 4
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Boost"
             ]
             actionsred: [
@@ -1315,7 +1315,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "<r>> Rotate Arc</r>"
-                "Target Lock" 
+                "Lock" 
                 "<r>> Rotate Arc</r>"
                 "Rotate Arc"
             ]
@@ -1365,7 +1365,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "<r>> Barrel Roll</r>"
-                "Target Lock"
+                "Lock"
                 "Barrel Roll"
             ]
             actionsred: [
@@ -1387,9 +1387,9 @@ exportObj.basicCardData = ->
             shields: 0
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Barrel Roll"
-                "<r>> Target Lock</r>"
+                "<r>> Lock</r>"
             ]
             actionsred: [
                 "Reload"
@@ -1412,7 +1412,7 @@ exportObj.basicCardData = ->
             shields: 2
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Barrel Roll"
             ]
             actionsred: [
@@ -1436,7 +1436,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Evade"
-                "Target Lock"
+                "Lock"
                 "Barrel Roll"
                 "Boost"
             ]
@@ -1461,11 +1461,11 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Evade"
-                "Target Lock"
+                "Lock"
                 "Barrel Roll"
-                "<r>> Target Lock</r>"
+                "<r>> Lock</r>"
                 "Boost"
-                "<r>> Target Lock</r>"
+                "<r>> Lock</r>"
             ]
             actionsred: [
             ]
@@ -1510,7 +1510,7 @@ exportObj.basicCardData = ->
             shields: 4
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Rotate Arc"
             ]
             actionsred: [
@@ -1534,7 +1534,7 @@ exportObj.basicCardData = ->
             shields: 4
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Reinforce"
                 "Rotate Arc"
             ]
@@ -1559,7 +1559,7 @@ exportObj.basicCardData = ->
             shields: 1
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Barrel Roll"
                 "<r>> Focus</r>"
                 "Boost"
@@ -1585,7 +1585,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Evade"
-                "Target Lock"
+                "Lock"
                 "Barrel Roll"
             ]
             actionsred: [
@@ -1609,7 +1609,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Calculate"
                 "Evade"
-                "Target Lock"
+                "Lock"
                 "Boost"
             ]
             actionsred: [
@@ -1634,7 +1634,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Reinforce"
-                "Target Lock"
+                "Lock"
             ]
             actionsred: [
             ]
@@ -1655,7 +1655,7 @@ exportObj.basicCardData = ->
             shields: 1
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Barrel Roll"
             ]
             actionsred: [
@@ -1678,7 +1678,7 @@ exportObj.basicCardData = ->
             medium: true
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Slam"
                 "Rotate Arc"
                 "Reload"
@@ -1702,9 +1702,9 @@ exportObj.basicCardData = ->
             medium: true
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Boost" 
-                "<r>> Target Lock</r>"
+                "<r>> Lock</r>"
                 "Reload"
             ]
             actionsred: [
@@ -1728,7 +1728,7 @@ exportObj.basicCardData = ->
             large: true
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Reinforce"
             ]
             actionsred: [
@@ -1774,7 +1774,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Evade"
-                "Target Lock"
+                "Lock"
                 "Barrel Roll"
                 "<r>> Focus</r>"
                 "Boost"
@@ -1801,7 +1801,7 @@ exportObj.basicCardData = ->
             medium: true
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Jam"
             ]
             actionsred: [
@@ -1825,7 +1825,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "<r>> Rotate Arc</r>"
-                "Target Lock"
+                "Lock"
                 "<r>> Rotate Arc</r>"
             ]
             actionsred: [
@@ -1850,7 +1850,7 @@ exportObj.basicCardData = ->
             medium: true
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
             ]
             actionsred: [
                 "Barrel Roll"
@@ -1873,7 +1873,7 @@ exportObj.basicCardData = ->
             shields: 0
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Barrel Roll"
                 "<r>> Focus</r>"
                 "Boost"
@@ -1902,7 +1902,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Evade"
-                "Target Lock"
+                "Lock"
                 "Rotate Arc"
             ]
             actionsred: [
@@ -1947,7 +1947,7 @@ exportObj.basicCardData = ->
             shields: 3
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
             ]
             actionsred: [
                 "Coordinate"
@@ -2013,7 +2013,7 @@ exportObj.basicCardData = ->
             medium: true
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
             ]
             actionsred: [
                 "Barrel Roll"
@@ -2035,7 +2035,7 @@ exportObj.basicCardData = ->
             shields: 1
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Barrel Roll" 
                 "<r>> Evade</r>"
             ]
@@ -2058,7 +2058,7 @@ exportObj.basicCardData = ->
             shields: 3
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Slam"
                 "Reload"
             ]
@@ -2082,7 +2082,7 @@ exportObj.basicCardData = ->
             medium: true
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Reload"
             ]
             actionsred: [
@@ -2106,7 +2106,7 @@ exportObj.basicCardData = ->
             shields: 1
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Coordinate"
             ]
             actionsred: [
@@ -2172,7 +2172,7 @@ exportObj.basicCardData = ->
             shields: 3
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Boost"
             ]
             actionsred: [
@@ -2196,7 +2196,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Evade"
-                "Target Lock"
+                "Lock"
                 "Barrel Roll"
             ]
             actionsred: [
@@ -2220,7 +2220,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Evade"
-                "Target Lock"
+                "Lock"
                 "Barrel Roll"
             ]
             actionsred: [
@@ -2244,7 +2244,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Boost"
-                "Target Lock"
+                "Lock"
                 "Barrel Roll"
             ]
             actionsred: [
@@ -2271,7 +2271,7 @@ exportObj.basicCardData = ->
                 "> Rotate Arc"
                 "Evade"
                 "> Rotate Arc"
-                "Target Lock"
+                "Lock"
                 "> Rotate Arc"
                 "Barrel Roll"
                 "> Rotate Arc"
@@ -2297,7 +2297,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Reinforce"
-                "Target Lock"
+                "Lock"
                 "Coordinate"
                 "Jam"
             ]
@@ -2322,7 +2322,7 @@ exportObj.basicCardData = ->
             shields: 3
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
                 "Rotate Arc"
                 "Reload"
             ]
@@ -2348,7 +2348,7 @@ exportObj.basicCardData = ->
             shields: 3
             actions: [
                 "Focus"
-                "Target Lock"
+                "Lock"
             ]
             actionsred: [
                 "Boost"
@@ -2768,6 +2768,7 @@ exportObj.basicCardData = ->
             name: "Norra Wexley (Y-Wing)"
             id: 25
             unique: true
+            canonical_name: 'Norra Wexley'.canonicalize()
             xws: "norrawexley-btla4ywing"
             faction: "Rebel Alliance"
             ship: "Y-Wing"
@@ -3043,7 +3044,7 @@ exportObj.basicCardData = ->
             ship_override:
                 actions: [
                     "Calculate"
-                    "Target Lock"
+                    "Lock"
                     "Rotate Arc"
                 ]
         }
@@ -3064,7 +3065,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Han Solo (Rebel)"
+            name: "Han Solo"
             id: 42
             unique: true
             xws: "hansolo-modifiedyt1300lightfreighter"
@@ -3084,7 +3085,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Lando Calrissian (Rebel)"
+            name: "Lando Calrissian"
             id: 43
             unique: true
             xws: "landocalrissian-modifiedyt1300lightfreighter"
@@ -3356,6 +3357,7 @@ exportObj.basicCardData = ->
             name: "Hera Syndulla (VCX-100)"
             id: 61
             unique: true
+            canonical_name: 'Hera Syndulla'.canonicalize()
             xws: "herasyndulla-vcx100lightfreighter"
             faction: "Rebel Alliance"
             ship: "VCX-100"
@@ -3412,7 +3414,7 @@ exportObj.basicCardData = ->
             ship_override:
                 actions: [
                     "Calculate"
-                    "Target Lock"
+                    "Lock"
                     "Reinforce"
                 ]
         }
@@ -3907,7 +3909,7 @@ exportObj.basicCardData = ->
             ship_override:
                 actions: [
                     "Calculate"
-                    "Target Lock"
+                    "Lock"
                     "Rotate Arc"
                 ]
         }
@@ -4204,7 +4206,7 @@ exportObj.basicCardData = ->
             ship_override:
                 actions: [
                     "Calculate"
-                    "Target Lock"
+                    "Lock"
                     "Jam"
                 ]
 
@@ -4825,7 +4827,7 @@ exportObj.basicCardData = ->
             ship_override:
                 actions: [
                     "Calculate"
-                    "Target Lock"
+                    "Lock"
                     "Barrel Roll"
                     "<r>> Calculate</r>"
                     "Boost"
@@ -6402,6 +6404,7 @@ exportObj.basicCardData = ->
            name: '"Chopper" (Astromech)'
            id: 0
            slot: "Astromech"
+           canonical_name: '"Chopper"'.canonicalize()
            points: 2
            unique: true
            faction: "Rebel Alliance"
@@ -6425,6 +6428,7 @@ exportObj.basicCardData = ->
            name: "R2-D2 (Astromech)"
            id: 3
            unique: true
+           canonical_name: 'R2-D2'.canonicalize()
            slot: "Astromech"
            points: 8
            charge: 3
@@ -6581,10 +6585,9 @@ exportObj.basicCardData = ->
            faction: "Scum and Villainy"
        }
        {
-           name: "Chewbacca (Rebel)"
+           name: "Chewbacca"
            id: 21
            slot: "Crew"
-           xws: "chewbacca" 
            points: 5
            unique: true
            faction: "Rebel Alliance"
@@ -6603,6 +6606,7 @@ exportObj.basicCardData = ->
        {
            name: '"Chopper" (Crew)'
            id: 23
+           canonical_name: '"Chopper"'.canonicalize()
            xws: "chopper-crew" 
            slot: "Crew"
            points: 2
@@ -6660,7 +6664,7 @@ exportObj.basicCardData = ->
            faction: "Galactic Empire"
            applies_condition: 'Optimized Prototype'.canonicalize()
            modifier_func: (stats) ->
-                stats.actions.push 'Target Lock' if 'Target Lock' not in stats.actions
+                stats.actions.push 'Lock' if 'Lock' not in stats.actions
        }
        {
            name: "Emperor Palpatine"
@@ -6720,7 +6724,7 @@ exportObj.basicCardData = ->
            charge: 2
            recurring: true
            restriction_func: (ship) ->
-                "Target Lock" in ship.effectiveStats().actions or "Target Lock" in ship.effectiveStats().actionsred
+                "Lock" in ship.effectiveStats().actions or "Lock" in ship.effectiveStats().actionsred
        }
        {
            name: "Hera Syndulla"
@@ -6803,7 +6807,7 @@ exportObj.basicCardData = ->
            faction: "Scum and Villainy"
        }
        {
-           name: "Lando Calrissian (Rebel)"
+           name: "Lando Calrissian"
            id: 44
            slot: "Crew"
            xws: "landocalrissian" 
@@ -7166,7 +7170,7 @@ exportObj.basicCardData = ->
            charge: 1
        }
        {
-           name: "Han Solo (Rebel)"
+           name: "Han Solo"
            id: 84
            slot: "Gunner"
            xws: "hansolo" 
@@ -8018,7 +8022,7 @@ exportObj.basicCardData = ->
             slot: "Tech"
             points: 0
             restriction_func: (ship) ->
-                "Target Lock" in ship.effectiveStats().actions or "Target Lock" in ship.effectiveStats().actionsred
+                "Lock" in ship.effectiveStats().actions or "Lock" in ship.effectiveStats().actionsred
        }
        {
             name: "Primed Thrusters"
@@ -8518,7 +8522,7 @@ exportObj.translations.English =
         "Boost": "Boost"
         "Evade": "Evade"
         "Focus": "Focus"
-        "Target Lock": "Target Lock"
+        "Lock": "Lock"
         "Recover": "Recover"
         "Reinforce": "Reinforce"
         "Jam": "Jam"
@@ -8549,37 +8553,6 @@ exportObj.translations.English =
         "Title": "Title"
     sources: # needed?
         "Core": "Core"
-        "A-Wing Expansion Pack": "A-Wing Expansion Pack"
-        "B-Wing Expansion Pack": "B-Wing Expansion Pack"
-        "X-Wing Expansion Pack": "X-Wing Expansion Pack"
-        "Y-Wing Expansion Pack": "Y-Wing Expansion Pack"
-        "Millennium Falcon Expansion Pack": "Millennium Falcon Expansion Pack"
-        "HWK-290 Expansion Pack": "HWK-290 Expansion Pack"
-        "TIE Fighter Expansion Pack": "TIE Fighter Expansion Pack"
-        "TIE Interceptor Expansion Pack": "TIE Interceptor Expansion Pack"
-        "TIE Bomber Expansion Pack": "TIE Bomber Expansion Pack"
-        "TIE Advanced Expansion Pack": "TIE Advanced Expansion Pack"
-        "Lambda-Class Shuttle Expansion Pack": "Lambda-Class Shuttle Expansion Pack"
-        "Slave I Expansion Pack": "Slave I Expansion Pack"
-        "Imperial Aces Expansion Pack": "Imperial Aces Expansion Pack"
-        "Rebel Transport Expansion Pack": "Rebel Transport Expansion Pack"
-        "Z-95 Headhunter Expansion Pack": "Z-95 Headhunter Expansion Pack"
-        "TIE Defender Expansion Pack": "TIE Defender Expansion Pack"
-        "E-Wing Expansion Pack": "E-Wing Expansion Pack"
-        "TIE Phantom Expansion Pack": "TIE Phantom Expansion Pack"
-        "Tantive IV Expansion Pack": "Tantive IV Expansion Pack"
-        "Rebel Aces Expansion Pack": "Rebel Aces Expansion Pack"
-        "YT-2400 Freighter Expansion Pack": "YT-2400 Freighter Expansion Pack"
-        "VT-49 Decimator Expansion Pack": "VT-49 Decimator Expansion Pack"
-        "StarViper Expansion Pack": "StarViper Expansion Pack"
-        "M3-A Interceptor Expansion Pack": "M3-A Interceptor Expansion Pack"
-        "IG-2000 Expansion Pack": "IG-2000 Expansion Pack"
-        "Most Wanted Expansion Pack": "Most Wanted Expansion Pack"
-        "Imperial Raider Expansion Pack": "Imperial Raider Expansion Pack"
-        "Hound's Tooth Expansion Pack": "Hound's Tooth Expansion Pack"
-        "Kihraxz Fighter Expansion Pack": "Kihraxz Fighter Expansion Pack"
-        "K-Wing Expansion Pack": "K-Wing Expansion Pack"
-        "TIE Punisher Expansion Pack": "TIE Punisher Expansion Pack"
         "The Force Awakens Core Set": "The Force Awakens Core Set"
     ui:
         shipSelectorPlaceholder: "Select a ship"
@@ -8863,7 +8836,7 @@ exportObj.cardLoaders.English = () ->
            text: """At the start of the Engagement Phase, if there is at least 1 enemy ship at range 0-1, you may gain 1 focus token.  %LINEBREAK% MICROTHRUSTERS: While you perform a barrel roll, you MUST use the (1 %BANKLEFT%) or (1 %BANKRIGHT%) template instead of the [1 %STRAIGHT%] template."""
         "Han Solo (Scum)":
            text: """Whlie you defend or perform a primary attack, if the attack is obstructed by an obstacle, you may roll 1 additional die."""
-        "Han Solo (Rebel)":
+        "Han Solo":
            text: """After you roll dice, if you are at range 0-1 of an obstacle, you may reroll all of your dice. This does not count as rerolling for the purpose of other effects."""
         "Heff Tobber":
            text: """After an enemy ship executes a maneuver, if it is at range 0, you may perform an action."""
@@ -8937,7 +8910,7 @@ exportObj.cardLoaders.English = () ->
            text: """After you defend or perform an attack, if the attack missed, gain 1 evade token. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."""
         "Lando Calrissian (Scum) (Escape Craft)":
            text: """After you roll dice, if you are not stressed, you may gain 1 stress token to reroll all of your blank results. %LINEBREAK% CO-PILOT: While you are docked, your carried ship has your pilot ability in addition it's own."""
-        "Lando Calrissian (Rebel)":
+        "Lando Calrissian":
            text: """After you fully execute a blue maneuver, you may choose a friendly ship at range 0-3. That ship may perform an action."""
         "Lando Calrissian (Scum)":
            text: """After you roll dice, if you are not stressed, you may gain 1 stress token to reroll all of your blank results."""
@@ -9225,7 +9198,7 @@ exportObj.cardLoaders.English = () ->
            text: """After you drop or launch a device, you may perform a red %BOOST% action."""
         "Cassian Andor":
            text: """During the System Phase, you may choose 1 enemy ship at range 1-2 and guess aloud a bearing and speed, then look at that ship's dial. If the chosen ship's bearing and speed match your guess, you may set your dial to another maneuver."""
-        "Chewbacca (Rebel)":
+        "Chewbacca":
            text: """At the start of the Engagement Phase, you may spend 2 %CHARGE% to repair 1 faceup damage card."""
         "Chewbacca (Scum)":
            text: """At the start of the End Phase, you may spend 1 focus token to repair 1 of your faceup damage cards."""
@@ -9303,7 +9276,7 @@ exportObj.cardLoaders.English = () ->
            text: """<i>Requires: %LOCK%</i> %LINEBREAK% During the System Phase, you may spend 2 %CHARGE%. If you do, each friendly ship may acquire a lock on a ship that you have locked."""
         "Greedo":
            text: """While you perform an attack, you may spend 1 %CHARGE% to change 1 %HIT% result to a %CRIT% result. While you defend, if your %CHARGE% is active, the attacker may change 1 %HIT% result to a %CRIT% result."""
-        "Han Solo (Rebel)":
+        "Han Solo":
            text: """During the Engagement Phase, at initiative 7, you may perform a %TURRET% attack. You cannot attack from that %TURRET% again this round."""
         "Han Solo (Scum)":
            text: """Before you engage, you may perform a red %FOCUS% action."""
@@ -9361,7 +9334,7 @@ exportObj.cardLoaders.English = () ->
            text: """Setup: Equip this side faceup. While you defend, you may flip this card. If you do, the attack must reroll all attack dice"""
         "L3-37's Programming":
            text: """If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."""
-        "Lando Calrissian (Rebel)":
+        "Lando Calrissian":
            text: """Action: Roll 2 defense dice. For each %FOCUS% result, gain 1 focus token. For each %EVADE% result, gain 1 evade token. If both results are blank, the opposing player chooses focus or evade. You gain 1 token of that type."""
         "Lando Calrissian (Scum)":
            text: """After you roll dice, you may spend 1 green token to reroll up to 2 of your results."""
@@ -10288,12 +10261,12 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'Han Solo (Rebel)'
+            name: 'Han Solo'
             type: 'pilot'
             count: 1
         }
         {
-            name: 'Lando Calrissian (Rebel)'
+            name: 'Lando Calrissian'
             type: 'pilot'
             count: 1
         }
@@ -10523,7 +10496,7 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'Chewbacca (Rebel)'
+            name: 'Chewbacca'
             type: 'upgrade'
             count: 1
         }
@@ -10563,7 +10536,7 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'Lando Calrissian (Rebel)'
+            name: 'Lando Calrissian'
             type: 'upgrade'
             count: 1
         }
@@ -10708,7 +10681,7 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'Han Solo (Rebel)'
+            name: 'Han Solo'
             type: 'upgrade'
             count: 1
         }
@@ -11562,6 +11535,11 @@ exportObj.manifestByExpansion =
     ]
     'Scum and Villainy Conversion Kit': [
         {
+            name: 'Kihraxz Fighter'
+            type: 'ship'
+            count: 3
+        }
+        {
             name: 'YV-666'
             type: 'ship'
             count: 2
@@ -11622,7 +11600,7 @@ exportObj.manifestByExpansion =
             count: 2
         }
         {
-            name: 'Starviper'
+            name: 'StarViper'
             type: 'ship'
             count: 2
         }
@@ -15943,7 +15921,7 @@ class Ship
                     """<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>"""
                 when 'Barrel Roll'
                     """<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>"""
-                when 'Target Lock'
+                when 'Lock'
                     """<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>"""
                 when 'Boost'
                     """<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>"""
@@ -15965,7 +15943,7 @@ class Ship
                     """<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>"""
                 when 'Calculate'
                     """<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>"""
-                when "<r>> Target Lock</r>"
+                when "<r>> Lock</r>"
                     """<r>> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-lock"></i></r>"""
                 when "<r>> Barrel Roll</r>"
                     """<r>> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-barrelroll"></i></r>"""
@@ -15988,7 +15966,7 @@ class Ship
                     """<i class="xwing-miniatures-font red xwing-miniatures-font-evade"></i>"""
                 when 'Barrel Roll'
                     """<i class="xwing-miniatures-font red xwing-miniatures-font-barrelroll"></i>"""
-                when 'Target Lock'
+                when 'Lock'
                     """<i class="xwing-miniatures-font red xwing-miniatures-font-lock"></i>"""
                 when 'Boost'
                     """<i class="xwing-miniatures-font red xwing-miniatures-font-boost"></i>"""

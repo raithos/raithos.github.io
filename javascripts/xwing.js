@@ -1306,7 +1306,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 4,
         shields: 2,
-        actions: ["Focus", "Target Lock", "Barrel Roll"],
+        actions: ["Focus", "Lock", "Barrel Roll"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
       },
@@ -1318,7 +1318,7 @@ exportObj.basicCardData = function() {
         agility: 1,
         hull: 6,
         shields: 2,
-        actions: ["Focus", "Target Lock"],
+        actions: ["Focus", "Lock"],
         actionsred: ["Barrel Roll", "Reload"],
         maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0], [1, 1, 2, 1, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 3, 0, 0, 3]]
       },
@@ -1330,7 +1330,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 2,
         shields: 2,
-        actions: ["Focus", "Evade", "Target Lock", "Barrel Roll", "Boost"],
+        actions: ["Focus", "Evade", "Lock", "Barrel Roll", "Boost"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0]]
       },
@@ -1342,7 +1342,7 @@ exportObj.basicCardData = function() {
         agility: 1,
         hull: 8,
         shields: 5,
-        actions: ["Focus", "Target Lock", "Rotate Arc"],
+        actions: ["Focus", "Lock", "Rotate Arc"],
         actionsred: ["Boost"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0]],
         large: true
@@ -1356,7 +1356,7 @@ exportObj.basicCardData = function() {
         agility: 1,
         hull: 8,
         shields: 3,
-        actions: ["Focus", "Target Lock", "Rotate Arc"],
+        actions: ["Focus", "Lock", "Rotate Arc"],
         actionsred: ["Boost"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0]],
         large: true
@@ -1381,7 +1381,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 3,
         shields: 2,
-        actions: ["Focus", "<r>> Barrel Roll</r>", "Target Lock", "Barrel Roll"],
+        actions: ["Focus", "<r>> Barrel Roll</r>", "Lock", "Barrel Roll"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
@@ -1406,7 +1406,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 6,
         shields: 4,
-        actions: ["Focus", "Target Lock", "Boost"],
+        actions: ["Focus", "Lock", "Boost"],
         actionsred: ["Reinforce"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]],
         medium: true
@@ -1419,7 +1419,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 3,
         shields: 2,
-        actions: ["Focus", "<r>> Rotate Arc</r>", "Target Lock", "<r>> Rotate Arc</r>", "Rotate Arc"],
+        actions: ["Focus", "<r>> Rotate Arc</r>", "Lock", "<r>> Rotate Arc</r>", "Rotate Arc"],
         actionsred: ["Boost", "Jam"],
         maneuvers: [[0, 0, 3, 0, 0], [0, 2, 2, 2, 0], [1, 1, 2, 1, 1], [3, 1, 1, 1, 3], [0, 0, 1, 0, 0]]
       },
@@ -1445,7 +1445,7 @@ exportObj.basicCardData = function() {
         agility: 1,
         hull: 4,
         shields: 4,
-        actions: ["Focus", "<r>> Barrel Roll</r>", "Target Lock", "Barrel Roll"],
+        actions: ["Focus", "<r>> Barrel Roll</r>", "Lock", "Barrel Roll"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 3, 0, 0, 0, 0], [0, 3, 1, 3, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
       },
@@ -1457,7 +1457,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 6,
         shields: 0,
-        actions: ["Focus", "Target Lock", "Barrel Roll", "<r>> Target Lock</r>"],
+        actions: ["Focus", "Lock", "Barrel Roll", "<r>> Lock</r>"],
         actionsred: ["Reload"],
         maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 3], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 3]]
       },
@@ -1469,7 +1469,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 2,
         shields: 2,
-        actions: ["Focus", "Target Lock", "Barrel Roll"],
+        actions: ["Focus", "Lock", "Barrel Roll"],
         actionsred: ["Barrel Roll"],
         maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0], [1, 2, 2, 2, 1, 0], [1, 1, 1, 1, 1, 3], [0, 0, 1, 0, 0, 3]]
       },
@@ -1481,7 +1481,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 3,
         shields: 4,
-        actions: ["Focus", "Evade", "Target Lock", "Barrel Roll", "Boost"],
+        actions: ["Focus", "Evade", "Lock", "Barrel Roll", "Boost"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0], [3, 2, 0, 2, 3, 0], [3, 1, 2, 1, 3, 3], [1, 1, 2, 1, 1, 0], [0, 0, 2, 0, 0, 1], [0, 0, 2, 0, 0, 0]]
       },
@@ -1493,7 +1493,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 3,
         shields: 3,
-        actions: ["Focus", "Evade", "Target Lock", "Barrel Roll", "<r>> Target Lock</r>", "Boost", "<r>> Target Lock</r>"],
+        actions: ["Focus", "Evade", "Lock", "Barrel Roll", "<r>> Lock</r>", "Boost", "<r>> Lock</r>"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
       },
@@ -1517,7 +1517,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 6,
         shields: 4,
-        actions: ["Focus", "Target Lock", "Rotate Arc"],
+        actions: ["Focus", "Lock", "Rotate Arc"],
         actionsred: ["Barrel Roll"],
         large: true,
         maneuvers: [[0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 0], [1, 1, 1, 1, 1, 0], [0, 0, 1, 0, 0, 3]]
@@ -1530,7 +1530,7 @@ exportObj.basicCardData = function() {
         agility: 0,
         hull: 12,
         shields: 4,
-        actions: ["Focus", "Target Lock", "Reinforce", "Rotate Arc"],
+        actions: ["Focus", "Lock", "Reinforce", "Rotate Arc"],
         actionsred: ["Coordinate"],
         large: true,
         maneuvers: [[0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0], [1, 1, 2, 1, 1, 0], [1, 1, 1, 1, 1, 0], [0, 0, 1, 0, 0, 0]]
@@ -1543,7 +1543,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 4,
         shields: 1,
-        actions: ["Focus", "Target Lock", "Barrel Roll", "<r>> Focus</r>", "Boost", "<r>> Focus</r>"],
+        actions: ["Focus", "Lock", "Barrel Roll", "<r>> Focus</r>", "Boost", "<r>> Focus</r>"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [0, 1, 2, 1, 0, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0]]
       },
@@ -1555,7 +1555,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 3,
         shields: 1,
-        actions: ["Focus", "Evade", "Target Lock", "Barrel Roll"],
+        actions: ["Focus", "Evade", "Lock", "Barrel Roll"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0], [1, 2, 0, 2, 1, 0], [1, 1, 2, 1, 1, 0], [0, 1, 2, 1, 0, 3], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 3]]
       },
@@ -1567,7 +1567,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 5,
         shields: 3,
-        actions: ["Calculate", "Evade", "Target Lock", "Boost"],
+        actions: ["Calculate", "Evade", "Lock", "Boost"],
         actionsred: [],
         medium: true,
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [0, 2, 2, 2, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0]]
@@ -1581,7 +1581,7 @@ exportObj.basicCardData = function() {
         hull: 9,
         shields: 3,
         large: true,
-        actions: ["Focus", "Reinforce", "Target Lock"],
+        actions: ["Focus", "Reinforce", "Lock"],
         actionsred: [],
         maneuvers: [[0, 0, 3, 0, 0, 0], [0, 2, 2, 2, 0, 0], [3, 1, 2, 1, 3, 0], [1, 1, 2, 1, 1, 0], [0, 0, 1, 0, 0, 0]]
       },
@@ -1593,7 +1593,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 5,
         shields: 1,
-        actions: ["Focus", "Target Lock", "Barrel Roll"],
+        actions: ["Focus", "Lock", "Barrel Roll"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 0, 2, 1, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 3, 3], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
       },
@@ -1606,7 +1606,7 @@ exportObj.basicCardData = function() {
         hull: 6,
         shields: 3,
         medium: true,
-        actions: ["Focus", "Target Lock", "Slam", "Rotate Arc", "Reload"],
+        actions: ["Focus", "Lock", "Slam", "Rotate Arc", "Reload"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0], [1, 1, 2, 1, 1, 0], [0, 1, 1, 1, 0, 0]]
       },
@@ -1619,7 +1619,7 @@ exportObj.basicCardData = function() {
         hull: 6,
         shields: 3,
         medium: true,
-        actions: ["Focus", "Target Lock", "Boost", "<r>> Target Lock</r>", "Reload"],
+        actions: ["Focus", "Lock", "Boost", "<r>> Lock</r>", "Reload"],
         actionsred: ["Barrel Roll"],
         maneuvers: [[0, 0, 3, 0, 0, 0], [0, 2, 2, 2, 0, 0], [1, 1, 2, 1, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 0, 0, 0, 3]]
       },
@@ -1632,7 +1632,7 @@ exportObj.basicCardData = function() {
         hull: 10,
         shields: 4,
         large: true,
-        actions: ["Focus", "Target Lock", "Reinforce"],
+        actions: ["Focus", "Lock", "Reinforce"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0], [1, 2, 2, 2, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 1, 0, 0, 3]]
       },
@@ -1656,7 +1656,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 2,
         shields: 2,
-        actions: ["Focus", "Evade", "Target Lock", "Barrel Roll", "<r>> Focus</r>", "Boost", "<r>> Focus</r>"],
+        actions: ["Focus", "Evade", "Lock", "Barrel Roll", "<r>> Focus</r>", "Boost", "<r>> Focus</r>"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 2, 0, 2, 2, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
@@ -1669,7 +1669,7 @@ exportObj.basicCardData = function() {
         hull: 5,
         shields: 4,
         medium: true,
-        actions: ["Focus", "Target Lock", "Jam"],
+        actions: ["Focus", "Lock", "Jam"],
         actionsred: [],
         maneuvers: [[0, 0, 3, 0, 0, 0], [3, 2, 2, 2, 3, 0], [1, 1, 2, 1, 1, 3], [0, 3, 1, 3, 0, 0], [0, 0, 3, 0, 0, 3]]
       },
@@ -1682,7 +1682,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 6,
         shields: 3,
-        actions: ["Focus", "<r>> Rotate Arc</r>", "Target Lock", "<r>> Rotate Arc</r>"],
+        actions: ["Focus", "<r>> Rotate Arc</r>", "Lock", "<r>> Rotate Arc</r>"],
         actionsred: ["Barrel Roll"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 1, 3, 0, 0, 0], [1, 2, 2, 1, 3, 0, 0, 0], [0, 2, 2, 1, 0, 0, 3, 0], [0, 0, 1, 0, 0, 3, 0, 0]]
       },
@@ -1696,7 +1696,7 @@ exportObj.basicCardData = function() {
         hull: 6,
         shields: 3,
         medium: true,
-        actions: ["Focus", "Target Lock"],
+        actions: ["Focus", "Lock"],
         actionsred: ["Barrel Roll"],
         maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0], [1, 2, 2, 2, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 3, 0, 0, 3]]
       },
@@ -1709,7 +1709,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 4,
         shields: 0,
-        actions: ["Focus", "Target Lock", "Barrel Roll", "<r>> Focus</r>", "Boost", "<r>> Focus</r>"],
+        actions: ["Focus", "Lock", "Barrel Roll", "<r>> Focus</r>", "Boost", "<r>> Focus</r>"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
@@ -1723,7 +1723,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 8,
         shields: 2,
-        actions: ["Focus", "Evade", "Target Lock", "Rotate Arc"],
+        actions: ["Focus", "Evade", "Lock", "Rotate Arc"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0], [1, 1, 2, 1, 1, 0], [2, 2, 2, 2, 2, 0], [0, 0, 2, 0, 0, 0], [0, 0, 1, 0, 0, 3]]
       },
@@ -1748,7 +1748,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 5,
         shields: 3,
-        actions: ["Focus", "Target Lock"],
+        actions: ["Focus", "Lock"],
         actionsred: ["Coordinate"],
         maneuvers: [[0, 0, 3, 0, 0], [0, 2, 2, 2, 0], [1, 2, 2, 2, 1], [0, 1, 1, 1, 0], [0, 0, 1, 0, 0]]
       },
@@ -1785,7 +1785,7 @@ exportObj.basicCardData = function() {
         hull: 6,
         shields: 4,
         medium: true,
-        actions: ["Focus", "Target Lock"],
+        actions: ["Focus", "Lock"],
         actionsred: ["Barrel Roll"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 3, 3], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
       },
@@ -1797,7 +1797,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 4,
         shields: 1,
-        actions: ["Focus", "Target Lock", "Barrel Roll", "<r>> Evade</r>"],
+        actions: ["Focus", "Lock", "Barrel Roll", "<r>> Evade</r>"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
       },
@@ -1809,7 +1809,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 4,
         shields: 3,
-        actions: ["Focus", "Target Lock", "Slam", "Reload"],
+        actions: ["Focus", "Lock", "Slam", "Reload"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0]]
       },
@@ -1822,7 +1822,7 @@ exportObj.basicCardData = function() {
         hull: 7,
         shields: 2,
         medium: true,
-        actions: ["Focus", "Target Lock", "Reload"],
+        actions: ["Focus", "Lock", "Reload"],
         actionsred: ["Barrel Roll"],
         maneuvers: [[0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 0], [0, 0, 0, 0, 0, 3]]
       },
@@ -1835,7 +1835,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 4,
         shields: 1,
-        actions: ["Focus", "Target Lock", "Coordinate"],
+        actions: ["Focus", "Lock", "Coordinate"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       },
@@ -1872,7 +1872,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 4,
         shields: 3,
-        actions: ["Focus", "Target Lock", "Boost"],
+        actions: ["Focus", "Lock", "Boost"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
       },
@@ -1885,7 +1885,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 3,
         shields: 2,
-        actions: ["Focus", "Evade", "Target Lock", "Barrel Roll"],
+        actions: ["Focus", "Evade", "Lock", "Barrel Roll"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0], [1, 2, 2, 2, 1, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0]]
       },
@@ -1897,7 +1897,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 3,
         shields: 1,
-        actions: ["Focus", "Evade", "Target Lock", "Barrel Roll"],
+        actions: ["Focus", "Evade", "Lock", "Barrel Roll"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0], [2, 2, 2, 2, 2, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
       },
@@ -1909,7 +1909,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 4,
         shields: 2,
-        actions: ["Focus", "Boost", "Target Lock", "Barrel Roll"],
+        actions: ["Focus", "Boost", "Lock", "Barrel Roll"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
       },
@@ -1922,7 +1922,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 3,
         shields: 3,
-        actions: ["Focus", "> Rotate Arc", "Evade", "> Rotate Arc", "Target Lock", "> Rotate Arc", "Barrel Roll", "> Rotate Arc"],
+        actions: ["Focus", "> Rotate Arc", "Evade", "> Rotate Arc", "Lock", "> Rotate Arc", "Barrel Roll", "> Rotate Arc"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 3, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       },
@@ -1934,7 +1934,7 @@ exportObj.basicCardData = function() {
         agility: 0,
         hull: 0,
         shields: 6,
-        actions: ["Focus", "Reinforce", "Target Lock", "Coordinate", "Jam"],
+        actions: ["Focus", "Reinforce", "Lock", "Coordinate", "Jam"],
         actionsred: [],
         maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
         large: true
@@ -1947,7 +1947,7 @@ exportObj.basicCardData = function() {
         agility: 0,
         hull: 9,
         shields: 3,
-        actions: ["Focus", "Target Lock", "Rotate Arc", "Reload"],
+        actions: ["Focus", "Lock", "Rotate Arc", "Reload"],
         actionsred: [],
         maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
         large: true
@@ -1961,7 +1961,7 @@ exportObj.basicCardData = function() {
         agility: 0,
         hull: 0,
         shields: 3,
-        actions: ["Focus", "Target Lock"],
+        actions: ["Focus", "Lock"],
         actionsred: ["Boost", "Rotate Arc"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0]],
         large: true
@@ -2204,6 +2204,7 @@ exportObj.basicCardData = function() {
         name: "Norra Wexley (Y-Wing)",
         id: 25,
         unique: true,
+        canonical_name: 'Norra Wexley'.canonicalize(),
         xws: "norrawexley-btla4ywing",
         faction: "Rebel Alliance",
         ship: "Y-Wing",
@@ -2343,7 +2344,7 @@ exportObj.basicCardData = function() {
         points: 98,
         slots: ["Missile", "Gunner", "Crew", "Modification", "Title", "Illicit"],
         ship_override: {
-          actions: ["Calculate", "Target Lock", "Rotate Arc"]
+          actions: ["Calculate", "Lock", "Rotate Arc"]
         }
       }, {
         name: "Wild Space Fringer",
@@ -2354,7 +2355,7 @@ exportObj.basicCardData = function() {
         points: 88,
         slots: ["Missile", "Gunner", "Crew", "Modification", "Title", "Illicit"]
       }, {
-        name: "Han Solo (Rebel)",
+        name: "Han Solo",
         id: 42,
         unique: true,
         xws: "hansolo-modifiedyt1300lightfreighter",
@@ -2364,7 +2365,7 @@ exportObj.basicCardData = function() {
         points: 92,
         slots: ["Talent", "Missile", "Gunner", "Crew", "Crew", "Modification", "Title", "Illicit"]
       }, {
-        name: "Lando Calrissian (Rebel)",
+        name: "Lando Calrissian",
         id: 43,
         unique: true,
         xws: "landocalrissian-modifiedyt1300lightfreighter",
@@ -2525,6 +2526,7 @@ exportObj.basicCardData = function() {
         name: "Hera Syndulla (VCX-100)",
         id: 61,
         unique: true,
+        canonical_name: 'Hera Syndulla'.canonicalize(),
         xws: "herasyndulla-vcx100lightfreighter",
         faction: "Rebel Alliance",
         ship: "VCX-100",
@@ -2551,7 +2553,7 @@ exportObj.basicCardData = function() {
         points: 72,
         slots: ["Torpedo", "Gunner", "Crew", "Crew", "Modification", "Turret", "Title"],
         ship_override: {
-          actions: ["Calculate", "Target Lock", "Reinforce"]
+          actions: ["Calculate", "Lock", "Reinforce"]
         }
       }, {
         name: "Lothal Rebel",
@@ -2807,7 +2809,7 @@ exportObj.basicCardData = function() {
         points: 47,
         slots: ["Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"],
         ship_override: {
-          actions: ["Calculate", "Target Lock", "Rotate Arc"]
+          actions: ["Calculate", "Lock", "Rotate Arc"]
         }
       }, {
         name: "Freighter Captain",
@@ -2979,7 +2981,7 @@ exportObj.basicCardData = function() {
         points: 49,
         slots: ["Talent", "System", "Crew", "Illicit", "Modification", "Title"],
         ship_override: {
-          actions: ["Calculate", "Target Lock", "Jam"]
+          actions: ["Calculate", "Lock", "Jam"]
         }
       }, {
         name: "Zuckuss",
@@ -3324,7 +3326,7 @@ exportObj.basicCardData = function() {
         points: 62,
         slots: ["Talent", "System", "Torpedo", "Modification", "Title"],
         ship_override: {
-          actions: ["Calculate", "Target Lock", "Barrel Roll", "<r>> Calculate</r>", "Boost", "<r>> Calculate</r>"]
+          actions: ["Calculate", "Lock", "Barrel Roll", "<r>> Calculate</r>", "Boost", "<r>> Calculate</r>"]
         }
       }, {
         name: "Prince Xizor",
@@ -4247,6 +4249,7 @@ exportObj.basicCardData = function() {
         name: '"Chopper" (Astromech)',
         id: 0,
         slot: "Astromech",
+        canonical_name: '"Chopper"'.canonicalize(),
         points: 2,
         unique: true,
         faction: "Rebel Alliance"
@@ -4267,6 +4270,7 @@ exportObj.basicCardData = function() {
         name: "R2-D2 (Astromech)",
         id: 3,
         unique: true,
+        canonical_name: 'R2-D2'.canonicalize(),
         slot: "Astromech",
         points: 8,
         charge: 3,
@@ -4420,10 +4424,9 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "Scum and Villainy"
       }, {
-        name: "Chewbacca (Rebel)",
+        name: "Chewbacca",
         id: 21,
         slot: "Crew",
-        xws: "chewbacca",
         points: 5,
         unique: true,
         faction: "Rebel Alliance",
@@ -4440,6 +4443,7 @@ exportObj.basicCardData = function() {
       }, {
         name: '"Chopper" (Crew)',
         id: 23,
+        canonical_name: '"Chopper"'.canonicalize(),
         xws: "chopper-crew",
         slot: "Crew",
         points: 2,
@@ -4496,8 +4500,8 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         applies_condition: 'Optimized Prototype'.canonicalize(),
         modifier_func: function(stats) {
-          if (__indexOf.call(stats.actions, 'Target Lock') < 0) {
-            return stats.actions.push('Target Lock');
+          if (__indexOf.call(stats.actions, 'Lock') < 0) {
+            return stats.actions.push('Lock');
           }
         }
       }, {
@@ -4557,7 +4561,7 @@ exportObj.basicCardData = function() {
         charge: 2,
         recurring: true,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.effectiveStats().actions, "Target Lock") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Target Lock") >= 0;
+          return __indexOf.call(ship.effectiveStats().actions, "Lock") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Lock") >= 0;
         }
       }, {
         name: "Hera Syndulla",
@@ -4634,7 +4638,7 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "Scum and Villainy"
       }, {
-        name: "Lando Calrissian (Rebel)",
+        name: "Lando Calrissian",
         id: 44,
         slot: "Crew",
         xws: "landocalrissian",
@@ -5037,7 +5041,7 @@ exportObj.basicCardData = function() {
         faction: "Scum and Villainy",
         charge: 1
       }, {
-        name: "Han Solo (Rebel)",
+        name: "Han Solo",
         id: 84,
         slot: "Gunner",
         xws: "hansolo",
@@ -5842,7 +5846,7 @@ exportObj.basicCardData = function() {
         slot: "Tech",
         points: 0,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.effectiveStats().actions, "Target Lock") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Target Lock") >= 0;
+          return __indexOf.call(ship.effectiveStats().actions, "Lock") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Lock") >= 0;
         }
       }, {
         name: "Primed Thrusters",
@@ -6414,7 +6418,7 @@ exportObj.translations.English = {
     "Boost": "Boost",
     "Evade": "Evade",
     "Focus": "Focus",
-    "Target Lock": "Target Lock",
+    "Lock": "Lock",
     "Recover": "Recover",
     "Reinforce": "Reinforce",
     "Jam": "Jam",
@@ -6447,37 +6451,6 @@ exportObj.translations.English = {
   },
   sources: {
     "Core": "Core",
-    "A-Wing Expansion Pack": "A-Wing Expansion Pack",
-    "B-Wing Expansion Pack": "B-Wing Expansion Pack",
-    "X-Wing Expansion Pack": "X-Wing Expansion Pack",
-    "Y-Wing Expansion Pack": "Y-Wing Expansion Pack",
-    "Millennium Falcon Expansion Pack": "Millennium Falcon Expansion Pack",
-    "HWK-290 Expansion Pack": "HWK-290 Expansion Pack",
-    "TIE Fighter Expansion Pack": "TIE Fighter Expansion Pack",
-    "TIE Interceptor Expansion Pack": "TIE Interceptor Expansion Pack",
-    "TIE Bomber Expansion Pack": "TIE Bomber Expansion Pack",
-    "TIE Advanced Expansion Pack": "TIE Advanced Expansion Pack",
-    "Lambda-Class Shuttle Expansion Pack": "Lambda-Class Shuttle Expansion Pack",
-    "Slave I Expansion Pack": "Slave I Expansion Pack",
-    "Imperial Aces Expansion Pack": "Imperial Aces Expansion Pack",
-    "Rebel Transport Expansion Pack": "Rebel Transport Expansion Pack",
-    "Z-95 Headhunter Expansion Pack": "Z-95 Headhunter Expansion Pack",
-    "TIE Defender Expansion Pack": "TIE Defender Expansion Pack",
-    "E-Wing Expansion Pack": "E-Wing Expansion Pack",
-    "TIE Phantom Expansion Pack": "TIE Phantom Expansion Pack",
-    "Tantive IV Expansion Pack": "Tantive IV Expansion Pack",
-    "Rebel Aces Expansion Pack": "Rebel Aces Expansion Pack",
-    "YT-2400 Freighter Expansion Pack": "YT-2400 Freighter Expansion Pack",
-    "VT-49 Decimator Expansion Pack": "VT-49 Decimator Expansion Pack",
-    "StarViper Expansion Pack": "StarViper Expansion Pack",
-    "M3-A Interceptor Expansion Pack": "M3-A Interceptor Expansion Pack",
-    "IG-2000 Expansion Pack": "IG-2000 Expansion Pack",
-    "Most Wanted Expansion Pack": "Most Wanted Expansion Pack",
-    "Imperial Raider Expansion Pack": "Imperial Raider Expansion Pack",
-    "Hound's Tooth Expansion Pack": "Hound's Tooth Expansion Pack",
-    "Kihraxz Fighter Expansion Pack": "Kihraxz Fighter Expansion Pack",
-    "K-Wing Expansion Pack": "K-Wing Expansion Pack",
-    "TIE Punisher Expansion Pack": "TIE Punisher Expansion Pack",
     "The Force Awakens Core Set": "The Force Awakens Core Set"
   },
   ui: {
@@ -6847,7 +6820,7 @@ exportObj.cardLoaders.English = function() {
     "Han Solo (Scum)": {
       text: "Whlie you defend or perform a primary attack, if the attack is obstructed by an obstacle, you may roll 1 additional die."
     },
-    "Han Solo (Rebel)": {
+    "Han Solo": {
       text: "After you roll dice, if you are at range 0-1 of an obstacle, you may reroll all of your dice. This does not count as rerolling for the purpose of other effects."
     },
     "Heff Tobber": {
@@ -6958,7 +6931,7 @@ exportObj.cardLoaders.English = function() {
     "Lando Calrissian (Scum) (Escape Craft)": {
       text: "After you roll dice, if you are not stressed, you may gain 1 stress token to reroll all of your blank results. %LINEBREAK% CO-PILOT: While you are docked, your carried ship has your pilot ability in addition it's own."
     },
-    "Lando Calrissian (Rebel)": {
+    "Lando Calrissian": {
       text: "After you fully execute a blue maneuver, you may choose a friendly ship at range 0-3. That ship may perform an action."
     },
     "Lando Calrissian (Scum)": {
@@ -7386,7 +7359,7 @@ exportObj.cardLoaders.English = function() {
     "Cassian Andor": {
       text: "During the System Phase, you may choose 1 enemy ship at range 1-2 and guess aloud a bearing and speed, then look at that ship's dial. If the chosen ship's bearing and speed match your guess, you may set your dial to another maneuver."
     },
-    "Chewbacca (Rebel)": {
+    "Chewbacca": {
       text: "At the start of the Engagement Phase, you may spend 2 %CHARGE% to repair 1 faceup damage card."
     },
     "Chewbacca (Scum)": {
@@ -7503,7 +7476,7 @@ exportObj.cardLoaders.English = function() {
     "Greedo": {
       text: "While you perform an attack, you may spend 1 %CHARGE% to change 1 %HIT% result to a %CRIT% result. While you defend, if your %CHARGE% is active, the attacker may change 1 %HIT% result to a %CRIT% result."
     },
-    "Han Solo (Rebel)": {
+    "Han Solo": {
       text: "During the Engagement Phase, at initiative 7, you may perform a %TURRET% attack. You cannot attack from that %TURRET% again this round."
     },
     "Han Solo (Scum)": {
@@ -7590,7 +7563,7 @@ exportObj.cardLoaders.English = function() {
     "L3-37's Programming": {
       text: "If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."
     },
-    "Lando Calrissian (Rebel)": {
+    "Lando Calrissian": {
       text: "Action: Roll 2 defense dice. For each %FOCUS% result, gain 1 focus token. For each %EVADE% result, gain 1 evade token. If both results are blank, the opposing player chooses focus or evade. You gain 1 token of that type."
     },
     "Lando Calrissian (Scum)": {
@@ -8494,11 +8467,11 @@ exportObj.manifestByExpansion = {
       type: 'pilot',
       count: 1
     }, {
-      name: 'Han Solo (Rebel)',
+      name: 'Han Solo',
       type: 'pilot',
       count: 1
     }, {
-      name: 'Lando Calrissian (Rebel)',
+      name: 'Lando Calrissian',
       type: 'pilot',
       count: 1
     }, {
@@ -8682,7 +8655,7 @@ exportObj.manifestByExpansion = {
       type: 'upgrade',
       count: 1
     }, {
-      name: 'Chewbacca (Rebel)',
+      name: 'Chewbacca',
       type: 'upgrade',
       count: 1
     }, {
@@ -8714,7 +8687,7 @@ exportObj.manifestByExpansion = {
       type: 'upgrade',
       count: 1
     }, {
-      name: 'Lando Calrissian (Rebel)',
+      name: 'Lando Calrissian',
       type: 'upgrade',
       count: 1
     }, {
@@ -8830,7 +8803,7 @@ exportObj.manifestByExpansion = {
       type: 'upgrade',
       count: 1
     }, {
-      name: 'Han Solo (Rebel)',
+      name: 'Han Solo',
       type: 'upgrade',
       count: 1
     }, {
@@ -9516,6 +9489,10 @@ exportObj.manifestByExpansion = {
   ],
   'Scum and Villainy Conversion Kit': [
     {
+      name: 'Kihraxz Fighter',
+      type: 'ship',
+      count: 3
+    }, {
       name: 'YV-666',
       type: 'ship',
       count: 2
@@ -9564,7 +9541,7 @@ exportObj.manifestByExpansion = {
       type: 'ship',
       count: 2
     }, {
-      name: 'Starviper',
+      name: 'StarViper',
       type: 'ship',
       count: 2
     }, {
@@ -11135,7 +11112,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 13425
+                    lineno: 13403
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -11726,7 +11703,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 14056
+              lineno: 14034
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -12446,7 +12423,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 14698
+          lineno: 14676
         }));
         __iced_deferrals._fulfill();
       });
@@ -12458,7 +12435,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 14699
+            lineno: 14677
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -14133,7 +14110,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 15709
+                      lineno: 15687
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -14207,7 +14184,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 15735
+                lineno: 15713
               })
             ]);
             __iced_deferrals._fulfill();
@@ -14254,7 +14231,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 15758
+              lineno: 15736
             }));
           }
         }
@@ -14263,7 +14240,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 15760
+              lineno: 15738
             }));
           }
         }
@@ -14272,7 +14249,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 15762
+              lineno: 15740
             }));
           }
         }
@@ -14536,7 +14513,7 @@ Ship = (function() {
             return "<i class=\"xwing-miniatures-font xwing-miniatures-font-evade\"></i>";
           case 'Barrel Roll':
             return "<i class=\"xwing-miniatures-font xwing-miniatures-font-barrelroll\"></i>";
-          case 'Target Lock':
+          case 'Lock':
             return "<i class=\"xwing-miniatures-font xwing-miniatures-font-lock\"></i>";
           case 'Boost':
             return "<i class=\"xwing-miniatures-font xwing-miniatures-font-boost\"></i>";
@@ -14558,7 +14535,7 @@ Ship = (function() {
             return "<i class=\"xwing-miniatures-font xwing-miniatures-font-reload\"></i>";
           case 'Calculate':
             return "<i class=\"xwing-miniatures-font xwing-miniatures-font-calculate\"></i>";
-          case "<r>> Target Lock</r>":
+          case "<r>> Lock</r>":
             return "<r>> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-lock\"></i></r>";
           case "<r>> Barrel Roll</r>":
             return "<r>> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-barrelroll\"></i></r>";
@@ -14586,7 +14563,7 @@ Ship = (function() {
             return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-evade\"></i>";
           case 'Barrel Roll':
             return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-barrelroll\"></i>";
-          case 'Target Lock':
+          case 'Lock':
             return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-lock\"></i>";
           case 'Boost':
             return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-boost\"></i>";
@@ -15359,7 +15336,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 16515
+                lineno: 16493
               })
             ]);
             __iced_deferrals._fulfill();
@@ -15479,7 +15456,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 16577
+                  lineno: 16555
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -15501,7 +15478,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 16581
+                    lineno: 16559
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -15591,7 +15568,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 16624
+            lineno: 16602
           }));
         }
         __iced_deferrals._fulfill();
