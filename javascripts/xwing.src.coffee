@@ -969,18 +969,18 @@ class exportObj.CardBrowser
                 @card_viewer_container.find('tr.info-shields td.info-data').text(data.ship_override?.shields ? ship.shields)
                 @card_viewer_container.find('tr.info-shields').show()
 
-                if ship.force?
-                    @card_viewer_container.find('tr.info-force td.info-data').html (ship.force + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>') 
+                if data.force?
+                    @card_viewer_container.find('tr.info-force td.info-data').html (data.force + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>') 
                     @card_viewer_container.find('tr.info-force td.info-header').show()
                     @card_viewer_container.find('tr.info-force').show()
                 else
                     @card_viewer_container.find('tr.info-force').hide() 
 
-                if ship.charge?
+                if data.charge?
                     if data.recurring?
-                        @card_viewer_container.find('tr.info-charge td.info-data').html (ship.charge + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
+                        @card_viewer_container.find('tr.info-charge td.info-data').html (data.charge + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
                     else
-                        @card_viewer_container.find('tr.info-charge td.info-data').text ship.charge
+                        @card_viewer_container.find('tr.info-charge td.info-data').text data.charge
                     @card_viewer_container.find('tr.info-charge').show()
                 else
                     @card_viewer_container.find('tr.info-charge').hide()
@@ -16011,6 +16011,11 @@ class Ship
             <span class="info-data info-force">#{statAndEffectiveStat((@pilot.ship_override?.force ? @pilot.force), effective_stats, 'force')}</span>
         """ else ''
 
+        chargeHTML = if (@pilot.charge?) then $.trim """
+            <i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>
+            <span class="info-data info-charge">#{statAndEffectiveStat((@pilot.ship_override?.charge ? @pilot.charge), effective_stats, 'charge')}</span>
+        """ else ''
+
         html = $.trim """
             <div class="fancy-pilot-header">
                 <div class="pilot-header-text">#{@pilot.name} <i class="xwing-miniatures-ship xwing-miniatures-ship-#{@data.canonical_name}"></i><span class="fancy-ship-type"> #{@data.name}</span></div>
@@ -16032,6 +16037,7 @@ class Ship
                     <i class="xwing-miniatures-font xwing-miniatures-font-shield"></i>
                     <span class="info-data info-shields">#{statAndEffectiveStat((@pilot.ship_override?.shields ? @data.shields), effective_stats, 'shields')}</span>
                     #{forceHTML}
+                    #{chargeHTML}
                     &nbsp;
                     #{action_bar}
                     &nbsp;
@@ -16678,6 +16684,16 @@ class GenericAddon
                     <i class="xwing-miniatures-font xwing-miniatures-font-energy"></i>
                 </div>
             """ else ''
+            
+            forceHTML = if (@pilot.force?) then $.trim """
+                <i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>
+                <span class="info-data info-force">#{@pilot.force}</span>
+            """ else ''
+
+            chargeHTML = if (@pilot.charge?) then $.trim """
+                <i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>
+                <span class="info-data info-charge">#{@pilot.charge}</span>
+            """ else ''
                 
             $.trim """
                 <div class="upgrade-container">
@@ -16692,6 +16708,8 @@ class GenericAddon
                     </div>
                     #{attackHTML}
                     #{energyHTML}
+                    #{forceHTML}
+                    #{chargeHTML}
                     <div class="upgrade-text">#{text_str}</div>
                     <div style="clear: both;"></div>
                 </div>

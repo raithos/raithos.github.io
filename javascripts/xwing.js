@@ -1132,18 +1132,18 @@ exportObj.CardBrowser = (function() {
         this.card_viewer_container.find('tr.info-hull').show();
         this.card_viewer_container.find('tr.info-shields td.info-data').text((_ref12 = (_ref13 = data.ship_override) != null ? _ref13.shields : void 0) != null ? _ref12 : ship.shields);
         this.card_viewer_container.find('tr.info-shields').show();
-        if (ship.force != null) {
-          this.card_viewer_container.find('tr.info-force td.info-data').html(ship.force + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>');
+        if (data.force != null) {
+          this.card_viewer_container.find('tr.info-force td.info-data').html(data.force + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>');
           this.card_viewer_container.find('tr.info-force td.info-header').show();
           this.card_viewer_container.find('tr.info-force').show();
         } else {
           this.card_viewer_container.find('tr.info-force').hide();
         }
-        if (ship.charge != null) {
+        if (data.charge != null) {
           if (data.recurring != null) {
-            this.card_viewer_container.find('tr.info-charge td.info-data').html(ship.charge + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>');
+            this.card_viewer_container.find('tr.info-charge td.info-data').html(data.charge + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>');
           } else {
-            this.card_viewer_container.find('tr.info-charge td.info-data').text(ship.charge);
+            this.card_viewer_container.find('tr.info-charge td.info-data').text(data.charge);
           }
           this.card_viewer_container.find('tr.info-charge').show();
         } else {
@@ -14498,7 +14498,7 @@ Ship = (function() {
   };
 
   Ship.prototype.toHTML = function() {
-    var action, action_bar, action_bar_red, action_icons, action_icons_red, actionred, attackHTML, attack_icon, effective_stats, energyHTML, forceHTML, html, modification, slotted_upgrades, title, upgrade, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var action, action_bar, action_bar_red, action_icons, action_icons_red, actionred, attackHTML, attack_icon, chargeHTML, effective_stats, energyHTML, forceHTML, html, modification, slotted_upgrades, title, upgrade, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     effective_stats = this.effectiveStats();
     action_icons = [];
     action_icons_red = [];
@@ -14596,38 +14596,39 @@ Ship = (function() {
     attackHTML = (((_ref3 = this.pilot.ship_override) != null ? _ref3.attack : void 0) != null) || (this.data.attack != null) ? $.trim("<i class=\"xwing-miniatures-font " + attack_icon + "\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref4 = (_ref5 = this.pilot.ship_override) != null ? _ref5.attack : void 0) != null ? _ref4 : this.data.attack, effective_stats, 'attack')) + "</span>") : '';
     energyHTML = (((_ref6 = this.pilot.ship_override) != null ? _ref6.energy : void 0) != null) || (this.data.energy != null) ? $.trim("<i class=\"xwing-miniatures-font xwing-miniatures-font-energy\"></i>\n<span class=\"info-data info-energy\">" + (statAndEffectiveStat((_ref7 = (_ref8 = this.pilot.ship_override) != null ? _ref8.energy : void 0) != null ? _ref7 : this.data.energy, effective_stats, 'energy')) + "</span>") : '';
     forceHTML = (this.pilot.force != null) ? $.trim("<i class=\"xwing-miniatures-font xwing-miniatures-font-forcecharge\"></i>\n<span class=\"info-data info-force\">" + (statAndEffectiveStat((_ref9 = (_ref10 = this.pilot.ship_override) != null ? _ref10.force : void 0) != null ? _ref9 : this.pilot.force, effective_stats, 'force')) + "</span>") : '';
-    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + this.pilot.name + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.canonical_name + "\"></i><span class=\"fancy-ship-type\"> " + this.data.name + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + this.pilot.points + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">PS " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + attackHTML + "\n        " + energyHTML + "\n        <i class=\"xwing-miniatures-font xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref11 = (_ref12 = this.pilot.ship_override) != null ? _ref12.agility : void 0) != null ? _ref11 : this.data.agility, effective_stats, 'agility')) + "</span>\n        <i class=\"xwing-miniatures-font xwing-miniatures-font-hull\"></i>\n        <span class=\"info-data info-hull\">" + (statAndEffectiveStat((_ref13 = (_ref14 = this.pilot.ship_override) != null ? _ref14.hull : void 0) != null ? _ref13 : this.data.hull, effective_stats, 'hull')) + "</span>\n        <i class=\"xwing-miniatures-font xwing-miniatures-font-shield\"></i>\n        <span class=\"info-data info-shields\">" + (statAndEffectiveStat((_ref15 = (_ref16 = this.pilot.ship_override) != null ? _ref16.shields : void 0) != null ? _ref15 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + forceHTML + "\n        &nbsp;\n        " + action_bar + "\n        &nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
+    chargeHTML = (this.pilot.charge != null) ? $.trim("<i class=\"xwing-miniatures-font xwing-miniatures-font-charge\"></i>\n<span class=\"info-data info-charge\">" + (statAndEffectiveStat((_ref11 = (_ref12 = this.pilot.ship_override) != null ? _ref12.charge : void 0) != null ? _ref11 : this.pilot.charge, effective_stats, 'charge')) + "</span>") : '';
+    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + this.pilot.name + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.canonical_name + "\"></i><span class=\"fancy-ship-type\"> " + this.data.name + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + this.pilot.points + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">PS " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + attackHTML + "\n        " + energyHTML + "\n        <i class=\"xwing-miniatures-font xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref13 = (_ref14 = this.pilot.ship_override) != null ? _ref14.agility : void 0) != null ? _ref13 : this.data.agility, effective_stats, 'agility')) + "</span>\n        <i class=\"xwing-miniatures-font xwing-miniatures-font-hull\"></i>\n        <span class=\"info-data info-hull\">" + (statAndEffectiveStat((_ref15 = (_ref16 = this.pilot.ship_override) != null ? _ref16.hull : void 0) != null ? _ref15 : this.data.hull, effective_stats, 'hull')) + "</span>\n        <i class=\"xwing-miniatures-font xwing-miniatures-font-shield\"></i>\n        <span class=\"info-data info-shields\">" + (statAndEffectiveStat((_ref17 = (_ref18 = this.pilot.ship_override) != null ? _ref18.shields : void 0) != null ? _ref17 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + forceHTML + "\n        " + chargeHTML + "\n        &nbsp;\n        " + action_bar + "\n        &nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
     if (this.pilot.text) {
       html += $.trim("<div class=\"fancy-pilot-text\">" + this.pilot.text + "</div>");
     }
     slotted_upgrades = ((function() {
-      var _k, _len2, _ref17, _results;
-      _ref17 = this.upgrades;
+      var _k, _len2, _ref19, _results;
+      _ref19 = this.upgrades;
       _results = [];
-      for (_k = 0, _len2 = _ref17.length; _k < _len2; _k++) {
-        upgrade = _ref17[_k];
+      for (_k = 0, _len2 = _ref19.length; _k < _len2; _k++) {
+        upgrade = _ref19[_k];
         if (upgrade.data != null) {
           _results.push(upgrade);
         }
       }
       return _results;
     }).call(this)).concat((function() {
-      var _k, _len2, _ref17, _results;
-      _ref17 = this.modifications;
+      var _k, _len2, _ref19, _results;
+      _ref19 = this.modifications;
       _results = [];
-      for (_k = 0, _len2 = _ref17.length; _k < _len2; _k++) {
-        modification = _ref17[_k];
+      for (_k = 0, _len2 = _ref19.length; _k < _len2; _k++) {
+        modification = _ref19[_k];
         if (modification.data != null) {
           _results.push(modification);
         }
       }
       return _results;
     }).call(this)).concat((function() {
-      var _k, _len2, _ref17, _results;
-      _ref17 = this.titles;
+      var _k, _len2, _ref19, _results;
+      _ref19 = this.titles;
       _results = [];
-      for (_k = 0, _len2 = _ref17.length; _k < _len2; _k++) {
-        title = _ref17[_k];
+      for (_k = 0, _len2 = _ref19.length; _k < _len2; _k++) {
+        title = _ref19[_k];
         if (title.data != null) {
           _results.push(title);
         }
@@ -15336,7 +15337,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 16493
+                lineno: 16499
               })
             ]);
             __iced_deferrals._fulfill();
@@ -15456,7 +15457,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 16555
+                  lineno: 16561
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -15478,7 +15479,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 16559
+                    lineno: 16565
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -15568,7 +15569,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 16602
+            lineno: 16608
           }));
         }
         __iced_deferrals._fulfill();
@@ -15629,7 +15630,7 @@ GenericAddon = (function() {
   };
 
   GenericAddon.prototype.toHTML = function() {
-    var attackHTML, energyHTML, match_array, restriction_html, text_str, upgrade_slot_font, _ref;
+    var attackHTML, chargeHTML, energyHTML, forceHTML, match_array, restriction_html, text_str, upgrade_slot_font, _ref;
     if (this.data != null) {
       upgrade_slot_font = ((_ref = this.data.slot) != null ? _ref : this.type).toLowerCase().replace(/[^0-9a-z]/gi, '');
       match_array = this.data.text.match(/(<span.*<\/span>)<br \/><br \/>(.*)/);
@@ -15642,7 +15643,9 @@ GenericAddon = (function() {
       }
       attackHTML = (this.data.attack != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attack + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-frontarc\"></i>\n</div>") : (this.data.attackt != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attackt + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-singleturretarc\"></i>\n</div>") : (this.data.attackbull != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attackbull + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-bullseyearc\"></i>\n</div>") : '';
       energyHTML = (this.data.energy != null) ? $.trim("<div class=\"upgrade-energy\">\n    <span class=\"info-data info-energy\">" + this.data.energy + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-energy\"></i>\n</div>") : '';
-      return $.trim("<div class=\"upgrade-container\">\n    <div class=\"upgrade-stats\">\n        <div class=\"upgrade-name\"><i class=\"xwing-miniatures-font xwing-miniatures-font-" + upgrade_slot_font + "\"></i>" + this.data.name + "</div>\n        <div class=\"mask\">\n            <div class=\"outer-circle\">\n                <div class=\"inner-circle upgrade-points\">" + this.data.points + "</div>\n            </div>\n        </div>\n        " + restriction_html + "\n    </div>\n    " + attackHTML + "\n    " + energyHTML + "\n    <div class=\"upgrade-text\">" + text_str + "</div>\n    <div style=\"clear: both;\"></div>\n</div>");
+      forceHTML = (this.pilot.force != null) ? $.trim("<i class=\"xwing-miniatures-font xwing-miniatures-font-forcecharge\"></i>\n<span class=\"info-data info-force\">" + this.pilot.force + "</span>") : '';
+      chargeHTML = (this.pilot.charge != null) ? $.trim("<i class=\"xwing-miniatures-font xwing-miniatures-font-charge\"></i>\n<span class=\"info-data info-charge\">" + this.pilot.charge + "</span>") : '';
+      return $.trim("<div class=\"upgrade-container\">\n    <div class=\"upgrade-stats\">\n        <div class=\"upgrade-name\"><i class=\"xwing-miniatures-font xwing-miniatures-font-" + upgrade_slot_font + "\"></i>" + this.data.name + "</div>\n        <div class=\"mask\">\n            <div class=\"outer-circle\">\n                <div class=\"inner-circle upgrade-points\">" + this.data.points + "</div>\n            </div>\n        </div>\n        " + restriction_html + "\n    </div>\n    " + attackHTML + "\n    " + energyHTML + "\n    " + forceHTML + "\n    " + chargeHTML + "\n    <div class=\"upgrade-text\">" + text_str + "</div>\n    <div style=\"clear: both;\"></div>\n</div>");
     } else {
       return '';
     }
