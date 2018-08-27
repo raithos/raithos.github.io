@@ -15630,7 +15630,7 @@ GenericAddon = (function() {
   };
 
   GenericAddon.prototype.toHTML = function() {
-    var attackHTML, chargeHTML, energyHTML, forceHTML, match_array, restriction_html, text_str, upgrade_slot_font, _ref;
+    var attackHTML, energyHTML, match_array, restriction_html, text_str, upgrade_slot_font, _ref;
     if (this.data != null) {
       upgrade_slot_font = ((_ref = this.data.slot) != null ? _ref : this.type).toLowerCase().replace(/[^0-9a-z]/gi, '');
       match_array = this.data.text.match(/(<span.*<\/span>)<br \/><br \/>(.*)/);
@@ -15643,9 +15643,7 @@ GenericAddon = (function() {
       }
       attackHTML = (this.data.attack != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attack + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-frontarc\"></i>\n</div>") : (this.data.attackt != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attackt + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-singleturretarc\"></i>\n</div>") : (this.data.attackbull != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attackbull + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-bullseyearc\"></i>\n</div>") : '';
       energyHTML = (this.data.energy != null) ? $.trim("<div class=\"upgrade-energy\">\n    <span class=\"info-data info-energy\">" + this.data.energy + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-energy\"></i>\n</div>") : '';
-      forceHTML = (this.pilot.force != null) ? $.trim("<i class=\"xwing-miniatures-font xwing-miniatures-font-forcecharge\"></i>\n<span class=\"info-data info-force\">" + this.pilot.force + "</span>") : '';
-      chargeHTML = (this.pilot.charge != null) ? $.trim("<i class=\"xwing-miniatures-font xwing-miniatures-font-charge\"></i>\n<span class=\"info-data info-charge\">" + this.pilot.charge + "</span>") : '';
-      return $.trim("<div class=\"upgrade-container\">\n    <div class=\"upgrade-stats\">\n        <div class=\"upgrade-name\"><i class=\"xwing-miniatures-font xwing-miniatures-font-" + upgrade_slot_font + "\"></i>" + this.data.name + "</div>\n        <div class=\"mask\">\n            <div class=\"outer-circle\">\n                <div class=\"inner-circle upgrade-points\">" + this.data.points + "</div>\n            </div>\n        </div>\n        " + restriction_html + "\n    </div>\n    " + attackHTML + "\n    " + energyHTML + "\n    " + forceHTML + "\n    " + chargeHTML + "\n    <div class=\"upgrade-text\">" + text_str + "</div>\n    <div style=\"clear: both;\"></div>\n</div>");
+      return $.trim("<div class=\"upgrade-container\">\n    <div class=\"upgrade-stats\">\n        <div class=\"upgrade-name\"><i class=\"xwing-miniatures-font xwing-miniatures-font-" + upgrade_slot_font + "\"></i>" + this.data.name + "</div>\n        <div class=\"mask\">\n            <div class=\"outer-circle\">\n                <div class=\"inner-circle upgrade-points\">" + this.data.points + "</div>\n            </div>\n        </div>\n        " + restriction_html + "\n    </div>\n    " + attackHTML + "\n    " + energyHTML + "\n    <div class=\"upgrade-text\">" + text_str + "</div>\n    <div style=\"clear: both;\"></div>\n</div>");
     } else {
       return '';
     }
