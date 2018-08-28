@@ -985,7 +985,7 @@ class exportObj.CardBrowser
                 else
                     @card_viewer_container.find('tr.info-charge').hide()
 
-                @card_viewer_container.find('tr.info-actions td.info-data').html (exportObj.translate(@language, 'action', action) for action in exportObj.ships[data.ship].actions).join(' ')
+                @card_viewer_container.find('tr.info-actions td.info-data').html (((exportObj.translate(@language, 'action', action) for action in exportObj.ships[data.ship].actions).join(', ')).replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked">') #super ghetto double replace for linked actions
                 @card_viewer_container.find('tr.info-actions').show()
 
                 if ships[data.ship].actionsred?
@@ -995,7 +995,7 @@ class exportObj.CardBrowser
                     @card_viewer_container.find('tr.info-actions-red').hide()
 
                 @card_viewer_container.find('tr.info-upgrades').show()
-                @card_viewer_container.find('tr.info-upgrades td.info-data').text((exportObj.translate(@language, 'slot', slot) for slot in data.slots).join(', ') or 'None')
+                @card_viewer_container.find('tr.info-upgrades td.info-data').html((exportObj.translate(@language, 'sloticon', slot) for slot in data.slots).join(' ') or 'None')
             else
                 @card_viewer_container.find('.info-type').text type
                 @card_viewer_container.find('.info-type').append " &ndash; #{data.faction} only" if data.faction?
@@ -1241,7 +1241,7 @@ exportObj.basicCardData = ->
             shields: 2
             actions: [
                 "Focus" 
-                "<r>> Barrel Roll</r>"
+                "R> Barrel Roll"
                 "Lock"
                 "Barrel Roll"
             ]
@@ -1314,9 +1314,9 @@ exportObj.basicCardData = ->
             shields: 2
             actions: [
                 "Focus"
-                "<r>> Rotate Arc</r>"
+                "R> Rotate Arc"
                 "Lock" 
-                "<r>> Rotate Arc</r>"
+                "R> Rotate Arc"
                 "Rotate Arc"
             ]
             actionsred: [
@@ -1364,7 +1364,7 @@ exportObj.basicCardData = ->
             shields: 4
             actions: [
                 "Focus"
-                "<r>> Barrel Roll</r>"
+                "R> Barrel Roll"
                 "Lock"
                 "Barrel Roll"
             ]
@@ -1389,7 +1389,7 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Lock"
                 "Barrel Roll"
-                "<r>> Lock</r>"
+                "R> Lock"
             ]
             actionsred: [
                 "Reload"
@@ -1463,9 +1463,9 @@ exportObj.basicCardData = ->
                 "Evade"
                 "Lock"
                 "Barrel Roll"
-                "<r>> Lock</r>"
+                "R> Lock"
                 "Boost"
-                "<r>> Lock</r>"
+                "R> Lock"
             ]
             actionsred: [
             ]
@@ -1561,9 +1561,9 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Lock"
                 "Barrel Roll"
-                "<r>> Focus</r>"
+                "R> Focus"
                 "Boost"
-                "<r>> Focus</r>"
+                "R> Focus"
             ]
             actionsred: [
             ]
@@ -1704,7 +1704,7 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Lock"
                 "Boost" 
-                "<r>> Lock</r>"
+                "R> Lock"
                 "Reload"
             ]
             actionsred: [
@@ -1752,7 +1752,7 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Evade"
                 "Barrel Roll"
-                "<r>> Evade</r>"
+                "R> Evade"
             ]
             actionsred: [
             ]
@@ -1776,9 +1776,9 @@ exportObj.basicCardData = ->
                 "Evade"
                 "Lock"
                 "Barrel Roll"
-                "<r>> Focus</r>"
+                "R> Focus"
                 "Boost"
-                "<r>> Focus</r>"
+                "R> Focus"
             ]
             actionsred: [
             ]
@@ -1824,9 +1824,9 @@ exportObj.basicCardData = ->
             shields: 3
             actions: [
                 "Focus"
-                "<r>> Rotate Arc</r>"
+                "R> Rotate Arc"
                 "Lock"
-                "<r>> Rotate Arc</r>"
+                "R> Rotate Arc"
             ]
             actionsred: [
                 "Barrel Roll"
@@ -1875,9 +1875,9 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Lock"
                 "Barrel Roll"
-                "<r>> Focus</r>"
+                "R> Focus"
                 "Boost"
-                "<r>> Focus</r>"
+                "R> Focus"
             ]
             actionsred: [
             ]
@@ -2037,7 +2037,7 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Lock"
                 "Barrel Roll" 
-                "<r>> Evade</r>"
+                "R> Evade"
             ]
             actionsred: [
             ]
@@ -4829,9 +4829,9 @@ exportObj.basicCardData = ->
                     "Calculate"
                     "Lock"
                     "Barrel Roll"
-                    "<r>> Calculate</r>"
+                    "R> Calculate"
                     "Boost"
-                    "<r>> Calculate</r>"
+                    "R> Calculate"
                 ]
         }
         {
@@ -8516,39 +8516,63 @@ exportObj.codeToLanguage.en = 'English'
 exportObj.translations ?= {}
 # This is here mostly as a template for other languages.
 exportObj.translations.English =
-    action:
-        "Barrel Roll": "Barrel Roll"
-        "Boost": "Boost"
-        "Evade": "Evade"
-        "Focus": "Focus"
-        "Lock": "Lock"
-        "Recover": "Recover"
-        "Reinforce": "Reinforce"
-        "Jam": "Jam"
-        "Coordinate": "Coordinate"
-        "Cloak": "Cloak"
-        "Slam": "Slam"
+    action: #do not change this anymore. We use Icons instead of words
+        "Barrel Roll": '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>'
+        "Boost": '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>'
+        "Evade": '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>'
+        "Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>'
+        "Lock": '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>'
+        "Reload": '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>'
+        "Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>'
+        "Reinforce": '<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i>'
+        "Jam": '<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i>'
+        "Calculate": '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>'
+        "Coordinate": '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>'
+        "Cloak": '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>'
+        "Slam": '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>'
+        "R> Barrel Roll": '<r><i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i></r>'
+        "R> Focus": '<r><i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-focus"></i></r>'
+        "R> Lock": '<r><i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-lock"></i></r>'
+        "> Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>'
+        "R> Rotate Arc": '<r><i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i></r>'
+        "R> Evade": '<r><i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-evade"></i></r>'
+        "R> Calculate": '<r><i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i></r>'
+    sloticon:
+        "Astromech": '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>'
+        "Force": '<i class="xwing-miniatures-font xwing-miniatures-font-forcepower"></i>'
+        "Bomb": '<i class="xwing-miniatures-font xwing-miniatures-font-bomb"></i>'
+        "Cannon": '<i class="xwing-miniatures-font xwing-miniatures-font-cannon"></i>'
+        "Crew": '<i class="xwing-miniatures-font xwing-miniatures-font-crew"></i>'
+        "Talent": '<i class="xwing-miniatures-font xwing-miniatures-font-talent"></i>'
+        "Missile": '<i class="xwing-miniatures-font xwing-miniatures-font-missile"></i>'
+        "System": '<i class="xwing-miniatures-font xwing-miniatures-font-system"></i>'
+        "Torpedo": '<i class="xwing-miniatures-font xwing-miniatures-font-torpedo"></i>'
+        "Turret": '<i class="xwing-miniatures-font xwing-miniatures-font-turret"></i>'
+        "Illicit": '<i class="xwing-miniatures-font xwing-miniatures-font-illicit"></i>'
+        "Configuration": '<i class="xwing-miniatures-font xwing-miniatures-font-configuration"></i>'
+        "Modification": '<i class="xwing-miniatures-font xwing-miniatures-font-modification"></i>'
+        "Gunner": '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>'
+        "Device": '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>'
+        "Tech": '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>'
+        "Title": '<i class="xwing-miniatures-font xwing-miniatures-font-title"></i>'
     slot:
         "Astromech": "Astromech"
+        "Force": "Force"
         "Bomb": "Bomb"
         "Cannon": "Cannon"
         "Crew": "Crew"
-        "Elite": "Elite"
         "Missile": "Missile"
         "System": "System"
         "Torpedo": "Torpedo"
         "Turret": "Turret"
-        "Cargo": "Cargo"
         "Hardpoint": "Hardpoint"
-        "Team": "Team"
         "Illicit": "Illicit"
-        "Salvaged Astromech": "Salvaged Astromech"
         "Configuration": "Configuration"
         "Talent": "Talent"
-        "Force": "Force"
         "Modification": "Modification"
         "Gunner": "Gunner"
         "Device": "Device"
+        "Tech": "Tech"
         "Title": "Title"
     sources: # needed?
         "Core": "Core"
@@ -14936,6 +14960,7 @@ class exportObj.SquadBuilder
         outTable += "</tbody></table>"
         outTable
 
+        
     showTooltip: (type, data, additional_opts) ->
         if data != @tooltip_currently_displaying
             switch type
@@ -15005,15 +15030,15 @@ class exportObj.SquadBuilder
                     else
                         @info_container.find('tr.info-charge').hide()
 
-                    @info_container.find('tr.info-actions td.info-data').html (exportObj.translate(@language, 'action', a) for a in (data.pilot.ship_override?.actions ? data.data.actions).concat( ("<strong>#{exportObj.translate @language, 'action', action}</strong>" for action in extra_actions))).join ' '
+                    @info_container.find('tr.info-actions td.info-data').html (((exportObj.translate(@language, 'action', a) for a in (data.pilot.ship_override?.actions ? data.data.actions).concat( ("<strong>#{exportObj.translate @language, 'action', action}</strong>" for action in extra_actions))).join ', ').replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked">') #super ghetto double replace for linked actions
                     
                     if data.data.actionsred?
-                        @info_container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', a) for a in (data.pilot.ship_override?.actionsred ? data.data.actionsred).concat( ("<strong>#{exportObj.translate @language, 'action', action}</strong>" for action in extra_actions_red))).join ' '       
+                        @info_container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', a) for a in (data.pilot.ship_override?.actionsred ? data.data.actionsred).concat( ("<strong>#{exportObj.translate @language, 'action', action}</strong>" for action in extra_actions_red))).join ', '       
                     @info_container.find('tr.info-actions-red').toggle(data.data.actionsred?)
                     
                     @info_container.find('tr.info-actions').show()
                     @info_container.find('tr.info-upgrades').show()
-                    @info_container.find('tr.info-upgrades td.info-data').text((exportObj.translate(@language, 'slot', slot) for slot in data.pilot.slots).join(', ') or 'None')
+                    @info_container.find('tr.info-upgrades td.info-data').html((exportObj.translate(@language, 'sloticon', slot) for slot in data.pilot.slots).join(' ') or 'None')
                     @info_container.find('p.info-maneuvers').show()
                     @info_container.find('p.info-maneuvers').html(@getManeuverTableHTML(effective_stats.maneuvers, data.data.maneuvers))
                 when 'Pilot'
@@ -15076,17 +15101,18 @@ class exportObj.SquadBuilder
                     else
                         @info_container.find('tr.info-charge').hide()
 
-                    @info_container.find('tr.info-actions td.info-data').html (exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actions ? exportObj.ships[data.ship].actions)).join(' ')
+                    @info_container.find('tr.info-actions td.info-data').html (((exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actions ? exportObj.ships[data.ship].actions)).join(', ')).replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked">')
+                    #super ghetto double replace for linked actions
     
                     if ships[data.ship].actionsred?
-                        @info_container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actionsred ? exportObj.ships[data.ship].actionsred)).join(' ')
+                        @info_container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actionsred ? exportObj.ships[data.ship].actionsred)).join(', ')
                         @info_container.find('tr.info-actions-red').show()
                     else
                         @info_container.find('tr.info-actions-red').hide()
 
                     @info_container.find('tr.info-actions').show()
                     @info_container.find('tr.info-upgrades').show()
-                    @info_container.find('tr.info-upgrades td.info-data').text((exportObj.translate(@language, 'slot', slot) for slot in data.slots).join(', ') or 'None')
+                    @info_container.find('tr.info-upgrades td.info-data').html((exportObj.translate(@language, 'sloticon', slot) for slot in data.slots).join(' ') or 'None')
                     @info_container.find('p.info-maneuvers').show()
                     @info_container.find('p.info-maneuvers').html(@getManeuverTableHTML(ship.maneuvers, ship.maneuvers))
                 when 'Addon'

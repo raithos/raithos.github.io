@@ -1149,7 +1149,7 @@ exportObj.CardBrowser = (function() {
         } else {
           this.card_viewer_container.find('tr.info-charge').hide();
         }
-        this.card_viewer_container.find('tr.info-actions td.info-data').html(((function() {
+        this.card_viewer_container.find('tr.info-actions td.info-data').html(((((function() {
           var _j, _len1, _ref14, _results;
           _ref14 = exportObj.ships[data.ship].actions;
           _results = [];
@@ -1158,7 +1158,7 @@ exportObj.CardBrowser = (function() {
             _results.push(exportObj.translate(this.language, 'action', action));
           }
           return _results;
-        }).call(this)).join(' '));
+        }).call(this)).join(', ')).replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">/g, ' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked">/g, ' <i class="xwing-miniatures-font xwing-miniatures-font-linked">'));
         this.card_viewer_container.find('tr.info-actions').show();
         if (ships[data.ship].actionsred != null) {
           this.card_viewer_container.find('tr.info-actions-red td.info-data').html(((function() {
@@ -1176,16 +1176,16 @@ exportObj.CardBrowser = (function() {
           this.card_viewer_container.find('tr.info-actions-red').hide();
         }
         this.card_viewer_container.find('tr.info-upgrades').show();
-        this.card_viewer_container.find('tr.info-upgrades td.info-data').text(((function() {
+        this.card_viewer_container.find('tr.info-upgrades td.info-data').html(((function() {
           var _j, _len1, _ref14, _results;
           _ref14 = data.slots;
           _results = [];
           for (_j = 0, _len1 = _ref14.length; _j < _len1; _j++) {
             slot = _ref14[_j];
-            _results.push(exportObj.translate(this.language, 'slot', slot));
+            _results.push(exportObj.translate(this.language, 'sloticon', slot));
           }
           return _results;
-        }).call(this)).join(', ') || 'None');
+        }).call(this)).join(' ') || 'None');
         break;
       default:
         this.card_viewer_container.find('.info-type').text(type);
@@ -1381,7 +1381,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 3,
         shields: 2,
-        actions: ["Focus", "<r>> Barrel Roll</r>", "Lock", "Barrel Roll"],
+        actions: ["Focus", "R> Barrel Roll", "Lock", "Barrel Roll"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
@@ -1419,7 +1419,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 3,
         shields: 2,
-        actions: ["Focus", "<r>> Rotate Arc</r>", "Lock", "<r>> Rotate Arc</r>", "Rotate Arc"],
+        actions: ["Focus", "R> Rotate Arc", "Lock", "R> Rotate Arc", "Rotate Arc"],
         actionsred: ["Boost", "Jam"],
         maneuvers: [[0, 0, 3, 0, 0], [0, 2, 2, 2, 0], [1, 1, 2, 1, 1], [3, 1, 1, 1, 3], [0, 0, 1, 0, 0]]
       },
@@ -1445,7 +1445,7 @@ exportObj.basicCardData = function() {
         agility: 1,
         hull: 4,
         shields: 4,
-        actions: ["Focus", "<r>> Barrel Roll</r>", "Lock", "Barrel Roll"],
+        actions: ["Focus", "R> Barrel Roll", "Lock", "Barrel Roll"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 3, 0, 0, 0, 0], [0, 3, 1, 3, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
       },
@@ -1457,7 +1457,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 6,
         shields: 0,
-        actions: ["Focus", "Lock", "Barrel Roll", "<r>> Lock</r>"],
+        actions: ["Focus", "Lock", "Barrel Roll", "R> Lock"],
         actionsred: ["Reload"],
         maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 3], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 3]]
       },
@@ -1493,7 +1493,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 3,
         shields: 3,
-        actions: ["Focus", "Evade", "Lock", "Barrel Roll", "<r>> Lock</r>", "Boost", "<r>> Lock</r>"],
+        actions: ["Focus", "Evade", "Lock", "Barrel Roll", "R> Lock", "Boost", "R> Lock"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
       },
@@ -1543,7 +1543,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 4,
         shields: 1,
-        actions: ["Focus", "Lock", "Barrel Roll", "<r>> Focus</r>", "Boost", "<r>> Focus</r>"],
+        actions: ["Focus", "Lock", "Barrel Roll", "R> Focus", "Boost", "R> Focus"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [0, 1, 2, 1, 0, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0]]
       },
@@ -1619,7 +1619,7 @@ exportObj.basicCardData = function() {
         hull: 6,
         shields: 3,
         medium: true,
-        actions: ["Focus", "Lock", "Boost", "<r>> Lock</r>", "Reload"],
+        actions: ["Focus", "Lock", "Boost", "R> Lock", "Reload"],
         actionsred: ["Barrel Roll"],
         maneuvers: [[0, 0, 3, 0, 0, 0], [0, 2, 2, 2, 0, 0], [1, 1, 2, 1, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 0, 0, 0, 3]]
       },
@@ -1644,7 +1644,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 3,
         shields: 1,
-        actions: ["Focus", "Evade", "Barrel Roll", "<r>> Evade</r>"],
+        actions: ["Focus", "Evade", "Barrel Roll", "R> Evade"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0], [1, 1, 2, 1, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 1, 0, 0, 3]]
       },
@@ -1656,7 +1656,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 2,
         shields: 2,
-        actions: ["Focus", "Evade", "Lock", "Barrel Roll", "<r>> Focus</r>", "Boost", "<r>> Focus</r>"],
+        actions: ["Focus", "Evade", "Lock", "Barrel Roll", "R> Focus", "Boost", "R> Focus"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 2, 0, 2, 2, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
@@ -1682,7 +1682,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 6,
         shields: 3,
-        actions: ["Focus", "<r>> Rotate Arc</r>", "Lock", "<r>> Rotate Arc</r>"],
+        actions: ["Focus", "R> Rotate Arc", "Lock", "R> Rotate Arc"],
         actionsred: ["Barrel Roll"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 1, 3, 0, 0, 0], [1, 2, 2, 1, 3, 0, 0, 0], [0, 2, 2, 1, 0, 0, 3, 0], [0, 0, 1, 0, 0, 3, 0, 0]]
       },
@@ -1709,7 +1709,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 4,
         shields: 0,
-        actions: ["Focus", "Lock", "Barrel Roll", "<r>> Focus</r>", "Boost", "<r>> Focus</r>"],
+        actions: ["Focus", "Lock", "Barrel Roll", "R> Focus", "Boost", "R> Focus"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
@@ -1797,7 +1797,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 4,
         shields: 1,
-        actions: ["Focus", "Lock", "Barrel Roll", "<r>> Evade</r>"],
+        actions: ["Focus", "Lock", "Barrel Roll", "R> Evade"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
       },
@@ -3326,7 +3326,7 @@ exportObj.basicCardData = function() {
         points: 62,
         slots: ["Talent", "System", "Torpedo", "Modification", "Title"],
         ship_override: {
-          actions: ["Calculate", "Lock", "Barrel Roll", "<r>> Calculate</r>", "Boost", "<r>> Calculate</r>"]
+          actions: ["Calculate", "Lock", "Barrel Roll", "R> Calculate", "Boost", "R> Calculate"]
         }
       }, {
         name: "Prince Xizor",
@@ -6414,39 +6414,64 @@ if (exportObj.translations == null) {
 
 exportObj.translations.English = {
   action: {
-    "Barrel Roll": "Barrel Roll",
-    "Boost": "Boost",
-    "Evade": "Evade",
-    "Focus": "Focus",
-    "Lock": "Lock",
-    "Recover": "Recover",
-    "Reinforce": "Reinforce",
-    "Jam": "Jam",
-    "Coordinate": "Coordinate",
-    "Cloak": "Cloak",
-    "Slam": "Slam"
+    "Barrel Roll": '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>',
+    "Boost": '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>',
+    "Evade": '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>',
+    "Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>',
+    "Lock": '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>',
+    "Reload": '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>',
+    "Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>',
+    "Reinforce": '<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i>',
+    "Jam": '<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i>',
+    "Calculate": '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>',
+    "Coordinate": '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>',
+    "Cloak": '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>',
+    "Slam": '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>',
+    "R> Barrel Roll": '<r><i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i></r>',
+    "R> Focus": '<r><i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-focus"></i></r>',
+    "R> Lock": '<r><i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-lock"></i></r>',
+    "> Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>',
+    "R> Rotate Arc": '<r><i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i></r>',
+    "R> Evade": '<r><i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-evade"></i></r>',
+    "R> Calculate": '<r><i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i></r>'
+  },
+  sloticon: {
+    "Astromech": '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>',
+    "Force": '<i class="xwing-miniatures-font xwing-miniatures-font-forcepower"></i>',
+    "Bomb": '<i class="xwing-miniatures-font xwing-miniatures-font-bomb"></i>',
+    "Cannon": '<i class="xwing-miniatures-font xwing-miniatures-font-cannon"></i>',
+    "Crew": '<i class="xwing-miniatures-font xwing-miniatures-font-crew"></i>',
+    "Talent": '<i class="xwing-miniatures-font xwing-miniatures-font-talent"></i>',
+    "Missile": '<i class="xwing-miniatures-font xwing-miniatures-font-missile"></i>',
+    "System": '<i class="xwing-miniatures-font xwing-miniatures-font-system"></i>',
+    "Torpedo": '<i class="xwing-miniatures-font xwing-miniatures-font-torpedo"></i>',
+    "Turret": '<i class="xwing-miniatures-font xwing-miniatures-font-turret"></i>',
+    "Illicit": '<i class="xwing-miniatures-font xwing-miniatures-font-illicit"></i>',
+    "Configuration": '<i class="xwing-miniatures-font xwing-miniatures-font-configuration"></i>',
+    "Modification": '<i class="xwing-miniatures-font xwing-miniatures-font-modification"></i>',
+    "Gunner": '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>',
+    "Device": '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>',
+    "Tech": '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>',
+    "Title": '<i class="xwing-miniatures-font xwing-miniatures-font-title"></i>'
   },
   slot: {
     "Astromech": "Astromech",
+    "Force": "Force",
     "Bomb": "Bomb",
     "Cannon": "Cannon",
     "Crew": "Crew",
-    "Elite": "Elite",
     "Missile": "Missile",
     "System": "System",
     "Torpedo": "Torpedo",
     "Turret": "Turret",
-    "Cargo": "Cargo",
     "Hardpoint": "Hardpoint",
-    "Team": "Team",
     "Illicit": "Illicit",
-    "Salvaged Astromech": "Salvaged Astromech",
     "Configuration": "Configuration",
     "Talent": "Talent",
-    "Force": "Force",
     "Modification": "Modification",
     "Gunner": "Gunner",
     "Device": "Device",
+    "Tech": "Tech",
     "Title": "Title"
   },
   sources: {
@@ -11112,7 +11137,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 13402
+                    lineno: 13426
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -11703,7 +11728,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 14033
+              lineno: 14057
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -12423,7 +12448,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 14675
+          lineno: 14699
         }));
         __iced_deferrals._fulfill();
       });
@@ -12435,7 +12460,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 14676
+            lineno: 14700
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -13048,7 +13073,7 @@ exportObj.SquadBuilder = (function() {
           } else {
             this.info_container.find('tr.info-charge').hide();
           }
-          this.info_container.find('tr.info-actions td.info-data').html(((function() {
+          this.info_container.find('tr.info-actions td.info-data').html(((((function() {
             var _i, _len, _ref35, _ref36, _ref37, _results;
             _ref37 = ((_ref35 = (_ref36 = data.pilot.ship_override) != null ? _ref36.actions : void 0) != null ? _ref35 : data.data.actions).concat((function() {
               var _j, _len, _results1;
@@ -13065,7 +13090,7 @@ exportObj.SquadBuilder = (function() {
               _results.push(exportObj.translate(this.language, 'action', a));
             }
             return _results;
-          }).call(this)).join(' '));
+          }).call(this)).join(', ')).replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">/g, ' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked">/g, ' <i class="xwing-miniatures-font xwing-miniatures-font-linked">'));
           if (data.data.actionsred != null) {
             this.info_container.find('tr.info-actions-red td.info-data-red').html(((function() {
               var _i, _len, _ref35, _ref36, _ref37, _results;
@@ -13084,21 +13109,21 @@ exportObj.SquadBuilder = (function() {
                 _results.push(exportObj.translate(this.language, 'action', a));
               }
               return _results;
-            }).call(this)).join(' '));
+            }).call(this)).join(', '));
           }
           this.info_container.find('tr.info-actions-red').toggle(data.data.actionsred != null);
           this.info_container.find('tr.info-actions').show();
           this.info_container.find('tr.info-upgrades').show();
-          this.info_container.find('tr.info-upgrades td.info-data').text(((function() {
+          this.info_container.find('tr.info-upgrades td.info-data').html(((function() {
             var _i, _len, _ref35, _results;
             _ref35 = data.pilot.slots;
             _results = [];
             for (_i = 0, _len = _ref35.length; _i < _len; _i++) {
               slot = _ref35[_i];
-              _results.push(exportObj.translate(this.language, 'slot', slot));
+              _results.push(exportObj.translate(this.language, 'sloticon', slot));
             }
             return _results;
-          }).call(this)).join(', ') || 'None');
+          }).call(this)).join(' ') || 'None');
           this.info_container.find('p.info-maneuvers').show();
           this.info_container.find('p.info-maneuvers').html(this.getManeuverTableHTML(effective_stats.maneuvers, data.data.maneuvers));
           break;
@@ -13164,7 +13189,7 @@ exportObj.SquadBuilder = (function() {
           } else {
             this.info_container.find('tr.info-charge').hide();
           }
-          this.info_container.find('tr.info-actions td.info-data').html(((function() {
+          this.info_container.find('tr.info-actions td.info-data').html(((((function() {
             var _i, _len, _ref57, _ref58, _ref59, _results;
             _ref59 = (_ref57 = (_ref58 = data.ship_override) != null ? _ref58.actions : void 0) != null ? _ref57 : exportObj.ships[data.ship].actions;
             _results = [];
@@ -13173,7 +13198,7 @@ exportObj.SquadBuilder = (function() {
               _results.push(exportObj.translate(this.language, 'action', action));
             }
             return _results;
-          }).call(this)).join(' '));
+          }).call(this)).join(', ')).replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">/g, ' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked">/g, ' <i class="xwing-miniatures-font xwing-miniatures-font-linked">'));
           if (ships[data.ship].actionsred != null) {
             this.info_container.find('tr.info-actions-red td.info-data-red').html(((function() {
               var _i, _len, _ref57, _ref58, _ref59, _results;
@@ -13184,23 +13209,23 @@ exportObj.SquadBuilder = (function() {
                 _results.push(exportObj.translate(this.language, 'action', action));
               }
               return _results;
-            }).call(this)).join(' '));
+            }).call(this)).join(', '));
             this.info_container.find('tr.info-actions-red').show();
           } else {
             this.info_container.find('tr.info-actions-red').hide();
           }
           this.info_container.find('tr.info-actions').show();
           this.info_container.find('tr.info-upgrades').show();
-          this.info_container.find('tr.info-upgrades td.info-data').text(((function() {
+          this.info_container.find('tr.info-upgrades td.info-data').html(((function() {
             var _i, _len, _ref57, _results;
             _ref57 = data.slots;
             _results = [];
             for (_i = 0, _len = _ref57.length; _i < _len; _i++) {
               slot = _ref57[_i];
-              _results.push(exportObj.translate(this.language, 'slot', slot));
+              _results.push(exportObj.translate(this.language, 'sloticon', slot));
             }
             return _results;
-          }).call(this)).join(', ') || 'None');
+          }).call(this)).join(' ') || 'None');
           this.info_container.find('p.info-maneuvers').show();
           this.info_container.find('p.info-maneuvers').html(this.getManeuverTableHTML(ship.maneuvers, ship.maneuvers));
           break;
@@ -14110,7 +14135,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 15686
+                      lineno: 15712
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -14184,7 +14209,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 15712
+                lineno: 15738
               })
             ]);
             __iced_deferrals._fulfill();
@@ -14231,7 +14256,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 15735
+              lineno: 15761
             }));
           }
         }
@@ -14240,7 +14265,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 15737
+              lineno: 15763
             }));
           }
         }
@@ -14249,7 +14274,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 15739
+              lineno: 15765
             }));
           }
         }
@@ -15337,7 +15362,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 16498
+                lineno: 16524
               })
             ]);
             __iced_deferrals._fulfill();
@@ -15457,7 +15482,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 16560
+                  lineno: 16586
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -15479,7 +15504,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 16564
+                    lineno: 16590
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -15569,7 +15594,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 16607
+            lineno: 16633
           }));
         }
         __iced_deferrals._fulfill();
