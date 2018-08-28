@@ -2390,7 +2390,7 @@ exportObj.basicCardData = function() {
         id: 45,
         faction: "Rebel Alliance",
         ship: "YT-1300",
-        skill: 5,
+        skill: 1,
         points: 78,
         slots: ["Missile", "Gunner", "Crew", "Crew", "Modification", "Title", "Illicit"]
       }, {
