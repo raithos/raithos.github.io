@@ -21,7 +21,7 @@
 .ship-tieadvanced0, .ship-tieavanzado0 {
   background-image: url("../images/tieadvanced0.png");
   background-repeat: no-repeat;
-  background-position: 0px -30px; }
+  background-position: 0px -10px; }
 
 .ship-tieinterceptor0, .ship-tieabfangjger0, .ship-interceptortie0 {
   background-image: url("../images/tieinterceptor0.png");
@@ -51,7 +51,7 @@
 .ship-tiebomber0, .ship-bombarderotie0 {
   background-image: url("../images/tie_bomber.png");
   background-repeat: no-repeat;
-  background-position: 0px -30px; }
+  background-position: 0px -00px; }
 
 .ship-lambdaclassshuttle0, .ship-raumfhrederlambdaklasse0, .ship-lanzaderaclaselambda0 {
   background-image: url("../images/lambda_shuttle.png");
@@ -61,7 +61,7 @@
 .ship-hwk2900 {
   background-image: url("../images/hwk290.png");
   background-repeat: no-repeat;
-  background-position: 0px -30px; }
+  background-position: 0px -10px; }
 
 .ship-starviper0 {
   background-image: url("../images/starviper0.png");
@@ -81,7 +81,7 @@
 .ship-ewing0 {
   background-image: url("../images/ewing0.png");
   background-repeat: no-repeat;
-  background-position: 0px -30px; }
+  background-position: -00px -35px; }
 
 .ship-yt24000 {
   background-image: url("../images/yt2400.png");
@@ -91,7 +91,7 @@
 .ship-vt49decimator0 {
   background-image: url("../images/vt49decimator0.png");
   background-repeat: no-repeat;
-  background-position: 0px -30px; }
+  background-position: -20px -30px; }
 
 .ship-tiedefender0 {
   background-image: url("../images/tiedefender0.png");
@@ -166,12 +166,12 @@
 .ship-kwing0 {
   background-image: url("../images/kwing0.png");
   background-repeat: no-repeat;
-  background-position: 0px -30px; }
+  background-position: -25px -20px; }
 
 .ship-sheathipedeclassshuttle0 {
   background-image: url("../images/phantom20.png");
   background-repeat: no-repeat;
-  background-position: 0px -30px; }
+  background-position: -10px -35px; }
 
 .ship-auzituckgunship0 {
   background-image: url("../images/auzituckgunship.png");
@@ -186,7 +186,7 @@
 .ship-alphaclassstarwing0 {
   background-image: url("../images/starwing.png");
   background-repeat: no-repeat;
-  background-position: 0px -30px; }
+  background-position: -20px -10px; }
 
 .ship-tiepunisher0 {
   background-image: url("../images/tiepunisher.png");
@@ -196,7 +196,7 @@
 .ship-tiereaper0 {
   background-image: url("../images/tiereaper.png");
   background-repeat: no-repeat;
-  background-position: 0px -30px; }
+  background-position: 0px -10px; }
 
 .ship-tiestriker0 {
   background-image: url("../images/tiestriker.png");
@@ -266,7 +266,7 @@
 .ship-bsf17bomber0 {
   background-image: url("../images/resistancebomber.png");
   background-repeat: no-repeat;
-  background-position: 0px -30px; }
+  background-position: 0px -15px; }
 
 .ship-rz2awing0 {
   background-image: url("../images/rz2awing.png");
