@@ -26,7 +26,7 @@
 .ship-tieinterceptor0, .ship-tieabfangjger0, .ship-interceptortie0 {
   background-image: url("../images/tieinterceptor0.png");
   background-repeat: no-repeat;
-  background-position: 0px -30px; }
+  background-position: -10px -30px; }
 
 .ship-yt13000 {
   background-image: url("../images/millennium_falcon.png");
@@ -111,7 +111,7 @@
 .ship-tiefofighter0 {
   background-image: url("../images/tiefofighter0.png");
   background-repeat: no-repeat;
-  background-position: 0px -30px; }
+  background-position: 0px -40px; }
 
 .ship-t70xwing0 {
   background-image: url("../images/t70xwing0.png");
@@ -156,7 +156,7 @@
 .ship-upsilonclassshuttle0 {
   background-image: url("../images/upsilonclassshuttle.png");
   background-repeat: no-repeat;
-  background-position: 0px -30px; }
+  background-position: 0px -25px; }
 
 .ship-tieaggressor0 {
   background-image: url("../images/tieaggressor.png");
@@ -221,12 +221,12 @@
 .ship-m12lkimogilafighter0 {
   background-image: url("../images/m12lkimogilafighter.png");
   background-repeat: no-repeat;
-  background-position: 0px -30px; }
+  background-position: 0px -15px; }
 
 .ship-yt1300scum0 {
   background-image: url("../images/landos_millennium_falcon.png");
   background-repeat: no-repeat;
-  background-position: 0px -30px; }
+  background-position: -20px -00px; }
 
 .ship-miningguildtiefighter0 {
   background-image: url("../images/miningguildtie.png");
@@ -236,17 +236,17 @@
 .ship-quadjumper0 {
   background-image: url("../images/quadjumper.png");
   background-repeat: no-repeat;
-  background-position: 0px -30px; }
+  background-position: 0px -20px; }
 
 .ship-scurrgh6bomber0 {
   background-image: url("../images/scurrgh6bomber.png");
   background-repeat: no-repeat;
-  background-position: 0px -30px; }
+  background-position: 0px -40px; }
 
 .ship-yv6660 {
   background-image: url("../images/houndstooth.png");
   background-repeat: no-repeat;
-  background-position: 0px -30px; }
+  background-position: 0px -20px; }
 
 .ship-tiesffighter0 {
   background-image: url("../images/tiesf.png");
