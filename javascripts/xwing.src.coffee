@@ -1202,8 +1202,8 @@ exportObj.basicCardData = ->
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0]
-              [ 0, 1, 2, 1, 0, 0, 0, 0]
-              [ 1, 2, 2, 2, 1, 0, 0, 0]
+              [ 0, 2, 2, 2, 0, 0, 0, 0]
+              [ 1, 1, 2, 1, 1, 0, 0, 0]
               [ 1, 1, 2, 1, 1, 0, 3, 3]
               [ 0, 0, 1, 0, 0, 3, 0, 0]
             ]
@@ -8508,6 +8508,16 @@ exportObj.renameShip = (english_name, new_name) ->
     exportObj.ships[new_name].english_name = english_name
     delete exportObj.ships[english_name]
 
+exportObj.randomizer = (faction_name, points) ->
+    shiplistmaster = exportObj.basicCardData #export ship database
+    listcount = 0 #start count at 0
+    #for shiplistmaster in shiplistmaster.pilotsbyid.faction == faction_name loop grab pilots by faction
+        #if Math.random() >= 0.9
+        #append.shiplistmaster.pilotsbyid.xws ? shiplistmaster.pilotsbyid.canonical_name ? shiplistmaster.pilotsbyid.name.canonicalize())    
+            
+        
+    
+    
 exportObj = exports ? this
 
 exportObj.codeToLanguage ?= {}
