@@ -2174,7 +2174,7 @@ exportObj.basicCardData = function() {
         ship: "E-Wing",
         skill: 5,
         points: 74,
-        slots: ["Talent", "System", "Torpedo", "Astromech", "Modification"]
+        slots: ["Talent", "Sensor", "Torpedo", "Astromech", "Modification"]
       }, {
         name: "Gavin Darklighter",
         id: 22,
@@ -2183,7 +2183,7 @@ exportObj.basicCardData = function() {
         ship: "E-Wing",
         skill: 4,
         points: 68,
-        slots: ["Talent", "System", "Torpedo", "Astromech", "Modification"]
+        slots: ["Talent", "Sensor", "Torpedo", "Astromech", "Modification"]
       }, {
         name: "Rogue Squadron Escort",
         id: 23,
@@ -2191,7 +2191,7 @@ exportObj.basicCardData = function() {
         ship: "E-Wing",
         skill: 4,
         points: 63,
-        slots: ["Talent", "System", "Torpedo", "Astromech", "Modification"]
+        slots: ["Talent", "Sensor", "Torpedo", "Astromech", "Modification"]
       }, {
         name: "Knave Squadron Escort",
         id: 24,
@@ -2199,7 +2199,7 @@ exportObj.basicCardData = function() {
         ship: "E-Wing",
         skill: 2,
         points: 61,
-        slots: ["System", "Torpedo", "Astromech", "Modification"]
+        slots: ["Sensor", "Torpedo", "Astromech", "Modification"]
       }, {
         name: "Norra Wexley (Y-Wing)",
         id: 25,
@@ -2262,7 +2262,7 @@ exportObj.basicCardData = function() {
         ship: "U-Wing",
         skill: 4,
         points: 49,
-        slots: ["Talent", "System", "Crew", "Crew", "Modification", "Configuration"]
+        slots: ["Talent", "Sensor", "Crew", "Crew", "Modification", "Configuration"]
       }, {
         name: "Cassian Andor",
         id: 32,
@@ -2271,7 +2271,7 @@ exportObj.basicCardData = function() {
         ship: "U-Wing",
         skill: 3,
         points: 47,
-        slots: ["Talent", "System", "Crew", "Crew", "Modification", "Configuration"]
+        slots: ["Talent", "Sensor", "Crew", "Crew", "Modification", "Configuration"]
       }, {
         name: "Heff Tobber",
         id: 33,
@@ -2280,7 +2280,7 @@ exportObj.basicCardData = function() {
         ship: "U-Wing",
         skill: 2,
         points: 45,
-        slots: ["Talent", "System", "Crew", "Crew", "Modification", "Configuration"]
+        slots: ["Talent", "Sensor", "Crew", "Crew", "Modification", "Configuration"]
       }, {
         name: "Magva Yarro",
         id: 34,
@@ -2289,7 +2289,7 @@ exportObj.basicCardData = function() {
         ship: "U-Wing",
         skill: 3,
         points: 50,
-        slots: ["Talent", "System", "Crew", "Crew", "Modification", "Configuration", "Illicit"]
+        slots: ["Talent", "Sensor", "Crew", "Crew", "Modification", "Configuration", "Illicit"]
       }, {
         name: "Saw Gerrera",
         id: 35,
@@ -2298,7 +2298,7 @@ exportObj.basicCardData = function() {
         ship: "U-Wing",
         skill: 4,
         points: 52,
-        slots: ["Talent", "System", "Crew", "Crew", "Modification", "Configuration", "Illicit"]
+        slots: ["Talent", "Sensor", "Crew", "Crew", "Modification", "Configuration", "Illicit"]
       }, {
         name: "Benthic Two-Tubes",
         id: 36,
@@ -2307,7 +2307,7 @@ exportObj.basicCardData = function() {
         ship: "U-Wing",
         skill: 2,
         points: 47,
-        slots: ["Illicit", "System", "Crew", "Crew", "Modification", "Configuration"]
+        slots: ["Illicit", "Sensor", "Crew", "Crew", "Modification", "Configuration"]
       }, {
         name: "Blue Squadron Scout",
         id: 37,
@@ -2316,7 +2316,7 @@ exportObj.basicCardData = function() {
         ship: "U-Wing",
         skill: 2,
         points: 43,
-        slots: ["System", "Crew", "Crew", "Modification", "Configuration"]
+        slots: ["Sensor", "Crew", "Crew", "Modification", "Configuration"]
       }, {
         name: "Partisan Renegade",
         id: 38,
@@ -2324,7 +2324,7 @@ exportObj.basicCardData = function() {
         ship: "U-Wing",
         skill: 1,
         points: 43,
-        slots: ["Illicit", "System", "Crew", "Crew", "Modification", "Configuration"]
+        slots: ["Illicit", "Sensor", "Crew", "Crew", "Modification", "Configuration"]
       }, {
         name: "Dash Rendar",
         id: 39,
@@ -2651,7 +2651,7 @@ exportObj.basicCardData = function() {
         ship: "B-Wing",
         skill: 4,
         points: 50,
-        slots: ["Talent", "System", "Cannon", "Cannon", "Torpedo", "Modification"]
+        slots: ["Talent", "Sensor", "Cannon", "Cannon", "Torpedo", "Modification"]
       }, {
         name: "Ten Numb",
         id: 74,
@@ -2660,7 +2660,7 @@ exportObj.basicCardData = function() {
         ship: "B-Wing",
         skill: 4,
         points: 50,
-        slots: ["Talent", "System", "Cannon", "Cannon", "Torpedo", "Modification"]
+        slots: ["Talent", "Sensor", "Cannon", "Cannon", "Torpedo", "Modification"]
       }, {
         name: "Blade Squadron Veteran",
         id: 75,
@@ -2668,7 +2668,7 @@ exportObj.basicCardData = function() {
         ship: "B-Wing",
         skill: 3,
         points: 44,
-        slots: ["Talent", "System", "Cannon", "Cannon", "Torpedo", "Modification"]
+        slots: ["Talent", "Sensor", "Cannon", "Cannon", "Torpedo", "Modification"]
       }, {
         name: "Blue Squadron Pilot",
         id: 76,
@@ -2676,7 +2676,7 @@ exportObj.basicCardData = function() {
         ship: "B-Wing",
         skill: 2,
         points: 42,
-        slots: ["System", "Cannon", "Cannon", "Torpedo", "Modification"]
+        slots: ["Sensor", "Cannon", "Cannon", "Torpedo", "Modification"]
       }, {
         name: "Norra Wexley",
         id: 77,
@@ -2720,7 +2720,7 @@ exportObj.basicCardData = function() {
         ship: "Aggressor",
         skill: 4,
         points: 70,
-        slots: ["Talent", "System", "Cannon", "Cannon", "Device", "Illicit", "Modification", "Title"]
+        slots: ["Talent", "Sensor", "Cannon", "Cannon", "Device", "Illicit", "Modification", "Title"]
       }, {
         name: "IG-88B",
         id: 82,
@@ -2728,7 +2728,7 @@ exportObj.basicCardData = function() {
         ship: "Aggressor",
         skill: 4,
         points: 70,
-        slots: ["Talent", "System", "Cannon", "Cannon", "Device", "Illicit", "Modification", "Title"]
+        slots: ["Talent", "Sensor", "Cannon", "Cannon", "Device", "Illicit", "Modification", "Title"]
       }, {
         name: "IG-88C",
         id: 83,
@@ -2736,7 +2736,7 @@ exportObj.basicCardData = function() {
         ship: "Aggressor",
         skill: 4,
         points: 70,
-        slots: ["Talent", "System", "Cannon", "Cannon", "Device", "Illicit", "Modification", "Title"]
+        slots: ["Talent", "Sensor", "Cannon", "Cannon", "Device", "Illicit", "Modification", "Title"]
       }, {
         name: "IG-88D",
         id: 84,
@@ -2744,7 +2744,7 @@ exportObj.basicCardData = function() {
         ship: "Aggressor",
         skill: 4,
         points: 70,
-        slots: ["Talent", "System", "Cannon", "Cannon", "Device", "Illicit", "Modification", "Title"]
+        slots: ["Talent", "Sensor", "Cannon", "Cannon", "Device", "Illicit", "Modification", "Title"]
       }, {
         name: "Kavil",
         id: 85,
@@ -2979,7 +2979,7 @@ exportObj.basicCardData = function() {
         ship: "G-1A Starfighter",
         skill: 3,
         points: 49,
-        slots: ["Talent", "System", "Crew", "Illicit", "Modification", "Title"],
+        slots: ["Talent", "Sensor", "Crew", "Illicit", "Modification", "Title"],
         ship_override: {
           actions: ["Calculate", "Lock", "Jam"]
         }
@@ -2991,7 +2991,7 @@ exportObj.basicCardData = function() {
         ship: "G-1A Starfighter",
         skill: 3,
         points: 47,
-        slots: ["Talent", "System", "Crew", "Illicit", "Modification", "Title"]
+        slots: ["Talent", "Sensor", "Crew", "Illicit", "Modification", "Title"]
       }, {
         name: "Gand Findsman",
         id: 111,
@@ -2999,7 +2999,7 @@ exportObj.basicCardData = function() {
         ship: "G-1A Starfighter",
         skill: 1,
         points: 43,
-        slots: ["System", "Crew", "Illicit", "Modification", "Title"]
+        slots: ["Sensor", "Crew", "Illicit", "Modification", "Title"]
       }, {
         name: "Palob Godalhi",
         id: 112,
@@ -3324,7 +3324,7 @@ exportObj.basicCardData = function() {
         ship: "StarViper",
         skill: 5,
         points: 62,
-        slots: ["Talent", "System", "Torpedo", "Modification", "Title"],
+        slots: ["Talent", "Sensor", "Torpedo", "Modification", "Title"],
         ship_override: {
           actions: ["Calculate", "Lock", "Barrel Roll", "R> Calculate", "Boost", "R> Calculate"]
         }
@@ -3336,7 +3336,7 @@ exportObj.basicCardData = function() {
         ship: "StarViper",
         skill: 4,
         points: 54,
-        slots: ["Talent", "System", "Torpedo", "Modification", "Title"]
+        slots: ["Talent", "Sensor", "Torpedo", "Modification", "Title"]
       }, {
         name: "Dalan Oberos (StarViper)",
         id: 149,
@@ -3346,7 +3346,7 @@ exportObj.basicCardData = function() {
         ship: "StarViper",
         skill: 4,
         points: 54,
-        slots: ["Talent", "System", "Torpedo", "Modification", "Title"]
+        slots: ["Talent", "Sensor", "Torpedo", "Modification", "Title"]
       }, {
         name: "Black Sun Assassin",
         id: 150,
@@ -3354,7 +3354,7 @@ exportObj.basicCardData = function() {
         ship: "StarViper",
         skill: 3,
         points: 48,
-        slots: ["Talent", "System", "Torpedo", "Modification", "Title"]
+        slots: ["Talent", "Sensor", "Torpedo", "Modification", "Title"]
       }, {
         name: "Black Sun Enforcer",
         id: 151,
@@ -3362,7 +3362,7 @@ exportObj.basicCardData = function() {
         ship: "StarViper",
         skill: 2,
         points: 46,
-        slots: ["System", "Torpedo", "Modification", "Title"]
+        slots: ["Sensor", "Torpedo", "Modification", "Title"]
       }, {
         name: "Moralo Eval",
         id: 152,
@@ -3450,7 +3450,7 @@ exportObj.basicCardData = function() {
         ship: "Alpha-Class Star Wing",
         skill: 4,
         points: 41,
-        slots: ["Talent", "System", "Torpedo", "Missile", "Modification", "Configuration"]
+        slots: ["Talent", "Sensor", "Torpedo", "Missile", "Modification", "Configuration"]
       }, {
         name: "Lieutenant Karsabi",
         id: 162,
@@ -3459,7 +3459,7 @@ exportObj.basicCardData = function() {
         ship: "Alpha-Class Star Wing",
         skill: 3,
         points: 39,
-        slots: ["Talent", "System", "Torpedo", "Missile", "Modification", "Configuration"]
+        slots: ["Talent", "Sensor", "Torpedo", "Missile", "Modification", "Configuration"]
       }, {
         name: "Rho Squadron Pilot",
         id: 163,
@@ -3467,7 +3467,7 @@ exportObj.basicCardData = function() {
         ship: "Alpha-Class Star Wing",
         skill: 3,
         points: 37,
-        slots: ["Talent", "System", "Torpedo", "Missile", "Modification", "Configuration"]
+        slots: ["Talent", "Sensor", "Torpedo", "Missile", "Modification", "Configuration"]
       }, {
         name: "Nu Squadron Pilot",
         id: 164,
@@ -3475,7 +3475,7 @@ exportObj.basicCardData = function() {
         ship: "Alpha-Class Star Wing",
         skill: 2,
         points: 35,
-        slots: ["System", "Torpedo", "Missile", "Modification", "Configuration"]
+        slots: ["Sensor", "Torpedo", "Missile", "Modification", "Configuration"]
       }, {
         name: "Captain Kagi",
         id: 165,
@@ -3484,7 +3484,7 @@ exportObj.basicCardData = function() {
         ship: "Lambda-Class Shuttle",
         skill: 4,
         points: 48,
-        slots: ["System", "Cannon", "Crew", "Crew", "Modification", "Title"]
+        slots: ["Sensor", "Cannon", "Crew", "Crew", "Modification", "Title"]
       }, {
         name: "Lieutenant Sai",
         id: 166,
@@ -3493,7 +3493,7 @@ exportObj.basicCardData = function() {
         ship: "Lambda-Class Shuttle",
         skill: 3,
         points: 47,
-        slots: ["System", "Cannon", "Crew", "Crew", "Modification", "Title"]
+        slots: ["Sensor", "Cannon", "Crew", "Crew", "Modification", "Title"]
       }, {
         name: "Colonel Jendon",
         id: 167,
@@ -3503,7 +3503,7 @@ exportObj.basicCardData = function() {
         skill: 3,
         charge: 2,
         points: 46,
-        slots: ["System", "Cannon", "Crew", "Crew", "Modification", "Title"]
+        slots: ["Sensor", "Cannon", "Crew", "Crew", "Modification", "Title"]
       }, {
         name: "Omicron Group Pilot",
         id: 168,
@@ -3511,7 +3511,7 @@ exportObj.basicCardData = function() {
         ship: "Lambda-Class Shuttle",
         skill: 1,
         points: 43,
-        slots: ["System", "Cannon", "Crew", "Crew", "Modification", "Title"]
+        slots: ["Sensor", "Cannon", "Crew", "Crew", "Modification", "Title"]
       }, {
         name: "Grand Inquisitor",
         id: 169,
@@ -3521,7 +3521,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         points: 58,
         force: 2,
-        slots: ["Force", "System", "Missile"]
+        slots: ["Force", "Sensor", "Missile"]
       }, {
         name: "Seventh Sister",
         id: 170,
@@ -3531,7 +3531,7 @@ exportObj.basicCardData = function() {
         skill: 4,
         points: 48,
         force: 2,
-        slots: ["Force", "System", "Missile"]
+        slots: ["Force", "Sensor", "Missile"]
       }, {
         name: "Inquisitor",
         id: 171,
@@ -3540,7 +3540,7 @@ exportObj.basicCardData = function() {
         skill: 3,
         points: 40,
         force: 1,
-        slots: ["Force", "System", "Missile"]
+        slots: ["Force", "Sensor", "Missile"]
       }, {
         name: "Baron of the Empire",
         id: 172,
@@ -3548,7 +3548,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Advanced Prototype",
         skill: 3,
         points: 34,
-        slots: ["Talent", "System", "Missile"]
+        slots: ["Talent", "Sensor", "Missile"]
       }, {
         name: "Darth Vader",
         id: 173,
@@ -3558,7 +3558,7 @@ exportObj.basicCardData = function() {
         skill: 6,
         points: 70,
         force: 3,
-        slots: ["Force", "System", "Missile", "Modification"]
+        slots: ["Force", "Sensor", "Missile", "Modification"]
       }, {
         name: "Maarek Stele",
         id: 174,
@@ -3567,7 +3567,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Advanced",
         skill: 5,
         points: 50,
-        slots: ["Talent", "System", "Missile", "Modification"]
+        slots: ["Talent", "Sensor", "Missile", "Modification"]
       }, {
         name: "Ved Foslo",
         id: 175,
@@ -3576,7 +3576,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Advanced",
         skill: 4,
         points: 47,
-        slots: ["Talent", "System", "Missile", "Modification"]
+        slots: ["Talent", "Sensor", "Missile", "Modification"]
       }, {
         name: "Zertik Strom",
         id: 176,
@@ -3585,7 +3585,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Advanced",
         skill: 3,
         points: 45,
-        slots: ["System", "Missile", "Modification"]
+        slots: ["Sensor", "Missile", "Modification"]
       }, {
         name: "Storm Squadron Ace",
         id: 177,
@@ -3593,7 +3593,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Advanced",
         skill: 3,
         points: 43,
-        slots: ["Talent", "System", "Missile", "Modification"]
+        slots: ["Talent", "Sensor", "Missile", "Modification"]
       }, {
         name: "Tempest Squadron Pilot",
         id: 178,
@@ -3601,7 +3601,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Advanced",
         skill: 2,
         points: 41,
-        slots: ["System", "Missile", "Modification"]
+        slots: ["Sensor", "Missile", "Modification"]
       }, {
         name: "Soontir Fel",
         id: 179,
@@ -3713,7 +3713,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Punisher",
         skill: 5,
         points: 44,
-        slots: ["System", "Torpedo", "Missile", "Missile", "Gunner", "Device", "Device", "Modification"]
+        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Gunner", "Device", "Device", "Modification"]
       }, {
         name: '"Deathrain"',
         id: 192,
@@ -3722,7 +3722,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Punisher",
         skill: 4,
         points: 42,
-        slots: ["System", "Torpedo", "Missile", "Missile", "Gunner", "Device", "Device", "Modification"]
+        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Gunner", "Device", "Device", "Modification"]
       }, {
         name: "Cutlass Squadron Pilot",
         id: 193,
@@ -3730,7 +3730,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Punisher",
         skill: 2,
         points: 36,
-        slots: ["System", "Torpedo", "Missile", "Missile", "Gunner", "Device", "Device", "Modification"]
+        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Gunner", "Device", "Device", "Modification"]
       }, {
         name: "Colonel Vessery",
         id: 194,
@@ -3739,7 +3739,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Defender",
         skill: 4,
         points: 88,
-        slots: ["Talent", "System", "Cannon", "Missile"]
+        slots: ["Talent", "Sensor", "Cannon", "Missile"]
       }, {
         name: "Countess Ryad",
         id: 195,
@@ -3748,7 +3748,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Defender",
         skill: 4,
         points: 86,
-        slots: ["Talent", "System", "Cannon", "Missile"]
+        slots: ["Talent", "Sensor", "Cannon", "Missile"]
       }, {
         name: "Rexler Brath",
         id: 196,
@@ -3757,7 +3757,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Defender",
         skill: 5,
         points: 84,
-        slots: ["Talent", "System", "Cannon", "Missile"]
+        slots: ["Talent", "Sensor", "Cannon", "Missile"]
       }, {
         name: "Onyx Squadron Ace",
         id: 197,
@@ -3765,7 +3765,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Defender",
         skill: 4,
         points: 78,
-        slots: ["Talent", "System", "Cannon", "Missile"]
+        slots: ["Talent", "Sensor", "Cannon", "Missile"]
       }, {
         name: "Delta Squadron Pilot",
         id: 198,
@@ -3773,7 +3773,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Defender",
         skill: 1,
         points: 72,
-        slots: ["System", "Cannon", "Missile"]
+        slots: ["Sensor", "Cannon", "Missile"]
       }, {
         name: '"Whisper"',
         id: 199,
@@ -3782,7 +3782,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Phantom",
         skill: 5,
         points: 52,
-        slots: ["Talent", "System", "Crew", "Modification"]
+        slots: ["Talent", "Sensor", "Crew", "Modification"]
       }, {
         name: '"Echo"',
         id: 200,
@@ -3791,7 +3791,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Phantom",
         skill: 4,
         points: 50,
-        slots: ["Talent", "System", "Crew", "Modification"]
+        slots: ["Talent", "Sensor", "Crew", "Modification"]
       }, {
         name: '"Sigma Squadron Ace"',
         id: 201,
@@ -3799,7 +3799,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Phantom",
         skill: 4,
         points: 46,
-        slots: ["Talent", "System", "Crew", "Modification"]
+        slots: ["Talent", "Sensor", "Crew", "Modification"]
       }, {
         name: "Imdaar Test Pilot",
         id: 202,
@@ -3807,7 +3807,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Phantom",
         skill: 3,
         points: 44,
-        slots: ["System", "Crew", "Modification"]
+        slots: ["Sensor", "Crew", "Modification"]
       }, {
         name: "Captain Jonus",
         id: 203,
@@ -4129,7 +4129,7 @@ exportObj.basicCardData = function() {
         ship: "Upsilon-class Shuttle",
         skill: 0,
         points: 100,
-        slots: ["Tech", "Tech", "Crew", "Crew", "Cannon", "System", "Modification"]
+        slots: ["Tech", "Tech", "Crew", "Crew", "Cannon", "Sensor", "Modification"]
       }, {
         name: "Lulo Lampar",
         id: 239,
@@ -4167,7 +4167,7 @@ exportObj.basicCardData = function() {
         ship: "TIE/sf Fighter",
         skill: 4,
         points: 100,
-        slots: ["Talent", "Tech", "Gunner", "System", "Modification"]
+        slots: ["Talent", "Tech", "Gunner", "Sensor", "Modification"]
       }, {
         name: '"Quickdraw"',
         id: 243,
@@ -4176,7 +4176,7 @@ exportObj.basicCardData = function() {
         ship: "TIE/sf Fighter",
         skill: 0,
         points: 100,
-        slots: ["Talent", "Tech", "Gunner", "System", "Modification"]
+        slots: ["Talent", "Tech", "Gunner", "Sensor", "Modification"]
       }, {
         name: "Rey",
         id: 244,
@@ -5256,23 +5256,23 @@ exportObj.basicCardData = function() {
       }, {
         name: "Advanced Sensors",
         id: 111,
-        slot: "System",
+        slot: "Sensor",
         points: 8
       }, {
         name: "Collision Detector",
         id: 112,
-        slot: "System",
+        slot: "Sensor",
         points: 5,
         charge: 2
       }, {
         name: "Fire-Control System",
         id: 113,
-        slot: "System",
+        slot: "Sensor",
         points: 3
       }, {
         name: "Trajectory Simulator",
         id: 114,
-        slot: "System",
+        slot: "Sensor",
         points: 3
       }, {
         name: "Composure",
@@ -5565,7 +5565,7 @@ exportObj.basicCardData = function() {
         confersAddons: [
           {
             type: exportObj.Upgrade,
-            slot: 'System'
+            slot: 'Sensor'
           }, {
             type: exportObj.Upgrade,
             slot: 'Astromech'
@@ -6377,7 +6377,7 @@ exportObj.setupCardData = function(basic_cards, pilot_translations, upgrade_tran
 
 exportObj.fixIcons = function(data) {
   if (data.text != null) {
-    return data.text = data.text.replace(/%ASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>').replace(/%BULLSEYEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bullseyearc"></i>').replace(/%GUNNER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>').replace(/%SINGLETURRETARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>').replace(/%FRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>').replace(/%REARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reararc"></i>').replace(/%ROTATEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>').replace(/%FULLFRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullfrontarc"></i>').replace(/%FULLREARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullreararc"></i>').replace(/%DEVICE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>').replace(/%RELOAD%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>').replace(/%CONFIG%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-config"></i>').replace(/%FORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>').replace(/%CHARGE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>').replace(/%CALCULATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>').replace(/%BANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankleft"></i>').replace(/%BANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankright"></i>').replace(/%BARRELROLL%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>').replace(/%BOMB%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bomb"></i>').replace(/%BOOST%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>').replace(/%CANNON%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cannon"></i>').replace(/%CARGO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cargo"></i>').replace(/%CLOAK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>').replace(/%COORDINATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>').replace(/%CRIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crit"></i>').replace(/%CREW%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crew"></i>').replace(/%DUALCARD%/g, '<span class="card-restriction">Dual card.</span>').replace(/%ELITE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-elite"></i>').replace(/%EVADE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>').replace(/%FOCUS%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>').replace(/%HARDPOINT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>').replace(/%HIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hit"></i>').replace(/%ILLICIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-illicit"></i>').replace(/%JAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i>').replace(/%KTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%MISSILE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-missile"></i>').replace(/%RECOVER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-recover"></i>').replace(/%REINFORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i>').replace(/%SALVAGEDASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-salvagedastromech"></i>').replace(/%SLAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>').replace(/%SLOOPLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopleft"></i>').replace(/%SLOOPRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopright"></i>').replace(/%STRAIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-straight"></i>').replace(/%STOP%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-stop"></i>').replace(/%SYSTEM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-system"></i>').replace(/%LOCK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>').replace(/%TEAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-team"></i>').replace(/%TECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>').replace(/%TORPEDO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-torpedo"></i>').replace(/%TROLLLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollleft"></i>').replace(/%TROLLRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollright"></i>').replace(/%TURNLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnleft"></i>').replace(/%TURNRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnright"></i>').replace(/%TURRET%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turret"></i>').replace(/%UTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%HUGESHIPONLY%/g, '<span class="card-restriction">Huge ship only.</span>').replace(/%LARGESHIPONLY%/g, '<span class="card-restriction">Large ship only.</span>').replace(/%SMALLSHIPONLY%/g, '<span class="card-restriction">Small ship only.</span>').replace(/%REBELONLY%/g, '<span class="card-restriction">Rebel only.</span>').replace(/%IMPERIALONLY%/g, '<span class="card-restriction">Imperial only.</span>').replace(/%SCUMONLY%/g, '<span class="card-restriction">Scum only.</span>').replace(/%LIMITED%/g, '<span class="card-restriction">Limited.</span>').replace(/%LINEBREAK%/g, '<br /><br />').replace(/%DE_HUGESHIPONLY%/g, '<span class="card-restriction">Nur für riesige Schiffe.</span>').replace(/%DE_LARGESHIPONLY%/g, '<span class="card-restriction">Nur für grosse Schiffe.</span>').replace(/%DE_REBELONLY%/g, '<span class="card-restriction">Nur für Rebellen.</span>').replace(/%DE_IMPERIALONLY%/g, '<span class="card-restriction">Nur für das Imperium.</span>').replace(/%DE_SCUMONLY%/g, '<span class="card-restriction">Nur für Abschaum & Kriminelle.</span>').replace(/%DE_GOZANTIONLY%/g, '<span class="card-restriction">Nur für Kreuzer der <em>Gozanti</em>-Klasse.</span>').replace(/%DE_LIMITED%/g, '<span class="card-restriction">Limitiert.</span>').replace(/%DE_SMALLSHIPONLY%/g, '<span class="card-restriction">Nur für kleine Schiffe.</span>').replace(/%DE_DUALCARD%/g, '<span class="card-restriction">Doppelseiteige Karte.</span>').replace(/%FR_HUGESHIPONLY%/g, '<span class="card-restriction">Vaisseau immense uniquement.</span>').replace(/%FR_LARGESHIPONLY%/g, '<span class="card-restriction">Grand vaisseau uniquement.</span>').replace(/%FR_REBELONLY%/g, '<span class="card-restriction">Rebelle uniquement.</span>').replace(/%FR_IMPERIALONLY%/g, '<span class="card-restriction">Impérial uniquement.</span>').replace(/%FR_SCUMONLY%/g, '<span class="card-restriction">Racailles uniquement.</span>');
+    return data.text = data.text.replace(/%ASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>').replace(/%BULLSEYEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bullseyearc"></i>').replace(/%GUNNER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>').replace(/%SINGLETURRETARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>').replace(/%FRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>').replace(/%REARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reararc"></i>').replace(/%ROTATEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>').replace(/%FULLFRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullfrontarc"></i>').replace(/%FULLREARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullreararc"></i>').replace(/%DEVICE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>').replace(/%RELOAD%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>').replace(/%CONFIG%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-config"></i>').replace(/%FORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>').replace(/%CHARGE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>').replace(/%CALCULATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>').replace(/%BANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankleft"></i>').replace(/%BANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankright"></i>').replace(/%BARRELROLL%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>').replace(/%BOMB%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bomb"></i>').replace(/%BOOST%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>').replace(/%CANNON%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cannon"></i>').replace(/%CARGO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cargo"></i>').replace(/%CLOAK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>').replace(/%COORDINATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>').replace(/%CRIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crit"></i>').replace(/%CREW%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crew"></i>').replace(/%DUALCARD%/g, '<span class="card-restriction">Dual card.</span>').replace(/%ELITE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-elite"></i>').replace(/%EVADE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>').replace(/%FOCUS%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>').replace(/%HARDPOINT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>').replace(/%HIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hit"></i>').replace(/%ILLICIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-illicit"></i>').replace(/%JAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i>').replace(/%KTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%MISSILE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-missile"></i>').replace(/%RECOVER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-recover"></i>').replace(/%REINFORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i>').replace(/%SALVAGEDASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-salvagedastromech"></i>').replace(/%SLAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>').replace(/%SLOOPLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopleft"></i>').replace(/%SLOOPRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopright"></i>').replace(/%STRAIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-straight"></i>').replace(/%STOP%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-stop"></i>').replace(/%SENSOR%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-system"></i>').replace(/%LOCK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>').replace(/%TEAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-team"></i>').replace(/%TECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>').replace(/%TORPEDO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-torpedo"></i>').replace(/%TROLLLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollleft"></i>').replace(/%TROLLRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollright"></i>').replace(/%TURNLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnleft"></i>').replace(/%TURNRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnright"></i>').replace(/%TURRET%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turret"></i>').replace(/%UTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%HUGESHIPONLY%/g, '<span class="card-restriction">Huge ship only.</span>').replace(/%LARGESHIPONLY%/g, '<span class="card-restriction">Large ship only.</span>').replace(/%SMALLSHIPONLY%/g, '<span class="card-restriction">Small ship only.</span>').replace(/%REBELONLY%/g, '<span class="card-restriction">Rebel only.</span>').replace(/%IMPERIALONLY%/g, '<span class="card-restriction">Imperial only.</span>').replace(/%SCUMONLY%/g, '<span class="card-restriction">Scum only.</span>').replace(/%LIMITED%/g, '<span class="card-restriction">Limited.</span>').replace(/%LINEBREAK%/g, '<br /><br />').replace(/%DE_HUGESHIPONLY%/g, '<span class="card-restriction">Nur für riesige Schiffe.</span>').replace(/%DE_LARGESHIPONLY%/g, '<span class="card-restriction">Nur für grosse Schiffe.</span>').replace(/%DE_REBELONLY%/g, '<span class="card-restriction">Nur für Rebellen.</span>').replace(/%DE_IMPERIALONLY%/g, '<span class="card-restriction">Nur für das Imperium.</span>').replace(/%DE_SCUMONLY%/g, '<span class="card-restriction">Nur für Abschaum & Kriminelle.</span>').replace(/%DE_GOZANTIONLY%/g, '<span class="card-restriction">Nur für Kreuzer der <em>Gozanti</em>-Klasse.</span>').replace(/%DE_LIMITED%/g, '<span class="card-restriction">Limitiert.</span>').replace(/%DE_SMALLSHIPONLY%/g, '<span class="card-restriction">Nur für kleine Schiffe.</span>').replace(/%DE_DUALCARD%/g, '<span class="card-restriction">Doppelseiteige Karte.</span>').replace(/%FR_HUGESHIPONLY%/g, '<span class="card-restriction">Vaisseau immense uniquement.</span>').replace(/%FR_LARGESHIPONLY%/g, '<span class="card-restriction">Grand vaisseau uniquement.</span>').replace(/%FR_REBELONLY%/g, '<span class="card-restriction">Rebelle uniquement.</span>').replace(/%FR_IMPERIALONLY%/g, '<span class="card-restriction">Impérial uniquement.</span>').replace(/%FR_SCUMONLY%/g, '<span class="card-restriction">Racailles uniquement.</span>');
   }
 };
 
@@ -6449,7 +6449,7 @@ exportObj.translations.English = {
     "Crew": '<i class="xwing-miniatures-font xwing-miniatures-font-crew"></i>',
     "Talent": '<i class="xwing-miniatures-font xwing-miniatures-font-talent"></i>',
     "Missile": '<i class="xwing-miniatures-font xwing-miniatures-font-missile"></i>',
-    "System": '<i class="xwing-miniatures-font xwing-miniatures-font-system"></i>',
+    "Sensor": '<i class="xwing-miniatures-font xwing-miniatures-font-system"></i>',
     "Torpedo": '<i class="xwing-miniatures-font xwing-miniatures-font-torpedo"></i>',
     "Turret": '<i class="xwing-miniatures-font xwing-miniatures-font-turret"></i>',
     "Illicit": '<i class="xwing-miniatures-font xwing-miniatures-font-illicit"></i>',
@@ -6467,7 +6467,7 @@ exportObj.translations.English = {
     "Cannon": "Cannon",
     "Crew": "Crew",
     "Missile": "Missile",
-    "System": "System",
+    "Sensor": "Sensor",
     "Torpedo": "Torpedo",
     "Turret": "Turret",
     "Hardpoint": "Hardpoint",
@@ -7514,7 +7514,7 @@ exportObj.cardLoaders.English = function() {
       text: "Before you engage, you may perform a red %FOCUS% action."
     },
     "Havoc": {
-      text: "Remove %CREW% slot. Add %SYSTEM% and %ASTROMECH% slots."
+      text: "Remove %CREW% slot. Add %SENSOR% and %ASTROMECH% slots."
     },
     "Heavy Laser Cannon": {
       text: "Attack: After the Modify Attack Dice step, change all %CRIT% results to %HIT% results."
