@@ -13621,12 +13621,12 @@ exportObj.SquadBuilder = (function() {
       points: this.total_points,
       vendor: {
         yasb: {
-          builder: '(Yet Another) X-Wing Miniatures Squad Builder',
+          builder: 'Yet Another Squad Builder 2.0',
           builder_url: window.location.href.split('?')[0],
           link: this.getPermaLink()
         }
       },
-      version: '0.3.0'
+      version: '0.1'
     };
     _ref = this.ships;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -13720,7 +13720,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.loadFromXWS = function(xws, cb) {
-    var a, addon, addon_added, addons, err, error, i, modification, new_ship, p, pilot, ship_data, ship_name, shipnameXWS, slot, slot_guesses, success, title, upgrade, upgrade_canonical, upgrade_canonicals, upgrade_type, version_list, x, xws_faction, _, _base1, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _m, _n, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
+    var addon, addon_added, addons, err, error, i, new_ship, p, pilot, ship_data, ship_name, shipnameXWS, slot, success, upgrade, upgrade_canonical, upgrade_canonicals, upgrade_type, version_list, x, xws_faction, _, _base1, _i, _j, _k, _l, _len, _len1, _len2, _ref, _ref1, _ref2, _ref3, _ref4, _ref5;
     success = null;
     error = null;
     version_list = (function() {
@@ -13805,60 +13805,15 @@ exportObj.SquadBuilder = (function() {
             for (_ = _k = 0; _k < 1000; _ = ++_k) {
               addon = addons.shift();
               addon_added = false;
-              switch (addon.type) {
-                case 'Modification':
-                  _ref5 = new_ship.modifications;
-                  for (_l = 0, _len2 = _ref5.length; _l < _len2; _l++) {
-                    modification = _ref5[_l];
-                    if (modification.data != null) {
-                      continue;
-                    }
-                    modification.setData(addon.data);
-                    addon_added = true;
-                    break;
-                  }
-                  break;
-                case 'Title':
-                  _ref6 = new_ship.titles;
-                  for (_m = 0, _len3 = _ref6.length; _m < _len3; _m++) {
-                    title = _ref6[_m];
-                    if (title.data != null) {
-                      continue;
-                    }
-                    if (addon.data instanceof Array) {
-                      slot_guesses = (function() {
-                        var _len4, _n, _ref7, _results;
-                        _results = [];
-                        for (_n = 0, _len4 = addons.length; _n < _len4; _n++) {
-                          a = addons[_n];
-                          if ((_ref7 = a.data.slot) === 'Cannon' || _ref7 === 'Missile' || _ref7 === 'Torpedo') {
-                            _results.push(a.data.slot);
-                          }
-                        }
-                        return _results;
-                      })();
-                      if (slot_guesses.length > 0) {
-                        title.setData(exportObj.titlesByLocalizedName["\"Heavy Scyk\" Interceptor (" + slot_guesses[0] + ")"]);
-                      } else {
-                        title.setData(addon.data[0]);
-                      }
-                    } else {
-                      title.setData(addon.data);
-                    }
-                    addon_added = true;
-                  }
-                  break;
-                default:
-                  _ref7 = new_ship.upgrades;
-                  for (i = _n = 0, _len4 = _ref7.length; _n < _len4; i = ++_n) {
-                    upgrade = _ref7[i];
-                    if (upgrade.slot !== addon.slot || (upgrade.data != null)) {
-                      continue;
-                    }
-                    upgrade.setData(addon.data);
-                    addon_added = true;
-                    break;
-                  }
+              _ref5 = new_ship.upgrades;
+              for (i = _l = 0, _len2 = _ref5.length; _l < _len2; i = ++_l) {
+                upgrade = _ref5[i];
+                if (upgrade.slot !== addon.slot || (upgrade.data != null)) {
+                  continue;
+                }
+                upgrade.setData(addon.data);
+                addon_added = true;
+                break;
               }
               if (addon_added) {
                 if (addons.length === 0) {
@@ -14141,7 +14096,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 15722
+                      lineno: 15695
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -14215,7 +14170,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 15748
+                lineno: 15721
               })
             ]);
             __iced_deferrals._fulfill();
@@ -14262,7 +14217,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 15771
+              lineno: 15744
             }));
           }
         }
@@ -14271,7 +14226,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 15773
+              lineno: 15746
             }));
           }
         }
@@ -14280,7 +14235,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 15775
+              lineno: 15748
             }));
           }
         }
@@ -15368,7 +15323,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 16534
+                lineno: 16507
               })
             ]);
             __iced_deferrals._fulfill();
@@ -15428,7 +15383,7 @@ GenericAddon = (function() {
               return this.type.toLowerCase().replace(/[^0-9a-z]/gi, '');
           }
         }).call(_this);
-        icon = icon.replace("configuration", "config").replace("force", "forcepower");
+        icon = icon.replace("configuration", "config").replace("force", "forcepower").replace("sensor", "system");
         $(container).append("<i class=\"xwing-miniatures-font xwing-miniatures-font-" + icon + "\"></i> " + obj.text);
         return void 0;
       };
@@ -15488,7 +15443,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 16596
+                  lineno: 16570
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -15510,7 +15465,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 16600
+                    lineno: 16574
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -15600,7 +15555,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 16643
+            lineno: 16617
           }));
         }
         __iced_deferrals._fulfill();
@@ -15924,13 +15879,17 @@ exportObj.fromXWSFaction = {
   'rebels': 'Rebel Alliance',
   'galacticempire': 'Galactic Empire',
   'imperial': 'Galactic Empire',
-  'scumandvillainy': 'Scum and Villainy'
+  'scumandvillainy': 'Scum and Villainy',
+  'firstorder': 'First Order',
+  'resistance': 'Resistance'
 };
 
 exportObj.toXWSFaction = {
   'Rebel Alliance': 'rebelalliance',
   'Galactic Empire': 'galacticempire',
-  'Scum and Villainy': 'scumandvillainy'
+  'Scum and Villainy': 'scumandvillainy',
+  'First Order': 'firstorder',
+  'Resistance': 'resistance'
 };
 
 exportObj.toXWSUpgrade = {
@@ -15944,8 +15903,8 @@ exportObj.fromXWSUpgrade = {
   'astromechdroid': 'Astromech',
   'ept': 'Talent',
   'elitepilottalent': 'Talent',
-  'mod': 'Modification',
-  'system': 'Sensor'
+  'system': 'Sensor',
+  'mod': 'Modification'
 };
 
 SPEC_URL = 'https://github.com/elistevens/xws-spec';
