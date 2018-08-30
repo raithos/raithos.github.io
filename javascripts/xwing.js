@@ -13621,7 +13621,7 @@ exportObj.SquadBuilder = (function() {
       points: this.total_points,
       vendor: {
         yasb: {
-          builder: 'Yet Another Squad Builder 2.0',
+          builder: 'Yet Another Squad Builder 2',
           builder_url: window.location.href.split('?')[0],
           link: this.getPermaLink()
         }
