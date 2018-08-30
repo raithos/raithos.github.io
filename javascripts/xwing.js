@@ -13621,12 +13621,12 @@ exportObj.SquadBuilder = (function() {
       points: this.total_points,
       vendor: {
         yasb: {
-          builder: 'Yet Another Squad Builder 2',
+          builder: 'Yet Another Squad Builder 2.0',
           builder_url: window.location.href.split('?')[0],
           link: this.getPermaLink()
         }
       },
-      version: '0.1'
+      version: '0.3.0'
     };
     _ref = this.ships;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
