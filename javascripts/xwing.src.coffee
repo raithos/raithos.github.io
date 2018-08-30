@@ -16933,6 +16933,7 @@ exportObj.fromXWSUpgrade =
     'ept': 'Talent'
     'elitepilottalent': 'Talent'
     'mod': 'Modification'
+    'system': 'Sensor'
 
 SPEC_URL = 'https://github.com/elistevens/xws-spec'
 

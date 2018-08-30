@@ -15944,7 +15944,8 @@ exportObj.fromXWSUpgrade = {
   'astromechdroid': 'Astromech',
   'ept': 'Talent',
   'elitepilottalent': 'Talent',
-  'mod': 'Modification'
+  'mod': 'Modification',
+  'system': 'Sensor'
 };
 
 SPEC_URL = 'https://github.com/elistevens/xws-spec';
