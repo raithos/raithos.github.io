@@ -3607,9 +3607,11 @@ exportObj.basicCardData = function() {
         points: 41,
         slots: ["Sensor", "Missile", "Modification"]
       }, {
-        name: "Soontir Fel",
+        name: "Soontir Fel Hates Dee Yun",
         id: 179,
         unique: true,
+        canonical_name: 'Soontir Fel'.canonicalize(),
+        xws: "soontirfel",
         faction: "Galactic Empire",
         ship: "TIE Interceptor",
         skill: 6,
@@ -3779,9 +3781,11 @@ exportObj.basicCardData = function() {
         points: 72,
         slots: ["Sensor", "Cannon", "Missile"]
       }, {
-        name: '"Whisper"',
+        name: '"Whisper" Hates Dee Yun',
         id: 199,
         unique: true,
+        canonical_name: '"Whisper"'.canonicalize(),
+        xws: "whisper",
         faction: "Galactic Empire",
         ship: "TIE Phantom",
         skill: 5,
@@ -4079,7 +4083,7 @@ exportObj.basicCardData = function() {
         points: 1,
         slots: ["Astromech", "Modification", "Configuration", "Tech", "Hardpoint"]
       }, {
-        name: '"Midnight"',
+        name: '"Midnight" (Not Lockdown)',
         id: 233,
         unique: true,
         faction: "First Order",
@@ -6883,16 +6887,16 @@ exportObj.cardLoaders.English = function() {
       text: "Before a friendly TIE/ln fighter at range 0-1 would suffer 1 or more damage, you may spend 1 %CHARGE%. If you do, prevent that damage."
     },
     "IG-88A": {
-      text: "At the start of the Engagement Phase, you may choose 1 friendly ship with %CALCULATE% on its action bar at range 1-3. If you do, transfer 1 of your calculate tokens to it. ADVANCED DROID BRAIN: After you perform a %CALCULATE% action, gain 1 calculate token."
+      text: "At the start of the Engagement Phase, you may choose 1 friendly ship with %CALCULATE% on its action bar at range 1-3. If you do, transfer 1 of your calculate tokens to it. %LINEBREAK% ADVANCED DROID BRAIN: After you perform a %CALCULATE% action, gain 1 calculate token."
     },
     "IG-88B": {
-      text: "After you perform an attack that misses, you may perform a bonus %CANNON% attack. ADVANCED DROID BRAIN: After you perform a %CALCULATE% action, gain 1 calculate token."
+      text: "After you perform an attack that misses, you may perform a bonus %CANNON% attack. %LINEBREAK% ADVANCED DROID BRAIN: After you perform a %CALCULATE% action, gain 1 calculate token."
     },
     "IG-88C": {
-      text: "After you perform a %BOOST% action, you may perform an %EVADE% action. ADVANCED DROID BRAIN: After you perform a %CALCULATE% action, gain 1 calculate token."
+      text: "After you perform a %BOOST% action, you may perform an %EVADE% action. %LINEBREAK% ADVANCED DROID BRAIN: After you perform a %CALCULATE% action, gain 1 calculate token."
     },
     "IG-88D": {
-      text: "While you execute a Segnor's Loop (%SLOOPLEFT% or %SLOOPRIGHT%) maneuver, you may use another template of the same speed instead: either the turn (%TURNLEFT% or %TURNRIGHT%) of the same direction or the straight (%STRAIGHT%) template. ADVANCED DROID BRAIN: After you perform a %CALCULATE% action, gain 1 calculate token."
+      text: "While you execute a Segnor's Loop (%SLOOPLEFT% or %SLOOPRIGHT%) maneuver, you may use another template of the same speed instead: either the turn (%TURNLEFT% or %TURNRIGHT%) of the same direction or the straight (%STRAIGHT%) template. %LINEBREAK% ADVANCED DROID BRAIN: After you perform a %CALCULATE% action, gain 1 calculate token."
     },
     "Imdaar Test Pilot": {
       text: "STYGUM ARRAY: After you decloak, you may perform an %EVADE% action. At the Start of the End Phase, you may spend 1 evade token to gain one cloak token."
@@ -7173,7 +7177,7 @@ exportObj.cardLoaders.English = function() {
     "Sol Sixxa": {
       text: "If you would drop a device using a [1 %STRAIGHT%] template, you may drop it using any other speed 1 template instead."
     },
-    "Soontir Fel": {
+    "Soontir Fel Hates Dee Yun": {
       text: "At the start of the Engagement Phase, if there is an enemy ship in your %BULLSEYEARC%, gain 1 focus token. %LINEBREAK% AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."
     },
     "Spice Runner": {
@@ -7245,7 +7249,7 @@ exportObj.cardLoaders.English = function() {
     "Wedge Antilles": {
       text: "While you perform an attack, the defender rolls 1 fewer defense die."
     },
-    '"Whisper"': {
+    '"Whisper" Hates Dee Yun': {
       text: "After you perform an attack that hits, gain 1 evade token. STYGUM ARRAY: After you decloak, you may perform an %EVADE% action. At the Start of the End Phase, you may spend 1 evade token to gain one cloak token."
     },
     "Wild Space Fringer": {
@@ -7278,7 +7282,7 @@ exportObj.cardLoaders.English = function() {
     "Lieutenant Bastian": {
       text: "After a ship at range 1-2 is dealt a damage card, you may acquire a lock on that ship. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
     },
-    '"Midnight"': {
+    '"Midnight" (Not Lockdown)': {
       text: "While you defend or perform an attack, if you have a lock on the enemy ship, that ship's dice cannot be modified."
     },
     '"Longshot"': {
@@ -9057,7 +9061,7 @@ exportObj.manifestByExpansion = {
       type: 'pilot',
       count: 3
     }, {
-      name: 'Soontir Fel',
+      name: 'Soontir Fel Hates Dee Yun',
       type: 'pilot',
       count: 1
     }, {
@@ -9157,7 +9161,7 @@ exportObj.manifestByExpansion = {
       type: 'pilot',
       count: 1
     }, {
-      name: '"Whisper"',
+      name: '"Whisper" Hates Dee Yun',
       type: 'pilot',
       count: 1
     }, {
@@ -11147,7 +11151,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 13440
+                    lineno: 13444
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -11738,7 +11742,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 14071
+              lineno: 14075
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -12198,8 +12202,8 @@ exportObj.SquadBuilder = (function() {
         htmlview_ships.push(ship.toSimpleHTML());
       }
     }
-    this.htmlview_container.find('textarea').val($.trim("" + (htmlview_ships.join('<br />')) + "\n<br />\n<b><i>Total: " + this.total_points + "</i></b>\n<br />\n<a href=\"" + (this.getPermaLink()) + "\">View in Yet Another Squad Builder</a>"));
-    this.bbcode_container.find('textarea').val($.trim("" + (bbcode_ships.join("\n\n")) + "\n\n[b][i]Total: " + this.total_points + "[/i][/b]\n\n[url=" + (this.getPermaLink()) + "]View in Yet Another Squad Builder[/url]"));
+    this.htmlview_container.find('textarea').val($.trim("" + (htmlview_ships.join('<br />')) + "\n<br />\n<b><i>Total: " + this.total_points + "</i></b>\n<br />\n<a href=\"" + (this.getPermaLink()) + "\">View in Yet Another Squad Builder 2.0</a>"));
+    this.bbcode_container.find('textarea').val($.trim("" + (bbcode_ships.join("\n\n")) + "\n\n[b][i]Total: " + this.total_points + "[/i][/b]\n\n[url=" + (this.getPermaLink()) + "]View in Yet Another Squad Builder 2.0[/url]"));
     this.checkCollection();
     if (typeof Set !== "undefined" && Set !== null) {
       conditions_set = new Set();
@@ -12458,7 +12462,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 14713
+          lineno: 14717
         }));
         __iced_deferrals._fulfill();
       });
@@ -12470,7 +12474,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 14714
+            lineno: 14718
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -14100,7 +14104,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 15699
+                      lineno: 15703
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -14174,7 +14178,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 15725
+                lineno: 15729
               })
             ]);
             __iced_deferrals._fulfill();
@@ -14221,7 +14225,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 15748
+              lineno: 15752
             }));
           }
         }
@@ -14230,7 +14234,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 15750
+              lineno: 15754
             }));
           }
         }
@@ -14239,7 +14243,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 15752
+              lineno: 15756
             }));
           }
         }
@@ -15327,7 +15331,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 16511
+                lineno: 16515
               })
             ]);
             __iced_deferrals._fulfill();
@@ -15447,7 +15451,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 16574
+                  lineno: 16578
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -15469,7 +15473,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 16578
+                    lineno: 16582
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -15559,7 +15563,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 16621
+            lineno: 16625
           }));
         }
         __iced_deferrals._fulfill();
