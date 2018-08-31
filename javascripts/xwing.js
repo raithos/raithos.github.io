@@ -14829,7 +14829,7 @@ Ship = (function() {
   };
 
   Ship.prototype.fromSerialized = function(version, serialized) {
-    var addon_cls, addon_id, addon_type_serialized, conferred_addon, conferredaddon_pair, conferredaddon_pairs, deferred_id, deferred_ids, i, modification, modification_conferred_addon_pairs, modification_id, pilot_id, title, title_conferred_addon_pairs, title_conferred_upgrade_ids, title_id, upgrade, upgrade_conferred_addon_pairs, upgrade_id, upgrade_ids, _i, _j, _k, _l, _len, _len1, _len10, _len11, _len12, _len13, _len14, _len15, _len16, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _len9, _m, _n, _o, _p, _q, _r, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _s, _t, _u, _v, _w, _x, _y;
+    var addon_cls, addon_id, addon_type_serialized, conferred_addon, conferredaddon_pair, conferredaddon_pairs, deferred_id, deferred_ids, i, modification, modification_conferred_addon_pairs, modification_id, pilot_id, title_conferred_addon_pairs, title_conferred_upgrade_ids, title_id, upgrade, upgrade_conferred_addon_pairs, upgrade_id, upgrade_ids, _i, _j, _k, _l, _len, _len1, _len10, _len11, _len12, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _len9, _m, _n, _o, _p, _q, _r, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _s, _t, _u;
     switch (version) {
       case 1:
         _ref = serialized.split(':'), pilot_id = _ref[0], upgrade_ids = _ref[1], title_id = _ref[2], title_conferred_upgrade_ids = _ref[3], modification_id = _ref[4];
@@ -14968,65 +14968,19 @@ Ship = (function() {
             break;
           }
         }
-        title_id = parseInt(title_id);
-        if (title_id >= 0) {
-          this.titles[0].setById(title_id);
-        }
-        modification_id = parseInt(modification_id);
-        if (modification_id >= 0) {
-          this.modifications[0].setById(modification_id);
-        }
         if (conferredaddon_pairs != null) {
           conferredaddon_pairs = conferredaddon_pairs.split(',');
         } else {
           conferredaddon_pairs = [];
         }
-        _ref13 = this.titles;
-        for (i = _t = 0, _len11 = _ref13.length; _t < _len11; i = ++_t) {
-          title = _ref13[i];
-          if (((title != null ? title.data : void 0) != null) && title.conferredAddons.length > 0) {
-            title_conferred_addon_pairs = conferredaddon_pairs.splice(0, title.conferredAddons.length);
-            for (i = _u = 0, _len12 = title_conferred_addon_pairs.length; _u < _len12; i = ++_u) {
-              conferredaddon_pair = title_conferred_addon_pairs[i];
-              _ref14 = conferredaddon_pair.split('.'), addon_type_serialized = _ref14[0], addon_id = _ref14[1];
-              addon_id = parseInt(addon_id);
-              addon_cls = SERIALIZATION_CODE_TO_CLASS[addon_type_serialized];
-              conferred_addon = title.conferredAddons[i];
-              if (conferred_addon instanceof addon_cls) {
-                conferred_addon.setById(addon_id);
-              } else {
-                throw new Error("Expected addon class " + addon_cls.constructor.name + " for conferred addon at index " + i + " but " + conferred_addon.constructor.name + " is there");
-              }
-            }
-          }
-        }
-        _ref15 = this.modifications;
-        for (_v = 0, _len13 = _ref15.length; _v < _len13; _v++) {
-          modification = _ref15[_v];
-          if (((modification != null ? modification.data : void 0) != null) && modification.conferredAddons.length > 0) {
-            modification_conferred_addon_pairs = conferredaddon_pairs.splice(0, modification.conferredAddons.length);
-            for (i = _w = 0, _len14 = modification_conferred_addon_pairs.length; _w < _len14; i = ++_w) {
-              conferredaddon_pair = modification_conferred_addon_pairs[i];
-              _ref16 = conferredaddon_pair.split('.'), addon_type_serialized = _ref16[0], addon_id = _ref16[1];
-              addon_id = parseInt(addon_id);
-              addon_cls = SERIALIZATION_CODE_TO_CLASS[addon_type_serialized];
-              conferred_addon = modification.conferredAddons[i];
-              if (conferred_addon instanceof addon_cls) {
-                conferred_addon.setById(addon_id);
-              } else {
-                throw new Error("Expected addon class " + addon_cls.constructor.name + " for conferred addon at index " + i + " but " + conferred_addon.constructor.name + " is there");
-              }
-            }
-          }
-        }
-        _ref17 = this.upgrades;
-        for (_x = 0, _len15 = _ref17.length; _x < _len15; _x++) {
-          upgrade = _ref17[_x];
+        _ref13 = this.upgrades;
+        for (_t = 0, _len11 = _ref13.length; _t < _len11; _t++) {
+          upgrade = _ref13[_t];
           if (((upgrade != null ? upgrade.data : void 0) != null) && upgrade.conferredAddons.length > 0) {
             upgrade_conferred_addon_pairs = conferredaddon_pairs.splice(0, upgrade.conferredAddons.length);
-            for (i = _y = 0, _len16 = upgrade_conferred_addon_pairs.length; _y < _len16; i = ++_y) {
+            for (i = _u = 0, _len12 = upgrade_conferred_addon_pairs.length; _u < _len12; i = ++_u) {
               conferredaddon_pair = upgrade_conferred_addon_pairs[i];
-              _ref18 = conferredaddon_pair.split('.'), addon_type_serialized = _ref18[0], addon_id = _ref18[1];
+              _ref14 = conferredaddon_pair.split('.'), addon_type_serialized = _ref14[0], addon_id = _ref14[1];
               addon_id = parseInt(addon_id);
               addon_cls = SERIALIZATION_CODE_TO_CLASS[addon_type_serialized];
               conferred_addon = upgrade.conferredAddons[i];
@@ -15331,7 +15285,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 16515
+                lineno: 16480
               })
             ]);
             __iced_deferrals._fulfill();
@@ -15451,7 +15405,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 16578
+                  lineno: 16543
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -15473,7 +15427,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 16582
+                    lineno: 16547
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -15563,7 +15517,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 16625
+            lineno: 16590
           }));
         }
         __iced_deferrals._fulfill();
