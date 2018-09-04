@@ -304,3 +304,12 @@ li.squad-summary {
 
 svg > g.maneuver.backwards {
   transform: translate(200px, 200px) rotate(180deg); }
+
+.selectnav {
+  display: none; }
+
+@media screen and (max-width: 600px) {
+  .js #nav {
+    display: none; }
+  .js .selectnav {
+    display: block; } }

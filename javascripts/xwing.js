@@ -2519,7 +2519,7 @@ exportObj.basicCardData = function() {
         id: 60,
         faction: "Rebel Alliance",
         ship: "Auzituck Gunship",
-        skill: 3,
+        skill: 1,
         points: 46,
         slots: ["Crew", "Crew", "Modification"]
       }, {
