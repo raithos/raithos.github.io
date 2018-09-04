@@ -309,7 +309,7 @@ svg > g.maneuver.backwards {
   display: none; }
 
 @media screen and (max-width: 600px) {
-  .js #nav {
+  .js #select2-results {
     display: none; }
   .js .selectnav {
     display: block; } }
