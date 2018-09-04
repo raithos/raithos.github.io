@@ -1413,7 +1413,6 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Lock"
-                "Barrel Roll"
             ]
             actionsred: [
                 "Barrel Roll"
