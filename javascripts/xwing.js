@@ -2531,7 +2531,7 @@ exportObj.basicCardData = function() {
         ship: "VCX-100",
         skill: 5,
         points: 76,
-        slots: ["Talent", "Torpedo", "Gunner", "Crew", "Crew", "Modification", "Turret", "Title"]
+        slots: ["Talent", "Torpedo", "Turret", "Crew", "Crew", "Modification", "Gunner", "Title"]
       }, {
         name: "Kanan Jarrus",
         id: 62,
@@ -2541,7 +2541,7 @@ exportObj.basicCardData = function() {
         skill: 3,
         force: 2,
         points: 90,
-        slots: ["Force", "Torpedo", "Gunner", "Crew", "Crew", "Modification", "Turret", "Title"]
+        slots: ["Force", "Torpedo", "Turret", "Crew", "Crew", "Modification", "Gunner", "Title"]
       }, {
         name: '"Chopper"',
         id: 63,
@@ -2550,7 +2550,7 @@ exportObj.basicCardData = function() {
         ship: "VCX-100",
         skill: 2,
         points: 72,
-        slots: ["Torpedo", "Gunner", "Crew", "Crew", "Modification", "Turret", "Title"],
+        slots: ["Torpedo", "Turret", "Crew", "Crew", "Modification", "Gunner", "Title"],
         ship_override: {
           actions: ["Calculate", "Lock", "Reinforce"]
         }
@@ -2561,7 +2561,7 @@ exportObj.basicCardData = function() {
         ship: "VCX-100",
         skill: 2,
         points: 70,
-        slots: ["Torpedo", "Gunner", "Crew", "Crew", "Modification", "Turret", "Title"]
+        slots: ["Torpedo", "Turret", "Crew", "Crew", "Modification", "Gunner", "Title"]
       }, {
         name: "Hera Syndulla",
         id: 65,
