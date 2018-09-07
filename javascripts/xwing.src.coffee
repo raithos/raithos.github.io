@@ -1413,6 +1413,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Lock"
+                "Barrel Roll"
             ]
             actionsred: [
                 "Barrel Roll"
@@ -2977,7 +2978,6 @@ exportObj.basicCardData = ->
         {
             name: "Blue Squadron Scout"
             id: 37
-            unique: true
             faction: "Rebel Alliance"
             ship: "U-Wing"
             skill: 2
@@ -3344,7 +3344,7 @@ exportObj.basicCardData = ->
             id: 60
             faction: "Rebel Alliance"
             ship: "Auzituck Gunship"
-            skill: 1
+            skill: 3
             points: 46
             slots: [
                 "Crew"
@@ -5328,7 +5328,7 @@ exportObj.basicCardData = ->
               ]
         }
         {
-            name: "Soontir Fel Hates Dee Yun"
+            name: "Soontir Fel"
             id: 179
             unique: true
             canonical_name: 'Soontir Fel'.canonicalize()
@@ -5633,7 +5633,7 @@ exportObj.basicCardData = ->
               ]
         }
         {
-            name: '"Whisper" Hates Dee Yun'
+            name: '"Whisper"'
             id: 199
             unique: true
             canonical_name: '"Whisper"'.canonicalize()
@@ -6145,7 +6145,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: '"Midnight" (Not Lockdown)'
+            name: '"Midnight"'
             id: 233
             unique: true
             faction: "First Order"
@@ -9088,7 +9088,7 @@ exportObj.cardLoaders.English = () ->
            text: """CONCORDIA FACEOFF: While you defend, if the attack range is 1 and you are in the attackers %FRONTARC%, change 1 result to an %EVADE% result."""
         "Sol Sixxa":
            text: """If you would drop a device using a [1 %STRAIGHT%] template, you may drop it using any other speed 1 template instead."""
-        "Soontir Fel Hates Dee Yun":
+        "Soontir Fel":
            text: """At the start of the Engagement Phase, if there is an enemy ship in your %BULLSEYEARC%, gain 1 focus token. %LINEBREAK% AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."""
         "Spice Runner":
            text: """ """
@@ -9136,7 +9136,7 @@ exportObj.cardLoaders.English = () ->
            text: """ """
         "Wedge Antilles":
            text: """While you perform an attack, the defender rolls 1 fewer defense die."""
-        '"Whisper" Hates Dee Yun':
+        '"Whisper"':
            text: """After you perform an attack that hits, gain 1 evade token. STYGUM ARRAY: After you decloak, you may perform an %EVADE% action. At the Start of the End Phase, you may spend 1 evade token to gain one cloak token."""
         "Wild Space Fringer":
            text: """SENSOR BLINDSPOT: While you perform a primary attack at range 0-1, do not apply the range 0-1 bonus and roll 1 fewer attack die."""
@@ -9158,7 +9158,7 @@ exportObj.cardLoaders.English = () ->
            text: """After you perform an action, you may spend 1 %CHARGE% to perform a white action, treating it as red. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."""
         "Lieutenant Bastian":
            text: """After a ship at range 1-2 is dealt a damage card, you may acquire a lock on that ship. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."""
-        '"Midnight" (Not Lockdown)':
+        '"Midnight"':
            text: """While you defend or perform an attack, if you have a lock on the enemy ship, that ship's dice cannot be modified."""
         '"Longshot"':
            text: """While you perform a primary attack at attack range 3, roll 1 additional attack die."""
@@ -9215,7 +9215,7 @@ exportObj.cardLoaders.English = () ->
         "Agent Kallus":
            text: """Setup: Assign the Hunted condition to 1 enemy ship. While you perform an attack against th eship with the Hunted condition, you may change 1 of your %FOCUS% results to a %HIT% result."""
         "Agile Gunner":
-           text: """In the End Phase you may rotate your %SINGLETURRETARC% indicator"""
+           text: """In the End Phase you may rotate your %TURRET% indi﻿cator﻿"""
         "Andrasta":
            text: """<i>Adds: %RELOAD%</i> %LINEBREAK% Add %DEVICE% slot."""
         "Barrage Rockets":
@@ -9295,7 +9295,7 @@ exportObj.cardLoaders.English = () ->
         "Expert Handling":
            text: """<i>Requires: <r>%BARRELROLL%</r>. Adds: %BARRELROLL% %LINEBREAK% This upgrade has a variable cost, worth 2, 4, or 6 points depending on if the ship base is small, medium or large respectively.</i>"""
         "Ezra Bridger":
-           text: """After you perform a primary attack, you may spend 1 %FORCE% to perform a bonus %SINGLETURRETARC% attack from a %SINGLETURRETARC% you have not attacked from this round. If you do and you are stressed, you may reroll 1 attack die."""
+           text: """After you perform a primary attack, you may spend 1 %FORCE% to perform a bonus %TURRET% attack from a %TURRET% you have not attacked from this round. If you do and you are stressed, you may reroll 1 attack die."""
         "Fearless":
            text: """While you perform a %FRONTARC% primary attack, if the attack range is 1 and you are in the defender's %FRONTARC%, you may change 1 of your results to a %HIT% result."""
         "Feedback Array":
@@ -9317,7 +9317,7 @@ exportObj.cardLoaders.English = () ->
         "Greedo":
            text: """While you perform an attack, you may spend 1 %CHARGE% to change 1 %HIT% result to a %CRIT% result. While you defend, if your %CHARGE% is active, the attacker may change 1 %HIT% result to a %CRIT% result."""
         "Han Solo":
-           text: """During the Engagement Phase, at initiative 7, you may perform a %SINGLETURRETARC% attack. You cannot attack from that %SINGLETURRETARC% again this round."""
+           text: """During the Engagement Phase, at initiative 7, you may perform a %TURRET% attack. You cannot attack from that %TURRET% again this round."""
         "Han Solo (Scum)":
            text: """Before you engage, you may perform a red %FOCUS% action."""
         "Havoc":
@@ -9331,7 +9331,7 @@ exportObj.cardLoaders.English = () ->
         "Homing Missiles":
            text: """Attack (%LOCK%): Spend 1 %CHARGE%. After you declare the defender, the defender may choose to suffer 1 %HIT% damage. If it does, skip the Attack and Defense Dice steps and the attack is treated as hitting."""
         "Hotshot Gunner":
-           text: """While you perform a %SINGLETURRETARC% attack, after the Modify Defense Dice step, the defender removes 1 focus or calculate token."""
+           text: """While you perform a %TURRET% attack, after the Modify Defense Dice step, the defender removes 1 focus or calculate token."""
         "Hound's Tooth":
            text: """1 Z-95 AF4 headhunter can dock with you."""
         "Hull Upgrade":
@@ -9387,7 +9387,7 @@ exportObj.cardLoaders.English = () ->
         "Lone Wolf":
            text: """While you defend or perform an attack, if there are no other friendly ships at range 0-2, you may spend 1 %CHARGE% to reroll 1 of your dice."""
         "Luke Skywalker":
-           text: """At the start of the Engagement Phase, you may spend 1 %FORCE% to rotate your %SINGLETURRETARC% indicator."""
+           text: """At the start of the Engagement Phase, you may spend 1 %FORCE% to rotate your %TURRET% indicator."""
         "Magva Yarro":
            text: """After you defend, if the attack hit, you may acquire a lock on the attacker."""
         "Marauder":
@@ -10993,7 +10993,7 @@ exportObj.manifestByExpansion =
             count: 3
         }
         {
-            name: 'Soontir Fel Hates Dee Yun'
+            name: 'Soontir Fel'
             type: 'pilot'
             count: 1
         }
@@ -11118,7 +11118,7 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: '"Whisper" Hates Dee Yun'
+            name: '"Whisper"'
             type: 'pilot'
             count: 1
         }
