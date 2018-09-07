@@ -1413,7 +1413,6 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Lock"
-                "Barrel Roll"
             ]
             actionsred: [
                 "Barrel Roll"
@@ -3344,7 +3343,7 @@ exportObj.basicCardData = ->
             id: 60
             faction: "Rebel Alliance"
             ship: "Auzituck Gunship"
-            skill: 3
+            skill: 1
             points: 46
             slots: [
                 "Crew"
@@ -5331,8 +5330,6 @@ exportObj.basicCardData = ->
             name: "Soontir Fel"
             id: 179
             unique: true
-            canonical_name: 'Soontir Fel'.canonicalize()
-            xws: "soontirfel" 
             faction: "Galactic Empire"
             ship: "TIE Interceptor"
             skill: 6
@@ -5636,8 +5633,6 @@ exportObj.basicCardData = ->
             name: '"Whisper"'
             id: 199
             unique: true
-            canonical_name: '"Whisper"'.canonicalize()
-            xws: "whisper" 
             faction: "Galactic Empire"
             ship: "TIE Phantom"
             skill: 5
@@ -8547,13 +8542,13 @@ exportObj.translations.English =
         "Coordinate": '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>'
         "Cloak": '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>'
         "Slam": '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>'
-        "R> Barrel Roll": '<r><i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i></r>'
-        "R> Focus": '<r><i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-focus"></i></r>'
-        "R> Lock": '<r><i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-lock"></i></r>'
+        "R> Barrel Roll": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-barrelroll"></i>'
+        "R> Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-focus"></i>'
+        "R> Lock": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-lock"></i>'
         "> Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>'
-        "R> Rotate Arc": '<r><i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i></r>'
-        "R> Evade": '<r><i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-evade"></i></r>'
-        "R> Calculate": '<r><i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i></r>'
+        "R> Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-rotatearc"></i>'
+        "R> Evade": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-evade"></i>'
+        "R> Calculate": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-calculate"></i>'
     sloticon:
         "Astromech": '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>'
         "Force": '<i class="xwing-miniatures-font xwing-miniatures-font-forcepower"></i>'
@@ -9215,7 +9210,7 @@ exportObj.cardLoaders.English = () ->
         "Agent Kallus":
            text: """Setup: Assign the Hunted condition to 1 enemy ship. While you perform an attack against th eship with the Hunted condition, you may change 1 of your %FOCUS% results to a %HIT% result."""
         "Agile Gunner":
-           text: """In the End Phase you may rotate your %TURRET% indi﻿cator﻿"""
+           text: """In the End Phase you may rotate your %SINGLETURRETARC% indicator"""
         "Andrasta":
            text: """<i>Adds: %RELOAD%</i> %LINEBREAK% Add %DEVICE% slot."""
         "Barrage Rockets":
@@ -9295,7 +9290,7 @@ exportObj.cardLoaders.English = () ->
         "Expert Handling":
            text: """<i>Requires: <r>%BARRELROLL%</r>. Adds: %BARRELROLL% %LINEBREAK% This upgrade has a variable cost, worth 2, 4, or 6 points depending on if the ship base is small, medium or large respectively.</i>"""
         "Ezra Bridger":
-           text: """After you perform a primary attack, you may spend 1 %FORCE% to perform a bonus %TURRET% attack from a %TURRET% you have not attacked from this round. If you do and you are stressed, you may reroll 1 attack die."""
+           text: """After you perform a primary attack, you may spend 1 %FORCE% to perform a bonus %SINGLETURRETARC% attack from a %SINGLETURRETARC% you have not attacked from this round. If you do and you are stressed, you may reroll 1 attack die."""
         "Fearless":
            text: """While you perform a %FRONTARC% primary attack, if the attack range is 1 and you are in the defender's %FRONTARC%, you may change 1 of your results to a %HIT% result."""
         "Feedback Array":
@@ -9317,7 +9312,7 @@ exportObj.cardLoaders.English = () ->
         "Greedo":
            text: """While you perform an attack, you may spend 1 %CHARGE% to change 1 %HIT% result to a %CRIT% result. While you defend, if your %CHARGE% is active, the attacker may change 1 %HIT% result to a %CRIT% result."""
         "Han Solo":
-           text: """During the Engagement Phase, at initiative 7, you may perform a %TURRET% attack. You cannot attack from that %TURRET% again this round."""
+           text: """During the Engagement Phase, at initiative 7, you may perform a %SINGLETURRETARC% attack. You cannot attack from that %SINGLETURRETARC% again this round."""
         "Han Solo (Scum)":
            text: """Before you engage, you may perform a red %FOCUS% action."""
         "Havoc":
@@ -9331,7 +9326,7 @@ exportObj.cardLoaders.English = () ->
         "Homing Missiles":
            text: """Attack (%LOCK%): Spend 1 %CHARGE%. After you declare the defender, the defender may choose to suffer 1 %HIT% damage. If it does, skip the Attack and Defense Dice steps and the attack is treated as hitting."""
         "Hotshot Gunner":
-           text: """While you perform a %TURRET% attack, after the Modify Defense Dice step, the defender removes 1 focus or calculate token."""
+           text: """While you perform a %SINGLETURRETARC% attack, after the Modify Defense Dice step, the defender removes 1 focus or calculate token."""
         "Hound's Tooth":
            text: """1 Z-95 AF4 headhunter can dock with you."""
         "Hull Upgrade":
@@ -9387,7 +9382,7 @@ exportObj.cardLoaders.English = () ->
         "Lone Wolf":
            text: """While you defend or perform an attack, if there are no other friendly ships at range 0-2, you may spend 1 %CHARGE% to reroll 1 of your dice."""
         "Luke Skywalker":
-           text: """At the start of the Engagement Phase, you may spend 1 %FORCE% to rotate your %TURRET% indicator."""
+           text: """At the start of the Engagement Phase, you may spend 1 %FORCE% to rotate your %SINGLETURRETARC% indicator."""
         "Magva Yarro":
            text: """After you defend, if the attack hit, you may acquire a lock on the attacker."""
         "Marauder":
@@ -15047,7 +15042,7 @@ class exportObj.SquadBuilder
                     else
                         @info_container.find('tr.info-charge').hide()
 
-                    @info_container.find('tr.info-actions td.info-data').html (((exportObj.translate(@language, 'action', a) for a in (data.pilot.ship_override?.actions ? data.data.actions).concat( ("<strong>#{exportObj.translate @language, 'action', action}</strong>" for action in extra_actions))).join ', ').replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked">') #super ghetto double replace for linked actions
+                    @info_container.find('tr.info-actions td.info-data').html ((exportObj.translate(@language, 'action', a) for a in (data.pilot.ship_override?.actions ? data.data.actions).concat( ("<strong>#{exportObj.translate @language, 'action', action}</strong>" for action in extra_actions))).join ', ').replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked')
                     
                     if data.data.actionsred?
                         @info_container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', a) for a in (data.pilot.ship_override?.actionsred ? data.data.actionsred).concat( ("<strong>#{exportObj.translate @language, 'action', action}</strong>" for action in extra_actions_red))).join ', '       
@@ -15118,8 +15113,7 @@ class exportObj.SquadBuilder
                     else
                         @info_container.find('tr.info-charge').hide()
 
-                    @info_container.find('tr.info-actions td.info-data').html (((exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actions ? exportObj.ships[data.ship].actions)).join(', ')).replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked">')
-                    #super ghetto double replace for linked actions
+                    @info_container.find('tr.info-actions td.info-data').html ((exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actions ? exportObj.ships[data.ship].actions)).join(', ')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked')
     
                     if ships[data.ship].actionsred?
                         @info_container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actionsred ? exportObj.ships[data.ship].actionsred)).join(', ')
@@ -15931,45 +15925,45 @@ class Ship
         for action in effective_stats.actions
             action_icons.push switch action
                 when 'Focus'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>"""
+                    """<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i> """
                 when 'Evade'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>"""
+                    """<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i> """
                 when 'Barrel Roll'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>"""
+                    """<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i> """
                 when 'Lock'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>"""
+                    """<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i> """
                 when 'Boost'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>"""
+                    """<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i> """
                 when 'Coordinate'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>"""
+                    """<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i> """
                 when 'Jam'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i>"""
-                when 'Recover'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-recover"></i>"""
+                    """<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i> """
                 when 'Reinforce'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i>"""
+                    """<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i> """
                 when 'Cloak'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>"""
+                    """<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i> """
                 when 'Slam'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>"""
+                    """<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i> """
                 when 'Rotate Arc'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>"""
+                    """<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i> """
                 when 'Reload'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>"""
+                    """<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i> """
                 when 'Calculate'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>"""
-                when "<r>> Lock</r>"
-                    """<r>> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-lock"></i></r>"""
-                when "<r>> Barrel Roll</r>"
-                    """<r>> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-barrelroll"></i></r>"""
-                when "<r>> Focus</r>"
-                    """<r>> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-focus"></i></r>"""
-                when "<r>> Rotate Arc</r>"
-                    """<r>> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-rotatearc"></i></r>"""
-                when "<r>> Evade</r>"
-                    """<r>> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-evade"></i></r>"""
-                when "<r>> Calculate</r>"
-                    """<r>> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-calculate"></i></r>"""
+                    """<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i> """
+                when "R> Lock"
+                    """<i class="xwing-miniatures-font red xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-lock"></i>&nbsp;"""
+                when "R> Barrel Roll"
+                    """<i class="xwing-miniatures-font red xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-barrelroll"></i>&nbsp;"""
+                when "R> Focus"
+                    """<i class="xwing-miniatures-font red xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-focus"></i>&nbsp;"""
+                when "R> Rotate Arc"
+                    """<i class="xwing-miniatures-font red xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-rotatearc"></i>&nbsp;"""
+                when "> Rotate Arc"
+                    """<i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-rotatearc"></i>&nbsp;"""
+                when "R> Evade"
+                    """<i class="xwing-miniatures-font red xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-evade"></i>&nbsp;"""
+                when "R> Calculate"
+                    """<i class="xwing-miniatures-font red xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-calculate"></i>&nbsp;"""
                 else
                     """<span>&nbsp;#{action}<span>"""
 
@@ -15989,8 +15983,6 @@ class Ship
                     """<i class="xwing-miniatures-font red xwing-miniatures-font-coordinate"></i>"""
                 when 'Jam'
                     """<i class="xwing-miniatures-font red xwing-miniatures-font-jam"></i>"""
-                when 'Recover'
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-recover"></i>"""
                 when 'Reinforce'
                     """<i class="xwing-miniatures-font red xwing-miniatures-font-reinforce"></i>"""
                 when 'Cloak'
