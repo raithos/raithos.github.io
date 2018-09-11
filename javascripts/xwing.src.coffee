@@ -7468,6 +7468,8 @@ exportObj.basicCardData = ->
            slot: "Talent"
            points: 3
            charge: 1
+           restriction_func: (ship) ->
+                not ship.data.large?
        }
        {
            name: "Expert Handling"
