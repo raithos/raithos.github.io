@@ -7282,6 +7282,7 @@ exportObj.basicCardData = ->
            points: 6
            attack: 3
            range: """2-3"""
+           rangebonus: true 
            charge: 5
            restriction_func: (ship, upgrade_obj) ->
                ship.hasAnotherUnoccupiedSlotLike upgrade_obj
@@ -7296,6 +7297,7 @@ exportObj.basicCardData = ->
            points: 5
            attack: 3
            range: """1-2"""
+           rangebonus: true 
            charge: 4
        }
        {
@@ -7305,6 +7307,7 @@ exportObj.basicCardData = ->
            points: 6
            attack: 3
            range: """2-3"""
+           rangebonus: true 
            charge: 3
        }
        {
@@ -7314,6 +7317,7 @@ exportObj.basicCardData = ->
            points: 3
            attack: 4
            range: """2-3"""
+           rangebonus: true 
            charge: 2
        }
        {
@@ -7323,6 +7327,7 @@ exportObj.basicCardData = ->
            points: 4
            attack: 3
            range: """2-3"""
+           rangebonus: true 
            charge: 3
        }
        {
@@ -7332,6 +7337,7 @@ exportObj.basicCardData = ->
            points: 7
            attackbull: 5
            range: """1-2"""
+           rangebonus: true 
            charge: 1
        }
        {
@@ -7574,6 +7580,7 @@ exportObj.basicCardData = ->
            points: 6
            attack: 5
            range: """1"""
+           rangebonus: true 
            charge: 1
        }
        {
@@ -7583,6 +7590,7 @@ exportObj.basicCardData = ->
            points: 6
            attack: 4
            range: """2-3"""
+           rangebonus: true 
            charge: 2
        }
        {
@@ -7592,6 +7600,7 @@ exportObj.basicCardData = ->
            points: 9
            attack: 4
            range: """2-3"""
+           rangebonus: true 
            charge: 2
        }
        {
@@ -14204,7 +14213,7 @@ class exportObj.SquadBuilder
                         </tr>
                         <tr class="info-range">
                             <td class="info-header">Range</td>
-                            <td class="info-data info-range"></td>
+                            <td class="info-data info-range"></td><td class="info-rangebonus"><i class="xwing-miniatures-font red header-range xwing-miniatures-font-rangebonusindicator"></i></td>
                         </tr>
                         <tr class="info-actions">
                             <td class="info-header">Actions</td>
@@ -15034,6 +15043,7 @@ class exportObj.SquadBuilder
                     @info_container.find('tr.info-energy td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.energy ? data.data.energy), effective_stats, 'energy')
                     @info_container.find('tr.info-energy').toggle(data.pilot.ship_override?.energy? or data.data.energy?)
                     @info_container.find('tr.info-range').hide()
+                    @info_container.find('td.info-rangebonus').hide()
                     @info_container.find('tr.info-agility td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.agility ? data.data.agility), effective_stats, 'agility')
                     @info_container.find('tr.info-agility').show()
                     @info_container.find('tr.info-hull td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.hull ? data.data.hull), effective_stats, 'hull')
@@ -15105,6 +15115,7 @@ class exportObj.SquadBuilder
                     @info_container.find('tr.info-energy td.info-data').text(data.ship_override?.energy ? ship.energy)
                     @info_container.find('tr.info-energy').toggle(data.ship_override?.energy? or ship.energy?)
                     @info_container.find('tr.info-range').hide()
+                    @info_container.find('td.info-rangebonus').hide()
                     @info_container.find('tr.info-agility td.info-data').text(data.ship_override?.agility ? ship.agility)
                     @info_container.find('tr.info-agility').show()
                     @info_container.find('tr.info-hull td.info-data').text(data.ship_override?.hull ? ship.hull)
@@ -15193,7 +15204,13 @@ class exportObj.SquadBuilder
                         @info_container.find('tr.info-range').show()
                     else
                         @info_container.find('tr.info-range').hide()
-                    
+
+                    if data.rangebonus?
+                        @info_container.find('td.info-rangebonus').show()
+                    else
+                        @info_container.find('td.info-rangebonus').hide()
+                        
+                        
                     @info_container.find('tr.info-force td.info-data').html (data.force + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
                     @info_container.find('tr.info-force').toggle(data.force?)                        
 
@@ -16645,9 +16662,15 @@ class GenericAddon
                 restriction_html = ''
                 text_str = @data.text
 
+            if @data.rangebonus?
+                attackrangebonus = """<span class="upgrade-attack-rangebonus"><i class="xwing-miniatures-font xwing-miniatures-font-rangebonusindicator"></i></span>"""
+            else
+                attackrangebonus = ''
+                
             attackHTML = if (@data.attack?) then $.trim """
                 <div class="upgrade-attack">
                     <span class="upgrade-attack-range">#{@data.range}</span>
+                    #{attackrangebonus}
                     <span class="info-data info-attack">#{@data.attack}</span>
                     <i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>
                 </div>

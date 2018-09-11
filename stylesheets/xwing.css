@@ -88,6 +88,9 @@ i.xwing-miniatures-font-singleturretarc, i.xwing-miniatures-font-doubleturretarc
   padding-left: 9px;
   padding-right: 10px; }
 
+i.xwing-miniatures-font-rangebonusindicator {
+  font-size: 1.1em; }
+
 i.header-energy {
   color: #C7B5E2;
   padding-left: 5px;
@@ -117,6 +120,12 @@ i.header-charge {
   color: #C2B230;
   padding-left: 7px;
   padding-right: 8px; }
+
+i.header-range {
+  vertical-align: middle;
+  padding: 0px 3px;
+  background-color: black;
+  color: #EF232B; }
 
 .info-data.info-attack {
   color: #EF232B; }
