@@ -5532,6 +5532,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "L3-37's Programming",
         id: 145,
+        skip: true,
         points: 0,
         slot: "Configuration",
         faction: "Scum and Villainy"
@@ -7617,10 +7618,7 @@ exportObj.cardLoaders.English = function() {
       text: "At the start of the End Phase, you may choose 1 enemy ship at range 0-2 in your firing arc. If you do, that ship does not remove its tractor tokens."
     },
     "L3-37": {
-      text: "Setup: Equip this side faceup. While you defend, you may flip this card. If you do, the attack must reroll all attack dice"
-    },
-    "L3-37's Programming": {
-      text: "If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."
+      text: "<b>L3-37:</b> Setup: Equip this side faceup. %LINEBREAK% While you defend, you may flip this card. If you do, the attack must reroll all attack dice %LINEBREAK% <b>L3-37's Programming:</b> If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."
     },
     "Lando Calrissian": {
       text: "Action: Roll 2 defense dice. For each %FOCUS% result, gain 1 focus token. For each %EVADE% result, gain 1 evade token. If both results are blank, the opposing player chooses focus or evade. You gain 1 token of that type."
@@ -7955,13 +7953,13 @@ if (exportObj.codeToLanguage == null) {
   exportObj.codeToLanguage = {};
 }
 
-exportObj.codeToLanguage.en = 'English';
+exportObj.codeToLanguage.hu = 'Hungarian';
 
 if (exportObj.translations == null) {
   exportObj.translations = {};
 }
 
-exportObj.translations.English = {
+exportObj.translations.Hungarian = {
   action: {
     "Barrel Roll": '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>',
     "Boost": '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>',
@@ -8127,9 +8125,9 @@ if (exportObj.cardLoaders == null) {
   exportObj.cardLoaders = {};
 }
 
-exportObj.cardLoaders.English = function() {
+exportObj.cardLoaders.Hungarian = function() {
   var basic_cards, condition_translations, modification_translations, pilot_translations, title_translations, upgrade_translations;
-  exportObj.cardLanguage = 'English';
+  exportObj.cardLanguage = 'Hungarian';
   basic_cards = exportObj.basicCardData();
   exportObj.canonicalizeShipNames(basic_cards);
   exportObj.ships = basic_cards.ships;
@@ -9142,10 +9140,7 @@ exportObj.cardLoaders.English = function() {
       text: "At the start of the End Phase, you may choose 1 enemy ship at range 0-2 in your firing arc. If you do, that ship does not remove its tractor tokens."
     },
     "L3-37": {
-      text: "Setup: Equip this side faceup. While you defend, you may flip this card. If you do, the attack must reroll all attack dice"
-    },
-    "L3-37's Programming": {
-      text: "If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."
+      text: "<b>L3-37:</b> %LINEBREAK% Setup: Equip this side faceup. %LINEBREAK% While you defend, you may flip this card. If you do, the attack must reroll all attack dice %LINEBREAK% <b>L3-37's Programming:</b> %LINEBREAK% If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers. fdasfdsafdas fdasfsd"
     },
     "Lando Calrissian": {
       text: "Action: Roll 2 defense dice. For each %FOCUS% result, gain 1 focus token. For each %EVADE% result, gain 1 evade token. If both results are blank, the opposing player chooses focus or evade. You gain 1 token of that type."
@@ -12696,7 +12691,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 14545
+                    lineno: 14542
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -12984,7 +12979,7 @@ exportObj.SquadBuilder = (function() {
     this.list_modal = $(document.createElement('DIV'));
     this.list_modal.addClass('modal hide fade text-list-modal');
     this.container.append(this.list_modal);
-    this.list_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n\n    <div class=\"hidden-phone hidden-print\">\n        <h3><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)<h3>\n    </div>\n\n    <div class=\"visible-phone hidden-print\">\n        <h4><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)<h4>\n    </div>\n\n    <div class=\"visible-print\">\n        <div class=\"fancy-header\">\n            <div class=\"squad-name\"></div>\n            <div class=\"squad-faction\"></div>\n            <div class=\"mask\">\n                <div class=\"outer-circle\">\n                    <div class=\"inner-circle\">\n                        <span class=\"total-points\"></span>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"fancy-under-header\"></div>\n    </div>\n\n</div>\n<div class=\"modal-body\">\n    <div class=\"fancy-list hidden-phone\"></div>\n    <div class=\"simple-list\"></div>\n    <div class=\"bbcode-list\">\n        <p>Copy the BBCode below and paste it into your forum post.</p>\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n    <div class=\"html-list\">\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <label class=\"vertical-space-checkbox\">\n        Add space for damage/upgrade cards when printing <input type=\"checkbox\" class=\"toggle-vertical-space\" />\n    </label>\n    <label class=\"color-print-checkbox\">\n        Print color <input type=\"checkbox\" class=\"toggle-color-print\" />\n    </label>\n    <label class=\"qrcode-checkbox hidden-phone\">\n        Include QR codes <input type=\"checkbox\" class=\"toggle-juggler-qrcode\" checked=\"checked\" />\n    </label>\n    <label class=\"qrcode-checkbox hidden-phone\">\n        Include obstacle/damage deck choices <input type=\"checkbox\" class=\"toggle-obstacles\" />\n    </label>\n    <div class=\"btn-group list-display-mode\">\n        <button class=\"btn select-simple-view\">Simple</button>\n        <button class=\"btn select-fancy-view hidden-phone\">Fancy</button>\n        <button class=\"btn select-bbcode-view\">BBCode</button>\n        <button class=\"btn select-html-view\">HTML</button>\n    </div>\n    <button class=\"btn print-list hidden-phone\"><i class=\"fa fa-print\"></i>&nbsp;Print</button>\n    <button class=\"btn close-print-dialog\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.list_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n\n    <div class=\"hidden-phone hidden-print\">\n        <h3><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)<h3>\n    </div>\n\n    <div class=\"visible-phone hidden-print\">\n        <h4><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)<h4>\n    </div>\n\n    <div class=\"visible-print\">\n        <div class=\"fancy-header\">\n            <div class=\"squad-name\"></div>\n            <div class=\"squad-faction\"></div>\n            <div class=\"mask\">\n                <div class=\"outer-circle\">\n                    <div class=\"inner-circle\">\n                        <span class=\"total-points\"></span>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"fancy-under-header\"></div>\n    </div>\n\n</div>\n<div class=\"modal-body\">\n    <div class=\"fancy-list hidden-phone\"></div>\n    <div class=\"simple-list\"></div>\n    <div class=\"bbcode-list\">\n        <p>Copy the BBCode below and paste it into your forum post.</p>\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n    <div class=\"html-list\">\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <label class=\"vertical-space-checkbox\">\n        Add space for damage/upgrade cards when printing <input type=\"checkbox\" class=\"toggle-vertical-space\" />\n    </label>\n    <label class=\"color-print-checkbox\">\n        Print color <input type=\"checkbox\" class=\"toggle-color-print\" checked=\"checked\"/>\n    </label>\n    <label class=\"qrcode-checkbox hidden-phone\">\n        Include QR codes <input type=\"checkbox\" class=\"toggle-juggler-qrcode\" checked=\"checked\" />\n    </label>\n    <label class=\"qrcode-checkbox hidden-phone\">\n        Include obstacle/damage deck choices <input type=\"checkbox\" class=\"toggle-obstacles\" />\n    </label>\n    <div class=\"btn-group list-display-mode\">\n        <button class=\"btn select-simple-view\">Simple</button>\n        <button class=\"btn select-fancy-view hidden-phone\">Fancy</button>\n        <button class=\"btn select-bbcode-view\">BBCode</button>\n        <button class=\"btn select-html-view\">HTML</button>\n    </div>\n    <button class=\"btn print-list hidden-phone\"><i class=\"fa fa-print\"></i>&nbsp;Print</button>\n    <button class=\"btn close-print-dialog\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
     this.fancy_container = $(this.list_modal.find('div.modal-body .fancy-list'));
     this.fancy_total_points_container = $(this.list_modal.find('div.modal-header .total-points'));
     this.simple_container = $(this.list_modal.find('div.modal-body .simple-list'));
@@ -13287,7 +13282,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 15176
+              lineno: 15173
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -14007,7 +14002,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 15822
+          lineno: 15819
         }));
         __iced_deferrals._fulfill();
       });
@@ -14019,7 +14014,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 15823
+            lineno: 15820
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -15673,7 +15668,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 16835
+                      lineno: 16832
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -15747,7 +15742,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 16861
+                lineno: 16858
               })
             ]);
             __iced_deferrals._fulfill();
@@ -15794,7 +15789,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 16884
+              lineno: 16881
             }));
           }
         }
@@ -15803,7 +15798,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 16886
+              lineno: 16883
             }));
           }
         }
@@ -15812,7 +15807,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 16888
+              lineno: 16885
             }));
           }
         }
@@ -16870,7 +16865,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 17620
+                lineno: 17617
               })
             ]);
             __iced_deferrals._fulfill();
@@ -17002,7 +16997,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 17687
+                  lineno: 17684
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -17024,7 +17019,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 17691
+                    lineno: 17688
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -17114,7 +17109,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 17734
+            lineno: 17731
           }));
         }
         __iced_deferrals._fulfill();

@@ -7683,6 +7683,7 @@ exportObj.basicCardData = ->
        {
            name: "L3-37's Programming"
            id: 145
+           skip: true 
            points: 0
            slot: "Configuration"
            faction: "Scum and Villainy"
@@ -9391,9 +9392,7 @@ exportObj.cardLoaders.English = () ->
         "Ketsu Onyo":
            text: """At the start of the End Phase, you may choose 1 enemy ship at range 0-2 in your firing arc. If you do, that ship does not remove its tractor tokens."""
         "L3-37":
-           text: """Setup: Equip this side faceup. While you defend, you may flip this card. If you do, the attack must reroll all attack dice"""
-        "L3-37's Programming":
-           text: """If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."""
+           text: """<b>L3-37:</b> Setup: Equip this side faceup. %LINEBREAK% While you defend, you may flip this card. If you do, the attack must reroll all attack dice %LINEBREAK% <b>L3-37's Programming:</b> If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."""
         "Lando Calrissian":
            text: """Action: Roll 2 defense dice. For each %FOCUS% result, gain 1 focus token. For each %EVADE% result, gain 1 evade token. If both results are blank, the opposing player chooses focus or evade. You gain 1 token of that type."""
         "Lando Calrissian (Scum)":
@@ -9620,11 +9619,11 @@ exportObj.cardLoaders.English = () ->
 exportObj = exports ? this
 
 exportObj.codeToLanguage ?= {}
-exportObj.codeToLanguage.en = 'English'
+exportObj.codeToLanguage.hu = 'Hungarian'
 
 exportObj.translations ?= {}
 # This is here mostly as a template for other languages.
-exportObj.translations.English =
+exportObj.translations.Hungarian =
     action: #do not change this anymore. We use Icons instead of words
         "Barrel Roll": '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>'
         "Boost": '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>'
@@ -9786,8 +9785,8 @@ exportObj.translations.English =
         'Title': 'Title'
 
 exportObj.cardLoaders ?= {}
-exportObj.cardLoaders.English = () ->
-    exportObj.cardLanguage = 'English'
+exportObj.cardLoaders.Hungarian = () ->
+    exportObj.cardLanguage = 'Hungarian'
 
     # Assumes cards-common has been loaded
     basic_cards = exportObj.basicCardData()
@@ -10473,9 +10472,7 @@ exportObj.cardLoaders.English = () ->
         "Ketsu Onyo":
            text: """At the start of the End Phase, you may choose 1 enemy ship at range 0-2 in your firing arc. If you do, that ship does not remove its tractor tokens."""
         "L3-37":
-           text: """Setup: Equip this side faceup. While you defend, you may flip this card. If you do, the attack must reroll all attack dice"""
-        "L3-37's Programming":
-           text: """If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."""
+           text: """<b>L3-37:</b> %LINEBREAK% Setup: Equip this side faceup. %LINEBREAK% While you defend, you may flip this card. If you do, the attack must reroll all attack dice %LINEBREAK% <b>L3-37's Programming:</b> %LINEBREAK% If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers. fdasfdsafdas fdasfsd"""
         "Lando Calrissian":
            text: """Action: Roll 2 defense dice. For each %FOCUS% result, gain 1 focus token. For each %EVADE% result, gain 1 evade token. If both results are blank, the opposing player chooses focus or evade. You gain 1 token of that type."""
         "Lando Calrissian (Scum)":
@@ -14855,7 +14852,7 @@ class exportObj.SquadBuilder
                     Add space for damage/upgrade cards when printing <input type="checkbox" class="toggle-vertical-space" />
                 </label>
                 <label class="color-print-checkbox">
-                    Print color <input type="checkbox" class="toggle-color-print" />
+                    Print color <input type="checkbox" class="toggle-color-print" checked="checked"/>
                 </label>
                 <label class="qrcode-checkbox hidden-phone">
                     Include QR codes <input type="checkbox" class="toggle-juggler-qrcode" checked="checked" />
