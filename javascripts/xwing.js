@@ -16038,7 +16038,9 @@ Ship = (function() {
         if (_this.data != null) {
           _this.builder.showTooltip('Ship', _this);
         }
-        return scrollTo(0, $('#info-container').offset().top - 10, 'smooth');
+        if (_this.data != null) {
+          return scrollTo(0, $('#info-container').offset().top - 10, 'smooth');
+        }
       };
     })(this));
     this.pilot_selector.data('select2').container.hide();
@@ -16881,7 +16883,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 17631
+                lineno: 17632
               })
             ]);
             __iced_deferrals._fulfill();
@@ -16982,7 +16984,9 @@ GenericAddon = (function() {
             addon_type: _this.type
           });
         }
-        return scrollTo(0, $('#info-container').offset().top - 10, 'smooth');
+        if (_this.data != null) {
+          return scrollTo(0, $('#info-container').offset().top - 10, 'smooth');
+        }
       };
     })(this));
   };
@@ -17011,7 +17015,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 17697
+                  lineno: 17699
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -17033,7 +17037,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 17701
+                    lineno: 17703
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -17123,7 +17127,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 17744
+            lineno: 17746
           }));
         }
         __iced_deferrals._fulfill();
