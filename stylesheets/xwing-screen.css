@@ -3,7 +3,6 @@
 
 .fancy-header {
   border: 38px solid black;
-  color: white;
   border-left-color: transparent;
   border-top-color: transparent;
   border-right-color: transparent;
@@ -183,10 +182,10 @@
         color: red;
         background-color: black;
         font-family: kimberley; }
-        .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack-rangebonus .info-attack {
-          margin-right: 2px; }
-        .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack-rangebonus .xwing-miniatures-font {
-          vertical-align: middle; }
+      .fancy-ship .fancy-upgrade-container .upgrade-container .info-attack {
+        margin-right: 2px; }
+      .fancy-ship .fancy-upgrade-container .upgrade-container .xwing-miniatures-font {
+        vertical-align: middle; }
       .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-text {
         padding-right: 33.75px;
         padding-left: 26px;

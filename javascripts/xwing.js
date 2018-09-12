@@ -16074,7 +16074,7 @@ Ship = (function() {
   };
 
   Ship.prototype.toHTML = function() {
-    var action, action_bar, action_bar_red, action_icons, action_icons_red, actionred, attackHTML, attack_icon, chargeHTML, effective_stats, energyHTML, forceHTML, html, modification, slotted_upgrades, title, upgrade, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var action, action_bar, action_bar_red, action_icons, action_icons_red, actionred, attackHTML, attack_icon, chargeHTML, effective_stats, energyHTML, forceHTML, html, modification, slotted_upgrades, title, upgrade, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     effective_stats = this.effectiveStats();
     action_icons = [];
     action_icons_red = [];
@@ -16167,42 +16167,50 @@ Ship = (function() {
     action_bar = action_icons.join(' ');
     action_bar_red = action_icons_red.join(' ');
     attack_icon = (_ref2 = this.data.attack_icon) != null ? _ref2 : 'xwing-miniatures-font-frontarc';
-    attackHTML = (((_ref3 = this.pilot.ship_override) != null ? _ref3.attack : void 0) != null) || (this.data.attack != null) ? $.trim("<i class=\"xwing-miniatures-font " + attack_icon + "\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref4 = (_ref5 = this.pilot.ship_override) != null ? _ref5.attack : void 0) != null ? _ref4 : this.data.attack, effective_stats, 'attack')) + "</span>") : '';
-    energyHTML = (((_ref6 = this.pilot.ship_override) != null ? _ref6.energy : void 0) != null) || (this.data.energy != null) ? $.trim("<i class=\"xwing-miniatures-font xwing-miniatures-font-energy\"></i>\n<span class=\"info-data info-energy\">" + (statAndEffectiveStat((_ref7 = (_ref8 = this.pilot.ship_override) != null ? _ref8.energy : void 0) != null ? _ref7 : this.data.energy, effective_stats, 'energy')) + "</span>") : '';
-    forceHTML = (this.pilot.force != null) ? $.trim("<i class=\"xwing-miniatures-font xwing-miniatures-font-forcecharge\"></i>\n<span class=\"info-data info-force\">" + (statAndEffectiveStat((_ref9 = (_ref10 = this.pilot.ship_override) != null ? _ref10.force : void 0) != null ? _ref9 : this.pilot.force, effective_stats, 'force')) + "</span>") : '';
-    chargeHTML = (this.pilot.charge != null) ? $.trim("<i class=\"xwing-miniatures-font xwing-miniatures-font-charge\"></i>\n<span class=\"info-data info-charge\">" + (statAndEffectiveStat((_ref11 = (_ref12 = this.pilot.ship_override) != null ? _ref12.charge : void 0) != null ? _ref11 : this.pilot.charge, effective_stats, 'charge')) + "</span>") : '';
-    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + this.pilot.name + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.canonical_name + "\"></i><span class=\"fancy-ship-type\"> " + this.data.name + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + this.pilot.points + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">PS " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + attackHTML + "\n        " + energyHTML + "\n        <i class=\"xwing-miniatures-font xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref13 = (_ref14 = this.pilot.ship_override) != null ? _ref14.agility : void 0) != null ? _ref13 : this.data.agility, effective_stats, 'agility')) + "</span>\n        <i class=\"xwing-miniatures-font xwing-miniatures-font-hull\"></i>\n        <span class=\"info-data info-hull\">" + (statAndEffectiveStat((_ref15 = (_ref16 = this.pilot.ship_override) != null ? _ref16.hull : void 0) != null ? _ref15 : this.data.hull, effective_stats, 'hull')) + "</span>\n        <i class=\"xwing-miniatures-font xwing-miniatures-font-shield\"></i>\n        <span class=\"info-data info-shields\">" + (statAndEffectiveStat((_ref17 = (_ref18 = this.pilot.ship_override) != null ? _ref18.shields : void 0) != null ? _ref17 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + forceHTML + "\n        " + chargeHTML + "\n        &nbsp;\n        " + action_bar + "\n        &nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
+    attackHTML = (((_ref3 = this.pilot.ship_override) != null ? _ref3.attack : void 0) != null) || (this.data.attack != null) ? $.trim("<i class=\"xwing-miniatures-font header-attack " + attack_icon + "\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref4 = (_ref5 = this.pilot.ship_override) != null ? _ref5.attack : void 0) != null ? _ref4 : this.data.attack, effective_stats, 'attack')) + "</span>") : '';
+    energyHTML = (((_ref6 = this.pilot.ship_override) != null ? _ref6.energy : void 0) != null) || (this.data.energy != null) ? $.trim("<i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i>\n<span class=\"info-data info-energy\">" + (statAndEffectiveStat((_ref7 = (_ref8 = this.pilot.ship_override) != null ? _ref8.energy : void 0) != null ? _ref7 : this.data.energy, effective_stats, 'energy')) + "</span>") : '';
+    forceHTML = (this.pilot.force != null) ? $.trim("<i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i>\n<span class=\"info-data info-force\">" + (statAndEffectiveStat((_ref9 = (_ref10 = this.pilot.ship_override) != null ? _ref10.force : void 0) != null ? _ref9 : this.pilot.force, effective_stats, 'force')) + "<i class=\"xwing-miniatures-font xwing-miniatures-font-recurring\"></i></span>") : '';
+    if (this.pilot.charge != null) {
+      if (this.pilot.recurring != null) {
+        chargeHTML = $.trim("<i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i>\n<span class=\"info-data info-charge\">" + (statAndEffectiveStat((_ref11 = (_ref12 = this.pilot.ship_override) != null ? _ref12.charge : void 0) != null ? _ref11 : this.pilot.charge, effective_stats, 'charge')) + "<i class=\"xwing-miniatures-font xwing-miniatures-font-recurring\"></i></span>");
+      } else {
+        chargeHTML = $.trim("<i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i>\n<span class=\"info-data info-charge\">" + (statAndEffectiveStat((_ref13 = (_ref14 = this.pilot.ship_override) != null ? _ref14.charge : void 0) != null ? _ref13 : this.pilot.charge, effective_stats, 'charge')) + "</span>");
+      }
+    } else {
+      chargeHTML = '';
+    }
+    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + this.pilot.name + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.canonical_name + "\"></i><span class=\"fancy-ship-type\"> " + this.data.name + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + this.pilot.points + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">PS " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + attackHTML + "\n        " + energyHTML + "\n        <i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref15 = (_ref16 = this.pilot.ship_override) != null ? _ref16.agility : void 0) != null ? _ref15 : this.data.agility, effective_stats, 'agility')) + "</span>\n        <i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i>\n        <span class=\"info-data info-hull\">" + (statAndEffectiveStat((_ref17 = (_ref18 = this.pilot.ship_override) != null ? _ref18.hull : void 0) != null ? _ref17 : this.data.hull, effective_stats, 'hull')) + "</span>\n        <i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i>\n        <span class=\"info-data info-shields\">" + (statAndEffectiveStat((_ref19 = (_ref20 = this.pilot.ship_override) != null ? _ref20.shields : void 0) != null ? _ref19 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + forceHTML + "\n        " + chargeHTML + "\n        &nbsp;\n        " + action_bar + "\n        &nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
     if (this.pilot.text) {
       html += $.trim("<div class=\"fancy-pilot-text\">" + this.pilot.text + "</div>");
     }
     slotted_upgrades = ((function() {
-      var _k, _len2, _ref19, _results;
-      _ref19 = this.upgrades;
+      var _k, _len2, _ref21, _results;
+      _ref21 = this.upgrades;
       _results = [];
-      for (_k = 0, _len2 = _ref19.length; _k < _len2; _k++) {
-        upgrade = _ref19[_k];
+      for (_k = 0, _len2 = _ref21.length; _k < _len2; _k++) {
+        upgrade = _ref21[_k];
         if (upgrade.data != null) {
           _results.push(upgrade);
         }
       }
       return _results;
     }).call(this)).concat((function() {
-      var _k, _len2, _ref19, _results;
-      _ref19 = this.modifications;
+      var _k, _len2, _ref21, _results;
+      _ref21 = this.modifications;
       _results = [];
-      for (_k = 0, _len2 = _ref19.length; _k < _len2; _k++) {
-        modification = _ref19[_k];
+      for (_k = 0, _len2 = _ref21.length; _k < _len2; _k++) {
+        modification = _ref21[_k];
         if (modification.data != null) {
           _results.push(modification);
         }
       }
       return _results;
     }).call(this)).concat((function() {
-      var _k, _len2, _ref19, _results;
-      _ref19 = this.titles;
+      var _k, _len2, _ref21, _results;
+      _ref21 = this.titles;
       _results = [];
-      for (_k = 0, _len2 = _ref19.length; _k < _len2; _k++) {
-        title = _ref19[_k];
+      for (_k = 0, _len2 = _ref21.length; _k < _len2; _k++) {
+        title = _ref21[_k];
         if (title.data != null) {
           _results.push(title);
         }
@@ -16865,7 +16873,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 17622
+                lineno: 17627
               })
             ]);
             __iced_deferrals._fulfill();
@@ -16985,7 +16993,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 17685
+                  lineno: 17690
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -17007,7 +17015,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 17689
+                    lineno: 17694
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -17097,7 +17105,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 17732
+            lineno: 17737
           }));
         }
         __iced_deferrals._fulfill();

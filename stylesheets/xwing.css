@@ -61,8 +61,8 @@ strong em, em strong {
 
 .card-icon, i.xwing-miniatures-font-attack, i.xwing-miniatures-font-attack-turret, i.xwing-miniatures-font-attack-frontback, i.xwing-miniatures-font-attack-180, i.header-attack, i.header-energy, i.header-agility, i.header-hull, i.header-shield, i.header-force, i.header-charge {
   background: black;
-  border-radius: 40%;
-  padding: 4px;
+  border-radius: 50%;
+  padding: 2px;
   font-weight: normal; }
 
 .info-upgrades {
@@ -109,17 +109,20 @@ i.header-hull {
 i.header-shield {
   color: #7ED3E5;
   padding-left: 6px;
-  padding-right: 6px; }
+  padding-right: 6.5px;
+  padding-bottom: 2px; }
 
 i.header-force {
   color: #9D899D;
   padding-left: 5px;
-  padding-right: 5px; }
+  padding-right: 5px;
+  padding-bottom: 5px; }
 
 i.header-charge {
   color: #C2B230;
   padding-left: 7px;
-  padding-right: 8px; }
+  padding-right: 7px;
+  padding-bottom: 3px; }
 
 i.header-range {
   vertical-align: middle;
