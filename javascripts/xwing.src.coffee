@@ -8122,14 +8122,6 @@ exportObj.basicCardData = ->
             modifier_func: (stats) ->
                 stats.force += 1
        }
-       {
-            name: "Dee Yun Loves Twin Laser Turret"
-            id: 188
-            slot: "Turret"
-            attack: 3
-            range: """2-3"""
-            points: 100
-       }
     ]
 
 
@@ -9594,8 +9586,6 @@ exportObj.cardLoaders.English = () ->
            text: """ While you perform an attack, you may spend 1 focus to change 1 of your blank results to a %HIT% result. """
         "Rey (Gunner)":
            text: """ ... defend or ... If the ... in your %SINGLETURRETARC% ... 1 %FORCE% to ... 1 of your blank results to a %EVADE% or %HIT% result. """
-        "Dee Yun Loves Twin Laser Turret":
-           text: """Attack: Perform this attack twice (even against a ship outside your firing arc). %LINEBREAK% Each time this attack hits, the defender suffers 1 damage. Then cancel all dice results."""
         
     condition_translations =
         'Suppressive Fire':
@@ -16112,7 +16102,7 @@ class exportObj.SquadBuilder
                         el not in (data.pilot.ship_override?.actions ? data.data.actions)
                     extra_actions_red = $.grep effective_stats.actionsred, (el, i) ->
                         el not in (data.pilot.ship_override?.actionsred ? data.data.actionsred)
-                    @info_container.find('.info-name').html """#{if data.pilot.unique then "&middot;&nbsp;" else ""}#{data.pilot.name}<br>hates Dee Yun #{if exportObj.isReleased(data.pilot) then "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
+                    @info_container.find('.info-name').html """#{if data.pilot.unique then "&middot;&nbsp;" else ""}#{data.pilot.name} #{if exportObj.isReleased(data.pilot) then "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
                     @info_container.find('p.info-text').html data.pilot.text ? ''
                     @info_container.find('tr.info-ship td.info-data').text data.pilot.ship
                     @info_container.find('tr.info-ship').show()

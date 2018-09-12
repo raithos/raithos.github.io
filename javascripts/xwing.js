@@ -5943,13 +5943,6 @@ exportObj.basicCardData = function() {
         modifier_func: function(stats) {
           return stats.force += 1;
         }
-      }, {
-        name: "Dee Yun Loves Twin Laser Turret",
-        id: 188,
-        slot: "Turret",
-        attack: 3,
-        range: "2-3",
-        points: 100
       }
     ],
     conditionsById: [
@@ -7916,9 +7909,6 @@ exportObj.cardLoaders.English = function() {
     },
     "Rey (Gunner)": {
       text: " ... defend or ... If the ... in your %SINGLETURRETARC% ... 1 %FORCE% to ... 1 of your blank results to a %EVADE% or %HIT% result. "
-    },
-    "Dee Yun Loves Twin Laser Turret": {
-      text: "Attack: Perform this attack twice (even against a ship outside your firing arc). %LINEBREAK% Each time this attack hits, the defender suffers 1 damage. Then cancel all dice results."
     }
   };
   condition_translations = {
@@ -12709,7 +12699,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 14557
+                    lineno: 14547
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -13300,7 +13290,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 15188
+              lineno: 15178
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -14020,7 +14010,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 15834
+          lineno: 15824
         }));
         __iced_deferrals._fulfill();
       });
@@ -14032,7 +14022,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 15835
+            lineno: 15825
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -14602,7 +14592,7 @@ exportObj.SquadBuilder = (function() {
             var _ref7, _ref8;
             return __indexOf.call((_ref7 = (_ref8 = data.pilot.ship_override) != null ? _ref8.actionsred : void 0) != null ? _ref7 : data.data.actionsred, el) < 0;
           });
-          this.info_container.find('.info-name').html("" + (data.pilot.unique ? "&middot;&nbsp;" : "") + data.pilot.name + "<br>hates Dee Yun " + (exportObj.isReleased(data.pilot) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
+          this.info_container.find('.info-name').html("" + (data.pilot.unique ? "&middot;&nbsp;" : "") + data.pilot.name + " " + (exportObj.isReleased(data.pilot) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
           this.info_container.find('p.info-text').html((_ref7 = data.pilot.text) != null ? _ref7 : '');
           this.info_container.find('tr.info-ship td.info-data').text(data.pilot.ship);
           this.info_container.find('tr.info-ship').show();
@@ -15686,7 +15676,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 16847
+                      lineno: 16837
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -15760,7 +15750,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 16873
+                lineno: 16863
               })
             ]);
             __iced_deferrals._fulfill();
@@ -15807,7 +15797,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 16896
+              lineno: 16886
             }));
           }
         }
@@ -15816,7 +15806,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 16898
+              lineno: 16888
             }));
           }
         }
@@ -15825,7 +15815,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 16900
+              lineno: 16890
             }));
           }
         }
@@ -16883,7 +16873,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 17632
+                lineno: 17622
               })
             ]);
             __iced_deferrals._fulfill();
@@ -17015,7 +17005,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 17699
+                  lineno: 17689
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -17037,7 +17027,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 17703
+                    lineno: 17693
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -17127,7 +17117,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 17746
+            lineno: 17736
           }));
         }
         __iced_deferrals._fulfill();
