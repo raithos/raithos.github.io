@@ -148,6 +148,8 @@ body {
         margin-top: -0.2in; }
         #printable .fancy-ship .fancy-pilot-stats .pilot-stats-content .xwing-miniatures-font {
           vertical-align: middle; }
+        #printable .fancy-ship .fancy-pilot-stats .pilot-stats-content .red {
+          -webkit-text-stroke: 0.1px white; }
       #printable .fancy-ship .fancy-pilot-stats .info-data, #printable .fancy-ship .fancy-pilot-stats .xwing-miniatures-font {
         position: relative;
         bottom: 0.048in; }
