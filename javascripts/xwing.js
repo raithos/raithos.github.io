@@ -13333,7 +13333,7 @@ exportObj.SquadBuilder = (function() {
     content_container = $(document.createElement('DIV'));
     content_container.addClass('container-fluid');
     this.container.append(content_container);
-    content_container.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span9 ship-container\">\n        <label class=\"notes-container show-authenticated\">\n            <span>Squad Notes:</span>\n            <br />\n            <textarea class=\"squad-notes\"></textarea>\n        </label>\n        <span class=\"obstacles-container\">\n            <button class=\"btn btn-primary choose-obstacles\">Choose Obstacles</button>\n        </span>\n     </div>\n   <div class=\"span3 info-container\" />\n</div>"));
+    content_container.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span9 ship-container\">\n        <label class=\"notes-container show-authenticated\">\n            <span>Squad Notes:</span>\n            <br />\n            <textarea class=\"squad-notes\"></textarea>\n        </label>\n        <span class=\"obstacles-container\">\n            <button class=\"btn btn-primary choose-obstacles\">Choose Obstacles</button>\n        </span>\n     </div>\n   <div class=\"span3 info-container\" id=\"info-container\" />\n</div>"));
     this.ship_container = $(content_container.find('div.ship-container'));
     this.info_container = $(content_container.find('div.info-container'));
     this.obstacles_container = content_container.find('.obstacles-container');
@@ -16033,6 +16033,14 @@ Ship = (function() {
         }
       };
     })(this));
+    this.pilot_selector.data('select2').container.on('touchmove', (function(_this) {
+      return function(e) {
+        if (_this.data != null) {
+          _this.builder.showTooltip('Ship', _this);
+        }
+        return scrollTo(0, $('#info-container').offset().top - 10, 'smooth');
+      };
+    })(this));
     this.pilot_selector.data('select2').container.hide();
     this.points_container = $(this.row.find('.points-display-container'));
     this.points_container.fadeTo(0, 0);
@@ -16873,7 +16881,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 17627
+                lineno: 17631
               })
             ]);
             __iced_deferrals._fulfill();
@@ -16958,13 +16966,23 @@ GenericAddon = (function() {
         }
       };
     })(this));
-    return this.selector.data('select2').container.on('mouseover', (function(_this) {
+    this.selector.data('select2').container.on('mouseover', (function(_this) {
       return function(e) {
         if (_this.data != null) {
           return _this.ship.builder.showTooltip('Addon', _this.data, {
             addon_type: _this.type
           });
         }
+      };
+    })(this));
+    return this.selector.data('select2').container.on('touchmove', (function(_this) {
+      return function(e) {
+        if (_this.data != null) {
+          _this.ship.builder.showTooltip('Addon', _this.data, {
+            addon_type: _this.type
+          });
+        }
+        return scrollTo(0, $('#info-container').offset().top - 10, 'smooth');
       };
     })(this));
   };
@@ -16993,7 +17011,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 17690
+                  lineno: 17697
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -17015,7 +17033,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 17694
+                    lineno: 17701
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -17105,7 +17123,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 17737
+            lineno: 17744
           }));
         }
         __iced_deferrals._fulfill();
