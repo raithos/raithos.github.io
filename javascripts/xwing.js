@@ -1447,7 +1447,7 @@ exportObj.basicCardData = function() {
         shields: 4,
         actions: ["Focus", "R> Barrel Roll", "Lock", "Barrel Roll"],
         actionsred: [],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 3, 0, 0, 0, 0], [0, 3, 1, 3, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 3, 0, 0, 0, 0], [0, 3, 2, 3, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
       },
       "TIE Bomber": {
         name: "TIE Bomber",
@@ -1537,7 +1537,7 @@ exportObj.basicCardData = function() {
       },
       "StarViper": {
         name: "StarViper",
-        xws: "Starviper-class Attack Platform".canonicalize(),
+        xws: "Starviper-Class Attack Platform".canonicalize(),
         factions: ["Scum and Villainy"],
         attack: 3,
         agility: 3,
@@ -1713,9 +1713,9 @@ exportObj.basicCardData = function() {
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
-      "Lancer-class Pursuit Craft": {
-        name: "Lancer-class Pursuit Craft",
-        xws: "Lancer-class Pursuit Craft".canonicalize(),
+      "Lancer-Class Pursuit Craft": {
+        name: "Lancer-Class Pursuit Craft",
+        xws: "Lancer-Class Pursuit Craft".canonicalize(),
         factions: ["Scum and Villainy"],
         large: true,
         attack: 3,
@@ -1913,9 +1913,9 @@ exportObj.basicCardData = function() {
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
       },
-      "TIE/sf Fighter": {
-        name: "TIE/sf Fighter",
-        xws: "TIE/sf Fighter".canonicalize(),
+      "TIE/SF Fighter": {
+        name: "TIE/SF Fighter",
+        xws: "TIE/SF Fighter".canonicalize(),
         factions: ["First Order"],
         attack: 0,
         attackt: 0,
@@ -1926,9 +1926,9 @@ exportObj.basicCardData = function() {
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 3, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       },
-      "Upsilon-class Shuttle": {
-        name: "Upsilon-class Shuttle",
-        xws: "Upsilon-class Shuttle".canonicalize(),
+      "Upsilon-Class Shuttle": {
+        name: "Upsilon-Class Shuttle",
+        xws: "Upsilon-Class Shuttle".canonicalize(),
         factions: ["First Order"],
         attack: 0,
         agility: 0,
@@ -3130,7 +3130,7 @@ exportObj.basicCardData = function() {
         id: 125,
         unique: true,
         faction: "Scum and Villainy",
-        ship: "Lancer-class Pursuit Craft",
+        ship: "Lancer-Class Pursuit Craft",
         skill: 4,
         points: 84,
         force: 2,
@@ -3140,7 +3140,7 @@ exportObj.basicCardData = function() {
         id: 126,
         unique: true,
         faction: "Scum and Villainy",
-        ship: "Lancer-class Pursuit Craft",
+        ship: "Lancer-Class Pursuit Craft",
         skill: 5,
         points: 74,
         slots: ["Talent", "Crew", "Illicit", "Illicit", "Modification", "Title"]
@@ -3150,7 +3150,7 @@ exportObj.basicCardData = function() {
         unique: true,
         xws: "sabinewren-lancerclasspursuitcraft",
         faction: "Scum and Villainy",
-        ship: "Lancer-class Pursuit Craft",
+        ship: "Lancer-Class Pursuit Craft",
         skill: 3,
         points: 68,
         slots: ["Talent", "Crew", "Illicit", "Illicit", "Modification", "Title"]
@@ -3158,7 +3158,7 @@ exportObj.basicCardData = function() {
         name: "Shadowport Hunter",
         id: 128,
         faction: "Scum and Villainy",
-        ship: "Lancer-class Pursuit Craft",
+        ship: "Lancer-Class Pursuit Craft",
         skill: 2,
         points: 64,
         slots: ["Crew", "Illicit", "Illicit", "Modification", "Title"]
@@ -4132,7 +4132,7 @@ exportObj.basicCardData = function() {
         id: 238,
         unique: true,
         faction: "First Order",
-        ship: "Upsilon-class Shuttle",
+        ship: "Upsilon-Class Shuttle",
         skill: 0,
         points: 100,
         slots: ["Tech", "Tech", "Crew", "Crew", "Cannon", "Sensor", "Modification"]
@@ -4170,7 +4170,7 @@ exportObj.basicCardData = function() {
         id: 242,
         unique: true,
         faction: "First Order",
-        ship: "TIE/sf Fighter",
+        ship: "TIE/SF Fighter",
         skill: 4,
         points: 100,
         slots: ["Talent", "Tech", "Gunner", "Sensor", "Modification"]
@@ -4179,7 +4179,7 @@ exportObj.basicCardData = function() {
         id: 243,
         unique: true,
         faction: "First Order",
-        ship: "TIE/sf Fighter",
+        ship: "TIE/SF Fighter",
         skill: 0,
         points: 100,
         slots: ["Talent", "Tech", "Gunner", "Sensor", "Modification"]
@@ -5705,7 +5705,7 @@ exportObj.basicCardData = function() {
         points: 6,
         unique: true,
         faction: "Scum and Villainy",
-        ship: "Lancer-class Pursuit Craft"
+        ship: "Lancer-Class Pursuit Craft"
       }, {
         name: "Slave I",
         id: 161,
@@ -7525,7 +7525,7 @@ exportObj.cardLoaders.English = function() {
       text: "After you fully execute a maneuver, if you have not dropped or launched a device this round, you may drop 1 bomb."
     },
     "Ghost": {
-      text: "You can dock 1 attack shuttle or Sheathipede-class shuttle. Your docked ships can deploy only from your rear guides."
+      text: "You can dock 1 attack shuttle or Sheathipede-Class shuttle. Your docked ships can deploy only from your rear guides."
     },
     "Grand Inquisitor": {
       text: "After an enemy ship at range 0-2 reveals its dial, you may spend 1 %FORCE% to perform 1 white action on your action bar, treating that action as red."
@@ -9742,74 +9742,6 @@ exportObj.manifestByExpansion = {
   ],
   'Rebel Alliance Conversion Kit': [
     {
-      name: 'A-Wing',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'ARC-170',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Auzituck Gunship',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'B-Wing',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'E-Wing',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'VCX-100',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'HWK-290',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'K-Wing',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'YT-1300',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Attack Shuttle',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Sheathipede-Class Shuttle',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'TIE Fighter',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'U-Wing',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'X-Wing',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Y-Wing',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'YT-2400',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Z-95 Headhunter',
-      type: 'ship',
-      count: 4
-    }, {
       name: 'Thane Kyrell',
       type: 'pilot',
       count: 1
@@ -10469,58 +10401,6 @@ exportObj.manifestByExpansion = {
   ],
   'Galactic Empire Conversion Kit': [
     {
-      name: 'Alpha-Class Star Wing',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'TIE Advanced Prototype',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'Lambda-Class Shuttle',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'TIE Advanced',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'TIE Aggressor',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'TIE Bomber',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'TIE Defender',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'TIE Fighter',
-      type: 'ship',
-      count: 4
-    }, {
-      name: 'TIE Interceptor',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'TIE Phantom',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'TIE Punisher',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'TIE Striker',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'VT-49 Decimator',
-      type: 'ship',
-      count: 2
-    }, {
       name: 'Ved Foslo',
       type: 'pilot',
       count: 1
@@ -11068,70 +10948,6 @@ exportObj.manifestByExpansion = {
   ],
   'Scum and Villainy Conversion Kit': [
     {
-      name: 'Kihraxz Fighter',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'YV-666',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Aggressor',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'HWK-290',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'M12-L Kimogila Fighter',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'M3-A Interceptor',
-      type: 'ship',
-      count: 4
-    }, {
-      name: 'G-1A Starfighter',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Fang Fighter',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'JumpMaster 5000',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Quadjumper',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'Scurrg H-6 Bomber',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Lancer-class Pursuit Craft',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Firespray-31',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'StarViper',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Y-Wing',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Z-95 Headhunter',
-      type: 'ship',
-      count: 4
-    }, {
       name: 'Joy Rekkoff',
       type: 'pilot',
       count: 1
@@ -12261,15 +12077,231 @@ exportObj.manifestByExpansion = {
       type: 'upgrade',
       count: 1
     }
+  ],
+  'Loose Ships': [
+    {
+      name: 'A-Wing',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'ARC-170',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'Auzituck Gunship',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'B-Wing',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'E-Wing',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'VCX-100',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'HWK-290',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'K-Wing',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'YT-1300',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'Attack Shuttle',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'Sheathipede-Class Shuttle',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'TIE Fighter',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'U-Wing',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'X-Wing',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'Y-Wing',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'YT-2400',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'Z-95 Headhunter',
+      type: 'ship',
+      count: 4
+    }, {
+      name: 'Alpha-Class Star Wing',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'TIE Advanced Prototype',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'Lambda-Class Shuttle',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'TIE Advanced',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'TIE Aggressor',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'TIE Bomber',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'TIE Defender',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'TIE Fighter',
+      type: 'ship',
+      count: 4
+    }, {
+      name: 'TIE Interceptor',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'TIE Phantom',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'TIE Punisher',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'TIE Striker',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'VT-49 Decimator',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'Kihraxz Fighter',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'YV-666',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'Aggressor',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'HWK-290',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'M12-L Kimogila Fighter',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'M3-A Interceptor',
+      type: 'ship',
+      count: 4
+    }, {
+      name: 'G-1A Starfighter',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'Fang Fighter',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'JumpMaster 5000',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'Quadjumper',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'Scurrg H-6 Bomber',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'Lancer-class Pursuit Craft',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'Firespray-31',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'StarViper',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'Y-Wing',
+      type: 'ship',
+      count: 2
+    }, {
+      name: 'Z-95 Headhunter',
+      type: 'ship',
+      count: 4
+    }, {
+      name: 'T-70 X-Wing',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'B/SF-17 Bomber',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'TIE/SF Fighter',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'TIE/FO Fighter',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'TIE Silencer',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'Upsilon-Class Shuttle',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'YT-1300 (Resistance)',
+      type: 'ship',
+      count: 3
+    }
   ]
 };
 
 exportObj.Collection = (function() {
   function Collection(args) {
     this.onLanguageChange = __bind(this.onLanguageChange, this);
-    var _ref, _ref1;
+    var _ref, _ref1, _ref2;
     this.expansions = (_ref = args.expansions) != null ? _ref : {};
     this.singletons = (_ref1 = args.singletons) != null ? _ref1 : {};
+    this.looseships = (_ref2 = args.looseships) != null ? _ref2 : {};
     this.backend = args.backend;
     this.setupUI();
     this.setupHandlers();
@@ -12443,7 +12475,7 @@ exportObj.Collection = (function() {
     this.modal = $(document.createElement('DIV'));
     this.modal.addClass('modal hide fade collection-modal hidden-print');
     $('body').append(this.modal);
-    this.modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h4>Your Collection</h4>\n</div>\n<div class=\"modal-body\">\n    <ul class=\"nav nav-tabs\">\n        <li class=\"active\"><a data-target=\"#collection-expansions\" data-toggle=\"tab\">Expansions</a><li>\n        <li><a data-target=\"#collection-ships\" data-toggle=\"tab\">Ships</a><li>\n        <li><a data-target=\"#collection-pilots\" data-toggle=\"tab\">Pilots</a><li>\n        <li><a data-target=\"#collection-upgrades\" data-toggle=\"tab\">Upgrades</a><li>\n        <li><a data-target=\"#collection-modifications\" data-toggle=\"tab\">Mods</a><li>\n        <li><a data-target=\"#collection-titles\" data-toggle=\"tab\">Titles</a><li>\n        <li><a data-target=\"#collection-components\" data-toggle=\"tab\">Inventory</a><li>\n    </ul>\n    <div class=\"tab-content\">\n        <div id=\"collection-expansions\" class=\"tab-pane active container-fluid collection-content\"></div>\n        <div id=\"collection-ships\" class=\"tab-pane active container-fluid collection-ship-content\"></div>\n        <div id=\"collection-pilots\" class=\"tab-pane active container-fluid collection-pilot-content\"></div>\n        <div id=\"collection-upgrades\" class=\"tab-pane active container-fluid collection-upgrade-content\"></div>\n        <div id=\"collection-modifications\" class=\"tab-pane active container-fluid collection-modification-content\"></div>\n        <div id=\"collection-titles\" class=\"tab-pane active container-fluid collection-title-content\"></div>\n        <div id=\"collection-components\" class=\"tab-pane container-fluid collection-inventory-content\"></div>\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <span class=\"collection-status\"></span>\n    &nbsp;\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h4>Your Collection</h4>\n</div>\n<div class=\"modal-body\">\n    <ul class=\"nav nav-tabs\">\n        <li class=\"active\"><a data-target=\"#collection-expansions\" data-toggle=\"tab\">Expansions</a><li>\n        <li><a data-target=\"#collection-ships\" data-toggle=\"tab\">Ships</a><li>\n        <li><a data-target=\"#collection-pilots\" data-toggle=\"tab\">Pilots</a><li>\n        <li><a data-target=\"#collection-upgrades\" data-toggle=\"tab\">Upgrades</a><li>\n        <li><a data-target=\"#collection-components\" data-toggle=\"tab\">Inventory</a><li>\n    </ul>\n    <div class=\"tab-content\">\n        <div id=\"collection-expansions\" class=\"tab-pane active container-fluid collection-content\"></div>\n        <div id=\"collection-ships\" class=\"tab-pane active container-fluid collection-ship-content\"></div>\n        <div id=\"collection-pilots\" class=\"tab-pane active container-fluid collection-pilot-content\"></div>\n        <div id=\"collection-upgrades\" class=\"tab-pane active container-fluid collection-upgrade-content\"></div>\n        <div id=\"collection-components\" class=\"tab-pane container-fluid collection-inventory-content\"></div>\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <span class=\"collection-status\"></span>\n    &nbsp;\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
     this.modal_status = $(this.modal.find('.collection-status'));
     collection_content = $(this.modal.find('.collection-content'));
     _ref1 = exportObj.expansions;
@@ -12455,7 +12487,9 @@ exportObj.Collection = (function() {
       input.data('expansion', expansion);
       input.closest('div').css('background-color', this.countToBackgroundColor(input.val()));
       $(row).find('.expansion-name').data('english_name', expansion);
-      collection_content.append(row);
+      if (expansion !== 'Loose Ships') {
+        collection_content.append(row);
+      }
     }
     shipcollection_content = $(this.modal.find('.collection-ship-content'));
     _ref3 = singletonsByType.ship;
@@ -12691,7 +12725,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 14542
+                    lineno: 14577
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -13282,7 +13316,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 15173
+              lineno: 15208
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -14002,7 +14036,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 15819
+          lineno: 15854
         }));
         __iced_deferrals._fulfill();
       });
@@ -14014,7 +14048,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 15820
+            lineno: 15855
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -15668,7 +15702,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 16832
+                      lineno: 16867
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -15742,7 +15776,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 16858
+                lineno: 16893
               })
             ]);
             __iced_deferrals._fulfill();
@@ -15789,7 +15823,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 16881
+              lineno: 16916
             }));
           }
         }
@@ -15798,7 +15832,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 16883
+              lineno: 16918
             }));
           }
         }
@@ -15807,7 +15841,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 16885
+              lineno: 16920
             }));
           }
         }
@@ -16865,7 +16899,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 17617
+                lineno: 17652
               })
             ]);
             __iced_deferrals._fulfill();
@@ -16997,7 +17031,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 17684
+                  lineno: 17719
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -17019,7 +17053,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 17688
+                    lineno: 17723
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -17109,7 +17143,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 17731
+            lineno: 17766
           }));
         }
         __iced_deferrals._fulfill();

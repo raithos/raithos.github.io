@@ -1374,7 +1374,7 @@ exportObj.basicCardData = ->
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
               [ 3, 2, 2, 2, 3, 0, 0, 0, 3, 3]
               [ 1, 1, 2, 1, 1, 3, 0, 0, 0, 0]
-              [ 0, 3, 1, 3, 0, 0, 0, 0, 0, 0]
+              [ 0, 3, 2, 3, 0, 0, 0, 0, 0, 0]
               [ 0, 0, 3, 0, 0, 0, 0, 0, 0, 0]
             ]
         "TIE Bomber":
@@ -1550,7 +1550,7 @@ exportObj.basicCardData = ->
             ]
         "StarViper":
             name: "StarViper"
-            xws: "Starviper-class Attack Platform".canonicalize()
+            xws: "Starviper-Class Attack Platform".canonicalize()
             factions: ["Scum and Villainy"]
             attack: 3
             agility: 3
@@ -1888,9 +1888,9 @@ exportObj.basicCardData = ->
                 [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0 ]
                 [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 ]
             ]
-        "Lancer-class Pursuit Craft":
-            name: "Lancer-class Pursuit Craft"
-            xws: "Lancer-class Pursuit Craft".canonicalize()
+        "Lancer-Class Pursuit Craft":
+            name: "Lancer-Class Pursuit Craft"
+            xws: "Lancer-Class Pursuit Craft".canonicalize()
             factions: ["Scum and Villainy"]
             large: true
             attack: 3
@@ -2255,9 +2255,9 @@ exportObj.basicCardData = ->
               [ 0, 0, 2, 0, 0, 3, 0, 0, 0, 0]
               [ 0, 0, 2, 0, 0, 0, 0, 0, 0, 0]
             ]
-        "TIE/sf Fighter":
-            name: "TIE/sf Fighter"
-            xws: "TIE/sf Fighter".canonicalize()
+        "TIE/SF Fighter":
+            name: "TIE/SF Fighter"
+            xws: "TIE/SF Fighter".canonicalize()
             factions: ["First Order"]
             attack: 0
             attackt: 0
@@ -2284,9 +2284,9 @@ exportObj.basicCardData = ->
               [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             ]
-        "Upsilon-class Shuttle":
-            name: "Upsilon-class Shuttle"
-            xws: "Upsilon-class Shuttle".canonicalize()
+        "Upsilon-Class Shuttle":
+            name: "Upsilon-Class Shuttle"
+            xws: "Upsilon-Class Shuttle".canonicalize()
             factions: ["First Order"]
             attack: 0
             agility: 0
@@ -4476,7 +4476,7 @@ exportObj.basicCardData = ->
             id: 125
             unique: true
             faction: "Scum and Villainy"
-            ship: "Lancer-class Pursuit Craft"
+            ship: "Lancer-Class Pursuit Craft"
             skill: 4
             points: 84
             force: 2
@@ -4494,7 +4494,7 @@ exportObj.basicCardData = ->
             id: 126
             unique: true
             faction: "Scum and Villainy"
-            ship: "Lancer-class Pursuit Craft"
+            ship: "Lancer-Class Pursuit Craft"
             skill: 5
             points: 74
             slots: [
@@ -4512,7 +4512,7 @@ exportObj.basicCardData = ->
             unique: true
             xws: "sabinewren-lancerclasspursuitcraft"
             faction: "Scum and Villainy"
-            ship: "Lancer-class Pursuit Craft"
+            ship: "Lancer-Class Pursuit Craft"
             skill: 3
             points: 68
             slots: [
@@ -4528,7 +4528,7 @@ exportObj.basicCardData = ->
             name: "Shadowport Hunter"
             id: 128
             faction: "Scum and Villainy"
-            ship: "Lancer-class Pursuit Craft"
+            ship: "Lancer-Class Pursuit Craft"
             skill: 2
             points: 64
             slots: [
@@ -6214,7 +6214,7 @@ exportObj.basicCardData = ->
             id: 238
             unique: true
             faction: "First Order"
-            ship: "Upsilon-class Shuttle"
+            ship: "Upsilon-Class Shuttle"
             skill: 0
             points: 100
             slots: [
@@ -6273,7 +6273,7 @@ exportObj.basicCardData = ->
             id: 242
             unique: true
             faction: "First Order"
-            ship: "TIE/sf Fighter"
+            ship: "TIE/SF Fighter"
             skill: 4
             points: 100
             slots: [
@@ -6289,7 +6289,7 @@ exportObj.basicCardData = ->
             id: 243
             unique: true
             faction: "First Order"
-            ship: "TIE/sf Fighter"
+            ship: "TIE/SF Fighter"
             skill: 0
             points: 100
             slots: [
@@ -7870,7 +7870,7 @@ exportObj.basicCardData = ->
            points: 6
            unique: true
            faction: "Scum and Villainy"
-           ship: "Lancer-class Pursuit Craft"
+           ship: "Lancer-Class Pursuit Craft"
        }
        {
            name: "Slave I"
@@ -9330,7 +9330,7 @@ exportObj.cardLoaders.English = () ->
         '"Genius"':
            text: """After you fully execute a maneuver, if you have not dropped or launched a device this round, you may drop 1 bomb."""
         "Ghost":
-           text: """You can dock 1 attack shuttle or Sheathipede-class shuttle. Your docked ships can deploy only from your rear guides."""
+           text: """You can dock 1 attack shuttle or Sheathipede-Class shuttle. Your docked ships can deploy only from your rear guides."""
         "Grand Inquisitor":
            text: """After an enemy ship at range 0-2 reveals its dial, you may spend 1 %FORCE% to perform 1 white action on your action bar, treating that action as red."""
         "Grand Moff Tarkin":
@@ -10710,7 +10710,7 @@ sortWithoutQuotes = (a, b) ->
         1
     else
         0
-
+        
 exportObj.manifestByExpansion =
     'Second Edition Core Set': [
         {
@@ -11019,91 +11019,6 @@ exportObj.manifestByExpansion =
         }
     ]
     'Rebel Alliance Conversion Kit': [
-        {
-            name: 'A-Wing'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'ARC-170'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'Auzituck Gunship'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'B-Wing'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'E-Wing'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'VCX-100'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'HWK-290'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'K-Wing'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'YT-1300'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'Attack Shuttle'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'Sheathipede-Class Shuttle'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'TIE Fighter'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'U-Wing'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'X-Wing'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'Y-Wing'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'YT-2400'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'Z-95 Headhunter'
-            type: 'ship'
-            count: 4
-        }
         {
             name: 'Thane Kyrell'
             type: 'pilot'
@@ -11927,71 +11842,6 @@ exportObj.manifestByExpansion =
     ]
     'Galactic Empire Conversion Kit': [
         {
-            name: 'Alpha-Class Star Wing'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'TIE Advanced Prototype'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'Lambda-Class Shuttle'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'TIE Advanced'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'TIE Aggressor'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'TIE Bomber'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'TIE Defender'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'TIE Fighter'
-            type: 'ship'
-            count: 4
-        }
-        {
-            name: 'TIE Interceptor'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'TIE Phantom'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'TIE Punisher'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'TIE Striker'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'VT-49 Decimator'
-            type: 'ship'
-            count: 2
-        }
-        {
             name: 'Ved Foslo'
             type: 'pilot'
             count: 1
@@ -12673,86 +12523,6 @@ exportObj.manifestByExpansion =
         }
     ]
     'Scum and Villainy Conversion Kit': [
-        {
-            name: 'Kihraxz Fighter'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'YV-666'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'Aggressor'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'HWK-290'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'M12-L Kimogila Fighter'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'M3-A Interceptor'
-            type: 'ship'
-            count: 4
-        }
-        {
-            name: 'G-1A Starfighter'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'Fang Fighter'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'JumpMaster 5000'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'Quadjumper'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'Scurrg H-6 Bomber'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'Lancer-class Pursuit Craft'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'Firespray-31'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'StarViper'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'Y-Wing'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'Z-95 Headhunter'
-            type: 'ship'
-            count: 4
-        }
         {
             name: 'Joy Rekkoff'
             type: 'pilot'
@@ -14153,6 +13923,273 @@ exportObj.manifestByExpansion =
             count: 1
         }
     ]
+    'Loose Ships': [
+        {
+            name: 'A-Wing'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'ARC-170'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'Auzituck Gunship'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'B-Wing'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'E-Wing'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'VCX-100'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'HWK-290'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'K-Wing'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'YT-1300'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'Attack Shuttle'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'Sheathipede-Class Shuttle'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'TIE Fighter'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'U-Wing'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'X-Wing'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'Y-Wing'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'YT-2400'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'Z-95 Headhunter'
+            type: 'ship'
+            count: 4
+        }
+        {
+            name: 'Alpha-Class Star Wing'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'TIE Advanced Prototype'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'Lambda-Class Shuttle'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'TIE Advanced'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'TIE Aggressor'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'TIE Bomber'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'TIE Defender'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'TIE Fighter'
+            type: 'ship'
+            count: 4
+        }
+        {
+            name: 'TIE Interceptor'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'TIE Phantom'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'TIE Punisher'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'TIE Striker'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'VT-49 Decimator'
+            type: 'ship'
+            count: 2
+        }        
+        {
+            name: 'Kihraxz Fighter'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'YV-666'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'Aggressor'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'HWK-290'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'M12-L Kimogila Fighter'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'M3-A Interceptor'
+            type: 'ship'
+            count: 4
+        }
+        {
+            name: 'G-1A Starfighter'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'Fang Fighter'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'JumpMaster 5000'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'Quadjumper'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'Scurrg H-6 Bomber'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'Lancer-class Pursuit Craft'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'Firespray-31'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'StarViper'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'Y-Wing'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'Z-95 Headhunter'
+            type: 'ship'
+            count: 4
+        }
+        {
+            name: 'T-70 X-Wing'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'B/SF-17 Bomber'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'TIE/SF Fighter'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'TIE/FO Fighter'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'TIE Silencer'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'Upsilon-Class Shuttle'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'YT-1300 (Resistance)'
+            type: 'ship'
+            count: 3
+        }
+    ]        
 
 class exportObj.Collection
     # collection = new exportObj.Collection
@@ -14187,6 +14224,7 @@ class exportObj.Collection
     constructor: (args) ->
         @expansions = args.expansions ? {}
         @singletons = args.singletons ? {}
+        @looseships = args.looseships ? {}
         # To save collection (optional)
         @backend = args.backend
 
@@ -14308,8 +14346,6 @@ class exportObj.Collection
                     <li><a data-target="#collection-ships" data-toggle="tab">Ships</a><li>
                     <li><a data-target="#collection-pilots" data-toggle="tab">Pilots</a><li>
                     <li><a data-target="#collection-upgrades" data-toggle="tab">Upgrades</a><li>
-                    <li><a data-target="#collection-modifications" data-toggle="tab">Mods</a><li>
-                    <li><a data-target="#collection-titles" data-toggle="tab">Titles</a><li>
                     <li><a data-target="#collection-components" data-toggle="tab">Inventory</a><li>
                 </ul>
                 <div class="tab-content">
@@ -14317,8 +14353,6 @@ class exportObj.Collection
                     <div id="collection-ships" class="tab-pane active container-fluid collection-ship-content"></div>
                     <div id="collection-pilots" class="tab-pane active container-fluid collection-pilot-content"></div>
                     <div id="collection-upgrades" class="tab-pane active container-fluid collection-upgrade-content"></div>
-                    <div id="collection-modifications" class="tab-pane active container-fluid collection-modification-content"></div>
-                    <div id="collection-titles" class="tab-pane active container-fluid collection-title-content"></div>
                     <div id="collection-components" class="tab-pane container-fluid collection-inventory-content"></div>
                 </div>
             </div>
@@ -14347,7 +14381,8 @@ class exportObj.Collection
             input.data 'expansion', expansion
             input.closest('div').css 'background-color', @countToBackgroundColor(input.val())
             $(row).find('.expansion-name').data 'english_name', expansion
-            collection_content.append row
+            if expansion != 'Loose Ships'
+                collection_content.append row
 
         shipcollection_content = $ @modal.find('.collection-ship-content')
         for ship in singletonsByType.ship
