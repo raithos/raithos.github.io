@@ -15664,7 +15664,8 @@ exportObj.SquadBuilder = (function() {
               id: ship_data.name,
               text: ship_data.name,
               english_name: ship_data.english_name,
-              canonical_name: ship_data.canonical_name
+              canonical_name: ship_data.canonical_name,
+              xws: ship_data.xws
             });
           }
         }
@@ -17265,7 +17266,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 17974
+                      lineno: 17975
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -17339,7 +17340,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 18000
+                lineno: 18001
               })
             ]);
             __iced_deferrals._fulfill();
@@ -17386,7 +17387,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 18023
+              lineno: 18024
             }));
           }
         }
@@ -17395,7 +17396,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 18025
+              lineno: 18026
             }));
           }
         }
@@ -17404,7 +17405,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 18027
+              lineno: 18028
             }));
           }
         }
@@ -17452,7 +17453,7 @@ Ship = (function() {
       this.ship_selector.select2('data', {
         id: this.pilot.ship,
         text: this.pilot.ship,
-        canonical_name: exportObj.ships[this.pilot.ship].canonical_name
+        xws: exportObj.ships[this.pilot.ship].xws
       });
       this.pilot_selector.select2('data', {
         id: this.pilot.id,
@@ -17498,7 +17499,7 @@ Ship = (function() {
     this.ship_selector = $(this.row.find('input.ship-selector-container'));
     this.pilot_selector = $(this.row.find('input.pilot-selector-container'));
     shipResultFormatter = function(object, container, query) {
-      $(container).append("<i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + object.canonical_name + "\"></i> " + object.text);
+      $(container).append("<i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + object.xws + "\"></i> " + object.text);
       return void 0;
     };
     this.ship_selector.select2({
@@ -17763,7 +17764,7 @@ Ship = (function() {
     } else {
       chargeHTML = '';
     }
-    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + this.pilot.name + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.canonical_name + "\"></i><span class=\"fancy-ship-type\"> " + this.data.name + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + this.pilot.points + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">INT " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + attackHTML + "\n        " + energyHTML + "\n        <i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref15 = (_ref16 = this.pilot.ship_override) != null ? _ref16.agility : void 0) != null ? _ref15 : this.data.agility, effective_stats, 'agility')) + "</span>\n        <i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i>\n        <span class=\"info-data info-hull\">" + (statAndEffectiveStat((_ref17 = (_ref18 = this.pilot.ship_override) != null ? _ref18.hull : void 0) != null ? _ref17 : this.data.hull, effective_stats, 'hull')) + "</span>\n        <i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i>\n        <span class=\"info-data info-shields\">" + (statAndEffectiveStat((_ref19 = (_ref20 = this.pilot.ship_override) != null ? _ref20.shields : void 0) != null ? _ref19 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + forceHTML + "\n        " + chargeHTML + "\n        &nbsp;\n        " + action_bar + "\n        &nbsp;&nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
+    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + this.pilot.name + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.xws + "\"></i><span class=\"fancy-ship-type\"> " + this.data.name + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + this.pilot.points + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">INT " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + attackHTML + "\n        " + energyHTML + "\n        <i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref15 = (_ref16 = this.pilot.ship_override) != null ? _ref16.agility : void 0) != null ? _ref15 : this.data.agility, effective_stats, 'agility')) + "</span>\n        <i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i>\n        <span class=\"info-data info-hull\">" + (statAndEffectiveStat((_ref17 = (_ref18 = this.pilot.ship_override) != null ? _ref18.hull : void 0) != null ? _ref17 : this.data.hull, effective_stats, 'hull')) + "</span>\n        <i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i>\n        <span class=\"info-data info-shields\">" + (statAndEffectiveStat((_ref19 = (_ref20 = this.pilot.ship_override) != null ? _ref20.shields : void 0) != null ? _ref19 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + forceHTML + "\n        " + chargeHTML + "\n        &nbsp;\n        " + action_bar + "\n        &nbsp;&nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
     if (this.pilot.text) {
       html += $.trim("<div class=\"fancy-pilot-text\">" + this.pilot.text + "</div>");
     }
@@ -18428,7 +18429,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 18738
+                lineno: 18740
               })
             ]);
             __iced_deferrals._fulfill();
@@ -18560,7 +18561,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 18806
+                  lineno: 18808
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -18582,7 +18583,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 18810
+                    lineno: 18812
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -18672,7 +18673,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 18853
+            lineno: 18855
           }));
         }
         __iced_deferrals._fulfill();
