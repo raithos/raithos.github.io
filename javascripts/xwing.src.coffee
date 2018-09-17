@@ -53,6 +53,7 @@ class exportObj.SquadBuilderBackend
         @squad_display_mode = 'all'
 
         @collection_save_timer = null
+        @collection = {}
 
         @setupHandlers()
         @setupUI()
@@ -615,7 +616,7 @@ class exportObj.SquadBuilderBackend
                     if res
                         $(window).trigger 'xwing-collection:saved', collection
             , 1000
-
+        
     getSettings: (cb=$.noop) ->
         $.get("#{@server}/settings").done (data, textStatus, jqXHR) =>
             cb data.settings
@@ -659,12 +660,14 @@ class exportObj.SquadBuilderBackend
         if settings?.collectioncheck?
             cb settings.collectioncheck
         else
+            @checkcollection = true
             cb true
                 
     saveCollection: (collection, cb=$.noop) ->
         post_args =
             expansions: collection.expansions
             singletons: collection.singletons
+            checks: collection.checks
         $.post("#{@server}/collection", post_args).done (data, textStatus, jqXHR) ->
             cb data.success
 
@@ -672,9 +675,11 @@ class exportObj.SquadBuilderBackend
         # Backend provides an empty collection if none exists yet for the user.
         $.get("#{@server}/collection").done (data, textStatus, jqXHR) ->
             collection = data.collection
-            new exportObj.Collection
+            @collection = new exportObj.Collection
                 expansions: collection.expansions
                 singletons: collection.singletons
+                checks: collection.checks
+            
 
 ###
     X-Wing Card Browser
@@ -8658,9 +8663,6 @@ exportObj.translations.English =
     byCSSSelector:
         # Warnings
         '.unreleased-content-used .translated': 'This squad uses unreleased content!'
-        '.epic-content-used .translated': 'This squad uses Epic content!'
-        '.illegal-epic-too-many-small-ships .translated': 'You may not field more than 12 of the same type Small ship!'
-        '.illegal-epic-too-many-large-ships .translated': 'You may not field more than 6 of the same type Large ship!'
         '.collection-invalid .translated': 'You cannot field this list with your collection!'
         # Type selector
         '.game-type-selector option[value="standard"]': 'Standard'
@@ -9739,9 +9741,6 @@ exportObj.translations['Français'] =
     byCSSSelector:
         # Warnings
         '.unreleased-content-used .translated': 'Cet escadron utilise du contenu inédit !'
-        '.epic-content-used .translated': 'Cet escadron utilise du contenu épique !'
-        '.illegal-epic-too-many-small-ships .translated': 'Vous ne pouvez pas ajouter plus de 12 Petits vaisseaux du même !'
-        '.illegal-epic-too-many-large-ships .translated': 'Vous ne pouvez pas ajouter plus de 12 Grands vaisseaux du même type !'
         '.collection-invalid .translated': 'Vous ne pouvez pas ajouter cette liste à votre collection !'
         # Type selector
         '.game-type-selector option[value="standard"]': 'Standard'
@@ -10823,9 +10822,6 @@ exportObj.translations.Hungarian =
     byCSSSelector:
         # Warnings
         '.unreleased-content-used .translated': 'This squad uses unreleased content!'
-        '.epic-content-used .translated': 'This squad uses Epic content!'
-        '.illegal-epic-too-many-small-ships .translated': 'You may not field more than 12 of the same type Small ship!'
-        '.illegal-epic-too-many-large-ships .translated': 'You may not field more than 6 of the same type Large ship!'
         '.collection-invalid .translated': 'You cannot field this list with your collection!'
         # Type selector
         '.game-type-selector option[value="standard"]': 'Standard'
@@ -11823,6 +11819,9 @@ sortWithoutQuotes = (a, b) ->
         1
     else
         0
+
+exportObj.manifestBySettings =
+    'collectioncheck': true
         
 exportObj.manifestByExpansion =
     'Second Edition Core Set': [
@@ -15338,21 +15337,21 @@ class exportObj.Collection
     constructor: (args) ->
         @expansions = args.expansions ? {}
         @singletons = args.singletons ? {}
-        @checks = args.checks ? []
+        @checks = args.checks ? {}
         # To save collection (optional)
         @backend = args.backend
-
+        
         @setupUI()
         @setupHandlers()
 
         @reset()
-
+        
         @language = 'English'
-        @collectioncheck = true
 
     reset: ->
         @shelf = {}
         @table = {}
+        
         for expansion, count of @expansions
             try
                 count = parseInt count
@@ -15447,12 +15446,6 @@ class exportObj.Collection
             sorted_names = (name for name of names).sort(sortWithoutQuotes)
             singletonsByType[type] = sorted_names
         
-            
-        if @collectioncheck == true #check is false because we want to default to checking collection
-            checkcollectionsaved = ' '
-        else
-            checkcollectionsaved = '''checked="checked"'''
-        
         @modal = $ document.createElement 'DIV'
         @modal.addClass 'modal hide fade collection-modal hidden-print'
         $('body').append @modal
@@ -15480,8 +15473,8 @@ class exportObj.Collection
             <div class="modal-footer hidden-print">
                 <span class="collection-status"></span>
                 &nbsp;
-                <label class="qrcode-checkbox hidden">
-                    Check Collection Requirements <input type="checkbox" class="check-collection" #{checkcollectionsaved} />
+                <label class="checkbox-check-collection">
+                    Check Collection Requirements <input type="checkbox" class="check-collection"/>
                 </label>
                 &nbsp;
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -15489,6 +15482,14 @@ class exportObj.Collection
         """
         @modal_status = $ @modal.find('.collection-status')
 
+        if @checks.collectioncheck?
+            if @checks.collectioncheck != "false"
+                @modal.find('.check-collection').prop('checked', true)
+        else
+            @checks.collectioncheck = true
+            @modal.find('.check-collection').prop('checked', true)
+        @modal.find('.checkbox-check-collection').show()
+        
         collection_content = $ @modal.find('.collection-content')
         for expansion in exportObj.expansions
             count = parseInt(@expansions[expansion] ? 0)
@@ -15623,9 +15624,10 @@ class exportObj.Collection
         .on 'xwing-collection:saved', (e, collection) =>
             @modal_status.text 'Collection saved'
             @modal_status.fadeIn 100, =>
-                @modal_status.fadeOut 5000
+                @modal_status.fadeOut 1000
         .on 'xwing:languageChanged', @onLanguageChange
-        .on 'xwing:CollectionCheckChanged', @onCollectionCheckChange
+
+        .on 'xwing:CollectionCheck', @onCollectionCheckSet
 
         $ @modal.find('input.expansion-count').change (e) =>
             target = $(e.target)
@@ -15650,16 +15652,16 @@ class exportObj.Collection
             $(exportObj).trigger 'xwing-collection:changed', this
 
         $ @modal.find('.check-collection').change (e) =>
-            if @checked
+            if @modal.find('.check-collection').prop('checked') == false
                 result = false
-                @modal_status.text """Collection Tracking Active"""
+                @modal_status.text """Collection Tracking Disabled"""
             else
                 result = true
-                @modal_status.text """Collection Tracking Disabled"""
-            @collectioncheck = result
+                @modal_status.text """Collection Tracking Active"""
+            @checks.collectioncheck = result
             @modal_status.fadeIn 100, =>
-                @modal_status.fadeOut 5000
-            $(exportObj).trigger 'xwing:CollectionCheckChanged', this
+                @modal_status.fadeOut 1000
+            $(exportObj).trigger 'xwing-collection:changed', this
             
     countToBackgroundColor: (count) ->
         count = parseInt(count)
@@ -15681,13 +15683,6 @@ class exportObj.Collection
                         # console.log "translating #{$(this).text()} (#{$(this).data('english_name')}) to #{language}"
                         $(this).text exportObj.translate language, 'sources', $(this).data('english_name')
                 @language = language
-
-    onCollectionCheckChange:
-        (e, check) =>
-            console.log "#{@collectioncheck} vs. #{check}"
-            if check != @collectioncheck
-                @collectioncheck = check
-
 ###
     X-Wing Squad Builder
     Geordan Rosario <geordan@gmail.com>
@@ -17604,6 +17599,10 @@ class exportObj.SquadBuilder
             # console.log "collection not ready or is empty"
             return true
         @collection.reset()
+        if @collection?.checks.collectioncheck != "true"
+            # console.log "collection not ready or is empty"
+            return true
+        @collection.reset()
         validity = true
         for ship in @ships
             if ship.pilot?
@@ -18104,7 +18103,7 @@ class Ship
                     results: @builder.getAvailableShipsMatching(query.term)
             minimumResultsForSearch: if $.isMobile() then -1 else 0
             formatResultCssClass: (obj) =>
-                if @builder.collection?
+                if @builder.collection? and (@builder.collection.checks.collectioncheck == "true")
                     not_in_collection = false
                     if @pilot? and obj.id == exportObj.ships[@pilot.ship].id
                         # Currently selected ship; mark as not in collection if it's neither
@@ -18135,7 +18134,7 @@ class Ship
                     results: @builder.getAvailablePilotsForShipIncluding(@ship_selector.val(), @pilot, query.term)
             minimumResultsForSearch: if $.isMobile() then -1 else 0
             formatResultCssClass: (obj) =>
-                if @builder.collection?
+                if @builder.collection? and (@builder.collection.checks.collectioncheck == "true")
                     not_in_collection = false
                     if obj.id == @pilot?.id
                         # Currently selected pilot; mark as not in collection if it's neither
@@ -18317,7 +18316,7 @@ class Ship
             </div>
             <div class="fancy-pilot-stats">
                 <div class="pilot-stats-content">
-                    <span class="info-data info-skill">PS #{statAndEffectiveStat(@pilot.skill, effective_stats, 'skill')}</span>
+                    <span class="info-data info-skill">INT #{statAndEffectiveStat(@pilot.skill, effective_stats, 'skill')}</span>
                     #{attackHTML}
                     #{energyHTML}
                     <i class="xwing-miniatures-font header-agility xwing-miniatures-font-agility"></i>

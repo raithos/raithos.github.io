@@ -107,6 +107,7 @@ exportObj.SquadBuilderBackend = (function() {
     };
     this.squad_display_mode = 'all';
     this.collection_save_timer = null;
+    this.collection = {};
     this.setupHandlers();
     this.setupUI();
     this.authenticate((function(_this) {
@@ -750,7 +751,7 @@ exportObj.SquadBuilderBackend = (function() {
                 return headers = arguments[0];
               };
             })(),
-            lineno: 642
+            lineno: 643
           }));
           __iced_deferrals._fulfill();
         });
@@ -786,6 +787,7 @@ exportObj.SquadBuilderBackend = (function() {
     if ((settings != null ? settings.collectioncheck : void 0) != null) {
       return cb(settings.collectioncheck);
     } else {
+      this.checkcollection = true;
       return cb(true);
     }
   };
@@ -797,7 +799,8 @@ exportObj.SquadBuilderBackend = (function() {
     }
     post_args = {
       expansions: collection.expansions,
-      singletons: collection.singletons
+      singletons: collection.singletons,
+      checks: collection.checks
     };
     return $.post("" + this.server + "/collection", post_args).done(function(data, textStatus, jqXHR) {
       return cb(data.success);
@@ -808,9 +811,10 @@ exportObj.SquadBuilderBackend = (function() {
     return $.get("" + this.server + "/collection").done(function(data, textStatus, jqXHR) {
       var collection;
       collection = data.collection;
-      return new exportObj.Collection({
+      return this.collection = new exportObj.Collection({
         expansions: collection.expansions,
-        singletons: collection.singletons
+        singletons: collection.singletons,
+        checks: collection.checks
       });
     });
   };
@@ -6565,9 +6569,6 @@ exportObj.translations.English = {
   },
   byCSSSelector: {
     '.unreleased-content-used .translated': 'This squad uses unreleased content!',
-    '.epic-content-used .translated': 'This squad uses Epic content!',
-    '.illegal-epic-too-many-small-ships .translated': 'You may not field more than 12 of the same type Small ship!',
-    '.illegal-epic-too-many-large-ships .translated': 'You may not field more than 6 of the same type Large ship!',
     '.collection-invalid .translated': 'You cannot field this list with your collection!',
     '.game-type-selector option[value="standard"]': 'Standard',
     '.game-type-selector option[value="custom"]': 'Custom',
@@ -8088,9 +8089,6 @@ exportObj.translations['Français'] = {
   },
   byCSSSelector: {
     '.unreleased-content-used .translated': 'Cet escadron utilise du contenu inédit !',
-    '.epic-content-used .translated': 'Cet escadron utilise du contenu épique !',
-    '.illegal-epic-too-many-small-ships .translated': 'Vous ne pouvez pas ajouter plus de 12 Petits vaisseaux du même !',
-    '.illegal-epic-too-many-large-ships .translated': 'Vous ne pouvez pas ajouter plus de 12 Grands vaisseaux du même type !',
     '.collection-invalid .translated': 'Vous ne pouvez pas ajouter cette liste à votre collection !',
     '.game-type-selector option[value="standard"]': 'Standard',
     '.game-type-selector option[value="custom"]': 'Personnalisé',
@@ -9613,9 +9611,6 @@ exportObj.translations.Hungarian = {
   },
   byCSSSelector: {
     '.unreleased-content-used .translated': 'This squad uses unreleased content!',
-    '.epic-content-used .translated': 'This squad uses Epic content!',
-    '.illegal-epic-too-many-small-ships .translated': 'You may not field more than 12 of the same type Small ship!',
-    '.illegal-epic-too-many-large-ships .translated': 'You may not field more than 6 of the same type Large ship!',
     '.collection-invalid .translated': 'You cannot field this list with your collection!',
     '.game-type-selector option[value="standard"]': 'Standard',
     '.game-type-selector option[value="custom"]': 'Custom',
@@ -11049,6 +11044,10 @@ sortWithoutQuotes = function(a, b) {
   } else {
     return 0;
   }
+};
+
+exportObj.manifestBySettings = {
+  'collectioncheck': true
 };
 
 exportObj.manifestByExpansion = {
@@ -13858,18 +13857,16 @@ exportObj.manifestByExpansion = {
 
 exportObj.Collection = (function() {
   function Collection(args) {
-    this.onCollectionCheckChange = __bind(this.onCollectionCheckChange, this);
     this.onLanguageChange = __bind(this.onLanguageChange, this);
     var _ref, _ref1, _ref2;
     this.expansions = (_ref = args.expansions) != null ? _ref : {};
     this.singletons = (_ref1 = args.singletons) != null ? _ref1 : {};
-    this.checks = (_ref2 = args.checks) != null ? _ref2 : [];
+    this.checks = (_ref2 = args.checks) != null ? _ref2 : {};
     this.backend = args.backend;
     this.setupUI();
     this.setupHandlers();
     this.reset();
     this.language = 'English';
-    this.collectioncheck = true;
   }
 
   Collection.prototype.reset = function() {
@@ -14013,7 +14010,7 @@ exportObj.Collection = (function() {
   };
 
   Collection.prototype.setupUI = function() {
-    var checkcollectionsaved, collection_content, count, expansion, expname, input, item, items, name, names, pilot, pilotcollection_content, row, ship, shipcollection_content, singletonsByType, sorted_names, type, upgrade, upgradecollection_content, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _m, _name, _ref, _ref1, _ref10, _ref11, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _results;
+    var collection_content, count, expansion, expname, input, item, items, name, names, pilot, pilotcollection_content, row, ship, shipcollection_content, singletonsByType, sorted_names, type, upgrade, upgradecollection_content, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _m, _name, _ref, _ref1, _ref10, _ref11, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _results;
     singletonsByType = {};
     _ref = exportObj.manifestByExpansion;
     for (expname in _ref) {
@@ -14035,16 +14032,20 @@ exportObj.Collection = (function() {
       })()).sort(sortWithoutQuotes);
       singletonsByType[type] = sorted_names;
     }
-    if (this.collectioncheck === true) {
-      checkcollectionsaved = ' ';
-    } else {
-      checkcollectionsaved = 'checked="checked"';
-    }
     this.modal = $(document.createElement('DIV'));
     this.modal.addClass('modal hide fade collection-modal hidden-print');
     $('body').append(this.modal);
-    this.modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h4>Your Collection</h4>\n</div>\n<div class=\"modal-body\">\n    <ul class=\"nav nav-tabs\">\n        <li class=\"active\"><a data-target=\"#collection-expansions\" data-toggle=\"tab\">Expansions</a><li>\n        <li><a data-target=\"#collection-ships\" data-toggle=\"tab\">Ships</a><li>\n        <li><a data-target=\"#collection-pilots\" data-toggle=\"tab\">Pilots</a><li>\n        <li><a data-target=\"#collection-upgrades\" data-toggle=\"tab\">Upgrades</a><li>\n        <li><a data-target=\"#collection-components\" data-toggle=\"tab\">Inventory</a><li>\n    </ul>\n    <div class=\"tab-content\">\n        <div id=\"collection-expansions\" class=\"tab-pane active container-fluid collection-content\"></div>\n        <div id=\"collection-ships\" class=\"tab-pane active container-fluid collection-ship-content\"></div>\n        <div id=\"collection-pilots\" class=\"tab-pane active container-fluid collection-pilot-content\"></div>\n        <div id=\"collection-upgrades\" class=\"tab-pane active container-fluid collection-upgrade-content\"></div>\n        <div id=\"collection-components\" class=\"tab-pane container-fluid collection-inventory-content\"></div>\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <span class=\"collection-status\"></span>\n    &nbsp;\n    <label class=\"qrcode-checkbox hidden\">\n        Check Collection Requirements <input type=\"checkbox\" class=\"check-collection\" " + checkcollectionsaved + " />\n    </label>\n    &nbsp;\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h4>Your Collection</h4>\n</div>\n<div class=\"modal-body\">\n    <ul class=\"nav nav-tabs\">\n        <li class=\"active\"><a data-target=\"#collection-expansions\" data-toggle=\"tab\">Expansions</a><li>\n        <li><a data-target=\"#collection-ships\" data-toggle=\"tab\">Ships</a><li>\n        <li><a data-target=\"#collection-pilots\" data-toggle=\"tab\">Pilots</a><li>\n        <li><a data-target=\"#collection-upgrades\" data-toggle=\"tab\">Upgrades</a><li>\n        <li><a data-target=\"#collection-components\" data-toggle=\"tab\">Inventory</a><li>\n    </ul>\n    <div class=\"tab-content\">\n        <div id=\"collection-expansions\" class=\"tab-pane active container-fluid collection-content\"></div>\n        <div id=\"collection-ships\" class=\"tab-pane active container-fluid collection-ship-content\"></div>\n        <div id=\"collection-pilots\" class=\"tab-pane active container-fluid collection-pilot-content\"></div>\n        <div id=\"collection-upgrades\" class=\"tab-pane active container-fluid collection-upgrade-content\"></div>\n        <div id=\"collection-components\" class=\"tab-pane container-fluid collection-inventory-content\"></div>\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <span class=\"collection-status\"></span>\n    &nbsp;\n    <label class=\"checkbox-check-collection\">\n        Check Collection Requirements <input type=\"checkbox\" class=\"check-collection\"/>\n    </label>\n    &nbsp;\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
     this.modal_status = $(this.modal.find('.collection-status'));
+    if (this.checks.collectioncheck != null) {
+      if (this.checks.collectioncheck !== "false") {
+        this.modal.find('.check-collection').prop('checked', true);
+      }
+    } else {
+      this.checks.collectioncheck = true;
+      this.modal.find('.check-collection').prop('checked', true);
+    }
+    this.modal.find('.checkbox-check-collection').show();
     collection_content = $(this.modal.find('.collection-content'));
     _ref1 = exportObj.expansions;
     for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
@@ -14162,10 +14163,10 @@ exportObj.Collection = (function() {
       return function(e, collection) {
         _this.modal_status.text('Collection saved');
         return _this.modal_status.fadeIn(100, function() {
-          return _this.modal_status.fadeOut(5000);
+          return _this.modal_status.fadeOut(1000);
         });
       };
-    })(this)).on('xwing:languageChanged', this.onLanguageChange).on('xwing:CollectionCheckChanged', this.onCollectionCheckChange);
+    })(this)).on('xwing:languageChanged', this.onLanguageChange).on('xwing:CollectionCheck', this.onCollectionCheckSet);
     $(this.modal.find('input.expansion-count').change((function(_this) {
       return function(e) {
         var target, val;
@@ -14195,18 +14196,18 @@ exportObj.Collection = (function() {
     return $(this.modal.find('.check-collection').change((function(_this) {
       return function(e) {
         var result;
-        if (_this.checked) {
+        if (_this.modal.find('.check-collection').prop('checked') === false) {
           result = false;
-          _this.modal_status.text("Collection Tracking Active");
+          _this.modal_status.text("Collection Tracking Disabled");
         } else {
           result = true;
-          _this.modal_status.text("Collection Tracking Disabled");
+          _this.modal_status.text("Collection Tracking Active");
         }
-        _this.collectioncheck = result;
+        _this.checks.collectioncheck = result;
         _this.modal_status.fadeIn(100, function() {
-          return _this.modal_status.fadeOut(5000);
+          return _this.modal_status.fadeOut(1000);
         });
-        return $(exportObj).trigger('xwing:CollectionCheckChanged', _this);
+        return $(exportObj).trigger('xwing-collection:changed', _this);
       };
     })(this)));
   };
@@ -14235,13 +14236,6 @@ exportObj.Collection = (function() {
         });
       })(this)(language);
       return this.language = language;
-    }
-  };
-
-  Collection.prototype.onCollectionCheckChange = function(e, check) {
-    console.log("" + this.collectioncheck + " vs. " + check);
-    if (check !== this.collectioncheck) {
-      return this.collectioncheck = check;
     }
   };
 
@@ -14317,7 +14311,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 15721
+                    lineno: 15716
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -14900,7 +14894,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 16340
+              lineno: 16335
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -15581,7 +15575,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 16962
+          lineno: 16957
         }));
         __iced_deferrals._fulfill();
       });
@@ -15593,7 +15587,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 16963
+            lineno: 16958
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -16695,24 +16689,28 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.isSquadPossibleWithCollection = function() {
-    var modification, modification_is_available, pilot_is_available, ship, ship_is_available, title, title_is_available, upgrade, upgrade_is_available, validity, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _ref3, _ref4, _ref5;
+    var modification, modification_is_available, pilot_is_available, ship, ship_is_available, title, title_is_available, upgrade, upgrade_is_available, validity, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6;
     if (Object.keys((_ref = (_ref1 = this.collection) != null ? _ref1.expansions : void 0) != null ? _ref : {}).length === 0) {
       return true;
     }
     this.collection.reset();
+    if (((_ref2 = this.collection) != null ? _ref2.checks.collectioncheck : void 0) !== "true") {
+      return true;
+    }
+    this.collection.reset();
     validity = true;
-    _ref2 = this.ships;
-    for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
-      ship = _ref2[_i];
+    _ref3 = this.ships;
+    for (_i = 0, _len = _ref3.length; _i < _len; _i++) {
+      ship = _ref3[_i];
       if (ship.pilot != null) {
         ship_is_available = this.collection.use('ship', ship.pilot.english_ship);
         pilot_is_available = this.collection.use('pilot', ship.pilot.english_name);
         if (!(ship_is_available && pilot_is_available)) {
           validity = false;
         }
-        _ref3 = ship.upgrades;
-        for (_j = 0, _len1 = _ref3.length; _j < _len1; _j++) {
-          upgrade = _ref3[_j];
+        _ref4 = ship.upgrades;
+        for (_j = 0, _len1 = _ref4.length; _j < _len1; _j++) {
+          upgrade = _ref4[_j];
           if (upgrade.data != null) {
             upgrade_is_available = this.collection.use('upgrade', upgrade.data.english_name);
             if (!upgrade_is_available) {
@@ -16720,9 +16718,9 @@ exportObj.SquadBuilder = (function() {
             }
           }
         }
-        _ref4 = ship.modifications;
-        for (_k = 0, _len2 = _ref4.length; _k < _len2; _k++) {
-          modification = _ref4[_k];
+        _ref5 = ship.modifications;
+        for (_k = 0, _len2 = _ref5.length; _k < _len2; _k++) {
+          modification = _ref5[_k];
           if (modification.data != null) {
             modification_is_available = this.collection.use('modification', modification.data.english_name);
             if (!modification_is_available) {
@@ -16730,9 +16728,9 @@ exportObj.SquadBuilder = (function() {
             }
           }
         }
-        _ref5 = ship.titles;
-        for (_l = 0, _len3 = _ref5.length; _l < _len3; _l++) {
-          title = _ref5[_l];
+        _ref6 = ship.titles;
+        for (_l = 0, _len3 = _ref6.length; _l < _len3; _l++) {
+          title = _ref6[_l];
           if ((title != null ? title.data : void 0) != null) {
             title_is_available = this.collection.use('title', title.data.english_name);
             if (!title_is_available) {
@@ -17236,7 +17234,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 17972
+                      lineno: 17971
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -17310,7 +17308,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 17998
+                lineno: 17997
               })
             ]);
             __iced_deferrals._fulfill();
@@ -17357,7 +17355,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 18021
+              lineno: 18020
             }));
           }
         }
@@ -17366,7 +17364,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 18023
+              lineno: 18022
             }));
           }
         }
@@ -17375,7 +17373,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 18025
+              lineno: 18024
             }));
           }
         }
@@ -17488,7 +17486,7 @@ Ship = (function() {
       formatResultCssClass: (function(_this) {
         return function(obj) {
           var not_in_collection;
-          if (_this.builder.collection != null) {
+          if ((_this.builder.collection != null) && (_this.builder.collection.checks.collectioncheck === "true")) {
             not_in_collection = false;
             if ((_this.pilot != null) && obj.id === exportObj.ships[_this.pilot.ship].id) {
               if (!(_this.builder.collection.checkShelf('ship', obj.english_name) || _this.builder.collection.checkTable('pilot', obj.english_name))) {
@@ -17532,7 +17530,7 @@ Ship = (function() {
       formatResultCssClass: (function(_this) {
         return function(obj) {
           var not_in_collection, _ref;
-          if (_this.builder.collection != null) {
+          if ((_this.builder.collection != null) && (_this.builder.collection.checks.collectioncheck === "true")) {
             not_in_collection = false;
             if (obj.id === ((_ref = _this.pilot) != null ? _ref.id : void 0)) {
               if (!(_this.builder.collection.checkShelf('pilot', obj.english_name) || _this.builder.collection.checkTable('pilot', obj.english_name))) {
@@ -17734,7 +17732,7 @@ Ship = (function() {
     } else {
       chargeHTML = '';
     }
-    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + this.pilot.name + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.canonical_name + "\"></i><span class=\"fancy-ship-type\"> " + this.data.name + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + this.pilot.points + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">PS " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + attackHTML + "\n        " + energyHTML + "\n        <i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref15 = (_ref16 = this.pilot.ship_override) != null ? _ref16.agility : void 0) != null ? _ref15 : this.data.agility, effective_stats, 'agility')) + "</span>\n        <i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i>\n        <span class=\"info-data info-hull\">" + (statAndEffectiveStat((_ref17 = (_ref18 = this.pilot.ship_override) != null ? _ref18.hull : void 0) != null ? _ref17 : this.data.hull, effective_stats, 'hull')) + "</span>\n        <i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i>\n        <span class=\"info-data info-shields\">" + (statAndEffectiveStat((_ref19 = (_ref20 = this.pilot.ship_override) != null ? _ref20.shields : void 0) != null ? _ref19 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + forceHTML + "\n        " + chargeHTML + "\n        &nbsp;\n        " + action_bar + "\n        &nbsp;&nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
+    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + this.pilot.name + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.canonical_name + "\"></i><span class=\"fancy-ship-type\"> " + this.data.name + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + this.pilot.points + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">INT " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + attackHTML + "\n        " + energyHTML + "\n        <i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref15 = (_ref16 = this.pilot.ship_override) != null ? _ref16.agility : void 0) != null ? _ref15 : this.data.agility, effective_stats, 'agility')) + "</span>\n        <i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i>\n        <span class=\"info-data info-hull\">" + (statAndEffectiveStat((_ref17 = (_ref18 = this.pilot.ship_override) != null ? _ref18.hull : void 0) != null ? _ref17 : this.data.hull, effective_stats, 'hull')) + "</span>\n        <i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i>\n        <span class=\"info-data info-shields\">" + (statAndEffectiveStat((_ref19 = (_ref20 = this.pilot.ship_override) != null ? _ref20.shields : void 0) != null ? _ref19 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + forceHTML + "\n        " + chargeHTML + "\n        &nbsp;\n        " + action_bar + "\n        &nbsp;&nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
     if (this.pilot.text) {
       html += $.trim("<div class=\"fancy-pilot-text\">" + this.pilot.text + "</div>");
     }
@@ -18399,7 +18397,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 18736
+                lineno: 18735
               })
             ]);
             __iced_deferrals._fulfill();
@@ -18531,7 +18529,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 18804
+                  lineno: 18803
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -18553,7 +18551,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 18808
+                    lineno: 18807
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -18643,7 +18641,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 18851
+            lineno: 18850
           }));
         }
         __iced_deferrals._fulfill();
