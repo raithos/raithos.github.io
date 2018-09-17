@@ -7176,6 +7176,9 @@ exportObj.basicCardData = ->
            points: 6
            unique: true
            faction: "Scum and Villainy"
+           recurring: true
+           charge: 1
+
        }
        {
            name: "Ezra Bridger"
@@ -8481,6 +8484,7 @@ exportObj.fixIcons = (data) ->
             .replace(/%FULLFRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullfrontarc"></i>')
             .replace(/%FULLREARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullreararc"></i>')
             .replace(/%DEVICE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>')
+            .replace(/%MODIFICATION%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-modification"></i>')
             .replace(/%RELOAD%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>')
             .replace(/%CONFIG%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-config"></i>')
             .replace(/%FORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>')
@@ -8526,7 +8530,6 @@ exportObj.fixIcons = (data) ->
             .replace(/%TURNRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnright"></i>')
             .replace(/%TURRET%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turret"></i>')
             .replace(/%UTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>')
-            .replace(/%HUGESHIPONLY%/g, '<span class="card-restriction">Huge ship only.</span>')
             .replace(/%LARGESHIPONLY%/g, '<span class="card-restriction">Large ship only.</span>')
             .replace(/%SMALLSHIPONLY%/g, '<span class="card-restriction">Small ship only.</span>')
             .replace(/%REBELONLY%/g, '<span class="card-restriction">Rebel only.</span>')
@@ -8534,20 +8537,6 @@ exportObj.fixIcons = (data) ->
             .replace(/%SCUMONLY%/g, '<span class="card-restriction">Scum only.</span>')
             .replace(/%LIMITED%/g, '<span class="card-restriction">Limited.</span>')
             .replace(/%LINEBREAK%/g, '<br /><br />')
-            .replace(/%DE_HUGESHIPONLY%/g, '<span class="card-restriction">Nur für riesige Schiffe.</span>')
-            .replace(/%DE_LARGESHIPONLY%/g, '<span class="card-restriction">Nur für grosse Schiffe.</span>')
-            .replace(/%DE_REBELONLY%/g, '<span class="card-restriction">Nur für Rebellen.</span>')
-            .replace(/%DE_IMPERIALONLY%/g, '<span class="card-restriction">Nur für das Imperium.</span>')
-            .replace(/%DE_SCUMONLY%/g, '<span class="card-restriction">Nur für Abschaum & Kriminelle.</span>')
-            .replace(/%DE_GOZANTIONLY%/g, '<span class="card-restriction">Nur für Kreuzer der <em>Gozanti</em>-Klasse.</span>')
-            .replace(/%DE_LIMITED%/g, '<span class="card-restriction">Limitiert.</span>')
-            .replace(/%DE_SMALLSHIPONLY%/g, '<span class="card-restriction">Nur für kleine Schiffe.</span>')
-            .replace(/%DE_DUALCARD%/g, '<span class="card-restriction">Doppelseiteige Karte.</span>')
-            .replace(/%FR_HUGESHIPONLY%/g, '<span class="card-restriction">Vaisseau immense uniquement.</span>')
-            .replace(/%FR_LARGESHIPONLY%/g, '<span class="card-restriction">Grand vaisseau uniquement.</span>')
-            .replace(/%FR_REBELONLY%/g, '<span class="card-restriction">Rebelle uniquement.</span>')
-            .replace(/%FR_IMPERIALONLY%/g, '<span class="card-restriction">Impérial uniquement.</span>')
-            .replace(/%FR_SCUMONLY%/g, '<span class="card-restriction">Racailles uniquement.</span>')
             
 exportObj.canonicalizeShipNames = (card_data) ->
     for ship_name, ship_data of card_data.ships
@@ -9441,7 +9430,7 @@ exportObj.cardLoaders.English = () ->
         "Magva Yarro":
            text: """After you defend, if the attack hit, you may acquire a lock on the attacker."""
         "Marauder":
-           text: """While you perform a primary %REARARC% attack,, you may reroll 1 attack die. Add %GUNNER% slot."""
+           text: """While you perform a primary %REARARC% attack, you may reroll 1 attack die. Add %GUNNER% slot."""
         "Marksmanship":
            text: """While you perform an attack, if the defender is in your %BULLSEYEARC%, you may change 1 %HIT% result to a %CRIT% result."""
         "Maul":
@@ -9569,7 +9558,7 @@ exportObj.cardLoaders.English = () ->
         "Veteran Turret Gunner":
            text: """<i>Requires: %ROTATEARC%</i> %LINEBREAK% After you perform a primary attack, you may perform a bonus %SINGLETURRETARC% attack using a %SINGLETURRETARC% you did not already attack from this round."""
         "Virago":
-           text: """During the End Phase, you may spend 1 %CHARGE% to perform a red %BOOST% action. Add %MODIFICATION% slot."""
+           text: """During the End Phase, you may spend 1 %CHARGE% to perform a red %BOOST% action. Adds %MODIFICATION% slot. Add 1 Shield Point. </i> %LINEBREAK% """
         "Xg-1 Assault Configuration":
            text: """While you have exactly 1 disarm token, you can still perform %CANNON% attacks. While you perform a %CANNON% attack while disarmed, roll a maximum of 3 attack dice. Add %CANNON% slot."""
         '"Zeb" Orrelios':
@@ -15374,21 +15363,34 @@ class exportObj.Collection
                 (@counts[type] ?= {})[thing] ?= 0
                 @counts[type][thing] += @shelf[type][thing].length
 
+                
+        # Create list of released singletons
+        singletonsByType = {}
+        for expname, items of exportObj.manifestByExpansion
+            for item in items
+                (singletonsByType[item.type] ?= {})[item.name] = true
+        for type, names of singletonsByType
+            sorted_names = (name for name of names).sort(sortWithoutQuotes)
+            singletonsByType[type] = sorted_names
+                
+                
         component_content = $ @modal.find('.collection-inventory-content')
         component_content.text ''
         for own type, things of @counts
-            contents = component_content.append $.trim """
-                <div class="row-fluid">
-                    <div class="span12"><h5>#{type.capitalize()}</h5></div>
-                </div>
-                <div class="row-fluid">
-                    <ul id="counts-#{type}" class="span12"></ul>
-                </div>
-            """
-            ul = $ contents.find("ul#counts-#{type}")
-            for thing in Object.keys(things).sort(sortWithoutQuotes)
-                ul.append """<li>#{thing} - #{things[thing]}</li>"""
-
+            if singletonsByType[type]?
+                contents = component_content.append $.trim """
+                    <div class="row-fluid">
+                        <div class="span12"><h5>#{type.capitalize()}</h5></div>
+                    </div>
+                    <div class="row-fluid">
+                        <ul id="counts-#{type}" class="span12"></ul>
+                    </div>
+                """
+                ul = $ contents.find("ul#counts-#{type}")
+                for thing in Object.keys(things).sort(sortWithoutQuotes)
+                    if thing in singletonsByType[type]
+                        ul.append """<li>#{thing} - #{things[thing]}</li>"""
+                
     fixName: (name) ->
         # Special case handling for Heavy Scyk :(
         if name.indexOf('"Heavy Scyk" Interceptor') == 0
