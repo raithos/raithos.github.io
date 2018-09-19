@@ -19456,9 +19456,9 @@ class Ship
             @builder.showTooltip 'Ship', this if @data?
         @pilot_selector.data('select2').container.on 'touchmove', (e) =>
             @builder.showTooltip 'Ship', this if @data?
-            if @data? 
-                scrollTo(0,$('#info-container').offset().top - 10,'smooth')
-            
+            ###if @data? 
+                scrollTo(0,$('#info-container').offset().top - 10,'smooth')###
+
 
         @pilot_selector.data('select2').container.hide()
 
@@ -20089,8 +20089,8 @@ class GenericAddon
             @ship.builder.showTooltip 'Addon', @data, {addon_type: @type} if @data?
         @selector.data('select2').container.on 'touchmove', (e) =>
             @ship.builder.showTooltip 'Addon', @data, {addon_type: @type} if @data?
-            if @data?
-                scrollTo(0,$('#info-container').offset().top - 10,'smooth')
+            ###if @data?
+                scrollTo(0,$('#info-container').offset().top - 10,'smooth')###
 
     setById: (id) ->
         @setData @dataById[parseInt id]

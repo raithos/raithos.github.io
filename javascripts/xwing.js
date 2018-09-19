@@ -19335,11 +19335,12 @@ Ship = (function() {
     this.pilot_selector.data('select2').container.on('touchmove', (function(_this) {
       return function(e) {
         if (_this.data != null) {
-          _this.builder.showTooltip('Ship', _this);
+          return _this.builder.showTooltip('Ship', _this);
         }
-        if (_this.data != null) {
-          return scrollTo(0, $('#info-container').offset().top - 10, 'smooth');
-        }
+
+        /*if @data? 
+            scrollTo(0,$('#info-container').offset().top - 10,'smooth')
+         */
       };
     })(this));
     this.pilot_selector.data('select2').container.hide();
@@ -20254,13 +20255,14 @@ GenericAddon = (function() {
     return this.selector.data('select2').container.on('touchmove', (function(_this) {
       return function(e) {
         if (_this.data != null) {
-          _this.ship.builder.showTooltip('Addon', _this.data, {
+          return _this.ship.builder.showTooltip('Addon', _this.data, {
             addon_type: _this.type
           });
         }
-        if (_this.data != null) {
-          return scrollTo(0, $('#info-container').offset().top - 10, 'smooth');
-        }
+
+        /*if @data?
+            scrollTo(0,$('#info-container').offset().top - 10,'smooth')
+         */
       };
     })(this));
   };
