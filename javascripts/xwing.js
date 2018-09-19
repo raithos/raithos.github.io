@@ -19171,7 +19171,7 @@ Ship = (function() {
   };
 
   Ship.prototype.updateSelections = function() {
-    var modification, title, upgrade, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _results;
+    var modification, points, title, upgrade, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _results;
     if (this.pilot != null) {
       this.ship_selector.select2('data', {
         id: this.pilot.ship,
@@ -19186,7 +19186,8 @@ Ship = (function() {
       _ref = this.upgrades;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         upgrade = _ref[_i];
-        upgrade.updateSelection();
+        points = upgrade.getPoints();
+        upgrade.updateSelection(points);
       }
       _ref1 = this.titles;
       for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
@@ -19382,7 +19383,7 @@ Ship = (function() {
   };
 
   Ship.prototype.toHTML = function() {
-    var action, action_bar, action_bar_red, action_icons, action_icons_red, actionred, attackHTML, attack_icon, chargeHTML, effective_stats, energyHTML, forceHTML, html, modification, slotted_upgrades, title, upgrade, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var action, action_bar, action_bar_red, action_icons, action_icons_red, actionred, attackHTML, attack_icon, chargeHTML, effective_stats, energyHTML, forceHTML, html, modification, points, slotted_upgrades, title, upgrade, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     effective_stats = this.effectiveStats();
     action_icons = [];
     action_icons_red = [];
@@ -19529,7 +19530,8 @@ Ship = (function() {
       html += $.trim("<div class=\"fancy-upgrade-container\">");
       for (_k = 0, _len2 = slotted_upgrades.length; _k < _len2; _k++) {
         upgrade = slotted_upgrades[_k];
-        html += upgrade.toHTML();
+        points = upgrade.getPoints();
+        html += upgrade.toHTML(points);
       }
       html += $.trim("</div>");
     }
@@ -19538,7 +19540,7 @@ Ship = (function() {
   };
 
   Ship.prototype.toTableRow = function() {
-    var modification, slotted_upgrades, table_html, title, upgrade, _i, _len;
+    var modification, points, slotted_upgrades, table_html, title, upgrade, _i, _len;
     table_html = $.trim("<tr class=\"simple-pilot\">\n    <td class=\"name\">" + this.pilot.name + " &mdash; " + this.data.name + "</td>\n    <td class=\"points\">" + this.pilot.points + "</td>\n</tr>");
     slotted_upgrades = ((function() {
       var _i, _len, _ref, _results;
@@ -19577,7 +19579,8 @@ Ship = (function() {
     if (slotted_upgrades.length > 0) {
       for (_i = 0, _len = slotted_upgrades.length; _i < _len; _i++) {
         upgrade = slotted_upgrades[_i];
-        table_html += upgrade.toTableRow();
+        points = upgrade.getPoints();
+        table_html += upgrade.toTableRow(points);
       }
     }
     table_html += "<tr class=\"simple-ship-total\"><td colspan=\"2\">Ship Total: " + (this.getPoints()) + "</td></tr>";
@@ -19586,7 +19589,7 @@ Ship = (function() {
   };
 
   Ship.prototype.toBBCode = function() {
-    var bbcode, bbcode_upgrades, modification, slotted_upgrades, title, upgrade, upgrade_bbcode, _i, _len;
+    var bbcode, bbcode_upgrades, modification, points, slotted_upgrades, title, upgrade, upgrade_bbcode, _i, _len;
     bbcode = "[b]" + this.pilot.name + " (" + this.pilot.points + ")[/b]";
     slotted_upgrades = ((function() {
       var _i, _len, _ref, _results;
@@ -19627,7 +19630,8 @@ Ship = (function() {
       bbcode_upgrades = [];
       for (_i = 0, _len = slotted_upgrades.length; _i < _len; _i++) {
         upgrade = slotted_upgrades[_i];
-        upgrade_bbcode = upgrade.toBBCode();
+        points = upgrade.getPoints();
+        upgrade_bbcode = upgrade.toBBCode(points);
         if (upgrade_bbcode != null) {
           bbcode_upgrades.push(upgrade_bbcode);
         }
@@ -19638,7 +19642,7 @@ Ship = (function() {
   };
 
   Ship.prototype.toSimpleHTML = function() {
-    var html, modification, slotted_upgrades, title, upgrade, upgrade_html, _i, _len;
+    var html, modification, points, slotted_upgrades, title, upgrade, upgrade_html, _i, _len;
     html = "<b>" + this.pilot.name + " (" + this.pilot.points + ")</b><br />";
     slotted_upgrades = ((function() {
       var _i, _len, _ref, _results;
@@ -19677,7 +19681,8 @@ Ship = (function() {
     if (slotted_upgrades.length > 0) {
       for (_i = 0, _len = slotted_upgrades.length; _i < _len; _i++) {
         upgrade = slotted_upgrades[_i];
-        upgrade_html = upgrade.toSimpleHTML();
+        points = upgrade.getPoints();
+        upgrade_html = upgrade.toSimpleHTML(points);
         if (upgrade_html != null) {
           html += upgrade_html;
         }
@@ -20152,7 +20157,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 20030
+                lineno: 20035
               })
             ]);
             __iced_deferrals._fulfill();
@@ -20284,7 +20289,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 20098
+                  lineno: 20103
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -20306,7 +20311,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 20102
+                    lineno: 20107
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -20396,7 +20401,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 20145
+            lineno: 20150
           }));
         }
         __iced_deferrals._fulfill();
@@ -20437,11 +20442,11 @@ GenericAddon = (function() {
     }
   };
 
-  GenericAddon.prototype.updateSelection = function() {
+  GenericAddon.prototype.updateSelection = function(points) {
     if (this.data != null) {
       return this.selector.select2('data', {
         id: this.data.id,
-        text: "" + this.data.name + " (" + this.data.points + ")"
+        text: "" + this.data.name + " (" + points + ")"
       });
     } else {
       return this.selector.select2('data', null);
@@ -20456,7 +20461,7 @@ GenericAddon = (function() {
     }
   };
 
-  GenericAddon.prototype.toHTML = function() {
+  GenericAddon.prototype.toHTML = function(points) {
     var attackHTML, attackrangebonus, chargeHTML, forceHTML, match_array, restriction_html, text_str, upgrade_slot_font, _ref;
     if (this.data != null) {
       upgrade_slot_font = ((_ref = this.data.slot) != null ? _ref : this.type).toLowerCase().replace(/[^0-9a-z]/gi, '');
@@ -20488,31 +20493,31 @@ GenericAddon = (function() {
       } else {
         forceHTML = $.trim('');
       }
-      return $.trim("<div class=\"upgrade-container\">\n    <div class=\"upgrade-stats\">\n        <div class=\"upgrade-name\"><i class=\"xwing-miniatures-font xwing-miniatures-font-" + upgrade_slot_font + "\"></i>" + this.data.name + "</div>\n        <div class=\"mask\">\n            <div class=\"outer-circle\">\n                <div class=\"inner-circle upgrade-points\">" + this.data.points + "</div>\n            </div>\n        </div>\n        " + restriction_html + "\n    </div>\n    " + attackHTML + "\n    " + chargeHTML + "\n    " + forceHTML + "\n    <div class=\"upgrade-text\">" + text_str + "</div>\n    <div style=\"clear: both;\"></div>\n</div>");
+      return $.trim("<div class=\"upgrade-container\">\n    <div class=\"upgrade-stats\">\n        <div class=\"upgrade-name\"><i class=\"xwing-miniatures-font xwing-miniatures-font-" + upgrade_slot_font + "\"></i>" + this.data.name + "</div>\n        <div class=\"mask\">\n            <div class=\"outer-circle\">\n                <div class=\"inner-circle upgrade-points\">" + points + "</div>\n            </div>\n        </div>\n        " + restriction_html + "\n    </div>\n    " + attackHTML + "\n    " + chargeHTML + "\n    " + forceHTML + "\n    <div class=\"upgrade-text\">" + text_str + "</div>\n    <div style=\"clear: both;\"></div>\n</div>");
     } else {
       return '';
     }
   };
 
-  GenericAddon.prototype.toTableRow = function() {
+  GenericAddon.prototype.toTableRow = function(points) {
     if (this.data != null) {
-      return $.trim("<tr class=\"simple-addon\">\n    <td class=\"name\">" + this.data.name + "</td>\n    <td class=\"points\">" + this.data.points + "</td>\n</tr>");
+      return $.trim("<tr class=\"simple-addon\">\n    <td class=\"name\">" + this.data.name + "</td>\n    <td class=\"points\">" + points + "</td>\n</tr>");
     } else {
       return '';
     }
   };
 
-  GenericAddon.prototype.toBBCode = function() {
+  GenericAddon.prototype.toBBCode = function(points) {
     if (this.data != null) {
-      return "[i]" + this.data.name + " (" + this.data.points + ")[/i]";
+      return "[i]" + this.data.name + " (" + points + ")[/i]";
     } else {
       return null;
     }
   };
 
-  GenericAddon.prototype.toSimpleHTML = function() {
+  GenericAddon.prototype.toSimpleHTML = function(points) {
     if (this.data != null) {
-      return "<i>" + this.data.name + " (" + this.data.points + ")</i><br />";
+      return "<i>" + this.data.name + " (" + points + ")</i><br />";
     } else {
       return '';
     }
