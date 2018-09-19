@@ -20448,7 +20448,7 @@ GenericAddon = (function() {
               return this.type.toLowerCase().replace(/[^0-9a-z]/gi, '');
           }
         }).call(_this);
-        icon = icon.replace("configuration", "config").replace("force", "forcepower").replace("sensor", "system");
+        icon = icon.replace("configuration", "config").replace("force", "forcepower");
         $(container).append("<i class=\"xwing-miniatures-font xwing-miniatures-font-" + icon + "\"></i> " + obj.text);
         return void 0;
       };
@@ -20521,7 +20521,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 20333
+                  lineno: 20332
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -20543,7 +20543,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 20337
+                    lineno: 20336
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -20633,7 +20633,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 20380
+            lineno: 20379
           }));
         }
         __iced_deferrals._fulfill();

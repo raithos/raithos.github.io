@@ -20299,7 +20299,6 @@ class GenericAddon
                     
             icon = icon.replace("configuration", "config")
                         .replace("force", "forcepower")
-                        .replace("sensor", "system")
                 
             # Append directly so we don't have to disable markup escaping
             $(container).append """<i class="xwing-miniatures-font xwing-miniatures-font-#{icon}"></i> #{obj.text}"""
