@@ -163,7 +163,7 @@
         .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-name i {
           display: inline-block;
           min-width: 26px; }
-      .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack, .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-energy {
+      .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack, .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-energy, .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-charge, .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-force {
         float: right;
         text-align: right;
         margin-top: 4px;
