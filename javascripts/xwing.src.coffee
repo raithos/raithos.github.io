@@ -7990,10 +7990,6 @@ exportObj.basicCardData = ->
            unique: true
            faction: "Rebel Alliance"
            ship: ["Attack Shuttle","Sheathipede-Class Shuttle"]
-           #restriction_func: (ship) ->
-                #builder = ship.builder
-                #return true if builder.ship == ("Attack Shuttle" or "Sheathipede-Class Shuttle")
-                #false
        }
        {
             name: "Hardpoint: Cannon"
@@ -8565,6 +8561,7 @@ exportObj.randomizer = (faction_name, points) ->
         
     
     
+
 ###
     X-Wing Squad Builder 2.0
     Stephen Kim <raithos@gmail.com>
@@ -9841,6 +9838,7 @@ exportObj.cardLoaders.Deutsch = () ->
         "Phantom":
            name: """Phantom"""
            text: """<i>Nur für Rebellen</i>%LINEBREAK%Du kannst in Reichweite 0-1 andocken."""
+           ship: ["""Jagdshuttle""", """Raumfähre der Sheathipede-Klasse"""]
         "Punishing One":
            name: """Vollstrecker Eins"""
            ship: """JumpMaster 5000"""
