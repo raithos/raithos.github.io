@@ -106,6 +106,7 @@
       .fancy-ship .fancy-pilot-stats .pilot-stats-content .xwing-miniatures-font {
         vertical-align: middle; }
   .fancy-ship .fancy-dial {
+    display: none;
     float: right;
     padding: 10px;
     table-layout: fixed; }
