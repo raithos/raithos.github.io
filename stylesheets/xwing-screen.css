@@ -105,7 +105,23 @@
       margin-top: -25px; }
       .fancy-ship .fancy-pilot-stats .pilot-stats-content .xwing-miniatures-font {
         vertical-align: middle; }
+  .fancy-ship .fancy-dial {
+    float: right;
+    padding: 10px;
+    table-layout: fixed; }
+  .fancy-ship .fancy-dial table > tbody > tr > td {
+    border: 2px solid #d6c9d2; }
+  .fancy-ship .fancy-dial table > tbody > tr > td:first-child {
+    color: white;
+    text-align: center;
+    padding: 3px;
+    background-color: #888888;
+    background-image: linear-gradient(rgba(45, 45, 45, 0.2) 50%, transparent 50%, transparent);
+    background-size: 5px 5px; }
+  .fancy-ship .fancy-dial table > tbody > tr > td ~ td {
+    background-color: #a29199; }
   .fancy-ship .fancy-pilot-text {
+    clear: both;
     margin-left: 60px;
     padding: 5px; }
   .fancy-ship .fancy-upgrade-container {

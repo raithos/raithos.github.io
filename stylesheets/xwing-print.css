@@ -18,6 +18,26 @@ body {
     color: white; }
   #printable .bw .fancy-pilot-stats .xwing-miniatures-font {
     color: black; }
+  #printable .bw .fancy-dial .svg-maneuver-triangle.svg-base-maneuver {
+    fill: black;
+    stroke: black; }
+  #printable .bw .fancy-dial .svg-maneuver-triangle.svg-modified-maneuver {
+    fill: black;
+    stroke: gray; }
+  #printable .bw .fancy-dial .svg-maneuver-inner.svg-white-maneuver {
+    stroke: white; }
+  #printable .bw .fancy-dial .svg-maneuver-inner.svg-blue-maneuver {
+    stroke: gray; }
+  #printable .bw .fancy-dial .svg-maneuver-inner.svg-red-maneuver {
+    stroke: black; }
+  #printable .bw .fancy-dial .svg-maneuver-outer.svg-base-maneuver {
+    stroke: black; }
+  #printable .bw .fancy-dial .svg-maneuver-outer.svg-modified-maneuver {
+    stroke: gray; }
+  #printable .bw .fancy-dial table > tbody > tr > td ~ td {
+    background-color: white !important; }
+  #printable .bw .fancy-dial table > tbody > tr > td {
+    border: 2px solid gray !important; }
   #printable .bw i.xwing-miniatures-font-agility, #printable .bw i.xwing-miniatures-font-hull, #printable .bw i.xwing-miniatures-font-shield, #printable .bw i.xwing-miniatures-font-attack-bullseye, #printable .bw i.xwing-miniatures-font-forcecharge, #printable .bw i.xwing-miniatures-font-charge, #printable .bw i.xwing-miniatures-font-doubleturretarc, #printable .bw i.xwing-miniatures-font-singleturretarc, #printable .bw i.xwing-miniatures-font-frontarc, #printable .bw i.xwing-miniatures-font-reararc, #printable .bw i.xwing-miniatures-font-fullfrontarc {
     background: white; }
   #printable .bw .upgrade-attack .xwing-miniatures-font-attack, #printable .bw .upgrade-attack i.xwing-miniatures-font-doublearcturret, #printable .bw .upgrade-attack i.xwing-miniatures-font-singleturretarc, #printable .bw .upgrade-attack i.xwing-miniatures-font-frontarc, #printable .bw .upgrade-attack i.xwing-miniatures-font-reararc, #printable .bw .upgrade-attack i.xwing-miniatures-font-fullfrontarc {
@@ -159,6 +179,22 @@ body {
       #printable .fancy-ship .fancy-pilot-stats .info-data, #printable .fancy-ship .fancy-pilot-stats .xwing-miniatures-font {
         position: relative;
         bottom: 0.048in; }
+    #printable .fancy-ship .fancy-dial {
+      float: right;
+      padding: 5px;
+      margin-left: 0.6in;
+      table-layout: fixed; }
+    #printable .fancy-ship .fancy-dial table > tbody > tr > td {
+      border: 2px solid #d6c9d2; }
+    #printable .fancy-ship .fancy-dial table > tbody > tr > td:first-child {
+      color: white;
+      text-align: center;
+      padding: 3px;
+      background-color: #888888;
+      background-image: linear-gradient(rgba(45, 45, 45, 0.2) 50%, transparent 50%, transparent);
+      background-size: 5px 5px; }
+    #printable .fancy-ship .fancy-dial table > tbody > tr > td ~ td {
+      background-color: #a29199; }
     #printable .fancy-ship .fancy-pilot-text {
       margin-left: 0.6in;
       padding: 5px;

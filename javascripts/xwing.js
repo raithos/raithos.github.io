@@ -17030,7 +17030,7 @@ exportObj.SquadBuilder = (function() {
     this.list_modal = $(document.createElement('DIV'));
     this.list_modal.addClass('modal hide fade text-list-modal');
     this.container.append(this.list_modal);
-    this.list_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n\n    <div class=\"hidden-phone hidden-print\">\n        <h3><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)<h3>\n    </div>\n\n    <div class=\"visible-phone hidden-print\">\n        <h4><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)<h4>\n    </div>\n\n    <div class=\"visible-print\">\n        <div class=\"fancy-header\">\n            <div class=\"squad-name\"></div>\n            <div class=\"squad-faction\"></div>\n            <div class=\"mask\">\n                <div class=\"outer-circle\">\n                    <div class=\"inner-circle\">\n                        <span class=\"total-points\"></span>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"fancy-under-header\"></div>\n    </div>\n\n</div>\n<div class=\"modal-body\">\n    <div class=\"fancy-list hidden-phone\"></div>\n    <div class=\"simple-list\"></div>\n    <div class=\"bbcode-list\">\n        <p>Copy the BBCode below and paste it into your forum post.</p>\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n    <div class=\"html-list\">\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <label class=\"vertical-space-checkbox\">\n        Add space for damage/upgrade cards when printing <input type=\"checkbox\" class=\"toggle-vertical-space\" />\n    </label>\n    <label class=\"color-print-checkbox\">\n        Print color <input type=\"checkbox\" class=\"toggle-color-print\" checked=\"checked\" />\n    </label>\n    <label class=\"qrcode-checkbox hidden-phone\">\n        Include QR codes <input type=\"checkbox\" class=\"toggle-juggler-qrcode\" checked=\"checked\" />\n    </label>\n    <label class=\"qrcode-checkbox hidden-phone\">\n        Include obstacle/damage deck choices <input type=\"checkbox\" class=\"toggle-obstacles\" />\n    </label>\n    <div class=\"btn-group list-display-mode\">\n        <button class=\"btn select-simple-view\">Simple</button>\n        <button class=\"btn select-fancy-view hidden-phone\">Fancy</button>\n        <button class=\"btn select-bbcode-view\">BBCode</button>\n        <button class=\"btn select-html-view\">HTML</button>\n    </div>\n    <button class=\"btn print-list hidden-phone\"><i class=\"fa fa-print\"></i>&nbsp;Print</button>\n    <button class=\"btn close-print-dialog\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.list_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n\n    <div class=\"hidden-phone hidden-print\">\n        <h3><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)<h3>\n    </div>\n\n    <div class=\"visible-phone hidden-print\">\n        <h4><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)<h4>\n    </div>\n\n    <div class=\"visible-print\">\n        <div class=\"fancy-header\">\n            <div class=\"squad-name\"></div>\n            <div class=\"squad-faction\"></div>\n            <div class=\"mask\">\n                <div class=\"outer-circle\">\n                    <div class=\"inner-circle\">\n                        <span class=\"total-points\"></span>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"fancy-under-header\"></div>\n    </div>\n\n</div>\n<div class=\"modal-body\">\n    <div class=\"fancy-list hidden-phone\"></div>\n    <div class=\"simple-list\"></div>\n    <div class=\"bbcode-list\">\n        <p>Copy the BBCode below and paste it into your forum post.</p>\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n    <div class=\"html-list\">\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <label class=\"vertical-space-checkbox\">\n        Add space for damage/upgrade cards when printing <input type=\"checkbox\" class=\"toggle-vertical-space\" />\n    </label>\n    <label class=\"maneuver-print-checkbox\">\n        Include Maneuvers <input type=\"checkbox\" class=\"toggle-maneuver-print\" />\n    </label>\n    <label class=\"color-print-checkbox\">\n        Print color <input type=\"checkbox\" class=\"toggle-color-print\" checked=\"checked\" />\n    </label>\n    <label class=\"qrcode-checkbox hidden-phone\">\n        Include QR codes <input type=\"checkbox\" class=\"toggle-juggler-qrcode\" checked=\"checked\" />\n    </label>\n    <label class=\"obstacles-checkbox hidden-phone\">\n        Include obstacle/damage deck choices <input type=\"checkbox\" class=\"toggle-obstacles\" />\n    </label>\n    <div class=\"btn-group list-display-mode\">\n        <button class=\"btn select-simple-view\">Simple</button>\n        <button class=\"btn select-fancy-view hidden-phone\">Fancy</button>\n        <button class=\"btn select-bbcode-view\">BBCode</button>\n        <button class=\"btn select-html-view\">HTML</button>\n    </div>\n    <button class=\"btn print-list hidden-phone\"><i class=\"fa fa-print\"></i>&nbsp;Print</button>\n    <button class=\"btn close-print-dialog\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
     this.fancy_container = $(this.list_modal.find('div.modal-body .fancy-list'));
     this.fancy_total_points_container = $(this.list_modal.find('div.modal-header .total-points'));
     this.simple_container = $(this.list_modal.find('div.modal-body .simple-list'));
@@ -17042,6 +17042,7 @@ exportObj.SquadBuilder = (function() {
     this.html_textarea.attr('readonly', 'readonly');
     this.toggle_vertical_space_container = $(this.list_modal.find('.vertical-space-checkbox'));
     this.toggle_color_print_container = $(this.list_modal.find('.color-print-checkbox'));
+    this.toggle_maneuver_dial_container = $(this.list_modal.find('.maneuver-print-checkbox'));
     this.list_modal.on('click', 'button.btn-copy', (function(_this) {
       return function(e) {
         _this.self = $(e.currentTarget);
@@ -17068,7 +17069,8 @@ exportObj.SquadBuilder = (function() {
           _this.bbcode_container.hide();
           _this.htmlview_container.hide();
           _this.toggle_vertical_space_container.hide();
-          return _this.toggle_color_print_container.hide();
+          _this.toggle_color_print_container.hide();
+          return _this.toggle_maneuver_dial_container.hide();
         }
       };
     })(this));
@@ -17085,7 +17087,8 @@ exportObj.SquadBuilder = (function() {
           _this.bbcode_container.hide();
           _this.htmlview_container.hide();
           _this.toggle_vertical_space_container.show();
-          return _this.toggle_color_print_container.show();
+          _this.toggle_color_print_container.show();
+          return _this.toggle_maneuver_dial_container.show();
         }
       };
     })(this));
@@ -17104,7 +17107,8 @@ exportObj.SquadBuilder = (function() {
           _this.bbcode_textarea.select();
           _this.bbcode_textarea.focus();
           _this.toggle_vertical_space_container.show();
-          return _this.toggle_color_print_container.show();
+          _this.toggle_color_print_container.show();
+          return _this.toggle_maneuver_dial_container.show();
         }
       };
     })(this));
@@ -17123,7 +17127,8 @@ exportObj.SquadBuilder = (function() {
           _this.html_textarea.select();
           _this.html_textarea.focus();
           _this.toggle_vertical_space_container.show();
-          return _this.toggle_color_print_container.show();
+          _this.toggle_color_print_container.show();
+          return _this.toggle_maneuver_dial_container.show();
         }
       };
     })(this));
@@ -17326,7 +17331,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 18354
+              lineno: 18362
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -17542,7 +17547,7 @@ exportObj.SquadBuilder = (function() {
     })(this));
     this.print_list_button.click((function(_this) {
       return function(e) {
-        var faction, query, ship, text, _i, _len, _ref;
+        var dial, faction, query, ship, text, _i, _j, _len, _len1, _ref, _ref1;
         e.preventDefault();
         _this.printable_container.find('.printable-header').html(_this.list_modal.find('.modal-header').html());
         _this.printable_container.find('.printable-body').text('');
@@ -17560,6 +17565,13 @@ exportObj.SquadBuilder = (function() {
             }
             _this.printable_container.find('.fancy-ship').toggleClass('tall', _this.list_modal.find('.toggle-vertical-space').prop('checked'));
             _this.printable_container.find('.printable-body').toggleClass('bw', !_this.list_modal.find('.toggle-color-print').prop('checked'));
+            if (!_this.list_modal.find('.toggle-maneuver-print').prop('checked')) {
+              _ref1 = _this.printable_container.find('.fancy-dial');
+              for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+                dial = _ref1[_j];
+                dial.hidden = true;
+              }
+            }
             faction = (function() {
               switch (this.faction) {
                 case 'Rebel Alliance':
@@ -18007,7 +18019,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 18976
+          lineno: 18987
         }));
         __iced_deferrals._fulfill();
       });
@@ -18019,7 +18031,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 18977
+            lineno: 18988
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -18431,7 +18443,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.getManeuverTableHTML = function(maneuvers, baseManeuvers) {
-    var bearing, bearings, bearings_without_maneuvers, className, color, difficulty, haveManeuver, linePath, outTable, outlineColor, speed, transform, trianglePath, turn, v, _i, _j, _k, _l, _len, _len1, _len2, _m, _n, _ref, _ref1, _ref2, _ref3, _results;
+    var bearing, bearings, bearings_without_maneuvers, className, color, difficulty, haveManeuver, linePath, maneuverClass, maneuverClass2, outTable, outlineColor, speed, transform, trianglePath, turn, v, _i, _j, _k, _l, _len, _len1, _len2, _m, _n, _ref, _ref1, _ref2, _ref3, _results;
     if ((maneuvers == null) || maneuvers.length === 0) {
       return "Missing maneuver info.";
     }
@@ -18480,13 +18492,25 @@ exportObj.SquadBuilder = (function() {
                 return "red";
             }
           })();
+          maneuverClass = (function() {
+            switch (maneuvers[speed][turn]) {
+              case 1:
+                return "svg-white-maneuver";
+              case 2:
+                return "svg-blue-maneuver";
+              case 3:
+                return "svg-red-maneuver";
+            }
+          })();
           outTable += "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"30px\" height=\"30px\" viewBox=\"0 0 200 200\">";
           if (speed === 0) {
             outTable += "<rect x=\"50\" y=\"50\" width=\"100\" height=\"100\" style=\"fill:" + color + "\" />";
           } else {
             outlineColor = "black";
+            maneuverClass2 = "svg-base-maneuver";
             if (maneuvers[speed][turn] !== baseManeuvers[speed][turn]) {
               outlineColor = "mediumblue";
+              maneuverClass2 = "svg-modified-maneuver";
             }
             transform = "";
             className = "";
@@ -18552,7 +18576,7 @@ exportObj.SquadBuilder = (function() {
                 transform = "transform='translate(-5 -15) rotate(45 70 90)' ";
                 className = 'backwards';
             }
-            outTable += $.trim("<g class=\"maneuver " + className + "\">\n  <path d='" + trianglePath + "' fill='" + color + "' stroke-width='5' stroke='" + outlineColor + "' " + transform + "/>\n  <path stroke-width='25' fill='none' stroke='" + outlineColor + "' d='" + linePath + "' />\n  <path stroke-width='15' fill='none' stroke='" + color + "' d='" + linePath + "' />\n</g>");
+            outTable += $.trim("<g class=\"maneuver " + className + "\">\n  <path class = 'svg-maneuver-outer " + maneuverClass + " " + maneuverClass2 + "' stroke-width='25' fill='none' stroke='" + outlineColor + "' d='" + linePath + "' />\n  <path class='svg-maneuver-triangle " + maneuverClass + " " + maneuverClass2 + "' d='" + trianglePath + "' fill='" + color + "' stroke-width='5' stroke='" + outlineColor + "' " + transform + "/>\n  <path class='svg-maneuver-inner " + maneuverClass + "' stroke-width='15' fill='none' stroke='" + color + "' d='" + linePath + "' />\n</g>");
           }
           outTable += "</svg>";
         }
@@ -19683,7 +19707,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 20000
+                      lineno: 20022
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -19757,7 +19781,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 20026
+                lineno: 20048
               })
             ]);
             __iced_deferrals._fulfill();
@@ -19804,7 +19828,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 20049
+              lineno: 20071
             }));
           }
         }
@@ -19813,7 +19837,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 20051
+              lineno: 20073
             }));
           }
         }
@@ -19822,7 +19846,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 20053
+              lineno: 20075
             }));
           }
         }
@@ -20078,7 +20102,7 @@ Ship = (function() {
   };
 
   Ship.prototype.toHTML = function() {
-    var action, action_bar, action_bar_red, action_icons, action_icons_red, actionred, attackHTML, attack_icon, attackbHTML, attackdtHTML, attackfHTML, attacktHTML, chargeHTML, effective_stats, energyHTML, forceHTML, html, modification, points, slotted_upgrades, title, upgrade, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var action, action_bar, action_bar_red, action_icons, action_icons_red, actionred, attackHTML, attack_icon, attackbHTML, attackdtHTML, attackfHTML, attacktHTML, chargeHTML, dialHTML, effective_stats, energyHTML, forceHTML, html, modification, points, slotted_upgrades, title, upgrade, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     effective_stats = this.effectiveStats();
     action_icons = [];
     action_icons_red = [];
@@ -20204,6 +20228,14 @@ Ship = (function() {
       chargeHTML = '';
     }
     html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + this.pilot.name + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.xws + "\"></i><span class=\"fancy-ship-type\"> " + this.data.name + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + this.pilot.points + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">INI " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + attackHTML + "\n        " + attackbHTML + "\n        " + attackfHTML + "\n        " + attacktHTML + "\n        " + attackdtHTML + "\n        " + energyHTML + "\n        <i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref27 = (_ref28 = this.pilot.ship_override) != null ? _ref28.agility : void 0) != null ? _ref27 : this.data.agility, effective_stats, 'agility')) + "</span>\n        <i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i>\n        <span class=\"info-data info-hull\">" + (statAndEffectiveStat((_ref29 = (_ref30 = this.pilot.ship_override) != null ? _ref30.hull : void 0) != null ? _ref29 : this.data.hull, effective_stats, 'hull')) + "</span>\n        <i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i>\n        <span class=\"info-data info-shields\">" + (statAndEffectiveStat((_ref31 = (_ref32 = this.pilot.ship_override) != null ? _ref32.shields : void 0) != null ? _ref31 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + forceHTML + "\n        " + chargeHTML + "\n        &nbsp;\n        " + action_bar + "\n        &nbsp;&nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
+    dialHTML = this.builder.getManeuverTableHTML(effective_stats.maneuvers, this.data.maneuvers);
+
+    /*html += $.trim """
+        <div class="fancy-dial">
+            #{dialHTML}
+        </div>
+        """
+     */
     if (this.pilot.text) {
       html += $.trim("<div class=\"fancy-pilot-text\">" + this.pilot.text + "</div>");
     }
@@ -20872,7 +20904,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 20798
+                lineno: 20829
               })
             ]);
             __iced_deferrals._fulfill();
@@ -21005,7 +21037,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 20865
+                  lineno: 20896
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -21027,7 +21059,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 20869
+                    lineno: 20900
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -21117,7 +21149,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 20912
+            lineno: 20943
           }));
         }
         __iced_deferrals._fulfill();

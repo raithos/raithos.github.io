@@ -18039,13 +18039,16 @@ class exportObj.SquadBuilder
                 <label class="vertical-space-checkbox">
                     Add space for damage/upgrade cards when printing <input type="checkbox" class="toggle-vertical-space" />
                 </label>
+                <label class="maneuver-print-checkbox">
+                    Include Maneuvers <input type="checkbox" class="toggle-maneuver-print" />
+                </label>
                 <label class="color-print-checkbox">
                     Print color <input type="checkbox" class="toggle-color-print" checked="checked" />
                 </label>
                 <label class="qrcode-checkbox hidden-phone">
                     Include QR codes <input type="checkbox" class="toggle-juggler-qrcode" checked="checked" />
                 </label>
-                <label class="qrcode-checkbox hidden-phone">
+                <label class="obstacles-checkbox hidden-phone">
                     Include obstacle/damage deck choices <input type="checkbox" class="toggle-obstacles" />
                 </label>
                 <div class="btn-group list-display-mode">
@@ -18069,6 +18072,7 @@ class exportObj.SquadBuilder
         @html_textarea.attr 'readonly', 'readonly'
         @toggle_vertical_space_container = $ @list_modal.find('.vertical-space-checkbox')
         @toggle_color_print_container = $ @list_modal.find('.color-print-checkbox')
+        @toggle_maneuver_dial_container = $ @list_modal.find('.maneuver-print-checkbox')
 
         @list_modal.on 'click', 'button.btn-copy', (e) =>
             @self = $(e.currentTarget)
@@ -18093,6 +18097,7 @@ class exportObj.SquadBuilder
                 @htmlview_container.hide()
                 @toggle_vertical_space_container.hide()
                 @toggle_color_print_container.hide()
+                @toggle_maneuver_dial_container.hide()
 
         @select_fancy_view_button = $ @list_modal.find('.select-fancy-view')
         @select_fancy_view_button.click (e) =>
@@ -18107,6 +18112,7 @@ class exportObj.SquadBuilder
                 @htmlview_container.hide()
                 @toggle_vertical_space_container.show()
                 @toggle_color_print_container.show()
+                @toggle_maneuver_dial_container.show()
 
         @select_bbcode_view_button = $ @list_modal.find('.select-bbcode-view')
         @select_bbcode_view_button.click (e) =>
@@ -18123,6 +18129,7 @@ class exportObj.SquadBuilder
                 @bbcode_textarea.focus()
                 @toggle_vertical_space_container.show()
                 @toggle_color_print_container.show()
+                @toggle_maneuver_dial_container.show()
 
         @select_html_view_button = $ @list_modal.find('.select-html-view')
         @select_html_view_button.click (e) =>
@@ -18139,6 +18146,7 @@ class exportObj.SquadBuilder
                 @html_textarea.focus()
                 @toggle_vertical_space_container.show()
                 @toggle_color_print_container.show()
+                @toggle_maneuver_dial_container.show()
 
         if $(window).width() >= 768
             @simple_container.hide()
@@ -18621,6 +18629,9 @@ class exportObj.SquadBuilder
                         @printable_container.find('.printable-body').append ship.toHTML() if ship.pilot?
                     @printable_container.find('.fancy-ship').toggleClass 'tall', @list_modal.find('.toggle-vertical-space').prop('checked')
                     @printable_container.find('.printable-body').toggleClass 'bw', not @list_modal.find('.toggle-color-print').prop('checked')
+                    if not @list_modal.find('.toggle-maneuver-print').prop('checked')
+                        for dial in @printable_container.find('.fancy-dial')
+                            dial.hidden = true
 
                     faction = switch @faction
                         when 'Rebel Alliance'
@@ -19154,6 +19165,13 @@ class exportObj.SquadBuilder
                         when 2 then "dodgerblue"
                         when 3 then "red"
 
+                     # we need this to change the color to b/w in case we want to print b/w
+
+                    maneuverClass = switch maneuvers[speed][turn]
+                        when 1 then "svg-white-maneuver"
+                        when 2 then "svg-blue-maneuver"
+                        when 3 then "svg-red-maneuver"
+
                     outTable += """<svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 200 200">"""
 
                     if speed == 0
@@ -19161,8 +19179,12 @@ class exportObj.SquadBuilder
                     else
 
                         outlineColor = "black"
+                        maneuverClass2 = "svg-base-maneuver"
                         if maneuvers[speed][turn] != baseManeuvers[speed][turn]
                             outlineColor = "mediumblue" # highlight manuevers modified by another card (e.g. R2 Astromech makes all 1 & 2 speed maneuvers green)
+                            maneuverClass2 = "svg-modified-maneuver"
+
+                        
 
                         transform = ""
                         className = ""
@@ -19231,9 +19253,9 @@ class exportObj.SquadBuilder
 
                         outTable += $.trim """
                           <g class="maneuver #{className}">
-                            <path d='#{trianglePath}' fill='#{color}' stroke-width='5' stroke='#{outlineColor}' #{transform}/>
-                            <path stroke-width='25' fill='none' stroke='#{outlineColor}' d='#{linePath}' />
-                            <path stroke-width='15' fill='none' stroke='#{color}' d='#{linePath}' />
+                            <path class = 'svg-maneuver-outer #{maneuverClass} #{maneuverClass2}' stroke-width='25' fill='none' stroke='#{outlineColor}' d='#{linePath}' />
+                            <path class='svg-maneuver-triangle #{maneuverClass} #{maneuverClass2}' d='#{trianglePath}' fill='#{color}' stroke-width='5' stroke='#{outlineColor}' #{transform}/>
+                            <path class='svg-maneuver-inner #{maneuverClass #{maneuverClass2}}' stroke-width='15' fill='none' stroke='#{color}' d='#{linePath}' />
                           </g>
                         """
 
@@ -20393,6 +20415,15 @@ class Ship
                 </div>
             </div>
         """
+
+        dialHTML = @builder.getManeuverTableHTML(effective_stats.maneuvers, @data.maneuvers)
+
+        ###html += $.trim """
+            <div class="fancy-dial">
+                #{dialHTML}
+            </div>
+            """###
+            
         
         if @pilot.text
             html += $.trim """
