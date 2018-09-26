@@ -17717,7 +17717,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.onPointsUpdated = function(cb) {
-    var bbcode_ships, conditions, conditions_set, htmlview_ships, i, points_left, ship, ship_uses_unreleased_content, unreleased_content_used, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2;
+    var bbcode_ships, conditions, conditions_set, dial, htmlview_ships, i, points_left, ship, ship_uses_unreleased_content, unreleased_content_used, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _ref3;
     if (cb == null) {
       cb = $.noop;
     }
@@ -17748,6 +17748,11 @@ exportObj.SquadBuilder = (function() {
       ship = _ref1[_j];
       if (ship.pilot != null) {
         this.fancy_container.append(ship.toHTML());
+        _ref2 = this.fancy_container.find('.fancy-dial');
+        for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+          dial = _ref2[_k];
+          dial.hidden = true;
+        }
         this.simple_container.find('table').append(ship.toTableRow());
         bbcode_ships.push(ship.toBBCode());
         htmlview_ships.push(ship.toSimpleHTML());
@@ -17758,9 +17763,9 @@ exportObj.SquadBuilder = (function() {
     this.checkCollection();
     if (typeof Set !== "undefined" && Set !== null) {
       conditions_set = new Set();
-      _ref2 = this.ships;
-      for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-        ship = _ref2[_k];
+      _ref3 = this.ships;
+      for (_l = 0, _len3 = _ref3.length; _l < _len3; _l++) {
+        ship = _ref3[_l];
         ship.getConditions().forEach(function(condition) {
           return conditions_set.add(condition);
         });
@@ -18019,7 +18024,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 18987
+          lineno: 18992
         }));
         __iced_deferrals._fulfill();
       });
@@ -18031,7 +18036,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 18988
+            lineno: 18993
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -19707,7 +19712,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 20022
+                      lineno: 20027
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -19781,7 +19786,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 20048
+                lineno: 20053
               })
             ]);
             __iced_deferrals._fulfill();
@@ -19828,7 +19833,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 20071
+              lineno: 20076
             }));
           }
         }
@@ -19837,7 +19842,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 20073
+              lineno: 20078
             }));
           }
         }
@@ -19846,7 +19851,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 20075
+              lineno: 20080
             }));
           }
         }
@@ -20229,13 +20234,7 @@ Ship = (function() {
     }
     html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + this.pilot.name + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.xws + "\"></i><span class=\"fancy-ship-type\"> " + this.data.name + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + this.pilot.points + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">INI " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + attackHTML + "\n        " + attackbHTML + "\n        " + attackfHTML + "\n        " + attacktHTML + "\n        " + attackdtHTML + "\n        " + energyHTML + "\n        <i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref27 = (_ref28 = this.pilot.ship_override) != null ? _ref28.agility : void 0) != null ? _ref27 : this.data.agility, effective_stats, 'agility')) + "</span>\n        <i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i>\n        <span class=\"info-data info-hull\">" + (statAndEffectiveStat((_ref29 = (_ref30 = this.pilot.ship_override) != null ? _ref30.hull : void 0) != null ? _ref29 : this.data.hull, effective_stats, 'hull')) + "</span>\n        <i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i>\n        <span class=\"info-data info-shields\">" + (statAndEffectiveStat((_ref31 = (_ref32 = this.pilot.ship_override) != null ? _ref32.shields : void 0) != null ? _ref31 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + forceHTML + "\n        " + chargeHTML + "\n        &nbsp;\n        " + action_bar + "\n        &nbsp;&nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
     dialHTML = this.builder.getManeuverTableHTML(effective_stats.maneuvers, this.data.maneuvers);
-
-    /*html += $.trim """
-        <div class="fancy-dial">
-            #{dialHTML}
-        </div>
-        """
-     */
+    html += $.trim("<div class=\"fancy-dial\">\n    " + dialHTML + "\n</div>");
     if (this.pilot.text) {
       html += $.trim("<div class=\"fancy-pilot-text\">" + this.pilot.text + "</div>");
     }
@@ -20904,7 +20903,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 20829
+                lineno: 20833
               })
             ]);
             __iced_deferrals._fulfill();
@@ -21037,7 +21036,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 20896
+                  lineno: 20900
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -21059,7 +21058,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 20900
+                    lineno: 20904
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -21149,7 +21148,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 20943
+            lineno: 20947
           }));
         }
         __iced_deferrals._fulfill();
