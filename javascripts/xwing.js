@@ -17037,10 +17037,13 @@ exportObj.SquadBuilder = (function() {
     this.list_modal = $(document.createElement('DIV'));
     this.list_modal.addClass('modal hide fade text-list-modal');
     this.container.append(this.list_modal);
-    this.list_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n\n    <div class=\"hidden-phone hidden-print\">\n        <h3><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)<h3>\n    </div>\n\n    <div class=\"visible-phone hidden-print\">\n        <h4><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)<h4>\n    </div>\n\n    <div class=\"visible-print\">\n        <div class=\"fancy-header\">\n            <div class=\"squad-name\"></div>\n            <div class=\"squad-faction\"></div>\n            <div class=\"mask\">\n                <div class=\"outer-circle\">\n                    <div class=\"inner-circle\">\n                        <span class=\"total-points\"></span>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"fancy-under-header\"></div>\n    </div>\n\n</div>\n<div class=\"modal-body\">\n    <div class=\"fancy-list hidden-phone\"></div>\n    <div class=\"simple-list\"></div>\n    <div class=\"bbcode-list\">\n        <p>Copy the BBCode below and paste it into your forum post.</p>\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n    <div class=\"html-list\">\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <label class=\"vertical-space-checkbox\">\n        Add space for damage/upgrade cards when printing <input type=\"checkbox\" class=\"toggle-vertical-space\" />\n    </label>\n    <label class=\"maneuver-print-checkbox\">\n        Include Maneuvers Chart<input type=\"checkbox\" class=\"toggle-maneuver-print\" checked=\"checked\" />\n    </label>\n    <label class=\"color-print-checkbox\">\n        Print color <input type=\"checkbox\" class=\"toggle-color-print\" checked=\"checked\" />\n    </label>\n    <label class=\"qrcode-checkbox hidden-phone\">\n        Include QR codes <input type=\"checkbox\" class=\"toggle-juggler-qrcode\" checked=\"checked\" />\n    </label>\n    <label class=\"obstacles-checkbox hidden-phone\">\n        Include obstacle/damage deck choices <input type=\"checkbox\" class=\"toggle-obstacles\" />\n    </label>\n    <div class=\"btn-group list-display-mode\">\n        <button class=\"btn select-simple-view\">Simple</button>\n        <button class=\"btn select-fancy-view hidden-phone\">Fancy</button>\n        <button class=\"btn select-bbcode-view\">BBCode</button>\n        <button class=\"btn select-html-view\">HTML</button>\n    </div>\n    <button class=\"btn print-list hidden-phone\"><i class=\"fa fa-print\"></i>&nbsp;Print</button>\n    <button class=\"btn close-print-dialog\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.list_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n\n    <div class=\"hidden-phone hidden-print\">\n        <h3><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)<h3>\n    </div>\n\n    <div class=\"visible-phone hidden-print\">\n        <h4><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)<h4>\n    </div>\n\n    <div class=\"visible-print\">\n        <div class=\"fancy-header\">\n            <div class=\"squad-name\"></div>\n            <div class=\"squad-faction\"></div>\n            <div class=\"mask\">\n                <div class=\"outer-circle\">\n                    <div class=\"inner-circle\">\n                        <span class=\"total-points\"></span>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"fancy-under-header\"></div>\n    </div>\n\n</div>\n<div class=\"modal-body\">\n    <div class=\"fancy-list hidden-phone\"></div>\n    <div class=\"simple-list\"></div>\n    <div class=\"reddit-list\">\n        <p>Copy the below and paste it into your reddit post.</p>\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n    <div class=\"bbcode-list\">\n        <p>Copy the BBCode below and paste it into your forum post.</p>\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n    <div class=\"html-list\">\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <label class=\"vertical-space-checkbox\">\n        Add space for damage/upgrade cards when printing <input type=\"checkbox\" class=\"toggle-vertical-space\" />\n    </label>\n    <label class=\"maneuver-print-checkbox\">\n        Include Maneuvers Chart<input type=\"checkbox\" class=\"toggle-maneuver-print\" checked=\"checked\" />\n    </label>\n    <label class=\"color-print-checkbox\">\n        Print color <input type=\"checkbox\" class=\"toggle-color-print\" checked=\"checked\" />\n    </label>\n    <label class=\"qrcode-checkbox hidden-phone\">\n        Include QR codes <input type=\"checkbox\" class=\"toggle-juggler-qrcode\" checked=\"checked\" />\n    </label>\n    <label class=\"obstacles-checkbox hidden-phone\">\n        Include obstacle/damage deck choices <input type=\"checkbox\" class=\"toggle-obstacles\" />\n    </label>\n    <div class=\"btn-group list-display-mode\">\n        <button class=\"btn select-simple-view\">Simple</button>\n        <button class=\"btn select-fancy-view hidden-phone\">Fancy</button>\n        <button class=\"btn select-reddit-view\">Reddit</button>\n        <button class=\"btn select-bbcode-view\">BBCode</button>\n        <button class=\"btn select-html-view\">HTML</button>\n    </div>\n    <button class=\"btn print-list hidden-phone\"><i class=\"fa fa-print\"></i>&nbsp;Print</button>\n    <button class=\"btn close-print-dialog\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
     this.fancy_container = $(this.list_modal.find('div.modal-body .fancy-list'));
     this.fancy_total_points_container = $(this.list_modal.find('div.modal-header .total-points'));
     this.simple_container = $(this.list_modal.find('div.modal-body .simple-list'));
+    this.reddit_container = $(this.list_modal.find('div.modal-body .reddit-list'));
+    this.reddit_textarea = $(this.reddit_container.find('textarea'));
+    this.reddit_textarea.attr('readonly', 'readonly');
     this.bbcode_container = $(this.list_modal.find('div.modal-body .bbcode-list'));
     this.bbcode_textarea = $(this.bbcode_container.find('textarea'));
     this.bbcode_textarea.attr('readonly', 'readonly');
@@ -17073,6 +17076,7 @@ exportObj.SquadBuilder = (function() {
           _this.list_display_mode = 'simple';
           _this.simple_container.show();
           _this.fancy_container.hide();
+          _this.reddit_container.hide();
           _this.bbcode_container.hide();
           _this.htmlview_container.hide();
           _this.toggle_vertical_space_container.hide();
@@ -17091,8 +17095,30 @@ exportObj.SquadBuilder = (function() {
           _this.list_display_mode = 'fancy';
           _this.fancy_container.show();
           _this.simple_container.hide();
+          _this.reddit_container.hide();
           _this.bbcode_container.hide();
           _this.htmlview_container.hide();
+          _this.toggle_vertical_space_container.show();
+          _this.toggle_color_print_container.show();
+          return _this.toggle_maneuver_dial_container.show();
+        }
+      };
+    })(this));
+    this.select_reddit_view_button = $(this.list_modal.find('.select-reddit-view'));
+    this.select_reddit_view_button.click((function(_this) {
+      return function(e) {
+        _this.select_reddit_view_button.blur();
+        if (_this.list_display_mode !== 'reddit') {
+          _this.list_modal.find('.list-display-mode .btn').removeClass('btn-inverse');
+          _this.select_reddit_view_button.addClass('btn-inverse');
+          _this.list_display_mode = 'reddit';
+          _this.reddit_container.show();
+          _this.bbcode_container.hide();
+          _this.htmlview_container.hide();
+          _this.simple_container.hide();
+          _this.fancy_container.hide();
+          _this.reddit_textarea.select();
+          _this.reddit_textarea.focus();
           _this.toggle_vertical_space_container.show();
           _this.toggle_color_print_container.show();
           return _this.toggle_maneuver_dial_container.show();
@@ -17108,6 +17134,7 @@ exportObj.SquadBuilder = (function() {
           _this.select_bbcode_view_button.addClass('btn-inverse');
           _this.list_display_mode = 'bbcode';
           _this.bbcode_container.show();
+          _this.reddit_container.hide();
           _this.htmlview_container.hide();
           _this.simple_container.hide();
           _this.fancy_container.hide();
@@ -17127,6 +17154,7 @@ exportObj.SquadBuilder = (function() {
           _this.list_modal.find('.list-display-mode .btn').removeClass('btn-inverse');
           _this.select_html_view_button.addClass('btn-inverse');
           _this.list_display_mode = 'html';
+          _this.reddit_container.hide();
           _this.bbcode_container.hide();
           _this.htmlview_container.show();
           _this.simple_container.hide();
@@ -17338,7 +17366,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 18369
+              lineno: 18399
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -17724,7 +17752,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.onPointsUpdated = function(cb) {
-    var bbcode_ships, conditions, conditions_set, htmlview_ships, i, points_left, ship, ship_uses_unreleased_content, unreleased_content_used, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2;
+    var bbcode_ships, conditions, conditions_set, htmlview_ships, i, points_left, reddit_ships, ship, ship_uses_unreleased_content, unreleased_content_used, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2;
     if (cb == null) {
       cb = $.noop;
     }
@@ -17748,6 +17776,7 @@ exportObj.SquadBuilder = (function() {
     this.fancy_total_points_container.text(this.total_points);
     this.fancy_container.text('');
     this.simple_container.html('<table class="simple-table"></table>');
+    reddit_ships = [];
     bbcode_ships = [];
     htmlview_ships = [];
     _ref1 = this.ships;
@@ -17756,11 +17785,13 @@ exportObj.SquadBuilder = (function() {
       if (ship.pilot != null) {
         this.fancy_container.append(ship.toHTML());
         this.simple_container.find('table').append(ship.toTableRow());
+        reddit_ships.push(ship.toRedditText());
         bbcode_ships.push(ship.toBBCode());
         htmlview_ships.push(ship.toSimpleHTML());
       }
     }
     this.htmlview_container.find('textarea').val($.trim("" + (htmlview_ships.join('<br />')) + "\n<br />\n<b><i>Total: " + this.total_points + "</i></b>\n<br />\n<a href=\"" + (this.getPermaLink()) + "\">View in Yet Another Squad Builder 2.0</a>"));
+    this.reddit_container.find('textarea').val($.trim("" + (reddit_ships.join("    \n")) + "\n\n\n**Total:** *" + this.total_points + "*    \n\n\n\n[View in Yet Another Squad Builder 2.0](" + (this.getPermaLink()) + ")    \n"));
     this.bbcode_container.find('textarea').val($.trim("" + (bbcode_ships.join("\n\n")) + "\n\n[b][i]Total: " + this.total_points + "[/i][/b]\n\n[url=" + (this.getPermaLink()) + "]View in Yet Another Squad Builder 2.0[/url]"));
     this.checkCollection();
     if (typeof Set !== "undefined" && Set !== null) {
@@ -18026,7 +18057,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 18998
+          lineno: 19038
         }));
         __iced_deferrals._fulfill();
       });
@@ -18038,7 +18069,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 18999
+            lineno: 19039
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -19714,7 +19745,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 20033
+                      lineno: 20073
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -19788,7 +19819,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 20059
+                lineno: 20099
               })
             ]);
             __iced_deferrals._fulfill();
@@ -19835,7 +19866,7 @@ Ship = (function() {
           title = _ref[_i];
           if (title != null) {
             title.destroy(__iced_deferrals.defer({
-              lineno: 20082
+              lineno: 20122
             }));
           }
         }
@@ -19844,7 +19875,7 @@ Ship = (function() {
           upgrade = _ref1[_j];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 20084
+              lineno: 20124
             }));
           }
         }
@@ -19853,7 +19884,7 @@ Ship = (function() {
           modification = _ref2[_k];
           if (modification != null) {
             modification.destroy(__iced_deferrals.defer({
-              lineno: 20086
+              lineno: 20126
             }));
           }
         }
@@ -20334,6 +20365,60 @@ Ship = (function() {
     table_html += "<tr class=\"simple-ship-total\"><td colspan=\"2\">Ship Total: " + (this.getPoints()) + "</td></tr>";
     table_html += '<tr><td>&nbsp;</td><td></td></tr>';
     return table_html;
+  };
+
+  Ship.prototype.toRedditText = function() {
+    var modification, points, reddit, reddit_upgrades, slotted_upgrades, title, upgrade, upgrade_reddit, _i, _len;
+    reddit = "**" + this.pilot.name + " (" + this.pilot.points + ")**    \n";
+    slotted_upgrades = ((function() {
+      var _i, _len, _ref, _results;
+      _ref = this.upgrades;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        upgrade = _ref[_i];
+        if (upgrade.data != null) {
+          _results.push(upgrade);
+        }
+      }
+      return _results;
+    }).call(this)).concat((function() {
+      var _i, _len, _ref, _results;
+      _ref = this.modifications;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        modification = _ref[_i];
+        if (modification.data != null) {
+          _results.push(modification);
+        }
+      }
+      return _results;
+    }).call(this)).concat((function() {
+      var _i, _len, _ref, _results;
+      _ref = this.titles;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        title = _ref[_i];
+        if (title.data != null) {
+          _results.push(title);
+        }
+      }
+      return _results;
+    }).call(this));
+    if (slotted_upgrades.length > 0) {
+      reddit += "    \n";
+      reddit_upgrades = [];
+      for (_i = 0, _len = slotted_upgrades.length; _i < _len; _i++) {
+        upgrade = slotted_upgrades[_i];
+        points = upgrade.getPoints();
+        upgrade_reddit = upgrade.toRedditText(points);
+        if (upgrade_reddit != null) {
+          reddit_upgrades.push(upgrade_reddit);
+        }
+      }
+      reddit += reddit_upgrades.join("    ");
+      reddit += "&nbsp;*Ship total: (" + (this.getPoints()) + ")*    \n";
+    }
+    return reddit;
   };
 
   Ship.prototype.toBBCode = function() {
@@ -20905,7 +20990,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 20839
+                lineno: 20896
               })
             ]);
             __iced_deferrals._fulfill();
@@ -21038,7 +21123,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 20906
+                  lineno: 20963
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -21060,7 +21145,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 20910
+                    lineno: 20967
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -21150,7 +21235,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 20953
+            lineno: 21010
           }));
         }
         __iced_deferrals._fulfill();
@@ -21253,6 +21338,14 @@ GenericAddon = (function() {
       return $.trim("<tr class=\"simple-addon\">\n    <td class=\"name\">" + this.data.name + "</td>\n    <td class=\"points\">" + points + "</td>\n</tr>");
     } else {
       return '';
+    }
+  };
+
+  GenericAddon.prototype.toRedditText = function(points) {
+    if (this.data != null) {
+      return "*&nbsp;" + this.data.name + " (" + points + ")*    \n";
+    } else {
+      return null;
     }
   };
 
