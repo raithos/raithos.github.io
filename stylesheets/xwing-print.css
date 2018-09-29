@@ -34,6 +34,20 @@ body {
     stroke: black; }
   #printable .bw .fancy-dial .svg-maneuver-outer.svg-modified-maneuver {
     stroke: gray; }
+  #printable .bw .fancy-dial .svg-maneuver-stop.svg-red-maneuver {
+    fill: black !important; }
+  #printable .bw .fancy-dial .svg-maneuver-stop.svg-white-maneuver {
+    fill: white !important;
+    stroke: black !important; }
+  #printable .bw .fancy-dial .svg-maneuver-stop.svg-blue-maneuver {
+    fill: gray !important;
+    stroke: black !important; }
+  #printable .bw .fancy-dial .svg-maneuver-stop.svg-modified-maneuver {
+    stroke: gray !important;
+    stroke-width: 10px; }
+  #printable .bw .fancy-dial .svg-maneuver-stop.svg-base-maneuver {
+    stroke: black !important;
+    stroke-width: 10px; }
   #printable .bw .fancy-dial table > tbody > tr > td ~ td {
     background-color: white !important; }
   #printable .bw .fancy-dial table > tbody > tr > td {
