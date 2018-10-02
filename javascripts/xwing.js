@@ -19365,7 +19365,7 @@ exportObj.SquadBuilder = (function() {
         }
         query = _this.getPermaLinkParams(['sn', 'obs']);
         if ((query != null) && _this.list_modal.find('.toggle-juggler-qrcode').prop('checked')) {
-          _this.printable_container.find('.printable-body').append($.trim("<div class=\"qrcode-container\">\n    <div class=\"permalink-container\">\n        <div class=\"qrcode\"></div>\n        <div class=\"qrcode-text\">Scan to open this list in the builder</div>\n    </div>\n    <div class=\"juggler-container\">\n        <div class=\"qrcode\"></div>\n        <div class=\"qrcode-text\">TOs: Scan to load this squad into List Juggler</div>\n    </div>\n</div>"));
+          _this.printable_container.find('.printable-body').append($.trim("<div class=\"qrcode-container\">\n    <div class=\"permalink-container\">\n        <div class=\"qrcode\"></div>\n        <div class=\"qrcode-text\">Scan to open this list in the builder</div>\n    </div>\n    <div class=\"juggler-container\">\n        <div class=\"qrcode\"></div>\n        <div class=\"qrcode-text\">For List Juggler (When it's updated for 2.0)</div>\n    </div>\n</div>"));
           text = "https://yasb-xws.herokuapp.com/juggler" + query;
           _this.printable_container.find('.juggler-container .qrcode').qrcode({
             render: 'div',
@@ -19373,7 +19373,7 @@ exportObj.SquadBuilder = (function() {
             size: text.length < 144 ? 144 : 160,
             text: text
           });
-          text = "https://geordanr.github.io/xwing/" + query;
+          text = "https://raithos.github.io/" + query;
           _this.printable_container.find('.permalink-container .qrcode').qrcode({
             render: 'div',
             ec: 'M',
