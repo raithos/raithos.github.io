@@ -10211,7 +10211,7 @@ exportObj.cardLoaders['Español'] = function() {
   exportObj.renameShip("B-Wing", "A/SF-01 Ala-B");
   exportObj.renameShip("TIE Defender", "Defensor TIE/D");
   exportObj.renameShip("TIE Bomber", "Bombardero TIE/sa");
-  exportObj.renameShip("TIE Punisher", "Casticador TIE/ca");
+  exportObj.renameShip("TIE Punisher", "Castigador TIE/ca");
   exportObj.renameShip("Aggressor", "Caza de asalto Agresor");
   exportObj.renameShip("G-1A Starfighter", "Caza estelar G-1A");
   exportObj.renameShip("VCX-100", "Carguero ligero VCX-100");
@@ -10428,7 +10428,7 @@ exportObj.cardLoaders['Español'] = function() {
       text: "<i>Bajo el mando del comandante Jun Sato, los valerosos pero inexpertos pilotos del Escuadrón Fénix se enfrentan al Imperio Galáctico teniéndolo todo en su contra.</i>%LINEBREAK%Propulsores vectoriales: Después de que realices una acción, puedes realizar una acción %BOOST% roja."
     },
     "Planetary Sentinel": {
-      display_name: "Planetary Sentinel",
+      display_name: "Centinela planetario",
       text: "<i>Para proteger sus muchas instalaciones militares, el Imperio precisa de una fuerza de defensa rápida y vigilante.</i>%LINEBREAK%Alerones adaptativos: Antes de que reveles tu selector, si no estás bajo tensión, debes ejecutar una maniobra [1 %BANKLEFT%], [1 %STRAIGHT%] o [1 %BANKRIGHT%] de color blanco."
     },
     "Rebel Scout": {
@@ -10721,11 +10721,11 @@ exportObj.cardLoaders['Español'] = function() {
     },
     "Han Solo": {
       display_name: "Han Solo",
-      text: "Mientras te defiendes o efectúas un ataque principal, si el ataque está obstruido por un obstáculo, puedes tirar 1 dado adicional."
+      text: "Después de que tires los dados, si estás a alcance 0-1 de un obstáculo, puedes volver a tirar todos tus dados. Esto no cuenta como volver a tirar los dados en lo que respecta a otros efectos de juego."
     },
     "Han Solo (Scum)": {
       display_name: "Han Solo (Scum)",
-      text: "Después de que tires los dados, si estás a alcance 0-1 de un obstáculo, puedes volver a tirar todos tus dados. Esto no cuenta como volver a tirar los dados en lo que respecta a otros efectos de juego."
+      text: "Mientras te defiendes o efectúas un ataque principal, si el ataque está obstruido por un obstáculo, puedes tirar 1 dado adicional."
     },
     "Heff Tobber": {
       display_name: "Heff Tobber",
@@ -11070,9 +11070,7 @@ exportObj.cardLoaders['Español'] = function() {
     "Zuckuss": {
       display_name: "Zuckuss",
       text: "Mientras efectúas un ataque principal, puedes tirar 1 dado de ataque adicional. Si lo haces, el defensor tira 1 dado de defensa adicional."
-    }
-  };
-  ({
+    },
     '"Chopper"': {
       display_name: "“Chopper”",
       text: "Al comienzo de la fase de Enfrentamiento, toda nave enemiga que tengas a alcance 0 recibe 2 fichas de Interferencia.%LINEBREAK%Cañón de cola: Mientras tienes una nave acoplada, posees un armamento principal %REARARC% con un valor de Ataque igual al del armamento principal %FRONTARC% de tu nave acoplada."
@@ -11214,7 +11212,7 @@ exportObj.cardLoaders['Español'] = function() {
     "Finch Dallow": {
       text: " ... drop a bomb, you ... play area touching ... instead. "
     }
-  });
+  };
   upgrade_translations = {
     "0-0-0": {
       display_name: "0-0-0",
@@ -11550,7 +11548,7 @@ exportObj.cardLoaders['Español'] = function() {
     },
     "Informant": {
       display_name: "Confidente",
-      text: "<strong>Preparación:<strong> Después de desplegar las fuerzas, elige 1 nave enemiga y asígnale el Estado <strong>Dispositivo de escucha</strong>."
+      text: "<strong>Preparación:</strong> Después de desplegar las fuerzas, elige 1 nave enemiga y asígnale el Estado <strong>Dispositivo de escucha</strong>."
     },
     "Instinctive Aim": {
       display_name: "Puntería instintiva",
@@ -11855,9 +11853,7 @@ exportObj.cardLoaders['Español'] = function() {
     "Zuckuss": {
       display_name: "Zuckuss",
       text: "<i>Sólo Escoria</i>%LINEBREAK%Mientras efectúas un ataque, si no estás bajo tensión, puedes elegir 1 dado de defensa y recibir 1 ficha de Tensión. Si lo haces, el defensor debe volver a tirar ese dado."
-    }
-  };
-  ({
+    },
     '"Chopper" (Crew)': {
       display_name: "“Chopper” (Crew)",
       text: "<i>Sólo Rebelde</i>%LINEBREAK%Durante el paso de “Realizar una acción”, puedes realizar 1 acción, incluso aunque estés bajo tensión. Después de que realices una acción mientras estás bajo tensión, sufres 1 de daño %HIT% a menos que expongas 1 de tus cartas de Daño."
@@ -11931,7 +11927,7 @@ exportObj.cardLoaders['Español'] = function() {
     "Rey (Gunner)": {
       text: " ... defend or ... If the ... in your %SINGLETURRETARC% ... 1 %FORCE% to ... 1 of your blank results to a %EVADE% or %HIT% result. "
     }
-  });
+  };
   condition_translations = {
     'Suppressive Fire': {
       display_name: "Fuego de supresión",
@@ -11947,7 +11943,7 @@ exportObj.cardLoaders['Español'] = function() {
     },
     'Optimized Prototype': {
       display_name: "Prototipo optimizado",
-      text: 'Cuando estés efectuando un ataque de armamento principal %FRONTARC% contra una nave que esté fijada como blanco por un anave aliada equipada con la mejora <strong>Director Krennic</strong> puedes gastar 1 resultado %HIT%/%CRIT%/%FOCUS%. Si lo haces, elige entre: el defensor pierde 1 ficha de Escudos, o el defensor le da la vuelta a 1 de sus cartas de Daño que tenga boca abajo.'
+      text: 'Cuando estés efectuando un ataque de armamento principal %FRONTARC% contra una nave que esté fijada como blanco por una nave aliada equipada con la mejora <strong>Director Krennic</strong> puedes gastar 1 resultado %HIT%, %CRIT% o %FOCUS%. Si lo haces, elige entre: el defensor pierde 1 ficha de Escudos, o el defensor le da la vuelta a 1 de sus cartas de Daño que tenga boca abajo.'
     },
     'I\'ll Show You the Dark Side': {
       text: ' ??? '
@@ -19842,7 +19838,7 @@ exportObj.SquadBuilder = (function() {
     _ref = exportObj.ships;
     for (ship_name in _ref) {
       ship_data = _ref[ship_name];
-      if (this.isOurFaction(ship_data.factions) && this.matcher(ship_data.name, term)) {
+      if (this.isOurFaction(ship_data.factions) && (this.matcher(ship_data.name, term) || (ship_data.display_name && this.matcher(ship_data.display_name, term)))) {
         if (!this.isSecondEdition || exportObj.secondEditionCheck(ship_data, this.faction)) {
           if (!ship_data.huge || this.isCustom) {
             if (ship_data.display_name) {
@@ -19877,11 +19873,11 @@ exportObj.SquadBuilder = (function() {
     }
     available_faction_pilots = (function() {
       var _ref, _results;
-      _ref = exportObj.pilotsByLocalizedName;
+      _ref = exportObj.pilots;
       _results = [];
       for (pilot_name in _ref) {
         pilot = _ref[pilot_name];
-        if (((ship == null) || pilot.ship === ship) && this.isOurFaction(pilot.faction) && this.matcher(pilot_name, term) && (!this.isSecondEdition || exportObj.secondEditionCheck(pilot))) {
+        if (((ship == null) || pilot.ship === ship) && this.isOurFaction(pilot.faction) && (this.matcher(pilot_name, term) || (pilot.display_name && this.matcher(pilot.display_name, term))) && (!this.isSecondEdition || exportObj.secondEditionCheck(pilot))) {
           _results.push(pilot);
         }
       }
@@ -19898,7 +19894,7 @@ exportObj.SquadBuilder = (function() {
       }
       return _results;
     }).call(this);
-    if ((include_pilot != null) && (include_pilot.unique != null) && this.matcher(include_pilot.name, term)) {
+    if ((include_pilot != null) && (include_pilot.unique != null) && (this.matcher(include_pilot.name, term) || (include_pilot.display_name && this.matcher(include_pilot.display_name, term)))) {
       eligible_faction_pilots.push(include_pilot);
     }
     return ((function() {
@@ -19981,7 +19977,7 @@ exportObj.SquadBuilder = (function() {
       _results = [];
       for (upgrade_name in _ref) {
         upgrade = _ref[upgrade_name];
-        if (upgrade.slot === slot && this.matcher(upgrade_name, term) && ((upgrade.ship == null) || this.isShip(upgrade.ship, ship.data.name)) && ((upgrade.faction == null) || this.isOurFaction(upgrade.faction)) && (!this.isSecondEdition || exportObj.secondEditionCheck(upgrade))) {
+        if (upgrade.slot === slot && (this.matcher(upgrade_name, term) || (upgrade.display_name && this.matcher(upgrade.display_name, term))) && ((upgrade.ship == null) || this.isShip(upgrade.ship, ship.data.name)) && ((upgrade.faction == null) || this.isOurFaction(upgrade.faction)) && (!this.isSecondEdition || exportObj.secondEditionCheck(upgrade))) {
           _results.push(upgrade);
         }
       }
@@ -20027,7 +20023,7 @@ exportObj.SquadBuilder = (function() {
       equipped_upgrade = _ref[_i];
       eligible_upgrades.removeItem(equipped_upgrade);
     }
-    if ((include_upgrade != null) && (((include_upgrade.unique != null) || (include_upgrade.limited != null) || (include_upgrade.max_per_squad != null)) && this.matcher(include_upgrade.name, term))) {
+    if ((include_upgrade != null) && (((include_upgrade.unique != null) || (include_upgrade.limited != null) || (include_upgrade.max_per_squad != null)) && (this.matcher(include_upgrade.name, term) || (include_upgrade.display_name && this.matcher(include_upgrade.display_name, term))))) {
       eligible_upgrades.push(include_upgrade);
     }
     retval = ((function() {
@@ -20083,7 +20079,7 @@ exportObj.SquadBuilder = (function() {
       _results = [];
       for (modification_name in _ref) {
         modification = _ref[modification_name];
-        if (this.matcher(modification_name, term) && ((modification.ship == null) || modification.ship === ship.data.name) && (!this.isSecondEdition || exportObj.secondEditionCheck(modification))) {
+        if ((this.matcher(modification_name, term) || (modification.display_name && this.matcher(modification.display_name, term))) && ((modification.ship == null) || modification.ship === ship.data.name) && (!this.isSecondEdition || exportObj.secondEditionCheck(modification))) {
           _results.push(modification);
         }
       }
@@ -20135,7 +20131,7 @@ exportObj.SquadBuilder = (function() {
         }
       }
     }
-    if ((include_modification != null) && (((include_modification.unique != null) || (include_modification.limited != null)) && this.matcher(include_modification.name, term))) {
+    if ((include_modification != null) && (((include_modification.unique != null) || (include_modification.limited != null)) && (this.matcher(include_modification.name, term) || (include_modification.display_name && this.matcher(include_modification.display_name, term))))) {
       eligible_modifications.push(include_modification);
     }
     return ((function() {
@@ -20178,7 +20174,7 @@ exportObj.SquadBuilder = (function() {
       _results = [];
       for (title_name in _ref) {
         title = _ref[title_name];
-        if (((title.ship == null) || title.ship === ship.data.name) && this.matcher(title_name, term)) {
+        if (((title.ship == null) || title.ship === ship.data.name) && (this.matcher(title_name, term) || (title.display_name && this.matcher(title.display_name, term)))) {
           _results.push(title);
         }
       }
@@ -20204,7 +20200,7 @@ exportObj.SquadBuilder = (function() {
       }
       return _results;
     }).call(this);
-    if ((include_title != null) && (((include_title.unique != null) || (include_title.limited != null)) && this.matcher(include_title.name, term))) {
+    if ((include_title != null) && (((include_title.unique != null) || (include_title.limited != null)) && (this.matcher(include_title.name, term) || (include_title.display_name && this.matcher(include_title.display_name, term))))) {
       eligible_titles.push(include_title);
     }
     return ((function() {

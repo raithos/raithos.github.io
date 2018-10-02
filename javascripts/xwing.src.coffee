@@ -11691,7 +11691,7 @@ exportObj.cardLoaders['Español'] = () ->
     exportObj.renameShip """B-Wing""", """A/SF-01 Ala-B"""
     exportObj.renameShip """TIE Defender""", """Defensor TIE/D"""
     exportObj.renameShip """TIE Bomber""", """Bombardero TIE/sa"""
-    exportObj.renameShip """TIE Punisher""", """Casticador TIE/ca"""
+    exportObj.renameShip """TIE Punisher""", """Castigador TIE/ca"""
     exportObj.renameShip """Aggressor""", """Caza de asalto Agresor"""
     exportObj.renameShip """G-1A Starfighter""", """Caza estelar G-1A"""
     exportObj.renameShip """VCX-100""", """Carguero ligero VCX-100"""
@@ -11863,7 +11863,7 @@ exportObj.cardLoaders['Español'] = () ->
            display_name: """Phoenix Squadron Pilot"""
            text: """<i>Bajo el mando del comandante Jun Sato, los valerosos pero inexpertos pilotos del Escuadrón Fénix se enfrentan al Imperio Galáctico teniéndolo todo en su contra.</i>%LINEBREAK%Propulsores vectoriales: Después de que realices una acción, puedes realizar una acción %BOOST% roja."""
         "Planetary Sentinel":
-           display_name: """Planetary Sentinel"""
+           display_name: """Centinela planetario"""
            text: """<i>Para proteger sus muchas instalaciones militares, el Imperio precisa de una fuerza de defensa rápida y vigilante.</i>%LINEBREAK%Alerones adaptativos: Antes de que reveles tu selector, si no estás bajo tensión, debes ejecutar una maniobra [1 %BANKLEFT%], [1 %STRAIGHT%] o [1 %BANKRIGHT%] de color blanco."""
         "Rebel Scout":
            display_name: """Explorador rebelde"""
@@ -12083,10 +12083,10 @@ exportObj.cardLoaders['Español'] = () ->
            text: """Al comienzo de la fase de Enfrentamiento, si tienes al menos 1 nave enemiga a alcance 0-1, puedes recibir 1 ficha de Concentración.%LINEBREAK%Micropropulsores: Mientras realizas un tonel volado, debes utilizar la plantilla %BANKLEFT% o %BANKRIGHT% en vez de la plantilla %STRAIGHT%."""
         "Han Solo":
            display_name: """Han Solo"""
-           text: """Mientras te defiendes o efectúas un ataque principal, si el ataque está obstruido por un obstáculo, puedes tirar 1 dado adicional."""
+           text: """Después de que tires los dados, si estás a alcance 0-1 de un obstáculo, puedes volver a tirar todos tus dados. Esto no cuenta como volver a tirar los dados en lo que respecta a otros efectos de juego."""
         "Han Solo (Scum)":
            display_name: """Han Solo (Scum)"""
-           text: """Después de que tires los dados, si estás a alcance 0-1 de un obstáculo, puedes volver a tirar todos tus dados. Esto no cuenta como volver a tirar los dados en lo que respecta a otros efectos de juego."""
+           text: """Mientras te defiendes o efectúas un ataque principal, si el ataque está obstruido por un obstáculo, puedes tirar 1 dado adicional."""
         "Heff Tobber":
            display_name: """Heff Tobber"""
            text: """Después de que una nave enemiga ejecute una maniobra, si esa nave enemiga está situada a alcance 0 de ti, puedes realizar una acción."""
@@ -12345,67 +12345,67 @@ exportObj.cardLoaders['Español'] = () ->
         "Zuckuss":
            display_name: """Zuckuss"""
            text: """Mientras efectúas un ataque principal, puedes tirar 1 dado de ataque adicional. Si lo haces, el defensor tira 1 dado de defensa adicional."""
-       '"Chopper"':
+        '"Chopper"':
            display_name: """“Chopper”"""
            text: """Al comienzo de la fase de Enfrentamiento, toda nave enemiga que tengas a alcance 0 recibe 2 fichas de Interferencia.%LINEBREAK%Cañón de cola: Mientras tienes una nave acoplada, posees un armamento principal %REARARC% con un valor de Ataque igual al del armamento principal %FRONTARC% de tu nave acoplada."""
-       '"Countdown"':
+        '"Countdown"':
            display_name: """“Cuenta Atrás”"""
            text: """Mientras te defiendes, después del paso de “Neutralizar los resultados”, puedes sufrir 1 de daño %HIT% y recibir 1 ficha de Tensión. Si lo haces, anula todos los resultados de los dados.%LINEBREAK%Alerones adaptativos: Antes de que reveles tu selector, si no estás bajo tensión, debes ejecutar una maniobra [1 %BANKLEFT%], [1 %STRAIGHT%] o [1 %BANKRIGHT%] de color blanco."""
-       '"Deathfire"':
+        '"Deathfire"':
            display_name: """“Muerte Ígnea”"""
            text: """Después de que seas destruido, antes de ser retirado de la zona de juego, puedes efectuar un ataque y soltar o lanzar 1 dispositivo. %LINEBREAK%Bombardero ágil: Si vas a soltar un dispositivo utilizando una plantilla %STRAIGHT%, en vez de esa plantilla puedes utilizar una plantilla %BANKLEFT% o %BANKRIGHT% con la misma velocidad."""
-       '"Deathrain"':
+        '"Deathrain"':
            display_name: """“Lluvia de Muerte”"""
            text: """Después de que sueltes o lances un dispositivo, puedes realizar una acción."""
-       '"Double Edge"':
+        '"Double Edge"':
            display_name: """“Doble Filo”"""
            text: """Después de que efectúes un ataque %TURRET% o %MISSILE% que falle, puedes realizar un ataque adicional utilizando un arma diferente."""
-       '"Duchess"':
+        '"Duchess"':
            display_name: """“Duquesa”"""
            text: """Puedes elegir no utilizar tus alerones adaptativos.%LINEBREAK%Puedes utilizar tus alerones adaptativos incluso aunque estés bajo tensión.%LINEBREAK%Alerones adaptativos: Antes de que reveles tu selector, si no estás bajo tensión, debes ejecutar una maniobra blanca [1 %BANKLEFT%], [1 %STRAIGHT%] o [1 %BANKRIGHT%]."""
-       '"Dutch" Vander':
+        '"Dutch" Vander':
            display_name: """“Dutch” Vander"""
            text: """Después de que realices la acción %LOCK%, puedes elegir 1 nave aliada que tengas a alcance 1-3. Esa nave puede obtener un Blanco fijado sobre el objeto que acabas de fijar como blanco, ignorando las restricciones por alcance."""
-       '"Echo"':
+        '"Echo"':
            display_name: """“Eco”"""
            text: """Mientras desactivas el camuflaje, debes utilizar la plantilla [2 %BANKLEFT%] o [2 %BANKRIGHT%] en vez de la plantilla [2 %STRAIGHT%].%LINEBREAK%Matriz de estigio: Después de que desactives el camuflaje, puedes realizar una acción %EVADE%. Al comienzo de la fase Final, puedes gastar 1 ficha de Evasión para recibir 1 ficha de Camuflaje."""
-       '"Howlrunner"':
+        '"Howlrunner"':
            display_name: """“Aullador Veloz”"""
            text: """Mientras una nave aliada que tienes a alcance 0-1 efectúa un ataque principal, esa nave puede volver a tirar 1 dado de ataque."""
-       '"Leebo"':
+        '"Leebo"':
            display_name: """“Leebo”"""
            text: """Después de que te defiendas o efectúes un ataque, si gastaste una ficha de Cálculos, recibes 1 ficha de Cálculos.%LINEBREAK%Punto ciego en los sensores: Mientras efectúas un ataque principal a alcance de ataque 0-1, no apliques el modificador por alcance 0-1 y tira 1 dado de ataque menos."""
-       '"Mauler" Mithel':
+        '"Mauler" Mithel':
            display_name: """“Mutilador” Mithel"""
            text: """Mientras efectúas un ataque a alcance de ataque 1, tira 1 dado de ataque adicional."""
-       '"Night Beast"':
+        '"Night Beast"':
            display_name: """“Bestia Nocturna”"""
            text: """Después de que ejecutes completamente una maniobra azul, puedes realizar una acción %FOCUS%."""
-       '"Pure Sabacc"':
+        '"Pure Sabacc"':
            display_name: """“Sabacc Puro”"""
            text: """Mientras efectúas un ataque, si tienes 1 o menos cartas de Daño, puedes tirar 1 dado de ataque adicional.%LINEBREAK%Alerones adaptativos: Antes de que reveles tu selector, si no estás bajo tensión, debes ejecutar una maniobra [1 %BANKLEFT%], [1 %STRAIGHT%] o [1 %BANKRIGHT%] de color blanco."""
-       '"Redline"':
+        '"Redline"':
            display_name: """“Velocidad Terminal”"""
            text: """Puedes mantener hasta 2 Blancos fijados.%LINEBREAK%Después de que realices una acción, puedes obtener un Blanco fijado."""
-       '"Scourge" Skutu':
+        '"Scourge" Skutu':
            display_name: """“Azote” Skutu"""
            text: """Mientras efectúas un ataque contra un defensor situado en tu %BULLSEYEARC%, tira 1 dado de ataque adicional."""
-       '"Vizier"':
+        '"Vizier"':
            display_name: """“Visir”"""
            text: """<smallbody>Después de que ejecutes completamente una maniobra de velocidad 1 utilizando la capacidad <strong>Alerones adaptativos</strong> de tu nave, puedes realizar una acción %COORDINATE%. Si lo haces, omite tu paso de “Realizar una acción”.</smallbody>%LINEBREAK%<sasmall><strong>Alerones adaptativos:</strong> Antes de revelar tu selector, si no estás bajo tensión, <b>debes</b> ejecutar una maniobra [1&nbsp;%BANKLEFT%], [1&nbsp;%STRAIGHT%] o [1&nbsp;%BANKRIGHT%] blanca.</sasmall>"""
-       '"Wampa"':
+        '"Wampa"':
            display_name: """“Wampa”"""
            text: """Mientras efectúas un ataque, puedes gastar 1 %CHARGE% para tirar 1 dado de ataque adicional.%LINEBREAK%Después de que te defiendas, pierdes 1 %CHARGE%."""
-       '"Whisper"':
+        '"Whisper"':
            display_name: """“Susurro”"""
            text: """Después de que efectúes un ataque que impacte, recibes 1 ficha de Evasión.%LINEBREAK%Matriz de estigio: Después de que desactives el camuflaje, puedes realizar una acción %EVADE%. Al comienzo de la fase Final, puedes gastar 1 ficha de Evasión para recibir 1 ficha de Camuflaje."""
-       '"Zeb" Orrelios':
+        '"Zeb" Orrelios':
            display_name: """“Zeb” Orrelios"""
            text: """Mientras te defiendes, los resultados %CRIT% se neutralizan antes que los resultados %HIT%.%LINEBREAK%Armas preparadas: Mientras estás acoplado, después de que tu nave nodriza efectúe un ataque principal %FRONTARC% o %TURRET%, puede efectuar un ataque principal %REARARC% adicional."""
-       '"Zeb" Orrelios (Sheathipede)':
+        '"Zeb" Orrelios (Sheathipede)':
            display_name: """“Zeb” Orrelios (Sheathipede)"""
            text: """Mientras te defiendes, los resultados %CRIT% se neutralizan antes que los resultados %HIT%.%LINEBREAK%Lanzadera de comunicaciones: Mientras estás acoplado, tu nave nodriza adquiere %COORDINATE%. Antes de que tu nave nodriza se active, puede realizar una acción %COORDINATE%."""
-       '"Zeb" Orrelios (TIE Fighter)':
+        '"Zeb" Orrelios (TIE Fighter)':
            display_name: """“Zeb” Orrelios (TIE Fighter)"""
            text: """Mientras te defiendes, los resultados %CRIT% se neutralizan antes que los resultados %HIT%."""
 
@@ -12704,7 +12704,7 @@ exportObj.cardLoaders['Español'] = () ->
            text: """Antes de que vayas a ejecutar una maniobra, puedes gastar 1 escudo. Si lo haces, ejecutas una maniobra [0 %STOP%] blanca en vez de la maniobra que has revelado, y luego recibes 1 ficha de Tensión."""
         "Informant":
            display_name: """Confidente"""
-           text: """<strong>Preparación:<strong> Después de desplegar las fuerzas, elige 1 nave enemiga y asígnale el Estado <strong>Dispositivo de escucha</strong>."""
+           text: """<strong>Preparación:</strong> Después de desplegar las fuerzas, elige 1 nave enemiga y asígnale el Estado <strong>Dispositivo de escucha</strong>."""
         "Instinctive Aim":
            display_name: """Puntería instintiva"""
            text: """Mientras efectúas un ataque especial, puedes gastar 1 %FORCE% para ignorar el requisito %FOCUS% o %LOCK%."""
@@ -12933,16 +12933,16 @@ exportObj.cardLoaders['Español'] = () ->
         "Zuckuss":
            display_name: """Zuckuss"""
            text: """<i>Sólo Escoria</i>%LINEBREAK%Mientras efectúas un ataque, si no estás bajo tensión, puedes elegir 1 dado de defensa y recibir 1 ficha de Tensión. Si lo haces, el defensor debe volver a tirar ese dado."""
-       '"Chopper" (Crew)':
+        '"Chopper" (Crew)':
            display_name: """“Chopper” (Crew)"""
            text: """<i>Sólo Rebelde</i>%LINEBREAK%Durante el paso de “Realizar una acción”, puedes realizar 1 acción, incluso aunque estés bajo tensión. Después de que realices una acción mientras estás bajo tensión, sufres 1 de daño %HIT% a menos que expongas 1 de tus cartas de Daño."""
-       '"Chopper" (Astromech)':
+        '"Chopper" (Astromech)':
            display_name: """“Chopper” (Astromech)"""
            text: """<i>Sólo Rebelde</i>%LINEBREAK%<strong>Acción:</strong> Gasta 1&nbsp;%CHARGE% no recurrente de otra carta de Mejora que tengas equipada para recuperar 1 escudo.%LINEBREAK%<strong>Acción:</strong> Gasta 2 escudos para recuperar 1&nbsp;%CHARGE% no recurrente sobre una mejora que tengas equipada."""
-       '"Genius"':
+        '"Genius"':
            display_name: """“Genio”"""
            text: """<i>Sólo Escoria</i>%LINEBREAK%Después de que ejecutes completamente una maniobra, si no has soltado ni lanzado ningún dispositivo en esta ronda, puedes soltar 1 bomba."""
-       '"Zeb" Orrelios':
+        '"Zeb" Orrelios':
            display_name: """“Zeb” Orrelios"""
            text: """<i>Sólo Rebelde</i>%LINEBREAK%Eres capaz de efectuar ataques principales a alcance 0. Las naves enemigas que tengas a alcance 0 son capaces de efectuar ataques principales contra ti."""
 
@@ -13000,7 +13000,7 @@ exportObj.cardLoaders['Español'] = () ->
            text: '''Durante la fase de Sistemas, si hay alguna nave enemiga con la mejora <strong>Confidente</strong> situada a alcance 0-2 de ti, dale la vuelta a tu selector para dejarlo boca arriba.'''
         'Optimized Prototype':
            display_name: """Prototipo optimizado"""
-           text: '''Cuando estés efectuando un ataque de armamento principal %FRONTARC% contra una nave que esté fijada como blanco por un anave aliada equipada con la mejora <strong>Director Krennic</strong> puedes gastar 1 resultado %HIT%/%CRIT%/%FOCUS%. Si lo haces, elige entre: el defensor pierde 1 ficha de Escudos, o el defensor le da la vuelta a 1 de sus cartas de Daño que tenga boca abajo.'''
+           text: '''Cuando estés efectuando un ataque de armamento principal %FRONTARC% contra una nave que esté fijada como blanco por una nave aliada equipada con la mejora <strong>Director Krennic</strong> puedes gastar 1 resultado %HIT%, %CRIT% o %FOCUS%. Si lo haces, elige entre: el defensor pierde 1 ficha de Escudos, o el defensor le da la vuelta a 1 de sus cartas de Daño que tenga boca abajo.'''
         '''I'll Show You the Dark Side''':
            text: ''' ??? '''
         'Proton Bomb':
@@ -20640,7 +20640,7 @@ class exportObj.SquadBuilder
     getAvailableShipsMatching: (term='') ->
         ships = []
         for ship_name, ship_data of exportObj.ships
-            if @isOurFaction(ship_data.factions) and @matcher(ship_data.name, term)
+            if @isOurFaction(ship_data.factions) and (@matcher(ship_data.name, term) or (ship_data.display_name and @matcher(ship_data.display_name, term)))
                 if (not @isSecondEdition or exportObj.secondEditionCheck(ship_data, @faction))
                     if not ship_data.huge or @isCustom
                         if ship_data.display_name
@@ -20664,12 +20664,12 @@ class exportObj.SquadBuilder
         
     getAvailablePilotsForShipIncluding: (ship, include_pilot, term='') ->
         # Returns data formatted for Select2
-        available_faction_pilots = (pilot for pilot_name, pilot of exportObj.pilotsByLocalizedName when (not ship? or pilot.ship == ship) and @isOurFaction(pilot.faction) and @matcher(pilot_name, term) and (not @isSecondEdition or exportObj.secondEditionCheck(pilot)))
+        available_faction_pilots = (pilot for pilot_name, pilot of exportObj.pilots when (not ship? or pilot.ship == ship) and @isOurFaction(pilot.faction) and (@matcher(pilot_name, term) or (pilot.display_name and @matcher(pilot.display_name, term)) ) and (not @isSecondEdition or exportObj.secondEditionCheck(pilot)))
 
         eligible_faction_pilots = (pilot for pilot_name, pilot of available_faction_pilots when (not pilot.unique? or pilot not in @uniques_in_use['Pilot'] or pilot.canonical_name.getXWSBaseName() == include_pilot?.canonical_name.getXWSBaseName()))
 
         # Re-add selected pilot
-        if include_pilot? and include_pilot.unique? and @matcher(include_pilot.name, term)
+        if include_pilot? and include_pilot.unique? and (@matcher(include_pilot.name, term) or (include_pilot.display_name and @matcher(include_pilot.display_name, term)) )
             eligible_faction_pilots.push include_pilot
         ({ id: pilot.id, text: "#{if pilot.display_name then pilot.display_name else pilot.name} (#{pilot.points})", points: pilot.points, ship: pilot.ship, english_name: pilot.english_name, disabled: pilot not in eligible_faction_pilots } for pilot in available_faction_pilots).sort exportObj.sortHelper
 
@@ -20699,7 +20699,7 @@ class exportObj.SquadBuilder
         # Returns data formatted for Select2
         limited_upgrades_in_use = (upgrade.data for upgrade in ship.upgrades when upgrade?.data?.limited?)
 
-        available_upgrades = (upgrade for upgrade_name, upgrade of exportObj.upgradesByLocalizedName when upgrade.slot == slot and @matcher(upgrade_name, term) and (not upgrade.ship? or @isShip(upgrade.ship, ship.data.name)) and (not upgrade.faction? or @isOurFaction(upgrade.faction)) and (not @isSecondEdition or exportObj.secondEditionCheck(upgrade)))
+        available_upgrades = (upgrade for upgrade_name, upgrade of exportObj.upgradesByLocalizedName when upgrade.slot == slot and ( @matcher(upgrade_name, term) or (upgrade.display_name and @matcher(upgrade.display_name, term)) ) and (not upgrade.ship? or @isShip(upgrade.ship, ship.data.name)) and (not upgrade.faction? or @isOurFaction(upgrade.faction)) and (not @isSecondEdition or exportObj.secondEditionCheck(upgrade)))
 
         if filter_func != @dfl_filter_func
             available_upgrades = (upgrade for upgrade in available_upgrades when filter_func(upgrade))
@@ -20718,7 +20718,7 @@ class exportObj.SquadBuilder
             eligible_upgrades.removeItem equipped_upgrade
 
         # Re-enable selected upgrade
-        if include_upgrade? and (((include_upgrade.unique? or include_upgrade.limited? or include_upgrade.max_per_squad?) and @matcher(include_upgrade.name, term)))# or current_upgrade_forcibly_removed)
+        if include_upgrade? and (((include_upgrade.unique? or include_upgrade.limited? or include_upgrade.max_per_squad?) and ( @matcher(include_upgrade.name, term) or (include_upgrade.display_name and @matcher(include_upgrade.display_name, term))) ))# or current_upgrade_forcibly_removed)
             # available_upgrades.push include_upgrade
             eligible_upgrades.push include_upgrade
 
@@ -20734,7 +20734,7 @@ class exportObj.SquadBuilder
         # Returns data formatted for Select2
         limited_modifications_in_use = (modification.data for modification in ship.modifications when modification?.data?.limited?)
 
-        available_modifications = (modification for modification_name, modification of exportObj.modificationsByLocalizedName when @matcher(modification_name, term) and (not modification.ship? or modification.ship == ship.data.name) and (not @isSecondEdition or exportObj.secondEditionCheck(modification)))
+        available_modifications = (modification for modification_name, modification of exportObj.modificationsByLocalizedName when ( @matcher(modification_name, term) or (modification.display_name and @matcher(modification.display_name, term)) ) and (not modification.ship? or modification.ship == ship.data.name) and (not @isSecondEdition or exportObj.secondEditionCheck(modification)))
 
         if filter_func != @dfl_filter_func
             available_modifications = (modification for modification in available_modifications when filter_func(modification))
@@ -20753,7 +20753,7 @@ class exportObj.SquadBuilder
                     # current_mod_forcibly_removed = true if equipped_modification == include_modification
 
         # Re-add selected modification
-        if include_modification? and (((include_modification.unique? or include_modification.limited?) and @matcher(include_modification.name, term)))# or current_mod_forcibly_removed)
+        if include_modification? and (((include_modification.unique? or include_modification.limited?) and ( @matcher(include_modification.name, term) or (include_modification.display_name and @matcher(include_modification.display_name, term)) ) ))# or current_mod_forcibly_removed)
             eligible_modifications.push include_modification
         ({ id: modification.id, text: "#{if modification.display_name then modification.display_name else modification.name} (#{modification.points})", points: modification.points, english_name: modification.english_name, disabled: modification not in eligible_modifications } for modification in available_modifications).sort exportObj.sortHelper
 
@@ -20761,12 +20761,12 @@ class exportObj.SquadBuilder
         # Returns data formatted for Select2
         # Titles are no longer unique!
         limited_titles_in_use = (title.data for title in ship.titles when title?.data?.limited?)
-        available_titles = (title for title_name, title of exportObj.titlesByLocalizedName when (not title.ship? or title.ship == ship.data.name) and @matcher(title_name, term))
+        available_titles = (title for title_name, title of exportObj.titlesByLocalizedName when (not title.ship? or title.ship == ship.data.name) and ( @matcher(title_name, term) or (title.display_name and @matcher(title.display_name, term))) )
 
         eligible_titles = (title for title_name, title of available_titles when (not title.unique? or (title not in @uniques_in_use['Title'] and title.canonical_name.getXWSBaseName() not in (t.canonical_name.getXWSBaseName() for t in @uniques_in_use['Title'])) or title.canonical_name.getXWSBaseName() == include_title?.canonical_name.getXWSBaseName()) and (not title.faction? or @isOurFaction(title.faction)) and (not (ship? and title.restriction_func?) or title.restriction_func ship) and title not in limited_titles_in_use)
 
         # Re-add selected title
-        if include_title? and (((include_title.unique? or include_title.limited?) and @matcher(include_title.name, term)))
+        if include_title? and (((include_title.unique? or include_title.limited?) and (@matcher(include_title.name, term) or (include_title.display_name and @matcher(include_title.display_name, term)) )))
             eligible_titles.push include_title
         ({ id: title.id, text: "#{if title.display_name then title.display_name else title.name} (#{title.points})", points: title.points, english_name: title.english_name, disabled: title not in eligible_titles } for title in available_titles).sort exportObj.sortHelper
 
