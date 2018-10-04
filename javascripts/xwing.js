@@ -21627,7 +21627,7 @@ Ship = (function() {
       html += $.trim("</div>");
     }
     HalfPoints = Math.floor(this.getPoints() / 2);
-    Threshold = Math.floor((effective_stats['hull'] + effective_stats['shields']) / 2);
+    Threshold = Math.ceil((effective_stats['hull'] + effective_stats['shields']) / 2);
     html += $.trim("<div class=\"ship-points-total\">\n    <strong>Ship Total: " + (this.getPoints()) + ", Half Points: " + HalfPoints + ", Threshold: " + Threshold + "</strong> \n</div>");
     return "<div class=\"fancy-ship\">" + html + "</div>";
   };
