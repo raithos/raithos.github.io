@@ -7741,7 +7741,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "C-3PO": {
       display_name: "C-3PO",
-      text: "<i>Fügt %CALCULATE% hinzu</i>%LINEBREAK%<i>Nur für Rebellen</i>%LINEBREAK%Bevor du Verteidigungswürfel wirfst, darfst du 1&nbsp;Berechnungs­marker ausgeben, um laut eine Zahl von 1 oder höher zu raten. Falls du das tust und genau so viele %EVADE%-Ergebnisse wirfst, wie du geraten hast, füge 1&nbsp;%EVADE%-Ergebnis hinzu.%LINEBREAK%Nachdem du die %CALCULATE%-Aktion"
+      text: "<i>Fügt %CALCULATE% hinzu</i>%LINEBREAK%<i>Nur für Rebellen</i>%LINEBREAK%Bevor du Verteidigungswürfel wirfst, darfst du 1&nbsp;Berechnungs­marker ausgeben, um laut eine Zahl von 1 oder höher zu raten. Falls du das tust und genau so viele %EVADE%-Ergebnisse wirfst, wie du geraten hast, füge 1&nbsp;%EVADE%-Ergebnis hinzu.%LINEBREAK%Nachdem du die %CALCULATE%-Aktion durchgeführt hast, erhalte 1&nbsp;%CALCULATE%-Marker"
     },
     "Cad Bane": {
       display_name: "Cad Bane",
@@ -19557,7 +19557,7 @@ exportObj.SquadBuilder = (function() {
 
   SquadBuilder.prototype.serialize = function() {
     var game_type_abbrev, serialization_version, ship;
-    serialization_version = 4;
+    serialization_version = 5;
     game_type_abbrev = (function() {
       switch (this.game_type_selector.val()) {
         case 'standard':
@@ -19593,6 +19593,7 @@ exportObj.SquadBuilder = (function() {
       switch (version) {
         case 3:
         case 4:
+        case 5:
           _ref = matches[2].split('!'), game_type_abbrev = _ref[0], serialized_ships = _ref[1];
           switch (game_type_abbrev) {
             case 's':
@@ -21756,7 +21757,7 @@ Ship = (function() {
   };
 
   Ship.prototype.fromSerialized = function(version, serialized) {
-    var addon_cls, addon_id, addon_type_serialized, conferred_addon, conferredaddon_pair, conferredaddon_pairs, deferred_id, deferred_ids, i, pilot_id, upgrade, upgrade_conferred_addon_pairs, upgrade_id, upgrade_ids, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _m, _n, _o, _p, _q, _ref, _ref1, _ref10, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var addon_cls, addon_id, addon_type_serialized, conferred_addon, conferredaddon_pair, conferredaddon_pairs, deferred_id, deferred_ids, i, pilot_id, upgrade, upgrade_conferred_addon_pairs, upgrade_id, upgrade_ids, version_4_compatibility_placeholder_mod, version_4_compatibility_placeholder_title, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _m, _n, _o, _p, _q, _ref, _ref1, _ref10, _ref11, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     switch (version) {
       case 1:
         _ref = serialized.split(':'), pilot_id = _ref[0], upgrade_ids = _ref[1];
@@ -21807,17 +21808,22 @@ Ship = (function() {
         }
         break;
       case 4:
-        _ref5 = serialized.split(':'), pilot_id = _ref5[0], upgrade_ids = _ref5[1], conferredaddon_pairs = _ref5[2];
+      case 5:
+        if ((serialized.split(':')).length === 3) {
+          _ref5 = serialized.split(':'), pilot_id = _ref5[0], upgrade_ids = _ref5[1], conferredaddon_pairs = _ref5[2];
+        } else {
+          _ref6 = serialized.split(':'), pilot_id = _ref6[0], upgrade_ids = _ref6[1], version_4_compatibility_placeholder_title = _ref6[2], version_4_compatibility_placeholder_mod = _ref6[3], conferredaddon_pairs = _ref6[4];
+        }
         this.setPilotById(parseInt(pilot_id));
         deferred_ids = [];
-        _ref6 = upgrade_ids.split(',');
-        for (i = _m = 0, _len4 = _ref6.length; _m < _len4; i = ++_m) {
-          upgrade_id = _ref6[i];
+        _ref7 = upgrade_ids.split(',');
+        for (i = _m = 0, _len4 = _ref7.length; _m < _len4; i = ++_m) {
+          upgrade_id = _ref7[i];
           upgrade_id = parseInt(upgrade_id);
           if (upgrade_id < 0 || isNaN(upgrade_id)) {
             continue;
           }
-          if (this.upgrades[i].isOccupied() || (((_ref7 = this.upgrades[i].dataById[upgrade_id]) != null ? _ref7.also_occupies_upgrades : void 0) != null)) {
+          if (this.upgrades[i].isOccupied() || (((_ref8 = this.upgrades[i].dataById[upgrade_id]) != null ? _ref8.also_occupies_upgrades : void 0) != null)) {
             deferred_ids.push(upgrade_id);
           } else {
             this.upgrades[i].setById(upgrade_id);
@@ -21825,9 +21831,9 @@ Ship = (function() {
         }
         for (_n = 0, _len5 = deferred_ids.length; _n < _len5; _n++) {
           deferred_id = deferred_ids[_n];
-          _ref8 = this.upgrades;
-          for (i = _o = 0, _len6 = _ref8.length; _o < _len6; i = ++_o) {
-            upgrade = _ref8[i];
+          _ref9 = this.upgrades;
+          for (i = _o = 0, _len6 = _ref9.length; _o < _len6; i = ++_o) {
+            upgrade = _ref9[i];
             if (upgrade.isOccupied() || upgrade.slot !== exportObj.upgradesById[deferred_id].slot) {
               continue;
             }
@@ -21840,16 +21846,20 @@ Ship = (function() {
         } else {
           conferredaddon_pairs = [];
         }
-        _ref9 = this.upgrades;
-        for (_p = 0, _len7 = _ref9.length; _p < _len7; _p++) {
-          upgrade = _ref9[_p];
+        _ref10 = this.upgrades;
+        for (_p = 0, _len7 = _ref10.length; _p < _len7; _p++) {
+          upgrade = _ref10[_p];
           if (((upgrade != null ? upgrade.data : void 0) != null) && upgrade.conferredAddons.length > 0) {
             upgrade_conferred_addon_pairs = conferredaddon_pairs.splice(0, upgrade.conferredAddons.length);
             for (i = _q = 0, _len8 = upgrade_conferred_addon_pairs.length; _q < _len8; i = ++_q) {
               conferredaddon_pair = upgrade_conferred_addon_pairs[i];
-              _ref10 = conferredaddon_pair.split('.'), addon_type_serialized = _ref10[0], addon_id = _ref10[1];
+              _ref11 = conferredaddon_pair.split('.'), addon_type_serialized = _ref11[0], addon_id = _ref11[1];
               addon_id = parseInt(addon_id);
               addon_cls = SERIALIZATION_CODE_TO_CLASS[addon_type_serialized];
+              if (!addon_cls) {
+                console.log("Something went wrong... could not serialize properly");
+                continue;
+              }
               conferred_addon = upgrade.conferredAddons[i];
               if (conferred_addon instanceof addon_cls) {
                 conferred_addon.setById(addon_id);
@@ -21929,7 +21939,9 @@ Ship = (function() {
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       upgrade = _ref[_i];
       if (((upgrade != null ? upgrade.data : void 0) != null) && !exportObj.isReleased(upgrade.data)) {
-        return true;
+        if (upgrade.data.id !== (168 || 169 || 170)) {
+          return true;
+        }
       }
     }
     return false;
@@ -22062,7 +22074,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 22205
+                lineno: 22212
               })
             ]);
             __iced_deferrals._fulfill();
@@ -22095,11 +22107,13 @@ GenericAddon = (function() {
         if (_this.ship.builder.collection != null) {
           not_in_collection = false;
           if (obj.id === ((_ref = _this.data) != null ? _ref.id : void 0)) {
-            if (!(_this.ship.builder.collection.checkShelf(_this.type.toLowerCase(), obj.name) || _this.ship.builder.collection.checkTable(_this.type.toLowerCase(), obj.name))) {
+            if (!((_this.ship.builder.collection.checkShelf(_this.type.toLowerCase(), obj.name) || _this.ship.builder.collection.checkTable(_this.type.toLowerCase(), obj.name)) || (obj.id === 168))) {
               not_in_collection = true;
             }
           } else {
-            not_in_collection = !_this.ship.builder.collection.checkShelf(_this.type.toLowerCase(), obj.name);
+            if (obj.id !== (168 || 169 || 170)) {
+              not_in_collection = !_this.ship.builder.collection.checkShelf(_this.type.toLowerCase(), obj.name);
+            }
           }
           if (not_in_collection) {
             return 'select2-result-not-in-collection';
@@ -22195,7 +22209,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 22272
+                  lineno: 22281
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -22217,7 +22231,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 22276
+                    lineno: 22285
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -22303,7 +22317,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 22315
+            lineno: 22324
           }));
         }
         __iced_deferrals._fulfill();

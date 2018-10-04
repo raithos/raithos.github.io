@@ -9867,7 +9867,7 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """<i>Nur für Abschaum</i>%LINEBREAK%Nachdem du einen Primärangriff durchgeführt hast, der verfehlt hat, falls du nicht gestresst bist, <b>musst</b> du 1 Stressmarker erhalten, um einen Bonus-Primärangriff gegen dasselbe Ziel durchzuführen."""
         "C-3PO":
            display_name: """C-3PO"""
-           text: """<i>Fügt %CALCULATE% hinzu</i>%LINEBREAK%<i>Nur für Rebellen</i>%LINEBREAK%Bevor du Verteidigungswürfel wirfst, darfst du 1&nbsp;Berechnungs­marker ausgeben, um laut eine Zahl von 1 oder höher zu raten. Falls du das tust und genau so viele %EVADE%-Ergebnisse wirfst, wie du geraten hast, füge 1&nbsp;%EVADE%-Ergebnis hinzu.%LINEBREAK%Nachdem du die %CALCULATE%-Aktion"""
+           text: """<i>Fügt %CALCULATE% hinzu</i>%LINEBREAK%<i>Nur für Rebellen</i>%LINEBREAK%Bevor du Verteidigungswürfel wirfst, darfst du 1&nbsp;Berechnungs­marker ausgeben, um laut eine Zahl von 1 oder höher zu raten. Falls du das tust und genau so viele %EVADE%-Ergebnisse wirfst, wie du geraten hast, füge 1&nbsp;%EVADE%-Ergebnis hinzu.%LINEBREAK%Nachdem du die %CALCULATE%-Aktion durchgeführt hast, erhalte 1&nbsp;%CALCULATE%-Marker"""
         "Cad Bane":
            display_name: """Cad Bane"""
            text: """<i>Nur für Abschaum</i>%LINEBREAK%Nachdem du ein Gerät abgeworfen oder gestartet hast, darfst du eine rote %BOOST%-Aktion durchführen."""
@@ -20439,7 +20439,7 @@ class exportObj.SquadBuilder
 
     serialize: ->
 
-        serialization_version = 4
+        serialization_version = 5
         game_type_abbrev = switch @game_type_selector.val()
             when 'standard'
                 's'
@@ -20460,7 +20460,7 @@ class exportObj.SquadBuilder
             # versioned
             version = parseInt matches[1]
             switch version
-                when 3, 4
+                when 3, 4, 5
                     # parse out game type
                     [ game_type_abbrev, serialized_ships ] = matches[2].split('!')
                     switch game_type_abbrev
@@ -22029,9 +22029,12 @@ class Ship
                     conferredaddon_pairs = []
 
 
-            when 4
+            when 4, 5
                 # PILOT_ID:UPGRADEID1,UPGRADEID2:CONFERREDADDONTYPE1.CONFERREDADDONID1,CONFERREDADDONTYPE2.CONFERREDADDONID2
-                [ pilot_id, upgrade_ids, conferredaddon_pairs ] = serialized.split ':'
+                if (serialized.split ':').length == 3
+                    [ pilot_id, upgrade_ids, conferredaddon_pairs ] = serialized.split ':'
+                else 
+                    [ pilot_id, upgrade_ids, version_4_compatibility_placeholder_title, version_4_compatibility_placeholder_mod, conferredaddon_pairs ] = serialized.split ':'
                 @setPilotById parseInt(pilot_id)
 
                 deferred_ids = []
@@ -22062,6 +22065,9 @@ class Ship
                             [ addon_type_serialized, addon_id ] = conferredaddon_pair.split '.'
                             addon_id = parseInt addon_id
                             addon_cls = SERIALIZATION_CODE_TO_CLASS[addon_type_serialized]
+                            if not addon_cls
+                                console.log("Something went wrong... could not serialize properly")
+                                continue
                             conferred_addon = upgrade.conferredAddons[i]
                             if conferred_addon instanceof addon_cls
                                 conferred_addon.setById addon_id
@@ -22122,8 +22128,9 @@ class Ship
 
         for upgrade in @upgrades
             if upgrade?.data? and not exportObj.isReleased upgrade.data
-                #console.log "#{upgrade.data.name} is unreleased"
-                return true
+                #console.log "#{upgrade.data.id} is unreleased"
+                if upgrade.data.id != (168 or 169 or 170) #ignore hardpoints
+                    return true
 
         false
 
@@ -22221,11 +22228,13 @@ class GenericAddon
                 if obj.id == @data?.id
                     # Currently selected card; mark as not in collection if it's neither
                     # on the shelf nor on the table
-                    unless (@ship.builder.collection.checkShelf(@type.toLowerCase(), obj.name) or @ship.builder.collection.checkTable(@type.toLowerCase(), obj.name))
+                    unless (@ship.builder.collection.checkShelf(@type.toLowerCase(), obj.name) or @ship.builder.collection.checkTable(@type.toLowerCase(), obj.name)) or (obj.id == 168)
                         not_in_collection = true
+                    
                 else
                     # Not currently selected; check shelf only
-                    not_in_collection = not @ship.builder.collection.checkShelf(@type.toLowerCase(), obj.name)
+                    if obj.id != (168 or 169 or 170) #ignore hardpoints
+                        not_in_collection = not @ship.builder.collection.checkShelf(@type.toLowerCase(), obj.name)
                 if not_in_collection then 'select2-result-not-in-collection' else ''
                     #and (@ship.builder.collection.checkcollection?) 
             else
