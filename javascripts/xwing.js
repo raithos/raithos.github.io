@@ -835,8 +835,16 @@ TYPES = ['pilots', 'upgrades'];
 
 byName = function(a, b) {
   var a_name, b_name;
-  a_name = a.name.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
-  b_name = b.name.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+  if (a.display_name) {
+    a_name = a.display_name.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+  } else {
+    a_name = a.name.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+  }
+  if (b.display_name) {
+    b_name = b.display_name.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+  } else {
+    b_name = b.name.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+  }
   if (a_name < b_name) {
     return -1;
   } else if (b_name < a_name) {
@@ -915,6 +923,7 @@ exportObj.CardBrowser = (function() {
             card_data = _ref[card_name];
             _results.push({
               name: card_data.name,
+              display_name: card_data.display_name,
               type: exportObj.translate(this.language, 'ui', 'upgradeHeader', card_data.slot),
               data: card_data,
               orig_type: card_data.slot
@@ -931,6 +940,7 @@ exportObj.CardBrowser = (function() {
             card_data = _ref[card_name];
             _results.push({
               name: card_data.name,
+              display_name: card_data.display_name,
               type: exportObj.translate(this.language, 'singular', type),
               data: card_data,
               orig_type: exportObj.translate('English', 'singular', type)
@@ -1095,12 +1105,13 @@ exportObj.CardBrowser = (function() {
   };
 
   CardBrowser.prototype.renderCard = function(card) {
-    var action, cls, data, name, orig_type, ship, slot, source, type, _i, _len, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var action, cls, data, display_name, name, orig_type, ship, slot, source, type, _i, _len, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    display_name = card.data('display_name');
     name = card.data('name');
     type = card.data('type');
     data = card.data('card');
     orig_type = card.data('orig_type');
-    this.card_viewer_container.find('.info-name').html("" + (data.unique ? "&middot;&nbsp;" : "") + name + " (" + data.points + ")" + (data.limited != null ? " (" + (exportObj.translate(this.language, 'ui', 'limited')) + ")" : "") + (data.epic != null ? " (" + (exportObj.translate(this.language, 'ui', 'epic')) + ")" : "") + (exportObj.isReleased(data) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
+    this.card_viewer_container.find('.info-name').html("" + (data.unique ? "&middot;&nbsp;" : "") + (display_name ? display_name : name) + " (" + data.points + ")" + (data.limited != null ? " (" + (exportObj.translate(this.language, 'ui', 'limited')) + ")" : "") + (data.epic != null ? " (" + (exportObj.translate(this.language, 'ui', 'epic')) + ")" : "") + (exportObj.isReleased(data) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
     this.card_viewer_container.find('p.info-text').html((_ref = data.text) != null ? _ref : '');
     this.card_viewer_container.find('.info-sources').text(((function() {
       var _i, _len, _ref1, _results;
@@ -1273,8 +1284,9 @@ exportObj.CardBrowser = (function() {
   CardBrowser.prototype.addCardTo = function(container, card) {
     var option;
     option = $(document.createElement('OPTION'));
-    option.text("" + card.name + " (" + card.data.points + ")");
+    option.text("" + (card.display_name ? card.display_name : card.name) + " (" + card.data.points + ")");
     option.data('name', card.name);
+    option.data('display_name', card.display_name);
     option.data('type', card.type);
     option.data('card', card.data);
     option.data('orig_type', card.orig_type);
@@ -18422,7 +18434,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 19265
+                    lineno: 19273
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -19036,7 +19048,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 19918
+              lineno: 19926
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -19727,7 +19739,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 20556
+          lineno: 20564
         }));
         __iced_deferrals._fulfill();
       });
@@ -19739,7 +19751,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 20557
+            lineno: 20565
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -21120,7 +21132,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 21511
+                      lineno: 21519
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -21178,7 +21190,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 21528
+                lineno: 21536
               })
             ]);
             __iced_deferrals._fulfill();
@@ -21225,7 +21237,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 21542
+              lineno: 21550
             }));
           }
         }
@@ -22083,7 +22095,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 22223
+                lineno: 22231
               })
             ]);
             __iced_deferrals._fulfill();
@@ -22224,7 +22236,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 22296
+                  lineno: 22304
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -22246,7 +22258,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 22300
+                    lineno: 22308
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -22332,7 +22344,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 22339
+            lineno: 22347
           }));
         }
         __iced_deferrals._fulfill();
