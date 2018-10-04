@@ -17982,7 +17982,7 @@ exportObj.Collection = (function() {
   }
 
   Collection.prototype.reset = function() {
-    var card, component_content, contents, count, counts, expansion, expname, item, items, name, names, singletonsByType, sorted_names, thing, things, type, ul, _, _base1, _base2, _base3, _base4, _base5, _base6, _i, _j, _k, _l, _len, _len1, _m, _name, _name1, _name2, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _results;
+    var card, card_different_by_type, card_totals_by_type, component_content, contents, count, counts, expansion, expname, item, items, name, names, singletonsByType, sorted_names, summary, thing, things, type, ul, _, _base1, _base2, _base3, _base4, _base5, _base6, _i, _j, _k, _l, _len, _len1, _len2, _len3, _m, _n, _name, _name1, _name2, _o, _ref, _ref1, _ref10, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     this.shelf = {};
     this.table = {};
     _ref = this.expansions;
@@ -18049,33 +18049,35 @@ exportObj.Collection = (function() {
     }
     component_content = $(this.modal.find('.collection-inventory-content'));
     component_content.text('');
+    card_totals_by_type = {};
+    card_different_by_type = {};
     _ref8 = this.counts;
-    _results = [];
     for (type in _ref8) {
       if (!__hasProp.call(_ref8, type)) continue;
       things = _ref8[type];
       if (singletonsByType[type] != null) {
+        card_totals_by_type[type] = 0;
+        card_different_by_type[type] = 0;
         contents = component_content.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\"><h5>" + (type.capitalize()) + "</h5></div>\n</div>\n<div class=\"row-fluid\">\n    <ul id=\"counts-" + type + "\" class=\"span12\"></ul>\n</div>"));
         ul = $(contents.find("ul#counts-" + type));
-        _results.push((function() {
-          var _len2, _n, _ref9, _results1;
-          _ref9 = Object.keys(things).sort(sortWithoutQuotes);
-          _results1 = [];
-          for (_n = 0, _len2 = _ref9.length; _n < _len2; _n++) {
-            thing = _ref9[_n];
-            if (__indexOf.call(singletonsByType[type], thing) >= 0) {
-              _results1.push(ul.append("<li>" + thing + " - " + things[thing] + "</li>"));
-            } else {
-              _results1.push(void 0);
-            }
+        _ref9 = Object.keys(things).sort(sortWithoutQuotes);
+        for (_n = 0, _len2 = _ref9.length; _n < _len2; _n++) {
+          thing = _ref9[_n];
+          card_totals_by_type[type] += things[thing];
+          if (__indexOf.call(singletonsByType[type], thing) >= 0) {
+            card_different_by_type[type]++;
+            ul.append("<li>" + thing + " - " + things[thing] + "</li>");
           }
-          return _results1;
-        })());
-      } else {
-        _results.push(void 0);
+        }
       }
     }
-    return _results;
+    summary = "";
+    _ref10 = Object.keys(card_totals_by_type);
+    for (_o = 0, _len3 = _ref10.length; _o < _len3; _o++) {
+      type = _ref10[_o];
+      summary += "<li>" + (type.capitalize()) + " - " + card_totals_by_type[type] + " (" + card_different_by_type[type] + " different)</li>";
+    }
+    return component_content.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\"><h5>Summary</h5></div>\n</div>\n<div class = \"row-fluid\">\n    <ul id=\"counts-summary\" class=\"span12\">\n        " + summary + "\n    </ul>\n</div>"));
   };
 
   Collection.prototype.fixName = function(name) {
@@ -18417,7 +18419,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 19240
+                    lineno: 19262
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -19031,7 +19033,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 19893
+              lineno: 19915
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -19721,7 +19723,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 20531
+          lineno: 20553
         }));
         __iced_deferrals._fulfill();
       });
@@ -19733,7 +19735,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 20532
+            lineno: 20554
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -21110,7 +21112,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 21483
+                      lineno: 21505
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -21168,7 +21170,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 21500
+                lineno: 21522
               })
             ]);
             __iced_deferrals._fulfill();
@@ -21215,7 +21217,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 21514
+              lineno: 21536
             }));
           }
         }
@@ -22060,7 +22062,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 22183
+                lineno: 22205
               })
             ]);
             __iced_deferrals._fulfill();
@@ -22193,7 +22195,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 22250
+                  lineno: 22272
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -22215,7 +22217,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 22254
+                    lineno: 22276
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -22301,7 +22303,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 22293
+            lineno: 22315
           }));
         }
         __iced_deferrals._fulfill();
