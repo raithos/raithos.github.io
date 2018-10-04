@@ -8002,6 +8002,7 @@ exportObj.basicCardData = ->
             id: 168
             slot: "Hardpoint"
             points: 0
+            ignorecollection: true
             confersAddons: [
                 {
                     type: exportObj.Upgrade
@@ -8013,6 +8014,7 @@ exportObj.basicCardData = ->
             name: "Hardpoint: Torpedo"
             id: 169
             slot: "Hardpoint"
+            ignorecollection: true
             points: 0
             confersAddons: [
                 {
@@ -8025,6 +8027,7 @@ exportObj.basicCardData = ->
             name: "Hardpoint: Missile"
             id: 170
             slot: "Hardpoint"
+            ignorecollection: true
             points: 0
             confersAddons: [
                 {
@@ -14902,7 +14905,7 @@ exportObj.cardLoaders.Magyar = () ->
         "Valen Rudor":
            text: """Miután egy baráti hajó 0-1-es távolságban védekezik - a sérülések elkönyvelése után -, végrehajthatsz egy akciót."""
         "Ved Foslo":
-           text: """Amikor végrehajtasz egy manővert, végrehajthatsz egy manővert ugyanabban az irányban és nehézségben, 1-gyel kisebb vagy nagyobb sebességgel. %LINEBREAK% ADVANCED TARGETING COPMUTER: Amikor végrehajtasz egy elsődleges támadást egy olyan védekező ellen, akit bemértél, 1-gyel több támadókockával dobj és változtasd egy %HIT% eredményed %CRIT% eredményre."""
+           text: """Amikor végrehajtasz egy manővert, helyette végrehajthatsz egy manővert ugyanabban az irányban és nehézségben, 1-gyel kisebb vagy nagyobb sebességgel. %LINEBREAK% ADVANCED TARGETING COPMUTER: Amikor végrehajtasz egy elsődleges támadást egy olyan védekező ellen, akit bemértél, 1-gyel több támadókockával dobj és változtasd egy %HIT% eredményed %CRIT% eredményre."""
         "Viktor Hel":
            text: """Miután védekeztél, ha nem pontosan 2 védekezőkockával dobtál, a támadó kap 1 stress jelzőt."""
         '"Vizier"':
@@ -15093,7 +15096,7 @@ exportObj.cardLoaders.Magyar = () ->
         "Greedo":
            text: """Amikor végrehajtasz egy támadást, elkölthetsz 1 %CHARGE% jelzőt, hogy megváltoztass 1 %HIT% eredméynyt %CRIT% eredményre. Amikor védekezel, ha a %CHARGE% jelződ aktív, a támadó megváltoztathat 1 %HIT% eredméynyt %CRIT% eredményre."""
         "Han Solo":
-           text: """Az ütközet fázis alatt, 7-es kezdeményezésnél, végrehajthatsz egy SINGLETURRETARC% támadást. Nem támadhatsz újra ezzel a %SINGLETURRETARC% fegyverrel ebben a körben."""
+           text: """Az ütközet fázis alatt, 7-es kezdeményezésnél, végrehajthatsz egy %SINGLETURRETARC% támadást. Nem támadhatsz újra ezzel a %SINGLETURRETARC% fegyverrel ebben a körben."""
         "Han Solo (Scum)":
            text: """Mielőtt sor kerül rád az üzközet fázisban, végrehajthatsz egy piros %FOCUS% akciót."""
         "Havoc":
@@ -21178,7 +21181,10 @@ class exportObj.SquadBuilder
                 validity = false unless ship_is_available and pilot_is_available
                 for upgrade in ship.upgrades
                     if upgrade.data?
-                        upgrade_is_available = @collection.use('upgrade', upgrade.data.name)
+                        if upgrade.data.ignorecollection? #ignore hardpoints
+                            upgrade_is_available = true
+                        else
+                            upgrade_is_available = @collection.use('upgrade', upgrade.data.name)
                         # console.log "#{@faction}: Upgrade #{upgrade.data.name} available: #{upgrade_is_available}"
                         validity = false unless upgrade_is_available
         validity
@@ -22129,7 +22135,7 @@ class Ship
         for upgrade in @upgrades
             if upgrade?.data? and not exportObj.isReleased upgrade.data
                 #console.log "#{upgrade.data.id} is unreleased"
-                if upgrade.data.id != (168 or 169 or 170) #ignore hardpoints
+                unless upgrade.data.ignorecollection? #ignore hardpoints
                     return true
 
         false
@@ -22226,14 +22232,18 @@ class GenericAddon
             if @ship.builder.collection?
                 not_in_collection = false
                 if obj.id == @data?.id
-                    # Currently selected card; mark as not in collection if it's neither
-                    # on the shelf nor on the table
-                    unless (@ship.builder.collection.checkShelf(@type.toLowerCase(), obj.name) or @ship.builder.collection.checkTable(@type.toLowerCase(), obj.name)) or (obj.id == 168)
-                        not_in_collection = true
-                    
+                    if @data.ignorecollection? #ignore hardpoints
+                        not_in_collection = false
+                    else
+                        # Currently selected card; mark as not in collection if it's neither
+                        # on the shelf nor on the table
+                        unless (@ship.builder.collection.checkShelf(@type.toLowerCase(), obj.name) or @ship.builder.collection.checkTable(@type.toLowerCase(), obj.name)) 
+                            not_in_collection = true
                 else
-                    # Not currently selected; check shelf only
-                    if obj.id != (168 or 169 or 170) #ignore hardpoints
+                    if (obj.id == 168) or (obj.id == 169) or (obj.id == 170) #ignore hardpoints
+                        not_in_collection = false
+                    else
+                        # Not currently selected; check shelf only
                         not_in_collection = not @ship.builder.collection.checkShelf(@type.toLowerCase(), obj.name)
                 if not_in_collection then 'select2-result-not-in-collection' else ''
                     #and (@ship.builder.collection.checkcollection?) 

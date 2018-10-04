@@ -5837,6 +5837,7 @@ exportObj.basicCardData = function() {
         id: 168,
         slot: "Hardpoint",
         points: 0,
+        ignorecollection: true,
         confersAddons: [
           {
             type: exportObj.Upgrade,
@@ -5847,6 +5848,7 @@ exportObj.basicCardData = function() {
         name: "Hardpoint: Torpedo",
         id: 169,
         slot: "Hardpoint",
+        ignorecollection: true,
         points: 0,
         confersAddons: [
           {
@@ -5858,6 +5860,7 @@ exportObj.basicCardData = function() {
         name: "Hardpoint: Missile",
         id: 170,
         slot: "Hardpoint",
+        ignorecollection: true,
         points: 0,
         confersAddons: [
           {
@@ -14428,7 +14431,7 @@ exportObj.cardLoaders.Magyar = function() {
       text: "Miután egy baráti hajó 0-1-es távolságban védekezik - a sérülések elkönyvelése után -, végrehajthatsz egy akciót."
     },
     "Ved Foslo": {
-      text: "Amikor végrehajtasz egy manővert, végrehajthatsz egy manővert ugyanabban az irányban és nehézségben, 1-gyel kisebb vagy nagyobb sebességgel. %LINEBREAK% ADVANCED TARGETING COPMUTER: Amikor végrehajtasz egy elsődleges támadást egy olyan védekező ellen, akit bemértél, 1-gyel több támadókockával dobj és változtasd egy %HIT% eredményed %CRIT% eredményre."
+      text: "Amikor végrehajtasz egy manővert, helyette végrehajthatsz egy manővert ugyanabban az irányban és nehézségben, 1-gyel kisebb vagy nagyobb sebességgel. %LINEBREAK% ADVANCED TARGETING COPMUTER: Amikor végrehajtasz egy elsődleges támadást egy olyan védekező ellen, akit bemértél, 1-gyel több támadókockával dobj és változtasd egy %HIT% eredményed %CRIT% eredményre."
     },
     "Viktor Hel": {
       text: "Miután védekeztél, ha nem pontosan 2 védekezőkockával dobtál, a támadó kap 1 stress jelzőt."
@@ -14712,7 +14715,7 @@ exportObj.cardLoaders.Magyar = function() {
       text: "Amikor végrehajtasz egy támadást, elkölthetsz 1 %CHARGE% jelzőt, hogy megváltoztass 1 %HIT% eredméynyt %CRIT% eredményre. Amikor védekezel, ha a %CHARGE% jelződ aktív, a támadó megváltoztathat 1 %HIT% eredméynyt %CRIT% eredményre."
     },
     "Han Solo": {
-      text: "Az ütközet fázis alatt, 7-es kezdeményezésnél, végrehajthatsz egy SINGLETURRETARC% támadást. Nem támadhatsz újra ezzel a %SINGLETURRETARC% fegyverrel ebben a körben."
+      text: "Az ütközet fázis alatt, 7-es kezdeményezésnél, végrehajthatsz egy %SINGLETURRETARC% támadást. Nem támadhatsz újra ezzel a %SINGLETURRETARC% fegyverrel ebben a körben."
     },
     "Han Solo (Scum)": {
       text: "Mielőtt sor kerül rád az üzközet fázisban, végrehajthatsz egy piros %FOCUS% akciót."
@@ -18419,7 +18422,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 19262
+                    lineno: 19265
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -19033,7 +19036,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 19915
+              lineno: 19918
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -19724,7 +19727,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 20553
+          lineno: 20556
         }));
         __iced_deferrals._fulfill();
       });
@@ -19736,7 +19739,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 20554
+            lineno: 20557
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -20679,7 +20682,11 @@ exportObj.SquadBuilder = (function() {
         for (_j = 0, _len1 = _ref4.length; _j < _len1; _j++) {
           upgrade = _ref4[_j];
           if (upgrade.data != null) {
-            upgrade_is_available = this.collection.use('upgrade', upgrade.data.name);
+            if (upgrade.data.ignorecollection != null) {
+              upgrade_is_available = true;
+            } else {
+              upgrade_is_available = this.collection.use('upgrade', upgrade.data.name);
+            }
             if (!upgrade_is_available) {
               validity = false;
             }
@@ -21113,7 +21120,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 21505
+                      lineno: 21511
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -21171,7 +21178,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 21522
+                lineno: 21528
               })
             ]);
             __iced_deferrals._fulfill();
@@ -21218,7 +21225,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 21536
+              lineno: 21542
             }));
           }
         }
@@ -21939,7 +21946,7 @@ Ship = (function() {
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       upgrade = _ref[_i];
       if (((upgrade != null ? upgrade.data : void 0) != null) && !exportObj.isReleased(upgrade.data)) {
-        if (upgrade.data.id !== (168 || 169 || 170)) {
+        if (upgrade.data.ignorecollection == null) {
           return true;
         }
       }
@@ -22074,7 +22081,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 22212
+                lineno: 22218
               })
             ]);
             __iced_deferrals._fulfill();
@@ -22107,11 +22114,17 @@ GenericAddon = (function() {
         if (_this.ship.builder.collection != null) {
           not_in_collection = false;
           if (obj.id === ((_ref = _this.data) != null ? _ref.id : void 0)) {
-            if (!((_this.ship.builder.collection.checkShelf(_this.type.toLowerCase(), obj.name) || _this.ship.builder.collection.checkTable(_this.type.toLowerCase(), obj.name)) || (obj.id === 168))) {
-              not_in_collection = true;
+            if (_this.data.ignorecollection != null) {
+              not_in_collection = false;
+            } else {
+              if (!(_this.ship.builder.collection.checkShelf(_this.type.toLowerCase(), obj.name) || _this.ship.builder.collection.checkTable(_this.type.toLowerCase(), obj.name))) {
+                not_in_collection = true;
+              }
             }
           } else {
-            if (obj.id !== (168 || 169 || 170)) {
+            if ((obj.id === 168) || (obj.id === 169) || (obj.id === 170)) {
+              not_in_collection = false;
+            } else {
               not_in_collection = !_this.ship.builder.collection.checkShelf(_this.type.toLowerCase(), obj.name);
             }
           }
@@ -22209,7 +22222,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 22281
+                  lineno: 22291
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -22231,7 +22244,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 22285
+                    lineno: 22295
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -22317,7 +22330,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 22324
+            lineno: 22334
           }));
         }
         __iced_deferrals._fulfill();
