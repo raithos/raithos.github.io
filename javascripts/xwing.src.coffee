@@ -21905,11 +21905,16 @@ class Ship
             html += $.trim """
                 </div>
             """
-
+        
+        HalfPoints = Math.floor @getPoints() / 2
+        
+        Threshold = Math.floor (effective_stats['hull'] + effective_stats['shields']) / 2
+        
+        
         # if @getPoints() != @pilot.points
         html += $.trim """
             <div class="ship-points-total">
-                <strong>Ship Total: #{@getPoints()}</strong>
+                <strong>Ship Total: #{@getPoints()}, Half Points: #{HalfPoints}, Threshold: #{Threshold}</strong> 
             </div>
         """
 
