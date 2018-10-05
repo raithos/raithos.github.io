@@ -21915,7 +21915,7 @@ class Ship
                 </div>
             """
         
-        HalfPoints = Math.floor @getPoints() / 2
+        HalfPoints = Math.ceil @getPoints() / 2
         
         Threshold = Math.ceil (effective_stats['hull'] + effective_stats['shields']) / 2
         
@@ -22600,9 +22600,7 @@ exportObj.toXWSFaction =
     'Resistance': 'resistance'
 
 exportObj.toXWSUpgrade =
-    'Astromech': 'amd'
-    'Talent': 'ept'
-    'Modification': 'mod'
+    'Modification': 'modification'
 
 exportObj.fromXWSUpgrade =
     'amd': 'Astromech'
