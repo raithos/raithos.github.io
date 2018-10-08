@@ -2014,11 +2014,11 @@ exportObj.basicCardData = function() {
         name: "Upsilon-Class Shuttle",
         xws: "Upsilon-Class Shuttle".canonicalize(),
         factions: ["First Order"],
-        attack: 0,
-        agility: 0,
-        hull: 0,
+        attack: 4,
+        agility: 1,
+        hull: 6,
         shields: 6,
-        actions: ["Focus", "Reinforce", "Lock", "Coordinate", "Jam"],
+        actions: ["Focus", "Lock", "Reinforce", "Coordinate", "Jam"],
         actionsred: [],
         maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
         large: true
@@ -4217,7 +4217,7 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "First Order",
         ship: "Upsilon-Class Shuttle",
-        skill: 0,
+        skill: 2,
         points: 100,
         slots: ["Tech", "Tech", "Crew", "Crew", "Cannon", "Sensor", "Modification"]
       }, {
@@ -4332,6 +4332,15 @@ exportObj.basicCardData = function() {
         skill: 0,
         points: 100,
         slots: ["Talent", "Modification"]
+      }, {
+        name: "Major Stridan",
+        id: 251,
+        unique: true,
+        faction: "First Order",
+        ship: "Upsilon-Class Shuttle",
+        skill: 4,
+        points: 100,
+        slots: ["Tech", "Tech", "Crew", "Crew", "Cannon", "Sensor", "Modification"]
       }
     ],
     upgradesById: [
@@ -5990,7 +5999,10 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 0,
         unique: true,
-        faction: "First Order"
+        faction: "First Order",
+        restriction_func: function(ship) {
+          return __indexOf.call(ship.effectiveStats().actions, "Coordinate") >= 0;
+        }
       }, {
         name: "Fanatical",
         id: 181,
@@ -6106,6 +6118,13 @@ exportObj.basicCardData = function() {
         unique: true,
         ship: "Scavenged YT-1300",
         faction: "Resistance"
+      }, {
+        name: "Petty Officer Thanisson",
+        id: 194,
+        slot: "Crew",
+        points: 0,
+        unique: true,
+        faction: "First Order"
       }
     ],
     conditionsById: [
@@ -7650,6 +7669,9 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Finch Dallow": {
       text: " ... drop a bomb, you ... play area touching ... instead. "
+    },
+    "Major Stridan": {
+      text: " While you coordinate or resolve the effect of one of your upgrades, you may treat friendly ships at range 2-3 as being at range 0 or range 1. %LINEBREAK% LINKED BATTERY: While you perform a %CANNON% attack, roll 1 addtional die. "
     }
   };
   upgrade_translations = {
@@ -8383,6 +8405,9 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Rey's Millenium Falcon": {
       text: " If you have 2 or fewer stress tokens, ou can execute red Segnor's Loop (%SLOOPLEFT% or %SLOOPRIGHT%) maneuvers and perform %BOOST% and %ROTATEARC% actions even while stressed. "
+    },
+    "Petty Officer Thanisson": {
+      text: " During the Activation or Engagement Phase, after an enemy ship in your %FRONTARC% at range 0-1 gains a red or orange token, if you are not stressed, you may gain 1 stress token. if you do, that ship gains an additional token of the type that it gained. "
     }
   };
   condition_translations = {
@@ -9544,7 +9569,7 @@ exportObj.cardLoaders.English = function() {
       text: " ??? %LINEBREAK% AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."
     },
     "Lieutenant Dormitz": {
-      text: " ... are placed, other ... be placed anywhere in ... range 0-2 of you. %LINEBREAK% ... : while you perform a %CANNON% ... additional die. "
+      text: " SETUP: After you are placed, other friendly ships can be placed anywhere in the play area at range 0-2 of you.  %LINEBREAK% LINKED BATTERY: While you perform a %CANNON% attack, roll 1 addtional die. "
     },
     "Tallissan Lintra": {
       text: "While an enemy ship in your %BULLSEYEARC% performs an attack, you may spend 1 %CHARGE%.  If you do, the defender rolls 1 additional die."
@@ -9578,6 +9603,9 @@ exportObj.cardLoaders.English = function() {
     },
     "Finch Dallow": {
       text: " ... drop a bomb, you ... play area touching ... instead. "
+    },
+    "Major Stridan": {
+      text: " While you coordinate or resolve the effect of one of your upgrades, you may treat friendly ships at range 2-3 as being at range 0 or range 1. %LINEBREAK% LINKED BATTERY: While you perform a %CANNON% attack, roll 1 addtional die. "
     }
   };
   upgrade_translations = {
@@ -10271,7 +10299,7 @@ exportObj.cardLoaders.English = function() {
       text: " Action: Choose 1 enemy ship at range 1-3. If you do, spend 1 %FORCE% to assign the I'll Show You the Dark Side condition to that ship. "
     },
     "General Hux": {
-      text: " ... perform a white %COORDINATE% action ... it as red. If you do, you ... up to 2 additional ships ... ship type, and each ship you coordinate must perform the same action, treating that action as red. "
+      text: " While you perform a white %COORDINATE% action you may treat it as red. If you do, you may coordinate up to 2 additional ships of the same ship type, and each ship you coordinate must perform the same action, treating that action as red. "
     },
     "Fanatical": {
       text: " While you perform a primary attack, if you are not shielded, you may change 1 %FOCUS% result to a %HIT% result. "
@@ -10280,13 +10308,13 @@ exportObj.cardLoaders.English = function() {
       text: " ... you perform a primary %FRONTARC% attack, ... your %SINGLETURRETARC% is in your %FRONTARC%, you may roll 1 additional attack die. After you perform a primary %FRONTARC% attack, ... your %TURRET% is in your %BACKARC%, you may perform a bonus primary %SINGLETURRETARC% attack. "
     },
     "Captain Phasma": {
-      text: " ??? "
+      text: " At the end of the Engagement Phase, each enemy ship at range 0-1 that is not stressed gains 1 stress token. "
     },
     "Supreme Leader Snoke": {
-      text: " ??? "
+      text: " During the System Phase, you may choose any number of enemy ships beyond range 1. If you do, spend that many %FORCE% to flip each chosen ship's dial faceup. "
     },
     "Hyperspace Tracking Data": {
-      text: " Setup: Before placing forces, you may ... 0 and 6 ... "
+      text: " Setup: Before placing forces, you may choose a number between 0 and 6. Treat your initiative as the chosen value during setup. %LINEBREAK% After Setup, Assign 1 focus of evade token to each friendly ship at range 0-2. "
     },
     "Advanced Optics": {
       text: " While you perform an attack, you may spend 1 focus to change 1 of your blank results to a %HIT% result. "
@@ -10311,6 +10339,9 @@ exportObj.cardLoaders.English = function() {
     },
     "Rey's Millenium Falcon": {
       text: " If you have 2 or fewer stress tokens, ou can execute red Segnor's Loop (%SLOOPLEFT% or %SLOOPRIGHT%) maneuvers and perform %BOOST% and %ROTATEARC% actions even while stressed. "
+    },
+    "Petty Officer Thanisson": {
+      text: " During the Activation or Engagement Phase, after an enemy ship in your %FRONTARC% at range 0-1 gains a red or orange token, if you are not stressed, you may gain 1 stress token. if you do, that ship gains an additional token of the type that it gained. "
     }
   };
   condition_translations = {
@@ -11578,6 +11609,9 @@ exportObj.cardLoaders['Español'] = function() {
     },
     "Finch Dallow": {
       text: " ... drop a bomb, you ... play area touching ... instead. "
+    },
+    "Major Stridan": {
+      text: " While you coordinate or resolve the effect of one of your upgrades, you may treat friendly ships at range 2-3 as being at range 0 or range 1. %LINEBREAK% LINKED BATTERY: While you perform a %CANNON% attack, roll 1 addtional die. "
     }
   };
   upgrade_translations = {
@@ -12311,6 +12345,9 @@ exportObj.cardLoaders['Español'] = function() {
     },
     "Rey's Millenium Falcon": {
       text: " If you have 2 or fewer stress tokens, ou can execute red Segnor's Loop (%SLOOPLEFT% or %SLOOPRIGHT%) maneuvers and perform %BOOST% and %ROTATEARC% actions even while stressed. "
+    },
+    "Petty Officer Thanisson": {
+      text: " During the Activation or Engagement Phase, after an enemy ship in your %FRONTARC% at range 0-1 gains a red or orange token, if you are not stressed, you may gain 1 stress token. if you do, that ship gains an additional token of the type that it gained. "
     }
   };
   condition_translations = {
@@ -15205,6 +15242,9 @@ exportObj.cardLoaders.Magyar = function() {
     },
     "Finch Dallow": {
       text: " ... drop a bomb, you ... play area touching ... instead. "
+    },
+    "Major Stridan": {
+      text: " While you coordinate or resolve the effect of one of your upgrades, you may treat friendly ships at range 2-3 as being at range 0 or range 1. %LINEBREAK% LINKED BATTERY: While you perform a %CANNON% attack, roll 1 addtional die. "
     }
   };
   upgrade_translations = {
@@ -15774,6 +15814,9 @@ exportObj.cardLoaders.Magyar = function() {
     },
     "Rey's Millenium Falcon": {
       text: " If you have 2 or fewer stress tokens, ou can execute red Segnor's Loop (%SLOOPLEFT% or %SLOOPRIGHT%) maneuvers and perform %BOOST% and %ROTATEARC% actions even while stressed. "
+    },
+    "Petty Officer Thanisson": {
+      text: " During the Activation or Engagement Phase, after an enemy ship in your %FRONTARC% at range 0-1 gains a red or orange token, if you are not stressed, you may gain 1 stress token. if you do, that ship gains an additional token of the type that it gained. "
     }
   };
   condition_translations = {
@@ -19096,7 +19139,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 19915
+                    lineno: 19955
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -19710,7 +19753,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 20568
+              lineno: 20608
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -20401,7 +20444,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 21206
+          lineno: 21246
         }));
         __iced_deferrals._fulfill();
       });
@@ -20413,7 +20456,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 21207
+            lineno: 21247
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -21794,7 +21837,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 22161
+                      lineno: 22201
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -21852,7 +21895,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 22178
+                lineno: 22218
               })
             ]);
             __iced_deferrals._fulfill();
@@ -21899,7 +21942,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 22192
+              lineno: 22232
             }));
           }
         }
@@ -22757,7 +22800,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 22873
+                lineno: 22913
               })
             ]);
             __iced_deferrals._fulfill();
@@ -22898,7 +22941,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 22946
+                  lineno: 22986
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -22920,7 +22963,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 22950
+                    lineno: 22990
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -23006,7 +23049,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 22989
+            lineno: 23029
           }));
         }
         __iced_deferrals._fulfill();

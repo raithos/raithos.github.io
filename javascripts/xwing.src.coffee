@@ -2363,14 +2363,14 @@ exportObj.basicCardData = ->
             name: "Upsilon-Class Shuttle"
             xws: "Upsilon-Class Shuttle".canonicalize()
             factions: ["First Order"]
-            attack: 0
-            agility: 0
-            hull: 0
+            attack: 4
+            agility: 1
+            hull: 6
             shields: 6
             actions: [
                 "Focus"
-                "Reinforce"
                 "Lock"
+                "Reinforce"
                 "Coordinate"
                 "Jam"
             ]
@@ -6289,7 +6289,7 @@ exportObj.basicCardData = ->
             unique: true
             faction: "First Order"
             ship: "Upsilon-Class Shuttle"
-            skill: 0
+            skill: 2
             points: 100
             slots: [
                 "Tech"
@@ -6475,6 +6475,24 @@ exportObj.basicCardData = ->
             points: 100
             slots: [
                 "Talent"
+                "Modification"
+            ]
+        }
+        {
+            name: "Major Stridan"
+            id: 251
+            unique: true
+            faction: "First Order"
+            ship: "Upsilon-Class Shuttle"
+            skill: 4
+            points: 100
+            slots: [
+                "Tech"
+                "Tech"
+                "Crew"
+                "Crew"
+                "Cannon"
+                "Sensor"
                 "Modification"
             ]
         }
@@ -8157,6 +8175,8 @@ exportObj.basicCardData = ->
             points: 0
             unique: true
             faction: "First Order"
+            restriction_func: (ship) ->
+                "Coordinate" in ship.effectiveStats().actions
        }
        {
             name: "Fanatical"
@@ -8273,6 +8293,14 @@ exportObj.basicCardData = ->
             unique: true
             ship: "Scavenged YT-1300"
             faction: "Resistance"
+       }
+       {
+            name: "Petty Officer Thanisson"
+            id: 194
+            slot: "Crew"
+            points: 0
+            unique: true
+            faction: "First Order"
        }
     ]
 
@@ -9786,7 +9814,8 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """ ??? """
         "Finch Dallow":
            text: """ ... drop a bomb, you ... play area touching ... instead. """
-
+        "Major Stridan":
+           text: """ While you coordinate or resolve the effect of one of your upgrades, you may treat friendly ships at range 2-3 as being at range 0 or range 1. %LINEBREAK% LINKED BATTERY: While you perform a %CANNON% attack, roll 1 addtional die. """
             
             
     upgrade_translations =
@@ -10355,7 +10384,9 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """ <i>Adds: <r>%EVADE%</r></i> %LINEBREAK% After you perform an %EVADE% action, gain additional evade tokens equal to the number of enemy ships at range 0-1. """
         "Rey's Millenium Falcon":
            text: """ If you have 2 or fewer stress tokens, ou can execute red Segnor's Loop (%SLOOPLEFT% or %SLOOPRIGHT%) maneuvers and perform %BOOST% and %ROTATEARC% actions even while stressed. """
-                    
+        "Petty Officer Thanisson":
+           text: """ During the Activation or Engagement Phase, after an enemy ship in your %FRONTARC% at range 0-1 gains a red or orange token, if you are not stressed, you may gain 1 stress token. if you do, that ship gains an additional token of the type that it gained. """
+            
     condition_translations =
         'Suppressive Fire':
            text: '''While you perform an attack against a ship other than <strong>Captain Rex</strong>, roll 1 fewer attack die. %LINEBREAK% After <strong>Captain Rex</strong> defends, remove this card.  %LINEBREAK% At the end of the Combat Phase, if <strong>Captain Rex</strong> did not perform an attack this phase, remove this card. %LINEBREAK% After <strong>Captain Rex</strong> is destroyed, remove this card.'''
@@ -11263,7 +11294,7 @@ exportObj.cardLoaders.English = () ->
         '"Blackout"':
            text: """ ??? %LINEBREAK% AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."""
         "Lieutenant Dormitz":
-           text: """ ... are placed, other ... be placed anywhere in ... range 0-2 of you. %LINEBREAK% ... : while you perform a %CANNON% ... additional die. """
+           text: """ SETUP: After you are placed, other friendly ships can be placed anywhere in the play area at range 0-2 of you.  %LINEBREAK% LINKED BATTERY: While you perform a %CANNON% attack, roll 1 addtional die. """
         "Tallissan Lintra":
            text: """While an enemy ship in your %BULLSEYEARC% performs an attack, you may spend 1 %CHARGE%.  If you do, the defender rolls 1 additional die."""
         "Lulo Lampar":
@@ -11286,7 +11317,8 @@ exportObj.cardLoaders.English = () ->
            text: """ ??? """
         "Finch Dallow":
            text: """ ... drop a bomb, you ... play area touching ... instead. """
-
+        "Major Stridan":
+           text: """ While you coordinate or resolve the effect of one of your upgrades, you may treat friendly ships at range 2-3 as being at range 0 or range 1. %LINEBREAK% LINKED BATTERY: While you perform a %CANNON% attack, roll 1 addtional die. """
             
             
     upgrade_translations =
@@ -11806,17 +11838,17 @@ exportObj.cardLoaders.English = () ->
         "Kylo Ren (Crew)":
            text: """ Action: Choose 1 enemy ship at range 1-3. If you do, spend 1 %FORCE% to assign the I'll Show You the Dark Side condition to that ship. """
         "General Hux":
-           text: """ ... perform a white %COORDINATE% action ... it as red. If you do, you ... up to 2 additional ships ... ship type, and each ship you coordinate must perform the same action, treating that action as red. """
+           text: """ While you perform a white %COORDINATE% action you may treat it as red. If you do, you may coordinate up to 2 additional ships of the same ship type, and each ship you coordinate must perform the same action, treating that action as red. """
         "Fanatical":
            text: """ While you perform a primary attack, if you are not shielded, you may change 1 %FOCUS% result to a %HIT% result. """
         "Special Forces Gunner":
            text: """ ... you perform a primary %FRONTARC% attack, ... your %SINGLETURRETARC% is in your %FRONTARC%, you may roll 1 additional attack die. After you perform a primary %FRONTARC% attack, ... your %TURRET% is in your %BACKARC%, you may perform a bonus primary %SINGLETURRETARC% attack. """
         "Captain Phasma":
-           text: """ ??? """
+           text: """ At the end of the Engagement Phase, each enemy ship at range 0-1 that is not stressed gains 1 stress token. """
         "Supreme Leader Snoke":
-           text: """ ??? """
+           text: """ During the System Phase, you may choose any number of enemy ships beyond range 1. If you do, spend that many %FORCE% to flip each chosen ship's dial faceup. """
         "Hyperspace Tracking Data":
-           text: """ Setup: Before placing forces, you may ... 0 and 6 ... """
+           text: """ Setup: Before placing forces, you may choose a number between 0 and 6. Treat your initiative as the chosen value during setup. %LINEBREAK% After Setup, Assign 1 focus of evade token to each friendly ship at range 0-2. """
         "Advanced Optics":
            text: """ While you perform an attack, you may spend 1 focus to change 1 of your blank results to a %HIT% result. """
         "Rey":
@@ -11833,6 +11865,8 @@ exportObj.cardLoaders.English = () ->
            text: """ <i>Adds: <r>%EVADE%</r></i> %LINEBREAK% After you perform an %EVADE% action, gain additional evade tokens equal to the number of enemy ships at range 0-1. """
         "Rey's Millenium Falcon":
            text: """ If you have 2 or fewer stress tokens, ou can execute red Segnor's Loop (%SLOOPLEFT% or %SLOOPRIGHT%) maneuvers and perform %BOOST% and %ROTATEARC% actions even while stressed. """
+        "Petty Officer Thanisson":
+           text: """ During the Activation or Engagement Phase, after an enemy ship in your %FRONTARC% at range 0-1 gains a red or orange token, if you are not stressed, you may gain 1 stress token. if you do, that ship gains an additional token of the type that it gained. """
             
         
     condition_translations =
@@ -12846,7 +12880,8 @@ exportObj.cardLoaders['Español'] = () ->
            text: """ ??? """
         "Finch Dallow":
            text: """ ... drop a bomb, you ... play area touching ... instead. """
-
+        "Major Stridan":
+           text: """ While you coordinate or resolve the effect of one of your upgrades, you may treat friendly ships at range 2-3 as being at range 0 or range 1. %LINEBREAK% LINKED BATTERY: While you perform a %CANNON% attack, roll 1 addtional die. """
 
 
     upgrade_translations =
@@ -13396,6 +13431,8 @@ exportObj.cardLoaders['Español'] = () ->
            text: """ <i>Adds: <r>%EVADE%</r></i> %LINEBREAK% After you perform an %EVADE% action, gain additional evade tokens equal to the number of enemy ships at range 0-1. """
         "Rey's Millenium Falcon":
            text: """ If you have 2 or fewer stress tokens, ou can execute red Segnor's Loop (%SLOOPLEFT% or %SLOOPRIGHT%) maneuvers and perform %BOOST% and %ROTATEARC% actions even while stressed. """
+        "Petty Officer Thanisson":
+           text: """ During the Activation or Engagement Phase, after an enemy ship in your %FRONTARC% at range 0-1 gains a red or orange token, if you are not stressed, you may gain 1 stress token. if you do, that ship gains an additional token of the type that it gained. """
             
     condition_translations =
         'Suppressive Fire':
@@ -15622,7 +15659,8 @@ exportObj.cardLoaders.Magyar = () ->
            text: """ ??? """
         "Finch Dallow":
            text: """ ... drop a bomb, you ... play area touching ... instead. """
-            
+        "Major Stridan":
+           text: """ While you coordinate or resolve the effect of one of your upgrades, you may treat friendly ships at range 2-3 as being at range 0 or range 1. %LINEBREAK% LINKED BATTERY: While you perform a %CANNON% attack, roll 1 addtional die. """            
             
     upgrade_translations =
         "0-0-0":
@@ -16003,7 +16041,9 @@ exportObj.cardLoaders.Magyar = () ->
            text: """ <i>Adds: <r>%EVADE%</r></i> %LINEBREAK% After you perform an %EVADE% action, gain additional evade tokens equal to the number of enemy ships at range 0-1. """
         "Rey's Millenium Falcon":
            text: """ If you have 2 or fewer stress tokens, ou can execute red Segnor's Loop (%SLOOPLEFT% or %SLOOPRIGHT%) maneuvers and perform %BOOST% and %ROTATEARC% actions even while stressed. """
-                            
+        "Petty Officer Thanisson":
+           text: """ During the Activation or Engagement Phase, after an enemy ship in your %FRONTARC% at range 0-1 gains a red or orange token, if you are not stressed, you may gain 1 stress token. if you do, that ship gains an additional token of the type that it gained. """
+            
     condition_translations =
         'Suppressive Fire':
            text: '''Amikor végrehajtasz egy támadást más hajó ellen mint <strong>Captain Rex</strong>, dobj 1-gyel kevesebb kockával. %LINEBREAK% Miután <strong>Captain Rex</strong> védekezik, vedd le ezt a kártyát.  %LINEBREAK% Az ütközet fázis végén, ha <strong>Captain Rex</strong> nem hajtott végre támadást ebben a fázisban, vedd le ezt a kártyát. %LINEBREAK% Miután <strong>Captain Rex</strong> megsemmisült, vedd le ezt a kártyát.'''
