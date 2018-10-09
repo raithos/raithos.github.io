@@ -19600,8 +19600,13 @@ class exportObj.Collection
 
         for type, counts of @singletons
             for name, count of counts
-                for _ in [0...count]
-                    ((@shelf[type] ?= {})[name] ?= []).push 'singleton'
+                if count > 0
+                    for _ in [0...count]
+                        ((@shelf[type] ?= {})[name] ?= []).push 'singleton'
+                else if count < 0
+                    for _ in [0...count]
+                        if ((@shelf[type] ?= {})[name] ?= []).length > 0
+                            @shelf[type][name].pop()
 
         @counts = {}
         for own type of @shelf
@@ -19866,7 +19871,7 @@ class exportObj.Collection
             target.val(0) if val < 0 or isNaN(parseInt(val))
             @expansions[target.data 'expansion'] = parseInt(target.val())
 
-            target.closest('div').css 'background-color', @countToBackgroundColor(val)
+            target.closest('div').css 'background-color', @countToBackgroundColor(target.val())
 
             # console.log "Input changed, triggering collection change"
             $(exportObj).trigger 'xwing-collection:changed', this
@@ -19874,10 +19879,10 @@ class exportObj.Collection
         $ @modal.find('input.singleton-count').change (e) =>
             target = $(e.target)
             val = target.val()
-            target.val(0) if val < 0 or isNaN(parseInt(val))
+            target.val(0) if isNaN(parseInt(val))
             (@singletons[target.data 'singletonType'] ?= {})[target.data 'singletonName'] = parseInt(target.val())
 
-            target.closest('div').css 'background-color', @countToBackgroundColor(val)
+            target.closest('div').css 'background-color', @countToBackgroundColor(target.val())
 
             # console.log "Input changed, triggering collection change"
             $(exportObj).trigger 'xwing-collection:changed', this
@@ -19897,13 +19902,15 @@ class exportObj.Collection
     countToBackgroundColor: (count) ->
         count = parseInt(count)
         switch
+            when count < 0
+                'red'
             when count == 0
                 ''
-            when count < 12
+            when count > 0
                 i = parseInt(200 * Math.pow(0.9, count - 1))
                 "rgb(#{i}, 255, #{i})"
             else
-                'red'
+                ''
 
     onLanguageChange:
         (e, language) =>

@@ -18702,7 +18702,7 @@ exportObj.Collection = (function() {
   }
 
   Collection.prototype.reset = function() {
-    var card, card_different_by_type, card_totals_by_type, component_content, contents, count, counts, expansion, expname, item, items, name, names, singletonsByType, sorted_names, summary, thing, things, type, ul, _, _base1, _base2, _base3, _base4, _base5, _base6, _i, _j, _k, _l, _len, _len1, _len2, _len3, _m, _n, _name, _name1, _name2, _o, _ref, _ref1, _ref10, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var card, card_different_by_type, card_totals_by_type, component_content, contents, count, counts, expansion, expname, item, items, name, names, singletonsByType, sorted_names, summary, thing, things, type, ul, _, _base1, _base2, _base3, _base4, _base5, _base6, _base7, _base8, _i, _j, _k, _l, _len, _len1, _len2, _len3, _m, _n, _name, _name1, _name2, _o, _p, _ref, _ref1, _ref10, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     this.shelf = {};
     this.table = {};
     _ref = this.expansions;
@@ -18728,8 +18728,16 @@ exportObj.Collection = (function() {
       counts = _ref4[type];
       for (name in counts) {
         count = counts[name];
-        for (_ = _l = 0; 0 <= count ? _l < count : _l > count; _ = 0 <= count ? ++_l : --_l) {
-          ((_base3 = ((_base4 = this.shelf)[type] != null ? _base4[type] : _base4[type] = {}))[name] != null ? _base3[name] : _base3[name] = []).push('singleton');
+        if (count > 0) {
+          for (_ = _l = 0; 0 <= count ? _l < count : _l > count; _ = 0 <= count ? ++_l : --_l) {
+            ((_base3 = ((_base4 = this.shelf)[type] != null ? _base4[type] : _base4[type] = {}))[name] != null ? _base3[name] : _base3[name] = []).push('singleton');
+          }
+        } else if (count < 0) {
+          for (_ = _m = 0; 0 <= count ? _m < count : _m > count; _ = 0 <= count ? ++_m : --_m) {
+            if (((_base5 = ((_base6 = this.shelf)[type] != null ? _base6[type] : _base6[type] = {}))[name] != null ? _base5[name] : _base5[name] = []).length > 0) {
+              this.shelf[type][name].pop();
+            }
+          }
         }
       }
     }
@@ -18740,8 +18748,8 @@ exportObj.Collection = (function() {
       _ref6 = this.shelf[type];
       for (thing in _ref6) {
         if (!__hasProp.call(_ref6, thing)) continue;
-        if ((_base5 = ((_base6 = this.counts)[type] != null ? _base6[type] : _base6[type] = {}))[thing] == null) {
-          _base5[thing] = 0;
+        if ((_base7 = ((_base8 = this.counts)[type] != null ? _base8[type] : _base8[type] = {}))[thing] == null) {
+          _base7[thing] = 0;
         }
         this.counts[type][thing] += this.shelf[type][thing].length;
       }
@@ -18750,8 +18758,8 @@ exportObj.Collection = (function() {
     _ref7 = exportObj.manifestByExpansion;
     for (expname in _ref7) {
       items = _ref7[expname];
-      for (_m = 0, _len1 = items.length; _m < _len1; _m++) {
-        item = items[_m];
+      for (_n = 0, _len1 = items.length; _n < _len1; _n++) {
+        item = items[_n];
         (singletonsByType[_name2 = item.type] != null ? singletonsByType[_name2] : singletonsByType[_name2] = {})[item.name] = true;
       }
     }
@@ -18781,8 +18789,8 @@ exportObj.Collection = (function() {
         contents = component_content.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\"><h5>" + (type.capitalize()) + "</h5></div>\n</div>\n<div class=\"row-fluid\">\n    <ul id=\"counts-" + type + "\" class=\"span12\"></ul>\n</div>"));
         ul = $(contents.find("ul#counts-" + type));
         _ref9 = Object.keys(things).sort(sortWithoutQuotes);
-        for (_n = 0, _len2 = _ref9.length; _n < _len2; _n++) {
-          thing = _ref9[_n];
+        for (_o = 0, _len2 = _ref9.length; _o < _len2; _o++) {
+          thing = _ref9[_o];
           card_totals_by_type[type] += things[thing];
           if (__indexOf.call(singletonsByType[type], thing) >= 0) {
             card_different_by_type[type]++;
@@ -18793,8 +18801,8 @@ exportObj.Collection = (function() {
     }
     summary = "";
     _ref10 = Object.keys(card_totals_by_type);
-    for (_o = 0, _len3 = _ref10.length; _o < _len3; _o++) {
-      type = _ref10[_o];
+    for (_p = 0, _len3 = _ref10.length; _p < _len3; _p++) {
+      type = _ref10[_p];
       summary += "<li>" + (type.capitalize()) + " - " + card_totals_by_type[type] + " (" + card_different_by_type[type] + " different)</li>";
     }
     return component_content.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\"><h5>Summary</h5></div>\n</div>\n<div class = \"row-fluid\">\n    <ul id=\"counts-summary\" class=\"span12\">\n        " + summary + "\n    </ul>\n</div>"));
@@ -18997,7 +19005,7 @@ exportObj.Collection = (function() {
           target.val(0);
         }
         _this.expansions[target.data('expansion')] = parseInt(target.val());
-        target.closest('div').css('background-color', _this.countToBackgroundColor(val));
+        target.closest('div').css('background-color', _this.countToBackgroundColor(target.val()));
         return $(exportObj).trigger('xwing-collection:changed', _this);
       };
     })(this)));
@@ -19006,11 +19014,11 @@ exportObj.Collection = (function() {
         var target, val, _base1, _name;
         target = $(e.target);
         val = target.val();
-        if (val < 0 || isNaN(parseInt(val))) {
+        if (isNaN(parseInt(val))) {
           target.val(0);
         }
         ((_base1 = _this.singletons)[_name = target.data('singletonType')] != null ? _base1[_name] : _base1[_name] = {})[target.data('singletonName')] = parseInt(target.val());
-        target.closest('div').css('background-color', _this.countToBackgroundColor(val));
+        target.closest('div').css('background-color', _this.countToBackgroundColor(target.val()));
         return $(exportObj).trigger('xwing-collection:changed', _this);
       };
     })(this)));
@@ -19037,13 +19045,15 @@ exportObj.Collection = (function() {
     var i;
     count = parseInt(count);
     switch (false) {
+      case !(count < 0):
+        return 'red';
       case count !== 0:
         return '';
-      case !(count < 12):
+      case !(count > 0):
         i = parseInt(200 * Math.pow(0.9, count - 1));
         return "rgb(" + i + ", 255, " + i + ")";
       default:
-        return 'red';
+        return '';
     }
   };
 
@@ -19139,7 +19149,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 19954
+                    lineno: 19961
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -19753,7 +19763,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 20607
+              lineno: 20614
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -20444,7 +20454,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 21245
+          lineno: 21252
         }));
         __iced_deferrals._fulfill();
       });
@@ -20456,7 +20466,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 21246
+            lineno: 21253
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -21837,7 +21847,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 22200
+                      lineno: 22207
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -21895,7 +21905,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 22217
+                lineno: 22224
               })
             ]);
             __iced_deferrals._fulfill();
@@ -21942,7 +21952,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 22231
+              lineno: 22238
             }));
           }
         }
@@ -22800,7 +22810,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 22912
+                lineno: 22919
               })
             ]);
             __iced_deferrals._fulfill();
@@ -22941,7 +22951,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 22985
+                  lineno: 22992
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -22963,7 +22973,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 22989
+                    lineno: 22996
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -23049,7 +23059,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 23028
+            lineno: 23035
           }));
         }
         __iced_deferrals._fulfill();
