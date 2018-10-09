@@ -754,7 +754,7 @@ class exportObj.CardBrowser
                     </div>
                     <div class="span8">
                         <div class="well card-search-container">
-                            <input type="text" placeholder="Search for name or Text" class = "card-search-text">"""+ #TODO: Add more search input options here. 
+                            <input type="search" placeholder="Search for name or text" class = "card-search-text">"""+ #TODO: Add more search input options here. 
                             """
                         </div>
                         <div class="well card-viewer-placeholder info-well">
@@ -854,7 +854,8 @@ class exportObj.CardBrowser
         @sort_selector.select2
             minimumResultsForSearch: -1
 
-        @card_search_text = $ @container.find('.xwing-card-browser .card-search-text')
+        @card_search_text = ($ @container.find('.xwing-card-browser .card-search-text'))[0]
+        # TODO: Make added inputs easy accessible
 
     setupHandlers: () ->
         @sort_selector.change (e) =>
@@ -865,10 +866,8 @@ class exportObj.CardBrowser
             @prepareData()
             @renderList @sort_selector.val()
 
-        @card_search_text.change (e) =>
-            @renderList @sort_selector.val()
-
-        # TODO: Make added criteria visible for the code, and add a call to @renderList to start the actual search
+        @card_search_text.oninput = => @renderList @sort_selector.val()
+        # TODO: Add a call to @renderList for added inputs, to start the actual search
 
     prepareData: () ->
         @all_cards = []
@@ -1112,7 +1111,7 @@ class exportObj.CardBrowser
 
     checkSearchCriteria: (card) ->
         # check for text search
-        search_text = @card_search_text[0].value.toLowerCase()
+        search_text = @card_search_text.value.toLowerCase()
         return false unless card.name.toLowerCase().indexOf(search_text) > -1 or card.data.text.toLowerCase().indexOf(search_text) > -1 or (card.display_name and card.display_name.toLowerCase().indexOf(search_text) > -1)
 
         #TODO: Add logic of addiditional search criteria here. Have a look at card.data, to see what data is available. Add search inputs at the todo marks above. 
@@ -10160,7 +10159,7 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """<i>Nur für Abschaum oder Staffel, die Ezra Bridger enthält oder Staffel, die Ezra Bridger (Sheathipede) enthält oder Staffel, die Ezra Bridger (TIE Fighter) enthält</i>%LINEBREAK%Nachdem du Schaden erlitten hast, darfst du 1&nbsp;Stress­marker erhalten, um 1&nbsp;%FORCE% wiederherzustellen.%LINEBREAK%Du kannst „Dunkle Seite“-Aufwertungen ausrüsten."""
         "Minister Tua":
            display_name: """Ministerin Tua"""
-           text: """<i>Nur für Imperium</i>%LINEBREAK%Zu Beginn der Kampfphase, falls du beschädigt bist, darfst du eine rote %FOCUS%-Aktion durchführen."""
+           text: """<i>Nur für Imperium</i>%LINEBREAK%Zu Beginn der Kampfphase, falls du beschädigt bist, darfst du eine rote %REINFORCE%-Aktion durchführen."""
         "Moff Jerjerrod":
            display_name: """Moff Jerjerrod"""
            text: """<i>Benötigt %COORDINATE% oder <r>%COORDINATE%</r></i>%LINEBREAK%<i>Nur für Imperium</i>%LINEBREAK%Während der Systemphase darfst du 2 %CHARGE% ausgeben. Falls du das tust, wähle die [1&nbsp;%BANKLEFT%]-, [1&nbsp;%STRAIGHT%]- oder [1&nbsp;%BANKRIGHT%]-Schablone. Jedes befreundete Schiff darf unter Verwendung jener Schablone eine rote %BOOST%-Aktion durchführen."""
@@ -11645,7 +11644,7 @@ exportObj.cardLoaders.English = () ->
            text: """<i>Scum or Squad including Ezra Bridger only</i>%LINEBREAK%After you suffer damage, you may gain 1 stress token to recover 1&nbsp;%FORCE%.%LINEBREAK%You can equip “Dark Side” upgrades."""
         "Minister Tua":
            display_name: """Minister Tua"""
-           text: """<i>Empire only</i>%LINEBREAK%At the start of the Engagement Phase, if you are damaged, you may perform a red %FOCUS% action."""
+           text: """<i>Empire only</i>%LINEBREAK%At the start of the Engagement Phase, if you are damaged, you may perform a red %REINFORCE% action."""
         "Moff Jerjerrod":
            display_name: """Moff Jerjerrod"""
            text: """<i>Requires %COORDINATE% or <r>%COORDINATE%</r></i>%LINEBREAK%<i>Empire only</i>%LINEBREAK%During the System Phase, you may spend 2 %CHARGE%. If you do, choose the [1&nbsp;%BANKLEFT%], [1&nbsp;%STRAIGHT%], or [1&nbsp;%BANKRIGHT%] template. Each friendly ship may perform a red %BOOST% action using that template."""
@@ -13208,7 +13207,7 @@ exportObj.cardLoaders['Español'] = () ->
            text: """<i>Sólo Escoria o Escuadrón que incluya a Ezra Bridger</i>%LINEBREAK%Después de que sufras daño, puedes recibir 1 ficha de Tensión para recuperar 1 %FORCE%.%LINEBREAK%Puedes equiparte con mejoras de “Lado Oscuro”."""
         "Minister Tua":
            display_name: """Ministra Tua"""
-           text: """<i>Sólo Imperio</i>%LINEBREAK%Al comienzo de la fase de Enfrentamiento, si estás dañado, puedes realizar una acción %FOCUS% roja."""
+           text: """<i>Sólo Imperio</i>%LINEBREAK%Al comienzo de la fase de Enfrentamiento, si estás dañado, puedes realizar una acción %REINFORCE% roja."""
         "Moff Jerjerrod":
            display_name: """Moff Jerjerrod"""
            text: """<i>Necesita %COORDINATE% o <r>%COORDINATE%</r></i>%LINEBREAK%<i>Sólo Imperio</i>%LINEBREAK%Durante la fase de Sistemas, puedes gastar 2&nbsp;%CHARGE%. Si lo haces, elige la plantilla [1&nbsp;%BANKLEFT%], [1&nbsp;%STRAIGHT%] o [1&nbsp;%BANKRIGHT%]. Toda nave aliada puede realizar una acción %BOOST% roja utilizando esa plantilla."""
@@ -14722,7 +14721,7 @@ exportObj.cardLoaders['Français'] = () ->
            text: """<i>Empire Galactique ou contient Ezra Bridger ou contient Ezra Bridger (Sheathipede) ou contient Ezra Bridger (TIE Fighter) uniquement</i>%LINEBREAK%Après avoir subi des dégâts, vous pouvez gagner 1 marqueur de stress pour récupérer 1&nbsp;%FORCE%.%LINEBREAK%Vous pouvez vous équiper d'améliorations “Côté Obscur”."""
         "Minister Tua":
            display_name: """Ministre Tua"""
-           text: """<i>Racailles et Scélérats uniquement</i>%LINEBREAK%Au début de la phase d'engagement, si vous êtes endommagé, vous pouvez effectuer une action %FOCUS% rouge."""
+           text: """<i>Racailles et Scélérats uniquement</i>%LINEBREAK%Au début de la phase d'engagement, si vous êtes endommagé, vous pouvez effectuer une action %REINFORCE% rouge."""
         "Moff Jerjerrod":
            display_name: """Moff Jerjerrod"""
            text: """<i>Requiert %COORDINATE% ou <r>%COORDINATE%</r></i>%LINEBREAK%<i>Racailles et Scélérats uniquement</i>%LINEBREAK%Pendant la phase de système, vous pouvez dépenser 2&nbsp;%CHARGE%. Dans ce cas, choisissez le gabarit [1&nbsp;%BANKLEFT%], [1&nbsp;%STRAIGHT%] ou [1&nbsp;%BANKRIGHT%]. Chaque vaisseau allié peut effectuer une action %BOOST% rouge en utilisant ce gabarit."""
