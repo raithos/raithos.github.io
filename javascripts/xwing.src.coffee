@@ -754,7 +754,7 @@ class exportObj.CardBrowser
                     </div>
                     <div class="span8">
                         <div class="well card-search-container">
-                            <input type="search" placeholder="Search for name or text" class = "card-search-text">"""+ #TODO: Add more search input options here. 
+                            <input type="text" placeholder="Search for name or Text" class = "card-search-text">"""+ #TODO: Add more search input options here. 
                             """
                         </div>
                         <div class="well card-viewer-placeholder info-well">
@@ -854,8 +854,7 @@ class exportObj.CardBrowser
         @sort_selector.select2
             minimumResultsForSearch: -1
 
-        @card_search_text = ($ @container.find('.xwing-card-browser .card-search-text'))[0]
-        # TODO: Make added inputs easy accessible
+        @card_search_text = $ @container.find('.xwing-card-browser .card-search-text')
 
     setupHandlers: () ->
         @sort_selector.change (e) =>
@@ -866,8 +865,10 @@ class exportObj.CardBrowser
             @prepareData()
             @renderList @sort_selector.val()
 
-        @card_search_text.oninput = => @renderList @sort_selector.val()
-        # TODO: Add a call to @renderList for added inputs, to start the actual search
+        @card_search_text.change (e) =>
+            @renderList @sort_selector.val()
+
+        # TODO: Make added criteria visible for the code, and add a call to @renderList to start the actual search
 
     prepareData: () ->
         @all_cards = []
@@ -1111,7 +1112,7 @@ class exportObj.CardBrowser
 
     checkSearchCriteria: (card) ->
         # check for text search
-        search_text = @card_search_text.value.toLowerCase()
+        search_text = @card_search_text[0].value.toLowerCase()
         return false unless card.name.toLowerCase().indexOf(search_text) > -1 or card.data.text.toLowerCase().indexOf(search_text) > -1 or (card.display_name and card.display_name.toLowerCase().indexOf(search_text) > -1)
 
         #TODO: Add logic of addiditional search criteria here. Have a look at card.data, to see what data is available. Add search inputs at the todo marks above. 
@@ -8156,7 +8157,7 @@ exportObj.basicCardData = ->
             points: 0
        }
        {
-            name: "Kylo Ren (Crew)"
+            name: "Kylo Ren"
             id: 179
             slot: "Crew"
             points: 0
@@ -10159,7 +10160,7 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """<i>Nur für Abschaum oder Staffel, die Ezra Bridger enthält oder Staffel, die Ezra Bridger (Sheathipede) enthält oder Staffel, die Ezra Bridger (TIE Fighter) enthält</i>%LINEBREAK%Nachdem du Schaden erlitten hast, darfst du 1&nbsp;Stress­marker erhalten, um 1&nbsp;%FORCE% wiederherzustellen.%LINEBREAK%Du kannst „Dunkle Seite“-Aufwertungen ausrüsten."""
         "Minister Tua":
            display_name: """Ministerin Tua"""
-           text: """<i>Nur für Imperium</i>%LINEBREAK%Zu Beginn der Kampfphase, falls du beschädigt bist, darfst du eine rote %REINFORCE%-Aktion durchführen."""
+           text: """<i>Nur für Imperium</i>%LINEBREAK%Zu Beginn der Kampfphase, falls du beschädigt bist, darfst du eine rote %FOCUS%-Aktion durchführen."""
         "Moff Jerjerrod":
            display_name: """Moff Jerjerrod"""
            text: """<i>Benötigt %COORDINATE% oder <r>%COORDINATE%</r></i>%LINEBREAK%<i>Nur für Imperium</i>%LINEBREAK%Während der Systemphase darfst du 2 %CHARGE% ausgeben. Falls du das tust, wähle die [1&nbsp;%BANKLEFT%]-, [1&nbsp;%STRAIGHT%]- oder [1&nbsp;%BANKRIGHT%]-Schablone. Jedes befreundete Schiff darf unter Verwendung jener Schablone eine rote %BOOST%-Aktion durchführen."""
@@ -10353,7 +10354,7 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """<i>Requires: %LOCK%</i> %LINEBREAK% While a friendly ship at range 1-2 performs an attack against a target you have locked, that ship ignores the %LOCK% attack requirement. """
         "Primed Thrusters":
            text: """<i>Requires: Small Base</i> %LINEBREAK% While you have 2 or fewer stress tokens, you can perform %BARRELROLL% and %BOOST% actions even while stressed. """
-        "Kylo Ren (Crew)":
+        "Kylo Ren":
            text: """ Action: Choose 1 enemy ship at range 1-3. If you do, spend 1 %FORCE% to assign the I'll Show You the Dark Side condition to that ship. """
         "General Hux":
            text: """ ... perform a white %COORDINATE% action ... it as red. If you do, you ... up to 2 additional ships ... ship type, and each ship you coordinate must perform the same action, treating that action as red. """
@@ -11644,7 +11645,7 @@ exportObj.cardLoaders.English = () ->
            text: """<i>Scum or Squad including Ezra Bridger only</i>%LINEBREAK%After you suffer damage, you may gain 1 stress token to recover 1&nbsp;%FORCE%.%LINEBREAK%You can equip “Dark Side” upgrades."""
         "Minister Tua":
            display_name: """Minister Tua"""
-           text: """<i>Empire only</i>%LINEBREAK%At the start of the Engagement Phase, if you are damaged, you may perform a red %REINFORCE% action."""
+           text: """<i>Empire only</i>%LINEBREAK%At the start of the Engagement Phase, if you are damaged, you may perform a red %FOCUS% action."""
         "Moff Jerjerrod":
            display_name: """Moff Jerjerrod"""
            text: """<i>Requires %COORDINATE% or <r>%COORDINATE%</r></i>%LINEBREAK%<i>Empire only</i>%LINEBREAK%During the System Phase, you may spend 2 %CHARGE%. If you do, choose the [1&nbsp;%BANKLEFT%], [1&nbsp;%STRAIGHT%], or [1&nbsp;%BANKRIGHT%] template. Each friendly ship may perform a red %BOOST% action using that template."""
@@ -11834,7 +11835,7 @@ exportObj.cardLoaders.English = () ->
            text: """<i>Requires: %LOCK%</i> %LINEBREAK% While a friendly ship at range 1-2 performs an attack against a target you have locked, that ship ignores the %LOCK% attack requirement. """
         "Primed Thrusters":
            text: """<i>Requires: Small Base</i> %LINEBREAK% While you have 2 or fewer stress tokens, you can perform %BARRELROLL% and %BOOST% actions even while stressed. """
-        "Kylo Ren (Crew)":
+        "Kylo Ren":
            text: """ Action: Choose 1 enemy ship at range 1-3. If you do, spend 1 %FORCE% to assign the I'll Show You the Dark Side condition to that ship. """
         "General Hux":
            text: """ While you perform a white %COORDINATE% action you may treat it as red. If you do, you may coordinate up to 2 additional ships of the same ship type, and each ship you coordinate must perform the same action, treating that action as red. """
@@ -13207,7 +13208,7 @@ exportObj.cardLoaders['Español'] = () ->
            text: """<i>Sólo Escoria o Escuadrón que incluya a Ezra Bridger</i>%LINEBREAK%Después de que sufras daño, puedes recibir 1 ficha de Tensión para recuperar 1 %FORCE%.%LINEBREAK%Puedes equiparte con mejoras de “Lado Oscuro”."""
         "Minister Tua":
            display_name: """Ministra Tua"""
-           text: """<i>Sólo Imperio</i>%LINEBREAK%Al comienzo de la fase de Enfrentamiento, si estás dañado, puedes realizar una acción %REINFORCE% roja."""
+           text: """<i>Sólo Imperio</i>%LINEBREAK%Al comienzo de la fase de Enfrentamiento, si estás dañado, puedes realizar una acción %FOCUS% roja."""
         "Moff Jerjerrod":
            display_name: """Moff Jerjerrod"""
            text: """<i>Necesita %COORDINATE% o <r>%COORDINATE%</r></i>%LINEBREAK%<i>Sólo Imperio</i>%LINEBREAK%Durante la fase de Sistemas, puedes gastar 2&nbsp;%CHARGE%. Si lo haces, elige la plantilla [1&nbsp;%BANKLEFT%], [1&nbsp;%STRAIGHT%] o [1&nbsp;%BANKRIGHT%]. Toda nave aliada puede realizar una acción %BOOST% roja utilizando esa plantilla."""
@@ -13400,7 +13401,7 @@ exportObj.cardLoaders['Español'] = () ->
            text: """<i>Requires: %LOCK%</i> %LINEBREAK% While a friendly ship at range 1-2 performs an attack against a target you have locked, that ship ignores the %LOCK% attack requirement. """
         "Primed Thrusters":
            text: """<i>Requires: Small Base</i> %LINEBREAK% While you have 2 or fewer stress tokens, you can perform %BARRELROLL% and %BOOST% actions even while stressed. """
-        "Kylo Ren (Crew)":
+        "Kylo Ren":
            text: """ Action: Choose 1 enemy ship at range 1-3. If you do, spend 1 %FORCE% to assign the I'll Show You the Dark Side condition to that ship. """
         "General Hux":
            text: """ ... perform a white %COORDINATE% action ... it as red. If you do, you ... up to 2 additional ships ... ship type, and each ship you coordinate must perform the same action, treating that action as red. """
@@ -14721,7 +14722,7 @@ exportObj.cardLoaders['Français'] = () ->
            text: """<i>Empire Galactique ou contient Ezra Bridger ou contient Ezra Bridger (Sheathipede) ou contient Ezra Bridger (TIE Fighter) uniquement</i>%LINEBREAK%Après avoir subi des dégâts, vous pouvez gagner 1 marqueur de stress pour récupérer 1&nbsp;%FORCE%.%LINEBREAK%Vous pouvez vous équiper d'améliorations “Côté Obscur”."""
         "Minister Tua":
            display_name: """Ministre Tua"""
-           text: """<i>Racailles et Scélérats uniquement</i>%LINEBREAK%Au début de la phase d'engagement, si vous êtes endommagé, vous pouvez effectuer une action %REINFORCE% rouge."""
+           text: """<i>Racailles et Scélérats uniquement</i>%LINEBREAK%Au début de la phase d'engagement, si vous êtes endommagé, vous pouvez effectuer une action %FOCUS% rouge."""
         "Moff Jerjerrod":
            display_name: """Moff Jerjerrod"""
            text: """<i>Requiert %COORDINATE% ou <r>%COORDINATE%</r></i>%LINEBREAK%<i>Racailles et Scélérats uniquement</i>%LINEBREAK%Pendant la phase de système, vous pouvez dépenser 2&nbsp;%CHARGE%. Dans ce cas, choisissez le gabarit [1&nbsp;%BANKLEFT%], [1&nbsp;%STRAIGHT%] ou [1&nbsp;%BANKRIGHT%]. Chaque vaisseau allié peut effectuer une action %BOOST% rouge en utilisant ce gabarit."""
@@ -16010,7 +16011,7 @@ exportObj.cardLoaders.Magyar = () ->
            text: """<i>Requires: %LOCK%</i> %LINEBREAK% While a friendly ship at range 1-2 performs an attack against a target you have locked, that ship ignores the %LOCK% attack requirement. """
         "Primed Thrusters":
            text: """<i>Requires: Small Base</i> %LINEBREAK% While you have 2 or fewer stress tokens, you can perform %BARRELROLL% and %BOOST% actions even while stressed. """
-        "Kylo Ren (Crew)":
+        "Kylo Ren":
            text: """ Action: Choose 1 enemy ship at range 1-3. If you do, spend 1 %FORCE% to assign the I'll Show You the Dark Side condition to that ship. """
         "General Hux":
            text: """ ... perform a white %COORDINATE% action ... it as red. If you do, you ... up to 2 additional ships ... ship type, and each ship you coordinate must perform the same action, treating that action as red. """
@@ -19600,13 +19601,8 @@ class exportObj.Collection
 
         for type, counts of @singletons
             for name, count of counts
-                if count > 0
-                    for _ in [0...count]
-                        ((@shelf[type] ?= {})[name] ?= []).push 'singleton'
-                else if count < 0
-                    for _ in [0...count]
-                        if ((@shelf[type] ?= {})[name] ?= []).length > 0
-                            @shelf[type][name].pop()
+                for _ in [0...count]
+                    ((@shelf[type] ?= {})[name] ?= []).push 'singleton'
 
         @counts = {}
         for own type of @shelf
@@ -19871,7 +19867,7 @@ class exportObj.Collection
             target.val(0) if val < 0 or isNaN(parseInt(val))
             @expansions[target.data 'expansion'] = parseInt(target.val())
 
-            target.closest('div').css 'background-color', @countToBackgroundColor(target.val())
+            target.closest('div').css 'background-color', @countToBackgroundColor(val)
 
             # console.log "Input changed, triggering collection change"
             $(exportObj).trigger 'xwing-collection:changed', this
@@ -19879,10 +19875,10 @@ class exportObj.Collection
         $ @modal.find('input.singleton-count').change (e) =>
             target = $(e.target)
             val = target.val()
-            target.val(0) if isNaN(parseInt(val))
+            target.val(0) if val < 0 or isNaN(parseInt(val))
             (@singletons[target.data 'singletonType'] ?= {})[target.data 'singletonName'] = parseInt(target.val())
 
-            target.closest('div').css 'background-color', @countToBackgroundColor(target.val())
+            target.closest('div').css 'background-color', @countToBackgroundColor(val)
 
             # console.log "Input changed, triggering collection change"
             $(exportObj).trigger 'xwing-collection:changed', this
@@ -19902,15 +19898,13 @@ class exportObj.Collection
     countToBackgroundColor: (count) ->
         count = parseInt(count)
         switch
-            when count < 0
-                'red'
             when count == 0
                 ''
-            when count > 0
+            when count < 12
                 i = parseInt(200 * Math.pow(0.9, count - 1))
                 "rgb(#{i}, 255, #{i})"
             else
-                ''
+                'red'
 
     onLanguageChange:
         (e, language) =>

@@ -880,7 +880,7 @@ exportObj.CardBrowser = (function() {
   }
 
   CardBrowser.prototype.setupUI = function() {
-    this.container.append($.trim("<div class=\"container-fluid xwing-card-browser\">\n    <div class=\"row-fluid\">\n        <div class=\"span12\">\n            <span class=\"translate sort-cards-by\">Sort cards by</span>: <select class=\"sort-by\">\n                <option value=\"name\">Name</option>\n                <option value=\"source\">Source</option>\n                <option value=\"type-by-points\">Type (by Points)</option>\n                <option value=\"type-by-name\" selected=\"1\">Type (by Name)</option>\n            </select>\n        </div>\n    </div>\n    <div class=\"row-fluid\">\n        <div class=\"span4 card-selector-container\">\n\n        </div>\n        <div class=\"span8\">\n            <div class=\"well card-search-container\">\n                <input type=\"search\" placeholder=\"Search for name or text\" class = \"card-search-text\">" + "            </div>\n            <div class=\"well card-viewer-placeholder info-well\">\n                <p class=\"translate select-a-card\">Select a card from the list at the left.</p>\n            </div>\n            <div class=\"well card-viewer-container info-well\">\n                <span class=\"info-name\"></span>\n                <br />\n                <span class=\"info-type\"></span>\n                <br />\n                <span class=\"info-sources\"></span>\n                <table>\n                    <tbody>\n                        <tr class=\"info-skill\">\n                            <td class=\"info-header\">Skill</td>\n                            <td class=\"info-data info-skill\"></td>\n                        </tr>\n                        <tr class=\"info-energy\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                            <td class=\"info-data info-energy\"></td>\n                        </tr>\n                        <tr class=\"info-attack\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-fullfront\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-bullseye\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-back\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-turret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-doubleturret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-agility\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                            <td class=\"info-data info-agility\"></td>\n                        </tr>\n                        <tr class=\"info-hull\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                            <td class=\"info-data info-hull\"></td>\n                        </tr>\n                        <tr class=\"info-shields\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                            <td class=\"info-data info-shields\"></td>\n                        </tr>\n                        <tr class=\"info-force\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i></td>\n                            <td class=\"info-data info-force\"></td>\n                        </tr>\n                        <tr class=\"info-charge\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                            <td class=\"info-data info-charge\"></td>\n                        </tr>\n                        <tr class=\"info-range\">\n                            <td class=\"info-header\">Range</td>\n                            <td class=\"info-data info-range\"></td>\n                        </tr>\n                        <tr class=\"info-actions\">\n                            <td class=\"info-header\">Actions</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                        <tr class=\"info-actions-red\">\n                            <td></td>\n                            <td class=\"info-data-red\"></td>\n                        </tr>\n                        <tr class=\"info-upgrades\">\n                            <td class=\"info-header\">Upgrades</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                    </tbody>\n                </table>\n                <p class=\"info-text\" />\n            </div>\n        </div>\n    </div>\n</div>"));
+    this.container.append($.trim("<div class=\"container-fluid xwing-card-browser\">\n    <div class=\"row-fluid\">\n        <div class=\"span12\">\n            <span class=\"translate sort-cards-by\">Sort cards by</span>: <select class=\"sort-by\">\n                <option value=\"name\">Name</option>\n                <option value=\"source\">Source</option>\n                <option value=\"type-by-points\">Type (by Points)</option>\n                <option value=\"type-by-name\" selected=\"1\">Type (by Name)</option>\n            </select>\n        </div>\n    </div>\n    <div class=\"row-fluid\">\n        <div class=\"span4 card-selector-container\">\n\n        </div>\n        <div class=\"span8\">\n            <div class=\"well card-search-container\">\n                <input type=\"text\" placeholder=\"Search for name or Text\" class = \"card-search-text\">" + "            </div>\n            <div class=\"well card-viewer-placeholder info-well\">\n                <p class=\"translate select-a-card\">Select a card from the list at the left.</p>\n            </div>\n            <div class=\"well card-viewer-container info-well\">\n                <span class=\"info-name\"></span>\n                <br />\n                <span class=\"info-type\"></span>\n                <br />\n                <span class=\"info-sources\"></span>\n                <table>\n                    <tbody>\n                        <tr class=\"info-skill\">\n                            <td class=\"info-header\">Skill</td>\n                            <td class=\"info-data info-skill\"></td>\n                        </tr>\n                        <tr class=\"info-energy\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                            <td class=\"info-data info-energy\"></td>\n                        </tr>\n                        <tr class=\"info-attack\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-fullfront\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-bullseye\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-back\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-turret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-doubleturret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-agility\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                            <td class=\"info-data info-agility\"></td>\n                        </tr>\n                        <tr class=\"info-hull\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                            <td class=\"info-data info-hull\"></td>\n                        </tr>\n                        <tr class=\"info-shields\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                            <td class=\"info-data info-shields\"></td>\n                        </tr>\n                        <tr class=\"info-force\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i></td>\n                            <td class=\"info-data info-force\"></td>\n                        </tr>\n                        <tr class=\"info-charge\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                            <td class=\"info-data info-charge\"></td>\n                        </tr>\n                        <tr class=\"info-range\">\n                            <td class=\"info-header\">Range</td>\n                            <td class=\"info-data info-range\"></td>\n                        </tr>\n                        <tr class=\"info-actions\">\n                            <td class=\"info-header\">Actions</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                        <tr class=\"info-actions-red\">\n                            <td></td>\n                            <td class=\"info-data-red\"></td>\n                        </tr>\n                        <tr class=\"info-upgrades\">\n                            <td class=\"info-header\">Upgrades</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                    </tbody>\n                </table>\n                <p class=\"info-text\" />\n            </div>\n        </div>\n    </div>\n</div>"));
     this.card_selector_container = $(this.container.find('.xwing-card-browser .card-selector-container'));
     this.card_viewer_container = $(this.container.find('.xwing-card-browser .card-viewer-container'));
     this.card_viewer_container.hide();
@@ -889,7 +889,7 @@ exportObj.CardBrowser = (function() {
     this.sort_selector.select2({
       minimumResultsForSearch: -1
     });
-    return this.card_search_text = ($(this.container.find('.xwing-card-browser .card-search-text')))[0];
+    return this.card_search_text = $(this.container.find('.xwing-card-browser .card-search-text'));
   };
 
   CardBrowser.prototype.setupHandlers = function() {
@@ -908,11 +908,11 @@ exportObj.CardBrowser = (function() {
         return _this.renderList(_this.sort_selector.val());
       };
     })(this));
-    return this.card_search_text.oninput = (function(_this) {
-      return function() {
+    return this.card_search_text.change((function(_this) {
+      return function(e) {
         return _this.renderList(_this.sort_selector.val());
       };
-    })(this);
+    })(this));
   };
 
   CardBrowser.prototype.prepareData = function() {
@@ -1321,7 +1321,7 @@ exportObj.CardBrowser = (function() {
 
   CardBrowser.prototype.checkSearchCriteria = function(card) {
     var search_text;
-    search_text = this.card_search_text.value.toLowerCase();
+    search_text = this.card_search_text[0].value.toLowerCase();
     if (!(card.name.toLowerCase().indexOf(search_text) > -1 || card.data.text.toLowerCase().indexOf(search_text) > -1 || (card.display_name && card.display_name.toLowerCase().indexOf(search_text) > -1))) {
       return false;
     }
@@ -5982,7 +5982,7 @@ exportObj.basicCardData = function() {
         slot: "Tech",
         points: 0
       }, {
-        name: "Kylo Ren (Crew)",
+        name: "Kylo Ren",
         id: 179,
         slot: "Crew",
         points: 0,
@@ -8105,7 +8105,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Minister Tua": {
       display_name: "Ministerin Tua",
-      text: "<i>Nur für Imperium</i>%LINEBREAK%Zu Beginn der Kampfphase, falls du beschädigt bist, darfst du eine rote %REINFORCE%-Aktion durchführen."
+      text: "<i>Nur für Imperium</i>%LINEBREAK%Zu Beginn der Kampfphase, falls du beschädigt bist, darfst du eine rote %FOCUS%-Aktion durchführen."
     },
     "Moff Jerjerrod": {
       display_name: "Moff Jerjerrod",
@@ -8361,7 +8361,7 @@ exportObj.cardLoaders.Deutsch = function() {
     "Primed Thrusters": {
       text: "<i>Requires: Small Base</i> %LINEBREAK% While you have 2 or fewer stress tokens, you can perform %BARRELROLL% and %BOOST% actions even while stressed. "
     },
-    "Kylo Ren (Crew)": {
+    "Kylo Ren": {
       text: " Action: Choose 1 enemy ship at range 1-3. If you do, spend 1 %FORCE% to assign the I'll Show You the Dark Side condition to that ship. "
     },
     "General Hux": {
@@ -10039,7 +10039,7 @@ exportObj.cardLoaders.English = function() {
     },
     "Minister Tua": {
       display_name: "Minister Tua",
-      text: "<i>Empire only</i>%LINEBREAK%At the start of the Engagement Phase, if you are damaged, you may perform a red %REINFORCE% action."
+      text: "<i>Empire only</i>%LINEBREAK%At the start of the Engagement Phase, if you are damaged, you may perform a red %FOCUS% action."
     },
     "Moff Jerjerrod": {
       display_name: "Moff Jerjerrod",
@@ -10295,7 +10295,7 @@ exportObj.cardLoaders.English = function() {
     "Primed Thrusters": {
       text: "<i>Requires: Small Base</i> %LINEBREAK% While you have 2 or fewer stress tokens, you can perform %BARRELROLL% and %BOOST% actions even while stressed. "
     },
-    "Kylo Ren (Crew)": {
+    "Kylo Ren": {
       text: " Action: Choose 1 enemy ship at range 1-3. If you do, spend 1 %FORCE% to assign the I'll Show You the Dark Side condition to that ship. "
     },
     "General Hux": {
@@ -12045,7 +12045,7 @@ exportObj.cardLoaders['Español'] = function() {
     },
     "Minister Tua": {
       display_name: "Ministra Tua",
-      text: "<i>Sólo Imperio</i>%LINEBREAK%Al comienzo de la fase de Enfrentamiento, si estás dañado, puedes realizar una acción %REINFORCE% roja."
+      text: "<i>Sólo Imperio</i>%LINEBREAK%Al comienzo de la fase de Enfrentamiento, si estás dañado, puedes realizar una acción %FOCUS% roja."
     },
     "Moff Jerjerrod": {
       display_name: "Moff Jerjerrod",
@@ -12301,7 +12301,7 @@ exportObj.cardLoaders['Español'] = function() {
     "Primed Thrusters": {
       text: "<i>Requires: Small Base</i> %LINEBREAK% While you have 2 or fewer stress tokens, you can perform %BARRELROLL% and %BOOST% actions even while stressed. "
     },
-    "Kylo Ren (Crew)": {
+    "Kylo Ren": {
       text: " Action: Choose 1 enemy ship at range 1-3. If you do, spend 1 %FORCE% to assign the I'll Show You the Dark Side condition to that ship. "
     },
     "General Hux": {
@@ -13987,7 +13987,7 @@ exportObj.cardLoaders['Français'] = function() {
     },
     "Minister Tua": {
       display_name: "Ministre Tua",
-      text: "<i>Racailles et Scélérats uniquement</i>%LINEBREAK%Au début de la phase d'engagement, si vous êtes endommagé, vous pouvez effectuer une action %REINFORCE% rouge."
+      text: "<i>Racailles et Scélérats uniquement</i>%LINEBREAK%Au début de la phase d'engagement, si vous êtes endommagé, vous pouvez effectuer une action %FOCUS% rouge."
     },
     "Moff Jerjerrod": {
       display_name: "Moff Jerjerrod",
@@ -15770,7 +15770,7 @@ exportObj.cardLoaders.Magyar = function() {
     "Primed Thrusters": {
       text: "<i>Requires: Small Base</i> %LINEBREAK% While you have 2 or fewer stress tokens, you can perform %BARRELROLL% and %BOOST% actions even while stressed. "
     },
-    "Kylo Ren (Crew)": {
+    "Kylo Ren": {
       text: " Action: Choose 1 enemy ship at range 1-3. If you do, spend 1 %FORCE% to assign the I'll Show You the Dark Side condition to that ship. "
     },
     "General Hux": {
@@ -18702,7 +18702,7 @@ exportObj.Collection = (function() {
   }
 
   Collection.prototype.reset = function() {
-    var card, card_different_by_type, card_totals_by_type, component_content, contents, count, counts, expansion, expname, item, items, name, names, singletonsByType, sorted_names, summary, thing, things, type, ul, _, _base1, _base2, _base3, _base4, _base5, _base6, _base7, _base8, _i, _j, _k, _l, _len, _len1, _len2, _len3, _m, _n, _name, _name1, _name2, _o, _p, _ref, _ref1, _ref10, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var card, card_different_by_type, card_totals_by_type, component_content, contents, count, counts, expansion, expname, item, items, name, names, singletonsByType, sorted_names, summary, thing, things, type, ul, _, _base1, _base2, _base3, _base4, _base5, _base6, _i, _j, _k, _l, _len, _len1, _len2, _len3, _m, _n, _name, _name1, _name2, _o, _ref, _ref1, _ref10, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     this.shelf = {};
     this.table = {};
     _ref = this.expansions;
@@ -18728,16 +18728,8 @@ exportObj.Collection = (function() {
       counts = _ref4[type];
       for (name in counts) {
         count = counts[name];
-        if (count > 0) {
-          for (_ = _l = 0; 0 <= count ? _l < count : _l > count; _ = 0 <= count ? ++_l : --_l) {
-            ((_base3 = ((_base4 = this.shelf)[type] != null ? _base4[type] : _base4[type] = {}))[name] != null ? _base3[name] : _base3[name] = []).push('singleton');
-          }
-        } else if (count < 0) {
-          for (_ = _m = 0; 0 <= count ? _m < count : _m > count; _ = 0 <= count ? ++_m : --_m) {
-            if (((_base5 = ((_base6 = this.shelf)[type] != null ? _base6[type] : _base6[type] = {}))[name] != null ? _base5[name] : _base5[name] = []).length > 0) {
-              this.shelf[type][name].pop();
-            }
-          }
+        for (_ = _l = 0; 0 <= count ? _l < count : _l > count; _ = 0 <= count ? ++_l : --_l) {
+          ((_base3 = ((_base4 = this.shelf)[type] != null ? _base4[type] : _base4[type] = {}))[name] != null ? _base3[name] : _base3[name] = []).push('singleton');
         }
       }
     }
@@ -18748,8 +18740,8 @@ exportObj.Collection = (function() {
       _ref6 = this.shelf[type];
       for (thing in _ref6) {
         if (!__hasProp.call(_ref6, thing)) continue;
-        if ((_base7 = ((_base8 = this.counts)[type] != null ? _base8[type] : _base8[type] = {}))[thing] == null) {
-          _base7[thing] = 0;
+        if ((_base5 = ((_base6 = this.counts)[type] != null ? _base6[type] : _base6[type] = {}))[thing] == null) {
+          _base5[thing] = 0;
         }
         this.counts[type][thing] += this.shelf[type][thing].length;
       }
@@ -18758,8 +18750,8 @@ exportObj.Collection = (function() {
     _ref7 = exportObj.manifestByExpansion;
     for (expname in _ref7) {
       items = _ref7[expname];
-      for (_n = 0, _len1 = items.length; _n < _len1; _n++) {
-        item = items[_n];
+      for (_m = 0, _len1 = items.length; _m < _len1; _m++) {
+        item = items[_m];
         (singletonsByType[_name2 = item.type] != null ? singletonsByType[_name2] : singletonsByType[_name2] = {})[item.name] = true;
       }
     }
@@ -18789,8 +18781,8 @@ exportObj.Collection = (function() {
         contents = component_content.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\"><h5>" + (type.capitalize()) + "</h5></div>\n</div>\n<div class=\"row-fluid\">\n    <ul id=\"counts-" + type + "\" class=\"span12\"></ul>\n</div>"));
         ul = $(contents.find("ul#counts-" + type));
         _ref9 = Object.keys(things).sort(sortWithoutQuotes);
-        for (_o = 0, _len2 = _ref9.length; _o < _len2; _o++) {
-          thing = _ref9[_o];
+        for (_n = 0, _len2 = _ref9.length; _n < _len2; _n++) {
+          thing = _ref9[_n];
           card_totals_by_type[type] += things[thing];
           if (__indexOf.call(singletonsByType[type], thing) >= 0) {
             card_different_by_type[type]++;
@@ -18801,8 +18793,8 @@ exportObj.Collection = (function() {
     }
     summary = "";
     _ref10 = Object.keys(card_totals_by_type);
-    for (_p = 0, _len3 = _ref10.length; _p < _len3; _p++) {
-      type = _ref10[_p];
+    for (_o = 0, _len3 = _ref10.length; _o < _len3; _o++) {
+      type = _ref10[_o];
       summary += "<li>" + (type.capitalize()) + " - " + card_totals_by_type[type] + " (" + card_different_by_type[type] + " different)</li>";
     }
     return component_content.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\"><h5>Summary</h5></div>\n</div>\n<div class = \"row-fluid\">\n    <ul id=\"counts-summary\" class=\"span12\">\n        " + summary + "\n    </ul>\n</div>"));
@@ -19005,7 +18997,7 @@ exportObj.Collection = (function() {
           target.val(0);
         }
         _this.expansions[target.data('expansion')] = parseInt(target.val());
-        target.closest('div').css('background-color', _this.countToBackgroundColor(target.val()));
+        target.closest('div').css('background-color', _this.countToBackgroundColor(val));
         return $(exportObj).trigger('xwing-collection:changed', _this);
       };
     })(this)));
@@ -19014,11 +19006,11 @@ exportObj.Collection = (function() {
         var target, val, _base1, _name;
         target = $(e.target);
         val = target.val();
-        if (isNaN(parseInt(val))) {
+        if (val < 0 || isNaN(parseInt(val))) {
           target.val(0);
         }
         ((_base1 = _this.singletons)[_name = target.data('singletonType')] != null ? _base1[_name] : _base1[_name] = {})[target.data('singletonName')] = parseInt(target.val());
-        target.closest('div').css('background-color', _this.countToBackgroundColor(target.val()));
+        target.closest('div').css('background-color', _this.countToBackgroundColor(val));
         return $(exportObj).trigger('xwing-collection:changed', _this);
       };
     })(this)));
@@ -19045,15 +19037,13 @@ exportObj.Collection = (function() {
     var i;
     count = parseInt(count);
     switch (false) {
-      case !(count < 0):
-        return 'red';
       case count !== 0:
         return '';
-      case !(count > 0):
+      case !(count < 12):
         i = parseInt(200 * Math.pow(0.9, count - 1));
         return "rgb(" + i + ", 255, " + i + ")";
       default:
-        return '';
+        return 'red';
     }
   };
 
@@ -19149,7 +19139,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 19961
+                    lineno: 19955
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -19763,7 +19753,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 20614
+              lineno: 20608
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -20454,7 +20444,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 21252
+          lineno: 21246
         }));
         __iced_deferrals._fulfill();
       });
@@ -20466,7 +20456,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 21253
+            lineno: 21247
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -21847,7 +21837,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 22207
+                      lineno: 22201
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -21905,7 +21895,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 22224
+                lineno: 22218
               })
             ]);
             __iced_deferrals._fulfill();
@@ -21952,7 +21942,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 22238
+              lineno: 22232
             }));
           }
         }
@@ -22810,7 +22800,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 22919
+                lineno: 22913
               })
             ]);
             __iced_deferrals._fulfill();
@@ -22951,7 +22941,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 22992
+                  lineno: 22986
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -22973,7 +22963,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 22996
+                    lineno: 22990
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -23059,7 +23049,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 23035
+            lineno: 23029
           }));
         }
         __iced_deferrals._fulfill();
