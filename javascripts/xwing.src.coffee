@@ -756,6 +756,30 @@ class exportObj.CardBrowser
                         <div class="well card-search-container">
                             <input type="search" placeholder="Search for name or text" class = "card-search-text">"""+ #TODO: Add more search input options here. 
                             """
+                            <button class="btn btn-primary show-advanced-search">
+                                Advanced Search
+                            </button>
+                            <div class="advanced-search-container">
+                                <strong>Faction:</strong>
+                                <label class = "toggle-rebel-search advanced-search-label">
+                                    <input type="checkbox" class="rebel-checkbox advanced-search-checkbox" checked="checked" /> Rebel
+                                </label>
+                                <label class = "toggle-imperial-search advanced-search-label">
+                                    <input type="checkbox" class="imperial-checkbox advanced-search-checkbox" checked="checked" /> Imperial
+                                </label>
+                                <label class = "toggle-scum-search advanced-search-label">
+                                    <input type="checkbox" class="scum-checkbox advanced-search-checkbox" checked="checked" /> Scum
+                                </label>
+                                <label class = "toggle-fo-search advanced-search-label">
+                                    <input type="checkbox" class="fo-checkbox advanced-search-checkbox" checked="checked" /> First Order
+                                </label>
+                                <label class = "toggle-resistance-search advanced-search-label">
+                                    <input type="checkbox" class="resistance-checkbox advanced-search-checkbox" checked="checked" /> Resistance
+                                </label>
+                                <label class = "toggle-factionless-search advanced-search-label">
+                                    <input type="checkbox" class="factionless-checkbox advanced-search-checkbox" checked="checked" /> Factionless
+                                </label>
+                            </div>
                         </div>
                         <div class="well card-viewer-placeholder info-well">
                             <p class="translate select-a-card">Select a card from the list at the left.</p>
@@ -849,13 +873,26 @@ class exportObj.CardBrowser
         @card_viewer_container = $ @container.find('.xwing-card-browser .card-viewer-container')
         @card_viewer_container.hide()
         @card_viewer_placeholder = $ @container.find('.xwing-card-browser .card-viewer-placeholder')
+        @advanced_search_button = ($ @container.find('.xwing-card-browser .show-advanced-search'))[0]
+        @advanced_search_container = $ @container.find('.xwing-card-browser .advanced-search-container')
+        @advanced_search_container.hide()
+        @advanced_search_active = false
 
         @sort_selector = $ @container.find('select.sort-by')
         @sort_selector.select2
             minimumResultsForSearch: -1
 
-        @card_search_text = ($ @container.find('.xwing-card-browser .card-search-text'))[0]
         # TODO: Make added inputs easy accessible
+
+        @card_search_text = ($ @container.find('.xwing-card-browser .card-search-text'))[0]
+        @faction_selectors = {}
+        @faction_selectors["Rebel Alliance"] = ($ @container.find('.xwing-card-browser .rebel-checkbox'))[0]
+        @faction_selectors["Scum and Villainy"] = ($ @container.find('.xwing-card-browser .scum-checkbox'))[0]
+        @faction_selectors["Galactic Empire"] = ($ @container.find('.xwing-card-browser .imperial-checkbox'))[0]
+        @faction_selectors["Resistance"] = ($ @container.find('.xwing-card-browser .resistance-checkbox'))[0]
+        @faction_selectors["First Order"] = ($ @container.find('.xwing-card-browser .fo-checkbox'))[0]
+        @faction_selectors[undefined] = ($ @container.find('.xwing-card-browser .factionless-checkbox'))[0]
+
 
     setupHandlers: () ->
         @sort_selector.change (e) =>
@@ -868,6 +905,20 @@ class exportObj.CardBrowser
 
         @card_search_text.oninput = => @renderList @sort_selector.val()
         # TODO: Add a call to @renderList for added inputs, to start the actual search
+
+        @advanced_search_button.onclick = @toggleAdvancedSearch
+
+        for faction, checkbox of @faction_selectors
+            checkbox.onclick = => @renderList @sort_selector.val()
+
+
+    toggleAdvancedSearch: () =>
+        if @advanced_search_active
+            @advanced_search_container.hide()
+        else 
+            @advanced_search_container.show()
+        @advanced_search_active = not @advanced_search_active
+        @renderList @sort_selector.val()
 
     prepareData: () ->
         @all_cards = []
@@ -1114,6 +1165,10 @@ class exportObj.CardBrowser
         search_text = @card_search_text.value.toLowerCase()
         return false unless card.name.toLowerCase().indexOf(search_text) > -1 or card.data.text.toLowerCase().indexOf(search_text) > -1 or (card.display_name and card.display_name.toLowerCase().indexOf(search_text) > -1)
 
+        return true unless @advanced_search_active
+
+        return false unless @faction_selectors[card.data.faction].checked
+        
         #TODO: Add logic of addiditional search criteria here. Have a look at card.data, to see what data is available. Add search inputs at the todo marks above. 
 
         return true
@@ -19648,7 +19703,12 @@ class exportObj.Collection
                     card_totals_by_type[type] += things[thing]
                     if thing in singletonsByType[type]
                         card_different_by_type[type]++
-                        ul.append """<li>#{thing} - #{things[thing]}</li>"""
+                        if type == 'pilot'
+                            ul.append """<li>#{if exportObj.pilots[thing].display_name then exportObj.pilots[thing].display_name else thing} - #{things[thing]}</li>"""
+                        if type == 'upgrade'
+                            ul.append """<li>#{if exportObj.upgrades[thing].display_name then exportObj.upgrades[thing].display_name else thing} - #{things[thing]}</li>"""
+                        if type == 'ship'
+                            ul.append """<li>#{if exportObj.ships[thing].display_name then exportObj.ships[thing].display_name else thing} - #{things[thing]}</li>"""
 
         summary = ""
         for type in Object.keys(card_totals_by_type)
@@ -19796,7 +19856,7 @@ class exportObj.Collection
                     <div class="span12">
                         <label>
                             <input class="singleton-count" type="number" size="3" value="#{count}" />
-                            <span class="ship-name">#{ship}</span>
+                            <span class="ship-name">#{if exportObj.ships[ship].display_name then exportObj.ships[ship].display_name else ship}</span>
                         </label>
                     </div>
                 </div>
@@ -19816,7 +19876,7 @@ class exportObj.Collection
                     <div class="span12">
                         <label>
                             <input class="singleton-count" type="number" size="3" value="#{count}" />
-                            <span class="pilot-name">#{pilot}</span>
+                            <span class="pilot-name">#{if exportObj.pilots[pilot].display_name then exportObj.pilots[pilot].display_name else pilot}</span>
                         </label>
                     </div>
                 </div>
@@ -19836,7 +19896,7 @@ class exportObj.Collection
                     <div class="span12">
                         <label>
                             <input class="singleton-count" type="number" size="3" value="#{count}" />
-                            <span class="upgrade-name">#{upgrade}</span>
+                            <span class="upgrade-name">#{if exportObj.upgrades[upgrade].display_name then exportObj.upgrades[upgrade].display_name else upgrade}</span>
                         </label>
                     </div>
                 </div>
@@ -20268,7 +20328,7 @@ class exportObj.SquadBuilder
                     Add space for damage/upgrade cards when printing <input type="checkbox" class="toggle-vertical-space" />
                 </label>
                 <label class="maneuver-print-checkbox">
-                    Include Maneuvers Chart<input type="checkbox" class="toggle-maneuver-print" checked="checked" />
+                    Include Maneuvers Chart <input type="checkbox" class="toggle-maneuver-print" checked="checked" />
                 </label>
                 <label class="color-print-checkbox">
                     Print color <input type="checkbox" class="toggle-color-print" checked="checked" />
