@@ -881,7 +881,7 @@ exportObj.CardBrowser = (function() {
   }
 
   CardBrowser.prototype.setupUI = function() {
-    this.container.append($.trim("<div class=\"container-fluid xwing-card-browser\">\n    <div class=\"row-fluid\">\n        <div class=\"span12\">\n            <span class=\"translate sort-cards-by\">Sort cards by</span>: <select class=\"sort-by\">\n                <option value=\"name\">Name</option>\n                <option value=\"source\">Source</option>\n                <option value=\"type-by-points\">Type (by Points)</option>\n                <option value=\"type-by-name\" selected=\"1\">Type (by Name)</option>\n            </select>\n        </div>\n    </div>\n    <div class=\"row-fluid\">\n        <div class=\"span4 card-selector-container\">\n\n        </div>\n        <div class=\"span8\">\n            <div class=\"well card-search-container\">\n                <input type=\"search\" placeholder=\"Search for name or text\" class = \"card-search-text\">" + "                <button class=\"btn btn-primary show-advanced-search\">\n                    Advanced Search\n                </button>\n                <div class=\"advanced-search-container\">\n                    <strong>Faction:</strong>\n                    <label class = \"toggle-rebel-search advanced-search-label\">\n                        <input type=\"checkbox\" class=\"rebel-checkbox advanced-search-checkbox\" checked=\"checked\" /> Rebel\n                    </label>\n                    <label class = \"toggle-imperial-search advanced-search-label\">\n                        <input type=\"checkbox\" class=\"imperial-checkbox advanced-search-checkbox\" checked=\"checked\" /> Imperial\n                    </label>\n                    <label class = \"toggle-scum-search advanced-search-label\">\n                        <input type=\"checkbox\" class=\"scum-checkbox advanced-search-checkbox\" checked=\"checked\" /> Scum\n                    </label>\n                    <label class = \"toggle-fo-search advanced-search-label\">\n                        <input type=\"checkbox\" class=\"fo-checkbox advanced-search-checkbox\" checked=\"checked\" /> First Order\n                    </label>\n                    <label class = \"toggle-resistance-search advanced-search-label\">\n                        <input type=\"checkbox\" class=\"resistance-checkbox advanced-search-checkbox\" checked=\"checked\" /> Resistance\n                    </label>\n                    <label class = \"toggle-factionless-search advanced-search-label\">\n                        <input type=\"checkbox\" class=\"factionless-checkbox advanced-search-checkbox\" checked=\"checked\" /> Factionless\n                    </label>\n                </div>\n            </div>\n            <div class=\"well card-viewer-placeholder info-well\">\n                <p class=\"translate select-a-card\">Select a card from the list at the left.</p>\n            </div>\n            <div class=\"well card-viewer-container info-well\">\n                <span class=\"info-name\"></span>\n                <br />\n                <span class=\"info-type\"></span>\n                <br />\n                <span class=\"info-sources\"></span>\n                <table>\n                    <tbody>\n                        <tr class=\"info-skill\">\n                            <td class=\"info-header\">Skill</td>\n                            <td class=\"info-data info-skill\"></td>\n                        </tr>\n                        <tr class=\"info-energy\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                            <td class=\"info-data info-energy\"></td>\n                        </tr>\n                        <tr class=\"info-attack\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-fullfront\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-bullseye\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-back\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-turret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-doubleturret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-agility\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                            <td class=\"info-data info-agility\"></td>\n                        </tr>\n                        <tr class=\"info-hull\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                            <td class=\"info-data info-hull\"></td>\n                        </tr>\n                        <tr class=\"info-shields\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                            <td class=\"info-data info-shields\"></td>\n                        </tr>\n                        <tr class=\"info-force\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i></td>\n                            <td class=\"info-data info-force\"></td>\n                        </tr>\n                        <tr class=\"info-charge\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                            <td class=\"info-data info-charge\"></td>\n                        </tr>\n                        <tr class=\"info-range\">\n                            <td class=\"info-header\">Range</td>\n                            <td class=\"info-data info-range\"></td>\n                        </tr>\n                        <tr class=\"info-actions\">\n                            <td class=\"info-header\">Actions</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                        <tr class=\"info-actions-red\">\n                            <td></td>\n                            <td class=\"info-data-red\"></td>\n                        </tr>\n                        <tr class=\"info-upgrades\">\n                            <td class=\"info-header\">Upgrades</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                    </tbody>\n                </table>\n                <p class=\"info-text\" />\n            </div>\n        </div>\n    </div>\n</div>"));
+    this.container.append($.trim("<div class=\"container-fluid xwing-card-browser\">\n    <div class=\"row-fluid\">\n        <div class=\"span12\">\n            <span class=\"translate sort-cards-by\">Sort cards by</span>: <select class=\"sort-by\">\n                <option value=\"name\">Name</option>\n                <option value=\"source\">Source</option>\n                <option value=\"type-by-points\">Type (by Points)</option>\n                <option value=\"type-by-name\" selected=\"1\">Type (by Name)</option>\n            </select>\n        </div>\n    </div>\n    <div class=\"row-fluid\">\n        <div class=\"span4 card-selector-container\">\n\n        </div>\n        <div class=\"span8\">\n            <div class=\"well card-search-container\">\n                <input type=\"search\" placeholder=\"Search for name, text or ship\" class = \"card-search-text\">" + "                <button class=\"btn btn-primary show-advanced-search\">\n                    Advanced Search\n                </button>\n                <div class=\"advanced-search-container\">\n                    <div class= \"advanced-search-faction-selection-container\">\n                        <strong>Faction:</strong>\n                        <label class = \"toggle-rebel-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"rebel-checkbox advanced-search-checkbox\" checked=\"checked\" /> Rebel\n                        </label>\n                        <label class = \"toggle-imperial-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"imperial-checkbox advanced-search-checkbox\" checked=\"checked\" /> Imperial\n                        </label>\n                        <label class = \"toggle-scum-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"scum-checkbox advanced-search-checkbox\" checked=\"checked\" /> Scum\n                        </label>\n                        <label class = \"toggle-fo-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"fo-checkbox advanced-search-checkbox\" checked=\"checked\" /> First Order\n                        </label>\n                        <label class = \"toggle-resistance-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"resistance-checkbox advanced-search-checkbox\" checked=\"checked\" /> Resistance\n                        </label>\n                        <label class = \"toggle-factionless-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"factionless-checkbox advanced-search-checkbox\" checked=\"checked\" /> Factionless\n                        </label>\n                        <span class=\"advanced-search-tooltip\" tooltip=\"A card is considered factionless, if it can be used by more than one faction.\"> &#9432 </span>\n                    </div>\n                    <div class = \"advanced-search-point-selection-container\">\n                        <strong>Point costs:</strong>\n                        <label class = \"advanced-search-label set-minimum-points\">\n                            from <input type=\"number\" class=\"minimum-point-cost advanced-search-number-input\" value=\"0\" /> \n                        </label>\n                        <label class = \"advanced-search-label set-maximum-points\">\n                            to <input type=\"number\" class=\"maximum-point-cost advanced-search-number-input\" value=\"200\" /> \n                        </label>\n                        <label class = \"advanced-search-label toggle-variable-cost-search\">\n                            <input type=\"checkbox\" class=\"variable-point-cost-checkbox advanced-search-checkbox\" checked=\"checked\" /> Variable point cost\n                        </label>\n                    </div>\n                </div>\n            </div>\n            <div class=\"well card-viewer-placeholder info-well\">\n                <p class=\"translate select-a-card\">Select a card from the list at the left.</p>\n            </div>\n            <div class=\"well card-viewer-container info-well\">\n                <span class=\"info-name\"></span>\n                <br />\n                <span class=\"info-type\"></span>\n                <br />\n                <span class=\"info-sources\"></span>\n                <table>\n                    <tbody>\n                        <tr class=\"info-skill\">\n                            <td class=\"info-header\">Skill</td>\n                            <td class=\"info-data info-skill\"></td>\n                        </tr>\n                        <tr class=\"info-energy\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                            <td class=\"info-data info-energy\"></td>\n                        </tr>\n                        <tr class=\"info-attack\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-fullfront\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-bullseye\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-back\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-turret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-doubleturret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-agility\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                            <td class=\"info-data info-agility\"></td>\n                        </tr>\n                        <tr class=\"info-hull\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                            <td class=\"info-data info-hull\"></td>\n                        </tr>\n                        <tr class=\"info-shields\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                            <td class=\"info-data info-shields\"></td>\n                        </tr>\n                        <tr class=\"info-force\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i></td>\n                            <td class=\"info-data info-force\"></td>\n                        </tr>\n                        <tr class=\"info-charge\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                            <td class=\"info-data info-charge\"></td>\n                        </tr>\n                        <tr class=\"info-range\">\n                            <td class=\"info-header\">Range</td>\n                            <td class=\"info-data info-range\"></td>\n                        </tr>\n                        <tr class=\"info-actions\">\n                            <td class=\"info-header\">Actions</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                        <tr class=\"info-actions-red\">\n                            <td></td>\n                            <td class=\"info-data-red\"></td>\n                        </tr>\n                        <tr class=\"info-upgrades\">\n                            <td class=\"info-header\">Upgrades</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                    </tbody>\n                </table>\n                <p class=\"info-text\" />\n            </div>\n        </div>\n    </div>\n</div>"));
     this.card_selector_container = $(this.container.find('.xwing-card-browser .card-selector-container'));
     this.card_viewer_container = $(this.container.find('.xwing-card-browser .card-viewer-container'));
     this.card_viewer_container.hide();
@@ -901,11 +901,14 @@ exportObj.CardBrowser = (function() {
     this.faction_selectors["Galactic Empire"] = ($(this.container.find('.xwing-card-browser .imperial-checkbox')))[0];
     this.faction_selectors["Resistance"] = ($(this.container.find('.xwing-card-browser .resistance-checkbox')))[0];
     this.faction_selectors["First Order"] = ($(this.container.find('.xwing-card-browser .fo-checkbox')))[0];
-    return this.faction_selectors[void 0] = ($(this.container.find('.xwing-card-browser .factionless-checkbox')))[0];
+    this.faction_selectors[void 0] = ($(this.container.find('.xwing-card-browser .factionless-checkbox')))[0];
+    this.minimum_point_costs = ($(this.container.find('.xwing-card-browser .minimum-point-cost')))[0];
+    this.maximum_point_costs = ($(this.container.find('.xwing-card-browser .maximum-point-cost')))[0];
+    return this.variable_point_costs = ($(this.container.find('.xwing-card-browser .variable-point-cost-checkbox')))[0];
   };
 
   CardBrowser.prototype.setupHandlers = function() {
-    var checkbox, faction, _ref, _results;
+    var checkbox, faction, _ref;
     this.sort_selector.change((function(_this) {
       return function(e) {
         return _this.renderList(_this.sort_selector.val());
@@ -928,16 +931,29 @@ exportObj.CardBrowser = (function() {
     })(this);
     this.advanced_search_button.onclick = this.toggleAdvancedSearch;
     _ref = this.faction_selectors;
-    _results = [];
     for (faction in _ref) {
       checkbox = _ref[faction];
-      _results.push(checkbox.onclick = (function(_this) {
+      checkbox.onclick = (function(_this) {
         return function() {
           return _this.renderList(_this.sort_selector.val());
         };
-      })(this));
+      })(this);
     }
-    return _results;
+    this.minimum_point_costs.oninput = (function(_this) {
+      return function() {
+        return _this.renderList(_this.sort_selector.val());
+      };
+    })(this);
+    this.maximum_point_costs.oninput = (function(_this) {
+      return function() {
+        return _this.renderList(_this.sort_selector.val());
+      };
+    })(this);
+    return this.variable_point_costs.onclick = (function(_this) {
+      return function() {
+        return _this.renderList(_this.sort_selector.val());
+      };
+    })(this);
   };
 
   CardBrowser.prototype.toggleAdvancedSearch = function() {
@@ -1355,15 +1371,42 @@ exportObj.CardBrowser = (function() {
   };
 
   CardBrowser.prototype.checkSearchCriteria = function(card) {
-    var search_text;
+    var s, search_text, ship, text_in_ship, text_search, _i, _len;
     search_text = this.card_search_text.value.toLowerCase();
-    if (!(card.name.toLowerCase().indexOf(search_text) > -1 || card.data.text.toLowerCase().indexOf(search_text) > -1 || (card.display_name && card.display_name.toLowerCase().indexOf(search_text) > -1))) {
+    text_search = card.name.toLowerCase().indexOf(search_text) > -1 || (card.data.text && card.data.text.toLowerCase().indexOf(search_text)) > -1 || (card.display_name && card.display_name.toLowerCase().indexOf(search_text) > -1);
+    if (!text_search) {
+      if (!card.data.ship) {
+        return false;
+      }
+      ship = card.data.ship;
+      if (ship instanceof Array) {
+        text_in_ship = false;
+        for (_i = 0, _len = ship.length; _i < _len; _i++) {
+          s = ship[_i];
+          if (s.toLowerCase().indexOf(search_text) > -1 || (exportObj.ships[s].display_name && exportObj.ships[s].display_name.toLowerCase().indexOf(search_text) > -1)) {
+            text_in_ship = true;
+            break;
+          }
+        }
+        if (!text_in_ship) {
+          return false;
+        }
+      } else {
+        if (!(ship.toLowerCase().indexOf(search_text) > -1 || (exportObj.ships[ship].display_name && exportObj.ships[ship].display_name.toLowerCase().indexOf(search_text) > -1))) {
+          return false;
+        }
+      }
+    }
+    if (card.data.slot === "Hardpoint") {
       return false;
     }
     if (!this.advanced_search_active) {
       return true;
     }
     if (!this.faction_selectors[card.data.faction].checked) {
+      return false;
+    }
+    if (!((card.data.points >= this.minimum_point_costs.value && card.data.points <= this.maximum_point_costs.value) || (this.variable_point_costs.checked && card.data.points === "*"))) {
       return false;
     }
     return true;
@@ -19201,7 +19244,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 20023
+                    lineno: 20065
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -19815,7 +19858,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 20676
+              lineno: 20718
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -20506,7 +20549,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 21314
+          lineno: 21356
         }));
         __iced_deferrals._fulfill();
       });
@@ -20518,7 +20561,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 21315
+            lineno: 21357
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -21899,7 +21942,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 22269
+                      lineno: 22311
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -21957,7 +22000,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 22286
+                lineno: 22328
               })
             ]);
             __iced_deferrals._fulfill();
@@ -22004,7 +22047,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 22300
+              lineno: 22342
             }));
           }
         }
@@ -22862,7 +22905,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 22981
+                lineno: 23023
               })
             ]);
             __iced_deferrals._fulfill();
@@ -23003,7 +23046,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 23054
+                  lineno: 23096
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -23025,7 +23068,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 23058
+                    lineno: 23100
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -23111,7 +23154,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 23097
+            lineno: 23139
           }));
         }
         __iced_deferrals._fulfill();
@@ -23168,10 +23211,10 @@ GenericAddon = (function() {
   };
 
   GenericAddon.prototype.toHTML = function(points) {
-    var attackHTML, attackrangebonus, chargeHTML, forceHTML, match_array, restriction_html, text_str, upgrade_slot_font, _ref;
+    var attackHTML, attackrangebonus, chargeHTML, forceHTML, match_array, restriction_html, text_str, upgrade_slot_font, _base1, _ref;
     if (this.data != null) {
       upgrade_slot_font = ((_ref = this.data.slot) != null ? _ref : this.type).toLowerCase().replace(/[^0-9a-z]/gi, '');
-      match_array = this.data.text.match(/(<span.*<\/span>)<br \/><br \/>(.*)/);
+      match_array = typeof (_base1 = this.data).text === "function" ? _base1.text(match(/(<span.*<\/span>)<br \/><br \/>(.*)/)) : void 0;
       if (match_array) {
         restriction_html = '<div class="card-restriction-container">' + match_array[1] + '</div>';
         text_str = match_array[2];
