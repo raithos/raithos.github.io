@@ -8658,12 +8658,12 @@ exportObj.translations.English = {
     '.info-well .info-upgrades td.info-header': 'Upgrades',
     '.info-well .info-range td.info-header': 'Range',
     '.clear-squad': 'New Squad',
-    '.save-list': 'Save',
-    '.save-list-as': 'Save as…',
-    '.delete-list': 'Delete',
-    '.backend-list-my-squads': 'Load squad',
+    '.save-list': '<i class="fa fa-floppy-o"></i>&nbsp;Save',
+    '.save-list-as': '<i class="fa fa-files-o"></i>&nbsp;Save as…',
+    '.delete-list': '<i class="fa fa-trash-o"></i>&nbsp;Delete',
+    '.backend-list-my-squads': 'Load Squad',
     '.view-as-text': '<span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text',
-    '.randomize': 'Random!',
+    '.randomize': '<i class="fa fa-random"></i>&nbsp;Random!',
     '.randomize-options': 'Randomizer options…',
     '.notes-container > span': 'Squad Notes',
     '.bbcode-list': 'Copy the BBCode below and paste it into your forum post.<textarea></textarea><button class="btn btn-copy">Copy</button>',
@@ -19293,7 +19293,7 @@ exportObj.setupTranslationUI = function(backend) {
     li = $(document.createElement('LI'));
     li.text(language);
     _fn(language, backend);
-    _results.push($('ul.dropdown-menu').append(li));
+    _results.push($('.language-picker .dropdown-menu').append(li));
   }
   return _results;
 };
@@ -19443,7 +19443,8 @@ exportObj.SquadBuilder = (function() {
     this.tooltip_currently_displaying = null;
     this.randomizer_options = {
       sources: null,
-      points: 100
+      points: 200,
+      bid_goal: 5
     };
     this.total_points = 0;
     this.isCustom = false;
@@ -19518,13 +19519,14 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.setupUI = function() {
-    var DEFAULT_RANDOMIZER_ITERATIONS, DEFAULT_RANDOMIZER_POINTS, DEFAULT_RANDOMIZER_TIMEOUT_SEC, content_container, expansion, opt, _i, _len, _ref;
-    DEFAULT_RANDOMIZER_POINTS = 100;
-    DEFAULT_RANDOMIZER_TIMEOUT_SEC = 2;
+    var DEFAULT_RANDOMIZER_BID_GOAL, DEFAULT_RANDOMIZER_ITERATIONS, DEFAULT_RANDOMIZER_POINTS, DEFAULT_RANDOMIZER_TIMEOUT_SEC, content_container, expansion, opt, _i, _len, _ref;
+    DEFAULT_RANDOMIZER_POINTS = 200;
+    DEFAULT_RANDOMIZER_TIMEOUT_SEC = 4;
     DEFAULT_RANDOMIZER_ITERATIONS = 1000;
+    DEFAULT_RANDOMIZER_BID_GOAL = 5;
     this.status_container = $(document.createElement('DIV'));
     this.status_container.addClass('container-fluid');
-    this.status_container.append($.trim('<div class="row-fluid">\n    <div class="span3 squad-name-container">\n        <div class="display-name">\n            <span class="squad-name"></span>\n            <i class="fa fa-pencil"></i>\n        </div>\n        <div class="input-append">\n            <input type="text" maxlength="64" placeholder="Name your squad..." />\n            <button class="btn save"><i class="fa fa-pencil-square-o"></i></button>\n        </div>\n    </div>\n    <div class="span4 points-display-container">\n        Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="100">\n        <select class="game-type-selector">\n            <option value="standard">Extended</option>\n            <option value="second_edition">Second Edition</option>\n            <option value="custom">Custom</option>\n        </select>\n        <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left)</span>\n        <span class="content-warning unreleased-content-used hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning collection-invalid hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n    </div>\n    <div class="span5 pull-right button-container">\n        <div class="btn-group pull-right">\n\n            <button class="btn btn-primary view-as-text"><span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text</button>\n            <!-- <button class="btn btn-primary print-list hidden-phone hidden-tablet"><i class="fa fa-print"></i>&nbsp;Print</button> -->\n            <a class="btn btn-primary hidden collection"><i class="fa fa-folder-open hidden-phone hidden-tabler"></i>&nbsp;Your Collection</a>\n\n            <!--\n            <button class="btn btn-primary randomize" ><i class="fa fa-random hidden-phone hidden-tablet"></i>&nbsp;Random!</button>\n            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">\n                <span class="caret"></span>\n            </button>\n            <ul class="dropdown-menu">\n                <li><a class="randomize-options">Randomizer Options...</a></li>\n            </ul>\n            -->\n\n        </div>\n    </div>\n</div>\n\n<div class="row-fluid">\n    <div class="span12">\n        <button class="show-authenticated btn btn-primary save-list"><i class="fa fa-floppy-o"></i>&nbsp;Save</button>\n        <button class="show-authenticated btn btn-primary save-list-as"><i class="fa fa-files-o"></i>&nbsp;Save As...</button>\n        <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>\n        <button class="show-authenticated btn btn-primary backend-list-my-squads show-authenticated">Load Squad</button>\n        <button class="btn btn-danger clear-squad">New Squad</button>\n        <span class="show-authenticated backend-status"></span>\n    </div>\n</div>'));
+    this.status_container.append($.trim('<div class="row-fluid">\n    <div class="span3 squad-name-container">\n        <div class="display-name">\n            <span class="squad-name"></span>\n            <i class="fa fa-pencil"></i>\n        </div>\n        <div class="input-append">\n            <input type="text" maxlength="64" placeholder="Name your squad..." />\n            <button class="btn save"><i class="fa fa-pencil-square-o"></i></button>\n        </div>\n    </div>\n    <div class="span4 points-display-container">\n        Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="100">\n        <select class="game-type-selector">\n            <option value="standard">Extended</option>\n            <option value="second_edition">Second Edition</option>\n            <option value="custom">Custom</option>\n        </select>\n        <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left)</span>\n        <span class="content-warning unreleased-content-used hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning collection-invalid hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n    </div>\n    <div class="span5 pull-right button-container">\n        <div class="btn-group pull-right">\n\n            <button class="btn btn-primary view-as-text"><span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text</button>\n            <!-- <button class="btn btn-primary print-list hidden-phone hidden-tablet"><i class="fa fa-print"></i>&nbsp;Print</button> -->\n            <a class="btn btn-primary hidden collection"><i class="fa fa-folder-open hidden-phone hidden-tablet"></i>&nbsp;Your Collection</a>\n            \n            <button class="btn btn-primary randomize" ><i class="fa fa-random hidden-phone hidden-tablet"></i>&nbsp;Random!</button>\n            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">\n                <span class="caret"></span>\n            </button>\n            <ul class="dropdown-menu">\n                <li><a class="randomize-options">Randomizer Options</a></li>\n            </ul>\n            \n\n        </div>\n    </div>\n</div>\n\n<div class="row-fluid">\n    <div class="span12">\n        <button class="show-authenticated btn btn-primary save-list"><i class="fa fa-floppy-o"></i>&nbsp;Save</button>\n        <button class="show-authenticated btn btn-primary save-list-as"><i class="fa fa-files-o"></i>&nbsp;Save As...</button>\n        <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>\n        <button class="show-authenticated btn btn-primary backend-list-my-squads show-authenticated">Load Squad</button>\n        <button class="btn btn-danger clear-squad">New Squad</button>\n        <span class="show-authenticated backend-status"></span>\n    </div>\n</div>'));
     this.container.append(this.status_container);
     this.list_modal = $(document.createElement('DIV'));
     this.list_modal.addClass('modal hide fade text-list-modal');
@@ -19764,7 +19766,7 @@ exportObj.SquadBuilder = (function() {
     this.randomizer_options_modal = $(document.createElement('DIV'));
     this.randomizer_options_modal.addClass('modal hide fade');
     $('body').append(this.randomizer_options_modal);
-    this.randomizer_options_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>Random Squad Builder Options</h3>\n</div>\n<div class=\"modal-body\">\n    <form>\n        <label>\n            Desired Points\n            <input type=\"number\" class=\"randomizer-points\" value=\"" + DEFAULT_RANDOMIZER_POINTS + "\" placeholder=\"" + DEFAULT_RANDOMIZER_POINTS + "\" />\n        </label>\n        <label>\n            Sets and Expansions (default all)\n            <select class=\"randomizer-sources\" multiple=\"1\" data-placeholder=\"Use all sets and expansions\">\n            </select>\n        </label>\n        <label>\n            Maximum Seconds to Spend Randomizing\n            <input type=\"number\" class=\"randomizer-timeout\" value=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" placeholder=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" />\n        </label>\n        <label>\n            Maximum Randomization Iterations\n            <input type=\"number\" class=\"randomizer-iterations\" value=\"" + DEFAULT_RANDOMIZER_ITERATIONS + "\" placeholder=\"" + DEFAULT_RANDOMIZER_ITERATIONS + "\" />\n        </label>\n    </form>\n</div>\n<div class=\"modal-footer\">\n    <button class=\"btn btn-primary do-randomize\" aria-hidden=\"true\">Randomize!</button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.randomizer_options_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>Random Squad Builder Options</h3>\n</div>\n<div class=\"modal-body\">\n    <form>\n        <label>\n            Desired Points\n            <input type=\"number\" class=\"randomizer-points\" value=\"" + DEFAULT_RANDOMIZER_POINTS + "\" placeholder=\"" + DEFAULT_RANDOMIZER_POINTS + "\" />\n        </label>\n        <label>\n            Left bid to stop randomizing\n            <input type=\"number\" class=\"randomizer-bid-goal\" value=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" placeholder=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" />\n        </label>\n        <label>\n            Sets and Expansions (default all)\n            <select class=\"randomizer-sources\" multiple=\"1\" data-placeholder=\"Use all sets and expansions\">\n            </select>\n        </label>\n        <label>\n            Maximum Seconds to Spend Randomizing\n            <input type=\"number\" class=\"randomizer-timeout\" value=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" placeholder=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" />\n        </label>\n        <label>\n            Maximum Randomization Iterations\n            <input type=\"number\" class=\"randomizer-iterations\" value=\"" + DEFAULT_RANDOMIZER_ITERATIONS + "\" placeholder=\"" + DEFAULT_RANDOMIZER_ITERATIONS + "\" />\n        </label>\n    </form>\n</div>\n<div class=\"modal-footer\">\n    <button class=\"btn btn-primary do-randomize\" aria-hidden=\"true\">Randomize!</button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
     this.randomizer_source_selector = $(this.randomizer_options_modal.find('select.randomizer-sources'));
     _ref = exportObj.expansions;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -19779,7 +19781,7 @@ exportObj.SquadBuilder = (function() {
     });
     this.randomize_button.click((function(_this) {
       return function(e) {
-        var iterations, points, timeout_sec;
+        var bid_goal, iterations, points, timeout_sec;
         e.preventDefault();
         if (_this.current_squad.dirty && (_this.backend != null)) {
           return _this.backend.warnUnsaved(_this, function() {
@@ -19790,6 +19792,10 @@ exportObj.SquadBuilder = (function() {
           if (isNaN(points) || points <= 0) {
             points = DEFAULT_RANDOMIZER_POINTS;
           }
+          bid_goal = parseInt($(_this.randomizer_options_modal.find('.randomizer-bid-goal')).val());
+          if (isNaN(points) || points <= 0) {
+            bid_goal = DEFAULT_RANDOMIZER_BID_GOAL;
+          }
           timeout_sec = parseInt($(_this.randomizer_options_modal.find('.randomizer-timeout')).val());
           if (isNaN(timeout_sec) || timeout_sec <= 0) {
             timeout_sec = DEFAULT_RANDOMIZER_TIMEOUT_SEC;
@@ -19798,7 +19804,7 @@ exportObj.SquadBuilder = (function() {
           if (isNaN(iterations) || iterations <= 0) {
             iterations = DEFAULT_RANDOMIZER_ITERATIONS;
           }
-          return _this.randomSquad(points, _this.randomizer_source_selector.val(), DEFAULT_RANDOMIZER_TIMEOUT_SEC * 1000, iterations);
+          return _this.randomSquad(points, _this.randomizer_source_selector.val(), timeout_sec * 1000, iterations, bid_goal);
         }
       };
     })(this));
@@ -19858,7 +19864,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 20718
+              lineno: 20725
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -20549,7 +20555,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 21356
+          lineno: 21363
         }));
         __iced_deferrals._fulfill();
       });
@@ -20561,7 +20567,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 21357
+            lineno: 21364
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -20591,10 +20597,13 @@ exportObj.SquadBuilder = (function() {
     }
   };
 
-  SquadBuilder.prototype.getAvailableShipsMatching = function(term) {
+  SquadBuilder.prototype.getAvailableShipsMatching = function(term, sorted) {
     var ship_data, ship_name, ships, _ref;
     if (term == null) {
       term = '';
+    }
+    if (sorted == null) {
+      sorted = true;
     }
     ships = [];
     _ref = exportObj.ships;
@@ -20625,13 +20634,39 @@ exportObj.SquadBuilder = (function() {
         }
       }
     }
-    return ships.sort(exportObj.sortHelper);
+    if (sorted) {
+      ships.sort(exportObj.sortHelper);
+    }
+    return ships;
   };
 
-  SquadBuilder.prototype.getAvailablePilotsForShipIncluding = function(ship, include_pilot, term) {
-    var available_faction_pilots, eligible_faction_pilots, pilot, pilot_name;
+  SquadBuilder.prototype.getAvailableShipsMatchingAndCheapEnough = function(points, term, sorted) {
+    var cheap_ships, pilots, possible_ships, ship, _i, _len;
     if (term == null) {
       term = '';
+    }
+    if (sorted == null) {
+      sorted = false;
+    }
+    possible_ships = this.getAvailableShipsMatching(term, sorted);
+    cheap_ships = [];
+    for (_i = 0, _len = possible_ships.length; _i < _len; _i++) {
+      ship = possible_ships[_i];
+      pilots = this.getAvailablePilotsForShipIncluding(ship.name, null, '', true);
+      if (pilots.length && pilots[0].points <= points) {
+        cheap_ships.push(ship);
+      }
+    }
+    return cheap_ships;
+  };
+
+  SquadBuilder.prototype.getAvailablePilotsForShipIncluding = function(ship, include_pilot, term, sorted) {
+    var available_faction_pilots, eligible_faction_pilots, pilot, pilot_name, retval;
+    if (term == null) {
+      term = '';
+    }
+    if (sorted == null) {
+      sorted = true;
     }
     available_faction_pilots = (function() {
       var _ref, _results;
@@ -20659,7 +20694,7 @@ exportObj.SquadBuilder = (function() {
     if ((include_pilot != null) && (include_pilot.unique != null) && (this.matcher(include_pilot.name, term) || (include_pilot.display_name && this.matcher(include_pilot.display_name, term)))) {
       eligible_faction_pilots.push(include_pilot);
     }
-    return ((function() {
+    retval = (function() {
       var _i, _len, _results;
       _results = [];
       for (_i = 0, _len = available_faction_pilots.length; _i < _len; _i++) {
@@ -20675,7 +20710,11 @@ exportObj.SquadBuilder = (function() {
         });
       }
       return _results;
-    })()).sort(exportObj.sortHelper);
+    })();
+    if (sorted) {
+      retval = retval.sort(exportObj.sortHelper);
+    }
+    return retval;
   };
 
   dfl_filter_func = function() {
@@ -20714,13 +20753,16 @@ exportObj.SquadBuilder = (function() {
     }
   };
 
-  SquadBuilder.prototype.getAvailableUpgradesIncluding = function(slot, include_upgrade, ship, this_upgrade_obj, term, filter_func) {
+  SquadBuilder.prototype.getAvailableUpgradesIncluding = function(slot, include_upgrade, ship, this_upgrade_obj, term, filter_func, sorted) {
     var available_upgrades, eligible_upgrades, equipped_upgrade, limited_upgrades_in_use, retval, upgrade, upgrade_name, _i, _j, _len, _len1, _ref, _results;
     if (term == null) {
       term = '';
     }
     if (filter_func == null) {
       filter_func = this.dfl_filter_func;
+    }
+    if (sorted == null) {
+      sorted = true;
     }
     limited_upgrades_in_use = (function() {
       var _i, _len, _ref, _ref1, _results;
@@ -20789,7 +20831,7 @@ exportObj.SquadBuilder = (function() {
     if ((include_upgrade != null) && (((include_upgrade.unique != null) || (include_upgrade.limited != null) || (include_upgrade.max_per_squad != null)) && (this.matcher(include_upgrade.name, term) || (include_upgrade.display_name && this.matcher(include_upgrade.display_name, term))))) {
       eligible_upgrades.push(include_upgrade);
     }
-    retval = ((function() {
+    retval = (function() {
       var _j, _len1, _results;
       _results = [];
       for (_j = 0, _len1 = available_upgrades.length; _j < _len1; _j++) {
@@ -20804,8 +20846,11 @@ exportObj.SquadBuilder = (function() {
         });
       }
       return _results;
-    })()).sort(exportObj.sortHelper);
-    if (this_upgrade_obj.adjustment_func != null) {
+    })();
+    if (sorted) {
+      retval = retval.sort(exportObj.sortHelper);
+    }
+    if (typeof this_upgrade_obj === "function" ? this_upgrade_obj(typeof adjustment_func !== "undefined" && adjustment_func !== null) : void 0) {
       _results = [];
       for (_j = 0, _len1 = retval.length; _j < _len1; _j++) {
         upgrade = retval[_j];
@@ -21293,10 +21338,10 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype._randomizerLoopBody = function(data) {
-    var addon, available_pilots, available_ships, available_upgrades, idx, new_ship, pilot, removable_things, ship, ship_type, thing_to_remove, unused_addons, upgrade, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _m, _ref, _ref1, _ref2, _ref3, _ref4;
+    var addon, available_pilots, available_ships, available_upgrades, idx, new_ship, pilot, removable_things, ship, ship_type, sorted, thing_to_remove, unused_addons, upgrade, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _len6, _len7, _m, _n, _o, _p, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
     if (data.keep_running && data.iterations < data.max_iterations) {
       data.iterations++;
-      if (this.total_points === data.max_points) {
+      if (data.max_points - this.total_points <= data.bid_goal && this.total_points <= data.max_points) {
         data.keep_running = false;
       } else if (this.total_points < data.max_points) {
         unused_addons = [];
@@ -21311,23 +21356,33 @@ exportObj.SquadBuilder = (function() {
             }
           }
         }
-        idx = $.randomInt(1 + unused_addons.length);
-        if (idx === 0) {
-          available_ships = this.getAvailableShipsMatching();
-          ship_type = available_ships[$.randomInt(available_ships.length)].text;
-          available_pilots = this.getAvailablePilotsForShipIncluding(ship_type);
-          pilot = available_pilots[$.randomInt(available_pilots.length)];
-          if (exportObj.pilotsById[pilot.id].sources.intersects(data.allowed_sources)) {
-            new_ship = this.addShip();
-            new_ship.setPilotById(pilot.id);
+        idx = $.randomInt(3 + unused_addons.length);
+        if (idx < 3) {
+          available_ships = this.getAvailableShipsMatchingAndCheapEnough(data.max_points - this.total_points);
+          if (available_ships.length === 0) {
+            if (unused_addons.length > 0) {
+              idx += 3;
+            } else {
+              available_ships = this.getAvailableShipsMatching('', false);
+            }
           }
-        } else {
-          addon = unused_addons[idx - 1];
+          if (available_ships.length > 0) {
+            ship_type = available_ships[$.randomInt(available_ships.length)].name;
+            available_pilots = this.getAvailablePilotsForShipIncluding(ship_type);
+            pilot = available_pilots[$.randomInt(available_pilots.length)];
+            if (!pilot.disabled && exportObj.pilotsById[pilot.id].sources.intersects(data.allowed_sources)) {
+              new_ship = this.addShip();
+              new_ship.setPilotById(pilot.id);
+            }
+          }
+        }
+        if (idx >= 3) {
+          addon = unused_addons[idx - 3];
           switch (addon.type) {
             case 'Upgrade':
               available_upgrades = (function() {
                 var _k, _len2, _ref2, _results;
-                _ref2 = this.getAvailableUpgradesIncluding(addon.slot, null, addon.ship);
+                _ref2 = this.getAvailableUpgradesIncluding(addon.slot, null, addon.ship, addon, '', this.dfl_filter_func, sorted = false);
                 _results = [];
                 for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
                   upgrade = _ref2[_k];
@@ -21338,7 +21393,10 @@ exportObj.SquadBuilder = (function() {
                 return _results;
               }).call(this);
               if (available_upgrades.length > 0) {
-                addon.setById(available_upgrades[$.randomInt(available_upgrades.length)].id);
+                upgrade = available_upgrades[$.randomInt(available_upgrades.length)];
+              }
+              if (upgrade && !upgrade.disabled) {
+                addon.setById(upgrade.id);
               }
               break;
             default:
@@ -21372,10 +21430,41 @@ exportObj.SquadBuilder = (function() {
       }
       return window.setTimeout(this._makeRandomizerLoopFunc(data), 0);
     } else {
+      while (this.total_points > data.max_points) {
+        removable_things = [];
+        _ref4 = this.ships;
+        for (_m = 0, _len4 = _ref4.length; _m < _len4; _m++) {
+          ship = _ref4[_m];
+          _ref5 = ship.upgrades;
+          for (_n = 0, _len5 = _ref5.length; _n < _len5; _n++) {
+            upgrade = _ref5[_n];
+            if (upgrade.data != null) {
+              removable_things.push(upgrade);
+            }
+          }
+        }
+        if (removable_things.length === 0) {
+          _ref6 = this.ships;
+          for (_o = 0, _len6 = _ref6.length; _o < _len6; _o++) {
+            ship = _ref6[_o];
+            removable_things.push(ship);
+          }
+        }
+        if (removable_things.length > 0) {
+          thing_to_remove = removable_things[$.randomInt(removable_things.length)];
+          if (thing_to_remove instanceof Ship) {
+            this.removeShip(thing_to_remove);
+          } else if (thing_to_remove instanceof GenericAddon) {
+            thing_to_remove.setData(null);
+          } else {
+            throw new Error("Unknown thing to remove " + thing_to_remove);
+          }
+        }
+      }
       window.clearTimeout(data.timer);
-      _ref4 = this.ships;
-      for (_m = 0, _len4 = _ref4.length; _m < _len4; _m++) {
-        ship = _ref4[_m];
+      _ref7 = this.ships;
+      for (_p = 0, _len7 = _ref7.length; _p < _len7; _p++) {
+        ship = _ref7[_p];
         ship.updateSelections();
       }
       this.suppress_automatic_new_ship = false;
@@ -21391,7 +21480,7 @@ exportObj.SquadBuilder = (function() {
     })(this);
   };
 
-  SquadBuilder.prototype.randomSquad = function(max_points, allowed_sources, timeout_ms, max_iterations) {
+  SquadBuilder.prototype.randomSquad = function(max_points, allowed_sources, timeout_ms, max_iterations, bid_goal) {
     var data, stopHandler;
     if (max_points == null) {
       max_points = 100;
@@ -21405,6 +21494,9 @@ exportObj.SquadBuilder = (function() {
     if (max_iterations == null) {
       max_iterations = 1000;
     }
+    if (bid_goal == null) {
+      bid_goal = 5;
+    }
     this.backend_status.fadeOut('slow');
     this.suppress_automatic_new_ship = true;
     while (this.ships.length > 0) {
@@ -21416,6 +21508,7 @@ exportObj.SquadBuilder = (function() {
     data = {
       iterations: 0,
       max_points: max_points,
+      bid_goal: bid_goal,
       max_iterations: max_iterations,
       keep_running: true,
       allowed_sources: allowed_sources != null ? allowed_sources : exportObj.expansions
@@ -21942,7 +22035,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 22311
+                      lineno: 22365
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -22000,7 +22093,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 22328
+                lineno: 22382
               })
             ]);
             __iced_deferrals._fulfill();
@@ -22047,7 +22140,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 22342
+              lineno: 22396
             }));
           }
         }
@@ -22905,7 +22998,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 23023
+                lineno: 23077
               })
             ]);
             __iced_deferrals._fulfill();
@@ -23046,7 +23139,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 23096
+                  lineno: 23150
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -23068,7 +23161,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 23100
+                    lineno: 23154
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -23154,7 +23247,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 23139
+            lineno: 23193
           }));
         }
         __iced_deferrals._fulfill();
