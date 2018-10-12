@@ -8829,9 +8829,9 @@ exportObj.translations.Deutsch =
         '.info-well .info-range td.info-header': 'Reichweite'
         # Squadron edit buttons
         '.clear-squad' : 'Neue Staffel'
-        '.save-list' : 'Speichern'
-        '.save-list-as' : 'Speichern unter…'
-        '.delete-list' : 'Löschen'
+        '.save-list' : '<i class="fa fa-floppy-o"></i>&nbsp;Speichern'
+        '.save-list-as' : '<i class="fa fa-files-o"></i>&nbsp;Speichern unter…'
+        '.delete-list' : '<i class="fa fa-trash-o"></i>&nbsp;Löschen'
         '.backend-list-my-squads' : 'Staffel laden'
         '.delete-squad' : 'Löschen'
         '.delete-squad' : 'Laden'
@@ -8840,8 +8840,8 @@ exportObj.translations.Deutsch =
         '.show-team-epic-squads' : 'Team Episch'
         '.show-all-squads' : 'Alle'
         '.view-as-text' : '<span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Drucken/Als </span>Text ansehen'
-        '.randomize' : 'Zufall!'
-        '.randomize-options' : 'Zufallsgenerator Optionen…'
+        '.randomize' : '<i class="fa fa-random"></i>&nbsp;Zufall!'
+        '.randomize-options' : 'Zufallsgenerator Optionen'
         '.notes-container > span' : 'Staffel Notizen'
         '.choose-obstacles' : 'Hindernisse wählen'
         '.from-xws' : 'Importieren aus XWS-Datei (Beta)'
@@ -16184,15 +16184,29 @@ exportObj = exports ? this
 String::startsWith ?= (t) ->
     @indexOf t == 0
 
-sortWithoutQuotes = (a, b) ->
-    a_name = a.replace /[^a-z0-9]/ig, ''
-    b_name = b.replace /[^a-z0-9]/ig, ''
+sortWithoutQuotes = (a, b, type = '') ->
+    a_name = displayName(a,type).replace /[^a-z0-9]/ig, ''
+    b_name = displayName(b,type).replace /[^a-z0-9]/ig, ''
     if a_name < b_name
         -1
     else if a_name > b_name
         1
     else
         0
+
+displayName = (name, type) ->
+    obj = undefined
+    if type == 'ship'
+        obj = exportObj.ships[name]
+    else if type == 'upgrade'
+        obj = exportObj.upgrades[name]
+    else if type == 'pilot'
+        obj = exportObj.pilots[name]
+    else
+        return name
+    if obj and obj.display_name
+        return obj.display_name
+    return name
 
 exportObj.manifestBySettings =
     'collectioncheck': true
@@ -19731,9 +19745,8 @@ class exportObj.Collection
             for item in items
                 (singletonsByType[item.type] ?= {})[item.name] = true
         for type, names of singletonsByType
-            sorted_names = (name for name of names).sort(sortWithoutQuotes)
+            sorted_names = (name for name of names).sort((a,b) -> sortWithoutQuotes(a,b,type))
             singletonsByType[type] = sorted_names
-                
                 
         component_content = $ @modal.find('.collection-inventory-content')
         component_content.text ''
@@ -19752,7 +19765,7 @@ class exportObj.Collection
                     </div>
                 """
                 ul = $ contents.find("ul#counts-#{type}")
-                for thing in Object.keys(things).sort(sortWithoutQuotes)
+                for thing in Object.keys(things).sort((a,b) -> sortWithoutQuotes(a,b,type))
                     card_totals_by_type[type] += things[thing]
                     if thing in singletonsByType[type]
                         card_different_by_type[type]++
@@ -19834,7 +19847,7 @@ class exportObj.Collection
             for item in items
                 (singletonsByType[item.type] ?= {})[item.name] = true
         for type, names of singletonsByType
-            sorted_names = (name for name of names).sort(sortWithoutQuotes)
+            sorted_names = (name for name of names).sort((a,b) -> sortWithoutQuotes(a,b,type))
             singletonsByType[type] = sorted_names
         
         @modal = $ document.createElement 'DIV'
@@ -20625,7 +20638,7 @@ class exportObj.SquadBuilder
                     <label>
                         Maximum Seconds to Spend Randomizing
                         <input type="number" class="randomizer-timeout" value="#{DEFAULT_RANDOMIZER_TIMEOUT_SEC}" placeholder="#{DEFAULT_RANDOMIZER_TIMEOUT_SEC}" />
-                    </label>it
+                    </label>
                 </form>
             </div>
             <div class="modal-footer">

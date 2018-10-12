@@ -4,7 +4,7 @@
     Stephen Kim <raithos@gmail.com>
     https://raithos.github.io
  */
-var DFL_LANGUAGE, GenericAddon, SERIALIZATION_CODE_TO_CLASS, SPEC_URL, SQUAD_DISPLAY_NAME_MAX_LENGTH, Ship, TYPES, URL_BASE, builders, byName, byPoints, conditionToHTML, exportObj, getPrimaryFaction, sortWithoutQuotes, statAndEffectiveStat, _base,
+var DFL_LANGUAGE, GenericAddon, SERIALIZATION_CODE_TO_CLASS, SPEC_URL, SQUAD_DISPLAY_NAME_MAX_LENGTH, Ship, TYPES, URL_BASE, builders, byName, byPoints, conditionToHTML, displayName, exportObj, getPrimaryFaction, sortWithoutQuotes, statAndEffectiveStat, _base,
   __slice = [].slice,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
@@ -6670,9 +6670,9 @@ exportObj.translations.Deutsch = {
     '.info-well .info-upgrades td.info-header': 'Aufwertungskarten',
     '.info-well .info-range td.info-header': 'Reichweite',
     '.clear-squad': 'Neue Staffel',
-    '.save-list': 'Speichern',
-    '.save-list-as': 'Speichern unter…',
-    '.delete-list': 'Löschen',
+    '.save-list': '<i class="fa fa-floppy-o"></i>&nbsp;Speichern',
+    '.save-list-as': '<i class="fa fa-files-o"></i>&nbsp;Speichern unter…',
+    '.delete-list': '<i class="fa fa-trash-o"></i>&nbsp;Löschen',
     '.backend-list-my-squads': 'Staffel laden',
     '.delete-squad': 'Löschen',
     '.delete-squad': 'Laden',
@@ -6681,8 +6681,8 @@ exportObj.translations.Deutsch = {
     '.show-team-epic-squads': 'Team Episch',
     '.show-all-squads': 'Alle',
     '.view-as-text': '<span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Drucken/Als </span>Text ansehen',
-    '.randomize': 'Zufall!',
-    '.randomize-options': 'Zufallsgenerator Optionen…',
+    '.randomize': '<i class="fa fa-random"></i>&nbsp;Zufall!',
+    '.randomize-options': 'Zufallsgenerator Optionen',
     '.notes-container > span': 'Staffel Notizen',
     '.choose-obstacles': 'Hindernisse wählen',
     '.from-xws': 'Importieren aus XWS-Datei (Beta)',
@@ -15961,10 +15961,13 @@ if ((_base = String.prototype).startsWith == null) {
   };
 }
 
-sortWithoutQuotes = function(a, b) {
+sortWithoutQuotes = function(a, b, type) {
   var a_name, b_name;
-  a_name = a.replace(/[^a-z0-9]/ig, '');
-  b_name = b.replace(/[^a-z0-9]/ig, '');
+  if (type == null) {
+    type = '';
+  }
+  a_name = displayName(a, type).replace(/[^a-z0-9]/ig, '');
+  b_name = displayName(b, type).replace(/[^a-z0-9]/ig, '');
   if (a_name < b_name) {
     return -1;
   } else if (a_name > b_name) {
@@ -15972,6 +15975,24 @@ sortWithoutQuotes = function(a, b) {
   } else {
     return 0;
   }
+};
+
+displayName = function(name, type) {
+  var obj;
+  obj = void 0;
+  if (type === 'ship') {
+    obj = exportObj.ships[name];
+  } else if (type === 'upgrade') {
+    obj = exportObj.upgrades[name];
+  } else if (type === 'pilot') {
+    obj = exportObj.pilots[name];
+  } else {
+    return name;
+  }
+  if (obj && obj.display_name) {
+    return obj.display_name;
+  }
+  return name;
 };
 
 exportObj.manifestBySettings = {
@@ -18868,7 +18889,9 @@ exportObj.Collection = (function() {
           _results.push(name);
         }
         return _results;
-      })()).sort(sortWithoutQuotes);
+      })()).sort(function(a, b) {
+        return sortWithoutQuotes(a, b, type);
+      });
       singletonsByType[type] = sorted_names;
     }
     component_content = $(this.modal.find('.collection-inventory-content'));
@@ -18884,7 +18907,9 @@ exportObj.Collection = (function() {
         card_different_by_type[type] = 0;
         contents = component_content.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\"><h5>" + (type.capitalize()) + "</h5></div>\n</div>\n<div class=\"row-fluid\">\n    <ul id=\"counts-" + type + "\" class=\"span12\"></ul>\n</div>"));
         ul = $(contents.find("ul#counts-" + type));
-        _ref9 = Object.keys(things).sort(sortWithoutQuotes);
+        _ref9 = Object.keys(things).sort(function(a, b) {
+          return sortWithoutQuotes(a, b, type);
+        });
         for (_o = 0, _len2 = _ref9.length; _o < _len2; _o++) {
           thing = _ref9[_o];
           card_totals_by_type[type] += things[thing];
@@ -19004,7 +19029,9 @@ exportObj.Collection = (function() {
           _results.push(name);
         }
         return _results;
-      })()).sort(sortWithoutQuotes);
+      })()).sort(function(a, b) {
+        return sortWithoutQuotes(a, b, type);
+      });
       singletonsByType[type] = sorted_names;
     }
     this.modal = $(document.createElement('DIV'));
@@ -19253,7 +19280,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 20076
+                    lineno: 20089
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -19776,7 +19803,7 @@ exportObj.SquadBuilder = (function() {
     this.randomizer_options_modal = $(document.createElement('DIV'));
     this.randomizer_options_modal.addClass('modal hide fade');
     $('body').append(this.randomizer_options_modal);
-    this.randomizer_options_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>Random Squad Builder Options</h3>\n</div>\n<div class=\"modal-body\">\n    <form>\n        <label>\n            Desired Points\n            <input type=\"number\" class=\"randomizer-points\" value=\"" + DEFAULT_RANDOMIZER_POINTS + "\" placeholder=\"" + DEFAULT_RANDOMIZER_POINTS + "\" />\n        </label>\n        <label>\n            Left bid to stop randomizing\n            <input type=\"number\" class=\"randomizer-bid-goal\" value=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" placeholder=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" />\n        </label>\n        <label>\n            More upgrades\n            <input type=\"range\" min=\"0\" max=\"10\" class=\"randomizer-ships-or-upgrades\" value=\"" + DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES + "\" placeholder=\"" + DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES + "\" />\n            Less upgrades\n        </label>\n        <label>\n            Sets and Expansions (default all)\n            <select class=\"randomizer-sources\" multiple=\"1\" data-placeholder=\"Use all sets and expansions\">\n            </select>\n        </label>\n        <label>\n            Maximum Seconds to Spend Randomizing\n            <input type=\"number\" class=\"randomizer-timeout\" value=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" placeholder=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" />\n        </label>it\n    </form>\n</div>\n<div class=\"modal-footer\">\n    <button class=\"btn btn-primary do-randomize\" aria-hidden=\"true\">Randomize!</button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.randomizer_options_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>Random Squad Builder Options</h3>\n</div>\n<div class=\"modal-body\">\n    <form>\n        <label>\n            Desired Points\n            <input type=\"number\" class=\"randomizer-points\" value=\"" + DEFAULT_RANDOMIZER_POINTS + "\" placeholder=\"" + DEFAULT_RANDOMIZER_POINTS + "\" />\n        </label>\n        <label>\n            Left bid to stop randomizing\n            <input type=\"number\" class=\"randomizer-bid-goal\" value=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" placeholder=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" />\n        </label>\n        <label>\n            More upgrades\n            <input type=\"range\" min=\"0\" max=\"10\" class=\"randomizer-ships-or-upgrades\" value=\"" + DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES + "\" placeholder=\"" + DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES + "\" />\n            Less upgrades\n        </label>\n        <label>\n            Sets and Expansions (default all)\n            <select class=\"randomizer-sources\" multiple=\"1\" data-placeholder=\"Use all sets and expansions\">\n            </select>\n        </label>\n        <label>\n            Maximum Seconds to Spend Randomizing\n            <input type=\"number\" class=\"randomizer-timeout\" value=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" placeholder=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" />\n        </label>\n    </form>\n</div>\n<div class=\"modal-footer\">\n    <button class=\"btn btn-primary do-randomize\" aria-hidden=\"true\">Randomize!</button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
     this.randomizer_source_selector = $(this.randomizer_options_modal.find('select.randomizer-sources'));
     _ref = exportObj.expansions;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -19874,7 +19901,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 20738
+              lineno: 20751
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -20565,7 +20592,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 21376
+          lineno: 21389
         }));
         __iced_deferrals._fulfill();
       });
@@ -20577,7 +20604,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 21377
+            lineno: 21390
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -22045,7 +22072,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 22377
+                      lineno: 22390
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -22103,7 +22130,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 22394
+                lineno: 22407
               })
             ]);
             __iced_deferrals._fulfill();
@@ -22150,7 +22177,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 22408
+              lineno: 22421
             }));
           }
         }
@@ -23008,7 +23035,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 23089
+                lineno: 23102
               })
             ]);
             __iced_deferrals._fulfill();
@@ -23149,7 +23176,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 23162
+                  lineno: 23175
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -23171,7 +23198,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 23166
+                    lineno: 23179
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -23257,7 +23284,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 23205
+            lineno: 23218
           }));
         }
         __iced_deferrals._fulfill();
