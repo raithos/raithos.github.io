@@ -881,7 +881,7 @@ exportObj.CardBrowser = (function() {
   }
 
   CardBrowser.prototype.setupUI = function() {
-    this.container.append($.trim("<div class=\"container-fluid xwing-card-browser\">\n    <div class=\"row-fluid\">\n        <div class=\"span12\">\n            <span class=\"translate sort-cards-by\">Sort cards by</span>: <select class=\"sort-by\">\n                <option value=\"name\">Name</option>\n                <option value=\"source\">Source</option>\n                <option value=\"type-by-points\">Type (by Points)</option>\n                <option value=\"type-by-name\" selected=\"1\">Type (by Name)</option>\n            </select>\n        </div>\n    </div>\n    <div class=\"row-fluid\">\n        <div class=\"span4 card-selector-container\">\n\n        </div>\n        <div class=\"span8\">\n            <div class=\"well card-search-container\">\n                <input type=\"search\" placeholder=\"Search for name, text or ship\" class = \"card-search-text\">" + "                <button class=\"btn btn-primary show-advanced-search\">\n                    Advanced Search\n                </button>\n                <div class=\"advanced-search-container\">\n                    <div class= \"advanced-search-faction-selection-container\">\n                        <strong>Faction:</strong>\n                        <label class = \"toggle-rebel-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"rebel-checkbox advanced-search-checkbox\" checked=\"checked\" /> Rebel\n                        </label>\n                        <label class = \"toggle-imperial-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"imperial-checkbox advanced-search-checkbox\" checked=\"checked\" /> Imperial\n                        </label>\n                        <label class = \"toggle-scum-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"scum-checkbox advanced-search-checkbox\" checked=\"checked\" /> Scum\n                        </label>\n                        <label class = \"toggle-fo-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"fo-checkbox advanced-search-checkbox\" checked=\"checked\" /> First Order\n                        </label>\n                        <label class = \"toggle-resistance-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"resistance-checkbox advanced-search-checkbox\" checked=\"checked\" /> Resistance\n                        </label>\n                        <label class = \"toggle-factionless-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"factionless-checkbox advanced-search-checkbox\" checked=\"checked\" /> Factionless\n                        </label>\n                        <span class=\"advanced-search-tooltip\" tooltip=\"A card is considered factionless, if it can be used by more than one faction.\"> &#9432 </span>\n                    </div>\n                    <div class = \"advanced-search-point-selection-container\">\n                        <strong>Point costs:</strong>\n                        <label class = \"advanced-search-label set-minimum-points\">\n                            from <input type=\"number\" class=\"minimum-point-cost advanced-search-number-input\" value=\"0\" /> \n                        </label>\n                        <label class = \"advanced-search-label set-maximum-points\">\n                            to <input type=\"number\" class=\"maximum-point-cost advanced-search-number-input\" value=\"200\" /> \n                        </label>\n                        <label class = \"advanced-search-label toggle-variable-cost-search\">\n                            <input type=\"checkbox\" class=\"variable-point-cost-checkbox advanced-search-checkbox\" checked=\"checked\" /> Variable point cost\n                        </label>\n                    </div>\n                </div>\n            </div>\n            <div class=\"well card-viewer-placeholder info-well\">\n                <p class=\"translate select-a-card\">Select a card from the list at the left.</p>\n            </div>\n            <div class=\"well card-viewer-container info-well\">\n                <span class=\"info-name\"></span>\n                <br />\n                <span class=\"info-type\"></span>\n                <br />\n                <span class=\"info-sources\"></span>\n                <table>\n                    <tbody>\n                        <tr class=\"info-skill\">\n                            <td class=\"info-header\">Skill</td>\n                            <td class=\"info-data info-skill\"></td>\n                        </tr>\n                        <tr class=\"info-energy\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                            <td class=\"info-data info-energy\"></td>\n                        </tr>\n                        <tr class=\"info-attack\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-fullfront\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-bullseye\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-back\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-turret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-doubleturret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-agility\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                            <td class=\"info-data info-agility\"></td>\n                        </tr>\n                        <tr class=\"info-hull\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                            <td class=\"info-data info-hull\"></td>\n                        </tr>\n                        <tr class=\"info-shields\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                            <td class=\"info-data info-shields\"></td>\n                        </tr>\n                        <tr class=\"info-force\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i></td>\n                            <td class=\"info-data info-force\"></td>\n                        </tr>\n                        <tr class=\"info-charge\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                            <td class=\"info-data info-charge\"></td>\n                        </tr>\n                        <tr class=\"info-range\">\n                            <td class=\"info-header\">Range</td>\n                            <td class=\"info-data info-range\"></td>\n                        </tr>\n                        <tr class=\"info-actions\">\n                            <td class=\"info-header\">Actions</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                        <tr class=\"info-actions-red\">\n                            <td></td>\n                            <td class=\"info-data-red\"></td>\n                        </tr>\n                        <tr class=\"info-upgrades\">\n                            <td class=\"info-header\">Upgrades</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                    </tbody>\n                </table>\n                <p class=\"info-text\" />\n            </div>\n        </div>\n    </div>\n</div>"));
+    this.container.append($.trim("<div class=\"container-fluid xwing-card-browser\">\n    <div class=\"row-fluid\">\n        <div class=\"span12\">\n            <span class=\"translate sort-cards-by\">Sort cards by</span>: <select class=\"sort-by\">\n                <option value=\"name\">Name</option>\n                <option value=\"source\">Source</option>\n                <option value=\"type-by-points\">Type (by Points)</option>\n                <option value=\"type-by-name\" selected=\"1\">Type (by Name)</option>\n            </select>\n        </div>\n    </div>\n    <div class=\"row-fluid\">\n        <div class=\"span4 card-selector-container\">\n\n        </div>\n        <div class=\"span8\">\n            <div class=\"well card-search-container\">\n                <input type=\"search\" placeholder=\"Search for name, text or ship\" class = \"card-search-text\">" + "                <button class=\"btn btn-primary show-advanced-search\">\n                    Advanced Search\n                </button>\n                <div class=\"advanced-search-container\">\n                    <div class= \"advanced-search-faction-selection-container\">\n                        <strong>Faction:</strong>\n                        <label class = \"toggle-rebel-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"rebel-checkbox advanced-search-checkbox\" checked=\"checked\" /> Rebel\n                        </label>\n                        <label class = \"toggle-imperial-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"imperial-checkbox advanced-search-checkbox\" checked=\"checked\" /> Imperial\n                        </label>\n                        <label class = \"toggle-scum-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"scum-checkbox advanced-search-checkbox\" checked=\"checked\" /> Scum\n                        </label>\n                        <label class = \"toggle-fo-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"fo-checkbox advanced-search-checkbox\" checked=\"checked\" /> First Order\n                        </label>\n                        <label class = \"toggle-resistance-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"resistance-checkbox advanced-search-checkbox\" checked=\"checked\" /> Resistance\n                        </label>\n                        <label class = \"toggle-factionless-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"factionless-checkbox advanced-search-checkbox\" checked=\"checked\" /> Factionless\n                            <span class=\"advanced-search-tooltip\" tooltip=\"A card is considered factionless, if it can be used by more than one faction.\"> &#9432 </span>\n                        </label>\n                    </div>\n                    <div class = \"advanced-search-point-selection-container\">\n                        <strong>Point costs:</strong>\n                        <label class = \"advanced-search-label set-minimum-points\">\n                            from <input type=\"number\" class=\"minimum-point-cost advanced-search-number-input\" value=\"0\" /> \n                        </label>\n                        <label class = \"advanced-search-label set-maximum-points\">\n                            to <input type=\"number\" class=\"maximum-point-cost advanced-search-number-input\" value=\"200\" /> \n                        </label>\n                        <label class = \"advanced-search-label toggle-variable-cost-search\">\n                            <input type=\"checkbox\" class=\"variable-point-cost-checkbox advanced-search-checkbox\" checked=\"checked\" /> Variable point cost\n                        </label>\n                    </div>\n                    <div class = \"advanced-search-misc-container\">\n                        <label class = \"advanced-search-label toggle-second-edition\">\n                            <input type=\"checkbox\" class=\"second-edition-checkbox advanced-search-checkbox\" /> Second-Edition only\n                            <span class=\"advanced-search-tooltip\" tooltip=\"Check to exclude cards only obtainable from conversion kits.\"> &#9432 </span>\n                        </label>\n                    </div>\n                </div>\n            </div>\n            <div class=\"well card-viewer-placeholder info-well\">\n                <p class=\"translate select-a-card\">Select a card from the list at the left.</p>\n            </div>\n            <div class=\"well card-viewer-container info-well\">\n                <span class=\"info-name\"></span>\n                <br />\n                <span class=\"info-type\"></span>\n                <br />\n                <span class=\"info-sources\"></span>\n                <table>\n                    <tbody>\n                        <tr class=\"info-skill\">\n                            <td class=\"info-header\">Skill</td>\n                            <td class=\"info-data info-skill\"></td>\n                        </tr>\n                        <tr class=\"info-energy\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                            <td class=\"info-data info-energy\"></td>\n                        </tr>\n                        <tr class=\"info-attack\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-fullfront\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-bullseye\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-back\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-turret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-doubleturret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-agility\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                            <td class=\"info-data info-agility\"></td>\n                        </tr>\n                        <tr class=\"info-hull\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                            <td class=\"info-data info-hull\"></td>\n                        </tr>\n                        <tr class=\"info-shields\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                            <td class=\"info-data info-shields\"></td>\n                        </tr>\n                        <tr class=\"info-force\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i></td>\n                            <td class=\"info-data info-force\"></td>\n                        </tr>\n                        <tr class=\"info-charge\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                            <td class=\"info-data info-charge\"></td>\n                        </tr>\n                        <tr class=\"info-range\">\n                            <td class=\"info-header\">Range</td>\n                            <td class=\"info-data info-range\"></td>\n                        </tr>\n                        <tr class=\"info-actions\">\n                            <td class=\"info-header\">Actions</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                        <tr class=\"info-actions-red\">\n                            <td></td>\n                            <td class=\"info-data-red\"></td>\n                        </tr>\n                        <tr class=\"info-upgrades\">\n                            <td class=\"info-header\">Upgrades</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                    </tbody>\n                </table>\n                <p class=\"info-text\" />\n            </div>\n        </div>\n    </div>\n</div>"));
     this.card_selector_container = $(this.container.find('.xwing-card-browser .card-selector-container'));
     this.card_viewer_container = $(this.container.find('.xwing-card-browser .card-viewer-container'));
     this.card_viewer_container.hide();
@@ -904,7 +904,8 @@ exportObj.CardBrowser = (function() {
     this.faction_selectors[void 0] = ($(this.container.find('.xwing-card-browser .factionless-checkbox')))[0];
     this.minimum_point_costs = ($(this.container.find('.xwing-card-browser .minimum-point-cost')))[0];
     this.maximum_point_costs = ($(this.container.find('.xwing-card-browser .maximum-point-cost')))[0];
-    return this.variable_point_costs = ($(this.container.find('.xwing-card-browser .variable-point-cost-checkbox')))[0];
+    this.variable_point_costs = ($(this.container.find('.xwing-card-browser .variable-point-cost-checkbox')))[0];
+    return this.second_edition_checkbox = ($(this.container.find('.xwing-card-browser .second-edition-checkbox')))[0];
   };
 
   CardBrowser.prototype.setupHandlers = function() {
@@ -949,7 +950,12 @@ exportObj.CardBrowser = (function() {
         return _this.renderList(_this.sort_selector.val());
       };
     })(this);
-    return this.variable_point_costs.onclick = (function(_this) {
+    this.variable_point_costs.onclick = (function(_this) {
+      return function() {
+        return _this.renderList(_this.sort_selector.val());
+      };
+    })(this);
+    return this.second_edition_checkbox.onclick = (function(_this) {
       return function() {
         return _this.renderList(_this.sort_selector.val());
       };
@@ -1404,6 +1410,9 @@ exportObj.CardBrowser = (function() {
       return true;
     }
     if (!this.faction_selectors[card.data.faction].checked) {
+      return false;
+    }
+    if (!(exportObj.secondEditionCheck(card.data) || !this.second_edition_checkbox.checked)) {
       return false;
     }
     if (!((card.data.points >= this.minimum_point_costs.value && card.data.points <= this.maximum_point_costs.value) || (this.variable_point_costs.checked && card.data.points === "*"))) {
@@ -19244,7 +19253,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 20065
+                    lineno: 20076
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -19444,7 +19453,8 @@ exportObj.SquadBuilder = (function() {
     this.randomizer_options = {
       sources: null,
       points: 200,
-      bid_goal: 5
+      bid_goal: 5,
+      ships_or_upgrades: 3
     };
     this.total_points = 0;
     this.isCustom = false;
@@ -19519,11 +19529,11 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.setupUI = function() {
-    var DEFAULT_RANDOMIZER_BID_GOAL, DEFAULT_RANDOMIZER_ITERATIONS, DEFAULT_RANDOMIZER_POINTS, DEFAULT_RANDOMIZER_TIMEOUT_SEC, content_container, expansion, opt, _i, _len, _ref;
+    var DEFAULT_RANDOMIZER_BID_GOAL, DEFAULT_RANDOMIZER_POINTS, DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES, DEFAULT_RANDOMIZER_TIMEOUT_SEC, content_container, expansion, opt, _i, _len, _ref;
     DEFAULT_RANDOMIZER_POINTS = 200;
     DEFAULT_RANDOMIZER_TIMEOUT_SEC = 4;
-    DEFAULT_RANDOMIZER_ITERATIONS = 1000;
     DEFAULT_RANDOMIZER_BID_GOAL = 5;
+    DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES = 3;
     this.status_container = $(document.createElement('DIV'));
     this.status_container.addClass('container-fluid');
     this.status_container.append($.trim('<div class="row-fluid">\n    <div class="span3 squad-name-container">\n        <div class="display-name">\n            <span class="squad-name"></span>\n            <i class="fa fa-pencil"></i>\n        </div>\n        <div class="input-append">\n            <input type="text" maxlength="64" placeholder="Name your squad..." />\n            <button class="btn save"><i class="fa fa-pencil-square-o"></i></button>\n        </div>\n    </div>\n    <div class="span4 points-display-container">\n        Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="100">\n        <select class="game-type-selector">\n            <option value="standard">Extended</option>\n            <option value="second_edition">Second Edition</option>\n            <option value="custom">Custom</option>\n        </select>\n        <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left)</span>\n        <span class="content-warning unreleased-content-used hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning collection-invalid hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n    </div>\n    <div class="span5 pull-right button-container">\n        <div class="btn-group pull-right">\n\n            <button class="btn btn-primary view-as-text"><span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text</button>\n            <!-- <button class="btn btn-primary print-list hidden-phone hidden-tablet"><i class="fa fa-print"></i>&nbsp;Print</button> -->\n            <a class="btn btn-primary hidden collection"><i class="fa fa-folder-open hidden-phone hidden-tablet"></i>&nbsp;Your Collection</a>\n            \n            <button class="btn btn-primary randomize" ><i class="fa fa-random hidden-phone hidden-tablet"></i>&nbsp;Random!</button>\n            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">\n                <span class="caret"></span>\n            </button>\n            <ul class="dropdown-menu">\n                <li><a class="randomize-options">Randomizer Options</a></li>\n            </ul>\n            \n\n        </div>\n    </div>\n</div>\n\n<div class="row-fluid">\n    <div class="span12">\n        <button class="show-authenticated btn btn-primary save-list"><i class="fa fa-floppy-o"></i>&nbsp;Save</button>\n        <button class="show-authenticated btn btn-primary save-list-as"><i class="fa fa-files-o"></i>&nbsp;Save As...</button>\n        <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>\n        <button class="show-authenticated btn btn-primary backend-list-my-squads show-authenticated">Load Squad</button>\n        <button class="btn btn-danger clear-squad">New Squad</button>\n        <span class="show-authenticated backend-status"></span>\n    </div>\n</div>'));
@@ -19766,7 +19776,7 @@ exportObj.SquadBuilder = (function() {
     this.randomizer_options_modal = $(document.createElement('DIV'));
     this.randomizer_options_modal.addClass('modal hide fade');
     $('body').append(this.randomizer_options_modal);
-    this.randomizer_options_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>Random Squad Builder Options</h3>\n</div>\n<div class=\"modal-body\">\n    <form>\n        <label>\n            Desired Points\n            <input type=\"number\" class=\"randomizer-points\" value=\"" + DEFAULT_RANDOMIZER_POINTS + "\" placeholder=\"" + DEFAULT_RANDOMIZER_POINTS + "\" />\n        </label>\n        <label>\n            Left bid to stop randomizing\n            <input type=\"number\" class=\"randomizer-bid-goal\" value=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" placeholder=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" />\n        </label>\n        <label>\n            Sets and Expansions (default all)\n            <select class=\"randomizer-sources\" multiple=\"1\" data-placeholder=\"Use all sets and expansions\">\n            </select>\n        </label>\n        <label>\n            Maximum Seconds to Spend Randomizing\n            <input type=\"number\" class=\"randomizer-timeout\" value=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" placeholder=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" />\n        </label>\n        <label>\n            Maximum Randomization Iterations\n            <input type=\"number\" class=\"randomizer-iterations\" value=\"" + DEFAULT_RANDOMIZER_ITERATIONS + "\" placeholder=\"" + DEFAULT_RANDOMIZER_ITERATIONS + "\" />\n        </label>\n    </form>\n</div>\n<div class=\"modal-footer\">\n    <button class=\"btn btn-primary do-randomize\" aria-hidden=\"true\">Randomize!</button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.randomizer_options_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>Random Squad Builder Options</h3>\n</div>\n<div class=\"modal-body\">\n    <form>\n        <label>\n            Desired Points\n            <input type=\"number\" class=\"randomizer-points\" value=\"" + DEFAULT_RANDOMIZER_POINTS + "\" placeholder=\"" + DEFAULT_RANDOMIZER_POINTS + "\" />\n        </label>\n        <label>\n            Left bid to stop randomizing\n            <input type=\"number\" class=\"randomizer-bid-goal\" value=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" placeholder=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" />\n        </label>\n        <label>\n            More upgrades\n            <input type=\"range\" min=\"0\" max=\"10\" class=\"randomizer-ships-or-upgrades\" value=\"" + DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES + "\" placeholder=\"" + DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES + "\" />\n            Less upgrades\n        </label>\n        <label>\n            Sets and Expansions (default all)\n            <select class=\"randomizer-sources\" multiple=\"1\" data-placeholder=\"Use all sets and expansions\">\n            </select>\n        </label>\n        <label>\n            Maximum Seconds to Spend Randomizing\n            <input type=\"number\" class=\"randomizer-timeout\" value=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" placeholder=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" />\n        </label>it\n    </form>\n</div>\n<div class=\"modal-footer\">\n    <button class=\"btn btn-primary do-randomize\" aria-hidden=\"true\">Randomize!</button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
     this.randomizer_source_selector = $(this.randomizer_options_modal.find('select.randomizer-sources'));
     _ref = exportObj.expansions;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -19781,7 +19791,7 @@ exportObj.SquadBuilder = (function() {
     });
     this.randomize_button.click((function(_this) {
       return function(e) {
-        var bid_goal, iterations, points, timeout_sec;
+        var bid_goal, points, ships_or_upgrades, timeout_sec;
         e.preventDefault();
         if (_this.current_squad.dirty && (_this.backend != null)) {
           return _this.backend.warnUnsaved(_this, function() {
@@ -19793,18 +19803,18 @@ exportObj.SquadBuilder = (function() {
             points = DEFAULT_RANDOMIZER_POINTS;
           }
           bid_goal = parseInt($(_this.randomizer_options_modal.find('.randomizer-bid-goal')).val());
-          if (isNaN(points) || points <= 0) {
+          if (isNaN(bid_goal) || bid_goal < 0) {
             bid_goal = DEFAULT_RANDOMIZER_BID_GOAL;
+          }
+          ships_or_upgrades = parseInt($(_this.randomizer_options_modal.find('.randomizer-ships-or-upgrades')).val());
+          if (isNaN(ships_or_upgrades) || ships_or_upgrades < 0) {
+            ships_or_upgrades = DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES;
           }
           timeout_sec = parseInt($(_this.randomizer_options_modal.find('.randomizer-timeout')).val());
           if (isNaN(timeout_sec) || timeout_sec <= 0) {
             timeout_sec = DEFAULT_RANDOMIZER_TIMEOUT_SEC;
           }
-          iterations = parseInt($(_this.randomizer_options_modal.find('.randomizer-iterations')).val());
-          if (isNaN(iterations) || iterations <= 0) {
-            iterations = DEFAULT_RANDOMIZER_ITERATIONS;
-          }
-          return _this.randomSquad(points, _this.randomizer_source_selector.val(), timeout_sec * 1000, iterations, bid_goal);
+          return _this.randomSquad(points, _this.randomizer_source_selector.val(), timeout_sec * 1000, bid_goal, ships_or_upgrades);
         }
       };
     })(this));
@@ -19864,7 +19874,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 20725
+              lineno: 20738
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -20555,7 +20565,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 21363
+          lineno: 21376
         }));
         __iced_deferrals._fulfill();
       });
@@ -20567,7 +20577,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 21364
+            lineno: 21377
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -21338,9 +21348,8 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype._randomizerLoopBody = function(data) {
-    var addon, available_pilots, available_ships, available_upgrades, idx, new_ship, pilot, removable_things, ship, ship_type, sorted, thing_to_remove, unused_addons, upgrade, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _len6, _len7, _m, _n, _o, _p, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
-    if (data.keep_running && data.iterations < data.max_iterations) {
-      data.iterations++;
+    var addon, available_pilots, available_ships, available_upgrades, idx, new_ship, pilot, removable_things, ship, ship_type, sorted, thing_to_remove, unused_addons, upgrade, _, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _len6, _len7, _m, _n, _o, _p, _q, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8;
+    if (data.keep_running) {
       if (data.max_points - this.total_points <= data.bid_goal && this.total_points <= data.max_points) {
         data.keep_running = false;
       } else if (this.total_points < data.max_points) {
@@ -21356,12 +21365,12 @@ exportObj.SquadBuilder = (function() {
             }
           }
         }
-        idx = $.randomInt(3 + unused_addons.length);
-        if (idx < 3) {
+        idx = $.randomInt(data.ships_or_upgrades + unused_addons.length);
+        if (idx < data.ships_or_upgrades || unused_addons.length === 0) {
           available_ships = this.getAvailableShipsMatchingAndCheapEnough(data.max_points - this.total_points);
           if (available_ships.length === 0) {
             if (unused_addons.length > 0) {
-              idx += 3;
+              idx += data.ships_or_upgrades;
             } else {
               available_ships = this.getAvailableShipsMatching('', false);
             }
@@ -21376,8 +21385,8 @@ exportObj.SquadBuilder = (function() {
             }
           }
         }
-        if (idx >= 3) {
-          addon = unused_addons[idx - 3];
+        if (idx >= data.ships_or_upgrades && unused_addons.length !== 0) {
+          addon = unused_addons[idx - data.ships_or_upgrades];
           switch (addon.type) {
             case 'Upgrade':
               available_upgrades = (function() {
@@ -21408,10 +21417,12 @@ exportObj.SquadBuilder = (function() {
         _ref2 = this.ships;
         for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
           ship = _ref2[_k];
-          removable_things.push(ship);
-          _ref3 = ship.upgrades;
-          for (_l = 0, _len3 = _ref3.length; _l < _len3; _l++) {
-            upgrade = _ref3[_l];
+          for (_ = _l = 0, _ref3 = 11 - data.ships_or_upgrades; 0 <= _ref3 ? _l < _ref3 : _l > _ref3; _ = 0 <= _ref3 ? ++_l : --_l) {
+            removable_things.push(ship);
+          }
+          _ref4 = ship.upgrades;
+          for (_m = 0, _len3 = _ref4.length; _m < _len3; _m++) {
+            upgrade = _ref4[_m];
             if (upgrade.data != null) {
               removable_things.push(upgrade);
             }
@@ -21432,21 +21443,21 @@ exportObj.SquadBuilder = (function() {
     } else {
       while (this.total_points > data.max_points) {
         removable_things = [];
-        _ref4 = this.ships;
-        for (_m = 0, _len4 = _ref4.length; _m < _len4; _m++) {
-          ship = _ref4[_m];
-          _ref5 = ship.upgrades;
-          for (_n = 0, _len5 = _ref5.length; _n < _len5; _n++) {
-            upgrade = _ref5[_n];
+        _ref5 = this.ships;
+        for (_n = 0, _len4 = _ref5.length; _n < _len4; _n++) {
+          ship = _ref5[_n];
+          _ref6 = ship.upgrades;
+          for (_o = 0, _len5 = _ref6.length; _o < _len5; _o++) {
+            upgrade = _ref6[_o];
             if (upgrade.data != null) {
               removable_things.push(upgrade);
             }
           }
         }
         if (removable_things.length === 0) {
-          _ref6 = this.ships;
-          for (_o = 0, _len6 = _ref6.length; _o < _len6; _o++) {
-            ship = _ref6[_o];
+          _ref7 = this.ships;
+          for (_p = 0, _len6 = _ref7.length; _p < _len6; _p++) {
+            ship = _ref7[_p];
             removable_things.push(ship);
           }
         }
@@ -21462,9 +21473,9 @@ exportObj.SquadBuilder = (function() {
         }
       }
       window.clearTimeout(data.timer);
-      _ref7 = this.ships;
-      for (_p = 0, _len7 = _ref7.length; _p < _len7; _p++) {
-        ship = _ref7[_p];
+      _ref8 = this.ships;
+      for (_q = 0, _len7 = _ref8.length; _q < _len7; _q++) {
+        ship = _ref8[_q];
         ship.updateSelections();
       }
       this.suppress_automatic_new_ship = false;
@@ -21480,10 +21491,10 @@ exportObj.SquadBuilder = (function() {
     })(this);
   };
 
-  SquadBuilder.prototype.randomSquad = function(max_points, allowed_sources, timeout_ms, max_iterations, bid_goal) {
+  SquadBuilder.prototype.randomSquad = function(max_points, allowed_sources, timeout_ms, bid_goal, ships_or_upgrades) {
     var data, stopHandler;
     if (max_points == null) {
-      max_points = 100;
+      max_points = 200;
     }
     if (allowed_sources == null) {
       allowed_sources = null;
@@ -21491,11 +21502,11 @@ exportObj.SquadBuilder = (function() {
     if (timeout_ms == null) {
       timeout_ms = 1000;
     }
-    if (max_iterations == null) {
-      max_iterations = 1000;
-    }
     if (bid_goal == null) {
       bid_goal = 5;
+    }
+    if (ships_or_upgrades == null) {
+      ships_or_upgrades = 3;
     }
     this.backend_status.fadeOut('slow');
     this.suppress_automatic_new_ship = true;
@@ -21506,10 +21517,9 @@ exportObj.SquadBuilder = (function() {
       throw new Error("Ships not emptied");
     }
     data = {
-      iterations: 0,
       max_points: max_points,
       bid_goal: bid_goal,
-      max_iterations: max_iterations,
+      ships_or_upgrades: ships_or_upgrades,
       keep_running: true,
       allowed_sources: allowed_sources != null ? allowed_sources : exportObj.expansions
     };
@@ -22035,7 +22045,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 22365
+                      lineno: 22377
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -22093,7 +22103,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 22382
+                lineno: 22394
               })
             ]);
             __iced_deferrals._fulfill();
@@ -22140,7 +22150,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 22396
+              lineno: 22408
             }));
           }
         }
@@ -22998,7 +23008,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 23077
+                lineno: 23089
               })
             ]);
             __iced_deferrals._fulfill();
@@ -23139,7 +23149,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 23150
+                  lineno: 23162
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -23161,7 +23171,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 23154
+                    lineno: 23166
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -23247,7 +23257,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 23193
+            lineno: 23205
           }));
         }
         __iced_deferrals._fulfill();
