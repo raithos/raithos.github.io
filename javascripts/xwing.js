@@ -21397,7 +21397,7 @@ exportObj.SquadBuilder = (function() {
           available_ships = this.getAvailableShipsMatchingAndCheapEnough(data.max_points - this.total_points);
           if (available_ships.length === 0) {
             if (unused_addons.length > 0) {
-              idx += data.ships_or_upgrades;
+              idx = $.randomInt(unused_addons.length) + data.ships_or_upgrades;
             } else {
               available_ships = this.getAvailableShipsMatching('', false);
             }
