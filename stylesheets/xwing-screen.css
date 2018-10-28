@@ -105,6 +105,8 @@
       margin-top: -25px; }
       .fancy-ship .fancy-pilot-stats .pilot-stats-content .xwing-miniatures-font {
         vertical-align: middle; }
+  .fancy-ship .expanded-hull-or-shield {
+    display: none; }
   .fancy-ship .fancy-dial {
     display: none;
     float: right;
@@ -215,7 +217,7 @@
     margin-right: 30px;
     clear: both; }
 
-.bbcode-list textarea, textarea.xws-content, .html-list textarea {
+.bbcode-list textarea, textarea.xws-content, .html-list textarea, .reddit-list textarea {
   width: 95%;
   height: 200px;
   cursor: text; }

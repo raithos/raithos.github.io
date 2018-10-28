@@ -800,6 +800,13 @@ class exportObj.CardBrowser
                                         <span class="advanced-search-tooltip" tooltip="Check to exclude cards only obtainable from conversion kits."> &#9432 </span>
                                     </label>
                                 </div>
+                                <div class = "advanced-search-slot-container">
+                                    <label class = "advanced-search-label select-slots">
+                                        Available slots
+                                        <select class="advanced-search-selection slot-selection" multiple="1" data-placeholder="No slots selected"></select>
+                                        <span class="advanced-search-tooltip" tooltip="Search for pilots having the all selected slots available."> &#9432 </span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div class="well card-viewer-placeholder info-well">
@@ -917,6 +924,13 @@ class exportObj.CardBrowser
         @maximum_point_costs = ($ @container.find('.xwing-card-browser .maximum-point-cost'))[0]
         @variable_point_costs = ($ @container.find('.xwing-card-browser .variable-point-cost-checkbox'))[0]
         @second_edition_checkbox = ($ @container.find('.xwing-card-browser .second-edition-checkbox'))[0]
+        @slot_selection = ($ @container.find('.xwing-card-browser select.slot-selection'))
+        for slot of exportObj.upgradesBySlotCanonicalName
+            opt = $ document.createElement('OPTION')
+            opt.text slot
+            @slot_selection.append opt
+        @slot_selection.select2
+            minimumResultsForSearch: if $.isMobile() then -1 else 0
 
 
     setupHandlers: () ->
@@ -940,6 +954,7 @@ class exportObj.CardBrowser
         @maximum_point_costs.oninput = => @renderList @sort_selector.val()
         @variable_point_costs.onclick = => @renderList @sort_selector.val()
         @second_edition_checkbox.onclick = => @renderList @sort_selector.val()
+        @slot_selection[0].onchange = => @renderList @sort_selector.val()
 
 
     toggleAdvancedSearch: () =>
@@ -1207,7 +1222,8 @@ class exportObj.CardBrowser
                 return false unless text_in_ship
             else
                 return false unless ship.toLowerCase().indexOf(search_text) > -1 or (exportObj.ships[ship].display_name and exportObj.ships[ship].display_name.toLowerCase().indexOf(search_text) > -1)
- 
+    
+        # prevent the three virtual hardpoint cards from beeing displayed
         return false unless card.data.slot != "Hardpoint"
 
         # check if advanced search is enabled
@@ -1219,9 +1235,16 @@ class exportObj.CardBrowser
         # check if second-edition only matches
         return false unless exportObj.secondEditionCheck(card.data) or not @second_edition_checkbox.checked
 
+        # check for slot requirements
+        required_slots = @slot_selection.val()
+        if required_slots
+            for slot in required_slots
+               return false unless card.data.slots? and slot in card.data.slots
+
         # check if point costs matches
         return false unless (card.data.points >= @minimum_point_costs.value and card.data.points <= @maximum_point_costs.value) or (@variable_point_costs.checked and card.data.points == "*")
         
+
         #TODO: Add logic of addiditional search criteria here. Have a look at card.data, to see what data is available. Add search inputs at the todo marks above. 
 
         return true
@@ -10698,9 +10721,55 @@ exportObj.cardLoaders.English = () ->
     basic_cards = exportObj.basicCardData()
     exportObj.canonicalizeShipNames basic_cards
 
-    # English names are loaded by default, so no update is needed
+    # YASB Names are loaded by default (mostly 1.0 names of ships), so we want to update to official 2nd edition
     exportObj.ships = basic_cards.ships
-    
+
+    exportObj.renameShip """YT-1300""", """Modified YT-1300 Light Freighter"""
+    exportObj.renameShip """StarViper""", """StarViper-class Attack Platform"""
+    exportObj.renameShip """Scurrg H-6 Bomber""", """Scurrg H-6 Bomber"""
+    exportObj.renameShip """YT-2400""", """YT-2400 Light Freighter"""
+    exportObj.renameShip """Auzituck Gunship""", """Auzituck Gunship"""
+    exportObj.renameShip """Kihraxz Fighter""", """Kihraxz Fighter"""
+    exportObj.renameShip """Sheathipede-Class Shuttle""", """Sheathipede-class Shuttle"""
+    exportObj.renameShip """Quadjumper""", """Quadrijet Transfer Spacetug"""
+    exportObj.renameShip """Firespray-31""", """Firespray-class Patrol Craft"""
+    exportObj.renameShip """TIE Fighter""", """TIE/ln Fighter"""
+    exportObj.renameShip """Y-Wing""", """BTL-A4 Y-Wing"""
+    exportObj.renameShip """TIE Advanced""", """TIE Advanced x1"""
+    exportObj.renameShip """Alpha-Class Star Wing""", """Alpha-class Star Wing"""
+    exportObj.renameShip """U-Wing""", """UT-60D U-Wing"""
+    exportObj.renameShip """TIE Striker""", """TIE/sk Striker"""
+    exportObj.renameShip """B-Wing""", """A/SF-01 B-Wing"""
+    exportObj.renameShip """TIE Defender""", """TIE/D Defender"""
+    exportObj.renameShip """TIE Bomber""", """TIE/sa Bomber"""
+    exportObj.renameShip """TIE Punisher""", """TIE/ca Punisher"""
+    exportObj.renameShip """Aggressor""", """Aggressor Assault Fighter"""
+    exportObj.renameShip """G-1A Starfighter""", """G-1A Starfighter"""
+    exportObj.renameShip """VCX-100""", """VCX-100 Light Freighter"""
+    exportObj.renameShip """YV-666""", """YV-666 Light Freighter"""
+    exportObj.renameShip """TIE Advanced Prototype""", """TIE Advanced v1"""
+    exportObj.renameShip """Lambda-Class Shuttle""", """Lambda-class T-4a Shuttle"""
+    exportObj.renameShip """TIE Phantom""", """TIE/ph Phantom"""
+    exportObj.renameShip """VT-49 Decimator""", """VT-49 Decimator"""
+    exportObj.renameShip """TIE Aggressor""", """TIE/ag Aggressor"""
+    exportObj.renameShip """K-Wing""", """BTL-S8 K-Wing"""
+    exportObj.renameShip """ARC-170""", """ARC-170 Starfighter"""
+    exportObj.renameShip """Attack Shuttle""", """Attack Shuttle"""
+    exportObj.renameShip """X-Wing""", """T-65 X-Wing"""
+    exportObj.renameShip """HWK-290""", """HWK-290 Light Freighter"""
+    exportObj.renameShip """A-Wing""", """RZ-1 A-Wing"""
+    exportObj.renameShip """Fang Fighter""", """Fang Fighter"""
+    exportObj.renameShip """Z-95 Headhunter""", """Z-95-AF4 Headhunter"""
+    exportObj.renameShip """M12-L Kimogila Fighter""", """M12-L Kimogila Fighter"""
+    exportObj.renameShip """E-Wing""", """E-Wing"""
+    exportObj.renameShip """TIE Interceptor""", """TIE Interceptor"""
+    exportObj.renameShip """Lancer-Class Pursuit Craft""", """Lancer-class Pursuit Craft"""
+    exportObj.renameShip """TIE Reaper""", """TIE Reaper"""
+    exportObj.renameShip """JumpMaster 5000""", """JumpMaster 5000"""
+    exportObj.renameShip """M3-A Interceptor""", """M3-A Interceptor"""
+    exportObj.renameShip """Scavenged YT-1300""", """Customized YT-1300 Light Freighter"""
+    exportObj.renameShip """Escape Craft""", """Escape Craft"""
+
     # Names don't need updating, but text needs to be set
     pilot_translations =
         "Academy Pilot":
@@ -20394,13 +20463,16 @@ class exportObj.SquadBuilder
                 </div>
             </div>
             <div class="modal-footer hidden-print">
-                <label class="vertical-space-checkbox">
+                <label class="vertical-space-checkbox hidden-phone">
                     Add space for damage/upgrade cards when printing <input type="checkbox" class="toggle-vertical-space" />
                 </label>
-                <label class="maneuver-print-checkbox">
+                <label class="maneuver-print-checkbox hidden-phone">
                     Include Maneuvers Chart <input type="checkbox" class="toggle-maneuver-print" checked="checked" />
                 </label>
-                <label class="color-print-checkbox">
+                <label class="expanded-shield-hull-print-checkbox hidden-phone">
+                    Expand Shield and Hull <input type="checkbox" class="toggle-expanded-shield-hull-print" />
+                </label>
+                <label class="color-print-checkbox hidden-phone">
                     Print color <input type="checkbox" class="toggle-color-print" checked="checked" />
                 </label>
                 <label class="qrcode-checkbox hidden-phone">
@@ -20435,6 +20507,10 @@ class exportObj.SquadBuilder
         @toggle_vertical_space_container = $ @list_modal.find('.vertical-space-checkbox')
         @toggle_color_print_container = $ @list_modal.find('.color-print-checkbox')
         @toggle_maneuver_dial_container = $ @list_modal.find('.maneuver-print-checkbox')
+        @toggle_expanded_shield_hull_container = $ @list_modal.find('.expanded-shield-hull-print-checkbox')
+        @toggle_qrcode_container = $ @list_modal.find('.qrcode-checkbox')
+        @toggle_obstacle_container = $ @list_modal.find('.obstacles-checkbox')
+        @btn_print_list = ($ @list_modal.find('.print-list'))[0]
 
         @list_modal.on 'click', 'button.btn-copy', (e) =>
             @self = $(e.currentTarget)
@@ -20461,6 +20537,10 @@ class exportObj.SquadBuilder
                 @toggle_vertical_space_container.hide()
                 @toggle_color_print_container.hide()
                 @toggle_maneuver_dial_container.hide()
+                @toggle_expanded_shield_hull_container.hide()
+                @toggle_qrcode_container.show()
+                @toggle_obstacle_container.show()
+                @btn_print_list.disabled = false;
 
         @select_fancy_view_button = $ @list_modal.find('.select-fancy-view')
         @select_fancy_view_button.click (e) =>
@@ -20477,6 +20557,10 @@ class exportObj.SquadBuilder
                 @toggle_vertical_space_container.show()
                 @toggle_color_print_container.show()
                 @toggle_maneuver_dial_container.show()
+                @toggle_expanded_shield_hull_container.show()
+                @toggle_qrcode_container.show()
+                @toggle_obstacle_container.show()
+                @btn_print_list.disabled = false;
 
         @select_reddit_view_button = $ @list_modal.find('.select-reddit-view')
         @select_reddit_view_button.click (e) =>
@@ -20492,9 +20576,13 @@ class exportObj.SquadBuilder
                 @fancy_container.hide()
                 @reddit_textarea.select()
                 @reddit_textarea.focus()
-                @toggle_vertical_space_container.show()
-                @toggle_color_print_container.show()
-                @toggle_maneuver_dial_container.show()
+                @toggle_vertical_space_container.hide()
+                @toggle_color_print_container.hide()
+                @toggle_maneuver_dial_container.hide()
+                @toggle_expanded_shield_hull_container.hide()
+                @toggle_qrcode_container.hide()
+                @toggle_obstacle_container.hide()
+                @btn_print_list.disabled = true;
 
         @select_bbcode_view_button = $ @list_modal.find('.select-bbcode-view')
         @select_bbcode_view_button.click (e) =>
@@ -20510,9 +20598,13 @@ class exportObj.SquadBuilder
                 @fancy_container.hide()
                 @bbcode_textarea.select()
                 @bbcode_textarea.focus()
-                @toggle_vertical_space_container.show()
-                @toggle_color_print_container.show()
-                @toggle_maneuver_dial_container.show()
+                @toggle_vertical_space_container.hide()
+                @toggle_color_print_container.hide()
+                @toggle_maneuver_dial_container.hide()
+                @toggle_expanded_shield_hull_container.hide()
+                @toggle_qrcode_container.hide()
+                @toggle_obstacle_container.hide()
+                @btn_print_list.disabled = true;
 
         @select_html_view_button = $ @list_modal.find('.select-html-view')
         @select_html_view_button.click (e) =>
@@ -20528,9 +20620,13 @@ class exportObj.SquadBuilder
                 @fancy_container.hide()
                 @html_textarea.select()
                 @html_textarea.focus()
-                @toggle_vertical_space_container.show()
-                @toggle_color_print_container.show()
-                @toggle_maneuver_dial_container.show()
+                @toggle_vertical_space_container.hide()
+                @toggle_color_print_container.hide()
+                @toggle_maneuver_dial_container.hide()
+                @toggle_expanded_shield_hull_container.hide()
+                @toggle_qrcode_container.hide()
+                @toggle_obstacle_container.hide()
+                @btn_print_list.disabled = true;
 
         if $(window).width() >= 768
             @simple_container.hide()
@@ -21023,6 +21119,11 @@ class exportObj.SquadBuilder
                     if not @list_modal.find('.toggle-maneuver-print').prop('checked')
                         for dial in @printable_container.find('.fancy-dial')
                             dial.hidden = true
+                    expanded_hull_and_shield = @list_modal.find('.toggle-expanded-shield-hull-print').prop('checked')
+                    for container in @printable_container.find('.expanded-hull-or-shield')
+                        container.hidden = not expanded_hull_and_shield
+                    for container in @printable_container.find('.simple-hull-or-shield')
+                        container.hidden = expanded_hull_and_shield
 
                     faction = switch @faction
                         when 'Rebel Alliance'
@@ -22725,6 +22826,16 @@ class Ship
         else 
             chargeHTML = ''
 
+        shieldIconHTML = ''
+        if effective_stats.shields?
+            for _ in [1..(effective_stats.shields)]
+                shieldIconHTML += """<i class="xwing-miniatures-font header-shield xwing-miniatures-font-shield expanded-hull-or-shield"></i>"""
+
+        hullIconHTML = ''
+        if effective_stats.hull?
+            for _ in [1..(effective_stats.hull)]
+                hullIconHTML += """<i class="xwing-miniatures-font header-hull xwing-miniatures-font-hull expanded-hull-or-shield"></i>"""
+
         html = $.trim """
             <div class="fancy-pilot-header">
                 <div class="pilot-header-text">#{if @pilot.display_name then @pilot.display_name else @pilot.name} <i class="xwing-miniatures-ship xwing-miniatures-ship-#{@data.xws}"></i><span class="fancy-ship-type"> #{if @data.display_name then @data.display_name else @data.name}</span></div>
@@ -22744,11 +22855,13 @@ class Ship
                     #{attackdtHTML}
                     #{energyHTML}
                     <i class="xwing-miniatures-font header-agility xwing-miniatures-font-agility"></i>
-                    <span class="info-data info-agility">#{statAndEffectiveStat((@pilot.ship_override?.agility ? @data.agility), effective_stats, 'agility')}</span>
-                    <i class="xwing-miniatures-font header-hull xwing-miniatures-font-hull"></i>
-                    <span class="info-data info-hull">#{statAndEffectiveStat((@pilot.ship_override?.hull ? @data.hull), effective_stats, 'hull')}</span>
-                    <i class="xwing-miniatures-font header-shield xwing-miniatures-font-shield"></i>
-                    <span class="info-data info-shields">#{statAndEffectiveStat((@pilot.ship_override?.shields ? @data.shields), effective_stats, 'shields')}</span>
+                    <span class="info-data info-agility">#{statAndEffectiveStat((@pilot.ship_override?.agility ? @data.agility), effective_stats, 'agility')}</span>                    
+                    #{hullIconHTML}
+                    <i class="xwing-miniatures-font header-hull xwing-miniatures-font-hull simple-hull-or-shield"></i>
+                    <span class="info-data info-hull simple-hull-or-shield">#{statAndEffectiveStat((@pilot.ship_override?.hull ? @data.hull), effective_stats, 'hull')}</span>
+                    #{shieldIconHTML}
+                    <i class="xwing-miniatures-font header-shield xwing-miniatures-font-shield simple-hull-or-shield"></i>
+                    <span class="info-data info-shields simple-hull-or-shield">#{statAndEffectiveStat((@pilot.ship_override?.shields ? @data.shields), effective_stats, 'shields')}</span>
                     #{forceHTML}
                     #{chargeHTML}
                     &nbsp;
