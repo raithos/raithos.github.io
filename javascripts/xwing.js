@@ -22646,13 +22646,13 @@ Ship = (function() {
       chargeHTML = '';
     }
     shieldIconHTML = '';
-    if (effective_stats.shields != null) {
+    if (effective_stats.shields) {
       for (_ = _k = 1, _ref22 = effective_stats.shields; 1 <= _ref22 ? _k <= _ref22 : _k >= _ref22; _ = 1 <= _ref22 ? ++_k : --_k) {
         shieldIconHTML += "<i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield expanded-hull-or-shield\"></i>";
       }
     }
     hullIconHTML = '';
-    if (effective_stats.hull != null) {
+    if (effective_stats.hull) {
       for (_ = _l = 1, _ref23 = effective_stats.hull; 1 <= _ref23 ? _l <= _ref23 : _l >= _ref23; _ = 1 <= _ref23 ? ++_l : --_l) {
         hullIconHTML += "<i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull expanded-hull-or-shield\"></i>";
       }
