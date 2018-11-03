@@ -794,17 +794,52 @@ class exportObj.CardBrowser
                                         <input type="checkbox" class="variable-point-cost-checkbox advanced-search-checkbox" checked="checked" /> Variable point cost
                                     </label>
                                 </div>
+                                <div class = "advanced-search-collection-container">
+                                    <strong>Owned copies:</strong>
+                                    <label class = "advanced-search-label set-minimum-owned-copies">
+                                        from <input type="number" class="minimum-owned-copies advanced-search-number-input" value="0" /> 
+                                    </label>
+                                    <label class = "advanced-search-label set-maximum-owened-copies">
+                                        to <input type="number" class="maximum-owned-copies advanced-search-number-input" value="100" /> 
+                                    </label>
+                                </div>
+                                <div class = "advanced-search-slot-available-container">
+                                    <label class = "advanced-search-label select-available-slots">
+                                        <strong>Available slots: </strong>
+                                        <select class="advanced-search-selection slot-available-selection" multiple="1" data-placeholder="No slots selected"></select>
+                                        <span class="advanced-search-tooltip" tooltip="Search for pilots having all selected slots available."> &#9432 </span>
+                                    </label>
+                                </div>
+                                <div class = "advanced-search-slot-used-container">
+                                    <label class = "advanced-search-label select-used-slots">
+                                        <strong>Used slot: </strong>
+                                        <select class="advanced-search-selection slot-used-selection" multiple="1" data-placeholder="No slots selected"></select>
+                                        <span class="advanced-search-tooltip" tooltip="Search for upgrades using any of the selected slots."> &#9432 </span>
+                                    </label>
+                                </div>
+                                <div class = "advanced-search-charge-container">
+                                    <strong>Charges:</strong>
+                                    <label class = "advanced-search-label set-minimum-charge">
+                                        from <input type="number" class="minimum-charge advanced-search-number-input" value="0" /> 
+                                    </label>
+                                    <label class = "advanced-search-label set-maximum-charge">
+                                        to <input type="number" class="maximum-charge advanced-search-number-input" value="5" /> 
+                                    </label>
+                                    <label class = "advanced-search-label has-recurring-charge">
+                                        <input type="checkbox" class="advanced-search-checkbox has-recurring-charge-checkbox" checked="checked"/> recurring
+                                    </label>
+                                    <label class = "advanced-search-label has-not-recurring-charge">
+                                        <input type="checkbox" class="advanced-search-checkbox has-not-recurring-charge-checkbox" checked="checked"/> not recurring
+                                    </label>
+                                </div>
                                 <div class = "advanced-search-misc-container">
+                                    <strong>Misc:</strong>
+                                    <label class = "advanced-search-label toggle-unique">
+                                        <input type="checkbox" class="unique-checkbox advanced-search-checkbox" /> Is unique
+                                    </label>
                                     <label class = "advanced-search-label toggle-second-edition">
                                         <input type="checkbox" class="second-edition-checkbox advanced-search-checkbox" /> Second-Edition only
                                         <span class="advanced-search-tooltip" tooltip="Check to exclude cards only obtainable from conversion kits."> &#9432 </span>
-                                    </label>
-                                </div>
-                                <div class = "advanced-search-slot-container">
-                                    <label class = "advanced-search-label select-slots">
-                                        Available slots
-                                        <select class="advanced-search-selection slot-selection" multiple="1" data-placeholder="No slots selected"></select>
-                                        <span class="advanced-search-tooltip" tooltip="Search for pilots having the all selected slots available."> &#9432 </span>
                                     </label>
                                 </div>
                             </div>
@@ -818,6 +853,8 @@ class exportObj.CardBrowser
                             <span class="info-type"></span>
                             <br />
                             <span class="info-sources"></span>
+                            <br />
+                            <span class="info-collection"></span>
                             <table>
                                 <tbody>
                                     <tr class="info-skill">
@@ -924,13 +961,28 @@ class exportObj.CardBrowser
         @maximum_point_costs = ($ @container.find('.xwing-card-browser .maximum-point-cost'))[0]
         @variable_point_costs = ($ @container.find('.xwing-card-browser .variable-point-cost-checkbox'))[0]
         @second_edition_checkbox = ($ @container.find('.xwing-card-browser .second-edition-checkbox'))[0]
-        @slot_selection = ($ @container.find('.xwing-card-browser select.slot-selection'))
+        @unique_checkbox = ($ @container.find('.xwing-card-browser .unique-checkbox'))[0]
+        @slot_available_selection = ($ @container.find('.xwing-card-browser select.slot-available-selection'))
         for slot of exportObj.upgradesBySlotCanonicalName
             opt = $ document.createElement('OPTION')
             opt.text slot
-            @slot_selection.append opt
-        @slot_selection.select2
+            @slot_available_selection.append opt
+        @slot_available_selection.select2
             minimumResultsForSearch: if $.isMobile() then -1 else 0
+        @slot_used_selection = ($ @container.find('.xwing-card-browser select.slot-used-selection'))
+        for slot of exportObj.upgradesBySlotCanonicalName
+            opt = $ document.createElement('OPTION')
+            opt.text slot
+            @slot_used_selection.append opt
+        @slot_used_selection.select2
+            minimumResultsForSearch: if $.isMobile() then -1 else 0
+        @minimum_charge = ($ @container.find('.xwing-card-browser .minimum-charge'))[0]
+        @maximum_charge = ($ @container.find('.xwing-card-browser .maximum-charge'))[0]
+        @recurring_charge = ($ @container.find('.xwing-card-browser .has-recurring-charge-checkbox'))[0]
+        @not_recurring_charge = ($ @container.find('.xwing-card-browser .has-not-recurring-charge-checkbox'))[0]
+        @minimum_owned_copies = ($ @container.find('.xwing-card-browser .minimum-owned-copies'))[0]
+        @maximum_owned_copies = ($ @container.find('.xwing-card-browser .maximum-owned-copies'))[0]
+
 
 
     setupHandlers: () ->
@@ -954,7 +1006,15 @@ class exportObj.CardBrowser
         @maximum_point_costs.oninput = => @renderList @sort_selector.val()
         @variable_point_costs.onclick = => @renderList @sort_selector.val()
         @second_edition_checkbox.onclick = => @renderList @sort_selector.val()
-        @slot_selection[0].onchange = => @renderList @sort_selector.val()
+        @unique_checkbox.onclick = => @renderList @sort_selector.val()
+        @slot_available_selection[0].onchange = => @renderList @sort_selector.val()
+        @slot_used_selection[0].onchange = => @renderList @sort_selector.val()
+        @recurring_charge.onclick = => @renderList @sort_selector.val()
+        @not_recurring_charge.onclick = => @renderList @sort_selector.val()
+        @minimum_charge.oninput = => @renderList @sort_selector.val()
+        @maximum_charge.oninput = => @renderList @sort_selector.val()
+        @minimum_owned_copies.oninput = => @renderList @sort_selector.val()
+        @maximum_owned_copies.oninput = => @renderList @sort_selector.val()
 
 
     toggleAdvancedSearch: () =>
@@ -1074,6 +1134,12 @@ class exportObj.CardBrowser
             when 'Pilot'
                 ship = exportObj.ships[data.ship]
                 @card_viewer_container.find('.info-type').text "#{data.ship} Pilot (#{data.faction})"
+                if exportObj.builders[0].collection?.counts?
+                    ship_count = exportObj.builders[0].collection.counts?.ship?[data.ship] ? 0
+                    pilot_count = exportObj.builders[0].collection.counts?.pilot?[data.name] ? 0
+                    @card_viewer_container.find('.info-collection').text """You have #{ship_count} ship model#{if ship_count > 1 then 's' else ''} and #{pilot_count} pilot card#{if pilot_count > 1 then 's' else ''} in your collection."""
+                else
+                    @card_viewer_container.find('.info-collection').text ''
                 @card_viewer_container.find('tr.info-skill td.info-data').text data.skill
                 @card_viewer_container.find('tr.info-skill').show()
 
@@ -1137,6 +1203,11 @@ class exportObj.CardBrowser
             else
                 @card_viewer_container.find('.info-type').text type
                 @card_viewer_container.find('.info-type').append " &ndash; #{data.faction} only" if data.faction?
+                if exportObj.builders[0].collection?.counts?
+                    addon_count = exportObj.builders[0].collection.counts.upgrade[data.name] ? 0
+                    @card_viewer_container.find('.info-collection').text """You have #{addon_count} in your collection."""
+                else
+                    @card_viewer_container.find('.info-collection').text ''
                 @card_viewer_container.find('tr.info-ship').hide()
                 @card_viewer_container.find('tr.info-skill').hide()
                 if data.energy?
@@ -1236,14 +1307,44 @@ class exportObj.CardBrowser
         return false unless exportObj.secondEditionCheck(card.data) or not @second_edition_checkbox.checked
 
         # check for slot requirements
-        required_slots = @slot_selection.val()
+        required_slots = @slot_available_selection.val()
         if required_slots
             for slot in required_slots
                return false unless card.data.slots? and slot in card.data.slots
 
         # check if point costs matches
         return false unless (card.data.points >= @minimum_point_costs.value and card.data.points <= @maximum_point_costs.value) or (@variable_point_costs.checked and card.data.points == "*")
+
+        # check if used slot matches
+        used_slots = @slot_used_selection.val()
+        if used_slots
+            return false unless card.data.slot?
+            matches = false
+            for slot in used_slots
+                if card.data.slot == slot
+                    matches = true
+                    break
+            return false unless matches
         
+        # check for uniqueness
+        return false unless not @unique_checkbox.checked or card.data.unique
+
+        # check charge stuff
+        return false unless (card.data.charge? and card.data.charge <= @maximum_charge.value and card.data.charge >= @minimum_charge.value) or (@minimum_charge.value <= 0 and not card.data.charge?)
+        return false if card.data.recurring and not @recurring_charge.checked
+        return false if card.data.charge and not card.data.recurring and not @not_recurring_charge.checked
+
+        # check collection status
+        if exportObj.builders[0].collection.counts? # ignore collection stuff, if no collection available
+            owned_copies = 0
+            switch card.type
+                when 'pilot'
+                    owned_copies = exportObj.builders[0].collection.counts.pilot[card.name] ? 0 
+                when 'ship'
+                    owned_copies = exportObj.builders[0].collection.counts.ship[card.name] ? 0
+                else # type is e.g. astromech
+                    owned_copies = exportObj.builders[0].collection.counts.upgrade[card.name] ? 0
+            return false unless owned_copies >= @minimum_owned_copies.value and owned_copies <= @maximum_owned_copies.value
 
         #TODO: Add logic of addiditional search criteria here. Have a look at card.data, to see what data is available. Add search inputs at the todo marks above. 
 
@@ -7406,6 +7507,7 @@ exportObj.basicCardData = ->
            unique: true
            faction: "Scum and Villainy"
            charge: 1
+           recurring: true 
        }
        {
            name: "Han Solo"
@@ -10703,6 +10805,8 @@ exportObj.translations.English =
         '.core2asteroid3-select' : 'Force Awakens Asteroid 3'
         '.core2asteroid4-select' : 'Force Awakens Asteroid 4'
         '.core2asteroid5-select' : 'Force Awakens Asteroid 5'
+        # Collection
+        '.collection': '<i class="fa fa-folder-open hidden-phone hidden-tabler"></i>&nbsp;Your Collection'
 
     singular:
         'pilots': 'Pilot'
@@ -20002,7 +20106,7 @@ class exportObj.Collection
             input.data 'singletonType', 'ship'
             input.data 'singletonName', ship
             input.closest('div').css 'background-color', @countToBackgroundColor(input.val())
-            $(row).find('.ship-name').data 'name', expansion
+            $(row).find('.ship-name').data 'name', ship
             shipcollection_content.append row
 
         pilotcollection_content = $ @modal.find('.collection-pilot-content')
@@ -20022,7 +20126,7 @@ class exportObj.Collection
             input.data 'singletonType', 'pilot'
             input.data 'singletonName', pilot
             input.closest('div').css 'background-color', @countToBackgroundColor(input.val())
-            $(row).find('.pilot-name').data 'name', expansion
+            $(row).find('.pilot-name').data 'name', pilot
             pilotcollection_content.append row
 
         upgradecollection_content = $ @modal.find('.collection-upgrade-content')
@@ -20042,7 +20146,7 @@ class exportObj.Collection
             input.data 'singletonType', 'upgrade'
             input.data 'singletonName', upgrade
             input.closest('div').css 'background-color', @countToBackgroundColor(input.val())
-            $(row).find('.upgrade-name').data 'name', expansion
+            $(row).find('.upgrade-name').data 'name', upgrade
             upgradecollection_content.append row
 
     destroyUI: ->
@@ -20113,13 +20217,20 @@ class exportObj.Collection
 
     onLanguageChange:
         (e, language) =>
-            if language != @language
+            @language = language
+            if language != @old_language
+                @old_language = language
                 # console.log "language changed to #{language}"
                 do (language) =>
                     @modal.find('.expansion-name').each ->
                         # console.log "translating #{$(this).text()} (#{$(this).data('name')}) to #{language}"
                         $(this).text exportObj.translate language, 'sources', $(this).data('name')
-                @language = language
+                    @modal.find('.ship-name').each ->
+                        $(this).text (if exportObj.ships[$(this).data('name')].display_name then exportObj.ships[$(this).data('name')].display_name else $(this).data('name'))
+                    @modal.find('.pilot-name').each ->
+                        $(this).text (if exportObj.pilots[$(this).data('name')].display_name then exportObj.pilots[$(this).data('name')].display_name else $(this).data('name'))
+                    @modal.find('.upgrade-name').each ->
+                        $(this).text (if exportObj.upgrades[$(this).data('name')].display_name then exportObj.upgrades[$(this).data('name')].display_name else $(this).data('name'))
 
 ###
     X-Wing Squad Builder 2.0
@@ -20189,7 +20300,9 @@ exportObj.registerBuilderForTranslation = (builder) ->
 exportObj = exports ? this
 
 exportObj.sortHelper = (a, b) ->
-    if a.points == b.points
+    if typeof(a.points) == "string" # handling cases where points value is "*" instead of a number
+        1
+    else if a.points == b.points
         a_name = a.text.replace(/[^a-z0-9]/ig, '')
         b_name = b.text.replace(/[^a-z0-9]/ig, '')
         if a_name == b_name
@@ -21604,7 +21717,7 @@ class exportObj.SquadBuilder
         retval = ({ id: upgrade.id, text: "#{if upgrade.display_name then upgrade.display_name else upgrade.name} (#{upgrade.points})", points: upgrade.points, name: upgrade.name, display_name: upgrade.display_name, disabled: upgrade not in eligible_upgrades } for upgrade in available_upgrades)
         if sorted
             retval = retval.sort exportObj.sortHelper
-        
+
         # Possibly adjust the upgrade
         if this_upgrade_obj?adjustment_func?
             (this_upgrade_obj.adjustment_func(upgrade) for upgrade in retval)
