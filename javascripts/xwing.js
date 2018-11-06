@@ -6839,7 +6839,8 @@ exportObj.translations.Deutsch = {
     "Gunner": '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>',
     "Device": '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>',
     "Tech": '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>',
-    "Title": '<i class="xwing-miniatures-font xwing-miniatures-font-title"></i>'
+    "Title": '<i class="xwing-miniatures-font xwing-miniatures-font-title"></i>',
+    "Hardpoint": '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>'
   },
   slot: {
     "Astromech": "Astromech",
@@ -8838,7 +8839,8 @@ exportObj.translations.English = {
     "Gunner": '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>',
     "Device": '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>',
     "Tech": '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>',
-    "Title": '<i class="xwing-miniatures-font xwing-miniatures-font-title"></i>'
+    "Title": '<i class="xwing-miniatures-font xwing-miniatures-font-title"></i>',
+    "Hardpoint": '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>'
   },
   slot: {
     "Astromech": "Astromech",
@@ -10073,7 +10075,7 @@ exportObj.cardLoaders.English = function() {
     },
     "Outrider": {
       display_name: "Outrider",
-      text: "<i>Rebel only</i>%LINEBREAK%While you perform an attack that is obsructed by an obstacle, the defender rolls 1 fewer defense die.%LINEBREAK%After you fully execute a maneuver, if you moved through or overlapped an obstacle, you may remove 1 of your red or orange tokens.%LINEBREAK%<i>Errata (since rules reference 1.0.2): changed \"obstructed attack\" to \"an attack that is obstructed by an obstacle\"</i>"
+      text: "<i>Rebel only</i>%LINEBREAK% While you perform an attack that is obsructed by an obstacle, the defender rolls 1 fewer defense die. %LINEBREAK% After you fully execute a maneuver, if you moved through or overlapped an obstacle, you may remove 1 of your red or orange tokens. %LINEBREAK% <i>Errata (since rules reference 1.0.2): changed \"obstructed attack\" to \"an attack that is obstructed by an obstacle\"</i>"
     },
     "Phantom": {
       display_name: "Phantom",
@@ -12883,7 +12885,8 @@ exportObj.translations['Français'] = {
     "Gunner": '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>',
     "Device": '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>',
     "Tech": '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>',
-    "Title": '<i class="xwing-miniatures-font xwing-miniatures-font-title"></i>'
+    "Title": '<i class="xwing-miniatures-font xwing-miniatures-font-title"></i>',
+    "Hardpoint": '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>'
   },
   slot: {
     "Astromech": "Astromech",
@@ -14733,7 +14736,8 @@ exportObj.translations.Magyar = {
     "Gunner": '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>',
     "Device": '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>',
     "Tech": '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>',
-    "Title": '<i class="xwing-miniatures-font xwing-miniatures-font-title"></i>'
+    "Title": '<i class="xwing-miniatures-font xwing-miniatures-font-title"></i>',
+    "Hardpoint": '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>'
   },
   slot: {
     "Astromech": "Astromech",
@@ -19617,7 +19621,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 20475
+                    lineno: 20479
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -20264,7 +20268,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 21166
+              lineno: 21170
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -20966,7 +20970,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 21809
+          lineno: 21813
         }));
         __iced_deferrals._fulfill();
       });
@@ -20978,7 +20982,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 21810
+            lineno: 21814
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -22446,7 +22450,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 22810
+                      lineno: 22814
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -22504,7 +22508,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 22827
+                lineno: 22831
               })
             ]);
             __iced_deferrals._fulfill();
@@ -22551,7 +22555,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 22841
+              lineno: 22845
             }));
           }
         }
@@ -23424,7 +23428,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 23539
+                lineno: 23543
               })
             ]);
             __iced_deferrals._fulfill();
@@ -23565,7 +23569,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 23612
+                  lineno: 23616
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -23587,7 +23591,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 23616
+                    lineno: 23620
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -23673,7 +23677,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 23655
+            lineno: 23659
           }));
         }
         __iced_deferrals._fulfill();
