@@ -4650,6 +4650,85 @@ exportObj.basicCardData = function() {
         skill: 1,
         points: 100,
         slots: ["Sensor", "Device", "Device", "Modification"]
+      }, {
+        name: "TN-3465",
+        id: 261,
+        unique: true,
+        faction: "First Order",
+        ship: "TIE/FO Fighter",
+        skill: 2,
+        points: 100,
+        slots: ["Modification"]
+      }, {
+        name: '"Scorch"',
+        id: 262,
+        unique: true,
+        faction: "First Order",
+        ship: "TIE/FO Fighter",
+        skill: 4,
+        points: 100,
+        slots: ["Talent", "Modification"]
+      }, {
+        name: '"Longshot"',
+        id: 263,
+        unique: true,
+        faction: "First Order",
+        ship: "TIE/FO Fighter",
+        skill: 3,
+        points: 100,
+        slots: ["Talent", "Modification"]
+      }, {
+        name: '"Static"',
+        id: 264,
+        unique: true,
+        faction: "First Order",
+        ship: "TIE/FO Fighter",
+        skill: 4,
+        points: 100,
+        slots: ["Talent", "Modification"]
+      }, {
+        name: "Lieutenant Rivas",
+        id: 265,
+        unique: true,
+        faction: "First Order",
+        ship: "TIE/FO Fighter",
+        skill: 1,
+        points: 100,
+        slots: ["Modification"]
+      }, {
+        name: "Commander Malarus",
+        id: 266,
+        unique: true,
+        faction: "First Order",
+        ship: "TIE/FO Fighter",
+        skill: 5,
+        points: 100,
+        charge: 2,
+        slots: ["Talent", "Modification"]
+      }, {
+        name: "Omega Squadron Ace",
+        id: 267,
+        faction: "First Order",
+        ship: "TIE/FO Fighter",
+        skill: 3,
+        points: 100,
+        slots: ["Talent", "Modification"]
+      }, {
+        name: "Zeta Squadron Pilot",
+        id: 268,
+        faction: "First Order",
+        ship: "TIE/FO Fighter",
+        skill: 2,
+        points: 100,
+        slots: ["Modification"]
+      }, {
+        name: "Epsilon Squadron Cadet",
+        id: 269,
+        faction: "First Order",
+        ship: "TIE/FO Fighter",
+        skill: 1,
+        points: 100,
+        slots: ["Modification"]
       }
     ],
     upgradesById: [
@@ -10022,6 +10101,33 @@ exportObj.cardLoaders.English = function() {
     },
     "Cobalt Squadron Bomber": {
       text: " ... "
+    },
+    "TN-3465": {
+      text: " While another friendly ship performs an attack, if you are at range 0-1 of the defender, you may suffer 1 %CRIT% damage to change 1 of the attacker's results to a %CRIT% result. "
+    },
+    '"Scorch"': {
+      text: " While you perform a primary attack, if you are not stressed, you may gain 1 stress token to roll 1 additional attack die. "
+    },
+    '"Longshot"': {
+      text: " While you perform a primary attack at attack range 3, roll 1 additional attack die. "
+    },
+    '"Static"': {
+      text: " While you perform a primary attack, you may spend your lock on the defender and a focus token to change all of your results to %CRIT% results. "
+    },
+    "Lieutenant Rivas": {
+      text: " After a ship at range 1-2 gains a red or orange token, if you do not have that ship locked, you may acquire a lock on that ship. "
+    },
+    "Commander Malarus": {
+      text: " At the start of the Engagement Phase, you may spend 1 %CHARGE% and gain 1 stress token. If you do, until the end of the round, while you defend or perform an attack, you may change all of your %FOCUS% results to %EVADE% or %HIT% results. "
+    },
+    "Omega Squadron Ace": {
+      text: " <i class = flavor_text>Only pilots who have demonstrated both exceptional skill and unwavering dedication are rewarded with coveted positions in the First Order squadrons operating secretly against the New Republic during the Cold War.</i> "
+    },
+    "Zeta Squadron Pilot": {
+      text: " <i class = flavor_text>Unhampered by a cumbersome galactic bureaucracy, technologies originally researched by the Empire's TIE Advanced program are now mass-produced on the First Order starfighters. As a result, TIE/fo pilots enjoy higher survival rates than their predecessors in the Galactic Empire.</i> "
+    },
+    "Epsilon Squadron Cadet": {
+      text: " <i class = flavor_text>Trained from childhood aboard Resurgent-class Star Destroyers in deep space, many First Order TIE pilots have never even set foot on a planet's surface.</i> "
     }
   };
   upgrade_translations = {
@@ -10671,7 +10777,7 @@ exportObj.cardLoaders.English = function() {
     },
     '"Chopper" (Astromech)': {
       display_name: "“Chopper”",
-      text: "<i>Rebel only</i>%LINEBREAK%<strong>Action:</strong> Spend 1&nbsp;%CHARGE% from another equipped upgrade to recover 1 shield. %LINEBREAK%<strong>Action:</strong> Spend 2 shields to recover 1 non-recurring %CHARGE% on an equipped upgrade."
+      text: "<i>Rebel only</i>%LINEBREAK%<strong>Action:</strong> Spend 1 non-recurring %CHARGE% from another equipped upgrade to recover 1 shield. %LINEBREAK%<strong>Action:</strong> Spend 2 shields to recover 1 non-recurring %CHARGE% on an equipped upgrade."
     },
     '"Genius"': {
       display_name: "“Genius”",
@@ -19621,7 +19727,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 20479
+                    lineno: 20608
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -20268,7 +20374,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 21170
+              lineno: 21299
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -20970,7 +21076,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 21813
+          lineno: 21942
         }));
         __iced_deferrals._fulfill();
       });
@@ -20982,7 +21088,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 21814
+            lineno: 21943
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -22450,7 +22556,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 22814
+                      lineno: 22943
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -22508,7 +22614,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 22831
+                lineno: 22960
               })
             ]);
             __iced_deferrals._fulfill();
@@ -22555,7 +22661,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 22845
+              lineno: 22974
             }));
           }
         }
@@ -23428,7 +23534,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 23543
+                lineno: 23672
               })
             ]);
             __iced_deferrals._fulfill();
@@ -23569,7 +23675,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 23616
+                  lineno: 23745
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -23591,7 +23697,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 23620
+                    lineno: 23749
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -23677,7 +23783,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 23659
+            lineno: 23788
           }));
         }
         __iced_deferrals._fulfill();
