@@ -1457,11 +1457,33 @@ exportObj.CardBrowser = (function() {
     option.data('type', card.type);
     option.data('card', card.data);
     option.data('orig_type', card.orig_type);
+    if (this.getCollectionNumber(card) === 0) {
+      option[0].classList.add('result-not-in-collection');
+    }
     return $(container).append(option);
   };
 
+  CardBrowser.prototype.getCollectionNumber = function(card) {
+    var owned_copies, _ref, _ref1, _ref2;
+    if (!((exportObj.builders[0].collection != null) && (exportObj.builders[0].collection.counts != null))) {
+      return -1;
+    }
+    owned_copies = 0;
+    switch (card.orig_type) {
+      case 'Pilot':
+        owned_copies = (_ref = exportObj.builders[0].collection.counts.pilot[card.name]) != null ? _ref : 0;
+        break;
+      case 'Ship':
+        owned_copies = (_ref1 = exportObj.builders[0].collection.counts.ship[card.name]) != null ? _ref1 : 0;
+        break;
+      default:
+        owned_copies = (_ref2 = exportObj.builders[0].collection.counts.upgrade[card.name]) != null ? _ref2 : 0;
+    }
+    return owned_copies;
+  };
+
   CardBrowser.prototype.checkSearchCriteria = function(card) {
-    var matches, owned_copies, required_slots, s, search_text, ship, slot, text_in_ship, text_search, used_slots, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2;
+    var matches, owned_copies, required_slots, s, search_text, ship, slot, text_in_ship, text_search, used_slots, _i, _j, _k, _len, _len1, _len2;
     search_text = this.card_search_text.value.toLowerCase();
     text_search = card.name.toLowerCase().indexOf(search_text) > -1 || (card.data.text && card.data.text.toLowerCase().indexOf(search_text)) > -1 || (card.display_name && card.display_name.toLowerCase().indexOf(search_text) > -1);
     if (!text_search) {
@@ -1541,17 +1563,7 @@ exportObj.CardBrowser = (function() {
       return false;
     }
     if (exportObj.builders[0].collection.counts != null) {
-      owned_copies = 0;
-      switch (card.type) {
-        case 'pilot':
-          owned_copies = (_ref = exportObj.builders[0].collection.counts.pilot[card.name]) != null ? _ref : 0;
-          break;
-        case 'ship':
-          owned_copies = (_ref1 = exportObj.builders[0].collection.counts.ship[card.name]) != null ? _ref1 : 0;
-          break;
-        default:
-          owned_copies = (_ref2 = exportObj.builders[0].collection.counts.upgrade[card.name]) != null ? _ref2 : 0;
-      }
+      owned_copies = this.getCollectionNumber(card);
       if (!(owned_copies >= this.minimum_owned_copies.value && owned_copies <= this.maximum_owned_copies.value)) {
         return false;
       }
@@ -8053,7 +8065,7 @@ exportObj.cardLoaders.Deutsch = function() {
       text: " ??? %LINEBREAK% AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."
     },
     "Lieutenant Dormitz": {
-      text: " ... are placed, other ... be placed anywhere in ... range 0-2 of you. %LINEBREAK% ... : while you perform a %CANNON% ... additional die. "
+      text: " SETUP: After you are placed, other friendly ships can be placed anywhere in the play area at range 0-2 of you.  %LINEBREAK% LINKED BATTERY: While you perform a %CANNON% attack, roll 1 addtional die. "
     },
     "Tallissan Lintra": {
       text: "While an enemy ship in your %BULLSEYEARC% performs an attack, you may spend 1 %CHARGE%.  If you do, the defender rolls 1 additional die."
@@ -8062,10 +8074,13 @@ exportObj.cardLoaders.Deutsch = function() {
       text: "While you defend or perform a primary attack, if you are stressed, you must roll 1 fewer defense die or 1 additional attack die."
     },
     '"Backdraft"': {
-      text: " ... perform a %TURRET% primary ... defender is in your %BACKARC% ... additional dice. %LINEBREAK% ... TURRET: You can... indicator only to your ... must treat the %FRONTARC% ... your equipped %MISSILE% ... as %TURRET%. "
+      text: " ... perform a %TURRET% primary ... defender is in your %REARARC% ... additional dice. %LINEBREAK% HEAVY WEAPON TURRET: You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. You must treat the %FRONTARC% requirement of your equipped %MISSILE% upgrades as %SINGLETURRETARC%.  "
     },
     '"Quickdraw"': {
-      text: " ??? %LINEBREAK% ... TURRET: You can... indicator only to your ... must treat the %FRONTARC% ... your equipped %MISSILE% ... as %TURRET%. "
+      text: " After you lose a shield, you may spend 1 %CHARGE%. If you do, you may perform a bonus primary attack. %LINEBREAK% HEAVY WEAPON TURRET: You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. You must treat the %FRONTARC% requirement of your equipped %MISSILE% upgrades as %SINGLETURRETARC%. "
+    },
+    "Zeta Squadron Survivor": {
+      text: " ... %LINEBREAK% HEAVY WEAPON TURRET: You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. You must treat the %FRONTARC% requirement of your equipped %MISSILE% upgrades as %SINGLETURRETARC%. "
     },
     "Rey": {
       text: " While you defend or perform an attack, if the enemy ship in your %FRONTARC%, you may spend 1 %FORCE% change 1 of your blank results to an %EVADE% or %HIT% result. "
@@ -8090,6 +8105,33 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Major Stridan": {
       text: " While you coordinate or resolve the effect of one of your upgrades, you may treat friendly ships at range 2-3 as being at range 0 or range 1. %LINEBREAK% LINKED BATTERY: While you perform a %CANNON% attack, roll 1 addtional die. "
+    },
+    "Kare Kun": {
+      text: " While you boost, you may use the (1 %TURNLEFT%) or (1 %TURNRIGHT%) template instead. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
+    },
+    "Joph Seastriker": {
+      text: " After you lose 1 shield, gain 1 evade token. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
+    },
+    "Lieutenant Bastian": {
+      text: " After a ship at range 1-2 is dealt a damage card, you may acquire a lock on that ship. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
+    },
+    "Jaycris Tubbs": {
+      text: " After you fully execute a blue maneuver, you may choose a friendly ship at range 0-1. If you do, that ship removes 1 stress token. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
+    },
+    "Joph Seastriker": {
+      text: " After you lose 1 shield, gain 1 evade token. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
+    },
+    "Black Squadron Ace (T-70)": {
+      text: " <i class = flavor_text>During the Cold War, Poe Dameron's Black Squadron conducted daring covert operations against the First Order in defiance of treaties ratified by the New Republic Senate.</i> %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
+    },
+    "Red Squadron Expert": {
+      text: " <i class = flavor_text>Although the bulk of the Resistance Starfighter Corps is made up of young volunteers from the New Republic, their ranks are bolstered by the veterans of the Galactic Civil War determined to finish what they started decades ago.</i> %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
+    },
+    "Blue Squadron Rookie": {
+      text: " <i class = flavor_text>The Incom-FreiTek T-70 X-Wing was designed to improve upon the tactical flexibility of the venerable T-65. The starfighters's advanced droid socket is compatible with a wide array of astromechs, and it's modular weapons pods allow for ground crews to tailor its payload for specific missions.</i> %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
+    },
+    "Cobalt Squadron Bomber": {
+      text: " ... "
     }
   };
   upgrade_translations = {
@@ -8765,13 +8807,13 @@ exportObj.cardLoaders.Deutsch = function() {
       text: " While you defend or perform an attack, if you have only blank results and have 2 or more results, you may reroll any number of your dice. "
     },
     "Rose Tico": {
-      text: " ??? "
+      text: " While you defend or perform an attack, you may spend 1 of your results to acquire a lock on the enemy ship. "
     },
     "Finn": {
-      text: " While you defend or perform a primary attack, if the enemy ship is in your %FRONTARC%, you may add 1 blank result to your roll ... can be rerolled or otherwise ...  "
+      text: " While you defend or perform a primary attack, if the enemy ship is in your %FRONTARC%, you may add 1 blank result to your roll (this die roll can be rerolled or otherwise modified)  "
     },
     "Integrated S-Foils": {
-      text: "<b>Closed:</b> While you perform a primary attack, if the defender is not in your %BULLSEYEARC%, roll 1 fewer attack die. Before you activate, you may flip this card. %LINEBREAK% <i>Adds: %BARRELROLL%, %FOCUS% > <r>%BARRELROLL%</r></i> %LINEBREAK% <b>Open:</b> ???"
+      text: "<strong>Closed: </strong><i>Adds %BARRELROLL%, %FOCUS% &nbsp;<i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i>&nbsp;<r>%BARRELROLL%</r></i>%LINEBREAK% While you perform a primary attack, if the defender is not in your %BULLSEYEARC%, roll 1 fewer attack die. %LINEBREAK% Before you activate, you may flip this card. %LINEBREAK% <b>Open:</b> Before you activate, you may flip this card."
     },
     "Targeting Synchronizer": {
       text: "<i>Requires: %LOCK%</i> %LINEBREAK% While a friendly ship at range 1-2 performs an attack against a target you have locked, that ship ignores the %LOCK% attack requirement. "
@@ -8783,22 +8825,22 @@ exportObj.cardLoaders.Deutsch = function() {
       text: " Action: Choose 1 enemy ship at range 1-3. If you do, spend 1 %FORCE% to assign the I'll Show You the Dark Side condition to that ship. "
     },
     "General Hux": {
-      text: " ... perform a white %COORDINATE% action ... it as red. If you do, you ... up to 2 additional ships ... ship type, and each ship you coordinate must perform the same action, treating that action as red. "
+      text: " While you perform a white %COORDINATE% action you may treat it as red. If you do, you may coordinate up to 2 additional ships of the same ship type, and each ship you coordinate must perform the same action, treating that action as red. "
     },
     "Fanatical": {
       text: " While you perform a primary attack, if you are not shielded, you may change 1 %FOCUS% result to a %HIT% result. "
     },
     "Special Forces Gunner": {
-      text: " ... you perform a primary %FRONTARC% attack, ... your %SINGLETURRETARC% is in your %FRONTARC%, you may roll 1 additional attack die. After you perform a primary %FRONTARC% attack, ... your %TURRET% is in your %BACKARC%, you may perform a bonus primary %SINGLETURRETARC% attack. "
+      text: " After you perform a primary %FRONTARC% attack, if your %SINGLETURRETARC% is in your %FRONTARC%, you may roll 1 additional attack die. After you perform a primary %FRONTARC% attack, if your %TURRET% is in your %REARARC%, you may perform a bonus primary %SINGLETURRETARC% attack. "
     },
     "Captain Phasma": {
-      text: " ??? "
+      text: " At the end of the Engagement Phase, each enemy ship at range 0-1 that is not stressed gains 1 stress token. "
     },
     "Supreme Leader Snoke": {
-      text: " ??? "
+      text: " During the System Phase, you may choose any number of enemy ships beyond range 1. If you do, spend that many %FORCE% to flip each chosen ship's dial faceup. "
     },
     "Hyperspace Tracking Data": {
-      text: " Setup: Before placing forces, you may ... 0 and 6 ... "
+      text: " Setup: Before placing forces, you may choose a number between 0 and 6. Treat your initiative as the chosen value during setup. %LINEBREAK% After Setup, Assign 1 focus of evade token to each friendly ship at range 0-2. "
     },
     "Advanced Optics": {
       text: " While you perform an attack, you may spend 1 focus to change 1 of your blank results to a %HIT% result. "
@@ -8826,6 +8868,15 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Petty Officer Thanisson": {
       text: " During the Activation or Engagement Phase, after an enemy ship in your %FRONTARC% at range 0-1 gains a red or orange token, if you are not stressed, you may gain 1 stress token. if you do, that ship gains an additional token of the type that it gained. "
+    },
+    "BB-8": {
+      text: " Before you execute a blue maneuver, you may spend 1 %CHARGE% to perform a %BARRELROLL% or %BOOST% action. "
+    },
+    "BB Astromech": {
+      text: " Before you execute a blue maneuver, you may spend 1 %CHARGE% to perform a %BARRELROLL% action. "
+    },
+    "M9-G8": {
+      text: " While a ship you are locking performs an attack, you may choose 1 attack die. If you do, the attacker rerolls that die. "
     }
   };
   condition_translations = {
@@ -19727,7 +19778,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 20608
+                    lineno: 20643
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -20374,7 +20425,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 21299
+              lineno: 21334
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -21076,7 +21127,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 21942
+          lineno: 21977
         }));
         __iced_deferrals._fulfill();
       });
@@ -21088,7 +21139,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 21943
+            lineno: 21978
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -22556,7 +22607,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 22943
+                      lineno: 22978
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -22614,7 +22665,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 22960
+                lineno: 22995
               })
             ]);
             __iced_deferrals._fulfill();
@@ -22661,7 +22712,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 22974
+              lineno: 23009
             }));
           }
         }
@@ -23534,7 +23585,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 23672
+                lineno: 23707
               })
             ]);
             __iced_deferrals._fulfill();
@@ -23675,7 +23726,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 23745
+                  lineno: 23780
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -23697,7 +23748,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 23749
+                    lineno: 23784
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -23783,7 +23834,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 23788
+            lineno: 23823
           }));
         }
         __iced_deferrals._fulfill();
