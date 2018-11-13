@@ -2156,7 +2156,7 @@ exportObj.basicCardData = ->
         "ARC-170":
             name: "ARC-170"
             xws: "Arc-170 Starfighter".canonicalize()
-            factions: ["Rebel Alliance"]
+            factions: ["Rebel Alliance","Galactic Republic"]
             attack: 3
             attackb: 2
             agility: 1
@@ -2502,16 +2502,16 @@ exportObj.basicCardData = ->
             name: "RZ-2 A-Wing"
             xws: "RZ-2 A-Wing".canonicalize()
             factions: ["Resistance"]
-            attack: 2
             attackt: 2
             agility: 3
-            hull: 3
+            hull: 2
             shields: 2
             actions: [
                 "Focus"
                 "Evade"
                 "Lock"
                 "Barrel Roll"
+                "Boost"
             ]
             actionsred: [
             ]
@@ -2698,6 +2698,102 @@ exportObj.basicCardData = ->
               [ 1, 1, 2, 1, 1, 3]
               [ 0, 0, 1, 0, 0, 0]
               [ 0, 0, 3, 0, 0, 0]
+            ]
+        "V-19 Torrent":
+            name: "V-19 Torrent"
+            xws: "V-19 Torrent".canonicalize()
+            factions: ["Galactic Republic"]
+            attack: 2
+            agility: 2
+            hull: 5
+            shields: 0
+            actions: [
+                "Focus"
+                "Evade"
+                "Lock"
+                "R> Evade"
+            ]
+            actionsred: [
+            ]
+            maneuvers: [
+              [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+              [ 3, 2, 2, 2, 3, 0, 0, 0, 0, 0]
+              [ 1, 1, 2, 1, 1, 0, 0, 0, 3, 3]
+              [ 0, 1, 2, 1, 0, 3, 0, 0, 0, 0]
+              [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+              [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            ]
+        "Delta-7 Aethersprite":
+            name: "Delta-7 Aethersprite"
+            xws: "Delta-7 Aethersprite".canonicalize()
+            factions: ["Galactic Republic"]
+            attack: 2
+            agility: 3
+            hull: 3
+            shields: 1
+            actions: [
+                "Focus"
+                "F-Evade"
+                "Lock"
+                "Barrel Roll"
+                "Boost"
+            ]
+            actionsred: [
+            ]
+            maneuvers: [
+              [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+              [ 1, 2, 0, 2, 1, 0, 0, 0, 0, 0]
+              [ 1, 2, 2, 2, 1, 0, 3, 3, 0, 0]
+              [ 0, 1, 2, 1, 0, 0, 0, 0, 0, 0]
+              [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0]
+              [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0]
+            ]
+        "Sith Infiltrator":
+            name: "Sith Infiltrator"
+            xws: "Sith Infiltrator".canonicalize()
+            factions: ["Separatist Alliance"]
+            attack: 3
+            agility: 1
+            hull: 6
+            shields: 4
+            actions: [
+                "Focus"
+                "Lock"
+            ]
+            actionsred: [
+                "Barrel Roll"
+            ]
+            maneuvers: [
+              [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+              [ 3, 2, 2, 2, 3, 0, 0, 0, 0, 0]
+              [ 1, 2, 2, 2, 1, 0, 3, 3, 0, 0]
+              [ 1, 1, 2, 1, 1, 0, 0, 0, 0, 0]
+              [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+              [ 0, 0, 0, 0, 0, 3, 0, 0, 0, 0]
+            ]
+        "Vulture-class Droid Fighter":
+            name: "Vulture-class Droid Fighter"
+            xws: "Vulture-class Droid Fighter".canonicalize()
+            factions: ["Separatist Alliance"]
+            attack: 2
+            agility: 2
+            hull: 3
+            shields: 0
+            actions: [
+                "Calculate"
+                "Lock"
+                "Barrel Roll"
+                "R> Calculate"
+            ]
+            actionsred: [
+            ]
+            maneuvers: [
+              [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+              [ 1, 0, 0, 0, 1, 3, 0, 0, 0, 0]
+              [ 2, 1, 2, 1, 2, 0, 0, 0, 3, 3]
+              [ 1, 3, 2, 3, 1, 0, 0, 0, 0, 0]
+              [ 0, 0, 2, 0, 0, 0, 0, 0, 0, 0]
+              [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0]
             ]
     # name field is for convenience only
     pilotsById: [
@@ -6544,7 +6640,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Lulo Lampar"
+            name: "L'ulo L'ampar"
             id: 239
             unique: true
             faction: "Resistance"
@@ -6554,6 +6650,8 @@ exportObj.basicCardData = ->
             slots: [
                 "Talent"
                 "Missile"
+                "Tech"
+                "Modification"
             ]
         }
         {
@@ -6569,20 +6667,14 @@ exportObj.basicCardData = ->
             slots: [
                 "Talent"
                 "Missile"
+                "Tech"
+                "Modification"
             ]
         }
         {
-            name: "Lulo Lampar"
+            name: "blanks"
             id: 241
-            unique: true
-            faction: "Resistance"
-            ship: "RZ-2 A-Wing"
-            skill: 5
-            points: 100
-            slots: [
-                "Talent"
-                "Missile"
-            ]
+            skip: true
         }
         {
             name: '"Backdraft"'
@@ -6998,6 +7090,166 @@ exportObj.basicCardData = ->
             skill: 1
             points: 100
             slots: [
+                "Modification"
+            ]
+        }
+        {
+            name: "Greer Sonnel"
+            id: 270
+            unique: true
+            faction: "Resistance"
+            ship: "RZ-2 A-Wing"
+            skill: 4
+            points: 100
+            slots: [
+                "Talent"
+                "Missile"
+                "Tech"
+                "Modification"
+            ]
+        }
+        {
+            name: "Zari Bangel"
+            id: 271
+            unique: true
+            faction: "Resistance"
+            ship: "RZ-2 A-Wing"
+            skill: 3
+            points: 100
+            slots: [
+                "Talent"
+                "Missile"
+                "Tech"
+                "Modification"
+            ]
+        }
+        {
+            name: "Darth Maul"
+            id: 272
+            unique: true
+            faction: "Separatist Alliance"
+            ship: "Sith Infiltrator"
+            skill: 5
+            force: 3
+            points: 100
+            slots: [
+                "Force"
+                "Modification"
+            ]
+        }
+        {
+            name: "Anakin Skylwaker"
+            id: 273
+            unique: true
+            faction: "Galactic Republic"
+            ship: "Delta-7 Aethersprite"
+            skill: 6
+            force: 3
+            points: 100
+            slots: [
+                "Force"
+                "Configuration"
+                "Modification"
+            ]
+        }
+        {
+            name: "Luminara Unduli"
+            id: 274
+            unique: true
+            faction: "Galactic Republic"
+            ship: "Delta-7 Aethersprite"
+            skill: 4
+            force: 2
+            points: 100
+            slots: [
+                "Force"
+                "Configuration"
+                "Modification"
+            ]
+        }
+        {
+            name: "Barriss Offee"
+            id: 275
+            unique: true
+            faction: "Galactic Republic"
+            ship: "Delta-7 Aethersprite"
+            skill: 6
+            force: 3
+            points: 100
+            slots: [
+                "Force"
+                "Configuration"
+                "Modification"
+            ]
+        }
+        {
+            name: "Ahsoka Tano"
+            id: 276
+            unique: true
+            faction: "Galactic Republic"
+            ship: "Delta-7 Aethersprite"
+            skill: 3
+            force: 2
+            points: 100
+            slots: [
+                "Force"
+                "Configuration"
+                "Modification"
+            ]
+        }
+        {
+            name: "Jedi Knight"
+            id: 277
+            faction: "Galactic Republic"
+            ship: "Delta-7 Aethersprite"
+            skill: 3
+            force: 1
+            points: 100
+            slots: [
+                "Force"
+                "Configuration"
+                "Modification"
+            ]
+        }
+        {
+            name: "Obi-Wan Kenobi"
+            id: 278
+            unique: true
+            faction: "Galactic Republic"
+            ship: "Delta-7 Aethersprite"
+            skill: 5
+            force: 2
+            points: 100
+            slots: [
+                "Force"
+                "Configuration"
+                "Modification"
+            ]
+        }
+        {
+            name: "Trade Federation Drone"
+            id: 279
+            faction: "Separatist Alliance"
+            ship: "Vulture-class Droid Fighter"
+            skill: 1
+            points: 100
+            slots: [
+                "Modification"
+            ]
+        }
+        {
+            name: '"Sinker"'
+            id: 280
+            faction: "Galactic Republic"
+            ship: "ARC-170"
+            skill: 3
+            points: 100
+            slots: [
+                "Talent"
+                "Torpedo"
+                "Crew"
+                "Gunner"
+                "Astromech"
                 "Modification"
             ]
         }
@@ -8837,7 +9089,42 @@ exportObj.basicCardData = ->
             unique: true
             faction: "Resistance"
        }
-    ]
+       {
+            name: "Ferrosphere Paint"
+            id: 198
+            slot: "Tech"
+            points: 0
+            faction: "Resistance"
+       }
+       {
+            name: "Brilliant Evasion"
+            id: 199
+            slot: "Force"
+            points: 0
+       }
+       {
+            name: "Calibrated Laser Targeting"
+            id: 200
+            slot: "Configuration"
+            ship: "Delta-7 Aethersprite"
+            points: 0
+            unequips_upgrades: [ "Modification" ]
+            also_occupies_upgrades: [ "Modification" ]
+       }
+       {
+            name: "Delta-7B"
+            id: 201
+            slot: "Configuration"
+            ship: "Delta-7 Aethersprite"
+            points: 0
+            modifier_func: (stats) ->
+                stats.attack += 1
+                stats.agility += -1
+                stats.shields += 2
+       }
+
+
+]
 
 
     conditionsById: [
@@ -9052,6 +9339,8 @@ exportObj.fixIcons = (data) ->
             .replace(/%SINGLETURRETARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>')
             .replace(/%FRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>')
             .replace(/%REARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reararc"></i>')
+            .replace(/%LEFTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-leftarc"></i>')
+            .replace(/%RIGHTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-rightarc"></i>')
             .replace(/%ROTATEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>')
             .replace(/%FULLFRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullfrontarc"></i>')
             .replace(/%FULLREARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullreararc"></i>')
@@ -10328,10 +10617,6 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """ ??? %LINEBREAK% AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."""
         "Lieutenant Dormitz":
            text: """ SETUP: After you are placed, other friendly ships can be placed anywhere in the play area at range 0-2 of you.  %LINEBREAK% LINKED BATTERY: While you perform a %CANNON% attack, roll 1 addtional die. """
-        "Tallissan Lintra":
-           text: """While an enemy ship in your %BULLSEYEARC% performs an attack, you may spend 1 %CHARGE%.  If you do, the defender rolls 1 additional die."""
-        "Lulo Lampar":
-           text: """While you defend or perform a primary attack, if you are stressed, you must roll 1 fewer defense die or 1 additional attack die."""
         '"Backdraft"':
            text: """ ... perform a %TURRET% primary ... defender is in your %REARARC% ... additional dice. %LINEBREAK% HEAVY WEAPON TURRET: You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. You must treat the %FRONTARC% requirement of your equipped %MISSILE% upgrades as %SINGLETURRETARC%.  """
         '"Quickdraw"':
@@ -10986,6 +11271,7 @@ exportObj.translations.English =
         "Barrel Roll": '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>'
         "Boost": '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>'
         "Evade": '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>'
+        "F-Evade": '<i class="xwing-miniatures-font force xwing-miniatures-font-evade"></i>'
         "Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>'
         "Lock": '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>'
         "Reload": '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>'
@@ -11905,10 +12191,6 @@ exportObj.cardLoaders.English = () ->
            text: """ ??? %LINEBREAK% AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."""
         "Lieutenant Dormitz":
            text: """ SETUP: After you are placed, other friendly ships can be placed anywhere in the play area at range 0-2 of you.  %LINEBREAK% LINKED BATTERY: While you perform a %CANNON% attack, roll 1 addtional die. """
-        "Tallissan Lintra":
-           text: """While an enemy ship in your %BULLSEYEARC% performs an attack, you may spend 1 %CHARGE%.  If you do, the defender rolls 1 additional die."""
-        "Lulo Lampar":
-           text: """While you defend or perform a primary attack, if you are stressed, you must roll 1 fewer defense die or 1 additional attack die."""
         '"Backdraft"':
            text: """ ... perform a %TURRET% primary ... defender is in your %REARARC% ... additional dice. %LINEBREAK% HEAVY WEAPON TURRET: You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. You must treat the %FRONTARC% requirement of your equipped %MISSILE% upgrades as %SINGLETURRETARC%.  """
         '"Quickdraw"':
@@ -11967,8 +12249,20 @@ exportObj.cardLoaders.English = () ->
            text: """ <i class = flavor_text>Unhampered by a cumbersome galactic bureaucracy, technologies originally researched by the Empire's TIE Advanced program are now mass-produced on the First Order starfighters. As a result, TIE/fo pilots enjoy higher survival rates than their predecessors in the Galactic Empire.</i> """
         "Epsilon Squadron Cadet":
            text: """ <i class = flavor_text>Trained from childhood aboard Resurgent-class Star Destroyers in deep space, many First Order TIE pilots have never even set foot on a planet's surface.</i> """
-            
-            
+        "Greer Sonnel":
+           text: """ After you fully execute a maneuver, you may rotate your %SINGLETURRETARC% %LINEBREAK% REFINED GYROSTABILIZERS: You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. After you perform an action, you may perform a red %BOOST% or %ROTATEARC% action. """
+        "L'ulo L'ampar":
+           text: """ While you defend or perform a primary attack, if you are stressed, you must roll 1 fewer defense die or 1 additional attack die. %LINEBREAK% REFINED GYROSTABILIZERS: You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. After you perform an action, you may perform a red %BOOST% or %ROTATEARC% action. """
+        "Zari Bangel":
+           text: """ You do not skip your Perform Action step after you partially execute a maneuver. %LINEBREAK% REFINED GYROSTABILIZERS: You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. After you perform an action, you may perform a red %BOOST% or %ROTATEARC% action. """
+        "Tallissan Lintra":
+           text: """ While an enemy ship in your %BULLSEYEARC% performs an attack, you may spend 1 %CHARGE%. If you do, the defender rolls 1 addtional die. %LINEBREAK% REFINED GYROSTABILIZERS: You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. After you perform an action, you may perform a red %BOOST% or %ROTATEARC% action. """
+        "Darth Maul":
+           text: """ After you perform an attack, you may spend 2 %FORCE% to perform a bonus primary attack against a different target. If your attack missed, you may perform that bonus primary attack against the same target instead. """
+        '"Sinker"':
+           text: """ While a friendly ship at range 1-2 in your %LEFTARC% or %RIGHTARC% performs a primary attack, if may reroll 1 attack die. """
+
+
     upgrade_translations =
         "0-0-0":
            display_name: """0-0-0"""
@@ -12521,6 +12815,14 @@ exportObj.cardLoaders.English = () ->
            text: """ Before you execute a blue maneuver, you may spend 1 %CHARGE% to perform a %BARRELROLL% action. """
         "M9-G8":
            text: """ While a ship you are locking performs an attack, you may choose 1 attack die. If you do, the attacker rerolls that die. """
+        "Ferrosphere Paint":
+           text: """ After an enemy ship locks you, if you are not in that ship's %BULLSEYEARC%, that ship gains 1 stress token. """
+        "Brilliant Evasion":
+           text: """ While you defend, if you are not in the attacker's %BULLSEYEARC%, you may spend 1 %FORCE% to change 2 of your %FOCUS% results to %EVADE% results. """
+        "Calibrated Laser Targeting":
+           text: """ While you perform a primary attack, if the defender is in your %BULLSEYEARC%, add 1 %FOCUS% result. """
+        "Delta-7B":
+           text: """ <i>Adds: 1 attack, 2 shields %LINEBREAK% Removes: 1 agility</i> """
             
         
     condition_translations =
@@ -13512,10 +13814,6 @@ exportObj.cardLoaders['Español'] = () ->
            text: """ ??? %LINEBREAK% AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."""
         "Lieutenant Dormitz":
            text: """ ... are placed, other ... be placed anywhere in ... range 0-2 of you. %LINEBREAK% ... : while you perform a %CANNON% ... additional die. """
-        "Tallissan Lintra":
-           text: """While an enemy ship in your %BULLSEYEARC% performs an attack, you may spend 1 %CHARGE%.  If you do, the defender rolls 1 additional die."""
-        "Lulo Lampar":
-           text: """While you defend or perform a primary attack, if you are stressed, you must roll 1 fewer defense die or 1 additional attack die."""
         '"Backdraft"':
            text: """ ... perform a %TURRET% primary ... defender is in your %BACKARC% ... additional dice. %LINEBREAK% ... TURRET: You can... indicator only to your ... must treat the %FRONTARC% ... your equipped %MISSILE% ... as %TURRET%. """
         '"Quickdraw"':
@@ -16293,10 +16591,6 @@ exportObj.cardLoaders.Magyar = () ->
            text: """ ??? %LINEBREAK% AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action."""
         "Lieutenant Dormitz":
            text: """ ... are placed, other ... be placed anywhere in ... range 0-2 of you. %LINEBREAK% ... : while you perform a %CANNON% ... additional die. """
-        "Tallissan Lintra":
-           text: """While an enemy ship in your %BULLSEYEARC% performs an attack, you may spend 1 %CHARGE%.  If you do, the defender rolls 1 additional die."""
-        "Lulo Lampar":
-           text: """While you defend or perform a primary attack, if you are stressed, you must roll 1 fewer defense die or 1 additional attack die."""
         '"Backdraft"':
            text: """ ... perform a %TURRET% primary ... defender is in your %BACKARC% ... additional dice. %LINEBREAK% ... TURRET: You can... indicator only to your ... must treat the %FRONTARC% ... your equipped %MISSILE% ... as %TURRET%. """
         '"Quickdraw"':
