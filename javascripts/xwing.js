@@ -10438,7 +10438,7 @@ exportObj.cardLoaders.English = function() {
     },
     "Virago": {
       display_name: "Virago",
-      text: "During the End Phase, you may spend 1&nbsp;%CHARGE% to perform a red %BOOST% action.%LINEBREAK%Add %MODIFICATION% slot."
+      text: "<i>Adds 1 shield</i> %LINEBREAK% During the End Phase, you may spend 1&nbsp;%CHARGE% to perform a red %BOOST% action.%LINEBREAK%Add %MODIFICATION% slot."
     },
     "Ablative Plating": {
       display_name: "Ablative Plating",
