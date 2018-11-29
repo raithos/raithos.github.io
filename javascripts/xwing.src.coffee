@@ -6998,6 +6998,10 @@ exportObj.basicCardData = ->
             points: 63
             slots: [
                 "Sensor"
+                "Tech"
+                "Crew"
+                "Gunner"
+                "Gunner"
                 "Device"
                 "Device"
                 "Modification"
@@ -7037,9 +7041,10 @@ exportObj.basicCardData = ->
             faction: "First Order"
             ship: "TIE/FO Fighter"
             skill: 3
-            points: 100
+            points: 33
             slots: [
                 "Talent"
+                "Tech"
                 "Modification"
             ]
         }
@@ -7363,6 +7368,7 @@ exportObj.basicCardData = ->
             skill: 3
             points: 36
             slots: [
+                "Talent"
                 "Tech"
                 "Gunner"
                 "Missile"
@@ -7641,8 +7647,6 @@ exportObj.basicCardData = ->
             skill: 1
             points: 32
             slots: [
-                "Talent"
-                "Talent"
                 "Missile"
                 "Tech"
             ]
