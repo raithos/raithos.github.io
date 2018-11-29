@@ -4601,7 +4601,7 @@ exportObj.basicCardData = function() {
         ship: "Mining Guild TIE Fighter",
         skill: 2,
         points: 25,
-        slots: ["Modification"]
+        slots: ["Talent", "Modification"]
       }, {
         name: "Ahhav",
         id: 249,
@@ -5101,7 +5101,6 @@ exportObj.basicCardData = function() {
       }, {
         name: "Mining Guild Sentry",
         id: 304,
-        unique: true,
         faction: "Scum and Villainy",
         ship: "Mining Guild TIE Fighter",
         skill: 1,

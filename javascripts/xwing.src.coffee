@@ -6802,6 +6802,7 @@ exportObj.basicCardData = ->
             skill: 2
             points: 25
             slots: [
+                "Talent"
                 "Modification"
             ]
         }
@@ -7681,7 +7682,6 @@ exportObj.basicCardData = ->
         {
             name: "Mining Guild Sentry"
             id: 304
-            unique: true
             faction: "Scum and Villainy"
             ship: "Mining Guild TIE Fighter"
             skill: 1
