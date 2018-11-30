@@ -5966,7 +5966,7 @@ exportObj.basicCardData = function() {
         slot: "Gunner",
         points: 8,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.effectiveStats().actions, "Rotate Arc") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Rotate Arc") >= 0 || __indexOf.call(ship.effectiveStats().actions, "> Rotate Arc") >= 0 || __indexOf.call(ship.effectiveStats().actions, "R> Rotate Arc") >= 0;
+          return __indexOf.call(ship.effectiveStats().actions, "Rotate Arc") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Rotate Arc") >= 0;
         }
       }, {
         name: "Cloaking Device",
