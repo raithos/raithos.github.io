@@ -1591,7 +1591,7 @@ exportObj.isReleased = function(data) {
   return false;
 };
 
-exportObj.secondEditionExpansions = ['Second Edition Core Set', "Saw's Renegades Expansion Pack", 'TIE Reaper Expansion Pack', 'T-65 X-Wing Expansion Pack', 'BTL-A4 Y-Wing Expansion Pack', 'TIE/ln Fighter Expansion Pack', 'TIE Advanced x1 Expansion Pack', 'Slave I Expansion Pack', 'Fang Fighter Expansion Pack', "Lando's Millennium Falcon Expansion Pack"];
+exportObj.secondEditionExpansions = ['Second Edition Core Set', "Saw's Renegades Expansion Pack", 'TIE Reaper Expansion Pack', 'T-65 X-Wing Expansion Pack', 'BTL-A4 Y-Wing Expansion Pack', 'TIE/ln Fighter Expansion Pack', 'TIE Advanced x1 Expansion Pack', 'Slave I Expansion Pack', 'Fang Fighter Expansion Pack', "Lando's Millennium Falcon Expansion Pack", 'T-70 X-Wing Expansion Pack', 'RZ-2 A-Wing Expansion Pack', 'Mining Guild TIE Expansion Pack', 'TIE/FO Fighter Expansion Pack'];
 
 exportObj.secondEditionCheck = function(data, faction) {
   var source, _i, _len, _ref;
@@ -4935,7 +4935,7 @@ exportObj.basicCardData = function() {
         points: 36,
         slots: ["Talent", "Tech", "Gunner", "Missile", "Sensor", "Modification"]
       }, {
-        name: "Sienar-Jaemus Enginner",
+        name: "Sienar-Jaemus Engineer",
         id: 286,
         faction: "First Order",
         ship: "TIE Silencer",
@@ -6891,7 +6891,7 @@ exportObj.basicCardData = function() {
         name: "Rey's Millenium Falcon",
         id: 193,
         slot: "Title",
-        points: 0,
+        points: 5,
         unique: true,
         ship: "Scavenged YT-1300",
         faction: "Resistance"
@@ -10628,7 +10628,7 @@ exportObj.cardLoaders.English = function() {
     "Omega Squadron Expert": {
       text: " <i class = flavor_text> ... </i>  %LINEBREAK% HEAVY WEAPON TURRET: You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. You must treat the %FRONTARC% requirement of your equipped %MISSILE% upgrades as %SINGLETURRETARC%. "
     },
-    "Sienar-Jaemus Enginner": {
+    "Sienar-Jaemus Engineer": {
       text: " <i class = flavor_text> ... </i> %LINEBREAK% AUTOTHRUSTERS: After you perform an action. you may perform a red %BARRELROLL% or a red %BOOST% action. "
     },
     "First Order Test Pilot": {
@@ -19589,6 +19589,520 @@ exportObj.manifestByExpansion = {
       count: 1
     }
   ],
+  'Resistance Conversion Kit': [
+    {
+      name: 'Finch Dallow',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Edon Kappehl',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Ben Teene',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Vennie',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Cat',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Cobalt Squadron Bomber',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Rey',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Han Solo (Resistance)',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Chewbacca (Resistance)',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Resistance Sympathizer',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Poe Dameron',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Ello Asty',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Nien Numb',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Temmin Wexley',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Kare Kun',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Jessika Pava',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Joph Seastriker',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Jaycris Tubbs',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Lieutenant Bastian',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Black Squadron Ace (T-70)',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Red Squadron Expert',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Blue Squadron Rookie',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: "Rey's Millenium Falcon",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'R2-HA',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'BB-8',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Heroic',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'R5-X3',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Black One',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'BB Astromech',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Primed Thrusters',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'M9-G8',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'C-3PO (Resistance)',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Rey',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Finn',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Han Solo (Resistance)',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Chewbacca (Resistance)',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Integrated S-Foils',
+      type: 'upgrade',
+      count: 4
+    }, {
+      name: 'Rose Tico',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Paige Tico',
+      type: 'upgrade',
+      count: 1
+    }
+  ],
+  'T-70 X-Wing Expansion Pack': [
+    {
+      name: 'T-70 X-Wing',
+      type: 'ship',
+      count: 1
+    }, {
+      name: 'Poe Dameron',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Ello Asty',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Nien Numb',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Temmin Wexley',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Kare Kun',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Jessika Pava',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Joph Seastriker',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Jaycris Tubbs',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Lieutenant Bastian',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Black Squadron Ace (T-70)',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Red Squadron Expert',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Blue Squadron Rookie',
+      type: 'pilot',
+      count: 1
+    }
+  ],
+  'RZ-2 A-Wing Expansion Pack': [
+    {
+      name: 'RZ-2 A-Wing',
+      type: 'ship',
+      count: 1
+    }, {
+      name: "L'ulo L'ampar",
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Greer Sonnel',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Tallissan Lintra',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Zari Bangel',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Green Squadron Expert',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Blue Squadron Recruit',
+      type: 'pilot',
+      count: 1
+    }
+  ],
+  'Mining Guild TIE Expansion Pack': [
+    {
+      name: 'Mining Guild TIE Fighter',
+      type: 'ship',
+      count: 1
+    }, {
+      name: 'Foreman Proach',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Ahhav',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Captain Seevor',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Overseer Yushyn',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Mining Guild Surveyor',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Mining Guild Sentry',
+      type: 'pilot',
+      count: 1
+    }
+  ],
+  'First Order Conversion Kit': [
+    {
+      name: 'Epsilon Squadron Cadet',
+      type: 'pilot',
+      count: 7
+    }, {
+      name: 'Zeta Squadron Pilot',
+      type: 'pilot',
+      count: 7
+    }, {
+      name: 'Omega Squadron Ace',
+      type: 'pilot',
+      count: 6
+    }, {
+      name: '"Null"',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Lieutenant Rivas',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Muse"',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'TN-3465',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Longshot"',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Static"',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Scorch"',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Commander Malarus',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Midnight"',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Quickdraw"',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Backdraft"',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: "Omega Squadron Expert",
+      type: 'pilot',
+      count: 1
+    }, {
+      name: "Zeta Squadron Survivor",
+      type: 'pilot',
+      count: 1
+    }, {
+      name: "Kylo Ren",
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Blackout"',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Recoil"',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Avenger"',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: "First Order Test Pilot",
+      type: 'pilot',
+      count: 1
+    }, {
+      name: "Sienar-Jaemus Engineer",
+      type: 'pilot',
+      count: 1
+    }, {
+      name: "Captain Cardinal",
+      type: 'pilot',
+      count: 1
+    }, {
+      name: "Major Stridan",
+      type: 'pilot',
+      count: 1
+    }, {
+      name: "Lieutenant Tavson",
+      type: 'pilot',
+      count: 1
+    }, {
+      name: "Lieutenant Dormitz",
+      type: 'pilot',
+      count: 1
+    }, {
+      name: "Petty Officer Thanisson",
+      type: 'pilot',
+      count: 1
+    }, {
+      name: "Starkiller Base Pilot",
+      type: 'pilot',
+      count: 1
+    }, {
+      name: "Primed Thrusters",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: "Hyperspace Tracking Data",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: "Fanatical",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: "Special Forces Gunner",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: "Supreme Leader Snoke",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: "Petty Officer Thanisson",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: "Kylo Ren",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: "General Hux",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: "Captain Phasma",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: "Biohexacrypt Codes",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: "Predictive Shot",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: "Hate",
+      type: 'upgrade',
+      count: 1
+    }
+  ],
+  'TIE/FO Fighter Expansion Pack': [
+    {
+      name: 'TIE/FO Fighter',
+      type: 'ship',
+      count: 1
+    }, {
+      name: 'Epsilon Squadron Cadet',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Zeta Squadron Pilot',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Omega Squadron Ace',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Null"',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Lieutenant Rivas',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Muse"',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'TN-3465',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Longshot"',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Static"',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Scorch"',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Commander Malarus',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Midnight"',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Targeting Synchronizer',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Advanced Optics',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Swarm Tactics',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Squad Leader',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Fanatical',
+      type: 'upgrade',
+      count: 1
+    }
+  ],
   'Loose Ships': [
     {
       name: 'A-Wing',
@@ -20292,7 +20806,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 21463
+                    lineno: 22101
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -20981,7 +21495,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 22198
+              lineno: 22836
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -21686,7 +22200,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 22844
+          lineno: 23482
         }));
         __iced_deferrals._fulfill();
       });
@@ -21698,7 +22212,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 22845
+            lineno: 23483
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -23166,7 +23680,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 23845
+                      lineno: 24483
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -23224,7 +23738,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 23862
+                lineno: 24500
               })
             ]);
             __iced_deferrals._fulfill();
@@ -23271,7 +23785,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 23876
+              lineno: 24514
             }));
           }
         }
@@ -24172,7 +24686,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 24584
+                lineno: 25222
               })
             ]);
             __iced_deferrals._fulfill();
@@ -24313,7 +24827,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 24657
+                  lineno: 25295
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -24335,7 +24849,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 24661
+                    lineno: 25299
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -24421,7 +24935,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 24700
+            lineno: 25338
           }));
         }
         __iced_deferrals._fulfill();
