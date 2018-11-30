@@ -777,6 +777,12 @@ class exportObj.CardBrowser
                                     <label class = "toggle-resistance-search advanced-search-label">
                                         <input type="checkbox" class="resistance-checkbox advanced-search-checkbox" checked="checked" /> Resistance
                                     </label>
+                                    <label class = "toggle-separatist-search advanced-search-label">
+                                        <input type="checkbox" class="separatist-checkbox advanced-search-checkbox" checked="checked" /> Separatist
+                                    </label>
+                                    <label class = "toggle-republic-search advanced-search-label">
+                                        <input type="checkbox" class="republic-checkbox advanced-search-checkbox" checked="checked" /> Republic
+                                    </label>
                                     <label class = "toggle-factionless-search advanced-search-label">
                                         <input type="checkbox" class="factionless-checkbox advanced-search-checkbox" checked="checked" /> Factionless
                                         <span class="advanced-search-tooltip" tooltip="A card is considered factionless, if it can be used by more than one faction."> &#9432 </span>
@@ -956,6 +962,8 @@ class exportObj.CardBrowser
         @faction_selectors["Galactic Empire"] = ($ @container.find('.xwing-card-browser .imperial-checkbox'))[0]
         @faction_selectors["Resistance"] = ($ @container.find('.xwing-card-browser .resistance-checkbox'))[0]
         @faction_selectors["First Order"] = ($ @container.find('.xwing-card-browser .fo-checkbox'))[0]
+        @faction_selectors["Separatist Alliance"] = ($ @container.find('.xwing-card-browser .separatist-checkbox'))[0]
+        @faction_selectors["Galactic Republic"] = ($ @container.find('.xwing-card-browser .republic-checkbox'))[0]
         @faction_selectors[undefined] = ($ @container.find('.xwing-card-browser .factionless-checkbox'))[0]
         @minimum_point_costs = ($ @container.find('.xwing-card-browser .minimum-point-cost'))[0]
         @maximum_point_costs = ($ @container.find('.xwing-card-browser .maximum-point-cost'))[0]
@@ -9594,7 +9602,13 @@ exportObj.basicCardData = ->
             slot: "Astromech"
             faction: "Resistance"
             charge: 2
-            points: 3
+            points: 5
+       }
+       {
+            name: "Pattern Analyzer"
+            id: 206
+            slot: "Tech"
+            points: 5
        }
 
 
@@ -9715,7 +9729,9 @@ exportObj.setupCardData = (basic_cards, pilot_translations, upgrade_translations
                     else
                         throw new Error("Unexpected card type #{card.type} for card #{card.name} of #{expansion}")
             catch e
+                console.log(e)
                 console.error "Error adding card #{card.name} (#{card.type}) from #{expansion}"
+
 
     for name, card of exportObj.pilots
         card.sources = card.sources.sort()
@@ -11706,6 +11722,24 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """ Before you execute a blue maneuver, you may spend 1 %CHARGE% to perform a %BARRELROLL% action. """
         "M9-G8":
            text: """ While a ship you are locking performs an attack, you may choose 1 attack die. If you do, the attacker rerolls that die. """
+        "Ferrosphere Paint":
+           text: """ After an enemy ship locks you, if you are not in that ship's %BULLSEYEARC%, that ship gains 1 stress token. """
+        "Brilliant Evasion":
+           text: """ While you defend, if you are not in the attacker's %BULLSEYEARC%, you may spend 1 %FORCE% to change 2 of your %FOCUS% results to %EVADE% results. """
+        "Calibrated Laser Targeting":
+           text: """ While you perform a primary attack, if the defender is in your %BULLSEYEARC%, add 1 %FOCUS% result. """
+        "Delta-7B":
+           text: """ <i>Adds: 1 attack, 2 shields %LINEBREAK% Removes: 1 agility</i> """
+        "Biohexacrypt Codes":
+           text: """ While you coordinate or jam, if you have a lock on a ship, you may spend that lock to choose that ship, ignoring range restrictions. """
+        "Predictive Shot":
+           text: """ After you declare an attack, if the defender is in your %BULLSEYEARC%, you may spend 1 %FORCE%. If you do, during the Roll Defense Dice step, the defender cannot roll more defense dice than the number of your %HIT%/%CRIT% results. """
+        "Hate":
+           text: """ After you suffer 1 or more damage, recover that many %FORCE% """
+        "R5-X3":
+           text: """ Before you activate or engage, you may spend 1 %CHARGE% to ignore obstacles until the end of this phase. """
+        "Pattern Analyzer":
+           text: """ While you fully execute a red maneuver, before the Check Difficulty step, you may perform 1 action. """
             
     condition_translations =
         'Suppressive Fire':
@@ -13352,6 +13386,8 @@ exportObj.cardLoaders.English = () ->
            text: """ After you suffer 1 or more damage, recover that many %FORCE% """
         "R5-X3":
            text: """ Before you activate or engage, you may spend 1 %CHARGE% to ignore obstacles until the end of this phase. """
+        "Pattern Analyzer":
+           text: """ While you fully execute a red maneuver, before the Check Difficulty step, you may perform 1 action. """
         
             
         
@@ -14915,7 +14951,31 @@ exportObj.cardLoaders['Español'] = () ->
            text: """ If you have 2 or fewer stress tokens, ou can execute red Segnor's Loop (%SLOOPLEFT% or %SLOOPRIGHT%) maneuvers and perform %BOOST% and %ROTATEARC% actions even while stressed. """
         "Petty Officer Thanisson":
            text: """ During the Activation or Engagement Phase, after an enemy ship in your %FRONTARC% at range 0-1 gains a red or orange token, if you are not stressed, you may gain 1 stress token. if you do, that ship gains an additional token of the type that it gained. """
-            
+        "BB-8":
+           text: """ Before you execute a blue maneuver, you may spend 1 %CHARGE% to perform a %BARRELROLL% or %BOOST% action. """
+        "BB Astromech":
+           text: """ Before you execute a blue maneuver, you may spend 1 %CHARGE% to perform a %BARRELROLL% action. """
+        "M9-G8":
+           text: """ While a ship you are locking performs an attack, you may choose 1 attack die. If you do, the attacker rerolls that die. """
+        "Ferrosphere Paint":
+           text: """ After an enemy ship locks you, if you are not in that ship's %BULLSEYEARC%, that ship gains 1 stress token. """
+        "Brilliant Evasion":
+           text: """ While you defend, if you are not in the attacker's %BULLSEYEARC%, you may spend 1 %FORCE% to change 2 of your %FOCUS% results to %EVADE% results. """
+        "Calibrated Laser Targeting":
+           text: """ While you perform a primary attack, if the defender is in your %BULLSEYEARC%, add 1 %FOCUS% result. """
+        "Delta-7B":
+           text: """ <i>Adds: 1 attack, 2 shields %LINEBREAK% Removes: 1 agility</i> """
+        "Biohexacrypt Codes":
+           text: """ While you coordinate or jam, if you have a lock on a ship, you may spend that lock to choose that ship, ignoring range restrictions. """
+        "Predictive Shot":
+           text: """ After you declare an attack, if the defender is in your %BULLSEYEARC%, you may spend 1 %FORCE%. If you do, during the Roll Defense Dice step, the defender cannot roll more defense dice than the number of your %HIT%/%CRIT% results. """
+        "Hate":
+           text: """ After you suffer 1 or more damage, recover that many %FORCE% """
+        "R5-X3":
+           text: """ Before you activate or engage, you may spend 1 %CHARGE% to ignore obstacles until the end of this phase. """
+        "Pattern Analyzer":
+           text: """ While you fully execute a red maneuver, before the Check Difficulty step, you may perform 1 action. """   
+           
     condition_translations =
         'Suppressive Fire':
            display_name: """Fuego de supresión"""
@@ -17523,6 +17583,30 @@ exportObj.cardLoaders.Magyar = () ->
            text: """ If you have 2 or fewer stress tokens, ou can execute red Segnor's Loop (%SLOOPLEFT% or %SLOOPRIGHT%) maneuvers and perform %BOOST% and %ROTATEARC% actions even while stressed. """
         "Petty Officer Thanisson":
            text: """ During the Activation or Engagement Phase, after an enemy ship in your %FRONTARC% at range 0-1 gains a red or orange token, if you are not stressed, you may gain 1 stress token. if you do, that ship gains an additional token of the type that it gained. """
+        "BB-8":
+           text: """ Before you execute a blue maneuver, you may spend 1 %CHARGE% to perform a %BARRELROLL% or %BOOST% action. """
+        "BB Astromech":
+           text: """ Before you execute a blue maneuver, you may spend 1 %CHARGE% to perform a %BARRELROLL% action. """
+        "M9-G8":
+           text: """ While a ship you are locking performs an attack, you may choose 1 attack die. If you do, the attacker rerolls that die. """
+        "Ferrosphere Paint":
+           text: """ After an enemy ship locks you, if you are not in that ship's %BULLSEYEARC%, that ship gains 1 stress token. """
+        "Brilliant Evasion":
+           text: """ While you defend, if you are not in the attacker's %BULLSEYEARC%, you may spend 1 %FORCE% to change 2 of your %FOCUS% results to %EVADE% results. """
+        "Calibrated Laser Targeting":
+           text: """ While you perform a primary attack, if the defender is in your %BULLSEYEARC%, add 1 %FOCUS% result. """
+        "Delta-7B":
+           text: """ <i>Adds: 1 attack, 2 shields %LINEBREAK% Removes: 1 agility</i> """
+        "Biohexacrypt Codes":
+           text: """ While you coordinate or jam, if you have a lock on a ship, you may spend that lock to choose that ship, ignoring range restrictions. """
+        "Predictive Shot":
+           text: """ After you declare an attack, if the defender is in your %BULLSEYEARC%, you may spend 1 %FORCE%. If you do, during the Roll Defense Dice step, the defender cannot roll more defense dice than the number of your %HIT%/%CRIT% results. """
+        "Hate":
+           text: """ After you suffer 1 or more damage, recover that many %FORCE% """
+        "R5-X3":
+           text: """ Before you activate or engage, you may spend 1 %CHARGE% to ignore obstacles until the end of this phase. """
+        "Pattern Analyzer":
+           text: """ While you fully execute a red maneuver, before the Check Difficulty step, you may perform 1 action. """
             
     condition_translations =
         'Suppressive Fire':
@@ -21665,7 +21749,7 @@ exportObj.manifestByExpansion =
             count: 3
         }
         {
-            name: 'B/SF-17 Bomber'
+            name: 'MG-100 StarFortress'
             type: 'ship'
             count: 3
         }
