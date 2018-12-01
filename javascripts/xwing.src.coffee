@@ -6947,6 +6947,7 @@ exportObj.basicCardData = ->
             skill: 4
             points: 50
             slots: [
+                "Talent"
                 "Astromech"
                 "Modification"
                 "Configuration"
@@ -6963,6 +6964,7 @@ exportObj.basicCardData = ->
             skill: 3
             points: 48
             slots: [
+                "Talent"
                 "Astromech"
                 "Modification"
                 "Configuration"
@@ -11992,7 +11994,7 @@ exportObj.cardLoaders.English = () ->
     exportObj.renameShip """TIE Reaper""", """TIE Reaper"""
     exportObj.renameShip """JumpMaster 5000""", """JumpMaster 5000"""
     exportObj.renameShip """M3-A Interceptor""", """M3-A Interceptor"""
-    exportObj.renameShip """Scavenged YT-1300""", """Customized YT-1300 Light Freighter"""
+    exportObj.renameShip """Scavenged YT-1300""", """Scavenged YT-1300 Light Freighter"""
     exportObj.renameShip """Escape Craft""", """Escape Craft"""
 
     # Names don't need updating, but text needs to be set
@@ -21780,7 +21782,108 @@ exportObj.manifestByExpansion =
             count: 3
         }
     ]        
-
+    'Hyperspace': [
+        {
+            name: 'YT-1300'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'U-Wing'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'X-Wing'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'Y-Wing'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'TIE Advanced'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'TIE Fighter'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'TIE Striker'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'TIE Reaper'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Fang Fighter'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'Firespray-31'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'Customized YT-1300'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Escape Craft'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'T-70 X-Wing'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'MG-100 StarFortress'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'RZ-2 A-Wing'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Scavenged YT-1300'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'TIE/SF Fighter'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'TIE/FO Fighter'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'Upsilon-Class Shuttle'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'TIE Silencer'
+            type: 'ship'
+            count: 3
+        }
+    ]
 
 class exportObj.Collection
 
@@ -22001,7 +22104,7 @@ class exportObj.Collection
             input.data 'expansion', expansion
             input.closest('div').css 'background-color', @countToBackgroundColor(input.val())
             $(row).find('.expansion-name').data 'name', expansion
-            if expansion != 'Loose Ships'
+            if expansion != 'Loose Ships' or 'Hyperspace'
                 collection_content.append row
 
         shipcollection_content = $ @modal.find('.collection-ship-content')
