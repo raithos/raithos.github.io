@@ -9797,7 +9797,7 @@ exportObj.translations.English = {
   byCSSSelector: {
     '.unreleased-content-used .translated': 'This squad uses unreleased content!',
     '.collection-invalid .translated': 'You cannot field this list with your collection!',
-    '.game-type-selector option[value="standard"]': 'Standard',
+    '.game-type-selector option[value="standard"]': 'Extended',
     '.game-type-selector option[value="custom"]': 'Custom',
     '.game-type-selector option[value="epic"]': 'Epic',
     '.game-type-selector option[value="team-epic"]': 'Team Epic',
