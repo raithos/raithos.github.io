@@ -7751,8 +7751,6 @@ exportObj.basicCardData = ->
             ship: "T-70 X-Wing"
             skill: 4
             points: 54
-            charge: 1
-            recurring: true 
             slots: [
                 "Talent"
                 "Astromech"
