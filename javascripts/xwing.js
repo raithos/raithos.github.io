@@ -4806,6 +4806,7 @@ exportObj.basicCardData = function() {
         name: "Black Squadron Ace (T-70)",
         id: 256,
         faction: "Resistance",
+        xws: "blacksquadronace-t70xwing",
         ship: "T-70 X-Wing",
         skill: 4,
         points: 50,
@@ -7193,9 +7194,10 @@ exportObj.basicCardData = function() {
         },
         isHyperspace: true
       }, {
-        name: "Rey's Millenium Falcon",
+        name: "Rey's Millennium Falcon",
         id: 193,
         slot: "Title",
+        xws: "",
         points: 5,
         unique: true,
         ship: "Scavenged YT-1300",
@@ -11761,8 +11763,8 @@ exportObj.cardLoaders.English = function() {
     "Han Solo (Resistance)": {
       text: " <i>Adds: <r>%EVADE%</r></i> %LINEBREAK% After you perform an %EVADE% action, gain additional evade tokens equal to the number of enemy ships at range 0-1. "
     },
-    "Rey's Millenium Falcon": {
-      text: " If you have 2 or fewer stress tokens, ou can execute red Segnor's Loop (%SLOOPLEFT% or %SLOOPRIGHT%) maneuvers and perform %BOOST% and %ROTATEARC% actions even while stressed. "
+    "Rey's Millennium Falcon": {
+      text: " If you have 2 or fewer stress tokens, you can execute red Segnor's Loop (%SLOOPLEFT% or %SLOOPRIGHT%) maneuvers and perform %BOOST% and %ROTATEARC% actions even while stressed. "
     },
     "Petty Officer Thanisson": {
       text: " During the Activation or Engagement Phase, after an enemy ship in your %FRONTARC% at range 0-1 gains a red or orange token, if you are not stressed, you may gain 1 stress token. if you do, that ship gains an additional token of the type that it gained. "
@@ -20155,7 +20157,7 @@ exportObj.manifestByExpansion = {
       type: 'upgrade',
       count: 1
     }, {
-      name: "Rey's Millenium Falcon",
+      name: "Rey's Millennium Falcon",
       type: 'upgrade',
       count: 1
     }, {
@@ -20609,11 +20611,11 @@ exportObj.manifestByExpansion = {
     }, {
       name: "Omega Squadron Expert",
       type: 'pilot',
-      count: 1
+      count: 4
     }, {
       name: "Zeta Squadron Survivor",
       type: 'pilot',
-      count: 1
+      count: 5
     }, {
       name: "Kylo Ren",
       type: 'pilot',
@@ -20633,11 +20635,11 @@ exportObj.manifestByExpansion = {
     }, {
       name: "First Order Test Pilot",
       type: 'pilot',
-      count: 1
+      count: 3
     }, {
       name: "Sienar-Jaemus Engineer",
       type: 'pilot',
-      count: 1
+      count: 3
     }, {
       name: "Captain Cardinal",
       type: 'pilot',
@@ -20661,7 +20663,7 @@ exportObj.manifestByExpansion = {
     }, {
       name: "Starkiller Base Pilot",
       type: 'pilot',
-      count: 1
+      count: 3
     }, {
       name: "Primed Thrusters",
       type: 'upgrade',
@@ -20766,25 +20768,253 @@ exportObj.manifestByExpansion = {
       type: 'pilot',
       count: 1
     }, {
-      name: 'Targeting Synchronizer',
+      name: 'Fanatical',
+      type: 'upgrade',
+      count: 3
+    }, {
+      name: 'Crack Shot',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Daredevil',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Debris Gambit',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Elusive',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Intimidation',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Juke',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Lone Wolf',
       type: 'upgrade',
       count: 1
     }, {
-      name: 'Advanced Optics',
+      name: 'Marksmanship',
       type: 'upgrade',
-      count: 1
+      count: 2
     }, {
-      name: 'Swarm Tactics',
+      name: 'Outmaneuver',
       type: 'upgrade',
-      count: 1
+      count: 2
+    }, {
+      name: 'Predator',
+      type: 'upgrade',
+      count: 2
     }, {
       name: 'Squad Leader',
       type: 'upgrade',
       count: 1
     }, {
-      name: 'Fanatical',
+      name: 'Swarm Tactics',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Trick Shot',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Advanced Optics',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Pattern Analyzer',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Primed Thrusters',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Targeting Synchronizer',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Hyperspace Tracking Data',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Advanced Sensors',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Collision Detector',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Fire-Control System',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Heavy Laser Cannon',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Ion Cannon',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Jamming Beam',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Tractor Beam',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Adv. Proton Torpedoes',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Proton Torpedoes',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Ion Torpedoes',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Cluster Missiles',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Concussion Missiles',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Homing Missiles',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Ion Missiles',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Proton Rockets',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Freelance Slicer',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'GNK "Gonk" Droid',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Informant',
       type: 'upgrade',
       count: 1
+    }, {
+      name: 'Novice Technician',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Perceptive Copilot',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Seasoned Navigator',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Hotshot Gunner',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Special Forces Gunner',
+      type: 'upgrade',
+      count: 4
+    }, {
+      name: 'Contraband Cybernetics',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: "Deadman's Switch",
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Feedback Array',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Inertial Dampeners',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Rigged Cargo Chute',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Bomblet Generator',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Conner Nets',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Proton Bombs',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Proximity Mines',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Seismic Charges',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Ablative Plating',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Advanced SLAM',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Electronic Baffle',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Engine Upgrade',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Hull Upgrade',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Munitions Failsafe',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Shield Upgrade',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Static Discharge Vanes',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Stealth Device',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Tactical Scrambler',
+      type: 'upgrade',
+      count: 2
     }
   ],
   'Loose Ships': [
@@ -21573,7 +21803,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 22923
+                    lineno: 23210
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -22263,7 +22493,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 23660
+              lineno: 23947
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -22986,7 +23216,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 24322
+          lineno: 24609
         }));
         __iced_deferrals._fulfill();
       });
@@ -22998,7 +23228,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 24323
+            lineno: 24610
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -24476,7 +24706,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 25331
+                      lineno: 25618
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -24534,7 +24764,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 25348
+                lineno: 25635
               })
             ]);
             __iced_deferrals._fulfill();
@@ -24581,7 +24811,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 25362
+              lineno: 25649
             }));
           }
         }
@@ -25482,7 +25712,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 26070
+                lineno: 26357
               })
             ]);
             __iced_deferrals._fulfill();
@@ -25623,7 +25853,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 26143
+                  lineno: 26430
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -25645,7 +25875,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 26147
+                    lineno: 26434
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -25731,7 +25961,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 26186
+            lineno: 26473
           }));
         }
         __iced_deferrals._fulfill();
