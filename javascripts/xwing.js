@@ -1466,20 +1466,20 @@ exportObj.CardBrowser = (function() {
   };
 
   CardBrowser.prototype.getCollectionNumber = function(card) {
-    var owned_copies, _ref, _ref1, _ref2;
+    var owned_copies, _ref, _ref1, _ref2, _ref3, _ref4, _ref5;
     if (!((exportObj.builders[0].collection != null) && (exportObj.builders[0].collection.counts != null))) {
       return -1;
     }
     owned_copies = 0;
     switch (card.orig_type) {
       case 'Pilot':
-        owned_copies = (_ref = exportObj.builders[0].collection.counts.pilot[card.name]) != null ? _ref : 0;
+        owned_copies = (_ref = (_ref1 = exportObj.builders[0].collection.counts.pilot) != null ? _ref1[card.name] : void 0) != null ? _ref : 0;
         break;
       case 'Ship':
-        owned_copies = (_ref1 = exportObj.builders[0].collection.counts.ship[card.name]) != null ? _ref1 : 0;
+        owned_copies = (_ref2 = (_ref3 = exportObj.builders[0].collection.counts.ship) != null ? _ref3[card.name] : void 0) != null ? _ref2 : 0;
         break;
       default:
-        owned_copies = (_ref2 = exportObj.builders[0].collection.counts.upgrade[card.name]) != null ? _ref2 : 0;
+        owned_copies = (_ref4 = (_ref5 = exportObj.builders[0].collection.counts.upgrade) != null ? _ref5[card.name] : void 0) != null ? _ref4 : 0;
     }
     return owned_copies;
   };
@@ -9611,7 +9611,7 @@ exportObj.cardLoaders.Deutsch = function() {
     "Han Solo (Resistance)": {
       text: " <i>Adds: <r>%EVADE%</r></i> %LINEBREAK% After you perform an %EVADE% action, gain additional evade tokens equal to the number of enemy ships at range 0-1. "
     },
-    "Rey's Millenium Falcon": {
+    "Rey's Millennium Falcon": {
       text: " If you have 2 or fewer stress tokens, ou can execute red Segnor's Loop (%SLOOPLEFT% or %SLOOPRIGHT%) maneuvers and perform %BOOST% and %ROTATEARC% actions even while stressed. "
     },
     "Petty Officer Thanisson": {
@@ -13803,7 +13803,7 @@ exportObj.cardLoaders['Español'] = function() {
     "Han Solo (Resistance)": {
       text: " <i>Adds: <r>%EVADE%</r></i> %LINEBREAK% After you perform an %EVADE% action, gain additional evade tokens equal to the number of enemy ships at range 0-1. "
     },
-    "Rey's Millenium Falcon": {
+    "Rey's Millennium Falcon": {
       text: " If you have 2 or fewer stress tokens, ou can execute red Segnor's Loop (%SLOOPLEFT% or %SLOOPRIGHT%) maneuvers and perform %BOOST% and %ROTATEARC% actions even while stressed. "
     },
     "Petty Officer Thanisson": {
@@ -17304,7 +17304,7 @@ exportObj.cardLoaders.Magyar = function() {
     "Han Solo (Resistance)": {
       text: " <i>Adds: <r>%EVADE%</r></i> %LINEBREAK% After you perform an %EVADE% action, gain additional evade tokens equal to the number of enemy ships at range 0-1. "
     },
-    "Rey's Millenium Falcon": {
+    "Rey's Millennium Falcon": {
       text: " If you have 2 or fewer stress tokens, ou can execute red Segnor's Loop (%SLOOPLEFT% or %SLOOPRIGHT%) maneuvers and perform %BOOST% and %ROTATEARC% actions even while stressed. "
     },
     "Petty Officer Thanisson": {
