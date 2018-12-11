@@ -1485,7 +1485,7 @@ exportObj.CardBrowser = (function() {
   };
 
   CardBrowser.prototype.checkSearchCriteria = function(card) {
-    var matches, owned_copies, required_slots, s, search_text, ship, slot, text_in_ship, text_search, used_slots, _i, _j, _k, _len, _len1, _len2;
+    var matches, owned_copies, required_slots, s, search_text, ship, slot, text_in_ship, text_search, used_slots, _i, _j, _k, _len, _len1, _len2, _ref;
     search_text = this.card_search_text.value.toLowerCase();
     text_search = card.name.toLowerCase().indexOf(search_text) > -1 || (card.data.text && card.data.text.toLowerCase().indexOf(search_text)) > -1 || (card.display_name && card.display_name.toLowerCase().indexOf(search_text) > -1);
     if (!text_search) {
@@ -1564,7 +1564,7 @@ exportObj.CardBrowser = (function() {
     if (card.data.charge && !card.data.recurring && !this.not_recurring_charge.checked) {
       return false;
     }
-    if (exportObj.builders[0].collection.counts != null) {
+    if (((_ref = exportObj.builders[0].collection) != null ? _ref.counts : void 0) != null) {
       owned_copies = this.getCollectionNumber(card);
       if (!(owned_copies >= this.minimum_owned_copies.value && owned_copies <= this.maximum_owned_copies.value)) {
         return false;
