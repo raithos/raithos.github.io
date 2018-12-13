@@ -1485,7 +1485,7 @@ exportObj.CardBrowser = (function() {
   };
 
   CardBrowser.prototype.checkSearchCriteria = function(card) {
-    var matches, owned_copies, required_slots, s, search_text, ship, slot, text_in_ship, text_search, used_slots, _i, _j, _k, _len, _len1, _len2, _ref;
+    var matches, owned_copies, required_slots, s, search_text, ship, slot, text_in_ship, text_search, used_slots, _i, _j, _k, _len, _len1, _len2;
     search_text = this.card_search_text.value.toLowerCase();
     text_search = card.name.toLowerCase().indexOf(search_text) > -1 || (card.data.text && card.data.text.toLowerCase().indexOf(search_text)) > -1 || (card.display_name && card.display_name.toLowerCase().indexOf(search_text) > -1);
     if (!text_search) {
@@ -1564,7 +1564,7 @@ exportObj.CardBrowser = (function() {
     if (card.data.charge && !card.data.recurring && !this.not_recurring_charge.checked) {
       return false;
     }
-    if (((_ref = exportObj.builders[0].collection) != null ? _ref.counts : void 0) != null) {
+    if (exportObj.builders[0].collection.counts != null) {
       owned_copies = this.getCollectionNumber(card);
       if (!(owned_copies >= this.minimum_owned_copies.value && owned_copies <= this.maximum_owned_copies.value)) {
         return false;
@@ -7201,6 +7201,7 @@ exportObj.basicCardData = function() {
         name: "Rey's Millennium Falcon",
         id: 193,
         slot: "Title",
+        xws: "",
         points: 5,
         unique: true,
         ship: "Scavenged YT-1300",
@@ -7834,51 +7835,51 @@ exportObj.cardLoaders.Deutsch = function() {
   basic_cards = exportObj.basicCardData();
   exportObj.canonicalizeShipNames(basic_cards);
   exportObj.ships = basic_cards.ships;
-  exportObj.renameShip("YT-1300", "Modifizierter leichter YT-1300-Frachter");
-  exportObj.renameShip("StarViper", "Angriffsplattform der Sternenviper-Klasse");
-  exportObj.renameShip("Scurrg H-6 Bomber", "Scurrg-H-6-Bomber");
-  exportObj.renameShip("YT-2400", "Leichter YT-2400-Frachter");
-  exportObj.renameShip("Auzituck Gunship", "Auzituck-Kanonenboot");
-  exportObj.renameShip("Kihraxz Fighter", "Kihraxz-Jäger");
-  exportObj.renameShip("Sheathipede-Class Shuttle", "Raumfähre der Sheathipede-Klasse");
-  exportObj.renameShip("Quadjumper", "Quadrijet-Transferschlepper");
-  exportObj.renameShip("Firespray-31", "Patrouillenboot der Firespray-Klasse");
-  exportObj.renameShip("TIE Fighter", "TIE/ln-Jäger");
-  exportObj.renameShip("Y-Wing", "BTL-A4-Y-Flügler");
-  exportObj.renameShip("TIE Advanced", "TIE-x1-Turbojäger");
-  exportObj.renameShip("Alpha-Class Star Wing", "Sternflügler der Alpha-Klasse");
-  exportObj.renameShip("U-Wing", "UT-60D-U-Flügler");
-  exportObj.renameShip("TIE Striker", "TIE/sk-Stürmer");
-  exportObj.renameShip("B-Wing", "A/SF-01-B-Flügler");
-  exportObj.renameShip("TIE Defender", "TIE/D-Abwehrjäger");
-  exportObj.renameShip("TIE Bomber", "TIE/sa-Bomber");
-  exportObj.renameShip("TIE Punisher", "TIE/ca-Vergelter");
-  exportObj.renameShip("Aggressor", "Aggressor-Angriffsjäger");
-  exportObj.renameShip("G-1A Starfighter", "G-1A Sternenjäger");
-  exportObj.renameShip("VCX-100", "Leichter VCX-100-Frachter");
-  exportObj.renameShip("YV-666", "Leichter YV-666-Frachter");
-  exportObj.renameShip("TIE Advanced Prototype", "TIE-v1-Turbojäger");
-  exportObj.renameShip("Lambda-Class Shuttle", "T-4A-Raumfähre der Lambda-Klasse");
-  exportObj.renameShip("TIE Phantom", "TIE/ph-Phantom");
-  exportObj.renameShip("VT-49 Decimator", "VT-49-Decimator");
-  exportObj.renameShip("TIE Aggressor", "TIE/ag-Agressor");
-  exportObj.renameShip("K-Wing", "BTL-S8-K-Flügler");
-  exportObj.renameShip("ARC-170", "ARC-170-Sternenjäger");
-  exportObj.renameShip("Attack Shuttle", "Jagdshuttle");
-  exportObj.renameShip("X-Wing", "T-65-X-Flügler");
-  exportObj.renameShip("HWK-290", "Leichter HWK-290-Frachter");
-  exportObj.renameShip("A-Wing", "RZ-1-A-Flügler");
-  exportObj.renameShip("Fang Fighter", "Fangjäger");
-  exportObj.renameShip("Z-95 Headhunter", "Z-95-AF4-Kopfjäger");
-  exportObj.renameShip("M12-L Kimogila Fighter", "M12-L-Kimogila-Jäger");
-  exportObj.renameShip("E-Wing", "E-Flügler");
-  exportObj.renameShip("TIE Interceptor", "TIE-Abfangjäger");
-  exportObj.renameShip("Lancer-Class Pursuit Craft", "Jagdschiff der Lanzen-Klasse");
-  exportObj.renameShip("TIE Reaper", "TIE-Schnitter");
-  exportObj.renameShip("JumpMaster 5000", "JumpMaster 5000");
-  exportObj.renameShip("M3-A Interceptor", "M3-A-Abfangjäger");
-  exportObj.renameShip("Scavenged YT-1300", "Modifizierter YT-1300-Frachter");
-  exportObj.renameShip("Escape Craft", "Fluchtschiff");
+  exportObj.renameShip('YT-1300', 'Modifizierter leichter YT-1300-Frachter');
+  exportObj.renameShip('StarViper', 'Angriffsplattform der Sternenviper-Klasse');
+  exportObj.renameShip('Scurrg H-6 Bomber', 'Scurrg-H-6-Bomber');
+  exportObj.renameShip('YT-2400', 'Leichter YT-2400-Frachter');
+  exportObj.renameShip('Auzituck Gunship', 'Auzituck-Kanonenboot');
+  exportObj.renameShip('Kihraxz Fighter', 'Kihraxz-Jäger');
+  exportObj.renameShip('Sheathipede-Class Shuttle', 'Raumfähre der Sheathipede-Klasse');
+  exportObj.renameShip('Quadjumper', 'Quadrijet-Transferschlepper');
+  exportObj.renameShip('Firespray-31', 'Patrouillenboot der Firespray-Klasse');
+  exportObj.renameShip('TIE Fighter', 'TIE/ln-Jäger');
+  exportObj.renameShip('Y-Wing', 'BTL-A4-Y-Flügler');
+  exportObj.renameShip('TIE Advanced', 'TIE-x1-Turbojäger');
+  exportObj.renameShip('Alpha-Class Star Wing', 'Sternflügler der Alpha-Klasse');
+  exportObj.renameShip('U-Wing', 'UT-60D-U-Flügler');
+  exportObj.renameShip('TIE Striker', 'TIE/sk-Stürmer');
+  exportObj.renameShip('B-Wing', 'A/SF-01-B-Flügler');
+  exportObj.renameShip('TIE Defender', 'TIE/D-Abwehrjäger');
+  exportObj.renameShip('TIE Bomber', 'TIE/sa-Bomber');
+  exportObj.renameShip('TIE Punisher', 'TIE/ca-Vergelter');
+  exportObj.renameShip('Aggressor', 'Aggressor-Angriffsjäger');
+  exportObj.renameShip('G-1A Starfighter', 'G-1A Sternenjäger');
+  exportObj.renameShip('VCX-100', 'Leichter VCX-100-Frachter');
+  exportObj.renameShip('YV-666', 'Leichter YV-666-Frachter');
+  exportObj.renameShip('TIE Advanced Prototype', 'TIE-v1-Turbojäger');
+  exportObj.renameShip('Lambda-Class Shuttle', 'T-4A-Raumfähre der Lambda-Klasse');
+  exportObj.renameShip('TIE Phantom', 'TIE/ph-Phantom');
+  exportObj.renameShip('VT-49 Decimator', 'VT-49-Decimator');
+  exportObj.renameShip('TIE Aggressor', 'TIE/ag-Agressor');
+  exportObj.renameShip('K-Wing', 'BTL-S8-K-Flügler');
+  exportObj.renameShip('ARC-170', 'ARC-170-Sternenjäger');
+  exportObj.renameShip('Attack Shuttle', 'Jagdshuttle');
+  exportObj.renameShip('X-Wing', 'T-65-X-Flügler');
+  exportObj.renameShip('HWK-290', 'Leichter HWK-290-Frachter');
+  exportObj.renameShip('A-Wing', 'RZ-1-A-Flügler');
+  exportObj.renameShip('Fang Fighter', 'Fangjäger');
+  exportObj.renameShip('Z-95 Headhunter', 'Z-95-AF4-Kopfjäger');
+  exportObj.renameShip('M12-L Kimogila Fighter', 'M12-L-Kimogila-Jäger');
+  exportObj.renameShip('E-Wing', 'E-Flügler');
+  exportObj.renameShip('TIE Interceptor', 'TIE-Abfangjäger');
+  exportObj.renameShip('Lancer-Class Pursuit Craft', 'Jagdschiff der Lanzen-Klasse');
+  exportObj.renameShip('TIE Reaper', 'TIE-Schnitter');
+  exportObj.renameShip('JumpMaster 5000', 'JumpMaster 5000');
+  exportObj.renameShip('M3-A Interceptor', 'M3-A-Abfangjäger');
+  exportObj.renameShip('Customized YT-1300', 'Modifizierter YT-1300-Frachter');
+  exportObj.renameShip('Escape Craft', 'Fluchtschiff');
   pilot_translations = {
     "4-LOM": {
       display_name: "4-LOM",
@@ -7894,7 +7895,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Academy Pilot": {
       display_name: "Pilot der Akademie",
-      text: "<i class = flavor_text>Was Sternenjäger betrifft, setzt das Galaktische Imperium hauptsächlich auf den schnellen und wendigen TIE/ln von Sienar Flottensysteme und lässt ihn in erstaunlicher Stückzahl produzieren.</i>"
+      text: "<i class=flavor_text>Was Sternenjäger betrifft, setzt das Galaktische Imperium hauptsächlich auf den schnellen und wendigen TIE/ln von Sienar Flottensysteme und lässt ihn in erstaunlicher Stückzahl produzieren.</i>"
     },
     "Airen Cracken": {
       display_name: "Airen Cracken",
@@ -8034,7 +8035,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Cartel Spacer": {
       display_name: "Raumfahrer des Kartells",
-      text: "<i class = flavor_text>Der M3-A-„Scyk“-Abfangjäger von MandalMotors wurde in großer Stückzahl vom Hutt-Kartell und den Car’das-Schmugglern angeschafft. Grund dafür waren der günstige Einstiegspreis und die vielen Ausstattungsoptionen des Jägers. </i>%LINEBREAK%<strong>Waffenaufhängung:</strong> Du kannst 1&nbsp;%CANNON%-,&nbsp;%TORPEDO%- oder %MISSILE%-Aufwertung ausrüsten."
+      text: "<i class = flavor_text>Der M3-A-„Scyk“-Abfangjäger von MandalMotors wurde in großer Stückzahl vom Hutt-Kartell und den Car'das-Schmugglern angeschafft. Grund dafür waren der günstige Einstiegspreis und die vielen Ausstattungsoptionen des Jägers. </i>%LINEBREAK%<strong>Waffenaufhängung:</strong> Du kannst 1&nbsp;%CANNON%-,&nbsp;%TORPEDO%- oder %MISSILE%-Aufwertung ausrüsten."
     },
     "Cassian Andor": {
       display_name: "Cassian Andor",
@@ -8144,13 +8145,13 @@ exportObj.cardLoaders.Deutsch = function() {
       display_name: "Ezra Bridger (TIE Fighter)",
       text: "Solange du verteidigst oder einen Angriff durchführst, falls du gestresst bist, darfst du 1&nbsp;%FORCE% ausgeben, um bis zu 2 deiner %FOCUS%-Ergebnisse in %EVADE%- oder %HIT%-Ergebnisse zu ändern."
     },
-    "Fenn Rau (Sheathipede)": {
-      display_name: "Fenn Rau (Sheathipede)",
-      text: "Nachdem ein feindliches Schiff in deinem Feuerwinkel begonnen hat zu kämpfen, falls du nicht gestresst bist, darfst du 1 Stressmarker erhalten. Falls du das tust, kann jenes Schiff keine Marker ausgeben, um Würfel zu modifizieren, solange es während dieser Phase einen Angriff durchführt.%LINEBREAK%<strong>Kommunikationsantennen:</strong> Solange du angedockt bist, erhält dein Trägerschiff %COORDINATE%. Bevor dein Trägerschiff aktiviert wird, darf es eine %COORDINATE%-Aktion durchführen."
-    },
     "Fenn Rau": {
       display_name: "Fenn Rau",
       text: "Solange du verteidigst oder einen Angriff durchführst, falls die Angriffsreichweite 1 ist, darfst du 1&nbsp;zusätzlichen Würfel werfen.%LINEBREAK%<strong>Concordianischer Wirbel:</strong> Solange du verteidigst, falls die Angriffsreichweite 1 ist und du im%FRONTARC%&nbsp;des Angreifers bist, ändere 1&nbsp;Ergebnis in ein %EVADE%-Ergebnis."
+    },
+    "Fenn Rau (Sheathipede)": {
+      display_name: "Fenn Rau (Sheathipede)",
+      text: "Nachdem ein feindliches Schiff in deinem Feuerwinkel begonnen hat zu kämpfen, falls du nicht gestresst bist, darfst du 1 Stressmarker erhalten. Falls du das tust, kann jenes Schiff keine Marker ausgeben, um Würfel zu modifizieren, solange es während dieser Phase einen Angriff durchführt.%LINEBREAK%<strong>Kommunikationsantennen:</strong> Solange du angedockt bist, erhält dein Trägerschiff %COORDINATE%. Bevor dein Trägerschiff aktiviert wird, darf es eine %COORDINATE%-Aktion durchführen."
     },
     "Freighter Captain": {
       display_name: "Frachtercaptain",
@@ -8208,13 +8209,13 @@ exportObj.cardLoaders.Deutsch = function() {
       display_name: "Guri",
       text: "Zu Beginn der Kampfphase, falls mindestens 1 feindliches Schiff in Reichweite 0-1 ist, darfst du 1&nbsp;Fokusmarker erhalten.%LINEBREAK%<strong>Mikrodüsen:</strong> Solange du eine Fassrolle durchführst, <b>musst</b> du die %BANKLEFT%- oder %BANKRIGHT%-Schablone anstatt der %STRAIGHT%-Schablone verwenden."
     },
-    "Han Solo": {
-      display_name: "Han Solo",
-      text: "Nachdem du Würfel geworfen hast, falls du in Reichweite 0-1 eines Hindernisses bist, darfst du alle deine Würfel neu werfen. Dies zählt für alle anderen Effekte nicht als Neuwerfen."
-    },
     "Han Solo (Scum)": {
       display_name: "Han Solo (Scum)",
       text: "Solange du verteidigst oder einen Primärangriff durchführst, falls der Angriff durch ein Hindernis versperrt ist, darfst du 1 zusätzlichen Würfel werfen."
+    },
+    "Han Solo": {
+      display_name: "Han Solo",
+      text: "Nachdem du Würfel geworfen hast, falls du in Reichweite 0-1 eines Hindernisses bist, darfst du alle deine Würfel neu werfen. Dies zählt für alle anderen Effekte nicht als Neuwerfen."
     },
     "Heff Tobber": {
       display_name: "Heff Tobber",
@@ -8293,7 +8294,7 @@ exportObj.cardLoaders.Deutsch = function() {
       text: "Solange du einen Angriff durchführst, darfst du 1&nbsp;%CHARGE% von einer ausgerüsteten %TORPEDO%-Aufwertung ausgeben. Falls du das tust, wirft der Verteidiger 1&nbsp;Verteidigungswürfel weniger.%LINEBREAK%<strong>Concordianischer Wirbel:</strong> Solange du verteidigst, falls die Angriffsreichweite 1 ist und du im %FRONTARC% des Angreifers bist, ändere 1&nbsp;Ergebnis in ein %EVADE%-Ergebnis."
     },
     "Kaa'to Leeachos": {
-      display_name: "Kaa’to Leeachos",
+      display_name: "Kaa'to Leeachos",
       text: "Zu Beginn der Kampfphase darfst du 1&nbsp;befreundetes Schiff in Reichweite 0-2 wählen. Falls du das tust, transferiere 1&nbsp;Fokus- oder Ausweichmarker von jenem Schiff auf dich selbst."
     },
     "Kad Solus": {
@@ -8349,7 +8350,7 @@ exportObj.cardLoaders.Deutsch = function() {
       text: "Falls du keine Schilde hast, verringere die Schwierigkeit deiner Drehmanöver (%BANKLEFT% und %BANKRIGHT%) .%LINEBREAK%<strong>Co-Pilot:</strong> Solange du angedockt bist, hat dein Träger-Schiff deine Piloten-Fähigkeit zusätzlich zu seiner eigenen."
     },
     "Laetin A'shera": {
-      display_name: "Laetin A’shera",
+      display_name: "Laetin A'shera",
       text: "Nachdem du verteidigt oder einen Angriff durchgeführt hast, falls der Angriff verfehlt hat, erhalte 1 Ausweichmarker.%LINEBREAK%<strong>Waffenaufhängung:</strong> Du kannst 1&nbsp;%CANNON%-,&nbsp;%TORPEDO%- oder %MISSILE%-Aufwertung ausrüsten."
     },
     "Lando Calrissian": {
@@ -8449,7 +8450,7 @@ exportObj.cardLoaders.Deutsch = function() {
       text: "<i class = flavor_text>Inspiriert von anderen Modellen der Cygnus Raumwerften, ist der Sternflügler der Alpha-Klasse ein vielseitiges Kanonenboot, das für verschiedene Einsatzgebiete umgerüstet werden kann und somit ideal für die Spezialeinheiten der Imperialen Flotte ist.</i>"
     },
     "N'dru Suhlak": {
-      display_name: "N’dru Suhlak",
+      display_name: "N'dru Suhlak",
       text: "Solange du einen Primärangriff durchführst, falls keine anderen befreundeten Schiffe in Reichweite 0-2 sind, wirf 1 zusätzlichen Angriffswürfel."
     },
     "Obsidian Squadron Pilot": {
@@ -8630,7 +8631,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Tansarii Point Veteran": {
       display_name: "Veteran von Tansarii ",
-      text: "<i class = flavor_text>Mit dem Abschuss von Talonbane Cobra, einem Spitzenpiloten der Schwarzen Sonne, entschieden die Car’das-Schmuggler die Schlacht um Tansarii Point für sich. Bis heute sind die Veteranen dieses Scharmützels im ganzen Sektor hochangesehen. </i>%LINEBREAK%<strong>Waffenaufhängung:</strong> Du kannst 1&nbsp;%CANNON%-,&nbsp;%TORPEDO%- oder %MISSILE%-Aufwertung ausrüsten."
+      text: "<i class = flavor_text>Mit dem Abschuss von Talonbane Cobra, einem Spitzenpiloten der Schwarzen Sonne, entschieden die Car'das-Schmuggler die Schlacht um Tansarii Point für sich. Bis heute sind die Veteranen dieses Scharmützels im ganzen Sektor hochangesehen. </i>%LINEBREAK%<strong>Waffenaufhängung:</strong> Du kannst 1&nbsp;%CANNON%-,&nbsp;%TORPEDO%- oder %MISSILE%-Aufwertung ausrüsten."
     },
     "Tel Trevura": {
       display_name: "Tel Trevura",
@@ -9038,14 +9039,6 @@ exportObj.cardLoaders.Deutsch = function() {
       display_name: "Chewbacca",
       text: "<i>Nur für Rebellen</i>%LINEBREAK%Zu Beginn der Kampfphase darfst du 2 %CHARGE% ausgeben, um 1 offene Schadenskarte zu reparieren."
     },
-    "Chewbacca": {
-      display_name: "Chewbacca",
-      text: "<i>Nur für Rebellen</i>%LINEBREAK%Zu Beginn der Kampfphase darfst du 2 %CHARGE% ausgeben, um 1 offene Schadenskarte zu reparieren."
-    },
-    "Chewbacca (Scum)": {
-      display_name: "Chewbacca (Scum)",
-      text: "<i>Nur für Abschaum</i>%LINEBREAK%Zu Beginn der Endphase darfst du 1&nbsp;Fokusmarker ausgeben, um 1&nbsp;deiner offenen Schadenskarten zu reparieren."
-    },
     "Ciena Ree": {
       display_name: "Ciena Ree",
       text: "<i>Benötigt %COORDINATE% oder <r>%COORDINATE%</r></i>%LINEBREAK%<i>Nur für Imperium</i>%LINEBREAK%Nachdem du eine %COORDINATE%-Aktion durchgeführt hast, falls das von dir koordinierte Schiff eine %BARRELROLL%- oder %BOOST%-Aktion durchgeführt hat, darf es 1&nbsp;Stressmarker erhalten, um sich um 90° zu drehen."
@@ -9375,7 +9368,7 @@ exportObj.cardLoaders.Deutsch = function() {
       text: "<strong>Mine</strong>%LINEBREAK%Während der Systemphase darfst du 1&nbsp;%CHARGE% ausgeben, um unter Verwendung der [1&nbsp;%STRAIGHT%]-Schablone eine Annäherungsmine abzuwerfen.%LINEBREAK%Die %CHARGE% dieser Karte können nicht wiederhergestellt werden."
     },
     "Qi'ra": {
-      display_name: "Qi’ra",
+      display_name: "Qi'ra",
       text: "<i>Nur für Abschaum</i>%LINEBREAK%Solange du dich bewegst und Angriffe durchführst, ignorierst du Hindernisse, die du als Ziel erfasst hast."
     },
     "R2 Astromech": {
@@ -9547,13 +9540,13 @@ exportObj.cardLoaders.Deutsch = function() {
       text: "<i>Nur für Rebellen</i>%LINEBREAK%Du kannst Primärangriffe in Reichweite 0 durchführen. Feindliche Schiffe in Reichweite 0 können Primärangriffe gegen dich durchführen."
     },
     "Hardpoint: Cannon": {
-      text: "Fügt einen %CANNON% Slot hinzu"
+      text: "Adds a %CANNON% slot"
     },
     "Hardpoint: Missile": {
-      text: "Fügt einen %MISSILE% Slot hinzu"
+      text: "Adds a %MISSILE% slot"
     },
     "Hardpoint: Torpedo": {
-      text: "Fügt einen %TORPEDO% Slot hinzu"
+      text: "Adds a %TORPEDO% slot"
     },
     "Black One": {
       text: "<i>Adds: %SLAM%</i> %LINEBREAK% After you perform a %SLAM% action, lose 1 %CHARGE%. Then you may gain 1 ion token to remove 1 disarm token. %LINEBREAK% If your charge is inactive, you cannot perform the %SLAM% action."
@@ -20498,30 +20491,6 @@ exportObj.manifestByExpansion = {
       name: 'Blue Squadron Rookie',
       type: 'pilot',
       count: 1
-    }, {
-      name: 'Black One',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'BB-8',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'BB Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Integrated S-Foils',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'M9-G8',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Targeting Synchronizer',
-      type: 'upgrade',
-      count: 1
     }
   ],
   'RZ-2 A-Wing Expansion Pack': [
@@ -20552,26 +20521,6 @@ exportObj.manifestByExpansion = {
     }, {
       name: 'Blue Squadron Recruit',
       type: 'pilot',
-      count: 1
-    }, {
-      name: 'Heroic',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ferrosphere Paint',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Homing Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Primed Thrusters',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proton Rockets',
-      type: 'upgrade',
       count: 1
     }
   ],
@@ -20728,9 +20677,13 @@ exportObj.manifestByExpansion = {
       type: 'upgrade',
       count: 1
     }, {
+      name: "Fanatical",
+      type: 'upgrade',
+      count: 1
+    }, {
       name: "Special Forces Gunner",
       type: 'upgrade',
-      count: 4
+      count: 1
     }, {
       name: "Supreme Leader Snoke",
       type: 'upgrade',
@@ -20763,206 +20716,6 @@ exportObj.manifestByExpansion = {
       name: "Hate",
       type: 'upgrade',
       count: 1
-    }, {
-      name: 'Crack Shot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Daredevil',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Debris Gambit',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Elusive',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Fanatical',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Intimidation',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Juke',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Lone Wolf',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Marksmanship',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Outmaneuver',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Predator',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Squad Leader',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Swarm Tactics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Trick Shot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Advanced Optics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Pattern Analyzer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Primed Thrusters',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Targeting Synchronizer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Hyperspace Tracking Data',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Advanced Sensors',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Collision Detector',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Fire-Control System',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Heavy Laser Cannon',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Cannon',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Jamming Beam',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Tractor Beam',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Adv. Proton Torpedoes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proton Torpedoes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Torpedoes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Cluster Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Homing Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proton Rockets',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Freelance Slicer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'GNK "Gonk" Droid',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Informant',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Novice Technician',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Perceptive Copilot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Seasoned Navigator',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Hotshot Gunner',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ablative Plating',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Electronic Baffle',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Engine Upgrade',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Hull Upgrade',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Munitions Failsafe',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Shield Upgrade',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Static Discharge Vanes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Stealth Device',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Tactical Scrambler',
-      type: 'upgrade',
-      count: 2
     }
   ],
   'TIE/FO Fighter Expansion Pack': [
@@ -22054,7 +21807,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 23268
+                    lineno: 23214
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -22744,7 +22497,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 24005
+              lineno: 23951
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -23322,7 +23075,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.loadFromSerialized = function(serialized) {
-    var game_type_abbrev, matches, new_ship, re, serialized_ship, serialized_ships, ship, ships_with_unmet_dependencies, version, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _ref3;
+    var game_type_abbrev, matches, new_ship, re, serialized_ship, serialized_ships, version, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _ref3;
     this.suppress_automatic_new_ship = true;
     this.removeAllShips();
     re = /^v(\d+)!(.*)/;
@@ -23352,26 +23105,19 @@ exportObj.SquadBuilder = (function() {
               this.desired_points_input.val(parseInt(game_type_abbrev.split('=')[1]));
               this.desired_points_input.change();
           }
-          ships_with_unmet_dependencies = [];
           _ref1 = serialized_ships.split(';');
           for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
             serialized_ship = _ref1[_i];
             if (serialized_ship !== '') {
               new_ship = this.addShip();
-              if (!new_ship.fromSerialized(version, serialized_ship)) {
-                ships_with_unmet_dependencies.push([new_ship, serialized_ship]);
-              }
+              new_ship.fromSerialized(version, serialized_ship);
             }
-          }
-          for (_j = 0, _len1 = ships_with_unmet_dependencies.length; _j < _len1; _j++) {
-            ship = ships_with_unmet_dependencies[_j];
-            ship[0].fromSerialized(version, ship[1]);
           }
           break;
         case 2:
           _ref2 = matches[2].split(';');
-          for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-            serialized_ship = _ref2[_k];
+          for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
+            serialized_ship = _ref2[_j];
             if (serialized_ship !== '') {
               new_ship = this.addShip();
               new_ship.fromSerialized(version, serialized_ship);
@@ -23380,8 +23126,8 @@ exportObj.SquadBuilder = (function() {
       }
     } else {
       _ref3 = serialized.split(';');
-      for (_l = 0, _len3 = _ref3.length; _l < _len3; _l++) {
-        serialized_ship = _ref3[_l];
+      for (_k = 0, _len2 = _ref3.length; _k < _len2; _k++) {
+        serialized_ship = _ref3[_k];
         if (serialized !== '') {
           new_ship = this.addShip();
           new_ship.fromSerialized(1, serialized_ship);
@@ -23474,7 +23220,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 24677
+          lineno: 24613
         }));
         __iced_deferrals._fulfill();
       });
@@ -23486,7 +23232,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 24678
+            lineno: 24614
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -24964,7 +24710,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 25686
+                      lineno: 25622
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -25022,7 +24768,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 25703
+                lineno: 25639
               })
             ]);
             __iced_deferrals._fulfill();
@@ -25069,7 +24815,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 25717
+              lineno: 25653
             }));
           }
         }
@@ -25653,8 +25399,7 @@ Ship = (function() {
   };
 
   Ship.prototype.fromSerialized = function(version, serialized) {
-    var addon_cls, addon_id, addon_type_serialized, conferred_addon, conferredaddon_pair, conferredaddon_pairs, deferred_id, deferred_ids, everythingadded, i, pilot_id, upgrade, upgrade_conferred_addon_pairs, upgrade_id, upgrade_ids, version_4_compatibility_placeholder_mod, version_4_compatibility_placeholder_title, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _m, _n, _o, _p, _q, _ref, _ref1, _ref10, _ref11, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
-    everythingadded = true;
+    var addon_cls, addon_id, addon_type_serialized, conferred_addon, conferredaddon_pair, conferredaddon_pairs, deferred_id, deferred_ids, i, pilot_id, upgrade, upgrade_conferred_addon_pairs, upgrade_id, upgrade_ids, version_4_compatibility_placeholder_mod, version_4_compatibility_placeholder_title, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _m, _n, _o, _p, _q, _ref, _ref1, _ref10, _ref11, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     switch (version) {
       case 1:
         _ref = serialized.split(':'), pilot_id = _ref[0], upgrade_ids = _ref[1];
@@ -25724,7 +25469,6 @@ Ship = (function() {
             deferred_ids.push(upgrade_id);
           } else {
             this.upgrades[i].setById(upgrade_id);
-            everythingadded &= this.upgrades[i].lastSetValid;
           }
         }
         for (_n = 0, _len5 = deferred_ids.length; _n < _len5; _n++) {
@@ -25733,11 +25477,9 @@ Ship = (function() {
           for (i = _o = 0, _len6 = _ref9.length; _o < _len6; i = ++_o) {
             upgrade = _ref9[i];
             if (upgrade.isOccupied() || upgrade.slot !== exportObj.upgradesById[deferred_id].slot) {
-              everythingadded = false;
               continue;
             }
             upgrade.setById(deferred_id);
-            everythingadded &= upgrade.lastSetValid;
             break;
           }
         }
@@ -25763,7 +25505,6 @@ Ship = (function() {
               conferred_addon = upgrade.conferredAddons[i];
               if (conferred_addon instanceof addon_cls) {
                 conferred_addon.setById(addon_id);
-                everythingadded &= conferred_addon.lastSetValid;
               } else {
                 throw new Error("Expected addon class " + addon_cls.constructor.name + " for conferred addon at index " + i + " but " + conferred_addon.constructor.name + " is there");
               }
@@ -25771,8 +25512,7 @@ Ship = (function() {
           }
         }
     }
-    this.updateSelections();
-    return everythingadded;
+    return this.updateSelections();
   };
 
   Ship.prototype.effectiveStats = function() {
@@ -25811,8 +25551,7 @@ Ship = (function() {
   };
 
   Ship.prototype.validate = function() {
-    var func, i, max_checks, unchanged, upgrade, valid, _i, _j, _len, _ref, _ref1, _ref2, _ref3, _ref4;
-    unchanged = true;
+    var func, i, max_checks, upgrade, valid, _i, _j, _len, _ref, _ref1, _ref2, _ref3, _ref4;
     max_checks = 128;
     for (i = _i = 0; 0 <= max_checks ? _i < max_checks : _i > max_checks; i = 0 <= max_checks ? ++_i : --_i) {
       valid = true;
@@ -25823,7 +25562,6 @@ Ship = (function() {
         if ((func != null) && !func(this, upgrade)) {
           upgrade.setById(null);
           valid = false;
-          unchanged = false;
           break;
         }
       }
@@ -25831,8 +25569,7 @@ Ship = (function() {
         break;
       }
     }
-    this.updateSelections();
-    return unchanged;
+    return this.updateSelections();
   };
 
   Ship.prototype.checkUnreleasedContent = function() {
@@ -25979,7 +25716,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 26445
+                lineno: 26361
               })
             ]);
             __iced_deferrals._fulfill();
@@ -26120,7 +25857,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 26519
+                  lineno: 26434
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -26142,7 +25879,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 26523
+                    lineno: 26438
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -26165,7 +25902,6 @@ GenericAddon = (function() {
             } else {
               _this.deoccupyOtherUpgrades();
             }
-            _this.lastSetValid = _this.ship.validate();
             return __iced_k(_this.ship.builder.container.trigger('xwing:pointsUpdated'));
           });
         };
@@ -26229,7 +25965,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 26564
+            lineno: 26477
           }));
         }
         __iced_deferrals._fulfill();
