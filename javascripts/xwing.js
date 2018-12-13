@@ -5214,7 +5214,7 @@ exportObj.basicCardData = function() {
         slots: ["Talent", "Astromech", "Modification", "Configuration", "Tech", "Title", "Hardpoint"],
         isHyperspace: true
       }, {
-        name: "Nien Numb",
+        name: "Nien Nunb",
         id: 298,
         unique: true,
         faction: "Resistance",
@@ -9600,6 +9600,9 @@ exportObj.cardLoaders.Deutsch = function() {
     "Advanced Optics": {
       text: " While you perform an attack, you may spend 1 focus to change 1 of your blank results to a %HIT% result. "
     },
+    "Nien Nunb": {
+      text: " After you gain a stress token, if there is an enemy ship in your %FRONTARC% at range 0-1, you may remove that stress token. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
+    },
     "Rey": {
       text: " ... defend or ... If the ... in your %SINGLETURRETARC% ... 1 %FORCE% to ... 1 of your blank results to a %EVADE% or %HIT% result. "
     },
@@ -11026,7 +11029,7 @@ exportObj.cardLoaders.English = function() {
     "Temmin Wexley": {
       text: " After you fully execute a speed 2-4 maneuver, you may perform a %BOOST% action. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
     },
-    "Nien Numb": {
+    "Nien Nunb": {
       text: " After you gain a stress token, if there is an enemy ship in your %FRONTARC% at range 0-1, you may remove that stress token. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
     },
     "Ello Asty": {
@@ -13079,6 +13082,9 @@ exportObj.cardLoaders['Español'] = function() {
     },
     "Major Stridan": {
       text: " While you coordinate or resolve the effect of one of your upgrades, you may treat friendly ships at range 2-3 as being at range 0 or range 1. %LINEBREAK% LINKED BATTERY: While you perform a %CANNON% attack, roll 1 addtional die. "
+    },
+    "Nien Nunb": {
+      text: " After you gain a stress token, if there is an enemy ship in your %FRONTARC% at range 0-1, you may remove that stress token. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."
     }
   };
   upgrade_translations = {
@@ -20076,7 +20082,7 @@ exportObj.manifestByExpansion = {
       type: 'pilot',
       count: 1
     }, {
-      name: 'Nien Numb',
+      name: 'Nien Nunb',
       type: 'pilot',
       count: 1
     }, {
@@ -20459,7 +20465,7 @@ exportObj.manifestByExpansion = {
       type: 'pilot',
       count: 1
     }, {
-      name: 'Nien Numb',
+      name: 'Nien Nunb',
       type: 'pilot',
       count: 1
     }, {
@@ -22054,7 +22060,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 23268
+                    lineno: 23271
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -22744,7 +22750,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 24005
+              lineno: 24008
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -23474,7 +23480,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 24677
+          lineno: 24680
         }));
         __iced_deferrals._fulfill();
       });
@@ -23486,7 +23492,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 24678
+            lineno: 24681
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -24964,7 +24970,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 25686
+                      lineno: 25689
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -25022,7 +25028,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 25703
+                lineno: 25706
               })
             ]);
             __iced_deferrals._fulfill();
@@ -25069,7 +25075,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 25717
+              lineno: 25720
             }));
           }
         }
@@ -25979,7 +25985,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 26445
+                lineno: 26448
               })
             ]);
             __iced_deferrals._fulfill();
@@ -26120,7 +26126,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 26519
+                  lineno: 26522
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -26142,7 +26148,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 26523
+                    lineno: 26526
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -26229,7 +26235,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 26564
+            lineno: 26567
           }));
         }
         __iced_deferrals._fulfill();

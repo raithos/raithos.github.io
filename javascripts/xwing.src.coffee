@@ -7767,7 +7767,7 @@ exportObj.basicCardData = ->
             isHyperspace: true
         }
         {
-            name: "Nien Numb"
+            name: "Nien Nunb"
             id: 298
             unique: true
             faction: "Resistance"
@@ -11772,6 +11772,8 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """ Setup: Before placing forces, you may choose a number between 0 and 6. Treat your initiative as the chosen value during setup. %LINEBREAK% After Setup, Assign 1 focus of evade token to each friendly ship at range 0-2. """
         "Advanced Optics":
            text: """ While you perform an attack, you may spend 1 focus to change 1 of your blank results to a %HIT% result. """
+        "Nien Nunb":
+           text: """ After you gain a stress token, if there is an enemy ship in your %FRONTARC% at range 0-1, you may remove that stress token. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."""
         "Rey":
            text: """ ... defend or ... If the ... in your %SINGLETURRETARC% ... 1 %FORCE% to ... 1 of your blank results to a %EVADE% or %HIT% result. """
         "Chewbacca (Resistance)":
@@ -12876,7 +12878,7 @@ exportObj.cardLoaders.English = () ->
            text: """ While you defend or perform an attack, you may spend 1 %CHARGE% or 1 non-recurring %CHARGE% from your equipped %ASTROMECH% upgrade to reroll up to 1 of your dice for each other friendly ship at range 0-1. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."""
         "Temmin Wexley":
            text: """ After you fully execute a speed 2-4 maneuver, you may perform a %BOOST% action. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."""
-        "Nien Numb":
+        "Nien Nunb":
            text: """ After you gain a stress token, if there is an enemy ship in your %FRONTARC% at range 0-1, you may remove that stress token. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."""
         "Ello Asty":
            text: """ After you reveal a red Tallon Roll (%TROLLLEFT% or %TROLLRIGHT%), if you have 2 or fewer stress tokens, treat that maneuver as white. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."""
@@ -14473,7 +14475,8 @@ exportObj.cardLoaders['Español'] = () ->
            text: """ ... drop a bomb, you ... play area touching ... instead. """
         "Major Stridan":
            text: """ While you coordinate or resolve the effect of one of your upgrades, you may treat friendly ships at range 2-3 as being at range 0 or range 1. %LINEBREAK% LINKED BATTERY: While you perform a %CANNON% attack, roll 1 addtional die. """
-
+        "Nien Nunb":
+           text: """ After you gain a stress token, if there is an enemy ship in your %FRONTARC% at range 0-1, you may remove that stress token. %LINEBREAK% WEAPON HARDPOINT: You can equip 1 %CANNON%, %TORPEDO% or %MISSILE% upgrade."""
 
     upgrade_translations =
         "0-0-0":
@@ -21013,7 +21016,7 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'Nien Numb'
+            name: 'Nien Nunb'
             type: 'pilot'
             count: 1
         }
@@ -21490,7 +21493,7 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'Nien Numb'
+            name: 'Nien Nunb'
             type: 'pilot'
             count: 1
         }
