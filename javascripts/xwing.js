@@ -5161,7 +5161,8 @@ exportObj.basicCardData = function() {
         skill: 3,
         points: 68,
         slots: ["Sensor", "Tech", "Crew", "Gunner", "Gunner", "Device", "Device", "Modification"],
-        isHyperspace: true
+        isHyperspace: true,
+        applies_condition: 'Rattled'.canonicalize()
       }, {
         name: "Edon Kappehl",
         id: 293,
@@ -7350,6 +7351,9 @@ exportObj.basicCardData = function() {
       }, {
         name: 'Proximity Mine',
         id: 11
+      }, {
+        name: 'Rattled',
+        id: 12
       }
     ]
   };
@@ -12034,6 +12038,9 @@ exportObj.cardLoaders.English = function() {
     },
     'Listening Device': {
       text: 'During the System Phase, if an enemy ship with the <strong>Informant</strong> upgrade is at range 0-2, flip your dial faceup.'
+    },
+    'Rattled': {
+      text: 'After a bomb or mine at range 0-1 detonates, suffer 1 %CRIT%. Then, remove this card. %LINEBREAK% Action: If there are no bombs or mines at range 0-1, remove this card.'
     },
     'Optimized Prototype': {
       text: 'While you perform a %FRONTARC% primary attack against a ship locked by a friendly ship with the <strong>Director Krennic</strong> upgrade, you may spend 1 %HIT%/%CRIT%/%FOCUS% result. If you do, choose one: the defender loses 1 shield or the defender flips 1 of its facedown damage cards.'
@@ -22265,7 +22272,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 23443
+                    lineno: 23450
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -22955,7 +22962,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 24180
+              lineno: 24187
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -23685,7 +23692,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 24852
+          lineno: 24859
         }));
         __iced_deferrals._fulfill();
       });
@@ -23697,7 +23704,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 24853
+            lineno: 24860
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -25175,7 +25182,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 25861
+                      lineno: 25868
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -25233,7 +25240,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 25878
+                lineno: 25885
               })
             ]);
             __iced_deferrals._fulfill();
@@ -25280,7 +25287,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 25892
+              lineno: 25899
             }));
           }
         }
@@ -26190,7 +26197,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 26620
+                lineno: 26627
               })
             ]);
             __iced_deferrals._fulfill();
@@ -26331,7 +26338,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 26694
+                  lineno: 26701
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -26353,7 +26360,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 26698
+                    lineno: 26705
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -26440,7 +26447,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 26739
+            lineno: 26746
           }));
         }
         __iced_deferrals._fulfill();
