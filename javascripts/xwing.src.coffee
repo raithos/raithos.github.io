@@ -6878,6 +6878,7 @@ exportObj.basicCardData = ->
             name: "Han Solo (Resistance)"
             id: 245
             unique: true
+            xws: "hansolo-scavengedyt1300"
             faction: "Resistance"
             ship: "Scavenged YT-1300"
             skill: 6
@@ -8463,6 +8464,7 @@ exportObj.basicCardData = ->
            points: 8
            unique: true
            faction: "Rebel Alliance"
+           isHyperspace: true
        }
        {
            name: "Seasoned Navigator"
@@ -9800,7 +9802,6 @@ exportObj.basicCardData = ->
             id: 192
             slot: "Crew"
             points: 6
-            xws: "hansolo-scavengedyt1300"
             unique: true
             faction: "Resistance"
             modifier_func: (stats) ->
@@ -26105,6 +26106,8 @@ class Ship
                     """<i class="xwing-miniatures-font red xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-barrelroll"></i>&nbsp;"""
                 when "R> Focus"
                     """<i class="xwing-miniatures-font red xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-focus"></i>&nbsp;"""
+                when "> Rotate Arc"
+                    """<i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack xwing-miniatures-font-rotatearc"></i>&nbsp;"""
                 when "R> Rotate Arc"
                     """<i class="xwing-miniatures-font red xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-rotatearc"></i>&nbsp;"""
                 when "> Rotate Arc"
