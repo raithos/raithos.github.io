@@ -15987,7 +15987,7 @@ if (exportObj.codeToLanguage == null) {
   exportObj.codeToLanguage = {};
 }
 
-exportObj.codeToLanguage.en = 'Magyar';
+exportObj.codeToLanguage.hu = 'Magyar';
 
 if (exportObj.translations == null) {
   exportObj.translations = {};

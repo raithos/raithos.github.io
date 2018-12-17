@@ -16731,7 +16731,7 @@ exportObj.cardLoaders['Français'] = () ->
 exportObj = exports ? this
 
 exportObj.codeToLanguage ?= {}
-exportObj.codeToLanguage.en = 'Magyar'
+exportObj.codeToLanguage.hu = 'Magyar'
 
 exportObj.translations ?= {}
 # This is here mostly as a template for other languages.
