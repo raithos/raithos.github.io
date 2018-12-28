@@ -9928,6 +9928,7 @@ exportObj.hyperspaceShipInclusions = [
     {name: 'TIE Striker', faction: 'Galactic Empire'},
     {name: 'Firespray-31', faction: 'Scum and Villainy'},
     {name: 'Escape Craft', faction: 'Scum and Villainy'},
+    {name: 'Mining Guild TIE Fighter', faction: 'Scum and Villainy'},
     {name: 'Fang Fighter', faction: 'Scum and Villainy'},
     {name: 'Customized YT-1300', faction: 'Scum and Villainy'},
     {name: 'TIE Fighter', faction: 'Scum and Villainy'},
@@ -16627,7 +16628,7 @@ exportObj.translations.Magyar =
         '.collection-invalid .translated': 'Ez a lista nem vihető pályára a készletedből!'
         # Type selector
         '.game-type-selector option[value="standard"]': 'Kiterjesztett'
-        '.game-type-selector option[value="hyperspace"]': 'Hyperspace-p'
+        '.game-type-selector option[value="hyperspace"]': 'Hyperspace'
         '.game-type-selector option[value="custom"]': 'Egyéni'
         # Card browser
         '.xwing-card-browser option[value="name"]': 'Név'
