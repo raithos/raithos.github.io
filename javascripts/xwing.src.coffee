@@ -26196,7 +26196,7 @@ class Ship
             @builder.showTooltip 'Pilot', exportObj.pilotsById[select2_data.id], {ship: @data?.name} if select2_data?.id?
         @pilot_selector.data('select2').container.on 'mouseover', (e) =>
             @builder.showTooltip 'Ship', this if @data?
-        @pilot_selector.data('select2').container.on 'touchmove', (e) =>
+        @pilot_selector.data('select2').container.on 'touchend', (e) =>
             @builder.showTooltip 'Ship', this if @data?
             ###if @data? 
                 scrollTo(0,$('#info-container').offset().top - 10,'smooth')###
@@ -26870,7 +26870,7 @@ class GenericAddon
             @ship.builder.showTooltip 'Addon', @dataById[select2_data.id], {addon_type: @type} if select2_data?.id?
         @selector.data('select2').container.on 'mouseover', (e) =>
             @ship.builder.showTooltip 'Addon', @data, {addon_type: @type} if @data?
-        @selector.data('select2').container.on 'touchmove', (e) =>
+        @selector.data('select2').container.on 'touchend', (e) =>
             @ship.builder.showTooltip 'Addon', @data, {addon_type: @type} if @data?
             ###if @data?
                 scrollTo(0,$('#info-container').offset().top - 10,'smooth')###

@@ -25689,7 +25689,7 @@ Ship = (function() {
         }
       };
     })(this));
-    this.pilot_selector.data('select2').container.on('touchmove', (function(_this) {
+    this.pilot_selector.data('select2').container.on('touchend', (function(_this) {
       return function(e) {
         if (_this.data != null) {
           return _this.builder.showTooltip('Ship', _this);
@@ -26534,7 +26534,7 @@ GenericAddon = (function() {
         }
       };
     })(this));
-    return this.selector.data('select2').container.on('touchmove', (function(_this) {
+    return this.selector.data('select2').container.on('touchend', (function(_this) {
       return function(e) {
         if (_this.data != null) {
           return _this.ship.builder.showTooltip('Addon', _this.data, {
