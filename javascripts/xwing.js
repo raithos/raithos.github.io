@@ -2352,7 +2352,19 @@ exportObj.basicCardData = function() {
         shields: 0,
         actions: ["Calculate", "Lock", "Barrel Roll", "R> Calculate"],
         actionsred: [],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 3, 0, 0, 0, 0], [2, 1, 2, 1, 2, 0, 0, 0, 3, 3], [1, 3, 2, 3, 1, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 3, 0, 0, 0, 0], [2, 1, 2, 1, 2, 0, 0, 0, 3, 3], [1, 3, 2, 3, 1, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
+      },
+      "Belbullab-22 Starfighter": {
+        name: "Belbullab-22 Starfighter",
+        xws: "Belbullab-22 Starfighter".canonicalize(),
+        factions: ["Separatist Alliance"],
+        attack: 3,
+        agility: 2,
+        hull: 3,
+        shields: 2,
+        actions: ["Focus", "Lock", "Barrel Roll", "R> Focus", "Boost", "R> Focus"],
+        actionsred: [],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 1, 0, 1, 1, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 3, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       }
     },
     pilotsById: [
@@ -4902,7 +4914,7 @@ exportObj.basicCardData = function() {
         ship: "Vulture-class Droid Fighter",
         skill: 1,
         points: 100,
-        slots: ["Modification"]
+        slots: ["Configuration", "Modification"]
       }, {
         name: '"Sinker"',
         id: 280,
@@ -5129,6 +5141,71 @@ exportObj.basicCardData = function() {
         skill: 1,
         points: 24,
         slots: ["Modification"]
+      }, {
+        name: "General Grevious",
+        id: 305,
+        faction: "Separatist Alliance",
+        ship: "Belbullab-22 Starfighter",
+        unique: true,
+        skill: 4,
+        points: 100,
+        slots: ["Talent", "Modification"]
+      }, {
+        name: "Wat Tambor",
+        id: 306,
+        faction: "Separatist Alliance",
+        ship: "Belbullab-22 Starfighter",
+        unique: true,
+        skill: 3,
+        points: 100,
+        slots: ["Talent", "Modification"]
+      }, {
+        name: "Feethan Ottraw Autopilot",
+        id: 307,
+        faction: "Separatist Alliance",
+        ship: "Belbullab-22 Starfighter",
+        skill: 1,
+        points: 100,
+        slots: ["Modification"],
+        ship_override: {
+          actions: ["Calculate", "Lock", "Barrel Roll", "R> Calculate", "Boost", "R> Calculate"]
+        }
+      }, {
+        name: "Captain Sear",
+        id: 308,
+        faction: "Separatist Alliance",
+        ship: "Belbullab-22 Starfighter",
+        unique: true,
+        skill: 2,
+        points: 100,
+        slots: ["Configuration", "Modification"]
+      }, {
+        name: "Precise Hunter",
+        id: 309,
+        faction: "Separatist Alliance",
+        ship: "Vulture-class Droid Fighter",
+        skill: 3,
+        points: 100,
+        restricted: 3,
+        slots: ["Configuration", "Modification"]
+      }, {
+        name: "Hadr Chall Prototype",
+        id: 310,
+        faction: "Separatist Alliance",
+        ship: "Vulture-class Droid Fighter",
+        skill: 1,
+        points: 100,
+        restricted: 2,
+        slots: ["Configuration", "Modification"]
+      }, {
+        name: "DFS-081",
+        id: 311,
+        faction: "Separatist Alliance",
+        ship: "Vulture-class Droid Fighter",
+        skill: 3,
+        points: 100,
+        unique: true,
+        slots: ["Configuration", "Modification"]
       }
     ],
     upgradesById: [
@@ -7011,6 +7088,19 @@ exportObj.basicCardData = function() {
         id: 206,
         slot: "Tech",
         points: 5
+      }, {
+        name: "Impervium Plating",
+        id: 207,
+        ship: "Belbullab-22 Starfighter",
+        charge: 2,
+        slot: "Modification",
+        points: 100
+      }, {
+        name: "Grappling Struts",
+        id: 208,
+        ship: "Vulture-class Droid Fighter",
+        slot: "Configuration",
+        points: 100
       }
     ],
     conditionsById: [
@@ -11055,6 +11145,24 @@ exportObj.cardLoaders.English = function() {
     },
     "Overseer Yushyn": {
       text: " Before a friendly ship at range 1 would gain a disarm token, if that ship is not stressed you may spend 1 %CHARGE%. If you do, that ship gains 1 stress token instead. %LINEBREAK% NOTCHED STABILIZERS: While you move, you ignore asteroids. "
+    },
+    "General Grevious": {
+      text: " While you perform a primary attack, if you are not in the defender's firing arc, you may reroll up to 2 attack dice. "
+    },
+    "Wat Tambor": {
+      text: " While you perform a primary attack, you may reroll 1 attack die for each calculating friendly ship at range 1 of the defender. "
+    },
+    "Captain Sear": {
+      text: " While a friendly ship at range 0-3 performs a primary attack, if the defender is in its %BULLSEYEARC%, before the Neutralize Results step, the friendly ship may spend 1 calculate token to cancel 1 %EVADE% result. "
+    },
+    "Precise Hunter": {
+      text: " While you perform an attack, if the defender is in your %BULLSEYEARC%, you may reroll 1 blank result. %LINEBREAK% NETWORKED CALCULATIONS: While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range 0-1 to change 1 %FOCUS% result to an %EVADE% or %HIT% result. "
+    },
+    "Hadr Chall Prototype": {
+      text: " After an enemy ship in your %BULLSEYEARC% at range 0-2 declares another friendly ship as the defender, you may perform a %CALCULATE% or %LOCK% action. %LINEBREAK% NETWORKED CALCULATIONS: While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range 0-1 to change 1 %FOCUS% result to an %EVADE% or %HIT% result. "
+    },
+    "DFS-081": {
+      text: " While a friendly ship at range 0-1 defends, it may spend 1 calculate token to change all %CRIT% results to %HIT% results. %LINEBREAK% NETWORKED CALCULATIONS: While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range 0-1 to change 1 %FOCUS% result to an %EVADE% or %HIT% result. "
     }
   };
   upgrade_translations = {
@@ -11827,6 +11935,12 @@ exportObj.cardLoaders.English = function() {
     },
     "Pattern Analyzer": {
       text: " While you fully execute a red maneuver, before the Check Difficulty step, you may perform 1 action. "
+    },
+    "Impervium Plating": {
+      text: " Before you would be dealt a faceup Ship damage card, you may spend 1 %CHARGE% to discard it instead. "
+    },
+    "Grappling Struts": {
+      text: "<strong>Closed: </strong> Setup: Equip this side faceup. %LINEBREAK% While you execute a manuever, if you overlap an asteroid or debris cloud and there are 1 or fewer other friendly ships at range 0 of that obstacle, you may flip this card. %LINEBREAK% <b>Open:</b> You ignore obstacles at range 0 and while you move through them. After you reveal your dial, if you reveal a maneuver other than a [2 %STRAIGHT%] and are at range 0 of an asteroid or debris cloud, skip your Execute Maneuver step and remove 1 stress token; if you revealed a right or left maneuver, rotate your ship 90º in that direction. After you execute a maneuver, flip this card."
     }
   };
   condition_translations = {
@@ -22362,7 +22476,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 23446
+                    lineno: 23601
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -23051,7 +23165,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 24181
+              lineno: 24336
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -23768,7 +23882,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 24844
+          lineno: 24999
         }));
         __iced_deferrals._fulfill();
       });
@@ -23780,7 +23894,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 24845
+            lineno: 25000
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -24235,7 +24349,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.showTooltip = function(type, data, additional_opts) {
-    var a, action, addon_count, effective_stats, extra_actions, extra_actions_red, pilot_count, ship, ship_count, slot, source, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref40, _ref41, _ref42, _ref43, _ref44, _ref45, _ref46, _ref47, _ref48, _ref49, _ref5, _ref50, _ref51, _ref52, _ref53, _ref54, _ref55, _ref56, _ref6, _ref7, _ref8, _ref9;
+    var a, action, addon_count, count, effective_stats, extra_actions, extra_actions_red, pilot_count, ship, ship_count, slot, source, uniquedots, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref40, _ref41, _ref42, _ref43, _ref44, _ref45, _ref46, _ref47, _ref48, _ref49, _ref5, _ref50, _ref51, _ref52, _ref53, _ref54, _ref55, _ref56, _ref6, _ref7, _ref8, _ref9;
     if (data !== this.tooltip_currently_displaying) {
       switch (type) {
         case 'Ship':
@@ -24265,7 +24379,20 @@ exportObj.SquadBuilder = (function() {
             var _ref7, _ref8;
             return __indexOf.call((_ref7 = (_ref8 = data.pilot.ship_override) != null ? _ref8.actionsred : void 0) != null ? _ref7 : data.data.actionsred, el) < 0;
           });
-          this.info_container.find('.info-name').html("" + (data.pilot.unique ? "&middot;&nbsp;" : "") + (data.pilot.display_name ? data.pilot.display_name : data.pilot.name) + " " + (exportObj.isReleased(data.pilot) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
+          if (data.pilot.unique != null) {
+            uniquedots = "&middot;&nbsp;";
+          } else if (data.pilot.restricted != null) {
+            count = 0;
+            uniquedots = "";
+            while (count < data.pilot.restricted) {
+              uniquedots = uniquedots.concat("&middot;");
+              ++count;
+            }
+            uniquedots = uniquedots.concat("&nbsp;");
+          } else {
+            uniquedots = "";
+          }
+          this.info_container.find('.info-name').html("" + uniquedots + (data.pilot.display_name ? data.pilot.display_name : data.pilot.name) + " " + (exportObj.isReleased(data.pilot) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
           this.info_container.find('p.info-text').html((_ref7 = data.pilot.text) != null ? _ref7 : '');
           this.info_container.find('tr.info-ship td.info-data').text(data.pilot.ship);
           this.info_container.find('tr.info-ship').show();
@@ -24389,7 +24516,20 @@ exportObj.SquadBuilder = (function() {
           } else {
             this.info_container.find('.info-collection').text('');
           }
-          this.info_container.find('.info-name').html("" + (data.unique ? "&middot;&nbsp;" : "") + (data.display_name ? data.display_name : data.name) + (exportObj.isReleased(data) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
+          if (data.unique != null) {
+            uniquedots = "&middot;&nbsp;";
+          } else if (data.restricted != null) {
+            count = 0;
+            uniquedots = "";
+            while (count < data.restricted) {
+              uniquedots = uniquedots.concat("&middot;");
+              ++count;
+            }
+            uniquedots = uniquedots.concat("&nbsp;");
+          } else {
+            uniquedots = "";
+          }
+          this.info_container.find('.info-name').html("" + uniquedots + (data.display_name ? data.display_name : data.name) + (exportObj.isReleased(data) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
           this.info_container.find('p.info-text').html((_ref36 = data.text) != null ? _ref36 : '');
           ship = exportObj.ships[data.ship];
           this.info_container.find('tr.info-ship td.info-data').text(data.ship);
@@ -25261,7 +25401,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 25851
+                      lineno: 26034
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -25319,7 +25459,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 25868
+                lineno: 26051
               })
             ]);
             __iced_deferrals._fulfill();
@@ -25366,7 +25506,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 25882
+              lineno: 26065
             }));
           }
         }
@@ -25579,9 +25719,16 @@ Ship = (function() {
     this.copy_button = $(this.row.find('button.copy-pilot'));
     this.copy_button.click((function(_this) {
       return function(e) {
-        var clone;
+        var clone, count;
         clone = _this.builder.ships[_this.builder.ships.length - 1];
-        return clone.copyFrom(_this);
+        if (_this.pilot.restricted) {
+          count = 0;
+          if (count < _this.pilot.restricted) {
+            return clone.copyFrom(_this);
+          }
+        } else {
+          return clone.copyFrom(_this);
+        }
       };
     })(this));
     return this.copy_button.hide();
@@ -26285,7 +26432,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 26620
+                lineno: 26813
               })
             ]);
             __iced_deferrals._fulfill();
@@ -26426,7 +26573,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 26694
+                  lineno: 26887
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -26448,7 +26595,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 26698
+                    lineno: 26891
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -26535,7 +26682,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 26739
+            lineno: 26932
           }));
         }
         __iced_deferrals._fulfill();

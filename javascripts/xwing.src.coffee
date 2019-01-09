@@ -2799,8 +2799,35 @@ exportObj.basicCardData = ->
               [ 2, 1, 2, 1, 2, 0, 0, 0, 3, 3]
               [ 1, 3, 2, 3, 1, 0, 0, 0, 0, 0]
               [ 0, 0, 2, 0, 0, 0, 0, 0, 0, 0]
-              [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0]
+              [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
             ]
+        "Belbullab-22 Starfighter":
+            name: "Belbullab-22 Starfighter"
+            xws: "Belbullab-22 Starfighter".canonicalize()
+            factions: ["Separatist Alliance"]
+            attack: 3
+            agility: 2
+            hull: 3
+            shields: 2
+            actions: [
+                "Focus"
+                "Lock"
+                "Barrel Roll"
+                "R> Focus"
+                "Boost"
+                "R> Focus"
+            ]
+            actionsred: [
+            ]
+            maneuvers: [
+              [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+              [ 1, 1, 0, 1, 1, 0, 0, 0, 0, 0]
+              [ 1, 2, 2, 2, 1, 0, 0, 0, 0, 0]
+              [ 3, 1, 2, 1, 3, 0, 3, 3, 0, 0]
+              [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+              [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+            ]
+        
     # name field is for convenience only
     pilotsById: [
         {
@@ -7287,6 +7314,7 @@ exportObj.basicCardData = ->
             skill: 1
             points: 100
             slots: [
+                "Configuration"
                 "Modification"
             ]
         }
@@ -7705,6 +7733,104 @@ exportObj.basicCardData = ->
             skill: 1
             points: 24
             slots: [
+                "Modification"
+            ]
+        }
+        {
+            name: "General Grevious"
+            id: 305
+            faction: "Separatist Alliance"
+            ship: "Belbullab-22 Starfighter"
+            unique: true
+            skill: 4
+            points: 100
+            slots: [
+                "Talent"
+                "Modification"
+            ]
+        }
+        {
+            name: "Wat Tambor"
+            id: 306
+            faction: "Separatist Alliance"
+            ship: "Belbullab-22 Starfighter"
+            unique: true
+            skill: 3
+            points: 100
+            slots: [
+                "Talent"
+                "Modification"
+            ]
+        }
+        {
+            name: "Feethan Ottraw Autopilot"
+            id: 307
+            faction: "Separatist Alliance"
+            ship: "Belbullab-22 Starfighter"
+            skill: 1
+            points: 100
+            slots: [
+                "Modification"
+            ]
+            ship_override:
+                actions: [
+                    "Calculate"
+                    "Lock"
+                    "Barrel Roll"
+                    "R> Calculate"
+                    "Boost"
+                    "R> Calculate"
+                ]
+        }
+        {
+            name: "Captain Sear"
+            id: 308
+            faction: "Separatist Alliance"
+            ship: "Belbullab-22 Starfighter"
+            unique: true
+            skill: 2
+            points: 100
+            slots: [
+                "Configuration"
+                "Modification"
+            ]
+        }
+        {
+            name: "Precise Hunter"
+            id: 309
+            faction: "Separatist Alliance"
+            ship: "Vulture-class Droid Fighter"
+            skill: 3
+            points: 100
+            restricted: 3
+            slots: [
+                "Configuration"
+                "Modification"
+            ]
+        }
+        {
+            name: "Hadr Chall Prototype"
+            id: 310
+            faction: "Separatist Alliance"
+            ship: "Vulture-class Droid Fighter"
+            skill: 1
+            points: 100
+            restricted: 2
+            slots: [
+                "Configuration"
+                "Modification"
+            ]
+        }
+        {
+            name: "DFS-081"
+            id: 311
+            faction: "Separatist Alliance"
+            ship: "Vulture-class Droid Fighter"
+            skill: 3
+            points: 100
+            unique: true
+            slots: [
+                "Configuration"
                 "Modification"
             ]
         }
@@ -9620,6 +9746,21 @@ exportObj.basicCardData = ->
             id: 206
             slot: "Tech"
             points: 5
+       }
+       {
+            name: "Impervium Plating"
+            id: 207
+            ship: "Belbullab-22 Starfighter"
+            charge: 2
+            slot: "Modification"
+            points: 100
+       }
+       {
+            name: "Grappling Struts"
+            id: 208
+            ship: "Vulture-class Droid Fighter"
+            slot: "Configuration"
+            points: 100
        }
 
 
@@ -12876,7 +13017,18 @@ exportObj.cardLoaders.English = () ->
            text: """ Before you engage, you may choose 1 enemy ship in your %BULLSEYEARC% at range 1-2 and gain 1 disarm token. If you do, that ship gains 1 tractor token. %LINEBREAK% NOTCHED STABILIZERS: While you move, you ignore asteroids. """
         "Overseer Yushyn":
            text: """ Before a friendly ship at range 1 would gain a disarm token, if that ship is not stressed you may spend 1 %CHARGE%. If you do, that ship gains 1 stress token instead. %LINEBREAK% NOTCHED STABILIZERS: While you move, you ignore asteroids. """
-            
+        "General Grevious":
+           text: """ While you perform a primary attack, if you are not in the defender's firing arc, you may reroll up to 2 attack dice. """
+        "Wat Tambor":
+           text: """ While you perform a primary attack, you may reroll 1 attack die for each calculating friendly ship at range 1 of the defender. """
+        "Captain Sear":
+           text: """ While a friendly ship at range 0-3 performs a primary attack, if the defender is in its %BULLSEYEARC%, before the Neutralize Results step, the friendly ship may spend 1 calculate token to cancel 1 %EVADE% result. """
+        "Precise Hunter":
+           text: """ While you perform an attack, if the defender is in your %BULLSEYEARC%, you may reroll 1 blank result. %LINEBREAK% NETWORKED CALCULATIONS: While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range 0-1 to change 1 %FOCUS% result to an %EVADE% or %HIT% result. """
+        "Hadr Chall Prototype":
+           text: """ After an enemy ship in your %BULLSEYEARC% at range 0-2 declares another friendly ship as the defender, you may perform a %CALCULATE% or %LOCK% action. %LINEBREAK% NETWORKED CALCULATIONS: While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range 0-1 to change 1 %FOCUS% result to an %EVADE% or %HIT% result. """
+        "DFS-081":
+           text: """ While a friendly ship at range 0-1 defends, it may spend 1 calculate token to change all %CRIT% results to %HIT% results. %LINEBREAK% NETWORKED CALCULATIONS: While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range 0-1 to change 1 %FOCUS% result to an %EVADE% or %HIT% result. """
             
 
     upgrade_translations =
@@ -13449,7 +13601,10 @@ exportObj.cardLoaders.English = () ->
            text: """ Before you activate or engage, you may spend 1 %CHARGE% to ignore obstacles until the end of this phase. """
         "Pattern Analyzer":
            text: """ While you fully execute a red maneuver, before the Check Difficulty step, you may perform 1 action. """
-        
+        "Impervium Plating":
+           text: """ Before you would be dealt a faceup Ship damage card, you may spend 1 %CHARGE% to discard it instead. """
+        "Grappling Struts":
+           text: """<strong>Closed: </strong> Setup: Equip this side faceup. %LINEBREAK% While you execute a manuever, if you overlap an asteroid or debris cloud and there are 1 or fewer other friendly ships at range 0 of that obstacle, you may flip this card. %LINEBREAK% <b>Open:</b> You ignore obstacles at range 0 and while you move through them. After you reveal your dial, if you reveal a maneuver other than a [2 %STRAIGHT%] and are at range 0 of an asteroid or debris cloud, skip your Execute Maneuver step and remove 1 stress token; if you revealed a right or left maneuver, rotate your ship 90º in that direction. After you execute a maneuver, flip this card."""
             
         
     condition_translations =
@@ -25123,7 +25278,21 @@ class exportObj.SquadBuilder
                         el not in (data.pilot.ship_override?.actions ? data.data.actions)
                     extra_actions_red = $.grep effective_stats.actionsred, (el, i) ->
                         el not in (data.pilot.ship_override?.actionsred ? data.data.actionsred)
-                    @info_container.find('.info-name').html """#{if data.pilot.unique then "&middot;&nbsp;" else ""}#{if data.pilot.display_name then data.pilot.display_name else data.pilot.name} #{if exportObj.isReleased(data.pilot) then "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
+                    
+                    #logic to determine how many dots to use for uniqueness
+                    if data.pilot.unique?
+                        uniquedots = "&middot;&nbsp;"
+                    else if data.pilot.restricted?
+                        count = 0
+                        uniquedots = ""
+                        while (count < data.pilot.restricted)
+                            uniquedots = uniquedots.concat("&middot;")
+                            ++count
+                        uniquedots = uniquedots.concat("&nbsp;")
+                    else
+                        uniquedots = ""
+                            
+                    @info_container.find('.info-name').html """#{uniquedots}#{if data.pilot.display_name then data.pilot.display_name else data.pilot.name} #{if exportObj.isReleased(data.pilot) then "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
 
                     @info_container.find('p.info-text').html data.pilot.text ? ''
                     @info_container.find('tr.info-ship td.info-data').text data.pilot.ship
@@ -25206,7 +25375,21 @@ class exportObj.SquadBuilder
                         @info_container.find('.info-collection').text """You have #{ship_count} ship model#{if ship_count > 1 then 's' else ''} and #{pilot_count} pilot card#{if pilot_count > 1 then 's' else ''} in your collection."""
                     else
                         @info_container.find('.info-collection').text ''
-                    @info_container.find('.info-name').html """#{if data.unique then "&middot;&nbsp;" else ""}#{if data.display_name then data.display_name else data.name}#{if exportObj.isReleased(data) then "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
+                        
+                    #logic to determine how many dots to use for uniqueness
+                    if data.unique?
+                        uniquedots = "&middot;&nbsp;"
+                    else if data.restricted?
+                        count = 0
+                        uniquedots = ""
+                        while (count < data.restricted)
+                            uniquedots = uniquedots.concat("&middot;")
+                            ++count
+                        uniquedots = uniquedots.concat("&nbsp;")
+                    else
+                        uniquedots = ""
+                        
+                    @info_container.find('.info-name').html """#{uniquedots}#{if data.display_name then data.display_name else data.name}#{if exportObj.isReleased(data) then "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
                     @info_container.find('p.info-text').html data.text ? ''
                     ship = exportObj.ships[data.ship]
                     @info_container.find('tr.info-ship td.info-data').text data.ship
@@ -26037,7 +26220,17 @@ class Ship
         @copy_button = $ @row.find('button.copy-pilot')
         @copy_button.click (e) =>
             clone = @builder.ships[@builder.ships.length - 1]
-            clone.copyFrom(this)
+            
+            # Restricted Check
+            if this.pilot.restricted
+                count = 0
+                # for ship in @builder.ships
+                    # shipname = ship.pilot.name
+                if count < this.pilot.restricted
+                    clone.copyFrom(this)
+            else
+                clone.copyFrom(this)
+                
         @copy_button.hide()
 
     teardownUI: ->
