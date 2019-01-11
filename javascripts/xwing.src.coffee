@@ -7808,6 +7808,7 @@ exportObj.basicCardData = ->
             ship: "Vulture-class Droid Fighter"
             skill: 3
             points: 100
+            unique: true
             restricted: 3
             slots: [
                 "Configuration"
@@ -7821,6 +7822,7 @@ exportObj.basicCardData = ->
             ship: "Vulture-class Droid Fighter"
             skill: 1
             points: 100
+            unique: true
             restricted: 2
             slots: [
                 "Configuration"
@@ -23094,7 +23096,7 @@ exportObj.manifestByExpansion =
             count: 3
         }
         {
-            name: 'Upsilon-Class Shuttle'
+            name: 'Upsilon-Class Command Shuttle'
             type: 'ship'
             count: 3
         }
@@ -23196,7 +23198,7 @@ exportObj.manifestByExpansion =
             count: 3
         }
         {
-            name: 'Upsilon-Class Shuttle'
+            name: 'Upsilon-Class Command Shuttle'
             type: 'ship'
             count: 3
         }
@@ -24956,6 +24958,8 @@ class exportObj.SquadBuilder
         @uniques_in_use[type].indexOf unique
 
     claimUnique: (unique, type, cb) =>
+        #if unique.restricted 
+            #console.log("here we go")
         if @uniqueIndex(unique, type) < 0
             # Claim pilots with the same canonical name
             for other in (exportObj.pilotsByUniqueName[unique.canonical_name.getXWSBaseName()] or [])
