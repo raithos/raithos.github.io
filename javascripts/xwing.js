@@ -2253,9 +2253,9 @@ exportObj.basicCardData = function() {
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
-      "Upsilon-Class Shuttle": {
-        name: "Upsilon-Class Shuttle",
-        xws: "Upsilon-Class Shuttle".canonicalize(),
+      "Upsilon-Class Command Shuttle": {
+        name: "Upsilon-Class Command Shuttle",
+        xws: "Upsilon-Class Command Shuttle".canonicalize(),
         factions: ["First Order"],
         attack: 4,
         agility: 1,
@@ -3935,6 +3935,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         points: 58,
         force: 2,
+        darkside: true,
         slots: ["Force", "Sensor", "Missile"]
       }, {
         name: "Seventh Sister",
@@ -3945,6 +3946,7 @@ exportObj.basicCardData = function() {
         skill: 4,
         points: 48,
         force: 2,
+        darkside: true,
         slots: ["Force", "Sensor", "Missile"]
       }, {
         name: "Inquisitor",
@@ -3954,6 +3956,7 @@ exportObj.basicCardData = function() {
         skill: 3,
         points: 40,
         force: 1,
+        darkside: true,
         slots: ["Force", "Sensor", "Missile"]
       }, {
         name: "Baron of the Empire",
@@ -3970,6 +3973,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         ship: "TIE Advanced",
         skill: 6,
+        darkside: true,
         points: 70,
         force: 3,
         slots: ["Force", "Sensor", "Missile", "Modification"]
@@ -4523,6 +4527,7 @@ exportObj.basicCardData = function() {
         ship: "TIE/VN Silencer",
         skill: 5,
         force: 2,
+        darkside: true,
         points: 82,
         applies_condition: 'I\'ll Show You the Dark Side'.canonicalize(),
         slots: ["Force", "Tech", "Torpedo", "Missile", "Modification"]
@@ -4540,7 +4545,7 @@ exportObj.basicCardData = function() {
         id: 238,
         unique: true,
         faction: "First Order",
-        ship: "Upsilon-Class Shuttle",
+        ship: "Upsilon-Class Command Shuttle",
         skill: 2,
         points: 60,
         slots: ["Tech", "Tech", "Crew", "Crew", "Crew", "Cannon", "Sensor", "Modification"]
@@ -4660,7 +4665,7 @@ exportObj.basicCardData = function() {
         id: 251,
         unique: true,
         faction: "First Order",
-        ship: "Upsilon-Class Shuttle",
+        ship: "Upsilon-Class Command Shuttle",
         skill: 4,
         points: 63,
         slots: ["Tech", "Tech", "Crew", "Crew", "Crew", "Cannon", "Sensor", "Modification"]
@@ -4846,6 +4851,7 @@ exportObj.basicCardData = function() {
         ship: "Sith Infiltrator",
         skill: 5,
         force: 3,
+        darkside: true,
         points: 100,
         slots: ["Force", "Modification"]
       }, {
@@ -4928,7 +4934,7 @@ exportObj.basicCardData = function() {
         id: 281,
         unique: true,
         faction: "First Order",
-        ship: "Upsilon-Class Shuttle",
+        ship: "Upsilon-Class Command Shuttle",
         skill: 1,
         points: 60,
         charge: 1,
@@ -4939,7 +4945,7 @@ exportObj.basicCardData = function() {
         id: 282,
         unique: true,
         faction: "First Order",
-        ship: "Upsilon-Class Shuttle",
+        ship: "Upsilon-Class Command Shuttle",
         skill: 4,
         points: 64,
         charge: 2,
@@ -4990,7 +4996,7 @@ exportObj.basicCardData = function() {
         name: "Starkiller Base Pilot",
         id: 288,
         faction: "First Order",
-        ship: "Upsilon-Class Shuttle",
+        ship: "Upsilon-Class Command Shuttle",
         skill: 2,
         points: 56,
         slots: ["Tech", "Tech", "Crew", "Crew", "Crew", "Cannon", "Sensor", "Modification"]
@@ -4999,7 +5005,7 @@ exportObj.basicCardData = function() {
         id: 289,
         unique: true,
         faction: "First Order",
-        ship: "Upsilon-Class Shuttle",
+        ship: "Upsilon-Class Command Shuttle",
         skill: 3,
         charge: 2,
         recurring: true,
@@ -5648,7 +5654,8 @@ exportObj.basicCardData = function() {
         unique: true,
         force: 1,
         modifier_func: function(stats) {
-          return stats.force += 1;
+          stats.force += 1;
+          return stats.darkside = true;
         },
         restriction_func: function(ship) {
           var builder, t, thing, things, _ref;
@@ -7485,7 +7492,7 @@ exportObj.hyperspaceShipInclusions = [
     name: 'TIE/SF Fighter',
     faction: 'First Order'
   }, {
-    name: 'Upsilon-Class Shuttle',
+    name: 'Upsilon-Class Command Shuttle',
     faction: 'First Order'
   }
 ];
@@ -7776,7 +7783,7 @@ exportObj.cardLoaders.Deutsch = function() {
   exportObj.renameShip("Escape Craft", "Fluchtschiff");
   exportObj.renameShip("TIE/FO Fighter", "TIE/eo-Jäger");
   exportObj.renameShip("TIE/SF Fighter", "TIE/sf Jäger");
-  exportObj.renameShip("Upsilon-Class Shuttle", "Kommandoshuttle der Ypsilon-Klasse");
+  exportObj.renameShip("Upsilon-Class Command Shuttle", "Kommandoshuttle der Ypsilon-Klasse");
   exportObj.renameShip("TIE/VN Silencer", "TIE/vn-Dämpfer");
   exportObj.renameShip("T-70 X-Wing", "T-70-X-Flügler");
   exportObj.renameShip("RZ-2 A-Wing", "RZ-2-A-Flügler");
@@ -22476,7 +22483,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 23601
+                    lineno: 23611
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -23165,7 +23172,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 24336
+              lineno: 24346
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -23882,7 +23889,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 24999
+          lineno: 25009
         }));
         __iced_deferrals._fulfill();
       });
@@ -23894,7 +23901,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 25000
+            lineno: 25010
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -25401,7 +25408,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 26034
+                      lineno: 26044
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -25459,7 +25466,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 26051
+                lineno: 26061
               })
             ]);
             __iced_deferrals._fulfill();
@@ -25506,7 +25513,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 26065
+              lineno: 26075
             }));
           }
         }
@@ -25689,7 +25696,7 @@ Ship = (function() {
         }
       };
     })(this));
-    this.pilot_selector.data('select2').container.on('touchend', (function(_this) {
+    this.pilot_selector.data('select2').container.on('touchmove', (function(_this) {
       return function(e) {
         if (_this.data != null) {
           return _this.builder.showTooltip('Ship', _this);
@@ -26224,7 +26231,7 @@ Ship = (function() {
   };
 
   Ship.prototype.effectiveStats = function() {
-    var s, stats, upgrade, _i, _j, _len, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var s, stats, upgrade, _i, _j, _len, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     stats = {
       skill: this.pilot.skill,
       attack: (_ref = (_ref1 = this.pilot.ship_override) != null ? _ref1.attack : void 0) != null ? _ref : this.data.attack,
@@ -26238,21 +26245,22 @@ Ship = (function() {
       shields: (_ref16 = (_ref17 = this.pilot.ship_override) != null ? _ref17.shields : void 0) != null ? _ref16 : this.data.shields,
       force: (_ref18 = (_ref19 = (_ref20 = this.pilot.ship_override) != null ? _ref20.force : void 0) != null ? _ref19 : this.pilot.force) != null ? _ref18 : 0,
       charge: (_ref21 = (_ref22 = this.pilot.ship_override) != null ? _ref22.charge : void 0) != null ? _ref21 : this.pilot.charge,
-      actions: ((_ref23 = (_ref24 = this.pilot.ship_override) != null ? _ref24.actions : void 0) != null ? _ref23 : this.data.actions).slice(0),
-      actionsred: ((_ref25 = (_ref26 = (_ref27 = this.pilot.ship_override) != null ? _ref27.actionsred : void 0) != null ? _ref26 : this.data.actionsred) != null ? _ref25 : []).slice(0)
+      darkside: (_ref23 = (_ref24 = (_ref25 = this.pilot.ship_override) != null ? _ref25.darkside : void 0) != null ? _ref24 : this.pilot.darkside) != null ? _ref23 : false,
+      actions: ((_ref26 = (_ref27 = this.pilot.ship_override) != null ? _ref27.actions : void 0) != null ? _ref26 : this.data.actions).slice(0),
+      actionsred: ((_ref28 = (_ref29 = (_ref30 = this.pilot.ship_override) != null ? _ref30.actionsred : void 0) != null ? _ref29 : this.data.actionsred) != null ? _ref28 : []).slice(0)
     };
     stats.maneuvers = [];
-    for (s = _i = 0, _ref28 = ((_ref29 = this.data.maneuvers) != null ? _ref29 : []).length; 0 <= _ref28 ? _i < _ref28 : _i > _ref28; s = 0 <= _ref28 ? ++_i : --_i) {
+    for (s = _i = 0, _ref31 = ((_ref32 = this.data.maneuvers) != null ? _ref32 : []).length; 0 <= _ref31 ? _i < _ref31 : _i > _ref31; s = 0 <= _ref31 ? ++_i : --_i) {
       stats.maneuvers[s] = this.data.maneuvers[s].slice(0);
     }
-    _ref30 = this.upgrades;
-    for (_j = 0, _len = _ref30.length; _j < _len; _j++) {
-      upgrade = _ref30[_j];
-      if ((upgrade != null ? (_ref31 = upgrade.data) != null ? _ref31.modifier_func : void 0 : void 0) != null) {
+    _ref33 = this.upgrades;
+    for (_j = 0, _len = _ref33.length; _j < _len; _j++) {
+      upgrade = _ref33[_j];
+      if ((upgrade != null ? (_ref34 = upgrade.data) != null ? _ref34.modifier_func : void 0 : void 0) != null) {
         upgrade.data.modifier_func(stats);
       }
     }
-    if (((_ref32 = this.pilot) != null ? _ref32.modifier_func : void 0) != null) {
+    if (((_ref35 = this.pilot) != null ? _ref35.modifier_func : void 0) != null) {
       this.pilot.modifier_func(stats);
     }
     return stats;
@@ -26432,7 +26440,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 26813
+                lineno: 26824
               })
             ]);
             __iced_deferrals._fulfill();
@@ -26534,7 +26542,7 @@ GenericAddon = (function() {
         }
       };
     })(this));
-    return this.selector.data('select2').container.on('touchend', (function(_this) {
+    return this.selector.data('select2').container.on('touchmove', (function(_this) {
       return function(e) {
         if (_this.data != null) {
           return _this.ship.builder.showTooltip('Addon', _this.data, {
@@ -26573,7 +26581,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 26887
+                  lineno: 26898
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -26595,7 +26603,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 26891
+                    lineno: 26902
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -26682,7 +26690,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 26932
+            lineno: 26943
           }));
         }
         __iced_deferrals._fulfill();

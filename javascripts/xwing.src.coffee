@@ -2605,9 +2605,9 @@ exportObj.basicCardData = ->
               [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
               [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
             ]
-        "Upsilon-Class Shuttle":
-            name: "Upsilon-Class Shuttle"
-            xws: "Upsilon-Class Shuttle".canonicalize()
+        "Upsilon-Class Command Shuttle":
+            name: "Upsilon-Class Command Shuttle"
+            xws: "Upsilon-Class Command Shuttle".canonicalize()
             factions: ["First Order"]
             attack: 4
             agility: 1
@@ -5644,6 +5644,7 @@ exportObj.basicCardData = ->
             skill: 5
             points: 58
             force: 2
+            darkside: true
             slots: [       
                 "Force"
                 "Sensor"
@@ -5659,6 +5660,7 @@ exportObj.basicCardData = ->
             skill: 4
             points: 48
             force: 2
+            darkside: true
             slots: [       
                 "Force"
                 "Sensor"
@@ -5673,6 +5675,7 @@ exportObj.basicCardData = ->
             skill: 3
             points: 40
             force: 1
+            darkside: true
             slots: [       
                 "Force"
                 "Sensor"
@@ -5699,6 +5702,7 @@ exportObj.basicCardData = ->
             faction: "Galactic Empire"
             ship: "TIE Advanced"
             skill: 6
+            darkside: true
             points: 70
             force: 3
             slots: [       
@@ -6643,6 +6647,7 @@ exportObj.basicCardData = ->
             ship: "TIE/VN Silencer"
             skill: 5
             force: 2
+            darkside: true
             points: 82
             applies_condition: '''I'll Show You the Dark Side'''.canonicalize()
             slots: [
@@ -6674,7 +6679,7 @@ exportObj.basicCardData = ->
             id: 238
             unique: true
             faction: "First Order"
-            ship: "Upsilon-Class Shuttle"
+            ship: "Upsilon-Class Command Shuttle"
             skill: 2
             points: 60
             slots: [
@@ -6885,7 +6890,7 @@ exportObj.basicCardData = ->
             id: 251
             unique: true
             faction: "First Order"
-            ship: "Upsilon-Class Shuttle"
+            ship: "Upsilon-Class Command Shuttle"
             skill: 4
             points: 63
             slots: [
@@ -7211,6 +7216,7 @@ exportObj.basicCardData = ->
             ship: "Sith Infiltrator"
             skill: 5
             force: 3
+            darkside: true
             points: 100
             slots: [
                 "Force"
@@ -7339,7 +7345,7 @@ exportObj.basicCardData = ->
             id: 281
             unique: true
             faction: "First Order"
-            ship: "Upsilon-Class Shuttle"
+            ship: "Upsilon-Class Command Shuttle"
             skill: 1
             points: 60
             charge: 1
@@ -7360,7 +7366,7 @@ exportObj.basicCardData = ->
             id: 282
             unique: true
             faction: "First Order"
-            ship: "Upsilon-Class Shuttle"
+            ship: "Upsilon-Class Command Shuttle"
             skill: 4
             points: 64
             charge: 2
@@ -7456,7 +7462,7 @@ exportObj.basicCardData = ->
             name: "Starkiller Base Pilot"
             id: 288
             faction: "First Order"
-            ship: "Upsilon-Class Shuttle"
+            ship: "Upsilon-Class Command Shuttle"
             skill: 2
             points: 56
             slots: [
@@ -7475,7 +7481,7 @@ exportObj.basicCardData = ->
             id: 289
             unique: true
             faction: "First Order"
-            ship: "Upsilon-Class Shuttle"
+            ship: "Upsilon-Class Command Shuttle"
             skill: 3
             charge: 2
             recurring: true
@@ -8293,6 +8299,7 @@ exportObj.basicCardData = ->
            force: 1
            modifier_func: (stats) ->
                 stats.force += 1
+                stats.darkside = true
            restriction_func: (ship) ->
                 builder = ship.builder
                 return true if builder.faction == "Scum and Villainy"
@@ -9732,6 +9739,9 @@ exportObj.basicCardData = ->
             id: 204
             slot: "Force"
             points: 3
+            # waiting to hear from official ruling
+            # restriction_func: (ship) ->
+                # ship.effectiveStats().darkside == true
        }
        {
             name: "R5-X3"
@@ -10082,7 +10092,7 @@ exportObj.hyperspaceShipInclusions = [
     {name: 'TIE/FO Fighter', faction: 'First Order'},
     {name: 'TIE/VN Silencer', faction: 'First Order'},
     {name: 'TIE/SF Fighter', faction: 'First Order'},
-    {name: 'Upsilon-Class Shuttle', faction: 'First Order'}
+    {name: 'Upsilon-Class Command Shuttle', faction: 'First Order'}
 ]
 
 # Used to exclude pilots from included ships
@@ -10443,7 +10453,7 @@ exportObj.cardLoaders.Deutsch = () ->
     exportObj.renameShip """Escape Craft""", """Fluchtschiff"""
     exportObj.renameShip """TIE/FO Fighter""", """TIE/eo-Jäger"""
     exportObj.renameShip """TIE/SF Fighter""", """TIE/sf Jäger"""
-    exportObj.renameShip """Upsilon-Class Shuttle""", """Kommandoshuttle der Ypsilon-Klasse"""
+    exportObj.renameShip """Upsilon-Class Command Shuttle""", """Kommandoshuttle der Ypsilon-Klasse"""
     exportObj.renameShip """TIE/VN Silencer""", """TIE/vn-Dämpfer"""
     exportObj.renameShip """T-70 X-Wing""", """T-70-X-Flügler"""
     exportObj.renameShip """RZ-2 A-Wing""", """RZ-2-A-Flügler"""
@@ -26196,7 +26206,7 @@ class Ship
             @builder.showTooltip 'Pilot', exportObj.pilotsById[select2_data.id], {ship: @data?.name} if select2_data?.id?
         @pilot_selector.data('select2').container.on 'mouseover', (e) =>
             @builder.showTooltip 'Ship', this if @data?
-        @pilot_selector.data('select2').container.on 'touchend', (e) =>
+        @pilot_selector.data('select2').container.on 'touchmove', (e) =>
             @builder.showTooltip 'Ship', this if @data?
             ###if @data? 
                 scrollTo(0,$('#info-container').offset().top - 10,'smooth')###
@@ -26681,6 +26691,7 @@ class Ship
             shields: @pilot.ship_override?.shields ? @data.shields
             force: (@pilot.ship_override?.force ? @pilot.force) ? 0
             charge: @pilot.ship_override?.charge ? @pilot.charge
+            darkside: (@pilot.ship_override?.darkside ? @pilot.darkside) ? false
             actions: (@pilot.ship_override?.actions ? @data.actions).slice 0
             actionsred: ((@pilot.ship_override?.actionsred ? @data.actionsred) ? []).slice 0
 
@@ -26870,7 +26881,7 @@ class GenericAddon
             @ship.builder.showTooltip 'Addon', @dataById[select2_data.id], {addon_type: @type} if select2_data?.id?
         @selector.data('select2').container.on 'mouseover', (e) =>
             @ship.builder.showTooltip 'Addon', @data, {addon_type: @type} if @data?
-        @selector.data('select2').container.on 'touchend', (e) =>
+        @selector.data('select2').container.on 'touchmove', (e) =>
             @ship.builder.showTooltip 'Addon', @data, {addon_type: @type} if @data?
             ###if @data?
                 scrollTo(0,$('#info-container').offset().top - 10,'smooth')###
