@@ -6655,7 +6655,12 @@ exportObj.basicCardData = function() {
         id: 142,
         points: 0,
         slot: "Configuration",
-        ship: "X-Wing"
+        ship: "X-Wing",
+        modifier_func: function(stats) {
+          stats.actions.push('Boost');
+          stats.actions.push('*Focus');
+          return stats.actions.push('R> Boost');
+        }
       }, {
         name: "Blank",
         id: 143,
@@ -7007,7 +7012,12 @@ exportObj.basicCardData = function() {
         slot: "Configuration",
         points: 0,
         faction: "Resistance",
-        ship: "T-70 X-Wing"
+        ship: "T-70 X-Wing",
+        modifier_func: function(stats) {
+          stats.actions.push('Barrel Roll');
+          stats.actions.push('*Focus');
+          return stats.actions.push('R> Barrel Roll');
+        }
       }, {
         name: "Integrated S-Foils (Open)",
         id: 176,
@@ -7737,6 +7747,7 @@ exportObj.translations.Deutsch = {
     "Boost": '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>',
     "Evade": '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>',
     "Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>',
+    "*Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>',
     "Lock": '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>',
     "Reload": '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>',
     "Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>',
@@ -7747,6 +7758,7 @@ exportObj.translations.Deutsch = {
     "Cloak": '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>',
     "Slam": '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>',
     "R> Barrel Roll": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-barrelroll"></i>',
+    "R> Boost": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-boost"></i>',
     "R> Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-focus"></i>',
     "R> Lock": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-lock"></i>',
     "> Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>',
@@ -9986,6 +9998,7 @@ exportObj.translations.English = {
     "Evade": '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>',
     "F-Evade": '<i class="xwing-miniatures-font force xwing-miniatures-font-evade"></i>',
     "Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>',
+    "*Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>',
     "Lock": '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>',
     "Reload": '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>',
     "Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>',
@@ -9996,6 +10009,7 @@ exportObj.translations.English = {
     "Cloak": '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>',
     "Slam": '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>',
     "R> Barrel Roll": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-barrelroll"></i>',
+    "R> Boost": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-boost"></i>',
     "R> Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-focus"></i>',
     "R> Lock": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-lock"></i>',
     "> Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>',
@@ -12279,6 +12293,7 @@ exportObj.translations['Español'] = {
     "Boost": '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>',
     "Evade": '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>',
     "Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>',
+    "*Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>',
     "Lock": '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>',
     "Reload": '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>',
     "Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>',
@@ -12289,6 +12304,7 @@ exportObj.translations['Español'] = {
     "Cloak": '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>',
     "Slam": '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>',
     "R> Barrel Roll": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-barrelroll"></i>',
+    "R> Boost": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-boost"></i>',
     "R> Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-focus"></i>',
     "R> Lock": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-lock"></i>',
     "> Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>',
@@ -14152,6 +14168,7 @@ exportObj.translations['Français'] = {
     "Boost": '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>',
     "Evade": '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>',
     "Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>',
+    "*Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>',
     "Lock": '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>',
     "Reload": '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>',
     "Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>',
@@ -14162,6 +14179,7 @@ exportObj.translations['Français'] = {
     "Cloak": '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>',
     "Slam": '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>',
     "R> Barrel Roll": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-barrelroll"></i>',
+    "R> Boost": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-boost"></i>',
     "R> Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-focus"></i>',
     "R> Lock": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-lock"></i>',
     "> Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>',
@@ -16000,6 +16018,7 @@ exportObj.translations.Magyar = {
     "Evade": '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>',
     "F-Evade": '<i class="xwing-miniatures-font force xwing-miniatures-font-evade"></i>',
     "Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>',
+    "*Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>',
     "Lock": '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>',
     "Reload": '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>',
     "Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>',
@@ -16010,6 +16029,7 @@ exportObj.translations.Magyar = {
     "Cloak": '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>',
     "Slam": '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>',
     "R> Barrel Roll": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-barrelroll"></i>',
+    "R> Boost": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-boost"></i>',
     "R> Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-focus"></i>',
     "R> Lock": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-lock"></i>',
     "> Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>',
@@ -22577,7 +22597,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 23707
+                    lineno: 23725
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -23273,7 +23293,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 24452
+              lineno: 24470
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -23997,7 +24017,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 25118
+          lineno: 25136
         }));
         __iced_deferrals._fulfill();
       });
@@ -24009,7 +24029,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 25119
+            lineno: 25137
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -24566,7 +24586,7 @@ exportObj.SquadBuilder = (function() {
               _results1 = [];
               for (_j = 0, _len = extra_actions.length; _j < _len; _j++) {
                 action = extra_actions[_j];
-                _results1.push("<strong>" + (exportObj.translate(this.language, 'action', action)) + "</strong>");
+                _results1.push("" + (exportObj.translate(this.language, 'action', action)));
               }
               return _results1;
             }).call(this));
@@ -25516,7 +25536,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 26153
+                      lineno: 26171
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -25574,7 +25594,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 26170
+                lineno: 26188
               })
             ]);
             __iced_deferrals._fulfill();
@@ -25621,7 +25641,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 26184
+              lineno: 26202
             }));
           }
         }
@@ -25874,6 +25894,8 @@ Ship = (function() {
         switch (action) {
           case 'Focus':
             return "<i class=\"xwing-miniatures-font xwing-miniatures-font-focus\"></i> ";
+          case '*Focus':
+            return "<i class=\"xwing-miniatures-font xwing-miniatures-font-focus\"></i> ";
           case 'Evade':
             return "<i class=\"xwing-miniatures-font xwing-miniatures-font-evade\"></i> ";
           case 'Barrel Roll':
@@ -25902,14 +25924,14 @@ Ship = (function() {
             return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-linked\"></i> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-lock\"></i>&nbsp;";
           case "R> Barrel Roll":
             return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-linked\"></i> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-barrelroll\"></i>&nbsp;";
+          case "R> Boost":
+            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-linked\"></i> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-boost\"></i>&nbsp;";
           case "R> Focus":
             return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-linked\"></i> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-focus\"></i>&nbsp;";
           case "> Rotate Arc":
             return "<i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> <i class=\"xwing-miniatures-font info-attack xwing-miniatures-font-rotatearc\"></i>&nbsp;";
           case "R> Rotate Arc":
             return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-linked\"></i> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-rotatearc\"></i>&nbsp;";
-          case "> Rotate Arc":
-            return "<i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-rotatearc\"></i>&nbsp;";
           case "R> Evade":
             return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-linked\"></i> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-evade\"></i>&nbsp;";
           case "R> Calculate":
@@ -26548,7 +26570,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 26933
+                lineno: 26953
               })
             ]);
             __iced_deferrals._fulfill();
@@ -26689,7 +26711,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 27007
+                  lineno: 27027
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -26711,7 +26733,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 27011
+                    lineno: 27031
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -26798,7 +26820,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 27052
+            lineno: 27072
           }));
         }
         __iced_deferrals._fulfill();

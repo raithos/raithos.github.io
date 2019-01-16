@@ -4,7 +4,7 @@
 
 body {
   -webkit-print-color-adjust: exact;
-  color-adjust: exact;
+  color-adjust: exact !important;
   background-color: transparent !important;
   zoom: 75%; }
 
@@ -73,13 +73,14 @@ body {
     font-size: 0.225in !important;
     position: relative; }
   #printable .fancy-header {
-    border: 0.375in solid black;
+    border: 0.375in solid #4e4e4e;
     color: white;
     border-left-color: transparent;
     border-top-color: transparent;
     border-right-color: transparent;
     font-family: EurostileStandard, Impact, sans-serif; }
     #printable .fancy-header .squad-name {
+      color: white;
       position: absolute;
       font-size: 0.3in;
       margin-top: 0.09375in;
