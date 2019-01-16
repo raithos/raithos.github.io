@@ -1,6 +1,9 @@
 .text-list-modal .modal-header {
   overflow: hidden; }
 
+.modal-body {
+  height: calc(100vh - 430px); }
+
 .fancy-header {
   border: 38px solid black;
   border-left-color: transparent;
