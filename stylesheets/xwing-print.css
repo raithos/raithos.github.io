@@ -4,6 +4,7 @@
 
 body {
   -webkit-print-color-adjust: exact;
+  color-adjust: exact;
   background-color: transparent !important;
   zoom: 75%; }
 
