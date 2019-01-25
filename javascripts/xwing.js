@@ -827,6 +827,8 @@ exportObj.SquadBuilderBackend = (function() {
     X-Wing Card Browser
     Geordan Rosario <geordan@gmail.com>
     https://github.com/geordanr/xwing
+    Advanced search by Patrick Mischke
+    https://github.com/patschke
  */
 
 exportObj = typeof exports !== "undefined" && exports !== null ? exports : this;
@@ -882,7 +884,7 @@ exportObj.CardBrowser = (function() {
 
   CardBrowser.prototype.setupUI = function() {
     var opt, slot;
-    this.container.append($.trim("<div class=\"container-fluid xwing-card-browser\">\n    <div class=\"row-fluid\">\n        <div class=\"span12\">\n            <span class=\"translate sort-cards-by\">Sort cards by</span>: <select class=\"sort-by\">\n                <option value=\"name\">Name</option>\n                <option value=\"source\">Source</option>\n                <option value=\"type-by-points\">Type (by Points)</option>\n                <option value=\"type-by-name\" selected=\"1\">Type (by Name)</option>\n            </select>\n        </div>\n    </div>\n    <div class=\"row-fluid\">\n        <div class=\"span4 card-selector-container\">\n\n        </div>\n        <div class=\"span8\">\n            <div class=\"well card-search-container\">\n                <input type=\"search\" placeholder=\"Search for name, text or ship\" class = \"card-search-text\">" + "                <button class=\"btn btn-primary show-advanced-search\">\n                    Advanced Search\n                </button>\n                <div class=\"advanced-search-container\">\n                    <div class= \"advanced-search-faction-selection-container\">\n                        <strong>Faction:</strong>\n                        <label class = \"toggle-rebel-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"rebel-checkbox advanced-search-checkbox\" checked=\"checked\" /> Rebel\n                        </label>\n                        <label class = \"toggle-imperial-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"imperial-checkbox advanced-search-checkbox\" checked=\"checked\" /> Imperial\n                        </label>\n                        <label class = \"toggle-scum-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"scum-checkbox advanced-search-checkbox\" checked=\"checked\" /> Scum\n                        </label>\n                        <label class = \"toggle-fo-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"fo-checkbox advanced-search-checkbox\" checked=\"checked\" /> First Order\n                        </label>\n                        <label class = \"toggle-resistance-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"resistance-checkbox advanced-search-checkbox\" checked=\"checked\" /> Resistance\n                        </label>\n                        <label class = \"toggle-separatist-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"separatist-checkbox advanced-search-checkbox\" checked=\"checked\" /> Separatist\n                        </label>\n                        <label class = \"toggle-republic-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"republic-checkbox advanced-search-checkbox\" checked=\"checked\" /> Republic\n                        </label>\n                        <label class = \"toggle-factionless-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"factionless-checkbox advanced-search-checkbox\" checked=\"checked\" /> Factionless\n                            <span class=\"advanced-search-tooltip\" tooltip=\"A card is considered factionless, if it can be used by more than one faction.\"> &#9432 </span>\n                        </label>\n                    </div>\n                    <div class = \"advanced-search-point-selection-container\">\n                        <strong>Point costs:</strong>\n                        <label class = \"advanced-search-label set-minimum-points\">\n                            from <input type=\"number\" class=\"minimum-point-cost advanced-search-number-input\" value=\"0\" /> \n                        </label>\n                        <label class = \"advanced-search-label set-maximum-points\">\n                            to <input type=\"number\" class=\"maximum-point-cost advanced-search-number-input\" value=\"200\" /> \n                        </label>\n                        <label class = \"advanced-search-label toggle-variable-cost-search\">\n                            <input type=\"checkbox\" class=\"variable-point-cost-checkbox advanced-search-checkbox\" checked=\"checked\" /> Variable point cost\n                        </label>\n                    </div>\n                    <div class = \"advanced-search-collection-container\">\n                        <strong>Owned copies:</strong>\n                        <label class = \"advanced-search-label set-minimum-owned-copies\">\n                            from <input type=\"number\" class=\"minimum-owned-copies advanced-search-number-input\" value=\"0\" /> \n                        </label>\n                        <label class = \"advanced-search-label set-maximum-owened-copies\">\n                            to <input type=\"number\" class=\"maximum-owned-copies advanced-search-number-input\" value=\"100\" /> \n                        </label>\n                    </div>\n                    <div class = \"advanced-search-slot-available-container\">\n                        <label class = \"advanced-search-label select-available-slots\">\n                            <strong>Available slots: </strong>\n                            <select class=\"advanced-search-selection slot-available-selection\" multiple=\"1\" data-placeholder=\"No slots selected\"></select>\n                            <span class=\"advanced-search-tooltip\" tooltip=\"Search for pilots having all selected slots available.\"> &#9432 </span>\n                        </label>\n                    </div>\n                    <div class = \"advanced-search-slot-used-container\">\n                        <label class = \"advanced-search-label select-used-slots\">\n                            <strong>Used slot: </strong>\n                            <select class=\"advanced-search-selection slot-used-selection\" multiple=\"1\" data-placeholder=\"No slots selected\"></select>\n                            <span class=\"advanced-search-tooltip\" tooltip=\"Search for upgrades using any of the selected slots.\"> &#9432 </span>\n                        </label>\n                    </div>\n                    <div class = \"advanced-search-charge-container\">\n                        <strong>Charges:</strong>\n                        <label class = \"advanced-search-label set-minimum-charge\">\n                            from <input type=\"number\" class=\"minimum-charge advanced-search-number-input\" value=\"0\" /> \n                        </label>\n                        <label class = \"advanced-search-label set-maximum-charge\">\n                            to <input type=\"number\" class=\"maximum-charge advanced-search-number-input\" value=\"5\" /> \n                        </label>\n                        <label class = \"advanced-search-label has-recurring-charge\">\n                            <input type=\"checkbox\" class=\"advanced-search-checkbox has-recurring-charge-checkbox\" checked=\"checked\"/> recurring\n                        </label>\n                        <label class = \"advanced-search-label has-not-recurring-charge\">\n                            <input type=\"checkbox\" class=\"advanced-search-checkbox has-not-recurring-charge-checkbox\" checked=\"checked\"/> not recurring\n                        </label>\n                    </div>\n                    <div class = \"advanced-search-ini-container\">\n                        <strong>Initiative:</strong>\n                        <label class = \"advanced-search-label set-minimum-ini\">\n                            from <input type=\"number\" class=\"minimum-ini advanced-search-number-input\" value=\"0\" /> \n                        </label>\n                        <label class = \"advanced-search-label set-maximum-ini\">\n                            to <input type=\"number\" class=\"maximum-ini advanced-search-number-input\" value=\"6\" /> \n                        </label>\n                    </div>\n                    <div class = \"advanced-search-misc-container\">\n                        <strong>Misc:</strong>\n                        <label class = \"advanced-search-label toggle-unique\">\n                            <input type=\"checkbox\" class=\"unique-checkbox advanced-search-checkbox\" /> Is unique\n                        </label>\n                        <label class = \"advanced-search-label toggle-hyperspace\">\n                            <input type=\"checkbox\" class=\"hyperspace-checkbox advanced-search-checkbox\" /> Hyperspace only\n                            <span class=\"advanced-search-tooltip\" tooltip=\"Check to search only hyperspace compatible cards.\"> &#9432 </span>\n                        </label>\n                    </div>\n                </div>\n            </div>\n            <div class=\"well card-viewer-placeholder info-well\">\n                <p class=\"translate select-a-card\">Select a card from the list at the left.</p>\n            </div>\n            <div class=\"well card-viewer-container info-well\">\n                <span class=\"info-name\"></span>\n                <br />\n                <span class=\"info-type\"></span>\n                <br />\n                <span class=\"info-sources\"></span>\n                <br />\n                <span class=\"info-collection\"></span>\n                <table>\n                    <tbody>\n                        <tr class=\"info-skill\">\n                            <td class=\"info-header\">Skill</td>\n                            <td class=\"info-data info-skill\"></td>\n                        </tr>\n                        <tr class=\"info-energy\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                            <td class=\"info-data info-energy\"></td>\n                        </tr>\n                        <tr class=\"info-attack\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-fullfront\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-bullseye\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-back\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-turret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-doubleturret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-agility\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                            <td class=\"info-data info-agility\"></td>\n                        </tr>\n                        <tr class=\"info-hull\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                            <td class=\"info-data info-hull\"></td>\n                        </tr>\n                        <tr class=\"info-shields\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                            <td class=\"info-data info-shields\"></td>\n                        </tr>\n                        <tr class=\"info-force\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i></td>\n                            <td class=\"info-data info-force\"></td>\n                        </tr>\n                        <tr class=\"info-charge\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                            <td class=\"info-data info-charge\"></td>\n                        </tr>\n                        <tr class=\"info-range\">\n                            <td class=\"info-header\">Range</td>\n                            <td class=\"info-data info-range\"></td>\n                        </tr>\n                        <tr class=\"info-actions\">\n                            <td class=\"info-header\">Actions</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                        <tr class=\"info-actions-red\">\n                            <td></td>\n                            <td class=\"info-data-red\"></td>\n                        </tr>\n                        <tr class=\"info-upgrades\">\n                            <td class=\"info-header\">Upgrades</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                    </tbody>\n                </table>\n                <p class=\"info-text\" />\n            </div>\n        </div>\n    </div>\n</div>"));
+    this.container.append($.trim("<div class=\"container-fluid xwing-card-browser\">\n    <div class=\"row-fluid\">\n        <div class=\"span12\">\n            <span class=\"translate sort-cards-by\">Sort cards by</span>: <select class=\"sort-by\">\n                <option value=\"name\">Name</option>\n                <option value=\"source\">Source</option>\n                <option value=\"type-by-points\">Type (by Points)</option>\n                <option value=\"type-by-name\" selected=\"1\">Type (by Name)</option>\n            </select>\n        </div>\n    </div>\n    <div class=\"row-fluid\">\n        <div class=\"span4 card-selector-container\">\n\n        </div>\n        <div class=\"span8\">\n            <div class=\"well card-search-container\">\n                <input type=\"search\" placeholder=\"Search for name, text or ship\" class = \"card-search-text\">" + "                <button class=\"btn btn-primary show-advanced-search\">\n                    Advanced Search\n                </button>\n                <div class=\"advanced-search-container\">\n                    <div class= \"advanced-search-faction-selection-container\">\n                        <strong>Faction:</strong>\n                        <label class = \"toggle-rebel-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"rebel-checkbox advanced-search-checkbox\" checked=\"checked\" /> Rebel\n                        </label>\n                        <label class = \"toggle-imperial-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"imperial-checkbox advanced-search-checkbox\" checked=\"checked\" /> Imperial\n                        </label>\n                        <label class = \"toggle-scum-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"scum-checkbox advanced-search-checkbox\" checked=\"checked\" /> Scum\n                        </label>\n                        <label class = \"toggle-fo-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"fo-checkbox advanced-search-checkbox\" checked=\"checked\" /> First Order\n                        </label>\n                        <label class = \"toggle-resistance-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"resistance-checkbox advanced-search-checkbox\" checked=\"checked\" /> Resistance\n                        </label>\n                        <label class = \"toggle-separatist-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"separatist-checkbox advanced-search-checkbox\" checked=\"checked\" /> Separatist\n                        </label>\n                        <label class = \"toggle-republic-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"republic-checkbox advanced-search-checkbox\" checked=\"checked\" /> Republic\n                        </label>\n                        <label class = \"toggle-factionless-search advanced-search-label\">\n                            <input type=\"checkbox\" class=\"factionless-checkbox advanced-search-checkbox\" checked=\"checked\" /> Factionless\n                            <span class=\"advanced-search-tooltip\" tooltip=\"A card is considered factionless, if it can be used by more than one faction.\"> &#9432 </span>\n                        </label>\n                    </div>\n                    <div class = \"advanced-search-point-selection-container\">\n                        <strong>Point costs:</strong>\n                        <label class = \"advanced-search-label set-minimum-points\">\n                            from <input type=\"number\" class=\"minimum-point-cost advanced-search-number-input\" value=\"0\" /> \n                        </label>\n                        <label class = \"advanced-search-label set-maximum-points\">\n                            to <input type=\"number\" class=\"maximum-point-cost advanced-search-number-input\" value=\"200\" /> \n                        </label>\n                        <label class = \"advanced-search-label toggle-variable-cost-search\">\n                            <input type=\"checkbox\" class=\"variable-point-cost-checkbox advanced-search-checkbox\" checked=\"checked\" /> Variable point cost\n                        </label>\n                    </div>\n                    <div class = \"advanced-search-collection-container\">\n                        <strong>Owned copies:</strong>\n                        <label class = \"advanced-search-label set-minimum-owned-copies\">\n                            from <input type=\"number\" class=\"minimum-owned-copies advanced-search-number-input\" value=\"0\" /> \n                        </label>\n                        <label class = \"advanced-search-label set-maximum-owened-copies\">\n                            to <input type=\"number\" class=\"maximum-owned-copies advanced-search-number-input\" value=\"100\" /> \n                        </label>\n                    </div>\n                    <div class = \"advanced-search-slot-available-container\">\n                        <label class = \"advanced-search-label select-available-slots\">\n                            <strong>Available slots: </strong>\n                            <select class=\"advanced-search-selection slot-available-selection\" multiple=\"1\" data-placeholder=\"No slots selected\"></select>\n                            <span class=\"advanced-search-tooltip\" tooltip=\"Search for pilots and ships having all selected slots available.\"> &#9432 </span>\n                        </label>\n                    </div>\n                    <div class = \"advanced-search-slot-used-container\">\n                        <label class = \"advanced-search-label select-used-slots\">\n                            <strong>Used slot: </strong>\n                            <select class=\"advanced-search-selection slot-used-selection\" multiple=\"1\" data-placeholder=\"No slots selected\"></select>\n                            <span class=\"advanced-search-tooltip\" tooltip=\"Search for upgrades using any of the selected slots.\"> &#9432 </span>\n                        </label>\n                    </div>\n                    <div class = \"advanced-search-charge-container\">\n                        <strong>Charges:</strong>\n                        <label class = \"advanced-search-label set-minimum-charge\">\n                            from <input type=\"number\" class=\"minimum-charge advanced-search-number-input\" value=\"0\" /> \n                        </label>\n                        <label class = \"advanced-search-label set-maximum-charge\">\n                            to <input type=\"number\" class=\"maximum-charge advanced-search-number-input\" value=\"5\" /> \n                        </label>\n                        <label class = \"advanced-search-label has-recurring-charge\">\n                            <input type=\"checkbox\" class=\"advanced-search-checkbox has-recurring-charge-checkbox\" checked=\"checked\"/> recurring\n                        </label>\n                        <label class = \"advanced-search-label has-not-recurring-charge\">\n                            <input type=\"checkbox\" class=\"advanced-search-checkbox has-not-recurring-charge-checkbox\" checked=\"checked\"/> not recurring\n                        </label>\n                    </div>\n                    <div class = \"advanced-search-ini-container\">\n                        <strong>Initiative:</strong>\n                        <label class = \"advanced-search-label set-minimum-ini\">\n                            from <input type=\"number\" class=\"minimum-ini advanced-search-number-input\" value=\"0\" /> \n                        </label>\n                        <label class = \"advanced-search-label set-maximum-ini\">\n                            to <input type=\"number\" class=\"maximum-ini advanced-search-number-input\" value=\"6\" /> \n                            <span class=\"advanced-search-tooltip\" tooltip=\"Changing these values will also hide all upgrades. \"> &#9432 </span>\n                        </label>\n                    </div>\n                    <div class = \"advanced-search-base-size-container\">\n                        <strong>Base size:</strong>\n                        <label class = \"advanced-search-label toggle-small-base\">\n                            <input type=\"checkbox\" class=\"small-base-checkbox advanced-search-checkbox\" checked=\"checked\"/> Small\n                        </label>\n                        <label class = \"advanced-search-label toggle-medium-base\">\n                            <input type=\"checkbox\" class=\"medium-base-checkbox advanced-search-checkbox\" checked=\"checked\"/> Medium\n                        </label>\n                        <label class = \"advanced-search-label toggle-large-base\">\n                            <input type=\"checkbox\" class=\"large-base-checkbox advanced-search-checkbox\" checked=\"checked\"/> Large\n                            <span class=\"advanced-search-tooltip\" tooltip=\"Unchecking these boxes will also hide all upgrades\"> &#9432 </span>\n                        </label>\n                    </div>\n                    <div class = \"advanced-search-misc-container\">\n                        <strong>Misc:</strong>\n                        <label class = \"advanced-search-label toggle-unique\">\n                            <input type=\"checkbox\" class=\"unique-checkbox advanced-search-checkbox\" /> Is unique\n                        </label>\n                        <label class = \"advanced-search-label toggle-non-unique\">\n                            <input type=\"checkbox\" class=\"non-unique-checkbox advanced-search-checkbox\" /> Is not unique\n                        </label>\n                        <label class = \"advanced-search-label toggle-hyperspace\">\n                            <input type=\"checkbox\" class=\"hyperspace-checkbox advanced-search-checkbox\" /> Hyperspace only\n                            <span class=\"advanced-search-tooltip\" tooltip=\"Check to search only hyperspace compatible cards.\"> &#9432 </span>\n                        </label>\n                    </div>\n                </div>\n            </div>\n            <div class=\"well card-viewer-placeholder info-well\">\n                <p class=\"translate select-a-card\">Select a card from the list at the left.</p>\n            </div>\n            <div class=\"well card-viewer-container info-well\">\n                <span class=\"info-name\"></span>\n                <br />\n                <span class=\"info-type\"></span>\n                <br />\n                <span class=\"info-sources\"></span>\n                <br />\n                <span class=\"info-collection\"></span>\n                <table>\n                    <tbody>\n                        <tr class=\"info-skill\">\n                            <td class=\"info-header\">Skill</td>\n                            <td class=\"info-data info-skill\"></td>\n                        </tr>\n                        <tr class=\"info-energy\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                            <td class=\"info-data info-energy\"></td>\n                        </tr>\n                        <tr class=\"info-attack\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-fullfront\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-bullseye\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-back\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-turret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-doubleturret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-agility\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                            <td class=\"info-data info-agility\"></td>\n                        </tr>\n                        <tr class=\"info-hull\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                            <td class=\"info-data info-hull\"></td>\n                        </tr>\n                        <tr class=\"info-shields\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                            <td class=\"info-data info-shields\"></td>\n                        </tr>\n                        <tr class=\"info-force\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i></td>\n                            <td class=\"info-data info-force\"></td>\n                        </tr>\n                        <tr class=\"info-charge\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                            <td class=\"info-data info-charge\"></td>\n                        </tr>\n                        <tr class=\"info-range\">\n                            <td class=\"info-header\">Range</td>\n                            <td class=\"info-data info-range\"></td>\n                        </tr>\n                        <tr class=\"info-actions\">\n                            <td class=\"info-header\">Actions</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                        <tr class=\"info-actions-red\">\n                            <td></td>\n                            <td class=\"info-data-red\"></td>\n                        </tr>\n                        <tr class=\"info-upgrades\">\n                            <td class=\"info-header\">Upgrades</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                    </tbody>\n                </table>\n                <p class=\"info-text\" />\n            </div>\n        </div>\n    </div>\n</div>"));
     this.card_selector_container = $(this.container.find('.xwing-card-browser .card-selector-container'));
     this.card_viewer_container = $(this.container.find('.xwing-card-browser .card-viewer-container'));
     this.card_viewer_container.hide();
@@ -910,6 +912,12 @@ exportObj.CardBrowser = (function() {
     this.variable_point_costs = ($(this.container.find('.xwing-card-browser .variable-point-cost-checkbox')))[0];
     this.hyperspace_checkbox = ($(this.container.find('.xwing-card-browser .hyperspace-checkbox')))[0];
     this.unique_checkbox = ($(this.container.find('.xwing-card-browser .unique-checkbox')))[0];
+    this.non_unique_checkbox = ($(this.container.find('.xwing-card-browser .non-unique-checkbox')))[0];
+    this.base_size_checkboxes = {
+      large: ($(this.container.find('.xwing-card-browser .large-base-checkbox')))[0],
+      medium: ($(this.container.find('.xwing-card-browser .medium-base-checkbox')))[0],
+      small: ($(this.container.find('.xwing-card-browser .small-base-checkbox')))[0]
+    };
     this.slot_available_selection = $(this.container.find('.xwing-card-browser select.slot-available-selection'));
     for (slot in exportObj.upgradesBySlotCanonicalName) {
       opt = $(document.createElement('OPTION'));
@@ -939,7 +947,7 @@ exportObj.CardBrowser = (function() {
   };
 
   CardBrowser.prototype.setupHandlers = function() {
-    var checkbox, faction, _ref;
+    var basesize, checkbox, faction, _ref, _ref1;
     this.sort_selector.change((function(_this) {
       return function(e) {
         return _this.renderList(_this.sort_selector.val());
@@ -970,6 +978,15 @@ exportObj.CardBrowser = (function() {
         };
       })(this);
     }
+    _ref1 = this.base_size_checkboxes;
+    for (basesize in _ref1) {
+      checkbox = _ref1[basesize];
+      checkbox.onclick = (function(_this) {
+        return function() {
+          return _this.renderList(_this.sort_selector.val());
+        };
+      })(this);
+    }
     this.minimum_point_costs.oninput = (function(_this) {
       return function() {
         return _this.renderList(_this.sort_selector.val());
@@ -991,6 +1008,11 @@ exportObj.CardBrowser = (function() {
       };
     })(this);
     this.unique_checkbox.onclick = (function(_this) {
+      return function() {
+        return _this.renderList(_this.sort_selector.val());
+      };
+    })(this);
+    this.non_unique_checkbox.onclick = (function(_this) {
       return function() {
         return _this.renderList(_this.sort_selector.val());
       };
@@ -1623,7 +1645,7 @@ exportObj.CardBrowser = (function() {
   };
 
   CardBrowser.prototype.checkSearchCriteria = function(card) {
-    var checkbox, faction, faction_matches, hyperspace_legal, matches, name, owned_copies, pilot, pilots, required_slots, s, search_text, ship, slot, slots, text_in_ship, text_search, used_slots, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _m, _ref, _ref1, _ref2, _ref3, _ref4;
+    var checkbox, faction, faction_matches, hyperspace_legal, matches, name, owned_copies, pilot, pilots, required_slots, s, search_text, ship, size_matches, slot, slots, text_in_ship, text_search, used_slots, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _m, _ref, _ref1, _ref2, _ref3, _ref4;
     search_text = this.card_search_text.value.toLowerCase();
     text_search = card.name.toLowerCase().indexOf(search_text) > -1 || (card.data.text && card.data.text.toLowerCase().indexOf(search_text)) > -1 || (card.display_name && card.display_name.toLowerCase().indexOf(search_text) > -1);
     if (!text_search) {
@@ -1734,6 +1756,9 @@ exportObj.CardBrowser = (function() {
     if (!(!this.unique_checkbox.checked || card.data.unique)) {
       return false;
     }
+    if (!(!this.non_unique_checkbox.checked || !card.data.unique)) {
+      return false;
+    }
     if (!(((card.data.charge != null) && card.data.charge <= this.maximum_charge.value && card.data.charge >= this.minimum_charge.value) || (this.minimum_charge.value <= 0 && (card.data.charge == null)))) {
       return false;
     }
@@ -1755,6 +1780,22 @@ exportObj.CardBrowser = (function() {
       }
     } else {
       if (!(this.minimum_ini.value <= 0 && this.maximum_ini.value >= 6)) {
+        return false;
+      }
+    }
+    if (!(this.base_size_checkboxes['small'].checked && this.base_size_checkboxes['medium'].checked && this.base_size_checkboxes['large'].checked)) {
+      size_matches = false;
+      if (card.orig_type === 'Ship') {
+        size_matches = size_matches || card.data.medium && this.base_size_checkboxes['medium'].checked;
+        size_matches = size_matches || card.data.large && this.base_size_checkboxes['large'].checked;
+        size_matches = size_matches || !card.data.medium && !card.data.large && this.base_size_checkboxes['small'].checked;
+      } else if (card.orig_type === 'Pilot') {
+        ship = exportObj.ships[card.data.ship];
+        size_matches = size_matches || ship.medium && this.base_size_checkboxes['medium'].checked;
+        size_matches = size_matches || ship.large && this.base_size_checkboxes['large'].checked;
+        size_matches = size_matches || !ship.medium && !ship.large && this.base_size_checkboxes['small'].checked;
+      }
+      if (!size_matches) {
         return false;
       }
     }
@@ -1795,7 +1836,7 @@ exportObj.basicCardData = function() {
     ships: {
       "X-Wing": {
         name: "X-Wing",
-        xws: "T-65 X-Wing".canonicalize(),
+        xws: "T-65 X-wing".canonicalize(),
         factions: ["Rebel Alliance"],
         attack: 3,
         agility: 2,
@@ -1807,7 +1848,7 @@ exportObj.basicCardData = function() {
       },
       "Y-Wing": {
         name: "Y-Wing",
-        xws: "BTL-A4 Y-Wing".canonicalize(),
+        xws: "BTL-A4 Y-wing".canonicalize(),
         factions: ["Rebel Alliance", "Scum and Villainy"],
         attack: 2,
         agility: 1,
@@ -1819,7 +1860,7 @@ exportObj.basicCardData = function() {
       },
       "A-Wing": {
         name: "A-Wing",
-        xws: "RZ-1 A-Wing".canonicalize(),
+        xws: "RZ-1 A-wing".canonicalize(),
         factions: ["Rebel Alliance"],
         attack: 2,
         agility: 3,
@@ -1858,7 +1899,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Fighter": {
         name: "TIE Fighter",
-        xws: "TIE/LN Fighter".canonicalize(),
+        xws: "TIE/ln Fighter".canonicalize(),
         factions: ["Rebel Alliance", "Galactic Empire"],
         attack: 2,
         agility: 3,
@@ -1870,7 +1911,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Advanced": {
         name: "TIE Advanced",
-        xws: "TIE Advanced X1".canonicalize(),
+        xws: "TIE Advanced x1".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 2,
         agility: 3,
@@ -1894,7 +1935,7 @@ exportObj.basicCardData = function() {
       },
       "Firespray-31": {
         name: "Firespray-31",
-        xws: "Firespray-Class Patrol Craft".canonicalize(),
+        xws: "Firespray-class Patrol Craft".canonicalize(),
         factions: ["Scum and Villainy"],
         attack: 3,
         attackb: 3,
@@ -1908,7 +1949,7 @@ exportObj.basicCardData = function() {
       },
       "HWK-290": {
         name: "HWK-290",
-        xws: "Hwk-290 Light Freighter".canonicalize(),
+        xws: "HWK-290 Light Freighter".canonicalize(),
         factions: ["Rebel Alliance", "Scum and Villainy"],
         attackt: 2,
         agility: 2,
@@ -1920,7 +1961,7 @@ exportObj.basicCardData = function() {
       },
       "Lambda-Class Shuttle": {
         name: "Lambda-Class Shuttle",
-        xws: "Lambda-Class T-4a Shuttle".canonicalize(),
+        xws: "Lambda-class T-4a Shuttle".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 3,
         attackb: 2,
@@ -1934,7 +1975,7 @@ exportObj.basicCardData = function() {
       },
       "B-Wing": {
         name: "B-Wing",
-        xws: "A/SF-01 B-Wing".canonicalize(),
+        xws: "A/SF-01 B-wing".canonicalize(),
         factions: ["Rebel Alliance"],
         attack: 3,
         agility: 1,
@@ -1946,7 +1987,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Bomber": {
         name: "TIE Bomber",
-        xws: "TIE/SA Bomber".canonicalize(),
+        xws: "TIE/sa Bomber".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 2,
         agility: 2,
@@ -1982,7 +2023,7 @@ exportObj.basicCardData = function() {
       },
       "E-Wing": {
         name: "E-Wing",
-        xws: "E-Wing".canonicalize(),
+        xws: "E-wing".canonicalize(),
         factions: ["Rebel Alliance"],
         attack: 3,
         agility: 3,
@@ -1994,7 +2035,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Phantom": {
         name: "TIE Phantom",
-        xws: "TIE/PH Phantom".canonicalize(),
+        xws: "TIE/ph Phantom".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 3,
         agility: 2,
@@ -2032,7 +2073,7 @@ exportObj.basicCardData = function() {
       },
       "StarViper": {
         name: "StarViper",
-        xws: "Starviper-Class Attack Platform".canonicalize(),
+        xws: "StarViper-class Attack Platform".canonicalize(),
         factions: ["Scum and Villainy"],
         attack: 3,
         agility: 3,
@@ -2094,7 +2135,7 @@ exportObj.basicCardData = function() {
       },
       "K-Wing": {
         name: "K-Wing",
-        xws: "BTL-S8 K-Wing".canonicalize(),
+        xws: "BTL-S8 K-wing".canonicalize(),
         factions: ["Rebel Alliance"],
         attackdt: 2,
         agility: 1,
@@ -2107,7 +2148,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Punisher": {
         name: "TIE Punisher",
-        xws: "TIE/CA Punisher".canonicalize(),
+        xws: "TIE/ca Punisher".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 2,
         agility: 1,
@@ -2145,7 +2186,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Advanced Prototype": {
         name: "TIE Advanced Prototype",
-        xws: "TIE Advanced V1".canonicalize(),
+        xws: "TIE Advanced v1".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 2,
         agility: 3,
@@ -2183,7 +2224,7 @@ exportObj.basicCardData = function() {
       },
       "ARC-170": {
         name: "ARC-170",
-        xws: "Arc-170 Starfighter".canonicalize(),
+        xws: "ARC-170 Starfighter".canonicalize(),
         factions: ["Rebel Alliance", "Galactic Republic"],
         attack: 3,
         attackb: 2,
@@ -2198,7 +2239,7 @@ exportObj.basicCardData = function() {
       "Fang Fighter": {
         name: "Fang Fighter",
         canonical_name: 'Protectorate Starfighter'.canonicalize(),
-        xws: "Fang fighter".canonicalize(),
+        xws: "Fang Fighter".canonicalize(),
         factions: ["Scum and Villainy"],
         attack: 3,
         agility: 3,
@@ -2210,7 +2251,7 @@ exportObj.basicCardData = function() {
       },
       "Lancer-Class Pursuit Craft": {
         name: "Lancer-Class Pursuit Craft",
-        xws: "Lancer-Class Pursuit Craft".canonicalize(),
+        xws: "Lancer-class Pursuit Craft".canonicalize(),
         factions: ["Scum and Villainy"],
         large: true,
         attack: 3,
@@ -2236,7 +2277,7 @@ exportObj.basicCardData = function() {
       },
       "U-Wing": {
         name: "U-Wing",
-        xws: "UT-60D U-Wing".canonicalize(),
+        xws: "UT-60D U-wing".canonicalize(),
         factions: ["Rebel Alliance"],
         medium: true,
         attack: 3,
@@ -2249,7 +2290,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Striker": {
         name: "TIE Striker",
-        xws: "TIE/SK Striker".canonicalize(),
+        xws: "TIE/sk Striker".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 3,
         agility: 2,
@@ -2286,7 +2327,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Aggressor": {
         name: "TIE Aggressor",
-        xws: "TIE/AG Aggressor".canonicalize(),
+        xws: "TIE/ag Aggressor".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 2,
         agility: 2,
@@ -2298,7 +2339,7 @@ exportObj.basicCardData = function() {
       },
       "Alpha-Class Star Wing": {
         name: "Alpha-Class Star Wing",
-        xws: "Alpha-Class Star Wing".canonicalize(),
+        xws: "Alpha-class Star Wing".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 2,
         agility: 2,
@@ -2323,7 +2364,7 @@ exportObj.basicCardData = function() {
       },
       "Sheathipede-Class Shuttle": {
         name: "Sheathipede-Class Shuttle",
-        xws: "Sheathipede-Class Shuttle".canonicalize(),
+        xws: "Sheathipede-class Shuttle".canonicalize(),
         factions: ["Rebel Alliance"],
         attack: 2,
         attackb: 2,
@@ -2361,7 +2402,7 @@ exportObj.basicCardData = function() {
       },
       "T-70 X-Wing": {
         name: "T-70 X-Wing",
-        xws: "T-70 X-Wing".canonicalize(),
+        xws: "T-70 X-wing".canonicalize(),
         factions: ["Resistance"],
         attack: 3,
         agility: 2,
@@ -2373,7 +2414,7 @@ exportObj.basicCardData = function() {
       },
       "RZ-2 A-Wing": {
         name: "RZ-2 A-Wing",
-        xws: "RZ-2 A-Wing".canonicalize(),
+        xws: "RZ-2 A-wing".canonicalize(),
         factions: ["Resistance"],
         attackt: 2,
         agility: 3,
@@ -2385,7 +2426,7 @@ exportObj.basicCardData = function() {
       },
       "TIE/FO Fighter": {
         name: "TIE/FO Fighter",
-        xws: "TIE/FO Fighter".canonicalize(),
+        xws: "TIE/fo Fighter".canonicalize(),
         factions: ["First Order"],
         attack: 2,
         agility: 3,
@@ -2397,7 +2438,7 @@ exportObj.basicCardData = function() {
       },
       "TIE/VN Silencer": {
         name: "TIE/VN Silencer",
-        xws: "TIE/VN Silencer".canonicalize(),
+        xws: "TIE/vn Silencer".canonicalize(),
         factions: ["First Order"],
         attack: 3,
         agility: 3,
@@ -2409,7 +2450,7 @@ exportObj.basicCardData = function() {
       },
       "TIE/SF Fighter": {
         name: "TIE/SF Fighter",
-        xws: "TIE/SF Fighter".canonicalize(),
+        xws: "TIE/sf Fighter".canonicalize(),
         factions: ["First Order"],
         attack: 2,
         attackt: 2,
@@ -2422,7 +2463,7 @@ exportObj.basicCardData = function() {
       },
       "Upsilon-Class Command Shuttle": {
         name: "Upsilon-Class Command Shuttle",
-        xws: "Upsilon-Class Command Shuttle".canonicalize(),
+        xws: "Upsilon-class command shuttle".canonicalize(),
         factions: ["First Order"],
         attack: 4,
         agility: 1,
@@ -2463,7 +2504,7 @@ exportObj.basicCardData = function() {
       },
       "Mining Guild TIE Fighter": {
         name: "Mining Guild TIE Fighter",
-        xws: "Modified TIE/LN Fighter".canonicalize(),
+        xws: "Modified TIE/ln Fighter".canonicalize(),
         factions: ["Scum and Villainy"],
         attack: 2,
         agility: 3,
@@ -2475,7 +2516,7 @@ exportObj.basicCardData = function() {
       },
       "V-19 Torrent": {
         name: "V-19 Torrent",
-        xws: "V-19 Torrent".canonicalize(),
+        xws: "V-19 Torrent Starfighter".canonicalize(),
         factions: ["Galactic Republic"],
         attack: 2,
         agility: 2,
@@ -8023,11 +8064,11 @@ exportObj.cardLoaders.Deutsch = function() {
       text: "<i class = flavor_text>Der Kihraxz-Angriffsjäger wurde eigens für das Verbrechersyndikat Schwarze Sonne entwickelt, dessen hochbezahlte Fliegerasse ein leistungsstarkes, wendiges Schiff verlangten, das ihren Fähigkeiten entsprach.</i>"
     },
     "Black Sun Assassin": {
-      display_name: "Attentäter der ",
+      display_name: "Attentäter der Schwarzen Sonne",
       text: "<i class = flavor_text>Ein Attentat kann mit einem Schuss im Dunkeln oder mit einem vergifteten Getränk verübt werden. Aussagekräftiger ist jedoch eine brennende Raumfähre, die hilflos vom Himmel trudelt. </i>%LINEBREAK%<strong>Mikrodüsen:</strong> Solange du eine Fassrolle durchführst, <b>musst</b> du die %BANKLEFT%- oder %BANKRIGHT%-Schablone anstatt der %STRAIGHT%-Schablone verwenden."
     },
     "Black Sun Enforcer": {
-      display_name: "Vollstrecker der ",
+      display_name: "Vollstrecker der Schwarzen Sonne",
       text: "<i class = flavor_text>Prinz Xizor persönlich entwickelte die Angriffsplattform der SternenViper-Klasse in Zusammenarbeit mit MandalMotors und schuf so einen der vorzüglichsten Sternenjäger der Galaxis. </i>%LINEBREAK%<strong>Mikrodüsen:</strong> Solange du eine Fassrolle durchführst, <b>musst</b> du die %BANKLEFT%- oder %BANKRIGHT%-Schablone anstatt der %STRAIGHT%-Schablone verwenden."
     },
     "Black Sun Soldier": {
@@ -8048,14 +8089,14 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Blue Squadron Recruit": {
       display_name: "Rekrut der blauen Staffel",
-      text: "<i class = flavor_text>Überall in der Galaxis wachsen junge Leute mit Geschichten über die Helden des Galaktischen Bürgerkriegs auf. Viele lernen das Fliegen in den Cockpits, in denen ihre Eltern einst das Imperium bekämpften.</i>%LINEBREAK%<strong>Optimierte Gyrostabilisatoren:</strong> Du kannst deinen %SINGLETURRETARC%-Anzeiger nur auf deinen %FRONTARC% oder %REARARC% rotieren. Nachdem du eine Aktion durchgeführt hast, darfst du eine rote %BOOST%- oder eine rote <rotate>-Aktion durchführen."
+      text: "<i class = flavor_text>Überall in der Galaxis wachsen junge Leute mit Geschichten über die Helden des Galaktischen Bürgerkriegs auf. Viele lernen das Fliegen in den Cockpits, in denen ihre Eltern einst das Imperium bekämpften.</i>%LINEBREAK%<strong>Optimierte Gyrostabilisatoren:</strong> Du kannst deinen %SINGLETURRETARC%-Anzeiger nur auf deinen %FRONTARC% oder %REARARC% rotieren. Nachdem du eine Aktion durchgeführt hast, darfst du eine rote %BOOST%- oder eine rote %ROTATEARC%-Aktion durchführen."
     },
     "Blue Squadron Rookie": {
       display_name: "Anfängerpilot der blauen Staffel",
       text: "<i class = flavor_text>Incom-FreiTek setzte bei der Entwicklung des T-70-X-Flüglers auf eine Verbesserung der taktischen Flexibilität des altehrwürdigen T-65-Modells. Sein moderner Droidenport ist mit fast allen gängigen Astromechs kompatibel, und dank seiner modularen Waffenkapseln kann er für jeden Einsatz mit maßgeschneiderter Bewaffnung ausgestattet werden.</i>%LINEBREAK%<strong>Waffenaufhängung:</strong> Du kannst 1&nbsp;%CANNON%-, %TORPEDO%- oder %MISSILE%-Aufwertung ausrüsten."
     },
     "Blue Squadron Scout": {
-      display_name: "Aufklärer der blauen ",
+      display_name: "Aufklärer der blauen Staffel",
       text: "<i class = flavor_text>Der UT-60D-U-Flügler deckt den Bedarf der Rebellion an schnellen, unverwüstlichen Truppentransportern. Meistens wird er eingesetzt, um Soldaten im Schutz der Dunkelheit oder inmitten eines tobenden Gefechts an ihren Einsatzort zu befördern. </i>"
     },
     "Boba Fett": {
@@ -9382,7 +9423,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Engine Upgrade": {
       display_name: "Verbessertes Triebwerk",
-      text: "Diese Aufwertungskarte hat variable Punktekosten.%LINEBREAK%<i>Fügt %BOOST% hinzu</i>%LINEBREAK%<i>Benötigt <r>%BOOST%</r></i>%LINEBREAK%<i class = flavor_text>Große Armeen wie das Militär des Galaktischen Imperiums haben meist standardisierte Triebwerke. Freischaffende Piloten und kleinere Organisationen ersetzen oft Energiekopplungen, "
+      text: "Diese Aufwertungskarte hat variable Punktekosten.%LINEBREAK%<i>Fügt %BOOST% hinzu</i>%LINEBREAK%<i>Benötigt <r>%BOOST%</r></i>%LINEBREAK%<i class = flavor_text>Große Armeen wie das Militär des Galaktischen Imperiums haben meist standardisierte Triebwerke. Freischaffende Piloten und kleinere Organisationen ersetzen oft Energiekopplungen,  bauen zusätzliche Düsen ein oder nutzen Hochleistungskraftstoffe, um noch mehr aus ihren Triebwerken herauszuholen</i>"
     },
     "Expert Handling": {
       display_name: "Flugkunst",
@@ -9916,22 +9957,28 @@ exportObj.cardLoaders.Deutsch = function() {
       text: 'While you perform a %FRONTARC% primary attack against a ship locked by a friendly ship with the <strong>Director Krennic</strong> upgrade, you may spend 1 %HIT%/%CRIT%/%FOCUS% result. If you do, choose one: the defender loses 1 shield or the defender flips 1 of its facedown damage cards.'
     },
     'Proton Bomb': {
-      text: '(Bomb Token) - At the end of the Activation Phase, this device detonates. When this device detonates, each ship at range 0–1 suffers 1 %CRIT% damage.'
+      display_name: "Protonenbombe",
+      text: '(Bomb Token) - Am Ende der Aktivierungsphase detoniert dieses Gerät. Sobald dieses Gerät detoniert, erleidet jedes Schiff in Reichweite 0–1 1 %CRIT%-Schaden.'
     },
     'Seismic Charge': {
-      text: '(Bomb Token) - At the end of the Activation Phase this device detonates. When this device detonates, choose 1 obstacle at range 0–1. Each ship at range 0–1 of the obstacle suffers 1 %HIT% damage. Then remove that obstacle. '
+      display_name: "Seismische Bombe",
+      text: '(Bomb Token) - Am Ende der Aktivierungsphase detoniert dieses Gerät. Sobald dieses Gerät detoniert, wähle 1 Hindernis in Reichweite 0–1. Jedes Schiff in Reichweite 0–1 zu jenem Hindernis erleidet 1 %HIT%-Schaden. Dann entferne jenes Hindernis.'
     },
     'Bomblet': {
-      text: '(Bomb Token) - At the end of the Activation Phase this device detonates. When this device detonates, each ship at range 0–1 rolls 2 attack dice. Each ship suffers 1 %HIT% damage for each %HIT%/%CRIT% result.'
+      display_name: "Streubombe",
+      text: '(Bomb Token) - Am Ende der Aktivierungsphase detoniert dieses Gerät. Sobald dieses Gerät detoniert, wirft jedes Schiff in Reichweite 0–1 2 Angriffswürfel. Jedes Schiff erleidet 1 %HIT%-Schaden für jedes %HIT%/%CRIT% Ergebnis.'
     },
     'Loose Cargo': {
-      text: '(Debris Token) - Loose cargo is a debris cloud.'
+      display_name: "Freie Fracht",
+      text: '(Debris Token) - Freie Fracht ist eine Trümmerwolke..'
     },
     'Conner Net': {
-      text: '(Mine Token) - After a ship overlaps or moves through this device, it detonates. When this device detonates, the ship suffers 1 %HIT% damage and gains 3 ion tokens.'
+      display_name: "Connernetz",
+      text: '(Mine Token) - Nachdem ein Schiff sich durch dieses Gerät hindurchbewegt oder sich mit ihm überschnitten hat, detoniert es. Sobald dieses Gerät detoniert, erleidet das Schiff 1 %HIT%-Schaden und erhält 3 Ionenmarker.'
     },
     'Proximity Mine': {
-      text: '(Mine Token) - After a ship overlaps or moves through this device, it detonates. When this device detonates, that ship rolls 2 attack dice. That ship then suffers 1 %HIT% plus 1 %HIT%/%CRIT% damage for each matching result.'
+      display_name: "Annäherungsmine",
+      text: '(Mine Token) - Nachdem sich ein Schiff durch dieses Gerät hindurchbewegt oder mit ihm überschnitten hat, detoniert es. Sobald dieses Gerät detoniert, wirft jenes Schiff 2 Angriffswürfel. Jenes Schiff erleidet dann 1 %HIT%-Schaden sowie 1 %HIT%/%CRIT%-Schaden für jedes passende Ergebnis.'
     }
   };
   return exportObj.setupTranslationCardData(pilot_translations, upgrade_translations, condition_translations);
@@ -25148,6 +25195,14 @@ exportObj.manifestByExpansion = {
   ],
   'First Order Conversion Kit': [
     {
+      name: 'Commander Malarus',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'TN-3456',
+      type: 'pilot',
+      count: 1
+    }, {
       name: 'Epsilon Squadron Cadet',
       type: 'pilot',
       count: 7
@@ -26369,7 +26424,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 26529
+                    lineno: 26586
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -27065,7 +27120,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 27274
+              lineno: 27331
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -27789,7 +27844,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 27940
+          lineno: 27997
         }));
         __iced_deferrals._fulfill();
       });
@@ -27801,7 +27856,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 27941
+            lineno: 27998
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -29308,7 +29363,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 28975
+                      lineno: 29032
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -29366,7 +29421,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 28992
+                lineno: 29049
               })
             ]);
             __iced_deferrals._fulfill();
@@ -29413,7 +29468,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 29006
+              lineno: 29063
             }));
           }
         }
@@ -30346,7 +30401,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 29760
+                lineno: 29817
               })
             ]);
             __iced_deferrals._fulfill();
@@ -30487,7 +30542,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 29834
+                  lineno: 29891
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -30509,7 +30564,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 29838
+                    lineno: 29895
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -30596,7 +30651,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 29879
+            lineno: 29936
           }));
         }
         __iced_deferrals._fulfill();

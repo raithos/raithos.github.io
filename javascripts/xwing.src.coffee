@@ -685,6 +685,8 @@ class exportObj.SquadBuilderBackend
     X-Wing Card Browser
     Geordan Rosario <geordan@gmail.com>
     https://github.com/geordanr/xwing
+    Advanced search by Patrick Mischke
+    https://github.com/patschke
 ###
 exportObj = exports ? this
 
@@ -813,7 +815,7 @@ class exportObj.CardBrowser
                                     <label class = "advanced-search-label select-available-slots">
                                         <strong>Available slots: </strong>
                                         <select class="advanced-search-selection slot-available-selection" multiple="1" data-placeholder="No slots selected"></select>
-                                        <span class="advanced-search-tooltip" tooltip="Search for pilots having all selected slots available."> &#9432 </span>
+                                        <span class="advanced-search-tooltip" tooltip="Search for pilots and ships having all selected slots available."> &#9432 </span>
                                     </label>
                                 </div>
                                 <div class = "advanced-search-slot-used-container">
@@ -845,12 +847,29 @@ class exportObj.CardBrowser
                                     </label>
                                     <label class = "advanced-search-label set-maximum-ini">
                                         to <input type="number" class="maximum-ini advanced-search-number-input" value="6" /> 
+                                        <span class="advanced-search-tooltip" tooltip="Changing these values will also hide all upgrades. "> &#9432 </span>
+                                    </label>
+                                </div>
+                                <div class = "advanced-search-base-size-container">
+                                    <strong>Base size:</strong>
+                                    <label class = "advanced-search-label toggle-small-base">
+                                        <input type="checkbox" class="small-base-checkbox advanced-search-checkbox" checked="checked"/> Small
+                                    </label>
+                                    <label class = "advanced-search-label toggle-medium-base">
+                                        <input type="checkbox" class="medium-base-checkbox advanced-search-checkbox" checked="checked"/> Medium
+                                    </label>
+                                    <label class = "advanced-search-label toggle-large-base">
+                                        <input type="checkbox" class="large-base-checkbox advanced-search-checkbox" checked="checked"/> Large
+                                        <span class="advanced-search-tooltip" tooltip="Unchecking these boxes will also hide all upgrades"> &#9432 </span>
                                     </label>
                                 </div>
                                 <div class = "advanced-search-misc-container">
                                     <strong>Misc:</strong>
                                     <label class = "advanced-search-label toggle-unique">
                                         <input type="checkbox" class="unique-checkbox advanced-search-checkbox" /> Is unique
+                                    </label>
+                                    <label class = "advanced-search-label toggle-non-unique">
+                                        <input type="checkbox" class="non-unique-checkbox advanced-search-checkbox" /> Is not unique
                                     </label>
                                     <label class = "advanced-search-label toggle-hyperspace">
                                         <input type="checkbox" class="hyperspace-checkbox advanced-search-checkbox" /> Hyperspace only
@@ -979,6 +998,11 @@ class exportObj.CardBrowser
         @variable_point_costs = ($ @container.find('.xwing-card-browser .variable-point-cost-checkbox'))[0]
         @hyperspace_checkbox = ($ @container.find('.xwing-card-browser .hyperspace-checkbox'))[0]
         @unique_checkbox = ($ @container.find('.xwing-card-browser .unique-checkbox'))[0]
+        @non_unique_checkbox = ($ @container.find('.xwing-card-browser .non-unique-checkbox'))[0]
+        @base_size_checkboxes = 
+            large: ($ @container.find('.xwing-card-browser .large-base-checkbox'))[0]
+            medium: ($ @container.find('.xwing-card-browser .medium-base-checkbox'))[0]
+            small: ($ @container.find('.xwing-card-browser .small-base-checkbox'))[0]
         @slot_available_selection = ($ @container.find('.xwing-card-browser select.slot-available-selection'))
         for slot of exportObj.upgradesBySlotCanonicalName
             opt = $ document.createElement('OPTION')
@@ -1017,15 +1041,17 @@ class exportObj.CardBrowser
         # TODO: Add a call to @renderList for added inputs, to start the actual search
 
         @advanced_search_button.onclick = @toggleAdvancedSearch
-
+        
         for faction, checkbox of @faction_selectors
             checkbox.onclick = => @renderList @sort_selector.val()
-            
+        for basesize, checkbox of @base_size_checkboxes
+            checkbox.onclick = => @renderList @sort_selector.val()            
         @minimum_point_costs.oninput = => @renderList @sort_selector.val()
         @maximum_point_costs.oninput = => @renderList @sort_selector.val()
         @variable_point_costs.onclick = => @renderList @sort_selector.val()
         @hyperspace_checkbox.onclick = => @renderList @sort_selector.val()
         @unique_checkbox.onclick = => @renderList @sort_selector.val()
+        @non_unique_checkbox.onclick = => @renderList @sort_selector.val()
         @slot_available_selection[0].onchange = => @renderList @sort_selector.val()
         @slot_used_selection[0].onchange = => @renderList @sort_selector.val()
         @recurring_charge.onclick = => @renderList @sort_selector.val()
@@ -1479,6 +1505,7 @@ class exportObj.CardBrowser
 
         # check for uniqueness
         return false unless not @unique_checkbox.checked or card.data.unique
+        return false unless not @non_unique_checkbox.checked or not card.data.unique
         
         # check charge stuff
         return false unless (card.data.charge? and card.data.charge <= @maximum_charge.value and card.data.charge >= @minimum_charge.value) or (@minimum_charge.value <= 0 and not card.data.charge?)
@@ -1496,6 +1523,20 @@ class exportObj.CardBrowser
         else 
             # if the card has no ini value (is not a pilot) return false, if the ini criteria has been set (is not 0 to 6)
             return false unless @minimum_ini.value <= 0 and @maximum_ini.value >= 6
+
+        # check for base size
+        if not (@base_size_checkboxes['small'].checked and @base_size_checkboxes['medium'].checked and @base_size_checkboxes['large'].checked)
+            size_matches = false
+            if card.orig_type == 'Ship'
+                size_matches = size_matches or card.data.medium and @base_size_checkboxes['medium'].checked
+                size_matches = size_matches or card.data.large and @base_size_checkboxes['large'].checked
+                size_matches = size_matches or not card.data.medium and not card.data.large and @base_size_checkboxes['small'].checked
+            else if card.orig_type == 'Pilot'
+                ship = exportObj.ships[card.data.ship]
+                size_matches = size_matches or ship.medium and @base_size_checkboxes['medium'].checked
+                size_matches = size_matches or ship.large and @base_size_checkboxes['large'].checked
+                size_matches = size_matches or not ship.medium and not ship.large and @base_size_checkboxes['small'].checked
+            return false unless size_matches
 
         #TODO: Add logic of addiditional search criteria here. Have a look at card.data, to see what data is available. Add search inputs at the todo marks above. 
 
@@ -1525,7 +1566,7 @@ exportObj.basicCardData = ->
     ships:
         "X-Wing":
             name: "X-Wing"
-            xws: "T-65 X-Wing".canonicalize()
+            xws: "T-65 X-wing".canonicalize()
             factions: [ "Rebel Alliance", ]
             attack: 3
             agility: 2
@@ -1547,7 +1588,7 @@ exportObj.basicCardData = ->
             ]
         "Y-Wing":
             name: "Y-Wing"
-            xws: "BTL-A4 Y-Wing".canonicalize()
+            xws: "BTL-A4 Y-wing".canonicalize()
             factions: [ "Rebel Alliance", "Scum and Villainy" ]
             attack: 2
             agility: 1
@@ -1570,7 +1611,7 @@ exportObj.basicCardData = ->
             ]
         "A-Wing":
             name: "A-Wing"
-            xws: "RZ-1 A-Wing".canonicalize()
+            xws: "RZ-1 A-wing".canonicalize()
             factions: [ "Rebel Alliance" ]
             attack: 2
             agility: 3
@@ -1644,7 +1685,7 @@ exportObj.basicCardData = ->
             large: true
         "TIE Fighter":
             name: "TIE Fighter"
-            xws: "TIE/LN Fighter".canonicalize()
+            xws: "TIE/ln Fighter".canonicalize()
             factions: ["Rebel Alliance", "Galactic Empire"]
             attack: 2
             agility: 3
@@ -1667,7 +1708,7 @@ exportObj.basicCardData = ->
             ]
         "TIE Advanced":
             name: "TIE Advanced"
-            xws: "TIE Advanced X1".canonicalize()
+            xws: "TIE Advanced x1".canonicalize()
             factions: [ "Galactic Empire" ]
             attack: 2
             agility: 3
@@ -1715,7 +1756,7 @@ exportObj.basicCardData = ->
             ]
         "Firespray-31":
             name: "Firespray-31"
-            xws: "Firespray-Class Patrol Craft".canonicalize()
+            xws: "Firespray-class Patrol Craft".canonicalize()
             factions: [ "Scum and Villainy", ]
             attack: 3
             attackb: 3
@@ -1740,7 +1781,7 @@ exportObj.basicCardData = ->
             ]
         "HWK-290":
             name: "HWK-290"
-            xws: "Hwk-290 Light Freighter".canonicalize()
+            xws: "HWK-290 Light Freighter".canonicalize()
             factions: [ "Rebel Alliance", "Scum and Villainy" ]
             attackt: 2
             agility: 2
@@ -1766,7 +1807,7 @@ exportObj.basicCardData = ->
             ]
         "Lambda-Class Shuttle":
             name: "Lambda-Class Shuttle"
-            xws: "Lambda-Class T-4a Shuttle".canonicalize()
+            xws: "Lambda-class T-4a Shuttle".canonicalize()
             factions: [ "Galactic Empire", ]
             attack: 3
             attackb: 2
@@ -1790,7 +1831,7 @@ exportObj.basicCardData = ->
             large: true
         "B-Wing":
             name: "B-Wing"
-            xws: "A/SF-01 B-Wing".canonicalize()
+            xws: "A/SF-01 B-wing".canonicalize()
             factions: [ "Rebel Alliance", ]
             attack: 3
             agility: 1
@@ -1813,7 +1854,7 @@ exportObj.basicCardData = ->
             ]
         "TIE Bomber":
             name: "TIE Bomber"
-            xws: "TIE/SA Bomber".canonicalize()
+            xws: "TIE/sa Bomber".canonicalize()
             factions: [ "Galactic Empire", ]
             attack: 2
             agility: 2
@@ -1885,7 +1926,7 @@ exportObj.basicCardData = ->
             ]
         "E-Wing":
             name: "E-Wing"
-            xws: "E-Wing".canonicalize()
+            xws: "E-wing".canonicalize()
             factions: [ "Rebel Alliance", ]
             attack: 3
             agility: 3
@@ -1912,7 +1953,7 @@ exportObj.basicCardData = ->
             ]
         "TIE Phantom":
             name: "TIE Phantom"
-            xws: "TIE/PH Phantom".canonicalize()
+            xws: "TIE/ph Phantom".canonicalize()
             factions: [ "Galactic Empire", ]
             attack: 3
             agility: 2
@@ -1984,7 +2025,7 @@ exportObj.basicCardData = ->
             ]
         "StarViper":
             name: "StarViper"
-            xws: "Starviper-Class Attack Platform".canonicalize()
+            xws: "StarViper-class Attack Platform".canonicalize()
             factions: ["Scum and Villainy"]
             attack: 3
             agility: 3
@@ -2102,7 +2143,7 @@ exportObj.basicCardData = ->
             ]
         "K-Wing":
             name: "K-Wing"
-            xws: "BTL-S8 K-Wing".canonicalize()
+            xws: "BTL-S8 K-wing".canonicalize()
             factions: ["Rebel Alliance"]
             attackdt: 2
             agility: 1
@@ -2126,7 +2167,7 @@ exportObj.basicCardData = ->
             ]
         "TIE Punisher":
             name: "TIE Punisher"
-            xws: "TIE/CA Punisher".canonicalize()
+            xws: "TIE/ca Punisher".canonicalize()
             factions: ["Galactic Empire"]
             attack: 2
             agility: 1
@@ -2198,7 +2239,7 @@ exportObj.basicCardData = ->
             ]
         "TIE Advanced Prototype":
             name: "TIE Advanced Prototype"
-            xws: "TIE Advanced V1".canonicalize()
+            xws: "TIE Advanced v1".canonicalize()
             factions: ["Galactic Empire"]
             attack: 2
             agility: 3
@@ -2273,7 +2314,7 @@ exportObj.basicCardData = ->
             ]
         "ARC-170":
             name: "ARC-170"
-            xws: "Arc-170 Starfighter".canonicalize()
+            xws: "ARC-170 Starfighter".canonicalize()
             factions: ["Rebel Alliance","Galactic Republic"]
             attack: 3
             attackb: 2
@@ -2298,7 +2339,7 @@ exportObj.basicCardData = ->
         "Fang Fighter":
             name: "Fang Fighter"
             canonical_name: 'Protectorate Starfighter'.canonicalize()
-            xws: "Fang fighter".canonicalize()
+            xws: "Fang Fighter".canonicalize()
             factions: ["Scum and Villainy"]
             attack: 3
             agility: 3
@@ -2324,7 +2365,7 @@ exportObj.basicCardData = ->
             ]
         "Lancer-Class Pursuit Craft":
             name: "Lancer-Class Pursuit Craft"
-            xws: "Lancer-Class Pursuit Craft".canonicalize()
+            xws: "Lancer-class Pursuit Craft".canonicalize()
             factions: ["Scum and Villainy"]
             large: true
             attack: 3
@@ -2371,7 +2412,7 @@ exportObj.basicCardData = ->
             ]
         "U-Wing":
             name: "U-Wing"
-            xws: "UT-60D U-Wing".canonicalize()
+            xws: "UT-60D U-wing".canonicalize()
             factions: ["Rebel Alliance"]
             medium: true
             attack: 3
@@ -2394,7 +2435,7 @@ exportObj.basicCardData = ->
             ]
         "TIE Striker":
             name: "TIE Striker"
-            xws: "TIE/SK Striker".canonicalize()
+            xws: "TIE/sk Striker".canonicalize()
             factions: ["Galactic Empire"]
             attack: 3
             agility: 2
@@ -2460,7 +2501,7 @@ exportObj.basicCardData = ->
             ]
         "TIE Aggressor":
             name: "TIE Aggressor"
-            xws: "TIE/AG Aggressor".canonicalize()
+            xws: "TIE/ag Aggressor".canonicalize()
             factions: ["Galactic Empire"]
             attack: 2
             agility: 2
@@ -2483,7 +2524,7 @@ exportObj.basicCardData = ->
             ]
         "Alpha-Class Star Wing":
             name: "Alpha-Class Star Wing"
-            xws: "Alpha-Class Star Wing".canonicalize()
+            xws: "Alpha-class Star Wing".canonicalize()
             factions: ["Galactic Empire"]
             attack: 2
             agility: 2
@@ -2530,7 +2571,7 @@ exportObj.basicCardData = ->
             ]
         "Sheathipede-Class Shuttle":
             name: "Sheathipede-Class Shuttle"
-            xws: "Sheathipede-Class Shuttle".canonicalize()
+            xws: "Sheathipede-class Shuttle".canonicalize()
             factions: ["Rebel Alliance"]
             attack: 2
             attackb: 2
@@ -2596,7 +2637,7 @@ exportObj.basicCardData = ->
             ]
         "T-70 X-Wing":
             name: "T-70 X-Wing"
-            xws: "T-70 X-Wing".canonicalize()
+            xws: "T-70 X-wing".canonicalize()
             factions: [ "Resistance"]
             attack: 3
             agility: 2
@@ -2618,7 +2659,7 @@ exportObj.basicCardData = ->
             ]
         "RZ-2 A-Wing":
             name: "RZ-2 A-Wing"
-            xws: "RZ-2 A-Wing".canonicalize()
+            xws: "RZ-2 A-wing".canonicalize()
             factions: ["Resistance"]
             attackt: 2
             agility: 3
@@ -2643,7 +2684,7 @@ exportObj.basicCardData = ->
             ]
         "TIE/FO Fighter":
             name: "TIE/FO Fighter"
-            xws: "TIE/FO Fighter".canonicalize()
+            xws: "TIE/fo Fighter".canonicalize()
             factions: ["First Order"]
             attack: 2
             agility: 3
@@ -2667,7 +2708,7 @@ exportObj.basicCardData = ->
             ]
         "TIE/VN Silencer":
             name: "TIE/VN Silencer"
-            xws: "TIE/VN Silencer".canonicalize()
+            xws: "TIE/vn Silencer".canonicalize()
             factions: ["First Order"]
             attack: 3
             agility: 3
@@ -2691,7 +2732,7 @@ exportObj.basicCardData = ->
             ]
         "TIE/SF Fighter":
             name: "TIE/SF Fighter"
-            xws: "TIE/SF Fighter".canonicalize()
+            xws: "TIE/sf Fighter".canonicalize()
             factions: ["First Order"]
             attack: 2
             attackt: 2
@@ -2720,7 +2761,7 @@ exportObj.basicCardData = ->
             ]
         "Upsilon-Class Command Shuttle":
             name: "Upsilon-Class Command Shuttle"
-            xws: "Upsilon-Class Command Shuttle".canonicalize()
+            xws: "Upsilon-class command shuttle".canonicalize()
             factions: ["First Order"]
             attack: 4
             agility: 1
@@ -2797,7 +2838,7 @@ exportObj.basicCardData = ->
             large: true
         "Mining Guild TIE Fighter":
             name: "Mining Guild TIE Fighter"
-            xws: "Modified TIE/LN Fighter".canonicalize()
+            xws: "Modified TIE/ln Fighter".canonicalize()
             factions: ["Scum and Villainy"]
             attack: 2
             agility: 3
@@ -2820,7 +2861,7 @@ exportObj.basicCardData = ->
             ]
         "V-19 Torrent":
             name: "V-19 Torrent"
-            xws: "V-19 Torrent".canonicalize()
+            xws: "V-19 Torrent Starfighter".canonicalize()
             factions: ["Galactic Republic"]
             attack: 2
             agility: 2
@@ -10619,10 +10660,10 @@ exportObj.cardLoaders.Deutsch = () ->
            display_name: """Fliegerass der Schwarzen Sonne"""
            text: """<i class = flavor_text>Der Kihraxz-Angriffsjäger wurde eigens für das Verbrechersyndikat Schwarze Sonne entwickelt, dessen hochbezahlte Fliegerasse ein leistungsstarkes, wendiges Schiff verlangten, das ihren Fähigkeiten entsprach.</i>"""
         "Black Sun Assassin":
-           display_name: """Attentäter der """
+           display_name: """Attentäter der Schwarzen Sonne"""
            text: """<i class = flavor_text>Ein Attentat kann mit einem Schuss im Dunkeln oder mit einem vergifteten Getränk verübt werden. Aussagekräftiger ist jedoch eine brennende Raumfähre, die hilflos vom Himmel trudelt. </i>%LINEBREAK%<strong>Mikrodüsen:</strong> Solange du eine Fassrolle durchführst, <b>musst</b> du die %BANKLEFT%- oder %BANKRIGHT%-Schablone anstatt der %STRAIGHT%-Schablone verwenden."""
         "Black Sun Enforcer":
-           display_name: """Vollstrecker der """
+           display_name: """Vollstrecker der Schwarzen Sonne"""
            text: """<i class = flavor_text>Prinz Xizor persönlich entwickelte die Angriffsplattform der SternenViper-Klasse in Zusammenarbeit mit MandalMotors und schuf so einen der vorzüglichsten Sternenjäger der Galaxis. </i>%LINEBREAK%<strong>Mikrodüsen:</strong> Solange du eine Fassrolle durchführst, <b>musst</b> du die %BANKLEFT%- oder %BANKRIGHT%-Schablone anstatt der %STRAIGHT%-Schablone verwenden."""
         "Black Sun Soldier":
            display_name: """Kampfpilot der Schwarzen Sonne"""
@@ -10638,12 +10679,12 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """<i class = flavor_text>Seine schweren Waffensysteme und unverwüstlichen Schilde machen den B-Flügler zu einer der innovativsten Jagdmaschinen der Allianz.</i>"""
         "Blue Squadron Recruit":
            display_name: """Rekrut der blauen Staffel"""
-           text: """<i class = flavor_text>Überall in der Galaxis wachsen junge Leute mit Geschichten über die Helden des Galaktischen Bürgerkriegs auf. Viele lernen das Fliegen in den Cockpits, in denen ihre Eltern einst das Imperium bekämpften.</i>%LINEBREAK%<strong>Optimierte Gyrostabilisatoren:</strong> Du kannst deinen %SINGLETURRETARC%-Anzeiger nur auf deinen %FRONTARC% oder %REARARC% rotieren. Nachdem du eine Aktion durchgeführt hast, darfst du eine rote %BOOST%- oder eine rote <rotate>-Aktion durchführen."""
+           text: """<i class = flavor_text>Überall in der Galaxis wachsen junge Leute mit Geschichten über die Helden des Galaktischen Bürgerkriegs auf. Viele lernen das Fliegen in den Cockpits, in denen ihre Eltern einst das Imperium bekämpften.</i>%LINEBREAK%<strong>Optimierte Gyrostabilisatoren:</strong> Du kannst deinen %SINGLETURRETARC%-Anzeiger nur auf deinen %FRONTARC% oder %REARARC% rotieren. Nachdem du eine Aktion durchgeführt hast, darfst du eine rote %BOOST%- oder eine rote %ROTATEARC%-Aktion durchführen."""
         "Blue Squadron Rookie":
            display_name: """Anfängerpilot der blauen Staffel"""
            text: """<i class = flavor_text>Incom-FreiTek setzte bei der Entwicklung des T-70-X-Flüglers auf eine Verbesserung der taktischen Flexibilität des altehrwürdigen T-65-Modells. Sein moderner Droidenport ist mit fast allen gängigen Astromechs kompatibel, und dank seiner modularen Waffenkapseln kann er für jeden Einsatz mit maßgeschneiderter Bewaffnung ausgestattet werden.</i>%LINEBREAK%<strong>Waffenaufhängung:</strong> Du kannst 1&nbsp;%CANNON%-, %TORPEDO%- oder %MISSILE%-Aufwertung ausrüsten."""
         "Blue Squadron Scout":
-           display_name: """Aufklärer der blauen """
+           display_name: """Aufklärer der blauen Staffel"""
            text: """<i class = flavor_text>Der UT-60D-U-Flügler deckt den Bedarf der Rebellion an schnellen, unverwüstlichen Truppentransportern. Meistens wird er eingesetzt, um Soldaten im Schutz der Dunkelheit oder inmitten eines tobenden Gefechts an ihren Einsatzort zu befördern. </i>"""
         "Boba Fett":
            display_name: """Boba Fett"""
@@ -11642,7 +11683,7 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """<i>Nur für Imperium</i>%LINEBREAK%Solange ein anderes befreundetes Schiff verteidigt oder einen Angriff durchführt, darfst du 1&nbsp;%FORCE%&nbsp;ausgeben, um 1 seiner Würfel so zu modifizieren, als hätte jenes Schiff 1&nbsp;%FORCE%&nbsp;ausgegeben."""
         "Engine Upgrade":
            display_name: """Verbessertes Triebwerk"""
-           text: """Diese Aufwertungskarte hat variable Punktekosten.%LINEBREAK%<i>Fügt %BOOST% hinzu</i>%LINEBREAK%<i>Benötigt <r>%BOOST%</r></i>%LINEBREAK%<i class = flavor_text>Große Armeen wie das Militär des Galaktischen Imperiums haben meist standardisierte Triebwerke. Freischaffende Piloten und kleinere Organisationen ersetzen oft Energiekopplungen, """
+           text: """Diese Aufwertungskarte hat variable Punktekosten.%LINEBREAK%<i>Fügt %BOOST% hinzu</i>%LINEBREAK%<i>Benötigt <r>%BOOST%</r></i>%LINEBREAK%<i class = flavor_text>Große Armeen wie das Militär des Galaktischen Imperiums haben meist standardisierte Triebwerke. Freischaffende Piloten und kleinere Organisationen ersetzen oft Energiekopplungen,  bauen zusätzliche Düsen ein oder nutzen Hochleistungskraftstoffe, um noch mehr aus ihren Triebwerken herauszuholen</i>"""
         "Expert Handling":
            display_name: """Flugkunst"""
            text: """Diese Aufwertungskarte hat variable Punktekosten.%LINEBREAK%<i>Fügt %BARRELROLL% hinzu</i>%LINEBREAK%<i>Benötigt <r>%BARRELROLL%</r></i>%LINEBREAK%<i class = flavor_text>Auch schwere Jäger können in eine Fassrolle gezwungen werden, wobei es einen erfahrenen Piloten braucht, um die Maschine nicht übermäßig zu belasten und dem Feind kein leichtes Ziel zu bieten.</i>"""
@@ -12044,18 +12085,24 @@ exportObj.cardLoaders.Deutsch = () ->
         'Optimized Prototype':
            text: '''While you perform a %FRONTARC% primary attack against a ship locked by a friendly ship with the <strong>Director Krennic</strong> upgrade, you may spend 1 %HIT%/%CRIT%/%FOCUS% result. If you do, choose one: the defender loses 1 shield or the defender flips 1 of its facedown damage cards.'''
         'Proton Bomb':
-           text: '''(Bomb Token) - At the end of the Activation Phase, this device detonates. When this device detonates, each ship at range 0–1 suffers 1 %CRIT% damage.'''
+           display_name: """Protonenbombe"""
+           text: '''(Bomb Token) - Am Ende der Aktivierungsphase detoniert dieses Gerät. Sobald dieses Gerät detoniert, erleidet jedes Schiff in Reichweite 0–1 1 %CRIT%-Schaden.'''
         'Seismic Charge':
-           text: '''(Bomb Token) - At the end of the Activation Phase this device detonates. When this device detonates, choose 1 obstacle at range 0–1. Each ship at range 0–1 of the obstacle suffers 1 %HIT% damage. Then remove that obstacle. '''
+           display_name: """Seismische Bombe"""
+           text: '''(Bomb Token) - Am Ende der Aktivierungsphase detoniert dieses Gerät. Sobald dieses Gerät detoniert, wähle 1 Hindernis in Reichweite 0–1. Jedes Schiff in Reichweite 0–1 zu jenem Hindernis erleidet 1 %HIT%-Schaden. Dann entferne jenes Hindernis.'''
         'Bomblet':
-           text: '''(Bomb Token) - At the end of the Activation Phase this device detonates. When this device detonates, each ship at range 0–1 rolls 2 attack dice. Each ship suffers 1 %HIT% damage for each %HIT%/%CRIT% result.'''
+           display_name: """Streubombe"""
+           text: '''(Bomb Token) - Am Ende der Aktivierungsphase detoniert dieses Gerät. Sobald dieses Gerät detoniert, wirft jedes Schiff in Reichweite 0–1 2 Angriffswürfel. Jedes Schiff erleidet 1 %HIT%-Schaden für jedes %HIT%/%CRIT% Ergebnis.'''
         'Loose Cargo':
-           text: '''(Debris Token) - Loose cargo is a debris cloud.'''
+           display_name: """Freie Fracht"""
+           text: '''(Debris Token) - Freie Fracht ist eine Trümmerwolke..'''
         'Conner Net':
-           text: '''(Mine Token) - After a ship overlaps or moves through this device, it detonates. When this device detonates, the ship suffers 1 %HIT% damage and gains 3 ion tokens.'''
+           display_name: """Connernetz"""
+           text: '''(Mine Token) - Nachdem ein Schiff sich durch dieses Gerät hindurchbewegt oder sich mit ihm überschnitten hat, detoniert es. Sobald dieses Gerät detoniert, erleidet das Schiff 1 %HIT%-Schaden und erhält 3 Ionenmarker.'''
         'Proximity Mine':
-           text: '''(Mine Token) - After a ship overlaps or moves through this device, it detonates. When this device detonates, that ship rolls 2 attack dice. That ship then suffers 1 %HIT% plus 1 %HIT%/%CRIT% damage for each matching result.'''
-            
+           display_name: """Annäherungsmine"""
+           text: '''(Mine Token) - Nachdem sich ein Schiff durch dieses Gerät hindurchbewegt oder mit ihm überschnitten hat, detoniert es. Sobald dieses Gerät detoniert, wirft jenes Schiff 2 Angriffswürfel. Jenes Schiff erleidet dann 1 %HIT%-Schaden sowie 1 %HIT%/%CRIT%-Schaden für jedes passende Ergebnis.'''
+
     exportObj.setupTranslationCardData pilot_translations, upgrade_translations, condition_translations
 
 exportObj.codeToLanguage ?= {}
@@ -25210,6 +25257,16 @@ exportObj.manifestByExpansion =
         }
     ]
     'First Order Conversion Kit': [
+        {
+            name: 'Commander Malarus'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'TN-3456'
+            type: 'pilot'
+            count: 1
+        }
         {
             name: 'Epsilon Squadron Cadet'
             type: 'pilot'
