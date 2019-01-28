@@ -331,6 +331,8 @@ body {
       text-align: right; }
   #printable .print-notes {
     color: black; }
+  #printable .version {
+    color: black; }
   #printable .qrcode-container {
     color: black;
     width: 7in;
