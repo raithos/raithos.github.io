@@ -129,6 +129,9 @@ class exportObj.SquadBuilderBackend
         @show_all_squads_button.click()
         @squad_list_modal.modal 'show'
 
+        # This counter keeps tracked of the number of squads marked to be deleted (to hide the delete-selected button if none is selected)
+        @number_of_selected_squads_to_be_deleted = 0
+
         url = if all then "#{@server}/all" else "#{@server}/squads/list"
         $.get url, (data, textStatus, jqXHR) =>
             if data[builder.faction].length == 0
@@ -141,6 +144,7 @@ class exportObj.SquadBuilderBackend
                     li.addClass 'squad-summary'
                     li.data 'squad', squad
                     li.data 'builder', builder
+                    li.data 'selectedForDeletion', false
                     list_ul.append li
                     li.append $.trim """
                         <div class="row-fluid">
@@ -186,23 +190,36 @@ class exportObj.SquadBuilderBackend
                         else
                             builder.container.trigger 'xwing-backend:squadLoadRequested', li.data('squad')
 
-                    li.find('button.delete-squad').click (e) ->
+                    li.find('button.delete-squad').click (e) =>
                         e.preventDefault()
                         button = $ e.target
                         li = button.closest 'li'
                         builder = li.data('builder')
-                        do (li) ->
+                        li.data 'selectedForDeletion', true
+                        do (li) =>
                             li.find('.squad-description').fadeOut 'fast', ->
                                 li.find('.squad-delete-confirm').fadeIn 'fast'
+                            # show delete multiple section if not yet shown
+                            if not @number_of_selected_squads_to_be_deleted
+                                @squad_list_modal.find('div.delete-multiple-squads').show()
+                        # increment counter
+                        @number_of_selected_squads_to_be_deleted += 1
 
-                    li.find('button.cancel-delete-squad').click (e) ->
+
+                    li.find('button.cancel-delete-squad').click (e) =>
                         e.preventDefault()
                         button = $ e.target
                         li = button.closest 'li'
                         builder = li.data('builder')
-                        do (li) ->
+                        li.data 'selectedForDeletion', false
+                        # decrement counter
+                        @number_of_selected_squads_to_be_deleted -= 1
+                        do (li) =>
                             li.find('.squad-delete-confirm').fadeOut 'fast', ->
                                 li.find('.squad-description').fadeIn 'fast'
+                            # hide delete multiple section if this was the last selected squad
+                            if not @number_of_selected_squads_to_be_deleted
+                                @squad_list_modal.find('div.delete-multiple-squads').hide()
 
                     li.find('button.confirm-delete-squad').click (e) =>
                         e.preventDefault()
@@ -212,10 +229,15 @@ class exportObj.SquadBuilderBackend
                         li.find('.cancel-delete-squad').fadeOut 'fast'
                         li.find('.confirm-delete-squad').addClass 'disabled'
                         li.find('.confirm-delete-squad').text 'Deleting...'
-                        @delete li.data('squad').id, (results) ->
+                        @delete li.data('squad').id, (results) =>
                             if results.success
                                 li.slideUp 'fast', ->
                                     $(li).remove()
+                                # decrement counter
+                                @number_of_selected_squads_to_be_deleted -= 1
+                                # hide delete multiple section if this was the last selected squad
+                                if not @number_of_selected_squads_to_be_deleted
+                                    @squad_list_modal.find('div.delete-multiple-squads').hide()
                             else
                                 li.html $.trim """
                                     Error deleting #{li.data('squad').name}: <em>#{results.error}</em>
@@ -390,6 +412,10 @@ class exportObj.SquadBuilderBackend
                 </p>
             </div>
             <div class="modal-footer">
+                <div class="btn-group delete-multiple-squads">
+                    <button class="btn select-all">Select All</button>
+                    <button class="btn btn-danger delete-selected">Delete Selected</button>
+                </div>
                 <div class="btn-group squad-display-mode">
                     <button class="btn btn-inverse show-all-squads">All</button>
                     <button class="btn show-standard-squads">Standard</button>
@@ -400,6 +426,48 @@ class exportObj.SquadBuilderBackend
             </div>
         """
         @squad_list_modal.find('ul.squad-list').hide()
+
+        # The delete multiple section only appeares, when somebody hits the delete button of one squad. 
+        @squad_list_modal.find('div.delete-multiple-squads').hide() 
+
+        @delete_selected_button = $ @squad_list_modal.find('button.delete-selected')
+        @delete_selected_button.click (e) =>
+            ul = @squad_list_modal.find('ul.squad-list') 
+            for li in ul.find('li')
+                li = $ li
+                if li.data 'selectedForDeletion'
+                    do (li) =>
+                        li.find('.cancel-delete-squad').fadeOut 'fast'
+                        li.find('.confirm-delete-squad').addClass 'disabled'
+                        li.find('.confirm-delete-squad').text 'Deleting...'
+                        @delete li.data('squad').id, (results) =>
+                            if results.success
+                                li.slideUp 'fast', ->
+                                    $(li).remove()
+                                # decrement counter
+                                @number_of_selected_squads_to_be_deleted -= 1
+                                # hide delete multiple section if this was the last selected squad
+                                if not @number_of_selected_squads_to_be_deleted
+                                    @squad_list_modal.find('div.delete-multiple-squads').hide()
+                            else
+                                li.html $.trim """
+                                    Error deleting #{li.data('squad').name}: <em>#{results.error}</em>
+                                """
+
+        @select_all_button = $ @squad_list_modal.find('button.select-all')
+        @select_all_button.click (e) =>
+            ul = @squad_list_modal.find('ul.squad-list') 
+            for li in ul.find('li')
+                li = $ li
+                if not li.data 'selectedForDeletion'
+                    li.data 'selectedForDeletion', true
+                    do (li) =>
+                        li.find('.squad-description').fadeOut 'fast', ->
+                             li.find('.squad-delete-confirm').fadeIn 'fast'
+                    @number_of_selected_squads_to_be_deleted += 1
+
+        # Hide selection of Standard/epic/team epic as those modes do not exist.
+        @squad_list_modal.find('div.squad-display-mode').hide()
 
         @show_all_squads_button = $ @squad_list_modal.find('.show-all-squads')
         @show_all_squads_button.click (e) =>
@@ -1586,6 +1654,9 @@ exportObj.basicCardData = ->
               [ 1, 1, 1, 1, 1, 0, 0, 0, 3, 3]
               [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0]
             ]
+            autoequip: [
+              "Servomotor S-Foils"
+            ]
         "Y-Wing":
             name: "Y-Wing"
             xws: "BTL-A4 Y-wing".canonicalize()
@@ -2433,6 +2504,9 @@ exportObj.basicCardData = ->
                 [ 0, 1, 1, 1, 0 ]
                 [ 0, 0, 1, 0, 0 ]
             ]
+            autoequip: [
+              "Pivot Wing"
+            ]
         "TIE Striker":
             name: "TIE Striker"
             xws: "TIE/sk Striker".canonicalize()
@@ -2656,6 +2730,9 @@ exportObj.basicCardData = ->
               [ 1, 2, 2, 2, 1, 0, 0, 0, 0, 0]
               [ 1, 1, 2, 1, 1, 0, 0, 0, 3, 3]
               [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0]
+            ]
+            autoequip: [
+              "Integrated S-Foils"
             ]
         "RZ-2 A-Wing":
             name: "RZ-2 A-Wing"
@@ -6736,20 +6813,8 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Lieutenant Bastian"
-            id: 232
-            unique: true
-            faction: "Resistance"
-            ship: "T-70 X-Wing"
-            skill: 2
-            points: 1
-            slots: [
-                "Astromech"
-                "Modification"
-                "Configuration"
-                "Tech"
-                "Hardpoint"
-            ]
+            id: 232 # duplicate, has been removed 
+            skip: true
         }
         {
             name: '"Midnight"'
@@ -9767,6 +9832,7 @@ exportObj.basicCardData = ->
             name: "Chewbacca (Resistance)"
             id: 188
             slot: "Crew"
+            xws: "chewbacca-crew-swz19" 
             points: 5
             charge: 2
             unique: true
@@ -9804,6 +9870,7 @@ exportObj.basicCardData = ->
             name: "Han Solo (Resistance)"
             id: 192
             slot: "Crew"
+            xws: "hansolo-crew"
             points: 6
             unique: true
             faction: "Resistance"
@@ -25263,7 +25330,7 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'TN-3456'
+            name: 'TN-3465'
             type: 'pilot'
             count: 1
         }
@@ -28094,25 +28161,25 @@ class exportObj.SquadBuilder
             
     getAvailableUpgradesIncluding: (slot, include_upgrade, ship, this_upgrade_obj, term='', filter_func=@dfl_filter_func, sorted=true) ->
         # Returns data formatted for Select2
-        limited_upgrades_in_use = (upgrade.data for upgrade in ship.upgrades when upgrade?.data?.limited?)
+        upgrades_in_use = (upgrade.data for upgrade in ship.upgrades)
 
         available_upgrades = (upgrade for upgrade_name, upgrade of exportObj.upgrades when upgrade.slot == slot and ( @matcher(upgrade_name, term) or (upgrade.display_name and @matcher(upgrade.display_name, term)) ) and (not upgrade.ship? or @isShip(upgrade.ship, ship.data.name)) and (not upgrade.faction? or @isOurFaction(upgrade.faction)) and (@isItemAvailable(upgrade)))
 
         if filter_func != @dfl_filter_func
             available_upgrades = (upgrade for upgrade in available_upgrades when filter_func(upgrade))
 
-        eligible_upgrades = (upgrade for upgrade_name, upgrade of available_upgrades when (not upgrade.unique? or upgrade not in @uniques_in_use['Upgrade']) and (not (ship? and upgrade.restriction_func?) or upgrade.restriction_func(ship, this_upgrade_obj)) and upgrade not in limited_upgrades_in_use and ((not upgrade.max_per_squad?) or ship.builder.countUpgrades(upgrade.canonical_name) < upgrade.max_per_squad))
+        eligible_upgrades = (upgrade for upgrade_name, upgrade of available_upgrades when (not upgrade.unique? or upgrade not in @uniques_in_use['Upgrade']) and (not (ship? and upgrade.restriction_func?) or upgrade.restriction_func(ship, this_upgrade_obj)) and upgrade not in upgrades_in_use and ((not upgrade.max_per_squad?) or ship.builder.countUpgrades(upgrade.canonical_name) < upgrade.max_per_squad))
 
 
         for equipped_upgrade in (upgrade.data for upgrade in ship.upgrades when upgrade?.data?)
             eligible_upgrades.removeItem equipped_upgrade
 
         # Re-enable selected upgrade
-        if include_upgrade? and (((include_upgrade.unique? or include_upgrade.limited? or include_upgrade.max_per_squad?) and ( @matcher(include_upgrade.name, term) or (include_upgrade.display_name and @matcher(include_upgrade.display_name, term))) ))# or current_upgrade_forcibly_removed)
+        if include_upgrade? and ((( @matcher(include_upgrade.name, term) or (include_upgrade.display_name and @matcher(include_upgrade.display_name, term))) ))# or current_upgrade_forcibly_removed)
             # available_upgrades.push include_upgrade
             eligible_upgrades.push include_upgrade
 
-        retval = ({ id: upgrade.id, text: "#{if upgrade.display_name then upgrade.display_name else upgrade.name} (#{upgrade.points})", points: upgrade.points, name: upgrade.name, display_name: upgrade.display_name, disabled: upgrade not in eligible_upgrades } for upgrade in available_upgrades)
+        retval = ({ id: upgrade.id, text: "#{if upgrade.display_name then upgrade.display_name else upgrade.name} (#{this_upgrade_obj.getPoints(upgrade)}#{if upgrade.points == '*' then '*' else ''})", points: this_upgrade_obj.getPoints(upgrade), name: upgrade.name, display_name: upgrade.display_name, disabled: upgrade not in eligible_upgrades } for upgrade in available_upgrades)
         if sorted
             retval = retval.sort exportObj.sortHelper
 
@@ -28845,7 +28912,7 @@ class exportObj.SquadBuilder
                     #            xws: ship_data.xws
                     # console.log "#{pilot.xws}"
                     try
-                        new_ship.setPilot (p for p in (exportObj.pilotsByFactionXWS[@faction][pilotxws] ?= exportObj.pilotsByFactionCanonicalName[@faction][pilotxws]) when p.ship == shipname)[0]
+                        new_ship.setPilot (p for p in (exportObj.pilotsByFactionXWS[@faction][pilotxws] ?= exportObj.pilotsByFactionCanonicalName[@faction][pilotxws]) when p.ship == shipname)[0], true
                     catch err
                         console.error err.message 
                         continue
@@ -28952,7 +29019,7 @@ class Ship
             # Look for cheapest generic or available unique, otherwise do nothing
             available_pilots = (pilot_data for pilot_data in @builder.getAvailablePilotsForShipIncluding(other.data.name) when not pilot_data.disabled)
             if available_pilots.length > 0
-                @setPilotById available_pilots[0].id
+                @setPilotById available_pilots[0].id, true
                 # Can't just copy upgrades since slots may be different
                 # Similar to setPilot() when ship is the same
 
@@ -28970,7 +29037,7 @@ class Ship
                 return
         else
             # Exact clone, so we can copy things over directly
-            @setPilotById other.pilot.id
+            @setPilotById other.pilot.id, true
 
             # set up non-conferred addons
             other_conferred_addons = []
@@ -29008,13 +29075,13 @@ class Ship
 
         @builder.container.trigger 'xwing:shipUpdated'
 
-    setPilotById: (id) ->
-        @setPilot exportObj.pilotsById[parseInt id]
+    setPilotById: (id, noautoequip = false) ->
+        @setPilot exportObj.pilotsById[parseInt id], noautoequip
 
     setPilotByName: (name) ->
         @setPilot exportObj.pilots[$.trim name]
 
-    setPilot: (new_pilot) ->
+    setPilot: (new_pilot, noautoequip = false) ->
         if new_pilot != @pilot
             @builder.current_squad.dirty = true
             same_ship = @pilot? and new_pilot?.ship == @pilot.ship
@@ -29035,11 +29102,19 @@ class Ship
                 @setupAddons() if @pilot?
                 @copy_button.show()
                 @setShipType @pilot.ship
+                if (@pilot.autoequip? or (exportObj.ships[@pilot.ship].autoequip? and not same_ship)) and not noautoequip
+                    autoequip = (@pilot.autoequip ? []).concat(exportObj.ships[@pilot.ship].autoequip ? [])
+                    for upgrade_name in autoequip
+                        auto_equip_upgrade = exportObj.upgrades[upgrade_name]
+                        for upgrade in @upgrades
+                            if upgrade.slot == auto_equip_upgrade.slot
+                                upgrade.setData auto_equip_upgrade
                 if same_ship
-                    for upgrade in @upgrades
-                        old_upgrade = (old_upgrades[upgrade.slot] ? []).shift()
-                        if old_upgrade?
-                            upgrade.setById old_upgrade.data.id
+                    for _ in [1..2] # try this twice, as upgrades added in the first run may add new slots that are filled in the second run.
+                        for upgrade in @upgrades
+                            old_upgrade = (old_upgrades[upgrade.slot] ? []).shift()
+                            if old_upgrade?
+                                upgrade.setById old_upgrade.data.id
             else
                 @copy_button.hide()
             @builder.container.trigger 'xwing:pointsUpdated'
@@ -29577,7 +29652,7 @@ class Ship
                 # PILOT_ID:UPGRADEID1,UPGRADEID2:TITLEUPGRADE1,TITLEUPGRADE2
                 [ pilot_id, upgrade_ids ] = serialized.split ':'
 
-                @setPilotById parseInt(pilot_id)
+                @setPilotById parseInt(pilot_id), true
 
                 for upgrade_id, i in upgrade_ids.split ','
                     upgrade_id = parseInt upgrade_id
@@ -29586,7 +29661,7 @@ class Ship
             when 2, 3
                 # PILOT_ID:UPGRADEID1,UPGRADEID2:CONFERREDADDONTYPE1.CONFERREDADDONID1,CONFERREDADDONTYPE2.CONFERREDADDONID2
                 [ pilot_id, upgrade_ids, conferredaddon_pairs ] = serialized.split ':'
-                @setPilotById parseInt(pilot_id)
+                @setPilotById parseInt(pilot_id), true
 
                 deferred_ids = []
                 for upgrade_id, i in upgrade_ids.split ','
@@ -29618,7 +29693,7 @@ class Ship
                 else 
                     # version 4
                     [ pilot_id, upgrade_ids, version_4_compatibility_placeholder_title, version_4_compatibility_placeholder_mod, conferredaddon_pairs ] = serialized.split ':'
-                @setPilotById parseInt(pilot_id)
+                @setPilotById parseInt(pilot_id), true
                 # make sure the pilot is valid 
                 return false unless @validate
 
@@ -29942,18 +30017,18 @@ class GenericAddon
                 throw new Error("Unexpected addon type for addon #{addon}")
         @conferredAddons = []
 
-    getPoints: ->
+    getPoints: (data = @data, ship = @ship) ->
         # Moar special case jankiness
-        if @data?.variableagility? and @ship?
-            Math.max(@data?.basepoints ? 0, (@data?.basepoints ? 0) + ((@ship?.data.agility - 1)*2) + 1)
-        else if @data?.variablebase? and not (@ship.data.medium? or @ship.data.large?)
-            Math.max(0, @data?.basepoints)
-        else if @data?.variablebase? and @ship?.data.medium?
-            Math.max(0, (@data?.basepoints ? 0) + (@data?.basepoints))
-        else if @data?.variablebase? and @ship?.data.large?
-            Math.max(0, (@data?.basepoints ? 0) + (@data?.basepoints * 2))
+        if data?.variableagility? and ship?
+            Math.max(data?.basepoints ? 0, (data?.basepoints ? 0) + ((ship?.data.agility - 1)*2) + 1)
+        else if data?.variablebase? and not (ship.data.medium? or ship.data.large?)
+            Math.max(0, data?.basepoints)
+        else if data?.variablebase? and ship?.data.medium?
+            Math.max(0, (data?.basepoints ? 0) + (data?.basepoints))
+        else if data?.variablebase? and ship?.data.large?
+            Math.max(0, (data?.basepoints ? 0) + (data?.basepoints * 2))
         else
-            @data?.points ? 0
+            data?.points ? 0
             
     updateSelection: (points) ->
         if @data?
@@ -29965,7 +30040,7 @@ class GenericAddon
 
     toString: ->
         if @data?
-            "#{if @data.display_name then @data.display_name else @data.name} (#{@data.points})"
+            "#{if @data.display_name then @data.display_name else @data.name} (#{@getPoints()})"
         else
             "No #{@type}"
 
