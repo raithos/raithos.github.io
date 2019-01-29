@@ -1244,7 +1244,18 @@ class exportObj.CardBrowser
         orig_type = card.data 'orig_type'
 
         @card_viewer_container.find('.info-name').html """#{if data.unique then "&middot;&nbsp;" else ""}#{if display_name then display_name else name} (#{data.points})#{if data.limited? then " (#{exportObj.translate(@language, 'ui', 'limited')})" else ""}#{if data.epic? then " (#{exportObj.translate(@language, 'ui', 'epic')})" else ""}#{if exportObj.isReleased(data) then "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
-        @card_viewer_container.find('p.info-text').html data.text ? ''
+        
+        if data.pointsarray? 
+            point_info = "<i>Point cost " + data.pointsarray + " when "
+            if data.variableagility? and data.variableagility
+                point_info += "agility is " + [0..data.pointsarray.length-1]
+            else if data.variableinit? and data.variableinit
+                point_info += "initiative is " + [0..data.pointsarray.length-1]
+            else if data.variablebase? and data.variablebase
+                point_info += " base size is small, medium or large"
+            point_info += "</i><br/><br/>"
+
+        @card_viewer_container.find('p.info-text').html (point_info ? '') + (data.text ? '')
         @card_viewer_container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
         switch orig_type
             when 'Pilot'
@@ -1553,7 +1564,6 @@ class exportObj.CardBrowser
                             for pilot in pilots # there are sometimes multiple pilots with the same name, so we have another array layer here
                                 if pilot.ship == card.data.name
                                     slots.push.apply(slots, pilot.slots)
-                                    console.log(slots)
             for slot in required_slots
                return false unless slots? and slot in slots
 
@@ -11156,8 +11166,8 @@ exportObj.cardLoaders.Deutsch = () ->
            display_name: """Rebell von Lothal"""
            text: """<i class = flavor_text>Der VCX-100 ist ein weiteres Erfolgsmodell der Corellianischen Ingenieursgesellschaft, geräumiger und mit mehr Ausstattungsoptionen als die beliebte YT-Serie.</i>%LINEBREAK%<strong>Heckgeschütz:</strong> Solange du ein angedocktes Schiff hast, hast du eine %REARARC%-Primärwaffe mit einem Angriffswert in Höhe des Angriffswertes der %FRONTARC%-Primärwaffe deines angedockten Schiffes."""
         "Lowhhrick":
-           display_name: """Wullffwarro"""
-           text: """Solange du einen Primärangriff durchführst, falls du beschädigt bist, darfst du 1 zusätzlichen Angriffswürfel werfen."""
+           display_name: """Lowhhrick"""
+           text: """Nachdem ein befreundetes Schiff in Reichweite 0-1 zum Verteidiger geworden ist, darfst du 1 Verstärkungsmarker ausgeben. Falls du das tust, erhält jenes Schiff 1 Ausweichmarker."""
         "Luke Skywalker":
            display_name: """Luke Skywalker"""
            text: """Nachdem du zum Verteidiger geworden bist (bevor Würfel geworfen werden), darfst du 1&nbsp;%FORCE% wiederherstellen."""
@@ -11438,8 +11448,8 @@ exportObj.cardLoaders.Deutsch = () ->
            display_name: """Grenzgänger aus dem Wilden Raum"""
            text: """<i class = flavor_text>Serienmäßig bietet der YT-2400 reichlich Laderaum. Allerdings opfern die meisten Besitzer einen Teil davon, um Platz für modifizierte Waffensysteme und extragroße Triebwerke zu schaffen.</i>%LINEBREAK%<strong>Toter Winkel:</strong> Solange du einen Primärangriff in Reichweite 0-1 durchführst, wende den Bonus für Reichweite 0-1 nicht an und wirf 1 Angriffswürfel weniger."""
         "Wullffwarro":
-           display_name: """Lowhhrick"""
-           text: """Nachdem ein befreundetes Schiff in Reichweite 0-1 zum Verteidiger geworden ist, darfst du 1 Verstärkungsmarker ausgeben. Falls du das tust, erhält jenes Schiff 1 Ausweichmarker."""
+           display_name: """Wullffwarro"""
+           text: """Solange du einen Primärangriff durchführst, falls du beschädigt bist, darfst du 1 zusätzlichen Angriffswürfel werfen."""
         "Zari Bangel":
            display_name: """Zari Bangel"""
            text: """Du überspringst deinen Schritt „Aktion durchführen“ nicht, nachdem du ein Manöver teilweise ausgeführt hast.%LINEBREAK%<strong>Optimierte Gyrostabilisatoren:</strong> Du kannst deinen %SINGLETURRETARC%-Anzeiger nur auf deinen %FRONTARC% oder %REARARC% rotieren. Nachdem du eine Aktion durchgeführt hast, darfst du eine rote %BOOST%- oder eine rote <rotate>-Aktion durchführen."""
@@ -13522,10 +13532,10 @@ exportObj.cardLoaders.English = () ->
            text: """<i>Empire only</i>%LINEBREAK%While another friendly ship defends or performs an attack, you may spend 1&nbsp;%FORCE% to modify 1 of its dice as though that ship had spent 1&nbsp;%FORCE%."""
         "Engine Upgrade":
            display_name: """Engine Upgrade"""
-           text: """This upgrade has a variable cost, worth 3, 6, or 9 points depending on if the ship base is small, medium or large respectively.%LINEBREAK%<i>Adds %BOOST%</i>%LINEBREAK%<i>Requires <r>%BOOST%</r></i>%LINEBREAK%<i class = flavor_text>Large military forces such as the Galactic Empire have standardized engines, but individual pilots and small organizations often replace the power couplings, add thrusters, or use high-performance fuel to get extra push out of their engines.</i>"""
+           text: """<i>Adds %BOOST%</i>%LINEBREAK%<i>Requires <r>%BOOST%</r></i>%LINEBREAK%<i class = flavor_text>Large military forces such as the Galactic Empire have standardized engines, but individual pilots and small organizations often replace the power couplings, add thrusters, or use high-performance fuel to get extra push out of their engines.</i>"""
         "Expert Handling":
            display_name: """Expert Handling"""
-           text: """This upgrade has a variable cost, worth 2, 4, or 6 points depending on if the ship base is small, medium or large respectively.%LINEBREAK%<i>Adds %BARRELROLL%</i>%LINEBREAK%<i>Requires <r>%BARRELROLL%</r></i>%LINEBREAK%<i class = flavor_text>While heavy fighters can often be coaxed into a barrel roll, seasoned pilots know how to do it without putting undue stress on their craft or leaving themselves open to attack.</i>"""
+           text: """<i>Adds %BARRELROLL%</i>%LINEBREAK%<i>Requires <r>%BARRELROLL%</r></i>%LINEBREAK%<i class = flavor_text>While heavy fighters can often be coaxed into a barrel roll, seasoned pilots know how to do it without putting undue stress on their craft or leaving themselves open to attack.</i>"""
         "Ezra Bridger":
            display_name: """Ezra Bridger"""
            text: """<i>Rebel only</i>%LINEBREAK%After you perform a primary attack, you may spend 1&nbsp;%FORCE% to perform a bonus %SINGLETURRETARC% attack from a %SINGLETURRETARC% you have not attacked from this round. If you do and you are stressed, you may reroll 1 attack die."""
@@ -13600,7 +13610,7 @@ exportObj.cardLoaders.English = () ->
            text: """While you perform a %SINGLETURRETARC% attack, after the Modify Defense Dice step, the defender removes 1 focus or calculate token."""
         "Hull Upgrade":
            display_name: """Hull Upgrade"""
-           text: """This upgrade has a variable cost, worth 2, 3, 5, or 7 points depending on if the ship agility is 0, 1, 2, or 3 respectively.%LINEBREAK%<i class = flavor_text>For those who cannot afford an enhanced shield generator, bolting additional plates onto the hull of a ship can serve as an adequate substitute.</i>"""
+           text: """<i class = flavor_text>For those who cannot afford an enhanced shield generator, bolting additional plates onto the hull of a ship can serve as an adequate substitute.</i>"""
         "Hyperspace Tracking Data":
            display_name: """Hyperspace Tracking Data"""
            text: """<i>large ship only</i>%LINEBREAK%<i>First Order only</i>%LINEBREAK%<strong>Setup:</strong> Before placing forces, you may choose a number between 0 and 6. Treat your initiative as the chosen value during Setup.%LINEBREAK%After Setup, assign 1 focus or evade token to each friendly ship at range&nbsp;0-2."""
@@ -13831,7 +13841,7 @@ exportObj.cardLoaders.English = () ->
            text: """<i>Empire only</i>%LINEBREAK%If an enemy ship at range 0-1 would gain a stress token, you may spend 1&nbsp;%FORCE% to have it gain 1 jam or tractor token instead."""
         "Shield Upgrade":
            display_name: """Shield Upgrade"""
-           text: """This upgrade has a variable cost, worth 3, 4, 6, or 8 points depending on if the ship agility is 0, 1, 2, or 3 respectively.%LINEBREAK%<i class = flavor_text>Deflector shields are a substantial line of defense on most starships beyond the lightest fighters. While enhancing a ship’s shield capacity can be costly, all but the most confident or reckless pilots see the value in this sort of investment.</i>"""
+           text: """<i class = flavor_text>Deflector shields are a substantial line of defense on most starships beyond the lightest fighters. While enhancing a ship’s shield capacity can be costly, all but the most confident or reckless pilots see the value in this sort of investment.</i>"""
         "Skilled Bombardier":
            display_name: """Skilled Bombardier"""
            text: """If you would drop or launch a device, you may use a template of the same bearing with a speed 1 higher or lower."""
@@ -13846,7 +13856,7 @@ exportObj.cardLoaders.English = () ->
            text: """Before you would gain 1 ion or jam token, if you are not stressed, you may choose another ship at range 0-1 and gain 1 stress token. If you do, the chosen ship gains that ion or jam token instead. %LINEBREAK%<i>Errata (since rules reference 1.0.2): Changed from "If you would gain an ion or jam token, if you are not stressed, you may choose a ship at range 0-1. If you do, gain 1 stress token and transfer 1 ion or jam token to that ship."</i>"""
         "Stealth Device":
            display_name: """Stealth Device"""
-           text: """This upgrade has a variable cost, worth 3, 4, 6, or 8 points depending on if the ship agility is 0, 1, 2, or 3 respectively.%LINEBREAK%While you defend, if your %CHARGE% is active, roll 1 additional defense die.%LINEBREAK%After you suffer damage, lose 1&nbsp;%CHARGE%."""
+           text: """While you defend, if your %CHARGE% is active, roll 1 additional defense die.%LINEBREAK%After you suffer damage, lose 1&nbsp;%CHARGE%."""
         "Supernatural Reflexes":
            display_name: """Supernatural Reflexes"""
            text: """<i>small ship only</i>%LINEBREAK%Before you activate, you may spend 1&nbsp;%FORCE% to perform a %BARRELROLL% or %BOOST% action. Then, if you performed an action you do not have on your action bar, suffer 1&nbsp;%HIT% damage."""
@@ -25344,6 +25354,11 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
+            name: 'Lieutenant Rivas'
+            type: 'pilot'
+            count: 1
+        }
+        {
             name: 'TN-3465'
             type: 'pilot'
             count: 1
@@ -26861,10 +26876,10 @@ class exportObj.SquadBuilder
         @container.trigger 'xwing-backend:squadNameChanged'
         @container.trigger 'xwing-backend:squadDirtinessChanged'
 
-    newSquadFromScratch: ->
-        @squad_name_input.val 'New Squadron'
+    newSquadFromScratch: (squad_name = 'New Squadron') ->
+        @squad_name_input.val squad_name
         @removeAllShips()
-        @addShip()
+        @addShip() if not @suppress_automatic_new_ship
         @current_obstacles = []
         @resetCurrentSquad()
         @notes.val ''
@@ -26913,6 +26928,7 @@ class exportObj.SquadBuilder
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="randomize-options">Randomizer Options</a></li>
+                            <li><a class="misc-settings">Misc Settings</a></li>
                         </ul>
                         
 
@@ -27227,6 +27243,7 @@ class exportObj.SquadBuilder
         @view_list_button = $ @status_container.find('div.button-container button.view-as-text')
         @randomize_button = $ @status_container.find('div.button-container button.randomize')
         @customize_randomizer = $ @status_container.find('div.button-container a.randomize-options')
+        @misc_settings = $ @status_container.find('div.button-container a.misc-settings')
         @backend_status = $ @status_container.find('.backend-status')
         @backend_status.hide()
 
@@ -27269,7 +27286,7 @@ class exportObj.SquadBuilder
                 @squad_name_input.closest('div').hide()
 
         @randomizer_options_modal = $ document.createElement('DIV')
-        @randomizer_options_modal.addClass 'modal hide fade'
+        @randomizer_options_modal.addClass 'modal hide fade randomizer-modal'
         $('body').append @randomizer_options_modal
         @randomizer_options_modal.append $.trim """
             <div class="modal-header">
@@ -27337,10 +27354,66 @@ class exportObj.SquadBuilder
             e.preventDefault()
             @randomizer_options_modal.modal('hide')
             @randomize_button.click()
-
+            
         @customize_randomizer.click (e) =>
             e.preventDefault()
             @randomizer_options_modal.modal()
+
+        @misc_settings_modal = $ document.createElement('DIV')
+        @misc_settings_modal.addClass 'modal hide fade'
+        $('body').append @misc_settings_modal
+        @misc_settings_modal.append $.trim """
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Miscellaneous Settings</h3>
+            </div>
+            <div class="modal-body">
+                <label class = "toggle-initiative-prefix-names misc-settings-label">
+                    <input type="checkbox" class="initiative-prefix-names-checkbox misc-settings-checkbox" /> Put INI as prefix in front of names. 
+                </label>
+            </div>
+            <div class="modal-footer">
+                <span class="misc-settings-infoline"></span>
+                &nbsp;
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        """
+        @misc_settings_infoline = $ @misc_settings_modal.find('.misc-settings-infoline')
+        @misc_settings_initiative_prefix = $ @misc_settings_modal.find('.initiative-prefix-names-checkbox')
+        if @backend? 
+            @backend.getSettings (st) =>
+                exportObj.settings ?= []
+                exportObj.settings.initiative_prefix = st.showInitiativeInFrontOfPilotName?
+                if st.showInitiativeInFrontOfPilotName? 
+                    @misc_settings_initiative_prefix.prop('checked', true)
+        else 
+            @waiting_for_backend ?= []
+            @waiting_for_backend.push => 
+                @backend.getSettings (st) =>
+                    exportObj.settings ?= []
+                    exportObj.settings.initiative_prefix = st.showInitiativeInFrontOfPilotName?
+                    if st.showInitiativeInFrontOfPilotName? 
+                        @misc_settings_initiative_prefix.prop('checked', true)
+                        
+        @misc_settings_initiative_prefix.click (e) =>
+            exportObj.settings ?= []
+            exportObj.settings.initiative_prefix = @misc_settings_initiative_prefix.prop('checked')
+            if @backend? 
+                if @misc_settings_initiative_prefix.prop('checked')
+                    @backend.set 'showInitiativeInFrontOfPilotName', '1', (ds) =>
+                        @misc_settings_infoline.text "Changes Saved"
+                        @misc_settings_infoline.fadeIn 100, =>
+                            @misc_settings_infoline.fadeOut 3000
+                else 
+                    @backend.deleteSetting 'showInitiativeInFrontOfPilotName', (dd) =>
+                        @misc_settings_infoline.text "Changes Saved"
+                        @misc_settings_infoline.fadeIn 100, =>
+                            @misc_settings_infoline.fadeOut 3000
+
+        @misc_settings.click (e) =>
+            e.preventDefault()
+            @misc_settings_modal.modal()
+            @misc_settings_initiative_prefix.prop('checked', exportObj.settings?.initiative_prefix? and exportObj.settings.initiative_prefix)
 
         @choose_obstacles_modal = $ document.createElement 'DIV'
         @choose_obstacles_modal.addClass 'modal hide fade choose-obstacles-modal'
@@ -27810,7 +27883,7 @@ class exportObj.SquadBuilder
                 @maxSmallShipsOfOneType = null
                 @maxLargeShipsOfOneType = null
         if (oldHyperspace != @isHyperspace)
-            @newSquadFromScratch()
+            @newSquadFromScratch($.trim(@current_squad.name))
         @onPointsUpdated cb
 
     onPointsUpdated: (cb=$.noop) =>
@@ -28146,7 +28219,7 @@ class exportObj.SquadBuilder
         if include_pilot? and include_pilot.unique? and (@matcher(include_pilot.name, term) or (include_pilot.display_name and @matcher(include_pilot.display_name, term)) )
             eligible_faction_pilots.push include_pilot
 
-        retval = ({ id: pilot.id, text: "#{if pilot.display_name then pilot.display_name else pilot.name} (#{pilot.points})", points: pilot.points, ship: pilot.ship, name: pilot.name, display_name: pilot.display_name, disabled: pilot not in eligible_faction_pilots } for pilot in available_faction_pilots)
+        retval = ({ id: pilot.id, text: "#{if exportObj.settings?.initiative_prefix? and exportObj.settings.initiative_prefix then pilot.skill + ' - ' else ''}#{if pilot.display_name then pilot.display_name else pilot.name} (#{pilot.points})", points: pilot.points, ship: pilot.ship, name: pilot.name, display_name: pilot.display_name, disabled: pilot not in eligible_faction_pilots } for pilot in available_faction_pilots)
         if sorted
             retval = retval.sort exportObj.sortHelper
         retval
@@ -28552,8 +28625,18 @@ class exportObj.SquadBuilder
                         @info_container.find('.info-collection').text """You have #{addon_count} in your collection."""
                     else
                         @info_container.find('.info-collection').text ''
-                    @info_container.find('.info-name').html """#{if data.unique then "&middot;&nbsp;" else ""}#{if data.display_name then data.display_name else data.name}#{if data.limited? then " (#{exportObj.translate(@language, 'ui', 'limited')})" else ""}#{if exportObj.isReleased(data) then  "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
-                    @info_container.find('p.info-text').html data.text ? ''
+                    @info_container.find('.info-name').html """#{if data.unique then "&middot;&nbsp;" else ""}#{if data.display_name then data.display_name else data.name}#{if exportObj.isReleased(data) then  "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
+                    if data.pointsarray? 
+                        point_info = "<i>Point cost " + data.pointsarray + " when "
+                        if data.variableagility? and data.variableagility
+                            point_info += "agility is " + [0..data.pointsarray.length-1]
+                        else if data.variableinit? and data.variableinit
+                            point_info += "initiative is " + [0..data.pointsarray.length-1]
+                        else if data.variablebase? and data.variablebase
+                            point_info += " base size is small, medium or large"
+                        point_info += "</i><br/><br/>"
+
+                    @info_container.find('p.info-text').html (point_info ? '') + (data.text ? '')
                     @info_container.find('tr.info-ship').hide()
                     @info_container.find('tr.info-base').hide()
                     @info_container.find('tr.info-skill').hide()
@@ -28743,6 +28826,9 @@ class exportObj.SquadBuilder
 
     setBackend: (backend) ->
         @backend = backend
+        if @waiting_for_backend?
+            for meth in @waiting_for_backend
+                meth()
 
     describeSquad: ->
         (ship.pilot.name for ship in @ships when ship.pilot?).join ', '
@@ -29179,7 +29265,7 @@ class Ship
                     xws: exportObj.ships[@pilot.ship].xws
             @pilot_selector.select2 'data',
                 id: @pilot.id
-                text: "#{if @pilot.display_name then @pilot.display_name else @pilot.name} (#{@pilot.points})"
+                text: "#{if exportObj.settings?.initiative_prefix? and exportObj.settings.initiative_prefix then @pilot.skill + ' - ' else ''}#{if @pilot.display_name then @pilot.display_name else @pilot.name} (#{@pilot.points})"
             @pilot_selector.data('select2').container.show()
             for upgrade in @upgrades
                 points = upgrade.getPoints()
