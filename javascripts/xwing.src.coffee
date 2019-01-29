@@ -5171,6 +5171,7 @@ exportObj.basicCardData = ->
             skill: 4
             points: 76
             force: 2
+            darkside: true
             slots: [
                 "Force"
                 "Crew"
