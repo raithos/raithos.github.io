@@ -394,6 +394,22 @@ class exportObj.SquadBuilderBackend
                 methods_ul.append li
             @ui_ready = true
 
+        @reload_done_modal = $ document.createElement('DIV')
+        @reload_done_modal.addClass 'modal hide fade hidden-print'
+        $(document.body).append @reload_done_modal
+        @reload_done_modal.append $.trim """
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Reload Done</h3>
+            </div>
+            <div class="modal-body">
+                <p>All squads of that faction have been reloaded.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" aria-hidden="true" data-dismiss="modal">Well done!</button>
+            </div>
+        """
+
         @squad_list_modal = $ document.createElement('DIV')
         @squad_list_modal.addClass 'modal hide fade hidden-print squad-list'
         $(document.body).append @squad_list_modal
@@ -422,6 +438,7 @@ class exportObj.SquadBuilderBackend
                     <button class="btn show-epic-squads">Epic</button>
                     <button class="btn show-team-epic-squads">Team<span class="hidden-phone"> Epic</span></button>
                 </div>
+                <button class="btn btn reload-all">Reload all squads (this might take a while)</button>
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         """
@@ -453,6 +470,35 @@ class exportObj.SquadBuilderBackend
                                 li.html $.trim """
                                     Error deleting #{li.data('squad').name}: <em>#{results.error}</em>
                                 """
+
+        @squad_list_modal.find('button.reload-all').click (e) =>
+            ul = @squad_list_modal.find('ul.squad-list') 
+            squadProcessingStack = [ () =>
+                @reload_done_modal.modal 'show' ]
+            squadDataStack = []
+            for li in ul.find('li')
+                li = $ li
+                squadDataStack.push li.data('squad')
+                builder = li.data('builder')
+                squadProcessingStack.push () => 
+                    sqd = squadDataStack.pop()
+                    # console.log("loading " + sqd.name)
+                    builder.container.trigger 'xwing-backend:squadLoadRequested', [ sqd, () =>
+                        additional_data =
+                            points: builder.total_points
+                            description: builder.describeSquad()
+                            cards: builder.listCards()
+                            notes: builder.notes.val().substr(0, 1024)
+                            obstacles: builder.getObstacles()
+                        # console.log("saving " + builder.current_squad.name)
+                        @save builder.serialize(), builder.current_squad.id, builder.current_squad.name, builder.faction, additional_data, squadProcessingStack.pop() ]
+                        
+            @squad_list_modal.modal 'hide'
+            if builder.current_squad.dirty
+                    @warnUnsaved builder, squadProcessingStack.pop()
+            else
+                squadProcessingStack.pop()()
+
 
         @select_all_button = $ @squad_list_modal.find('button.select-all')
         @select_all_button.click (e) =>
@@ -1316,7 +1362,7 @@ class exportObj.CardBrowser
                 else
                     @card_viewer_container.find('tr.info-charge').hide()
 
-                @card_viewer_container.find('tr.info-actions td.info-data').html (((exportObj.translate(@language, 'action', action) for action in exportObj.ships[data.ship].actions).join(', ')).replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked">') #super ghetto double replace for linked actions
+                @card_viewer_container.find('tr.info-actions td.info-data').html (((exportObj.translate(@language, 'action', action) for action in exportObj.ships[data.ship].actions).join(', ')).replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked red">/g,' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked red">').replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked red">/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked red">').replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked">') #super ghetto quadruple replace for linked actions
                 @card_viewer_container.find('tr.info-actions').show()
 
                 if ships[data.ship].actionsred?
@@ -8078,6 +8124,106 @@ exportObj.basicCardData = ->
                 "Modification"
             ]
         }
+        {
+            name: "Plo Koon"
+            id: 312
+            unique: true
+            faction: "Galactic Republic"
+            ship: "Delta-7 Aethersprite"
+            skill: 5
+            force: 2
+            points: 100
+            slots: [
+                "Force"
+                "Configuration"
+                "Modification"
+            ]
+        }
+        {
+            name: "Saesee Tiin"
+            id: 313
+            unique: true
+            faction: "Galactic Republic"
+            ship: "Delta-7 Aethersprite"
+            skill: 4
+            force: 2
+            points: 100
+            slots: [
+                "Force"
+                "Configuration"
+                "Modification"
+            ]
+        }
+        {
+            name: "Mace Windu"
+            id: 314
+            unique: true
+            faction: "Galactic Republic"
+            ship: "Delta-7 Aethersprite"
+            skill: 4
+            force: 3
+            points: 100
+            slots: [
+                "Force"
+                "Configuration"
+                "Modification"
+            ]
+        }
+        {
+            name: '"Kickback"'
+            id: 315
+            unique: true
+            faction: "Galactic Republic"
+            ship: "V-19 Torrent"
+            skill: 4
+            points: 100
+            slots: [
+            ]
+        }
+        {
+            name: '"Odd Ball"'
+            id: 316
+            unique: true
+            faction: "Galactic Republic"
+            ship: "V-19 Torrent"
+            skill: 5
+            points: 100
+            slots: [
+            ]
+        }
+        {
+            name: '"Swoop"'
+            id: 317
+            unique: true
+            faction: "Galactic Republic"
+            ship: "V-19 Torrent"
+            skill: 3
+            points: 100
+            slots: [
+            ]
+        }
+        {
+            name: '"Axe"'
+            id: 318
+            unique: true
+            faction: "Galactic Republic"
+            ship: "V-19 Torrent"
+            skill: 3
+            points: 100
+            slots: [
+            ]
+        }
+        {
+            name: '"Tucker"'
+            id: 319
+            unique: true
+            faction: "Galactic Republic"
+            ship: "V-19 Torrent"
+            skill: 2
+            points: 100
+            slots: [
+            ]
+        }
     ]
 
 
@@ -13320,6 +13466,24 @@ exportObj.cardLoaders.English = () ->
            text: """ After an enemy ship in your %BULLSEYEARC% at range 0-2 declares another friendly ship as the defender, you may perform a %CALCULATE% or %LOCK% action. %LINEBREAK% NETWORKED CALCULATIONS: While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range 0-1 to change 1 %FOCUS% result to an %EVADE% or %HIT% result. """
         "DFS-081":
            text: """ While a friendly ship at range 0-1 defends, it may spend 1 calculate token to change all %CRIT% results to %HIT% results. %LINEBREAK% NETWORKED CALCULATIONS: While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range 0-1 to change 1 %FOCUS% result to an %EVADE% or %HIT% result. """
+        "Obi-Wan Kenobi":
+           text: """When a friendly ship at range 0-2 spends a focus token, you may spend 1 %FORCE%. If you do, that ship gains 1 focus token."""
+        "Plo Koon":
+           text: """At the beginning of the engagement phase, you may spend 1 %FORCE% and choose another friendly ship at range 0-2. If you do, you may transfer 1 of your green tokens to the chosen ship or you may transfer 1 orange token from the chosen ship to you."""
+        "Saesee Tiin":
+           text: """When a friendly ship at range 0-2 reveals its dial, you may spend 1 %FORCE%. If you do, you may set that ship's dial to another manoeuvre of the same speed and difficulty."""
+        "Mace Windu":
+           text: """After you fully execute a red manoeuvre, recover 1 %FORCE%."""
+        '"Kickback"':
+           text: """After you perform %BARRELROLL% action, you may perform a red %LOCK% action. """
+        '"Odd Ball"':
+           text: """After you fully execute a red manoeuvre or execute a red action, if there is an enemy ship in your %BULLSEYEARC%, you may gain a lock on it. """
+        '"Swoop"':
+           text: """When a friendly small or medium ship fully executes a speed 3 - 4 manoeuvre, if it's at range 0-1, it may perform a red %BOOST% action."""
+        '"Axe"':
+           text: """After you defend or perform an attack, you may choose a friendly ship at range 1 - 2 in your %Left Side Arc% or %Right Side Arc%. If you do, transfer 1 green token to that ship."""
+        '"Tucker"':
+           text: """When a friedly ship at range 1 - 2 performs an attack against an enemy ship in your %FRONTARC%, you may perform a %FOCUS% action."""
             
 
 
@@ -27660,8 +27824,9 @@ class exportObj.SquadBuilder
                 @onPointsUpdated () =>
                     @isUpdatingPoints = false
                     cb()
-        .on 'xwing-backend:squadLoadRequested', (e, squad) =>
+        .on 'xwing-backend:squadLoadRequested', (e, squad, cb=$.noop) =>
             @onSquadLoadRequested squad
+            cb()
         .on 'xwing-backend:squadDirtinessChanged', (e) =>
             @onSquadDirtinessChanged()
         .on 'xwing-backend:squadNameChanged', (e) =>
@@ -28831,7 +28996,7 @@ class exportObj.SquadBuilder
                 meth()
 
     describeSquad: ->
-        (ship.pilot.name for ship in @ships when ship.pilot?).join ', '
+        ((ship.pilot.name for ship in @ships when ship.pilot?).join ', ') + ', Squad saved: ' + (new Date()).toLocaleString()
 
     listCards: ->
         card_obj = {}

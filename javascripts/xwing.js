@@ -470,10 +470,14 @@ exportObj.SquadBuilderBackend = (function() {
         return _this.ui_ready = true;
       };
     })(this));
+    this.reload_done_modal = $(document.createElement('DIV'));
+    this.reload_done_modal.addClass('modal hide fade hidden-print');
+    $(document.body).append(this.reload_done_modal);
+    this.reload_done_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>Reload Done</h3>\n</div>\n<div class=\"modal-body\">\n    <p>All squads of that faction have been reloaded.</p>\n</div>\n<div class=\"modal-footer\">\n    <button class=\"btn btn-primary\" aria-hidden=\"true\" data-dismiss=\"modal\">Well done!</button>\n</div>"));
     this.squad_list_modal = $(document.createElement('DIV'));
     this.squad_list_modal.addClass('modal hide fade hidden-print squad-list');
     $(document.body).append(this.squad_list_modal);
-    this.squad_list_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3 class=\"squad-list-header-placeholder hidden-phone hidden-tablet\"></h3>\n    <h4 class=\"squad-list-header-placeholder hidden-desktop\"></h4>\n</div>\n<div class=\"modal-body\">\n    <ul class=\"squad-list\"></ul>\n    <p class=\"pagination-centered squad-list-loading\">\n        <i class=\"fa fa-spinner fa-spin fa-3x\"></i>\n        <br />\n        Fetching squads...\n    </p>\n</div>\n<div class=\"modal-footer\">\n    <div class=\"btn-group delete-multiple-squads\">\n        <button class=\"btn select-all\">Select All</button>\n        <button class=\"btn btn-danger delete-selected\">Delete Selected</button>\n    </div>\n    <div class=\"btn-group squad-display-mode\">\n        <button class=\"btn btn-inverse show-all-squads\">All</button>\n        <button class=\"btn show-standard-squads\">Standard</button>\n        <button class=\"btn show-epic-squads\">Epic</button>\n        <button class=\"btn show-team-epic-squads\">Team<span class=\"hidden-phone\"> Epic</span></button>\n    </div>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.squad_list_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3 class=\"squad-list-header-placeholder hidden-phone hidden-tablet\"></h3>\n    <h4 class=\"squad-list-header-placeholder hidden-desktop\"></h4>\n</div>\n<div class=\"modal-body\">\n    <ul class=\"squad-list\"></ul>\n    <p class=\"pagination-centered squad-list-loading\">\n        <i class=\"fa fa-spinner fa-spin fa-3x\"></i>\n        <br />\n        Fetching squads...\n    </p>\n</div>\n<div class=\"modal-footer\">\n    <div class=\"btn-group delete-multiple-squads\">\n        <button class=\"btn select-all\">Select All</button>\n        <button class=\"btn btn-danger delete-selected\">Delete Selected</button>\n    </div>\n    <div class=\"btn-group squad-display-mode\">\n        <button class=\"btn btn-inverse show-all-squads\">All</button>\n        <button class=\"btn show-standard-squads\">Standard</button>\n        <button class=\"btn show-epic-squads\">Epic</button>\n        <button class=\"btn show-team-epic-squads\">Team<span class=\"hidden-phone\"> Epic</span></button>\n    </div>\n    <button class=\"btn btn reload-all\">Reload all squads (this might take a while)</button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
     this.squad_list_modal.find('ul.squad-list').hide();
     this.squad_list_modal.find('div.delete-multiple-squads').hide();
     this.delete_selected_button = $(this.squad_list_modal.find('button.delete-selected'));
@@ -510,6 +514,48 @@ exportObj.SquadBuilderBackend = (function() {
           }
         }
         return _results;
+      };
+    })(this));
+    this.squad_list_modal.find('button.reload-all').click((function(_this) {
+      return function(e) {
+        var builder, li, squadDataStack, squadProcessingStack, ul, _i, _len, _ref;
+        ul = _this.squad_list_modal.find('ul.squad-list');
+        squadProcessingStack = [
+          function() {
+            return _this.reload_done_modal.modal('show');
+          }
+        ];
+        squadDataStack = [];
+        _ref = ul.find('li');
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          li = _ref[_i];
+          li = $(li);
+          squadDataStack.push(li.data('squad'));
+          builder = li.data('builder');
+          squadProcessingStack.push(function() {
+            var sqd;
+            sqd = squadDataStack.pop();
+            return builder.container.trigger('xwing-backend:squadLoadRequested', [
+              sqd, function() {
+                var additional_data;
+                additional_data = {
+                  points: builder.total_points,
+                  description: builder.describeSquad(),
+                  cards: builder.listCards(),
+                  notes: builder.notes.val().substr(0, 1024),
+                  obstacles: builder.getObstacles()
+                };
+                return _this.save(builder.serialize(), builder.current_squad.id, builder.current_squad.name, builder.faction, additional_data, squadProcessingStack.pop());
+              }
+            ]);
+          });
+        }
+        _this.squad_list_modal.modal('hide');
+        if (builder.current_squad.dirty) {
+          return _this.warnUnsaved(builder, squadProcessingStack.pop());
+        } else {
+          return squadProcessingStack.pop()();
+        }
       };
     })(this));
     this.select_all_button = $(this.squad_list_modal.find('button.select-all'));
@@ -829,7 +875,7 @@ exportObj.SquadBuilderBackend = (function() {
                 return headers = arguments[0];
               };
             })(),
-            lineno: 711
+            lineno: 757
           }));
           __iced_deferrals._fulfill();
         });
@@ -1479,7 +1525,7 @@ exportObj.CardBrowser = (function() {
             _results2.push(exportObj.translate(this.language, 'action', action));
           }
           return _results2;
-        }).call(this)).join(', ')).replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">/g, ' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked">/g, ' <i class="xwing-miniatures-font xwing-miniatures-font-linked">'));
+        }).call(this)).join(', ')).replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked red">/g, ' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked red">').replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">/g, ' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked red">/g, ' <i class="xwing-miniatures-font xwing-miniatures-font-linked red">').replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked">/g, ' <i class="xwing-miniatures-font xwing-miniatures-font-linked">'));
         this.card_viewer_container.find('tr.info-actions').show();
         if (ships[data.ship].actionsred != null) {
           this.card_viewer_container.find('tr.info-actions-red td.info-data').html(((function() {
@@ -5515,6 +5561,81 @@ exportObj.basicCardData = function() {
         points: 100,
         unique: true,
         slots: ["Missile", "Configuration", "Modification"]
+      }, {
+        name: "Plo Koon",
+        id: 312,
+        unique: true,
+        faction: "Galactic Republic",
+        ship: "Delta-7 Aethersprite",
+        skill: 5,
+        force: 2,
+        points: 100,
+        slots: ["Force", "Configuration", "Modification"]
+      }, {
+        name: "Saesee Tiin",
+        id: 313,
+        unique: true,
+        faction: "Galactic Republic",
+        ship: "Delta-7 Aethersprite",
+        skill: 4,
+        force: 2,
+        points: 100,
+        slots: ["Force", "Configuration", "Modification"]
+      }, {
+        name: "Mace Windu",
+        id: 314,
+        unique: true,
+        faction: "Galactic Republic",
+        ship: "Delta-7 Aethersprite",
+        skill: 4,
+        force: 3,
+        points: 100,
+        slots: ["Force", "Configuration", "Modification"]
+      }, {
+        name: '"Kickback"',
+        id: 315,
+        unique: true,
+        faction: "Galactic Republic",
+        ship: "V-19 Torrent",
+        skill: 4,
+        points: 100,
+        slots: []
+      }, {
+        name: '"Odd Ball"',
+        id: 316,
+        unique: true,
+        faction: "Galactic Republic",
+        ship: "V-19 Torrent",
+        skill: 5,
+        points: 100,
+        slots: []
+      }, {
+        name: '"Swoop"',
+        id: 317,
+        unique: true,
+        faction: "Galactic Republic",
+        ship: "V-19 Torrent",
+        skill: 3,
+        points: 100,
+        slots: []
+      }, {
+        name: '"Axe"',
+        id: 318,
+        unique: true,
+        faction: "Galactic Republic",
+        ship: "V-19 Torrent",
+        skill: 3,
+        points: 100,
+        slots: []
+      }, {
+        name: '"Tucker"',
+        id: 319,
+        unique: true,
+        faction: "Galactic Republic",
+        ship: "V-19 Torrent",
+        skill: 2,
+        points: 100,
+        slots: []
       }
     ],
     upgradesById: [
@@ -11517,6 +11638,33 @@ exportObj.cardLoaders.English = function() {
     },
     "DFS-081": {
       text: " While a friendly ship at range 0-1 defends, it may spend 1 calculate token to change all %CRIT% results to %HIT% results. %LINEBREAK% NETWORKED CALCULATIONS: While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range 0-1 to change 1 %FOCUS% result to an %EVADE% or %HIT% result. "
+    },
+    "Obi-Wan Kenobi": {
+      text: "When a friendly ship at range 0-2 spends a focus token, you may spend 1 %FORCE%. If you do, that ship gains 1 focus token."
+    },
+    "Plo Koon": {
+      text: "At the beginning of the engagement phase, you may spend 1 %FORCE% and choose another friendly ship at range 0-2. If you do, you may transfer 1 of your green tokens to the chosen ship or you may transfer 1 orange token from the chosen ship to you."
+    },
+    "Saesee Tiin": {
+      text: "When a friendly ship at range 0-2 reveals its dial, you may spend 1 %FORCE%. If you do, you may set that ship's dial to another manoeuvre of the same speed and difficulty."
+    },
+    "Mace Windu": {
+      text: "After you fully execute a red manoeuvre, recover 1 %FORCE%."
+    },
+    '"Kickback"': {
+      text: "After you perform %BARRELROLL% action, you may perform a red %LOCK% action. "
+    },
+    '"Odd Ball"': {
+      text: "After you fully execute a red manoeuvre or execute a red action, if there is an enemy ship in your %BULLSEYEARC%, you may gain a lock on it. "
+    },
+    '"Swoop"': {
+      text: "When a friendly small or medium ship fully executes a speed 3 - 4 manoeuvre, if it's at range 0-1, it may perform a red %BOOST% action."
+    },
+    '"Axe"': {
+      text: "After you defend or perform an attack, you may choose a friendly ship at range 1 - 2 in your %Left Side Arc% or %Right Side Arc%. If you do, transfer 1 green token to that ship."
+    },
+    '"Tucker"': {
+      text: "When a friedly ship at range 1 - 2 performs an attack against an enemy ship in your %FRONTARC%, you may perform a %FOCUS% action."
     }
   };
   upgrade_translations = {
@@ -26538,7 +26686,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 26682
+                    lineno: 26846
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -27309,7 +27457,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 27485
+              lineno: 27649
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -27389,8 +27537,12 @@ exportObj.SquadBuilder = (function() {
         }
       };
     })(this)).on('xwing-backend:squadLoadRequested', (function(_this) {
-      return function(e, squad) {
-        return _this.onSquadLoadRequested(squad);
+      return function(e, squad, cb) {
+        if (cb == null) {
+          cb = $.noop;
+        }
+        _this.onSquadLoadRequested(squad);
+        return cb();
       };
     })(this)).on('xwing-backend:squadDirtinessChanged', (function(_this) {
       return function(e) {
@@ -28033,7 +28185,7 @@ exportObj.SquadBuilder = (function() {
           funcname: "SquadBuilder.removeShip"
         });
         ship.destroy(__iced_deferrals.defer({
-          lineno: 28152
+          lineno: 28317
         }));
         __iced_deferrals._fulfill();
       });
@@ -28045,7 +28197,7 @@ exportObj.SquadBuilder = (function() {
             funcname: "SquadBuilder.removeShip"
           });
           _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 28153
+            lineno: 28318
           }));
           __iced_deferrals._fulfill();
         })(function() {
@@ -29075,7 +29227,7 @@ exportObj.SquadBuilder = (function() {
 
   SquadBuilder.prototype.describeSquad = function() {
     var ship;
-    return ((function() {
+    return (((function() {
       var _i, _len, _ref, _results;
       _ref = this.ships;
       _results = [];
@@ -29086,7 +29238,7 @@ exportObj.SquadBuilder = (function() {
         }
       }
       return _results;
-    }).call(this)).join(', ');
+    }).call(this)).join(', ')) + ', Squad saved: ' + (new Date()).toLocaleString();
   };
 
   SquadBuilder.prototype.listCards = function() {
@@ -29585,7 +29737,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 29200
+                      lineno: 29365
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -29659,7 +29811,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 29225
+                lineno: 29390
               })
             ]);
             __iced_deferrals._fulfill();
@@ -29706,7 +29858,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 29239
+              lineno: 29404
             }));
           }
         }
@@ -30639,7 +30791,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 29993
+                lineno: 30158
               })
             ]);
             __iced_deferrals._fulfill();
@@ -30780,7 +30932,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 30067
+                  lineno: 30232
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -30802,7 +30954,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 30071
+                    lineno: 30236
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -30889,7 +31041,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 30112
+            lineno: 30277
           }));
         }
         __iced_deferrals._fulfill();
