@@ -2796,7 +2796,7 @@ exportObj.basicCardData = function() {
         points: 48,
         slots: ["Torpedo", "Astromech", "Modification", "Configuration"]
       }, {
-        name: "Edrio Two-Tubes",
+        name: "Edrio Two Tubes",
         id: 8,
         unique: true,
         faction: "Rebel Alliance",
@@ -3043,7 +3043,7 @@ exportObj.basicCardData = function() {
         points: 52,
         slots: ["Talent", "Sensor", "Crew", "Crew", "Modification", "Configuration", "Illicit"]
       }, {
-        name: "Benthic Two-Tubes",
+        name: "Benthic Two Tubes",
         id: 36,
         unique: true,
         faction: "Rebel Alliance",
@@ -8637,7 +8637,7 @@ exportObj.cardLoaders.Deutsch = function() {
       display_name: "Ben Teene",
       text: "Nachdem du einen Angriff durchgeführt hast, falls der Verteidiger in deinem %SINGLETURRETARC% ist, ordne dem Verteidiger den Zustand <strong>Aus der Fassung</strong> zu."
     },
-    "Benthic Two-Tubes": {
+    "Benthic Two Tubes": {
       display_name: "Benthic Two Tubes",
       text: "Nachdem du eine %FOCUS%-Aktion durchgeführt hast, darfst du 1 deiner Fokusmarker auf ein befreundetes Schiff in Reichweite 1-2 transferieren."
     },
@@ -8869,7 +8869,7 @@ exportObj.cardLoaders.Deutsch = function() {
       display_name: "Edon Kappehl",
       text: "Nachdem du ein blaues oder weißes Manöver vollständig ausgeführt hast, falls du in dieser Runde noch kein Gerät abgeworfen oder gestartet hast, darfst du 1 Gerät abwerfen."
     },
-    "Edrio Two-Tubes": {
+    "Edrio Two Tubes": {
       display_name: "Edrio Two Tubes",
       text: "Bevor du aktiviert wirst, falls du fokussiert bist, darfst du eine Aktion durchführen."
     },
@@ -10876,7 +10876,7 @@ exportObj.cardLoaders.English = function() {
       display_name: "Ben Teene",
       text: "After you perform an attack, if the defender is in your %SINGLETURRETARC%, assign the <strong>Rattled</strong> condition to the defender."
     },
-    "Benthic Two-Tubes": {
+    "Benthic Two Tubes": {
       display_name: "Benthic Two Tubes",
       text: "After you perform a %FOCUS% action, you may transfer 1 of your focus tokens to a friendly ship at range 1-2."
     },
@@ -11112,7 +11112,7 @@ exportObj.cardLoaders.English = function() {
       display_name: "Edon Kappehl",
       text: "After you fully execute a blue or white maneuver, if you have not dropped or launched a device this round, you may drop 1 device."
     },
-    "Edrio Two-Tubes": {
+    "Edrio Two Tubes": {
       display_name: "Edrio Two Tubes",
       text: "Before you activate, if you are focused, you may perform an action."
     },
@@ -13409,7 +13409,7 @@ exportObj.cardLoaders['Español'] = function() {
       display_name: "Dron autopilotado",
       text: "<i class = flavor_text>A veces, las advertencias del fabricante están hechas para ser ignoradas.</i>%LINEBREAK%<strong>Células de energía manipuladas:</strong>  Durante la fase de Sistemas, si no estás acoplado, pierdes 1 %CHARGE%. Al final de la fase de Activación, si tienes 0 %CHARGE%, eres destruido. Antes de ser retirado de la zona de juego, toda nave que tengas a alcance 0-1 sufre 1 de daño %CRIT%."
     },
-    "Benthic Two-Tubes": {
+    "Benthic Two Tubes": {
       display_name: "Benthic Dos Tubos",
       text: "Después de que realices una acción %FOCUS%, puedes transferir 1 de tus fichas de Concentración a una nave aliada que tengas a alcance 1-2."
     },
@@ -13521,7 +13521,7 @@ exportObj.cardLoaders['Español'] = function() {
       display_name: "Drea Renthal",
       text: "Mientras una nave aliada que no sea limitada efectúa un ataque, si el defensor está situado en tu arco de fuego, el atacante puede volver a tirar 1 dado de ataque."
     },
-    "Edrio Two-Tubes": {
+    "Edrio Two Tubes": {
       display_name: "Edrio Dos Tubos",
       text: "Antes de que te actives, si estás concentrado, puedes realizar una acción."
     },
@@ -15228,7 +15228,7 @@ exportObj.cardLoaders['Français'] = function() {
       display_name: "Drone Automatique",
       text: "<i class = flavor_text>Il est parfois utile d'ignorer les avertissements de sécurité préconisés par les fabricants…</i>%LINEBREAK%Cellules Énergétiques Bidouillées&nbsp;: pendant la phase de système, si vous n'êtes pas arrimé, perdez 1 &nbsp;%CHARGE%. À la fin de la phase d'activation, vous êtes détruit si vous avez 0 %CHARGE%. Avant de retirer votre figurine, chaque vaisseau à porté 0-1 subit 1 dégât %CRIT%."
     },
-    "Benthic Two-Tubes": {
+    "Benthic Two Tubes": {
       display_name: "Benthic Deux-Tubes",
       text: "Après avoir effectué une action %FOCUS%, vous pouvez transférer 1 de vos marqueurs de concentration à un vaisseau allié à portée 1-2."
     },
@@ -15340,7 +15340,7 @@ exportObj.cardLoaders['Français'] = function() {
       display_name: "Drea Renthal",
       text: "Tant qu'un vaisseau allié non-limité effectue une attaque, si le défenseur est dans votre arc de tir, l'attaquant peut relancer 1 dé d'attaque."
     },
-    "Edrio Two-Tubes": {
+    "Edrio Two Tubes": {
       display_name: "Edrio Deux-Tubes",
       text: "Avant votre activation, si vous êtes concentré, vous pouvez effectuer une action."
     },
@@ -17030,7 +17030,7 @@ exportObj.cardLoaders.Magyar = function() {
       display_name: "Autopilot Drone",
       text: "<strong>Rigged Energy Cells:</strong> A Rendszer fázis alatt, ha nem vagy dokkolva, elvesztesz 1&nbsp;%CHARGE% jelzőt. Az aktivációs fázis végén, ha már nincs %CHARGE% jelződ, megsemmisülsz. Mielőtt levennéd a hajód minden 0-1-es távolságban lévő hajó elszenved 1&nbsp;%CRIT% sérülést."
     },
-    "Benthic Two-Tubes": {
+    "Benthic Two Tubes": {
       display_name: "Benthic Two Tubes",
       text: "Miután végrehajtottál egy %FOCUS% akciót, átrakhatod 1 fókusz jelződ egy baráti hajóra 1-2-es távolságban."
     },
@@ -17142,7 +17142,7 @@ exportObj.cardLoaders.Magyar = function() {
       display_name: "Drea Renthal",
       text: "Amikor egy baráti nem-limitált hajó végrehajt egy támadást, ha a védekező benne van a tűzívedben, a támadó újradobhatja 1 támadókockáját."
     },
-    "Edrio Two-Tubes": {
+    "Edrio Two Tubes": {
       display_name: "Edrio Two Tubes",
       text: "Mielőtt aktiválódnál és van fókuszod, végrehajthatsz egy akciót."
     },
@@ -18728,7 +18728,7 @@ exportObj.cardLoaders.Italiano = function() {
       display_name: "Ben Teene",
       text: "Dopo che hai effettuato un attacco, se il difensore è nel tuo %SINGLETURRETARC%, assegna la condizione <strong>Sconquassato</strong> al difensore."
     },
-    "Benthic Two-Tubes": {
+    "Benthic Two Tubes": {
       display_name: "Benthic Due Tubi",
       text: "Dopo che hai effettuato un’azione %FOCUS%, puoi trasferire 1 tuo segnalino concentrazione a una nave amica a gittata 1-2."
     },
@@ -18960,7 +18960,7 @@ exportObj.cardLoaders.Italiano = function() {
       display_name: "Edon Kappehl",
       text: "Dopo che hai eseguito completamente una manovra blu o bianca, se non hai sganciato o lanciato un congegno in questo round, puoi sganciare 1 congegno."
     },
-    "Edrio Two-Tubes": {
+    "Edrio Two Tubes": {
       display_name: "Edrio Due Tubi",
       text: "Prima di attivarti, se sei concentrato,puoi effettuare 1 azione."
     },
@@ -20701,7 +20701,7 @@ exportObj.cardLoaders.Português = function() {
       display_name: "Ben Teene",
       text: "After you perform an attack, if the defender is in your %SINGLETURRETARC%, assign the <strong>Rattled</strong> condition to the defender."
     },
-    "Benthic Two-Tubes": {
+    "Benthic Two Tubes": {
       display_name: "Benthic Two Tubes",
       text: "Após realizar uma ação %FOCUS%, você pode transferir 1 de suas fichas de foco para uma nave amiga em alcance 1-2."
     },
@@ -20933,7 +20933,7 @@ exportObj.cardLoaders.Português = function() {
       display_name: "Edon Kappehl",
       text: "After you fully execute a blue or white maneuver, if you have not dropped or launched a device this round, you may drop 1 device."
     },
-    "Edrio Two-Tubes": {
+    "Edrio Two Tubes": {
       display_name: "Edrio Two Tubes",
       text: "Antes de ativar, se estiver focado, você pode realizar uma ação."
     },
@@ -22788,7 +22788,7 @@ exportObj.manifestByExpansion = {
       type: 'pilot',
       count: 1
     }, {
-      name: 'Benthic Two-Tubes',
+      name: 'Benthic Two Tubes',
       type: 'pilot',
       count: 1
     }, {
@@ -22804,7 +22804,7 @@ exportObj.manifestByExpansion = {
       type: 'pilot',
       count: 1
     }, {
-      name: 'Edrio Two-Tubes',
+      name: 'Edrio Two Tubes',
       type: 'pilot',
       count: 1
     }, {
