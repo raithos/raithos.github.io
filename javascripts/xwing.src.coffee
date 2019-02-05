@@ -7589,7 +7589,7 @@ exportObj.basicCardData = ->
             faction: "Galactic Republic"
             ship: "Delta-7 Aethersprite"
             skill: 5
-            force: 2
+            force: 3
             points: 100
             slots: [
                 "Force"
@@ -8161,7 +8161,7 @@ exportObj.basicCardData = ->
             unique: true
             faction: "Galactic Republic"
             ship: "Delta-7 Aethersprite"
-            skill: 4
+            skill: 5
             force: 3
             points: 100
             slots: [
@@ -8179,6 +8179,8 @@ exportObj.basicCardData = ->
             skill: 4
             points: 100
             slots: [
+                "Talent"
+                "Modification"
             ]
         }
         {
@@ -8190,6 +8192,8 @@ exportObj.basicCardData = ->
             skill: 5
             points: 100
             slots: [
+                "Talent"
+                "Modification"
             ]
         }
         {
@@ -8201,6 +8205,8 @@ exportObj.basicCardData = ->
             skill: 3
             points: 100
             slots: [
+                "Talent"
+                "Modification"
             ]
         }
         {
@@ -8212,6 +8218,8 @@ exportObj.basicCardData = ->
             skill: 3
             points: 100
             slots: [
+                "Talent"
+                "Modification"
             ]
         }
         {
@@ -8223,6 +8231,30 @@ exportObj.basicCardData = ->
             skill: 2
             points: 100
             slots: [
+                "Modification"
+            ]
+        }
+        {
+            name: "Blue Squadron Protector"
+            id: 320
+            faction: "Galactic Republic"
+            ship: "V-19 Torrent"
+            skill: 3
+            points: 100
+            slots: [
+                "Talent"
+                "Modification"
+            ]
+        }
+        {
+            name: "Gold Squadron Trooper"
+            id: 321
+            faction: "Galactic Republic"
+            ship: "V-19 Torrent"
+            skill: 2
+            points: 100
+            slots: [
+                "Modification"
             ]
         }
     ]
@@ -14042,27 +14074,24 @@ exportObj.cardLoaders.English = () ->
         "DFS-081":
            text: """ While a friendly ship at range 0-1 defends, it may spend 1 calculate token to change all %CRIT% results to %HIT% results. %LINEBREAK% NETWORKED CALCULATIONS: While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range 0-1 to change 1 %FOCUS% result to an %EVADE% or %HIT% result. """
         "Obi-Wan Kenobi":
-           text: """When a friendly ship at range 0-2 spends a focus token, you may spend 1 %FORCE%. If you do, that ship gains 1 focus token."""
+           text: """After a friendly ship at range 0-2 spends a focus token, you may spend 1 %FORCE%. If you do, that ship gains 1 focus token. %LINEBREAK% FINE-TUNED CONTROLS: After you fully execute a maneuver, you may spend 1 %FORCE% to perform a %BOOST% or %BARRELROLL% action. """ 
         "Plo Koon":
-           text: """At the beginning of the engagement phase, you may spend 1 %FORCE% and choose another friendly ship at range 0-2. If you do, you may transfer 1 of your green tokens to the chosen ship or you may transfer 1 orange token from the chosen ship to you."""
+           text: """At the start of the Engagement Phase, you may spend 1 %FORCE% and choose another friendly ship at range 0-2. If you do, you may transfer 1 green token to it or transfer one orange token from it to yourself. %LINEBREAK% FINE-TUNED CONTROLS: After you fully execute a maneuver, you may spend 1 %FORCE% to perform a %BOOST% or %BARRELROLL% action. """
         "Saesee Tiin":
-           text: """When a friendly ship at range 0-2 reveals its dial, you may spend 1 %FORCE%. If you do, you may set that ship's dial to another manoeuvre of the same speed and difficulty."""
+           text: """After a friendly ship at range 0-2 reveals its dial, you may spend 1 %FORCE%. If you do, set it's dial to another maneuver of the same speed and difficulty. %LINEBREAK% FINE-TUNED CONTROLS: After you fully execute a maneuver, you may spend 1 %FORCE% to perform a %BOOST% or %BARRELROLL% action. """
         "Mace Windu":
-           text: """After you fully execute a red manoeuvre, recover 1 %FORCE%."""
+           text: """After you fully execute a red maneuver, recover 1 %FORCE%. %LINEBREAK% FINE-TUNED CONTROLS: After you fully execute a maneuver, you may spend 1 %FORCE% to perform a %BOOST% or %BARRELROLL% action. """
         '"Kickback"':
-           text: """After you perform %BARRELROLL% action, you may perform a red %LOCK% action. """
+           text: """After you perform a %BARRELROLL% action, you may perform a red %LOCK% action. """
         '"Odd Ball"':
-           text: """After you fully execute a red manoeuvre or execute a red action, if there is an enemy ship in your %BULLSEYEARC%, you may gain a lock on it. """
+           text: """After you fully execute a red maneuver or perform a red action, if there is an enemy ship in your %BULLSEYEARC%, you may acquire a lock on that ship. """
         '"Swoop"':
-           text: """When a friendly small or medium ship fully executes a speed 3 - 4 manoeuvre, if it's at range 0-1, it may perform a red %BOOST% action."""
+           text: """After a friendly small or medium ship fully executes a speed 3-4 maneuver, if it is at range 0-1, it may perform a red %BOOST% action."""
         '"Axe"':
-           text: """After you defend or perform an attack, you may choose a friendly ship at range 1 - 2 in your %Left Side Arc% or %Right Side Arc%. If you do, transfer 1 green token to that ship."""
+           text: """After you defend or perform an attack, you may choose a friendly ship at range 1-2 in your %LEFTARC% or %RIGHTARC%. If you do, transfer 1 green token to that ship."""
         '"Tucker"':
-           text: """When a friedly ship at range 1 - 2 performs an attack against an enemy ship in your %FRONTARC%, you may perform a %FOCUS% action."""
-            
-
-
-
+           text: """After a friedly ship at range 1-2 performs an attack against an enemy ship in your %FRONTARC%, you may perform a %FOCUS% action."""
+        
 
     upgrade_translations =
         "0-0-0":
@@ -28617,7 +28646,6 @@ class exportObj.SquadBuilder
                 @isHyperspace = false
                 @isQuickbuild = false
                 @isCustom = true
-                @desired_points_input.val 200
                 @maxSmallShipsOfOneType = null
                 @maxLargeShipsOfOneType = null
             when 'quickbuild'
