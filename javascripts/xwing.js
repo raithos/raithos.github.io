@@ -477,7 +477,7 @@ exportObj.SquadBuilderBackend = (function() {
     this.squad_list_modal = $(document.createElement('DIV'));
     this.squad_list_modal.addClass('modal hide fade hidden-print squad-list');
     $(document.body).append(this.squad_list_modal);
-    this.squad_list_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3 class=\"squad-list-header-placeholder hidden-phone hidden-tablet\"></h3>\n    <h4 class=\"squad-list-header-placeholder hidden-desktop\"></h4>\n</div>\n<div class=\"modal-body\">\n    <ul class=\"squad-list\"></ul>\n    <p class=\"pagination-centered squad-list-loading\">\n        <i class=\"fa fa-spinner fa-spin fa-3x\"></i>\n        <br />\n        Fetching squads...\n    </p>\n</div>\n<div class=\"modal-footer\">\n    <div class=\"btn-group delete-multiple-squads\">\n        <button class=\"btn select-all\">Select All</button>\n        <button class=\"btn btn-danger delete-selected\">Delete Selected</button>\n    </div>\n    <div class=\"btn-group squad-display-mode\">\n        <button class=\"btn btn-inverse show-all-squads\">All</button>\n        <button class=\"btn show-standard-squads\">Standard</button>\n        <button class=\"btn show-epic-squads\">Epic</button>\n        <button class=\"btn show-team-epic-squads\">Team<span class=\"hidden-phone\"> Epic</span></button>\n    </div>\n    <button class=\"btn btn reload-all\">Reload all squads (this might take a while)</button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.squad_list_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3 class=\"squad-list-header-placeholder hidden-phone hidden-tablet\"></h3>\n    <h4 class=\"squad-list-header-placeholder hidden-desktop\"></h4>\n</div>\n<div class=\"modal-body\">\n    <ul class=\"squad-list\"></ul>\n    <p class=\"pagination-centered squad-list-loading\">\n        <i class=\"fa fa-spinner fa-spin fa-3x\"></i>\n        <br />\n        Fetching squads...\n    </p>\n</div>\n<div class=\"modal-footer\">\n    <div class=\"btn-group delete-multiple-squads\">\n        <button class=\"btn select-all\">Select All</button>\n        <button class=\"btn btn-danger delete-selected\">Delete Selected</button>\n    </div>\n    <div class=\"btn-group squad-display-mode\">\n        <button class=\"btn btn-inverse show-all-squads\">All</button>\n        <button class=\"btn show-extended-squads\">Extended</button>\n        <button class=\"btn show-hyperspace-squads\">Hyperspace</button>\n        <button class=\"btn show-quickbuild-squads\">Quickbuild</button>\n    </div>\n    <button class=\"btn btn reload-all\">Reload<span class=\"hidden-phone\"> all squads (this might take a while)</span></button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
     this.squad_list_modal.find('ul.squad-list').hide();
     this.squad_list_modal.find('div.delete-multiple-squads').hide();
     this.delete_selected_button = $(this.squad_list_modal.find('button.delete-selected'));
@@ -583,7 +583,6 @@ exportObj.SquadBuilderBackend = (function() {
         return _results;
       };
     })(this));
-    this.squad_list_modal.find('div.squad-display-mode').hide();
     this.show_all_squads_button = $(this.squad_list_modal.find('.show-all-squads'));
     this.show_all_squads_button.click((function(_this) {
       return function(e) {
@@ -595,41 +594,41 @@ exportObj.SquadBuilderBackend = (function() {
         }
       };
     })(this));
-    this.show_standard_squads_button = $(this.squad_list_modal.find('.show-standard-squads'));
-    this.show_standard_squads_button.click((function(_this) {
+    this.show_extended_squads_button = $(this.squad_list_modal.find('.show-extended-squads'));
+    this.show_extended_squads_button.click((function(_this) {
       return function(e) {
-        if (_this.squad_display_mode !== 'standard') {
-          _this.squad_display_mode = 'standard';
+        if (_this.squad_display_mode !== 'extended') {
+          _this.squad_display_mode = 'extended';
           _this.squad_list_modal.find('.squad-display-mode .btn').removeClass('btn-inverse');
-          _this.show_standard_squads_button.addClass('btn-inverse');
+          _this.show_extended_squads_button.addClass('btn-inverse');
           return _this.squad_list_modal.find('.squad-list li').each(function(idx, elem) {
-            return $(elem).toggle(($(elem).data().squad.serialized.search(/v\d+!e/) === -1) && ($(elem).data().squad.serialized.search(/v\d+!t/) === -1));
+            return $(elem).toggle($(elem).data().squad.serialized.search(/v\d+!s/) !== -1);
           });
         }
       };
     })(this));
-    this.show_epic_squads_button = $(this.squad_list_modal.find('.show-epic-squads'));
-    this.show_epic_squads_button.click((function(_this) {
+    this.show_hyperspace_squads_button = $(this.squad_list_modal.find('.show-hyperspace-squads'));
+    this.show_hyperspace_squads_button.click((function(_this) {
       return function(e) {
-        if (_this.squad_display_mode !== 'epic') {
-          _this.squad_display_mode = 'epic';
+        if (_this.squad_display_mode !== 'hyperspace') {
+          _this.squad_display_mode = 'hyperspace';
           _this.squad_list_modal.find('.squad-display-mode .btn').removeClass('btn-inverse');
-          _this.show_epic_squads_button.addClass('btn-inverse');
+          _this.show_hyperspace_squads_button.addClass('btn-inverse');
           return _this.squad_list_modal.find('.squad-list li').each(function(idx, elem) {
-            return $(elem).toggle($(elem).data().squad.serialized.search(/v\d+!e/) !== -1);
+            return $(elem).toggle($(elem).data().squad.serialized.search(/v\d+!h/) !== -1);
           });
         }
       };
     })(this));
-    this.show_team_epic_squads_button = $(this.squad_list_modal.find('.show-team-epic-squads'));
-    this.show_team_epic_squads_button.click((function(_this) {
+    this.show_quickbuild_squads_button = $(this.squad_list_modal.find('.show-quickbuild-squads'));
+    this.show_quickbuild_squads_button.click((function(_this) {
       return function(e) {
-        if (_this.squad_display_mode !== 'team-epic') {
-          _this.squad_display_mode = 'team-epic';
+        if (_this.squad_display_mode !== 'quickbuild') {
+          _this.squad_display_mode = 'quickbuild';
           _this.squad_list_modal.find('.squad-display-mode .btn').removeClass('btn-inverse');
-          _this.show_team_epic_squads_button.addClass('btn-inverse');
+          _this.show_quickbuild_squads_button.addClass('btn-inverse');
           return _this.squad_list_modal.find('.squad-list li').each(function(idx, elem) {
-            return $(elem).toggle($(elem).data().squad.serialized.search(/v\d+!t/) !== -1);
+            return $(elem).toggle($(elem).data().squad.serialized.search(/v\d+!q/) !== -1);
           });
         }
       };
@@ -875,7 +874,7 @@ exportObj.SquadBuilderBackend = (function() {
                 return headers = arguments[0];
               };
             })(),
-            lineno: 757
+            lineno: 754
           }));
           __iced_deferrals._fulfill();
         });
@@ -7738,6 +7737,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         pilot: "Black Squadron Ace",
         suffix: " (x2)",
+        linkedId: 14,
         ship: "TIE Fighter",
         threat: 3,
         upgrades: ["Juke", "Stealth Device"]
@@ -7746,6 +7746,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         pilot: "Obsidian Squadron Pilot",
         suffix: " (x2)",
+        linkedId: 15,
         ship: "TIE Fighter",
         threat: 3,
         upgrades: ["Outmaneuver", "Shield Upgrade"]
@@ -7754,6 +7755,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         pilot: "Academy Pilot",
         suffix: " (x2)",
+        linkedId: 16,
         ship: "TIE Fighter",
         threat: 2
       }, {
@@ -7915,6 +7917,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         pilot: "Planetary Sentinel",
         suffix: " x2",
+        linkedId: 39,
         ship: "TIE Striker",
         threat: 3,
         upgrades: ["Conner Nets"]
@@ -7981,6 +7984,1346 @@ exportObj.basicCardData = function() {
         ship: "TIE Bomber",
         threat: 2,
         upgrades: ["Cluster Missiles", "Skilled Bombardier", "Seismic Charges", "Proximity Mines", "Electronic Baffle"]
+      }, {
+        id: 49,
+        faction: "Galactic Empire",
+        pilot: "Major Rhymer",
+        ship: "TIE Bomber",
+        threat: 2,
+        upgrades: ["Intimidation", "Adv. Proton Torpedoes", "Cluster Missiles"]
+      }, {
+        id: 50,
+        faction: "Galactic Empire",
+        pilot: "Scimitar Squadron Pilot",
+        suffix: " x2",
+        linkedId: 50,
+        ship: "TIE Bomber",
+        threat: 3,
+        upgrades: ["Ion Missiles", "Proton Bombs"]
+      }, {
+        id: 51,
+        faction: "Galactic Empire",
+        pilot: "Captain Jonus",
+        ship: "TIE Bomber",
+        threat: 2,
+        upgrades: ["Proton Torpedoes", "Shield Upgrade"]
+      }, {
+        id: 52,
+        faction: "Galactic Empire",
+        pilot: "Gamma Squadron Ace",
+        ship: "TIE Bomber",
+        threat: 2,
+        upgrades: ["Concussion Missiles", "Skilled Bombardier", "Bomblet Generator", "Shield Upgrade"]
+      }, {
+        id: 53,
+        faction: "Galactic Empire",
+        pilot: "Grand Inquisitor",
+        ship: "TIE Advanced Prototype",
+        threat: 3,
+        upgrades: ["Supernatural Reflexes", "Concussion Missiles"]
+      }, {
+        id: 54,
+        faction: "Galactic Empire",
+        pilot: "Inquisitor",
+        ship: "TIE Advanced Prototype",
+        threat: 2,
+        upgrades: ["Instinctive Aim", "Cluster Missiles", "Munitions Failsafe"]
+      }, {
+        id: 55,
+        faction: "Galactic Empire",
+        pilot: "Seventh Sister",
+        ship: "TIE Advanced Prototype",
+        threat: 2,
+        upgrades: ["Homing Missiles"]
+      }, {
+        id: 56,
+        faction: "Galactic Empire",
+        pilot: "Baron of the Empire",
+        ship: "TIE Advanced Prototype",
+        threat: 2,
+        upgrades: ["Crack Shot", "Proton Rockets", "Stealth Device"]
+      }, {
+        id: 57,
+        faction: "Galactic Empire",
+        pilot: "Soontir Fel",
+        ship: "TIE Interceptor",
+        threat: 2,
+        upgrades: ["Outmaneuver", "Afterburners", "Stealth Device"]
+      }, {
+        id: 58,
+        faction: "Galactic Empire",
+        pilot: "Alpha Squadron Pilot",
+        suffix: " x2",
+        linkedId: 58,
+        ship: "TIE Interceptor",
+        threat: 3,
+        upgrades: ["Ablative Plating"]
+      }, {
+        id: 59,
+        faction: "Galactic Empire",
+        pilot: "Turr Phennir",
+        ship: "TIE Interceptor",
+        threat: 2,
+        upgrades: ["Daredevil", "Electronic Baffle"]
+      }, {
+        id: 60,
+        faction: "Galactic Empire",
+        pilot: "Saber Squadron Ace",
+        ship: "TIE Interceptor",
+        threat: 2,
+        upgrades: ["Predator", "Stealth Device"]
+      }, {
+        id: 61,
+        faction: "Galactic Empire",
+        pilot: "Lieutenant Karsabi",
+        ship: "Alpha-Class Star Wing",
+        threat: 2,
+        upgrades: ["Outmaneuver", "Heavy Laser Cannon", "Advanced SLAM", "Xg-1 Assault Configuration"]
+      }, {
+        id: 62,
+        faction: "Galactic Empire",
+        pilot: "Nu Squadron Pilot",
+        ship: "Alpha-Class Star Wing",
+        threat: 2,
+        upgrades: ["Fire-Control System", "Proton Torpedos", "Advanced SLAM", "Os-1 Arsenal Loadout"]
+      }, {
+        id: 63,
+        faction: "Galactic Empire",
+        pilot: "Major Vynder",
+        ship: "Alpha-Class Star Wing",
+        threat: 2,
+        upgrades: ["Saturation Salvo", "Barrage Rockets", "Advanced SLAM", "Os-1 Arsenal Loadout"]
+      }, {
+        id: 64,
+        faction: "Galactic Empire",
+        pilot: "Rho Squadron Pilot",
+        ship: "Alpha-Class Star Wing",
+        threat: 2,
+        upgrades: ["Fire-Control System", "Ion Cannon", "Homing Missiles", "Advanced SLAM", "Xg-1 Assault Configuration"]
+      }, {
+        id: 65,
+        faction: "Galactic Empire",
+        pilot: '"Deathrain"',
+        ship: "TIE Punisher",
+        threat: 2,
+        upgrades: ["Trajectory Simulator", "Homing Missiles", "Bomblet Generator", "Ablative Plating"]
+      }, {
+        id: 66,
+        faction: "Galactic Empire",
+        pilot: '"Deathrain"',
+        ship: "TIE Punisher",
+        threat: 2,
+        upgrades: ["Trajectory Simulator", "Homing Missiles", "Bomblet Generator", "Ablative Plating"]
+      }, {
+        id: 67,
+        faction: "Galactic Empire",
+        pilot: "Cutlass Squadron Pilot",
+        ship: "TIE Punisher",
+        threat: 2,
+        upgrades: ["Trajectory Simulator", "Ion Missiles", "Skilled Bombardier", "Proton Bombs"]
+      }, {
+        id: 68,
+        faction: "Galactic Empire",
+        pilot: '"Redline"',
+        ship: "TIE Punisher",
+        threat: 2,
+        upgrades: ["Debris Gambit", "Cluster Missiles"]
+      }, {
+        id: 69,
+        faction: "Galactic Empire",
+        pilot: "Cutlass Squadron Pilot",
+        ship: "TIE Punisher",
+        threat: 2,
+        upgrades: ["Advanced Sensors", "Proton Rockets", "Connor Nets"]
+      }, {
+        id: 70,
+        faction: "Galactic Empire",
+        pilot: "Captain Oicunn",
+        ship: "VT-49 Decimator",
+        threat: 4,
+        upgrades: ["Intimidation", "Grand Moff Tarkin", "Dauntless"]
+      }, {
+        id: 71,
+        faction: "Galactic Empire",
+        pilot: "Rear Admiral Chiraneau",
+        ship: "VT-49 Decimator",
+        threat: 4,
+        upgrades: ["Swarm Tactics", "Minister Tua", "Tactical Officer"]
+      }, {
+        id: 72,
+        faction: "Galactic Empire",
+        pilot: "Patrol Leader",
+        ship: "VT-49 Decimator",
+        threat: 4,
+        upgrades: ["Informant", "Seventh Sister", "Fifth Brother"]
+      }, {
+        id: 73,
+        faction: "Galactic Empire",
+        pilot: '"Vizier"',
+        ship: "TIE Reaper",
+        threat: 2,
+        upgrades: ["Director Krennic"]
+      }, {
+        id: 74,
+        faction: "Galactic Empire",
+        pilot: "Scarif Base Pilot",
+        ship: "TIE Reaper",
+        threat: 2,
+        upgrades: ["Death Troopers", "Shield Upgrade"]
+      }, {
+        id: 75,
+        faction: "Galactic Empire",
+        pilot: "Major Vermeil",
+        ship: "TIE Reaper",
+        threat: 2,
+        upgrades: ["Swarm Tactics", "Tactical Officer"]
+      }, {
+        id: 76,
+        faction: "Galactic Empire",
+        pilot: "Captain Feroph",
+        ship: "TIE Reaper",
+        threat: 2,
+        upgrades: ["Swarm Tactics", "ISB Slicer"]
+      }, {
+        id: 77,
+        faction: "Rebel Alliance",
+        pilot: "Luke Skywalker",
+        ship: "X-Wing",
+        threat: 3,
+        upgrades: ["Instinctive Aim", "Proton Torpedoes", "R2-D2", "Servomotor S-Foils"]
+      }, {
+        id: 78,
+        faction: "Rebel Alliance",
+        pilot: "Red Squadron Veteran",
+        ship: "X-Wing",
+        threat: 2,
+        upgrades: ["Predator", "R5 Astromech", "Servomotor S-Foils"]
+      }, {
+        id: 79,
+        faction: "Rebel Alliance",
+        pilot: "Jek Porkins",
+        ship: "X-Wing",
+        threat: 3,
+        upgrades: ["Outmaneuver", "R5-D8", "Afterburners", "Hull Upgrade", "Servomotor S-Foils"]
+      }, {
+        id: 80,
+        faction: "Rebel Alliance",
+        pilot: "Blue Squadron Escort",
+        ship: "X-Wing",
+        threat: 2,
+        upgrades: ["Proton Torpedoes", "R3 Astromech", "Servomotor S-Foils"]
+      }, {
+        id: 81,
+        faction: "Rebel Alliance",
+        pilot: "Wedge Antilles",
+        ship: "X-Wing",
+        threat: 3,
+        upgrades: ["Outmaneuver", "Proton Torpedoes", "R4 Astromech", "Shield Upgrade", "Servomotor S-Foils"]
+      }, {
+        id: 82,
+        faction: "Rebel Alliance",
+        pilot: "Biggs Darklighter",
+        ship: "X-Wing",
+        threat: 2,
+        upgrades: ["Selfless", "Servomotor S-Foils"]
+      }, {
+        id: 83,
+        faction: "Rebel Alliance",
+        pilot: "Thane Kyrell",
+        ship: "X-Wing",
+        threat: 3,
+        upgrades: ["Elusive", "Ion Torpedoes", "R2 Astromech", "Afterburners", "Hull Upgrade", "Servomotor S-Foils"]
+      }, {
+        id: 84,
+        faction: "Rebel Alliance",
+        pilot: "Garven Dreis",
+        ship: "X-Wing",
+        threat: 2,
+        upgrades: ["Servomotor S-Foils"]
+      }, {
+        id: 85,
+        faction: "Rebel Alliance",
+        pilot: "Norra Wexley",
+        ship: "Y-Wing",
+        threat: 3,
+        upgrades: ["Expert Handling", "Ion Cannon Turret", "Veterna Turret Gunner", "R3 Astromech"]
+      }, {
+        id: 86,
+        faction: "Rebel Alliance",
+        pilot: "Evaan Verlaine",
+        ship: "Y-Wing",
+        threat: 2,
+        upgrades: ["Expert Handling", "Ion Cannon Turret"]
+      }, {
+        id: 87,
+        faction: "Rebel Alliance",
+        pilot: "Gold Squadron Veteran",
+        ship: "Y-Wing",
+        threat: 2,
+        upgrades: ["Expert Handling", "Proton Torpedoes", "R3 Astromech"]
+      }, {
+        id: 88,
+        faction: "Rebel Alliance",
+        pilot: "Horton Salm",
+        ship: "Y-Wing",
+        threat: 3,
+        upgrades: ["Outmaneuver", "Ion Cannon Turret", "Veteran Turret Gunner", "R5 Astromech"]
+      }, {
+        id: 89,
+        faction: "Rebel Alliance",
+        pilot: '"Dutch" Vander',
+        ship: "Y-Wing",
+        threat: 2,
+        upgrades: ["Proton Torpedoes", "R3 Astromech"]
+      }, {
+        id: 90,
+        faction: "Rebel Alliance",
+        pilot: "Gray Squadron Bomber",
+        ship: "Y-Wing",
+        threat: 2,
+        upgrades: ["Ion Cannon Turret", "Proton Bomb", "R5 Astromech"]
+      }, {
+        id: 91,
+        faction: "Rebel Alliance",
+        pilot: "Esege Tuketu",
+        ship: "K-Wing",
+        threat: 3,
+        upgrades: ["Trajectory Simulator", "Ion Missiles", "Perceptive Copilot", "Conner Nets", "Proton Bombs", "Advanced SLAM"]
+      }, {
+        id: 92,
+        faction: "Rebel Alliance",
+        pilot: "Miranda Doni",
+        ship: "K-Wing",
+        threat: 2,
+        upgrades: ["Proton Bombs", "Advanced SLAM"]
+      }, {
+        id: 93,
+        faction: "Rebel Alliance",
+        pilot: "Warden Squadron Pilot",
+        ship: "K-Wing",
+        threat: 2,
+        upgrades: ["Barrage Rocktes", "Bomblet Generator"]
+      }, {
+        id: 94,
+        faction: "Rebel Alliance",
+        pilot: "Braylen Stramm",
+        ship: "B-Wing",
+        threat: 2,
+        upgrades: ["Trick Shot", "Jamming Beam"]
+      }, {
+        id: 95,
+        faction: "Rebel Alliance",
+        pilot: "Blade Squadron Veteran",
+        ship: "B-Wing",
+        threat: 2,
+        upgrades: ["Elusive", "Tractor Beam"]
+      }, {
+        id: 96,
+        faction: "Rebel Alliance",
+        pilot: "Ten Numb",
+        ship: "B-Wing",
+        threat: 3,
+        upgrades: ["Squad Leader", "Advanced Sensors", "Heavy Laser Cannon", "Shield Upgrade"]
+      }, {
+        id: 97,
+        faction: "Rebel Alliance",
+        pilot: "Blue Squadron Pilot",
+        ship: "B-Wing",
+        threat: 2,
+        upgrades: ["Advanced Sensors"]
+      }, {
+        id: 98,
+        faction: "Rebel Alliance",
+        pilot: "Norra Wexley",
+        ship: "ARC-170",
+        threat: 3,
+        upgrades: ["Expert Handling", "Seasoned Navigator", "Veteran Tail Gunner", "R3 Astromech", "Ablative Plating", "Hull Upgrade"]
+      }, {
+        id: 99,
+        faction: "Rebel Alliance",
+        pilot: "Garven Dreis",
+        ship: "ARC-170",
+        threat: 3,
+        upgrades: ["Expert Handling", "Proton Torpedoes", "Perceptive Copilot", "Veteran Tail Gunner"]
+      }, {
+        id: 100,
+        faction: "Rebel Alliance",
+        pilot: "Shara Bey",
+        ship: "ARC-170",
+        threat: 3,
+        upgrades: ["Expert Handling", "Proton Torpedoes", "Perceptive Copilot", "R3 Astromech"]
+      }, {
+        id: 101,
+        faction: "Rebel Alliance",
+        pilot: "Ibtisam",
+        ship: "ARC-170",
+        threat: 2,
+        upgrades: ["Elusive"]
+      }, {
+        id: 102,
+        faction: "Rebel Alliance",
+        pilot: "Wullffwarro",
+        ship: "Auzituck Gunship",
+        threat: 3,
+        upgrades: ["Selfless", 'GNK "Gonk" Droid', "Novice Technician", "Hull Upgrade"]
+      }, {
+        id: 103,
+        faction: "Rebel Alliance",
+        pilot: "Lowhhrick",
+        ship: "Auzituck Gunship",
+        threat: 2
+      }, {
+        id: 104,
+        faction: "Rebel Alliance",
+        pilot: "Kashyyyk Defender",
+        ship: "Auzituck Gunship",
+        threat: 2,
+        upgrades: ["Novice Technician"]
+      }, {
+        id: 105,
+        skip: true
+      }, {
+        id: 106,
+        faction: "Rebel Alliance",
+        pilot: "Corran Horn",
+        ship: "E-Wing",
+        threat: 4,
+        upgrades: ["Outmaneuver", "Fire-Control System", "Proton Torpedoes", "R2 Astromech", "Afterburners"]
+      }, {
+        id: 107,
+        faction: "Rebel Alliance",
+        pilot: "Rogue Squadron Escort",
+        ship: "E-Wing",
+        threat: 3,
+        upgrades: ["Predator", "Collision Detector", "Proton Torpedoes", "R3 Astromech"]
+      }, {
+        id: 108,
+        faction: "Rebel Alliance",
+        pilot: "Gavin Darklighter",
+        ship: "E-Wing",
+        threat: 3,
+        upgrades: ["Crack Shot", "Fire-Control System", "Ion Torpedoes", "R4 Astromech"]
+      }, {
+        id: 109,
+        faction: "Rebel Alliance",
+        pilot: "Knave Squadron Escort",
+        ship: "E-Wing",
+        threat: 2
+      }, {
+        id: 110,
+        faction: "Rebel Alliance",
+        pilot: "Jan Ors",
+        ship: "HWK-290",
+        threat: 3,
+        upgrades: ["Trick Shot", "Perceptive Copilot", "Seismic Charges", "Cloaking Device", "Engine Upgrade", "Moldy Crow"]
+      }, {
+        id: 111,
+        faction: "Rebel Alliance",
+        pilot: "Roark Garnet",
+        ship: "HWK-290",
+        threat: 2,
+        upgrades: ["Elusive", "Seismic Charges", "Hull Upgrade", "Shield Upgrade"]
+      }, {
+        id: 112,
+        faction: "Rebel Alliance",
+        pilot: "Kyle Katarn",
+        ship: "HWK-290",
+        threat: 2,
+        upgrades: ["Moldy Crow"]
+      }, {
+        id: 113,
+        faction: "Rebel Alliance",
+        pilot: "Rebel Scout",
+        ship: "HWK-290",
+        threat: 2,
+        upgrades: ["Proton Bombs", "Seismic Charges", "Sabine Wren", "Engine Upgrade"]
+      }, {
+        id: 114,
+        faction: "Rebel Alliance",
+        pilot: "Arvel Crynyd",
+        ship: "A-Wing",
+        threat: 2,
+        upgrades: ["Intimidation", "Proton Rockets", "Hull Upgrade"]
+      }, {
+        id: 115,
+        faction: "Rebel Alliance",
+        pilot: "Green Squadron Pilot",
+        ship: "A-Wing",
+        threat: 2,
+        upgrades: ["Daredevil", "Concussion Missiles", "Shield Upgrade"]
+      }, {
+        id: 116,
+        faction: "Jake Farrell",
+        pilot: "Green Squadron Pilot",
+        ship: "A-Wing",
+        threat: 2,
+        upgrades: ["Outmaneuver", "Cluster Missiles"]
+      }, {
+        id: 117,
+        faction: "Rebel Alliance",
+        pilot: "Phoenix Squadron Pilot",
+        suffix: " x2",
+        linkedId: 117,
+        ship: "A-Wing",
+        threat: 3,
+        upgrades: ["Proton Rockets"]
+      }, {
+        id: 118,
+        faction: "Rebel Alliance",
+        pilot: "Fenn Rau (Sheathipede)",
+        ship: "Sheathipede-Class Shuttle",
+        threat: 3,
+        upgrades: ["Outmaneuver", "Seasoned Navigator", "R4 Astromech", "Stealth Device", "Phantom"]
+      }, {
+        id: 119,
+        faction: "Rebel Alliance",
+        pilot: "Ezra Bridger (Sheathipede)",
+        ship: "Sheathipede-Class Shuttle",
+        threat: 2,
+        upgrades: ["Heightened Perception", '"Chopper" (Astromech)', "Afterburners", "Phantom"]
+      }, {
+        id: 120,
+        faction: "Rebel Alliance",
+        pilot: "Captain Rex",
+        ship: "TIE Fighter",
+        threat: 2,
+        upgrades: ["Elusive", "Juke", "Stealth Device"]
+      }, {
+        id: 121,
+        faction: "Rebel Alliance",
+        pilot: "Sabine Wren (TIE Fighter)",
+        ship: "TIE Fighter",
+        threat: 2,
+        upgrades: ["Outmaneuver", "Conner Nets", "Hull Upgrade"]
+      }, {
+        id: 122,
+        faction: "Rebel Alliance",
+        pilot: "Ezra Bridger (TIE Fighter)",
+        ship: "TIE Fighter",
+        threat: 2,
+        upgrades: ["Supernatural Reflexes", '"Zeb" Orrelios', "Hull Upgrade"]
+      }, {
+        id: 123,
+        faction: "Rebel Alliance",
+        pilot: '"Zeb" Orrelios (TIE Fighter)',
+        ship: "TIE Fighter",
+        threat: 1
+      }, {
+        id: 124,
+        faction: "Rebel Alliance",
+        pilot: "Cassian Andor",
+        ship: "U-Wing",
+        threat: 3,
+        upgrades: ["Fire-Control System", "Jyn Erso", "Baze Malbus", "Pivot Wing"]
+      }, {
+        id: 125,
+        faction: "Rebel Alliance",
+        pilot: "Bohdi Rook",
+        ship: "U-Wing",
+        threat: 2,
+        upgrades: ["Cassian Andor", "Pivot Wing"]
+      }, {
+        id: 126,
+        faction: "Rebel Alliance",
+        pilot: "Heff Tobber",
+        ship: "U-Wing",
+        threat: 3,
+        upgrades: ["Fire-Control System", "Ion Cannon Turret", "Bistan", "Perceptive Copilot", "Pivot Wing"]
+      }, {
+        id: 127,
+        faction: "Rebel Alliance",
+        pilot: "Blue Squadron Scout",
+        ship: "U-Wing",
+        threat: 2,
+        upgrades: ["Advanced Sensors", "Tactical Officer", "Pivot Wing"]
+      }, {
+        id: 128,
+        faction: "Rebel Alliance",
+        pilot: "Han Solo",
+        ship: "YT-1300",
+        threat: 4,
+        upgrades: ["Lone Wolf", "Chewbacca", "Millennium Falcon"]
+      }, {
+        id: 129,
+        faction: "Rebel Alliance",
+        pilot: "Chewbacca",
+        ship: "YT-1300",
+        threat: 6,
+        upgrades: ["Predator", "C-3PO", "Leia Organa", "R2-D2", "Han Solo", "Luke Skywalker", "Engine Upgrade", "Millennium Falcon"]
+      }, {
+        id: 130,
+        faction: "Rebel Alliance",
+        pilot: "Lando Calrissian",
+        ship: "YT-1300",
+        threat: 5,
+        upgrades: ["Swarm Tactics", "Concussion Missiles", "Nien Numb", "Engine Upgrade", "Millennium Falcon"]
+      }, {
+        id: 131,
+        faction: "Rebel Alliance",
+        pilot: "Outer Rim Smuggler",
+        ship: "YT-1300",
+        threat: 4,
+        upgrades: ["Homing Missiles", "Novice Technician", "Veteran Turret Gunner", "Feedback Array", "Static Discharge Vanes"]
+      }, {
+        id: 132,
+        faction: "Rebel Alliance",
+        pilot: "Airen Cracken",
+        ship: "Z-95 Headhunter",
+        threat: 2,
+        upgrades: ["Swarm Tactics", "Cluster Missiles", "Hull Upgrade"]
+      }, {
+        id: 133,
+        faction: "Rebel Alliance",
+        pilot: "Bandit Squadron Pilot",
+        ship: "Z-95 Headhunter",
+        threat: 1
+      }, {
+        id: 134,
+        faction: "Rebel Alliance",
+        pilot: "Lieutenant Blount",
+        ship: "Z-95 Headhunter",
+        threat: 2,
+        upgrades: ["Outmaneuver", "Proton Rockets", "Shield Upgrade"]
+      }, {
+        id: 135,
+        faction: "Rebel Alliance",
+        pilot: "Tala Squadron Pilot",
+        ship: "Z-95 Headhunter",
+        threat: 1,
+        upgrades: ["Selfless"]
+      }, {
+        id: 136,
+        faction: "Rebel Alliance",
+        pilot: "Hera Syndulla",
+        ship: "Attack Shuttle",
+        threat: 2,
+        upgrades: ["Elusive", "Ion Cannon Turret", "Phantom"]
+      }, {
+        id: 137,
+        faction: "Rebel Alliance",
+        pilot: "Sabine Wren",
+        ship: "Attack Shuttle",
+        threat: 2,
+        upgrades: ["Outmaneuver", "Dorsal Turret", "Phantom"]
+      }, {
+        id: 138,
+        faction: "Rebel Alliance",
+        pilot: "Dash Rendar",
+        ship: "YT-2400",
+        threat: 5,
+        upgrades: ["Expert Handling", "Trick Shot", "Perceptive Copilot", "Rigged Cargo Chute", "Outrider"]
+      }, {
+        id: 139,
+        faction: "Rebel Alliance",
+        pilot: "Leebo",
+        ship: "YT-2400",
+        threat: 4,
+        upgrades: ["Outrider", "Inertial Dampeners"]
+      }, {
+        id: 140,
+        faction: "Rebel Alliance",
+        pilot: "Wild Space Fringer",
+        ship: "YT-2400",
+        threat: 4,
+        upgrades: ["Concussion Missiles", "Veteran Turret Gunner", "Contraband Cybernetics"]
+      }, {
+        id: 141,
+        faction: "Rebel Alliance",
+        pilot: "Magva Yarro",
+        ship: "U-Wing",
+        threat: 3,
+        upgrades: ["Elusive", "Saw Gerrera", "Advanced Sensors", "Shield Upgrade", "Pivot Wing"]
+      }, {
+        id: 142,
+        faction: "Rebel Alliance",
+        pilot: "Saw Gerrera",
+        ship: "U-Wing",
+        threat: 2,
+        upgrades: ["Magva Yarro", "Pivot Wing"]
+      }, {
+        id: 143,
+        faction: "Rebel Alliance",
+        pilot: "Benthic Two Tubes",
+        ship: "U-Wing",
+        threat: 2,
+        upgrades: ["Advanced Sensors", "Pivot Wing"]
+      }, {
+        id: 144,
+        faction: "Rebel Alliance",
+        pilot: "Partisan Renegade",
+        ship: "U-Wing",
+        threat: 2,
+        upgrades: ["Advanced Sensors", "Deadman's Switch", "Pivot Wing"]
+      }, {
+        id: 145,
+        faction: "Rebel Alliance",
+        pilot: "Kullbee Sperado",
+        ship: "X-Wing",
+        threat: 3,
+        upgrades: ["Outmaneuver", "R2 Astromech", "Deadman's Switch", "Afterburners", "Hull Upgrade", "Servomotor S-Foils"]
+      }, {
+        id: 146,
+        faction: "Rebel Alliance",
+        pilot: "Edrio Two Tubes",
+        ship: "X-Wing",
+        threat: 2,
+        upgrades: ["Trick Shot", "R4 Astromech", "Deadman's Switch", "Servomotor S-Foils"]
+      }, {
+        id: 147,
+        faction: "Rebel Alliance",
+        pilot: "Leevan Tenza",
+        ship: "X-Wing",
+        threat: 3,
+        upgrades: ["Elusive", "R2 Astromech", "Deadman's Switch", "Afterburners", "Shield Upgrade", "Servomotor S-Foils"]
+      }, {
+        id: 148,
+        faction: "Rebel Alliance",
+        pilot: "Cavern Angels Zealot",
+        ship: "X-Wing",
+        threat: 2,
+        upgrades: ["R2 Astromech", "Deadman's Switch", "Servomotor S-Foils"]
+      }, {
+        id: 149,
+        faction: "Rebel Alliance",
+        pilot: "Kanan Jarrus",
+        suffix: " + Phantom",
+        linkedId: 150,
+        ship: "VCX-100",
+        threat: 6,
+        upgrades: ["Ion Cannon Turret", "Hera Syndulla", '"Chopper" (Crew)', "Ezra Bridger", "Ghost"]
+      }, {
+        id: 150,
+        faction: "Rebel Alliance",
+        pilot: '"Zeb" Orrelios',
+        suffix: " + Ghost",
+        linkedId: 149,
+        ship: "Attack Shuttle",
+        threat: 6,
+        upgrades: ["Phantom"]
+      }, {
+        id: 151,
+        faction: "Rebel Alliance",
+        pilot: "Hera Syndulla (VCX-100)",
+        suffix: " + Phantom",
+        linkedId: 152,
+        ship: "VCX-100",
+        threat: 6,
+        upgrades: ["Elusive", "Dorsal Turret", "Kanan Jarrus", "Ghost"]
+      }, {
+        id: 152,
+        faction: "Rebel Alliance",
+        pilot: "Ezra Bridger",
+        suffix: " + Ghost",
+        linkedId: 151,
+        ship: "Attack Shuttle",
+        threat: 6,
+        upgrades: ["Supernatural Reflexes", "Dorsal Turret", "Phantom"]
+      }, {
+        id: 153,
+        faction: "Rebel Alliance",
+        pilot: '"Chopper"',
+        suffix: " + Phantom",
+        linkedId: 154,
+        ship: "VCX-100",
+        threat: 6,
+        upgrades: ["Ion Cannon Turret", '"Zeb" Orrelios', "Ghost"]
+      }, {
+        id: 154,
+        faction: "Rebel Alliance",
+        pilot: "AP-5",
+        suffix: " + Ghost",
+        linkedId: 153,
+        ship: "Sheathipede-Class Shuttle",
+        threat: 6,
+        upgrades: ["R4 Astromech", "Phantom"]
+      }, {
+        id: 155,
+        faction: "Rebel Alliance",
+        pilot: "Lothal Rebel",
+        suffix: " + Phantom",
+        linkedId: 156,
+        ship: "VCX-100",
+        threat: 4,
+        upgrades: ["Dorsal Turret", "Lando Calrissian", "Ghost"]
+      }, {
+        id: 156,
+        faction: "Rebel Alliance",
+        pilot: '"Zeb" Orrelios (Sheathipede)',
+        suffix: " + Ghost",
+        linkedId: 155,
+        ship: "Sheathipede-Class Shuttle",
+        threat: 4,
+        upgrades: ["R5 Astromech", "Phantom"]
+      }, {
+        id: 157,
+        faction: "First Order",
+        pilot: '"Midnight"',
+        ship: "TIE/FO Fighter",
+        threat: 2,
+        upgrades: ["Afterburners"]
+      }, {
+        id: 158,
+        faction: "First Order",
+        pilot: '"Static"',
+        ship: "TIE/FO Fighter",
+        threat: 2,
+        upgrades: ["Outmaneuver"]
+      }, {
+        id: 159,
+        faction: "First Order",
+        pilot: "Omega Squadron Ace",
+        ship: "TIE/FO Fighter",
+        threat: 2,
+        upgrades: ["Elusive", "Fanatical", "Hull Upgrade"]
+      }, {
+        id: 160,
+        faction: "First Order",
+        pilot: '"Scorch"',
+        ship: "TIE/FO Fighter",
+        threat: 2,
+        upgrades: ["Fanatical", "Hull Upgrade"]
+      }, {
+        id: 161,
+        faction: "First Order",
+        pilot: '"Longshot"',
+        ship: "TIE/FO Fighter",
+        threat: 2,
+        upgrades: ["Elusive", "Predator"]
+      }, {
+        id: 162,
+        faction: "First Order",
+        pilot: "Zeta Squadron Pilot",
+        ship: "TIE/FO Fighter",
+        threat: 2,
+        upgrades: ["Advanced Optics", "Shield Upgrade"]
+      }, {
+        id: 163,
+        faction: "First Order",
+        pilot: '"Muse"',
+        ship: "TIE/FO Fighter",
+        threat: 2,
+        upgrades: ["Squad Leader", "Advanced Optics"]
+      }, {
+        id: 164,
+        faction: "First Order",
+        pilot: '"Null"',
+        ship: "TIE/FO Fighter",
+        threat: 2,
+        upgrades: ["Swarm Tactics", "Afterburners", "Shield Upgrade"]
+      }, {
+        id: 165,
+        faction: "First Order",
+        pilot: "Epsilon Squadron Cadet",
+        ship: "TIE/FO Fighter",
+        threat: 2,
+        upgrades: ["Targeting Synchronizer", "Afterburners"]
+      }, {
+        id: 166,
+        faction: "First Order",
+        pilot: "Commander Malarus",
+        ship: "TIE/FO Fighter",
+        threat: 2,
+        upgrades: ["Advanced Optics"]
+      }, {
+        id: 167,
+        faction: "First Order",
+        pilot: "TN-3465",
+        ship: "TIE/FO Fighter",
+        threat: 2,
+        upgrades: ["Targeting Synchronizer", "Shield Upgrade"]
+      }, {
+        id: 168,
+        faction: "First Order",
+        pilot: "Lieutenant Rivas",
+        ship: "TIE/FO Fighter",
+        threat: 1,
+        upgrades: []
+      }, {
+        id: 169,
+        faction: "First Order",
+        pilot: '"Quickdraw"',
+        ship: "TIE/SF Fighter",
+        threat: 3,
+        upgrades: ["Juke", "Collision Detector", "Hotshot Gunner", "Afterburners", "Shield Upgrade"]
+      }, {
+        id: 170,
+        faction: "First Order",
+        pilot: "Zeta Squadron Survivor",
+        ship: "TIE/SF Fighter",
+        threat: 2,
+        upgrades: ["Pattern Analyzer", "Ion Missiles", "Special Forces Gunner"]
+      }, {
+        id: 171,
+        faction: "First Order",
+        pilot: '"Backdraft"',
+        ship: "TIE/SF Fighter",
+        threat: 3,
+        upgrades: ["Pattern Analyzer", "Collision Detector", "Ion Missiles", "Special Forces Gunner", "Shield Upgrade"]
+      }, {
+        id: 172,
+        faction: "First Order",
+        pilot: "Omega Squadron Expert",
+        ship: "TIE/SF Fighter",
+        threat: 2,
+        upgrades: ["Juke", "Special Forces Gunner"]
+      }, {
+        id: 173,
+        faction: "First Order",
+        pilot: "Kylo Ren",
+        ship: "TIE/VN Silencer",
+        threat: 4,
+        upgrades: ["Hate", "Predictive Shot", "Primed Thrusters", "Advanced Proton Torpedoes"]
+      }, {
+        id: 174,
+        faction: "First Order",
+        pilot: '"Recoil"',
+        ship: "TIE/VN Silencer",
+        threat: 3,
+        upgrades: ["Predator", "Proton Torpedoes"]
+      }, {
+        id: 175,
+        faction: "First Order",
+        pilot: "First Order Test Pilot",
+        ship: "TIE/VN Silencer",
+        threat: 3,
+        upgrades: ["Outmaneuver", "Hull Upgrade"]
+      }, {
+        id: 176,
+        faction: "First Order",
+        pilot: '"Blackout"',
+        ship: "TIE/VN Silencer",
+        threat: 3,
+        upgrades: ["Elusive", "Afterburners"]
+      }, {
+        id: 177,
+        faction: "First Order",
+        pilot: '"Avenger"',
+        ship: "TIE/VN Silencer",
+        threat: 3,
+        upgrades: ["Primed Thrusters", "Advanced Proton Torpedoes"]
+      }, {
+        id: 178,
+        faction: "First Order",
+        pilot: "Sienar-Jaemus Engineer",
+        ship: "TIE/VN Silencer",
+        threat: 2
+      }, {
+        id: 179,
+        faction: "First Order",
+        pilot: "Lieutenant Tavson",
+        ship: "Upsilon-Class Command Shuttle",
+        threat: 4,
+        upgrades: ["Advanced Sensors", "Ion Cannon", "Kylo Ren", "Supreme Leader Snoke", "Shield Upgrade"]
+      }, {
+        id: 180,
+        faction: "First Order",
+        pilot: "Lieutenant Dormitz",
+        ship: "Upsilon-Class Command Shuttle",
+        threat: 3,
+        upgrades: ["Biohexacrypt Codes", "Hyperspace Tracking Data", "Tractor Beam"]
+      }, {
+        id: 181,
+        faction: "First Order",
+        pilot: "Starkiller Base Pilot",
+        ship: "Upsilon-Class Command Shuttle",
+        threat: 2
+      }, {
+        id: 182,
+        faction: "First Order",
+        pilot: "Major Stridan",
+        ship: "Upsilon-Class Command Shuttle",
+        threat: 4,
+        upgrades: ["Biohexacrypt Codes", "Pattern Analyzer", "Tractor Beam", "Captain Phasma", "General Hux"]
+      }, {
+        id: 183,
+        faction: "First Order",
+        pilot: "Captain Cardinal",
+        ship: "Upsilon-Class Command Shuttle",
+        threat: 3,
+        upgrades: ["Ion Cannon", "Petty Officer Thanisson"]
+      }, {
+        id: 184,
+        faction: "First Order",
+        pilot: "Petty Officer Thanisson",
+        ship: "Upsilon-Class Command Shuttle",
+        threat: 3,
+        upgrades: ["Captain Phasma", "Tactical Scrambler"]
+      }, {
+        id: 185,
+        faction: "Scum and Villainy",
+        pilot: "Boba Fett",
+        ship: "Firespray-31",
+        threat: 4,
+        upgrades: ["Lone Wolf", "Perceptive Copilot", "Inertial Dampeners", "Seismic Charge", "Slave I"]
+      }, {
+        id: 186,
+        faction: "Scum and Villainy",
+        pilot: "Kath Scarlet",
+        ship: "Firespray-31",
+        threat: 3,
+        upgrades: ["Marauder"]
+      }, {
+        id: 187,
+        faction: "Scum and Villainy",
+        pilot: "Krassis Treux",
+        ship: "Firespray-31",
+        threat: 3,
+        upgrades: ["Concussion Missiles"]
+      }, {
+        id: 188,
+        faction: "Scum and Villainy",
+        pilot: "Emon Azzameen",
+        ship: "Firespray-31",
+        threat: 4,
+        upgrades: ["Elusive", "Perceptive Copilot", "Inertial Dampeners", "Proximity Mines", "Seismic Charge", "Andrasta"]
+      }, {
+        id: 189,
+        faction: "Scum and Villainy",
+        pilot: "Koshka Frost",
+        ship: "Firespray-31",
+        threat: 3,
+        upgrades: ["Perceptive Copilot"]
+      }, {
+        id: 190,
+        faction: "Scum and Villainy",
+        pilot: "Bounty Hunter",
+        ship: "Firespray-31",
+        threat: 3,
+        upgrades: ["Perceptive Copilot", "Inertial Dampeners", "Seismic Charge"]
+      }, {
+        id: 191,
+        faction: "Scum and Villainy",
+        pilot: "Fenn Rau",
+        ship: "Fang Fighter",
+        threat: 3,
+        upgrades: ["Daredevil", "Afterburners", "Hull Upgrade"]
+      }, {
+        id: 192,
+        faction: "Scum and Villainy",
+        pilot: "Kad Solus",
+        ship: "Fang Fighter",
+        threat: 2,
+        upgrades: ["Fearless"]
+      }, {
+        id: 193,
+        faction: "Scum and Villainy",
+        pilot: "Zealous Recruit",
+        ship: "Fang Fighter",
+        threat: 2,
+        upgrades: ["Proton Torpedoes"]
+      }, {
+        id: 194,
+        faction: "Scum and Villainy",
+        pilot: "Joy Rekkoff",
+        ship: "Fang Fighter",
+        threat: 3,
+        upgrades: ["Predator", "Ion Torpedoes", "Afterburners", "Hull Upgrade"]
+      }, {
+        id: 195,
+        faction: "Scum and Villainy",
+        pilot: "Old Teroch",
+        ship: "Fang Fighter",
+        threat: 2
+      }, {
+        id: 196,
+        faction: "Scum and Villainy",
+        pilot: "Skull Squadron Pilot",
+        ship: "Fang Fighter",
+        threat: 2,
+        upgrades: ["Fearless"]
+      }, {
+        id: 197,
+        faction: "Scum and Villainy",
+        pilot: "Ahhav",
+        ship: "Mining Guild TIE Fighter",
+        threat: 2,
+        upgrades: ["Elusive", "Afterburners", "Hull Upgrade"]
+      }, {
+        id: 198,
+        faction: "Scum and Villainy",
+        pilot: "Mining Guild Surveyor",
+        ship: "Mining Guild TIE Fighter",
+        threat: 2,
+        upgrades: ["Swarm Tactics", "Trick Shot", "Shield Upgrade", "Static Discharge Vanes"]
+      }, {
+        id: 199,
+        faction: "Scum and Villainy",
+        pilot: "Overseer Yushyn",
+        ship: "Mining Guild TIE Fighter",
+        threat: 1
+      }, {
+        id: 200,
+        faction: "Scum and Villainy",
+        pilot: "Captain Seevor",
+        ship: "Mining Guild TIE Fighter",
+        threat: 2,
+        upgrades: ["Outmaneuver", "Shield Upgrade"]
+      }, {
+        id: 201,
+        faction: "Scum and Villainy",
+        pilot: "Foreman Proach",
+        ship: "Mining Guild TIE Fighter",
+        threat: 2,
+        upgrades: ["Predator", "Swarm Tactics", "Hull Upgrade"]
+      }, {
+        id: 202,
+        faction: "Scum and Villainy",
+        pilot: "Mining Guild Sentry",
+        ship: "Mining Guild TIE Fighter",
+        threat: 1
+      }, {
+        id: 203,
+        faction: "Scum and Villainy",
+        pilot: "Ketsu Onyo",
+        ship: "Lancer-Class Pursuit Craft",
+        threat: 4,
+        upgrades: ["Outmaneuver", "Rigged Cargo Chute", "Shield Upgrade", "Shadow Caster"]
+      }, {
+        id: 204,
+        faction: "Scum and Villainy",
+        pilot: "Sabine Wren",
+        ship: "Lancer-Class Pursuit Craft",
+        threat: 3,
+        upgrades: ["Fearless", "Ketsu Onyo", "Shadow Caster"]
+      }, {
+        id: 205,
+        faction: "Scum and Villainy",
+        pilot: "Asajj Ventress",
+        ship: "Lancer-Class Pursuit Craft",
+        threat: 4,
+        upgrades: ["Sense", "Veteran Turret Gunner", "Deadman's Switch", "Inertial Dampeners"]
+      }, {
+        id: 206,
+        faction: "Scum and Villainy",
+        pilot: "Shadowport Hunter",
+        ship: "Lancer-Class Pursuit Craft",
+        threat: 3,
+        upgrades: ["Maul", "Contraband Cybernetics"]
+      }, {
+        id: 207,
+        faction: "Scum and Villainy",
+        pilot: "Talonbane Cobra",
+        ship: "Kihraxz Fighter",
+        threat: 3,
+        upgrades: ["Outmaneuver", "Cluster Missiles", "Inertial Dampeners", "Afterburners", "Electronic Baffle", "Shield Upgrade"]
+      }, {
+        id: 208,
+        faction: "Scum and Villainy",
+        pilot: "Viktor Hel",
+        ship: "Kihraxz Fighter",
+        threat: 2,
+        upgrades: ["Crack Shot", "Stealth Device"]
+      }, {
+        id: 209,
+        faction: "Scum and Villainy",
+        pilot: "Graz",
+        ship: "Kihraxz Fighter",
+        threat: 3,
+        upgrades: ["Outmaneuver", "Concussion Missiles", "Contraband Cybernetics", "Afterburners"]
+      }, {
+        id: 210,
+        faction: "Scum and Villainy",
+        pilot: "Black Sun Ace",
+        ship: "Kihraxz Fighter",
+        threat: 2,
+        upgrades: ["Predator", "Shield Upgrade"]
+      }, {
+        id: 211,
+        faction: "Scum and Villainy",
+        pilot: "Captain Jostero",
+        ship: "Kihraxz Fighter",
+        threat: 3,
+        upgrades: ["Ion Missiles", "Munitions Failsafe"]
+      }, {
+        id: 212,
+        faction: "Scum and Villainy",
+        pilot: "Cartel Marauder",
+        ship: "Kihraxz Fighter",
+        threat: 2,
+        upgrades: ["Concussion Missiles", "Hull Upgrade", "Munitions Failsafe"]
+      }, {
+        id: 213,
+        faction: "Scum and Villainy",
+        pilot: "Kavil",
+        ship: "Y-Wing",
+        threat: 3,
+        upgrades: ["Expert Handling", "Dorsal Turret", "Genius", "Proton Bombs", "Afterburners"]
+      }, {
+        id: 214,
+        faction: "Scum and Villainy",
+        pilot: "Hired Gun",
+        ship: "Y-Wing",
+        threat: 2,
+        upgrades: ["Crack Shot", "Ion Cannon Turret", "Veteran Turret Gunner", "R3 Astromech", "Conner Nets"]
+      }, {
+        id: 215,
+        faction: "Scum and Villainy",
+        pilot: "Drea Renthal",
+        ship: "Y-Wing",
+        threat: 2,
+        upgrades: ["Expert Handling", "Ion Cannon Turret", "Hotshot Gunner"]
+      }, {
+        id: 216,
+        faction: "Scum and Villainy",
+        pilot: "Crymorah Goon",
+        ship: "Y-Wing",
+        threat: 2,
+        upgrades: ["Dorsal Turret", "Ion Torpedoes", "R3 Astromech", "Inertial Dampeners", "Proximity Mines"]
+      }, {
+        id: 217,
+        faction: "Scum and Villainy",
+        pilot: "Dace Bonearm",
+        ship: "HWK-290",
+        threat: 2,
+        upgrades: ["Feedback Array", "Conner Nets", "Static Discharge Vanes"]
+      }, {
+        id: 218,
+        faction: "Scum and Villainy",
+        pilot: "Palob Godalhi",
+        ship: "HWK-290",
+        threat: 2,
+        upgrades: ["Debris Gambit", "Juke", "Contraband Cybernetics", "Stealth Device"]
+      }, {
+        id: 219,
+        faction: "Scum and Villainy",
+        pilot: "Torkil Mux",
+        ship: "HWK-290",
+        threat: 2,
+        upgrades: ["Cloaking Device", "Proximity Mines"]
+      }, {
+        id: 220,
+        faction: "Scum and Villainy",
+        pilot: "Spice Runner",
+        suffix: " (x2)",
+        ship: "HWK-290",
+        threat: 3,
+        linkedId: 220,
+        upgrades: ["Deadman's Switch", "Proton Bombs", "Electronic Baffle"]
+      }, {
+        id: 221,
+        faction: "Scum and Villainy",
+        pilot: "Constable Zuvio",
+        ship: "Quadjumper",
+        threat: 2,
+        upgrades: ["Outmaneuver", "Rigged Cargo Chute", "Conner Nets", "Shield Upgrade"]
+      }, {
+        id: 222,
+        faction: "Scum and Villainy",
+        pilot: "Jakku Gunrunner",
+        suffix: " (x2)",
+        linkedId: 222,
+        ship: "Quadjumper",
+        threat: 3,
+        upgrades: ["Novice Technician", "Proximity Mines", "Electronic Baffle"]
+      }, {
+        id: 223,
+        faction: "Scum and Villainy",
+        pilot: "Sarco Plank",
+        ship: "Quadjumper",
+        threat: 2,
+        upgrades: ["Unkar Plutt", "Feedback Array", "Seismic Charges", "Hull Upgrade", "Shield Upgrade"]
+      }, {
+        id: 224,
+        faction: "Scum and Villainy",
+        pilot: "Unkar Plutt",
+        ship: "Quadjumper",
+        threat: 2,
+        upgrades: ["Novice Technician", "Contraband Cybernetics", "Proximity Mines", "Afterburners"]
+      }, {
+        id: 225,
+        faction: "Scum and Villainy",
+        pilot: "Prince Xizor",
+        ship: "StarViper",
+        threat: 3,
+        upgrades: ["Predator", "Fire-Control System", "Shield Upgrade", "Virago"]
+      }, {
+        id: 226,
+        faction: "Scum and Villainy",
+        pilot: "Black Sun Enforcer",
+        ship: "StarViper",
+        threat: 2,
+        upgrades: ["Collision Detector"]
+      }, {
+        id: 227,
+        faction: "Scum and Villainy",
+        pilot: "Guri",
+        ship: "StarViper",
+        threat: 3,
+        upgrades: ["Daredevil", "Advanced Sensors", "Advanced Proton Torpedoes"]
+      }, {
+        id: 228,
+        faction: "Scum and Villainy",
+        pilot: "Dalan Oberos",
+        ship: "StarViper",
+        threat: 3,
+        upgrades: ["Outmaneuver", "Fire-Control System", "Proton Torpedoes", "Contraband Cybernetics"]
+      }, {
+        id: 229,
+        faction: "Scum and Villainy",
+        pilot: "Black Sun Assassin",
+        ship: "StarViper",
+        threat: 2,
+        upgrades: ["Fearless"]
+      }, {
+        id: 230,
+        faction: "Scum and Villainy",
+        pilot: "Serissu",
+        ship: "M3-A Interceptor",
+        threat: 2,
+        upgrades: ["Stealth Device"]
+      }, {
+        id: 231,
+        faction: "Scum and Villainy",
+        pilot: "Genesis Red",
+        ship: "M3-A Interceptor",
+        threat: 2,
+        upgrades: ["Juke", "Concussion Missiles", "Munitions Failsafe"]
+      }, {
+        id: 232,
+        faction: "Scum and Villainy",
+        pilot: "Quinn Jast",
+        ship: "M3-A Interceptor",
+        threat: 2,
+        upgrades: ["Crack Shot", "Advanced Proton Torpedoes", "Afterburners"]
+      }, {
+        id: 233,
+        faction: "Scum and Villainy",
+        pilot: "Laetin A'shera",
+        ship: "M3-A Interceptor",
+        threat: 2,
+        upgrades: ["Juke", "Cluster Missiles", "Munitions Failsafe", "Stealth Device"]
+      }, {
+        id: 234,
+        faction: "Scum and Villainy",
+        pilot: "Inaldra",
+        ship: "M3-A Interceptor",
+        threat: 2,
+        upgrades: ["Ion Cannon", "Hull Upgrade", "Shield Upgrade"]
+      }, {
+        id: 235,
+        faction: "Scum and Villainy",
+        pilot: "Tansarii Point Veteran",
+        suffix: " (x2)",
+        linkedId: 235,
+        ship: "M3-A Interceptor",
+        threat: 3,
+        upgrades: ["Crack Shot", "Heavy Laser Cannon"]
+      }, {
+        id: 236,
+        faction: "Scum and Villainy",
+        pilot: "Sunny Bounder",
+        ship: "M3-A Interceptor",
+        threat: 2,
+        upgrades: ["Predator", "Cluster Missiles", "Afterburners"]
+      }, {
+        id: 237,
+        faction: "Scum and Villainy",
+        pilot: "Cartel Spacer",
+        suffix: " (x2)",
+        linkedId: 237,
+        ship: "M3-A Interceptor",
+        threat: 3,
+        upgrades: ["Ion Torpedoes", "Munitions Failsafe"]
       }
     ]
   };
@@ -27063,7 +28406,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 27441
+                    lineno: 29697
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -27835,7 +29178,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 28246
+              lineno: 30502
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -28417,7 +29760,7 @@ exportObj.SquadBuilder = (function() {
       _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         ship = _ref[_i];
-        if (ship.pilot != null) {
+        if ((ship.pilot != null) && (!this.isQuickbuild || ship.primary)) {
           _results.push(ship.toSerialized());
         }
       }
@@ -28570,36 +29913,47 @@ exportObj.SquadBuilder = (function() {
     return new_ship;
   };
 
-  SquadBuilder.prototype.removeShip = function(ship) {
+  SquadBuilder.prototype.removeShip = function(ship, cb) {
     var ___iced_passed_deferral, __iced_deferrals, __iced_k;
     __iced_k = __iced_k_noop;
     ___iced_passed_deferral = iced.findDeferral(arguments);
+    if (cb == null) {
+      cb = $.noop;
+    }
     (function(_this) {
       return (function(__iced_k) {
-        __iced_deferrals = new iced.Deferrals(__iced_k, {
-          parent: ___iced_passed_deferral,
-          funcname: "SquadBuilder.removeShip"
-        });
-        ship.destroy(__iced_deferrals.defer({
-          lineno: 28930
-        }));
-        __iced_deferrals._fulfill();
+        if ((ship != null ? ship.destroy : void 0) != null) {
+          (function(__iced_k) {
+            __iced_deferrals = new iced.Deferrals(__iced_k, {
+              parent: ___iced_passed_deferral,
+              funcname: "SquadBuilder.removeShip"
+            });
+            ship.destroy(__iced_deferrals.defer({
+              lineno: 31187
+            }));
+            __iced_deferrals._fulfill();
+          })(function() {
+            (function(__iced_k) {
+              __iced_deferrals = new iced.Deferrals(__iced_k, {
+                parent: ___iced_passed_deferral,
+                funcname: "SquadBuilder.removeShip"
+              });
+              _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
+                lineno: 31188
+              }));
+              __iced_deferrals._fulfill();
+            })(function() {
+              _this.current_squad.dirty = true;
+              return __iced_k(_this.container.trigger('xwing-backend:squadDirtinessChanged'));
+            });
+          });
+        } else {
+          return __iced_k();
+        }
       });
     })(this)((function(_this) {
       return function() {
-        (function(__iced_k) {
-          __iced_deferrals = new iced.Deferrals(__iced_k, {
-            parent: ___iced_passed_deferral,
-            funcname: "SquadBuilder.removeShip"
-          });
-          _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-            lineno: 28931
-          }));
-          __iced_deferrals._fulfill();
-        })(function() {
-          _this.current_squad.dirty = true;
-          return _this.container.trigger('xwing-backend:squadDirtinessChanged');
-        });
+        return cb();
       };
     })(this));
   };
@@ -28697,13 +30051,16 @@ exportObj.SquadBuilder = (function() {
     return cheap_ships;
   };
 
-  SquadBuilder.prototype.getAvailablePilotsForShipIncluding = function(ship, include_pilot, term, sorted) {
+  SquadBuilder.prototype.getAvailablePilotsForShipIncluding = function(ship, include_pilot, term, sorted, ship_selector) {
     var allowed_quickbuilds_containing_uniques_in_use, available_faction_pilots, eligible_faction_pilots, id, pilot, pilot_name, quickbuild, quickbuilds_matching_ship_and_faction, retval, upgrade;
     if (term == null) {
       term = '';
     }
     if (sorted == null) {
       sorted = true;
+    }
+    if (ship_selector == null) {
+      ship_selector = null;
     }
     retval = [];
     if (!this.isQuickbuild) {
@@ -28773,19 +30130,23 @@ exportObj.SquadBuilder = (function() {
           for (id in quickbuilds_matching_ship_and_faction) {
             quickbuild = quickbuilds_matching_ship_and_faction[id];
             if (_ref = exportObj.pilots[quickbuild.pilot], __indexOf.call(this.uniques_in_use.Pilot, _ref) >= 0) {
-              allowed_quickbuilds_containing_uniques_in_use.push(id);
+              allowed_quickbuilds_containing_uniques_in_use.push(quickbuild.id);
               continue;
             }
             if (quickbuild.upgrades != null) {
               _results.push((function() {
-                var _i, _len, _ref1, _ref2, _results1;
+                var _i, _len, _ref1, _ref2, _ref3, _ref4, _results1;
                 _ref1 = quickbuild.upgrades;
                 _results1 = [];
                 for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
                   upgrade = _ref1[_i];
                   if (_ref2 = exportObj.upgrades[upgrade], __indexOf.call(this.uniques_in_use.Upgrade, _ref2) >= 0) {
-                    allowed_quickbuilds_containing_uniques_in_use.push(parseInt(id));
-                    break;
+                    if (ship_selector === null || !(__indexOf.call(exportObj.quickbuildsById[ship_selector.quickbuildId].upgrades, upgrade) >= 0 || __indexOf.call((_ref3 = exportObj.quickbuildsById[(_ref4 = ship_selector.linkedShip) != null ? _ref4.quickbuildId : void 0]) != null ? _ref3.upgrades : void 0, upgrade) >= 0)) {
+                      allowed_quickbuilds_containing_uniques_in_use.push(quickbuild.id);
+                      break;
+                    } else {
+                      _results1.push(void 0);
+                    }
                   } else {
                     _results1.push(void 0);
                   }
@@ -28809,7 +30170,7 @@ exportObj.SquadBuilder = (function() {
             text: "" + ((((_ref = exportObj.settings) != null ? _ref.initiative_prefix : void 0) != null) && exportObj.settings.initiative_prefix ? exportObj.pilots[quickbuild.pilot].skill + ' - ' : '') + (exportObj.pilots[quickbuild.pilot].display_name ? exportObj.pilots[quickbuild.pilot].display_name : quickbuild.pilot) + quickbuild.suffix + " (" + quickbuild.threat + ")",
             points: quickbuild.threat,
             ship: quickbuild.ship,
-            disabled: (_ref1 = "" + quickbuild.id, __indexOf.call(allowed_quickbuilds_containing_uniques_in_use, _ref1) >= 0)
+            disabled: (_ref1 = quickbuild.id, __indexOf.call(allowed_quickbuilds_containing_uniques_in_use, _ref1) >= 0)
           });
         }
         return _results;
@@ -30166,12 +31527,16 @@ Ship = (function() {
     this.pilot = null;
     this.data = null;
     this.quickbuildId = -1;
+    this.linkedShip = null;
+    this.primary = true;
     this.upgrades = [];
     this.setupUI();
   }
 
   Ship.prototype.destroy = function(cb) {
-    var idx;
+    var idx, ___iced_passed_deferral, __iced_deferrals, __iced_k;
+    __iced_k = __iced_k_noop;
+    ___iced_passed_deferral = iced.findDeferral(arguments);
     this.resetPilot();
     this.resetAddons();
     this.teardownUI();
@@ -30180,7 +31545,29 @@ Ship = (function() {
       throw new Error("Ship not registered with builder");
     }
     this.builder.ships.splice(idx, 1);
-    return cb();
+    (function(_this) {
+      return (function(__iced_k) {
+        if (_this.linkedShip !== null) {
+          _this.linkedShip.linkedShip = null;
+          (function(__iced_k) {
+            __iced_deferrals = new iced.Deferrals(__iced_k, {
+              parent: ___iced_passed_deferral,
+              funcname: "Ship.destroy"
+            });
+            _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
+              lineno: 32284
+            }));
+            __iced_deferrals._fulfill();
+          })(__iced_k);
+        } else {
+          return __iced_k();
+        }
+      });
+    })(this)((function(_this) {
+      return function() {
+        return cb();
+      };
+    })(this));
   };
 
   Ship.prototype.copyFrom = function(other) {
@@ -30369,7 +31756,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 30126
+                          lineno: 32391
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -30383,7 +31770,35 @@ Ship = (function() {
                     _this.setupAddons();
                   }
                   _this.copy_button.show();
-                  return __iced_k(_this.setShipType(_this.pilot.ship));
+                  _this.setShipType(_this.pilot.ship);
+                  (function(__iced_k) {
+                    if (_this.linkedShip) {
+                      (function(__iced_k) {
+                        if (quickbuild.linkedId != null) {
+                          _this.linkedShip.setPilotById(quickbuild.linkedId);
+                          return __iced_k(_this.linkedShip.primary = false);
+                        } else {
+                          _this.linkedShip.linkedShip = null;
+                          (function(__iced_k) {
+                            __iced_deferrals = new iced.Deferrals(__iced_k, {
+                              parent: ___iced_passed_deferral,
+                              funcname: "Ship.setPilotById"
+                            });
+                            _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
+                              lineno: 32407
+                            }));
+                            __iced_deferrals._fulfill();
+                          })(function() {
+                            return __iced_k(_this.linkedShip = null);
+                          });
+                        }
+                      })(__iced_k);
+                    } else {
+                      return __iced_k(quickbuild.linkedId != null ? (_this.linkedShip = _this.builder.ships.slice(-1)[0], _this.linkedShip.data !== null ? _this.linkedShip = _this.builder.addShip() : _this.builder.addShip(), _this.linkedShip.linkedShip = _this, _this.linkedShip.setPilotById(quickbuild.linkedId), _this.linkedShip.primary = false) : void 0);
+                    }
+                  })(function() {
+                    return __iced_k(_this.primary = true);
+                  });
                 });
               } else {
                 return __iced_k(_this.copy_button.hide());
@@ -30438,7 +31853,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 30155
+                      lineno: 32447
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -30512,7 +31927,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 30180
+                lineno: 32472
               })
             ]);
             __iced_deferrals._fulfill();
@@ -30548,6 +31963,10 @@ Ship = (function() {
       for (_j = 0, _len1 = _ref3.length; _j < _len1; _j++) {
         upgrade_name = _ref3[_j];
         upgrade_data = exportObj.upgrades[upgrade_name];
+        if (upgrade_data == null) {
+          console.log("Unknown Upgrade: " + upgrade_name);
+          continue;
+        }
         upgrade = new exportObj.QuickbuildUpgrade({
           ship: this,
           container: this.addon_container,
@@ -30577,7 +31996,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 30206
+              lineno: 32501
             }));
           }
         }
@@ -30607,7 +32026,7 @@ Ship = (function() {
       }
       return points;
     } else {
-      threat = (_ref3 = (_ref4 = exportObj.quickbuildsById[this.quickbuildId]) != null ? _ref4.threat : void 0) != null ? _ref3 : 0;
+      threat = this.primary ? (_ref3 = (_ref4 = exportObj.quickbuildsById[this.quickbuildId]) != null ? _ref4.threat : void 0) != null ? _ref3 : 0 : 0;
       this.points_container.find('span').text(threat);
       if (threat > 0) {
         this.points_container.fadeTo('fast', 1);
@@ -30636,7 +32055,7 @@ Ship = (function() {
       }
       this.pilot_selector.select2('data', {
         id: this.pilot.id,
-        text: "" + ((((_ref = exportObj.settings) != null ? _ref.initiative_prefix : void 0) != null) && exportObj.settings.initiative_prefix ? this.pilot.skill + ' - ' : '') + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + " (" + (this.builder.isQuickbuild ? exportObj.quickbuildsById[this.quickbuildId].threat : this.pilot.points) + ")"
+        text: "" + ((((_ref = exportObj.settings) != null ? _ref.initiative_prefix : void 0) != null) && exportObj.settings.initiative_prefix ? this.pilot.skill + ' - ' : '') + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + (this.quickbuildId !== -1 ? exportObj.quickbuildsById[this.quickbuildId].suffix : "") + " (" + (this.quickbuildId !== -1 ? (this.primary ? exportObj.quickbuildsById[this.quickbuildId].threat : 0) : this.pilot.points) + ")"
       });
       this.pilot_selector.data('select2').container.show();
       _ref1 = this.upgrades;
@@ -30717,23 +32136,23 @@ Ship = (function() {
           _this.builder.checkCollection();
           return query.callback({
             more: false,
-            results: _this.builder.getAvailablePilotsForShipIncluding(_this.ship_selector.val(), _this.pilot, query.term)
+            results: _this.builder.getAvailablePilotsForShipIncluding(_this.ship_selector.val(), _this.pilot, query.term, true, _this)
           });
         };
       })(this),
       minimumResultsForSearch: $.isMobile() ? -1 : 0,
       formatResultCssClass: (function(_this) {
         return function(obj) {
-          var name, not_in_collection, _ref;
+          var name, not_in_collection, _ref, _ref1, _ref2;
           if ((_this.builder.collection != null) && (_this.builder.collection.checks.collectioncheck === "true")) {
             not_in_collection = false;
             name = "";
             if (_this.builder.isQuickbuild) {
-              name = exportObj.quickbuildsById[obj.id].pilot;
+              name = (_ref = (_ref1 = exportObj.quickbuildsById[obj.id]) != null ? _ref1.pilot : void 0) != null ? _ref : "unknown pilot";
             } else {
               name = obj.name;
             }
-            if (obj.id === ((_ref = _this.pilot) != null ? _ref.id : void 0)) {
+            if (obj.id === ((_ref2 = _this.pilot) != null ? _ref2.id : void 0)) {
               if (!(_this.builder.collection.checkShelf('pilot', name) || _this.builder.collection.checkTable('pilot', name))) {
                 not_in_collection = true;
               }
@@ -30985,7 +32404,7 @@ Ship = (function() {
         hullIconHTML += "<i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull expanded-hull-or-shield\"></i>";
       }
     }
-    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.xws + "\"></i><span class=\"fancy-ship-type\"> " + (this.data.display_name ? this.data.display_name : this.data.name) + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + (this.builder.isQuickbuild ? exportObj.quickbuildsById[this.quickbuildId].threat : this.pilot.points) + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">INI " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + attackHTML + "\n        " + attackbHTML + "\n        " + attackfHTML + "\n        " + attacktHTML + "\n        " + attackdtHTML + "\n        " + energyHTML + "\n        <i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref24 = (_ref25 = this.pilot.ship_override) != null ? _ref25.agility : void 0) != null ? _ref24 : this.data.agility, effective_stats, 'agility')) + "</span>                    \n        " + hullIconHTML + "\n        <i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull simple-hull-or-shield\"></i>\n        <span class=\"info-data info-hull simple-hull-or-shield\">" + (statAndEffectiveStat((_ref26 = (_ref27 = this.pilot.ship_override) != null ? _ref27.hull : void 0) != null ? _ref26 : this.data.hull, effective_stats, 'hull')) + "</span>\n        " + shieldIconHTML + "\n        <i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield simple-hull-or-shield\"></i>\n        <span class=\"info-data info-shields simple-hull-or-shield\">" + (statAndEffectiveStat((_ref28 = (_ref29 = this.pilot.ship_override) != null ? _ref29.shields : void 0) != null ? _ref28 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + forceHTML + "\n        " + chargeHTML + "\n        &nbsp;\n        " + action_bar + "\n        &nbsp;&nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
+    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.xws + "\"></i><span class=\"fancy-ship-type\"> " + (this.data.display_name ? this.data.display_name : this.data.name) + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + (this.quickbuildId !== -1 ? (this.primary ? exportObj.quickbuildsById[this.quickbuildId].threat : 0) : this.pilot.points) + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">INI " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + attackHTML + "\n        " + attackbHTML + "\n        " + attackfHTML + "\n        " + attacktHTML + "\n        " + attackdtHTML + "\n        " + energyHTML + "\n        <i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref24 = (_ref25 = this.pilot.ship_override) != null ? _ref25.agility : void 0) != null ? _ref24 : this.data.agility, effective_stats, 'agility')) + "</span>                    \n        " + hullIconHTML + "\n        <i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull simple-hull-or-shield\"></i>\n        <span class=\"info-data info-hull simple-hull-or-shield\">" + (statAndEffectiveStat((_ref26 = (_ref27 = this.pilot.ship_override) != null ? _ref27.hull : void 0) != null ? _ref26 : this.data.hull, effective_stats, 'hull')) + "</span>\n        " + shieldIconHTML + "\n        <i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield simple-hull-or-shield\"></i>\n        <span class=\"info-data info-shields simple-hull-or-shield\">" + (statAndEffectiveStat((_ref28 = (_ref29 = this.pilot.ship_override) != null ? _ref29.shields : void 0) != null ? _ref28 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + forceHTML + "\n        " + chargeHTML + "\n        &nbsp;\n        " + action_bar + "\n        &nbsp;&nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
     dialHTML = this.builder.getManeuverTableHTML(effective_stats.maneuvers, this.data.maneuvers);
     html += $.trim("<div class=\"fancy-dial\">\n    " + dialHTML + "\n</div>");
     if (this.pilot.text) {
@@ -31020,7 +32439,7 @@ Ship = (function() {
 
   Ship.prototype.toTableRow = function() {
     var halfPoints, points, slotted_upgrades, table_html, threshold, upgrade, _i, _len;
-    table_html = $.trim("<tr class=\"simple-pilot\">\n    <td class=\"name\">" + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + " &mdash; " + (this.data.display_name ? this.data.display_name : this.data.name) + "</td>\n    <td class=\"points\">" + (this.builder.isQuickbuild ? exportObj.quickbuildsById[this.quickbuildId].threat : this.pilot.points) + "</td>\n</tr>");
+    table_html = $.trim("<tr class=\"simple-pilot\">\n    <td class=\"name\">" + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + " &mdash; " + (this.data.display_name ? this.data.display_name : this.data.name) + "</td>\n    <td class=\"points\">" + (this.quickbuildId !== -1 ? (this.primary ? exportObj.quickbuildsById[this.quickbuildId].threat : 0) : this.pilot.points) + "</td>\n</tr>");
     slotted_upgrades = (function() {
       var _i, _len, _ref, _results;
       _ref = this.upgrades;
@@ -31050,7 +32469,7 @@ Ship = (function() {
 
   Ship.prototype.toRedditText = function() {
     var points, reddit, reddit_upgrades, slotted_upgrades, upgrade, upgrade_reddit, _i, _len;
-    reddit = "**" + this.pilot.name + " (" + (this.builder.isQuickbuild ? exportObj.quickbuildsById[this.quickbuildId].threat : this.pilot.points) + ")**    \n";
+    reddit = "**" + this.pilot.name + " (" + (this.quickbuildId !== -1 ? (this.primary ? exportObj.quickbuildsById[this.quickbuildId].threat : 0) : this.pilot.points) + ")**    \n";
     slotted_upgrades = (function() {
       var _i, _len, _ref, _results;
       _ref = this.upgrades;
@@ -31110,7 +32529,7 @@ Ship = (function() {
 
   Ship.prototype.toBBCode = function() {
     var bbcode, bbcode_upgrades, points, slotted_upgrades, upgrade, upgrade_bbcode, _i, _len;
-    bbcode = "[b]" + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + " (" + (this.builder.isQuickbuild ? exportObj.quickbuildsById[this.quickbuildId].threat : this.pilot.points) + ")[/b]";
+    bbcode = "[b]" + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + " (" + (this.quickbuildId !== -1 ? (this.primary ? exportObj.quickbuildsById[this.quickbuildId].threat : 0) : this.pilot.points) + ")[/b]";
     slotted_upgrades = (function() {
       var _i, _len, _ref, _results;
       _ref = this.upgrades;
@@ -31141,7 +32560,7 @@ Ship = (function() {
 
   Ship.prototype.toSimpleHTML = function() {
     var html, points, slotted_upgrades, upgrade, upgrade_html, _i, _len;
-    html = "<b>" + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + " (" + (this.builder.isQuickbuild ? exportObj.quickbuildsById[this.quickbuildId].threat : this.pilot.points) + ")</b><br />";
+    html = "<b>" + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + " (" + (this.quickbuildId !== -1 ? (this.primary ? exportObj.quickbuildsById[this.quickbuildId].threat : 0) : this.pilot.points) + ")</b><br />";
     slotted_upgrades = (function() {
       var _i, _len, _ref, _results;
       _ref = this.upgrades;
@@ -31200,7 +32619,7 @@ Ship = (function() {
   };
 
   Ship.prototype.fromSerialized = function(version, serialized) {
-    var addon_cls, addon_id, addon_type_serialized, conferred_addon, conferredaddon_pair, conferredaddon_pairs, deferred_id, deferred_ids, everythingadded, i, pilot_id, upgrade, upgrade_conferred_addon_pairs, upgrade_id, upgrade_ids, version_4_compatibility_placeholder_mod, version_4_compatibility_placeholder_title, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _m, _n, _o, _p, _q, _ref, _ref1, _ref10, _ref11, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var addon_cls, addon_id, addon_type_serialized, conferred_addon, conferredaddon_pair, conferredaddon_pairs, deferred_id, deferred_id_added, deferred_ids, everythingadded, i, pilot_id, upgrade, upgrade_conferred_addon_pairs, upgrade_id, upgrade_ids, version_4_compatibility_placeholder_mod, version_4_compatibility_placeholder_title, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _m, _n, _o, _p, _q, _ref, _ref1, _ref10, _ref11, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     everythingadded = true;
     switch (version) {
       case 1:
@@ -31279,17 +32698,18 @@ Ship = (function() {
         }
         for (_n = 0, _len5 = deferred_ids.length; _n < _len5; _n++) {
           deferred_id = deferred_ids[_n];
+          deferred_id_added = false;
           _ref9 = this.upgrades;
           for (i = _o = 0, _len6 = _ref9.length; _o < _len6; i = ++_o) {
             upgrade = _ref9[i];
             if (upgrade.isOccupied() || upgrade.slot !== exportObj.upgradesById[deferred_id].slot) {
-              everythingadded = false;
               continue;
             }
             upgrade.setById(deferred_id);
-            everythingadded &= upgrade.lastSetValid;
+            deferred_id_added = upgrade.lastSetValid;
             break;
           }
+          everythingadded &= deferred_id_added;
         }
         if (conferredaddon_pairs != null) {
           conferredaddon_pairs = conferredaddon_pairs.split(',');
@@ -31539,7 +32959,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 30976
+                lineno: 33272
               })
             ]);
             __iced_deferrals._fulfill();
@@ -31680,7 +33100,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 31050
+                  lineno: 33346
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -31702,7 +33122,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 31054
+                    lineno: 33350
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -31789,7 +33209,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 31095
+            lineno: 33391
           }));
         }
         __iced_deferrals._fulfill();
