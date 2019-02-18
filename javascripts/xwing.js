@@ -5541,7 +5541,7 @@ exportObj.basicCardData = function() {
         ship: "Vulture-class Droid Fighter",
         skill: 3,
         points: 100,
-        restricted: 3,
+        max_per_squad: 3,
         slots: ["Missile", "Configuration", "Modification"]
       }, {
         name: "Hadr Chall Prototype",
@@ -5550,7 +5550,7 @@ exportObj.basicCardData = function() {
         ship: "Vulture-class Droid Fighter",
         skill: 1,
         points: 100,
-        restricted: 2,
+        max_per_squad: 2,
         slots: ["Missile", "Configuration", "Modification"]
       }, {
         name: "DFS-081",
@@ -9147,7 +9147,7 @@ exportObj.basicCardData = function() {
         pilot: "Kavil",
         ship: "Y-Wing",
         threat: 3,
-        upgrades: ["Expert Handling", "Dorsal Turret", "Genius", "Proton Bombs", "Afterburners"]
+        upgrades: ["Expert Handling", "Dorsal Turret", '"Genius"', "Proton Bombs", "Afterburners"]
       }, {
         id: 214,
         faction: "Scum and Villainy",
@@ -9324,6 +9324,419 @@ exportObj.basicCardData = function() {
         ship: "M3-A Interceptor",
         threat: 3,
         upgrades: ["Ion Torpedoes", "Munitions Failsafe"]
+      }, {
+        id: 238,
+        faction: "Scum and Villainy",
+        pilot: "Tel Trevura",
+        ship: "Jumpmaster 5000",
+        threat: 3,
+        upgrades: ["Expert Handling", 'GNK "Gonk" Droid', "Proton Torpedoes", "Deadman's Switch"]
+      }, {
+        id: 239,
+        faction: "Scum and Villainy",
+        pilot: "Contracted Scout",
+        ship: "Jumpmaster 5000",
+        threat: 2,
+        upgrades: ["Ion Torpedoes", "Inertial Dampeners"]
+      }, {
+        id: 240,
+        faction: "Scum and Villainy",
+        pilot: "Dengar",
+        ship: "Jumpmaster 5000",
+        threat: 3,
+        upgrades: ["Expert Handling", "Proton Torpedoes", "R4 Astromech", "Contraband Cybernetics", "Punishing One"]
+      }, {
+        id: 241,
+        faction: "Scum and Villainy",
+        pilot: "Manaroo",
+        ship: "Jumpmaster 5000",
+        threat: 3,
+        upgrades: ["Intimidation", "Perceptive Copilot", "Proton Torpedoes", "Feedback Array", "Static Discharge Vanes"]
+      }, {
+        id: 242,
+        faction: "Scum and Villainy",
+        pilot: "N'dru Suhlak",
+        ship: "Z-95 Headhunter",
+        threat: 2,
+        upgrades: ["Lone Wolf", "Homing Missiles", "Cloaking Device", "Hull Upgrade"]
+      }, {
+        id: 243,
+        faction: "Scum and Villainy",
+        pilot: "Black Sun Soldier",
+        suffix: " (x2)",
+        linkedId: 243,
+        ship: "Z-95 Headhunter",
+        threat: 3,
+        upgrades: ["Expert Handling", "Concussion Missiles", "Deadman's Switch", "Hull Upgrade"]
+      }, {
+        id: 244,
+        faction: "Scum and Villainy",
+        pilot: "Kaa'to Leeachos",
+        ship: "Z-95 Headhunter",
+        threat: 2,
+        upgrades: ["Expert Handling", "Concussion Missiles", "Contraband Cybernetics", "Afterburners"]
+      }, {
+        id: 245,
+        faction: "Scum and Villainy",
+        pilot: "Binayre Pirate",
+        ship: "Z-95 Headhunter",
+        threat: 1
+      }, {
+        id: 246,
+        faction: "Scum and Villainy",
+        pilot: "4-LOM",
+        ship: "G-1A Starfighter",
+        threat: 3,
+        upgrades: ["Elusive", "Advanced Sensors", "0-0-0", "Zuckus", "BT-1", "Mist Hunter"]
+      }, {
+        id: 247,
+        faction: "Scum and Villainy",
+        pilot: "Zuckuss",
+        ship: "G-1A Starfighter",
+        threat: 2,
+        upgrades: ["Lone Wolf", "Tractor Beam", "4-LOM", "Mist Hunter"]
+      }, {
+        id: 248,
+        faction: "Scum and Villainy",
+        pilot: "Gand Findsman",
+        ship: "G-1A Starfighter",
+        threat: 2,
+        upgrades: ["Fire-Control System", "Freelancer Slicer", "Deadman's Switch", "Electronic Baffle"]
+      }, {
+        id: 249,
+        faction: "Scum and Villainy",
+        pilot: "Moralo Eval",
+        ship: "YV-666",
+        threat: 4,
+        upgrades: ["Outmaneuver", "Cluster Missiles", "Latts Razzi", "Dengar", "Contraband Cybernetics"]
+      }, {
+        id: 250,
+        faction: "Scum and Villainy",
+        pilot: "Latts Razzi",
+        ship: "YV-666",
+        threat: 3,
+        upgrades: ["Boba Fett", "Bossk", "Dengar", "Feedback Array", "Static Discharge Vanes"]
+      }, {
+        id: 251,
+        faction: "Scum and Villainy",
+        pilot: "Trandoshan Slaver",
+        ship: "YV-666",
+        threat: 3,
+        upgrades: ["Hotshot Gunner", "Jabba the Hutt", "Contraband Cybernetics", "Rigged Cargo Chute"]
+      }, {
+        id: 252,
+        faction: "Scum and Villainy",
+        pilot: "Bossk",
+        suffix: " + Nashtah Pup",
+        linkedId: 253,
+        ship: "YV-666",
+        threat: 3,
+        upgrades: ["Marksmanship", "Greedo", "Hound's Tooth"]
+      }, {
+        id: 253,
+        faction: "Scum and Villainy",
+        pilot: "Nashtah Pup",
+        suffix: " + Bossk",
+        linkedId: 252,
+        ship: "YV-666",
+        threat: 3
+      }, {
+        id: 254,
+        faction: "Scum and Villainy",
+        pilot: "Trandoshan Slaver",
+        suffix: " + Nashtah Pup",
+        linkedId: 255,
+        ship: "YV-666",
+        threat: 3,
+        upgrades: ["Deadman's Switch", "Hound's Tooth"]
+      }, {
+        id: 255,
+        faction: "Scum and Villainy",
+        pilot: "Nashtah Pup",
+        suffix: " + Trandoshan Slaver",
+        linkedId: 254,
+        ship: "YV-666",
+        threat: 3,
+        upgrades: ["Proton Rockets"]
+      }, {
+        id: 256,
+        faction: "Scum and Villainy",
+        pilot: "Torani Kulda",
+        ship: "M12-L Kimogila Fighter",
+        threat: 3,
+        upgrades: ["Saturation Salvo", "Proton Torpedoes", "Cluster Missiles", "R4 Astromech", "Inertial Dampeners", "Shield Upgrade"]
+      }, {
+        id: 257,
+        faction: "Scum and Villainy",
+        pilot: "Dalan Oberos",
+        ship: "M12-L Kimogila Fighter",
+        threat: 2,
+        upgrades: ["Expert Handling", "R5-TK", "Inertial Dampeners"]
+      }, {
+        id: 258,
+        faction: "Scum and Villainy",
+        pilot: "Cartel Executioner",
+        ship: "M12-L Kimogila Fighter",
+        threat: 2,
+        upgrades: ["Crack Shot", "R5-P8", "Contraband Cybernetics"]
+      }, {
+        id: 259,
+        faction: "Scum and Villainy",
+        pilot: "Dalan Oberos",
+        ship: "M12-L Kimogila Fighter",
+        threat: 2,
+        upgrades: ["Expert Handling", "R5-TK", "Inertial Dampeners"]
+      }, {
+        id: 260,
+        faction: "Scum and Villainy",
+        pilot: "Captain Nym",
+        ship: "Scurrg H-6 Bomber",
+        threat: 3,
+        upgrades: ["Squad Leader", "Trajectory Simulator", "R4 Astromech", "Bomblet Generator", "Havoc"]
+      }, {
+        id: 261,
+        faction: "Scum and Villainy",
+        pilot: "Sol Sixxa",
+        ship: "Scurrg H-6 Bomber",
+        threat: 3,
+        upgrades: ["Ion Cannon Turret", "Skilled Bombardier", "Conner Nets", "Proximity Mines"]
+      }, {
+        id: 262,
+        faction: "Scum and Villainy",
+        pilot: "Lok Revenant",
+        ship: "Scurrg H-6 Bomber",
+        threat: 2,
+        upgrades: ["Dorsal Turret", "Bomblet Generator"]
+      }, {
+        id: 263,
+        faction: "Scum and Villainy",
+        pilot: "IG-88A",
+        suffix: " + IG-88D",
+        linkedId: 264,
+        ship: "Aggressor",
+        threat: 6,
+        upgrades: ["Advanced Sensors", "IG-2000"]
+      }, {
+        id: 264,
+        faction: "Scum and Villainy",
+        pilot: "IG-88D",
+        suffix: " + IG-88A",
+        linkedId: 263,
+        ship: "Aggressor",
+        threat: 6,
+        upgrades: ["Advanced Sensors", "IG-2000"]
+      }, {
+        id: 265,
+        faction: "Scum and Villainy",
+        pilot: "IG-88B",
+        suffix: " + IG-88C",
+        linkedId: 266,
+        ship: "Aggressor",
+        threat: 6,
+        upgrades: ["Fire-Control System", "Ion Cannon", "IG-2000"]
+      }, {
+        id: 266,
+        faction: "Scum and Villainy",
+        pilot: "IG-88C",
+        suffix: " + IG-88B",
+        linkedId: 265,
+        ship: "Aggressor",
+        threat: 6,
+        upgrades: ["Fire-Control System", "Ion Cannon", "IG-2000"]
+      }, {
+        id: 267,
+        faction: "Resistance",
+        pilot: "L'ulo L'ampar",
+        ship: "RZ-2 A-Wing",
+        threat: 2,
+        upgrades: ["Primed Thrusters", "Homing Missiles"]
+      }, {
+        id: 268,
+        faction: "Resistance",
+        pilot: "Greer Sonnel",
+        ship: "RZ-2 A-Wing",
+        threat: 2,
+        upgrades: ["Elusive", "Afterburners"]
+      }, {
+        id: 269,
+        faction: "Resistance",
+        pilot: "Green Squadron Expert",
+        ship: "RZ-2 A-Wing",
+        threat: 2,
+        upgrades: ["Heroic", "Primed Thursters", "Hull Upgrade"]
+      }, {
+        id: 270,
+        faction: "Resistance",
+        pilot: "Tallissan Lintra",
+        ship: "RZ-2 A-Wing",
+        threat: 2,
+        upgrades: ["Predator", "Ferrosphere Paint"]
+      }, {
+        id: 271,
+        faction: "Resistance",
+        pilot: "Zari Bangel",
+        ship: "RZ-2 A-Wing",
+        threat: 2,
+        upgrades: ["Outmaneuver", "Proton Rockets"]
+      }, {
+        id: 272,
+        faction: "Resistance",
+        pilot: "Blue Squadron Recruit",
+        ship: "RZ-2 A-Wing",
+        threat: 2,
+        upgrades: ["Primed Thrusters", "Homing Missiles", "Shield Upgrade"]
+      }, {
+        id: 273,
+        faction: "Resistance",
+        pilot: "Poe Dameron",
+        ship: "T-70 X-Wing",
+        threat: 4,
+        upgrades: ["Proton Torpedoes", "BB-8", "Black One", "Integrated S-Foils", "Afterburners"]
+      }, {
+        id: 274,
+        faction: "Resistance",
+        pilot: "Jessika Pava",
+        ship: "T-70 X-Wing",
+        threat: 3,
+        upgrades: ["R5 Astromech", "Integrated S-Foils", "Hull Upgrade"]
+      }, {
+        id: 275,
+        faction: "Resistance",
+        pilot: "Black Squadron Ace",
+        ship: "T-70 X-Wing",
+        threat: 3,
+        upgrades: ["Proton Torpedoes", "M9-G8", "Integrated S-Foils"]
+      }, {
+        id: 276,
+        faction: "Resistance",
+        pilot: "Ello Asty",
+        ship: "T-70 X-Wing",
+        threat: 3,
+        upgrades: ["Elusive", "Integrated S-Foils", "Afterburners"]
+      }, {
+        id: 277,
+        faction: "Resistance",
+        pilot: "Joph Seastriker",
+        ship: "T-70 X-Wing",
+        threat: 3,
+        upgrades: ["R2 Astromech", "Integrated S-Foils", "Shield Upgrade"]
+      }, {
+        id: 278,
+        faction: "Resistance",
+        pilot: "Jaycris Tubbs",
+        ship: "T-70 X-Wing",
+        threat: 2
+      }, {
+        id: 279,
+        faction: "Resistance",
+        pilot: "Nien Nunb",
+        ship: "T-70 X-Wing",
+        threat: 3,
+        upgrades: ["Elusive", "Integrated S-Foils", "Afterburners"]
+      }, {
+        id: 280,
+        faction: "Resistance",
+        pilot: "Lieutenant Bastian",
+        ship: "T-70 X-Wing",
+        threat: 3,
+        upgrades: ["Targeting Synchronizer", "Proton Torpedoes", "R3 Astromech", "Integrated S-Foils"]
+      }, {
+        id: 281,
+        faction: "Resistance",
+        pilot: "Red Squadron Expert",
+        ship: "T-70 X-Wing",
+        threat: 2
+      }, {
+        id: 282,
+        faction: "Resistance",
+        pilot: "Temmin Wexley",
+        ship: "T-70 X-Wing",
+        threat: 3,
+        upgrades: ["Outmaneuver", "Proton Torpedoes", "Integrated S-Foils"]
+      }, {
+        id: 283,
+        faction: "Resistance",
+        pilot: "Kare Kun",
+        ship: "T-70 X-Wing",
+        threat: 3,
+        upgrades: ["Predator", "Integrated S-Foils", "Afterburners"]
+      }, {
+        id: 284,
+        faction: "Resistance",
+        pilot: "Blue Squadron Rookie",
+        ship: "T-70 X-Wing",
+        threat: 2,
+        upgrades: ["BB Astromech"]
+      }, {
+        id: 285,
+        faction: "Resistance",
+        pilot: "Finch Dallow",
+        ship: "MG-100 StarFortress",
+        threat: 4,
+        upgrades: ["Advanced Optics", "Paige Tico", "Proton Bombs", "Ablative Plating", "Hull Upgrade"]
+      }, {
+        id: 286,
+        faction: "Resistance",
+        pilot: "Cat",
+        ship: "MG-100 StarFortress",
+        threat: 3,
+        upgrades: ["Skilled Bombardier", "Conner Nets", "Electronic Baffle"]
+      }, {
+        id: 287,
+        faction: "Resistance",
+        pilot: "Cobalt Squadron Bomber",
+        ship: "MG-100 StarFortress",
+        threat: 3,
+        upgrades: ["Trajectory Simulator", "Proton Bombs", "Ablative Plating"]
+      }, {
+        id: 288,
+        faction: "Resistance",
+        pilot: "Edon Kappehl",
+        ship: "MG-100 StarFortress",
+        threat: 4,
+        upgrades: ["Pattern Analyzer", "Seasoned Navigator", "Skilled Bombardier", "Conner Nets", "Proton Bombs"]
+      }, {
+        id: 289,
+        faction: "Resistance",
+        pilot: "Vennie",
+        ship: "MG-100 StarFortress",
+        threat: 4,
+        upgrades: ["Advanced Optics", "Rose Tico", "Finn", "Shield Upgrade"]
+      }, {
+        id: 290,
+        faction: "Resistance",
+        pilot: "Ben Teene",
+        ship: "MG-100 StarFortress",
+        threat: 3,
+        upgrades: ["Conner Nets", "Proton Bombs"]
+      }, {
+        id: 291,
+        faction: "Resistance",
+        pilot: "Han Solo (Resistance)",
+        ship: "Scavenged YT-1300",
+        threat: 3,
+        upgrades: ["Chewbacca"]
+      }, {
+        id: 292,
+        faction: "Resistance",
+        pilot: "Rey",
+        ship: "Scavenged YT-1300",
+        threat: 5,
+        upgrades: ["Finn", "BB-8", "Inertial Dampeners", "Engine Upgrade", "Rey's Millennium Falcon"]
+      }, {
+        id: 293,
+        faction: "Resistance",
+        pilot: "Chewbacca (Resistance)",
+        ship: "Scavenged YT-1300",
+        threat: 4,
+        upgrades: ["Rey", "Engine Upgrade", "Rey's Millennium Falcon"]
+      }, {
+        id: 294,
+        faction: "Resistance",
+        pilot: "Resistance Sympathizer",
+        ship: "Scavenged YT-1300",
+        threat: 4,
+        upgrades: ["Debris Gambit", "C-3PO", "Chewbacca", "Han Solo"]
       }
     ]
   };
@@ -19141,7 +19554,7 @@ exportObj.cardLoaders.Magyar = function() {
       text: "Amikor egy baráti hajó 1-2-es távolságban, a tiédnél alacsonyabb kezdeményezéssel védekezik vagy támadást hajt végre, ha van legalább 1&nbsp;%CHARGE% jelződ, az a hajó újradobhat 1&nbsp;%FOCUS% eredményét. Miután egy ellenséges hajó 0-3-as távolságban megsemmisül, elvesztesz 1&nbsp;%CHARGE% jelzőt.%LINEBREAK%<strong>Linked battery:</strong> Amikor végrehajtasz egy %CANNON% támadást, dobj 1-gyel több támadókockával."
     },
     '"Avenger"': {
-      text: "Miután egy ellenséges hajó 0-3-as távolságban megsemmisül After another friendly ship is destroyed, you may perform an action, even while stressed. %LINEBREAK%<strong>Autothrusters:</strong> Miután végrehajtasz egy akciót, végrehajthatsz egy piros %BARRELROLL% vagy piros %BOOST% akciót."
+      text: "Miután egy ellenséges hajó 0-3-as távolságban megsemmisül végrehajthatsz egy akciót, akkor is ha stresszes vagy. %LINEBREAK%<strong>Autothrusters:</strong> Miután végrehajtasz egy akciót, végrehajthatsz egy piros %BARRELROLL% vagy piros %BOOST% akciót."
     },
     '"Recoil"': {
       text: "Amikor stresszes vagy kezelheted úgy a %FRONTARC% tűzívedben 0-1-es távolságban lévő ellenséges hajókat, mintha a %BULLSEYEARC% tűzívedben lennének.%LINEBREAK%<strong>Autothrusters:</strong> Miután végrehajtasz egy akciót, végrehajthatsz egy piros %BARRELROLL% vagy piros %BOOST% akciót."
@@ -19202,6 +19615,51 @@ exportObj.cardLoaders.Magyar = function() {
     },
     "Overseer Yushyn": {
       text: "Mielőtt egy baráti hajó 1-es távolságban kapna 1 'inaktív fegyverzet' jelzőt, ha az a hajó nem stresszes, elkölthetsz 1&nbsp;%CHARGE% jelzőt. Ha így teszel, az a hajó 1 stressz jelzőt kap helyette.%LINEBREAK%<strong>Notched Stabilizers:</strong> Amikor mozogsz, hagyd figyelmen kívül az aszteroidákat."
+    },
+    "General Grevious": {
+      text: "Amikor elsődleges támadást hajtasz végre, ha nem vagy a védekező tűzívében, újradobhatod akár 2 támadókockádat is."
+    },
+    "Wat Tambor": {
+      text: "Amikor elsődleges támadást hajtasz végre, újradobhatsz 1 támadókockát minden kalkuláció tokennel rendelkező baráti hajó után ami a védekezőtől 1-es távolságban van."
+    },
+    "Captain Sear": {
+      text: "Amikor egy baráti hajó 0-3-as távolságban végrehajt egy elsődleges támadást, ha a védekező benne van annak %BULLSEYEARC% tűzívében, az 'Eredmények semlegesítése' lépés előtt a baráti hajó elkölthet 1&nbsp;%CALCULATE% jelzőt, hogy semlegesítsen 1&nbsp;%EVADE% eredményt."
+    },
+    "Precise Hunter": {
+      text: "Amikor támadást hajtasz végre, ha a védekező benne van a %BULLSEYEARC% tűzívedben, újradobhatsz 1 üres eredményt.%LINEBREAK% NETWORKED CALCULATIONS: Amikor védekezel vagy támadást hajtasz végre, elkölthetsz 1&nbsp;%CALCULATE% jelzőt egy 0-1-es távolságban lévő baráti hajóról, hogy megváltoztass 1&nbsp;%FOCUS% eredményt %EVADE% vagy %HIT% eredményre."
+    },
+    "Hadr Chall Prototype": {
+      text: "Miután egy ellenséges hajó a %BULLSEYEARC% tűzívedben 0-2-es távolságban védekezőnek jelöl egy másik baráti hajót, végrehajthatsz egy %CALCULATE% vagy %LOCK% akciót.%LINEBREAK% NETWORKED CALCULATIONS: Amikor védekezel vagy támadást hajtasz végre, elkölthetsz 1&nbsp;%CALCULATE% jelzőt egy 0-1-es távolságban lévő baráti hajóról, hogy megváltoztass 1&nbsp;%FOCUS% eredményt %EVADE% vagy %HIT% eredményre."
+    },
+    "DFS-081": {
+      text: "Amikor egy baráti hajó 0-1 távolságban védekezik, elkölthet 1&nbsp;%CALCULATE% jelzőt, hogy az összes %CRIT% eredményt %HIT% eredményre változtassa.%LINEBREAK% NETWORKED CALCULATIONS: Amikor védekezel vagy támadást hajtasz végre, elkölthetsz 1&nbsp;%CALCULATE% jelzőt egy 0-1-es távolságban lévő baráti hajóról, hogy megváltoztass 1&nbsp;%FOCUS% eredményt %EVADE% vagy %HIT% eredményre."
+    },
+    "Obi-Wan Kenobi": {
+      text: "Miután egy baráti hajó 0-2-es távolságban elkölt egy %FOCUS% jelzőt, elkölthetsz 1&nbsp;%FORCE% jelzőt. Ha így teszel, az a hajó kap 1&nbsp;%FOCUS% jelzőt.%LINEBREAK% FINE-TUNED CONTROLS: Miután teljesen végrehajtottál egy manővert, elkölthetsz 1&nbsp;%FORCE% jelzőt, hogy végrehajts egy %BOOST% vagy %BARRELROLL% akciót."
+    },
+    "Plo Koon": {
+      text: "Az Ütközet fázis elején elkölthetsz 1&nbsp;%FORCE% jelzőt, hogy válassz egy másik baráti hajót 0-2-es távolságban. Ha így teszel, átadhatsz 1 zöld jelzőt neki vagy átvehetsz egy narancs jelzőt magadra.%LINEBREAK% FINE-TUNED CONTROLS: Miután teljesen végrehajtottál egy manővert, elkölthetsz 1&nbsp;%FORCE% jelzőt, hogy végrehajts egy %BOOST% vagy %BARRELROLL% akciót."
+    },
+    "Saesee Tiin": {
+      text: "Miután egy baráti hajó 0-2-es távolságban felfedi a tárcsáját elkölthetsz 1&nbsp;%FORCE% jelzőt. Ha így teszel, állítsd át a tárcsáját egy másik hasonló sebességű és nehézségű manőverre.%LINEBREAK% FINE-TUNED CONTROLS: Miután teljesen végrehajtottál egy manővert, elkölthetsz 1&nbsp;%FORCE% jelzőt, hogy végrehajts egy %BOOST% vagy %BARRELROLL% akciót."
+    },
+    "Mace Windu": {
+      text: "Miután teljesen végrehajtottál egy piros manővert, tölts vissza 1&nbsp;%FORCE% jelzőt.%LINEBREAK% FINE-TUNED CONTROLS: Miután teljesen végrehajtottál egy manővert, elkölthetsz 1&nbsp;%FORCE% jelzőt, hogy végrehajts egy %BOOST% vagy %BARRELROLL% akciót."
+    },
+    '"Kickback"': {
+      text: "Miután végrehajtasz egy %BARRELROLL% akciót, végrehajthatsz egy piros %LOCK% akciót."
+    },
+    '"Odd Ball"': {
+      text: "Miután teljesen végrehajtottál egy piros manővert, ha van egy ellenséges hajó a %BULLSEYEARC% tűzívedben, feltehetsz egy bemérőt arra a hajóra."
+    },
+    '"Swoop"': {
+      text: "Miután egy baráti kis vagy közepes hajó teljesen végrehajt egy 3-4 sebességű manővert, ha az 0-1-es távolságban van tőled, végrehajthat egy piros %BOOST% akciót."
+    },
+    '"Axe"': {
+      text: "Miután védekezel vagy támadást hajtasz végre, választhatsz egy baráti hajót 1-2-es távolságban a %LEFTARC% vagy %RIGHTARC% tűzívedben. Ha így teszel add át 1 zöld jelződet annak a hajónak."
+    },
+    '"Tucker"': {
+      text: "Miután egy baráti hajó 1-2-es távolságban végrehajt egy támadást egy ellenséges hajó ellen a %FRONTARC% tűzívedben, végrehajthatsz egy %FOCUS% akciót."
     }
   };
   upgrade_translations = {
@@ -19583,7 +20041,7 @@ exportObj.cardLoaders.Magyar = function() {
     },
     "Kanan Jarrus": {
       display_name: "Kanan Jarrus",
-      text: "<i>csak Lázadók</i>%LINEBREAK%Miután egy baráti hajó 0-2-es távolságban teljesen végrehajt egy manővert, elkölthetsz 1&nbsp;%FORCE% jelzőt, hogy levegyél róla 1 stressz jelzőt."
+      text: "<i>csak Lázadók</i>%LINEBREAK%Miután egy baráti hajó 0-2-es távolságban teljesen végrehajt egy fehér manővert, elkölthetsz 1&nbsp;%FORCE% jelzőt, hogy levegyél róla 1 stressz jelzőt."
     },
     "Ketsu Onyo": {
       display_name: "Ketsu Onyo",
@@ -19767,7 +20225,7 @@ exportObj.cardLoaders.Magyar = function() {
     },
     "Servomotor S-Foils": {
       display_name: "Servomotor S-foils",
-      text: "<strong>Closed: </strong><i>Adds %BOOST% ,  %FOCUS%&nbsp;<i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i>&nbsp;<r>%BOOST%</r></i>%LINEBREAK% While you perform a primary attack, roll 1 fewer attack die.%LINEBREAK%Before you activate, you may flip this card.%LINEBREAK%<strong>Open:</strong> Before you activate, you may flip this card."
+      text: "<strong>Csukva: </strong><i>Kapott akciók: %BOOST% , %FOCUS%&nbsp;<i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i>&nbsp;<r>%BOOST%</r></i>%LINEBREAK% Amikor végrehajtasz egy elsődleges támadást, 1-gyel kevesebb támadókockával dobj.%LINEBREAK%Mielőtt aktiválódsz, megfordíthatod ezt a kártyát.%LINEBREAK%<strong>Nyitva:</strong> Mielőtt aktiválódsz, megfordíthatod ezt a kártyát."
     },
     "Seventh Sister": {
       display_name: "Seventh Sister",
@@ -19874,7 +20332,7 @@ exportObj.cardLoaders.Magyar = function() {
       text: "<i>Kapott akció: %SLAM%</i> %LINEBREAK% Miután végrehajtasz egy %SLAM% akciót, elvesztesz 1&nbsp;%CHARGE% jelzőt. Ezután kaphatsz 1 ion jelzőt, hogy levedd az inaktív fegyverzet jelzőt. Ha a %CHARGE% nem aktív, nem hajthatsz végre %SLAM% akciót."
     },
     "Heroic": {
-      text: "Amikor védekezel vagy támadást hajtasz végre, ha 2 vagy több csak üres eredményed van, újradobhatsz akárhány kockát."
+      text: "<i>csak Ellenállás</i><br>Amikor védekezel vagy támadást hajtasz végre, ha 2 vagy több csak üres eredményed van, újradobhatsz akárhány kockát."
     },
     "Rose Tico": {
       text: "Amikor védekezel vagy támadást hajtasz végre, elkölthetsz egy dobás eredményed, hogy bemérőt rakj az ellenséges hajóra."
@@ -19974,6 +20432,15 @@ exportObj.cardLoaders.Magyar = function() {
     },
     "Pattern Analyzer": {
       text: "Amikor teljesen végrehajtasz egy piros manővert, a <strong>Nehézség ellenőrzése</strong> lépés előtt végrehjathatsz 1 akciót."
+    },
+    "Impervium Plating": {
+      text: "Mielőtt egy felfordított <b>Ship</b> sérüléskártyát kapnál, elkölthetsz 1&nbsp;%CHARGE% jelzőt, hogy eldobd."
+    },
+    "Grappling Struts": {
+      text: "<strong>Csukva: </strong> Felhelyezés: ezzel az oldalával helyezd fel. %LINEBREAK% Amikor végrehajtasz egy manővert, ha átfedésbe kerülsz egy aszteroidával vagy űrszeméttel és 1 vagy kevesebb másik baráti hajó van 0-ás távolságra attól az akadálytól, megfordíthatod ezt a kártyát. \n%LINEBREAK% <b>Nyitva:</b> Hagyd figyelment kívül a 0-ás távolságnban lévő akadályokat amíg átmozogsz rajtuk. Miután felfeded a tárcsádat, ha más manővert fedtél fel mint [2 %STRAIGHT%] és 0-ás távolságra vagy egy aszteroidától vagy űrszeméttől, ugord át a 'Manőver végrehajtása' lépést és vegyél le 1 stresst jelzőt; ha jobb vagy bal manővert fedtél fel, forgasd a hajódat 90 fokkal abba az irányba. Miután végrehajtottál egy manővert fordítsd át ezt a kártyát."
+    },
+    "Energy-Shell Charges": {
+      text: " <strong>Támadás (%CALCULATE%):</strong> Költs el 1&nbsp;%CHARGE% jelzőt. Amikor végrehajtasz egy támadást, elkölthetsz 1&nbsp;%CALCULATE% jelzőt, hogy megváltoztass 1&nbsp;%FOCUS% eredményt %CRIT% eredményre.%LINEBREAK% <strong>Akció:</strong> Töltsd újra ezt a kártyát."
     }
   };
   condition_translations = {
@@ -28406,7 +28873,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 29697
+                    lineno: 30433
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -29178,7 +29645,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 30502
+              lineno: 31238
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -29929,7 +30396,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 31187
+              lineno: 31923
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -29939,7 +30406,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 31188
+                lineno: 31924
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -30081,7 +30548,7 @@ exportObj.SquadBuilder = (function() {
         _results = [];
         for (pilot_name in available_faction_pilots) {
           pilot = available_faction_pilots[pilot_name];
-          if (((pilot.unique == null) || __indexOf.call(this.uniques_in_use['Pilot'], pilot) < 0 || pilot.canonical_name.getXWSBaseName() === (include_pilot != null ? include_pilot.canonical_name.getXWSBaseName() : void 0)) && ((pilot.restriction_func == null) || pilot.restriction_func({
+          if (((pilot.unique == null) || __indexOf.call(this.uniques_in_use['Pilot'], pilot) < 0 || pilot.canonical_name.getXWSBaseName() === (include_pilot != null ? include_pilot.canonical_name.getXWSBaseName() : void 0)) && ((pilot.max_per_squad == null) || this.countPilots(pilot.canonical_name) < pilot.max_per_squad || pilot.canonical_name.getXWSBaseName() === (include_pilot != null ? include_pilot.canonical_name.getXWSBaseName() : void 0)) && ((pilot.restriction_func == null) || pilot.restriction_func({
             builder: this
           }, pilot))) {
             _results.push(pilot);
@@ -30125,7 +30592,7 @@ exportObj.SquadBuilder = (function() {
       allowed_quickbuilds_containing_uniques_in_use = [];
       ({
         loop: (function() {
-          var _ref, _results;
+          var _ref, _ref1, _results;
           _results = [];
           for (id in quickbuilds_matching_ship_and_faction) {
             quickbuild = quickbuilds_matching_ship_and_faction[id];
@@ -30133,15 +30600,19 @@ exportObj.SquadBuilder = (function() {
               allowed_quickbuilds_containing_uniques_in_use.push(quickbuild.id);
               continue;
             }
+            if ((((_ref1 = exportObj.pilots[quickbuild.pilot]) != null ? _ref1.max_per_squad : void 0) != null) && this.countPilots(exportObj.pilots[quickbuild.pilot].canonical_name) >= exportObj.pilots[quickbuild.pilot].max_per_squad) {
+              allowed_quickbuilds_containing_uniques_in_use.push(quickbuild.id);
+              continue;
+            }
             if (quickbuild.upgrades != null) {
               _results.push((function() {
-                var _i, _len, _ref1, _ref2, _ref3, _ref4, _results1;
-                _ref1 = quickbuild.upgrades;
+                var _i, _len, _ref2, _ref3, _ref4, _ref5, _results1;
+                _ref2 = quickbuild.upgrades;
                 _results1 = [];
-                for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
-                  upgrade = _ref1[_i];
-                  if (_ref2 = exportObj.upgrades[upgrade], __indexOf.call(this.uniques_in_use.Upgrade, _ref2) >= 0) {
-                    if (ship_selector === null || !(__indexOf.call(exportObj.quickbuildsById[ship_selector.quickbuildId].upgrades, upgrade) >= 0 || __indexOf.call((_ref3 = exportObj.quickbuildsById[(_ref4 = ship_selector.linkedShip) != null ? _ref4.quickbuildId : void 0]) != null ? _ref3.upgrades : void 0, upgrade) >= 0)) {
+                for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
+                  upgrade = _ref2[_i];
+                  if (_ref3 = exportObj.upgrades[upgrade], __indexOf.call(this.uniques_in_use.Upgrade, _ref3) >= 0) {
+                    if (ship_selector === null || !(__indexOf.call(exportObj.quickbuildsById[ship_selector.quickbuildId].upgrades, upgrade) >= 0 || __indexOf.call((_ref4 = exportObj.quickbuildsById[(_ref5 = ship_selector.linkedShip) != null ? _ref5.quickbuildId : void 0]) != null ? _ref4.upgrades : void 0, upgrade) >= 0)) {
                       allowed_quickbuilds_containing_uniques_in_use.push(quickbuild.id);
                       break;
                     } else {
@@ -30198,6 +30669,19 @@ exportObj.SquadBuilder = (function() {
         if ((upgrade != null ? (_ref2 = upgrade.data) != null ? _ref2.canonical_name : void 0 : void 0) === canonical_name) {
           count++;
         }
+      }
+    }
+    return count;
+  };
+
+  SquadBuilder.prototype.countPilots = function(canonical_name) {
+    var count, ship, _i, _len, _ref, _ref1;
+    count = 0;
+    _ref = this.ships;
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      ship = _ref[_i];
+      if ((ship != null ? (_ref1 = ship.pilot) != null ? _ref1.canonical_name.getXWSBaseName() : void 0 : void 0) === canonical_name.getXWSBaseName()) {
+        count++;
       }
     }
     return count;
@@ -31555,7 +32039,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 32284
+              lineno: 33031
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -31571,14 +32055,14 @@ Ship = (function() {
   };
 
   Ship.prototype.copyFrom = function(other) {
-    var available_pilots, i, no_uniques_involved, other_conferred_addons, other_upgrade, other_upgrades, pilot_data, upgrade, _i, _j, _k, _l, _len, _len1, _len2, _len3, _name, _ref, _ref1, _ref2, _ref3, _ref4, _ref5;
+    var available_pilots, i, no_uniques_involved, other_conferred_addons, other_upgrade, other_upgrades, pilot_data, upgrade, _i, _j, _k, _l, _len, _len1, _len2, _len3, _name, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6;
     if (other === this) {
       throw new Error("Cannot copy from self");
     }
     if (!((other.pilot != null) && (other.data != null))) {
       return;
     }
-    if (other.pilot.unique) {
+    if (other.pilot.unique || ((other.pilot.max_per_squad != null) && this.builder.countPilots(other.pilot.canonical_name) >= other.pilot.max_per_squad)) {
       available_pilots = (function() {
         var _i, _len, _ref, _results;
         _ref = this.builder.getAvailablePilotsForShipIncluding(other.data.name);
@@ -31622,14 +32106,14 @@ Ship = (function() {
       _ref3 = other.upgrades;
       for (_k = 0, _len2 = _ref3.length; _k < _len2; _k++) {
         upgrade = _ref3[_k];
-        if ((((_ref4 = upgrade.data) != null ? _ref4.unique : void 0) != null) && upgrade.data.unique) {
+        if (((((_ref4 = upgrade.data) != null ? _ref4.unique : void 0) != null) && upgrade.data.unique) || ((((_ref5 = upgrade.data) != null ? _ref5.max_per_squad : void 0) != null) && this.builder.countUpgrades(upgrade.data.canonical_name) >= upgrade.data.max_per_squad)) {
           no_uniques_involved = false;
           available_pilots = (function() {
-            var _l, _len3, _ref5, _results;
-            _ref5 = this.builder.getAvailablePilotsForShipIncluding(other.data.name);
+            var _l, _len3, _ref6, _results;
+            _ref6 = this.builder.getAvailablePilotsForShipIncluding(other.data.name);
             _results = [];
-            for (_l = 0, _len3 = _ref5.length; _l < _len3; _l++) {
-              pilot_data = _ref5[_l];
+            for (_l = 0, _len3 = _ref6.length; _l < _len3; _l++) {
+              pilot_data = _ref6[_l];
               if (!pilot_data.disabled) {
                 _results.push(pilot_data);
               }
@@ -31650,9 +32134,9 @@ Ship = (function() {
     } else {
       this.setPilotById(other.pilot.id, true);
       other_conferred_addons = [];
-      _ref5 = other.upgrades;
-      for (i = _l = 0, _len3 = _ref5.length; _l < _len3; i = ++_l) {
-        other_upgrade = _ref5[i];
+      _ref6 = other.upgrades;
+      for (i = _l = 0, _len3 = _ref6.length; _l < _len3; i = ++_l) {
+        other_upgrade = _ref6[i];
         if ((other_upgrade.data != null) && __indexOf.call(other_conferred_addons, other_upgrade) < 0 && !other_upgrade.data.unique && i < this.upgrades.length && ((other_upgrade.data.max_per_squad == null) || this.builder.countUpgrades(other_upgrade.data.canonical_name) < other_upgrade.data.max_per_squad)) {
           this.upgrades[i].setById(other_upgrade.data.id);
         }
@@ -31756,7 +32240,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 32391
+                          lineno: 33138
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -31785,7 +32269,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 32407
+                              lineno: 33154
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -31853,7 +32337,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 32447
+                      lineno: 33194
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -31927,7 +32411,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 32472
+                lineno: 33219
               })
             ]);
             __iced_deferrals._fulfill();
@@ -31996,7 +32480,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 32501
+              lineno: 33248
             }));
           }
         }
@@ -32959,7 +33443,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 33272
+                lineno: 34019
               })
             ]);
             __iced_deferrals._fulfill();
@@ -33100,7 +33584,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 33346
+                  lineno: 34093
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -33122,7 +33606,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 33350
+                    lineno: 34097
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -33209,7 +33693,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 33391
+            lineno: 34138
           }));
         }
         __iced_deferrals._fulfill();
