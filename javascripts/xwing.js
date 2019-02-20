@@ -2719,6 +2719,30 @@ exportObj.basicCardData = function() {
         actions: ["Focus", "Lock", "Barrel Roll", "R> Focus", "Boost", "R> Focus"],
         actionsred: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 1, 0, 1, 1, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 3, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
+      },
+      "Naboo Royal N-1 Starfighter": {
+        name: "Naboo Royal N-1 Starfighter",
+        xws: "Naboo Royal N-1 Starfighter".canonicalize(),
+        factions: ["Galactic Republic"],
+        attack: 2,
+        agility: 2,
+        hull: 3,
+        shields: 2,
+        actions: ["Focus", "Lock", "Barrel Roll", "Boost"],
+        actionsred: [],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
+      },
+      "Hyena-Class Droid Bomber": {
+        name: "Hyena-Class Droid Bomber",
+        xws: "Hyena-Class Droid Bomber".canonicalize(),
+        factions: ["Separatist Alliance"],
+        attack: 2,
+        agility: 2,
+        hull: 5,
+        shields: 0,
+        actions: ["Calculate", "Lock", "Barrel Roll", "R> Lock"],
+        actionsred: ["Reload"],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 3, 1, 3, 1, 0, 0, 0, 0, 0], [2, 1, 2, 1, 2, 3, 0, 0, 3, 3], [1, 0, 2, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
       }
     },
     pilotsById: [
@@ -5212,7 +5236,7 @@ exportObj.basicCardData = function() {
         skill: 6,
         force: 3,
         points: 100,
-        slots: ["Force", "Configuration", "Modification"]
+        slots: ["Force", "Astromech", "Configuration", "Modification"]
       }, {
         name: "Luminara Unduli",
         id: 274,
@@ -5222,7 +5246,7 @@ exportObj.basicCardData = function() {
         skill: 4,
         force: 2,
         points: 100,
-        slots: ["Force", "Configuration", "Modification"]
+        slots: ["Force", "Astromech", "Configuration", "Modification"]
       }, {
         name: "Barriss Offee",
         id: 275,
@@ -5232,7 +5256,7 @@ exportObj.basicCardData = function() {
         skill: 6,
         force: 3,
         points: 100,
-        slots: ["Force", "Configuration", "Modification"]
+        slots: ["Force", "Astromech", "Configuration", "Modification"]
       }, {
         name: "Ahsoka Tano",
         id: 276,
@@ -5242,7 +5266,7 @@ exportObj.basicCardData = function() {
         skill: 3,
         force: 2,
         points: 100,
-        slots: ["Force", "Configuration", "Modification"]
+        slots: ["Force", "Astromech", "Configuration", "Modification"]
       }, {
         name: "Jedi Knight",
         id: 277,
@@ -5251,7 +5275,7 @@ exportObj.basicCardData = function() {
         skill: 3,
         force: 1,
         points: 100,
-        slots: ["Force", "Configuration", "Modification"]
+        slots: ["Force", "Astromech", "Configuration", "Modification"]
       }, {
         name: "Obi-Wan Kenobi",
         id: 278,
@@ -5261,7 +5285,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         force: 3,
         points: 100,
-        slots: ["Force", "Configuration", "Modification"]
+        slots: ["Force", "Astromech", "Configuration", "Modification"]
       }, {
         name: "Trade Federation Drone",
         id: 279,
@@ -5273,6 +5297,7 @@ exportObj.basicCardData = function() {
       }, {
         name: '"Sinker"',
         id: 280,
+        unique: true,
         faction: "Galactic Republic",
         ship: "ARC-170",
         skill: 3,
@@ -5570,7 +5595,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         force: 2,
         points: 100,
-        slots: ["Force", "Configuration", "Modification"]
+        slots: ["Force", "Astromech", "Configuration", "Modification"]
       }, {
         name: "Saesee Tiin",
         id: 313,
@@ -5580,7 +5605,7 @@ exportObj.basicCardData = function() {
         skill: 4,
         force: 2,
         points: 100,
-        slots: ["Force", "Configuration", "Modification"]
+        slots: ["Force", "Astromech", "Configuration", "Modification"]
       }, {
         name: "Mace Windu",
         id: 314,
@@ -5590,7 +5615,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         force: 3,
         points: 100,
-        slots: ["Force", "Configuration", "Modification"]
+        slots: ["Force", "Astromech", "Configuration", "Modification"]
       }, {
         name: '"Kickback"',
         id: 315,
@@ -5652,6 +5677,112 @@ exportObj.basicCardData = function() {
         skill: 2,
         points: 100,
         slots: ["Modification"]
+      }, {
+        name: "Anakin Skywalker",
+        id: 322,
+        unique: true,
+        faction: "Galactic Republic",
+        ship: "Naboo Royal N-1 Starfighter",
+        skill: 4,
+        force: 1,
+        points: 100,
+        slots: ["Force", "Sensor", "Astromech", "Torpedo"]
+      }, {
+        name: "Generic PS 2",
+        id: 323,
+        faction: "Galactic Republic",
+        ship: "Naboo Royal N-1 Starfighter",
+        skill: 2,
+        points: 100,
+        slots: ["Sensor", "Astromech", "Torpedo"]
+      }, {
+        name: "Generic PS 1",
+        id: 324,
+        faction: "Separatist Alliance",
+        ship: "Hyena-Class Droid Bomber",
+        skill: 1,
+        points: 100,
+        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Configuration"]
+      }, {
+        name: "Bombardment Drone",
+        id: 325,
+        faction: "Separatist Alliance",
+        ship: "Hyena-Class Droid Bomber",
+        skill: 3,
+        points: 100,
+        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Configuration"]
+      }, {
+        name: "Unique PS 4",
+        id: 326,
+        unique: true,
+        faction: "Separatist Alliance",
+        ship: "Hyena-Class Droid Bomber",
+        skill: 4,
+        points: 100,
+        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Configuration"]
+      }, {
+        name: "Unique PS 3",
+        id: 327,
+        unique: true,
+        faction: "Separatist Alliance",
+        ship: "Hyena-Class Droid Bomber",
+        skill: 3,
+        points: 100,
+        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Configuration"]
+      }, {
+        name: "Pilot PS 3",
+        id: 328,
+        max_per_squad: 3,
+        faction: "Separatist Alliance",
+        ship: "Hyena-Class Droid Bomber",
+        skill: 3,
+        points: 100,
+        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Configuration"]
+      }, {
+        name: "Pilot PS 1",
+        id: 329,
+        max_per_squad: 2,
+        faction: "Separatist Alliance",
+        ship: "Hyena-Class Droid Bomber",
+        skill: 1,
+        points: 100,
+        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Configuration"]
+      }, {
+        name: "Pilot PS 1",
+        id: 330,
+        max_per_squad: 2,
+        faction: "Galactic Republic",
+        ship: "Naboo Royal N-1 Starfighter",
+        skill: 1,
+        points: 100,
+        slots: ["Sensor", "Astromech", "Torpedo"]
+      }, {
+        name: "Unique PS 3",
+        id: 331,
+        unique: true,
+        faction: "Galactic Republic",
+        ship: "Naboo Royal N-1 Starfighter",
+        skill: 3,
+        points: 100,
+        slots: ["Sensor", "Astromech", "Torpedo"]
+      }, {
+        name: "Unique PS 4",
+        id: 332,
+        unique: true,
+        faction: "Galactic Republic",
+        ship: "Naboo Royal N-1 Starfighter",
+        skill: 4,
+        points: 100,
+        slots: ["Sensor", "Astromech", "Torpedo"]
+      }, {
+        name: "Unique PS 5",
+        id: 333,
+        unique: true,
+        faction: "Galactic Republic",
+        ship: "Naboo Royal N-1 Starfighter",
+        skill: 5,
+        points: 100,
+        slots: ["Sensor", "Astromech", "Torpedo"]
       }
     ],
     upgradesById: [
@@ -7586,6 +7717,59 @@ exportObj.basicCardData = function() {
         restriction_func: function(ship) {
           return __indexOf.call(ship.effectiveStats().actions, "Calculate") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Calculate") >= 0;
         }
+      }, {
+        name: "Dedicated",
+        id: 210,
+        faction: "Galactic Republic",
+        slot: "Talent",
+        points: 100,
+        restriction_func: function(ship) {
+          return !ship.pilot.unique;
+        }
+      }, {
+        name: "Synchronized Console",
+        id: 211,
+        faction: "Galactic Republic",
+        slot: "Modification",
+        points: 100,
+        restriction_func: function(ship) {
+          return __indexOf.call(ship.effectiveStats().actions, "Lock") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Lock") >= 0;
+        }
+      }, {
+        name: "Battle Meditation",
+        id: 212,
+        faction: "Galactic Republic",
+        slot: "Force",
+        points: 100,
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'F-Coordinate') < 0) {
+            return stats.actions.push('F-Coordinate');
+          }
+        }
+      }, {
+        name: "R4-P Astromech",
+        id: 213,
+        faction: "Galactic Republic",
+        slot: "Astromech",
+        charge: 2,
+        points: 100
+      }, {
+        name: "R4-P17",
+        id: 214,
+        unique: true,
+        faction: "Galactic Republic",
+        slot: "Astromech",
+        charge: 2,
+        points: 100
+      }, {
+        name: "Spare Parts Canisters",
+        id: 215,
+        slot: "Modification",
+        charge: 1,
+        points: 100,
+        restriction_func: function(ship) {
+          return (__indexOf.call(ship.pilot.slots, "Astromech") >= 0) && (!ship.isSlotOccupied("Astromech"));
+        }
       }
     ],
     conditionsById: [
@@ -9328,28 +9512,28 @@ exportObj.basicCardData = function() {
         id: 238,
         faction: "Scum and Villainy",
         pilot: "Tel Trevura",
-        ship: "Jumpmaster 5000",
+        ship: "JumpMaster 5000",
         threat: 3,
         upgrades: ["Expert Handling", 'GNK "Gonk" Droid', "Proton Torpedoes", "Deadman's Switch"]
       }, {
         id: 239,
         faction: "Scum and Villainy",
         pilot: "Contracted Scout",
-        ship: "Jumpmaster 5000",
+        ship: "JumpMaster 5000",
         threat: 2,
         upgrades: ["Ion Torpedoes", "Inertial Dampeners"]
       }, {
         id: 240,
         faction: "Scum and Villainy",
         pilot: "Dengar",
-        ship: "Jumpmaster 5000",
+        ship: "JumpMaster 5000",
         threat: 3,
         upgrades: ["Expert Handling", "Proton Torpedoes", "R4 Astromech", "Contraband Cybernetics", "Punishing One"]
       }, {
         id: 241,
         faction: "Scum and Villainy",
         pilot: "Manaroo",
-        ship: "Jumpmaster 5000",
+        ship: "JumpMaster 5000",
         threat: 3,
         upgrades: ["Intimidation", "Perceptive Copilot", "Proton Torpedoes", "Feedback Array", "Static Discharge Vanes"]
       }, {
@@ -12383,6 +12567,7 @@ exportObj.translations.English = {
     "Jam": '<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i>',
     "Calculate": '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>',
     "Coordinate": '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>',
+    "F-Coordinate": '<i class="xwing-miniatures-font force xwing-miniatures-font-coordinate"></i>',
     "Cloak": '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>',
     "Slam": '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>',
     "R> Barrel Roll": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-barrelroll"></i>',
@@ -13800,6 +13985,9 @@ exportObj.cardLoaders.English = function() {
     '"Odd Ball"': {
       text: "After you fully execute a red maneuver or perform a red action, if there is an enemy ship in your %BULLSEYEARC%, you may acquire a lock on that ship. "
     },
+    '"Sinker"': {
+      text: "While a friendly ship at range 1-2 in your %LEFTARC% or %RIGHTARC% performs a primary attack, it may reroll 1 attack die. "
+    },
     '"Swoop"': {
       text: "After a friendly small or medium ship fully executes a speed 3-4 maneuver, if it is at range 0-1, it may perform a red %BOOST% action."
     },
@@ -13808,6 +13996,9 @@ exportObj.cardLoaders.English = function() {
     },
     '"Tucker"': {
       text: "After a friedly ship at range 1-2 performs an attack against an enemy ship in your %FRONTARC%, you may perform a %FOCUS% action."
+    },
+    "Bombardment Drone": {
+      text: "If you would drop a device, you may launch that device instead, using the same template. %LINEBREAK% NETWORKED CALCULATIONS: While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range 0-1 to change 1 %FOCUS% result to an %EVADE% or %HIT% result."
     }
   };
   upgrade_translations = {
@@ -14623,10 +14814,28 @@ exportObj.cardLoaders.English = function() {
       text: " Before you would be dealt a faceup Ship damage card, you may spend 1 %CHARGE% to discard it instead. "
     },
     "Grappling Struts": {
-      text: "<strong>Closed: </strong> Setup: Equip this side faceup. %LINEBREAK% While you execute a manuever, if you overlap an asteroid or debris cloud and there are 1 or fewer other friendly ships at range 0 of that obstacle, you may flip this card. %LINEBREAK% <b>Open:</b> You ignore obstacles at range 0 and while you move through them. After you reveal your dial, if you reveal a maneuver other than a [2 %STRAIGHT%] and are at range 0 of an asteroid or debris cloud, skip your Execute Maneuver step and remove 1 stress token; if you revealed a right or left maneuver, rotate your ship 90º in that direction. After you execute a maneuver, flip this card."
+      text: "<strong>Closed: </strong> Setup: Equip this side faceup. %LINEBREAK% While you execute a manuever, if you overlap an asteroid or debris cloud and there are 1 or fewer other friendly ships at range 0 of that obstacle, you may flip this card. %LINEBREAK% <b>Open:</b> You ignore obstacles at range 0 and while you move through them. After you reveal your dial, if you reveal a maneuver other than a [2 %STRAIGHT%] and are at range 0 of an asteroid or debris cloud, skip your Execute Maneuver step and remove 1 stress token; if you revealed a right or left maneuver, rotate your ship 90º in that direction. After you execute a maneuver, flip this card. "
     },
     "Energy-Shell Charges": {
-      text: " <strong>Attack (%CALCULATE%):</strong> Spend 1 %CHARGE%. While you perform this attack, you may spend 1 calculate token to change 1 %FOCUS% result to a %CRIT% result. %LINEBREAK% <strong>Action:</strong> Reload this card."
+      text: " <strong>Attack (%CALCULATE%):</strong> Spend 1 %CHARGE%. While you perform this attack, you may spend 1 calculate token to change 1 %FOCUS% result to a %CRIT% result. %LINEBREAK% <strong>Action:</strong> Reload this card. "
+    },
+    "Dedicated": {
+      text: " While another friendly ship in your %LEFTARC% or %RIGHTARC% at range 0-2 defends, if it is limited or has the Dedicated upgrade and you are not strained, you may gain 1 strain token. If you do, the defender rerolls 1 of their blank results. "
+    },
+    "Synchronized Console": {
+      text: " After you perform an attack, you may choose a friendly ship at range 1 or a friendly ship with the Synchronized Console upgrade at range 1-3 and spend a lock you have on the defender. If you do, the friendly ship you chose may acquire a lock on the defender. "
+    },
+    "Battle Meditation": {
+      text: " You cannot coordinate limited ships. %LINEBREAK% While you perform a purple %COORDINATE% action, you may coordinate 1 additional friendly non-limited ship of the same type. Both ships must perform the same action."
+    },
+    "R4-P Astromech": {
+      text: " Before you execute a basic maneuver, you may spend 1 %CHARGE%. If you do, while you execute that maneuver, reduce its difficulty. "
+    },
+    "R4-P17": {
+      text: " After you fully execute a red maneuver, you may spend 1 %CHARGE% to perform an action, even while stressed. "
+    },
+    "Spare Parts Canisters": {
+      text: " Action: Spend 1 %CHARGE% to recover 1 charge on one of your equipped %ASTROMECH% upgrades. %LINEBREAK% Action: Spend 1 %CHARGE% to drop 1 spare parts, then break all locks assigned to you. "
     }
   };
   condition_translations = {
@@ -28873,7 +29082,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 30433
+                    lineno: 30752
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -29645,7 +29854,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 31238
+              lineno: 31557
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -30396,7 +30605,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 31923
+              lineno: 32242
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -30406,7 +30615,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 31924
+                lineno: 32243
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -30989,10 +31198,10 @@ exportObj.SquadBuilder = (function() {
           });
           if (data.pilot.unique != null) {
             uniquedots = "&middot;&nbsp;";
-          } else if (data.pilot.restricted != null) {
+          } else if (data.pilot.max_per_squad != null) {
             count = 0;
             uniquedots = "";
-            while (count < data.pilot.restricted) {
+            while (count < data.pilot.max_per_squad) {
               uniquedots = uniquedots.concat("&middot;");
               ++count;
             }
@@ -31131,10 +31340,10 @@ exportObj.SquadBuilder = (function() {
           }
           if (data.unique != null) {
             uniquedots = "&middot;&nbsp;";
-          } else if (data.restricted != null) {
+          } else if (data.max_per_squad != null) {
             count = 0;
             uniquedots = "";
-            while (count < data.restricted) {
+            while (count < data.max_per_squad) {
               uniquedots = uniquedots.concat("&middot;");
               ++count;
             }
@@ -31246,10 +31455,10 @@ exportObj.SquadBuilder = (function() {
           ship = exportObj.ships[data.ship];
           if (pilot.unique != null) {
             uniquedots = "&middot;&nbsp;";
-          } else if (pilot.restricted != null) {
+          } else if (pilot.max_per_squad != null) {
             count = 0;
             uniquedots = "";
-            while (count < data.restricted) {
+            while (count < data.max_per_squad) {
               uniquedots = uniquedots.concat("&middot;");
               ++count;
             }
@@ -32039,7 +32248,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 33031
+              lineno: 33350
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -32240,7 +32449,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 33138
+                          lineno: 33457
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -32269,7 +32478,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 33154
+                              lineno: 33473
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -32337,7 +32546,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 33194
+                      lineno: 33513
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -32411,7 +32620,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 33219
+                lineno: 33538
               })
             ]);
             __iced_deferrals._fulfill();
@@ -32480,7 +32689,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 33248
+              lineno: 33567
             }));
           }
         }
@@ -32718,16 +32927,9 @@ Ship = (function() {
     this.copy_button = $(this.row.find('button.copy-pilot'));
     this.copy_button.click((function(_this) {
       return function(e) {
-        var clone, count;
+        var clone;
         clone = _this.builder.ships[_this.builder.ships.length - 1];
-        if (_this.pilot.restricted) {
-          count = 0;
-          if (count < _this.pilot.restricted) {
-            return clone.copyFrom(_this);
-          }
-        } else {
-          return clone.copyFrom(_this);
-        }
+        return clone.copyFrom(_this);
       };
     })(this));
     return this.copy_button.hide();
@@ -32762,6 +32964,8 @@ Ship = (function() {
             return "<i class=\"xwing-miniatures-font xwing-miniatures-font-focus\"></i> ";
           case 'Evade':
             return "<i class=\"xwing-miniatures-font xwing-miniatures-font-evade\"></i> ";
+          case 'F-Evade':
+            return "<i class=\"xwing-miniatures-font force xwing-miniatures-font-evade\"></i> ";
           case 'Barrel Roll':
             return "<i class=\"xwing-miniatures-font xwing-miniatures-font-barrelroll\"></i> ";
           case 'Lock':
@@ -32770,6 +32974,8 @@ Ship = (function() {
             return "<i class=\"xwing-miniatures-font xwing-miniatures-font-boost\"></i> ";
           case 'Coordinate':
             return "<i class=\"xwing-miniatures-font xwing-miniatures-font-coordinate\"></i> ";
+          case 'F-Coordinate':
+            return "<i class=\"xwing-miniatures-font force xwing-miniatures-font-coordinate\"></i> ";
           case 'Jam':
             return "<i class=\"xwing-miniatures-font xwing-miniatures-font-jam\"></i> ";
           case 'Reinforce':
@@ -33331,6 +33537,20 @@ Ship = (function() {
     return false;
   };
 
+  Ship.prototype.isSlotOccupied = function(slot_name) {
+    var upgrade, _i, _len, _ref;
+    _ref = this.upgrades;
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      upgrade = _ref[_i];
+      if (upgrade.slot === slot_name) {
+        if (!upgrade.isOccupied()) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
   Ship.prototype.toXWS = function() {
     var upgrade, upgrade_obj, xws, _i, _len, _ref, _ref1, _ref2;
     xws = {
@@ -33443,7 +33663,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 34019
+                lineno: 34340
               })
             ]);
             __iced_deferrals._fulfill();
@@ -33584,7 +33804,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 34093
+                  lineno: 34414
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -33606,7 +33826,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 34097
+                    lineno: 34418
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -33693,7 +33913,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 34138
+            lineno: 34459
           }));
         }
         __iced_deferrals._fulfill();
