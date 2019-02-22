@@ -220,7 +220,7 @@
     margin-right: 30px;
     clear: both; }
 
-.bbcode-list textarea, textarea.xws-content, .html-list textarea, .reddit-list textarea, .tts-list textarea {
+.bbcode-list textarea, textarea.xws-content, .html-list textarea, .reddit-list textarea, .tts-list textarea, .simplecopy-list textarea {
   width: 95%;
   height: 200px;
   cursor: text; }
