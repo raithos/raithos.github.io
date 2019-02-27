@@ -6947,6 +6947,7 @@ exportObj.basicCardData = ->
         {
             name: '"Longshot"'
             id: 234
+            skip: true
             unique: true
             faction: "First Order"
             ship: "TIE/FO Fighter"
@@ -7551,7 +7552,11 @@ exportObj.basicCardData = ->
             points: 100
             slots: [
                 "Force"
+                "Tactical Relay"
+                "Crew"
+                "Device"
                 "Modification"
+                "Title"
             ]
         }
         {
@@ -8078,7 +8083,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "General Grevious"
+            name: "General Grievous"
             id: 305
             faction: "Separatist Alliance"
             ship: "Belbullab-22 Starfighter"
@@ -8216,7 +8221,7 @@ exportObj.basicCardData = ->
             unique: true
             faction: "Galactic Republic"
             ship: "Delta-7 Aethersprite"
-            skill: 5
+            skill: 4
             force: 3
             points: 100
             slots: [
@@ -8504,7 +8509,62 @@ exportObj.basicCardData = ->
                 "Torpedo"
             ]
         }
-
+        {
+            name: "Count Dooku"
+            id: 334
+            unique: true
+            faction: "Separatist Alliance"
+            ship: "Sith Infiltrator"
+            skill: 3
+            force: 3
+            darkside: true
+            points: 100
+            slots: [
+                "Force"
+                "Tactical Relay"
+                "Crew"
+                "Device"
+                "Modification"
+                "Title"
+            ]
+        }
+        {
+            name: "D-66"
+            id: 335
+            unique: true
+            faction: "Separatist Alliance"
+            ship: "Sith Infiltrator"
+            skill: 3
+            points: 100
+            slots: [
+                "Talent"
+                "Tactical Relay"
+                "Crew"
+                "Device"
+                "Modification"
+                "Title"
+            ]
+            ship_override:
+                actions: [
+                    "Calculate"
+                    "Lock"
+                ]
+        }
+        {
+            name: "Dark Courier"
+            id: 336
+            faction: "Separatist Alliance"
+            ship: "Sith Infiltrator"
+            skill: 2
+            points: 100
+            slots: [
+                "Tactical Relay"
+                "Crew"
+                "Device"
+                "Modification"
+                "Title"
+            ]
+        }
     ]
 
 
@@ -10382,7 +10442,7 @@ exportObj.basicCardData = ->
             name: "Brilliant Evasion"
             id: 199
             slot: "Force"
-            points: 0
+            points: 100
        }
        {
             name: "Calibrated Laser Targeting"
@@ -10522,6 +10582,84 @@ exportObj.basicCardData = ->
             restriction_func: (ship) ->
                 ("Astromech" in ship.pilot.slots) and (not ship.isSlotOccupied "Astromech" )
        }
+       {
+            name: "Scimitar"
+            id: 216
+            unique: true
+            ship: "Sith Infiltrator"
+            slot: "Title"
+            faction: "Separatist Alliance"
+            points: 100
+            modifier_func: (stats) ->
+                stats.actionsred.push 'Cloak' if 'Cloak' not in stats.actionsred
+                stats.actions.push 'Jam' if 'Jam' not in stats.actions
+       }
+       {
+            name: "Chancellor Palpatine"
+            id: 217
+            unique: true
+            slot: "Crew"
+            force: 1
+            points: 100
+            modifier_func: (stats) ->
+                stats.actions.push 'F-Coordinate' if 'F-Coordinate' not in stats.actions
+            restriction_func: (ship) ->
+                builder = ship.builder
+                return true if builder.faction == "Galactic Republic" or "Separatist Alliance"
+       }
+       {
+            name: "Count Dooku"
+            id: 218
+            unique: true
+            slot: "Crew"
+            force: 1
+            faction: "Separatist Alliance"
+            points: 100
+       }
+       {
+            name: "General Grievous"
+            id: 219
+            unique: true
+            slot: "Crew"
+            charge: 1
+            faction: "Separatist Alliance"
+            points: 100
+       }
+       {
+            name: "K2-B4"
+            id: 220
+            unique: true
+            slot: "Tactical Relay"
+            faction: "Separatist Alliance"
+            points: 100
+       }
+       {
+            name: "DRK-1 Probe Droids"
+            id: 221
+            slot: "Device"
+            faction: "Separatist Alliance"
+            charge: 2
+            points: 100
+            applies_condition: '''DRK-1 Probe Droid'''.canonicalize()
+       }
+       {
+            name: "Kraken"
+            id: 222
+            unique: true
+            slot: "Tactical Relay"
+            faction: "Separatist Alliance"
+            points: 100
+            modifier_func: (stats) ->
+                stats.actions.push 'Calculate' if 'Calculate' not in stats.actions
+       }
+       {
+            name: "TV-94"
+            id: 223
+            unique: true
+            slot: "Tactical Relay"
+            faction: "Separatist Alliance"
+            points: 100
+       }
     ]
 
 
@@ -10582,6 +10720,10 @@ exportObj.basicCardData = ->
         {
             name: 'Rattled'
             id: 12
+        }
+        {
+            name: 'DRK-1 Probe Droid'
+            id: 13
         }
     ]
 
@@ -17320,8 +17462,9 @@ exportObj.cardLoaders.English = () ->
            text: """While you defend, %CRIT% results are neutralized before %HIT% results."""
 
 
-
-        "General Grevious":
+        "Darth Maul":
+           text: """After you perform an attack, you may spend 2 %FORCE% to perform a bonus primary attack against a different target. If your attack missed, you may perform that bonus primary attack against the same target instead."""
+        "General Grievous":
            text: """ While you perform a primary attack, if you are not in the defender's firing arc, you may reroll up to 2 attack dice. """
         "Wat Tambor":
            text: """ While you perform a primary attack, you may reroll 1 attack die for each calculating friendly ship at range 1 of the defender. """
@@ -17355,6 +17498,10 @@ exportObj.cardLoaders.English = () ->
            text: """After a friedly ship at range 1-2 performs an attack against an enemy ship in your %FRONTARC%, you may perform a %FOCUS% action."""
         "Bombardment Drone":
            text: """If you would drop a device, you may launch that device instead, using the same template. %LINEBREAK% NETWORKED CALCULATIONS: While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range 0-1 to change 1 %FOCUS% result to an %EVADE% or %HIT% result."""
+        "Count Dooku":
+           text: """After you defend, if the attacker is in your firing arc, you may spend 1 %FORCE% to remove 1 of your blue or red tokens.%LINEBREAK% After you perform an attack that hits, you may spend 1 %FORCE% to perform an action."""
+        "D-66":
+           text: """After you defend, you may spend 1 calculate token to perform an action."""
         
 
     upgrade_translations =
@@ -17699,7 +17846,7 @@ exportObj.cardLoaders.English = () ->
            text: """<i>Scum only</i>%LINEBREAK%At the start of the End Phase, you may choose 1 enemy ship at range 0-2 in your firing arc. If you do, that ship does not remove its tractor tokens."""
         "L3-37":
            display_name: """L3-37"""
-           text: """<i>Scum only</i>%LINEBREAK%<strong>Setup:</strong> Equip this side faceup.%LINEBREAK%While you defend, you may flip this card. If you do, the attacker must reroll all attack dice.%LINEBREAK%<strong>L3-37’s Programming</strong>If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."""
+           text: """<i>Scum only</i>%LINEBREAK%<strong>Setup:</strong> Equip this side faceup.%LINEBREAK%While you defend, you may flip this card. If you do, the attacker must reroll all attack dice.%LINEBREAK%<strong>L3-37’s Programming:</strong> If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."""
         "Kylo Ren":
            display_name: """Kylo Ren"""
            text: """<i>First Order only</i>%LINEBREAK%<strong>Action:</strong> Choose 1 enemy ship at range 1-3. If you do, spend 1&nbsp;%FORCE% to assign the <strong>I’ll Show You the Dark Side</strong> condition to that ship."""
@@ -17866,7 +18013,7 @@ exportObj.cardLoaders.English = () ->
            display_name: """Sense"""
            text: """During the System Phase, you may choose 1 ship at range 0-1 and look at its dial. If you spend 1&nbsp;%FORCE%, you may choose a ship at range 0-3 instead."""
         "Servomotor S-Foils":
-           display_name: """Servomotor S-foils"""
+           display_name: """Servomotor S-Foils"""
            text: """<strong>Closed: </strong><i>Adds %BOOST% ,  %FOCUS%&nbsp;<i class="xwing-miniatures-font xwing-miniatures-font-linked"></i>&nbsp;<r>%BOOST%</r></i>%LINEBREAK% While you perform a primary attack, roll 1 fewer attack die.%LINEBREAK%Before you activate, you may flip this card.%LINEBREAK%<strong>Open:</strong> Before you activate, you may flip this card."""
         "Seventh Sister":
            display_name: """Seventh Sister"""
@@ -17982,6 +18129,22 @@ exportObj.cardLoaders.English = () ->
            text: """ After you fully execute a red maneuver, you may spend 1 %CHARGE% to perform an action, even while stressed. """
         "Spare Parts Canisters":
            text: """ Action: Spend 1 %CHARGE% to recover 1 charge on one of your equipped %ASTROMECH% upgrades. %LINEBREAK% Action: Spend 1 %CHARGE% to drop 1 spare parts, then break all locks assigned to you. """
+        "Scimitar":
+           text: """Setup: After the Place Forces step, you may cloak. %LINEBREAK% After you decloak, you may choose an enemy ship in your %BULLSEYEARC%. If you do, it gains 1 jam token."""
+        "Chancellor Palpatine":
+           text: """<strong>Setup:</strong> Equip this side faceup.%LINEBREAK% After you defend, if the attacker is at range 0-2, you may spend 1 %FORCE%. If you do, the attacker gains 1 stress token. %LINEBREAK% During the End Phase, you may flip this card. %LINEBREAK% <strong>Darth Sidious:</strong> After you perform a purple %COORDINATE% action, the ship you coordinated gains 1 stress token. Then, it gains 1 focus token or recovers 1 %FORCE%."""
+        "Count Dooku":
+           text: """Before a ship at range 0-2 rolls attack or defense dice, if all of your %FORCE% are active, you may spend 1 %FORCE% and name a result. If the roll does not contain the named result, the ship must change 1 die to that result."""
+        "General Grievous":
+           text: """While you defend, after the Neutralize Results step, if there are 2 or more %HIT%/%CRIT% results, you may spend 1 %CHARGE% to cancel 1 %HIT% or %CRIT% result. %LINEBREAK% After a friendly ship is destroyed, recover 1 %CHARGE%."""
+        "K2-B4":
+           text: """While a friendly ship at range 0-3 defends, it may spend 1 calculate token. If it does, add 1 %EVADE% result unless the attacker chooses to gain 1 strain token."""
+        "DRK-1 Probe Droids":
+           text: """During the End Phase, you may spend 1 %CHARGE% to drop or launch 1 DRK-1 probe droid using a speed 3 template. %LINEBREAK% This card's %CHARGE% cannot be recovered."""
+        "Kraken":
+           text: """During the End Phase, you may choose up to 3 friendly ships at range 0-3. If you do, each of these ships does not remove 1 calculate token."""
+        "TV-94":
+           text: """While a friendly ship at range 0-3 performs a primary attack against a defender in its %BULLSEYEARC%, if there are 2 or fewer attack dice, it may spend 1 calculate token to add 1 %HIT% result."""
             
         
     condition_translations =
@@ -18009,6 +18172,8 @@ exportObj.cardLoaders.English = () ->
            text: '''(Mine Token) - After a ship overlaps or moves through this device, it detonates. When this device detonates, the ship suffers 1 %HIT% damage and gains 3 ion tokens.'''
         'Proximity Mine':
            text: '''(Mine Token) - After a ship overlaps or moves through this device, it detonates. When this device detonates, that ship rolls 2 attack dice. That ship then suffers 1 %HIT% plus 1 %HIT%/%CRIT% damage for each matching result.%LINEBREAK%<i>Errata (since rules reference 1.0.2): Add: "1 %HIT% plus"</i>'''
+        'DRK-1 Probe Droid':
+           text: '''INIT: 0 %LINEBREAK% AGILITY: 3 %LINEBREAK% HULL: 1 %LINEBREAK% (Remote) - While a friendly ship locks an object or jams an enemy ship, it may measure range from you. %LINEBREAK% After an enemy ship overlaps you, that ship rolls 1 attack die. On a %FOCUS% result, you suffer 1 %HIT% damage. %LINEBREAK% System Phase: At your initiative, you may relocate using a [2 %BANKLEFT%], [2 %STRAIGHT%] or [2 %BANKRIGHT%] template.'''
             
     exportObj.setupTranslationCardData pilot_translations, upgrade_translations, condition_translations
 
@@ -21852,7 +22017,7 @@ exportObj.cardLoaders.Magyar = () ->
            text: """Mielőtt sorra kerülsz az Ütközet fázisban, választhasz 1 ellenséges hajót a %BULLSEYEARC% tűzívedben 1-2-es távolságban és kapsz 1 'inaktív fegyverzet' jelzőt. Ha így teszel, az a hajó kap 1 vonósugár jelzőt.%LINEBREAK%<strong>Notched Stabilizers:</strong> Amikor mozogsz, hagyd figyelmen kívül az aszteroidákat."""
         "Overseer Yushyn":
            text: """Mielőtt egy baráti hajó 1-es távolságban kapna 1 'inaktív fegyverzet' jelzőt, ha az a hajó nem stresszes, elkölthetsz 1&nbsp;%CHARGE% jelzőt. Ha így teszel, az a hajó 1 stressz jelzőt kap helyette.%LINEBREAK%<strong>Notched Stabilizers:</strong> Amikor mozogsz, hagyd figyelmen kívül az aszteroidákat."""
-        "General Grevious":
+        "General Grievous":
            text: """Amikor elsődleges támadást hajtasz végre, ha nem vagy a védekező tűzívében, újradobhatod akár 2 támadókockádat is."""
         "Wat Tambor":
            text: """Amikor elsődleges támadást hajtasz végre, újradobhatsz 1 támadókockát minden kalkuláció tokennel rendelkező baráti hajó után ami a védekezőtől 1-es távolságban van."""
@@ -30886,9 +31051,9 @@ class exportObj.SquadBuilder
             bid_goal: 5
             ships_or_upgrades: 3
         @total_points = 0
-        @isCustom = false
-        @isHyperspace = false
-        @isQuickbuild = false
+        # a squad given in the link is loaded on construction of that builder. It will set all gamemodes of already existing builders accordingly, but we did not exists back than. So we copy over the gamemode
+        @isHyperspace = exportObj.builders[0]?.isHyperspace ? false
+        @isQuickbuild = exportObj.builders[0]?.isQuickbuild ? false
         @maxSmallShipsOfOneType = null
         @maxLargeShipsOfOneType = null
 
@@ -30901,6 +31066,7 @@ class exportObj.SquadBuilder
         @current_obstacles = []
 
         @setupUI()
+        @game_type_selector.val (exportObj.builders[0] ? @).game_type_selector.val()
         @setupEventHandlers()
 
         window.setInterval @updatePermaLink, 250
@@ -30911,6 +31077,7 @@ class exportObj.SquadBuilder
             @resetCurrentSquad(true)
             @loadFromSerialized $.getParameterByName('d')
         else
+            @
             @resetCurrentSquad()
             @addShip()
 
@@ -30976,12 +31143,11 @@ class exportObj.SquadBuilder
                     </div>
                 </div>
                 <div class="span4 points-display-container">
-                    Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="100">
+                    Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="200">
                     <select class="game-type-selector">
                         <option value="standard">Extended</option>
                         <option value="hyperspace">Hyperspace</option>
                         <option value="quickbuild">Quickbuild</option>
-                        <option value="custom">Custom</option>
                     </select>
                     <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left)</span>
                     <span class="content-warning unreleased-content-used hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>
@@ -31343,11 +31509,11 @@ class exportObj.SquadBuilder
         @total_points_span = $ @points_container.find('.total-points')
         @game_type_selector = $ @status_container.find('.game-type-selector')
         @game_type_selector.change (e) =>
-            @onGameTypeChanged @game_type_selector.val()
+            $(window).trigger 'xwing:gameTypeChanged', @game_type_selector.val()
+            # @onGameTypeChanged @game_type_selector.val()
         @desired_points_input = $ @points_container.find('.desired-points')
         @desired_points_input.change (e) =>
-            @game_type_selector.val 'custom'
-            @onGameTypeChanged 'custom'
+            @onPointsUpdated $.noop
         @points_remaining_span = $ @points_container.find('.points-remaining')
         @points_remaining_container = $ @points_container.find('.points-remaining-container')
         @unreleased_content_used_container = $ @points_container.find('.unreleased-content-used')
@@ -31811,7 +31977,6 @@ class exportObj.SquadBuilder
 
         $(window).on 'xwing-backend:authenticationChanged', (e) =>
             @resetCurrentSquad()
-
         .on 'xwing-collection:created', (e, collection) =>
             # console.log "#{@faction}: collection was created"
             @collection = collection
@@ -31831,6 +31996,8 @@ class exportObj.SquadBuilder
             if faction == @faction
                 @tab.tab('show')
                 cb this
+        .on 'xwing:gameTypeChanged', (e, gameType, cb=$.noop) =>
+            @onGameTypeChanged gameType, cb
 
         @obstacles_select.change (e) =>
             if @obstacles_select.val().length > 3
@@ -31976,39 +32143,34 @@ class exportObj.SquadBuilder
             @container.trigger 'xwing-backend:squadDirtinessChanged'
 
     onGameTypeChanged: (gametype, cb=$.noop) =>
+        @game_type_selector.val gametype
         oldHyperspace = @isHyperspace
         oldQuickbuild = @isQuickbuild
         switch gametype
             when 'standard'
                 @isHyperspace = false
                 @isQuickbuild = false
-                @isCustom = false
                 @desired_points_input.val 200
                 @maxSmallShipsOfOneType = null
                 @maxLargeShipsOfOneType = null
             when 'hyperspace'
                 @isHyperspace = true
                 @isQuickbuild = false
-                @isCustom = false
                 @desired_points_input.val 200
-                @maxSmallShipsOfOneType = null
-                @maxLargeShipsOfOneType = null
-            when 'custom'
-                @isHyperspace = false
-                @isQuickbuild = false
-                @isCustom = true
                 @maxSmallShipsOfOneType = null
                 @maxLargeShipsOfOneType = null
             when 'quickbuild'
                 @isHyperspace = false
                 @isQuickbuild = true
-                @isCustom = false
                 @desired_points_input.val 8
                 @maxSmallShipsOfOneType = null
                 @maxLargeShipsOfOneType = null
         if (oldHyperspace != @isHyperspace) or (oldQuickbuild != @isQuickbuild)
+            old_id = @current_squad.id
             @newSquadFromScratch($.trim(@current_squad.name))
-        @onPointsUpdated cb
+            @current_squad.id = old_id # we want to keep the ID, so we allow people to use the save button
+        #@onPointsUpdated cb
+        cb()
 
     onPointsUpdated: (cb=$.noop) =>
         @total_points = 0
@@ -32063,6 +32225,7 @@ class exportObj.SquadBuilder
         @tts_container.find('textarea').val $.trim """#{tts_ships.join ""}"""
 
         @bbcode_container.find('textarea').val $.trim """#{bbcode_ships.join "\n\n"}\n[b][i]Total: #{@total_points}[/i][/b]\n\n[url=#{@getPermaLink()}]View in Yet Another Squad Builder 2.0[/url]"""
+
         # console.log "#{@faction}: Squad updated, checking collection"
         @checkCollection()
 
@@ -32142,7 +32305,7 @@ class exportObj.SquadBuilder
 
     serialize: ->
 
-        serialization_version = 5
+        serialization_version = 6
         game_type_abbrev = switch @game_type_selector.val()
             when 'standard'
                 's'
@@ -32150,9 +32313,13 @@ class exportObj.SquadBuilder
                 'h'
             when 'quickbuild'
                 'q'
-            when 'custom'
-                "c=#{$.trim @desired_points_input.val()}"
-        """v#{serialization_version}!#{game_type_abbrev}!#{( ship.toSerialized() for ship in @ships when ship.pilot? and (not @isQuickbuild or ship.primary) ).join ';'}"""
+        selected_points = $.trim @desired_points_input.val()
+        """v#{serialization_version}!#{game_type_abbrev}=#{selected_points}!#{( ship.toSerialized() for ship in @ships when ship.pilot? and (not @isQuickbuild or ship.primary) ).join ';'}"""
+
+    changeGameTypeOnSquadLoad: (gametype) ->
+        if @game_type_selector.val() != gametype
+            $(window).trigger 'xwing:gameTypeChanged', gametype
+
 
     loadFromSerialized: (serialized) ->
         @suppress_automatic_new_ship = true
@@ -32166,25 +32333,36 @@ class exportObj.SquadBuilder
             version = parseInt matches[1]
             # version 1-3 are 1st edition only (may be removed here)
             # version 4 is the final version of 1st edition x-wing, and has been the first few weeks of YASB 2.0
-            # version 5 is the current version
+            # version 5 is the first version for 2nd edtition x-wing only, it features extended (=standard), hyperspace, quickbuild and custom mode
+            # version 6 is the current version, the difference to version 5 is, that custom (=extended with != 200 points) has been removed and points are specified for all modes. 
             switch version
-                when 3, 4, 5
+                when 3, 4, 5, 6
                     # parse out game type
-                    [ game_type_abbrev, serialized_ships ] = matches[2].split('!')
-                    switch game_type_abbrev
-                        when 's'
-                            @game_type_selector.val 'standard'
-                            @game_type_selector.change()
-                        when 'h'
-                            @game_type_selector.val 'hyperspace'
-                            @game_type_selector.change()
-                        when 'q'
-                            @game_type_selector.val 'quickbuild'
-                            @game_type_selector.change()
-                        else
-                            @game_type_selector.val 'custom'
-                            @desired_points_input.val parseInt(game_type_abbrev.split('=')[1])
-                            @desired_points_input.change()
+                    [ game_type_and_point_abbrev, serialized_ships ] = matches[2].split('!')
+                    if version == 6 
+                        desired_points = parseInt(game_type_and_point_abbrev.split('=')[1])
+                        game_type_abbrev = game_type_and_point_abbrev.split('=')[0]  
+                        switch game_type_abbrev
+                            when 's'
+                                @changeGameTypeOnSquadLoad 'standard'
+                            when 'h'
+                                @changeGameTypeOnSquadLoad 'hyperspace'
+                            when 'q'
+                                @changeGameTypeOnSquadLoad 'quickbuild'
+                        @desired_points_input.val desired_points
+                        @desired_points_input.change()
+                    else 
+                        switch game_type_and_point_abbrev
+                            when 's'
+                                @changeGameTypeOnSquadLoad 'standard'
+                            when 'h'
+                                @changeGameTypeOnSquadLoad 'hyperspace'
+                            when 'q'
+                                @changeGameTypeOnSquadLoad 'quickbuild'
+                            else
+                                @changeGameTypeOnSquadLoad 'standard'
+                                @desired_points_input.val parseInt(game_type_and_point_abbrev.split('=')[1])
+                                @desired_points_input.change()
                     ships_with_unmet_dependencies = []
                     for serialized_ship in serialized_ships.split(';')
                         unless serialized_ship == ''
@@ -32304,7 +32482,7 @@ class exportObj.SquadBuilder
         for ship_name, ship_data of exportObj.ships
             if @isOurFaction(ship_data.factions) and (@matcher(ship_data.name, term) or (ship_data.display_name and @matcher(ship_data.display_name, term)))
                 if (@isItemAvailable(ship_data, true))
-                    if not ship_data.huge or @isCustom
+                    if not ship_data.huge
                         if ship_data.display_name
                             ships.push
                                 id: ship_data.name
@@ -34179,7 +34357,7 @@ class Ship
                     conferredaddon_pairs = []
 
 
-            when 4, 5
+            when 4, 5, 6
                 # PILOT_ID:UPGRADEID1,UPGRADEID2:CONFERREDADDONTYPE1.CONFERREDADDONID1,CONFERREDADDONTYPE2.CONFERREDADDONID2
                 # version 5 is the same as version 4, but title and mod has been dropped (as they are treated as upgrades anyways). Thus, we may differ by length
                 if (serialized.split ':').length == 3

@@ -4877,6 +4877,7 @@ exportObj.basicCardData = function() {
       }, {
         name: '"Longshot"',
         id: 234,
+        skip: true,
         unique: true,
         faction: "First Order",
         ship: "TIE/FO Fighter",
@@ -5226,7 +5227,7 @@ exportObj.basicCardData = function() {
         force: 3,
         darkside: true,
         points: 100,
-        slots: ["Force", "Modification"]
+        slots: ["Force", "Tactical Relay", "Crew", "Device", "Modification", "Title"]
       }, {
         name: "Anakin Skylwaker",
         id: 273,
@@ -5522,7 +5523,7 @@ exportObj.basicCardData = function() {
         points: 24,
         slots: ["Modification"]
       }, {
-        name: "General Grevious",
+        name: "General Grievous",
         id: 305,
         faction: "Separatist Alliance",
         ship: "Belbullab-22 Starfighter",
@@ -5612,7 +5613,7 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "Galactic Republic",
         ship: "Delta-7 Aethersprite",
-        skill: 5,
+        skill: 4,
         force: 3,
         points: 100,
         slots: ["Force", "Astromech", "Configuration", "Modification"]
@@ -5783,6 +5784,37 @@ exportObj.basicCardData = function() {
         skill: 5,
         points: 100,
         slots: ["Sensor", "Astromech", "Torpedo"]
+      }, {
+        name: "Count Dooku",
+        id: 334,
+        unique: true,
+        faction: "Separatist Alliance",
+        ship: "Sith Infiltrator",
+        skill: 3,
+        force: 3,
+        darkside: true,
+        points: 100,
+        slots: ["Force", "Tactical Relay", "Crew", "Device", "Modification", "Title"]
+      }, {
+        name: "D-66",
+        id: 335,
+        unique: true,
+        faction: "Separatist Alliance",
+        ship: "Sith Infiltrator",
+        skill: 3,
+        points: 100,
+        slots: ["Talent", "Tactical Relay", "Crew", "Device", "Modification", "Title"],
+        ship_override: {
+          actions: ["Calculate", "Lock"]
+        }
+      }, {
+        name: "Dark Courier",
+        id: 336,
+        faction: "Separatist Alliance",
+        ship: "Sith Infiltrator",
+        skill: 2,
+        points: 100,
+        slots: ["Tactical Relay", "Crew", "Device", "Modification", "Title"]
       }
     ],
     upgradesById: [
@@ -7637,7 +7669,7 @@ exportObj.basicCardData = function() {
         name: "Brilliant Evasion",
         id: 199,
         slot: "Force",
-        points: 0
+        points: 100
       }, {
         name: "Calibrated Laser Targeting",
         id: 200,
@@ -7770,6 +7802,91 @@ exportObj.basicCardData = function() {
         restriction_func: function(ship) {
           return (__indexOf.call(ship.pilot.slots, "Astromech") >= 0) && (!ship.isSlotOccupied("Astromech"));
         }
+      }, {
+        name: "Scimitar",
+        id: 216,
+        unique: true,
+        ship: "Sith Infiltrator",
+        slot: "Title",
+        faction: "Separatist Alliance",
+        points: 100,
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actionsred, 'Cloak') < 0) {
+            stats.actionsred.push('Cloak');
+          }
+          if (__indexOf.call(stats.actions, 'Jam') < 0) {
+            return stats.actions.push('Jam');
+          }
+        }
+      }, {
+        name: "Chancellor Palpatine",
+        id: 217,
+        unique: true,
+        slot: "Crew",
+        force: 1,
+        points: 100,
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'F-Coordinate') < 0) {
+            return stats.actions.push('F-Coordinate');
+          }
+        },
+        restriction_func: function(ship) {
+          var builder;
+          builder = ship.builder;
+          if (builder.faction === "Galactic Republic" || "Separatist Alliance") {
+            return true;
+          }
+        }
+      }, {
+        name: "Count Dooku",
+        id: 218,
+        unique: true,
+        slot: "Crew",
+        force: 1,
+        faction: "Separatist Alliance",
+        points: 100
+      }, {
+        name: "General Grievous",
+        id: 219,
+        unique: true,
+        slot: "Crew",
+        charge: 1,
+        faction: "Separatist Alliance",
+        points: 100
+      }, {
+        name: "K2-B4",
+        id: 220,
+        unique: true,
+        slot: "Tactical Relay",
+        faction: "Separatist Alliance",
+        points: 100
+      }, {
+        name: "DRK-1 Probe Droids",
+        id: 221,
+        slot: "Device",
+        faction: "Separatist Alliance",
+        charge: 2,
+        points: 100,
+        applies_condition: 'DRK-1 Probe Droid'.canonicalize()
+      }, {
+        name: "Kraken",
+        id: 222,
+        unique: true,
+        slot: "Tactical Relay",
+        faction: "Separatist Alliance",
+        points: 100,
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'Calculate') < 0) {
+            return stats.actions.push('Calculate');
+          }
+        }
+      }, {
+        name: "TV-94",
+        id: 223,
+        unique: true,
+        slot: "Tactical Relay",
+        faction: "Separatist Alliance",
+        points: 100
       }
     ],
     conditionsById: [
@@ -7817,6 +7934,9 @@ exportObj.basicCardData = function() {
       }, {
         name: 'Rattled',
         id: 12
+      }, {
+        name: 'DRK-1 Probe Droid',
+        id: 13
       }
     ],
     quickbuildsById: [
@@ -13949,7 +14069,10 @@ exportObj.cardLoaders.English = function() {
       display_name: "“Zeb” Orrelios (TIE Fighter)",
       text: "While you defend, %CRIT% results are neutralized before %HIT% results."
     },
-    "General Grevious": {
+    "Darth Maul": {
+      text: "After you perform an attack, you may spend 2 %FORCE% to perform a bonus primary attack against a different target. If your attack missed, you may perform that bonus primary attack against the same target instead."
+    },
+    "General Grievous": {
       text: " While you perform a primary attack, if you are not in the defender's firing arc, you may reroll up to 2 attack dice. "
     },
     "Wat Tambor": {
@@ -13999,6 +14122,12 @@ exportObj.cardLoaders.English = function() {
     },
     "Bombardment Drone": {
       text: "If you would drop a device, you may launch that device instead, using the same template. %LINEBREAK% NETWORKED CALCULATIONS: While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range 0-1 to change 1 %FOCUS% result to an %EVADE% or %HIT% result."
+    },
+    "Count Dooku": {
+      text: "After you defend, if the attacker is in your firing arc, you may spend 1 %FORCE% to remove 1 of your blue or red tokens.%LINEBREAK% After you perform an attack that hits, you may spend 1 %FORCE% to perform an action."
+    },
+    "D-66": {
+      text: "After you defend, you may spend 1 calculate token to perform an action."
     }
   };
   upgrade_translations = {
@@ -14456,7 +14585,7 @@ exportObj.cardLoaders.English = function() {
     },
     "L3-37": {
       display_name: "L3-37",
-      text: "<i>Scum only</i>%LINEBREAK%<strong>Setup:</strong> Equip this side faceup.%LINEBREAK%While you defend, you may flip this card. If you do, the attacker must reroll all attack dice.%LINEBREAK%<strong>L3-37’s Programming</strong>If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."
+      text: "<i>Scum only</i>%LINEBREAK%<strong>Setup:</strong> Equip this side faceup.%LINEBREAK%While you defend, you may flip this card. If you do, the attacker must reroll all attack dice.%LINEBREAK%<strong>L3-37’s Programming:</strong> If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."
     },
     "Kylo Ren": {
       display_name: "Kylo Ren",
@@ -14679,7 +14808,7 @@ exportObj.cardLoaders.English = function() {
       text: "During the System Phase, you may choose 1 ship at range 0-1 and look at its dial. If you spend 1&nbsp;%FORCE%, you may choose a ship at range 0-3 instead."
     },
     "Servomotor S-Foils": {
-      display_name: "Servomotor S-foils",
+      display_name: "Servomotor S-Foils",
       text: "<strong>Closed: </strong><i>Adds %BOOST% ,  %FOCUS%&nbsp;<i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i>&nbsp;<r>%BOOST%</r></i>%LINEBREAK% While you perform a primary attack, roll 1 fewer attack die.%LINEBREAK%Before you activate, you may flip this card.%LINEBREAK%<strong>Open:</strong> Before you activate, you may flip this card."
     },
     "Seventh Sister": {
@@ -14836,6 +14965,30 @@ exportObj.cardLoaders.English = function() {
     },
     "Spare Parts Canisters": {
       text: " Action: Spend 1 %CHARGE% to recover 1 charge on one of your equipped %ASTROMECH% upgrades. %LINEBREAK% Action: Spend 1 %CHARGE% to drop 1 spare parts, then break all locks assigned to you. "
+    },
+    "Scimitar": {
+      text: "Setup: After the Place Forces step, you may cloak. %LINEBREAK% After you decloak, you may choose an enemy ship in your %BULLSEYEARC%. If you do, it gains 1 jam token."
+    },
+    "Chancellor Palpatine": {
+      text: "<strong>Setup:</strong> Equip this side faceup.%LINEBREAK% After you defend, if the attacker is at range 0-2, you may spend 1 %FORCE%. If you do, the attacker gains 1 stress token. %LINEBREAK% During the End Phase, you may flip this card. %LINEBREAK% <strong>Darth Sidious:</strong> After you perform a purple %COORDINATE% action, the ship you coordinated gains 1 stress token. Then, it gains 1 focus token or recovers 1 %FORCE%."
+    },
+    "Count Dooku": {
+      text: "Before a ship at range 0-2 rolls attack or defense dice, if all of your %FORCE% are active, you may spend 1 %FORCE% and name a result. If the roll does not contain the named result, the ship must change 1 die to that result."
+    },
+    "General Grievous": {
+      text: "While you defend, after the Neutralize Results step, if there are 2 or more %HIT%/%CRIT% results, you may spend 1 %CHARGE% to cancel 1 %HIT% or %CRIT% result. %LINEBREAK% After a friendly ship is destroyed, recover 1 %CHARGE%."
+    },
+    "K2-B4": {
+      text: "While a friendly ship at range 0-3 defends, it may spend 1 calculate token. If it does, add 1 %EVADE% result unless the attacker chooses to gain 1 strain token."
+    },
+    "DRK-1 Probe Droids": {
+      text: "During the End Phase, you may spend 1 %CHARGE% to drop or launch 1 DRK-1 probe droid using a speed 3 template. %LINEBREAK% This card's %CHARGE% cannot be recovered."
+    },
+    "Kraken": {
+      text: "During the End Phase, you may choose up to 3 friendly ships at range 0-3. If you do, each of these ships does not remove 1 calculate token."
+    },
+    "TV-94": {
+      text: "While a friendly ship at range 0-3 performs a primary attack against a defender in its %BULLSEYEARC%, if there are 2 or fewer attack dice, it may spend 1 calculate token to add 1 %HIT% result."
     }
   };
   condition_translations = {
@@ -14874,6 +15027,9 @@ exportObj.cardLoaders.English = function() {
     },
     'Proximity Mine': {
       text: '(Mine Token) - After a ship overlaps or moves through this device, it detonates. When this device detonates, that ship rolls 2 attack dice. That ship then suffers 1 %HIT% plus 1 %HIT%/%CRIT% damage for each matching result.%LINEBREAK%<i>Errata (since rules reference 1.0.2): Add: "1 %HIT% plus"</i>'
+    },
+    'DRK-1 Probe Droid': {
+      text: 'INIT: 0 %LINEBREAK% AGILITY: 3 %LINEBREAK% HULL: 1 %LINEBREAK% (Remote) - While a friendly ship locks an object or jams an enemy ship, it may measure range from you. %LINEBREAK% After an enemy ship overlaps you, that ship rolls 1 attack die. On a %FOCUS% result, you suffer 1 %HIT% damage. %LINEBREAK% System Phase: At your initiative, you may relocate using a [2 %BANKLEFT%], [2 %STRAIGHT%] or [2 %BANKRIGHT%] template.'
     }
   };
   return exportObj.setupTranslationCardData(pilot_translations, upgrade_translations, condition_translations);
@@ -19825,7 +19981,7 @@ exportObj.cardLoaders.Magyar = function() {
     "Overseer Yushyn": {
       text: "Mielőtt egy baráti hajó 1-es távolságban kapna 1 'inaktív fegyverzet' jelzőt, ha az a hajó nem stresszes, elkölthetsz 1&nbsp;%CHARGE% jelzőt. Ha így teszel, az a hajó 1 stressz jelzőt kap helyette.%LINEBREAK%<strong>Notched Stabilizers:</strong> Amikor mozogsz, hagyd figyelmen kívül az aszteroidákat."
     },
-    "General Grevious": {
+    "General Grievous": {
       text: "Amikor elsődleges támadást hajtasz végre, ha nem vagy a védekező tűzívében, újradobhatod akár 2 támadókockádat is."
     },
     "Wat Tambor": {
@@ -29082,7 +29238,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 30752
+                    lineno: 30917
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -29278,6 +29434,7 @@ exportObj.SquadBuilder = (function() {
     this.updatePermaLink = __bind(this.updatePermaLink, this);
     this.getPermaLink = __bind(this.getPermaLink, this);
     this.getPermaLinkParams = __bind(this.getPermaLinkParams, this);
+    var _ref, _ref1, _ref2, _ref3, _ref4;
     this.container = $(args.container);
     this.faction = $.trim(args.faction);
     this.printable_container = $(args.printable_container);
@@ -29296,9 +29453,8 @@ exportObj.SquadBuilder = (function() {
       ships_or_upgrades: 3
     };
     this.total_points = 0;
-    this.isCustom = false;
-    this.isHyperspace = false;
-    this.isQuickbuild = false;
+    this.isHyperspace = (_ref = (_ref1 = exportObj.builders[0]) != null ? _ref1.isHyperspace : void 0) != null ? _ref : false;
+    this.isQuickbuild = (_ref2 = (_ref3 = exportObj.builders[0]) != null ? _ref3.isQuickbuild : void 0) != null ? _ref2 : false;
     this.maxSmallShipsOfOneType = null;
     this.maxLargeShipsOfOneType = null;
     this.backend = null;
@@ -29307,6 +29463,7 @@ exportObj.SquadBuilder = (function() {
     this.collection = null;
     this.current_obstacles = [];
     this.setupUI();
+    this.game_type_selector.val(((_ref4 = exportObj.builders[0]) != null ? _ref4 : this).game_type_selector.val());
     this.setupEventHandlers();
     window.setInterval(this.updatePermaLink, 250);
     this.isUpdatingPoints = false;
@@ -29314,6 +29471,7 @@ exportObj.SquadBuilder = (function() {
       this.resetCurrentSquad(true);
       this.loadFromSerialized($.getParameterByName('d'));
     } else {
+      this;
       this.resetCurrentSquad();
       this.addShip();
     }
@@ -29381,7 +29539,7 @@ exportObj.SquadBuilder = (function() {
     DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES = 3;
     this.status_container = $(document.createElement('DIV'));
     this.status_container.addClass('container-fluid');
-    this.status_container.append($.trim('<div class="row-fluid">\n    <div class="span3 squad-name-container">\n        <div class="display-name">\n            <span class="squad-name"></span>\n            <i class="fa fa-pencil"></i>\n        </div>\n        <div class="input-append">\n            <input type="text" maxlength="64" placeholder="Name your squad..." />\n            <button class="btn save"><i class="fa fa-pencil-square-o"></i></button>\n        </div>\n    </div>\n    <div class="span4 points-display-container">\n        Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="100">\n        <select class="game-type-selector">\n            <option value="standard">Extended</option>\n            <option value="hyperspace">Hyperspace</option>\n            <option value="quickbuild">Quickbuild</option>\n            <option value="custom">Custom</option>\n        </select>\n        <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left)</span>\n        <span class="content-warning unreleased-content-used hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning collection-invalid hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n    </div>\n    <div class="span5 pull-right button-container">\n        <div class="btn-group pull-right">\n\n            <button class="btn btn-primary view-as-text"><span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text</button>\n            <!-- <button class="btn btn-primary print-list hidden-phone hidden-tablet"><i class="fa fa-print"></i>&nbsp;Print</button> -->\n            <a class="btn btn-primary hidden collection"><i class="fa fa-folder-open hidden-phone hidden-tablet"></i>&nbsp;Your Collection</a>\n            \n            <button class="btn btn-primary randomize" ><i class="fa fa-random hidden-phone hidden-tablet"></i>&nbsp;Random!</button>\n            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">\n                <span class="caret"></span>\n            </button>\n            <ul class="dropdown-menu">\n                <li><a class="randomize-options">Randomizer Options</a></li>\n                <li><a class="misc-settings">Misc Settings</a></li>\n            </ul>\n            \n\n        </div>\n    </div>\n</div>\n\n<div class="row-fluid">\n    <div class="span12">\n        <button class="show-authenticated btn btn-primary save-list"><i class="fa fa-floppy-o"></i>&nbsp;Save</button>\n        <button class="show-authenticated btn btn-primary save-list-as"><i class="fa fa-files-o"></i>&nbsp;Save As...</button>\n        <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>\n        <button class="show-authenticated btn btn-primary backend-list-my-squads show-authenticated">Load Squad</button>\n        <button class="btn btn-danger clear-squad">New Squad</button>\n        <span class="show-authenticated backend-status"></span>\n    </div>\n</div>'));
+    this.status_container.append($.trim('<div class="row-fluid">\n    <div class="span3 squad-name-container">\n        <div class="display-name">\n            <span class="squad-name"></span>\n            <i class="fa fa-pencil"></i>\n        </div>\n        <div class="input-append">\n            <input type="text" maxlength="64" placeholder="Name your squad..." />\n            <button class="btn save"><i class="fa fa-pencil-square-o"></i></button>\n        </div>\n    </div>\n    <div class="span4 points-display-container">\n        Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="200">\n        <select class="game-type-selector">\n            <option value="standard">Extended</option>\n            <option value="hyperspace">Hyperspace</option>\n            <option value="quickbuild">Quickbuild</option>\n        </select>\n        <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left)</span>\n        <span class="content-warning unreleased-content-used hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning collection-invalid hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n    </div>\n    <div class="span5 pull-right button-container">\n        <div class="btn-group pull-right">\n\n            <button class="btn btn-primary view-as-text"><span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text</button>\n            <!-- <button class="btn btn-primary print-list hidden-phone hidden-tablet"><i class="fa fa-print"></i>&nbsp;Print</button> -->\n            <a class="btn btn-primary hidden collection"><i class="fa fa-folder-open hidden-phone hidden-tablet"></i>&nbsp;Your Collection</a>\n            \n            <button class="btn btn-primary randomize" ><i class="fa fa-random hidden-phone hidden-tablet"></i>&nbsp;Random!</button>\n            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">\n                <span class="caret"></span>\n            </button>\n            <ul class="dropdown-menu">\n                <li><a class="randomize-options">Randomizer Options</a></li>\n                <li><a class="misc-settings">Misc Settings</a></li>\n            </ul>\n            \n\n        </div>\n    </div>\n</div>\n\n<div class="row-fluid">\n    <div class="span12">\n        <button class="show-authenticated btn btn-primary save-list"><i class="fa fa-floppy-o"></i>&nbsp;Save</button>\n        <button class="show-authenticated btn btn-primary save-list-as"><i class="fa fa-files-o"></i>&nbsp;Save As...</button>\n        <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>\n        <button class="show-authenticated btn btn-primary backend-list-my-squads show-authenticated">Load Squad</button>\n        <button class="btn btn-danger clear-squad">New Squad</button>\n        <span class="show-authenticated backend-status"></span>\n    </div>\n</div>'));
     this.container.append(this.status_container);
     this.list_modal = $(document.createElement('DIV'));
     this.list_modal.addClass('modal hide fade text-list-modal');
@@ -29647,14 +29805,13 @@ exportObj.SquadBuilder = (function() {
     this.game_type_selector = $(this.status_container.find('.game-type-selector'));
     this.game_type_selector.change((function(_this) {
       return function(e) {
-        return _this.onGameTypeChanged(_this.game_type_selector.val());
+        return $(window).trigger('xwing:gameTypeChanged', _this.game_type_selector.val());
       };
     })(this));
     this.desired_points_input = $(this.points_container.find('.desired-points'));
     this.desired_points_input.change((function(_this) {
       return function(e) {
-        _this.game_type_selector.val('custom');
-        return _this.onGameTypeChanged('custom');
+        return _this.onPointsUpdated($.noop);
       };
     })(this));
     this.points_remaining_span = $(this.points_container.find('.points-remaining'));
@@ -29891,7 +30048,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 31597
+              lineno: 31763
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -30068,6 +30225,13 @@ exportObj.SquadBuilder = (function() {
           _this.tab.tab('show');
           return cb(_this);
         }
+      };
+    })(this)).on('xwing:gameTypeChanged', (function(_this) {
+      return function(e, gameType, cb) {
+        if (cb == null) {
+          cb = $.noop;
+        }
+        return _this.onGameTypeChanged(gameType, cb);
       };
     })(this));
     this.obstacles_select.change((function(_this) {
@@ -30266,17 +30430,17 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.onGameTypeChanged = function(gametype, cb) {
-    var oldHyperspace, oldQuickbuild;
+    var oldHyperspace, oldQuickbuild, old_id;
     if (cb == null) {
       cb = $.noop;
     }
+    this.game_type_selector.val(gametype);
     oldHyperspace = this.isHyperspace;
     oldQuickbuild = this.isQuickbuild;
     switch (gametype) {
       case 'standard':
         this.isHyperspace = false;
         this.isQuickbuild = false;
-        this.isCustom = false;
         this.desired_points_input.val(200);
         this.maxSmallShipsOfOneType = null;
         this.maxLargeShipsOfOneType = null;
@@ -30284,30 +30448,23 @@ exportObj.SquadBuilder = (function() {
       case 'hyperspace':
         this.isHyperspace = true;
         this.isQuickbuild = false;
-        this.isCustom = false;
         this.desired_points_input.val(200);
-        this.maxSmallShipsOfOneType = null;
-        this.maxLargeShipsOfOneType = null;
-        break;
-      case 'custom':
-        this.isHyperspace = false;
-        this.isQuickbuild = false;
-        this.isCustom = true;
         this.maxSmallShipsOfOneType = null;
         this.maxLargeShipsOfOneType = null;
         break;
       case 'quickbuild':
         this.isHyperspace = false;
         this.isQuickbuild = true;
-        this.isCustom = false;
         this.desired_points_input.val(8);
         this.maxSmallShipsOfOneType = null;
         this.maxLargeShipsOfOneType = null;
     }
     if ((oldHyperspace !== this.isHyperspace) || (oldQuickbuild !== this.isQuickbuild)) {
+      old_id = this.current_squad.id;
       this.newSquadFromScratch($.trim(this.current_squad.name));
+      this.current_squad.id = old_id;
     }
-    return this.onPointsUpdated(cb);
+    return cb();
   };
 
   SquadBuilder.prototype.onPointsUpdated = function(cb) {
@@ -30456,8 +30613,8 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.serialize = function() {
-    var game_type_abbrev, serialization_version, ship;
-    serialization_version = 5;
+    var game_type_abbrev, selected_points, serialization_version, ship;
+    serialization_version = 6;
     game_type_abbrev = (function() {
       switch (this.game_type_selector.val()) {
         case 'standard':
@@ -30466,11 +30623,10 @@ exportObj.SquadBuilder = (function() {
           return 'h';
         case 'quickbuild':
           return 'q';
-        case 'custom':
-          return "c=" + ($.trim(this.desired_points_input.val()));
       }
     }).call(this);
-    return "v" + serialization_version + "!" + game_type_abbrev + "!" + (((function() {
+    selected_points = $.trim(this.desired_points_input.val());
+    return "v" + serialization_version + "!" + game_type_abbrev + "=" + selected_points + "!" + (((function() {
       var _i, _len, _ref, _results;
       _ref = this.ships;
       _results = [];
@@ -30484,8 +30640,14 @@ exportObj.SquadBuilder = (function() {
     }).call(this)).join(';'));
   };
 
+  SquadBuilder.prototype.changeGameTypeOnSquadLoad = function(gametype) {
+    if (this.game_type_selector.val() !== gametype) {
+      return $(window).trigger('xwing:gameTypeChanged', gametype);
+    }
+  };
+
   SquadBuilder.prototype.loadFromSerialized = function(serialized) {
-    var game_type_abbrev, matches, new_ship, re, serialized_ship, serialized_ships, ship, ships_with_unmet_dependencies, version, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _ref3;
+    var desired_points, game_type_abbrev, game_type_and_point_abbrev, matches, new_ship, re, serialized_ship, serialized_ships, ship, ships_with_unmet_dependencies, version, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _ref3;
     this.suppress_automatic_new_ship = true;
     this.removeAllShips();
     re = /^v(\d+)!(.*)/;
@@ -30496,24 +30658,39 @@ exportObj.SquadBuilder = (function() {
         case 3:
         case 4:
         case 5:
-          _ref = matches[2].split('!'), game_type_abbrev = _ref[0], serialized_ships = _ref[1];
-          switch (game_type_abbrev) {
-            case 's':
-              this.game_type_selector.val('standard');
-              this.game_type_selector.change();
-              break;
-            case 'h':
-              this.game_type_selector.val('hyperspace');
-              this.game_type_selector.change();
-              break;
-            case 'q':
-              this.game_type_selector.val('quickbuild');
-              this.game_type_selector.change();
-              break;
-            default:
-              this.game_type_selector.val('custom');
-              this.desired_points_input.val(parseInt(game_type_abbrev.split('=')[1]));
-              this.desired_points_input.change();
+        case 6:
+          _ref = matches[2].split('!'), game_type_and_point_abbrev = _ref[0], serialized_ships = _ref[1];
+          if (version === 6) {
+            desired_points = parseInt(game_type_and_point_abbrev.split('=')[1]);
+            game_type_abbrev = game_type_and_point_abbrev.split('=')[0];
+            switch (game_type_abbrev) {
+              case 's':
+                this.changeGameTypeOnSquadLoad('standard');
+                break;
+              case 'h':
+                this.changeGameTypeOnSquadLoad('hyperspace');
+                break;
+              case 'q':
+                this.changeGameTypeOnSquadLoad('quickbuild');
+            }
+            this.desired_points_input.val(desired_points);
+            this.desired_points_input.change();
+          } else {
+            switch (game_type_and_point_abbrev) {
+              case 's':
+                this.changeGameTypeOnSquadLoad('standard');
+                break;
+              case 'h':
+                this.changeGameTypeOnSquadLoad('hyperspace');
+                break;
+              case 'q':
+                this.changeGameTypeOnSquadLoad('quickbuild');
+                break;
+              default:
+                this.changeGameTypeOnSquadLoad('standard');
+                this.desired_points_input.val(parseInt(game_type_and_point_abbrev.split('=')[1]));
+                this.desired_points_input.change();
+            }
           }
           ships_with_unmet_dependencies = [];
           _ref1 = serialized_ships.split(';');
@@ -30645,7 +30822,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 32276
+              lineno: 32454
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -30655,7 +30832,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 32277
+                lineno: 32455
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -30718,7 +30895,7 @@ exportObj.SquadBuilder = (function() {
       ship_data = _ref[ship_name];
       if (this.isOurFaction(ship_data.factions) && (this.matcher(ship_data.name, term) || (ship_data.display_name && this.matcher(ship_data.display_name, term)))) {
         if (this.isItemAvailable(ship_data, true)) {
-          if (!ship_data.huge || this.isCustom) {
+          if (!ship_data.huge) {
             if (ship_data.display_name) {
               ships.push({
                 id: ship_data.name,
@@ -32288,7 +32465,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 33384
+              lineno: 33562
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -32489,7 +32666,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 33491
+                          lineno: 33669
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -32518,7 +32695,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 33507
+                              lineno: 33685
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -32586,7 +32763,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 33547
+                      lineno: 33725
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -32660,7 +32837,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 33572
+                lineno: 33750
               })
             ]);
             __iced_deferrals._fulfill();
@@ -32729,7 +32906,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 33601
+              lineno: 33779
             }));
           }
         }
@@ -33437,6 +33614,7 @@ Ship = (function() {
         break;
       case 4:
       case 5:
+      case 6:
         if ((serialized.split(':')).length === 3) {
           _ref5 = serialized.split(':'), pilot_id = _ref5[0], upgrade_ids = _ref5[1], conferredaddon_pairs = _ref5[2];
         } else {
@@ -33738,7 +33916,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 34395
+                lineno: 34573
               })
             ]);
             __iced_deferrals._fulfill();
@@ -33879,7 +34057,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 34469
+                  lineno: 34647
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -33901,7 +34079,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 34473
+                    lineno: 34651
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -33988,7 +34166,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 34514
+            lineno: 34692
           }));
         }
         __iced_deferrals._fulfill();
