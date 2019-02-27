@@ -10602,6 +10602,8 @@ exportObj.basicCardData = ->
             force: 1
             points: 100
             modifier_func: (stats) ->
+                stats.force += 1
+            modifier_func: (stats) ->
                 stats.actions.push 'F-Coordinate' if 'F-Coordinate' not in stats.actions
             restriction_func: (ship) ->
                 builder = ship.builder
@@ -10615,6 +10617,8 @@ exportObj.basicCardData = ->
             force: 1
             faction: "Separatist Alliance"
             points: 100
+            modifier_func: (stats) ->
+                stats.force += 1
        }
        {
             name: "General Grievous"
