@@ -4921,7 +4921,7 @@ exportObj.basicCardData = function() {
         faction: "First Order",
         ship: "Upsilon-Class Command Shuttle",
         skill: 2,
-        points: 60,
+        points: 70,
         slots: ["Tech", "Tech", "Crew", "Crew", "Crew", "Cannon", "Sensor", "Modification"]
       }, {
         name: "L'ulo L'ampar",
@@ -7545,7 +7545,7 @@ exportObj.basicCardData = function() {
         id: 185,
         slot: "Tech",
         faction: "First Order",
-        points: 2,
+        points: 10,
         restriction_func: function(ship) {
           return ship.data.large != null;
         }
