@@ -10746,7 +10746,7 @@ exportObj.basicCardData = ->
         {
             id: 1
             faction: "Galactic Empire"
-            pilot: "Black Squadron Ace"
+            pilot: "Black Squadron Ace (T-70)"
             ship: "TIE Fighter"
             threat: 2
             upgrades: [
@@ -11499,6 +11499,7 @@ exportObj.basicCardData = ->
         }
         {
             id: 66
+            skip: true
             faction: "Galactic Empire"
             pilot: '"Deathrain"'
             ship: "TIE Punisher"
@@ -11719,7 +11720,7 @@ exportObj.basicCardData = ->
         {
             id: 84
             faction: "Rebel Alliance"
-            pilot: "Garven Dreis"
+            pilot: "Garven Dreis (X-Wing)"
             ship: "X-Wing"
             threat: 2
             upgrades: [
@@ -11729,7 +11730,7 @@ exportObj.basicCardData = ->
         {
             id: 85
             faction: "Rebel Alliance"
-            pilot: "Norra Wexley"
+            pilot: "Norra Wexley (Y-Wing)"
             ship: "Y-Wing"
             threat: 3
             upgrades: [
@@ -12196,7 +12197,7 @@ exportObj.basicCardData = ->
         {
             id: 125
             faction: "Rebel Alliance"
-            pilot: "Bohdi Rook"
+            pilot: "Bodhi Rook"
             ship: "U-Wing"
             threat: 2
             upgrades: [
@@ -12369,7 +12370,7 @@ exportObj.basicCardData = ->
         {
             id: 139
             faction: "Rebel Alliance"
-            pilot: "Leebo"
+            pilot: '"Leebo"'
             ship: "YT-2400"
             threat: 4
             upgrades: [
@@ -12943,7 +12944,7 @@ exportObj.basicCardData = ->
         {
             id: 187
             faction: "Scum and Villainy"
-            pilot: "Krassis Treux"
+            pilot: "Krassis Trelix"
             ship: "Firespray-31"
             threat: 3
             upgrades: [
@@ -13127,7 +13128,7 @@ exportObj.basicCardData = ->
         {
             id: 204
             faction: "Scum and Villainy"
-            pilot: "Sabine Wren"
+            pilot: "Sabine Wren (Scum)"
             ship: "Lancer-Class Pursuit Craft"
             threat: 3
             upgrades: [
@@ -13429,7 +13430,7 @@ exportObj.basicCardData = ->
         {
             id: 228
             faction: "Scum and Villainy"
-            pilot: "Dalan Oberos"
+            pilot: "Dalan Oberos (StarViper)"
             ship: "StarViper"
             threat: 3
             upgrades: [
@@ -13748,7 +13749,7 @@ exportObj.basicCardData = ->
             pilot: "Nashtah Pup"
             suffix: " + Bossk"
             linkedId: 252
-            ship: "YV-666"
+            ship: "Z-95 Headhunter"
             threat: 3
         }
         {
@@ -13770,7 +13771,7 @@ exportObj.basicCardData = ->
             pilot: "Nashtah Pup"
             suffix: " + Trandoshan Slaver"
             linkedId: 254
-            ship: "YV-666"
+            ship: "Z-95 Headhunter"
             threat: 3
             upgrades: [
                 "Proton Rockets"
@@ -13817,6 +13818,7 @@ exportObj.basicCardData = ->
         }
         {
             id: 259
+            skip: true
             faction: "Scum and Villainy"
             pilot: "Dalan Oberos"
             ship: "M12-L Kimogila Fighter"
@@ -32721,10 +32723,10 @@ class exportObj.SquadBuilder
                     for upgrade in quickbuild.upgrades
                         if exportObj.upgrades[upgrade] in @uniques_in_use.Upgrade
                             # check, if unique is used by this ship or it's linked ship
-                            if ship_selector == null or not (upgrade in exportObj.quickbuildsById[ship_selector.quickbuildId].upgrades or upgrade in exportObj.quickbuildsById[ship_selector.linkedShip?.quickbuildId]?.upgrades)
+                            if ship_selector == null or not (upgrade in exportObj.quickbuildsById[ship_selector.quickbuildId].upgrades or (ship_selector.linkedShip and upgrade in (exportObj.quickbuildsById[ship_selector.linkedShip?.quickbuildId].upgrades ? [])))
                                 allowed_quickbuilds_containing_uniques_in_use.push quickbuild.id
                                 break
-
+            
             retval = ({id: quickbuild.id, text: "#{if exportObj.settings?.initiative_prefix? and exportObj.settings.initiative_prefix then exportObj.pilots[quickbuild.pilot].skill + ' - ' else ''}#{if exportObj.pilots[quickbuild.pilot].display_name then exportObj.pilots[quickbuild.pilot].display_name else quickbuild.pilot}#{quickbuild.suffix} (#{quickbuild.threat})", points: quickbuild.threat, ship: quickbuild.ship, disabled: quickbuild.id in allowed_quickbuilds_containing_uniques_in_use} for quickbuild in quickbuilds_matching_ship_and_faction)
 
         if sorted
@@ -33842,6 +33844,7 @@ class Ship
                     quickbuild = exportObj.quickbuildsById[parseInt id]
                     new_pilot = exportObj.pilots[quickbuild.pilot]
                     @data = exportObj.ships[quickbuild.ship]
+                    @builder.isUpdatingPoints = true # prevents unneccesary validations while still adding stuff
                     if new_pilot?.unique?
                         await @builder.container.trigger 'xwing:claimUnique', [ new_pilot, 'Pilot', defer() ]
                     @pilot = new_pilot
@@ -33874,6 +33877,8 @@ class Ship
                         @linkedShip.setPilotById quickbuild.linkedId
                         @linkedShip.primary = false
                     @primary = true
+                    @builder.isUpdatingPoints = false
+                    @builder.container.trigger 'xwing:pointsUpdated'
 
                 else
                     @copy_button.hide()
