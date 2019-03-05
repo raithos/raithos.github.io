@@ -10747,7 +10747,7 @@ exportObj.basicCardData = ->
         {
             id: 1
             faction: "Galactic Empire"
-            pilot: "Black Squadron Ace (T-70)"
+            pilot: "Black Squadron Ace"
             ship: "TIE Fighter"
             threat: 2
             upgrades: [
@@ -14019,7 +14019,7 @@ exportObj.basicCardData = ->
         {
             id: 275
             faction: "Resistance"
-            pilot: "Black Squadron Ace"
+            pilot: "Black Squadron Ace (T-70)"
             ship: "T-70 X-Wing"
             threat: 3
             upgrades: [
