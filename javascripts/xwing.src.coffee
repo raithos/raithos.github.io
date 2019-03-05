@@ -10607,7 +10607,8 @@ exportObj.basicCardData = ->
                 stats.actions.push 'F-Coordinate' if 'F-Coordinate' not in stats.actions
             restriction_func: (ship) ->
                 builder = ship.builder
-                return true if builder.faction == "Galactic Republic" or "Separatist Alliance"
+                return true if builder.faction == ("Galactic Republic" or "Separatist Alliance")
+                false
        }
        {
             name: "Count Dooku"
