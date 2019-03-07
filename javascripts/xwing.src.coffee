@@ -14656,6 +14656,7 @@ exportObj.fixIcons = (data) ->
             .replace(/%CREW%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crew"></i>')
             .replace(/%DUALCARD%/g, '<span class="card-restriction">Dual card.</span>')
             .replace(/%ELITE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-elite"></i>')
+            .replace(/%TACTICALRELAY%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-tacticalrelay"></i>')
             .replace(/%EVADE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>')
             .replace(/%FOCUS%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>')
             .replace(/%HARDPOINT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>')
@@ -16579,6 +16580,7 @@ exportObj.translations.English =
         "Coordinate": '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>'
         "F-Coordinate": '<i class="xwing-miniatures-font force xwing-miniatures-font-coordinate"></i>'
         "Cloak": '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>'
+        "Tactical Relay": '<i class="xwing-miniatures-font xwing-miniatures-font-tacticalrelay"></i>'
         "Slam": '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>'
         "R> Barrel Roll": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-barrelroll"></i>'
         "R> Boost": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-boost"></i>'
