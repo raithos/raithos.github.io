@@ -33989,7 +33989,7 @@ Ship = (function() {
   };
 
   Ship.prototype.toXWS = function() {
-    var upgrade, upgrade_obj, xws, _i, _len, _ref, _ref1, _ref2;
+    var upgrade, upgrade_obj, xws, _i, _len, _ref, _ref1, _ref2, _ref3;
     xws = {
       id: (_ref = this.pilot.xws) != null ? _ref : this.pilot.canonical_name,
       name: (_ref1 = this.pilot.xws) != null ? _ref1 : this.pilot.canonical_name,
@@ -34003,7 +34003,7 @@ Ship = (function() {
     _ref2 = this.upgrades;
     for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
       upgrade = _ref2[_i];
-      if ((upgrade != null ? upgrade.data : void 0) != null) {
+      if (((upgrade != null ? upgrade.data : void 0) != null) && ((upgrade != null ? (_ref3 = upgrade.data) != null ? _ref3.ignorecollection : void 0 : void 0) == null)) {
         upgrade.toXWS(upgrade_obj);
       }
     }
