@@ -5815,6 +5815,15 @@ exportObj.basicCardData = function() {
         skill: 2,
         points: 200,
         slots: ["Tactical Relay", "Crew", "Device", "Modification", "Title"]
+      }, {
+        name: "DFS-311",
+        id: 337,
+        faction: "Separatist Alliance",
+        ship: "Vulture-class Droid Fighter",
+        skill: 1,
+        points: 200,
+        unique: true,
+        slots: ["Missile", "Configuration", "Modification"]
       }
     ],
     upgradesById: [
@@ -7894,6 +7903,15 @@ exportObj.basicCardData = function() {
         slot: "Tactical Relay",
         faction: "Separatist Alliance",
         points: 200
+      }, {
+        name: "Discord Missiles",
+        id: 224,
+        slot: "Missile",
+        faction: "Separatist Alliance",
+        charge: 1,
+        max_per_squad: 3,
+        points: 200,
+        applies_condition: 'Buzz Droid Swarm'.canonicalize()
       }
     ],
     conditionsById: [
@@ -7944,6 +7962,9 @@ exportObj.basicCardData = function() {
       }, {
         name: 'DRK-1 Probe Droid',
         id: 13
+      }, {
+        name: 'Buzz Droid Swarm',
+        id: 14
       }
     ],
     quickbuildsById: [
@@ -14216,6 +14237,21 @@ exportObj.cardLoaders.English = function() {
     "Obi-Wan Kenobi": {
       text: "After a friendly ship at range 0-2 spends a focus token, you may spend 1 %FORCE%. If you do, that ship gains 1 focus token. %LINEBREAK% FINE-TUNED CONTROLS: After you fully execute a maneuver, you may spend 1 %FORCE% to perform a %BOOST% or %BARRELROLL% action. "
     },
+    "Jedi Knight": {
+      text: "FINE-TUNED CONTROLS: After you fully execute a maneuver, you may spend 1 %FORCE% to perform a %BOOST% or %BARRELROLL% action. "
+    },
+    "Ahsoka Tano": {
+      text: "%LINEBREAK% FINE-TUNED CONTROLS: After you fully execute a maneuver, you may spend 1 %FORCE% to perform a %BOOST% or %BARRELROLL% action. "
+    },
+    "Anakin Skywalker": {
+      text: "%LINEBREAK% FINE-TUNED CONTROLS: After you fully execute a maneuver, you may spend 1 %FORCE% to perform a %BOOST% or %BARRELROLL% action. "
+    },
+    "Barriss Offee": {
+      text: "%LINEBREAK% FINE-TUNED CONTROLS: After you fully execute a maneuver, you may spend 1 %FORCE% to perform a %BOOST% or %BARRELROLL% action. "
+    },
+    "Luminara Unduli": {
+      text: "%LINEBREAK% FINE-TUNED CONTROLS: After you fully execute a maneuver, you may spend 1 %FORCE% to perform a %BOOST% or %BARRELROLL% action. "
+    },
     "Plo Koon": {
       text: "At the start of the Engagement Phase, you may spend 1 %FORCE% and choose another friendly ship at range 0-2. If you do, you may transfer 1 green token to it or transfer one orange token from it to yourself. %LINEBREAK% FINE-TUNED CONTROLS: After you fully execute a maneuver, you may spend 1 %FORCE% to perform a %BOOST% or %BARRELROLL% action. "
     },
@@ -14251,6 +14287,9 @@ exportObj.cardLoaders.English = function() {
     },
     "D-66": {
       text: "After you defend, you may spend 1 calculate token to perform an action."
+    },
+    "DFS-311": {
+      text: " At the start of the Engagement Phase, you may transfer 1 of your calculate tokens to another friendly ship at range 0-3. %LINEBREAK% NETWORKED CALCULATIONS: While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range 0-1 to change 1 %FOCUS% result to an %EVADE% or %HIT% result. "
     }
   };
   upgrade_translations = {
@@ -15066,7 +15105,7 @@ exportObj.cardLoaders.English = function() {
       text: " Before you would be dealt a faceup Ship damage card, you may spend 1 %CHARGE% to discard it instead. "
     },
     "Grappling Struts": {
-      text: "<strong>Closed: </strong> Setup: Equip this side faceup. %LINEBREAK% While you execute a manuever, if you overlap an asteroid or debris cloud and there are 1 or fewer other friendly ships at range 0 of that obstacle, you may flip this card. %LINEBREAK% <b>Open:</b> You ignore obstacles at range 0 and while you move through them. After you reveal your dial, if you reveal a maneuver other than a [2 %STRAIGHT%] and are at range 0 of an asteroid or debris cloud, skip your Execute Maneuver step and remove 1 stress token; if you revealed a right or left maneuver, rotate your ship 90º in that direction. After you execute a maneuver, flip this card. "
+      text: "<strong>Closed: </strong> Setup: Equip this side faceup. %LINEBREAK% While you execute a manuever, if you overlap an asteroid or debris cloud and there are 1 or fewer other friendly ships at range 0 of that obstacle, you may flip this card. %LINEBREAK% <strong>Open:</strong> You ignore obstacles at range 0 and while you move through them. After you reveal your dial, if you reveal a maneuver other than a [2 %STRAIGHT%] and are at range 0 of an asteroid or debris cloud, skip your Execute Maneuver step and remove 1 stress token; if you revealed a right or left maneuver, rotate your ship 90º in that direction. After you execute a maneuver, flip this card. "
     },
     "Energy-Shell Charges": {
       text: " <strong>Attack (%CALCULATE%):</strong> Spend 1 %CHARGE%. While you perform this attack, you may spend 1 calculate token to change 1 %FOCUS% result to a %CRIT% result. %LINEBREAK% <strong>Action:</strong> Reload this card. "
@@ -15112,6 +15151,9 @@ exportObj.cardLoaders.English = function() {
     },
     "TV-94": {
       text: "While a friendly ship at range 0-3 performs a primary attack against a defender in its %BULLSEYEARC%, if there are 2 or fewer attack dice, it may spend 1 calculate token to add 1 %HIT% result."
+    },
+    "Discord Missiles": {
+      text: "At the start of the Engagement Phase, you may spend 1 calculate token and 1 %CHARGE% to launch 1 buzz droid swarm using the [3 %BANKLEFT%], [3 %STRAIGHT%], or [3 %BANKRIGHT%] template. %LINEBREAK% This card's %CHARGE% cannot be recovered."
     }
   };
   condition_translations = {
@@ -15153,6 +15195,9 @@ exportObj.cardLoaders.English = function() {
     },
     'DRK-1 Probe Droid': {
       text: 'INIT: 0 %LINEBREAK% AGILITY: 3 %LINEBREAK% HULL: 1 %LINEBREAK% (Remote) - While a friendly ship locks an object or jams an enemy ship, it may measure range from you. %LINEBREAK% After an enemy ship overlaps you, that ship rolls 1 attack die. On a %FOCUS% result, you suffer 1 %HIT% damage. %LINEBREAK% System Phase: At your initiative, you may relocate using a [2 %BANKLEFT%], [2 %STRAIGHT%] or [2 %BANKRIGHT%] template.'
+    },
+    'Buzz Droid Swarm': {
+      text: 'INIT: 0 %LINEBREAK% AGILITY: 3 %LINEBREAK% HULL: 1 %LINEBREAK% (Remote) - After an enemy ship moves through or overlaps you, relocate to its front or rear guides (you are at range 0 of this ship). You cannot overlap an object this way. If you cannot be placed at either set of guides, you and that ship each suffere 1 %HIT% damage. %LINEBREAK% Engagement Phase: At your initiative, each enemy ship at range 0 suffers 1 %CRIT% damage.'
     }
   };
   return exportObj.setupTranslationCardData(pilot_translations, upgrade_translations, condition_translations);
@@ -29361,7 +29406,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 31096
+                    lineno: 31140
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -30171,7 +30216,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 31942
+              lineno: 31986
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -30945,7 +30990,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 32633
+              lineno: 32677
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -30955,7 +31000,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 32634
+                lineno: 32678
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -31910,13 +31955,26 @@ exportObj.SquadBuilder = (function() {
             return _results;
           }).call(this)).sort().join(', '));
           this.info_container.find('.info-sources').show();
+          if (data.unique != null) {
+            uniquedots = "&middot;&nbsp;";
+          } else if (data.max_per_squad != null) {
+            count = 0;
+            uniquedots = "";
+            while (count < data.max_per_squad) {
+              uniquedots = uniquedots.concat("&middot;");
+              ++count;
+            }
+            uniquedots = uniquedots.concat("&nbsp;");
+          } else {
+            uniquedots = "";
+          }
           if (((_ref68 = this.collection) != null ? _ref68.counts : void 0) != null) {
             addon_count = (_ref69 = (_ref70 = this.collection.counts) != null ? (_ref71 = _ref70[additional_opts.addon_type.toLowerCase()]) != null ? _ref71[data.name] : void 0 : void 0) != null ? _ref69 : 0;
             this.info_container.find('.info-collection').text("You have " + addon_count + " in your collection.");
           } else {
             this.info_container.find('.info-collection').text('');
           }
-          this.info_container.find('.info-name').html("" + (data.unique ? "&middot;&nbsp;" : "") + (data.display_name ? data.display_name : data.name) + (exportObj.isReleased(data) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
+          this.info_container.find('.info-name').html("" + uniquedots + (data.display_name ? data.display_name : data.name) + (exportObj.isReleased(data) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
           if (data.pointsarray != null) {
             point_info = "<i>Point cost " + data.pointsarray + " when ";
             if ((data.variableagility != null) && data.variableagility) {
@@ -32588,7 +32646,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 33741
+              lineno: 33800
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -32790,7 +32848,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 33849
+                          lineno: 33908
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -32819,7 +32877,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 33865
+                              lineno: 33924
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -32889,7 +32947,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 33907
+                      lineno: 33966
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -32963,7 +33021,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 33932
+                lineno: 33991
               })
             ]);
             __iced_deferrals._fulfill();
@@ -33032,7 +33090,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 33961
+              lineno: 34020
             }));
           }
         }
@@ -34042,7 +34100,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 34755
+                lineno: 34814
               })
             ]);
             __iced_deferrals._fulfill();
@@ -34183,7 +34241,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 34829
+                  lineno: 34888
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -34205,7 +34263,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 34833
+                    lineno: 34892
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -34292,7 +34350,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 34874
+            lineno: 34933
           }));
         }
         __iced_deferrals._fulfill();
