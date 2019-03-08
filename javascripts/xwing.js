@@ -7845,7 +7845,7 @@ exportObj.basicCardData = function() {
         restriction_func: function(ship) {
           var builder;
           builder = ship.builder;
-          if (builder.faction === ("Galactic Republic" || "Separatist Alliance")) {
+          if (builder.faction === "Galactic Republic" || builder.faction === "Separatist Alliance") {
             return true;
           }
           return false;
@@ -33732,7 +33732,7 @@ Ship = (function() {
         for (i = _j = 0, _len1 = _ref2.length; _j < _len1; i = ++_j) {
           upgrade = _ref2[i];
           if (__indexOf.call(conferred_addons, upgrade) < 0) {
-            _results.push((_ref3 = upgrade != null ? (_ref4 = upgrade.data) != null ? _ref4.id : void 0 : void 0) != null ? _ref3 : -1);
+            _results.push((_ref3 = upgrade != null ? (_ref4 = upgrade.data) != null ? _ref4.id : void 0 : void 0) != null ? _ref3 : "");
           }
         }
         return _results;
