@@ -10689,6 +10689,14 @@ exportObj.basicCardData = ->
             points: 200
             applies_condition: '''Buzz Droid Swarm'''.canonicalize()
        }
+       {
+            name: "Clone Commander Cody"
+            id: 225
+            unique: true
+            slot: "Crew"
+            faction: "Galactic Republic"
+            points: 200
+       }
     ]
 
 
@@ -17695,7 +17703,7 @@ exportObj.cardLoaders.English = () ->
         "Jedi Knight":
            text: """FINE-TUNED CONTROLS: After you fully execute a maneuver, you may spend 1 %FORCE% to perform a %BOOST% or %BARRELROLL% action. """ 
         "Ahsoka Tano":
-           text: """%LINEBREAK% FINE-TUNED CONTROLS: After you fully execute a maneuver, you may spend 1 %FORCE% to perform a %BOOST% or %BARRELROLL% action. """ 
+           text: """ After you fully execute a maneuver, you may choose a friendly ship at range 0-1 and spend 1 %FORCE%. That ship may perform an action, even if it is stressed. %LINEBREAK% FINE-TUNED CONTROLS: After you fully execute a maneuver, you may spend 1 %FORCE% to perform a %BOOST% or %BARRELROLL% action. """ 
         "Anakin Skywalker":
            text: """%LINEBREAK% FINE-TUNED CONTROLS: After you fully execute a maneuver, you may spend 1 %FORCE% to perform a %BOOST% or %BARRELROLL% action. """ 
         "Barriss Offee":
@@ -18373,6 +18381,8 @@ exportObj.cardLoaders.English = () ->
            text: """While a friendly ship at range 0-3 performs a primary attack against a defender in its %BULLSEYEARC%, if there are 2 or fewer attack dice, it may spend 1 calculate token to add 1 %HIT% result."""
         "Discord Missiles":
            text: """At the start of the Engagement Phase, you may spend 1 calculate token and 1 %CHARGE% to launch 1 buzz droid swarm using the [3 %BANKLEFT%], [3 %STRAIGHT%], or [3 %BANKRIGHT%] template. %LINEBREAK% This card's %CHARGE% cannot be recovered."""
+        "Clone Commander Cody":
+           text: """ After you perform an attack that missed, if 1 or more %HIT%/%CRIT% results were neutralized, the defender gains 1 strain token. """
             
         
     condition_translations =
