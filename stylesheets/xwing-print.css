@@ -195,22 +195,6 @@ body {
       #printable .fancy-ship .fancy-pilot-stats .info-data, #printable .fancy-ship .fancy-pilot-stats .xwing-miniatures-font {
         position: relative;
         bottom: 0.048in; }
-    #printable .fancy-ship .fancy-dial {
-      float: right;
-      padding: 5px;
-      margin-left: 0.6in;
-      table-layout: fixed; }
-    #printable .fancy-ship .fancy-dial table > tbody > tr > td {
-      border: 2px solid #d6c9d2; }
-    #printable .fancy-ship .fancy-dial table > tbody > tr > td:first-child {
-      color: white;
-      text-align: center;
-      padding: 3px;
-      background-color: #888888;
-      background-image: linear-gradient(rgba(45, 45, 45, 0.2) 50%, transparent 50%, transparent);
-      background-size: 5px 5px; }
-    #printable .fancy-ship .fancy-dial table > tbody > tr > td ~ td {
-      background-color: #a29199; }
     #printable .fancy-ship .fancy-pilot-text {
       margin-left: 0.6in;
       padding: 5px;
@@ -303,6 +287,25 @@ body {
       margin-left: 0.75in;
       margin-right: 0.365in;
       clear: both; }
+  #printable .print-dials-container {
+    overflow: auto;
+    text-align: center;
+    page-break-inside: avoid; }
+    #printable .print-dials-container .fancy-dial {
+      padding: 5px;
+      table-layout: fixed;
+      display: inline-block; }
+    #printable .print-dials-container .fancy-dial table > tbody > tr > td {
+      border: 2px solid #d6c9d2; }
+    #printable .print-dials-container .fancy-dial table > tbody > tr > td:first-child {
+      color: white;
+      text-align: center;
+      padding: 3px;
+      background-color: #888888;
+      background-image: linear-gradient(rgba(45, 45, 45, 0.2) 50%, transparent 50%, transparent);
+      background-size: 5px 5px; }
+    #printable .print-dials-container .fancy-dial table > tbody > tr > td ~ td {
+      background-color: #a29199; }
   #printable .printable-footer {
     position: fixed;
     bottom: 0;
