@@ -295,6 +295,8 @@ body {
       padding: 5px;
       table-layout: fixed;
       display: inline-block; }
+      #printable .print-dials-container .fancy-dial .ship-name-dial {
+        color: black; }
     #printable .print-dials-container .fancy-dial table > tbody > tr > td {
       border: 2px solid #d6c9d2; }
     #printable .print-dials-container .fancy-dial table > tbody > tr > td:first-child {
