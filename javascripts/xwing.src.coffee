@@ -10700,7 +10700,7 @@ exportObj.basicCardData = ->
             name: "Clone Commander Cody"
             id: 225
             unique: true
-            slot: "Crew"
+            slot: "Gunner"
             faction: "Galactic Republic"
             points: 200
        }
