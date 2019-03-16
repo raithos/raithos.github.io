@@ -3001,6 +3001,7 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Evade"
                 "Lock"
+                "Barrel Roll"
                 "R> Evade"
             ]
             actionsred: [
@@ -10685,7 +10686,13 @@ exportObj.basicCardData = ->
             charge: 1
             points: 200
             restriction_func: (ship) ->
-                ("Astromech" in ship.pilot.slots or ship.upgrades) and (not ship.isSlotOccupied "Astromech" )
+                if "Astromech" in ship.pilot.slots
+                    if not ship.isSlotOccupied "Astromech"
+                        return true
+                else if ship.doesSlotExist "Astromech"
+                    if not ship.isSlotOccupied "Astromech"
+                        return true
+                false
        }
        {
             name: "Scimitar"
@@ -34897,6 +34904,13 @@ class Ship
             continue if upgrade == upgrade_obj or upgrade.slot != upgrade_obj.slot
             return true unless upgrade.isOccupied()
         false
+
+    doesSlotExist: (slot) ->
+        for upgrade in @upgrades
+            if slot == upgrade.slot
+                return true
+        false
+    
     
     isSlotOccupied: (slot_name) ->
         for upgrade in @upgrades
