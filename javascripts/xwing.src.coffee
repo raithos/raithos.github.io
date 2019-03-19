@@ -8093,6 +8093,7 @@ exportObj.basicCardData = ->
             points: 200
             slots: [
                 "Talent"
+                "Tactical Relay"
                 "Modification"
             ]
         }
@@ -8106,6 +8107,7 @@ exportObj.basicCardData = ->
             points: 200
             slots: [
                 "Talent"
+                "Tactical Relay"
                 "Modification"
             ]
         }
@@ -8117,6 +8119,7 @@ exportObj.basicCardData = ->
             skill: 1
             points: 200
             slots: [
+                "Tactical Relay"
                 "Modification"
             ]
             ship_override:
@@ -8138,7 +8141,7 @@ exportObj.basicCardData = ->
             skill: 2
             points: 200
             slots: [
-                "Configuration"
+                "Tactical Relay"
                 "Modification"
             ]
         }
@@ -8588,7 +8591,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: '"Odd Ball (ARC-170)"'
+            name: '"Odd Ball" (ARC-170)'
             id: 338
             unique: true
             faction: "Galactic Republic"
@@ -8668,6 +8671,20 @@ exportObj.basicCardData = ->
                 "Crew"
                 "Gunner"
                 "Astromech"
+                "Modification"
+            ]
+        }
+        {
+            name: "Separatist Drone"
+            id: 343
+            faction: "Separatist Alliance"
+            ship: "Vulture-class Droid Fighter"
+            skill: 3
+            points: 200
+            slots: [
+                "Talent"
+                "Missile"
+                "Configuration"
                 "Modification"
             ]
         }
@@ -10746,6 +10763,7 @@ exportObj.basicCardData = ->
             name: "K2-B4"
             id: 220
             unique: true
+            solitary: true
             slot: "Tactical Relay"
             faction: "Separatist Alliance"
             points: 200
@@ -10764,6 +10782,7 @@ exportObj.basicCardData = ->
             id: 222
             unique: true
             slot: "Tactical Relay"
+            solitary: true
             faction: "Separatist Alliance"
             points: 200
             modifier_func: (stats) ->
@@ -10773,6 +10792,7 @@ exportObj.basicCardData = ->
             name: "TV-94"
             id: 223
             unique: true
+            solitary: true
             slot: "Tactical Relay"
             faction: "Separatist Alliance"
             points: 200
@@ -10810,6 +10830,24 @@ exportObj.basicCardData = ->
             slot: "Gunner"
             faction: "Galactic Republic"
             points: 200
+       }
+       {
+            name: "Treacherous"
+            id: 228
+            charge: 1
+            slot: "Talent"
+            faction: "Separatist Alliance"
+            points: 200
+       }
+       {
+            name: "Soulless One"
+            id: 229
+            slot: "Title"
+            unique: true
+            faction: "Separatist Alliance"
+            points: 200
+            modifier_func: (stats) ->
+                stats.hull += 2
        }
     ]
 
@@ -17850,7 +17888,7 @@ exportObj.cardLoaders.English = () ->
            text: """After you defend, you may spend 1 calculate token to perform an action."""
         "DFS-311":
            text: """ At the start of the Engagement Phase, you may transfer 1 of your calculate tokens to another friendly ship at range 0-3. %LINEBREAK% NETWORKED CALCULATIONS: While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range 0-1 to change 1 %FOCUS% result to an %EVADE% or %HIT% result. """
-        '"Odd Ball (ARC-170)"':
+        '"Odd Ball" (ARC-170)':
            text: """After you fully execute a red maneuver or perform a red action, if there is an enemy ship in your %BULLSEYEARC%, you may acquire a lock on that ship. """
         '"Jag"':
            text: """After a friendly ship at range 1-2 in your %LEFTARC% or %RIGHTARC% defends, you may acquire a lock on the attacker. """
@@ -18507,6 +18545,10 @@ exportObj.cardLoaders.English = () ->
            text: """ While another friendly ship performs a primary attack, if the defender is in your firing arc, you may spend 1 %CHARGE%. If you do, the attacker rolls 1 additional die, to a maximum of 4. During the System Phase, you may gain 1 disarm token to recover 1 %CHARGE%. """
         "R4-P44":
            text: """ After you fully execute a red maeuver, if there is an enemy ship in your %BULLSEYEARC%, gain 1 calculate token. """
+        "Treacherous":
+           text: """ While you defend, you may choose a ship obstructing the attack and spend 1 %CHARGE%. If you do, cancel 1 %HIT% or %CRIT% result, and the ship you chose gains 1 strain token. %LINEBREAK% After a ship at range 0-3 is destroyed, recover 1 %CHARGE%. """
+        "Soulless One":
+           text: """ While you defend, if the attacker is outside your firing arc, you may reroll 1 defense die. """
             
         
     condition_translations =
@@ -30495,16 +30537,680 @@ exportObj.manifestByExpansion =
         }
     ]
 
+    'Servants of Strike Squadron Pack': [
+        {
+            name: 'Belbullab-22 Starfighter'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Vulture-class Droid Fighter'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'General Grievous'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Captain Sear'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Wat Tambor'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Feethan Ottraw Autopilot'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Trade Federation Drone'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Separatist Drone'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'DFS-081'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Precise Hunter'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Hadr Chall Prototype'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Treacherous'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Soulless One'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Grappling Struts'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Impervium Plating'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'TV-94'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Kraken'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Composure'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Crack Shot'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Juke'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Trick Shot'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Marksmanship'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Swarm Tactics'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Cluster Missiles'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Proton Rockets'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Energy-Shell Charges'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+
+    'Sith Infiltrator Expansion Pack': [
+        {
+            name: 'Sith Infiltrator'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Dark Courier'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'O-66'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Count Dooku'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Darth Maul'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Brilliant Evasion'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Hate'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Adv. Proton Torpedoes'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Heavy Laser Cannon'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Count Dooku'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'General Grievous'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'K2-B4'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'DRK-1 Probe Droids'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+
+    'Vulture-class Droid Fighter Expansion': [
+        {
+            name: 'Vulture-class Droid Fighter'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Hadr Chall Prototype'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Separatist Drone'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Precise Hunter'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'DFS-311'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Trade Federation Drone'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Grappling Struts'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Energy-Shell Charges'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Discord Missiles'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Munitions Failsafe'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Concussion Missiles'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+
+    'Guardians of the Republic Squadron Pack': [
+        {
+            name: 'Delta-7 Aethersprite'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'V-19 Torrent'
+            type: 'ship'
+            count: 2
+        }
+        {
+            name: 'Obi-Wan Kenobi'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Plo Koon'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Mace Windu'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Saesee Tiin'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Jedi Knight'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Odd Ball"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Kickback"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Swoop"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Axe"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Tucker"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Blue Squadron Protector'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Gold Squadron Trooper'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'R4 Astromech'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R4-P Astromech'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R5 Astromech'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R4-P17'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Delta-7B'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Calibrated Laser Targeting'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Brilliant Evasion'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Battle Meditation'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+
+    'ARC-170 Starfighter Expansion': [
+        {
+            name: 'ARC-170'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: '"Wolffe"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Sinker"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Odd Ball" (ARC-170)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Jag"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Squad Seven Veteran'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '104th Battalion Pilot'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Dedicated'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R4-P44'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Chancellor Palpatine'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Clone Commander Cody'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Proton Torpedoes'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Seventh Fleet Gunner'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Synchronized Console'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Expert Handling'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+
+    'Delta-7 Aethersprite Expansion': [
+        {
+            name: 'Delta-7 Aethersprite'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Anakin Skywalker'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Ahsoka Tano'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Barriss Offee'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Luminara Unduli'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Jedi Knight'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Delta-7B'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Calibrated Laser Targeting'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R4-P Astromech'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R3 Astromech'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Brilliant Evasion'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Battle Meditation'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Composure'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Dedicated'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Expert Handling'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Juke'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Saturation Salvo'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Swarm Tactics'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Cluster Missiles'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Concussion Missiles'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Spare Parts Canisters'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+
+    'Z-95-AF4 Headhunter Expansion Pack': [
+        {
+            name: 'Z-95 Headhunter'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: "N'dru Suhlak"
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: "Kaa'to Leeachos"
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Black Sun Soldier'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Binayre Pirate'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Crack Shot'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Concussion Missiles'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Cluster Missiles'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: "Deadman's Switch"
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Munitions Failsafe'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+
+    'TIE/sk Striker Expansion Pack': [
+        {
+            name: 'TIE Striker'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: '"Countdown"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Pure Sabacc"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Duchess"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Black Squadron Scout'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Planetary Sentinel'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Proton Bombs'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Conner Nets'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Skilled Bombardier'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Trick Shot'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Intimidation'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+
     'Loose Ships': [
         {
             name: 'A-Wing'
             type: 'ship'
             count: 3
-        }
-        {
-            name: 'ARC-170'
-            type: 'ship'
-            count: 2
         }
         {
             name: 'Auzituck Gunship'
@@ -30552,34 +31258,9 @@ exportObj.manifestByExpansion =
             count: 2
         }
         {
-            name: 'TIE Fighter'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'U-Wing'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'X-Wing'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'Y-Wing'
-            type: 'ship'
-            count: 2
-        }
-        {
             name: 'YT-2400'
             type: 'ship'
             count: 2
-        }
-        {
-            name: 'Z-95 Headhunter'
-            type: 'ship'
-            count: 4
         }
         {
             name: 'Alpha-Class Star Wing'
@@ -30593,11 +31274,6 @@ exportObj.manifestByExpansion =
         }
         {
             name: 'Lambda-Class Shuttle'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'TIE Advanced'
             type: 'ship'
             count: 2
         }
@@ -30617,11 +31293,6 @@ exportObj.manifestByExpansion =
             count: 2
         }
         {
-            name: 'TIE Fighter'
-            type: 'ship'
-            count: 4
-        }
-        {
             name: 'TIE Interceptor'
             type: 'ship'
             count: 3
@@ -30635,11 +31306,6 @@ exportObj.manifestByExpansion =
             name: 'TIE Punisher'
             type: 'ship'
             count: 2
-        }
-        {
-            name: 'TIE Striker'
-            type: 'ship'
-            count: 3
         }
         {
             name: 'VT-49 Decimator'
@@ -30682,11 +31348,6 @@ exportObj.manifestByExpansion =
             count: 2
         }
         {
-            name: 'Fang Fighter'
-            type: 'ship'
-            count: 3
-        }
-        {
             name: 'JumpMaster 5000'
             type: 'ship'
             count: 2
@@ -30707,42 +31368,17 @@ exportObj.manifestByExpansion =
             count: 2
         }
         {
-            name: 'Firespray-31'
-            type: 'ship'
-            count: 2
-        }
-        {
             name: 'StarViper'
             type: 'ship'
             count: 2
         }
         {
-            name: 'Y-Wing'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'Z-95 Headhunter'
-            type: 'ship'
-            count: 4
-        }
-        {
-            name: 'T-70 X-Wing'
-            type: 'ship'
-            count: 3
-        }
-        {
             name: 'MG-100 StarFortress'
             type: 'ship'
             count: 3
         }
         {
             name: 'TIE/SF Fighter'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'TIE/FO Fighter'
             type: 'ship'
             count: 3
         }
@@ -30758,108 +31394,6 @@ exportObj.manifestByExpansion =
         }
         {
             name: 'Scavenged YT-1300'
-            type: 'ship'
-            count: 3
-        }
-    ]        
-    'Hyperspace': [
-        {
-            name: 'YT-1300'
-            type: 'ship'
-            count: 1
-        }
-        {
-            name: 'U-Wing'
-            type: 'ship'
-            count: 1
-        }
-        {
-            name: 'X-Wing'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'Y-Wing'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'TIE Advanced'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'TIE Fighter'
-            type: 'ship'
-            count: 1
-        }
-        {
-            name: 'TIE Striker'
-            type: 'ship'
-            count: 1
-        }
-        {
-            name: 'TIE Reaper'
-            type: 'ship'
-            count: 1
-        }
-        {
-            name: 'Fang Fighter'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'Firespray-31'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'Customized YT-1300'
-            type: 'ship'
-            count: 1
-        }
-        {
-            name: 'Escape Craft'
-            type: 'ship'
-            count: 1
-        }
-        {
-            name: 'T-70 X-Wing'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'MG-100 StarFortress'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'RZ-2 A-Wing'
-            type: 'ship'
-            count: 1
-        }
-        {
-            name: 'Scavenged YT-1300'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'TIE/SF Fighter'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'TIE/FO Fighter'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'Upsilon-Class Command Shuttle'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'TIE/VN Silencer'
             type: 'ship'
             count: 3
         }
@@ -31406,6 +31940,8 @@ class exportObj.SquadBuilder
             Pilot:
                 []
             Upgrade:
+                []
+            Slot:
                 []
         @suppress_automatic_new_ship = false
         @tooltip_currently_displaying = null
@@ -32790,6 +33326,10 @@ class exportObj.SquadBuilder
                         # else
                         #     throw new Error("Unique #{type} '#{unique.name}' already claimed as #{otherslot}")
 
+            # Solitary Check
+            if unique.solitary?
+                @uniques_in_use['Slot'].push unique.slot
+
             @uniques_in_use[type].push unique
         else
             throw new Error("Unique #{type} '#{unique.name}' already claimed")
@@ -32801,13 +33341,21 @@ class exportObj.SquadBuilder
             # Release all uniques with the same canonical name and base name
             for type, uniques of @uniques_in_use
                 # Removing stuff in a loop sucks, so we'll construct a new list
-                @uniques_in_use[type] = []
-                for u in uniques
-                    if u.canonical_name.getXWSBaseName() != unique.canonical_name.getXWSBaseName()
-                        # Keep this one
-                        @uniques_in_use[type].push u
-                    # else
-                    #     console.log "Releasing #{u.name} (#{type}) with canonical name #{unique.canonical_name}"
+                if type == 'Slot'
+                    if unique.solitary?
+                        @uniques_in_use[type] = []
+                        for u in uniques
+                            if u != unique.slot
+                                # Keep this one
+                                @uniques_in_use[type].push u.slot
+                else
+                    @uniques_in_use[type] = []
+                    for u in uniques
+                        if u.canonical_name.getXWSBaseName() != unique.canonical_name.getXWSBaseName()
+                            # Keep this one
+                            @uniques_in_use[type].push u
+                        # else
+                        #     console.log "Releasing #{u.name} (#{type}) with canonical name #{unique.canonical_name}"
         else
             throw new Error("Unique #{type} '#{unique.name}' not in use")
         cb()
@@ -32965,8 +33513,8 @@ class exportObj.SquadBuilder
         if filter_func != @dfl_filter_func
             available_upgrades = (upgrade for upgrade in available_upgrades when filter_func(upgrade))
 
-        eligible_upgrades = (upgrade for upgrade_name, upgrade of available_upgrades when (not upgrade.unique? or upgrade not in @uniques_in_use['Upgrade']) and (not (ship? and upgrade.restriction_func?) or upgrade.restriction_func(ship, this_upgrade_obj)) and upgrade not in upgrades_in_use and ((not upgrade.max_per_squad?) or ship.builder.countUpgrades(upgrade.canonical_name) < upgrade.max_per_squad))
-
+        eligible_upgrades = (upgrade for upgrade_name, upgrade of available_upgrades when (not upgrade.unique? or upgrade not in @uniques_in_use['Upgrade']) and (not (ship? and upgrade.restriction_func?) or upgrade.restriction_func(ship, this_upgrade_obj)) and upgrade not in upgrades_in_use and ((not upgrade.max_per_squad?) or ship.builder.countUpgrades(upgrade.canonical_name) < upgrade.max_per_squad) and (not upgrade.solitary? or upgrade.slot not in @uniques_in_use['Slot']))
+        
 
         for equipped_upgrade in (upgrade.data for upgrade in ship.upgrades when upgrade?.data?)
             eligible_upgrades.removeItem equipped_upgrade
@@ -35418,6 +35966,7 @@ exportObj.toXWSFaction =
 exportObj.toXWSUpgrade =
     'Modification': 'modification'
     'Force':'force-power'
+    'Tactical Relay':'tacticalrelay'
 
 exportObj.fromXWSUpgrade =
     'amd': 'Astromech'
@@ -35427,6 +35976,7 @@ exportObj.fromXWSUpgrade =
     'system': 'Sensor'
     'mod': 'Modification'
     'force-power':'Force'
+    'tacticalrelay':'Tactical Relay'
 
 SPEC_URL = 'https://github.com/elistevens/xws-spec'
 
