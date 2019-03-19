@@ -5229,7 +5229,7 @@ exportObj.basicCardData = function() {
         points: 200,
         slots: ["Force", "Tactical Relay", "Crew", "Device", "Modification", "Title"]
       }, {
-        name: "Anakin Skylwaker",
+        name: "Anakin Skywalker",
         id: 273,
         unique: true,
         faction: "Galactic Republic",
@@ -5679,7 +5679,7 @@ exportObj.basicCardData = function() {
         points: 200,
         slots: ["Missile", "Modification"]
       }, {
-        name: "Anakin Skywalker",
+        name: "Anakin Skywalker (N-1 Starfighter)",
         id: 322,
         unique: true,
         faction: "Galactic Republic",
@@ -5796,7 +5796,7 @@ exportObj.basicCardData = function() {
         points: 200,
         slots: ["Force", "Tactical Relay", "Crew", "Device", "Modification", "Title"]
       }, {
-        name: "D-66",
+        name: "O-66",
         id: 335,
         unique: true,
         faction: "Separatist Alliance",
@@ -14363,7 +14363,7 @@ exportObj.cardLoaders.English = function() {
     "Count Dooku": {
       text: "After you defend, if the attacker is in your firing arc, you may spend 1 %FORCE% to remove 1 of your blue or red tokens.%LINEBREAK% After you perform an attack that hits, you may spend 1 %FORCE% to perform an action."
     },
-    "D-66": {
+    "O-66": {
       text: "After you defend, you may spend 1 calculate token to perform an action."
     },
     "DFS-311": {
