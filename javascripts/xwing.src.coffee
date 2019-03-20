@@ -7602,8 +7602,8 @@ exportObj.basicCardData = ->
             unique: true
             faction: "Galactic Republic"
             ship: "Delta-7 Aethersprite"
-            skill: 6
-            force: 3
+            skill: 4
+            force: 1
             points: 43
             slots: [
                 "Force"
@@ -10885,6 +10885,7 @@ exportObj.basicCardData = ->
             id: 229
             slot: "Title"
             unique: true
+            ship: "Belbullab-22 Starfighter"
             faction: "Separatist Alliance"
             points: 10
             modifier_func: (stats) ->
@@ -15094,8 +15095,6 @@ exportObj.hyperspacePilotExclusions = [
 exportObj.hyperspaceUpgradeExclusions = [
     # Generic
     'Ion Cannon',
-    'Jamming Beam',
-    'Tractor Beam',
     'Freelance Slicer',
     'GNK "Gonk" Droid',
     'Novice Technician',
@@ -15160,7 +15159,6 @@ exportObj.hyperspaceUpgradeExclusions = [
     'Greedo'
 
     # FO
-    'Biohexacrypt Codes'
 ]
 
 # Ships/Pilots excluded unless in the included list (with further excluded pilots list for included ships, i.e u-wing)
