@@ -10604,7 +10604,7 @@ exportObj.basicCardData = ->
             slot: "Configuration"
             ship: "Delta-7 Aethersprite"
             points: "*"
-            pointsarray: [4,4,4,4,6,8,10]
+            pointsarray: [0,0,2,4,6,8,10]
             variableinit: true
             unequips_upgrades: [ "Modification" ]
             also_occupies_upgrades: [ "Modification" ]
@@ -15099,7 +15099,6 @@ exportObj.hyperspaceUpgradeExclusions = [
     'Cloaking Device',
     'Contraband Cybernetics',
     'Feedback Array',
-    'Barrage Rockets',
     'Ablative Plating',
     'Advanced SLAM',
     'Electronic Baffle',
@@ -15113,7 +15112,6 @@ exportObj.hyperspaceUpgradeExclusions = [
     '"Chopper" (Astromech)',
     '"Zeb" Orrelios'
     '"Chopper" (Crew)',
-    'Baze Malbus',
     'Cassian Andor',
     'Hera Syndulla',
     'Jyn Erso',
@@ -15125,8 +15123,6 @@ exportObj.hyperspaceUpgradeExclusions = [
     # Galactic Empire
     'Admiral Sloane'
     'Agent Kallus'
-    'Ciena Ree',
-    'Darth Vader',
     'Grand Inquisitor',
     'Grand Moff Tarkin',
     'Minister Tua',
@@ -15152,7 +15148,6 @@ exportObj.hyperspaceUpgradeExclusions = [
     'Jabba the Hutt',
     'Bossk',
     'BT-1',
-    'Dengar',
     'Greedo'
 
     # FO
