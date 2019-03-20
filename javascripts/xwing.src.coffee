@@ -5844,7 +5844,8 @@ exportObj.basicCardData = ->
             restriction_func: (ship) ->
                 builder = ship.builder
                 for t, things of builder.uniques_in_use
-                    return true if 'houndstooth' in (thing.canonical_name.getXWSBaseName() for thing in things)
+                    if t != 'Slot'
+                        return true if 'houndstooth' in (thing.canonical_name.getXWSBaseName() for thing in things)
                 false
 
         }
@@ -9152,7 +9153,8 @@ exportObj.basicCardData = ->
                 builder = ship.builder
                 return true if builder.faction == "Scum and Villainy"
                 for t, things of builder.uniques_in_use
-                    return true if 'ezrabridger' in (thing.canonical_name.getXWSBaseName() for thing in things)
+                    if t != 'Slot'
+                        return true if 'ezrabridger' in (thing.canonical_name.getXWSBaseName() for thing in things)
                 false
        }
        {
@@ -9295,7 +9297,8 @@ exportObj.basicCardData = ->
                 builder = ship.builder
                 return true if builder.faction == "Scum and Villainy"
                 for t, things of builder.uniques_in_use
-                    return true if 'darthvader' in (thing.canonical_name.getXWSBaseName() for thing in things)
+                    if t != 'Slot'
+                        return true if 'darthvader' in (thing.canonical_name.getXWSBaseName() for thing in things)
                 false
        }
        {
@@ -9427,7 +9430,8 @@ exportObj.basicCardData = ->
                 builder = ship.builder
                 return true if builder.faction == "Scum and Villainy"
                 for t, things of builder.uniques_in_use
-                    return true if 'darthvader' in (thing.canonical_name.getXWSBaseName() for thing in things)
+                    if t != 'Slot'
+                        return true if 'darthvader' in (thing.canonical_name.getXWSBaseName() for thing in things)
                 false
        }
        {
@@ -14608,6 +14612,148 @@ exportObj.basicCardData = ->
             threat: 3
             upgrades: [
                 "Afterburners"
+            ]
+        }
+        {
+            id: 309
+            faction: "Galactic Republic"
+            pilot: "Obi-Wan Kenobi"
+            ship: "Delta-7 Aethersprite"
+            threat: 3
+            upgrades: [
+                "Predictive Shot"
+                "R4-P17"
+                "Spare Parts Canisters"
+                "Calibrated Laser Targeting"
+            ]
+        }
+        {
+            id: 310
+            faction: "Galactic Republic"
+            pilot: "Saesee Tiin"
+            ship: "Delta-7 Aethersprite"
+            threat: 3
+            upgrades: [
+                "Supernatural Reflexes"
+                "R4-P Astromech"
+                "Delta-7B"
+            ]
+        }
+        {
+            id: 311
+            faction: "Galactic Republic"
+            pilot: "Mace Windu"
+            ship: "Delta-7 Aethersprite"
+            threat: 4
+            upgrades: [
+                "Supernatural Reflexes"
+                "R2 Astromech"
+                "Delta-7B"
+                "Afterburners"
+                "Shield Upgrade"
+            ]
+        }
+        {
+            id: 312
+            faction: "Galactic Republic"
+            pilot: "Plo Koon"
+            ship: "Delta-7 Aethersprite"
+            threat: 3
+            upgrades: [
+                "Battle Meditation"
+                "Sense"
+                "R4-P Astromech"
+                "Shield Upgrade"
+            ]
+        }
+        {
+            id: 313
+            faction: "Galactic Republic"
+            pilot: "Jedi Knight"
+            ship: "Delta-7 Aethersprite"
+            threat: 2
+            upgrades: [
+                "Delta-7B"
+            ]
+        }
+        {
+            id: 314
+            faction: "Galactic Republic"
+            pilot: '"Tucker"'
+            ship: "V-19 Torrent"
+            threat: 2
+            upgrades: [
+                "Concussion Missiles"
+                "Munitions Failsafe"
+            ]
+        }
+        {
+            id: 315
+            faction: "Galactic Republic"
+            pilot: "Gold Squadron Trooper"
+            ship: "V-19 Torrent"
+            threat: 2
+            upgrades: [
+                "Cluster Missiles"
+                "Afterburners"
+            ]
+        }
+        {
+            id: 316
+            faction: "Galactic Republic"
+            pilot: '"Swoop"'
+            ship: "V-19 Torrent"
+            threat: 2
+            upgrades: [
+                "Composure"
+                "Synchronized Console"
+                "Proton Rockets"
+            ]
+        }
+        {
+            id: 317
+            faction: "Galactic Republic"
+            pilot: "Blue Squadron Protector"
+            ship: "V-19 Torrent"
+            threat: 2
+            upgrades: [
+                "Dedicated"
+                "Synchronized Console"
+            ]
+        }
+        {
+            id: 318
+            faction: "Galactic Republic"
+            pilot: '"Odd Ball"'
+            ship: "V-19 Torrent"
+            threat: 3
+            upgrades: [
+                "Saturation Salvo"
+                "Cluster Missiles"
+                "Afterburners"
+                "Munitions Failsafe"
+            ]
+        }
+        {
+            id: 319
+            faction: "Galactic Republic"
+            pilot: '"Kickback"'
+            ship: "V-19 Torrent"
+            threat: 2
+            upgrades: [
+                "Crack Shot"
+                "Synchronized Console"
+            ]
+        }
+        {
+            id: 320
+            faction: "Galactic Republic"
+            pilot: '"Axe"'
+            ship: "V-19 Torrent"
+            threat: 2
+            upgrades: [
+                "Juke"
+                "Homing Missiles"
             ]
         }
     ]
@@ -32145,7 +32291,7 @@ class exportObj.SquadBuilder
             </div>
             <div class="modal-footer hidden-print">
                 <label class="vertical-space-checkbox hidden-phone">
-                    Add space for damage/upgrade cards when printing <input type="checkbox" class="toggle-vertical-space" />
+                    Add Space for Cards<input type="checkbox" class="toggle-vertical-space" />
                 </label>
                 <label class="maneuver-print-checkbox hidden-phone">
                     Include Maneuvers Chart <input type="checkbox" class="toggle-maneuver-print" checked="checked" />
@@ -32154,16 +32300,16 @@ class exportObj.SquadBuilder
                     Expand Shield and Hull <input type="checkbox" class="toggle-expanded-shield-hull-print" />
                 </label>
                 <label class="color-print-checkbox hidden-phone">
-                    Print color <input type="checkbox" class="toggle-color-print" checked="checked" />
+                    Print Color <input type="checkbox" class="toggle-color-print" checked="checked" />
                 </label>
                 <label class="color-skip-text-checkbox hidden-phone">
-                    Skip texts <input type="checkbox" class="toggle-skip-text-print" />
+                    Skip Card Text <input type="checkbox" class="toggle-skip-text-print" />
                 </label>
                 <label class="qrcode-checkbox hidden-phone">
                     Include QR codes <input type="checkbox" class="toggle-juggler-qrcode" checked="checked" />
                 </label>
                 <label class="obstacles-checkbox hidden-phone">
-                    Include obstacle/damage deck choices <input type="checkbox" class="toggle-obstacles" />
+                    Include Obstacle Choices <input type="checkbox" class="toggle-obstacles" />
                 </label>
                 <div class="btn-group list-display-mode">
                     <button class="btn select-simple-view">Simple</button>
@@ -32624,6 +32770,9 @@ class exportObj.SquadBuilder
                         <option class="core2asteroid3-select" value="core2asteroid3">Force Awakens Asteroid 3</option>
                         <option class="core2asteroid4-select" value="core2asteroid4">Force Awakens Asteroid 4</option>
                         <option class="core2asteroid5-select" value="core2asteroid5">Force Awakens Asteroid 5</option>
+                        <option class="gascloud1-select" value="gascloud1">Gas Cloud 1</option>
+                        <option class="gascloud2-select" value="gascloud2">Gas Cloud 2</option>
+                        <option class="gascloud3-select" value="gascloud3">Gas Cloud 3</option>
                     </select>
                 </div>
                 <div class="obstacle-image-container" style="display:none;">
@@ -32727,6 +32876,7 @@ class exportObj.SquadBuilder
                 <span class="info-sources"></span>
                 <br />
                 <span class="info-collection"></span>
+                <span class="info-solitary"><br />Solitary</span>
                 <table>
                     <tbody>
                         <tr class="info-ship">
@@ -32957,6 +33107,10 @@ class exportObj.SquadBuilder
                             'resistance'
                         when 'First Order'
                             'firstorder'
+                        when 'Galactic Republic'
+                            'galacticrepublic'
+                        when 'Separatist Alliance'
+                            'separatistalliance'
                     @printable_container.find('.squad-faction').html """<i class="xwing-miniatures-font xwing-miniatures-font-#{faction}"></i>"""
 
             # Conditions
@@ -32981,8 +33135,6 @@ class exportObj.SquadBuilder
                     <div class="obstacles">
                         <div>Mark the three obstacles you are using.</div>
                         <img class="obstacle-silhouettes" src="images/xws-obstacles.png" />
-                        <div>Mark which damage deck you are using.</div>
-                        <div><i class="fa fa-square-o"></i>Original Core Set&nbsp;&nbsp&nbsp;<i class="fa fa-square-o"></i>The Force Awakens Core Set</div>
                     </div>
                 """
 
@@ -33513,7 +33665,7 @@ class exportObj.SquadBuilder
         if filter_func != @dfl_filter_func
             available_upgrades = (upgrade for upgrade in available_upgrades when filter_func(upgrade))
 
-        eligible_upgrades = (upgrade for upgrade_name, upgrade of available_upgrades when (not upgrade.unique? or upgrade not in @uniques_in_use['Upgrade']) and (not (ship? and upgrade.restriction_func?) or upgrade.restriction_func(ship, this_upgrade_obj)) and upgrade not in upgrades_in_use and ((not upgrade.max_per_squad?) or ship.builder.countUpgrades(upgrade.canonical_name) < upgrade.max_per_squad) and (not upgrade.solitary? or upgrade.slot not in @uniques_in_use['Slot']))
+        eligible_upgrades = (upgrade for upgrade_name, upgrade of available_upgrades when (not upgrade.unique? or upgrade not in @uniques_in_use['Upgrade']) and (not (ship? and upgrade.restriction_func?) or upgrade.restriction_func(ship, this_upgrade_obj)) and upgrade not in upgrades_in_use and ((not upgrade.max_per_squad?) or ship.builder.countUpgrades(upgrade.canonical_name) < upgrade.max_per_squad) and (not upgrade.solitary? or (upgrade.slot not in @uniques_in_use['Slot'] or include_upgrade?.solitary?)))
         
 
         for equipped_upgrade in (upgrade.data for upgrade in ship.upgrades when upgrade?.data?)
@@ -33730,6 +33882,7 @@ class exportObj.SquadBuilder
                     @info_container.find('p.info-text').html data.pilot.text ? ''
                     @info_container.find('tr.info-ship td.info-data').text data.pilot.ship
                     @info_container.find('tr.info-ship').show()
+                    @info_container.find('.info-solitary').hide()
 
                     if data.data.large?
                         @info_container.find('tr.info-base td.info-data').text "Large"
@@ -33831,6 +33984,7 @@ class exportObj.SquadBuilder
                     ship = exportObj.ships[data.ship]
                     @info_container.find('tr.info-ship td.info-data').text data.ship
                     @info_container.find('tr.info-ship').show()
+                    @info_container.find('.info-solitary').hide
                     
                     if ship.large?
                         @info_container.find('tr.info-base td.info-data').text "Large"
@@ -33929,7 +34083,9 @@ class exportObj.SquadBuilder
                     @info_container.find('p.info-text').html pilot.text ? ''
                     @info_container.find('tr.info-ship td.info-data').text data.ship
                     @info_container.find('tr.info-ship').show()
-                    
+                    @info_container.find('.info-solitary').hide()
+
+
                     if ship.large?
                         @info_container.find('tr.info-base td.info-data').text "Large"
                     else if ship.medium?
@@ -34033,6 +34189,11 @@ class exportObj.SquadBuilder
                         else if data.variablebase? and data.variablebase
                             point_info += " base size is small, medium or large"
                         point_info += "</i><br/><br/>"
+
+                    if data.solitary?
+                        @info_container.find('.info-solitary').show()
+                    else
+                        @info_container.find('.info-solitary').hide()
 
                     @info_container.find('p.info-text').html (point_info ? '') + (data.text ? '')
                     @info_container.find('tr.info-ship').hide()
