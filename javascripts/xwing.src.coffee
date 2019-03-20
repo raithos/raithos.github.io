@@ -15088,6 +15088,7 @@ exportObj.hyperspaceShipInclusions = [
 
 # Used to exclude pilots from included ships
 exportObj.hyperspacePilotExclusions = [
+    'Nashtah Pup'
 ]
 
 # Upgrades in that are not in Hyperspace
