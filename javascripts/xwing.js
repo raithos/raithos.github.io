@@ -5228,8 +5228,8 @@ exportObj.basicCardData = function() {
         skill: 5,
         force: 3,
         darkside: true,
-        points: 200,
-        slots: ["Force", "Tactical Relay", "Crew", "Device", "Modification", "Title"]
+        points: 65,
+        slots: ["Force", "Cannon", "Torpedo", "Crew", "Crew", "Device", "Modification", "Title", "Tactical Relay"]
       }, {
         name: "Anakin Skywalker",
         id: 273,
@@ -5238,7 +5238,7 @@ exportObj.basicCardData = function() {
         ship: "Delta-7 Aethersprite",
         skill: 6,
         force: 3,
-        points: 200,
+        points: 60,
         slots: ["Force", "Astromech", "Configuration", "Modification"]
       }, {
         name: "Luminara Unduli",
@@ -5248,7 +5248,7 @@ exportObj.basicCardData = function() {
         ship: "Delta-7 Aethersprite",
         skill: 4,
         force: 2,
-        points: 200,
+        points: 44,
         slots: ["Force", "Astromech", "Configuration", "Modification"]
       }, {
         name: "Barriss Offee",
@@ -5258,7 +5258,7 @@ exportObj.basicCardData = function() {
         ship: "Delta-7 Aethersprite",
         skill: 6,
         force: 3,
-        points: 200,
+        points: 43,
         slots: ["Force", "Astromech", "Configuration", "Modification"]
       }, {
         name: "Ahsoka Tano",
@@ -5268,7 +5268,7 @@ exportObj.basicCardData = function() {
         ship: "Delta-7 Aethersprite",
         skill: 3,
         force: 2,
-        points: 200,
+        points: 47,
         slots: ["Force", "Astromech", "Configuration", "Modification"]
       }, {
         name: "Jedi Knight",
@@ -5277,7 +5277,7 @@ exportObj.basicCardData = function() {
         ship: "Delta-7 Aethersprite",
         skill: 3,
         force: 1,
-        points: 200,
+        points: 39,
         slots: ["Force", "Astromech", "Configuration", "Modification"]
       }, {
         name: "Obi-Wan Kenobi",
@@ -5287,7 +5287,7 @@ exportObj.basicCardData = function() {
         ship: "Delta-7 Aethersprite",
         skill: 5,
         force: 3,
-        points: 200,
+        points: 53,
         slots: ["Force", "Astromech", "Configuration", "Modification"]
       }, {
         name: "Trade Federation Drone",
@@ -5295,7 +5295,7 @@ exportObj.basicCardData = function() {
         faction: "Separatist Alliance",
         ship: "Vulture-class Droid Fighter",
         skill: 1,
-        points: 200,
+        points: 20,
         slots: ["Missile", "Configuration", "Modification"]
       }, {
         name: '"Sinker"',
@@ -5304,7 +5304,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "ARC-170",
         skill: 3,
-        points: 200,
+        points: 54,
         slots: ["Talent", "Torpedo", "Crew", "Gunner", "Astromech", "Modification"]
       }, {
         name: "Petty Officer Thanisson",
@@ -5531,8 +5531,8 @@ exportObj.basicCardData = function() {
         ship: "Belbullab-22 Starfighter",
         unique: true,
         skill: 4,
-        points: 200,
-        slots: ["Talent", "Tactical Relay", "Modification"]
+        points: 47,
+        slots: ["Talent", "Tactical Relay", "Modification", "Title"]
       }, {
         name: "Wat Tambor",
         id: 306,
@@ -5540,16 +5540,16 @@ exportObj.basicCardData = function() {
         ship: "Belbullab-22 Starfighter",
         unique: true,
         skill: 3,
-        points: 200,
-        slots: ["Talent", "Tactical Relay", "Modification"]
+        points: 43,
+        slots: ["Talent", "Tactical Relay", "Modification", "Title"]
       }, {
         name: "Feethan Ottraw Autopilot",
         id: 307,
         faction: "Separatist Alliance",
         ship: "Belbullab-22 Starfighter",
         skill: 1,
-        points: 200,
-        slots: ["Tactical Relay", "Modification"],
+        points: 37,
+        slots: ["Tactical Relay", "Modification", "Title"],
         ship_override: {
           actions: ["Calculate", "Lock", "Barrel Roll", "R> Calculate", "Boost", "R> Calculate"]
         }
@@ -5560,15 +5560,15 @@ exportObj.basicCardData = function() {
         ship: "Belbullab-22 Starfighter",
         unique: true,
         skill: 2,
-        points: 200,
-        slots: ["Tactical Relay", "Modification"]
+        points: 39,
+        slots: ["Tactical Relay", "Modification", "Title"]
       }, {
         name: "Precise Hunter",
         id: 309,
         faction: "Separatist Alliance",
         ship: "Vulture-class Droid Fighter",
         skill: 3,
-        points: 200,
+        points: 26,
         max_per_squad: 3,
         slots: ["Missile", "Configuration", "Modification"]
       }, {
@@ -5577,7 +5577,7 @@ exportObj.basicCardData = function() {
         faction: "Separatist Alliance",
         ship: "Vulture-class Droid Fighter",
         skill: 1,
-        points: 200,
+        points: 23,
         max_per_squad: 2,
         slots: ["Missile", "Configuration", "Modification"]
       }, {
@@ -5586,7 +5586,7 @@ exportObj.basicCardData = function() {
         faction: "Separatist Alliance",
         ship: "Vulture-class Droid Fighter",
         skill: 3,
-        points: 200,
+        points: 27,
         unique: true,
         slots: ["Missile", "Configuration", "Modification"]
       }, {
@@ -5597,7 +5597,7 @@ exportObj.basicCardData = function() {
         ship: "Delta-7 Aethersprite",
         skill: 5,
         force: 2,
-        points: 200,
+        points: 51,
         slots: ["Force", "Astromech", "Configuration", "Modification"]
       }, {
         name: "Saesee Tiin",
@@ -5607,7 +5607,7 @@ exportObj.basicCardData = function() {
         ship: "Delta-7 Aethersprite",
         skill: 4,
         force: 2,
-        points: 200,
+        points: 44,
         slots: ["Force", "Astromech", "Configuration", "Modification"]
       }, {
         name: "Mace Windu",
@@ -5617,7 +5617,7 @@ exportObj.basicCardData = function() {
         ship: "Delta-7 Aethersprite",
         skill: 4,
         force: 3,
-        points: 200,
+        points: 46,
         slots: ["Force", "Astromech", "Configuration", "Modification"]
       }, {
         name: '"Kickback"',
@@ -5626,7 +5626,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "V-19 Torrent",
         skill: 4,
-        points: 200,
+        points: 36,
         slots: ["Talent", "Missile", "Modification"]
       }, {
         name: '"Odd Ball"',
@@ -5635,7 +5635,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "V-19 Torrent",
         skill: 5,
-        points: 200,
+        points: 38,
         slots: ["Talent", "Missile", "Modification"]
       }, {
         name: '"Swoop"',
@@ -5644,7 +5644,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "V-19 Torrent",
         skill: 3,
-        points: 200,
+        points: 32,
         slots: ["Talent", "Missile", "Modification"]
       }, {
         name: '"Axe"',
@@ -5653,7 +5653,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "V-19 Torrent",
         skill: 3,
-        points: 200,
+        points: 33,
         slots: ["Talent", "Missile", "Modification"]
       }, {
         name: '"Tucker"',
@@ -5662,7 +5662,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "V-19 Torrent",
         skill: 2,
-        points: 200,
+        points: 31,
         slots: ["Missile", "Modification"]
       }, {
         name: "Blue Squadron Protector",
@@ -5670,7 +5670,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "V-19 Torrent",
         skill: 3,
-        points: 200,
+        points: 29,
         slots: ["Talent", "Missile", "Modification"]
       }, {
         name: "Gold Squadron Trooper",
@@ -5678,7 +5678,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "V-19 Torrent",
         skill: 2,
-        points: 200,
+        points: 25,
         slots: ["Missile", "Modification"]
       }, {
         name: "Anakin Skywalker (N-1 Starfighter)",
@@ -5795,8 +5795,8 @@ exportObj.basicCardData = function() {
         skill: 3,
         force: 3,
         darkside: true,
-        points: 200,
-        slots: ["Force", "Tactical Relay", "Crew", "Device", "Modification", "Title"]
+        points: 61,
+        slots: ["Force", "Cannon", "Torpedo", "Crew", "Crew", "Device", "Modification", "Title", "Tactical Relay"]
       }, {
         name: "O-66",
         id: 335,
@@ -5804,8 +5804,8 @@ exportObj.basicCardData = function() {
         faction: "Separatist Alliance",
         ship: "Sith Infiltrator",
         skill: 3,
-        points: 200,
-        slots: ["Talent", "Tactical Relay", "Crew", "Device", "Modification", "Title"],
+        points: 55,
+        slots: ["Cannon", "Torpedo", "Crew", "Crew", "Device", "Modification", "Title", "Tactical Relay"],
         ship_override: {
           actions: ["Calculate", "Lock"]
         }
@@ -5815,15 +5815,15 @@ exportObj.basicCardData = function() {
         faction: "Separatist Alliance",
         ship: "Sith Infiltrator",
         skill: 2,
-        points: 200,
-        slots: ["Tactical Relay", "Crew", "Device", "Modification", "Title"]
+        points: 53,
+        slots: ["Cannon", "Torpedo", "Crew", "Crew", "Device", "Modification", "Title", "Tactical Relay"]
       }, {
         name: "DFS-311",
         id: 337,
         faction: "Separatist Alliance",
         ship: "Vulture-class Droid Fighter",
         skill: 1,
-        points: 200,
+        points: 24,
         unique: true,
         slots: ["Missile", "Configuration", "Modification"]
       }, {
@@ -5833,7 +5833,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "ARC-170",
         skill: 5,
-        points: 200,
+        points: 55,
         slots: ["Talent", "Torpedo", "Crew", "Gunner", "Astromech", "Modification"]
       }, {
         name: '"Jag"',
@@ -5842,7 +5842,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "ARC-170",
         skill: 3,
-        points: 200,
+        points: 49,
         slots: ["Talent", "Torpedo", "Crew", "Gunner", "Astromech", "Modification"]
       }, {
         name: "Squad Seven Veteran",
@@ -5850,7 +5850,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "ARC-170",
         skill: 3,
-        points: 200,
+        points: 47,
         slots: ["Talent", "Torpedo", "Crew", "Gunner", "Astromech", "Modification"]
       }, {
         name: "104th Battalion Pilot",
@@ -5858,7 +5858,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "ARC-170",
         skill: 2,
-        points: 200,
+        points: 42,
         slots: ["Talent", "Torpedo", "Crew", "Gunner", "Astromech", "Modification"]
       }, {
         name: '"Wolffe"',
@@ -5868,7 +5868,7 @@ exportObj.basicCardData = function() {
         ship: "ARC-170",
         skill: 4,
         charge: 1,
-        points: 200,
+        points: 51,
         slots: ["Talent", "Torpedo", "Crew", "Gunner", "Astromech", "Modification"]
       }, {
         name: "Separatist Drone",
@@ -5876,8 +5876,17 @@ exportObj.basicCardData = function() {
         faction: "Separatist Alliance",
         ship: "Vulture-class Droid Fighter",
         skill: 3,
-        points: 200,
-        slots: ["Talent", "Missile", "Configuration", "Modification"]
+        points: 22,
+        slots: ["Missile", "Configuration", "Modification"]
+      }, {
+        name: "Skakoan Ace",
+        id: 344,
+        faction: "Separatist Alliance",
+        ship: "Belbullab-22 Starfighter",
+        unique: true,
+        skill: 3,
+        points: 41,
+        slots: ["Talent", "Tactical Relay", "Modification", "Title"]
       }
     ],
     upgradesById: [
@@ -7738,13 +7747,18 @@ exportObj.basicCardData = function() {
         name: "Brilliant Evasion",
         id: 199,
         slot: "Force",
-        points: 200
+        points: '*',
+        pointsarray: [0, 2, 4, 6],
+        variableagility: true,
+        points: 6
       }, {
         name: "Calibrated Laser Targeting",
         id: 200,
         slot: "Configuration",
         ship: "Delta-7 Aethersprite",
-        points: 0,
+        points: "*",
+        pointsarray: [4, 4, 4, 4, 6, 8, 10],
+        variableinit: true,
         unequips_upgrades: ["Modification"],
         also_occupies_upgrades: ["Modification"]
       }, {
@@ -7752,7 +7766,9 @@ exportObj.basicCardData = function() {
         id: 201,
         slot: "Configuration",
         ship: "Delta-7 Aethersprite",
-        points: 0,
+        points: "*",
+        pointsarray: [12, 13, 14, 15, 16, 17, 18],
+        variableinit: true,
         modifier_func: function(stats) {
           stats.attack += 1;
           stats.agility += -1;
@@ -7798,13 +7814,13 @@ exportObj.basicCardData = function() {
         ship: "Belbullab-22 Starfighter",
         charge: 2,
         slot: "Modification",
-        points: 200
+        points: 6
       }, {
         name: "Grappling Struts",
         id: 208,
         ship: "Vulture-class Droid Fighter",
         slot: "Configuration",
-        points: 200
+        points: 3
       }, {
         name: "Energy-Shell Charges",
         id: 209,
@@ -7814,7 +7830,7 @@ exportObj.basicCardData = function() {
         range: "2-3",
         rangebonus: true,
         charge: 1,
-        points: 200,
+        points: 4,
         restriction_func: function(ship) {
           return __indexOf.call(ship.effectiveStats().actions, "Calculate") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Calculate") >= 0;
         }
@@ -7823,7 +7839,7 @@ exportObj.basicCardData = function() {
         id: 210,
         faction: "Galactic Republic",
         slot: "Talent",
-        points: 200,
+        points: 3,
         restriction_func: function(ship) {
           return !ship.pilot.unique;
         }
@@ -7832,7 +7848,7 @@ exportObj.basicCardData = function() {
         id: 211,
         faction: "Galactic Republic",
         slot: "Modification",
-        points: 200,
+        points: 2,
         restriction_func: function(ship) {
           return __indexOf.call(ship.effectiveStats().actions, "Lock") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Lock") >= 0;
         }
@@ -7841,7 +7857,9 @@ exportObj.basicCardData = function() {
         id: 212,
         faction: "Galactic Republic",
         slot: "Force",
-        points: 200,
+        points: "*",
+        pointsarray: [3, 5, 7, 9, 11, 13, 15],
+        variableinit: true,
         modifier_func: function(stats) {
           if (__indexOf.call(stats.actions, 'F-Coordinate') < 0) {
             return stats.actions.push('F-Coordinate');
@@ -7853,7 +7871,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         slot: "Astromech",
         charge: 2,
-        points: 200
+        points: 4
       }, {
         name: "R4-P17",
         id: 214,
@@ -7861,13 +7879,13 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         slot: "Astromech",
         charge: 2,
-        points: 200
+        points: 5
       }, {
         name: "Spare Parts Canisters",
         id: 215,
         slot: "Modification",
         charge: 1,
-        points: 200,
+        points: 4,
         restriction_func: function(ship) {
           if (__indexOf.call(ship.pilot.slots, "Astromech") >= 0) {
             if (!ship.isSlotOccupied("Astromech")) {
@@ -7887,7 +7905,7 @@ exportObj.basicCardData = function() {
         ship: "Sith Infiltrator",
         slot: "Title",
         faction: "Separatist Alliance",
-        points: 200,
+        points: 4,
         modifier_func: function(stats) {
           if (__indexOf.call(stats.actionsred, 'Cloak') < 0) {
             stats.actionsred.push('Cloak');
@@ -7902,7 +7920,7 @@ exportObj.basicCardData = function() {
         unique: true,
         slot: "Crew",
         force: 1,
-        points: 200,
+        points: 14,
         modifier_func: function(stats) {
           return stats.force += 1;
         },
@@ -7926,7 +7944,7 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         force: 1,
         faction: "Separatist Alliance",
-        points: 200,
+        points: 9,
         modifier_func: function(stats) {
           return stats.force += 1;
         }
@@ -7937,7 +7955,7 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         charge: 1,
         faction: "Separatist Alliance",
-        points: 200
+        points: 3
       }, {
         name: "K2-B4",
         id: 220,
@@ -7945,14 +7963,14 @@ exportObj.basicCardData = function() {
         solitary: true,
         slot: "Tactical Relay",
         faction: "Separatist Alliance",
-        points: 200
+        points: 5
       }, {
         name: "DRK-1 Probe Droids",
         id: 221,
         slot: "Device",
         faction: "Separatist Alliance",
         charge: 2,
-        points: 200,
+        points: 6,
         applies_condition: 'DRK-1 Probe Droid'.canonicalize()
       }, {
         name: "Kraken",
@@ -7961,7 +7979,7 @@ exportObj.basicCardData = function() {
         slot: "Tactical Relay",
         solitary: true,
         faction: "Separatist Alliance",
-        points: 200,
+        points: 10,
         modifier_func: function(stats) {
           if (__indexOf.call(stats.actions, 'Calculate') < 0) {
             return stats.actions.push('Calculate');
@@ -7974,7 +7992,7 @@ exportObj.basicCardData = function() {
         solitary: true,
         slot: "Tactical Relay",
         faction: "Separatist Alliance",
-        points: 200
+        points: 5
       }, {
         name: "Discord Missiles",
         id: 224,
@@ -7982,7 +8000,7 @@ exportObj.basicCardData = function() {
         faction: "Separatist Alliance",
         charge: 1,
         max_per_squad: 3,
-        points: 200,
+        points: 6,
         applies_condition: 'Buzz Droid Swarm'.canonicalize()
       }, {
         name: "Clone Commander Cody",
@@ -7990,35 +8008,35 @@ exportObj.basicCardData = function() {
         unique: true,
         slot: "Gunner",
         faction: "Galactic Republic",
-        points: 200
+        points: 3
       }, {
         name: "R4-P44",
         id: 226,
         unique: true,
         faction: "Galactic Republic",
         slot: "Astromech",
-        points: 200
+        points: 5
       }, {
         name: "Seventh Fleet Gunner",
         id: 227,
         charge: 1,
         slot: "Gunner",
         faction: "Galactic Republic",
-        points: 200
+        points: 9
       }, {
         name: "Treacherous",
         id: 228,
         charge: 1,
         slot: "Talent",
         faction: "Separatist Alliance",
-        points: 200
+        points: 3
       }, {
         name: "Soulless One",
         id: 229,
         slot: "Title",
         unique: true,
         faction: "Separatist Alliance",
-        points: 200,
+        points: 10,
         modifier_func: function(stats) {
           return stats.hull += 2;
         }
@@ -30043,7 +30061,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 31967
+                    lineno: 32004
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -30855,7 +30873,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 32821
+              lineno: 32858
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -31648,7 +31666,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 33530
+              lineno: 33567
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -31658,7 +31676,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 33531
+                lineno: 33568
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -33331,7 +33349,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 34684
+              lineno: 34721
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -33533,7 +33551,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 34792
+                          lineno: 34829
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -33562,7 +33580,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 34808
+                              lineno: 34845
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -33632,7 +33650,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 34850
+                      lineno: 34887
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -33706,7 +33724,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 34875
+                lineno: 34912
               })
             ]);
             __iced_deferrals._fulfill();
@@ -33775,7 +33793,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 34904
+              lineno: 34941
             }));
           }
         }
@@ -34795,7 +34813,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 35706
+                lineno: 35743
               })
             ]);
             __iced_deferrals._fulfill();
@@ -34936,7 +34954,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 35780
+                  lineno: 35817
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -34958,7 +34976,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 35784
+                    lineno: 35821
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -35045,7 +35063,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 35825
+            lineno: 35862
           }));
         }
         __iced_deferrals._fulfill();
