@@ -15052,18 +15052,23 @@ exportObj.randomizer = (faction_name, points) ->
 exportObj.hyperspaceShipInclusions = [
     {name: 'X-Wing', faction: 'Rebel Alliance'},
     {name: 'YT-1300', faction: 'Rebel Alliance'},
+    {name: 'B-Wing', faction: 'Rebel Alliance'},
+    {name: 'A-Wing', faction: 'Rebel Alliance'},
     {name: 'Y-Wing', faction: 'Rebel Alliance'},
     {name: 'U-Wing', faction: 'Rebel Alliance'},
     {name: 'TIE Advanced', faction: 'Galactic Empire'},
+    {name: 'TIE Interceptor', faction: 'Galactic Empire'},
+    {name: 'TIE Bomber', faction: 'Galactic Empire'},
     {name: 'TIE Fighter', faction: 'Galactic Empire'},
     {name: 'TIE Reaper', faction: 'Galactic Empire'},
     {name: 'TIE Striker', faction: 'Galactic Empire'},
     {name: 'Firespray-31', faction: 'Scum and Villainy'},
+    {name: 'Z-95 Headhunter', faction: 'Scum and Villainy'},
+    {name: 'StarViper', faction: 'Scum and Villainy'},
     {name: 'Escape Craft', faction: 'Scum and Villainy'},
     {name: 'Mining Guild TIE Fighter', faction: 'Scum and Villainy'},
     {name: 'Fang Fighter', faction: 'Scum and Villainy'},
     {name: 'Customized YT-1300', faction: 'Scum and Villainy'},
-    {name: 'TIE Fighter', faction: 'Scum and Villainy'},
     {name: 'Scavenged YT-1300', faction: 'Resistance'},
     {name: 'T-70 X-Wing', faction: 'Resistance'},
     {name: 'RZ-2 A-Wing', faction: 'Resistance'},
@@ -15082,10 +15087,6 @@ exportObj.hyperspaceShipInclusions = [
 
 # Used to exclude pilots from included ships
 exportObj.hyperspacePilotExclusions = [
-    'Bodhi Rook',
-    'Cassian Andor',
-    'Heff Tobber',
-    'Blue Squadron Scout'
 ]
 
 # Upgrades in that are not in Hyperspace
