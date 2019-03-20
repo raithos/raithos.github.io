@@ -10769,7 +10769,6 @@ exportObj.basicCardData = ->
             points: 14
             modifier_func: (stats) ->
                 stats.force += 1
-            modifier_func: (stats) ->
                 stats.actions.push 'F-Coordinate' if 'F-Coordinate' not in stats.actions
             restriction_func: (ship) ->
                 builder = ship.builder
