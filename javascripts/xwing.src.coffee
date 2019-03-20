@@ -7681,7 +7681,6 @@ exportObj.basicCardData = ->
             skill: 3
             points: 54
             slots: [
-                "Talent"
                 "Torpedo"
                 "Crew"
                 "Gunner"
@@ -8280,7 +8279,6 @@ exportObj.basicCardData = ->
             skill: 3
             points: 32
             slots: [
-                "Talent"
                 "Missile"
                 "Modification"
             ]
@@ -8632,7 +8630,6 @@ exportObj.basicCardData = ->
             skill: 3
             points: 49
             slots: [
-                "Talent"
                 "Torpedo"
                 "Crew"
                 "Gunner"
@@ -8664,7 +8661,6 @@ exportObj.basicCardData = ->
             skill: 2
             points: 42
             slots: [
-                "Talent"
                 "Torpedo"
                 "Crew"
                 "Gunner"
@@ -30726,7 +30722,7 @@ exportObj.manifestByExpansion =
         }
     ]
 
-    'Servants of Strike Squadron Pack': [
+    'Servants of Strife Squadron Pack': [
         {
             name: 'Belbullab-22 Starfighter'
             type: 'ship'
