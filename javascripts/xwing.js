@@ -28908,6 +28908,10 @@ exportObj.manifestByExpansion = {
       type: 'pilot',
       count: 1
     }, {
+      name: 'Skakoan Ace',
+      type: 'pilot',
+      count: 1
+    }, {
       name: 'Feethan Ottraw Autopilot',
       type: 'pilot',
       count: 1
@@ -28932,21 +28936,13 @@ exportObj.manifestByExpansion = {
       type: 'pilot',
       count: 2
     }, {
-      name: 'Treacherous',
-      type: 'upgrade',
-      count: 1
-    }, {
       name: 'Soulless One',
       type: 'upgrade',
       count: 1
     }, {
       name: 'Grappling Struts',
       type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Impervium Plating',
-      type: 'upgrade',
-      count: 1
+      count: 2
     }, {
       name: 'TV-94',
       type: 'upgrade',
@@ -28958,39 +28954,91 @@ exportObj.manifestByExpansion = {
     }, {
       name: 'Composure',
       type: 'upgrade',
-      count: 1
+      count: 2
     }, {
       name: 'Crack Shot',
       type: 'upgrade',
-      count: 1
+      count: 2
+    }, {
+      name: 'Daredevil',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Intimidation',
+      type: 'upgrade',
+      count: 2
     }, {
       name: 'Juke',
       type: 'upgrade',
-      count: 1
+      count: 2
     }, {
-      name: 'Trick Shot',
+      name: 'Lone Wolf',
       type: 'upgrade',
       count: 1
     }, {
       name: 'Marksmanship',
       type: 'upgrade',
-      count: 1
+      count: 2
     }, {
       name: 'Swarm Tactics',
       type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Treacherous',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Trick Shot',
+      type: 'upgrade',
       count: 1
+    }, {
+      name: 'Concussion Missiles',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Cluster Missiles',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Homing Missiles',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Proton Rockets',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Energy-Shell Charges',
+      type: 'upgrade',
+      count: 2
     }, {
       name: 'Cluster Missiles',
       type: 'upgrade',
       count: 1
     }, {
-      name: 'Proton Rockets',
+      name: 'Afterburners',
+      type: 'upgrade',
+      count: 3
+    }, {
+      name: 'Electronic Baffle',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Impervium Plating',
       type: 'upgrade',
       count: 1
     }, {
-      name: 'Energy-Shell Charges',
+      name: 'Munitions Failsafe',
       type: 'upgrade',
-      count: 1
+      count: 2
+    }, {
+      name: 'Static Discharge Vanes',
+      type: 'upgrade',
+      count: 3
+    }, {
+      name: 'Stealth Device',
+      type: 'upgrade',
+      count: 3
     }
   ],
   'Sith Infiltrator Expansion Pack': [
@@ -29184,6 +29232,98 @@ exportObj.manifestByExpansion = {
       name: 'Battle Meditation',
       type: 'upgrade',
       count: 1
+    }, {
+      name: 'Predictive Shot',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Cluster Missiles',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Concussion Missiles',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Homing Missiles',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Proton Rockets',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Composure',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Crack Shot',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Dedicated',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Expert Handling',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Intimidation',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Juke',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Lone Wolf',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Marksmanship',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Saturation Salvo',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Swarm Tactics',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Trick Shot',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Afterburners',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Electronic Baffle',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Munitions Failsafe',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Spare Parts Canisters',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Static Discharge Vanes',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Stealth Device',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Synchronized Console',
+      type: 'upgrade',
+      count: 3
     }
   ],
   'ARC-170 Starfighter Expansion': [
@@ -29328,10 +29468,6 @@ exportObj.manifestByExpansion = {
       count: 1
     }, {
       name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Spare Parts Canisters',
       type: 'upgrade',
       count: 1
     }
@@ -30074,7 +30210,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 31992
+                    lineno: 32162
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -30886,7 +31022,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 32846
+              lineno: 33016
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -31679,7 +31815,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 33555
+              lineno: 33725
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -31689,7 +31825,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 33556
+                lineno: 33726
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -33362,7 +33498,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 34709
+              lineno: 34879
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -33564,7 +33700,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 34817
+                          lineno: 34987
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -33593,7 +33729,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 34833
+                              lineno: 35003
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -33663,7 +33799,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 34875
+                      lineno: 35045
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -33737,7 +33873,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 34900
+                lineno: 35070
               })
             ]);
             __iced_deferrals._fulfill();
@@ -33806,7 +33942,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 34929
+              lineno: 35099
             }));
           }
         }
@@ -34826,7 +34962,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 35731
+                lineno: 35901
               })
             ]);
             __iced_deferrals._fulfill();
@@ -34967,7 +35103,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 35805
+                  lineno: 35975
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -34989,7 +35125,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 35809
+                    lineno: 35979
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -35076,7 +35212,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 35850
+            lineno: 36020
           }));
         }
         __iced_deferrals._fulfill();
