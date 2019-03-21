@@ -8704,7 +8704,6 @@ exportObj.basicCardData = ->
             id: 344
             faction: "Separatist Alliance"
             ship: "Belbullab-22 Starfighter"
-            unique: true
             skill: 3
             points: 41
             slots: [
@@ -15111,7 +15110,6 @@ exportObj.hyperspaceUpgradeExclusions = [
     '"Chopper" (Astromech)',
     '"Zeb" Orrelios'
     '"Chopper" (Crew)',
-    'Cassian Andor',
     'Hera Syndulla',
     'Jyn Erso',
     'Kanan Jarrus',
@@ -36149,6 +36147,8 @@ exportObj.fromXWSFaction =
     'scumandvillainy': 'Scum and Villainy'
     'firstorder': 'First Order'
     'resistance': 'Resistance'
+    'galacticrepublic': 'Galactic Republic'
+    'separatistalliance': 'Separatist Alliance'
 
 exportObj.toXWSFaction =
     'Rebel Alliance': 'rebelalliance'
@@ -36156,11 +36156,13 @@ exportObj.toXWSFaction =
     'Scum and Villainy': 'scumandvillainy'
     'First Order': 'firstorder'
     'Resistance': 'resistance'
+    'Galactic Republic': 'galacticrepublic'
+    'Separatist Alliance': 'separatistalliance'
 
 exportObj.toXWSUpgrade =
     'Modification': 'modification'
     'Force':'force-power'
-    'Tactical Relay':'tacticalrelay'
+    'Tactical Relay':'tactical-relay'
 
 exportObj.fromXWSUpgrade =
     'amd': 'Astromech'
