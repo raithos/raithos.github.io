@@ -10437,6 +10437,105 @@ exportObj.basicCardData = function() {
         ship: "ARC-170",
         threat: 3,
         upgrades: ["Expert Handling", "Proton Torpedoes", "R4-P Astromech", "Novice Technician", "Seventh Fleet Gunner"]
+      }, {
+        id: 327,
+        faction: "Scum and Villainy",
+        pilot: "Black Sun Soldier",
+        ship: "Z-95 Headhunter",
+        threat: 2,
+        upgrades: ["Crack Shot", "Cluster Missiles", "Afterburners", "Shield Upgrade"]
+      }, {
+        id: 328,
+        faction: "Scum and Villainy",
+        pilot: "Binayre Pirate",
+        ship: "Z-95 Headhunter",
+        threat: 1,
+        upgrades: ["Deadman's Switch"]
+      }, {
+        id: 329,
+        faction: "Scum and Villainy",
+        pilot: "N'dru Suhlak",
+        ship: "Z-95 Headhunter",
+        threat: 2,
+        upgrades: ["Crack Shot", "Outmaneuver", "Hull Upgrade", "Stealth Device"]
+      }, {
+        id: 330,
+        faction: "Scum and Villainy",
+        pilot: "Kaa'to Leeachos",
+        ship: "Z-95 Headhunter",
+        threat: 2,
+        upgrades: ["Saturation Salvo", "Cluster Missiles", "Concussion Missiles", "Deadman's Switch", "Munitions Failsafe"]
+      }, {
+        id: 331,
+        faction: "Galactic Empire",
+        pilot: "Black Squadron Scout",
+        ship: "TIE Striker",
+        threat: 2,
+        upgrades: ["Predator", "Conner Nets"]
+      }, {
+        id: 332,
+        faction: "Galactic Empire",
+        pilot: "Planetary Sentinel",
+        ship: "TIE Striker",
+        threat: 2,
+        upgrades: ["Proton Bombs", "Skilled Bombardier", "Hull Upgrade"]
+      }, {
+        id: 333,
+        faction: "Galactic Empire",
+        pilot: '"Duchess"',
+        ship: "TIE Striker",
+        threat: 3,
+        upgrades: ["Outmaneuver", "Conner Nets", "Afterburners", "Hull Upgrade"]
+      }, {
+        id: 334,
+        faction: "Galactic Empire",
+        pilot: '"Countdown"',
+        ship: "TIE Striker",
+        threat: 3,
+        upgrades: ["Elusive", "Proton Bombs", "Skilled Bombardier", "Shield Upgrade"]
+      }, {
+        id: 335,
+        faction: "Galactic Empire",
+        pilot: '"Pure Sabacc"',
+        ship: "TIE Striker",
+        threat: 2,
+        upgrades: ["Trick Shot", "Shield Upgrade"]
+      }, {
+        id: 336,
+        skip: true,
+        faction: "Galactic Empire",
+        pilot: "Planetary Sentinel",
+        ship: "TIE Striker",
+        threat: 2,
+        upgrades: ["Proton Bombs", "Skilled Bombardier", "Hull Upgrade"]
+      }, {
+        id: 337,
+        faction: "Separatist Alliance",
+        pilot: "0-66",
+        ship: "Sith Infiltrator",
+        threat: 3,
+        upgrades: ["Chancellor Palpatine", "Shield Upgrade", "Scimitar"]
+      }, {
+        id: 338,
+        faction: "Separatist Alliance",
+        pilot: "Dark Courier",
+        ship: "Sith Infiltrator",
+        threat: 3,
+        upgrades: ["Count Dooku", "General Grievous", "K2-B4", "Scimitar"]
+      }, {
+        id: 339,
+        faction: "Separatist Alliance",
+        pilot: "Darth Maul",
+        ship: "Sith Infiltrator",
+        threat: 4,
+        upgrades: ["Hate", "Heavy Laser Cannon", "Perceptive Copilot", "DRK-1 Probe Droids", "Shield Upgrade", "Scimitar"]
+      }, {
+        id: 340,
+        faction: "Separatist Alliance",
+        pilot: "Count Dooku",
+        ship: "Sith Infiltrator",
+        threat: 4,
+        upgrades: ["Brilliant Evasion", "Predictive Shot", "Ion Torpedoes", "General Grievous", "Hull Upgrade", "Scimitar"]
       }
     ]
   };
@@ -10944,6 +11043,7 @@ exportObj.translations.Deutsch = {
     '.unreleased-content-used .translated': 'Diese Staffel verwendet nicht veröffentlicheten Inhalt!',
     '.loading-failed-container .translated': 'Du scheinst einem defekten Link gefolgt zu sein. Es konnte kein Squad geladen werden!',
     '.collection-invalid .translated': 'Du kannst diese Staffel nicht mit deiner Sammlung aufstellen!',
+    '.ship-number-invalid-container .translated': 'Eine Turnierlegale Staffel muss 2-8 Schiffe haben!',
     '.game-type-selector option[value="standard"]': 'Standard',
     '.game-type-selector option[value="hyperspace"]': 'Hyperspace',
     '.game-type-selector option[value="custom"]': 'Benutzerdefiniert',
@@ -13461,6 +13561,7 @@ exportObj.translations.English = {
     '.unreleased-content-used .translated': 'This squad uses unreleased content!',
     '.loading-failed-container .translated': 'It appears that you followed a broken link. No squad could be loaded!',
     '.collection-invalid .translated': 'You cannot field this list with your collection!',
+    '.ship-number-invalid-container .translated': 'A tournament legal squad must contain 2-8 ships!',
     '.game-type-selector option[value="standard"]': 'Extended',
     '.game-type-selector option[value="hyperspace"]': 'Hyperspace',
     '.game-type-selector option[value="custom"]': 'Custom',
@@ -15745,13 +15846,13 @@ exportObj.cardLoaders.English = function() {
       text: ' When this card is assigned, if there is no faceup damage card on it, the player who assigned it searches the damage deck for 1 Pilot damage card and places it faceup on this card. Then shuffle the damage deck. When you would suffer 1 %CRIT% damage, you are instead dealth the faceup damage card on this card. Then, remove this card. '
     },
     'Proton Bomb': {
-      text: '(Bomb Token) - At the end of the Activation Phase, this device detonates. When this device detonates, each ship at range 0–1 suffers 1 %CRIT% damage.'
+      text: '(Bomb Token) - At the end of the Activation Phase, this device detonates. When this device detonates, each ship and remote at range 0–1 suffers 1 %CRIT% damage.%LINEBREAK%<i>Errata (Official Rulings Thread 03/2019): Added: "and remote"</i>'
     },
     'Seismic Charge': {
-      text: '(Bomb Token) - At the end of the Activation Phase this device detonates. When this device detonates, choose 1 obstacle at range 0–1. Each ship at range 0–1 of the obstacle suffers 1 %HIT% damage. Then remove that obstacle. '
+      text: '(Bomb Token) - At the end of the Activation Phase this device detonates. When this device detonates, choose 1 obstacle at range 0–1. Each ship and remote at range 0–1 of the obstacle suffers 1 %HIT% damage. Then remove that obstacle.%LINEBREAK%<i>Errata (Official Rulings Thread 03/2019): Added: "and remote"</i> '
     },
     'Bomblet': {
-      text: '(Bomb Token) - At the end of the Activation Phase this device detonates. When this device detonates, each ship at range 0–1 rolls 2 attack dice. Each ship suffers 1 %HIT% damage for each %HIT%/%CRIT% result.'
+      text: '(Bomb Token) - At the end of the Activation Phase this device detonates. When this device detonates, each ship and remote at range 0–1 rolls 2 attack dice. Each ship and remote suffers 1 %HIT% damage for each %HIT%/%CRIT% result.%LINEBREAK%<i>Errata (Official Rulings Thread 03/2019): Added: "and remote"</i>'
     },
     'Loose Cargo': {
       text: '(Debris Token) - Loose cargo is a debris cloud.'
@@ -15760,7 +15861,7 @@ exportObj.cardLoaders.English = function() {
       text: '(Mine Token) - After a ship overlaps or moves through this device, it detonates. When this device detonates, the ship suffers 1 %HIT% damage and gains 3 ion tokens.'
     },
     'Proximity Mine': {
-      text: '(Mine Token) - After a ship overlaps or moves through this device, it detonates. When this device detonates, that ship rolls 2 attack dice. That ship then suffers 1 %HIT% plus 1 %HIT%/%CRIT% damage for each matching result.%LINEBREAK%<i>Errata (since rules reference 1.0.2): Add: "1 %HIT% plus"</i>'
+      text: '(Mine Token) - After a ship overlaps or moves through this device, it detonates. When this device detonates, that ship rolls 2 attack dice. That ship then suffers 1 %HIT% plus 1 %HIT%/%CRIT% damage for each matching result.%LINEBREAK%<i>Errata (since rules reference 1.0.2): Added: "1 %HIT% plus"</i>'
     },
     'DRK-1 Probe Droid': {
       text: 'INIT: 0 %LINEBREAK% AGILITY: 3 %LINEBREAK% HULL: 1 %LINEBREAK% (Remote) - While a friendly ship locks an object or jams an enemy ship, it may measure range from you. %LINEBREAK% After an enemy ship overlaps you, that ship rolls 1 attack die. On a %FOCUS% result, you suffer 1 %HIT% damage. %LINEBREAK% System Phase: At your initiative, you may relocate using a [2 %BANKLEFT%], [2 %STRAIGHT%] or [2 %BANKRIGHT%] template.'
@@ -30508,7 +30609,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 32429
+                    lineno: 32609
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -30810,7 +30911,7 @@ exportObj.SquadBuilder = (function() {
     DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES = 3;
     this.status_container = $(document.createElement('DIV'));
     this.status_container.addClass('container-fluid');
-    this.status_container.append($.trim('<div class="row-fluid">\n    <div class="span3 squad-name-container">\n        <div class="display-name">\n            <span class="squad-name"></span>\n            <i class="fa fa-pencil"></i>\n        </div>\n        <div class="input-append">\n            <input type="text" maxlength="64" placeholder="Name your squad..." />\n            <button class="btn save"><i class="fa fa-pencil-square-o"></i></button>\n        </div>\n    </div>\n    <div class="span4 points-display-container">\n        Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="200">\n        <select class="game-type-selector">\n            <option value="standard">Extended</option>\n            <option value="hyperspace">Hyperspace</option>\n            <option value="quickbuild">Quickbuild</option>\n        </select>\n        <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left)</span>\n        <span class="content-warning unreleased-content-used hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning loading-failed-container hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning collection-invalid hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n    </div>\n    <div class="span5 pull-right button-container">\n        <div class="btn-group pull-right">\n\n            <button class="btn btn-primary view-as-text"><span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text</button>\n            <!-- <button class="btn btn-primary print-list hidden-phone hidden-tablet"><i class="fa fa-print"></i>&nbsp;Print</button> -->\n            <a class="btn btn-primary hidden collection"><i class="fa fa-folder-open hidden-phone hidden-tablet"></i>&nbsp;Your Collection</a>\n            \n            <button class="btn btn-primary randomize" ><i class="fa fa-random hidden-phone hidden-tablet"></i>&nbsp;Random!</button>\n            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">\n                <span class="caret"></span>\n            </button>\n            <ul class="dropdown-menu">\n                <li><a class="randomize-options">Randomizer Options</a></li>\n                <li><a class="misc-settings">Misc Settings</a></li>\n            </ul>\n            \n\n        </div>\n    </div>\n</div>\n\n<div class="row-fluid">\n    <div class="span12">\n        <button class="show-authenticated btn btn-primary save-list"><i class="fa fa-floppy-o"></i>&nbsp;Save</button>\n        <button class="show-authenticated btn btn-primary save-list-as"><i class="fa fa-files-o"></i>&nbsp;Save As...</button>\n        <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>\n        <button class="show-authenticated btn btn-primary backend-list-my-squads show-authenticated">Load Squad</button>\n        <button class="btn btn-danger clear-squad">New Squad</button>\n        <span class="show-authenticated backend-status"></span>\n    </div>\n</div>'));
+    this.status_container.append($.trim('<div class="row-fluid">\n    <div class="span3 squad-name-container">\n        <div class="display-name">\n            <span class="squad-name"></span>\n            <i class="fa fa-pencil"></i>\n        </div>\n        <div class="input-append">\n            <input type="text" maxlength="64" placeholder="Name your squad..." />\n            <button class="btn save"><i class="fa fa-pencil-square-o"></i></button>\n        </div>\n    </div>\n    <div class="span4 points-display-container">\n        Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="200">\n        <select class="game-type-selector">\n            <option value="standard">Extended</option>\n            <option value="hyperspace">Hyperspace</option>\n            <option value="quickbuild">Quickbuild</option>\n        </select>\n        <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left)</span>\n        <span class="content-warning unreleased-content-used hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning loading-failed-container hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning collection-invalid hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning ship-number-invalid-container hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n    </div>\n    <div class="span5 pull-right button-container">\n        <div class="btn-group pull-right">\n\n            <button class="btn btn-primary view-as-text"><span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text</button>\n            <!-- <button class="btn btn-primary print-list hidden-phone hidden-tablet"><i class="fa fa-print"></i>&nbsp;Print</button> -->\n            <a class="btn btn-primary hidden collection"><i class="fa fa-folder-open hidden-phone hidden-tablet"></i>&nbsp;Your Collection</a>\n            \n            <button class="btn btn-primary randomize" ><i class="fa fa-random hidden-phone hidden-tablet"></i>&nbsp;Random!</button>\n            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">\n                <span class="caret"></span>\n            </button>\n            <ul class="dropdown-menu">\n                <li><a class="randomize-options">Randomizer Options</a></li>\n                <li><a class="misc-settings">Misc Settings</a></li>\n            </ul>\n            \n\n        </div>\n    </div>\n</div>\n\n<div class="row-fluid">\n    <div class="span12">\n        <button class="show-authenticated btn btn-primary save-list"><i class="fa fa-floppy-o"></i>&nbsp;Save</button>\n        <button class="show-authenticated btn btn-primary save-list-as"><i class="fa fa-files-o"></i>&nbsp;Save As...</button>\n        <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>\n        <button class="show-authenticated btn btn-primary backend-list-my-squads show-authenticated">Load Squad</button>\n        <button class="btn btn-danger clear-squad">New Squad</button>\n        <span class="show-authenticated backend-status"></span>\n    </div>\n</div>'));
     this.container.append(this.status_container);
     this.list_modal = $(document.createElement('DIV'));
     this.list_modal.addClass('modal hide fade text-list-modal');
@@ -31089,6 +31190,7 @@ exportObj.SquadBuilder = (function() {
     this.points_remaining_container = $(this.points_container.find('.points-remaining-container'));
     this.unreleased_content_used_container = $(this.points_container.find('.unreleased-content-used'));
     this.loading_failed_container = $(this.points_container.find('.loading-failed-container'));
+    this.ship_number_invalid_container = $(this.points_container.find('.ship-number-invalid-container'));
     this.collection_invalid_container = $(this.points_container.find('.collection-invalid'));
     this.view_list_button = $(this.status_container.find('div.button-container button.view-as-text'));
     this.randomize_button = $(this.status_container.find('div.button-container button.randomize'));
@@ -31320,7 +31422,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 33283
+              lineno: 33465
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -32094,6 +32196,7 @@ exportObj.SquadBuilder = (function() {
       container: this.ship_container
     });
     this.ships.push(new_ship);
+    this.ship_number_invalid_container.toggleClass('hidden', this.ships.length < 10 && this.ships.length > 2);
     return new_ship;
   };
 
@@ -32113,7 +32216,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 33992
+              lineno: 34175
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -32123,12 +32226,13 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 33993
+                lineno: 34176
               }));
               __iced_deferrals._fulfill();
             })(function() {
               _this.current_squad.dirty = true;
-              return __iced_k(_this.container.trigger('xwing-backend:squadDirtinessChanged'));
+              _this.container.trigger('xwing-backend:squadDirtinessChanged');
+              return __iced_k(_this.ship_number_invalid_container.toggleClass('hidden', _this.ships.length < 10 && _this.ships.length > 2));
             });
           });
         } else {
@@ -33796,7 +33900,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 35146
+              lineno: 35330
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -33998,7 +34102,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 35254
+                          lineno: 35438
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -34027,7 +34131,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 35270
+                              lineno: 35454
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -34097,7 +34201,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 35312
+                      lineno: 35496
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -34171,7 +34275,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 35337
+                lineno: 35521
               })
             ]);
             __iced_deferrals._fulfill();
@@ -34240,7 +34344,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 35366
+              lineno: 35550
             }));
           }
         }
@@ -35260,7 +35364,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 36168
+                lineno: 36352
               })
             ]);
             __iced_deferrals._fulfill();
@@ -35401,7 +35505,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 36242
+                  lineno: 36426
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -35423,7 +35527,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 36246
+                    lineno: 36430
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -35510,7 +35614,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 36287
+            lineno: 36471
           }));
         }
         __iced_deferrals._fulfill();

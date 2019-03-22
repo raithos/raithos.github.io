@@ -14863,6 +14863,184 @@ exportObj.basicCardData = ->
                 "Seventh Fleet Gunner"
             ]
         }
+        {
+            id: 327
+            faction: "Scum and Villainy"
+            pilot: "Black Sun Soldier"
+            ship: "Z-95 Headhunter"
+            threat: 2
+            upgrades: [
+                "Crack Shot"
+                "Cluster Missiles"
+                "Afterburners"
+                "Shield Upgrade"
+            ]
+        }
+        {
+            id: 328
+            faction: "Scum and Villainy"
+            pilot: "Binayre Pirate"
+            ship: "Z-95 Headhunter"
+            threat: 1
+            upgrades: [
+                "Deadman's Switch"
+            ]
+        }
+        {
+            id: 329
+            faction: "Scum and Villainy"
+            pilot: "N'dru Suhlak"
+            ship: "Z-95 Headhunter"
+            threat: 2
+            upgrades: [
+                "Crack Shot"
+                "Outmaneuver"
+                "Hull Upgrade"
+                "Stealth Device"
+            ]
+        }
+        {
+            id: 330
+            faction: "Scum and Villainy"
+            pilot: "Kaa'to Leeachos"
+            ship: "Z-95 Headhunter"
+            threat: 2
+            upgrades: [
+                "Saturation Salvo"
+                "Cluster Missiles"
+                "Concussion Missiles"
+                "Deadman's Switch"
+                "Munitions Failsafe"
+            ]
+        }
+        {
+            id: 331
+            faction: "Galactic Empire"
+            pilot: "Black Squadron Scout"
+            ship: "TIE Striker"
+            threat: 2
+            upgrades: [
+                "Predator"
+                "Conner Nets"
+            ]
+        }
+        {
+            id: 332
+            faction: "Galactic Empire"
+            pilot: "Planetary Sentinel"
+            ship: "TIE Striker"
+            threat: 2
+            upgrades: [
+                "Proton Bombs"
+                "Skilled Bombardier"
+                "Hull Upgrade"
+            ]
+        }
+        {
+            id: 333
+            faction: "Galactic Empire"
+            pilot: '"Duchess"'
+            ship: "TIE Striker"
+            threat: 3
+            upgrades: [
+                "Outmaneuver"
+                "Conner Nets"
+                "Afterburners"
+                "Hull Upgrade"
+            ]
+        }
+        {
+            id: 334
+            faction: "Galactic Empire"
+            pilot: '"Countdown"'
+            ship: "TIE Striker"
+            threat: 3
+            upgrades: [
+                "Elusive"
+                "Proton Bombs"
+                "Skilled Bombardier"
+                "Shield Upgrade"
+            ]
+        }
+        {
+            id: 335
+            faction: "Galactic Empire"
+            pilot: '"Pure Sabacc"'
+            ship: "TIE Striker"
+            threat: 2
+            upgrades: [
+                "Trick Shot"
+                "Shield Upgrade"
+            ]
+        }
+        {
+            id: 336
+            skip: true
+            faction: "Galactic Empire"
+            pilot: "Planetary Sentinel"
+            ship: "TIE Striker"
+            threat: 2
+            upgrades: [
+                "Proton Bombs"
+                "Skilled Bombardier"
+                "Hull Upgrade"
+            ]
+        }
+        {
+            id: 337
+            faction: "Separatist Alliance"
+            pilot: "0-66"
+            ship: "Sith Infiltrator"
+            threat: 3
+            upgrades: [
+                "Chancellor Palpatine"
+                "Shield Upgrade"
+                "Scimitar"
+            ]
+        }
+        {
+            id: 338
+            faction: "Separatist Alliance"
+            pilot: "Dark Courier"
+            ship: "Sith Infiltrator"
+            threat: 3
+            upgrades: [
+                "Count Dooku"
+                "General Grievous"
+                "K2-B4"
+                "Scimitar"
+            ]
+        }
+        {
+            id: 339
+            faction: "Separatist Alliance"
+            pilot: "Darth Maul"
+            ship: "Sith Infiltrator"
+            threat: 4
+            upgrades: [
+                "Hate"
+                "Heavy Laser Cannon"
+                "Perceptive Copilot"
+                "DRK-1 Probe Droids"
+                "Shield Upgrade"
+                "Scimitar"
+            ]
+        }
+        {
+            id: 340
+            faction: "Separatist Alliance"
+            pilot: "Count Dooku"
+            ship: "Sith Infiltrator"
+            threat: 4
+            upgrades: [
+                "Brilliant Evasion"
+                "Predictive Shot"
+                "Ion Torpedoes"
+                "General Grievous"
+                "Hull Upgrade"
+                "Scimitar"
+            ]
+        }
     ]
 
 
@@ -15306,6 +15484,7 @@ exportObj.translations.Deutsch =
         '.unreleased-content-used .translated': 'Diese Staffel verwendet nicht veröffentlicheten Inhalt!'
         '.loading-failed-container .translated': 'Du scheinst einem defekten Link gefolgt zu sein. Es konnte kein Squad geladen werden!'
         '.collection-invalid .translated': 'Du kannst diese Staffel nicht mit deiner Sammlung aufstellen!'
+        '.ship-number-invalid-container .translated': 'Eine Turnierlegale Staffel muss 2-8 Schiffe haben!'
         # Type selector
         '.game-type-selector option[value="standard"]': 'Standard'
         '.game-type-selector option[value="hyperspace"]': 'Hyperspace'
@@ -17267,6 +17446,7 @@ exportObj.translations.English =
         '.unreleased-content-used .translated': 'This squad uses unreleased content!'
         '.loading-failed-container .translated': 'It appears that you followed a broken link. No squad could be loaded!'
         '.collection-invalid .translated': 'You cannot field this list with your collection!'
+        '.ship-number-invalid-container .translated': 'A tournament legal squad must contain 2-8 ships!'
         # Type selector
         '.game-type-selector option[value="standard"]': 'Extended'
         '.game-type-selector option[value="hyperspace"]': 'Hyperspace'
@@ -19009,17 +19189,17 @@ exportObj.cardLoaders.English = () ->
         '''I'll Show You the Dark Side''': 
            text: ''' When this card is assigned, if there is no faceup damage card on it, the player who assigned it searches the damage deck for 1 Pilot damage card and places it faceup on this card. Then shuffle the damage deck. When you would suffer 1 %CRIT% damage, you are instead dealth the faceup damage card on this card. Then, remove this card. '''
         'Proton Bomb':
-           text: '''(Bomb Token) - At the end of the Activation Phase, this device detonates. When this device detonates, each ship at range 0–1 suffers 1 %CRIT% damage.'''
+           text: '''(Bomb Token) - At the end of the Activation Phase, this device detonates. When this device detonates, each ship and remote at range 0–1 suffers 1 %CRIT% damage.%LINEBREAK%<i>Errata (Official Rulings Thread 03/2019): Added: "and remote"</i>'''
         'Seismic Charge':
-           text: '''(Bomb Token) - At the end of the Activation Phase this device detonates. When this device detonates, choose 1 obstacle at range 0–1. Each ship at range 0–1 of the obstacle suffers 1 %HIT% damage. Then remove that obstacle. '''
+           text: '''(Bomb Token) - At the end of the Activation Phase this device detonates. When this device detonates, choose 1 obstacle at range 0–1. Each ship and remote at range 0–1 of the obstacle suffers 1 %HIT% damage. Then remove that obstacle.%LINEBREAK%<i>Errata (Official Rulings Thread 03/2019): Added: "and remote"</i> '''
         'Bomblet':
-           text: '''(Bomb Token) - At the end of the Activation Phase this device detonates. When this device detonates, each ship at range 0–1 rolls 2 attack dice. Each ship suffers 1 %HIT% damage for each %HIT%/%CRIT% result.'''
+           text: '''(Bomb Token) - At the end of the Activation Phase this device detonates. When this device detonates, each ship and remote at range 0–1 rolls 2 attack dice. Each ship and remote suffers 1 %HIT% damage for each %HIT%/%CRIT% result.%LINEBREAK%<i>Errata (Official Rulings Thread 03/2019): Added: "and remote"</i>'''
         'Loose Cargo':
            text: '''(Debris Token) - Loose cargo is a debris cloud.'''
         'Conner Net':
            text: '''(Mine Token) - After a ship overlaps or moves through this device, it detonates. When this device detonates, the ship suffers 1 %HIT% damage and gains 3 ion tokens.'''
         'Proximity Mine':
-           text: '''(Mine Token) - After a ship overlaps or moves through this device, it detonates. When this device detonates, that ship rolls 2 attack dice. That ship then suffers 1 %HIT% plus 1 %HIT%/%CRIT% damage for each matching result.%LINEBREAK%<i>Errata (since rules reference 1.0.2): Add: "1 %HIT% plus"</i>'''
+           text: '''(Mine Token) - After a ship overlaps or moves through this device, it detonates. When this device detonates, that ship rolls 2 attack dice. That ship then suffers 1 %HIT% plus 1 %HIT%/%CRIT% damage for each matching result.%LINEBREAK%<i>Errata (since rules reference 1.0.2): Added: "1 %HIT% plus"</i>'''
         'DRK-1 Probe Droid':
            text: '''INIT: 0 %LINEBREAK% AGILITY: 3 %LINEBREAK% HULL: 1 %LINEBREAK% (Remote) - While a friendly ship locks an object or jams an enemy ship, it may measure range from you. %LINEBREAK% After an enemy ship overlaps you, that ship rolls 1 attack die. On a %FOCUS% result, you suffer 1 %HIT% damage. %LINEBREAK% System Phase: At your initiative, you may relocate using a [2 %BANKLEFT%], [2 %STRAIGHT%] or [2 %BANKRIGHT%] template.'''
         'Buzz Droid Swarm':
@@ -32668,6 +32848,7 @@ class exportObj.SquadBuilder
                     <span class="content-warning unreleased-content-used hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>
                     <span class="content-warning loading-failed-container hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>
                     <span class="content-warning collection-invalid hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>
+                    <span class="content-warning ship-number-invalid-container hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>
                 </div>
                 <div class="span5 pull-right button-container">
                     <div class="btn-group pull-right">
@@ -33034,6 +33215,7 @@ class exportObj.SquadBuilder
         @points_remaining_container = $ @points_container.find('.points-remaining-container')
         @unreleased_content_used_container = $ @points_container.find('.unreleased-content-used')
         @loading_failed_container = $ @points_container.find('.loading-failed-container')
+        @ship_number_invalid_container = $ @points_container.find('.ship-number-invalid-container')
         @collection_invalid_container = $ @points_container.find('.collection-invalid')
         @view_list_button = $ @status_container.find('div.button-container button.view-as-text')
         @randomize_button = $ @status_container.find('div.button-container button.randomize')
@@ -33985,6 +34167,7 @@ class exportObj.SquadBuilder
             builder: this
             container: @ship_container
         @ships.push new_ship
+        @ship_number_invalid_container.toggleClass 'hidden', (@ships.length < 10 and @ships.length > 2) # bounds are 2..10 as we always have a "empty" ship at the bottom
         new_ship
 
 
@@ -33994,6 +34177,7 @@ class exportObj.SquadBuilder
             await @container.trigger 'xwing:pointsUpdated', defer()
             @current_squad.dirty = true
             @container.trigger 'xwing-backend:squadDirtinessChanged'
+            @ship_number_invalid_container.toggleClass 'hidden', (@ships.length < 10 and @ships.length > 2)
         cb()
 
     matcher: (item, term) ->
