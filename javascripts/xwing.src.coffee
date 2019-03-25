@@ -15041,6 +15041,146 @@ exportObj.basicCardData = ->
                 "Scimitar"
             ]
         }
+        {
+            id: 341
+            faction: "Separatist Alliance"
+            pilot: "DFS-311"
+            ship: "Vulture-class Droid Fighter"
+            threat: 1
+            upgrades: [
+                "Grappling Struts"
+            ]
+        }
+        {
+            id: 342
+            faction: "Separatist Alliance"
+            pilot: "Precise Hunter"
+            ship: "Vulture-class Droid Fighter"
+            threat: 2
+            upgrades: [
+                "Concussion Missiles"
+                "Afterburners"
+                "Shield Upgrade"
+            ]
+        }
+        {
+            id: 343
+            faction: "Separatist Alliance"
+            pilot: "Separatist Drone"
+            ship: "Vulture-class Droid Fighter"
+            threat: 2
+            upgrades: [
+                "Energy-Shell Charges"
+                "Grappling Struts"
+                "Shield Upgrade"
+            ]
+        }
+        {
+            id: 344
+            faction: "Separatist Alliance"
+            pilot: "Haor Chall Prototype"
+            ship: "Vulture-class Droid Fighter"
+            threat: 2
+            upgrades: [
+                "Discord Missiles"
+                "Energy-Shell Charges"
+                "Stealth Device"
+            ]
+        }
+        {
+            id: 345
+            faction: "Separatist Alliance"
+            pilot: "Trade Federation Drone"
+            ship: "Vulture-class Droid Fighter"
+            threat: 1
+            upgrades: [
+                "Energy-Shell Charges"
+            ]
+        }
+        {
+            id: 346
+            faction: "Separatist Alliance"
+            pilot: "DFS-081"
+            ship: "Vulture-class Droid Fighter"
+            threat: 2
+            upgrades: [
+                "Proton Rockets"
+                "Grappling Struts"
+                "Hull Upgrade"
+            ]
+        }
+        {
+            id: 347
+            faction: "Separatist Alliance"
+            pilot: "Haor Chall Prototype"
+            ship: "Vulture-class Droid Fighter"
+            threat: 2
+            upgrades: [
+                "Energy-Shell Charges"
+                "Stealth Device"
+                "Afterburners"
+            ]
+        }
+        {
+            id: 348
+            faction: "Separatist Alliance"
+            pilot: "General Grievous"
+            ship: "Belbullab-22 Starfighter"
+            threat: 3
+            upgrades: [
+                "Treacherous"
+                "Impervium Plating"
+                "Soulless One"
+                "TV-94"
+            ]
+        }
+        {
+            id: 349
+            faction: "Separatist Alliance"
+            pilot: "Wat Tambor"
+            ship: "Belbullab-22 Starfighter"
+            threat: 3
+            upgrades: [
+                "Intimidation"
+                "Kraken"
+                "Shield Upgrade"
+            ]
+        }
+        {
+            id: 350
+            faction: "Separatist Alliance"
+            pilot: "Skakoan Ace"
+            ship: "Belbullab-22 Starfighter"
+            threat: 2
+            upgrades: [
+                "Crack Shot"
+                "Afterburners"
+            ]
+        }
+        {
+            id: 351
+            faction: "Separatist Alliance"
+            pilot: "Captain Sear"
+            ship: "Belbullab-22 Starfighter"
+            threat: 3
+            upgrades: [
+                "Daredevil"
+                "Impervium Plating"
+                "Kraken"
+                "Stealth Device"
+            ]
+        }
+        {
+            id: 352
+            faction: "Separatist Alliance"
+            pilot: "Feethan Ottraw Autopilot"
+            ship: "Belbullab-22 Starfighter"
+            threat: 2
+            upgrades: [
+                "Impervium Plating"
+                "TV-94"
+            ]
+        }
     ]
 
 
@@ -15484,7 +15624,7 @@ exportObj.translations.Deutsch =
         '.unreleased-content-used .translated': 'Diese Staffel verwendet nicht veröffentlicheten Inhalt!'
         '.loading-failed-container .translated': 'Du scheinst einem defekten Link gefolgt zu sein. Es konnte kein Squad geladen werden!'
         '.collection-invalid .translated': 'Du kannst diese Staffel nicht mit deiner Sammlung aufstellen!'
-        '.ship-number-invalid-container .translated': 'Eine Turnierlegale Staffel muss 2-8 Schiffe haben!'
+        '.ship-number-invalid-container .translated': 'Eine turnierlegale Staffel muss aus  2-8 Schiffen bestehen!'
         # Type selector
         '.game-type-selector option[value="standard"]': 'Standard'
         '.game-type-selector option[value="hyperspace"]': 'Hyperspace'
@@ -34254,22 +34394,48 @@ class exportObj.SquadBuilder
             # filter for faction and ship
             quickbuilds_matching_ship_and_faction = (quickbuild for id, quickbuild of exportObj.quickbuildsById when (not ship? or quickbuild.ship == ship) and @isOurFaction(quickbuild.faction) and (@matcher(quickbuild.pilot, term) or (exportObj.pilots[quickbuild.pilot].display_name? and @matcher(exportObj.pilots[quickbuild.pilot].display_name, term)) ))
 
+            # create a list of the uniques blonging to the currently selected pilot
+            uniques_in_use_by_pilot_in_use = []
+            if include_pilot? and include_pilot != -1
+                include_quickbuild = exportObj.quickbuildsById[include_pilot]
+                include_pilot_pilot = exportObj.pilots[include_quickbuild.pilot]
+                if include_pilot_pilot.unique?
+                    uniques_in_use_by_pilot_in_use.push include_pilot_pilot
+                    for other in (exportObj.pilotsByUniqueName[include_pilot_pilot.canonical_name.getXWSBaseName()] or [])
+                        if other?
+                            uniques_in_use_by_pilot_in_use.push other
+                for include_upgrade_name in include_quickbuild.upgrades
+                    include_upgrade = exportObj.upgrades[include_upgrade_name]
+                    if include_upgrade.unique? 
+                        uniques_in_use_by_pilot_in_use.push other
+                        for other in (exportObj.pilotsByUniqueName[include_upgrade.canonical_name.getXWSBaseName()] or [])
+                            if other? 
+                                uniques_in_use_by_pilot_in_use.push other
+                    if include_upgrade.solitary?
+                        uniques_in_use_by_pilot_in_use.push include_upgrade.slot
+                # we should also add upgrades with the same unique name like some selected upgrades or the pilot. However, finding them is teadious
+                # we should also add uniques used by a linked ship. however, while it is easy to allow selecting them, it is harder to properly add them - as one need to make sure the order of selecting ship + linked ship matters
+
             # filter for uniques in use
             allowed_quickbuilds_containing_uniques_in_use = []
             loop: for id, quickbuild of quickbuilds_matching_ship_and_faction
-                if exportObj.pilots[quickbuild.pilot] in @uniques_in_use.Pilot
+                if exportObj.pilots[quickbuild.pilot]?.unique? and exportObj.pilots[quickbuild.pilot] in @uniques_in_use.Pilot and not (exportObj.pilots[quickbuild.pilot] in uniques_in_use_by_pilot_in_use)
                     allowed_quickbuilds_containing_uniques_in_use.push quickbuild.id
                     continue
-                if exportObj.pilots[quickbuild.pilot]?.max_per_squad? and @countPilots(exportObj.pilots[quickbuild.pilot].canonical_name) >= exportObj.pilots[quickbuild.pilot].max_per_squad
+                if exportObj.pilots[quickbuild.pilot]?.max_per_squad? and @countPilots(exportObj.pilots[quickbuild.pilot].canonical_name) >= exportObj.pilots[quickbuild.pilot].max_per_squad and not (exportObj.pilots[quickbuild.pilot] in uniques_in_use_by_pilot_in_use)
                     allowed_quickbuilds_containing_uniques_in_use.push quickbuild.id
                     continue
                 if quickbuild.upgrades? 
                     for upgrade in quickbuild.upgrades
-                        if exportObj.upgrades[upgrade] in @uniques_in_use.Upgrade
+                        if exportObj.upgrades[upgrade].unique? and exportObj.upgrades[upgrade] in @uniques_in_use.Upgrade and not (exportObj.upgrades[upgrade] in uniques_in_use_by_pilot_in_use)
                             # check, if unique is used by this ship or it's linked ship
                             if ship_selector == null or not (upgrade in exportObj.quickbuildsById[ship_selector.quickbuildId].upgrades or (ship_selector.linkedShip and upgrade in (exportObj.quickbuildsById[ship_selector.linkedShip?.quickbuildId].upgrades ? [])))
                                 allowed_quickbuilds_containing_uniques_in_use.push quickbuild.id
                                 break
+                        # check if solitary type is already claimed
+                        if exportObj.upgrades[upgrade].solitary? and exportObj.upgrades[upgrade].slot in @uniques_in_use['Slot'] and not (exportObj.upgrades[upgrade].slot in uniques_in_use_by_pilot_in_use)
+                            allowed_quickbuilds_containing_uniques_in_use.push quickbuild.id
+                            break
             
             retval = ({id: quickbuild.id, text: "#{if exportObj.settings?.initiative_prefix? and exportObj.settings.initiative_prefix then exportObj.pilots[quickbuild.pilot].skill + ' - ' else ''}#{if exportObj.pilots[quickbuild.pilot].display_name then exportObj.pilots[quickbuild.pilot].display_name else quickbuild.pilot}#{quickbuild.suffix} (#{quickbuild.threat})", points: quickbuild.threat, ship: quickbuild.ship, disabled: quickbuild.id in allowed_quickbuilds_containing_uniques_in_use} for quickbuild in quickbuilds_matching_ship_and_faction)
 
@@ -35362,7 +35528,7 @@ class Ship
             # check if any upgrades are unique. In that case the whole ship may not be copied
             no_uniques_involved = true
             for upgrade in other.upgrades
-                if (upgrade.data?.unique? and upgrade.data.unique) or (upgrade.data?.max_per_squad? and @builder.countUpgrades(upgrade.data.canonical_name) >= upgrade.data.max_per_squad)
+                if (upgrade.data?.unique? and upgrade.data.unique) or (upgrade.data?.max_per_squad? and @builder.countUpgrades(upgrade.data.canonical_name) >= upgrade.data.max_per_squad) or upgrade.data?.solitary?
                     no_uniques_involved = false
                     # select cheapest generic like above
                     available_pilots = (pilot_data for pilot_data in @builder.getAvailablePilotsForShipIncluding(other.data.name) when not pilot_data.disabled)
@@ -35663,7 +35829,7 @@ class Ship
                 @builder.checkCollection()
                 query.callback
                     more: false
-                    results: @builder.getAvailablePilotsForShipIncluding(@ship_selector.val(), @pilot, query.term, true, @)
+                    results: @builder.getAvailablePilotsForShipIncluding(@ship_selector.val(), (if not @builder.isQuickbuild then @pilot else @quickbuildId), query.term, true, @)
             minimumResultsForSearch: if $.isMobile() then -1 else 0
             formatResultCssClass: (obj) =>
                 if @builder.collection? and (@builder.collection.checks.collectioncheck == "true")
@@ -36423,11 +36589,11 @@ class GenericAddon
 
     setData: (new_data) ->
         if new_data?.id != @data?.id
-            if @data?.unique?
+            if @data?.unique? or @data?.solitary?
                 await @ship.builder.container.trigger 'xwing:releaseUnique', [ @unadjusted_data, @type, defer() ]
             @rescindAddons()
             @deoccupyOtherUpgrades()
-            if new_data?.unique?
+            if new_data?.unique? or new_data?.solitary?
                 await @ship.builder.container.trigger 'xwing:claimUnique', [ new_data, @type, defer() ]
             # Need to make a copy of the data, but that means I can't just check equality
             @data = @unadjusted_data = new_data
