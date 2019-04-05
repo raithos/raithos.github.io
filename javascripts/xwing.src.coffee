@@ -852,20 +852,7 @@ class exportObj.CardBrowser
         @container.append $.trim """
             <div class="container-fluid xwing-card-browser">
                 <div class="row-fluid">
-                    <div class="span12">
-                        <span class="translate sort-cards-by">Sort cards by</span>: <select class="sort-by">
-                            <option value="name">Name</option>
-                            <option value="source">Source</option>
-                            <option value="type-by-points">Type (by Points)</option>
-                            <option value="type-by-name" selected="1">Type (by Name)</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span4 card-selector-container">
-
-                    </div>
-                    <div class="span8">
+                    <div class="span4">
                         <div class="well card-search-container">
                         <h3>Card Search</h3>
                             <div class="advanced-search-container">
@@ -879,7 +866,6 @@ class exportObj.CardBrowser
                                         <label class = "advanced-search-label select-available-slots">
                                             <strong>Factions: </strong>
                                             <select class="advanced-search-selection faction-selection" multiple="1" data-placeholder="All factions"></select>
-                                            <span class="advanced-search-tooltip" tooltip="A card is considered factionless, if it can be used by more than one faction."> &#9432 </span>
                                         </label>
                                     </div>
                                     <div class = "advanced-search-point-selection-container">
@@ -914,12 +900,23 @@ class exportObj.CardBrowser
                                     </div>
                                 </div>
                                 <div class = "well search-container ship-search-container">
-                                    <h4>Ships and Pilots</h4><span class="advanced-search-tooltip" tooltip="Selecting anything in here will hide all upgrades."> &#9432 </span>
+                                    <h4>Ships and Pilots</h4>
                                     <div class = "advanced-search-slot-available-container">
                                         <label class = "advanced-search-label select-available-slots">
-                                            <strong>Available slots: </strong>
+                                            <strong>Slots: </strong>
                                             <select class="advanced-search-selection slot-available-selection" multiple="1" data-placeholder="No slots selected"></select>
-                                            <span class="advanced-search-tooltip" tooltip="Search for pilots and ships having all selected slots available."> &#9432 </span>
+                                        </label>
+                                    </div>
+                                    <div class = "advanced-search-actions-available-container">
+                                        <label class = "advanced-search-label select-available-actions">
+                                            <strong>Actions: </strong>
+                                            <select class="advanced-search-selection action-available-selection" multiple="1" data-placeholder="No actions selected"></select>
+                                        </label>
+                                    </div>
+                                    <div class = "advanced-search-linkedactions-available-container">
+                                        <label class = "advanced-search-label select-available-linkedactions">
+                                            <strong>Linked actions: </strong>
+                                            <select class="advanced-search-selection linkedaction-available-selection" multiple="1" data-placeholder="No actions selected"></select>
                                         </label>
                                     </div>
                                     <div class = "advanced-search-ini-container">
@@ -970,6 +967,60 @@ class exportObj.CardBrowser
                                             <input type="checkbox" class="large-base-checkbox advanced-search-checkbox" checked="checked"/> Large
                                         </label>
                                     </div>
+                                    <div class = "advanced-search-attack-container">
+                                        <strong>Attack  <i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>:</strong>
+                                        <label class = "advanced-search-label set-minimum-attack">
+                                            from <input type="number" class="minimum-attack advanced-search-number-input" value="0" /> 
+                                        </label>
+                                        <label class = "advanced-search-label set-maximum-attack">
+                                            to <input type="number" class="maximum-attack advanced-search-number-input" value="5" /> 
+                                        </label>
+                                    </div>
+                                    <div class = "advanced-search-attackt-container">
+                                        <strong>Attack  <i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>:</strong>
+                                        <label class = "advanced-search-label set-minimum-attackt">
+                                            from <input type="number" class="minimum-attackt advanced-search-number-input" value="0" /> 
+                                        </label>
+                                        <label class = "advanced-search-label set-maximum-attackt">
+                                            to <input type="number" class="maximum-attackt advanced-search-number-input" value="5" /> 
+                                        </label>
+                                    </div>
+                                    <div class = "advanced-search-attackdt-container">
+                                        <strong>Attack <i class="xwing-miniatures-font xwing-miniatures-font-doubleturretarc"></i>:</strong>
+                                        <label class = "advanced-search-label set-minimum-attackdt">
+                                            from <input type="number" class="minimum-attackdt advanced-search-number-input" value="0" /> 
+                                        </label>
+                                        <label class = "advanced-search-label set-maximum-attackdt">
+                                            to <input type="number" class="maximum-attackdt advanced-search-number-input" value="5" /> 
+                                        </label>
+                                    </div>
+                                    <div class = "advanced-search-attackf-container">
+                                        <strong>Attack <i class="xwing-miniatures-font xwing-miniatures-font-fullfrontarc"></i>:</strong>
+                                        <label class = "advanced-search-label set-minimum-attackf">
+                                            from <input type="number" class="minimum-attackf advanced-search-number-input" value="0" /> 
+                                        </label>
+                                        <label class = "advanced-search-label set-maximum-attackf">
+                                            to <input type="number" class="maximum-attackf advanced-search-number-input" value="5" /> 
+                                        </label>
+                                    </div>
+                                    <div class = "advanced-search-attackb-container">
+                                        <strong>Attack <i class="xwing-miniatures-font xwing-miniatures-font-reararc"></i>:</strong>
+                                        <label class = "advanced-search-label set-minimum-attackb">
+                                            from <input type="number" class="minimum-attackb advanced-search-number-input" value="0" /> 
+                                        </label>
+                                        <label class = "advanced-search-label set-maximum-attackb">
+                                            to <input type="number" class="maximum-attackb advanced-search-number-input" value="5" /> 
+                                        </label>
+                                    </div>
+                                    <div class = "advanced-search-attackbull-container">
+                                        <strong>Attack <i class="xwing-miniatures-font xwing-miniatures-font-bullseyearc"></i>:</strong>
+                                        <label class = "advanced-search-label set-minimum-attackbull">
+                                            from <input type="number" class="minimum-attackbull advanced-search-number-input" value="0" /> 
+                                        </label>
+                                        <label class = "advanced-search-label set-maximum-attackbull">
+                                            to <input type="number" class="maximum-attackbull advanced-search-number-input" value="5" /> 
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class = "well search-container other-stuff-search-container">
                                     <h4>Other Stuff</h4>
@@ -977,7 +1028,6 @@ class exportObj.CardBrowser
                                         <label class = "advanced-search-label select-used-slots">
                                             <strong>Used slot: </strong>
                                             <select class="advanced-search-selection slot-used-selection" multiple="1" data-placeholder="No slots selected"></select>
-                                            <span class="advanced-search-tooltip" tooltip="Search for upgrades using any of the selected slots."> &#9432 </span>
                                         </label>
                                     </div>
                                     <div class = "advanced-search-charge-container">
@@ -1007,6 +1057,19 @@ class exportObj.CardBrowser
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="span4 card-selecting-area">
+                        <span class="translate sort-cards-by">Sort cards by</span>: <select class="sort-by">
+                            <option value="name">Name</option>
+                            <option value="source">Source</option>
+                            <option value="type-by-points">Type (by Points)</option>
+                            <option value="type-by-name" selected="1">Type (by Name)</option>
+                        </select>
+                        <div class="card-selector-container">
+
+                        </div>
+                    </div>
+                    <div class="span4">
                         <div class="well card-viewer-placeholder info-well">
                             <p class="translate select-a-card">Select a card from the list at the left.</p>
                         </div>
@@ -1091,6 +1154,7 @@ class exportObj.CardBrowser
                                 </tbody>
                             </table>
                             <p class="info-text" />
+                            <p class="info-maneuvers" />
                         </div>
                     </div>
                 </div>
@@ -1136,6 +1200,20 @@ class exportObj.CardBrowser
             @slot_available_selection.append opt
         @slot_available_selection.select2
             minimumResultsForSearch: if $.isMobile() then -1 else 0
+        @action_available_selection = ($ @container.find('.xwing-card-browser select.action-available-selection'))
+        for action in ["Evade","Focus","Lock","Boost","Barrel Roll","Calculate","Reinforce","Rotate Arc","Coordinate","Slam","Reload"].sort()
+            opt = $ document.createElement('OPTION')
+            opt.text action
+            @action_available_selection.append opt
+        @action_available_selection.select2
+            minimumResultsForSearch: if $.isMobile() then -1 else 0
+        @linkedaction_available_selection = ($ @container.find('.xwing-card-browser select.linkedaction-available-selection'))
+        for linkedaction in ["Evade","Focus","Lock","Boost","Barrel Roll","Calculate","Reinforce","Rotate Arc","Coordinate","Slam","Reload"].sort()
+            opt = $ document.createElement('OPTION')
+            opt.text linkedaction
+            @linkedaction_available_selection.append opt
+        @linkedaction_available_selection.select2
+            minimumResultsForSearch: if $.isMobile() then -1 else 0
         @slot_used_selection = ($ @container.find('.xwing-card-browser select.slot-used-selection'))
         for slot of exportObj.upgradesBySlotCanonicalName
             opt = $ document.createElement('OPTION')
@@ -1155,6 +1233,18 @@ class exportObj.CardBrowser
         @maximum_shields = ($ @container.find('.xwing-card-browser .maximum-shields'))[0]
         @minimum_agility = ($ @container.find('.xwing-card-browser .minimum-agility'))[0]
         @maximum_agility = ($ @container.find('.xwing-card-browser .maximum-agility'))[0]
+        @minimum_attack = ($ @container.find('.xwing-card-browser .minimum-attack'))[0]
+        @maximum_attack = ($ @container.find('.xwing-card-browser .maximum-attack'))[0]
+        @minimum_attackt = ($ @container.find('.xwing-card-browser .minimum-attackt'))[0]
+        @maximum_attackt = ($ @container.find('.xwing-card-browser .maximum-attackt'))[0]
+        @minimum_attackdt = ($ @container.find('.xwing-card-browser .minimum-attackdt'))[0]
+        @maximum_attackdt = ($ @container.find('.xwing-card-browser .maximum-attackdt'))[0]
+        @minimum_attackf = ($ @container.find('.xwing-card-browser .minimum-attackf'))[0]
+        @maximum_attackf = ($ @container.find('.xwing-card-browser .maximum-attackf'))[0]
+        @minimum_attackb = ($ @container.find('.xwing-card-browser .minimum-attackb'))[0]
+        @maximum_attackb = ($ @container.find('.xwing-card-browser .maximum-attackb'))[0]
+        @minimum_attackbull = ($ @container.find('.xwing-card-browser .minimum-attackbull'))[0]
+        @maximum_attackbull = ($ @container.find('.xwing-card-browser .maximum-attackbull'))[0]
         @recurring_charge = ($ @container.find('.xwing-card-browser .has-recurring-charge-checkbox'))[0]
         @not_recurring_charge = ($ @container.find('.xwing-card-browser .has-not-recurring-charge-checkbox'))[0]
         @minimum_owned_copies = ($ @container.find('.xwing-card-browser .minimum-owned-copies'))[0]
@@ -1170,6 +1260,10 @@ class exportObj.CardBrowser
             @language = language
             @prepareData()
             @renderList @sort_selector.val()
+        .on 'xwing-collection:created', (e, collection) =>
+            @collection = collection
+        .on 'xwing-collection:destroyed', (e, collection) =>
+            @collection = null
 
         @card_search_text.oninput = => @renderList @sort_selector.val()
         # TODO: Add a call to @renderList for added inputs, to start the actual search
@@ -1183,6 +1277,8 @@ class exportObj.CardBrowser
         @unique_checkbox.onclick = => @renderList @sort_selector.val()
         @non_unique_checkbox.onclick = => @renderList @sort_selector.val()
         @slot_available_selection[0].onchange = => @renderList @sort_selector.val()
+        @action_available_selection[0].onchange = => @renderList @sort_selector.val()
+        @linkedaction_available_selection[0].onchange = => @renderList @sort_selector.val()
         @slot_used_selection[0].onchange = => @renderList @sort_selector.val()
         @recurring_charge.onclick = => @renderList @sort_selector.val()
         @not_recurring_charge.onclick = => @renderList @sort_selector.val()
@@ -1198,6 +1294,18 @@ class exportObj.CardBrowser
         @maximum_shields.oninput = => @renderList @sort_selector.val()
         @minimum_agility.oninput = => @renderList @sort_selector.val()
         @maximum_agility.oninput = => @renderList @sort_selector.val()
+        @minimum_attack.oninput = => @renderList @sort_selector.val()
+        @maximum_attack.oninput = => @renderList @sort_selector.val()
+        @minimum_attackt.oninput = => @renderList @sort_selector.val()
+        @maximum_attackt.oninput = => @renderList @sort_selector.val()
+        @minimum_attackdt.oninput = => @renderList @sort_selector.val()
+        @maximum_attackdt.oninput = => @renderList @sort_selector.val()
+        @minimum_attackf.oninput = => @renderList @sort_selector.val()
+        @maximum_attackf.oninput = => @renderList @sort_selector.val()
+        @minimum_attackb.oninput = => @renderList @sort_selector.val()
+        @maximum_attackb.oninput = => @renderList @sort_selector.val()
+        @minimum_attackbull.oninput = => @renderList @sort_selector.val()
+        @maximum_attackbull.oninput = => @renderList @sort_selector.val()
         @minimum_owned_copies.oninput = => @renderList @sort_selector.val()
         @maximum_owned_copies.oninput = => @renderList @sort_selector.val()
 
@@ -1302,248 +1410,15 @@ class exportObj.CardBrowser
         # Renders card to card container
         display_name = card.data 'display_name'
         name = card.data 'name'
-        type = card.data 'type'
+        # type = card.data 'type'
         data = card.data 'card'
         orig_type = card.data 'orig_type'
 
-        @card_viewer_container.find('.info-name').html """#{if data.unique then "&middot;&nbsp;" else ""}#{if display_name then display_name else name} (#{data.points})#{if data.limited? then " (#{exportObj.translate(@language, 'ui', 'limited')})" else ""}#{if data.epic? then " (#{exportObj.translate(@language, 'ui', 'epic')})" else ""}#{if exportObj.isReleased(data) then "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
-        
-        if data.pointsarray? 
-            point_info = "<i>Point cost " + data.pointsarray + " when "
-            if data.variableagility? and data.variableagility
-                point_info += "agility is " + [0..data.pointsarray.length-1]
-            else if data.variableinit? and data.variableinit
-                point_info += "initiative is " + [0..data.pointsarray.length-1]
-            else if data.variablebase? and data.variablebase
-                point_info += " base size is small, medium or large"
-            point_info += "</i><br/><br/>"
+        if not (orig_type in ['Pilot', 'Ship', 'Quickbuild'])
+            add_opts = {addon_type: orig_type}
+            orig_type = 'Addon'
 
-        @card_viewer_container.find('p.info-text').html (point_info ? '') + (data.text ? '')
-        @card_viewer_container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
-        switch orig_type
-            when 'Pilot'
-                ship = exportObj.ships[data.ship]
-                @card_viewer_container.find('.info-type').text "#{data.ship} Pilot (#{data.faction})"
-                if exportObj.builders[0].collection?.counts?
-                    ship_count = exportObj.builders[0].collection.counts?.ship?[data.ship] ? 0
-                    pilot_count = exportObj.builders[0].collection.counts?.pilot?[data.name] ? 0
-                    @card_viewer_container.find('.info-collection').text """You have #{ship_count} ship model#{if ship_count > 1 then 's' else ''} and #{pilot_count} pilot card#{if pilot_count > 1 then 's' else ''} in your collection."""
-                else
-                    @card_viewer_container.find('.info-collection').text ''
-                @card_viewer_container.find('tr.info-skill td.info-data').text data.skill
-                @card_viewer_container.find('tr.info-skill').show()
-
-                @card_viewer_container.find('tr.info-attack td.info-data').text(data.ship_override?.attack ? ship.attack)
-                @card_viewer_container.find('tr.info-attack-bullseye td.info-data').text(ship.attackbull)
-                @card_viewer_container.find('tr.info-attack-fullfront td.info-data').text(ship.attackf)
-                @card_viewer_container.find('tr.info-attack-back td.info-data').text(ship.attackb)
-                @card_viewer_container.find('tr.info-attack-turret td.info-data').text(ship.attackt)
-                @card_viewer_container.find('tr.info-attack-doubleturret td.info-data').text(ship.attackdt)
-
-                @card_viewer_container.find('tr.info-attack').toggle(ship.attack?)
-                @card_viewer_container.find('tr.info-attack-bullseye').toggle(ship.attackbull?)
-                @card_viewer_container.find('tr.info-attack-fullfront').toggle(ship.attackf?)
-                @card_viewer_container.find('tr.info-attack-back').toggle(ship.attackb?)
-                @card_viewer_container.find('tr.info-attack-turret').toggle(ship.attackt?)
-                @card_viewer_container.find('tr.info-attack-doubleturret').toggle(ship.attackdt?)
-                
-                
-                
-                for cls in @card_viewer_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
-                    @card_viewer_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-attack')
-                @card_viewer_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass(ship.attack_icon ? 'xwing-miniatures-font-attack')
-
-                @card_viewer_container.find('tr.info-energy td.info-data').text(data.ship_override?.energy ? ship.energy)
-                @card_viewer_container.find('tr.info-energy').toggle(data.ship_override?.energy? or ship.energy?)
-                @card_viewer_container.find('tr.info-range').hide()
-                @card_viewer_container.find('tr.info-agility td.info-data').text(data.ship_override?.agility ? ship.agility)
-                @card_viewer_container.find('tr.info-agility').show()
-                @card_viewer_container.find('tr.info-hull td.info-data').text(data.ship_override?.hull ? ship.hull)
-                @card_viewer_container.find('tr.info-hull').show()
-                @card_viewer_container.find('tr.info-shields td.info-data').text(data.ship_override?.shields ? ship.shields)
-                @card_viewer_container.find('tr.info-shields').show()
-
-                if data.force?
-                    @card_viewer_container.find('tr.info-force td.info-data').html (data.force + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>') 
-                    @card_viewer_container.find('tr.info-force td.info-header').show()
-                    @card_viewer_container.find('tr.info-force').show()
-                else
-                    @card_viewer_container.find('tr.info-force').hide() 
-
-                if data.charge?
-                    if data.recurring?
-                        @card_viewer_container.find('tr.info-charge td.info-data').html (data.charge + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
-                    else
-                        @card_viewer_container.find('tr.info-charge td.info-data').text data.charge
-                    @card_viewer_container.find('tr.info-charge').show()
-                else
-                    @card_viewer_container.find('tr.info-charge').hide()
-
-                @card_viewer_container.find('tr.info-actions td.info-data').html (((exportObj.translate(@language, 'action', action) for action in exportObj.ships[data.ship].actions).join(', ')).replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked red">/g,' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked red">').replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked red">/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked red">').replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked">') #super ghetto quadruple replace for linked actions
-                @card_viewer_container.find('tr.info-actions').show()
-
-                if ships[data.ship].actionsred?
-                    @card_viewer_container.find('tr.info-actions-red td.info-data').html (exportObj.translate(@language, 'action', action) for action in exportObj.ships[data.ship].actionsred).join(' ')
-                    @card_viewer_container.find('tr.info-actions-red').show()
-                else
-                    @card_viewer_container.find('tr.info-actions-red').hide()
-
-                @card_viewer_container.find('tr.info-upgrades').show()
-                @card_viewer_container.find('tr.info-upgrades td.info-data').html((exportObj.translate(@language, 'sloticon', slot) for slot in data.slots).join(' ') or 'None')
-
-            when 'Ship'
-                # we get all pilots for the ship, to display stuff like available slots which are treated as pilot properties, not ship properties (which makes sense, as they depend on the pilot, e.g. talent or force slots)
-                possible_inis = []
-                slot_types = {} # one number per slot: 0: not available for that ship. 1: always available for that ship. 2: available for some pilots on that ship. -1: undefined
-                for slot of exportObj.upgradesBySlotCanonicalName
-                    slot_types[slot] = -1
-                for name, pilot of exportObj.pilots
-                    if pilot.ship != data.name 
-                        continue
-                    if not (pilot.skill in possible_inis)
-                        possible_inis.push(pilot.skill)
-                    for slot, state of slot_types
-                        if slot in pilot.slots
-                            switch state
-                                when -1
-                                    slot_types[slot] = 1
-                                when 0
-                                    slot_types[slot] = 2
-                        else 
-                            switch state
-                                when -1
-                                    slot_types[slot] = 0
-                                when 1
-                                    slot_types[slot] = 2
-                                
-                possible_inis.sort()
-
-                @card_viewer_container.find('.info-type').text type
-                if exportObj.builders[0].collection?.counts?
-                    ship_count = @getCollectionNumber({orig_type: 'Ship', name: name})
-                    @card_viewer_container.find('.info-collection').text """You have #{ship_count} ship model#{if ship_count > 1 then 's' else ''} in your collection."""
-                else
-                    @card_viewer_container.find('.info-collection').text ''
-                first = true
-                inis = String(possible_inis[0])
-                for ini in possible_inis
-                    if not first
-                        inis += ", " + ini
-                    first = false
-                @card_viewer_container.find('tr.info-skill td.info-data').text inis
-                @card_viewer_container.find('tr.info-skill').show()
-                
-                @card_viewer_container.find('tr.info-attack td.info-data').text(data.attack)
-                @card_viewer_container.find('tr.info-attack-bullseye td.info-data').text(data.attackbull)
-                @card_viewer_container.find('tr.info-attack-fullfront td.info-data').text(data.attackf)
-                @card_viewer_container.find('tr.info-attack-back td.info-data').text(data.attackb)
-                @card_viewer_container.find('tr.info-attack-turret td.info-data').text(data.attackt)
-                @card_viewer_container.find('tr.info-attack-doubleturret td.info-data').text(data.attackdt)
-
-                @card_viewer_container.find('tr.info-attack').toggle(data.attack?)
-                @card_viewer_container.find('tr.info-attack-bullseye').toggle(data.attackbull?)
-                @card_viewer_container.find('tr.info-attack-fullfront').toggle(data.attackf?)
-                @card_viewer_container.find('tr.info-attack-back').toggle(data.attackb?)
-                @card_viewer_container.find('tr.info-attack-turret').toggle(data.attackt?)
-                @card_viewer_container.find('tr.info-attack-doubleturret').toggle(data.attackdt?)
-                
-                
-                
-                for cls in @card_viewer_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
-                    @card_viewer_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-attack')
-                @card_viewer_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass(data.attack_icon ? 'xwing-miniatures-font-attack')
-
-                @card_viewer_container.find('tr.info-energy td.info-data').text(data.energy)
-                @card_viewer_container.find('tr.info-energy').toggle(data.energy?)
-                @card_viewer_container.find('tr.info-range').hide()
-                @card_viewer_container.find('tr.info-agility td.info-data').text(data.agility)
-                @card_viewer_container.find('tr.info-agility').show()
-                @card_viewer_container.find('tr.info-hull td.info-data').text(data.hull)
-                @card_viewer_container.find('tr.info-hull').show()
-                @card_viewer_container.find('tr.info-shields td.info-data').text(data.shields)
-                @card_viewer_container.find('tr.info-shields').show()
-                
-                # One may want to check for force sensitive pilots and display the possible values here (like done for ini), but I'll skip this for now. 
-                @card_viewer_container.find('tr.info-force').hide() 
-
-                @card_viewer_container.find('tr.info-charge').hide()
-
-                
-                @card_viewer_container.find('tr.info-actions td.info-data').html (((exportObj.translate(@language, 'action', action) for action in data.actions).join(', ')).replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked red">/g,' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked red">').replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked red">/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked red">').replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked">') #super ghetto quadruple replace for linked actions
-                @card_viewer_container.find('tr.info-actions').show()
-
-                if data.actionsred?
-                    @card_viewer_container.find('tr.info-actions-red td.info-data').html (exportObj.translate(@language, 'action', action) for action in data.actionsred).join(' ')
-                    @card_viewer_container.find('tr.info-actions-red').show()
-                else
-                    @card_viewer_container.find('tr.info-actions-red').hide()
-                
-                # Display all available slots, put brackets aroudn slots that are only available for some pilots
-                @card_viewer_container.find('tr.info-upgrades').show()
-                @card_viewer_container.find('tr.info-upgrades td.info-data').html(((if state == 1 then exportObj.translate(@language, 'sloticon', slot) else (if state == 2 then '('+exportObj.translate(@language, 'sloticon', slot)+')')) for slot, state of slot_types).join(' ') or 'None')
-                
-            else
-                @card_viewer_container.find('.info-type').text type
-                @card_viewer_container.find('.info-type').append " &ndash; #{data.faction} only" if data.faction?
-                if exportObj.builders[0].collection?.counts?
-                    addon_count = exportObj.builders[0].collection.counts.upgrade[data.name] ? 0
-                    @card_viewer_container.find('.info-collection').text """You have #{addon_count} in your collection."""
-                else
-                    @card_viewer_container.find('.info-collection').text ''
-                @card_viewer_container.find('tr.info-ship').hide()
-                @card_viewer_container.find('tr.info-skill').hide()
-                if data.energy?
-                    @card_viewer_container.find('tr.info-energy td.info-data').text data.energy
-                    @card_viewer_container.find('tr.info-energy').show()
-                else
-                    @card_viewer_container.find('tr.info-energy').hide()
-                if data.attack?
-                    @card_viewer_container.find('tr.info-attack td.info-data').text data.attack
-                    @card_viewer_container.find('tr.info-attack').show()
-                else
-                    @card_viewer_container.find('tr.info-attack').hide()
-                if data.attackbull?
-                    @card_viewer_container.find('tr.info-attack-bullseye td.info-data').text data.attackbull
-                    @card_viewer_container.find('tr.info-attack-bullseye').show()
-                else
-                    @card_viewer_container.find('tr.info-attack-bullseye').hide()
-                if data.attackt?
-                    @card_viewer_container.find('tr.info-attack-turret td.info-data').text data.attackt
-                    @card_viewer_container.find('tr.info-attack-turret').show()
-                else
-                    @card_viewer_container.find('tr.info-attack-turret').hide()
-                if data.range?
-                    @card_viewer_container.find('tr.info-range td.info-data').text data.range
-                    @card_viewer_container.find('tr.info-range').show()
-                else
-                    @card_viewer_container.find('tr.info-range').hide()
-
-                if data.force?
-                    @card_viewer_container.find('tr.info-force td.info-data').html (data.force + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>') 
-                    @card_viewer_container.find('tr.info-force td.info-header').show()
-                    @card_viewer_container.find('tr.info-force').show()
-                else
-                    @card_viewer_container.find('tr.info-force').hide() 
-
-                if data.charge?
-                    if data.recurring?
-                        @card_viewer_container.find('tr.info-charge td.info-data').html (data.charge + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
-                    else
-                        @card_viewer_container.find('tr.info-charge td.info-data').text data.charge
-                    @card_viewer_container.find('tr.info-charge').show()
-                else
-                    @card_viewer_container.find('tr.info-charge').hide()
-                    
-                    
-                @card_viewer_container.find('tr.info-attack-fullfront').hide()
-                @card_viewer_container.find('tr.info-attack-back').hide()
-                @card_viewer_container.find('tr.info-attack-doubleturret').hide()
-                @card_viewer_container.find('tr.info-agility').hide()
-                @card_viewer_container.find('tr.info-hull').hide()
-                @card_viewer_container.find('tr.info-shields').hide()
-                @card_viewer_container.find('tr.info-actions').hide()
-                @card_viewer_container.find('tr.info-actions-red').hide()
-                @card_viewer_container.find('tr.info-upgrades').hide()
+        exportObj.builders[0].showTooltip(orig_type, data, add_opts ? {}, @card_viewer_container) # we use the render method from the squad builder, cause it works.
 
         @card_viewer_container.show()
         @card_viewer_placeholder.hide()
@@ -1634,6 +1509,20 @@ class exportObj.CardBrowser
             for slot in required_slots
                return false unless slots? and slot in slots
 
+        # check for action requirements
+        required_actions = @action_available_selection.val()
+        required_linked_actions = @linkedaction_available_selection.val()
+        if required_actions or required_linked_actions
+            actions = card.data.actions ? []
+            actions = actions.concat (card.data.actionsred ? [])
+            if card.orig_type == 'Pilot'
+                actions = exportObj.ships[card.data.ship].actions
+                actions = actions.concat exportObj.ships[card.data.ship].actionsred
+        for action in required_actions ? []
+            return false unless actions? and ((action in actions) or (("F-" + action) in actions))
+        for action in required_linked_actions ? []
+            return false unless actions? and ((("R> " + action) in actions) or (("> " + action) in actions))
+
         # check if point costs matches
         if @minimum_point_costs.value > 0 or @maximum_point_costs.value < 200
             return false unless (card.data.points >= @minimum_point_costs.value and card.data.points <= @maximum_point_costs.value) or (card.data.points == "*" or not card.data.points?)
@@ -1714,6 +1603,30 @@ class exportObj.CardBrowser
         # check for agility
         if @minimum_agility.value != "0" or @maximum_agility.value != "3"
             return false unless (card.data.agility? and card.data.agility >= @minimum_agility.value and card.data.agility <= @maximum_agility.value) or (card.orig_type == 'Pilot' and exportObj.ships[card.data.ship].agility >= @minimum_agility.value and exportObj.ships[card.data.ship].agility <= @maximum_agility.value )
+                 
+        # check for attack
+        if @minimum_attack.value != "0" or @maximum_attack.value != "5"
+            return false unless (card.data.attack? and card.data.attack >= @minimum_attack.value and card.data.attack <= @maximum_attack.value) or (card.orig_type == 'Pilot' and ((exportObj.ships[card.data.ship].attack? and exportObj.ships[card.data.ship].attack >= @minimum_attack.value and exportObj.ships[card.data.ship].attack <= @maximum_attack.value ) or (not exportObj.ships[card.data.ship].attack? and @minimum_attack.value <= 0))) or (card.orig_type == 'Ship' and not card.data.attack? and @minimum_attack.value <= 0)
+        
+        # check for attackt
+        if @minimum_attackt.value != "0" or @maximum_attackt.value != "5"
+            return false unless (card.data.attackt? and card.data.attackt >= @minimum_attackt.value and card.data.attackt <= @maximum_attackt.value) or (card.orig_type == 'Pilot' and ((exportObj.ships[card.data.ship].attackt? and exportObj.ships[card.data.ship].attackt >= @minimum_attackt.value and exportObj.ships[card.data.ship].attackt <= @maximum_attackt.value ) or (not exportObj.ships[card.data.ship].attackt? and @minimum_attackt.value <= 0))) or (card.orig_type == 'Ship' and not card.data.attackt? and @minimum_attackt.value <= 0)
+         
+        # check for attackdt
+        if @minimum_attackdt.value != "0" or @maximum_attackdt.value != "5"
+            return false unless (card.data.attackdt? and card.data.attackdt >= @minimum_attackdt.value and card.data.attackdt <= @maximum_attackdt.value) or (card.orig_type == 'Pilot' and ((exportObj.ships[card.data.ship].attackdt? and exportObj.ships[card.data.ship].attackdt >= @minimum_attackdt.value and exportObj.ships[card.data.ship].attackdt <= @maximum_attackdt.value ) or (not exportObj.ships[card.data.ship].attackdt? and @minimum_attackdt.value <= 0))) or (card.orig_type == 'Ship' and not card.data.attackdt? and @minimum_attackdt.value <= 0)
+        
+        # check for attackf
+        if @minimum_attackf.value != "0" or @maximum_attackf.value != "5"
+            return false unless (card.data.attackf? and card.data.attackf >= @minimum_attackf.value and card.data.attackf <= @maximum_attackf.value) or (card.orig_type == 'Pilot' and ((exportObj.ships[card.data.ship].attackf? and exportObj.ships[card.data.ship].attackf >= @minimum_attackf.value and exportObj.ships[card.data.ship].attackf <= @maximum_attackf.value ) or (not exportObj.ships[card.data.ship].attackf? and @minimum_attackf.value <= 0))) or (card.orig_type == 'Ship' and not card.data.attackf? and @minimum_attackf.value <= 0)
+         
+        # check for attackb
+        if @minimum_attackb.value != "0" or @maximum_attackb.value != "5"
+            return false unless (card.data.attackb? and card.data.attackb >= @minimum_attackb.value and card.data.attackb <= @maximum_attackb.value) or (card.orig_type == 'Pilot' and ((exportObj.ships[card.data.ship].attackb? and exportObj.ships[card.data.ship].attackb >= @minimum_attackb.value and exportObj.ships[card.data.ship].attackb <= @maximum_attackb.value ) or (not exportObj.ships[card.data.ship].attackb? and @minimum_attackb.value <= 0))) or (card.orig_type == 'Ship' and not card.data.attackb? and @minimum_attackb.value <= 0)
+         
+        # check for attackbull
+        if @minimum_attackbull.value != "0" or @maximum_attackbull.value != "5"
+            return false unless (card.data.attackbull? and card.data.attackbull >= @minimum_attackbull.value and card.data.attackbull <= @maximum_attackbull.value) or (card.orig_type == 'Pilot' and ((exportObj.ships[card.data.ship].attackbull? and exportObj.ships[card.data.ship].attackbull >= @minimum_attackbull.value and exportObj.ships[card.data.ship].attackbull <= @maximum_attackbull.value ) or (not exportObj.ships[card.data.ship].attackbull? and @minimum_attackbull.value <= 0))) or (card.orig_type == 'Ship' and not card.data.attackbull? and @minimum_attackbull.value <= 0)
          
         # check for force
         if @minimum_force.value != "0" or @maximum_force.value != "3"
@@ -34882,125 +34795,114 @@ class exportObj.SquadBuilder
         outTable
 
         
-    showTooltip: (type, data, additional_opts) ->
+    showTooltip: (type, data, additional_opts, container = @info_container) ->
         if data != @tooltip_currently_displaying
             switch type
                 when 'Ship'
-                    @info_container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.pilot.sources).sort().join(', ')
-                    @info_container.find('.info-sources').show()
+            # we get all pilots for the ship, to display stuff like available slots which are treated as pilot properties, not ship properties (which makes sense, as they depend on the pilot, e.g. talent or force slots)
+                    possible_inis = []
+                    slot_types = {} # one number per slot: 0: not available for that ship. 1: always available for that ship. 2: available for some pilots on that ship. -1: undefined
+                    for slot of exportObj.upgradesBySlotCanonicalName
+                        slot_types[slot] = -1
+                    for name, pilot of exportObj.pilots
+                        if pilot.ship != data.name 
+                            continue
+                        if not (pilot.skill in possible_inis)
+                            possible_inis.push(pilot.skill)
+                        for slot, state of slot_types
+                            if slot in pilot.slots
+                                switch state
+                                    when -1
+                                        slot_types[slot] = 1
+                                    when 0
+                                        slot_types[slot] = 2
+                            else 
+                                switch state
+                                    when -1
+                                        slot_types[slot] = 0
+                                    when 1
+                                        slot_types[slot] = 2
+                                
+                    possible_inis.sort()
+        
+                    container.find('.info-type').text type
+                    container.find('.info-name').text data.name
                     if @collection?.counts?
-                        ship_count = @collection.counts?.ship?[data.data.name] ? 0
-                        pilot_count = @collection.counts?.pilot?[data.pilot.name] ? 0
-                        @info_container.find('.info-collection').text """You have #{ship_count} ship model#{if ship_count > 1 then 's' else ''} and #{pilot_count} pilot card#{if pilot_count > 1 then 's' else ''} in your collection."""
+                        ship_count = @collection.counts?.ship?[data.name] ? 0
+                        container.find('.info-collection').text """You have #{ship_count} ship model#{if ship_count > 1 then 's' else ''} in your collection."""
                     else
-                        @info_container.find('.info-collection').text ''
-                    effective_stats = data.effectiveStats()
-                    extra_actions = $.grep effective_stats.actions, (el, i) ->
-                        el not in (data.pilot.ship_override?.actions ? data.data.actions)
-                    extra_actions_red = $.grep effective_stats.actionsred, (el, i) ->
-                        el not in (data.pilot.ship_override?.actionsred ? data.data.actionsred)
-                    
-                    #logic to determine how many dots to use for uniqueness
-                    if data.pilot.unique?
-                        uniquedots = "&middot;&nbsp;"
-                    else if data.pilot.max_per_squad?
-                        count = 0
-                        uniquedots = ""
-                        while (count < data.pilot.max_per_squad)
-                            uniquedots = uniquedots.concat("&middot;")
-                            ++count
-                        uniquedots = uniquedots.concat("&nbsp;")
+                        container.find('.info-collection').text ''
+                    first = true
+                    inis = String(possible_inis[0])
+                    for ini in possible_inis
+                        if not first
+                            inis += ", " + ini
+                        first = false
+                    container.find('tr.info-skill td.info-data').text inis
+                    container.find('tr.info-skill').show()
+                
+                    container.find('tr.info-attack td.info-data').text(data.attack)
+                    container.find('tr.info-attack-bullseye td.info-data').text(data.attackbull)
+                    container.find('tr.info-attack-fullfront td.info-data').text(data.attackf)
+                    container.find('tr.info-attack-back td.info-data').text(data.attackb)
+                    container.find('tr.info-attack-turret td.info-data').text(data.attackt)
+                    container.find('tr.info-attack-doubleturret td.info-data').text(data.attackdt)
+        
+                    container.find('tr.info-attack').toggle(data.attack?)
+                    container.find('tr.info-attack-bullseye').toggle(data.attackbull?)
+                    container.find('tr.info-attack-fullfront').toggle(data.attackf?)
+                    container.find('tr.info-attack-back').toggle(data.attackb?)
+                    container.find('tr.info-attack-turret').toggle(data.attackt?)
+                    container.find('tr.info-attack-doubleturret').toggle(data.attackdt?)
+                
+                
+                
+                    for cls in container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
+                        container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-attack')
+                    container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass(data.attack_icon ? 'xwing-miniatures-font-attack')
+        
+                    container.find('tr.info-energy td.info-data').text(data.energy)
+                    container.find('tr.info-energy').toggle(data.energy?)
+                    container.find('tr.info-range').hide()
+                    container.find('tr.info-agility td.info-data').text(data.agility)
+                    container.find('tr.info-agility').show()
+                    container.find('tr.info-hull td.info-data').text(data.hull)
+                    container.find('tr.info-hull').show()
+                    container.find('tr.info-shields td.info-data').text(data.shields)
+                    container.find('tr.info-shields').show()
+                
+                    # One may want to check for force sensitive pilots and display the possible values here (like done for ini), but I'll skip this for now. 
+                    container.find('tr.info-force').hide() 
+        
+                    container.find('tr.info-charge').hide()
+        
+                
+                    container.find('tr.info-actions td.info-data').html (((exportObj.translate(@language, 'action', action) for action in data.actions).join(', ')).replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked red">/g,' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked red">').replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked red">/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked red">').replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked">') #super ghetto quadruple replace for linked actions
+                    container.find('tr.info-actions').show()
+
+                    if data.actionsred?
+                        container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', action) for action in data.actionsred).join(', ')
+                        container.find('tr.info-actions-red').show()
                     else
-                        uniquedots = ""
-                            
-                    @info_container.find('.info-name').html """#{uniquedots}#{if data.pilot.display_name then data.pilot.display_name else data.pilot.name} #{if exportObj.isReleased(data.pilot) then "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
+                        container.find('tr.info-actions-red').hide()
 
-                    @info_container.find('p.info-text').html data.pilot.text ? ''
-                    @info_container.find('tr.info-ship td.info-data').text data.pilot.ship
-                    @info_container.find('tr.info-ship').show()
-                    @info_container.find('.info-solitary').hide()
-
-                    if data.data.large?
-                        @info_container.find('tr.info-base td.info-data').text "Large"
-                    else if data.data.medium?
-                        @info_container.find('tr.info-base td.info-data').text "Medium"
-                    else
-                        @info_container.find('tr.info-base td.info-data').text "Small"
-                    @info_container.find('tr.info-base').show()
-                    
-                    @info_container.find('tr.info-skill td.info-data').text statAndEffectiveStat(data.pilot.skill, effective_stats, 'skill')
-                    @info_container.find('tr.info-skill').show()
-
-#                    for cls in @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
-#                        @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-attack')
-                    @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass(data.data.attack_icon ? 'xwing-miniatures-font-attack')
-
-                    @info_container.find('tr.info-attack td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.attack ? data.data.attack), effective_stats, 'attack')
-                    @info_container.find('tr.info-attack').toggle(effective_stats.attack?)
-                    
-                    @info_container.find('tr.info-attack-fullfront td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.attackf ? data.data.attackf), effective_stats, 'attackf')
-                    @info_container.find('tr.info-attack-fullfront').toggle(effective_stats.attackf?)
-
-                    @info_container.find('tr.info-attack-bullseye').hide()
-                    
-                    @info_container.find('tr.info-attack-back td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.attackb ? data.data.attackb), effective_stats, 'attackb')
-                    @info_container.find('tr.info-attack-back').toggle(effective_stats.attackb?)
-
-                    @info_container.find('tr.info-attack-turret td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.attackt ? data.data.attackt), effective_stats, 'attackt')
-                    @info_container.find('tr.info-attack-turret').toggle(effective_stats.attackt?)
-
-                    @info_container.find('tr.info-attack-doubleturret td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.attackdt ? data.data.attackdt), effective_stats, 'attackdt')
-                    @info_container.find('tr.info-attack-doubleturret').toggle(effective_stats.attackdt?)
-                                        
-                    @info_container.find('tr.info-energy td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.energy ? data.data.energy), effective_stats, 'energy')
-                    @info_container.find('tr.info-energy').toggle(data.pilot.ship_override?.energy? or data.data.energy?)
-                    @info_container.find('tr.info-range').hide()
-                    @info_container.find('td.info-rangebonus').hide()
-                    @info_container.find('tr.info-agility td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.agility ? data.data.agility), effective_stats, 'agility')
-                    @info_container.find('tr.info-agility').show()
-                    @info_container.find('tr.info-hull td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.hull ? data.data.hull), effective_stats, 'hull')
-                    @info_container.find('tr.info-hull').show()
-                    @info_container.find('tr.info-shields td.info-data').text statAndEffectiveStat((data.pilot.ship_override?.shields ? data.data.shields), effective_stats, 'shields')
-                    @info_container.find('tr.info-shields').show()
-
-                    if (effective_stats.force > 0) or data.pilot.force?
-                        @info_container.find('tr.info-force td.info-data').html (statAndEffectiveStat((data.pilot.ship_override?.force ? data.pilot.force), effective_stats, 'force') + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
-                        @info_container.find('tr.info-force').show()
-                    else
-                        @info_container.find('tr.info-force').hide()
-
-                    if data.pilot.charge?
-                        if data.pilot.recurring?
-                            @info_container.find('tr.info-charge td.info-data').html (data.pilot.charge + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
-                        else
-                            @info_container.find('tr.info-charge td.info-data').text data.pilot.charge
-                        @info_container.find('tr.info-charge').show()
-                    else
-                        @info_container.find('tr.info-charge').hide()
-
-                    @info_container.find('tr.info-actions td.info-data').html ((exportObj.translate(@language, 'action', a) for a in (data.pilot.ship_override?.actions ? data.data.actions).concat( ("#{exportObj.translate @language, 'action', action}" for action in extra_actions))).join ', ').replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked')
-                    
-                    if data.data.actionsred?
-                        @info_container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', a) for a in (data.pilot.ship_override?.actionsred ? data.data.actionsred).concat( ("<strong>#{exportObj.translate @language, 'action', action}</strong>" for action in extra_actions_red))).join ', '       
-                    @info_container.find('tr.info-actions-red').toggle(data.data.actionsred?)
-                    
-                    @info_container.find('tr.info-actions').show()
-                    if @isQuickbuild
-                        @info_container.find('tr.info-upgrades').hide()
-                    else
-                        @info_container.find('tr.info-upgrades').show()
-                        @info_container.find('tr.info-upgrades td.info-data').html((exportObj.translate(@language, 'sloticon', slot) for slot in data.pilot.slots).join(' ') or 'None')
-                    @info_container.find('p.info-maneuvers').show()
-                    @info_container.find('p.info-maneuvers').html(@getManeuverTableHTML(effective_stats.maneuvers, data.data.maneuvers))
+                    # Display all available slots, put brackets around slots that are only available for some pilots
+                    container.find('tr.info-upgrades').show()
+                    container.find('tr.info-upgrades td.info-data').html(((if state == 1 then exportObj.translate(@language, 'sloticon', slot) else (if state == 2 then '('+exportObj.translate(@language, 'sloticon', slot)+')')) for slot, state of slot_types).join(' ') or 'None')
+                
+                    container.find('p.info-text').hide()
+                    container.find('p.info-maneuvers').show()
+                    container.find('p.info-maneuvers').html(@getManeuverTableHTML(data.maneuvers, data.maneuvers))
                 when 'Pilot'
-                    @info_container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
-                    @info_container.find('.info-sources').show()
+                    container.find('.info-type').text type
+                    container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
+                    container.find('.info-sources').show()
                     if @collection?.counts?
                         pilot_count = @collection.counts?.pilot?[data.name] ? 0
-                        ship_count = @collection.counts.ship?[additional_opts.ship] ? 0
-                        @info_container.find('.info-collection').text """You have #{ship_count} ship model#{if ship_count > 1 then 's' else ''} and #{pilot_count} pilot card#{if pilot_count > 1 then 's' else ''} in your collection."""
+                        ship_count = @collection.counts.ship?[data.ship] ? 0
+                        container.find('.info-collection').text """You have #{ship_count} ship model#{if ship_count > 1 then 's' else ''} and #{pilot_count} pilot card#{if pilot_count > 1 then 's' else ''} in your collection."""
                     else
-                        @info_container.find('.info-collection').text ''
+                        container.find('.info-collection').text ''
                         
                     #logic to determine how many dots to use for uniqueness
                     if data.unique?
@@ -35015,89 +34917,91 @@ class exportObj.SquadBuilder
                     else
                         uniquedots = ""
                         
-                    @info_container.find('.info-name').html """#{uniquedots}#{if data.display_name then data.display_name else data.name}#{if exportObj.isReleased(data) then "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
-                    @info_container.find('p.info-text').html data.text ? ''
+                    container.find('.info-name').html """#{uniquedots}#{if data.display_name then data.display_name else data.name}#{if exportObj.isReleased(data) then "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
+                    container.find('p.info-text').html data.text ? ''
+                    container.find('p.info-text').show()
                     ship = exportObj.ships[data.ship]
-                    @info_container.find('tr.info-ship td.info-data').text data.ship
-                    @info_container.find('tr.info-ship').show()
-                    @info_container.find('.info-solitary').hide
+                    container.find('tr.info-ship td.info-data').text data.ship
+                    container.find('tr.info-ship').show()
+                    container.find('.info-solitary').hide
                     
                     if ship.large?
-                        @info_container.find('tr.info-base td.info-data').text "Large"
+                        container.find('tr.info-base td.info-data').text "Large"
                     else if ship.medium?
-                        @info_container.find('tr.info-base td.info-data').text "Medium"
+                        container.find('tr.info-base td.info-data').text "Medium"
                     else
-                        @info_container.find('tr.info-base td.info-data').text "Small"
-                    @info_container.find('tr.info-base').show()
+                        container.find('tr.info-base td.info-data').text "Small"
+                    container.find('tr.info-base').show()
 
                     
-                    @info_container.find('tr.info-skill td.info-data').text data.skill
-                    @info_container.find('tr.info-skill').show()
+                    container.find('tr.info-skill td.info-data').text data.skill
+                    container.find('tr.info-skill').show()
                     
-                    @info_container.find('tr.info-attack td.info-data').text(data.ship_override?.attack ? ship.attack)
-                    @info_container.find('tr.info-attack').toggle(data.ship_override?.attack? or ship.attack?)
+                    container.find('tr.info-attack td.info-data').text(data.ship_override?.attack ? ship.attack)
+                    container.find('tr.info-attack').toggle(data.ship_override?.attack? or ship.attack?)
 
-                    @info_container.find('tr.info-attack-fullfront td.info-data').text(ship.attackf)
-                    @info_container.find('tr.info-attack-fullfront').toggle(ship.attackf?)
+                    container.find('tr.info-attack-fullfront td.info-data').text(ship.attackf)
+                    container.find('tr.info-attack-fullfront').toggle(ship.attackf?)
                     
-                    @info_container.find('tr.info-attack-bullseye').hide()
+                    container.find('tr.info-attack-bullseye').hide()
                     
-                    @info_container.find('tr.info-attack-back td.info-data').text(ship.attackb)
-                    @info_container.find('tr.info-attack-back').toggle(ship.attackb?)
-                    @info_container.find('tr.info-attack-turret td.info-data').text(ship.attackt)
-                    @info_container.find('tr.info-attack-turret').toggle(ship.attackt?)
-                    @info_container.find('tr.info-attack-doubleturret td.info-data').text(ship.attackdt)
-                    @info_container.find('tr.info-attack-doubleturret').toggle(ship.attackdt?)
+                    container.find('tr.info-attack-back td.info-data').text(ship.attackb)
+                    container.find('tr.info-attack-back').toggle(ship.attackb?)
+                    container.find('tr.info-attack-turret td.info-data').text(ship.attackt)
+                    container.find('tr.info-attack-turret').toggle(ship.attackt?)
+                    container.find('tr.info-attack-doubleturret td.info-data').text(ship.attackdt)
+                    container.find('tr.info-attack-doubleturret').toggle(ship.attackdt?)
                     
-#                    for cls in @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
-#                        @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-frontarc')
-                    @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass(ship.attack_icon ? 'xwing-miniatures-font-frontarc')
+#                    for cls in container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
+#                        container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-frontarc')
+                    container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass(ship.attack_icon ? 'xwing-miniatures-font-frontarc')
 
-                    @info_container.find('tr.info-energy td.info-data').text(data.ship_override?.energy ? ship.energy)
-                    @info_container.find('tr.info-energy').toggle(data.ship_override?.energy? or ship.energy?)
-                    @info_container.find('tr.info-range').hide()
-                    @info_container.find('td.info-rangebonus').hide()
-                    @info_container.find('tr.info-agility td.info-data').text(data.ship_override?.agility ? ship.agility)
-                    @info_container.find('tr.info-agility').show()
-                    @info_container.find('tr.info-hull td.info-data').text(data.ship_override?.hull ? ship.hull)
-                    @info_container.find('tr.info-hull').show()
-                    @info_container.find('tr.info-shields td.info-data').text(data.ship_override?.shields ? ship.shields)
-                    @info_container.find('tr.info-shields').show()
+                    container.find('tr.info-energy td.info-data').text(data.ship_override?.energy ? ship.energy)
+                    container.find('tr.info-energy').toggle(data.ship_override?.energy? or ship.energy?)
+                    container.find('tr.info-range').hide()
+                    container.find('td.info-rangebonus').hide()
+                    container.find('tr.info-agility td.info-data').text(data.ship_override?.agility ? ship.agility)
+                    container.find('tr.info-agility').show()
+                    container.find('tr.info-hull td.info-data').text(data.ship_override?.hull ? ship.hull)
+                    container.find('tr.info-hull').show()
+                    container.find('tr.info-shields td.info-data').text(data.ship_override?.shields ? ship.shields)
+                    container.find('tr.info-shields').show()
 
                     if effective_stats?.force? or data.force?
-                        @info_container.find('tr.info-force td.info-data').html ((data.ship_override?.force ? data.force)+ '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
-                        @info_container.find('tr.info-force').show()
+                        container.find('tr.info-force td.info-data').html ((data.ship_override?.force ? data.force)+ '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
+                        container.find('tr.info-force').show()
                     else
-                        @info_container.find('tr.info-force').hide()
+                        container.find('tr.info-force').hide()
 
                     if data.charge?
                         if data.recurring?
-                            @info_container.find('tr.info-charge td.info-data').html (data.charge + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
+                            container.find('tr.info-charge td.info-data').html (data.charge + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
                         else
-                            @info_container.find('tr.info-charge td.info-data').text data.charge
-                        @info_container.find('tr.info-charge').show()
+                            container.find('tr.info-charge td.info-data').text data.charge
+                        container.find('tr.info-charge').show()
                     else
-                        @info_container.find('tr.info-charge').hide()
+                        container.find('tr.info-charge').hide()
 
-                    @info_container.find('tr.info-actions td.info-data').html ((exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actions ? exportObj.ships[data.ship].actions)).join(', ')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked')
+                    container.find('tr.info-actions td.info-data').html ((exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actions ? exportObj.ships[data.ship].actions)).join(', ')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked')
     
                     if ships[data.ship].actionsred?
-                        @info_container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actionsred ? exportObj.ships[data.ship].actionsred)).join(', ')
-                        @info_container.find('tr.info-actions-red').show()
+                        container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actionsred ? exportObj.ships[data.ship].actionsred)).join(', ')
+                        container.find('tr.info-actions-red').show()
                     else
-                        @info_container.find('tr.info-actions-red').hide()
+                        container.find('tr.info-actions-red').hide()
 
-                    @info_container.find('tr.info-actions').show()
+                    container.find('tr.info-actions').show()
                     if @isQuickbuild
-                        @info_container.find('tr.info-upgrades').hide()
+                        container.find('tr.info-upgrades').hide()
                     else
-                        @info_container.find('tr.info-upgrades').show()
-                        @info_container.find('tr.info-upgrades td.info-data').html((exportObj.translate(@language, 'sloticon', slot) for slot in data.slots).join(' ') or 'None')
-                    @info_container.find('p.info-maneuvers').show()
-                    @info_container.find('p.info-maneuvers').html(@getManeuverTableHTML(ship.maneuvers, ship.maneuvers))
+                        container.find('tr.info-upgrades').show()
+                        container.find('tr.info-upgrades td.info-data').html((exportObj.translate(@language, 'sloticon', slot) for slot in data.slots).join(' ') or 'None')
+                    container.find('p.info-maneuvers').show()
+                    container.find('p.info-maneuvers').html(@getManeuverTableHTML(ship.maneuvers, ship.maneuvers))
                 when 'Quickbuild'
-                    @info_container.find('.info-sources').hide() # there are different sources for the pilot and the upgrade cards, so we won't display any
-                    @info_container.find('.info-collection').text '' # same here, hard to give a single number telling a user how often he ones all required cards
+                    container.find('.info-type').text 'Quickbuild'
+                    container.find('.info-sources').hide() # there are different sources for the pilot and the upgrade cards, so we won't display any
+                    container.find('.info-collection').text '' # same here, hard to give a single number telling a user how often he ones all required cards
                     
                     pilot = exportObj.pilots[data.pilot]
                     ship = exportObj.ships[data.ship]
@@ -35115,86 +35019,88 @@ class exportObj.SquadBuilder
                     else
                         uniquedots = ""
                         
-                    @info_container.find('.info-name').html """#{uniquedots}#{if pilot.display_name then pilot.display_name else pilot.name}#{if data.suffix? then data.suffix else ""}#{if exportObj.isReleased(pilot) then "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
-                    @info_container.find('p.info-text').html pilot.text ? ''
-                    @info_container.find('tr.info-ship td.info-data').text data.ship
-                    @info_container.find('tr.info-ship').show()
-                    @info_container.find('.info-solitary').hide()
+                    container.find('.info-name').html """#{uniquedots}#{if pilot.display_name then pilot.display_name else pilot.name}#{if data.suffix? then data.suffix else ""}#{if exportObj.isReleased(pilot) then "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
+                    container.find('p.info-text').html pilot.text ? ''
+                    container.find('p.info-text').show()
+                    container.find('tr.info-ship td.info-data').text data.ship
+                    container.find('tr.info-ship').show()
+                    container.find('.info-solitary').hide()
 
 
                     if ship.large?
-                        @info_container.find('tr.info-base td.info-data').text "Large"
+                        container.find('tr.info-base td.info-data').text "Large"
                     else if ship.medium?
-                        @info_container.find('tr.info-base td.info-data').text "Medium"
+                        container.find('tr.info-base td.info-data').text "Medium"
                     else
-                        @info_container.find('tr.info-base td.info-data').text "Small"
-                    @info_container.find('tr.info-base').show()
+                        container.find('tr.info-base td.info-data').text "Small"
+                    container.find('tr.info-base').show()
 
                     
-                    @info_container.find('tr.info-skill td.info-data').text pilot.skill
-                    @info_container.find('tr.info-skill').show()
+                    container.find('tr.info-skill td.info-data').text pilot.skill
+                    container.find('tr.info-skill').show()
                     
-                    @info_container.find('tr.info-attack td.info-data').text(pilot.ship_override?.attack ? ship.attack)
-                    @info_container.find('tr.info-attack').toggle(pilot.ship_override?.attack? or ship.attack?)
+                    container.find('tr.info-attack td.info-data').text(pilot.ship_override?.attack ? ship.attack)
+                    container.find('tr.info-attack').toggle(pilot.ship_override?.attack? or ship.attack?)
 
-                    @info_container.find('tr.info-attack-fullfront td.info-data').text(ship.attackf)
-                    @info_container.find('tr.info-attack-fullfront').toggle(ship.attackf?)
+                    container.find('tr.info-attack-fullfront td.info-data').text(ship.attackf)
+                    container.find('tr.info-attack-fullfront').toggle(ship.attackf?)
                     
-                    @info_container.find('tr.info-attack-bullseye').hide()
+                    container.find('tr.info-attack-bullseye').hide()
                     
-                    @info_container.find('tr.info-attack-back td.info-data').text(ship.attackb)
-                    @info_container.find('tr.info-attack-back').toggle(ship.attackb?)
-                    @info_container.find('tr.info-attack-turret td.info-data').text(ship.attackt)
-                    @info_container.find('tr.info-attack-turret').toggle(ship.attackt?)
-                    @info_container.find('tr.info-attack-doubleturret td.info-data').text(ship.attackdt)
-                    @info_container.find('tr.info-attack-doubleturret').toggle(ship.attackdt?)
+                    container.find('tr.info-attack-back td.info-data').text(ship.attackb)
+                    container.find('tr.info-attack-back').toggle(ship.attackb?)
+                    container.find('tr.info-attack-turret td.info-data').text(ship.attackt)
+                    container.find('tr.info-attack-turret').toggle(ship.attackt?)
+                    container.find('tr.info-attack-doubleturret td.info-data').text(ship.attackdt)
+                    container.find('tr.info-attack-doubleturret').toggle(ship.attackdt?)
                     
-#                    for cls in @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
-#                        @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-frontarc')
-                    @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass(ship.attack_icon ? 'xwing-miniatures-font-frontarc')
+#                    for cls in container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
+#                        container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-frontarc')
+                    container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass(ship.attack_icon ? 'xwing-miniatures-font-frontarc')
 
-                    @info_container.find('tr.info-energy td.info-data').text(pilot.ship_override?.energy ? ship.energy)
-                    @info_container.find('tr.info-energy').toggle(pilot.ship_override?.energy? or ship.energy?)
-                    @info_container.find('tr.info-range').hide()
-                    @info_container.find('td.info-rangebonus').hide()
-                    @info_container.find('tr.info-agility td.info-data').text(pilot.ship_override?.agility ? ship.agility)
-                    @info_container.find('tr.info-agility').show()
-                    @info_container.find('tr.info-hull td.info-data').text(pilot.ship_override?.hull ? ship.hull)
-                    @info_container.find('tr.info-hull').show()
-                    @info_container.find('tr.info-shields td.info-data').text(pilot.ship_override?.shields ? ship.shields)
-                    @info_container.find('tr.info-shields').show()
+                    container.find('tr.info-energy td.info-data').text(pilot.ship_override?.energy ? ship.energy)
+                    container.find('tr.info-energy').toggle(pilot.ship_override?.energy? or ship.energy?)
+                    container.find('tr.info-range').hide()
+                    container.find('td.info-rangebonus').hide()
+                    container.find('tr.info-agility td.info-data').text(pilot.ship_override?.agility ? ship.agility)
+                    container.find('tr.info-agility').show()
+                    container.find('tr.info-hull td.info-data').text(pilot.ship_override?.hull ? ship.hull)
+                    container.find('tr.info-hull').show()
+                    container.find('tr.info-shields td.info-data').text(pilot.ship_override?.shields ? ship.shields)
+                    container.find('tr.info-shields').show()
 
                     if effective_stats?.force? or data.force?
-                        @info_container.find('tr.info-force td.info-data').html ((pilot.ship_override?.force ? pilot.force)+ '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
-                        @info_container.find('tr.info-force').show()
+                        container.find('tr.info-force td.info-data').html ((pilot.ship_override?.force ? pilot.force)+ '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
+                        container.find('tr.info-force').show()
                     else
-                        @info_container.find('tr.info-force').hide()
+                        container.find('tr.info-force').hide()
 
                     if data.charge?
                         if data.recurring?
-                            @info_container.find('tr.info-charge td.info-data').html (pilot.charge + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
+                            container.find('tr.info-charge td.info-data').html (pilot.charge + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
                         else
-                            @info_container.find('tr.info-charge td.info-data').text pilot.charge
-                        @info_container.find('tr.info-charge').show()
+                            container.find('tr.info-charge td.info-data').text pilot.charge
+                        container.find('tr.info-charge').show()
                     else
-                        @info_container.find('tr.info-charge').hide()
+                        container.find('tr.info-charge').hide()
 
-                    @info_container.find('tr.info-actions td.info-data').html ((exportObj.translate(@language, 'action', action) for action in (pilot.ship_override?.actions ? exportObj.ships[data.ship].actions)).join(', ')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked')
+                    container.find('tr.info-actions td.info-data').html ((exportObj.translate(@language, 'action', action) for action in (pilot.ship_override?.actions ? exportObj.ships[data.ship].actions)).join(', ')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked')
     
                     if ships[data.ship].actionsred?
-                        @info_container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', action) for action in (pilot.ship_override?.actionsred ? exportObj.ships[data.ship].actionsred)).join(', ')
-                        @info_container.find('tr.info-actions-red').show()
+                        container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', action) for action in (pilot.ship_override?.actionsred ? exportObj.ships[data.ship].actionsred)).join(', ')
+                        container.find('tr.info-actions-red').show()
                     else
-                        @info_container.find('tr.info-actions-red').hide()
+                        container.find('tr.info-actions-red').hide()
 
-                    @info_container.find('tr.info-actions').show()
-                    @info_container.find('tr.info-upgrades').show()
-                    @info_container.find('tr.info-upgrades td.info-data').html(((if exportObj.upgrades[upgrade].display_name? then exportObj.upgrades[upgrade].display_name else upgrade) for upgrade in (data.upgrades ? [])).join(', ') or 'None')
-                    @info_container.find('p.info-maneuvers').show()
-                    @info_container.find('p.info-maneuvers').html(@getManeuverTableHTML(ship.maneuvers, ship.maneuvers))
+                    container.find('tr.info-actions').show()
+                    container.find('tr.info-upgrades').show()
+                    container.find('tr.info-upgrades td.info-data').html(((if exportObj.upgrades[upgrade].display_name? then exportObj.upgrades[upgrade].display_name else upgrade) for upgrade in (data.upgrades ? [])).join(', ') or 'None')
+                    container.find('p.info-maneuvers').show()
+                    container.find('p.info-maneuvers').html(@getManeuverTableHTML(ship.maneuvers, ship.maneuvers))
                 when 'Addon'
-                    @info_container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
-                    @info_container.find('.info-sources').show()
+                    container.find('.info-type').text additional_opts.addon_type
+                    container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
+                    container.find('.info-sources').show()
                     
                     #logic to determine how many dots to use for uniqueness
                     if data.unique?
@@ -35212,10 +35118,10 @@ class exportObj.SquadBuilder
                     
                     if @collection?.counts?
                         addon_count = @collection.counts?[additional_opts.addon_type.toLowerCase()]?[data.name] ? 0
-                        @info_container.find('.info-collection').text """You have #{addon_count} in your collection."""
+                        container.find('.info-collection').text """You have #{addon_count} in your collection."""
                     else
-                        @info_container.find('.info-collection').text ''
-                    @info_container.find('.info-name').html """#{uniquedots}#{if data.display_name then data.display_name else data.name}#{if exportObj.isReleased(data) then  "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
+                        container.find('.info-collection').text ''
+                    container.find('.info-name').html """#{uniquedots}#{if data.display_name then data.display_name else data.name}#{if exportObj.isReleased(data) then  "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
                     if data.pointsarray? 
                         point_info = "<i>Point cost " + data.pointsarray + " when "
                         if data.variableagility? and data.variableagility
@@ -35227,74 +35133,75 @@ class exportObj.SquadBuilder
                         point_info += "</i><br/><br/>"
 
                     if data.solitary?
-                        @info_container.find('.info-solitary').show()
+                        container.find('.info-solitary').show()
                     else
-                        @info_container.find('.info-solitary').hide()
+                        container.find('.info-solitary').hide()
 
-                    @info_container.find('p.info-text').html (point_info ? '') + (data.text ? '')
-                    @info_container.find('tr.info-ship').hide()
-                    @info_container.find('tr.info-base').hide()
-                    @info_container.find('tr.info-skill').hide()
+                    container.find('p.info-text').html (point_info ? '') + (data.text ? '')
+                    container.find('p.info-text').show()
+                    container.find('tr.info-ship').hide()
+                    container.find('tr.info-base').hide()
+                    container.find('tr.info-skill').hide()
                     if data.energy?
-                        @info_container.find('tr.info-energy td.info-data').text data.energy
-                        @info_container.find('tr.info-energy').show()
+                        container.find('tr.info-energy td.info-data').text data.energy
+                        container.find('tr.info-energy').show()
                     else
-                        @info_container.find('tr.info-energy').hide()
+                        container.find('tr.info-energy').hide()
                     if data.attack?
                         # Attack icons on upgrade cards don't get special icons
-                    #    for cls in @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
-                    #        @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-frontarc')
-                    #    @info_container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass('xwing-miniatures-font-frontarc')
-                        @info_container.find('tr.info-attack td.info-data').text data.attack
-                        @info_container.find('tr.info-attack').show()
+                    #    for cls in container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
+                    #        container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-frontarc')
+                    #    container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass('xwing-miniatures-font-frontarc')
+                        container.find('tr.info-attack td.info-data').text data.attack
+                        container.find('tr.info-attack').show()
                     else
-                        @info_container.find('tr.info-attack').hide()
+                        container.find('tr.info-attack').hide()
 
                     if data.attackt?
-                        @info_container.find('tr.info-attack-turret td.info-data').text data.attackt
-                        @info_container.find('tr.info-attack-turret').show()
+                        container.find('tr.info-attack-turret td.info-data').text data.attackt
+                        container.find('tr.info-attack-turret').show()
                     else
-                        @info_container.find('tr.info-attack-turret').hide()
+                        container.find('tr.info-attack-turret').hide()
 
                     if data.attackbull?
-                        @info_container.find('tr.info-attack-bullseye td.info-data').text data.attackbull
-                        @info_container.find('tr.info-attack-bullseye').show()
+                        container.find('tr.info-attack-bullseye td.info-data').text data.attackbull
+                        container.find('tr.info-attack-bullseye').show()
                     else
-                        @info_container.find('tr.info-attack-bullseye').hide()
+                        container.find('tr.info-attack-bullseye').hide()
 
-                    @info_container.find('tr.info-attack-fullfront').hide()
-                    @info_container.find('tr.info-attack-back').hide()
-                    @info_container.find('tr.info-attack-doubleturret').hide()
+                    container.find('tr.info-attack-fullfront').hide()
+                    container.find('tr.info-attack-back').hide()
+                    container.find('tr.info-attack-doubleturret').hide()
 
                     if data.recurring?
-                        @info_container.find('tr.info-charge td.info-data').html (data.charge + """<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>""")
+                        container.find('tr.info-charge td.info-data').html (data.charge + """<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>""")
                     else                
-                        @info_container.find('tr.info-charge td.info-data').text data.charge
-                    @info_container.find('tr.info-charge').toggle(data.charge?)                        
+                        container.find('tr.info-charge td.info-data').text data.charge
+                    container.find('tr.info-charge').toggle(data.charge?)                        
                     
                     if data.range?
-                        @info_container.find('tr.info-range td.info-data').text data.range
-                        @info_container.find('tr.info-range').show()
+                        container.find('tr.info-range td.info-data').text data.range
+                        container.find('tr.info-range').show()
                     else
-                        @info_container.find('tr.info-range').hide()
+                        container.find('tr.info-range').hide()
 
                     if data.rangebonus?
-                        @info_container.find('td.info-rangebonus').show()
+                        container.find('td.info-rangebonus').show()
                     else
-                        @info_container.find('td.info-rangebonus').hide()
+                        container.find('td.info-rangebonus').hide()
                         
                         
-                    @info_container.find('tr.info-force td.info-data').html (data.force + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
-                    @info_container.find('tr.info-force').toggle(data.force?)                        
+                    container.find('tr.info-force td.info-data').html (data.force + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
+                    container.find('tr.info-force').toggle(data.force?)                        
 
-                    @info_container.find('tr.info-agility').hide()
-                    @info_container.find('tr.info-hull').hide()
-                    @info_container.find('tr.info-shields').hide()
-                    @info_container.find('tr.info-actions').hide()
-                    @info_container.find('tr.info-actions-red').hide()
-                    @info_container.find('tr.info-upgrades').hide()
-                    @info_container.find('p.info-maneuvers').hide()
-            @info_container.show()
+                    container.find('tr.info-agility').hide()
+                    container.find('tr.info-hull').hide()
+                    container.find('tr.info-shields').hide()
+                    container.find('tr.info-actions').hide()
+                    container.find('tr.info-actions-red').hide()
+                    container.find('tr.info-upgrades').hide()
+                    container.find('p.info-maneuvers').hide()
+            container.show()
             @tooltip_currently_displaying = data
         
     _randomizerLoopBody: (data) =>
@@ -36084,9 +35991,9 @@ class Ship
             else
                 @builder.showTooltip 'Pilot', exportObj.pilotsById[select2_data.id], {ship: @data?.name} if select2_data?.id?
         @pilot_selector.data('select2').container.on 'mouseover', (e) =>
-            @builder.showTooltip 'Ship', this if @data?
+            @builder.showTooltip 'Pilot', @pilot if @pilot
         @pilot_selector.data('select2').container.on 'touchmove', (e) =>
-            @builder.showTooltip 'Ship', this if @data?
+            @builder.showTooltip 'Ship', @pilot if @pilot
             ###if @data? 
                 scrollTo(0,$('#info-container').offset().top - 10,'smooth')###
 
