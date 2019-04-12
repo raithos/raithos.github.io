@@ -1078,8 +1078,6 @@ class exportObj.CardBrowser
                             <br />
                             <span class="info-type"></span>
                             <br />
-                            <span class="info-sources"></span>
-                            <br />
                             <span class="info-collection"></span>
                             <table>
                                 <tbody>
@@ -1155,6 +1153,9 @@ class exportObj.CardBrowser
                             </table>
                             <p class="info-text" />
                             <p class="info-maneuvers" />
+                            <br />
+                            <span class="info-header info-sources">Sources</span>: 
+                            <span class="info-data info-sources"></span>
                         </div>
                     </div>
                 </div>
@@ -10918,6 +10919,7 @@ exportObj.basicCardData = ->
         {
             name: 'Rattled'
             id: 12
+            unique: true
         }
         {
             name: 'DRK-1 Probe Droid'
@@ -15616,6 +15618,7 @@ exportObj.translations.Deutsch =
         '.info-well .info-actions td.info-header': 'Aktionen'
         '.info-well .info-upgrades td.info-header': 'Aufwertungskarten'
         '.info-well .info-range td.info-header': 'Reichweite'
+        '.info-well .info-sources.info-header': 'Enthalten&nbsp;in'
         # Squadron edit buttons
         '.clear-squad' : 'Neue Staffel'
         '.save-list' : '<i class="fa fa-floppy-o"></i>&nbsp;Speichern'
@@ -16014,7 +16017,7 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """Bevor du aktiviert wirst, falls du fokussiert bist, darfst du eine Aktion durchführen."""
         "Ello Asty":
            display_name: """Ello Asty"""
-           text: """Nachdem du ein rotes Tallon-Rolle-Manöver [<lefttalon> oder <righttalon>] aufgedeckt hast, falls du 2 oder weniger Stressmarker hast, behandle jenes Manöver, als wäre es weiß.%LINEBREAK%<strong>Waffenaufhängung:</strong> Du kannst 1 %CANNON%-, %TORPEDO%- oder %MISSILE%-Aufwertung ausrüsten."""
+           text: """Nachdem du ein rotes Tallon-Rolle-Manöver [%TROLLLEFT% oder %TROLLRIGHT%] aufgedeckt hast, falls du 2 oder weniger Stressmarker hast, behandle jenes Manöver, als wäre es weiß.%LINEBREAK%<strong>Waffenaufhängung:</strong> Du kannst 1 %CANNON%-, %TORPEDO%- oder %MISSILE%-Aufwertung ausrüsten."""
         "Emon Azzameen":
            display_name: """Emon Azzameen"""
            text: """Falls du unter Verwendung der [1 %STRAIGHT%]-Schablone ein Gerät abwerfen würdest, darfst du stattdessen die [3 %TURNLEFT%]-, [3 %STRAIGHT%]- oder [3 %TURNRIGHT%]-Schablone verwenden."""
@@ -16620,7 +16623,7 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """Nachdem ein anderes befreundetes Schiff zerstört worden ist, darfst du eine Aktion durchführen, auch solange du gestresst bist.%LINEBREAK%<strong>Automatische Schubdüsen:</strong> Nachdem du eine Aktion durchgeführt hast, darfst du eine rote %BARRELROLL%-Aktion oder eine rote %BOOST%-Aktion durchführen."""
         '"Axe"':
            display_name: """„Axe“"""
-           text: """Nachdem du verteidigt oder einen Angriff durchgeführt hast, darfst du ein befreundetes Schiff in Reichweite 1-2 in deinem <leftarc> oder <rightarc> wählen. Falls du das tust, transferiere 1 grünen Marker auf jenes Schiff."""
+           text: """Nachdem du verteidigt oder einen Angriff durchgeführt hast, darfst du ein befreundetes Schiff in Reichweite 1-2 in deinem %LEFTARC% oder %RIGHTARC% wählen. Falls du das tust, transferiere 1 grünen Marker auf jenes Schiff."""
         '"Backdraft"':
            display_name: """„Backdraft“"""
            text: """Solange du einen %SINGLETURRETARC%-Primärangriff durchführst, falls der Verteidiger in deinem %REARARC% ist, wirf 1 zusätzlichen Würfel.%LINEBREAK%<strong>Schwerer Geschützturm:</strong> Du kannst deinen %SINGLETURRETARC%-Anzeiger nur auf deinen %FRONTARC% oder %REARARC% rotieren. Du <b>musst</b> die %FRONTARC%-Voraussetzung deiner ausgerüsteten %MISSILE%-Aufwertungen behandeln, als wäre sie %SINGLETURRETARC%."""
@@ -16656,7 +16659,7 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """Solange ein befreundetes Schiff in Reichweite 0-1 einen Primärangriff durchführt, darf jenes Schiff 1 Angriffswürfel neu werfen."""
         '"Jag"':
            display_name: """„Jag“"""
-           text: """Nachdem ein befreundetes Schiff in Reichweite 1-2 in deinem <leftarc> oder <rightarc> verteidigt hat, darfst du den Angreifer als Ziel erfassen."""
+           text: """Nachdem ein befreundetes Schiff in Reichweite 1-2 in deinem %LEFTARC% oder %RIGHTARC% verteidigt hat, darfst du den Angreifer als Ziel erfassen."""
         '"Kickback"':
            display_name: """„Kickback“"""
            text: """Nachdem du eine %BARRELROLL%-Aktion durchgeführt hast, darfst du eine rote %LOCK%-Aktion durchführen."""
@@ -16707,7 +16710,7 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """Solange du einen Angriff gegen einen Verteidiger in deinem %BULLSEYEARC% durchführst, wirf 1 zusätzlichen Angriffswürfel."""
         '"Sinker"':
            display_name: """„Sinker“"""
-           text: """Solange ein befreundetes Schiff in Reichweite 1-2 in deinem <leftarc> oder <rightarc> einen Primärangriff durchführt, darf es 1 Angriffswürfel neu werfen."""
+           text: """Solange ein befreundetes Schiff in Reichweite 1-2 in deinem %LEFTARC% oder %RIGHTARC% einen Primärangriff durchführt, darf es 1 Angriffswürfel neu werfen."""
         '"Static"':
            display_name: """„Static“"""
            text: """Solange du einen Primärangriff durchführst, darfst du deine Zielerfassung auf dem Verteidiger und einen Fokusmarker ausgeben, um alle deine Ergebnisse in %CRIT%-Ergebnisse zu ändern."""
@@ -16963,7 +16966,7 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """<i>Fügt <r>%EVADE%</r> hinzu</i>%LINEBREAK%<i>Nur für kleines Schiff oder mittleres Schiff</i>%LINEBREAK%Solange du eine rote %EVADE%-Aktion durchführst, falls ein Hindernis in Reichweite 0-1 ist, behandle die Aktion stattdessen, als wäre sie weiß."""
         "Dedicated":
            display_name: """Pflichtbewusst"""
-           text: """<i>Nur für Galaktische Republik</i>%LINEBREAK%Solange ein anderes befreundetes Schiff in deinem <leftarc> oder <rightarc> in Reichweite 0-2 verteidigt, falls es limitiert ist oder die Aufwertung <strong>Pflichtbewusst</strong> hat und du nicht angestrengt bist, darfst du 1 Anstrengungsmarker erhalten. Falls du das tust, wirft der Verteidiger 1 seiner Leerseiten-Ergebnisse neu."""
+           text: """<i>Nur für Galaktische Republik</i>%LINEBREAK%Solange ein anderes befreundetes Schiff in deinem %LEFTARC% oder %RIGHTARC% in Reichweite 0-2 verteidigt, falls es limitiert ist oder die Aufwertung <strong>Pflichtbewusst</strong> hat und du nicht angestrengt bist, darfst du 1 Anstrengungsmarker erhalten. Falls du das tust, wirft der Verteidiger 1 seiner Leerseiten-Ergebnisse neu."""
         "Delta-7B":
            display_name: """Delta-7B"""
            text: """<i class = flavor_text>Der Delta-7B wurde als schwerere Variante des Abfangjägers der Aethersprite-Klasse konzipiert und unterscheidet sich optisch nur durch seinen verschobenen Astromech-Anschluss. Viele Jedi-Generäle bevorzugen ihn aufgrund seiner verbesserten Feuerkraft und Stabilität.</i>"""
@@ -17329,7 +17332,7 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """<i>Nur für Imperium</i>%LINEBREAK%Falls ein feindliches Schiff in Reichweite 0-1 einen Stressmarker erhalten würde, darfst du 1 %FORCE% ausgeben, um es stattdessen 1 Störsignal- oder 1 Fangstrahlmarker erhalten zu lassen."""
         "Shield Upgrade":
            display_name: """Verbesserte Schilde"""
-           text: """<i class = flavor_text>Deflektor­schilde sind der wichtigste Verteidigungsmechanismus der meisten Raumschiffe, abgesehen von extrem leichten Jägern. Eine Verbesserung der Schildkapazität ist eine kostspielige, aber durchaus """
+           text: """<i class = flavor_text>Deflektor­schilde sind der wichtigste Verteidigungsmechanismus der meisten Raumschiffe, abgesehen von extrem leichten Jägern. Eine Verbesserung der Schildkapazität ist eine kostspielige, aber durchaus lohnenswerte Investition. </i>"""
         "Skilled Bombardier":
            display_name: """Versierte Bombenschützin"""
            text: """Falls du ein Gerät abwerfen oder starten würdest, darfst du eine Schablone mit gleicher Flugrichtung und einer um 1 höheren oder niedrigeren Geschwindigkeit verwenden."""
@@ -17426,22 +17429,26 @@ exportObj.cardLoaders.Deutsch = () ->
             
     condition_translations =
         'Suppressive Fire':
-           text: '''While you perform an attack against a ship other than <strong>Captain Rex</strong>, roll 1 fewer attack die. %LINEBREAK% After <strong>Captain Rex</strong> defends, remove this card.  %LINEBREAK% At the end of the Combat Phase, if <strong>Captain Rex</strong> did not perform an attack this phase, remove this card. %LINEBREAK% After <strong>Captain Rex</strong> is destroyed, remove this card.'''
+           display_name: 'Sperrfeuer'
+           text: '''Solange du einen Angriff gegen ein anderes Schiff als <strong>Captain Rex</strong> durchführst, wirf 1 Angriffswürfel weniger. %LINEBREAK%Nachdem <strong>Captain Rex</strong> verteidigt hat, entferne diese Karte. <strong>Captain Rex</strong>Am Ende der Kampfphase, falls <strong>Captain Rex</strong> in dieser Phase keinen Angriff durchgeführt hat, entferne diese Karte. %LINEBREAK%Nachdem <strong>Captain Rex</strong> zerstört worden ist, entferne diese Karte.'''
         'Hunted':
-           text: '''After you are destroyed, you must choose another friendly ship and assign this condition to it, if able.'''
+           display_name: 'Gejagt'
+           text: '''Nachdem du zerstört worden bist, musst du ein anderes befreundetes Schiff wählen und ihm diesen Zustand zuordnen, falls möglich.'''
         'Listening Device':
-           text: '''During the System Phase, if an enemy ship with the <strong>Informant</strong> upgrade is at range 0-2, flip your dial faceup.'''
+           display_name: 'Abhörgerät'
+           text: '''Während der Systemphase, falls ein feindliches Schiff mit der Aufwertung <strong>Informant</strong> in Reichweite 0-2 ist, drehe dein Rad auf die offene Seite.'''
         'Optimized Prototype':
-           text: '''While you perform a %FRONTARC% primary attack against a ship locked by a friendly ship with the <strong>Director Krennic</strong> upgrade, you may spend 1 %HIT%/%CRIT%/%FOCUS% result. If you do, choose one: the defender loses 1 shield or the defender flips 1 of its facedown damage cards.'''
+           display_name: 'Optimierter Prototyp'
+           text: '''Solange du einen %FRONTARC%-Primärangriff gegen ein Schiff durchführst, das von einem befreundeten Schiff mit der Aufwertung <strong>Direktor Krennic</strong> als Ziel erfasst ist, darfst du 1 %HIT%/%CRIT%/%FOCUS%-Ergebnis ausgeben. Falls du das tust, wähle 1 der folgenden Optionen: Der Verteidiger verliert 1 Schild oder der Verteidiger dreht 1 seiner verdeckten Schadenskarten um.'''
         'Proton Bomb':
            display_name: """Protonenbombe"""
-           text: '''(Bomb Token) - Am Ende der Aktivierungsphase detoniert dieses Gerät. Sobald dieses Gerät detoniert, erleidet jedes Schiff in Reichweite 0–1 1 %CRIT%-Schaden.'''
+           text: '''(Bomben Token) - Am Ende der Aktivierungsphase detoniert dieses Gerät. Sobald dieses Gerät detoniert, erleidet jedes Schiff in Reichweite 0–1 1 %CRIT%-Schaden.'''
         'Seismic Charge':
            display_name: """Seismische Bombe"""
-           text: '''(Bomb Token) - Am Ende der Aktivierungsphase detoniert dieses Gerät. Sobald dieses Gerät detoniert, wähle 1 Hindernis in Reichweite 0–1. Jedes Schiff in Reichweite 0–1 zu jenem Hindernis erleidet 1 %HIT%-Schaden. Dann entferne jenes Hindernis.'''
+           text: '''(Bomben Token) - Am Ende der Aktivierungsphase detoniert dieses Gerät. Sobald dieses Gerät detoniert, wähle 1 Hindernis in Reichweite 0–1. Jedes Schiff in Reichweite 0–1 zu jenem Hindernis erleidet 1 %HIT%-Schaden. Dann entferne jenes Hindernis.'''
         'Bomblet':
            display_name: """Streubombe"""
-           text: '''(Bomb Token) - Am Ende der Aktivierungsphase detoniert dieses Gerät. Sobald dieses Gerät detoniert, wirft jedes Schiff in Reichweite 0–1 2 Angriffswürfel. Jedes Schiff erleidet 1 %HIT%-Schaden für jedes %HIT%/%CRIT% Ergebnis.'''
+           text: '''(Bomben Token) - Am Ende der Aktivierungsphase detoniert dieses Gerät. Sobald dieses Gerät detoniert, wirft jedes Schiff in Reichweite 0–1 2 Angriffswürfel. Jedes Schiff erleidet 1 %HIT%-Schaden für jedes %HIT%/%CRIT% Ergebnis.'''
         'Loose Cargo':
            display_name: """Freie Fracht"""
            text: '''(Debris Token) - Freie Fracht ist eine Trümmerwolke..'''
@@ -17451,6 +17458,12 @@ exportObj.cardLoaders.Deutsch = () ->
         'Proximity Mine':
            display_name: """Annäherungsmine"""
            text: '''(Mine Token) - Nachdem sich ein Schiff durch dieses Gerät hindurchbewegt oder mit ihm überschnitten hat, detoniert es. Sobald dieses Gerät detoniert, wirft jenes Schiff 2 Angriffswürfel. Jenes Schiff erleidet dann 1 %HIT%-Schaden sowie 1 %HIT%/%CRIT%-Schaden für jedes passende Ergebnis.'''
+        'Rattled':
+           display_name: 'Aus der Fassung'
+           text: 'Nachdem eine Bombe oder Mine in Reichweite 0-1 detoniert ist, erleide 1 %CRIT% Schaden. Dann entferne diese Karte. %LINEBREAK% <strong>Aktion:</strong> Falls keine Bomben oder Minen in Reichweite 0-1 sind, entferne diese Karte.'
+        '''I'll Show You the Dark Side''': 
+           display_name: 'Ich zeige dir die dunkle Seite'
+           text: 'Sobald diese Karte zugeordnet wird, falls keine offene Schadenskarte darauf liegt, sucht der Spieler, der sie zugeordnet hat, im Schadensstapel nach 1 <strong>Pilot</strong>-Schadenskarte und platziert sie offen auf dieser Karte. Dann mische den Schadensstapel. %LINEBREAK%Sobald du 1 %CRIT%-Schaden erleiden würdest, wird dir stattdessen die offene Schadenskarte auf dieser Karte zugeteilt. Dann entferne diese Karte. '
 
     exportObj.setupTranslationCardData pilot_translations, upgrade_translations, condition_translations
 exportObj.codeToLanguage ?= {}
@@ -17575,6 +17588,7 @@ exportObj.translations.English =
         '.info-well .info-actions td.info-header': 'Actions'
         '.info-well .info-upgrades td.info-header': 'Upgrades'
         '.info-well .info-range td.info-header': 'Range'
+        '.info-well .info-sources.info-header': 'Sources'
         # Squadron edit buttons
         '.clear-squad' : 'New Squad'
         '.save-list' : '<i class="fa fa-floppy-o"></i>&nbsp;Save'
@@ -17949,7 +17963,7 @@ exportObj.cardLoaders.English = () ->
            text: """Before you activate, if you are focused, you may perform an action."""
         "Ello Asty":
            display_name: """Ello Asty"""
-           text: """After you reveal a red Tallon Roll [<lefttalon> or <righttalon>] maneuver, if you have 2 or fewer stress tokens, treat that maneuver as white.%LINEBREAK%<strong>Weapon Hardpoint:</strong> You can equip 1&nbsp;%CANNON%, %TORPEDO%, or %MISSILE% upgrade."""
+           text: """After you reveal a red Tallon Roll [%TROLLLEFT% or %TROLLRIGHT%] maneuver, if you have 2 or fewer stress tokens, treat that maneuver as white.%LINEBREAK%<strong>Weapon Hardpoint:</strong> You can equip 1&nbsp;%CANNON%, %TORPEDO%, or %MISSILE% upgrade."""
         "Emon Azzameen":
            display_name: """Emon Azzameen"""
            text: """If you would drop a device using a [1&nbsp;%STRAIGHT%] template, you may use the [3&nbsp;%TURNLEFT%], [3&nbsp;%STRAIGHT%], or [3&nbsp;%TURNRIGHT%] template instead."""
@@ -18555,7 +18569,7 @@ exportObj.cardLoaders.English = () ->
            text: """After another friendly ship is destroyed, you may perform an action, even while stressed.%LINEBREAK%<strong>Autothrusters:</strong> After you perform an action, you may perform a red %BARRELROLL% or red %BOOST% action."""
         '"Axe"':
            display_name: """“Axe”"""
-           text: """After you defend or perform an attack, you may choose a friendly ship at range&nbsp;1-2 in your <leftarc>  or <rightarc>. If you do, transfer 1 green token to that ship."""
+           text: """After you defend or perform an attack, you may choose a friendly ship at range&nbsp;1-2 in your %LEFTARC%  or %RIGHTARC%. If you do, transfer 1 green token to that ship."""
         '"Backdraft"':
            display_name: """“Backdraft”"""
            text: """While you perform a %SINGLETURRETARC% primary attack, if the defender is in your %REARARC%, roll 1 additional die.%LINEBREAK%<strong>Heavy Weapon Turret:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. You <b>must</b> treat the %FRONTARC% requirement of your equipped %MISSILE% upgrades as %SINGLETURRETARC%."""
@@ -18591,7 +18605,7 @@ exportObj.cardLoaders.English = () ->
            text: """While a friendly ship at range 0-1 performs a primary attack, that ship may reroll 1 attack die."""
         '"Jag"':
            display_name: """“Jag”"""
-           text: """After a friendly ship at range&nbsp;1-2 in your <leftarc>  or <rightarc>  defends, you may acquire a lock on the attacker."""
+           text: """After a friendly ship at range&nbsp;1-2 in your %LEFTARC%  or %RIGHTARC%  defends, you may acquire a lock on the attacker."""
         '"Kickback"':
            display_name: """“Kickback”"""
            text: """After you perform a %BARRELROLL% action, you may perform a red %LOCK% action."""
@@ -18642,7 +18656,7 @@ exportObj.cardLoaders.English = () ->
            text: """While you perform an attack against a defender in your %BULLSEYEARC%, roll 1 additional attack die."""
         '"Sinker"':
            display_name: """“Sinker”"""
-           text: """While a friendly ship at range&nbsp;1-2 in your <leftarc> or <rightarc> performs a primary attack, it may reroll 1&nbsp;attack die."""
+           text: """While a friendly ship at range&nbsp;1-2 in your %LEFTARC% or %RIGHTARC% performs a primary attack, it may reroll 1&nbsp;attack die."""
         '"Static"':
            display_name: """“Static”"""
            text: """While you perform a primary attack, you may spend your lock on the defender and a focus token to change all of your results to %CRIT% results."""
@@ -18900,7 +18914,7 @@ exportObj.cardLoaders.English = () ->
            text: """<i>Adds <r>%EVADE%</r></i>%LINEBREAK%<i>small ship or medium ship only</i>%LINEBREAK%While you perform a red %EVADE% action, if there is an obstacle at range 0-1, treat the action as white instead."""
         "Dedicated":
            display_name: """Dedicated"""
-           text: """<i>Galactic Republic only</i>%LINEBREAK%While another friendly ship in your <leftarc>&nbsp;or <rightarc> at range&nbsp;0-2 defends, if it is limited or has the <strong>Dedicated</strong> upgrade and you are not strained, you may gain 1 strain token. If you do, the defender rerolls 1&nbsp;of their blank results."""
+           text: """<i>Galactic Republic only</i>%LINEBREAK%While another friendly ship in your %LEFTARC%&nbsp;or %RIGHTARC% at range&nbsp;0-2 defends, if it is limited or has the <strong>Dedicated</strong> upgrade and you are not strained, you may gain 1 strain token. If you do, the defender rerolls 1&nbsp;of their blank results."""
         "Delta-7B":
            display_name: """Delta-7B"""
            text: """<i class = flavor_text>The Delta-7B was designed as a heavier variant of the Delta-7 Aethersprite-class Interceptor, identifiable by the repositioned astromech slot. Many Jedi Generals favor this craft’s greater firepower and durability.</i>"""
@@ -32968,9 +32982,11 @@ SQUAD_DISPLAY_NAME_MAX_LENGTH = 24
 
 statAndEffectiveStat = (base_stat, effective_stats, key) ->
     if base_stat?
-        """#{base_stat}#{if effective_stats[key] != base_stat then " (#{effective_stats[key]})" else ""}"""
-    else
+        """#{base_stat}#{if (effective_stats? and effective_stats[key]? and effective_stats[key] != base_stat) then " (#{effective_stats[key]})" else ""}"""
+    else if effective_stats? and effective_stats[key]?
         """0 (#{effective_stats[key]})"""
+    else
+        "0"
 
 getPrimaryFaction = (faction) ->
     switch faction
@@ -33195,6 +33211,7 @@ class exportObj.SquadBuilder
                 </div>
                 <div class="reddit-list">
                     <p>Copy the below and paste it into your reddit post.</p>
+                    <p>Make sure that the post editor is set to markdown mode.</p>
                     <textarea></textarea><button class="btn btn-copy">Copy</button>
                 </div>
                 <div class="tts-list">
@@ -33725,7 +33742,7 @@ class exportObj.SquadBuilder
             if @backend? and not @backend_save_list_button.hasClass('disabled')
                 additional_data =
                     points: @total_points
-                    description: @describeSquad()
+                    description: @describeSquad() + ', Squad saved: ' + (new Date()).toLocaleString()
                     cards: @listCards()
                     notes: @notes.val().substr(0, 1024)
                     obstacles: @getObstacles()
@@ -33793,8 +33810,6 @@ class exportObj.SquadBuilder
         @info_container.append $.trim """
             <div class="well well-small info-well">
                 <span class="info-name"></span>
-                <br />
-                <span class="info-sources"></span>
                 <br />
                 <span class="info-collection"></span>
                 <span class="info-solitary"><br />Solitary</span>
@@ -33880,6 +33895,9 @@ class exportObj.SquadBuilder
                 </table>
                 <p class="info-text" />
                 <p class="info-maneuvers" />
+                <br />
+                <span class="info-header info-sources">Sources</span>: 
+                <span class="info-data info-sources"></span>
             </div>
         """
         @info_container.hide()
@@ -34241,11 +34259,16 @@ class exportObj.SquadBuilder
         @backend_status.fadeOut 'slow'
         @current_squad.dirty = false
         @container.trigger 'xwing-backend:squadDirtinessChanged'
+        @container.trigger 'xwing-backend:squadNameChanged'
 
     onSquadDirtinessChanged: () =>
         @backend_save_list_button.toggleClass 'disabled', not (@current_squad.dirty and @total_points > 0)
         @backend_save_list_as_button.toggleClass 'disabled', @total_points == 0
         @backend_delete_list_button.toggleClass 'disabled', not @current_squad.id?
+        if @ships.length > 1
+            $('meta[property="og:description"]').attr("content", "X-Wing Squadron by YASB 2.0: " + @current_squad.name + ": " + @describeSquad())
+        else
+            $('meta[property="og:description"]').attr("content", "YASB 2.0 is a simple, fast, and easy to use squad builder for X-Wing Miniatures by Fantasy Flight Games.")
 
     onSquadNameChanged: () =>
         if @current_squad.name.length > SQUAD_DISPLAY_NAME_MAX_LENGTH
@@ -34255,6 +34278,12 @@ class exportObj.SquadBuilder
         @squad_name_placeholder.text ''
         @squad_name_placeholder.append short_name
         @squad_name_input.val @current_squad.name
+        return unless @container.is(':visible') 
+        if @current_squad.name != "Unnamed Squadron" and @current_squad.name != "Unsaved Squadron"
+            if (document.title != "YASB 2.0 - " + @current_squad.name) 
+                document.title = "YASB 2.0 - " + @current_squad.name
+        else
+            document.title = "YASB 2.0"
 
     removeAllShips: ->
         while @ships.length > 0
@@ -34801,7 +34830,7 @@ class exportObj.SquadBuilder
                 when 'Ship'
             # we get all pilots for the ship, to display stuff like available slots which are treated as pilot properties, not ship properties (which makes sense, as they depend on the pilot, e.g. talent or force slots)
                     possible_inis = []
-                    slot_types = {} # one number per slot: 0: not available for that ship. 1: always available for that ship. 2: available for some pilots on that ship. -1: undefined
+                    slot_types = {} # one number per slot: 0: not available for that ship. 1: always available for that ship. 2: available for some pilots on that ship. 3: slot two times availabel for that ship 4: slot one or two times available (depending on pilot) 5: slot zero to two times available -1: undefined
                     for slot of exportObj.upgradesBySlotCanonicalName
                         slot_types[slot] = -1
                     for name, pilot of exportObj.pilots
@@ -34810,23 +34839,36 @@ class exportObj.SquadBuilder
                         if not (pilot.skill in possible_inis)
                             possible_inis.push(pilot.skill)
                         for slot, state of slot_types
-                            if slot in pilot.slots
-                                switch state
-                                    when -1
-                                        slot_types[slot] = 1
-                                    when 0
-                                        slot_types[slot] = 2
-                            else 
-                                switch state
-                                    when -1
-                                        slot_types[slot] = 0
-                                    when 1
-                                        slot_types[slot] = 2
+                            switch pilot.slots.filter((item) => item == slot).length
+                                when 1
+                                    switch state
+                                        when -1
+                                            slot_types[slot] = 1
+                                        when 0
+                                            slot_types[slot] = 2
+                                        when 3
+                                            slot_types[slot] = 4
+                                when 0
+                                    switch state
+                                        when -1
+                                            slot_types[slot] = 0
+                                        when 1
+                                            slot_types[slot] = 2
+                                        when 3,4
+                                            slot_types[slot] = 5
+                                when 2
+                                    switch state
+                                        when -1
+                                            slot_types[slot] = 3
+                                        when 0,2
+                                            slot_types[slot] = 5
+                                        when 1
+                                            slot_types[slot] = 4
                                 
                     possible_inis.sort()
         
                     container.find('.info-type').text type
-                    container.find('.info-name').text data.name
+                    container.find('.info-name').html """#{if data.display_name then data.display_name else data.name}#{if exportObj.isReleased(data) then "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
                     if @collection?.counts?
                         ship_count = @collection.counts?.ship?[data.name] ? 0
                         container.find('.info-collection').text """You have #{ship_count} ship model#{if ship_count > 1 then 's' else ''} in your collection."""
@@ -34888,14 +34930,18 @@ class exportObj.SquadBuilder
 
                     # Display all available slots, put brackets around slots that are only available for some pilots
                     container.find('tr.info-upgrades').show()
-                    container.find('tr.info-upgrades td.info-data').html(((if state == 1 then exportObj.translate(@language, 'sloticon', slot) else (if state == 2 then '('+exportObj.translate(@language, 'sloticon', slot)+')')) for slot, state of slot_types).join(' ') or 'None')
+                    container.find('tr.info-upgrades td.info-data').html(((if state == 1 then exportObj.translate(@language, 'sloticon', slot) else (if state == 2 then '('+exportObj.translate(@language, 'sloticon', slot)+')' else (if state == 3 then (exportObj.translate(@language, 'sloticon', slot) + exportObj.translate(@language, 'sloticon', slot)) else (if state == 4 then (exportObj.translate(@language, 'sloticon', slot) + '(' + exportObj.translate(@language, 'sloticon', slot) + ')') else (if state == 5 then '(' + exportObj.translate(@language, 'sloticon', slot) + exportObj.translate(@language, 'sloticon', slot) + ')'))))) for slot, state of slot_types).join(' ') or 'None')
                 
                     container.find('p.info-text').hide()
                     container.find('p.info-maneuvers').show()
                     container.find('p.info-maneuvers').html(@getManeuverTableHTML(data.maneuvers, data.maneuvers))
+                    
+                    sources = (exportObj.translate(@language, 'sources', source) for source in data.sources).sort()
+                    container.find('.info-sources.info-data').text if (sources.length > 1) or (not ('Loose Ships' in sources)) then (if sources.length > 0 then sources.join(', ') else exportObj.translate(@language, 'ui', 'unreleased')) else "Only available from 1st edition"
+                    container.find('.info-sources').show()
                 when 'Pilot'
                     container.find('.info-type').text type
-                    container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
+                    container.find('.info-sources.info-data').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
                     container.find('.info-sources').show()
                     if @collection?.counts?
                         pilot_count = @collection.counts?.pilot?[data.name] ? 0
@@ -34904,6 +34950,16 @@ class exportObj.SquadBuilder
                     else
                         container.find('.info-collection').text ''
                         
+                    # if the pilot is already selected and has uprades, some stats may be modified
+                    if additional_opts?.effectiveStats?
+                        effective_stats = additional_opts.effectiveStats()
+                        extra_actions = $.grep effective_stats.actions, (el, i) ->
+                            el not in (data.ship_override?.actions ? additional_opts.data.actions)
+                        extra_actions_red = $.grep effective_stats.actionsred, (el, i) ->
+                            el not in (data.ship_override?.actionsred ? additional_opts.data.actionsred)
+                    else
+                        extra_actions = []
+                        extra_actions_red = []
                     #logic to determine how many dots to use for uniqueness
                     if data.unique?
                         uniquedots = "&middot;&nbsp;"
@@ -34934,41 +34990,43 @@ class exportObj.SquadBuilder
                     container.find('tr.info-base').show()
 
                     
-                    container.find('tr.info-skill td.info-data').text data.skill
+                    container.find('tr.info-skill td.info-data').text statAndEffectiveStat(data.skill, effective_stats, 'skill')
                     container.find('tr.info-skill').show()
                     
-                    container.find('tr.info-attack td.info-data').text(data.ship_override?.attack ? ship.attack)
-                    container.find('tr.info-attack').toggle(data.ship_override?.attack? or ship.attack?)
-
-                    container.find('tr.info-attack-fullfront td.info-data').text(ship.attackf)
-                    container.find('tr.info-attack-fullfront').toggle(ship.attackf?)
-                    
-                    container.find('tr.info-attack-bullseye').hide()
-                    
-                    container.find('tr.info-attack-back td.info-data').text(ship.attackb)
-                    container.find('tr.info-attack-back').toggle(ship.attackb?)
-                    container.find('tr.info-attack-turret td.info-data').text(ship.attackt)
-                    container.find('tr.info-attack-turret').toggle(ship.attackt?)
-                    container.find('tr.info-attack-doubleturret td.info-data').text(ship.attackdt)
-                    container.find('tr.info-attack-doubleturret').toggle(ship.attackdt?)
-                    
 #                    for cls in container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
-#                        container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-frontarc')
-                    container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass(ship.attack_icon ? 'xwing-miniatures-font-frontarc')
+#                        container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-attack')
+                    container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass(ship.attack_icon ? 'xwing-miniatures-font-attack')
 
-                    container.find('tr.info-energy td.info-data').text(data.ship_override?.energy ? ship.energy)
+                    container.find('tr.info-attack td.info-data').text statAndEffectiveStat((data.ship_override?.attack ? ship.attack), effective_stats, 'attack')
+                    container.find('tr.info-attack').toggle(ship.attack? or effective_stats?.attack?)
+
+                    container.find('tr.info-attack-fullfront td.info-data').text statAndEffectiveStat((data.ship_override?.attackf ? ship.attackf), effective_stats, 'attackf')
+                    container.find('tr.info-attack-fullfront').toggle(ship.attackf? or effective_stats?.attackf?)
+
+                    container.find('tr.info-attack-bullseye').hide()
+
+                    container.find('tr.info-attack-back td.info-data').text statAndEffectiveStat((data.ship_override?.attackb ? ship.attackb), effective_stats, 'attackb')
+                    container.find('tr.info-attack-back').toggle(ship.attackb? or effective_stats?.attackb?)
+
+                    container.find('tr.info-attack-turret td.info-data').text statAndEffectiveStat((data.ship_override?.attackt ? ship.attackt), effective_stats, 'attackt')
+                    container.find('tr.info-attack-turret').toggle(ship.attackt? or effective_stats?.attackt?)
+
+                    container.find('tr.info-attack-doubleturret td.info-data').text statAndEffectiveStat((data.ship_override?.attackdt ? ship.attackdt), effective_stats, 'attackdt')
+                    container.find('tr.info-attack-doubleturret').toggle(ship.attackdt? or effective_stats?.attackdt?)
+
+                    container.find('tr.info-energy td.info-data').text statAndEffectiveStat((data.ship_override?.energy ? ship.energy), effective_stats, 'energy')
                     container.find('tr.info-energy').toggle(data.ship_override?.energy? or ship.energy?)
                     container.find('tr.info-range').hide()
                     container.find('td.info-rangebonus').hide()
-                    container.find('tr.info-agility td.info-data').text(data.ship_override?.agility ? ship.agility)
+                    container.find('tr.info-agility td.info-data').text statAndEffectiveStat((data.ship_override?.agility ? ship.agility), effective_stats, 'agility')
                     container.find('tr.info-agility').show()
-                    container.find('tr.info-hull td.info-data').text(data.ship_override?.hull ? ship.hull)
+                    container.find('tr.info-hull td.info-data').text statAndEffectiveStat((data.ship_override?.hull ? ship.hull), effective_stats, 'hull')
                     container.find('tr.info-hull').show()
-                    container.find('tr.info-shields td.info-data').text(data.ship_override?.shields ? ship.shields)
+                    container.find('tr.info-shields td.info-data').text statAndEffectiveStat((data.ship_override?.shields ? ship.shields), effective_stats, 'shields')
                     container.find('tr.info-shields').show()
 
-                    if effective_stats?.force? or data.force?
-                        container.find('tr.info-force td.info-data').html ((data.ship_override?.force ? data.force)+ '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
+                    if (effective_stats?.force? and effective_stats.force > 0) or data.force?
+                        container.find('tr.info-force td.info-data').html (statAndEffectiveStat((data.ship_override?.force ? data.force), effective_stats, 'force') + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
                         container.find('tr.info-force').show()
                     else
                         container.find('tr.info-force').hide()
@@ -34982,13 +35040,11 @@ class exportObj.SquadBuilder
                     else
                         container.find('tr.info-charge').hide()
 
-                    container.find('tr.info-actions td.info-data').html ((exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actions ? exportObj.ships[data.ship].actions)).join(', ')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked')
-    
-                    if ships[data.ship].actionsred?
-                        container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', action) for action in (data.ship_override?.actionsred ? exportObj.ships[data.ship].actionsred)).join(', ')
-                        container.find('tr.info-actions-red').show()
-                    else
-                        container.find('tr.info-actions-red').hide()
+                    container.find('tr.info-actions td.info-data').html ((exportObj.translate(@language, 'action', a) for a in (data.ship_override?.actions ? ship.actions).concat( ("#{exportObj.translate @language, 'action', action}" for action in extra_actions))).join ', ').replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked')
+
+                    if ship.actionsred?
+                        container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', a) for a in (data.ship_override?.actionsred ? ship.actionsred).concat( ("<strong>#{exportObj.translate @language, 'action', action}</strong>" for action in extra_actions_red))).join ', '       
+                    container.find('tr.info-actions-red').toggle(ship.actionsred?)
 
                     container.find('tr.info-actions').show()
                     if @isQuickbuild
@@ -35001,7 +35057,7 @@ class exportObj.SquadBuilder
                 when 'Quickbuild'
                     container.find('.info-type').text 'Quickbuild'
                     container.find('.info-sources').hide() # there are different sources for the pilot and the upgrade cards, so we won't display any
-                    container.find('.info-collection').text '' # same here, hard to give a single number telling a user how often he ones all required cards
+                    container.find('.info-collection').text '' # same here, hard to give a single number telling a user how often he ownes all required cards
                     
                     pilot = exportObj.pilots[data.pilot]
                     ship = exportObj.ships[data.ship]
@@ -35099,7 +35155,7 @@ class exportObj.SquadBuilder
                     container.find('p.info-maneuvers').html(@getManeuverTableHTML(ship.maneuvers, ship.maneuvers))
                 when 'Addon'
                     container.find('.info-type').text additional_opts.addon_type
-                    container.find('.info-sources').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
+                    container.find('.info-sources.info-data').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
                     container.find('.info-sources').show()
                     
                     #logic to determine how many dots to use for uniqueness
@@ -35336,7 +35392,7 @@ class exportObj.SquadBuilder
                 meth()
 
     describeSquad: ->
-        ((ship.pilot.name for ship in @ships when ship.pilot?).join ', ') + ', Squad saved: ' + (new Date()).toLocaleString()
+        ((ship.pilot.name for ship in @ships when ship.pilot?).join ', ') #+ ', Squad saved: ' + (new Date()).toLocaleString()
 
     listCards: ->
         card_obj = {}
@@ -35947,6 +36003,13 @@ class Ship
 
         @ship_selector.on 'change', (e) =>
             @setShipType @ship_selector.val()
+        @ship_selector.data('select2').results.on 'mousemove-filtered', (e) =>
+            select2_data = $(e.target).closest('.select2-result').data 'select2-data'
+            @builder.showTooltip 'Ship', exportObj.ships[select2_data.id] if select2_data?.id?
+        @ship_selector.data('select2').container.on 'mouseover', (e) =>
+            @builder.showTooltip 'Ship', exportObj.ships[@pilot.ship] if @pilot
+        @ship_selector.data('select2').container.on 'touchmove', (e) =>
+            @builder.showTooltip 'Ship', exportObj.ships[@pilot.ship] if @pilot
         # assign ship row an id for testing purposes
         @row.attr 'id', "row-#{@ship_selector.data('select2').container.attr('id')}"
 
@@ -35989,11 +36052,11 @@ class Ship
             if @builder.isQuickbuild
                 @builder.showTooltip 'Quickbuild', exportObj.quickbuildsById[select2_data.id], {ship: @data?.name} if select2_data?.id?
             else
-                @builder.showTooltip 'Pilot', exportObj.pilotsById[select2_data.id], {ship: @data?.name} if select2_data?.id?
+                @builder.showTooltip 'Pilot', exportObj.pilotsById[select2_data.id] if select2_data?.id?
         @pilot_selector.data('select2').container.on 'mouseover', (e) =>
-            @builder.showTooltip 'Pilot', @pilot if @pilot
+            @builder.showTooltip 'Pilot', @pilot, @ if @pilot
         @pilot_selector.data('select2').container.on 'touchmove', (e) =>
-            @builder.showTooltip 'Ship', @pilot if @pilot
+            @builder.showTooltip 'Ship', @pilot, @ if @pilot
             ###if @data? 
                 scrollTo(0,$('#info-container').offset().top - 10,'smooth')###
 
