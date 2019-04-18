@@ -196,7 +196,7 @@ r {
   font-family: BankGothicHD;
   font-size: 1em; }
 
-.info-type, .info-sources {
+.info-type, .info-data.info-sources {
   font-family: BankGothicHD;
   font-size: 1.2em; }
 
@@ -285,6 +285,16 @@ ul.nav li.dropdown ul.dropdown-menu li:hover {
 input[type=number] {
   width: 3em; }
 
+input[type=search].card-search-text {
+  width: 90%;
+  min-width: 100px;
+  max-width: 230px; }
+
+.advanced-search-selection {
+  width: 90%;
+  min-width: 100px;
+  max-width: 230px; }
+
 .force {
   color: #9D899D; }
 
@@ -344,6 +354,12 @@ li.squad-summary {
 
 .show-advanced-search {
   margin-bottom: 10px; }
+
+.search-container {
+  margin: 3px; }
+
+.card-search-container {
+  color: black; }
 
 .nav-tabs > .active > a,
 .nav-tabs > .active > a:focus,
