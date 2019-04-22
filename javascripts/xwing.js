@@ -1610,7 +1610,7 @@ exportObj.CardBrowser = (function() {
   };
 
   CardBrowser.prototype.checkSearchCriteria = function(card) {
-    var action, actions, all_factions, faction, faction_matches, hyperspace_legal, matches, matching_points, name, owned_copies, pilot, pilots, points, required_actions, required_linked_actions, required_slots, s, search_text, selected_factions, ship, size_matches, slot, slots, text_in_ship, text_search, used_slots, _i, _j, _k, _l, _len, _len1, _len10, _len11, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _len9, _m, _n, _o, _p, _q, _r, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _s, _t;
+    var action, actions, all_factions, faction, faction_matches, hyperspace_legal, matches, matching_points, name, owned_copies, pilot, pilots, points, required_actions, required_linked_actions, required_slots, s, search_text, selected_factions, ship, size_matches, slot, slots, text_in_ship, text_search, used_slots, _i, _j, _k, _l, _len, _len1, _len10, _len11, _len12, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _len9, _m, _n, _o, _p, _q, _r, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _s, _t, _u;
     search_text = this.card_search_text.value.toLowerCase();
     text_search = card.name.toLowerCase().indexOf(search_text) > -1 || (card.data.text && card.data.text.toLowerCase().indexOf(search_text)) > -1 || (card.display_name && card.display_name.toLowerCase().indexOf(search_text) > -1);
     if (!text_search) {
@@ -1654,14 +1654,25 @@ exportObj.CardBrowser = (function() {
       if (__indexOf.call(selected_factions, "Factionless") >= 0) {
         selected_factions.push(void 0);
       }
-      if (!((_ref = card.data.faction, __indexOf.call(selected_factions, _ref) >= 0) || card.orig_type === 'Ship')) {
+      if (!((_ref = card.data.faction, __indexOf.call(selected_factions, _ref) >= 0) || card.orig_type === 'Ship' || card.data.faction instanceof Array)) {
         return false;
+      }
+      if (card.data.faction instanceof Array) {
+        faction_matches = false;
+        _ref1 = card.data.faction;
+        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+          faction = _ref1[_j];
+          if (__indexOf.call(selected_factions, faction) >= 0) {
+            faction_matches = true;
+            break;
+          }
+        }
       }
       if (card.orig_type === 'Ship') {
         faction_matches = false;
-        _ref1 = card.data.factions;
-        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-          faction = _ref1[_j];
+        _ref2 = card.data.factions;
+        for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+          faction = _ref2[_k];
           if (__indexOf.call(selected_factions, faction) >= 0) {
             faction_matches = true;
             break;
@@ -1673,9 +1684,9 @@ exportObj.CardBrowser = (function() {
       }
     }
     if (this.hyperspace_checkbox.checked) {
-      _ref2 = selected_factions != null ? selected_factions : all_factions;
-      for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-        faction = _ref2[_k];
+      _ref3 = selected_factions != null ? selected_factions : all_factions;
+      for (_l = 0, _len3 = _ref3.length; _l < _len3; _l++) {
+        faction = _ref3[_l];
         hyperspace_legal = hyperspace_legal || exportObj.hyperspaceCheck(card.data, faction, card.orig_type === 'Ship');
       }
       if (!hyperspace_legal) {
@@ -1687,15 +1698,15 @@ exportObj.CardBrowser = (function() {
       slots = card.data.slots;
       if (card.orig_type === 'Ship') {
         slots = [];
-        _ref3 = selected_factions != null ? selected_factions : all_factions;
-        for (_l = 0, _len3 = _ref3.length; _l < _len3; _l++) {
-          faction = _ref3[_l];
+        _ref4 = selected_factions != null ? selected_factions : all_factions;
+        for (_m = 0, _len4 = _ref4.length; _m < _len4; _m++) {
+          faction = _ref4[_m];
           if (faction !== void 0) {
-            _ref4 = exportObj.pilotsByFactionCanonicalName[faction];
-            for (name in _ref4) {
-              pilots = _ref4[name];
-              for (_m = 0, _len4 = pilots.length; _m < _len4; _m++) {
-                pilot = pilots[_m];
+            _ref5 = exportObj.pilotsByFactionCanonicalName[faction];
+            for (name in _ref5) {
+              pilots = _ref5[name];
+              for (_n = 0, _len5 = pilots.length; _n < _len5; _n++) {
+                pilot = pilots[_n];
                 if (pilot.ship === card.data.name) {
                   slots.push.apply(slots, pilot.slots);
                 }
@@ -1704,8 +1715,8 @@ exportObj.CardBrowser = (function() {
           }
         }
       }
-      for (_n = 0, _len5 = required_slots.length; _n < _len5; _n++) {
-        slot = required_slots[_n];
+      for (_o = 0, _len6 = required_slots.length; _o < _len6; _o++) {
+        slot = required_slots[_o];
         if (!((slots != null) && __indexOf.call(slots, slot) >= 0)) {
           return false;
         }
@@ -1714,24 +1725,24 @@ exportObj.CardBrowser = (function() {
     required_actions = this.action_available_selection.val();
     required_linked_actions = this.linkedaction_available_selection.val();
     if (required_actions || required_linked_actions) {
-      actions = (_ref5 = card.data.actions) != null ? _ref5 : [];
-      actions = actions.concat((_ref6 = card.data.actionsred) != null ? _ref6 : []);
+      actions = (_ref6 = card.data.actions) != null ? _ref6 : [];
+      actions = actions.concat((_ref7 = card.data.actionsred) != null ? _ref7 : []);
       if (card.orig_type === 'Pilot') {
         actions = exportObj.ships[card.data.ship].actions;
         actions = actions.concat(exportObj.ships[card.data.ship].actionsred);
       }
     }
-    _ref7 = required_actions != null ? required_actions : [];
-    for (_o = 0, _len6 = _ref7.length; _o < _len6; _o++) {
-      action = _ref7[_o];
-      if (!((actions != null) && ((__indexOf.call(actions, action) >= 0) || (_ref8 = "F-" + action, __indexOf.call(actions, _ref8) >= 0)))) {
+    _ref8 = required_actions != null ? required_actions : [];
+    for (_p = 0, _len7 = _ref8.length; _p < _len7; _p++) {
+      action = _ref8[_p];
+      if (!((actions != null) && ((__indexOf.call(actions, action) >= 0) || (_ref9 = "F-" + action, __indexOf.call(actions, _ref9) >= 0)))) {
         return false;
       }
     }
-    _ref9 = required_linked_actions != null ? required_linked_actions : [];
-    for (_p = 0, _len7 = _ref9.length; _p < _len7; _p++) {
-      action = _ref9[_p];
-      if (!((actions != null) && ((_ref10 = "R> " + action, __indexOf.call(actions, _ref10) >= 0) || (_ref11 = "> " + action, __indexOf.call(actions, _ref11) >= 0)))) {
+    _ref10 = required_linked_actions != null ? required_linked_actions : [];
+    for (_q = 0, _len8 = _ref10.length; _q < _len8; _q++) {
+      action = _ref10[_q];
+      if (!((actions != null) && ((_ref11 = "R> " + action, __indexOf.call(actions, _ref11) >= 0) || (_ref12 = "> " + action, __indexOf.call(actions, _ref12) >= 0)))) {
         return false;
       }
     }
@@ -1741,9 +1752,9 @@ exportObj.CardBrowser = (function() {
       }
       if (card.data.pointsarray != null) {
         matching_points = false;
-        _ref12 = card.data.pointsarray;
-        for (_q = 0, _len8 = _ref12.length; _q < _len8; _q++) {
-          points = _ref12[_q];
+        _ref13 = card.data.pointsarray;
+        for (_r = 0, _len9 = _ref13.length; _r < _len9; _r++) {
+          points = _ref13[_r];
           if (points >= this.minimum_point_costs.value && points <= this.maximum_point_costs.value) {
             matching_points = true;
             break;
@@ -1755,14 +1766,14 @@ exportObj.CardBrowser = (function() {
       }
       if (card.orig_type === 'Ship') {
         matching_points = false;
-        _ref13 = selected_factions != null ? selected_factions : all_factions;
-        for (_r = 0, _len9 = _ref13.length; _r < _len9; _r++) {
-          faction = _ref13[_r];
-          _ref14 = exportObj.pilotsByFactionCanonicalName[faction];
-          for (name in _ref14) {
-            pilots = _ref14[name];
-            for (_s = 0, _len10 = pilots.length; _s < _len10; _s++) {
-              pilot = pilots[_s];
+        _ref14 = selected_factions != null ? selected_factions : all_factions;
+        for (_s = 0, _len10 = _ref14.length; _s < _len10; _s++) {
+          faction = _ref14[_s];
+          _ref15 = exportObj.pilotsByFactionCanonicalName[faction];
+          for (name in _ref15) {
+            pilots = _ref15[name];
+            for (_t = 0, _len11 = pilots.length; _t < _len11; _t++) {
+              pilot = pilots[_t];
               if (pilot.ship === card.data.name) {
                 if (pilot.points >= this.minimum_point_costs.value && pilot.points <= this.maximum_point_costs.value) {
                   matching_points = true;
@@ -1789,8 +1800,8 @@ exportObj.CardBrowser = (function() {
         return false;
       }
       matches = false;
-      for (_t = 0, _len11 = used_slots.length; _t < _len11; _t++) {
-        slot = used_slots[_t];
+      for (_u = 0, _len12 = used_slots.length; _u < _len12; _u++) {
+        slot = used_slots[_u];
         if (card.data.slot === slot) {
           matches = true;
           break;
@@ -1815,7 +1826,7 @@ exportObj.CardBrowser = (function() {
     if (card.data.charge && !card.data.recurring && !this.not_recurring_charge.checked) {
       return false;
     }
-    if (((_ref15 = exportObj.builders[0].collection) != null ? _ref15.counts : void 0) != null) {
+    if (((_ref16 = exportObj.builders[0].collection) != null ? _ref16.counts : void 0) != null) {
       owned_copies = this.getCollectionNumber(card);
       if (!(owned_copies >= this.minimum_owned_copies.value && owned_copies <= this.maximum_owned_copies.value)) {
         return false;
@@ -6281,6 +6292,7 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 11,
         unique: true,
+        faction: ["Scum and Villainy", "Rebel Alliance"],
         force: 1,
         modifier_func: function(stats) {
           stats.force += 1;
@@ -6456,6 +6468,7 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 5,
         unique: true,
+        faction: ["Scum and Villainy", "Galactic Empire"],
         restriction_func: function(ship) {
           var builder, t, thing, things, _ref;
           builder = ship.builder;
@@ -6594,6 +6607,7 @@ exportObj.basicCardData = function() {
         slot: "Gunner",
         points: 2,
         unique: true,
+        faction: ["Scum and Villainy", "Galactic Empire"],
         restriction_func: function(ship) {
           var builder, t, thing, things, _ref;
           builder = ship.builder;
@@ -7414,6 +7428,7 @@ exportObj.basicCardData = function() {
         slot: "Hardpoint",
         points: 0,
         ignorecollection: true,
+        faction: [],
         confersAddons: [
           {
             type: exportObj.Upgrade,
@@ -7425,6 +7440,7 @@ exportObj.basicCardData = function() {
         id: 169,
         slot: "Hardpoint",
         ignorecollection: true,
+        faction: [],
         points: 0,
         confersAddons: [
           {
@@ -7437,6 +7453,7 @@ exportObj.basicCardData = function() {
         id: 170,
         slot: "Hardpoint",
         ignorecollection: true,
+        faction: [],
         points: 0,
         confersAddons: [
           {
@@ -7873,6 +7890,7 @@ exportObj.basicCardData = function() {
         id: 217,
         unique: true,
         slot: "Crew",
+        faction: ["Galactic Republic", "Separatist Alliance"],
         force: 1,
         points: 14,
         modifier_func: function(stats) {
@@ -7880,14 +7898,6 @@ exportObj.basicCardData = function() {
           if (__indexOf.call(stats.actions, 'F-Coordinate') < 0) {
             return stats.actions.push('F-Coordinate');
           }
-        },
-        restriction_func: function(ship) {
-          var builder;
-          builder = ship.builder;
-          if (builder.faction === "Galactic Republic" || builder.faction === "Separatist Alliance") {
-            return true;
-          }
-          return false;
         }
       }, {
         name: "Count Dooku",
@@ -9287,7 +9297,7 @@ exportObj.basicCardData = function() {
         pilot: "Kylo Ren",
         ship: "TIE/VN Silencer",
         threat: 4,
-        upgrades: ["Hate", "Predictive Shot", "Primed Thrusters", "Advanced Proton Torpedoes"]
+        upgrades: ["Hate", "Predictive Shot", "Primed Thrusters", "Adv. Proton Torpedoes"]
       }, {
         id: 174,
         faction: "First Order",
@@ -9315,7 +9325,7 @@ exportObj.basicCardData = function() {
         pilot: '"Avenger"',
         ship: "TIE/VN Silencer",
         threat: 3,
-        upgrades: ["Primed Thrusters", "Advanced Proton Torpedoes"]
+        upgrades: ["Primed Thrusters", "Adv. Proton Torpedoes"]
       }, {
         id: 178,
         faction: "First Order",
@@ -9664,7 +9674,7 @@ exportObj.basicCardData = function() {
         pilot: "Guri",
         ship: "StarViper",
         threat: 3,
-        upgrades: ["Daredevil", "Advanced Sensors", "Advanced Proton Torpedoes"]
+        upgrades: ["Daredevil", "Advanced Sensors", "Adv. Proton Torpedoes"]
       }, {
         id: 228,
         faction: "Scum and Villainy",
@@ -9699,7 +9709,7 @@ exportObj.basicCardData = function() {
         pilot: "Quinn Jast",
         ship: "M3-A Interceptor",
         threat: 2,
-        upgrades: ["Crack Shot", "Advanced Proton Torpedoes", "Afterburners"]
+        upgrades: ["Crack Shot", "Adv. Proton Torpedoes", "Afterburners"]
       }, {
         id: 233,
         faction: "Scum and Villainy",
@@ -10173,7 +10183,7 @@ exportObj.basicCardData = function() {
         pilot: "Skull Squadron Pilot",
         ship: "Fang Fighter",
         threat: 3,
-        upgrades: ["Marksmanship", "Advanced Proton Torpedoes", "Afterburners"]
+        upgrades: ["Marksmanship", "Adv. Proton Torpedoes", "Afterburners"]
       }, {
         id: 298,
         faction: "Scum and Villainy",
@@ -13331,7 +13341,7 @@ exportObj.cardLoaders.Deutsch = function() {
       text: "Falls du ein Gerät abwerfen oder starten würdest, darfst du eine Schablone mit gleicher Flugrichtung und einer um 1 höheren oder niedrigeren Geschwindigkeit verwenden."
     },
     "Spare Parts Canisters": {
-      display_name: "%ASTROMECH% Ersatzteilkanister",
+      display_name: "Astromech Ersatzteilkanister",
       text: "<strong>Aktion:</strong> Gib 1 %CHARGE% aus, um 1 Ladung von 1  deiner ausgerüsteten %ASTROMECH%-Aufwertungen wiederherzustellen. %LINEBREAK%<strong>Aktion:</strong> Gib 1 %CHARGE% aus, um 1 Ersatzteil abzuwerfen, dann verliere alle Zielerfassungen, die dir zugeordnet sind."
     },
     "Special Forces Gunner": {
@@ -30866,7 +30876,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 32894
+                    lineno: 32903
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -30966,6 +30976,22 @@ exportObj.toTTS = function(txt) {
   } else {
     return txt.replace(/\(.*\)/g, "").replace("�", '"').replace("�", '"');
   }
+};
+
+exportObj.slotsMatching = function(slota, slotb) {
+  if (slota === slotb) {
+    return true;
+  }
+  if (slota !== 'Hardpoint' && slotb !== 'Hardpoint') {
+    return false;
+  }
+  if (slota === 'Torpedo' || slota === 'Cannon' || slota === 'Missile') {
+    return true;
+  }
+  if (slotb === 'Torpedo' || slotb === 'Cannon' || slotb === 'Missile') {
+    return true;
+  }
+  return false;
 };
 
 $.isMobile = function() {
@@ -31681,7 +31707,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 33753
+              lineno: 33767
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -32308,6 +32334,7 @@ exportObj.SquadBuilder = (function() {
         case 4:
         case 5:
         case 6:
+        case 7:
           _ref = matches[2].split('!'), game_type_and_point_abbrev = _ref[0], serialized_ships = _ref[1];
           if (serialized_ships == null) {
             this.loading_failed_container.toggleClass('hidden', false);
@@ -32491,7 +32518,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 34475
+              lineno: 34490
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -32501,7 +32528,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 34476
+                lineno: 34491
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -32615,7 +32642,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.getAvailablePilotsForShipIncluding = function(ship, include_pilot, term, sorted, ship_selector) {
-    var allowed_quickbuilds_containing_uniques_in_use, available_faction_pilots, eligible_faction_pilots, id, include_pilot_pilot, include_quickbuild, include_upgrade, include_upgrade_name, other, pilot, pilot_name, quickbuild, quickbuilds_matching_ship_and_faction, retval, uniques_in_use_by_pilot_in_use, upgrade, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2;
+    var allowed_quickbuilds_containing_uniques_in_use, available_faction_pilots, eligible_faction_pilots, id, include_pilot_pilot, include_quickbuild, include_upgrade, include_upgrade_name, other, pilot, pilot_name, quickbuild, quickbuilds_matching_ship_and_faction, retval, uniques_in_use_by_pilot_in_use, upgrade, upgradedata, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _ref3;
     if (term == null) {
       term = '';
     }
@@ -32699,15 +32726,15 @@ exportObj.SquadBuilder = (function() {
             }
           }
         }
-        _ref1 = include_quickbuild.upgrades;
-        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-          include_upgrade_name = _ref1[_j];
+        _ref2 = (_ref1 = include_quickbuild.upgrades) != null ? _ref1 : [];
+        for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
+          include_upgrade_name = _ref2[_j];
           include_upgrade = exportObj.upgrades[include_upgrade_name];
           if (include_upgrade.unique != null) {
             uniques_in_use_by_pilot_in_use.push(other);
-            _ref2 = exportObj.pilotsByUniqueName[include_upgrade.canonical_name.getXWSBaseName()] || [];
-            for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-              other = _ref2[_k];
+            _ref3 = exportObj.pilotsByUniqueName[include_upgrade.canonical_name.getXWSBaseName()] || [];
+            for (_k = 0, _len2 = _ref3.length; _k < _len2; _k++) {
+              other = _ref3[_k];
               if (other != null) {
                 uniques_in_use_by_pilot_in_use.push(other);
               }
@@ -32721,32 +32748,37 @@ exportObj.SquadBuilder = (function() {
       allowed_quickbuilds_containing_uniques_in_use = [];
       ({
         loop: (function() {
-          var _ref3, _ref4, _ref5, _ref6, _ref7, _results;
+          var _ref4, _ref5, _ref6, _ref7, _ref8, _results;
           _results = [];
           for (id in quickbuilds_matching_ship_and_faction) {
             quickbuild = quickbuilds_matching_ship_and_faction[id];
-            if ((((_ref3 = exportObj.pilots[quickbuild.pilot]) != null ? _ref3.unique : void 0) != null) && (_ref4 = exportObj.pilots[quickbuild.pilot], __indexOf.call(this.uniques_in_use.Pilot, _ref4) >= 0) && !(_ref5 = exportObj.pilots[quickbuild.pilot], __indexOf.call(uniques_in_use_by_pilot_in_use, _ref5) >= 0)) {
+            if ((((_ref4 = exportObj.pilots[quickbuild.pilot]) != null ? _ref4.unique : void 0) != null) && (_ref5 = exportObj.pilots[quickbuild.pilot], __indexOf.call(this.uniques_in_use.Pilot, _ref5) >= 0) && !(_ref6 = exportObj.pilots[quickbuild.pilot], __indexOf.call(uniques_in_use_by_pilot_in_use, _ref6) >= 0)) {
               allowed_quickbuilds_containing_uniques_in_use.push(quickbuild.id);
               continue;
             }
-            if ((((_ref6 = exportObj.pilots[quickbuild.pilot]) != null ? _ref6.max_per_squad : void 0) != null) && this.countPilots(exportObj.pilots[quickbuild.pilot].canonical_name) >= exportObj.pilots[quickbuild.pilot].max_per_squad && !(_ref7 = exportObj.pilots[quickbuild.pilot], __indexOf.call(uniques_in_use_by_pilot_in_use, _ref7) >= 0)) {
+            if ((((_ref7 = exportObj.pilots[quickbuild.pilot]) != null ? _ref7.max_per_squad : void 0) != null) && this.countPilots(exportObj.pilots[quickbuild.pilot].canonical_name) >= exportObj.pilots[quickbuild.pilot].max_per_squad && !(_ref8 = exportObj.pilots[quickbuild.pilot], __indexOf.call(uniques_in_use_by_pilot_in_use, _ref8) >= 0)) {
               allowed_quickbuilds_containing_uniques_in_use.push(quickbuild.id);
               continue;
             }
             if (quickbuild.upgrades != null) {
               _results.push((function() {
-                var _l, _len3, _ref10, _ref11, _ref12, _ref13, _ref14, _ref8, _ref9, _results1;
-                _ref8 = quickbuild.upgrades;
+                var _l, _len3, _ref10, _ref11, _ref12, _ref13, _ref9, _results1;
+                _ref9 = quickbuild.upgrades;
                 _results1 = [];
-                for (_l = 0, _len3 = _ref8.length; _l < _len3; _l++) {
-                  upgrade = _ref8[_l];
-                  if ((exportObj.upgrades[upgrade].unique != null) && (_ref9 = exportObj.upgrades[upgrade], __indexOf.call(this.uniques_in_use.Upgrade, _ref9) >= 0) && !(_ref10 = exportObj.upgrades[upgrade], __indexOf.call(uniques_in_use_by_pilot_in_use, _ref10) >= 0)) {
-                    if (ship_selector === null || !(__indexOf.call(exportObj.quickbuildsById[ship_selector.quickbuildId].upgrades, upgrade) >= 0 || (ship_selector.linkedShip && __indexOf.call((_ref11 = exportObj.quickbuildsById[(_ref12 = ship_selector.linkedShip) != null ? _ref12.quickbuildId : void 0].upgrades) != null ? _ref11 : [], upgrade) >= 0))) {
+                for (_l = 0, _len3 = _ref9.length; _l < _len3; _l++) {
+                  upgrade = _ref9[_l];
+                  upgradedata = exportObj.upgrades[upgrade];
+                  if (upgradedata == null) {
+                    console.log("There was an Issue including the upgrade " + upgrade + " in some quickbuild. Please report that Issue!");
+                    continue;
+                  }
+                  if ((upgradedata.unique != null) && __indexOf.call(this.uniques_in_use.Upgrade, upgradedata) >= 0 && !(__indexOf.call(uniques_in_use_by_pilot_in_use, upgradedata) >= 0)) {
+                    if (ship_selector === null || !(__indexOf.call(exportObj.quickbuildsById[ship_selector.quickbuildId].upgrades, upgrade) >= 0 || (ship_selector.linkedShip && __indexOf.call((_ref10 = exportObj.quickbuildsById[(_ref11 = ship_selector.linkedShip) != null ? _ref11.quickbuildId : void 0].upgrades) != null ? _ref10 : [], upgrade) >= 0))) {
                       allowed_quickbuilds_containing_uniques_in_use.push(quickbuild.id);
                       break;
                     }
                   }
-                  if ((exportObj.upgrades[upgrade].solitary != null) && (_ref13 = exportObj.upgrades[upgrade].slot, __indexOf.call(this.uniques_in_use['Slot'], _ref13) >= 0) && !(_ref14 = exportObj.upgrades[upgrade].slot, __indexOf.call(uniques_in_use_by_pilot_in_use, _ref14) >= 0)) {
+                  if ((upgradedata.solitary != null) && (_ref12 = upgradedata.slot, __indexOf.call(this.uniques_in_use['Slot'], _ref12) >= 0) && !(_ref13 = upgradedata.slot, __indexOf.call(uniques_in_use_by_pilot_in_use, _ref13) >= 0)) {
                     allowed_quickbuilds_containing_uniques_in_use.push(quickbuild.id);
                     break;
                   } else {
@@ -32763,16 +32795,16 @@ exportObj.SquadBuilder = (function() {
         }).call(this)
       });
       retval = (function() {
-        var _l, _len3, _ref3, _ref4, _results;
+        var _l, _len3, _ref4, _ref5, _results;
         _results = [];
         for (_l = 0, _len3 = quickbuilds_matching_ship_and_faction.length; _l < _len3; _l++) {
           quickbuild = quickbuilds_matching_ship_and_faction[_l];
           _results.push({
             id: quickbuild.id,
-            text: "" + ((((_ref3 = exportObj.settings) != null ? _ref3.initiative_prefix : void 0) != null) && exportObj.settings.initiative_prefix ? exportObj.pilots[quickbuild.pilot].skill + ' - ' : '') + (exportObj.pilots[quickbuild.pilot].display_name ? exportObj.pilots[quickbuild.pilot].display_name : quickbuild.pilot) + quickbuild.suffix + " (" + quickbuild.threat + ")",
+            text: "" + ((((_ref4 = exportObj.settings) != null ? _ref4.initiative_prefix : void 0) != null) && exportObj.settings.initiative_prefix ? exportObj.pilots[quickbuild.pilot].skill + ' - ' : '') + (exportObj.pilots[quickbuild.pilot].display_name ? exportObj.pilots[quickbuild.pilot].display_name : quickbuild.pilot) + quickbuild.suffix + " (" + quickbuild.threat + ")",
             points: quickbuild.threat,
             ship: quickbuild.ship,
-            disabled: (_ref4 = quickbuild.id, __indexOf.call(allowed_quickbuilds_containing_uniques_in_use, _ref4) >= 0)
+            disabled: (_ref5 = quickbuild.id, __indexOf.call(allowed_quickbuilds_containing_uniques_in_use, _ref5) >= 0)
           });
         }
         return _results;
@@ -32860,7 +32892,7 @@ exportObj.SquadBuilder = (function() {
       _results = [];
       for (upgrade_name in _ref) {
         upgrade = _ref[upgrade_name];
-        if (upgrade.slot === slot && (this.matcher(upgrade_name, term) || (upgrade.display_name && this.matcher(upgrade.display_name, term))) && ((upgrade.ship == null) || this.isShip(upgrade.ship, ship.data.name)) && ((upgrade.faction == null) || this.isOurFaction(upgrade.faction)) && (this.isItemAvailable(upgrade))) {
+        if (exportObj.slotsMatching(upgrade.slot, slot) && (this.matcher(upgrade_name, term) || (upgrade.display_name && this.matcher(upgrade.display_name, term))) && ((upgrade.ship == null) || this.isShip(upgrade.ship, ship.data.name)) && ((upgrade.faction == null) || this.isOurFaction(upgrade.faction)) && (this.isItemAvailable(upgrade))) {
           _results.push(upgrade);
         }
       }
@@ -34074,7 +34106,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.loadFromXWS = function(xws, cb) {
-    var addon, addon_added, addons, err, error, i, key, new_ship, p, pilot, pilotxws, possible_pilot, possible_pilots, shipname, slot, success, upgrade, upgrade_canonical, upgrade_canonicals, upgrade_type, version_list, x, xws_faction, _, _base1, _i, _j, _k, _l, _len, _len1, _len2, _len3, _m, _ref, _ref1, _ref2, _ref3, _ref4, _ref5;
+    var addons, error, key, new_ship, pilot, pilotxws, possible_pilot, possible_pilots, serialized_squad, slot, success, upgrade, upgrade_canonical, upgrade_canonicals, upgrade_type, version_list, x, xws_faction, _base1, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _ref3, _ref4;
     success = null;
     error = null;
     if (xws.version != null) {
@@ -34108,6 +34140,9 @@ exportObj.SquadBuilder = (function() {
         }
         this.suppress_automatic_new_ship = true;
         this.removeAllShips();
+        success = true;
+        error = "";
+        serialized_squad = "v7!s=200!";
         _ref = xws.pilots;
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           pilot = _ref[_i];
@@ -34122,7 +34157,7 @@ exportObj.SquadBuilder = (function() {
             break;
           }
           if (exportObj.pilotsByUniqueName[pilotxws] && exportObj.pilotsByUniqueName[pilotxws].length === 1) {
-            shipname = exportObj.pilotsByUniqueName[pilotxws][0].ship;
+            serialized_squad += exportObj.pilotsByUniqueName[pilotxws][0].id;
           } else {
             _ref1 = exportObj.pilotsByUniqueName;
             for (key in _ref1) {
@@ -34130,29 +34165,13 @@ exportObj.SquadBuilder = (function() {
               for (_j = 0, _len1 = possible_pilots.length; _j < _len1; _j++) {
                 possible_pilot = possible_pilots[_j];
                 if ((possible_pilot.xws && possible_pilot.xws === pilotxws) || (!possible_pilot.xws && key === pilotxws)) {
-                  shipname = possible_pilot.ship;
+                  serialized_squad += possible_pilot.id;
+                  break;
                 }
               }
             }
           }
-          try {
-            new_ship.setPilot(((function() {
-              var _base1, _k, _len2, _ref2, _results;
-              _ref2 = ((_base1 = exportObj.pilotsByFactionXWS[this.faction])[pilotxws] != null ? _base1[pilotxws] : _base1[pilotxws] = exportObj.pilotsByFactionCanonicalName[this.faction][pilotxws]);
-              _results = [];
-              for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-                p = _ref2[_k];
-                if (p.ship === shipname) {
-                  _results.push(p);
-                }
-              }
-              return _results;
-            }).call(this))[0], true);
-          } catch (_error) {
-            err = _error;
-            console.error(err.message);
-            continue;
-          }
+          serialized_squad += ":";
           addons = [];
           _ref3 = (_ref2 = pilot.upgrades) != null ? _ref2 : {};
           for (upgrade_type in _ref3) {
@@ -34161,63 +34180,23 @@ exportObj.SquadBuilder = (function() {
               upgrade_canonical = upgrade_canonicals[_k];
               slot = null;
               slot = (_ref4 = exportObj.fromXWSUpgrade[upgrade_type]) != null ? _ref4 : upgrade_type.capitalize();
-              addon = (_base1 = exportObj.upgradesBySlotXWSName[slot])[upgrade_canonical] != null ? _base1[upgrade_canonical] : _base1[upgrade_canonical] = exportObj.upgradesBySlotCanonicalName[slot][upgrade_canonical];
-              if (addon != null) {
-                addons.push({
-                  type: slot,
-                  data: addon,
-                  slot: slot
-                });
+              upgrade = (_base1 = exportObj.upgradesBySlotXWSName[slot])[upgrade_canonical] != null ? _base1[upgrade_canonical] : _base1[upgrade_canonical] = exportObj.upgradesBySlotCanonicalName[slot][upgrade_canonical];
+              if (upgrade == null) {
+                console.log("Failed to load xws upgrade: " + upgrade_canonical);
+                error += "Skipped upgrade " + upgrade_canonical;
+                success = false;
+                continue;
               }
+              serialized_squad += upgrade.id;
+              serialized_squad += ",";
             }
           }
-          if (addons.length > 0) {
-            for (_ = _l = 0; _l < 1000; _ = ++_l) {
-              addon = addons.shift();
-              addon_added = false;
-              _ref5 = new_ship.upgrades;
-              for (i = _m = 0, _len3 = _ref5.length; _m < _len3; i = ++_m) {
-                upgrade = _ref5[i];
-                if (upgrade.slot !== addon.slot || (upgrade.data != null)) {
-                  continue;
-                }
-                upgrade.setData(addon.data);
-                addon_added = true;
-                break;
-              }
-              if (addon_added) {
-                if (addons.length === 0) {
-                  break;
-                }
-              } else {
-                if (addons.length === 0) {
-                  success = false;
-                  error = "Could not add " + addon.data.name + " to " + new_ship;
-                  break;
-                } else {
-                  addons.push(addon);
-                }
-              }
-            }
-            if (addons.length > 0) {
-              success = false;
-              error = "Could not add all upgrades";
-              break;
-            }
-          }
+          serialized_squad += ":;";
         }
-        this.suppress_automatic_new_ship = false;
-        this.addShip();
-        success = true;
-        break;
-      default:
-        success = false;
-        error = "Invalid or unsupported XWS version";
-    }
-    if (success) {
-      this.current_squad.dirty = true;
-      this.container.trigger('xwing-backend:squadNameChanged');
-      this.container.trigger('xwing-backend:squadDirtinessChanged');
+        this.loadFromSerialized(serialized_squad);
+        this.current_squad.dirty = true;
+        this.container.trigger('xwing-backend:squadNameChanged');
+        this.container.trigger('xwing-backend:squadDirtinessChanged');
     }
     return cb({
       success: success,
@@ -34264,7 +34243,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 35680
+              lineno: 35654
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -34466,7 +34445,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 35788
+                          lineno: 35762
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -34495,7 +34474,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 35804
+                              lineno: 35778
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -34565,7 +34544,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 35846
+                      lineno: 35820
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -34589,7 +34568,7 @@ Ship = (function() {
                   _ref3 = _this.upgrades;
                   for (_k = 0, _len2 = _ref3.length; _k < _len2; _k++) {
                     upgrade = _ref3[_k];
-                    if (upgrade.slot === auto_equip_upgrade.slot) {
+                    if (exportObj.slotsMatching(upgrade.slot, auto_equip_upgrade.slot)) {
                       upgrade.setData(auto_equip_upgrade);
                     }
                   }
@@ -34639,7 +34618,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 35871
+                lineno: 35845
               })
             ]);
             __iced_deferrals._fulfill();
@@ -34708,7 +34687,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 35900
+              lineno: 35874
             }));
           }
         }
@@ -35382,7 +35361,7 @@ Ship = (function() {
   };
 
   Ship.prototype.fromSerialized = function(version, serialized) {
-    var addon_cls, addon_id, addon_type_serialized, conferred_addon, conferredaddon_pair, conferredaddon_pairs, deferred_id, deferred_id_added, deferred_ids, everythingadded, i, pilot_id, upgrade, upgrade_conferred_addon_pairs, upgrade_id, upgrade_ids, version_4_compatibility_placeholder_mod, version_4_compatibility_placeholder_title, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _m, _n, _o, _p, _q, _ref, _ref1, _ref10, _ref11, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var addon_cls, addon_id, addon_type_serialized, conferred_addon, conferredaddon_pair, conferredaddon_pairs, deferred_id, deferred_id_added, deferred_ids, everythingadded, i, pilot_id, upgrade, upgrade_conferred_addon_pairs, upgrade_id, upgrade_ids, upgrade_selection, version_4_compatibility_placeholder_mod, version_4_compatibility_placeholder_title, _, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _len9, _m, _n, _o, _p, _q, _r, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _s, _t;
     everythingadded = true;
     switch (version) {
       case 1:
@@ -35504,6 +35483,40 @@ Ship = (function() {
             }
           }
         }
+        break;
+      case 7:
+        _ref12 = serialized.split(':'), pilot_id = _ref12[0], upgrade_ids = _ref12[1], conferredaddon_pairs = _ref12[2];
+        upgrade_ids = upgrade_ids.split(',');
+        this.setPilotById(parseInt(pilot_id), true);
+        if (!this.validate) {
+          return false;
+        }
+        for (_ = _r = 1; _r < 3; _ = ++_r) {
+          for (i = _s = _ref13 = upgrade_ids.length - 1; _ref13 <= -1 ? _s < -1 : _s > -1; i = _ref13 <= -1 ? ++_s : --_s) {
+            upgrade_id = upgrade_ids[i];
+            upgrade = exportObj.upgradesById[upgrade_id];
+            if (upgrade == null) {
+              upgrade_ids.splice(i, 1);
+              if (upgrade_id !== "") {
+                console.log("Unknown upgrade id " + upgrade_id + " could not be added. Please report that error");
+                everythingadded = false;
+              }
+              continue;
+            }
+            _ref14 = this.upgrades;
+            for (_t = 0, _len9 = _ref14.length; _t < _len9; _t++) {
+              upgrade_selection = _ref14[_t];
+              if (exportObj.slotsMatching(upgrade.slot, upgrade_selection.slot) && !upgrade_selection.isOccupied()) {
+                upgrade_selection.setById(upgrade_id);
+                if (upgrade_selection.lastSetValid) {
+                  upgrade_ids.splice(i, 1);
+                }
+                break;
+              }
+            }
+          }
+        }
+        everythingadded &= upgrade_ids.length === 0;
     }
     this.updateSelections();
     return everythingadded;
@@ -35628,7 +35641,7 @@ Ship = (function() {
     _ref = this.upgrades;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       upgrade = _ref[_i];
-      if (upgrade.slot === slot_name) {
+      if (exportObj.slotsMatching(upgrade.slot, slot_name)) {
         if (!upgrade.isOccupied()) {
           return true;
         }
@@ -35749,7 +35762,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 36709
+                lineno: 36714
               })
             ]);
             __iced_deferrals._fulfill();
@@ -35890,7 +35903,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 36783
+                  lineno: 36788
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -35912,7 +35925,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 36787
+                    lineno: 36792
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -35999,7 +36012,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 36828
+            lineno: 36833
           }));
         }
         __iced_deferrals._fulfill();
