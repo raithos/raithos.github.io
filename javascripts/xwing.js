@@ -2709,6 +2709,30 @@ exportObj.basicCardData = function() {
         actions: ["Calculate", "Lock", "Barrel Roll", "R> Lock"],
         actionsred: ["Reload"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 3, 1, 3, 1, 0, 0, 0, 0, 0], [2, 1, 2, 1, 2, 3, 0, 0, 3, 3], [1, 0, 2, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
+      },
+      "Resistance Transport Pod": {
+        name: "Resistance Transport Pod",
+        xws: "Resistance Transport Pod".canonicalize(),
+        factions: ["Resistance"],
+        attack: 2,
+        agility: 2,
+        hull: 3,
+        shields: 1,
+        actions: ["Focus"],
+        actionsred: ["Lock", "Barrel Roll", "Jam"],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 3, 1, 3, 0, 3, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
+      },
+      "Resistance Transport": {
+        name: "Resistance Transport",
+        xws: "Resistance Transport".canonicalize(),
+        factions: ["Resistance"],
+        attack: 2,
+        agility: 1,
+        hull: 5,
+        shields: 3,
+        actions: ["Focus", "Lock"],
+        actionsred: ["Coordinate", "Jam"],
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0, 3, 0, 3], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0], [0, 3, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       }
     },
     pilotsById: [
@@ -5648,6 +5672,8 @@ exportObj.basicCardData = function() {
         slots: ["Missile", "Modification"]
       }, {
         name: "Anakin Skywalker (N-1 Starfighter)",
+        canonical_name: 'Anakin Skywalker'.canonicalize(),
+        xws: "anakinskywalker-nabooroyaln1starfighter",
         id: 322,
         unique: true,
         faction: "Galactic Republic",
@@ -5681,7 +5707,7 @@ exportObj.basicCardData = function() {
         points: 200,
         slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Configuration"]
       }, {
-        name: "Unique PS 4",
+        name: "DBS-404",
         id: 326,
         unique: true,
         faction: "Separatist Alliance",
@@ -5733,16 +5759,16 @@ exportObj.basicCardData = function() {
         ship: "Naboo Royal N-1 Starfighter",
         skill: 3,
         points: 200,
-        slots: ["Sensor", "Astromech", "Torpedo"]
+        slots: ["Talent", "Sensor", "Astromech", "Torpedo"]
       }, {
-        name: "Unique PS 4",
+        name: "Padmé Amidala",
         id: 332,
         unique: true,
         faction: "Galactic Republic",
         ship: "Naboo Royal N-1 Starfighter",
         skill: 4,
         points: 200,
-        slots: ["Sensor", "Astromech", "Torpedo"]
+        slots: ["Talent", "Sensor", "Astromech", "Torpedo"]
       }, {
         name: "Unique PS 5",
         id: 333,
@@ -5751,7 +5777,7 @@ exportObj.basicCardData = function() {
         ship: "Naboo Royal N-1 Starfighter",
         skill: 5,
         points: 200,
-        slots: ["Sensor", "Astromech", "Torpedo"]
+        slots: ["Talent", "Sensor", "Astromech", "Torpedo"]
       }, {
         name: "Count Dooku",
         id: 334,
@@ -5852,6 +5878,32 @@ exportObj.basicCardData = function() {
         skill: 3,
         points: 41,
         slots: ["Talent", "Tactical Relay", "Modification", "Title"]
+      }, {
+        name: "Rose Tico",
+        id: 345,
+        unique: true,
+        faction: "Resistance",
+        ship: "Resistance Transport Pod",
+        skill: 3,
+        points: 200,
+        slots: ["Talent", "Crew", "Modification"]
+      }, {
+        name: "Logistics Division Pilot",
+        id: 346,
+        faction: "Resistance",
+        ship: "Resistance Transport",
+        skill: 1,
+        points: 200,
+        slots: ["Cannon", "Crew", "Modification"]
+      }, {
+        name: "Pammich Nerro Goode",
+        id: 347,
+        unique: true,
+        faction: "Resistance",
+        ship: "Resistance Transport",
+        skill: 3,
+        points: 200,
+        slots: ["Talent", "Cannon", "Crew", "Modification"]
       }
     ],
     upgradesById: [
@@ -8003,6 +8055,63 @@ exportObj.basicCardData = function() {
         modifier_func: function(stats) {
           return stats.hull += 2;
         }
+      }, {
+        name: "GA-97",
+        id: 230,
+        slot: "Crew",
+        points: 200,
+        charge: 5,
+        recurring: true,
+        faction: "Resistance",
+        unique: true,
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'Calculate') < 0) {
+            return stats.actions.push('Calculate');
+          }
+        },
+        applies_condition: 'It\'s the Resistance'.canonicalize()
+      }, {
+        name: "Kaydel Connix",
+        id: 231,
+        slot: "Crew",
+        points: 200,
+        faction: "Resistance",
+        unique: true
+      }, {
+        name: "Autoblasters",
+        id: 232,
+        slot: "Cannon",
+        points: 200,
+        attack: 2,
+        range: "1-2"
+      }, {
+        name: "R2-C4",
+        id: 233,
+        unique: true,
+        slot: "Astromech",
+        points: 200,
+        faction: "Galactic Republic"
+      }, {
+        name: "Plasma Torpedoes",
+        id: 234,
+        slot: "Torpedo",
+        points: 200,
+        attack: 3,
+        range: "2-3",
+        rangebonus: true,
+        charge: 2
+      }, {
+        name: "Electro-Proton Bomb",
+        id: 235,
+        slot: "Device",
+        points: 200,
+        charge: 1,
+        unequips_upgrades: ["Modification"],
+        also_occupies_upgrades: ["Modification"],
+        applies_condition: 'Electro-Proton Bomb'.canonicalize(),
+        restriction_func: function(ship) {
+          return __indexOf.call(ship.effectiveStats().actions, "Reload") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Reload") >= 0;
+        }
       }
     ],
     conditionsById: [
@@ -8057,6 +8166,12 @@ exportObj.basicCardData = function() {
       }, {
         name: 'Buzz Droid Swarm',
         id: 14
+      }, {
+        name: 'It\'s the Resistance',
+        id: 15
+      }, {
+        name: 'Electro-Proton Bomb',
+        id: 16
       }
     ],
     quickbuildsById: [
@@ -8559,7 +8674,7 @@ exportObj.basicCardData = function() {
         pilot: "Cutlass Squadron Pilot",
         ship: "TIE Punisher",
         threat: 2,
-        upgrades: ["Advanced Sensors", "Proton Rockets", "Connor Nets"]
+        upgrades: ["Advanced Sensors", "Proton Rockets", "Conner Nets"]
       }, {
         id: 70,
         faction: "Galactic Empire",
@@ -12642,7 +12757,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Soulless One": {
       display_name: "Seelenlose",
-      text: "<i>Nur für Separatistenallianz</i>%LINEBREAK%Solange du verteidigst, falls der Angreifer außerhalb deines Feuerwinkels ist, darfst du 1 Verteidigungswürfel neu werfen."
+      text: "<i>Nur für Separatistenallianz %LINEBREAK% Fügt 2 Hüllenpunkte hinzu </i>%LINEBREAK% Solange du verteidigst, falls der Angreifer außerhalb deines Feuerwinkels ist, darfst du 1 Verteidigungswürfel neu werfen."
     },
     "Virago": {
       display_name: "Virago",
@@ -13848,7 +13963,7 @@ exportObj.cardLoaders.English = function() {
       text: "<i class = flavor_text>These heavily armed atmospheric craft employ their specialized moveable wings to gain additional speed and maneuverability.</i>%LINEBREAK% <sasmall><strong>Adaptive Ailerons:</strong> Before you reveal your dial, if you are not stressed, you <b>must</b> execute a white [1&nbsp;%BANKLEFT%], [1&nbsp;%STRAIGHT%], or [1&nbsp;%BANKRIGHT%] maneuver.</sasmall>"
     },
     "Black Squadron Ace (T-70)": {
-      display_name: "Black Squadron Ace (T-70)",
+      display_name: "Black Squadron Ace",
       text: "<i class = flavor_text>During the Cold War, Poe Dameron’s Black Squadron conducted daring covert operations against the First Order in defiance of treaties ratified by the New Republic Senate.</i>%LINEBREAK%<strong>Weapon Hardpoint:</strong> You can equip 1&nbsp;%CANNON%, %TORPEDO%, or %MISSILE% upgrade."
     },
     "Black Squadron Scout": {
@@ -13988,7 +14103,7 @@ exportObj.cardLoaders.English = function() {
       text: "Before you would be dealt a faceup damage card, you may spend 1&nbsp;%CHARGE% to be dealt the card facedown instead."
     },
     "Chewbacca (Resistance)": {
-      display_name: "Chewbacca (Resistance)",
+      display_name: "Chewbacca",
       text: "After a friendly ship at range 0-3 is destroyed, before that ship is removed, you may perform an action. Then you may perform a bonus attack."
     },
     "Cobalt Squadron Bomber": {
@@ -14048,7 +14163,7 @@ exportObj.cardLoaders.English = function() {
       text: "After an enemy ship at range 0-3 receives at least 1 ion token, you may spend 3&nbsp;%CHARGE%. If you do, that ship gains 2 additional ion tokens."
     },
     "Dalan Oberos (StarViper)": {
-      display_name: "Dalan Oberos (StarViper)",
+      display_name: "Dalan Oberos",
       text: "After you fully execute a maneuver, you may gain 1 stress token to rotate your ship 90º.%LINEBREAK% <strong>Microthrusters:</strong> While you perform a barrel roll, you <b>must</b> use the %BANKLEFT% or %BANKRIGHT% template instead of the %STRAIGHT% template."
     },
     "Dalan Oberos": {
@@ -14120,11 +14235,11 @@ exportObj.cardLoaders.English = function() {
       text: "While you defend or perform an attack, if you are stressed, you may spend 1&nbsp;%FORCE% to change up to 2 of your %FOCUS% results to %EVADE% or %HIT% results.%LINEBREAK%<strong>Locked and Loaded:</strong> While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus primary %REARARC% attack."
     },
     "Ezra Bridger (Sheathipede)": {
-      display_name: "Ezra Bridger (Sheathipede)",
+      display_name: "Ezra Bridger",
       text: "While you defend or perform an attack, if you are stressed, you may spend 1&nbsp;%FORCE% to change up to 2 of your %FOCUS% results to %EVADE% /%HIT% results. %LINEBREAK%<strong>Comms Shuttle:</strong> While you are docked, your carrier ship gains %COORDINATE%. Before your carrier ship activates, it may perform a %COORDINATE% action."
     },
     "Ezra Bridger (TIE Fighter)": {
-      display_name: "Ezra Bridger (TIE Fighter)",
+      display_name: "Ezra Bridger",
       text: "While you defend or perform an attack, if you are stressed, you may spend 1&nbsp;%FORCE% to change up to 2 of your %FOCUS% results to %EVADE% or %HIT% results."
     },
     "Feethan Ottraw Autopilot": {
@@ -14132,7 +14247,7 @@ exportObj.cardLoaders.English = function() {
       text: "<i class = flavor_text>Unlike the more disposable fighters it also built for the Separatists, Feethan Ottraw Scalable Assemblies designed the Belbullab-22 with a solid mix of firepower, durability, and speed.</i>"
     },
     "Fenn Rau (Sheathipede)": {
-      display_name: "Fenn Rau (Sheathipede)",
+      display_name: "Fenn Rau",
       text: "After an enemy ship in your firing arc engages, if you are not stressed, you may gain 1 stress token. If you do, that ship cannot spend tokens to modify dice while it performs an attack during this phase.%LINEBREAK%<strong>Comms Shuttle:</strong> While you are docked, your carrier ship gains %COORDINATE%. Before your carrier ship activates, it may perform a %COORDINATE% action."
     },
     "Fenn Rau": {
@@ -14164,7 +14279,7 @@ exportObj.cardLoaders.English = function() {
       text: "<i class = flavor_text>The legendary Findsmen of Gand worship the enshrouding mists of their home planet, using signs, augurs, and mystical rituals to track their quarry.</i>"
     },
     "Garven Dreis (X-Wing)": {
-      display_name: "Garven Dreis (X-Wing)",
+      display_name: "Garven Dreis",
       text: "After you spend a focus token, you may choose 1 friendly ship at range 1-3. That ship gains 1 focus token."
     },
     "Garven Dreis": {
@@ -14228,11 +14343,11 @@ exportObj.cardLoaders.English = function() {
       text: "After you roll dice, if you are at range 0-1 of an obstacle, you may reroll all of your dice. This does not count as rerolling for the purpose of other effects."
     },
     "Han Solo (Scum)": {
-      display_name: "Han Solo (Scum)",
+      display_name: "Han Solo",
       text: "While you defend or perform a primary attack, if the attack is obstructed by an obstacle, you may roll 1 additional die."
     },
     "Han Solo (Resistance)": {
-      display_name: "Han Solo (Resistance)",
+      display_name: "Han Solo",
       text: "<strong>Setup:</strong> You can be placed anywhere in the play area beyond range 3 of enemy ships."
     },
     "Heff Tobber": {
@@ -14244,7 +14359,7 @@ exportObj.cardLoaders.English = function() {
       text: "After you reveal a red or blue maneuver, you may set your dial to another maneuver of the same difficulty.%LINEBREAK%<strong>Locked and Loaded:</strong> While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus primary %REARARC% attack."
     },
     "Hera Syndulla (VCX-100)": {
-      display_name: "Hera Syndulla (VCX-100)",
+      display_name: "Hera Syndulla",
       text: "After you reveal a red or blue maneuver, you may set your dial to another maneuver of the same difficulty.%LINEBREAK%<strong>Tail Gun:</strong> While you have a docked ship, you have a primary %REARARC% weapon with an attack value equal to your docked ship’s primary %FRONTARC% attack value."
     },
     "Hired Gun": {
@@ -14388,7 +14503,7 @@ exportObj.cardLoaders.English = function() {
       text: "If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers."
     },
     "L3-37 (Escape Craft)": {
-      display_name: "L3-37 (Escape Craft)",
+      display_name: "L3-37",
       text: "If you are not shielded, decrease the difficulty of your bank (%BANKLEFT% and %BANKRIGHT%) maneuvers.%LINEBREAK%<strong>Co-Pilot:</strong> While you are docked, your carrier ship has your pilot ability in addition to its own."
     },
     "Laetin A'shera": {
@@ -14400,11 +14515,11 @@ exportObj.cardLoaders.English = function() {
       text: "After you fully execute a blue maneuver, you may choose a friendly ship at range 0-3. That ship may perform an action."
     },
     "Lando Calrissian (Scum)": {
-      display_name: "Lando Calrissian (Scum)",
+      display_name: "Lando Calrissian",
       text: "After you roll dice, if you are not stressed, you may gain 1 stress token to reroll all of your blank results."
     },
     "Lando Calrissian (Scum) (Escape Craft)": {
-      display_name: "Lando Calrissian (Scum) (Escape Craft)",
+      display_name: "Lando Calrissian",
       text: "After you roll dice, if you are not stressed, you may gain 1 stress token to reroll all of your blank results.%LINEBREAK%<strong>Co-Pilot:</strong> While you are docked, your carrier ship has your pilot ability in addition to its own."
     },
     "Latts Razzi": {
@@ -14524,7 +14639,7 @@ exportObj.cardLoaders.English = function() {
       text: "After you gain a stress token, if there is an enemy ship in your %FRONTARC% at range 0-1, you may remove that stress token.%LINEBREAK%<strong>Weapon Hardpoint:</strong> You can equip 1&nbsp;%CANNON%, %TORPEDO%, or %MISSILE% upgrade."
     },
     "Norra Wexley (Y-Wing)": {
-      display_name: "Norra Wexley (Y-Wing)",
+      display_name: "Norra Wexley",
       text: "While you defend, if there is an enemy ship at range 0-1, add 1&nbsp;%EVADE% result to your dice results."
     },
     "Norra Wexley": {
@@ -14672,11 +14787,11 @@ exportObj.cardLoaders.English = function() {
       text: "Before you activate, you may perform a %BARRELROLL% or %BOOST% action.%LINEBREAK%<strong>Locked and Loaded:</strong> While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus primary %REARARC% attack."
     },
     "Sabine Wren (TIE Fighter)": {
-      display_name: "Sabine Wren (TIE Fighter)",
+      display_name: "Sabine Wren",
       text: "Before you activate, you may perform a %BARRELROLL% or %BOOST% action."
     },
     "Sabine Wren (Scum)": {
-      display_name: "Sabine Wren (Scum)",
+      display_name: "Sabine Wren",
       text: "While you defend, if the attacker is in your %SINGLETURRETARC% at range 0-2, you may add 1&nbsp;%FOCUS% result to your dice results."
     },
     "Saesee Tiin": {
@@ -14992,7 +15107,7 @@ exportObj.cardLoaders.English = function() {
       text: "After you fully execute a red maneuver or perform a red action, if there is an enemy ship in your %BULLSEYEARC%, you may acquire a lock on that ship."
     },
     '"Odd Ball" (ARC-170)': {
-      display_name: "“Odd Ball” (ARC-170)",
+      display_name: "“Odd Ball”",
       text: "After you fully execute a red maneuver or perform a red action, if there is an enemy ship in your %BULLSEYEARC%, you may acquire a lock on that ship."
     },
     '"Pure Sabacc"': {
@@ -15056,11 +15171,11 @@ exportObj.cardLoaders.English = function() {
       text: "While you defend, %CRIT% results are neutralized before %HIT% results.%LINEBREAK%<strong>Locked and Loaded:</strong> While you are docked, after your carrier ship performs a primary %FRONTARC% or %TURRET% attack, it may perform a bonus primary %REARARC% attack."
     },
     '"Zeb" Orrelios (Sheathipede)': {
-      display_name: "“Zeb” Orrelios (Sheathipede)",
+      display_name: "“Zeb” Orrelios",
       text: "While you defend, %CRIT% results are neutralized before %HIT% results.%LINEBREAK%<strong>Comms Shuttle:</strong> While you are docked, your carrier ship gains %COORDINATE%. Before your carrier ship activates, it may perform a %COORDINATE% action."
     },
     '"Zeb" Orrelios (TIE Fighter)': {
-      display_name: "“Zeb” Orrelios (TIE Fighter)",
+      display_name: "“Zeb” Orrelios",
       text: "While you defend, %CRIT% results are neutralized before %HIT% results."
     },
     "Bombardment Drone": {
@@ -15073,6 +15188,26 @@ exportObj.cardLoaders.English = function() {
     "Precise Hunter": {
       display_name: "Precise Hunter",
       text: "While you perform an attack, if the defender is in your %BULLSEYEARC%, you may reroll 1&nbsp;blank result.%LINEBREAK%<strong>Networked Calculations:</strong> While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range&nbsp;0-1 to change 1&nbsp;%FOCUS% result to an %EVADE% or %HIT% result."
+    },
+    "Rose Tico": {
+      display_name: "Rose Tico",
+      text: "While you defend or perform an attack, you may reroll up to 1 of your results for each other friendly ship in the attack arc."
+    },
+    "Pammich Nerro Goode": {
+      display_name: "Pammich Nerro Goode",
+      text: "While you have 2 or fewer stress tokens, you may execute red maneuvers even while stressed."
+    },
+    "Padmé Amidala": {
+      display_name: "Padmé Amidala",
+      text: "While an enemy ship in your %FRONTARC% defends or performs an attack, that ship can modify only 1 %FOCUS% result (other results can still be modified). %LINEBREAK%<strong>Full Throttle:</strong> After you fully execute a speed 3-5 maneuver, you may perform an %EVADE% action."
+    },
+    "Anakin Skywalker (N-1 Starfighter)": {
+      display_name: "Anakin Skywalker",
+      text: "Before you reveal your maneuver, you may spend 1 %FORCE% to barrel roll (this is not an action). %LINEBREAK%<strong>Full Throttle:</strong> After you fully execute a speed 3-5 maneuver, you may perform an %EVADE% action."
+    },
+    "DBS-404": {
+      display_name: "DBS-404",
+      text: "You can perform primary attacks at range 0. While you perform an attack at attack range 0-1, you <strong>must</strong> roll 1 additional die. After the attack hits, suffer 1 %CRIT% damage. %LINEBREAK%<strong>Networked Calculations:</strong> While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range&nbsp;0-1 to change 1&nbsp;%FOCUS% result to an %EVADE% or %HIT% result."
     }
   };
   upgrade_translations = {
@@ -15162,7 +15297,7 @@ exportObj.cardLoaders.English = function() {
     },
     "Soulless One": {
       display_name: "Soulless One",
-      text: "<i>Separatist Alliance only</i>%LINEBREAK%While you defend, if the attacker is outside your firing arc, you may reroll 1&nbsp;defense die."
+      text: "<i>Separatist Alliance only %LINEBREAK% Adds 2 Hull</i>%LINEBREAK% While you defend, if the attacker is outside your firing arc, you may reroll 1&nbsp;defense die."
     },
     "Ablative Plating": {
       display_name: "Ablative Plating",
@@ -15253,7 +15388,7 @@ exportObj.cardLoaders.English = function() {
       text: "<i>Adds %CALCULATE%</i>%LINEBREAK%<i>Rebel only</i>%LINEBREAK%Before rolling defense dice, you may spend 1 calculate token to guess aloud a number 1 or higher. If you do and you roll exactly that many %EVADE% results, add 1&nbsp;%EVADE% result.%LINEBREAK%After you perform the %CALCULATE% action, gain 1 calculate token."
     },
     "C-3PO (Resistance)": {
-      display_name: "C-3PO (Resistance)",
+      display_name: "C-3PO",
       text: "<i>Adds %CALCULATE% ,  <r>%COORDINATE%</r></i>%LINEBREAK%<i>Resistance only</i>%LINEBREAK%While you coordinate, you can choose friendly ships beyond range 2 if they have&nbsp;%CALCULATE% on their action bar.%LINEBREAK%After you perform the&nbsp;%CALCULATE% or&nbsp;%COORDINATE% action, gain 1&nbsp;calculate token."
     },
     "Cad Bane": {
@@ -15281,11 +15416,11 @@ exportObj.cardLoaders.English = function() {
       text: "<i>Rebel only</i>%LINEBREAK%At the start of the Engagement Phase, you may spend 2 %CHARGE% to repair 1 faceup damage card."
     },
     "Chewbacca (Scum)": {
-      display_name: "Chewbacca (Scum)",
+      display_name: "Chewbacca",
       text: "<i>Scum only</i>%LINEBREAK%At the start of the End Phase, you may spend 1 focus token to repair 1 of your faceup damage cards."
     },
     "Chewbacca (Resistance)": {
-      display_name: "Chewbacca (Resistance)",
+      display_name: "Chewbacca",
       text: "<i>Resistance only</i>%LINEBREAK%<strong>Setup:</strong> Lose 1&nbsp;%CHARGE%.%LINEBREAK%After a friendly ship at range&nbsp;0-3 is dealt 1&nbsp;damage card, recover 1&nbsp;%CHARGE%.%LINEBREAK%While you perform an attack, you may spend 2&nbsp;%CHARGE% to change 1&nbsp;%FOCUS% result to a&nbsp;%CRIT% result."
     },
     "Ciena Ree": {
@@ -15477,11 +15612,11 @@ exportObj.cardLoaders.English = function() {
       text: "<i>Rebel only</i>%LINEBREAK%During the Engagement Phase, at initiative 7, you may perform a %SINGLETURRETARC% attack. You cannot attack from that %SINGLETURRETARC% again this round."
     },
     "Han Solo (Scum)": {
-      display_name: "Han Solo (Scum)",
+      display_name: "Han Solo",
       text: "<i>Scum only</i>%LINEBREAK%Before you engage, you may perform a red %FOCUS% action."
     },
     "Han Solo (Resistance)": {
-      display_name: "Han Solo (Resistance)",
+      display_name: "Han Solo",
       text: "<i>Adds <r>%EVADE%</r></i>%LINEBREAK%<i>Resistance only</i>%LINEBREAK%After you perform an %EVADE% action, gain additional evade tokens equal to the number of enemy ships at range 0-1."
     },
     "Hate": {
@@ -15617,7 +15752,7 @@ exportObj.cardLoaders.English = function() {
       text: "<i>Rebel only</i>%LINEBREAK%<strong>Action:</strong> Roll 2 defense dice. For each %FOCUS% result, gain 1 focus token. For each %EVADE% result, gain 1 evade token. If both results are blank, the opposing player chooses focus or evade. You gain 1 token of that type."
     },
     "Lando Calrissian (Scum)": {
-      display_name: "Lando Calrissian (Scum)",
+      display_name: "Lando Calrissian",
       text: "<i>Scum only</i>%LINEBREAK%After you roll dice, you may spend 1 green token to reroll up to 2 of your results."
     },
     "Lando's Millennium Falcon": {
@@ -15741,7 +15876,7 @@ exportObj.cardLoaders.English = function() {
       text: "After you reveal your dial, you may spend 1&nbsp;%CHARGE% and gain 1 disarm token to recover 1 shield."
     },
     "R2-D2 (Crew)": {
-      display_name: "R2-D2 (Crew)",
+      display_name: "R2-D2",
       text: "<i>Rebel only</i>%LINEBREAK%During the End Phase, if you are damaged and not shielded, you may roll 1 attack die to recover 1 shield. On a %HIT% result, expose 1 of your damage cards."
     },
     "R2-D2": {
@@ -15953,11 +16088,11 @@ exportObj.cardLoaders.English = function() {
       text: "<i>Scum only</i>%LINEBREAK%While you perform an attack, if you are not stressed, you may choose 1 defense die and gain 1 stress token. If you do, the defender must reroll that die."
     },
     '"Chopper" (Crew)': {
-      display_name: "“Chopper” (Crew)",
+      display_name: "“Chopper”",
       text: "<i>Rebel only</i>%LINEBREAK%During the Perform Action step, you may perform 1 action, even while stressed. After you perform an action while stressed, suffer 1&nbsp;%HIT% damage unless you expose 1 of your damage cards."
     },
     '"Chopper" (Astromech)': {
-      display_name: "“Chopper” (Astromech)",
+      display_name: "“Chopper”",
       text: "<i>Rebel only</i>%LINEBREAK%<strong>Action:</strong> Spend 1 non-recurring &nbsp;%CHARGE% from another equipped upgrade to recover 1 shield. %LINEBREAK%<strong>Action:</strong> Spend 2 shields to recover 1 non-recurring %CHARGE% on an equipped upgrade."
     },
     '"Genius"': {
@@ -15967,6 +16102,30 @@ exportObj.cardLoaders.English = function() {
     '"Zeb" Orrelios': {
       display_name: "“Zeb” Orrelios",
       text: "<i>Rebel only</i>%LINEBREAK%You can perform primary attacks at range 0. Enemy ships at range 0 can perform primary attacks against you."
+    },
+    "GA-97": {
+      display_name: "GA-97",
+      text: "<strong>Setup</strong>: Before lacing forces, you may spend 3-5 %CHARGE%. If you do, choose another friendly ship and assign the <strong>It's the Resistance</strong> condition to it."
+    },
+    "Kaydel Connix": {
+      display_name: "Kaydel Connix",
+      text: "After you reveal your dial, you may set your dial to a basic maneuver of the next higher speed. While you execute that maneuver, increase its' difficulty."
+    },
+    "Autoblasters": {
+      display_name: "Autoblasters",
+      text: "<strong>Attack:</strong> If the defender is in your %BULLSEYEARC%, roll 1 additional die. During the Neutralize Results step, if you are not in the defender's %FRONTARC%, %EVADE% results do not cancel %CRIT% results. "
+    },
+    "R2-C4": {
+      display_name: "R2-C4",
+      text: "While you perform an attack, you may spend 1 evade token to change 1 %FOCUS% result to a %HIT% result. "
+    },
+    "Plasma Torpedoes": {
+      display_name: "Plasma Torpedoes",
+      text: "<strong>Attack (%LOCK%):</strong> Spend 1 %CHARGE%. During the Neutralize Results step, %CRIT% results are cancelled before %HIT% results. After the attack hits, the defender loses 1 shield. "
+    },
+    "Electro-Proton Bomb": {
+      display_name: "Electro-Proton Bomb",
+      text: "<strong>Bomb</strong>%LINEBREAK%During the System Phase, you may spend 1 %CHARGE% to drop an Electro-Proton Bomb with the [1 %STRAIGHT%] template. Then place 1 fuse marker on that device. %LINEBREAK%This card’s %CHARGE% cannot be recovered."
     },
     "Hardpoint: Cannon": {
       text: "Adds a %CANNON% slot"
@@ -16020,6 +16179,12 @@ exportObj.cardLoaders.English = function() {
     },
     'Buzz Droid Swarm': {
       text: 'INIT: 0 %LINEBREAK% AGILITY: 3 %LINEBREAK% HULL: 1 %LINEBREAK% (Remote) - After an enemy ship moves through or overlaps you, relocate to its front or rear guides (you are at range 0 of this ship). You cannot overlap an object this way. If you cannot be placed at either set of guides, you and that ship each suffere 1 %HIT% damage. %LINEBREAK% Engagement Phase: At your initiative, each enemy ship at range 0 suffers 1 %CRIT% damage.'
+    },
+    'It\'s the Resistance': {
+      text: '<strong>Setup:</strong> Start in reserve. %LINEBREAK% When you deploy, you are placed within range 1 of any table edge and beyond range 3 of any enemy ship. %LINEBREAK% At the start of the round, if all of the friendly <strong>GA-97</strong>\'s %CHARGE% are active, you <strong>must</strong> deploy. Then remove this card. After the friendly <strong>GA-97</strong> is destroyed, you <strong>must</strong> deploy. Then gain 1 disarm token and remove this card.'
+    },
+    'Electro-Proton Bomb': {
+      text: '(Bomb Token) - At the end of the Activation Phase this device detonates. When this device detonates, each ship at range 0–2 rolls 4 attack dice. Each ship loses 1 shield for each blank result, gains 1 ion token for each %FOCUS%/%HIT% result, and gains 1 disarm token for each %CRIT% result. '
     }
   };
   return exportObj.setupTranslationCardData(pilot_translations, upgrade_translations, condition_translations);
@@ -30876,7 +31041,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 32903
+                    lineno: 33101
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -31707,7 +31872,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 33767
+              lineno: 33965
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -32518,7 +32683,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 34490
+              lineno: 34688
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -32528,7 +32693,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 34491
+                lineno: 34689
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -34243,7 +34408,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 35654
+              lineno: 35852
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -34445,7 +34610,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 35762
+                          lineno: 35960
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -34474,7 +34639,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 35778
+                              lineno: 35976
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -34544,7 +34709,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 35820
+                      lineno: 36018
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -34618,7 +34783,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 35845
+                lineno: 36043
               })
             ]);
             __iced_deferrals._fulfill();
@@ -34687,7 +34852,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 35874
+              lineno: 36072
             }));
           }
         }
@@ -34919,7 +35084,7 @@ Ship = (function() {
     this.pilot_selector.data('select2').container.on('touchmove', (function(_this) {
       return function(e) {
         if (_this.pilot) {
-          return _this.builder.showTooltip('Ship', _this.pilot, _this);
+          return _this.builder.showTooltip('Pilot', _this.pilot, _this);
         }
 
         /*if @data? 
@@ -35762,7 +35927,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 36714
+                lineno: 36912
               })
             ]);
             __iced_deferrals._fulfill();
@@ -35903,7 +36068,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 36788
+                  lineno: 36986
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -35925,7 +36090,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 36792
+                    lineno: 36990
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -36012,7 +36177,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 36833
+            lineno: 37031
           }));
         }
         __iced_deferrals._fulfill();
