@@ -8406,6 +8406,7 @@ exportObj.basicCardData = ->
                 "Missile"
                 "Device"
                 "Device"
+                "Modification"
                 "Configuration"
             ]
         }
@@ -8424,6 +8425,7 @@ exportObj.basicCardData = ->
                 "Missile"
                 "Device"
                 "Device"
+                "Modification"
                 "Configuration"
             ]
         }
@@ -8442,6 +8444,7 @@ exportObj.basicCardData = ->
                 "Missile"
                 "Device"
                 "Device"
+                "Modification"
                 "Configuration"
             ]
         }
@@ -8459,6 +8462,7 @@ exportObj.basicCardData = ->
                 "Missile"
                 "Device"
                 "Device"
+                "Modification"
                 "Configuration"
             ]
         }
@@ -8477,6 +8481,7 @@ exportObj.basicCardData = ->
                 "Missile"
                 "Device"
                 "Device"
+                "Modification"
                 "Configuration"
             ]
         }
@@ -8495,6 +8500,7 @@ exportObj.basicCardData = ->
                 "Missile"
                 "Device"
                 "Device"
+                "Modification"
                 "Configuration"
             ]
         }
@@ -8638,6 +8644,7 @@ exportObj.basicCardData = ->
         {
             name: '"Odd Ball" (ARC-170)'
             id: 338
+            xws: "oddball-arc170starfighter" 
             unique: true
             faction: "Galactic Republic"
             ship: "ARC-170"

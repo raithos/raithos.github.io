@@ -5697,7 +5697,7 @@ exportObj.basicCardData = function() {
         ship: "Hyena-Class Droid Bomber",
         skill: 1,
         points: 200,
-        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Configuration"]
+        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Modification", "Configuration"]
       }, {
         name: "Bombardment Drone",
         id: 325,
@@ -5706,7 +5706,7 @@ exportObj.basicCardData = function() {
         skill: 3,
         max_per_squad: 3,
         points: 200,
-        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Configuration"]
+        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Modification", "Configuration"]
       }, {
         name: "DBS-404",
         id: 326,
@@ -5715,7 +5715,7 @@ exportObj.basicCardData = function() {
         ship: "Hyena-Class Droid Bomber",
         skill: 4,
         points: 200,
-        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Configuration"]
+        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Modification", "Configuration"]
       }, {
         name: "Separatist Bomber",
         id: 327,
@@ -5723,7 +5723,7 @@ exportObj.basicCardData = function() {
         ship: "Hyena-Class Droid Bomber",
         skill: 3,
         points: 200,
-        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Configuration"]
+        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Modification", "Configuration"]
       }, {
         name: "DBS-32C",
         id: 328,
@@ -5732,7 +5732,7 @@ exportObj.basicCardData = function() {
         ship: "Hyena-Class Droid Bomber",
         skill: 3,
         points: 200,
-        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Configuration"]
+        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Modification", "Configuration"]
       }, {
         name: "Baktoid Prototype",
         id: 329,
@@ -5741,7 +5741,7 @@ exportObj.basicCardData = function() {
         ship: "Hyena-Class Droid Bomber",
         skill: 1,
         points: 200,
-        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Configuration"]
+        slots: ["Sensor", "Torpedo", "Missile", "Missile", "Device", "Device", "Modification", "Configuration"]
       }, {
         name: "Pilot PS 1",
         id: 330,
@@ -5821,6 +5821,7 @@ exportObj.basicCardData = function() {
       }, {
         name: '"Odd Ball" (ARC-170)',
         id: 338,
+        xws: "oddball-arc170starfighter",
         unique: true,
         faction: "Galactic Republic",
         ship: "ARC-170",
@@ -31136,7 +31137,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 33182
+                    lineno: 33189
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -31967,7 +31968,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 34046
+              lineno: 34053
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -32778,7 +32779,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 34769
+              lineno: 34776
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -32788,7 +32789,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 34770
+                lineno: 34777
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -34505,7 +34506,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 35935
+              lineno: 35942
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -34707,7 +34708,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 36043
+                          lineno: 36050
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -34736,7 +34737,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 36059
+                              lineno: 36066
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -34806,7 +34807,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 36101
+                      lineno: 36108
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -34880,7 +34881,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 36126
+                lineno: 36133
               })
             ]);
             __iced_deferrals._fulfill();
@@ -34949,7 +34950,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 36155
+              lineno: 36162
             }));
           }
         }
@@ -36024,7 +36025,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 36995
+                lineno: 37002
               })
             ]);
             __iced_deferrals._fulfill();
@@ -36165,7 +36166,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 37069
+                  lineno: 37076
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -36187,7 +36188,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 37073
+                    lineno: 37080
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -36274,7 +36275,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 37114
+            lineno: 37121
           }));
         }
         __iced_deferrals._fulfill();
