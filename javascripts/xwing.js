@@ -33902,7 +33902,7 @@ exportObj.SquadBuilder = (function() {
         upgrade = available_upgrades[_j];
         _results.push({
           id: upgrade.id,
-          text: "" + (upgrade.display_name ? upgrade.display_name : upgrade.name) + " (" + (this_upgrade_obj.getPoints(upgrade)) + (upgrade.points === '*' ? '*' : '') + ")",
+          text: "" + (upgrade.display_name ? upgrade.display_name : upgrade.name) + " (" + (this_upgrade_obj.getPoints(upgrade)) + (upgrade.pointsarray ? '*' : '') + ")",
           points: this_upgrade_obj.getPoints(upgrade),
           name: upgrade.name,
           display_name: upgrade.display_name,
@@ -37019,7 +37019,7 @@ GenericAddon = (function() {
     if (this.data != null) {
       return this.selector.select2('data', {
         id: this.data.id,
-        text: "" + (this.data.display_name ? this.data.display_name : this.data.name) + " (" + points + ")"
+        text: "" + (this.data.display_name ? this.data.display_name : this.data.name) + " (" + points + (this.data.pointsarray ? '*' : '') + ")"
       });
     } else {
       return this.selector.select2('data', null);
