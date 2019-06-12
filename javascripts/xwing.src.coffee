@@ -5860,7 +5860,7 @@ exportObj.basicCardData = ->
             unique: true
             faction: "Scum and Villainy"
             ship: "Z-95 Headhunter"
-            skill: 1
+            skill: 0
             points: 6
             slots: [
                 "Missile"
@@ -8380,7 +8380,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Generic PS 2"
+            name: "Bravo Flight Officer"
             id: 323
             faction: "Galactic Republic"
             ship: "Naboo Royal N-1 Starfighter"
@@ -8505,13 +8505,14 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Pilot PS 1"
+            name: "Naboo Handmaiden"
             id: 330
             max_per_squad: 2
             faction: "Galactic Republic"
             ship: "Naboo Royal N-1 Starfighter"
             skill: 1
             points: 200
+            applies_condition: '''Decoyed'''.canonicalize()
             slots: [
                 "Sensor"
                 "Astromech"
@@ -8519,7 +8520,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Unique PS 3"
+            name: "Dineé Ellberger"
             id: 331
             unique: true
             faction: "Galactic Republic"
@@ -8549,7 +8550,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Unique PS 5"
+            name: "Ric Olié"
             id: 333
             unique: true
             faction: "Galactic Republic"
@@ -8775,6 +8776,7 @@ exportObj.basicCardData = ->
             slots: [
                 "Cannon"
                 "Crew"
+                "Crew"
                 "Modification"
             ]
         }
@@ -8790,9 +8792,89 @@ exportObj.basicCardData = ->
                 "Talent"
                 "Cannon"
                 "Crew"
+                "Crew"
                 "Modification"
             ]
         }
+        {
+            name: "Vi Moradi"
+            id: 348
+            unique: true
+            faction: "Resistance"
+            ship: "Resistance Transport Pod"
+            skill: 1
+            points: 200
+            applies_condition: '''Compromising Intel'''.canonicalize()
+            slots: [
+                "Talent"
+                "Crew"
+                "Modification"
+            ]
+        }
+        {
+            name: "BB-8"
+            id: 349
+            unique: true
+            faction: "Resistance"
+            ship: "Resistance Transport Pod"
+            skill: 3
+            points: 200
+            slots: [
+                "Talent"
+                "Crew"
+                "Modification"
+            ]
+            ship_override:
+                actions: [
+                    "Calculate"
+                ]
+        }
+        {
+            name: "Finn"
+            id: 350
+            unique: true
+            faction: "Resistance"
+            ship: "Resistance Transport Pod"
+            skill: 3
+            points: 200
+            slots: [
+                "Talent"
+                "Crew"
+                "Modification"
+            ]
+        }
+        {
+            name: "Cova Nell"
+            id: 351
+            unique: true
+            faction: "Resistance"
+            ship: "Resistance Transport"
+            skill: 4
+            points: 200
+            slots: [
+                "Talent"
+                "Cannon"
+                "Crew"
+                "Crew"
+                "Modification"
+            ]
+        }
+        {
+            name: "Nodin Chavdri"
+            id: 352
+            unique: true
+            faction: "Resistance"
+            ship: "Resistance Transport"
+            skill: 2
+            points: 200
+            slots: [
+                "Cannon"
+                "Crew"
+                "Crew"
+                "Modification"
+            ]
+        }
+        
     ]
 
 
@@ -9492,7 +9574,6 @@ exportObj.basicCardData = ->
            name: "Supernatural Reflexes"
            id: 74
            slot: "Force"
-           points: '*'
            pointsarray: [4,4,4,8,16,24,32]
            variableinit: true
            restriction_func: (ship) ->
@@ -9786,7 +9867,6 @@ exportObj.basicCardData = ->
            name: "Engine Upgrade"
            id: 107
            slot: "Modification"
-           points: '*'
            pointsarray: [2,4,7]
            variablebase: true
            restriction_func: (ship) ->
@@ -9885,7 +9965,6 @@ exportObj.basicCardData = ->
            name: "Expert Handling"
            id: 120
            slot: "Talent"
-           points: '*'
            pointsarray: [2,4,6]
            variablebase: true
            restriction_func: (ship) ->
@@ -9967,7 +10046,6 @@ exportObj.basicCardData = ->
            name: "Squad Leader"
            id: 131
            slot: "Talent"
-           points: "*"
            pointsarray: [2,4,6,8,10,12,14] 
            variableinit: true
            unique: true
@@ -10337,7 +10415,6 @@ exportObj.basicCardData = ->
            name: "Hull Upgrade"
            id: 164
            slot: "Modification"
-           points: '*'
            pointsarray: [2,3,5,7]
            variableagility: true
            modifier_func: (stats) ->
@@ -10347,7 +10424,6 @@ exportObj.basicCardData = ->
            name: "Shield Upgrade"
            id: 165
            slot: "Modification"
-           points: '*'
            pointsarray: [3,4,6,8]
            variableagility: true
            modifier_func: (stats) ->
@@ -10357,7 +10433,6 @@ exportObj.basicCardData = ->
            name: "Stealth Device"
            id: 166
            slot: "Modification"
-           points: '*'
            pointsarray: [3,4,6,8]
            variableagility: true
            charge: 1
@@ -10479,7 +10554,6 @@ exportObj.basicCardData = ->
             name: "Primed Thrusters"
             id: 178
             slot: "Tech"
-            points: "*"
             pointsarray: [4,5,6,7,8,9,10]
             variableinit: true
             restriction_func: (ship) ->
@@ -10643,7 +10717,6 @@ exportObj.basicCardData = ->
             name: "BB-8"
             id: 195
             slot: "Astromech"
-            points: "*"
             pointsarray: [2,3,4,5,6,7,8]
             variableinit: true
             charge: 2
@@ -10654,7 +10727,6 @@ exportObj.basicCardData = ->
             name: "BB Astromech"
             id: 196
             slot: "Astromech"
-            points: "*"
             pointsarray: [0,1,2,3,4,5,6]
             variableinit: true
             charge: 2
@@ -10679,17 +10751,14 @@ exportObj.basicCardData = ->
             name: "Brilliant Evasion"
             id: 199
             slot: "Force"
-            points: '*'
             pointsarray: [0,2,4,6]
             variableagility: true
-            points: 6
        }
        {
             name: "Calibrated Laser Targeting"
             id: 200
             slot: "Configuration"
             ship: "Delta-7 Aethersprite"
-            points: "*"
             pointsarray: [0,0,2,4,6,8,10]
             variableinit: true
             unequips_upgrades: [ "Modification" ]
@@ -10700,7 +10769,6 @@ exportObj.basicCardData = ->
             id: 201
             slot: "Configuration"
             ship: "Delta-7 Aethersprite"
-            points: "*"
             pointsarray: [12,13,14,15,16,17,18]
             variableinit: true
             modifier_func: (stats) ->
@@ -10796,7 +10864,6 @@ exportObj.basicCardData = ->
             id: 212
             faction: "Galactic Republic"
             slot: "Force"
-            points: "*"
             pointsarray: [3,5,7,9,11,13,15]
             variableinit: true
             modifier_func: (stats) ->
@@ -11065,6 +11132,76 @@ exportObj.basicCardData = ->
             faction: "Separatist Alliance"
             points: 200
        }
+       {
+            name: "Passive Sensors"
+            id: 240
+            slot: "Sensor"
+            points: 200
+       }
+       {
+            name: "R2-A6"
+            id: 241
+            slot: "Astromech"
+            faction: "Galactic Republic"
+            points: 200
+       }
+       {
+            name: "Amilyn Holdo"
+            id: 242
+            slot: "Crew"
+            faction: "Resistance"
+            points: 200
+       }
+       {
+            name: "Larma D'Acy"
+            id: 243
+            slot: "Crew"
+            faction: "Resistance"
+            points: 200
+       }
+       {
+            name: "Leia Organa (Resistance)"
+            id: 244
+            slot: "Crew"
+            faction: "Resistance"
+            force: 1
+            points: 200
+            restriction_func: (ship, upgrade_obj) ->
+                ship.hasAnotherUnoccupiedSlotLike upgrade_obj
+            validation_func: (ship, upgrade_obj) ->
+                upgrade_obj.occupiesAnotherUpgradeSlot()
+            also_occupies_upgrades: [ "Crew" ]
+            modifier_func: (stats) ->
+                stats.force += 1
+                stats.actions.push 'F-Coordinate' if 'F-Coordinate' not in stats.actions
+       }
+       {
+            name: "Korr Sella"
+            id: 245
+            slot: "Crew"
+            faction: "Resistance"
+            points: 200
+       }
+       {
+            name: "PZ-4CO"
+            id: 246
+            slot: "Crew"
+            faction: "Resistance"
+            points: 200
+            modifier_func: (stats) ->
+                stats.actions.push 'Calculate' if 'Calculate' not in stats.actions
+       }
+       {
+            name: "Angled Deflectors"
+            id: 247
+            slot: "Modification"
+            points: 200
+            modifier_func: (stats) ->
+                stats.shields -= 1
+                stats.actions.push 'Reinforce' if 'Reinforce' not in stats.actions
+            restriction_func: (ship) ->                
+                (not ship.data.large?) and ship.data.shields?
+       }
 
     ]
 
@@ -11143,6 +11280,14 @@ exportObj.basicCardData = ->
         {
             name: 'Electro-Proton Bomb'
             id: 16
+        }
+        {
+            name: 'Decoyed'
+            id: 17
+        }
+        {
+            name: 'Compromising Intel'
+            id: 18
         }
     ]
 
@@ -15572,6 +15717,7 @@ exportObj.fixIcons = (data) ->
             .replace(/%CANNON%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cannon"></i>')
             .replace(/%CARGO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cargo"></i>')
             .replace(/%CLOAK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>')
+            .replace(/%F-COORDINATE%/g, '<i class="xwing-miniatures-font force xwing-miniatures-font-coordinate"></i>')
             .replace(/%COORDINATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>')
             .replace(/%CRIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crit"></i>')
             .replace(/%CREW%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crew"></i>')
@@ -18946,7 +19092,30 @@ exportObj.cardLoaders.English = () ->
         "Anakin Skywalker (N-1 Starfighter)":
            display_name: """Anakin Skywalker"""
            text: """Before you reveal your maneuver, you may spend 1 %FORCE% to barrel roll (this is not an action). %LINEBREAK%<strong>Full Throttle:</strong> After you fully execute a speed 3-5 maneuver, you may perform an %EVADE% action."""
-
+        "Ric Olié":
+           display_name: """Ric Olié"""
+           text: """While you defend or perform a primary attack, if the speed of your revealed maneuver is higher than the enemy ship's, roll 1 additional die. %LINEBREAK%<strong>Full Throttle:</strong> After you fully execute a speed 3-5 maneuver, you may perform an %EVADE% action."""
+        "Dineé Ellberger":
+           display_name: """Dineé Ellberger"""
+           text: """While you defend or perform an attack, if the speed of your revealed maneuver is the same as the enemy ship's, that ship's dice cannot be modified. %LINEBREAK%<strong>Full Throttle:</strong> After you fully execute a speed 3-5 maneuver, you may perform an %EVADE% action."""
+        "Naboo Handmaiden":
+           display_name: """Naboo Handmaiden"""
+           text: """<strong>Setup:</strong> After placing forces, assign the <strong>Decoyed</strong> condition to 1 friendly ship other than <strong>Naboo Handmaiden</strong>. %LINEBREAK%<strong>Full Throttle:</strong> After you fully execute a speed 3-5 maneuver, you may perform an %EVADE% action."""
+        "BB-8":
+           display_name: """BB-8"""
+           text: """During the System Phase, you may perform a red %BARRELROLL% or %BOOST% action."""
+        "Finn":
+           display_name: """Finn"""
+           text: """While you defend or perform an attack, you may add 1 blank result, or you may gain 1 strain token to add 1 focus result instead."""
+        "Cova Nell":
+           display_name: """Cova Nell"""
+           text: """While you defend or perform a primary attack, if your revealed maneuver is red, roll 1 additional die."""
+        "Nodin Chavdri":
+           display_name: """Nodin Chavdri"""
+           text: """After you coordinate or are coordinated, if you have 2 or fewer stress tokens, you may perform 1 action on your action bar as a red action, even if you are stressed."""
+        "Vi Moradi":
+           display_name: """Vi Moradi"""
+           text: """<strong>Setup:</strong> After placing forces, assign the <strong>Compromising Intel</strong> condition to 1 enemy ship."""
 
 
     upgrade_translations =
@@ -19659,6 +19828,31 @@ exportObj.cardLoaders.English = () ->
         "Electro-Proton Bomb":
            display_name: """Electro-Proton Bomb"""
            text: """<strong>Bomb</strong>%LINEBREAK%During the System Phase, you may spend 1 %CHARGE% to drop an Electro-Proton Bomb with the [1 %STRAIGHT%] template. Then place 1 fuse marker on that device. %LINEBREAK%This card’s %CHARGE% cannot be recovered."""
+        "Passive Sensors":
+           display_name: """Passive Sensors"""
+           text: """<strong>Action:</strong> Spend 1 %CHARGE%. You can only perform this action in your Perform Action step. %LINEBREAK% While your %CHARGE% is inactive, you cannot be coordinated. Before you engage, if your %CHARGE% is inactive, you may perform a %CALCULATE% or %LOCK% action."""
+        "R2-A6":
+           display_name: """R2-A6"""
+           text: """<i>Republic only</i>%LINEBREAK% After you reveal your dial, you may set your dial to a maneuver of the same bearing of a speed 1 higher or lower."""
+        "Amilyn Holdo":
+           display_name: """Amilyn Holdo"""
+           text: """<i>Resistance only</i>%LINEBREAK% Before you engage, you may choose another friendly ship at range 1-2. You may transfer to that ship 1 token of a type that ship does not have. That ship may transfer 1 token to you of a type you do not have."""
+        "Larma D'Acy":
+           display_name: """Larma D'Acy"""
+           text: """<i>Resistance only</i>%LINEBREAK% While you have 2 or fewer stress tokens, you can perform %REINFORCE%, %COORDINATE%, and %JAM% actions, even while stressed.%LINEBREAK% While you perform a white %REINFORCE%, %COORDINATE%, or %JAM% action, if you are stressed, treat that action as red."""
+        "PZ-4CO":
+           display_name: """PZ-4CO"""
+           text: """<i>Resistance only</i>%LINEBREAK% <i>Adds %CALCULATE%</i>%LINEBREAK%<i> At the end of the Activation Phase, you may choose 1 friendly ship at range 1-2. If you do, transfer 1 calculate token to that ship. If your revealed maneuver is blue, you may transfer 1 focus token instead."""
+        "Leia Organa (Resistance)":
+           display_name: """Leia Organa"""
+           text: """<i>Resistance only</i>%LINEBREAK% <i>Adds %F-COORDINATE%</i>%LINEBREAK%<i> After a friendly ship reveals its dial, you may spend 1 %FORCE%. If you do, the chosen ship reduces the difficulty of that maneuver."""
+        "Korr Sella":
+           display_name: """Korr Sella"""
+           text: """<i>Resistance only</i>%LINEBREAK% After you fully execute a blue maneuver, remove all of your stress tokens."""
+        "Angled Deflectors":
+           display_name: """Angled Deflectors"""
+           text: """<i>Adds %REINFORCE%, Removes 1 Shield. %LINEBREAK% Requires 1 shield and Small or Medium Base Ship.</i>%LINEBREAK% After you fully execute a blue maneuver, remove all of your stress tokens."""
+            
 
         "Hardpoint: Cannon":
            text: """Adds a %CANNON% slot"""
@@ -19701,6 +19895,10 @@ exportObj.cardLoaders.English = () ->
            text: '''<strong>Setup:</strong> Start in reserve. %LINEBREAK% When you deploy, you are placed within range 1 of any table edge and beyond range 3 of any enemy ship. %LINEBREAK% At the start of the round, if all of the friendly <strong>GA-97</strong>'s %CHARGE% are active, you <strong>must</strong> deploy. Then remove this card. After the friendly <strong>GA-97</strong> is destroyed, you <strong>must</strong> deploy. Then gain 1 disarm token and remove this card.'''
         'Electro-Proton Bomb':
            text: '''(Bomb Token) - At the end of the Activation Phase this device detonates. When this device detonates, each ship at range 0–2 rolls 4 attack dice. Each ship loses 1 shield for each blank result, gains 1 ion token for each %FOCUS%/%HIT% result, and gains 1 disarm token for each %CRIT% result. '''
+        'Decoyed':
+           text: '''While you defend, each friendly <strong>Naboo Handmaiden</strong> in the attack arc may spend 1 evade token to change one of your results to an %EVADE% result. %LINEBREAK% If you are a Naboo Royal N-1 Starfighter, each friendly <strong>Naboo Handmaiden</strong> in the attack arc may spend 1 evade token to add 1 %EVADE% result instead.'''
+        'Compromising Intel':
+           text: '''During the System Phase, if the enemy <strong>Vi Morandi</strong> is at range 0-3, flip your dial faceup. %LINEBREAK% While you defend or perform an attack against the enemy <strong>Vi Morandi</strong>, you cannot spend focus tokens.'''
             
     exportObj.setupTranslationCardData pilot_translations, upgrade_translations, condition_translations
 
@@ -32580,6 +32778,646 @@ exportObj.manifestByExpansion =
         }
     ]
 
+    'Naboo Royal N-1 Starfighter Expansion Pack': [
+        {
+            name: 'Naboo Royal N-1 Starfighter'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Ric Olié'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Anakin Skywalker (N-1 Starfighter)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Padmé Amidala'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Dineé Ellberger'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Naboo Handmaiden'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Bravo Flight Officer'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Daredevil'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Collision Detector'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Passive Sensors'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Plasma Torpedoes'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R2-A6'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R2 Astromech'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R2-C4'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R4 Astromech'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+
+    'Hyena-Class Droid Bomber Expansion Pack': [
+        {
+            name: 'Hyena-Class Droid Bomber'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'DBS-404'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'DBS-32C'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Bombardment Drone'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Baktoid Prototype'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Techno Union Bomber'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Separatist Bomber'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Passive Sensors'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Trajectory Simulator'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Plasma Torpedoes'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Barrage Rockets'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Diamond-Boron Missiles'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'TA-175'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Bomblet Generator'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Electro-Proton Bomb'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Delayed Fuses'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Landing Struts'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+
+
+    'A/SF-01 B-Wing Expansion Pack': [
+        {
+            name: 'B-Wing'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Braylen Stramm'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Ten Numb'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Blade Squadron Veteran'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Blue Squadron Pilot'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Squad Leader'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Heavy Laser Cannon'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ion Cannon'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Jamming Beam'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Afterburners'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Electronic Baffle'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Fire-Control System'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Adv. Proton Torpedoes'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+
+    'Millennium Falcon Expansion Pack': [
+        {
+            name: 'YT-1300'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Han Solo'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Chewbacca'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Lando Calrissian'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Outer Rim Smuggler'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'C-3PO'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Chewbacca'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Informant'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Lando Calrissian'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Leia Organa'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Nien Nunb'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Homing Missiles'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Swarm Tactics'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Millennium Falcon'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+
+    'VT-49 Decimator Expansion Pack': [
+        {
+            name: 'VT-49 Decimator'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Rear Admiral Chiraneau'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Captain Oicunn'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Patrol Leader'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Lone Wolf'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Agent Kallus'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Darth Vader'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'GNK "Gonk" Droid'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Grand Inquisitor'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Seventh Sister'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'BT-1'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: '0-0-0'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+
+    'TIE/VN Silencer Expansion Pack': [
+        {
+            name: 'TIE/VN Silencer'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Kylo Ren'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Blackout"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Recoil"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Avenger"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'First Order Test Pilot'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Sienar-Jaemus Engineer'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Hate'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Predictive Shot'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Marksmanship'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Primed Thrusters'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Collision Detector'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Adv. Proton Torpedoes'
+            type: 'upgrade'
+            count: 1
+        }        
+    ]
+
+    'TIE/SF Fighter Expansion Pack': [
+        {
+            name: 'TIE/VN Silencer'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: '"Quickdraw"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Backdraft"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Omega Squadron Expert'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Zeta Squadron Survivor'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Hotshot Gunner'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Special Forces Gunner'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ion Missiles'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Afterburners'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Collision Detector'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Juke'
+            type: 'upgrade'
+            count: 1
+        }        
+        {
+            name: 'Pattern Analyzer'
+            type: 'upgrade'
+            count: 1
+        }        
+    ]
+
+    'Resistance Transport Expansion Pack': [
+        {
+            name: 'Resistance Transport'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Resistance Transport Pod'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'BB-8'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Finn'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Rose Tico'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Vi Moradi'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Cova Nell'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Pammich Nerro Goode'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Nodin Chavdri'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Logistics Division Pilot'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Composure'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Expert Handling'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Passive Sensors'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Plasma Torpedoes'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Autoblasters'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Amilyn Holdo'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Leia Organa (Resistance)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'GA-97'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Kaydel Connix'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Korr Sella'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: "Larma D'Acy"
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'PZ-4CO'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R2-HA'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R5-X3'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Afterburners'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Angled Deflectors'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Spare Parts Canisters'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+
     'Loose Ships': [
         {
             name: 'A-Wing'
@@ -32588,11 +33426,6 @@ exportObj.manifestByExpansion =
         }
         {
             name: 'Auzituck Gunship'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'B-Wing'
             type: 'ship'
             count: 2
         }
@@ -32681,11 +33514,6 @@ exportObj.manifestByExpansion =
             type: 'ship'
             count: 2
         }
-        {
-            name: 'VT-49 Decimator'
-            type: 'ship'
-            count: 2
-        }        
         {
             name: 'Kihraxz Fighter'
             type: 'ship'
@@ -34959,7 +35787,7 @@ class exportObj.SquadBuilder
             # available_upgrades.push include_upgrade
             eligible_upgrades.push include_upgrade
 
-        retval = ({ id: upgrade.id, text: "#{if upgrade.display_name then upgrade.display_name else upgrade.name} (#{this_upgrade_obj.getPoints(upgrade)}#{if upgrade.points == '*' then '*' else ''})", points: this_upgrade_obj.getPoints(upgrade), name: upgrade.name, display_name: upgrade.display_name, disabled: upgrade not in eligible_upgrades } for upgrade in available_upgrades)
+        retval = ({ id: upgrade.id, text: "#{if upgrade.display_name then upgrade.display_name else upgrade.name} (#{this_upgrade_obj.getPoints(upgrade)}#{if upgrade.pointsarray then '*' else ''})", points: this_upgrade_obj.getPoints(upgrade), name: upgrade.name, display_name: upgrade.display_name, disabled: upgrade not in eligible_upgrades } for upgrade in available_upgrades)
         if sorted
             retval = retval.sort exportObj.sortHelper
 
@@ -37147,7 +37975,7 @@ class GenericAddon
         if @data?
             @selector.select2 'data',
             id: @data.id
-            text: "#{if @data.display_name then @data.display_name else @data.name} (#{points})"
+            text: "#{if @data.display_name then @data.display_name else @data.name} (#{points}#{if @data.pointsarray then '*' else ''})"
         else
             @selector.select2 'data', null
 
