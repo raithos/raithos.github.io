@@ -2032,7 +2032,7 @@ exportObj.basicCardData = function() {
       },
       "TIE Interceptor": {
         name: "TIE Interceptor",
-        xws: "TIE Interceptor".canonicalize(),
+        xws: "TIE/IN Interceptor".canonicalize(),
         factions: ["Galactic Empire"],
         attack: 3,
         agility: 3,
