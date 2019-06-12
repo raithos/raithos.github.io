@@ -35215,7 +35215,7 @@ Ship = (function() {
   };
 
   Ship.prototype.copyFrom = function(other) {
-    var available_pilots, i, no_uniques_involved, other_conferred_addons, other_upgrade, other_upgrades, pilot_data, upgrade, _i, _j, _k, _l, _len, _len1, _len2, _len3, _name, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
+    var available_pilots, delayed_upgrades, i, id, no_uniques_involved, other_upgrade, other_upgrades, pilot_data, upgrade, _i, _j, _k, _l, _len, _len1, _len2, _len3, _name, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
     if (other === this) {
       throw new Error("Cannot copy from self");
     }
@@ -35249,13 +35249,21 @@ Ship = (function() {
               other_upgrades[upgrade.slot].push(upgrade);
             }
           }
+          delayed_upgrades = {};
           _ref1 = this.upgrades;
           for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
             upgrade = _ref1[_j];
             other_upgrade = ((_ref2 = other_upgrades[upgrade.slot]) != null ? _ref2 : []).shift();
             if (other_upgrade != null) {
               upgrade.setById(other_upgrade.data.id);
+              if (!upgrades.lastSetValid) {
+                delayed_upgrades[other_upgrade.data.id] = upgrade;
+              }
             }
+          }
+          for (id in delayed_upgrades) {
+            upgrade = delayed_upgrades[id];
+            upgrade.setById(id);
           }
         }
       } else {
@@ -35293,13 +35301,20 @@ Ship = (function() {
       }
     } else {
       this.setPilotById(other.pilot.id, true);
-      other_conferred_addons = [];
+      delayed_upgrades = {};
       _ref7 = other.upgrades;
       for (i = _l = 0, _len3 = _ref7.length; _l < _len3; i = ++_l) {
         other_upgrade = _ref7[i];
-        if ((other_upgrade.data != null) && __indexOf.call(other_conferred_addons, other_upgrade) < 0 && !other_upgrade.data.unique && i < this.upgrades.length && ((other_upgrade.data.max_per_squad == null) || this.builder.countUpgrades(other_upgrade.data.canonical_name) < other_upgrade.data.max_per_squad)) {
+        if ((other_upgrade.data != null) && !other_upgrade.data.unique && i < this.upgrades.length && ((other_upgrade.data.max_per_squad == null) || this.builder.countUpgrades(other_upgrade.data.canonical_name) < other_upgrade.data.max_per_squad)) {
           this.upgrades[i].setById(other_upgrade.data.id);
+          if (!this.upgrades[i].lastSetValid) {
+            delayed_upgrades[i] = other_upgrade.data.id;
+          }
         }
+      }
+      for (i in delayed_upgrades) {
+        id = delayed_upgrades[i];
+        this.upgrades[i].setById(id);
       }
     }
     this.updateSelections();
@@ -35401,7 +35416,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 36878
+                          lineno: 36886
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -35430,7 +35445,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 36894
+                              lineno: 36902
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -35463,7 +35478,7 @@ Ship = (function() {
   };
 
   Ship.prototype.setPilot = function(new_pilot, noautoequip) {
-    var auto_equip_upgrade, autoequip, old_upgrade, old_upgrades, same_ship, upgrade, upgrade_name, _, ___iced_passed_deferral, __iced_deferrals, __iced_k, _i, _len, _name, _ref;
+    var auto_equip_upgrade, autoequip, delayed_upgrades, id, old_upgrade, old_upgrades, same_ship, upgrade, upgrade_name, ___iced_passed_deferral, __iced_deferrals, __iced_k, _i, _len, _name, _ref;
     __iced_k = __iced_k_noop;
     ___iced_passed_deferral = iced.findDeferral(arguments);
     if (noautoequip == null) {
@@ -35500,7 +35515,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 36936
+                      lineno: 36944
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -35509,7 +35524,7 @@ Ship = (function() {
                 return __iced_k();
               }
             })(function() {
-              var _j, _k, _l, _len1, _len2, _len3, _m, _ref1, _ref2, _ref3, _ref4, _ref5;
+              var _j, _k, _l, _len1, _len2, _len3, _ref1, _ref2, _ref3, _ref4, _ref5;
               _this.pilot = new_pilot;
               if (_this.pilot != null) {
                 _this.setupAddons();
@@ -35531,15 +35546,21 @@ Ship = (function() {
                 }
               }
               if (same_ship) {
-                for (_ = _l = 1; _l <= 2; _ = ++_l) {
-                  _ref4 = _this.upgrades;
-                  for (_m = 0, _len3 = _ref4.length; _m < _len3; _m++) {
-                    upgrade = _ref4[_m];
-                    old_upgrade = ((_ref5 = old_upgrades[upgrade.slot]) != null ? _ref5 : []).shift();
-                    if (old_upgrade != null) {
-                      upgrade.setById(old_upgrade.data.id);
+                delayed_upgrades = {};
+                _ref4 = _this.upgrades;
+                for (_l = 0, _len3 = _ref4.length; _l < _len3; _l++) {
+                  upgrade = _ref4[_l];
+                  old_upgrade = ((_ref5 = old_upgrades[upgrade.slot]) != null ? _ref5 : []).shift();
+                  if (old_upgrade != null) {
+                    upgrade.setById(old_upgrade.data.id);
+                    if (!upgrade.lastSetValid) {
+                      delayed_upgrades[old_upgrade.data.id] = upgrade;
                     }
                   }
+                }
+                for (id in delayed_upgrades) {
+                  upgrade = delayed_upgrades[id];
+                  upgrade.setById(id);
                 }
               }
               return __iced_k();
@@ -35574,7 +35595,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 36961
+                lineno: 36973
               })
             ]);
             __iced_deferrals._fulfill();
@@ -35643,7 +35664,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 36990
+              lineno: 37002
             }));
           }
         }
@@ -36718,7 +36739,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 37830
+                lineno: 37842
               })
             ]);
             __iced_deferrals._fulfill();
@@ -36859,7 +36880,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 37904
+                  lineno: 37916
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -36881,7 +36902,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 37908
+                    lineno: 37920
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -36968,7 +36989,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 37949
+            lineno: 37961
           }));
         }
         __iced_deferrals._fulfill();
