@@ -1081,8 +1081,16 @@ class exportObj.CardBrowser
                             <span class="info-collection"></span>
                             <table>
                                 <tbody>
+                                    <tr class="info-ship">
+                                        <td class="info-header">Ship</td>
+                                        <td class="info-data"></td>
+                                    </tr>
+                                    <tr class="info-base">
+                                        <td class="info-header">Base</td>
+                                        <td class="info-data"></td>
+                                    </tr>
                                     <tr class="info-skill">
-                                        <td class="info-header">Skill</td>
+                                        <td class="info-header">Initiative</td>
                                         <td class="info-data info-skill"></td>
                                     </tr>
                                     <tr class="info-energy">
@@ -3187,6 +3195,50 @@ exportObj.basicCardData = ->
                 [ 1, 1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 0, 3, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+           ]
+        "Nantex-Class Starfighter":
+           name: "Nantex-Class Starfighter"               
+           xws: "Nantex-Class Starfighter".canonicalize()
+           factions: ["Separatist Alliance"]
+           attackbull: 3
+           attackt: 2
+           agility: 3
+           hull: 4
+           actions: [
+             "Focus"
+             "Evade"
+           ]
+           maneuvers: [
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+                [ 1, 2, 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0 ]
+                [ 1, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0 ]
+                [ 1, 2, 2, 2, 1, 0, 3, 3, 0, 0, 0, 0, 0 ]
+                [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+                [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0 ]
+           ]
+        "BTL-B Y-Wing":
+           name: "BTL-B Y-Wing"               
+           xws: "BTL-B Y-Wing".canonicalize()
+           factions: ["Galactic Republic"]
+           attack: 2
+           agility: 1
+           hull: 5
+           shields: 3
+           actions: [
+             "Focus"
+             "Lock"
+           ]
+           actionsred: [
+             "Barrel Roll"
+             "Reload"
+           ]
+           maneuvers: [
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+                [ 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+                [ 1, 1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 ]
+                [ 3, 1, 1, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0 ]
+                [ 0, 0, 3, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0 ]
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
            ]
         
     # name field is for convenience only
@@ -8874,6 +8926,178 @@ exportObj.basicCardData = ->
                 "Modification"
             ]
         }
+        {
+            name: "Stalgasin Hive Guard"
+            id: 353
+            faction: "Separatist Alliance"
+            ship: "Nantex-Class Starfighter"
+            skill: 3
+            points: 200
+            slots: [
+                "Modification"
+            ]
+        }
+        {
+            name: "Petranaki ???"
+            id: 354
+            faction: "Separatist Alliance"
+            ship: "Nantex-Class Starfighter"
+            skill: 4
+            points: 200
+            slots: [
+                "Modification"
+            ]
+        }
+        {
+            name: "Ini 2 Unique"
+            unique: true
+            id: 355
+            faction: "Separatist Alliance"
+            ship: "Nantex-Class Starfighter"
+            skill: 2
+            points: 200
+            slots: [
+                "Modification"
+            ]
+        }
+        {
+            name: "Chertek"
+            unique: true
+            id: 356
+            faction: "Separatist Alliance"
+            ship: "Nantex-Class Starfighter"
+            skill: 4
+            points: 200
+            slots: [
+                "Modification"
+            ]
+        }
+        {
+            name: "Sun Fac"
+            unique: true
+            id: 357
+            faction: "Separatist Alliance"
+            ship: "Nantex-Class Starfighter"
+            skill: 6
+            points: 200
+            slots: [
+                "Modification"
+            ]
+        }
+        {
+            name: "Berwer Kart"
+            unique: true
+            id: 358
+            faction: "Separatist Alliance"
+            ship: "Nantex-Class Starfighter"
+            skill: 5
+            points: 200
+            slots: [
+                "Modification"
+            ]
+        }
+        {
+            name: "Annakin Skywalker (Y-Wing)"
+            unique: true
+            id: 359
+            faction: "Galactic Republic"
+            ship: "BTL-B Y-Wing"
+            skill: 6
+            points: 200
+            slots: [
+                "Modification"
+                "Turret"
+            ]
+        }
+        {
+            name: "Shadow Squadron Veteran"
+            id: 360
+            faction: "Galactic Republic"
+            ship: "BTL-B Y-Wing"
+            skill: 3
+            points: 200
+            slots: [
+                "Modification"
+                "Turret"
+            ]
+        }
+        {
+            name: "Red Squadron Bomber"
+            id: 361
+            faction: "Galactic Republic"
+            ship: "BTL-B Y-Wing"
+            skill: 2
+            points: 200
+            slots: [
+                "Modification"
+                "Turret"
+            ]
+        }
+        {
+            name: "Ini 2 Unique"
+            id: 362
+            unique: true
+            faction: "Galactic Republic"
+            ship: "BTL-B Y-Wing"
+            skill: 2
+            points: 200
+            slots: [
+                "Modification"
+                "Turret"
+            ]
+        }
+        {
+            name: "Another Ini 2 Unique"
+            id: 363
+            unique: true
+            faction: "Galactic Republic"
+            ship: "BTL-B Y-Wing"
+            skill: 2
+            points: 200
+            slots: [
+                "Modification"
+                "Turret"
+            ]
+        }
+        {
+            name: "Ini 3 Unique"
+            id: 364
+            unique: true
+            faction: "Galactic Republic"
+            ship: "BTL-B Y-Wing"
+            skill: 3
+            points: 200
+            slots: [
+                "Modification"
+                "Turret"
+            ]
+        }
+        {
+            name: "Ini 4 Unique"
+            id: 365
+            unique: true
+            faction: "Galactic Republic"
+            ship: "BTL-B Y-Wing"
+            skill: 4
+            points: 200
+            slots: [
+                "Modification"
+                "Turret"
+            ]
+        }
+        {
+            name: "Ini 5 Unique"
+            id: 366
+            unique: true
+            faction: "Galactic Republic"
+            ship: "BTL-B Y-Wing"
+            skill: 5
+            points: 200
+            slots: [
+                "Modification"
+                "Turret"
+            ]
+        }
         
     ]
 
@@ -11950,7 +12174,7 @@ exportObj.basicCardData = ->
             faction: "Galactic Empire"
             pilot: "Soontir Fel"
             ship: "TIE Interceptor"
-            threat: 2
+            threat: 3
             upgrades: [
                 "Outmaneuver"
                 "Afterburners"
@@ -19810,9 +20034,6 @@ exportObj.cardLoaders.English = () ->
         '"Zeb" Orrelios':
            display_name: """“Zeb” Orrelios"""
            text: """<i>Rebel only</i>%LINEBREAK%You can perform primary attacks at range 0. Enemy ships at range 0 can perform primary attacks against you."""
-        "GA-97":
-           display_name: """GA-97"""
-           text: """<strong>Setup</strong>: Before lacing forces, you may spend 3-5 %CHARGE%. If you do, choose another friendly ship and assign the <strong>It's the Resistance</strong> condition to it."""
         "Kaydel Connix":
            display_name: """Kaydel Connix"""
            text: """After you reveal your dial, you may set your dial to a basic maneuver of the next higher speed. While you execute that maneuver, increase its' difficulty."""
@@ -19842,10 +20063,10 @@ exportObj.cardLoaders.English = () ->
            text: """<i>Resistance only</i>%LINEBREAK% While you have 2 or fewer stress tokens, you can perform %REINFORCE%, %COORDINATE%, and %JAM% actions, even while stressed.%LINEBREAK% While you perform a white %REINFORCE%, %COORDINATE%, or %JAM% action, if you are stressed, treat that action as red."""
         "PZ-4CO":
            display_name: """PZ-4CO"""
-           text: """<i>Resistance only</i>%LINEBREAK% <i>Adds %CALCULATE%</i>%LINEBREAK%<i> At the end of the Activation Phase, you may choose 1 friendly ship at range 1-2. If you do, transfer 1 calculate token to that ship. If your revealed maneuver is blue, you may transfer 1 focus token instead."""
+           text: """<i>Resistance only</i>%LINEBREAK% <i>Adds %CALCULATE%</i>%LINEBREAK% At the end of the Activation Phase, you may choose 1 friendly ship at range 1-2. If you do, transfer 1 calculate token to that ship. If your revealed maneuver is blue, you may transfer 1 focus token instead."""
         "Leia Organa (Resistance)":
            display_name: """Leia Organa"""
-           text: """<i>Resistance only</i>%LINEBREAK% <i>Adds %F-COORDINATE%</i>%LINEBREAK%<i> After a friendly ship reveals its dial, you may spend 1 %FORCE%. If you do, the chosen ship reduces the difficulty of that maneuver."""
+           text: """<i>Resistance only</i>%LINEBREAK% <i>Adds %F-COORDINATE%</i>%LINEBREAK% After a friendly ship reveals its dial, you may spend 1 %FORCE%. If you do, the chosen ship reduces the difficulty of that maneuver."""
         "Korr Sella":
            display_name: """Korr Sella"""
            text: """<i>Resistance only</i>%LINEBREAK% After you fully execute a blue maneuver, remove all of your stress tokens."""
@@ -31387,6 +31608,31 @@ exportObj.manifestByExpansion =
             type: 'pilot'
             count: 1
         }
+        {
+            name: 'Hull Upgrade'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Static Discharge Vanes'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Elusive'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Swarm Tactics'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Trick Shot'
+            type: 'upgrade'
+            count: 1
+        }
     ]
     'First Order Conversion Kit': [
         {
@@ -36030,6 +36276,15 @@ class exportObj.SquadBuilder
                     container.find('tr.info-attack-turret').toggle(data.attackt?)
                     container.find('tr.info-attack-doubleturret').toggle(data.attackdt?)
                 
+                    container.find('tr.info-ship').hide()                    
+                    if data.large?
+                        container.find('tr.info-base td.info-data').text "Large"
+                    else if data.medium?
+                        container.find('tr.info-base td.info-data').text "Medium"
+                    else
+                        container.find('tr.info-base td.info-data').text "Small"
+                    container.find('tr.info-base').show()
+
                 
                 
                     for cls in container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
