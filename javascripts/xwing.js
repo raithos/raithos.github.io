@@ -33404,7 +33404,7 @@ exportObj.SquadBuilder = (function() {
 
   SquadBuilder.prototype.serialize = function() {
     var game_type_abbrev, selected_points, serialization_version, ship;
-    serialization_version = 6;
+    serialization_version = 7;
     game_type_abbrev = (function() {
       switch (this.game_type_selector.val()) {
         case 'standard':

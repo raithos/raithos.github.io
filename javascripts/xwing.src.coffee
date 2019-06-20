@@ -35683,7 +35683,7 @@ class exportObj.SquadBuilder
 
     serialize: ->
 
-        serialization_version = 6
+        serialization_version = 7
         game_type_abbrev = switch @game_type_selector.val()
             when 'standard'
                 's'
