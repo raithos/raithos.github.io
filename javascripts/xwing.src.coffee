@@ -8981,6 +8981,7 @@ exportObj.basicCardData = ->
             skill: 6
             points: 200
             slots: [
+                "Talent"
                 "Modification"
             ]
         }
@@ -8997,7 +8998,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Annakin Skywalker (Y-Wing)"
+            name: "Anakin Skywalker (Y-Wing)"
             unique: true
             id: 359
             faction: "Galactic Republic"
@@ -11424,7 +11425,22 @@ exportObj.basicCardData = ->
                 stats.shields -= 1
                 stats.actions.push 'Reinforce' if 'Reinforce' not in stats.actions
             restriction_func: (ship) ->                
-                (not ship.data.large?) and ship.data.shields?
+                ship.data.shields > 0 and not ship.data.large?
+       }
+       {
+            name: "Ensnare"
+            id: 248
+            slot: "Talent"
+            points: 200
+            ship: "Nantex-Class Starfighter"
+       }
+       {
+            name: "Targeting Computer"
+            id: 249
+            slot: "Modification"
+            points: 200
+            modifier_func: (stats) ->
+                stats.actions.push 'Lock' if 'Lock' not in stats.actions
        }
 
     ]
@@ -19340,7 +19356,32 @@ exportObj.cardLoaders.English = () ->
         "Vi Moradi":
            display_name: """Vi Moradi"""
            text: """<strong>Setup:</strong> After placing forces, assign the <strong>Compromising Intel</strong> condition to 1 enemy ship."""
-
+        "Shadow Squadron Veteran":
+           text: """<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
+        "Red Squadron Bomber":
+           text: """<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
+        "Ini 2 Unique":
+           text: """Unknown pilot ability%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
+        "Ini 3 Unique":
+           text: """Unknown pilot ability%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
+        "Ini 4 Unique":
+           text: """Unknown pilot ability%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
+        "Ini 5 Unique":
+           text: """Unknown pilot ability%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
+        "Another Ini 2 Unique":
+           text: """Unknown pilot ability%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
+        "Anakin Skywalker (Y-Wing)":
+           text: """Unknown pilot ability%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
+        "Sun Fac":
+           text: """While you perform a primary [...] the defender is tractored [...] attack die%LINEBREAK% <strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."""
+        "Stalgasin Hive Guard":
+           text: """<strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."""
+        "Petranaki ???":
+           text: """<strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."""
+        "Berwer Kart":
+           text: """Unknown pilot ability%LINEBREAK%<strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."""
+        "Chertek":
+           text: """Unknown pilot ability%LINEBREAK%<strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."""
 
     upgrade_translations =
         "0-0-0":
@@ -19597,6 +19638,8 @@ exportObj.cardLoaders.English = () ->
         "Engine Upgrade":
            display_name: """Engine Upgrade"""
            text: """<i>Adds %BOOST%</i>%LINEBREAK%<i>Requires <r>%BOOST%</r></i>%LINEBREAK%<i class = flavor_text>Large military forces such as the Galactic Empire have standardized engines, but individual pilots and small organizations often replace the power couplings, add thrusters, or use high-performance fuel to get extra push out of their engines.</i>"""
+        "Ensnare":
+           text: """At the end of the Activation Phase, if you are tractored, you may choose 1 ship in your %SINGLETURRETARC% arc at range 0-1. Transfer 1 tractor token to it."""
         "Expert Handling":
            display_name: """Expert Handling"""
            text: """<i>Adds %BARRELROLL%</i>%LINEBREAK%<i>Requires <r>%BARRELROLL%</r></i>%LINEBREAK%<i class = flavor_text>While heavy fighters can often be coaxed into a barrel roll, seasoned pilots know how to do it without putting undue stress on their craft or leaving themselves open to attack.</i>"""
@@ -19989,6 +20032,8 @@ exportObj.cardLoaders.English = () ->
         "Tactical Scrambler":
            display_name: """Tactical Scrambler"""
            text: """<i>large ship or medium ship only</i>%LINEBREAK%While you obstruct an enemy ship’s attack, the defender rolls 1 additional defense die."""
+        "Targeting Computer":
+           text: """Adds %LOCK% action"""
         "Targeting Synchronizer":
            display_name: """Targeting Synchronizer"""
            text: """<i>Requires %LOCK% or <r>%LOCK%</r></i>%LINEBREAK%While a friendly ship at range 1-2 performs an attack against a target you have locked, that ship ignores the&nbsp;%LOCK% attack requirement."""
@@ -36276,7 +36321,8 @@ class exportObj.SquadBuilder
                     container.find('tr.info-attack-turret').toggle(data.attackt?)
                     container.find('tr.info-attack-doubleturret').toggle(data.attackdt?)
                 
-                    container.find('tr.info-ship').hide()                    
+                    container.find('tr.info-ship').hide()        
+                    container.find('.info-solitary').hide()         
                     if data.large?
                         container.find('tr.info-base td.info-data').text "Large"
                     else if data.medium?
@@ -36367,7 +36413,7 @@ class exportObj.SquadBuilder
                     ship = exportObj.ships[data.ship]
                     container.find('tr.info-ship td.info-data').text data.ship
                     container.find('tr.info-ship').show()
-                    container.find('.info-solitary').hide
+                    container.find('.info-solitary').hide()
                     
                     if ship.large?
                         container.find('tr.info-base td.info-data').text "Large"
@@ -36390,8 +36436,9 @@ class exportObj.SquadBuilder
 
                     container.find('tr.info-attack-fullfront td.info-data').text statAndEffectiveStat((data.ship_override?.attackf ? ship.attackf), effective_stats, 'attackf')
                     container.find('tr.info-attack-fullfront').toggle(ship.attackf? or effective_stats?.attackf?)
-
-                    container.find('tr.info-attack-bullseye').hide()
+                    
+                    container.find('tr.info-attack-bullseye td.info-data').text statAndEffectiveStat((data.ship_override?.attackbull ? ship.attackbull), effective_stats, 'attackbull')
+                    container.find('tr.info-attack-bullseye').toggle(ship.attackbull? or effective_stats?.attackbull?)
 
                     container.find('tr.info-attack-back td.info-data').text statAndEffectiveStat((data.ship_override?.attackb ? ship.attackb), effective_stats, 'attackb')
                     container.find('tr.info-attack-back').toggle(ship.attackb? or effective_stats?.attackb?)
