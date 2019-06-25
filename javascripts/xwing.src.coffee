@@ -11319,6 +11319,7 @@ exportObj.basicCardData = ->
        {
             name: "Electro-Proton Bomb"
             id: 235
+            unique: true
             slot: "Device"
             points: 14
             charge: 1
@@ -11342,19 +11343,20 @@ exportObj.basicCardData = ->
             points: 1
        }
        {
-           name: "Diamond-Boron Missiles"
-           id: 238
-           slot: "Missile"
-           points: 6
-           attack: 3
-           range: """2-3"""
-           rangebonus: true 
-           charge: 3
-           restriction_func: (ship, upgrade_obj) ->
-               ship.hasAnotherUnoccupiedSlotLike upgrade_obj
-           validation_func: (ship, upgrade_obj) ->
-               upgrade_obj.occupiesAnotherUpgradeSlot()
-           also_occupies_upgrades: [ 'Missile' ]
+            name: "Diamond-Boron Missiles"
+            id: 238
+            unique: true
+            slot: "Missile"
+            points: 6
+            attack: 3
+            range: """2-3"""
+            rangebonus: true 
+            charge: 3
+            restriction_func: (ship, upgrade_obj) ->
+                ship.hasAnotherUnoccupiedSlotLike upgrade_obj
+            validation_func: (ship, upgrade_obj) ->
+                upgrade_obj.occupiesAnotherUpgradeSlot()
+            also_occupies_upgrades: [ 'Missile' ]
        }
        {
             name: "TA-175"
@@ -11374,6 +11376,7 @@ exportObj.basicCardData = ->
        {
             name: "R2-A6"
             id: 241
+            unique: true
             slot: "Astromech"
             faction: "Galactic Republic"
             points: 6
@@ -11381,6 +11384,7 @@ exportObj.basicCardData = ->
        {
             name: "Amilyn Holdo"
             id: 242
+            unique: true
             slot: "Crew"
             faction: "Resistance"
             points: 9
@@ -11388,6 +11392,7 @@ exportObj.basicCardData = ->
        {
             name: "Larma D'Acy"
             id: 243
+            unique: true
             slot: "Crew"
             faction: "Resistance"
             points: 4
@@ -11395,6 +11400,7 @@ exportObj.basicCardData = ->
        {
             name: "Leia Organa (Resistance)"
             id: 244
+            unique: true
             slot: "Crew"
             faction: "Resistance"
             force: 1
@@ -11411,6 +11417,7 @@ exportObj.basicCardData = ->
        {
             name: "Korr Sella"
             id: 245
+            unique: true
             slot: "Crew"
             faction: "Resistance"
             points: 6
@@ -11418,6 +11425,7 @@ exportObj.basicCardData = ->
        {
             name: "PZ-4CO"
             id: 246
+            unique: true
             slot: "Crew"
             faction: "Resistance"
             points: 6
