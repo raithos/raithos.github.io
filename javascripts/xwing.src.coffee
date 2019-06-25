@@ -9674,7 +9674,7 @@ exportObj.basicCardData = ->
            id: 59
            slot: "Crew"
            pointsarray: [2,3,4,5,6,7,8]
-           variableagility: true
+           variableinit: true
        }
        {
            name: "Seventh Sister"

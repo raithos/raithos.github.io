@@ -288,12 +288,35 @@
   background-repeat: no-repeat;
   background-position: 0px -30px; }
 
-
 .ship-hyenaclassdroidbomber {
   background-image: url("../images/hyenaclassdroidbomber0.png");
   background-repeat: no-repeat;
   background-position: 0px -30px; }
 
+.ship-delta7aethersprite {
+  background-image: url("../images/delta7aethersprite0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-v19torrent {
+  background-image: url("../images/v19torrent0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -10px; }
+
+.ship-belbullab22starfighter {
+  background-image: url("../images/belbullab22starfighter0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-sithinfiltrator {
+  background-image: url("../images/sithinfiltrator0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -10px; }
+
+.ship-vultureclassdroidfighter {
+  background-image: url("../images/vultureclassdroidfighter0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
 
 .its-working {
   background-image: url("../images/its_working.png");
