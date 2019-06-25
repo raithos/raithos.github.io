@@ -16631,7 +16631,7 @@ exportObj.cardLoaders.English = function() {
     },
     "Angled Deflectors": {
       display_name: "Angled Deflectors",
-      text: "<i>Adds %REINFORCE%, Removes 1 Shield. %LINEBREAK% Requires 1 shield and Small or Medium Base Ship.</i>%LINEBREAK% After you fully execute a blue maneuver, remove all of your stress tokens."
+      text: "<i>Adds %REINFORCE%, Removes 1 Shield. %LINEBREAK% Requires 1 shield and Small or Medium Base Ship.</i>"
     },
     "Hardpoint: Cannon": {
       text: "Adds a %CANNON% slot"
