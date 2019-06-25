@@ -273,6 +273,28 @@
   background-repeat: no-repeat;
   background-position: 0px -30px; }
 
+.ship-resistancetransport {
+  background-image: url("../images/resistancetransport0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-resistancetransportpod {
+  background-image: url("../images/resistancetransportpod0.png");
+  background-repeat: no-repeat;
+  background-position: 0px 0px; }
+
+.ship-nabooroyaln1starfighter {
+  background-image: url("../images/nabooroyaln1starfighter0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+
+.ship-hyenaclassdroidbomber {
+  background-image: url("../images/hyenaclassdroidbomber0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+
 .its-working {
   background-image: url("../images/its_working.png");
   background-repeat: no-repeat;
