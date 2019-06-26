@@ -8528,6 +8528,10 @@ exportObj.basicCardData = ->
                 "Modification"
                 "Configuration"
             ]
+            ship_override:
+                actionsred: [
+                    "Jam"
+                ]
         }
         {
             name: "Baktoid Prototype"
@@ -8563,6 +8567,7 @@ exportObj.basicCardData = ->
         {
             name: "Dineé Ellberger"
             id: 331
+            xws: "dineeellberger-nabooroyaln1starfighter"
             unique: true
             faction: "Galactic Republic"
             ship: "Naboo Royal N-1 Starfighter"
@@ -8578,6 +8583,7 @@ exportObj.basicCardData = ->
         {
             name: "Padmé Amidala"
             id: 332
+            xws: "padmeamidala-nabooroyaln1starfighter"
             unique: true
             faction: "Galactic Republic"
             ship: "Naboo Royal N-1 Starfighter"
@@ -8593,6 +8599,7 @@ exportObj.basicCardData = ->
         {
             name: "Ric Olié"
             id: 333
+            xws: "ricolie-nabooroyaln1starfighter"
             unique: true
             faction: "Galactic Republic"
             ship: "Naboo Royal N-1 Starfighter"
@@ -18021,7 +18028,7 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """<i>Nur für Rebellen</i>%LINEBREAK%Während des Schrittes „Aktion durchführen“ darfst du 1 Aktion durchführen, auch solange du gestresst bist. Nachdem du eine Aktion durchgeführt hast, solange du gestresst bist, erleide 1 %HIT%-Schaden, es sei denn, du legst 1 deiner Schadenskarten offen."""
         '"Chopper" (Astromech)':
            display_name: """„Chopper“ (Astromech)"""
-           text: """<i>Nur für Rebellen</i>%LINEBREAK%<strong>Aktion:</strong> Gib 1 nicht-wiederkehrende %CHARGE% von einer anderen ausgerüsteten Aufwertung aus, um 1 Schild wiederherzustellen."""
+           text: """<i>Nur für Rebellen</i>%LINEBREAK%<strong>Aktion:</strong> Gib 1 nicht-wiederkehrende %CHARGE% von einer anderen ausgerüsteten Aufwertung aus, um 1 Schild wiederherzustellen.%LINEBREAK%<strong>Aktion:</strong> Gib 2 Schilde aus, um 1 nicht-wiederkehrende %CHARGE% von einer ausgerüsteten Aufwertung wiederherzustellen."""
         '"Genius"':
            display_name: """„Genie“"""
            text: """<i>Nur für Abschaum</i>%LINEBREAK%Nachdem du ein Manöver vollständig ausgeführt hast, falls du in dieser Runde noch kein Gerät abgeworfen oder gestartet hast, darfst du 1 Bombe abwerfen."""
