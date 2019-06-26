@@ -106,6 +106,7 @@ exportObj.SquadBuilderBackend = (function() {
       }
     };
     this.squad_display_mode = 'all';
+    this.show_archived = false;
     this.collection_save_timer = null;
     this.setupHandlers();
     this.setupUI();
@@ -195,6 +196,11 @@ exportObj.SquadBuilderBackend = (function() {
     })(this));
   };
 
+  SquadBuilderBackend.prototype.archive = function(data, faction, cb) {
+    data.additional_data["archived"] = true;
+    return this.save(data.serialized, data.id, data.name, faction, data.additional_data, cb);
+  };
+
   SquadBuilderBackend.prototype.list = function(builder, all) {
     var list_ul, loading_pane, url;
     if (all == null) {
@@ -216,94 +222,99 @@ exportObj.SquadBuilderBackend = (function() {
     url = all ? "" + this.server + "/all" : "" + this.server + "/squads/list";
     return $.get(url, (function(_this) {
       return function(data, textStatus, jqXHR) {
-        var li, squad, _i, _len, _ref;
-        if (data[builder.faction].length === 0) {
-          list_ul.append($.trim("<li>You have no squads saved.  Go save one!</li>"));
-        } else {
-          _ref = data[builder.faction];
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            squad = _ref[_i];
-            li = $(document.createElement('LI'));
-            li.addClass('squad-summary');
-            li.data('squad', squad);
-            li.data('builder', builder);
-            li.data('selectedForDeletion', false);
-            list_ul.append(li);
-            li.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span9\">\n        <h4>" + squad.name + "</h4>\n    </div>\n    <div class=\"span3\">\n        <h5>" + squad.additional_data.points + " Points</h5>\n    </div>\n</div>\n<div class=\"row-fluid squad-description\">\n    <div class=\"span8\">\n        " + squad.additional_data.description + "\n    </div>\n    <div class=\"span4\">\n        <button class=\"btn load-squad\">Load</button>\n        &nbsp;\n        <button class=\"btn btn-danger delete-squad\">Delete</button>\n    </div>\n</div>\n<div class=\"row-fluid squad-delete-confirm\">\n    <div class=\"span8\">\n        Really delete <em>" + squad.name + "</em>?\n    </div>\n    <div class=\"span4\">\n        <button class=\"btn btn-danger confirm-delete-squad\">Delete</button>\n        &nbsp;\n        <button class=\"btn cancel-delete-squad\">Cancel</button>\n    </div>\n</div>"));
-            li.find('.squad-delete-confirm').hide();
-            li.find('button.load-squad').click(function(e) {
-              var button;
-              e.preventDefault();
-              button = $(e.target);
-              li = button.closest('li');
-              builder = li.data('builder');
-              _this.squad_list_modal.modal('hide');
-              if (builder.current_squad.dirty) {
-                return _this.warnUnsaved(builder, function() {
-                  return builder.container.trigger('xwing-backend:squadLoadRequested', li.data('squad'));
-                });
-              } else {
+        var hasNotArchivedSquads, li, squad, _i, _len, _ref, _ref1;
+        hasNotArchivedSquads = false;
+        _ref = data[builder.faction];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          squad = _ref[_i];
+          li = $(document.createElement('LI'));
+          li.addClass('squad-summary');
+          li.data('squad', squad);
+          li.data('builder', builder);
+          li.data('selectedForDeletion', false);
+          list_ul.append(li);
+          if (((_ref1 = squad.additional_data) != null ? _ref1.archived : void 0) != null) {
+            li.hide();
+          } else {
+            hasNotArchivedSquads = true;
+          }
+          li.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span9\">\n        <h4>" + squad.name + "</h4>\n    </div>\n    <div class=\"span3\">\n        <h5>" + squad.additional_data.points + " Points</h5>\n    </div>\n</div>\n<div class=\"row-fluid squad-description\">\n    <div class=\"span8\">\n        " + squad.additional_data.description + "\n    </div>\n    <div class=\"span4\">\n        <button class=\"btn load-squad\">Load</button>\n        &nbsp;\n        <button class=\"btn btn-danger delete-squad\">Delete</button>\n    </div>\n</div>\n<div class=\"row-fluid squad-delete-confirm\">\n    <div class=\"span8\">\n        Really delete <em>" + squad.name + "</em>?\n    </div>\n    <div class=\"span4\">\n        <button class=\"btn btn-danger confirm-delete-squad\">Delete</button>\n        &nbsp;\n        <button class=\"btn cancel-delete-squad\">Cancel</button>\n    </div>\n</div>"));
+          li.find('.squad-delete-confirm').hide();
+          li.find('button.load-squad').click(function(e) {
+            var button;
+            e.preventDefault();
+            button = $(e.target);
+            li = button.closest('li');
+            builder = li.data('builder');
+            _this.squad_list_modal.modal('hide');
+            if (builder.current_squad.dirty) {
+              return _this.warnUnsaved(builder, function() {
                 return builder.container.trigger('xwing-backend:squadLoadRequested', li.data('squad'));
+              });
+            } else {
+              return builder.container.trigger('xwing-backend:squadLoadRequested', li.data('squad'));
+            }
+          });
+          li.find('button.delete-squad').click(function(e) {
+            var button;
+            e.preventDefault();
+            button = $(e.target);
+            li = button.closest('li');
+            builder = li.data('builder');
+            li.data('selectedForDeletion', true);
+            (function(li) {
+              li.find('.squad-description').fadeOut('fast', function() {
+                return li.find('.squad-delete-confirm').fadeIn('fast');
+              });
+              if (!_this.number_of_selected_squads_to_be_deleted) {
+                return _this.squad_list_modal.find('div.delete-multiple-squads').show();
               }
-            });
-            li.find('button.delete-squad').click(function(e) {
-              var button;
-              e.preventDefault();
-              button = $(e.target);
-              li = button.closest('li');
-              builder = li.data('builder');
-              li.data('selectedForDeletion', true);
-              (function(li) {
-                li.find('.squad-description').fadeOut('fast', function() {
-                  return li.find('.squad-delete-confirm').fadeIn('fast');
+            })(li);
+            return _this.number_of_selected_squads_to_be_deleted += 1;
+          });
+          li.find('button.cancel-delete-squad').click(function(e) {
+            var button;
+            e.preventDefault();
+            button = $(e.target);
+            li = button.closest('li');
+            builder = li.data('builder');
+            li.data('selectedForDeletion', false);
+            _this.number_of_selected_squads_to_be_deleted -= 1;
+            return (function(li) {
+              li.find('.squad-delete-confirm').fadeOut('fast', function() {
+                return li.find('.squad-description').fadeIn('fast');
+              });
+              if (!_this.number_of_selected_squads_to_be_deleted) {
+                return _this.squad_list_modal.find('div.delete-multiple-squads').hide();
+              }
+            })(li);
+          });
+          li.find('button.confirm-delete-squad').click(function(e) {
+            var button;
+            e.preventDefault();
+            button = $(e.target);
+            li = button.closest('li');
+            builder = li.data('builder');
+            li.find('.cancel-delete-squad').fadeOut('fast');
+            li.find('.confirm-delete-squad').addClass('disabled');
+            li.find('.confirm-delete-squad').text('Deleting...');
+            return _this["delete"](li.data('squad').id, function(results) {
+              if (results.success) {
+                li.slideUp('fast', function() {
+                  return $(li).remove();
                 });
-                if (!_this.number_of_selected_squads_to_be_deleted) {
-                  return _this.squad_list_modal.find('div.delete-multiple-squads').show();
-                }
-              })(li);
-              return _this.number_of_selected_squads_to_be_deleted += 1;
-            });
-            li.find('button.cancel-delete-squad').click(function(e) {
-              var button;
-              e.preventDefault();
-              button = $(e.target);
-              li = button.closest('li');
-              builder = li.data('builder');
-              li.data('selectedForDeletion', false);
-              _this.number_of_selected_squads_to_be_deleted -= 1;
-              return (function(li) {
-                li.find('.squad-delete-confirm').fadeOut('fast', function() {
-                  return li.find('.squad-description').fadeIn('fast');
-                });
+                _this.number_of_selected_squads_to_be_deleted -= 1;
                 if (!_this.number_of_selected_squads_to_be_deleted) {
                   return _this.squad_list_modal.find('div.delete-multiple-squads').hide();
                 }
-              })(li);
+              } else {
+                return li.html($.trim("Error deleting " + (li.data('squad').name) + ": <em>" + results.error + "</em>"));
+              }
             });
-            li.find('button.confirm-delete-squad').click(function(e) {
-              var button;
-              e.preventDefault();
-              button = $(e.target);
-              li = button.closest('li');
-              builder = li.data('builder');
-              li.find('.cancel-delete-squad').fadeOut('fast');
-              li.find('.confirm-delete-squad').addClass('disabled');
-              li.find('.confirm-delete-squad').text('Deleting...');
-              return _this["delete"](li.data('squad').id, function(results) {
-                if (results.success) {
-                  li.slideUp('fast', function() {
-                    return $(li).remove();
-                  });
-                  _this.number_of_selected_squads_to_be_deleted -= 1;
-                  if (!_this.number_of_selected_squads_to_be_deleted) {
-                    return _this.squad_list_modal.find('div.delete-multiple-squads').hide();
-                  }
-                } else {
-                  return li.html($.trim("Error deleting " + (li.data('squad').name) + ": <em>" + results.error + "</em>"));
-                }
-              });
-            });
-          }
+          });
+        }
+        if (!hasNotArchivedSquads) {
+          list_ul.append($.trim("<li>Nothing to see here. Go save a squad!</li>"));
         }
         loading_pane.fadeOut('fast');
         return list_ul.fadeIn('fast');
@@ -477,7 +488,7 @@ exportObj.SquadBuilderBackend = (function() {
     this.squad_list_modal = $(document.createElement('DIV'));
     this.squad_list_modal.addClass('modal hide fade hidden-print squad-list');
     $(document.body).append(this.squad_list_modal);
-    this.squad_list_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3 class=\"squad-list-header-placeholder hidden-phone hidden-tablet\"></h3>\n    <h4 class=\"squad-list-header-placeholder hidden-desktop\"></h4>\n</div>\n<div class=\"modal-body\">\n    <ul class=\"squad-list\"></ul>\n    <p class=\"pagination-centered squad-list-loading\">\n        <i class=\"fa fa-spinner fa-spin fa-3x\"></i>\n        <br />\n        Fetching squads...\n    </p>\n</div>\n<div class=\"modal-footer\">\n    <div class=\"btn-group delete-multiple-squads\">\n        <button class=\"btn select-all\">Select All</button>\n        <button class=\"btn btn-danger delete-selected\">Delete Selected</button>\n    </div>\n    <div class=\"btn-group squad-display-mode\">\n        <button class=\"btn btn-inverse show-all-squads\">All</button>\n        <button class=\"btn show-extended-squads\">Extended</button>\n        <button class=\"btn show-hyperspace-squads\">Hyperspace</button>\n        <button class=\"btn show-quickbuild-squads\">Quickbuild</button>\n    </div>\n    <button class=\"btn btn reload-all\">Reload<span class=\"hidden-phone\"> all squads (this might take a while)</span></button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.squad_list_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3 class=\"squad-list-header-placeholder hidden-phone hidden-tablet\"></h3>\n    <h4 class=\"squad-list-header-placeholder hidden-desktop\"></h4>\n</div>\n<div class=\"modal-body\">\n    <ul class=\"squad-list\"></ul>\n    <p class=\"pagination-centered squad-list-loading\">\n        <i class=\"fa fa-spinner fa-spin fa-3x\"></i>\n        <br />\n        Fetching squads...\n    </p>\n</div>\n<div class=\"modal-footer\">\n    <div class=\"btn-group delete-multiple-squads\">\n        <button class=\"btn select-all\">Select All</button>\n        <button class=\"btn archive-selected\">Archive Selected</button>\n        <button class=\"btn btn-danger delete-selected\">Delete Selected</button>\n    </div>\n    <div class=\"btn-group squad-display-mode\">\n        <button class=\"btn btn-inverse show-all-squads\">All</button>\n        <button class=\"btn show-extended-squads\">Extended</button>\n        <button class=\"btn show-hyperspace-squads\">Hyperspace</button>\n        <button class=\"btn show-quickbuild-squads\">Quickbuild</button>\n        <button class=\"btn show-archived-squads\">Archived</button>\n    </div>\n    <button class=\"btn btn reload-all\">Reload<span class=\"hidden-phone\"> all squads (this might take a while)</span></button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
     this.squad_list_modal.find('ul.squad-list').hide();
     this.squad_list_modal.find('div.delete-multiple-squads').hide();
     this.delete_selected_button = $(this.squad_list_modal.find('button.delete-selected'));
@@ -506,6 +517,47 @@ exportObj.SquadBuilderBackend = (function() {
                   }
                 } else {
                   return li.html($.trim("Error deleting " + (li.data('squad').name) + ": <em>" + results.error + "</em>"));
+                }
+              });
+            })(li));
+          } else {
+            _results.push(void 0);
+          }
+        }
+        return _results;
+      };
+    })(this));
+    this.archive_selected_button = $(this.squad_list_modal.find('button.archive-selected'));
+    this.archive_selected_button.click((function(_this) {
+      return function(e) {
+        var li, ul, _i, _len, _ref, _results;
+        ul = _this.squad_list_modal.find('ul.squad-list');
+        _ref = ul.find('li');
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          li = _ref[_i];
+          li = $(li);
+          if (li.data('selectedForDeletion')) {
+            _results.push((function(li) {
+              li.find('.confirm-delete-squad').addClass('disabled');
+              li.find('.confirm-delete-squad').text('Archiving...');
+              return _this.archive(li.data('squad'), li.data('builder').faction, function(results) {
+                if (results.success) {
+                  li.slideUp('fast', function() {
+                    $(li).hide();
+                    $(li).find('.confirm-delete-squad').removeClass('disabled');
+                    $(li).find('.confirm-delete-squad').text('Delete');
+                    $(li).data('selectedForDeletion', false);
+                    return $(li).find('.squad-delete-confirm').fadeOut('fast', function() {
+                      return $(li).find('.squad-description').fadeIn('fast');
+                    });
+                  });
+                  _this.number_of_selected_squads_to_be_deleted -= 1;
+                  if (!_this.number_of_selected_squads_to_be_deleted) {
+                    return _this.squad_list_modal.find('div.delete-multiple-squads').hide();
+                  }
+                } else {
+                  return li.html($.trim("Error archiving " + (li.data('squad').name) + ": <em>" + results.error + "</em>"));
                 }
               });
             })(li));
@@ -631,6 +683,20 @@ exportObj.SquadBuilderBackend = (function() {
             return $(elem).toggle($(elem).data().squad.serialized.search(/v\d+!q/) !== -1);
           });
         }
+      };
+    })(this));
+    this.show_archived_squads_button = $(this.squad_list_modal.find('.show-archived-squads'));
+    this.show_archived_squads_button.click((function(_this) {
+      return function(e) {
+        _this.show_archived = !_this.show_archived;
+        if (_this.show_archived) {
+          _this.show_archived_squads_button.addClass('btn-inverse');
+        } else {
+          _this.show_archived_squads_button.removeClass('btn-inverse');
+        }
+        return _this.squad_list_modal.find('.squad-list li').each(function(idx, elem) {
+          return $(elem).toggle(($(elem).data().squad.additional_data.archived != null) === _this.show_archived);
+        });
       };
     })(this));
     this.save_as_modal = $(document.createElement('DIV'));
@@ -874,7 +940,7 @@ exportObj.SquadBuilderBackend = (function() {
                 return headers = arguments[0];
               };
             })(),
-            lineno: 754
+            lineno: 804
           }));
           __iced_deferrals._fulfill();
         });
@@ -32087,7 +32153,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 34325
+                    lineno: 34375
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -32900,7 +32966,7 @@ exportObj.SquadBuilder = (function() {
         if ((_this.backend != null) && !_this.backend_save_list_button.hasClass('disabled')) {
           additional_data = {
             points: _this.total_points,
-            description: _this.describeSquad() + ', Squad saved: ' + (new Date()).toLocaleString(),
+            description: _this.describeSquad(),
             cards: _this.listCards(),
             notes: _this.notes.val().substr(0, 1024),
             obstacles: _this.getObstacles()
@@ -32918,7 +32984,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 35189
+              lineno: 35239
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -33729,7 +33795,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 35912
+              lineno: 35962
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -33739,7 +33805,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 35913
+                lineno: 35963
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -35132,18 +35198,22 @@ exportObj.SquadBuilder = (function() {
 
   SquadBuilder.prototype.describeSquad = function() {
     var ship;
-    return ((function() {
-      var _i, _len, _ref, _results;
-      _ref = this.ships;
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        ship = _ref[_i];
-        if (ship.pilot != null) {
-          _results.push(ship.pilot.name);
+    if (this.getNotes().trim() === '') {
+      return ((function() {
+        var _i, _len, _ref, _results;
+        _ref = this.ships;
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          ship = _ref[_i];
+          if (ship.pilot != null) {
+            _results.push(ship.pilot.name);
+          }
         }
-      }
-      return _results;
-    }).call(this)).join(', ');
+        return _results;
+      }).call(this)).join(', ');
+    } else {
+      return this.getNotes();
+    }
   };
 
   SquadBuilder.prototype.listCards = function() {
@@ -35467,7 +35537,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 37089
+              lineno: 37139
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -35684,7 +35754,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 37205
+                          lineno: 37255
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -35713,7 +35783,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 37221
+                              lineno: 37271
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -35783,7 +35853,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 37263
+                      lineno: 37313
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -35863,7 +35933,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 37292
+                lineno: 37342
               })
             ]);
             __iced_deferrals._fulfill();
@@ -35932,7 +36002,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 37321
+              lineno: 37371
             }));
           }
         }
@@ -36574,34 +36644,21 @@ Ship = (function() {
   };
 
   Ship.prototype.toSerialized = function() {
-    var addon, conferred_addons, i, serialized_conferred_addons, upgrade, upgrades, _i, _j, _len, _len1, _ref, _ref1;
+    var i, upgrade, upgrades;
     if (this.builder.isQuickbuild) {
       return "" + this.quickbuildId + ":";
     } else {
-      conferred_addons = [];
-      _ref = this.upgrades;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        upgrade = _ref[_i];
-        conferred_addons = conferred_addons.concat((_ref1 = upgrade != null ? upgrade.conferredAddons : void 0) != null ? _ref1 : []);
-      }
       upgrades = "" + ((function() {
-        var _j, _len1, _ref2, _ref3, _ref4, _results;
-        _ref2 = this.upgrades;
+        var _i, _len, _ref, _ref1, _ref2, _results;
+        _ref = this.upgrades;
         _results = [];
-        for (i = _j = 0, _len1 = _ref2.length; _j < _len1; i = ++_j) {
-          upgrade = _ref2[i];
-          if (__indexOf.call(conferred_addons, upgrade) < 0) {
-            _results.push((_ref3 = upgrade != null ? (_ref4 = upgrade.data) != null ? _ref4.id : void 0 : void 0) != null ? _ref3 : "");
-          }
+        for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
+          upgrade = _ref[i];
+          _results.push((_ref1 = upgrade != null ? (_ref2 = upgrade.data) != null ? _ref2.id : void 0 : void 0) != null ? _ref1 : "");
         }
         return _results;
       }).call(this));
-      serialized_conferred_addons = [];
-      for (_j = 0, _len1 = conferred_addons.length; _j < _len1; _j++) {
-        addon = conferred_addons[_j];
-        serialized_conferred_addons.push(addon.toSerialized());
-      }
-      return [this.pilot.id, upgrades, serialized_conferred_addons.join(',')].join(':');
+      return [this.pilot.id, upgrades].join(':');
     }
   };
 
@@ -37007,7 +37064,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 38161
+                lineno: 38202
               })
             ]);
             __iced_deferrals._fulfill();
@@ -37148,7 +37205,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 38235
+                  lineno: 38276
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -37170,7 +37227,7 @@ GenericAddon = (function() {
                 });
                 _this.ship.builder.container.trigger('xwing:claimUnique', [
                   new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 38239
+                    lineno: 38280
                   })
                 ]);
                 __iced_deferrals._fulfill();
@@ -37257,7 +37314,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 38280
+            lineno: 38321
           }));
         }
         __iced_deferrals._fulfill();
