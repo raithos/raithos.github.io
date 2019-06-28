@@ -11248,6 +11248,7 @@ exportObj.basicCardData = ->
             name: "DRK-1 Probe Droids"
             id: 221
             slot: "Device"
+            unique: true
             faction: "Separatist Alliance"
             charge: 2
             points: 5
@@ -35644,10 +35645,15 @@ class exportObj.SquadBuilder
                 @desired_points_input.val 8
                 @maxSmallShipsOfOneType = null
                 @maxLargeShipsOfOneType = null
-        if (oldHyperspace != @isHyperspace) or (oldQuickbuild != @isQuickbuild)
+        if oldQuickbuild != @isQuickbuild
             old_id = @current_squad.id
             @newSquadFromScratch($.trim(@current_squad.name))
             @current_squad.id = old_id # we want to keep the ID, so we allow people to use the save button
+        else if oldHyperspace != @isHyperspace
+            if @isHyperspace == true
+                old_id = @current_squad.id
+                @newSquadFromScratch($.trim(@current_squad.name)) # need to change this to a new function to check hyperspace and remove
+                @current_squad.id = old_id # we want to keep the ID, so we allow people to use the save button
         #@onPointsUpdated cb
         cb()
 
@@ -35847,7 +35853,8 @@ class exportObj.SquadBuilder
                         @desired_points_input.val desired_points
                         @desired_points_input.change()
                     else 
-                        switch game_type_and_point_abbrev
+                        game_type_abbrev = game_type_and_point_abbrev.split('=')[0]
+                        switch game_type_abbrev
                             when 's'
                                 @changeGameTypeOnSquadLoad 'standard'
                             when 'h'
