@@ -567,7 +567,7 @@ class exportObj.SquadBuilderBackend
                 @squad_list_modal.find('.squad-display-mode .btn').removeClass 'btn-inverse'
                 @show_extended_squads_button.addClass 'btn-inverse'
                 @squad_list_modal.find('.squad-list li').each (idx, elem) ->
-                    $(elem).toggle $(elem).data().squad.serialized.search(/v\d+!s/) != -1
+                    $(elem).toggle $(elem).data().squad.serialized.search(/v\d+Zs/) != -1
 
         @show_hyperspace_squads_button = $ @squad_list_modal.find('.show-hyperspace-squads')
         @show_hyperspace_squads_button.click (e) =>
@@ -576,7 +576,7 @@ class exportObj.SquadBuilderBackend
                 @squad_list_modal.find('.squad-display-mode .btn').removeClass 'btn-inverse'
                 @show_hyperspace_squads_button.addClass 'btn-inverse'
                 @squad_list_modal.find('.squad-list li').each (idx, elem) ->
-                    $(elem).toggle $(elem).data().squad.serialized.search(/v\d+!h/) != -1
+                    $(elem).toggle $(elem).data().squad.serialized.search(/v\d+Zh/) != -1
 
         @show_quickbuild_squads_button = $ @squad_list_modal.find('.show-quickbuild-squads')
         @show_quickbuild_squads_button.click (e) =>
@@ -585,7 +585,7 @@ class exportObj.SquadBuilderBackend
                 @squad_list_modal.find('.squad-display-mode .btn').removeClass 'btn-inverse'
                 @show_quickbuild_squads_button.addClass 'btn-inverse'
                 @squad_list_modal.find('.squad-list li').each (idx, elem) ->
-                    $(elem).toggle $(elem).data().squad.serialized.search(/v\d+!q/) != -1
+                    $(elem).toggle $(elem).data().squad.serialized.search(/v\d+Zq/) != -1
                     
         @show_archived_squads_button = $ @squad_list_modal.find('.show-archived-squads')
         @show_archived_squads_button.click (e) =>
@@ -1554,10 +1554,11 @@ class exportObj.CardBrowser
 
         # check if hyperspace only matches
         if @hyperspace_checkbox.checked
-            for faction in selected_factions ? all_factions
+            # check all factions specified by the card (which might be a single faction or an array of factions), or all selected factions if card does not specify any
+            for faction in (if card.data.faction? then (if Array.isArray(card.data.faction) then card.data.faction else [card.data.faction]) else (selected_factions ? all_factions))
+                continue unless faction in (selected_factions ? all_factions) # e.g. ships should only be displayed if a legal faction is selected
                 hyperspace_legal = hyperspace_legal or exportObj.hyperspaceCheck(card.data, faction, card.orig_type == 'Ship' )
             return false unless hyperspace_legal
-
 
         # check for slot requirements
         required_slots = @slot_available_selection.val()
@@ -17665,7 +17666,7 @@ exportObj.cardLoaders.Deutsch = () ->
            text: """<i>Benötigt %CALCULATE% oder <r>%CALCULATE%</r></i>%LINEBREAK%<i>Nur für Separatistenallianz</i>%LINEBREAK%<strong>Angriff (%CALCULATE%):</strong> Gib 1 %CHARGE% aus. Solange du diesen Angriff durchführst, darfst du 1 Berechnungsmarker ausgegeben, um 1 %FOCUS%-Ergebnis in ein %CRIT%-Ergebnis zu ändern.%LINEBREAK%<strong>Aktion</strong>: Lade diese Karte nach."""
         "Engine Upgrade":
            display_name: """Verbessertes Triebwerk"""
-           text: """<i>Fügt %BOOST% hinzu</i>%LINEBREAK%<i>Benötigt <r>%BOOST%</r></i>%LINEBREAK%<i class = flavor_text>Große Armeen wie das Militär des Galaktischen Imperiums haben meist standardisierte Triebwerke. Freischaffende Piloten und kleinere Organisationen ersetzen oft Energiekopplungen, """
+           text: """<i>Fügt %BOOST% hinzu</i>%LINEBREAK%<i>Benötigt <r>%BOOST%</r></i>%LINEBREAK%<i class = flavor_text>Große Armeen wie das Militär des Galaktischen Imperiums haben meist standardisierte Triebwerke. Freischaffende Piloten und kleinere Organisationen ersetzen oft Energiekopplungen, bauen zusätzliche Düsen ein oder nutzen Hochleistungskraftstoffe, um noch mehr aus ihren Triebwerken herauszuholen.</i>"""
         "Expert Handling":
            display_name: """Flugkunst"""
            text: """<i>Fügt %BARRELROLL% hinzu</i>%LINEBREAK%<i>Benötigt <r>%BARRELROLL%</r></i>%LINEBREAK%<i class = flavor_text>Auch schwere Jäger können in eine Fassrolle gezwungen werden, wobei es einen erfahrenen Piloten braucht, um die Maschine nicht übermäßig zu belasten und dem Feind kein leichtes Ziel zu bieten.</i>"""
@@ -35804,7 +35805,7 @@ class exportObj.SquadBuilder
 
     serialize: ->
 
-        serialization_version = 7
+        serialization_version = 8
         game_type_abbrev = switch @game_type_selector.val()
             when 'standard'
                 's'
@@ -35813,7 +35814,7 @@ class exportObj.SquadBuilder
             when 'quickbuild'
                 'q'
         selected_points = $.trim @desired_points_input.val()
-        """v#{serialization_version}!#{game_type_abbrev}=#{selected_points}!#{( ship.toSerialized() for ship in @ships when ship.pilot? and (not @isQuickbuild or ship.primary) ).join ';'}"""
+        """v#{serialization_version}Z#{game_type_abbrev}Z#{selected_points}Z#{( ship.toSerialized() for ship in @ships when ship.pilot? and (not @isQuickbuild or ship.primary) ).join 'Y'}"""
 
     changeGameTypeOnSquadLoad: (gametype) ->
         if @game_type_selector.val() != gametype
@@ -35825,7 +35826,7 @@ class exportObj.SquadBuilder
         # Clear all existing ships
         @removeAllShips()
 
-        re = /^v(\d+)!(.*)/
+        re = if "Z" in serialized then /^v(\d+)Z(.*)/ else /^v(\d+)!(.*)/
         matches = re.exec serialized
         if matches?
             # versioned
@@ -35834,66 +35835,47 @@ class exportObj.SquadBuilder
             # version 4 is the final version of 1st edition x-wing, and has been the first few weeks of YASB 2.0
             # version 5 is the first version for 2nd edtition x-wing only, it features extended (=standard), hyperspace, quickbuild and custom mode
             # version 6 has the only difference to version 5 is, that custom (=extended with != 200 points) has been removed and points are specified for all modes. 
-            # version 7 is the current version, arbitrary ordering of upgrades is additionally supported
-            switch version
-                when 3, 4, 5, 6, 7
-                    # parse out game type
-                    [ game_type_and_point_abbrev, serialized_ships ] = matches[2].split('!')
-                    # check if there are serialized ships to load
-                    if !serialized_ships? # something went wrong, we can't load that serialization
-                        @loading_failed_container.toggleClass 'hidden', false
-                        return
-                    if version == 6 
-                        desired_points = parseInt(game_type_and_point_abbrev.split('=')[1])
-                        game_type_abbrev = game_type_and_point_abbrev.split('=')[0]  
-                        switch game_type_abbrev
-                            when 's'
-                                @changeGameTypeOnSquadLoad 'standard'
-                            when 'h'
-                                @changeGameTypeOnSquadLoad 'hyperspace'
-                            when 'q'
-                                @changeGameTypeOnSquadLoad 'quickbuild'
-                        @desired_points_input.val desired_points
-                        @desired_points_input.change()
-                    else 
-                        game_type_abbrev = game_type_and_point_abbrev.split('=')[0]
-                        switch game_type_abbrev
-                            when 's'
-                                @changeGameTypeOnSquadLoad 'standard'
-                            when 'h'
-                                @changeGameTypeOnSquadLoad 'hyperspace'
-                            when 'q'
-                                @changeGameTypeOnSquadLoad 'quickbuild'
-                            else
-                                @changeGameTypeOnSquadLoad 'standard'
-                                @desired_points_input.val parseInt(game_type_and_point_abbrev.split('=')[1])
-                                @desired_points_input.change()
-                    ships_with_unmet_dependencies = []
-                    for serialized_ship in serialized_ships.split(';')
-                        unless serialized_ship == ''
-                            new_ship = @addShip()
-                            # try to create ship. fromSerialized returns false, if some upgrade have been skipped as they are not legal until now (e.g. 0-0-0 but vader is not yet in the squad)
-                            # if not the entire ship is valid, we'll try again later - but keep the valid part added, so other ships may already see some upgrades
-                            if (not new_ship.fromSerialized version, serialized_ship) or not new_ship.pilot # also check, if the pilot has been set (the pilot himself was not invalid) 
-                                ships_with_unmet_dependencies.push [new_ship, serialized_ship]
-                    for ship in ships_with_unmet_dependencies
-                        # 2nd attempt to load ships with unmet dependencies. 
-                        if not ship[0].pilot
-                            # create ship, if the ship was so invalid, that it in fact decided to not exist
-                            ship[0] = @addShip()
-                        ship[0].fromSerialized version, ship[1]
-                            
-                when 2
-                    for serialized_ship in matches[2].split(';')
-                        unless serialized_ship == ''
-                            new_ship = @addShip()
-                            new_ship.fromSerialized version, serialized_ship
-        else
-            # v1 (unversioned)
-            for serialized_ship in serialized.split(';')
-                unless serialized == ''
+            # version 7 has arbitrary ordering of upgrades additionally supported
+            # version 8 is the current version, replacing "!" with "Z" in the serialzed string, and 'Y' etc
+            ship_splitter = if version > 7 then 'Y' else ';'
+            # parse out game type
+            [ game_type_abbrev, desired_points, serialized_ships ] =
+                if version > 7
+                     [g, p, s] = matches[2].split('Z')
+                     [g, parseInt(p), s]
+                else
+                    [ game_type_and_point_abbrev, s ] = matches[2].split('!')
+                    p = parseInt(game_type_and_point_abbrev.split('=')[1])
+                    g = game_type_and_point_abbrev.split('=')[0]
+                    [ g, p, s ]
+
+            # check if there are serialized ships to load
+            if !serialized_ships? # something went wrong, we can't load that serialization
+                @loading_failed_container.toggleClass 'hidden', false
+                return
+            switch game_type_abbrev
+                when 's'
+                    @changeGameTypeOnSquadLoad 'standard'
+                when 'h'
+                    @changeGameTypeOnSquadLoad 'hyperspace'
+                when 'q'
+                    @changeGameTypeOnSquadLoad 'quickbuild'
+            @desired_points_input.val desired_points
+            @desired_points_input.change()
+            ships_with_unmet_dependencies = []
+            for serialized_ship in serialized_ships.split(ship_splitter)
+                unless serialized_ship == ''
                     new_ship = @addShip()
-                    new_ship.fromSerialized 1, serialized_ship
+                    # try to create ship. fromSerialized returns false, if some upgrade have been skipped as they are not legal until now (e.g. 0-0-0 but vader is not yet in the squad)
+                    # if not the entire ship is valid, we'll try again later - but keep the valid part added, so other ships may already see some upgrades
+                    if (not new_ship.fromSerialized version, serialized_ship) or not new_ship.pilot # also check, if the pilot has been set (the pilot himself was not invalid)
+                        ships_with_unmet_dependencies.push [new_ship, serialized_ship]
+            for ship in ships_with_unmet_dependencies
+                # 2nd attempt to load ships with unmet dependencies.
+                if not ship[0].pilot
+                    # create ship, if the ship was so invalid, that it in fact decided to not exist
+                    ship[0] = @addShip()
+                ship[0].fromSerialized version, ship[1]
 
         @suppress_automatic_new_ship = false
         # Finally, the unassigned ship
@@ -37059,7 +37041,7 @@ class exportObj.SquadBuilder
                 success = true
                 error = ""
 
-                serialized_squad = "v7!s=200!" # serialization version 7, standard squad, 200 points
+                serialized_squad = "v8Zs=200Z" # serialization version 7, standard squad, 200 points
                 # serialization schema SHIPID:UPGRADEID,UPGRADEID,...,UPGRADEID:;SHIPID:UPGRADEID,...
 
                 for pilot in xws.pilots
@@ -37090,7 +37072,7 @@ class exportObj.SquadBuilder
                                     serialized_squad += possible_pilot.id
                                     break
 
-                    serialized_squad += ":"
+                    serialized_squad += "X"
 
                     # add upgrade ids
                     # Turn all the upgrades into a flat list so we can keep trying to add them
@@ -37107,8 +37089,8 @@ class exportObj.SquadBuilder
                                 success = false
                                 continue
                             serialized_squad += upgrade.id
-                            serialized_squad += ","
-                    serialized_squad += ":;"
+                            serialized_squad += "W"
+                    serialized_squad += "XY"
 
                 @loadFromSerialized(serialized_squad)
 
@@ -37489,8 +37471,9 @@ class Ship
             @builder.showTooltip 'Ship', exportObj.ships[select2_data.id] if select2_data?.id?
         @ship_selector.data('select2').container.on 'mouseover', (e) =>
             @builder.showTooltip 'Ship', exportObj.ships[@pilot.ship] if @pilot
-        @ship_selector.data('select2').container.on 'touchmove', (e) =>
+        @ship_selector.data('select2').container.on 'touchstart', (e) =>
             @builder.showTooltip 'Ship', exportObj.ships[@pilot.ship] if @pilot
+
         # assign ship row an id for testing purposes
         @row.attr 'id', "row-#{@ship_selector.data('select2').container.attr('id')}"
 
@@ -37536,10 +37519,8 @@ class Ship
                 @builder.showTooltip 'Pilot', exportObj.pilotsById[select2_data.id] if select2_data?.id?
         @pilot_selector.data('select2').container.on 'mouseover', (e) =>
             @builder.showTooltip 'Pilot', @pilot, @ if @pilot
-        @pilot_selector.data('select2').container.on 'touchmove', (e) =>
+        @pilot_selector.data('select2').container.on 'touchstart', (e) =>
             @builder.showTooltip 'Pilot', @pilot, @ if @pilot
-            ###if @data? 
-                scrollTo(0,$('#info-container').offset().top - 10,'smooth')###
 
         @pilot_selector.data('select2').container.hide()
 
@@ -37905,12 +37886,11 @@ class Ship
         if @builder.isQuickbuild
             """#{@quickbuildId}:"""
         else
-            upgrades = """#{upgrade?.data?.id ? "" for upgrade, i in @upgrades}"""
-
+            upgrades = """#{upgrade?.data?.id ? "" for upgrade, i in @upgrades}""".replace(/,/g, "W")
             [
                 @pilot.id,
                 upgrades,
-            ].join ':'
+            ].join 'X'
 
 
     fromSerialized: (version, serialized) ->
@@ -37922,42 +37902,6 @@ class Ship
         # version 1-3 are 1st edition x-wing only, so we may as well delete them. 
         # version 4 was the final version of 1st edition, and the first few weeks of 2nd edition. 
         # version 5 is the current version. It handles titles and mods as regular upgrades. 
-            when 1
-                # PILOT_ID:UPGRADEID1,UPGRADEID2:TITLEUPGRADE1,TITLEUPGRADE2
-                [ pilot_id, upgrade_ids ] = serialized.split ':'
-
-                @setPilotById parseInt(pilot_id), true
-
-                for upgrade_id, i in upgrade_ids.split ','
-                    upgrade_id = parseInt upgrade_id
-                    @upgrades[i].setById upgrade_id if upgrade_id >= 0
-
-            when 2, 3
-                # PILOT_ID:UPGRADEID1,UPGRADEID2:CONFERREDADDONTYPE1.CONFERREDADDONID1,CONFERREDADDONTYPE2.CONFERREDADDONID2
-                [ pilot_id, upgrade_ids, conferredaddon_pairs ] = serialized.split ':'
-                @setPilotById parseInt(pilot_id), true
-
-                deferred_ids = []
-                for upgrade_id, i in upgrade_ids.split ','
-                    upgrade_id = parseInt upgrade_id
-                    continue if upgrade_id < 0 or isNaN(upgrade_id)
-                    if @upgrades[i].isOccupied()
-                        deferred_ids.push upgrade_id
-                    else
-                        @upgrades[i].setById upgrade_id
-
-                for deferred_id in deferred_ids
-                    for upgrade, i in @upgrades
-                        continue if upgrade.isOccupied() or upgrade.slot != exportObj.upgradesById[deferred_id].slot
-                        upgrade.setById deferred_id
-                        break
-
-                if conferredaddon_pairs?
-                    conferredaddon_pairs = conferredaddon_pairs.split ','
-                else
-                    conferredaddon_pairs = []
-
-
             when 4, 5, 6
                 # PILOT_ID:UPGRADEID1,UPGRADEID2:CONFERREDADDONTYPE1.CONFERREDADDONID1,CONFERREDADDONTYPE2.CONFERREDADDONID2
                 # conferredaddons are upgrade slots added by e.g. titles 
@@ -38015,10 +37959,12 @@ class Ship
                             else
                                 throw new Error("Expected addon class #{addon_cls.constructor.name} for conferred addon at index #{i} but #{conferred_addon.constructor.name} is there")
 
-            when 7
+            when 7, 8
+                pilot_splitter = if version > 7 then 'X' else ':'
+                upgrade_splitter = if version > 7 then 'W' else ','
                 # version 7 is an further extension of version 6, allowing arbitrary order of upgrades. It currently ignores conferredaddons (upgrades in slots added by titles etc), probably we can drop the special case handling for them and include them into the usual upgrade list?
-                [ pilot_id, upgrade_ids, conferredaddon_pairs ] = serialized.split ':' 
-                upgrade_ids = upgrade_ids.split ','
+                [ pilot_id, upgrade_ids, conferredaddon_pairs ] = serialized.split pilot_splitter
+                upgrade_ids = upgrade_ids.split upgrade_splitter
                 # set the pilot
                 @setPilotById parseInt(pilot_id), true
                 # make sure the pilot is valid 
@@ -38269,10 +38215,8 @@ class GenericAddon
             @ship.builder.showTooltip 'Addon', @dataById[select2_data.id], {addon_type: @type} if select2_data?.id?
         @selector.data('select2').container.on 'mouseover', (e) =>
             @ship.builder.showTooltip 'Addon', @data, {addon_type: @type} if @data?
-        @selector.data('select2').container.on 'touchmove', (e) =>
+        @selector.data('select2').container.on 'touchstart', (e) =>
             @ship.builder.showTooltip 'Addon', @data, {addon_type: @type} if @data?
-            ###if @data?
-                scrollTo(0,$('#info-container').offset().top - 10,'smooth')###
 
     setById: (id) ->
         @setData @dataById[parseInt id]
