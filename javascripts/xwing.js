@@ -37106,7 +37106,7 @@ GenericAddon = (function() {
   };
 
   GenericAddon.prototype.setData = function(new_data) {
-    var ___iced_passed_deferral, __iced_deferrals, __iced_k, _ref;
+    var alreadyClaimed, ___iced_passed_deferral, __iced_deferrals, __iced_k, _ref;
     __iced_k = __iced_k_noop;
     ___iced_passed_deferral = iced.findDeferral(arguments);
     if ((new_data != null ? new_data.id : void 0) !== ((_ref = this.data) != null ? _ref.id : void 0)) {
@@ -37137,16 +37137,22 @@ GenericAddon = (function() {
           (function(__iced_k) {
             if (((new_data != null ? new_data.unique : void 0) != null) || ((new_data != null ? new_data.solitary : void 0) != null)) {
               (function(__iced_k) {
-                __iced_deferrals = new iced.Deferrals(__iced_k, {
-                  parent: ___iced_passed_deferral,
-                  funcname: "GenericAddon.setData"
-                });
-                _this.ship.builder.container.trigger('xwing:claimUnique', [
-                  new_data, _this.type, __iced_deferrals.defer({
-                    lineno: 38234
-                  })
-                ]);
-                __iced_deferrals._fulfill();
+                try {
+                  __iced_deferrals = new iced.Deferrals(__iced_k, {
+                    parent: ___iced_passed_deferral,
+                    funcname: "GenericAddon.setData"
+                  });
+                  _this.ship.builder.container.trigger('xwing:claimUnique', [
+                    new_data, _this.type, __iced_deferrals.defer({
+                      lineno: 38235
+                    })
+                  ]);
+                  __iced_deferrals._fulfill();
+                } catch (_error) {
+                  alreadyClaimed = _error;
+                  _this.ship.builder.container.trigger('xwing:pointsUpdated');
+                  return _this.lastSetValid = false;
+                }
               })(__iced_k);
             } else {
               return __iced_k();
@@ -37230,7 +37236,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 38275
+            lineno: 38280
           }));
         }
         __iced_deferrals._fulfill();
