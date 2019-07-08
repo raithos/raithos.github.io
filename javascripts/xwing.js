@@ -6032,7 +6032,7 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "Resistance",
         ship: "Resistance Transport Pod",
-        skill: 3,
+        skill: 2,
         points: 29,
         slots: ["Talent", "Tech", "Crew", "Modification"]
       }, {
