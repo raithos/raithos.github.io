@@ -16533,7 +16533,7 @@ exportObj.cardLoaders.English = function() {
       text: "<i>First Order only</i>%LINEBREAK%During the Activation or Engagement Phase, after an enemy ship in your %FRONTARC% at range 0-1 gains a red or orange token, if you are not stressed, you may gain 1 stress token. If you do, that ship gains 1 additional token of the type that it gained."
     },
     "Plasma Torpedoes": {
-      display_name: "Plasma Torpedoes are BETTER than Dee Yun",
+      display_name: "Plasma Torpedoes",
       text: "<strong>Attack (%LOCK%):</strong> Spend 1&nbsp;%CHARGE%. During the Neutralize Results step, %CRIT% results are cancelled before %HIT% results. After this attack hits, the defender loses 1 shield."
     },
     "Pivot Wing": {
