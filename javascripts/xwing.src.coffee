@@ -1895,6 +1895,7 @@ exportObj.basicCardData = ->
             ]
         "TIE Interceptor":
             name: "TIE Interceptor"
+            icon: "TIE Interceptor"
             xws: "TIE/IN Interceptor".canonicalize()
             factions: [ "Galactic Empire" ]
             attack: 3
@@ -37551,7 +37552,10 @@ class Ship
 
         shipResultFormatter = (object, container, query) ->
             # Append directly so we don't have to disable markup escaping
-            $(container).append """<i class="xwing-miniatures-ship xwing-miniatures-ship-#{object.xws}"></i> #{object.text}"""
+            if object.icon?
+                $(container).append """<i class="xwing-miniatures-ship xwing-miniatures-ship-#{object.icon}"></i> #{object.text}"""
+            else
+                $(container).append """<i class="xwing-miniatures-ship xwing-miniatures-ship-#{object.xws}"></i> #{object.text}"""
             # If you return a string, Select2 will render it
             undefined
 
