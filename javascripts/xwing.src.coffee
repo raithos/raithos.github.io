@@ -16290,7 +16290,7 @@ exportObj.translations.Deutsch =
         '.info-well .info-actions td.info-header': 'Aktionen'
         '.info-well .info-upgrades td.info-header': 'Aufwertungskarten'
         '.info-well .info-range td.info-header': 'Reichweite'
-        '.info-well .info-sources td.info-header': 'Enthalten&nbsp;in'
+        '.info-well .info-sources.info-header': 'Enthalten&nbsp;in'
         # Squadron edit buttons
         '.clear-squad' : 'Neue Staffel'
         '.save-list' : '<i class="fa fa-floppy-o"></i>&nbsp;Speichern'
@@ -23270,7 +23270,7 @@ exportObj.translations.Magyar =
         '.info-well .info-actions td.info-header': 'Akciók'
         '.info-well .info-upgrades td.info-header': 'Fejlesztések'
         '.info-well .info-range td.info-header': 'Távolság'
-        '.info-well .info-sources td.info-header':  'Források'
+        '.info-well .info-sources.info-header':  'Források'
         # Squadron edit buttons
         '.clear-squad' : 'Új raj'
         '.save-list' : '<i class="fa fa-floppy-o"></i>&nbsp;Mentés'
