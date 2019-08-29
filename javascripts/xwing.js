@@ -11105,6 +11105,146 @@ exportObj.basicCardData = function() {
         ship: "Belbullab-22 Starfighter",
         threat: 2,
         upgrades: ["Impervium Plating", "TV-94"]
+      }, {
+        id: 353,
+        faction: "Resistance",
+        pilot: "Cova Nell",
+        ship: "Resistance Transport",
+        threat: 3,
+        upgrades: ["Composure", "Leia Organa (Resistance)", "Korr Sella"]
+      }, {
+        id: 354,
+        faction: "Resistance",
+        pilot: "Pammich Nerro Goode",
+        ship: "Resistance Transport",
+        threat: 2,
+        upgrades: ["Autoblasters", "R5-X3", "Kaydel Connix", "Spare Parts Canisters"]
+      }, {
+        id: 355,
+        faction: "Resistance",
+        pilot: "Nodin Chavdri",
+        ship: "Resistance Transport",
+        threat: 2,
+        upgrades: ["Proton Torpedoes", "R2-HA", "Angled Deflectors"]
+      }, {
+        id: 356,
+        faction: "Resistance",
+        pilot: "Logistics Division Pilot",
+        ship: "Resistance Transport",
+        threat: 2,
+        upgrades: ["Proton Torpedoes", "Larma D'Acy", "Amilyn Holdo"]
+      }, {
+        id: 357,
+        faction: "Resistance",
+        pilot: "Rose Tico",
+        ship: "Resistance Transport Pod",
+        threat: 1,
+        upgrades: ["PZ-4CO"]
+      }, {
+        id: 358,
+        faction: "Resistance",
+        pilot: "Finn",
+        ship: "Resistance Transport Pod",
+        threat: 1,
+        upgrades: ["Predator"]
+      }, {
+        id: 359,
+        faction: "Resistance",
+        pilot: "BB-8",
+        ship: "Resistance Transport Pod",
+        threat: 2,
+        upgrades: ["Autoblasters", "Afterburners"]
+      }, {
+        id: 360,
+        faction: "Resistance",
+        pilot: "Vi Moradi",
+        ship: "Resistance Transport Pod",
+        threat: 1,
+        upgrades: ["GA-97"]
+      }, {
+        id: 361,
+        faction: "Galactic Republic",
+        pilot: "Padmé Amidala",
+        ship: "Naboo Royal N-1 Starfighter",
+        threat: 2,
+        upgrades: ["Elusive", "Collision Detector"]
+      }, {
+        id: 362,
+        faction: "Galactic Republic",
+        pilot: "Dineé Ellberger",
+        ship: "Naboo Royal N-1 Starfighter",
+        threat: 2,
+        upgrades: ["Passive Sensors", "R3 Astromech", "Plasma Torpedoes"]
+      }, {
+        id: 363,
+        faction: "Galactic Republic",
+        pilot: "Bravo Flight Officer",
+        ship: "Naboo Royal N-1 Starfighter",
+        threat: 2,
+        upgrades: ["Passive Sensors", "R2-C4", "Proton Torpedoes"]
+      }, {
+        id: 364,
+        faction: "Galactic Republic",
+        pilot: "Anakin Skywalker (N-1 Starfighter)",
+        ship: "Naboo Royal N-1 Starfighter",
+        threat: 3,
+        upgrades: ["Outmaneuver", "Proton Torpedoes", "Heightened Perception", "R2 Astromech", "Collision Detector"]
+      }, {
+        id: 365,
+        faction: "Galactic Republic",
+        pilot: "Ric Olié",
+        ship: "Naboo Royal N-1 Starfighter",
+        threat: 2,
+        upgrades: ["Daredevil", "R2-A6"]
+      }, {
+        id: 366,
+        faction: "Galactic Republic",
+        pilot: "Naboo Handmaiden",
+        ship: "Naboo Royal N-1 Starfighter",
+        threat: 2,
+        upgrades: ["Plasma Torpedoes", "R5 Astromech"]
+      }, {
+        id: 367,
+        faction: "Separatist Alliance",
+        pilot: "Baktoid Prototype",
+        ship: "Hyena-Class Droid Bomber",
+        threat: 2,
+        upgrades: ["Passive Sensors", "Barrage Rockets", "Hull Upgrade"]
+      }, {
+        id: 368,
+        faction: "Separatist Alliance",
+        pilot: "Bombardment Drone",
+        ship: "Hyena-Class Droid Bomber",
+        threat: 2,
+        upgrades: ["Trajectory Simulator", "Delayed Fuses", "Bomblet Generator"]
+      }, {
+        id: 369,
+        faction: "Separatist Alliance",
+        pilot: "DBS-32C",
+        ship: "Hyena-Class Droid Bomber",
+        threat: 2,
+        upgrades: ["TA-175", "Stealth Device", "Landing Struts"]
+      }, {
+        id: 370,
+        faction: "Separatist Alliance",
+        pilot: "DBS-404",
+        ship: "Hyena-Class Droid Bomber",
+        threat: 2,
+        upgrades: ["Predator", "Plasma Torpedoes", "Afterburners", "Landing Struts"]
+      }, {
+        id: 371,
+        faction: "Separatist Alliance",
+        pilot: "Separatist Bomber",
+        ship: "Hyena-Class Droid Bomber",
+        threat: 2,
+        upgrades: ["Passive Sensors", "Diamond-Boron Missiles"]
+      }, {
+        id: 372,
+        faction: "Separatist Alliance",
+        pilot: "Techno Union Bomber",
+        ship: "Hyena-Class Droid Bomber",
+        threat: 2,
+        upgrades: ["Proton Torpedoes", "Electro-Proton Bomb", "Delayed Fuses"]
       }
     ]
   };
@@ -32489,7 +32629,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 34628
+                    lineno: 34862
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -33320,7 +33460,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 35492
+              lineno: 35726
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -33738,19 +33878,18 @@ exportObj.SquadBuilder = (function() {
     } else if (oldHyperspace !== this.isHyperspace) {
       if (this.isHyperspace === true) {
         old_id = this.current_squad.id;
-        this.newSquadFromScratch($.trim(this.current_squad.name));
-        this.current_squad.id = old_id;
+        this.container.trigger('xwing:pointsUpdated', cb);
       }
     }
     return cb();
   };
 
   SquadBuilder.prototype.onPointsUpdated = function(cb) {
-    var bbcode_ships, conditions, conditions_set, htmlview_ships, i, points_left, reddit_ships, ship, ship_uses_unreleased_content, simplecopy_ships, tts_ships, unreleased_content_used, _i, _j, _k, _len, _len1, _ref, _ref1, _ref2;
+    var bbcode_ships, conditions, conditions_set, htmlview_ships, i, points_left, reddit_ships, ship, ship_uses_unreleased_content, simplecopy_ships, tot_points, tts_ships, unreleased_content_used, _i, _j, _k, _len, _len1, _ref, _ref1, _ref2;
     if (cb == null) {
       cb = $.noop;
     }
-    this.total_points = 0;
+    tot_points = 0;
     unreleased_content_used = false;
     for (i = _i = _ref = this.ships.length - 1; _ref <= -1 ? _i < -1 : _i > -1; i = _ref <= -1 ? ++_i : --_i) {
       ship = this.ships[i];
@@ -33758,12 +33897,13 @@ exportObj.SquadBuilder = (function() {
       if (!ship) {
         continue;
       }
-      this.total_points += ship.getPoints();
+      tot_points += ship.getPoints();
       ship_uses_unreleased_content = ship.checkUnreleasedContent();
       if (ship_uses_unreleased_content) {
         unreleased_content_used = ship_uses_unreleased_content;
       }
     }
+    this.total_points = tot_points;
     this.total_points_span.text(this.total_points);
     points_left = parseInt(this.desired_points_input.val()) - this.total_points;
     this.points_remaining_span.text(points_left);
@@ -34092,7 +34232,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 36205
+              lineno: 36441
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -34102,7 +34242,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 36206
+                lineno: 36442
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -35733,7 +35873,7 @@ exportObj.SquadBuilder = (function() {
         this.removeAllShips();
         success = true;
         error = "";
-        serialized_squad = "v8Zs=200Z";
+        serialized_squad = "v8ZsZ200Z";
         _ref = xws.pilots;
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           pilot = _ref[_i];
@@ -35836,7 +35976,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 37384
+              lineno: 37620
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -36053,7 +36193,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 37500
+                          lineno: 37736
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -36082,7 +36222,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 37516
+                              lineno: 37752
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -36152,7 +36292,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 37558
+                      lineno: 37794
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -36232,7 +36372,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 37587
+                lineno: 37823
               })
             ]);
             __iced_deferrals._fulfill();
@@ -36301,7 +36441,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 37616
+              lineno: 37852
             }));
           }
         }
@@ -37117,12 +37257,15 @@ Ship = (function() {
 
   Ship.prototype.validate = function() {
     var equipped_upgrades, func, i, max_checks, pilot_func, unchanged, upgrade, valid, _i, _j, _len, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    if (this.pilot == null) {
+      return true;
+    }
     unchanged = true;
     max_checks = 128;
     for (i = _i = 0; 0 <= max_checks ? _i < max_checks : _i > max_checks; i = 0 <= max_checks ? ++_i : --_i) {
       valid = true;
       pilot_func = (_ref = (_ref1 = (_ref2 = this.pilot) != null ? _ref2.validation_func : void 0) != null ? _ref1 : (_ref3 = this.pilot) != null ? _ref3.restriction_func : void 0) != null ? _ref : void 0;
-      if ((pilot_func != null) && !pilot_func(this, this.pilot)) {
+      if (((pilot_func != null) && !pilot_func(this, this.pilot)) || !(this.builder.isItemAvailable(this.pilot))) {
         this.builder.removeShip(this);
         return false;
       }
@@ -37131,7 +37274,7 @@ Ship = (function() {
       for (_j = 0, _len = _ref4.length; _j < _len; _j++) {
         upgrade = _ref4[_j];
         func = (_ref5 = (_ref6 = upgrade != null ? (_ref7 = upgrade.data) != null ? _ref7.validation_func : void 0 : void 0) != null ? _ref6 : upgrade != null ? (_ref8 = upgrade.data) != null ? _ref8.restriction_func : void 0 : void 0) != null ? _ref5 : void 0;
-        if ((((func != null) && !func(this, upgrade)) || (((upgrade != null ? upgrade.data : void 0) != null) && (_ref9 = upgrade.data, __indexOf.call(equipped_upgrades, _ref9) >= 0))) && !this.builder.isQuickbuild) {
+        if ((((func != null) && !func(this, upgrade)) || (((upgrade != null ? upgrade.data : void 0) != null) && ((_ref9 = upgrade.data, __indexOf.call(equipped_upgrades, _ref9) >= 0) || !this.builder.isItemAvailable(upgrade.data)))) && !this.builder.isQuickbuild) {
           upgrade.setById(null);
           valid = false;
           unchanged = false;
@@ -37319,7 +37462,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 38416
+                lineno: 38658
               })
             ]);
             __iced_deferrals._fulfill();
@@ -37456,7 +37599,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 38488
+                  lineno: 38730
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -37479,7 +37622,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 38493
+                      lineno: 38735
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -37571,7 +37714,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 38538
+            lineno: 38780
           }));
         }
         __iced_deferrals._fulfill();
@@ -37991,15 +38134,15 @@ exportObj.XWSManager = (function() {
 
   XWSManager.prototype.setupUI = function() {
     this.container.addClass('hidden-print');
-    this.container.html($.trim("<div class=\"row-fluid\">\n    <div class=\"span9 indent\">\n        <button class=\"btn btn-primary from-xws\">Import from XWS (beta)</button>\n        <button class=\"btn btn-primary to-xws\">Export to XWS (beta)</button>\n    </div>\n</div>"));
+    this.container.html($.trim("<div class=\"row-fluid\">\n    <div class=\"span9 indent\">\n        <button class=\"btn btn-primary from-xws\">Import from XWS</button>\n        <button class=\"btn btn-primary to-xws\">Export to XWS</button>\n    </div>\n</div>"));
     this.xws_export_modal = $(document.createElement('DIV'));
     this.xws_export_modal.addClass('modal hide fade xws-modal hidden-print');
     this.container.append(this.xws_export_modal);
-    this.xws_export_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>XWS Export (Beta!)</h3>\n</div>\n<div class=\"modal-body\">\n    <ul class=\"nav nav-pills\">\n        <li><a id=\"xws-text-tab\" href=\"#xws-text\" data-toggle=\"tab\">Text</a></li>\n        <li><a id=\"xws-qrcode-tab\" href=\"#xws-qrcode\" data-toggle=\"tab\">QR Code</a></li>\n    </ul>\n    <div class=\"tab-content\">\n        <div class=\"tab-pane\" id=\"xws-text\">\n            Copy and paste this into an XWS-compliant application to transfer your list.\n            <i>(This is in beta, and the <a href=\"" + SPEC_URL + "\">spec</a> is still being defined, so it may not work!)</i>\n            <div class=\"container-fluid\">\n                <textarea class=\"xws-content\"></textarea>\n            </div>\n        </div>\n        <div class=\"tab-pane\" id=\"xws-qrcode\">\n            Below is a QR Code of XWS.  <i>This is still very experimental!</i>\n            <div id=\"xws-qrcode-container\"></div>\n        </div>\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.xws_export_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>XWS Export</h3>\n</div>\n<div class=\"modal-body\">\n    <ul class=\"nav nav-pills\">\n        <li><a id=\"xws-text-tab\" href=\"#xws-text\" data-toggle=\"tab\">Text</a></li>\n        <li><a id=\"xws-qrcode-tab\" href=\"#xws-qrcode\" data-toggle=\"tab\">QR Code</a></li>\n    </ul>\n    <div class=\"tab-content\">\n        <div class=\"tab-pane\" id=\"xws-text\">\n            Copy and paste this into an XWS-compliant application to transfer your list.\n            <i>XWS is a way to share X-Wing squads between applications, e.g. YASB and LaunchBay Next</i>\n            <div class=\"container-fluid\">\n                <textarea class=\"xws-content\"></textarea>\n            </div>\n        </div>\n        <div class=\"tab-pane\" id=\"xws-qrcode\">\n            Below is a QR Code of XWS</i>\n            <div id=\"xws-qrcode-container\"></div>\n        </div>\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
     this.xws_import_modal = $(document.createElement('DIV'));
     this.xws_import_modal.addClass('modal hide fade xws-modal hidden-print');
     this.container.append(this.xws_import_modal);
-    return this.xws_import_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>XWS Import (Beta!)</h3>\n</div>\n<div class=\"modal-body\">\n    Paste XWS here to load a list exported from another application.\n    <i>(This is in beta, and the <a href=\"" + SPEC_URL + "\">spec</a> is still being defined, so it may not work!)</i>\n    <div class=\"container-fluid\">\n        <textarea class=\"xws-content\" placeholder=\"Paste XWS here...\"></textarea>\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <span class=\"xws-import-status\"></span>&nbsp;\n    <button class=\"btn btn-primary import-xws\">Import It!</button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    return this.xws_import_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>XWS Import</h3>\n</div>\n<div class=\"modal-body\">\n    Paste XWS here to load a list exported from another application.\n    <i>XWS is a way to share X-Wing squads between applications, e.g. YASB and LaunchBay Next</i>\n    <div class=\"container-fluid\">\n        <textarea class=\"xws-content\" placeholder=\"Paste XWS here...\"></textarea>\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <span class=\"xws-import-status\"></span>&nbsp;\n    <button class=\"btn btn-primary import-xws\">Import It!</button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
   };
 
   XWSManager.prototype.setupHandlers = function() {

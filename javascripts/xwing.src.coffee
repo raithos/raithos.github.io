@@ -15834,6 +15834,240 @@ exportObj.basicCardData = ->
                 "TV-94"
             ]
         }
+        {
+            id: 353
+            faction: "Resistance"
+            pilot: "Cova Nell"
+            ship: "Resistance Transport"
+            threat: 3
+            upgrades: [
+                "Composure"
+                "Leia Organa (Resistance)"
+                "Korr Sella"
+            ]
+        }
+        {
+            id: 354
+            faction: "Resistance"
+            pilot: "Pammich Nerro Goode"
+            ship: "Resistance Transport"
+            threat: 2
+            upgrades: [
+                "Autoblasters"
+                "R5-X3"
+                "Kaydel Connix"
+                "Spare Parts Canisters"
+            ]
+        }
+        {
+            id: 355
+            faction: "Resistance"
+            pilot: "Nodin Chavdri"
+            ship: "Resistance Transport"
+            threat: 2
+            upgrades: [
+                "Proton Torpedoes"
+                "R2-HA"
+                "Angled Deflectors"
+            ]
+        }
+        {
+            id: 356
+            faction: "Resistance"
+            pilot: "Logistics Division Pilot"
+            ship: "Resistance Transport"
+            threat: 2
+            upgrades: [
+                "Proton Torpedoes"
+                "Larma D'Acy"
+                "Amilyn Holdo"
+            ]
+        }
+        {
+            id: 357
+            faction: "Resistance"
+            pilot: "Rose Tico"
+            ship: "Resistance Transport Pod"
+            threat: 1
+            upgrades: [
+                "PZ-4CO"
+            ]
+        }
+        {
+            id: 358
+            faction: "Resistance"
+            pilot: "Finn"
+            ship: "Resistance Transport Pod"
+            threat: 1
+            upgrades: [
+                "Predator"
+            ]
+        }
+        {
+            id: 359
+            faction: "Resistance"
+            pilot: "BB-8"
+            ship: "Resistance Transport Pod"
+            threat: 2
+            upgrades: [
+                "Autoblasters"
+                "Afterburners"
+            ]
+        }
+        {
+            id: 360
+            faction: "Resistance"
+            pilot: "Vi Moradi"
+            ship: "Resistance Transport Pod"
+            threat: 1
+            upgrades: [
+                "GA-97"
+            ]
+        }
+        {
+            id: 361
+            faction: "Galactic Republic"
+            pilot: "Padmé Amidala"
+            ship: "Naboo Royal N-1 Starfighter"
+            threat: 2
+            upgrades: [
+                "Elusive"
+                "Collision Detector"
+            ]
+        }
+        {
+            id: 362
+            faction: "Galactic Republic"
+            pilot: "Dineé Ellberger"
+            ship: "Naboo Royal N-1 Starfighter"
+            threat: 2
+            upgrades: [
+                "Passive Sensors"
+                "R3 Astromech"
+                "Plasma Torpedoes"
+            ]
+        }
+        {
+            id: 363
+            faction: "Galactic Republic"
+            pilot: "Bravo Flight Officer"
+            ship: "Naboo Royal N-1 Starfighter"
+            threat: 2
+            upgrades: [
+                "Passive Sensors"
+                "R2-C4"
+                "Proton Torpedoes"
+            ]
+        }
+        {
+            id: 364
+            faction: "Galactic Republic"
+            pilot: "Anakin Skywalker (N-1 Starfighter)"
+            ship: "Naboo Royal N-1 Starfighter"
+            threat: 3
+            upgrades: [
+                "Outmaneuver"
+                "Proton Torpedoes"
+                "Heightened Perception"
+                "R2 Astromech"
+                "Collision Detector"
+            ]
+        }
+        {
+            id: 365
+            faction: "Galactic Republic"
+            pilot: "Ric Olié"
+            ship: "Naboo Royal N-1 Starfighter"
+            threat: 2
+            upgrades: [
+                "Daredevil"
+                "R2-A6"
+            ]
+        }
+        {
+            id: 366
+            faction: "Galactic Republic"
+            pilot: "Naboo Handmaiden"
+            ship: "Naboo Royal N-1 Starfighter"
+            threat: 2
+            upgrades: [
+                "Plasma Torpedoes"
+                "R5 Astromech"
+            ]
+        }
+        {
+            id: 367
+            faction: "Separatist Alliance"
+            pilot: "Baktoid Prototype"
+            ship: "Hyena-Class Droid Bomber"
+            threat: 2
+            upgrades: [
+                "Passive Sensors"
+                "Barrage Rockets"
+                "Hull Upgrade"
+            ]
+        }
+        {
+            id: 368
+            faction: "Separatist Alliance"
+            pilot: "Bombardment Drone"
+            ship: "Hyena-Class Droid Bomber"
+            threat: 2
+            upgrades: [
+                "Trajectory Simulator"
+                "Delayed Fuses"
+                "Bomblet Generator"
+            ]
+        }
+        {
+            id: 369
+            faction: "Separatist Alliance"
+            pilot: "DBS-32C"
+            ship: "Hyena-Class Droid Bomber"
+            threat: 2
+            upgrades: [
+                "TA-175"
+                "Stealth Device"
+                "Landing Struts"
+            ]
+        }
+        {
+            id: 370
+            faction: "Separatist Alliance"
+            pilot: "DBS-404"
+            ship: "Hyena-Class Droid Bomber"
+            threat: 2
+            upgrades: [
+                "Predator"
+                "Plasma Torpedoes"
+                "Afterburners"
+                "Landing Struts"
+            ]
+        }
+        {
+            id: 371
+            faction: "Separatist Alliance"
+            pilot: "Separatist Bomber"
+            ship: "Hyena-Class Droid Bomber"
+            threat: 2
+            upgrades: [
+                "Passive Sensors"
+                "Diamond-Boron Missiles"
+            ]
+        }
+        {
+            id: 372
+            faction: "Separatist Alliance"
+            pilot: "Techno Union Bomber"
+            ship: "Hyena-Class Droid Bomber"
+            threat: 2
+            upgrades: [
+                "Proton Torpedoes"
+                "Electro-Proton Bomb"
+                "Delayed Fuses"
+            ]
+        }
+
     ]
 
 
@@ -35904,22 +36138,24 @@ class exportObj.SquadBuilder
         else if oldHyperspace != @isHyperspace
             if @isHyperspace == true
                 old_id = @current_squad.id
-                @newSquadFromScratch($.trim(@current_squad.name)) # need to change this to a new function to check hyperspace and remove
-                @current_squad.id = old_id # we want to keep the ID, so we allow people to use the save button
+                #@newSquadFromScratch($.trim(@current_squad.name)) # need to change this to a new function to check hyperspace and remove
+                #@current_squad.id = old_id # we want to keep the ID, so we allow people to use the save button
+                @container.trigger 'xwing:pointsUpdated', cb
         #@onPointsUpdated cb
         cb()
 
     onPointsUpdated: (cb=$.noop) =>
-        @total_points = 0
+        tot_points = 0
         unreleased_content_used = false
         # validating may remove the ship, if not only some upgrade, but the pilot himself is not valid. Thus iterate backwards over the array, so that is probably fine?
         for i in [@ships.length - 1 ... -1]
             ship = @ships[i]
             ship.validate()
             continue unless ship # if the ship has been removed, we no longer care about it
-            @total_points += ship.getPoints()
+            tot_points += ship.getPoints()
             ship_uses_unreleased_content = ship.checkUnreleasedContent()
             unreleased_content_used = ship_uses_unreleased_content if ship_uses_unreleased_content
+        @total_points = tot_points
         @total_points_span.text @total_points
         points_left = parseInt(@desired_points_input.val()) - @total_points
         @points_remaining_span.text points_left
@@ -37294,7 +37530,7 @@ class exportObj.SquadBuilder
                 success = true
                 error = ""
 
-                serialized_squad = "v8Zs=200Z" # serialization version 7, standard squad, 200 points
+                serialized_squad = "v8ZsZ200Z" # serialization version 7, standard squad, 200 points
                 # serialization schema SHIPID:UPGRADEID,UPGRADEID,...,UPGRADEID:;SHIPID:UPGRADEID,...
 
                 for pilot in xws.pilots
@@ -38285,20 +38521,26 @@ class Ship
         # until everything checks out
         # If there is no explicit validation_func, use restriction_func
         # Returns true, if nothing has been changed, and false otherwise
+
+        # check if we are an empty selection, which is always valid
+        if not @pilot?
+            return true 
         unchanged = true
         max_checks = 128 # that's a lot of addons
         for i in [0...max_checks]
             valid = true
             pilot_func = @pilot?.validation_func ? @pilot?.restriction_func ? undefined
-            if pilot_func? and not pilot_func(this, @pilot)
-                # we go ahead and happily remove ourself. Of course, when calling a method like validate on an object, you have to expect that it will dissappears, right?
+            if (pilot_func? and not pilot_func(this, @pilot)) or not (@builder.isItemAvailable(@pilot))
+                # we go ahead and happily remove ourself. Of course, when calling a method like validate on an object, you have to expect that it will dissappear, right?
                 @builder.removeShip this 
                 return false # no need to check anything further, as we do not exist anymore 
             # everything is limited in X-Wing 2.0, so we need to check if any upgrade is equipped more than once
             equipped_upgrades = []
             for upgrade in @upgrades
                 func = upgrade?.data?.validation_func ? upgrade?.data?.restriction_func ? undefined
-                if ((func? and not func(this, upgrade)) or (upgrade?.data? and upgrade.data in equipped_upgrades)) and not @builder.isQuickbuild # check restriction func, check limited (is upgrade already in equipped_upgrades?), ignore building rules for Quickbuild
+                # check if either a) validation func not met or b) upgrade already equipped (in 2.0 everything is limited) or c) upgrade is not available (e.g. not Hyperspace legal)
+                # ignore those checks if this is a quickbuild squad, as quickbuild does whatever it wants to do...
+                if ((func? and not func(this, upgrade)) or (upgrade?.data? and (upgrade.data in equipped_upgrades or not @builder.isItemAvailable(upgrade.data)))) and not @builder.isQuickbuild
                     #console.log "Invalid upgrade: #{upgrade?.data?.name}"
                     upgrade.setById null
                     valid = false
@@ -38871,8 +39113,8 @@ class exportObj.XWSManager
         @container.html $.trim """
             <div class="row-fluid">
                 <div class="span9 indent">
-                    <button class="btn btn-primary from-xws">Import from XWS (beta)</button>
-                    <button class="btn btn-primary to-xws">Export to XWS (beta)</button>
+                    <button class="btn btn-primary from-xws">Import from XWS</button>
+                    <button class="btn btn-primary to-xws">Export to XWS</button>
                 </div>
             </div>
         """
@@ -38883,7 +39125,7 @@ class exportObj.XWSManager
         @xws_export_modal.append $.trim """
             <div class="modal-header">
                 <button type="button" class="close hidden-print" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3>XWS Export (Beta!)</h3>
+                <h3>XWS Export</h3>
             </div>
             <div class="modal-body">
                 <ul class="nav nav-pills">
@@ -38893,13 +39135,13 @@ class exportObj.XWSManager
                 <div class="tab-content">
                     <div class="tab-pane" id="xws-text">
                         Copy and paste this into an XWS-compliant application to transfer your list.
-                        <i>(This is in beta, and the <a href="#{SPEC_URL}">spec</a> is still being defined, so it may not work!)</i>
+                        <i>XWS is a way to share X-Wing squads between applications, e.g. YASB and LaunchBay Next</i>
                         <div class="container-fluid">
                             <textarea class="xws-content"></textarea>
                         </div>
                     </div>
                     <div class="tab-pane" id="xws-qrcode">
-                        Below is a QR Code of XWS.  <i>This is still very experimental!</i>
+                        Below is a QR Code of XWS</i>
                         <div id="xws-qrcode-container"></div>
                     </div>
                 </div>
@@ -38915,11 +39157,11 @@ class exportObj.XWSManager
         @xws_import_modal.append $.trim """
             <div class="modal-header">
                 <button type="button" class="close hidden-print" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3>XWS Import (Beta!)</h3>
+                <h3>XWS Import</h3>
             </div>
             <div class="modal-body">
                 Paste XWS here to load a list exported from another application.
-                <i>(This is in beta, and the <a href="#{SPEC_URL}">spec</a> is still being defined, so it may not work!)</i>
+                <i>XWS is a way to share X-Wing squads between applications, e.g. YASB and LaunchBay Next</i>
                 <div class="container-fluid">
                     <textarea class="xws-content" placeholder="Paste XWS here..."></textarea>
                 </div>
