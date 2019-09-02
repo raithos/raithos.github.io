@@ -1118,7 +1118,7 @@ exportObj.CardBrowser = (function() {
       minimumResultsForSearch: $.isMobile() ? -1 : 0
     });
     this.action_available_selection = $(this.container.find('.xwing-card-browser select.action-available-selection'));
-    _ref1 = ["Evade", "Focus", "Lock", "Boost", "Barrel Roll", "Calculate", "Reinforce", "Rotate Arc", "Coordinate", "Slam", "Reload"].sort();
+    _ref1 = ["Evade", "Focus", "Lock", "Boost", "Barrel Roll", "Calculate", "Reinforce", "Rotate Arc", "Coordinate", "Slam", "Reload", "Jam"].sort();
     for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
       action = _ref1[_i];
       opt = $(document.createElement('OPTION'));
@@ -1129,7 +1129,7 @@ exportObj.CardBrowser = (function() {
       minimumResultsForSearch: $.isMobile() ? -1 : 0
     });
     this.linkedaction_available_selection = $(this.container.find('.xwing-card-browser select.linkedaction-available-selection'));
-    _ref2 = ["Evade", "Focus", "Lock", "Boost", "Barrel Roll", "Calculate", "Reinforce", "Rotate Arc", "Coordinate", "Slam", "Reload"].sort();
+    _ref2 = ["Evade", "Focus", "Lock", "Boost", "Barrel Roll", "Calculate", "Reinforce", "Rotate Arc", "Coordinate", "Slam", "Reload", "Jam"].sort();
     for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
       linkedaction = _ref2[_j];
       opt = $(document.createElement('OPTION'));
@@ -1676,7 +1676,7 @@ exportObj.CardBrowser = (function() {
   };
 
   CardBrowser.prototype.checkSearchCriteria = function(card) {
-    var action, actions, all_factions, faction, faction_matches, hyperspace_legal, matches, matching_points, name, owned_copies, pilot, pilots, points, required_actions, required_linked_actions, required_slots, s, search_text, selected_factions, ship, size_matches, slot, slots, text_in_ship, text_search, used_slots, _i, _j, _k, _l, _len, _len1, _len10, _len11, _len12, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _len9, _m, _n, _o, _p, _q, _r, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _s, _t, _u;
+    var action, actions, all_factions, faction, faction_matches, hyperspace_legal, matches, matching_points, name, owned_copies, pilot, pilots, points, required_actions, required_linked_actions, required_slots, s, search_text, selected_factions, ship, size_matches, slot, slots, text_in_ship, text_search, used_slots, _i, _j, _k, _l, _len, _len1, _len10, _len11, _len12, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _len9, _m, _n, _o, _p, _q, _r, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _s, _t, _u;
     search_text = this.card_search_text.value.toLowerCase();
     text_search = card.name.toLowerCase().indexOf(search_text) > -1 || (card.data.text && card.data.text.toLowerCase().indexOf(search_text)) > -1 || (card.display_name && card.display_name.toLowerCase().indexOf(search_text) > -1);
     if (!text_search) {
@@ -1797,21 +1797,21 @@ exportObj.CardBrowser = (function() {
       actions = (_ref6 = card.data.actions) != null ? _ref6 : [];
       actions = actions.concat((_ref7 = card.data.actionsred) != null ? _ref7 : []);
       if (card.orig_type === 'Pilot') {
-        actions = exportObj.ships[card.data.ship].actions;
-        actions = actions.concat(exportObj.ships[card.data.ship].actionsred);
+        actions = (_ref8 = (_ref9 = card.data.ship_override) != null ? _ref9.actions : void 0) != null ? _ref8 : exportObj.ships[card.data.ship].actions;
+        actions = actions.concat((_ref10 = (_ref11 = card.data.ship_override) != null ? _ref11.actionsred : void 0) != null ? _ref10 : exportObj.ships[card.data.ship].actionsred);
       }
     }
-    _ref8 = required_actions != null ? required_actions : [];
-    for (_p = 0, _len7 = _ref8.length; _p < _len7; _p++) {
-      action = _ref8[_p];
-      if (!((actions != null) && ((__indexOf.call(actions, action) >= 0) || (_ref9 = "F-" + action, __indexOf.call(actions, _ref9) >= 0)))) {
+    _ref12 = required_actions != null ? required_actions : [];
+    for (_p = 0, _len7 = _ref12.length; _p < _len7; _p++) {
+      action = _ref12[_p];
+      if (!((actions != null) && ((__indexOf.call(actions, action) >= 0) || (_ref13 = "F-" + action, __indexOf.call(actions, _ref13) >= 0)))) {
         return false;
       }
     }
-    _ref10 = required_linked_actions != null ? required_linked_actions : [];
-    for (_q = 0, _len8 = _ref10.length; _q < _len8; _q++) {
-      action = _ref10[_q];
-      if (!((actions != null) && ((_ref11 = "R> " + action, __indexOf.call(actions, _ref11) >= 0) || (_ref12 = "> " + action, __indexOf.call(actions, _ref12) >= 0)))) {
+    _ref14 = required_linked_actions != null ? required_linked_actions : [];
+    for (_q = 0, _len8 = _ref14.length; _q < _len8; _q++) {
+      action = _ref14[_q];
+      if (!((actions != null) && ((_ref15 = "R> " + action, __indexOf.call(actions, _ref15) >= 0) || (_ref16 = "> " + action, __indexOf.call(actions, _ref16) >= 0)))) {
         return false;
       }
     }
@@ -1821,9 +1821,9 @@ exportObj.CardBrowser = (function() {
       }
       if (card.data.pointsarray != null) {
         matching_points = false;
-        _ref13 = card.data.pointsarray;
-        for (_r = 0, _len9 = _ref13.length; _r < _len9; _r++) {
-          points = _ref13[_r];
+        _ref17 = card.data.pointsarray;
+        for (_r = 0, _len9 = _ref17.length; _r < _len9; _r++) {
+          points = _ref17[_r];
           if (points >= this.minimum_point_costs.value && points <= this.maximum_point_costs.value) {
             matching_points = true;
             break;
@@ -1835,12 +1835,12 @@ exportObj.CardBrowser = (function() {
       }
       if (card.orig_type === 'Ship') {
         matching_points = false;
-        _ref14 = selected_factions != null ? selected_factions : all_factions;
-        for (_s = 0, _len10 = _ref14.length; _s < _len10; _s++) {
-          faction = _ref14[_s];
-          _ref15 = exportObj.pilotsByFactionCanonicalName[faction];
-          for (name in _ref15) {
-            pilots = _ref15[name];
+        _ref18 = selected_factions != null ? selected_factions : all_factions;
+        for (_s = 0, _len10 = _ref18.length; _s < _len10; _s++) {
+          faction = _ref18[_s];
+          _ref19 = exportObj.pilotsByFactionCanonicalName[faction];
+          for (name in _ref19) {
+            pilots = _ref19[name];
             for (_t = 0, _len11 = pilots.length; _t < _len11; _t++) {
               pilot = pilots[_t];
               if (pilot.ship === card.data.name) {
@@ -1895,7 +1895,7 @@ exportObj.CardBrowser = (function() {
     if (card.data.charge && !card.data.recurring && !this.not_recurring_charge.checked) {
       return false;
     }
-    if (((_ref16 = exportObj.builders[0].collection) != null ? _ref16.counts : void 0) != null) {
+    if (((_ref20 = exportObj.builders[0].collection) != null ? _ref20.counts : void 0) != null) {
       owned_copies = this.getCollectionNumber(card);
       if (!(owned_copies >= this.minimum_owned_copies.value && owned_copies <= this.maximum_owned_copies.value)) {
         return false;
@@ -34919,6 +34919,9 @@ exportObj.SquadBuilder = (function() {
                     case 1:
                       slot_types[slot] = 4;
                   }
+                  break;
+                case 3:
+                  slot_types[slot] = 6;
               }
             }
           }
@@ -35015,7 +35018,7 @@ exportObj.SquadBuilder = (function() {
             _results = [];
             for (slot in slot_types) {
               state = slot_types[slot];
-              _results.push(state === 1 ? exportObj.translate(this.language, 'sloticon', slot) : (state === 2 ? '(' + exportObj.translate(this.language, 'sloticon', slot) + ')' : (state === 3 ? exportObj.translate(this.language, 'sloticon', slot) + exportObj.translate(this.language, 'sloticon', slot) : (state === 4 ? exportObj.translate(this.language, 'sloticon', slot) + '(' + exportObj.translate(this.language, 'sloticon', slot) + ')' : (state === 5 ? '(' + exportObj.translate(this.language, 'sloticon', slot) + exportObj.translate(this.language, 'sloticon', slot) + ')' : void 0)))));
+              _results.push(state === 1 ? exportObj.translate(this.language, 'sloticon', slot) : (state === 2 ? '(' + exportObj.translate(this.language, 'sloticon', slot) + ')' : (state === 3 ? exportObj.translate(this.language, 'sloticon', slot) + exportObj.translate(this.language, 'sloticon', slot) : (state === 4 ? exportObj.translate(this.language, 'sloticon', slot) + '(' + exportObj.translate(this.language, 'sloticon', slot) + ')' : (state === 5 ? '(' + exportObj.translate(this.language, 'sloticon', slot) + exportObj.translate(this.language, 'sloticon', slot) + ')' : (state === 6 ? exportObj.translate(this.language, 'sloticon', slot) + exportObj.translate(this.language, 'sloticon', slot) + exportObj.translate(this.language, 'sloticon', slot) : void 0))))));
             }
             return _results;
           }).call(this)).join(' ') || 'None');
@@ -35976,7 +35979,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 37620
+              lineno: 37622
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -36193,7 +36196,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 37736
+                          lineno: 37738
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -36222,7 +36225,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 37752
+                              lineno: 37754
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -36292,7 +36295,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 37794
+                      lineno: 37796
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -36372,7 +36375,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 37823
+                lineno: 37825
               })
             ]);
             __iced_deferrals._fulfill();
@@ -36441,7 +36444,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 37852
+              lineno: 37854
             }));
           }
         }
@@ -37462,7 +37465,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 38658
+                lineno: 38660
               })
             ]);
             __iced_deferrals._fulfill();
@@ -37599,7 +37602,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 38730
+                  lineno: 38732
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -37622,7 +37625,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 38735
+                      lineno: 38737
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -37714,7 +37717,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 38780
+            lineno: 38782
           }));
         }
         __iced_deferrals._fulfill();
