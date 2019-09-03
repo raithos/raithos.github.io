@@ -6063,15 +6063,15 @@ exportObj.basicCardData = function() {
         points: 200,
         slots: ["Modification"]
       }, {
-        name: "Petranaki ???",
+        name: "Petranaki Arena Ace",
         id: 354,
         faction: "Separatist Alliance",
         ship: "Nantex-Class Starfighter",
         skill: 4,
         points: 200,
-        slots: ["Modification"]
+        slots: ["Talent", "Modification"]
       }, {
-        name: "Ini 2 Unique",
+        name: "Gorgol",
         unique: true,
         id: 355,
         faction: "Separatist Alliance",
@@ -6087,7 +6087,7 @@ exportObj.basicCardData = function() {
         ship: "Nantex-Class Starfighter",
         skill: 4,
         points: 200,
-        slots: ["Modification"]
+        slots: ["Talent", "Modification"]
       }, {
         name: "Sun Fac",
         unique: true,
@@ -6105,7 +6105,7 @@ exportObj.basicCardData = function() {
         ship: "Nantex-Class Starfighter",
         skill: 5,
         points: 200,
-        slots: ["Modification"]
+        slots: ["Talent", "Modification"]
       }, {
         name: "Anakin Skywalker (Y-Wing)",
         unique: true,
@@ -8510,6 +8510,63 @@ exportObj.basicCardData = function() {
             return stats.actions.push('Lock');
           }
         }
+      }, {
+        name: "Precognitive Reflexes",
+        id: 250,
+        slot: "Force",
+        points: 200,
+        restriction_func: function(ship) {
+          var _ref, _ref1;
+          return !(((_ref = ship.data.large) != null ? _ref : false) || ((_ref1 = ship.data.medium) != null ? _ref1 : false));
+        }
+      }, {
+        name: "Foresight",
+        slot: "Force",
+        points: 200,
+        id: 251,
+        attackbull: 2,
+        range: "1-3",
+        rangebonus: true
+      }, {
+        name: "C1-10P",
+        id: 252,
+        slot: "Astromech",
+        charge: 2,
+        points: 200,
+        faction: "Galactic Republic"
+      }, {
+        name: "Ahsoka Tano",
+        id: 253,
+        slot: "Gunner",
+        points: 200,
+        faction: "Galactic Republic",
+        force: 1,
+        modifier_func: function(stats) {
+          return stats.force += 1;
+        }
+      }, {
+        name: "C-3PO (Republic)",
+        id: 254,
+        slot: "Crew",
+        xws: "c3po-republic",
+        points: 200,
+        faction: "Galactic Republic",
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'Calculate') < 0) {
+            return stats.actions.push('Calculate');
+          }
+        }
+      }, {
+        name: "Gravitic Deflection",
+        id: 255,
+        slot: "Talent",
+        points: 200,
+        ship: "Nantex-Class Starfighter"
+      }, {
+        name: "Snap Shot",
+        id: 256,
+        slot: "Talent",
+        points: 200
       }
     ],
     conditionsById: [
@@ -16010,19 +16067,22 @@ exportObj.cardLoaders.English = function() {
       text: "After you fully execute a maneuver, if there is an enemy ship in your %FRONTARC% at range 0-1 or in your %BULLSEYEARC%, you may spend 1 %FORCE% to remove 1 stress token.%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."
     },
     "Sun Fac": {
-      text: "While you perform a primary [...] the defender is tractored [...] attack die%LINEBREAK% <strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."
+      text: "While you perform a primary attack, if the defender is tractored, roll 1 additional attack die. %LINEBREAK% <strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."
     },
     "Stalgasin Hive Guard": {
       text: "<strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."
     },
-    "Petranaki ???": {
+    "Petranaki Arena Ace": {
       text: "<strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."
     },
     "Berwer Kart": {
-      text: "Unknown pilot ability%LINEBREAK%<strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."
+      text: "After you perform an attack that hits, each friendly ship with %CALCULATE% on its action bar and a lock on the defender may perform a red %CALCULATE% action. %LINEBREAK%<strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."
     },
     "Chertek": {
-      text: "Unknown pilot ability%LINEBREAK%<strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."
+      text: "While you perform a primary attacki, if the defender is tractored, you may reroll up to 2 attack dice. %LINEBREAK%<strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."
+    },
+    "Gorgol": {
+      text: "During the System Phase, you may gain 1 disarm token and choose a friendly ship at range 1-2. If you do, it gains 1 tractor token, then repairs 1 of its faceup <strong>Ship</strong> trait damage cards. %LINEBREAK%<strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."
     }
   };
   upgrade_translations = {
@@ -17000,9 +17060,33 @@ exportObj.cardLoaders.English = function() {
       display_name: "Korr Sella",
       text: "<i>Resistance only</i>%LINEBREAK% After you fully execute a blue maneuver, remove all of your stress tokens."
     },
-    "Angled Deflectors": {
-      display_name: "Angled Deflectors",
-      text: "<i>Adds %REINFORCE%, Removes 1 Shield. %LINEBREAK% Requires 1 shield and Small or Medium Base Ship.</i>"
+    "Precognitive Reflexes": {
+      display_name: "Precognitive Reflexes",
+      text: "After you reveal your dial, you may spend 1 %FORCE% to perform a %BARRELROLL% or %BOOST% action. Then, if you performed an action you do not have on your action bar, gain 1 strain token. %LINEBREAK% If you do, you cannot perform another action during your activation."
+    },
+    "Foresight": {
+      display_name: "Foresight",
+      text: "After an enemy ship executes a maneuver, you may spend 1 %FORCE% to perform this attack against it as a bonus attack. %LINEBREAK% <strong>Attack:</strong> You may change 1 %FOCUS% result to a %HIT% result; your dice cannot be modified otherwise."
+    },
+    "C1-10P": {
+      display_name: "C1-10P",
+      text: "<strong>C1-10P: </strong>Setup: Equip this side faceup. %LINEBREAK% After you execute a maneuver, you may spend 1 %CHARGE% to perform a red %EVADE% action, even while stressed. %LINEBREAK% During the End Phase, if this card has 0 active %CHARGE%, flip it. %LINEBREAK% <strong>C1-10P (Erratic):</strong> After you execute a maneuver, you <strong>must</strong> choose a ship at range 0-1. It gains 1 jam token."
+    },
+    "Ahsoka Tano": {
+      display_name: "Ahsoka Tano",
+      text: "After you execute a maneuver, you may spend 1 %FORCE% and choose a friendly ship at range 1-3 in your firing arc. If you do, it may perform a red %FOCUS% action, even while stressed."
+    },
+    "C-3PO (Republic)": {
+      display_name: "C-3PO",
+      text: "While you defend, if you are calculating, you may reroll 1 defense die. %LINEBREAK% After you perform a %CALCULATE% action, gain 1 calculate token."
+    },
+    "Gravitic Deflection": {
+      display_name: "Gravitic Deflection",
+      text: "While you defend, you may reroll 1 defense die for each tractored ship in the attack arc."
+    },
+    "Snap Shot": {
+      display_name: "Snap Shot",
+      text: "After an enemy ship executes a maneuver, you may perform this attack against it as a bonus attack. %LINEBREAK% <strong>Attack:</strong> Your dice cannot be modified."
     },
     "Hardpoint: Cannon": {
       text: "Adds a %CANNON% slot"
@@ -32629,7 +32713,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 34897
+                    lineno: 34978
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -33460,7 +33544,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 35761
+              lineno: 35842
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -34232,7 +34316,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 36476
+              lineno: 36557
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -34242,7 +34326,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 36477
+                lineno: 36558
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -35979,7 +36063,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 37657
+              lineno: 37738
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -36196,7 +36280,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 37773
+                          lineno: 37854
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -36225,7 +36309,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 37789
+                              lineno: 37870
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -36295,7 +36379,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 37831
+                      lineno: 37912
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -36375,7 +36459,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 37860
+                lineno: 37941
               })
             ]);
             __iced_deferrals._fulfill();
@@ -36444,7 +36528,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 37889
+              lineno: 37970
             }));
           }
         }
@@ -37465,7 +37549,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 38695
+                lineno: 38776
               })
             ]);
             __iced_deferrals._fulfill();
@@ -37602,7 +37686,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 38767
+                  lineno: 38848
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -37625,7 +37709,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 38772
+                      lineno: 38853
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -37717,7 +37801,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 38817
+            lineno: 38898
           }));
         }
         __iced_deferrals._fulfill();
