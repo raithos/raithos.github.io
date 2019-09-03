@@ -9068,8 +9068,13 @@ exportObj.basicCardData = ->
             skill: 6
             points: 200
             slots: [
-                "Modification"
+                "Force"
                 "Turret"
+                "Torpedo"
+                "Gunner"
+                "Astromech"
+                "Device"
+                "Modification"
             ]
         }
         {
@@ -9080,8 +9085,12 @@ exportObj.basicCardData = ->
             skill: 3
             points: 200
             slots: [
-                "Modification"
                 "Turret"
+                "Torpedo"
+                "Gunner"
+                "Astromech"
+                "Device"
+                "Modification"
             ]
         }
         {
@@ -9092,12 +9101,16 @@ exportObj.basicCardData = ->
             skill: 2
             points: 200
             slots: [
-                "Modification"
                 "Turret"
+                "Torpedo"
+                "Gunner"
+                "Astromech"
+                "Device"
+                "Modification"
             ]
         }
         {
-            name: "Ini 2 Unique"
+            name: "R2-D2"
             id: 362
             unique: true
             faction: "Galactic Republic"
@@ -9105,12 +9118,16 @@ exportObj.basicCardData = ->
             skill: 2
             points: 200
             slots: [
-                "Modification"
                 "Turret"
+                "Torpedo"
+                "Gunner"
+                "Astromech"
+                "Device"
+                "Modification"
             ]
         }
         {
-            name: "Another Ini 2 Unique"
+            name: '"Goji"'
             id: 363
             unique: true
             faction: "Galactic Republic"
@@ -9118,12 +9135,16 @@ exportObj.basicCardData = ->
             skill: 2
             points: 200
             slots: [
-                "Modification"
                 "Turret"
+                "Torpedo"
+                "Gunner"
+                "Astromech"
+                "Device"
+                "Modification"
             ]
         }
         {
-            name: "Ini 3 Unique"
+            name: '"Broadside"'
             id: 364
             unique: true
             faction: "Galactic Republic"
@@ -9131,12 +9152,16 @@ exportObj.basicCardData = ->
             skill: 3
             points: 200
             slots: [
-                "Modification"
                 "Turret"
+                "Torpedo"
+                "Gunner"
+                "Astromech"
+                "Device"
+                "Modification"
             ]
         }
         {
-            name: "Ini 4 Unique"
+            name: '"Matchstick"'
             id: 365
             unique: true
             faction: "Galactic Republic"
@@ -9144,12 +9169,17 @@ exportObj.basicCardData = ->
             skill: 4
             points: 200
             slots: [
-                "Modification"
+                "Talent"
                 "Turret"
+                "Torpedo"
+                "Gunner"
+                "Astromech"
+                "Device"
+                "Modification"
             ]
         }
         {
-            name: "Ini 5 Unique"
+            name: '"Odd Ball" (Y-Wing)'
             id: 366
             unique: true
             faction: "Galactic Republic"
@@ -9157,8 +9187,13 @@ exportObj.basicCardData = ->
             skill: 5
             points: 200
             slots: [
-                "Modification"
+                "Talent"
                 "Turret"
+                "Torpedo"
+                "Gunner"
+                "Astromech"
+                "Device"
+                "Modification"
             ]
         }
         
@@ -19783,18 +19818,18 @@ exportObj.cardLoaders.English = () ->
            text: """<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
         "Red Squadron Bomber":
            text: """<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
-        "Ini 2 Unique":
-           text: """Unknown pilot ability%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
-        "Ini 3 Unique":
-           text: """Unknown pilot ability%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
-        "Ini 4 Unique":
-           text: """Unknown pilot ability%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
-        "Ini 5 Unique":
-           text: """Unknown pilot ability%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
-        "Another Ini 2 Unique":
-           text: """Unknown pilot ability%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
+        '"Goji"':
+           text: """While a friendly ship at range 0-3 defends, it may roll 1 additional defense die for each friendly bomb or mine at 0-1 of it. %LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
+        '"Broadside"':
+           text: """While you perform a %SINGLETURRETARC% attack, if your %SINGLETURRETARC% indicator is in your %LEFTARC% or %RIGHTARC%, you may change 1 blank result to a %FOCUS% result. %LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
+        '"Matchstick"':
+           text: """While you perform a primary or %SINGLETURRETARC% attack, you may reroll 1 attack die for each red token you have. %LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
+        '"Odd Ball" (Y-Wing)':
+           text: """After you execute a red maneuver or perform a red action, if there is an enemy ship in your %BULLSEYEARC%, you may acquire a lock on that ship. %LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
+        "R2-D2":
+           text: """At the start of the Engagement Phase, if there is an enemy ship in yuour %REARARC%, gain 1 calculate token.%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
         "Anakin Skywalker (Y-Wing)":
-           text: """Unknown pilot ability%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
+           text: """After you fully execute a maneuver, if there is an enemy ship in your %FRONTARC% at range 0-1 or in your %BULLSEYEARC%, you may spend 1 %FORCE% to remove 1 stress token.%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."""
         "Sun Fac":
            text: """While you perform a primary [...] the defender is tractored [...] attack die%LINEBREAK% <strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."""
         "Stalgasin Hive Guard":

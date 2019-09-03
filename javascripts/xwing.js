@@ -6114,7 +6114,7 @@ exportObj.basicCardData = function() {
         ship: "BTL-B Y-Wing",
         skill: 6,
         points: 200,
-        slots: ["Modification", "Turret"]
+        slots: ["Force", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
       }, {
         name: "Shadow Squadron Veteran",
         id: 360,
@@ -6122,7 +6122,7 @@ exportObj.basicCardData = function() {
         ship: "BTL-B Y-Wing",
         skill: 3,
         points: 200,
-        slots: ["Modification", "Turret"]
+        slots: ["Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
       }, {
         name: "Red Squadron Bomber",
         id: 361,
@@ -6130,52 +6130,52 @@ exportObj.basicCardData = function() {
         ship: "BTL-B Y-Wing",
         skill: 2,
         points: 200,
-        slots: ["Modification", "Turret"]
+        slots: ["Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
       }, {
-        name: "Ini 2 Unique",
+        name: "R2-D2",
         id: 362,
         unique: true,
         faction: "Galactic Republic",
         ship: "BTL-B Y-Wing",
         skill: 2,
         points: 200,
-        slots: ["Modification", "Turret"]
+        slots: ["Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
       }, {
-        name: "Another Ini 2 Unique",
+        name: '"Goji"',
         id: 363,
         unique: true,
         faction: "Galactic Republic",
         ship: "BTL-B Y-Wing",
         skill: 2,
         points: 200,
-        slots: ["Modification", "Turret"]
+        slots: ["Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
       }, {
-        name: "Ini 3 Unique",
+        name: '"Broadside"',
         id: 364,
         unique: true,
         faction: "Galactic Republic",
         ship: "BTL-B Y-Wing",
         skill: 3,
         points: 200,
-        slots: ["Modification", "Turret"]
+        slots: ["Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
       }, {
-        name: "Ini 4 Unique",
+        name: '"Matchstick"',
         id: 365,
         unique: true,
         faction: "Galactic Republic",
         ship: "BTL-B Y-Wing",
         skill: 4,
         points: 200,
-        slots: ["Modification", "Turret"]
+        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
       }, {
-        name: "Ini 5 Unique",
+        name: '"Odd Ball" (Y-Wing)',
         id: 366,
         unique: true,
         faction: "Galactic Republic",
         ship: "BTL-B Y-Wing",
         skill: 5,
         points: 200,
-        slots: ["Modification", "Turret"]
+        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
       }
     ],
     upgradesById: [
@@ -15991,23 +15991,23 @@ exportObj.cardLoaders.English = function() {
     "Red Squadron Bomber": {
       text: "<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."
     },
-    "Ini 2 Unique": {
-      text: "Unknown pilot ability%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."
+    '"Goji"': {
+      text: "While a friendly ship at range 0-3 defends, it may roll 1 additional defense die for each friendly bomb or mine at 0-1 of it. %LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."
     },
-    "Ini 3 Unique": {
-      text: "Unknown pilot ability%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."
+    '"Broadside"': {
+      text: "While you perform a %SINGLETURRETARC% attack, if your %SINGLETURRETARC% indicator is in your %LEFTARC% or %RIGHTARC%, you may change 1 blank result to a %FOCUS% result. %LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."
     },
-    "Ini 4 Unique": {
-      text: "Unknown pilot ability%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."
+    '"Matchstick"': {
+      text: "While you perform a primary or %SINGLETURRETARC% attack, you may reroll 1 attack die for each red token you have. %LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."
     },
-    "Ini 5 Unique": {
-      text: "Unknown pilot ability%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."
+    '"Odd Ball" (Y-Wing)': {
+      text: "After you execute a red maneuver or perform a red action, if there is an enemy ship in your %BULLSEYEARC%, you may acquire a lock on that ship. %LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."
     },
-    "Another Ini 2 Unique": {
-      text: "Unknown pilot ability%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."
+    "R2-D2": {
+      text: "At the start of the Engagement Phase, if there is an enemy ship in yuour %REARARC%, gain 1 calculate token.%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."
     },
     "Anakin Skywalker (Y-Wing)": {
-      text: "Unknown pilot ability%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."
+      text: "After you fully execute a maneuver, if there is an enemy ship in your %FRONTARC% at range 0-1 or in your %BULLSEYEARC%, you may spend 1 %FORCE% to remove 1 stress token.%LINEBREAK%<strong>Plated Hull:</strong> While you defend, if you are not critically damaged, change 1 %CRIT% to a %HIT% result."
     },
     "Sun Fac": {
       text: "While you perform a primary [...] the defender is tractored [...] attack die%LINEBREAK% <strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."
@@ -32629,7 +32629,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 34862
+                    lineno: 34897
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -33460,7 +33460,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 35726
+              lineno: 35761
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -34232,7 +34232,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 36441
+              lineno: 36476
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -34242,7 +34242,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 36442
+                lineno: 36477
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -35979,7 +35979,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 37622
+              lineno: 37657
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -36196,7 +36196,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 37738
+                          lineno: 37773
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -36225,7 +36225,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 37754
+                              lineno: 37789
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -36295,7 +36295,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 37796
+                      lineno: 37831
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -36375,7 +36375,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 37825
+                lineno: 37860
               })
             ]);
             __iced_deferrals._fulfill();
@@ -36444,7 +36444,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 37854
+              lineno: 37889
             }));
           }
         }
@@ -37465,7 +37465,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 38660
+                lineno: 38695
               })
             ]);
             __iced_deferrals._fulfill();
@@ -37602,7 +37602,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 38732
+                  lineno: 38767
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -37625,7 +37625,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 38737
+                      lineno: 38772
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -37717,7 +37717,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 38782
+            lineno: 38817
           }));
         }
         __iced_deferrals._fulfill();
