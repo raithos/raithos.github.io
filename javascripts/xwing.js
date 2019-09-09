@@ -6139,7 +6139,10 @@ exportObj.basicCardData = function() {
         ship: "BTL-B Y-Wing",
         skill: 2,
         points: 200,
-        slots: ["Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
+        slots: ["Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"],
+        ship_override: {
+          actions: ["Calculate", "Lock"]
+        }
       }, {
         name: '"Goji"',
         id: 363,
@@ -14879,7 +14882,7 @@ exportObj.cardLoaders.English = function() {
     },
     "Chewbacca (Resistance)": {
       display_name: "Chewbacca",
-      text: "After a friendly ship at range 0-3 is destroyed, before that ship is removed, you may perform an action. Then you may perform a bonus attack."
+      text: "After a friendly ship at range 0-3 is destroyed, before that ship is removed, you may perform an action. Then you may perform a bonus attack.%LINEBREAK%<i><strong>Note:</strong>The phrase \"before that ship is removed\" is not printed on the card, but within the official squad builder.</i>"
     },
     "Cobalt Squadron Bomber": {
       display_name: "Cobalt Squadron Bomber",
@@ -32713,7 +32716,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 34978
+                    lineno: 34983
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -33544,7 +33547,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 35842
+              lineno: 35847
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -34316,7 +34319,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 36557
+              lineno: 36562
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -34326,7 +34329,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 36558
+                lineno: 36563
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -36063,7 +36066,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 37738
+              lineno: 37743
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -36280,7 +36283,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 37854
+                          lineno: 37859
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -36309,7 +36312,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 37870
+                              lineno: 37875
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -36379,7 +36382,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 37912
+                      lineno: 37917
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -36459,7 +36462,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 37941
+                lineno: 37946
               })
             ]);
             __iced_deferrals._fulfill();
@@ -36528,7 +36531,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 37970
+              lineno: 37975
             }));
           }
         }
@@ -37549,7 +37552,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 38776
+                lineno: 38781
               })
             ]);
             __iced_deferrals._fulfill();
@@ -37686,7 +37689,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 38848
+                  lineno: 38853
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -37709,7 +37712,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 38853
+                      lineno: 38858
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -37801,7 +37804,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 38898
+            lineno: 38903
           }));
         }
         __iced_deferrals._fulfill();
