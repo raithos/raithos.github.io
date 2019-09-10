@@ -9069,6 +9069,7 @@ exportObj.basicCardData = ->
             faction: "Galactic Republic"
             ship: "BTL-B Y-Wing"
             skill: 6
+            force: 3
             points: 60
             slots: [
                 "Force"
@@ -34446,6 +34447,16 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
+            name: 'Foresight'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Snap Shot'
+            type: 'upgrade'
+            count: 1
+        }
+        {
             name: 'Ahsoka Tano'
             type: 'upgrade'
             count: 1
@@ -34461,7 +34472,22 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'Targeting Computer'
+            name: 'Delayed Fuses'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Electro-Proton Bomb'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Proton Bombs'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ion Cannon Turret'
             type: 'upgrade'
             count: 1
         }
@@ -34519,6 +34545,16 @@ exportObj.manifestByExpansion =
         }
         {
             name: 'Snap Shot'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Stealth Device'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Targeting Computer'
             type: 'upgrade'
             count: 1
         }
