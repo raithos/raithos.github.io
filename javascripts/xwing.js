@@ -6060,16 +6060,16 @@ exportObj.basicCardData = function() {
         faction: "Separatist Alliance",
         ship: "Nantex-Class Starfighter",
         skill: 3,
-        points: 200,
-        slots: ["Modification"]
+        points: 34,
+        slots: ["Talent"]
       }, {
         name: "Petranaki Arena Ace",
         id: 354,
         faction: "Separatist Alliance",
         ship: "Nantex-Class Starfighter",
         skill: 4,
-        points: 200,
-        slots: ["Talent", "Modification"]
+        points: 38,
+        slots: ["Talent", "Talent"]
       }, {
         name: "Gorgol",
         unique: true,
@@ -6077,8 +6077,8 @@ exportObj.basicCardData = function() {
         faction: "Separatist Alliance",
         ship: "Nantex-Class Starfighter",
         skill: 2,
-        points: 200,
-        slots: ["Modification"]
+        points: 36,
+        slots: ["Talent"]
       }, {
         name: "Chertek",
         unique: true,
@@ -6086,8 +6086,8 @@ exportObj.basicCardData = function() {
         faction: "Separatist Alliance",
         ship: "Nantex-Class Starfighter",
         skill: 4,
-        points: 200,
-        slots: ["Talent", "Modification"]
+        points: 39,
+        slots: ["Talent", "Talent"]
       }, {
         name: "Sun Fac",
         unique: true,
@@ -6095,8 +6095,8 @@ exportObj.basicCardData = function() {
         faction: "Separatist Alliance",
         ship: "Nantex-Class Starfighter",
         skill: 6,
-        points: 200,
-        slots: ["Talent", "Modification"]
+        points: 54,
+        slots: ["Talent", "Talent"]
       }, {
         name: "Berwer Kart",
         unique: true,
@@ -6104,8 +6104,8 @@ exportObj.basicCardData = function() {
         faction: "Separatist Alliance",
         ship: "Nantex-Class Starfighter",
         skill: 5,
-        points: 200,
-        slots: ["Talent", "Modification"]
+        points: 40,
+        slots: ["Talent", "Talent"]
       }, {
         name: "Anakin Skywalker (Y-Wing)",
         unique: true,
@@ -6113,7 +6113,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "BTL-B Y-Wing",
         skill: 6,
-        points: 200,
+        points: 60,
         slots: ["Force", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
       }, {
         name: "Shadow Squadron Veteran",
@@ -6121,15 +6121,15 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "BTL-B Y-Wing",
         skill: 3,
-        points: 200,
-        slots: ["Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
+        points: 35,
+        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
       }, {
         name: "Red Squadron Bomber",
         id: 361,
         faction: "Galactic Republic",
         ship: "BTL-B Y-Wing",
         skill: 2,
-        points: 200,
+        points: 33,
         slots: ["Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
       }, {
         name: "R2-D2",
@@ -6138,8 +6138,8 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "BTL-B Y-Wing",
         skill: 2,
-        points: 200,
-        slots: ["Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"],
+        points: 35,
+        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Crew", "Device", "Modification"],
         ship_override: {
           actions: ["Calculate", "Lock"]
         }
@@ -6150,7 +6150,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "BTL-B Y-Wing",
         skill: 2,
-        points: 200,
+        points: 34,
         slots: ["Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
       }, {
         name: '"Broadside"',
@@ -6159,8 +6159,8 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "BTL-B Y-Wing",
         skill: 3,
-        points: 200,
-        slots: ["Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
+        points: 36,
+        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
       }, {
         name: '"Matchstick"',
         id: 365,
@@ -6168,7 +6168,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "BTL-B Y-Wing",
         skill: 4,
-        points: 200,
+        points: 43,
         slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
       }, {
         name: '"Odd Ball" (Y-Wing)',
@@ -6177,7 +6177,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         ship: "BTL-B Y-Wing",
         skill: 5,
-        points: 200,
+        points: 44,
         slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
       }
     ],
@@ -8501,13 +8501,14 @@ exportObj.basicCardData = function() {
         name: "Ensnare",
         id: 248,
         slot: "Talent",
-        points: 200,
+        pointsarray: [10, 10, 10, 10, 10, 16, 24],
+        variableinit: true,
         ship: "Nantex-Class Starfighter"
       }, {
         name: "Targeting Computer",
         id: 249,
         slot: "Modification",
-        points: 200,
+        points: 3,
         modifier_func: function(stats) {
           if (__indexOf.call(stats.actions, 'Lock') < 0) {
             return stats.actions.push('Lock');
@@ -8517,7 +8518,8 @@ exportObj.basicCardData = function() {
         name: "Precognitive Reflexes",
         id: 250,
         slot: "Force",
-        points: 200,
+        pointsarray: [3, 3, 3, 4, 7, 10, 13],
+        variableinit: true,
         restriction_func: function(ship) {
           var _ref, _ref1;
           return !(((_ref = ship.data.large) != null ? _ref : false) || ((_ref1 = ship.data.medium) != null ? _ref1 : false));
@@ -8525,7 +8527,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Foresight",
         slot: "Force",
-        points: 200,
+        points: 4,
         id: 251,
         attackbull: 2,
         range: "1-3",
@@ -8535,13 +8537,13 @@ exportObj.basicCardData = function() {
         id: 252,
         slot: "Astromech",
         charge: 2,
-        points: 200,
+        points: 7,
         faction: "Galactic Republic"
       }, {
         name: "Ahsoka Tano",
         id: 253,
         slot: "Gunner",
-        points: 200,
+        points: 12,
         faction: "Galactic Republic",
         force: 1,
         modifier_func: function(stats) {
@@ -8552,7 +8554,7 @@ exportObj.basicCardData = function() {
         id: 254,
         slot: "Crew",
         xws: "c3po-republic",
-        points: 200,
+        points: 8,
         faction: "Galactic Republic",
         modifier_func: function(stats) {
           if (__indexOf.call(stats.actions, 'Calculate') < 0) {
@@ -8563,13 +8565,14 @@ exportObj.basicCardData = function() {
         name: "Gravitic Deflection",
         id: 255,
         slot: "Talent",
-        points: 200,
+        points: 5,
         ship: "Nantex-Class Starfighter"
       }, {
         name: "Snap Shot",
         id: 256,
         slot: "Talent",
-        points: 200
+        pointsarray: [7, 8, 9],
+        variablebase: true
       }
     ],
     conditionsById: [
@@ -32716,7 +32719,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 34983
+                    lineno: 34990
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -33547,7 +33550,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 35847
+              lineno: 35854
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -34319,7 +34322,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 36562
+              lineno: 36569
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -34329,7 +34332,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 36563
+                lineno: 36570
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -36066,7 +36069,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 37743
+              lineno: 37750
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -36283,7 +36286,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 37859
+                          lineno: 37866
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -36312,7 +36315,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 37875
+                              lineno: 37882
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -36382,7 +36385,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 37917
+                      lineno: 37924
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -36462,7 +36465,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 37946
+                lineno: 37953
               })
             ]);
             __iced_deferrals._fulfill();
@@ -36531,7 +36534,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 37975
+              lineno: 37982
             }));
           }
         }
@@ -37552,7 +37555,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 38781
+                lineno: 38788
               })
             ]);
             __iced_deferrals._fulfill();
@@ -37689,7 +37692,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 38853
+                  lineno: 38860
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -37712,7 +37715,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 38858
+                      lineno: 38865
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -37804,7 +37807,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 38903
+            lineno: 38910
           }));
         }
         __iced_deferrals._fulfill();
