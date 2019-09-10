@@ -9050,7 +9050,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Berwer Kart"
+            name: "Berwer Kret"
             unique: true
             id: 358
             faction: "Separatist Alliance"
@@ -19909,7 +19909,7 @@ exportObj.cardLoaders.English = () ->
            text: """<strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."""
         "Petranaki Arena Ace":
            text: """<strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."""
-        "Berwer Kart":
+        "Berwer Kret":
            text: """After you perform an attack that hits, each friendly ship with %CALCULATE% on its action bar and a lock on the defender may perform a red %CALCULATE% action. %LINEBREAK%<strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."""
         "Chertek":
            text: """While you perform a primary attacki, if the defender is tractored, you may reroll up to 2 attack dice. %LINEBREAK%<strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."""
@@ -20652,6 +20652,10 @@ exportObj.cardLoaders.English = () ->
         "Foresight":
            display_name: """Foresight"""
            text: """After an enemy ship executes a maneuver, you may spend 1 %FORCE% to perform this attack against it as a bonus attack. %LINEBREAK% <strong>Attack:</strong> You may change 1 %FOCUS% result to a %HIT% result; your dice cannot be modified otherwise."""
+        "Angled Deflectors":
+           display_name: """Angled Deflectors"""
+           text: """<strong>Requires:</strong> Small or Medium Ship with at least 1 shield %LINEBREAK% <strong>Adds:</strong> %REINFORCE% %LINEBREAK% <strong>Removes:</strong> 1 Shield """
+            
         "C1-10P":
            display_name: """C1-10P"""
            text: """<strong>C1-10P: </strong>Setup: Equip this side faceup. %LINEBREAK% After you execute a maneuver, you may spend 1 %CHARGE% to perform a red %EVADE% action, even while stressed. %LINEBREAK% During the End Phase, if this card has 0 active %CHARGE%, flip it. %LINEBREAK% <strong>C1-10P (Erratic):</strong> After you execute a maneuver, you <strong>must</strong> choose a ship at range 0-1. It gains 1 jam token."""
@@ -34390,7 +34394,135 @@ exportObj.manifestByExpansion =
             count: 1
         }
     ]
-
+    'BTL-B Y-Wing Expansion Pack': [
+        {
+            name: 'BTL-B Y-Wing'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Anakin Skywalker (Y-Wing)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Odd Ball" (Y-Wing)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Matchstick"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Broadside"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'R2-D2'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Goji"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Shadow Squadron Veteran'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Red Squadron Bomber'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Precognitive Reflexes'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ahsoka Tano'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'C-3PO (Republic)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'C1-10P'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Targeting Computer'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+    'Nantex-class Starfighter Expansion Pack': [
+        {
+            name: 'Nantex-Class Starfighter'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Sun Fac'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Berwer Kret'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Chertek'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Gorgol'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Petranaki Arena Ace'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Stalgasin Hive Guard'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Ensnare'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Gravitic Deflection'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Juke'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Snap Shot'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
     'Loose Ships': [
         {
             name: 'A-Wing'
