@@ -11628,6 +11628,12 @@ exportObj.hyperspaceShipInclusions = [
     name: 'U-Wing',
     faction: 'Rebel Alliance'
   }, {
+    name: 'VCX-100',
+    faction: 'Rebel Alliance'
+  }, {
+    name: 'Sheathipede-Class Shuttle',
+    faction: 'Rebel Alliance'
+  }, {
     name: 'TIE Advanced',
     faction: 'Galactic Empire'
   }, {
@@ -11641,6 +11647,9 @@ exportObj.hyperspaceShipInclusions = [
     faction: 'Galactic Empire'
   }, {
     name: 'TIE Reaper',
+    faction: 'Galactic Empire'
+  }, {
+    name: 'TIE Advanced Prototype',
     faction: 'Galactic Empire'
   }, {
     name: 'TIE Striker',
@@ -11668,6 +11677,12 @@ exportObj.hyperspaceShipInclusions = [
     faction: 'Scum and Villainy'
   }, {
     name: 'Customized YT-1300',
+    faction: 'Scum and Villainy'
+  }, {
+    name: 'JumpMaster 5000',
+    faction: 'Scum and Villainy'
+  }, {
+    name: 'M3-A Interceptor',
     faction: 'Scum and Villainy'
   }, {
     name: 'Scavenged YT-1300',
@@ -11712,6 +11727,9 @@ exportObj.hyperspaceShipInclusions = [
     name: 'Naboo Royal N-1 Starfighter',
     faction: 'Galactic Republic'
   }, {
+    name: 'BTL-B Y-Wing',
+    faction: 'Galactic Republic'
+  }, {
     name: 'Vulture-class Droid Fighter',
     faction: 'Separatist Alliance'
   }, {
@@ -11723,12 +11741,15 @@ exportObj.hyperspaceShipInclusions = [
   }, {
     name: 'Belbullab-22 Starfighter',
     faction: 'Separatist Alliance'
+  }, {
+    name: 'Nantex-Class Starfighter',
+    faction: 'Separatist Alliance'
   }
 ];
 
 exportObj.hyperspacePilotExclusions = ['Nashtah Pup'];
 
-exportObj.hyperspaceUpgradeExclusions = ['Freelance Slicer', 'Novice Technician', 'Cloaking Device', 'Contraband Cybernetics', 'Feedback Array', 'Ablative Plating', 'Advanced SLAM', 'Debris Gambit', 'Saturation Salvo', 'Dorsal Turret', '"Chopper" (Astromech)', '"Zeb" Orrelios', '"Chopper" (Crew)', 'Hera Syndulla', 'Jyn Erso', 'Kanan Jarrus', 'Sabine Wren', 'Bistan', 'Ezra Bridger', 'Admiral Sloane', 'Grand Moff Tarkin', 'Minister Tua', 'Moff Jerjerrod', 'Emperor Palpatine', '"Genius"', 'R5-TK', 'R5-P8', '4-LOM', 'Cad Bane', 'Cikatro Vizago', 'IG-88D', 'Ketsu Onyo', 'Latts Razzi', 'Maul', 'Unkar Plutt', 'Zuckuss', 'Jabba the Hutt', 'Bossk', 'Greedo'];
+exportObj.hyperspaceUpgradeExclusions = ['Freelance Slicer', 'Novice Technician', 'Cloaking Device', 'Feedback Array', 'Ablative Plating', 'Advanced SLAM', 'Debris Gambit', 'Saturation Salvo', 'Jyn Erso', 'Sabine Wren', 'Bistan', 'Ezra Bridger', 'Admiral Sloane', 'Grand Moff Tarkin', 'Minister Tua', 'Moff Jerjerrod', 'Emperor Palpatine', '"Genius"', 'R5-TK', '4-LOM', 'Cad Bane', 'Cikatro Vizago', 'IG-88D', 'Ketsu Onyo', 'Unkar Plutt', 'Zuckuss', 'Jabba the Hutt', 'Bossk', 'Greedo'];
 
 exportObj.hyperspaceCheck = function(data, faction, shipCheck) {
   var ship, _i, _len, _ref, _ref1, _ref2;
@@ -32218,6 +32239,286 @@ exportObj.manifestByExpansion = {
       count: 1
     }
   ],
+  'Punishing One Expansion Pack': [
+    {
+      name: 'JumpMaster 5000',
+      type: 'ship',
+      count: 1
+    }, {
+      name: 'Dengar',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Manaroo',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Tel Trevura',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Contracted Scout',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'R2 Astromech',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'R5-P8',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: '0-0-0',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Informant',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Latts Razzi',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Dengar',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Lone Wolf',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Punishing One',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Adv. Proton Torpedoes',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Ion Torpedoes',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Contraband Cybernetics',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Perceptive Copilot',
+      type: 'upgrade',
+      count: 1
+    }
+  ],
+  'M3-A Interceptor Expansion Pack': [
+    {
+      name: 'M3-A Interceptor',
+      type: 'ship',
+      count: 1
+    }, {
+      name: 'Genesis Red',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Inaldra',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: "Laetin A'shera",
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Quinn Jast',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Serissu',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Sunny Bounder',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Cartel Spacer',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Tansarii Point Veteran',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Ion Cannon',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Jamming Beam',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Proton Torpedoes',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Ion Missiles',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Intimidation',
+      type: 'upgrade',
+      count: 1
+    }
+  ],
+  'Ghost Expansion Pack': [
+    {
+      name: 'VCX-100',
+      type: 'ship',
+      count: 1
+    }, {
+      name: 'Sheathipede-Class Shuttle',
+      type: 'ship',
+      count: 1
+    }, {
+      name: 'AP-5',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Fenn Rau (Sheathipede)',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: "Ezra Bridger (Sheathipede)",
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Zeb" Orrelios (Sheathipede)',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Hera Syndulla (VCX-100)',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Kanan Jarrus',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Chopper"',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Lothal Rebel',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: '"Chopper" (Astromech)',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: '"Chopper" (Crew)',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Hera Syndulla',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Kanan Jarrus',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Maul',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: '"Zeb" Orrelios',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Hate',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Predictive Shot',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Agile Gunner',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Tactical Scrambler',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Collision Detector',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Squad Leader',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Ghost',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Phantom',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Ion Torpedoes',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Dorsal Turret',
+      type: 'upgrade',
+      count: 1
+    }
+  ],
+  "Inquisitors' TIE Expansion Pack": [
+    {
+      name: 'TIE Advanced Prototype',
+      type: 'ship',
+      count: 1
+    }, {
+      name: 'Grand Inquisitor',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Seventh Sister',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Inquisitor',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Baron of the Empire',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Hate',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Predictive Shot',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Heightened Perception',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Proton Rockets',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Afterburners',
+      type: 'upgrade',
+      count: 1
+    }
+  ],
   'Loose Ships': [
     {
       name: 'A-Wing',
@@ -32229,10 +32530,6 @@ exportObj.manifestByExpansion = {
       count: 2
     }, {
       name: 'E-Wing',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'VCX-100',
       type: 'ship',
       count: 2
     }, {
@@ -32252,19 +32549,11 @@ exportObj.manifestByExpansion = {
       type: 'ship',
       count: 2
     }, {
-      name: 'Sheathipede-Class Shuttle',
-      type: 'ship',
-      count: 2
-    }, {
       name: 'YT-2400',
       type: 'ship',
       count: 2
     }, {
       name: 'Alpha-Class Star Wing',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'TIE Advanced Prototype',
       type: 'ship',
       count: 3
     }, {
@@ -32316,15 +32605,7 @@ exportObj.manifestByExpansion = {
       type: 'ship',
       count: 2
     }, {
-      name: 'M3-A Interceptor',
-      type: 'ship',
-      count: 4
-    }, {
       name: 'G-1A Starfighter',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'JumpMaster 5000',
       type: 'ship',
       count: 2
     }, {
@@ -32858,7 +33139,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 35158
+                    lineno: 35475
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -33689,7 +33970,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 36022
+              lineno: 36339
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -34461,7 +34742,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 36737
+              lineno: 37054
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -34471,7 +34752,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 36738
+                lineno: 37055
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -36208,7 +36489,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 37918
+              lineno: 38235
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -36425,7 +36706,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 38034
+                          lineno: 38351
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -36454,7 +36735,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 38050
+                              lineno: 38367
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -36524,7 +36805,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 38092
+                      lineno: 38409
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -36604,7 +36885,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 38121
+                lineno: 38438
               })
             ]);
             __iced_deferrals._fulfill();
@@ -36673,7 +36954,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 38150
+              lineno: 38467
             }));
           }
         }
@@ -37694,7 +37975,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 38956
+                lineno: 39273
               })
             ]);
             __iced_deferrals._fulfill();
@@ -37831,7 +38112,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 39028
+                  lineno: 39345
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -37854,7 +38135,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 39033
+                      lineno: 39350
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -37946,7 +38227,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 39078
+            lineno: 39395
           }));
         }
         __iced_deferrals._fulfill();

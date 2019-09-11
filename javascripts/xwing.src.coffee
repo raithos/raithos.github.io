@@ -16441,11 +16441,14 @@ exportObj.hyperspaceShipInclusions = [
     {name: 'A-Wing', faction: 'Rebel Alliance'},
     {name: 'Y-Wing', faction: 'Rebel Alliance'},
     {name: 'U-Wing', faction: 'Rebel Alliance'},
+    {name: 'VCX-100', faction: 'Rebel Alliance'},
+    {name: 'Sheathipede-Class Shuttle', faction: 'Rebel Alliance'},
     {name: 'TIE Advanced', faction: 'Galactic Empire'},
     {name: 'TIE Interceptor', faction: 'Galactic Empire'},
     {name: 'TIE Bomber', faction: 'Galactic Empire'},
     {name: 'TIE Fighter', faction: 'Galactic Empire'},
     {name: 'TIE Reaper', faction: 'Galactic Empire'},
+    {name: 'TIE Advanced Prototype', faction: 'Galactic Empire'},
     {name: 'TIE Striker', faction: 'Galactic Empire'},
     {name: 'VT-49 Decimator', faction: 'Galactic Empire'},
     {name: 'Firespray-31', faction: 'Scum and Villainy'},
@@ -16455,6 +16458,8 @@ exportObj.hyperspaceShipInclusions = [
     {name: 'Mining Guild TIE Fighter', faction: 'Scum and Villainy'},
     {name: 'Fang Fighter', faction: 'Scum and Villainy'},
     {name: 'Customized YT-1300', faction: 'Scum and Villainy'},
+    {name: 'JumpMaster 5000', faction: 'Scum and Villainy'},
+    {name: 'M3-A Interceptor', faction: 'Scum and Villainy'},
     {name: 'Scavenged YT-1300', faction: 'Resistance'},
     {name: 'T-70 X-Wing', faction: 'Resistance'},
     {name: 'RZ-2 A-Wing', faction: 'Resistance'},
@@ -16469,10 +16474,12 @@ exportObj.hyperspaceShipInclusions = [
     {name: 'ARC-170', faction: 'Galactic Republic'},
     {name: 'V-19 Torrent', faction: 'Galactic Republic'},
     {name: 'Naboo Royal N-1 Starfighter', faction: 'Galactic Republic'},
+    {name: 'BTL-B Y-Wing', faction: 'Galactic Republic'},
     {name: 'Vulture-class Droid Fighter', faction: 'Separatist Alliance'},
     {name: 'Hyena-Class Droid Bomber', faction: 'Separatist Alliance'},
     {name: 'Sith Infiltrator', faction: 'Separatist Alliance'},
-    {name: 'Belbullab-22 Starfighter', faction: 'Separatist Alliance'}
+    {name: 'Belbullab-22 Starfighter', faction: 'Separatist Alliance'},
+    {name: 'Nantex-Class Starfighter', faction: 'Separatist Alliance'}
 ]
 
 # Used to exclude pilots from included ships
@@ -16487,21 +16494,14 @@ exportObj.hyperspaceUpgradeExclusions = [
     'Freelance Slicer',
     'Novice Technician',
     'Cloaking Device',
-    'Contraband Cybernetics',
     'Feedback Array',
     'Ablative Plating',
     'Advanced SLAM',
     'Debris Gambit',
     'Saturation Salvo',
-    'Dorsal Turret',
 
     # Rebel Alliance
-    '"Chopper" (Astromech)',
-    '"Zeb" Orrelios'
-    '"Chopper" (Crew)',
-    'Hera Syndulla',
     'Jyn Erso',
-    'Kanan Jarrus',
     'Sabine Wren',
     'Bistan',
     'Ezra Bridger',
@@ -16516,14 +16516,11 @@ exportObj.hyperspaceUpgradeExclusions = [
     # Scum and Villainy
     '"Genius"',
     'R5-TK',
-    'R5-P8',
     '4-LOM',
     'Cad Bane',
     'Cikatro Vizago',
     'IG-88D',
     'Ketsu Onyo',
-    'Latts Razzi',
-    'Maul',
     'Unkar Plutt',
     'Zuckuss',
     'Jabba the Hutt',
@@ -34559,6 +34556,351 @@ exportObj.manifestByExpansion =
             count: 1
         }
     ]
+    'Punishing One Expansion Pack': [
+        {
+            name: 'JumpMaster 5000'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Dengar'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Manaroo'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Tel Trevura'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Contracted Scout'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'R2 Astromech'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R5-P8'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: '0-0-0'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Informant'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Latts Razzi'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Dengar'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Lone Wolf'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Punishing One'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Adv. Proton Torpedoes'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ion Torpedoes'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Contraband Cybernetics'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Perceptive Copilot'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+    'M3-A Interceptor Expansion Pack': [
+        {
+            name: 'M3-A Interceptor'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Genesis Red'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Inaldra'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: "Laetin A'shera"
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Quinn Jast'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Serissu'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Sunny Bounder'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Cartel Spacer'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Tansarii Point Veteran'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Ion Cannon'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Jamming Beam'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Proton Torpedoes'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ion Missiles'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Intimidation'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+    'Ghost Expansion Pack': [
+        {
+            name: 'VCX-100'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Sheathipede-Class Shuttle'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'AP-5'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Fenn Rau (Sheathipede)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: "Ezra Bridger (Sheathipede)"
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Zeb" Orrelios (Sheathipede)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Hera Syndulla (VCX-100)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Kanan Jarrus'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Chopper"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Lothal Rebel'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Chopper" (Astromech)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: '"Chopper" (Crew)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Hera Syndulla'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Kanan Jarrus'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Maul'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: '"Zeb" Orrelios'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Hate'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Predictive Shot'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Agile Gunner'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Tactical Scrambler'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Collision Detector'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Squad Leader'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ghost'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Phantom'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ion Torpedoes'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Dorsal Turret'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+    "Inquisitors' TIE Expansion Pack": [
+        {
+            name: 'TIE Advanced Prototype'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Grand Inquisitor'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Seventh Sister'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Inquisitor'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Baron of the Empire'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Hate'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Predictive Shot'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Heightened Perception'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Proton Rockets'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Afterburners'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+
+
     'Loose Ships': [
         {
             name: 'A-Wing'
@@ -34572,11 +34914,6 @@ exportObj.manifestByExpansion =
         }
         {
             name: 'E-Wing'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'VCX-100'
             type: 'ship'
             count: 2
         }
@@ -34601,22 +34938,12 @@ exportObj.manifestByExpansion =
             count: 2
         }
         {
-            name: 'Sheathipede-Class Shuttle'
-            type: 'ship'
-            count: 2
-        }
-        {
             name: 'YT-2400'
             type: 'ship'
             count: 2
         }
         {
             name: 'Alpha-Class Star Wing'
-            type: 'ship'
-            count: 3
-        }
-        {
-            name: 'TIE Advanced Prototype'
             type: 'ship'
             count: 3
         }
@@ -34681,17 +35008,7 @@ exportObj.manifestByExpansion =
             count: 2
         }
         {
-            name: 'M3-A Interceptor'
-            type: 'ship'
-            count: 4
-        }
-        {
             name: 'G-1A Starfighter'
-            type: 'ship'
-            count: 2
-        }
-        {
-            name: 'JumpMaster 5000'
             type: 'ship'
             count: 2
         }
