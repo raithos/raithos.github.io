@@ -13682,7 +13682,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Chancellor Palpatine": {
       display_name: "Kanzler Palpatine",
-      text: "<i>Fügt %COORDINATE% hinzu</i>%LINEBREAK%<i>Nur für Separatistenallianz oder Galaktische Republik</i>%LINEBREAK%Kanzler Palpatine:%LINEBREAK%<strong>Aufbau:</strong> Rüste diese Seite offen aus. %LINEBREAK%Nachdem du verteidigt hast, falls der Angreifer in Reichweite 0-2 ist, darfst du 1 %FORCE% ausgeben. Falls du das tust, erhält der Angreifer 1 Stressmarker.%LINEBREAK%Während der Endphase darfst du diese Karte umdrehen.%LINEBREAK%Darth Sidious:%LINEBREAK%Nachdem du eine violette &nbsp;%COORDINATE%&nbsp;-Aktion durchgeführt hast, erhält das von dir koordinierte Schiff 1&nbsp;Stressmarker. Dann erhält es 1 _x001F_Fokusmarker oder es stellt 1&nbsp;%FORCE% wieder her."
+      text: "<i>Fügt <f>%COORDINATE%</f> hinzu</i>%LINEBREAK%<i>Nur für Separatistenallianz oder Galaktische Republik</i>%LINEBREAK%Kanzler Palpatine:%LINEBREAK%<strong>Aufbau:</strong> Rüste diese Seite offen aus. %LINEBREAK%Nachdem du verteidigt hast, falls der Angreifer in Reichweite 0-2 ist, darfst du 1 %FORCE% ausgeben. Falls du das tust, erhält der Angreifer 1 Stressmarker.%LINEBREAK%Während der Endphase darfst du diese Karte umdrehen.%LINEBREAK%Darth Sidious:%LINEBREAK%Nachdem du eine violette &nbsp;%COORDINATE%&nbsp;-Aktion durchgeführt hast, erhält das von dir koordinierte Schiff 1&nbsp;Stressmarker. Dann erhält es 1 _x001F_Fokusmarker oder es stellt 1&nbsp;%FORCE% wieder her."
     },
     "Chewbacca": {
       display_name: "Chewbacca",
@@ -16412,7 +16412,7 @@ exportObj.cardLoaders.English = function() {
     },
     "Chancellor Palpatine": {
       display_name: "Chancellor Palpatine",
-      text: "Chancellor Palpatine:%LINEBREAK%<i>Adds %COORDINATE%</i>%LINEBREAK%<i>Separatist Alliance or Galactic Republic only</i>%LINEBREAK%<strong>Setup:</strong> Equip this side faceup.%LINEBREAK%After you defend, if the attacker is at range 0-2, you may spend 1 %FORCE%. If you do, the attacker gains 1 stress token.%LINEBREAK%During the End Phase, you may flip this card.%LINEBREAK%Darth Sidious%LINEBREAK%<i>Adds %COORDINATE%</i>%LINEBREAK%<i>Separatist Alliance or Galactic Republic only</i>%LINEBREAK%After you perform a purple&nbsp;%COORDINATE%&nbsp;action, the ship you coordinated gains 1&nbsp;stress token. Then, it gains 1&nbsp;focus token or recovers 1&nbsp;%FORCE%."
+      text: "<i>Separatist Alliance or Galactic Republic only</i>%LINEBREAK%<i>Adds <f>%COORDINATE%</f></i>%LINEBREAK%Chancellor Palpatine:%LINEBREAK%<strong>Setup:</strong> Equip this side faceup.%LINEBREAK%After you defend, if the attacker is at range 0-2, you may spend 1 %FORCE%. If you do, the attacker gains 1 stress token.%LINEBREAK%During the End Phase, you may flip this card.%LINEBREAK%Darth Sidious%LINEBREAK%After you perform a purple&nbsp;%COORDINATE%&nbsp;action, the ship you coordinated gains 1&nbsp;stress token. Then, it gains 1&nbsp;focus token or recovers 1&nbsp;%FORCE%."
     },
     "Chewbacca": {
       display_name: "Chewbacca",
@@ -20988,7 +20988,7 @@ exportObj.cardLoaders['Français'] = function() {
     },
     "Chancellor Palpatine": {
       display_name: "Chancelier Palpatine",
-      text: "<i>Ajoute %COORDINATE%</i>%LINEBREAK%<i>Separatist Alliance ou Galactic Republic uniquement</i>%LINEBREAK%<strong>Chancelier Palpatine:</strong><strong>Mise en Place :</strong> à équiper avec cette face visible.%LINEBREAK%Après avoir défendu, si l’attaquant est à portée&nbsp;0-2, vous pouvez dépenser 1&nbsp;%FORCE%. Dans ce cas, l’attaquant gagne 1 marqueur de stress.%LINEBREAK%Pendant la phase de dénouement, vous pouvez retourner cette carte.%LINEBREAK%<strong>Darth Sidious:</strong>%LINEBREAK%<i>Separatist Alliance ou Galactic Republic uniquement</i>%LINEBREAK%Après avoir effectué une action %COORDINATE% violette, le vaisseau que vous avez coordonné gagne 1 marqueur de stress. Puis il gagne 1 marqueur de concentration ou récupère 1&nbsp;%FORCE%."
+      text: "<i>Ajoute <f>%COORDINATE%</f></i>%LINEBREAK%<i>Separatist Alliance ou Galactic Republic uniquement</i>%LINEBREAK%<strong>Chancelier Palpatine:</strong>%LINEBREAK%<strong>Mise en Place:</strong> à équiper avec cette face visible.%LINEBREAK%Après avoir défendu, si l’attaquant est à portée&nbsp;0-2, vous pouvez dépenser 1&nbsp;%FORCE%. Dans ce cas, l’attaquant gagne 1 marqueur de stress.%LINEBREAK%Pendant la phase de dénouement, vous pouvez retourner cette carte.%LINEBREAK%<strong>Darth Sidious:</strong>%LINEBREAK%Après avoir effectué une action %COORDINATE% violette, le vaisseau que vous avez coordonné gagne 1 marqueur de stress. Puis il gagne 1 marqueur de concentration ou récupère 1&nbsp;%FORCE%."
     },
     "Chewbacca": {
       display_name: "Chewbacca",
