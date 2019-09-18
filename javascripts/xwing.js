@@ -39616,7 +39616,7 @@ exportObj.XWSManager = (function() {
 
   XWSManager.prototype.setupUI = function() {
     this.container.addClass('hidden-print');
-    this.container.html($.trim("<div class=\"row-fluid span9\">\n    <div>\n        <button class=\"btn btn-primary from-xws\">Import from XWS</button>\n        <button class=\"btn btn-primary to-xws\">Export to XWS</button>\n    </div>\n    <div>\n        <a href=\"https://paypal.me/raithos\" target=\"_blank\"><button title=\"This donation link is here because many people have bothered me to add one. Please don't feel obligated to donate for using this site just because this button is here. This site will always be free, and always 100% available for all people to use.\" class=\"btn btn-primary paypal\">Donate?</button></a>\n    </div>\n</div>"));
+    this.container.html($.trim("<div class=\"row-fluid span9\">\n    <div>\n        <button class=\"btn btn-primary from-xws\">Import from XWS</button>\n        <button class=\"btn btn-primary to-xws\">Export to XWS</button>\n    </div>\n</div>"));
     this.xws_export_modal = $(document.createElement('DIV'));
     this.xws_export_modal.addClass('modal hide fade xws-modal hidden-print');
     this.container.append(this.xws_export_modal);
