@@ -11757,7 +11757,7 @@ exportObj.hyperspacePilotExclusions = ['Nashtah Pup'];
 exportObj.hyperspaceUpgradeExclusions = ['Freelance Slicer', 'Novice Technician', 'Cloaking Device', 'Feedback Array', 'Ablative Plating', 'Advanced SLAM', 'Debris Gambit', 'Saturation Salvo', 'Jyn Erso', 'Sabine Wren', 'Bistan', 'Ezra Bridger', 'Admiral Sloane', 'Grand Moff Tarkin', 'Minister Tua', 'Moff Jerjerrod', 'Emperor Palpatine', '"Genius"', 'R5-TK', '4-LOM', 'Cad Bane', 'Cikatro Vizago', 'IG-88D', 'Ketsu Onyo', 'Unkar Plutt', 'Zuckuss', 'Jabba the Hutt', 'Bossk', 'Greedo'];
 
 exportObj.hyperspaceCheck = function(data, faction, shipCheck) {
-  var ship, _i, _len, _ref, _ref1, _ref2;
+  var ship, _i, _len, _ref, _ref1, _ref2, _ref3;
   if (faction == null) {
     faction = '';
   }
@@ -11771,13 +11771,13 @@ exportObj.hyperspaceCheck = function(data, faction, shipCheck) {
     _ref1 = exportObj.hyperspaceShipInclusions;
     for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
       ship = _ref1[_i];
-      if (ship.faction === faction && (data.name === ship.name || data.ship === ship.name)) {
+      if (ship.faction === faction && (data.name === ship.name || data.ship === ship.name || (_ref2 = ship.name, __indexOf.call(data.ship, _ref2) >= 0))) {
         return true;
       }
     }
     return false;
   } else {
-    return _ref2 = data.name, __indexOf.call(exportObj.hyperspaceUpgradeExclusions, _ref2) < 0;
+    return _ref3 = data.name, __indexOf.call(exportObj.hyperspaceUpgradeExclusions, _ref3) < 0;
   }
 };
 
@@ -39616,7 +39616,7 @@ exportObj.XWSManager = (function() {
 
   XWSManager.prototype.setupUI = function() {
     this.container.addClass('hidden-print');
-    this.container.html($.trim("<div class=\"row-fluid\">\n    <div class=\"span9 indent\">\n        <button class=\"btn btn-primary from-xws\">Import from XWS</button>\n        <button class=\"btn btn-primary to-xws\">Export to XWS</button>\n    </div>\n</div>"));
+    this.container.html($.trim("<div class=\"row-fluid span9\">\n    <div>\n        <button class=\"btn btn-primary from-xws\">Import from XWS</button>\n        <button class=\"btn btn-primary to-xws\">Export to XWS</button>\n    </div>\n    <div>\n        <a href=\"https://paypal.me/raithos\" target=\"_blank\"><button title=\"This donation link is here because many people have bothered me to add one. Please don't feel obligated to donate for using this site just because this button is here. This site will always be free, and always 100% available for all people to use.\" class=\"btn btn-primary paypal\">Donate?</button></a>\n    </div>\n</div>"));
     this.xws_export_modal = $(document.createElement('DIV'));
     this.xws_export_modal.addClass('modal hide fade xws-modal hidden-print');
     this.container.append(this.xws_export_modal);

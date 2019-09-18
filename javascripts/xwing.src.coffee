@@ -16548,7 +16548,7 @@ exportObj.hyperspaceCheck = (data, faction='', shipCheck=false) ->
             return false
         for ship in exportObj.hyperspaceShipInclusions
             # checks against name for ship itself or ship name/faction for pilot inclusions
-            if (ship.faction == faction && (data.name == ship.name || data.ship == ship.name))
+            if (ship.faction == faction && (data.name == ship.name || data.ship == ship.name || ship.name in data.ship))
                 return true
         return false
     else
@@ -40456,10 +40456,13 @@ class exportObj.XWSManager
     setupUI: ->
         @container.addClass 'hidden-print'
         @container.html $.trim """
-            <div class="row-fluid">
-                <div class="span9 indent">
+            <div class="row-fluid span9">
+                <div>
                     <button class="btn btn-primary from-xws">Import from XWS</button>
                     <button class="btn btn-primary to-xws">Export to XWS</button>
+                </div>
+                <div>
+                    <a href="https://paypal.me/raithos" target="_blank"><button title="This donation link is here because many people have bothered me to add one. Please don't feel obligated to donate for using this site just because this button is here. This site will always be free, and always 100% available for all people to use." class="btn btn-primary paypal">Donate?</button></a>
                 </div>
             </div>
         """
