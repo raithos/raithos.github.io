@@ -14593,7 +14593,7 @@ exportObj.translations.English = {
     "Talent": "Talent",
     "Modification": "Modification",
     "Gunner": "Gunner",
-    "Device": "Device",
+    "Device": "Payload",
     "Tech": "Tech",
     "Title": "Title",
     "Tactical Relay": "Tactical Relay"
