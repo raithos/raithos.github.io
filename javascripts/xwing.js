@@ -9132,7 +9132,7 @@ exportObj.basicCardData = function() {
         id: 297,
         slot: "Title",
         unique: true,
-        ship: "CR90 Corellian Corvette",
+        ship: "Raider-class Corvette",
         faction: "Galactic Empire",
         points: 7
       }, {
