@@ -39323,8 +39323,12 @@ class exportObj.SquadBuilder
                         first = false
                     container.find('tr.info-skill td.info-data').text inis
                     container.find('tr.info-skill').show()
-                    container.find('tr.info-engagement td.info-data').text inis
-                    container.find('tr.info-engagement').show()
+                    
+                    if data.engagement?
+                        container.find('tr.info-engagement td.info-data').text data.engagement
+                        container.find('tr.info-engagement').show()
+                    else
+                        container.find('tr.info-engagement').hide()
                 
                     container.find('tr.info-attack td.info-data').text(data.attack)
                     container.find('tr.info-attack-bullseye td.info-data').text(data.attackbull)
