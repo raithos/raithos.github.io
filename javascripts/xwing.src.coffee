@@ -9410,7 +9410,7 @@ exportObj.basicCardData = ->
                 "Hardpoint"
                 "Hardpoint"
                 "Crew"
-                "Crew"
+                "Team"
                 "Team"
                 "Cargo"
                 "Title"
@@ -9429,7 +9429,7 @@ exportObj.basicCardData = ->
                 "Hardpoint"
                 "Turret"
                 "Crew"
-                "Crew"
+                "Team"
                 "Team"
                 "Cargo"
                 "Cargo"
@@ -38584,7 +38584,7 @@ class exportObj.SquadBuilder
             @current_squad.id = old_id # we want to keep the ID, so we allow people to use the save button
         else
             old_id = @current_squad.id
-            @container.trigger 'xwing:pointsUpdated', cb
+            @container.trigger 'xwing:pointsUpdated', $.noop
             @container.trigger 'xwing:shipUpdated'
         # @onPointsUpdated cb
         cb()
@@ -39324,11 +39324,7 @@ class exportObj.SquadBuilder
                     container.find('tr.info-skill td.info-data').text inis
                     container.find('tr.info-skill').show()
                     
-                    if data.engagement?
-                        container.find('tr.info-engagement td.info-data').text data.engagement
-                        container.find('tr.info-engagement').show()
-                    else
-                        container.find('tr.info-engagement').hide()
+                    container.find('tr.info-engagement').hide()
                 
                     container.find('tr.info-attack td.info-data').text(data.attack)
                     container.find('tr.info-attack-bullseye td.info-data').text(data.attackbull)
@@ -41072,7 +41068,8 @@ class Ship
             for i in [@upgrades.length - 1 ... -1]
                 upgrade = @upgrades[i]
                 if upgrade.slot == "Command"
-                    upgrade.setById null
+                    upgrade.destroy $.noop
+                    @upgrades.splice i,1
 
         for i in [0...max_checks]
             valid = true
