@@ -3253,6 +3253,7 @@ exportObj.basicCardData = ->
            attackt: 2
            agility: 3
            hull: 4
+           shields: 0
            actions: [
              "Focus"
              "Evade"
@@ -8886,6 +8887,7 @@ exportObj.basicCardData = ->
             name: '"Odd Ball" (ARC-170)'
             id: 338
             xws: "oddball-arc170starfighter" 
+            canonical_name: '"Odd Ball"'.canonicalize()
             unique: true
             faction: "Galactic Republic"
             ship: "ARC-170"
@@ -9204,6 +9206,7 @@ exportObj.basicCardData = ->
         }
         {
             name: "Anakin Skywalker (Y-Wing)"
+            canonical_name: 'Anakin Skywalker'.canonicalize()
             xws: "anakinskywalker-btlbywing"
             unique: true
             id: 359
@@ -9336,6 +9339,7 @@ exportObj.basicCardData = ->
             xws: "oddball-btlbywing"
             id: 366
             unique: true
+            canonical_name: '"Odd Ball"'.canonicalize()
             faction: "Galactic Republic"
             ship: "BTL-B Y-Wing"
             skill: 5
@@ -11455,6 +11459,7 @@ exportObj.basicCardData = ->
        {
             name: "R5-X3"
             id: 205
+            unique: true
             slot: "Astromech"
             faction: "Resistance"
             charge: 2
@@ -17559,7 +17564,7 @@ exportObj.translations.Deutsch =
         '.info-well .info-actions td.info-header': 'Aktionen'
         '.info-well .info-upgrades td.info-header': 'Aufwertungskarten'
         '.info-well .info-range td.info-header': 'Reichweite'
-        '.info-well .info-sources.info-header': 'Enthalten&nbsp;in'
+        '.info-well .info-sources.info-header': 'Enthalten&nbsp;in:'
         # Squadron edit buttons
         '.clear-squad' : 'Neue Staffel'
         '.save-list' : '<i class="fa fa-floppy-o"></i>&nbsp;Speichern'
@@ -25349,7 +25354,7 @@ exportObj.translations.Magyar =
         "Talent": "Talentum"
         "Modification": "Módosítás"
         "Gunner": "Fegyverzet kezelő"
-        "Device": "Eszköz"
+        "Device": "Töltet"
         "Tech": "Tech"
         "Title": "Nevesítés"
     sources: # needed?
@@ -26434,7 +26439,7 @@ exportObj.cardLoaders.Magyar = () ->
            text: """<strong>Full Throttle:</strong> Miután teljesen végrehajtasz egy 3-5 sebességű manővert, végrehajthatsz egy %EVADE% akciót."""
         "BB-8":
            display_name: """BB-8"""
-           text: """A Rendszer fázis alatt végrahjthatsz egy piros %BARRELROLL% vagy %BOOST% akciót."""
+           text: """A Rendszer fázis alatt végrehajthatsz egy piros %BARRELROLL% vagy %BOOST% akciót."""
         "Finn":
            display_name: """Finn"""
            text: """Amikor védekezel vagy támadást hajtasz végre, adj a dobáshoz 1 üres eredményt vagy kaphatsz 1 túlterhelés jelzőt, hogy üres helyett fókusz eredményt adhass hozzá."""
@@ -26451,6 +26456,30 @@ exportObj.cardLoaders.Magyar = () ->
            text: """<strong>Plated Hull:</strong> Amikor védekezel, ha nincs kritikus sérülésed, változtass 1 %CRIT% eredményt %HIT% eredményre."""
         "Red Squadron Bomber":
            text: """<strong>Plated Hull:</strong> Amikor védekezel, ha nincs kritikus sérülésed, változtass 1 %CRIT% eredményt %HIT% eredményre."""
+        '"Goji"':
+           text: """Amikor egy baráti hajó 0-3-as távolságban védekezik, további 1 védőkockával dobhat minden tőle 0-1 távolságban lévő baráti bomba vagy akna után. %LINEBREAK%<strong>Plated Hull:</strong> Amikor védekezel, ha nincs kritikus sérülésed, változtass 1 %CRIT% eredményt %HIT% eredményre."""
+        '"Broadside"':
+           text: """Amikor végrehajtasz egy %SINGLETURRETARC% támadást, ha a %SINGLETURRETARC% a %LEFTARC% vagy %RIGHTARC% tűzívedben van, 1 üres eredményed %FOCUS% eredményre változtathatsz. %LINEBREAK%<strong>Plated Hull:</strong> Amikor védekezel, ha nincs kritikus sérülésed, változtass 1 %CRIT% eredményt %HIT% eredményre."""
+        '"Matchstick"':
+           text: """Amikor végrehajtasz egy elsődleges vagy %SINGLETURRETARC% támadást, újradobhatsz 1 támadókockát minden egyes rajtad lévő piros jelző után. %LINEBREAK%<strong>Plated Hull:</strong> Amikor védekezel, ha nincs kritikus sérülésed, változtass 1 %CRIT% eredményt %HIT% eredményre."""
+        '"Odd Ball" (Y-Wing)':
+           text: """Miután teljesen végrehajtasz egy piros manővert vagy piros akciót, ha van egy ellenséges hajó a %BULLSEYEARC% tűzívedben, feltehetsz egy bemérőt arra a hajóra.%LINEBREAK%<strong>Plated Hull:</strong> Amikor védekezel, ha nincs kritikus sérülésed, változtass 1 %CRIT% eredményt %HIT% eredményre."""
+        "R2-D2":
+           text: """Az Ütközet fázis elején, ha van ellenséges hajó a %REARARC% tűzívedben, kapsz 1 %CALCULATE% jelzőt.%LINEBREAK%<strong>Plated Hull:</strong> Amikor védekezel, ha nincs kritikus sérülésed, változtass 1 %CRIT% eredményt %HIT% eredményre."""
+        "Anakin Skywalker (Y-Wing)":
+           text: """Miután teljesen végrehajthatsz egy manővert, ha van ellenséges hajó a %FRONTARC% tűzívedben 0-1-es távolságban, elkölthetsz 1 %FORCE% jelzőt, hogy levegyél egy stress jelzőt.%LINEBREAK%<strong>Plated Hull:</strong> Amikor védekezel, ha nincs kritikus sérülésed, változtass 1 %CRIT% eredményt %HIT% eredményre."""
+        "Sun Fac":
+           text: """Amikor végrehajthatsz egy elsődleges támadást, ha a védekező vonósugarazva van, dobj 1-gyel több kockával%LINEBREAK% <strong>Pinpoint Tractor Array:</strong> A %SINGLETURRETARC% fegyveredet nem forgathatod a %REARARC% tűzívedbe. Miután végrehajtasz egy manővert, kaphatsz 1 vonósugár jelzőt, hogy végrehajts egy %ROTATEARC% akciót."""
+        "Stalgasin Hive Guard":
+           text: """<strong>Pinpoint Tractor Array:</strong> A %SINGLETURRETARC% fegyveredet nem forgathatod a %REARARC% tűzívedbe. Miután végrehajtasz egy manővert, kaphatsz 1 vonósugár jelzőt, hogy végrehajts egy %ROTATEARC% akciót."""
+        "Petranaki Arena Ace":
+           text: """<strong>Pinpoint Tractor Array:</strong> A %SINGLETURRETARC% fegyveredet nem forgathatod a %REARARC% tűzívedbe. Miután végrehajtasz egy manővert, kaphatsz 1 vonósugár jelzőt, hogy végrehajts egy %ROTATEARC% akciót."""
+        "Berwer Kret":
+           text: """Miután végrehajtasz egy támadást, ami talált, minden baráti hajó, aminek van %CALCULATE% az akciósávján és bemérő jelzője a védekezőn, végrehajthat egy piros %CALCULATE% akciót  %LINEBREAK%<strong>Pinpoint Tractor Array:</strong> A %SINGLETURRETARC% fegyveredet nem forgathatod a %REARARC% tűzívedbe. Miután végrehajtasz egy manővert, kaphatsz 1 vonósugár jelzőt, hogy végrehajts egy %ROTATEARC% akciót."""
+        "Chertek":
+           text: """Amikor végrehajtasz egy elsődleges támadást, ha a védekező vonósugarazva van, újradobhatsz akár 2 támadókockát. %LINEBREAK%<strong>Pinpoint Tractor Array:</strong> A %SINGLETURRETARC% fegyveredet nem forgathatod a %REARARC% tűzívedbe. Miután végrehajtasz egy manővert, kaphatsz 1 vonósugár jelzőt, hogy végrehajts egy %ROTATEARC% akciót."""
+        "Gorgol":
+           text: """A Rendszer fázis alatt, kaphatsz 1 'inaktív fegyverzet' jelzőt, hogy válassz egy baráti hajót 1-2-es távolságban. Ha így teszel, az kap 1 vonósugár jelzőt, hogy megjavítsa 1 felfordított <strong>Ship</strong> sérüléskártyáját. %LINEBREAK%<strong>Pinpoint Tractor Array:</strong> A %SINGLETURRETARC% fegyveredet nem forgathatod a %REARARC% tűzívedbe. Miután végrehajtasz egy manővert, kaphatsz 1 vonósugár jelzőt, hogy végrehajts egy %ROTATEARC% akciót."""
 
 
     upgrade_translations =
@@ -26985,7 +27014,7 @@ exportObj.cardLoaders.Magyar = () ->
         "Chewbacca (Resistance)":
            text: """<strong>Felhelyezés:</strong>: elvesztesz el 1&nbsp;%CHARGE% jelzőt. %LINEBREAK% Miután egy baráti hajó 0-3-as távolságban felhúz 1 sérülés kártyát, állítsd helyre 1&nbsp;%CHARGE% jelzőt. Amikor támadást hajtasz végre elkölthetsz 2&nbsp;%CHARGE% jelzőt, hogy 1&nbsp;%FOCUS% eredményed %CRIT% eredményre változtass."""
         "Paige Tico":
-           text: """Miután véggrehajtasz egy elsődleges támadást, ledobhatsz egy bombát vagy forgathatod a %SINGLETURRETARC% tűzívedet. Miután megsemmisültél ledobhatsz 1 bombát."""
+           text: """Miután végrehajtasz egy elsődleges támadást, ledobhatsz egy bombát vagy forgathatod a %SINGLETURRETARC% tűzívedet. Miután megsemmisültél ledobhatsz 1 bombát."""
         "R2-HA":
            text: """Amikor védekezel, elköltheted a támadón lévő bemérődet, hogy újradobd bármennyi védőkockádat."""
         "C-3PO (Resistance)":
@@ -27071,7 +27100,7 @@ exportObj.cardLoaders.Magyar = () ->
            display_name: """Diamond-Boron Missiles"""
            text: """<strong>Támadás (%LOCK%):</strong> Költs el 1&nbsp;%CHARGE% jelzőt. Miután a támadás talált, elkölthetsz 1&nbsp;%CHARGE% jelzőt. Ha így teszel, minden a védekezőtől 0-1-es távolságban lévő hajó, aminek a mozgékonysága egyenlő vagy kisebb a védekezőénél dob 1 kockával és elszenved a dobásnak megfelelő 1 %HIT%/%CRIT% sérülést."""
         "Ensnare":
-           text: """Az Aktivációs fázis végén, ha vonósugár jelző van rajtad, kiválaszthatsz 1 hajót a %SINGLETURRETARC% tűzívedben 0-1-es távolságban. Add át a vonósugár jelződ neki."""
+           text: """Az Aktivációs fázis végén, ha vonósugarazva vagy, kiválaszthatsz 1 hajót a %SINGLETURRETARC% tűzívedben 0-1-es távolságban. Add át a vonósugár jelződ neki."""
         "GA-97":
            text: """<strong>Felhelyezés:</strong> mielőtt felhelyezed a hajóidat, elkölthetsz 3-5 %CHARGE% jelzőt. Ha így teszel válassz egy másik baráti hajót és rendeld hozzá az <strong>It's the Resistance</strong> kondíciós kártyát."""
         "Kaydel Connix":
@@ -27118,10 +27147,30 @@ exportObj.cardLoaders.Magyar = () ->
         "Korr Sella":
            display_name: """Korr Sella"""
            text: """<i>csak Ellenállás</i>%LINEBREAK%Miutá teljesen végrehajtasz egy kék manővert, vedd le az összes stressz jelződ."""
+        "Precognitive Reflexes":
+           display_name: """Precognitive Reflexes"""
+           text: """Miután felfeded a tárcsád, elkölthetsz 1 %FORCE% jelzőt, hogy végrehajts egy %BARRELROLL% vagy %BOOST% akciót. Ha így olyan akciót hajtasz végre, ami nincs az akciósávodon , kapsz 1 túlterhelés jelzőt.%LINEBREAK% Ha így teszel, nem hajthatsz végre másik akciót az aktivációd alatt."""
+        "Foresight":
+           display_name: """Foresight"""
+           text: """Miután egy ellenséges hajó végrehajt egy manővert, elkölthetsz 1 %FORCE% jelzőt, hogy végrehajts egy támadást ellene, mint bónusz támadás%LINEBREAK% <strong>Támadás:</strong> Megváltoztathatsz 1 %FOCUS% eredményt egy %HIT% eredményre; más kockamódosítást nem tehetsz."""
         "Angled Deflectors":
            display_name: """Angled Deflectors"""
            text: """<i>Legalább 1 pajzzsal rendelkező kis és közepes hajó.</i>%LINEBREAK%<i>Kapott akció: %REINFORCE%, vegyél le 1 pajzsot.</i>"""
-		   
+        "C1-10P":
+           display_name: """C1-10P"""
+           text: """<strong>C1-10P: </strong>Felhelyezés: Ez az oldal legyen felfelé. %LINEBREAK% Miután végrehajtasz egy manővert, elkölthetsz 1 %CHARGE% jelzőt, hogy végrehajts egy piros %EVADE% akciót, még ha stresszes is  vagy. %LINEBREAK% A Vége fázis alatt, ha ennek a kártyának 0 aktív %CHARGE% jelzője van, fordítsd meg. %LINEBREAK% <strong>C1-10P (hibás):</strong> Miután végrehajtasz egy manővert, választanod <strong>kell</strong> egy hajtót 0-1-es távolságban, ami kap egy zavarás jelzőt."""
+        "Ahsoka Tano":
+           display_name: """Ahsoka Tano"""
+           text: """Miután végrehajtasz egy manővert, elkölthetsz 1 %FORCE% jelzőt, hogy válassz egy tűzívedben lévő baráti hajót 1-3-as távolságban. Ha így teszel, az végrehajthat egy piros %FOCUS% akciót még ha stresses is."""
+        "C-3PO (Republic)":
+           display_name: """C-3PO"""
+           text: """Amikor védekezel és van %CALCULATE% jelződ, újradobhatsz 1 védekezőkockát. %LINEBREAK% Miután végrehajtottál egy %CALCULATE% akciót, kapsz 1 %CALCULATE% jelzőt."""
+        "Gravitic Deflection":
+           display_name: """Gravitic Deflection"""
+           text: """Amikor védekezel, újradobhatsz 1 védőkockát minden a támadási tűzívben lévő vonósugarazott hajó után."""
+        "Snap Shot":
+           display_name: """Snap Shot"""
+           text: """Miután egy ellenséges hajó végrehajt egy manővert, végrehajthatsz egy támadást ellene, mint bónusz támadás. <br> <strong>Támadás:</strong> A kockáid nem módosíthatók."""
 
     condition_translations =
         'Suppressive Fire':
@@ -38270,7 +38319,7 @@ class exportObj.SquadBuilder
                 <p class="info-text" />
                 <p class="info-maneuvers" />
                 <br />
-                <span class="info-header info-sources">Sources</span>: 
+                <span class="info-header info-sources">Sources:</span> 
                 <span class="info-data info-sources"></span>
             </div>
         """
@@ -39263,8 +39312,9 @@ class exportObj.SquadBuilder
                     if @collection?.counts?
                         ship_count = @collection.counts?.ship?[data.name] ? 0
                         container.find('.info-collection').text """You have #{ship_count} ship model#{if ship_count > 1 then 's' else ''} in your collection."""
+                        container.find('.info-collection').show()
                     else
-                        container.find('.info-collection').text ''
+                        container.find('.info-collection').hide()
                     first = true
                     inis = String(possible_inis[0])
                     for ini in possible_inis
@@ -39374,8 +39424,9 @@ class exportObj.SquadBuilder
                         pilot_count = @collection.counts?.pilot?[data.name] ? 0
                         ship_count = @collection.counts.ship?[data.ship] ? 0
                         container.find('.info-collection').text """You have #{ship_count} ship model#{if ship_count > 1 then 's' else ''} and #{pilot_count} pilot card#{if pilot_count > 1 then 's' else ''} in your collection."""
+                        container.find('.info-collection').show()
                     else
-                        container.find('.info-collection').text ''
+                        container.find('.info-collection').hide()
                         
                     # if the pilot is already selected and has uprades, some stats may be modified
                     if additional_opts?.effectiveStats?
@@ -39518,7 +39569,7 @@ class exportObj.SquadBuilder
                 when 'Quickbuild'
                     container.find('.info-type').text 'Quickbuild'
                     container.find('.info-sources').hide() # there are different sources for the pilot and the upgrade cards, so we won't display any
-                    container.find('.info-collection').text '' # same here, hard to give a single number telling a user how often he ownes all required cards
+                    container.find('.info-collection').hide() # same here, hard to give a single number telling a user how often he ownes all required cards
                     
                     pilot = exportObj.pilots[data.pilot]
                     ship = exportObj.ships[data.ship]
@@ -39641,8 +39692,9 @@ class exportObj.SquadBuilder
                     if @collection?.counts?
                         addon_count = @collection.counts?[additional_opts.addon_type.toLowerCase()]?[data.name] ? 0
                         container.find('.info-collection').text """You have #{addon_count} in your collection."""
+                        container.find('.info-collection').show()
                     else
-                        container.find('.info-collection').text ''
+                        container.find('.info-collection').hide()
                     container.find('.info-name').html """#{uniquedots}#{if data.display_name then data.display_name else data.name}#{if exportObj.isReleased(data) then  "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
                     if data.pointsarray? 
                         point_info = "<i>Point cost " + data.pointsarray + " when "
@@ -39731,6 +39783,47 @@ class exportObj.SquadBuilder
                     container.find('tr.info-actions-red').hide()
                     container.find('tr.info-upgrades').hide()
                     container.find('p.info-maneuvers').hide()
+                when 'MissingStuff'
+                    container.find('.info-type').text "List of Missing items"
+                    container.find('.info-sources').hide()
+                    container.find('.info-collection').hide()
+                    container.find('.info-name').html "Missing items"
+                    container.find('.info-name').show()
+                    container.find('.info-solitary').hide()
+                    missingStuffInfoText = "To field this squad you need the following additional items: <ul>"
+                    for item in data
+                        missingStuffInfoText += """<li><strong>#{(if item.display_name? then item.display_name else item.name)}</strong> ("""
+                        first = true
+                        for source in item.sources
+                            if not first
+                                missingStuffInfoText += ", "
+                            missingStuffInfoText += source
+                            first = false
+                        missingStuffInfoText += ")</li>"
+                    missingStuffInfoText +="</ul>"
+                    container.find('p.info-text').html missingStuffInfoText
+                    container.find('p.info-text').show()
+                    container.find('tr.info-ship').hide()
+                    container.find('tr.info-base').hide()
+                    container.find('tr.info-skill').hide()
+                    container.find('tr.info-agility').hide()
+                    container.find('tr.info-hull').hide()
+                    container.find('tr.info-shields').hide()
+                    container.find('tr.info-actions').hide()
+                    container.find('tr.info-actions-red').hide()
+                    container.find('tr.info-upgrades').hide()
+                    container.find('p.info-maneuvers').hide()
+                    container.find('tr.info-energy').hide()
+                    container.find('tr.info-attack').hide()
+                    container.find('tr.info-attack-turret').hide()
+                    container.find('tr.info-attack-bullseye').hide()
+                    container.find('tr.info-attack-fullfront').hide()
+                    container.find('tr.info-attack-back').hide()
+                    container.find('tr.info-attack-doubleturret').hide()
+                    container.find('tr.info-charge').hide()
+                    container.find('td.info-rangebonus').hide()
+                    container.find('tr.info-range').hide()
+                    container.find('tr.info-force').hide()
             container.show()
             @tooltip_currently_displaying = data
         
@@ -39888,13 +39981,14 @@ class exportObj.SquadBuilder
         # If the collection is uninitialized or empty, don't actually check it.
         if Object.keys(@collection?.expansions ? {}).length == 0
             # console.log "collection not ready or is empty"
-            return true 
+            return [true, []]
         @collection.reset()
         if @collection?.checks.collectioncheck != "true"
             # console.log "collection check not enabled"
-            return true
+            return [true, []]
         @collection.reset()
         validity = true
+        missingStuff = []
         for ship in @ships
             if ship.pilot?
                 # Try to get both the physical model and the pilot card.
@@ -39903,17 +39997,25 @@ class exportObj.SquadBuilder
                 # console.log "#{@faction}: Ship #{ship.pilot.ship} available: #{ship_is_available}"
                 # console.log "#{@faction}: Pilot #{ship.pilot.name} available: #{pilot_is_available}"
                 validity = false unless ship_is_available and pilot_is_available
+                missingStuff.push ship.data unless ship_is_available
+                missingStuff.push ship.pilot unless pilot_is_available
                 for upgrade in ship.upgrades
                     if upgrade.data?
                         upgrade_is_available = @collection.use('upgrade', upgrade.data.name)
                         # console.log "#{@faction}: Upgrade #{upgrade.data.name} available: #{upgrade_is_available}"
                         validity = false unless upgrade_is_available
-        validity
+                        missingStuff.push upgrade.data unless upgrade_is_available
+        [validity, missingStuff]
 
     checkCollection: ->
         # console.log "#{@faction}: Checking validity of squad against collection..."
         if @collection?
-            @collection_invalid_container.toggleClass 'hidden', @isSquadPossibleWithCollection()
+            [squadPossible, missingStuff] = @isSquadPossibleWithCollection()
+            @collection_invalid_container.toggleClass 'hidden', squadPossible
+            @collection_invalid_container.on 'mouseover', (e) =>
+                @showTooltip 'MissingStuff', missingStuff
+            @collection_invalid_container.on 'touchstart', (e) =>
+                @showTooltip 'MissingStuff', missingStuff
 
     toXWS: ->
         # Often you will want JSON.stringify(builder.toXWS())

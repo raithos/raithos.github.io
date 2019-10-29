@@ -2807,6 +2807,7 @@ exportObj.basicCardData = function() {
         attackt: 2,
         agility: 3,
         hull: 4,
+        shields: 0,
         actions: ["Focus", "Evade"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 0, 2, 1, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 2, 2, 2, 1, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0]]
       },
@@ -5997,6 +5998,7 @@ exportObj.basicCardData = function() {
         name: '"Odd Ball" (ARC-170)',
         id: 338,
         xws: "oddball-arc170starfighter",
+        canonical_name: '"Odd Ball"'.canonicalize(),
         unique: true,
         faction: "Galactic Republic",
         ship: "ARC-170",
@@ -6183,6 +6185,7 @@ exportObj.basicCardData = function() {
         slots: ["Talent", "Talent"]
       }, {
         name: "Anakin Skywalker (Y-Wing)",
+        canonical_name: 'Anakin Skywalker'.canonicalize(),
         xws: "anakinskywalker-btlbywing",
         unique: true,
         id: 359,
@@ -6252,6 +6255,7 @@ exportObj.basicCardData = function() {
         xws: "oddball-btlbywing",
         id: 366,
         unique: true,
+        canonical_name: '"Odd Ball"'.canonicalize(),
         faction: "Galactic Republic",
         ship: "BTL-B Y-Wing",
         skill: 5,
@@ -8225,6 +8229,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "R5-X3",
         id: 205,
+        unique: true,
         slot: "Astromech",
         faction: "Resistance",
         charge: 2,
@@ -12603,7 +12608,7 @@ exportObj.translations.Deutsch = {
     '.info-well .info-actions td.info-header': 'Aktionen',
     '.info-well .info-upgrades td.info-header': 'Aufwertungskarten',
     '.info-well .info-range td.info-header': 'Reichweite',
-    '.info-well .info-sources.info-header': 'Enthalten&nbsp;in',
+    '.info-well .info-sources.info-header': 'Enthalten&nbsp;in:',
     '.clear-squad': 'Neue Staffel',
     '.save-list': '<i class="fa fa-floppy-o"></i>&nbsp;Speichern',
     '.save-list-as': '<i class="fa fa-files-o"></i>&nbsp;Speichern unter…',
@@ -22716,7 +22721,7 @@ exportObj.translations.Magyar = {
     "Talent": "Talentum",
     "Modification": "Módosítás",
     "Gunner": "Fegyverzet kezelő",
-    "Device": "Eszköz",
+    "Device": "Töltet",
     "Tech": "Tech",
     "Title": "Nevesítés"
   },
@@ -24138,7 +24143,7 @@ exportObj.cardLoaders.Magyar = function() {
     },
     "BB-8": {
       display_name: "BB-8",
-      text: "A Rendszer fázis alatt végrahjthatsz egy piros %BARRELROLL% vagy %BOOST% akciót."
+      text: "A Rendszer fázis alatt végrehajthatsz egy piros %BARRELROLL% vagy %BOOST% akciót."
     },
     "Finn": {
       display_name: "Finn",
@@ -24161,6 +24166,42 @@ exportObj.cardLoaders.Magyar = function() {
     },
     "Red Squadron Bomber": {
       text: "<strong>Plated Hull:</strong> Amikor védekezel, ha nincs kritikus sérülésed, változtass 1 %CRIT% eredményt %HIT% eredményre."
+    },
+    '"Goji"': {
+      text: "Amikor egy baráti hajó 0-3-as távolságban védekezik, további 1 védőkockával dobhat minden tőle 0-1 távolságban lévő baráti bomba vagy akna után. %LINEBREAK%<strong>Plated Hull:</strong> Amikor védekezel, ha nincs kritikus sérülésed, változtass 1 %CRIT% eredményt %HIT% eredményre."
+    },
+    '"Broadside"': {
+      text: "Amikor végrehajtasz egy %SINGLETURRETARC% támadást, ha a %SINGLETURRETARC% a %LEFTARC% vagy %RIGHTARC% tűzívedben van, 1 üres eredményed %FOCUS% eredményre változtathatsz. %LINEBREAK%<strong>Plated Hull:</strong> Amikor védekezel, ha nincs kritikus sérülésed, változtass 1 %CRIT% eredményt %HIT% eredményre."
+    },
+    '"Matchstick"': {
+      text: "Amikor végrehajtasz egy elsődleges vagy %SINGLETURRETARC% támadást, újradobhatsz 1 támadókockát minden egyes rajtad lévő piros jelző után. %LINEBREAK%<strong>Plated Hull:</strong> Amikor védekezel, ha nincs kritikus sérülésed, változtass 1 %CRIT% eredményt %HIT% eredményre."
+    },
+    '"Odd Ball" (Y-Wing)': {
+      text: "Miután teljesen végrehajtasz egy piros manővert vagy piros akciót, ha van egy ellenséges hajó a %BULLSEYEARC% tűzívedben, feltehetsz egy bemérőt arra a hajóra.%LINEBREAK%<strong>Plated Hull:</strong> Amikor védekezel, ha nincs kritikus sérülésed, változtass 1 %CRIT% eredményt %HIT% eredményre."
+    },
+    "R2-D2": {
+      text: "Az Ütközet fázis elején, ha van ellenséges hajó a %REARARC% tűzívedben, kapsz 1 %CALCULATE% jelzőt.%LINEBREAK%<strong>Plated Hull:</strong> Amikor védekezel, ha nincs kritikus sérülésed, változtass 1 %CRIT% eredményt %HIT% eredményre."
+    },
+    "Anakin Skywalker (Y-Wing)": {
+      text: "Miután teljesen végrehajthatsz egy manővert, ha van ellenséges hajó a %FRONTARC% tűzívedben 0-1-es távolságban, elkölthetsz 1 %FORCE% jelzőt, hogy levegyél egy stress jelzőt.%LINEBREAK%<strong>Plated Hull:</strong> Amikor védekezel, ha nincs kritikus sérülésed, változtass 1 %CRIT% eredményt %HIT% eredményre."
+    },
+    "Sun Fac": {
+      text: "Amikor végrehajthatsz egy elsődleges támadást, ha a védekező vonósugarazva van, dobj 1-gyel több kockával%LINEBREAK% <strong>Pinpoint Tractor Array:</strong> A %SINGLETURRETARC% fegyveredet nem forgathatod a %REARARC% tűzívedbe. Miután végrehajtasz egy manővert, kaphatsz 1 vonósugár jelzőt, hogy végrehajts egy %ROTATEARC% akciót."
+    },
+    "Stalgasin Hive Guard": {
+      text: "<strong>Pinpoint Tractor Array:</strong> A %SINGLETURRETARC% fegyveredet nem forgathatod a %REARARC% tűzívedbe. Miután végrehajtasz egy manővert, kaphatsz 1 vonósugár jelzőt, hogy végrehajts egy %ROTATEARC% akciót."
+    },
+    "Petranaki Arena Ace": {
+      text: "<strong>Pinpoint Tractor Array:</strong> A %SINGLETURRETARC% fegyveredet nem forgathatod a %REARARC% tűzívedbe. Miután végrehajtasz egy manővert, kaphatsz 1 vonósugár jelzőt, hogy végrehajts egy %ROTATEARC% akciót."
+    },
+    "Berwer Kret": {
+      text: "Miután végrehajtasz egy támadást, ami talált, minden baráti hajó, aminek van %CALCULATE% az akciósávján és bemérő jelzője a védekezőn, végrehajthat egy piros %CALCULATE% akciót  %LINEBREAK%<strong>Pinpoint Tractor Array:</strong> A %SINGLETURRETARC% fegyveredet nem forgathatod a %REARARC% tűzívedbe. Miután végrehajtasz egy manővert, kaphatsz 1 vonósugár jelzőt, hogy végrehajts egy %ROTATEARC% akciót."
+    },
+    "Chertek": {
+      text: "Amikor végrehajtasz egy elsődleges támadást, ha a védekező vonósugarazva van, újradobhatsz akár 2 támadókockát. %LINEBREAK%<strong>Pinpoint Tractor Array:</strong> A %SINGLETURRETARC% fegyveredet nem forgathatod a %REARARC% tűzívedbe. Miután végrehajtasz egy manővert, kaphatsz 1 vonósugár jelzőt, hogy végrehajts egy %ROTATEARC% akciót."
+    },
+    "Gorgol": {
+      text: "A Rendszer fázis alatt, kaphatsz 1 'inaktív fegyverzet' jelzőt, hogy válassz egy baráti hajót 1-2-es távolságban. Ha így teszel, az kap 1 vonósugár jelzőt, hogy megjavítsa 1 felfordított <strong>Ship</strong> sérüléskártyáját. %LINEBREAK%<strong>Pinpoint Tractor Array:</strong> A %SINGLETURRETARC% fegyveredet nem forgathatod a %REARARC% tűzívedbe. Miután végrehajtasz egy manővert, kaphatsz 1 vonósugár jelzőt, hogy végrehajts egy %ROTATEARC% akciót."
     }
   };
   upgrade_translations = {
@@ -24876,7 +24917,7 @@ exportObj.cardLoaders.Magyar = function() {
       text: "<strong>Felhelyezés:</strong>: elvesztesz el 1&nbsp;%CHARGE% jelzőt. %LINEBREAK% Miután egy baráti hajó 0-3-as távolságban felhúz 1 sérülés kártyát, állítsd helyre 1&nbsp;%CHARGE% jelzőt. Amikor támadást hajtasz végre elkölthetsz 2&nbsp;%CHARGE% jelzőt, hogy 1&nbsp;%FOCUS% eredményed %CRIT% eredményre változtass."
     },
     "Paige Tico": {
-      text: "Miután véggrehajtasz egy elsődleges támadást, ledobhatsz egy bombát vagy forgathatod a %SINGLETURRETARC% tűzívedet. Miután megsemmisültél ledobhatsz 1 bombát."
+      text: "Miután végrehajtasz egy elsődleges támadást, ledobhatsz egy bombát vagy forgathatod a %SINGLETURRETARC% tűzívedet. Miután megsemmisültél ledobhatsz 1 bombát."
     },
     "R2-HA": {
       text: "Amikor védekezel, elköltheted a támadón lévő bemérődet, hogy újradobd bármennyi védőkockádat."
@@ -25001,7 +25042,7 @@ exportObj.cardLoaders.Magyar = function() {
       text: "<strong>Támadás (%LOCK%):</strong> Költs el 1&nbsp;%CHARGE% jelzőt. Miután a támadás talált, elkölthetsz 1&nbsp;%CHARGE% jelzőt. Ha így teszel, minden a védekezőtől 0-1-es távolságban lévő hajó, aminek a mozgékonysága egyenlő vagy kisebb a védekezőénél dob 1 kockával és elszenved a dobásnak megfelelő 1 %HIT%/%CRIT% sérülést."
     },
     "Ensnare": {
-      text: "Az Aktivációs fázis végén, ha vonósugár jelző van rajtad, kiválaszthatsz 1 hajót a %SINGLETURRETARC% tűzívedben 0-1-es távolságban. Add át a vonósugár jelződ neki."
+      text: "Az Aktivációs fázis végén, ha vonósugarazva vagy, kiválaszthatsz 1 hajót a %SINGLETURRETARC% tűzívedben 0-1-es távolságban. Add át a vonósugár jelződ neki."
     },
     "GA-97": {
       text: "<strong>Felhelyezés:</strong> mielőtt felhelyezed a hajóidat, elkölthetsz 3-5 %CHARGE% jelzőt. Ha így teszel válassz egy másik baráti hajót és rendeld hozzá az <strong>It's the Resistance</strong> kondíciós kártyát."
@@ -25066,9 +25107,37 @@ exportObj.cardLoaders.Magyar = function() {
       display_name: "Korr Sella",
       text: "<i>csak Ellenállás</i>%LINEBREAK%Miutá teljesen végrehajtasz egy kék manővert, vedd le az összes stressz jelződ."
     },
+    "Precognitive Reflexes": {
+      display_name: "Precognitive Reflexes",
+      text: "Miután felfeded a tárcsád, elkölthetsz 1 %FORCE% jelzőt, hogy végrehajts egy %BARRELROLL% vagy %BOOST% akciót. Ha így olyan akciót hajtasz végre, ami nincs az akciósávodon , kapsz 1 túlterhelés jelzőt.%LINEBREAK% Ha így teszel, nem hajthatsz végre másik akciót az aktivációd alatt."
+    },
+    "Foresight": {
+      display_name: "Foresight",
+      text: "Miután egy ellenséges hajó végrehajt egy manővert, elkölthetsz 1 %FORCE% jelzőt, hogy végrehajts egy támadást ellene, mint bónusz támadás%LINEBREAK% <strong>Támadás:</strong> Megváltoztathatsz 1 %FOCUS% eredményt egy %HIT% eredményre; más kockamódosítást nem tehetsz."
+    },
     "Angled Deflectors": {
       display_name: "Angled Deflectors",
       text: "<i>Legalább 1 pajzzsal rendelkező kis és közepes hajó.</i>%LINEBREAK%<i>Kapott akció: %REINFORCE%, vegyél le 1 pajzsot.</i>"
+    },
+    "C1-10P": {
+      display_name: "C1-10P",
+      text: "<strong>C1-10P: </strong>Felhelyezés: Ez az oldal legyen felfelé. %LINEBREAK% Miután végrehajtasz egy manővert, elkölthetsz 1 %CHARGE% jelzőt, hogy végrehajts egy piros %EVADE% akciót, még ha stresszes is  vagy. %LINEBREAK% A Vége fázis alatt, ha ennek a kártyának 0 aktív %CHARGE% jelzője van, fordítsd meg. %LINEBREAK% <strong>C1-10P (hibás):</strong> Miután végrehajtasz egy manővert, választanod <strong>kell</strong> egy hajtót 0-1-es távolságban, ami kap egy zavarás jelzőt."
+    },
+    "Ahsoka Tano": {
+      display_name: "Ahsoka Tano",
+      text: "Miután végrehajtasz egy manővert, elkölthetsz 1 %FORCE% jelzőt, hogy válassz egy tűzívedben lévő baráti hajót 1-3-as távolságban. Ha így teszel, az végrehajthat egy piros %FOCUS% akciót még ha stresses is."
+    },
+    "C-3PO (Republic)": {
+      display_name: "C-3PO",
+      text: "Amikor védekezel és van %CALCULATE% jelződ, újradobhatsz 1 védekezőkockát. %LINEBREAK% Miután végrehajtottál egy %CALCULATE% akciót, kapsz 1 %CALCULATE% jelzőt."
+    },
+    "Gravitic Deflection": {
+      display_name: "Gravitic Deflection",
+      text: "Amikor védekezel, újradobhatsz 1 védőkockát minden a támadási tűzívben lévő vonósugarazott hajó után."
+    },
+    "Snap Shot": {
+      display_name: "Snap Shot",
+      text: "Miután egy ellenséges hajó végrehajt egy manővert, végrehajthatsz egy támadást ellene, mint bónusz támadás. <br> <strong>Támadás:</strong> A kockáid nem módosíthatók."
     }
   };
   condition_translations = {
@@ -34994,7 +35063,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 37251
+                    lineno: 37300
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -35824,7 +35893,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 38115
+              lineno: 38164
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -35863,7 +35932,7 @@ exportObj.SquadBuilder = (function() {
     this.obstacles_container = content_container.find('.obstacles-container');
     this.notes_container = $(content_container.find('.notes-container'));
     this.notes = $(this.notes_container.find('textarea.squad-notes'));
-    this.info_container.append($.trim("<div class=\"well well-small info-well\">\n    <span class=\"info-name\"></span>\n    <br />\n    <span class=\"info-collection\"></span>\n    <span class=\"info-solitary\"><br />Solitary</span>\n    <table>\n        <tbody>\n            <tr class=\"info-ship\">\n                <td class=\"info-header\">Ship</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-base\">\n                <td class=\"info-header\">Base</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-skill\">\n                <td class=\"info-header\">Initiative</td>\n                <td class=\"info-data info-skill\"></td>\n            </tr>\n            <tr class=\"info-engagement\">\n                <td class=\"info-header\">Engagement</td>\n                <td class=\"info-data info-engagement\"></td>\n            </tr>\n            <tr class=\"info-attack\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-fullfront\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-bullseye\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-left\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-leftarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-right\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-rightarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-back\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-turret\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-doubleturret\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-agility\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                <td class=\"info-data info-agility\"></td>\n            </tr>\n            <tr class=\"info-hull\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                <td class=\"info-data info-hull\"></td>\n            </tr>\n            <tr class=\"info-shields\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                <td class=\"info-data info-shields\"></td>\n            </tr>\n            <tr class=\"info-force\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i></td>\n                <td class=\"info-data info-force\"></td>\n            </tr>\n            <tr class=\"info-charge\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                <td class=\"info-data info-charge\"></td>\n            </tr>\n            <tr class=\"info-energy\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                <td class=\"info-data info-energy\"></td>\n            </tr>\n            <tr class=\"info-range\">\n                <td class=\"info-header\">Range</td>\n                <td class=\"info-data info-range\"></td><td class=\"info-rangebonus\"><i class=\"xwing-miniatures-font red header-range xwing-miniatures-font-rangebonusindicator\"></i></td>\n            </tr>\n            <tr class=\"info-actions\">\n                <td class=\"info-header\">Actions</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-actions-red\">\n                <td></td>\n                <td class=\"info-data-red\"></td>\n            </tr>\n            <tr class=\"info-upgrades\">\n                <td class=\"info-header\">Upgrades</td>\n                <td class=\"info-data\"></td>\n            </tr>\n        </tbody>\n    </table>\n    <p class=\"info-text\" />\n    <p class=\"info-maneuvers\" />\n    <br />\n    <span class=\"info-header info-sources\">Sources</span>: \n    <span class=\"info-data info-sources\"></span>\n</div>"));
+    this.info_container.append($.trim("<div class=\"well well-small info-well\">\n    <span class=\"info-name\"></span>\n    <br />\n    <span class=\"info-collection\"></span>\n    <span class=\"info-solitary\"><br />Solitary</span>\n    <table>\n        <tbody>\n            <tr class=\"info-ship\">\n                <td class=\"info-header\">Ship</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-base\">\n                <td class=\"info-header\">Base</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-skill\">\n                <td class=\"info-header\">Initiative</td>\n                <td class=\"info-data info-skill\"></td>\n            </tr>\n            <tr class=\"info-engagement\">\n                <td class=\"info-header\">Engagement</td>\n                <td class=\"info-data info-engagement\"></td>\n            </tr>\n            <tr class=\"info-attack\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-fullfront\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-bullseye\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-left\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-leftarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-right\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-rightarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-back\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-turret\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-doubleturret\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-agility\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                <td class=\"info-data info-agility\"></td>\n            </tr>\n            <tr class=\"info-hull\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                <td class=\"info-data info-hull\"></td>\n            </tr>\n            <tr class=\"info-shields\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                <td class=\"info-data info-shields\"></td>\n            </tr>\n            <tr class=\"info-force\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i></td>\n                <td class=\"info-data info-force\"></td>\n            </tr>\n            <tr class=\"info-charge\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                <td class=\"info-data info-charge\"></td>\n            </tr>\n            <tr class=\"info-energy\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                <td class=\"info-data info-energy\"></td>\n            </tr>\n            <tr class=\"info-range\">\n                <td class=\"info-header\">Range</td>\n                <td class=\"info-data info-range\"></td><td class=\"info-rangebonus\"><i class=\"xwing-miniatures-font red header-range xwing-miniatures-font-rangebonusindicator\"></i></td>\n            </tr>\n            <tr class=\"info-actions\">\n                <td class=\"info-header\">Actions</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-actions-red\">\n                <td></td>\n                <td class=\"info-data-red\"></td>\n            </tr>\n            <tr class=\"info-upgrades\">\n                <td class=\"info-header\">Upgrades</td>\n                <td class=\"info-data\"></td>\n            </tr>\n        </tbody>\n    </table>\n    <p class=\"info-text\" />\n    <p class=\"info-maneuvers\" />\n    <br />\n    <span class=\"info-header info-sources\">Sources:</span> \n    <span class=\"info-data info-sources\"></span>\n</div>"));
     this.info_container.hide();
     this.print_list_button = $(this.container.find('button.print-list'));
     this.container.find('[rel=tooltip]').tooltip();
@@ -36598,7 +36667,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 38842
+              lineno: 38891
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -36608,7 +36677,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 38843
+                lineno: 38892
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -37236,7 +37305,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.showTooltip = function(type, data, additional_opts, container) {
-    var a, action, addon_count, cls, count, effective_stats, extra_actions, extra_actions_red, first, ini, inis, name, pilot, pilot_count, point_info, possible_inis, recurringicon, ship, ship_count, slot, slot_types, source, sources, state, uniquedots, upgrade, _i, _j, _k, _l, _len, _len1, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref40, _ref41, _ref42, _ref43, _ref44, _ref45, _ref46, _ref47, _ref48, _ref49, _ref5, _ref50, _ref51, _ref52, _ref53, _ref54, _ref55, _ref56, _ref57, _ref58, _ref59, _ref6, _ref60, _ref61, _ref62, _ref63, _ref64, _ref65, _ref66, _ref67, _ref68, _ref69, _ref7, _ref70, _ref71, _ref8, _ref9, _results, _results1;
+    var a, action, addon_count, cls, count, effective_stats, extra_actions, extra_actions_red, first, ini, inis, item, missingStuffInfoText, name, pilot, pilot_count, point_info, possible_inis, recurringicon, ship, ship_count, slot, slot_types, source, sources, state, uniquedots, upgrade, _i, _j, _k, _l, _len, _len1, _len2, _len3, _m, _n, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref40, _ref41, _ref42, _ref43, _ref44, _ref45, _ref46, _ref47, _ref48, _ref49, _ref5, _ref50, _ref51, _ref52, _ref53, _ref54, _ref55, _ref56, _ref57, _ref58, _ref59, _ref6, _ref60, _ref61, _ref62, _ref63, _ref64, _ref65, _ref66, _ref67, _ref68, _ref69, _ref7, _ref70, _ref71, _ref72, _ref8, _ref9, _results, _results1;
     if (container == null) {
       container = this.info_container;
     }
@@ -37313,8 +37382,9 @@ exportObj.SquadBuilder = (function() {
           if (((_ref2 = this.collection) != null ? _ref2.counts : void 0) != null) {
             ship_count = (_ref3 = (_ref4 = this.collection.counts) != null ? (_ref5 = _ref4.ship) != null ? _ref5[data.name] : void 0 : void 0) != null ? _ref3 : 0;
             container.find('.info-collection').text("You have " + ship_count + " ship model" + (ship_count > 1 ? 's' : '') + " in your collection.");
+            container.find('.info-collection').show();
           } else {
-            container.find('.info-collection').text('');
+            container.find('.info-collection').hide();
           }
           first = true;
           inis = String(possible_inis[0]);
@@ -37465,8 +37535,9 @@ exportObj.SquadBuilder = (function() {
             pilot_count = (_ref9 = (_ref10 = this.collection.counts) != null ? (_ref11 = _ref10.pilot) != null ? _ref11[data.name] : void 0 : void 0) != null ? _ref9 : 0;
             ship_count = (_ref12 = (_ref13 = this.collection.counts.ship) != null ? _ref13[data.ship] : void 0) != null ? _ref12 : 0;
             container.find('.info-collection').text("You have " + ship_count + " ship model" + (ship_count > 1 ? 's' : '') + " and " + pilot_count + " pilot card" + (pilot_count > 1 ? 's' : '') + " in your collection.");
+            container.find('.info-collection').show();
           } else {
-            container.find('.info-collection').text('');
+            container.find('.info-collection').hide();
           }
           if ((additional_opts != null ? additional_opts.effectiveStats : void 0) != null) {
             effective_stats = additional_opts.effectiveStats();
@@ -37644,7 +37715,7 @@ exportObj.SquadBuilder = (function() {
         case 'Quickbuild':
           container.find('.info-type').text('Quickbuild');
           container.find('.info-sources').hide();
-          container.find('.info-collection').text('');
+          container.find('.info-collection').hide();
           pilot = exportObj.pilots[data.pilot];
           ship = exportObj.ships[data.ship];
           if (pilot.unique != null) {
@@ -37789,8 +37860,9 @@ exportObj.SquadBuilder = (function() {
           if (((_ref65 = this.collection) != null ? _ref65.counts : void 0) != null) {
             addon_count = (_ref66 = (_ref67 = this.collection.counts) != null ? (_ref68 = _ref67[additional_opts.addon_type.toLowerCase()]) != null ? _ref68[data.name] : void 0 : void 0) != null ? _ref66 : 0;
             container.find('.info-collection').text("You have " + addon_count + " in your collection.");
+            container.find('.info-collection').show();
           } else {
-            container.find('.info-collection').text('');
+            container.find('.info-collection').hide();
           }
           container.find('.info-name').html("" + uniquedots + (data.display_name ? data.display_name : data.name) + (exportObj.isReleased(data) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
           if (data.pointsarray != null) {
@@ -37883,6 +37955,54 @@ exportObj.SquadBuilder = (function() {
           container.find('tr.info-actions-red').hide();
           container.find('tr.info-upgrades').hide();
           container.find('p.info-maneuvers').hide();
+          break;
+        case 'MissingStuff':
+          container.find('.info-type').text("List of Missing items");
+          container.find('.info-sources').hide();
+          container.find('.info-collection').hide();
+          container.find('.info-name').html("Missing items");
+          container.find('.info-name').show();
+          container.find('.info-solitary').hide();
+          missingStuffInfoText = "To field this squad you need the following additional items: <ul>";
+          for (_m = 0, _len2 = data.length; _m < _len2; _m++) {
+            item = data[_m];
+            missingStuffInfoText += "<li><strong>" + (item.display_name != null ? item.display_name : item.name) + "</strong> (";
+            first = true;
+            _ref72 = item.sources;
+            for (_n = 0, _len3 = _ref72.length; _n < _len3; _n++) {
+              source = _ref72[_n];
+              if (!first) {
+                missingStuffInfoText += ", ";
+              }
+              missingStuffInfoText += source;
+              first = false;
+            }
+            missingStuffInfoText += ")</li>";
+          }
+          missingStuffInfoText += "</ul>";
+          container.find('p.info-text').html(missingStuffInfoText);
+          container.find('p.info-text').show();
+          container.find('tr.info-ship').hide();
+          container.find('tr.info-base').hide();
+          container.find('tr.info-skill').hide();
+          container.find('tr.info-agility').hide();
+          container.find('tr.info-hull').hide();
+          container.find('tr.info-shields').hide();
+          container.find('tr.info-actions').hide();
+          container.find('tr.info-actions-red').hide();
+          container.find('tr.info-upgrades').hide();
+          container.find('p.info-maneuvers').hide();
+          container.find('tr.info-energy').hide();
+          container.find('tr.info-attack').hide();
+          container.find('tr.info-attack-turret').hide();
+          container.find('tr.info-attack-bullseye').hide();
+          container.find('tr.info-attack-fullfront').hide();
+          container.find('tr.info-attack-back').hide();
+          container.find('tr.info-attack-doubleturret').hide();
+          container.find('tr.info-charge').hide();
+          container.find('td.info-rangebonus').hide();
+          container.find('tr.info-range').hide();
+          container.find('tr.info-force').hide();
       }
       container.show();
       return this.tooltip_currently_displaying = data;
@@ -38143,16 +38263,17 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.isSquadPossibleWithCollection = function() {
-    var pilot_is_available, ship, ship_is_available, upgrade, upgrade_is_available, validity, _i, _j, _len, _len1, _ref, _ref1, _ref2, _ref3, _ref4;
+    var missingStuff, pilot_is_available, ship, ship_is_available, upgrade, upgrade_is_available, validity, _i, _j, _len, _len1, _ref, _ref1, _ref2, _ref3, _ref4;
     if (Object.keys((_ref = (_ref1 = this.collection) != null ? _ref1.expansions : void 0) != null ? _ref : {}).length === 0) {
-      return true;
+      return [true, []];
     }
     this.collection.reset();
     if (((_ref2 = this.collection) != null ? _ref2.checks.collectioncheck : void 0) !== "true") {
-      return true;
+      return [true, []];
     }
     this.collection.reset();
     validity = true;
+    missingStuff = [];
     _ref3 = this.ships;
     for (_i = 0, _len = _ref3.length; _i < _len; _i++) {
       ship = _ref3[_i];
@@ -38162,6 +38283,12 @@ exportObj.SquadBuilder = (function() {
         if (!(ship_is_available && pilot_is_available)) {
           validity = false;
         }
+        if (!ship_is_available) {
+          missingStuff.push(ship.data);
+        }
+        if (!pilot_is_available) {
+          missingStuff.push(ship.pilot);
+        }
         _ref4 = ship.upgrades;
         for (_j = 0, _len1 = _ref4.length; _j < _len1; _j++) {
           upgrade = _ref4[_j];
@@ -38170,16 +38297,31 @@ exportObj.SquadBuilder = (function() {
             if (!upgrade_is_available) {
               validity = false;
             }
+            if (!upgrade_is_available) {
+              missingStuff.push(upgrade.data);
+            }
           }
         }
       }
     }
-    return validity;
+    return [validity, missingStuff];
   };
 
   SquadBuilder.prototype.checkCollection = function() {
+    var missingStuff, squadPossible, _ref;
     if (this.collection != null) {
-      return this.collection_invalid_container.toggleClass('hidden', this.isSquadPossibleWithCollection());
+      _ref = this.isSquadPossibleWithCollection(), squadPossible = _ref[0], missingStuff = _ref[1];
+      this.collection_invalid_container.toggleClass('hidden', squadPossible);
+      this.collection_invalid_container.on('mouseover', (function(_this) {
+        return function(e) {
+          return _this.showTooltip('MissingStuff', missingStuff);
+        };
+      })(this));
+      return this.collection_invalid_container.on('touchstart', (function(_this) {
+        return function(e) {
+          return _this.showTooltip('MissingStuff', missingStuff);
+        };
+      })(this));
     }
   };
 
@@ -38431,7 +38573,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 40108
+              lineno: 40210
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -38648,7 +38790,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 40223
+                          lineno: 40325
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -38677,7 +38819,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 40239
+                              lineno: 40341
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -38747,7 +38889,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 40281
+                      lineno: 40383
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -38827,7 +38969,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 40310
+                lineno: 40412
               })
             ]);
             __iced_deferrals._fulfill();
@@ -38896,7 +39038,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 40339
+              lineno: 40441
             }));
           }
         }
@@ -39864,7 +40006,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 41097
+                lineno: 41199
               })
             ]);
             __iced_deferrals._fulfill();
@@ -39993,7 +40135,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 41163
+                  lineno: 41265
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -40016,7 +40158,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 41168
+                      lineno: 41270
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -40108,7 +40250,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 41213
+            lineno: 41315
           }));
         }
         __iced_deferrals._fulfill();
