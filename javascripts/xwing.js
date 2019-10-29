@@ -2003,11 +2003,6 @@ String.prototype.canonicalize = function() {
   return this.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-');
 };
 
-exportObj.hugeOnly = function(ship) {
-  var _ref;
-  return (_ref = ship.data.huge) != null ? _ref : false;
-};
-
 exportObj.basicCardData = function() {
   return {
     ships: {
@@ -2813,7 +2808,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 4,
         actions: ["Focus", "Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 3, 3, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 0, 2, 1, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 2, 2, 2, 1, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0]]
       },
       "BTL-B Y-Wing": {
         name: "BTL-B Y-Wing",
@@ -2825,7 +2820,87 @@ exportObj.basicCardData = function() {
         shields: 3,
         actions: ["Focus", "Lock"],
         actionsred: ["Barrel Roll", "Reload"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0], [1, 1, 2, 1, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 3, 0, 0, 3], [0, 0, 0, 0, 0, 0]]
+      },
+      "CR90 Corellian Corvette": {
+        name: "CR90 Corellian Corvette",
+        xws: "CR90 Corellian Corvette".canonicalize(),
+        icon: "cr90corvette",
+        factions: ["Galactic Republic", "Rebel Alliance"],
+        huge: true,
+        attackl: 4,
+        attackr: 4,
+        agility: 0,
+        hull: 18,
+        shields: 7,
+        shieldrecurr: 2,
+        energy: 7,
+        energyrecurr: 2,
+        actions: ["Focus", "Reinforce", "Lock", "Jam"],
+        actionsred: ["Coordinate"],
+        maneuvers: [[0, 3, 3, 3, 0], [0, 1, 1, 1, 0], [0, 2, 2, 2, 0], [0, 3, 2, 3, 0], [0, 0, 3, 0, 0], [0, 0, 3, 0, 0]]
+      },
+      "Raider-class Corvette": {
+        name: "Raider-class Corvette",
+        xws: "Raider-class Corvette".canonicalize(),
+        factions: ["Galactic Empire", "First Order"],
+        huge: true,
+        attackf: 4,
+        agility: 0,
+        hull: 20,
+        shields: 8,
+        shieldrecurr: 2,
+        energy: 6,
+        energyrecurr: 2,
+        actions: ["Focus", "Reinforce", "Lock", "Coordinate", "Reload"],
+        maneuvers: [[0, 3, 3, 3, 0], [0, 2, 1, 2, 0], [0, 1, 2, 1, 0], [0, 3, 2, 3, 0], [0, 0, 1, 0, 0], [0, 0, 3, 0, 0]]
+      },
+      "GR-75 Medium Transport": {
+        name: "GR-75 Medium Transport",
+        xws: "GR-75 Medium Transport".canonicalize(),
+        factions: ["Rebel Alliance", "Resistance"],
+        huge: true,
+        attack: 2,
+        agility: 0,
+        hull: 12,
+        shields: 3,
+        shieldrecurr: 1,
+        energy: 4,
+        energyrecurr: 1,
+        actions: ["Focus", "Coordinate", "Jam"],
+        actionsred: ["Reinforce", "Lock"],
+        maneuvers: [[0, 3, 3, 3, 0], [0, 2, 2, 2, 0], [0, 1, 1, 1, 0], [0, 0, 3, 0, 0], [0, 0, 3, 0, 0]]
+      },
+      "Gozanti-class Cruiser": {
+        name: "Gozanti-class Cruiser",
+        xws: "Gozanti-class Cruiser".canonicalize(),
+        factions: ["Galactic Empire", "First Order"],
+        huge: true,
+        attack: 3,
+        agility: 0,
+        hull: 11,
+        shields: 5,
+        shieldrecurr: 1,
+        energy: 3,
+        energyrecurr: 1,
+        actions: ["Focus", "Reinforce", "Lock", "Coordinate", "Jam"],
+        maneuvers: [[0, 3, 3, 3, 0], [0, 1, 2, 1, 0], [0, 3, 2, 3, 0], [0, 0, 2, 0, 0], [0, 0, 3, 0, 0]]
+      },
+      "C-ROC Cruiser": {
+        name: "C-ROC Cruiser",
+        xws: "C-ROC Cruiser".canonicalize(),
+        factions: ["Separatist Alliance", "Scum and Villainy"],
+        huge: true,
+        attack: 3,
+        agility: 0,
+        hull: 12,
+        shields: 4,
+        shieldrecurr: 1,
+        energy: 4,
+        energyrecurr: 1,
+        actions: ["Focus", "Reinforce", "Lock", "Reload"],
+        actionsred: ["Coordinate"],
+        maneuvers: [[0, 3, 3, 3, 0], [0, 1, 2, 1, 0], [0, 1, 2, 1, 0], [0, 3, 1, 3, 0], [0, 0, 3, 0, 0], [0, 0, 3, 0, 0]]
       }
     },
     pilotsById: [
@@ -4047,7 +4122,7 @@ exportObj.basicCardData = function() {
         ship: "M3-A Interceptor",
         skill: 5,
         points: 40,
-        slots: ["Talent", "Modification", "Hardpoint"]
+        slots: ["Talent", "Modification", "HardpointShip"]
       }, {
         name: "Genesis Red",
         id: 133,
@@ -4056,7 +4131,7 @@ exportObj.basicCardData = function() {
         ship: "M3-A Interceptor",
         skill: 4,
         points: 34,
-        slots: ["Talent", "Modification", "Hardpoint"]
+        slots: ["Talent", "Modification", "HardpointShip"]
       }, {
         name: "Laetin A'shera",
         id: 134,
@@ -4065,7 +4140,7 @@ exportObj.basicCardData = function() {
         ship: "M3-A Interceptor",
         skill: 3,
         points: 33,
-        slots: ["Talent", "Modification", "Hardpoint"]
+        slots: ["Talent", "Modification", "HardpointShip"]
       }, {
         name: "Quinn Jast",
         id: 135,
@@ -4074,7 +4149,7 @@ exportObj.basicCardData = function() {
         ship: "M3-A Interceptor",
         skill: 3,
         points: 34,
-        slots: ["Talent", "Modification", "Hardpoint"]
+        slots: ["Talent", "Modification", "HardpointShip"]
       }, {
         name: "Tansarii Point Veteran",
         id: 136,
@@ -4082,7 +4157,7 @@ exportObj.basicCardData = function() {
         ship: "M3-A Interceptor",
         skill: 3,
         points: 32,
-        slots: ["Talent", "Modification", "Hardpoint"]
+        slots: ["Talent", "Modification", "HardpointShip"]
       }, {
         name: "Inaldra",
         id: 137,
@@ -4091,7 +4166,7 @@ exportObj.basicCardData = function() {
         ship: "M3-A Interceptor",
         skill: 2,
         points: 31,
-        slots: ["Modification", "Hardpoint"]
+        slots: ["Modification", "HardpointShip"]
       }, {
         name: "Sunny Bounder",
         id: 138,
@@ -4100,7 +4175,7 @@ exportObj.basicCardData = function() {
         ship: "M3-A Interceptor",
         skill: 1,
         points: 30,
-        slots: ["Modification", "Hardpoint"]
+        slots: ["Modification", "HardpointShip"]
       }, {
         name: "Cartel Spacer",
         id: 139,
@@ -4108,7 +4183,7 @@ exportObj.basicCardData = function() {
         ship: "M3-A Interceptor",
         skill: 1,
         points: 28,
-        slots: ["Modification", "Hardpoint"]
+        slots: ["Modification", "HardpointShip"]
       }, {
         name: "Constable Zuvio",
         id: 140,
@@ -4946,7 +5021,7 @@ exportObj.basicCardData = function() {
         points: 68,
         charge: 1,
         recurring: true,
-        slots: ["Talent", "Astromech", "Modification", "Configuration", "Tech", "Title", "Hardpoint"]
+        slots: ["Talent", "Astromech", "Modification", "Configuration", "Tech", "Title", "HardpointShip"]
       }, {
         id: 232,
         skip: true
@@ -5136,7 +5211,7 @@ exportObj.basicCardData = function() {
         ship: "T-70 X-Wing",
         skill: 4,
         points: 52,
-        slots: ["Talent", "Astromech", "Modification", "Configuration", "Tech", "Title", "Hardpoint"]
+        slots: ["Talent", "Astromech", "Modification", "Configuration", "Tech", "Title", "HardpointShip"]
       }, {
         name: "Joph Seastriker",
         id: 253,
@@ -5145,7 +5220,7 @@ exportObj.basicCardData = function() {
         ship: "T-70 X-Wing",
         skill: 3,
         points: 51,
-        slots: ["Talent", "Astromech", "Modification", "Configuration", "Tech", "Title", "Hardpoint"]
+        slots: ["Talent", "Astromech", "Modification", "Configuration", "Tech", "Title", "HardpointShip"]
       }, {
         name: "Lieutenant Bastian",
         id: 254,
@@ -5154,7 +5229,7 @@ exportObj.basicCardData = function() {
         ship: "T-70 X-Wing",
         skill: 2,
         points: 48,
-        slots: ["Astromech", "Modification", "Configuration", "Tech", "Title", "Hardpoint"]
+        slots: ["Astromech", "Modification", "Configuration", "Tech", "Title", "HardpointShip"]
       }, {
         name: "Jaycris Tubbs",
         id: 255,
@@ -5163,7 +5238,7 @@ exportObj.basicCardData = function() {
         ship: "T-70 X-Wing",
         skill: 1,
         points: 49,
-        slots: ["Astromech", "Modification", "Configuration", "Tech", "Title", "Hardpoint"]
+        slots: ["Astromech", "Modification", "Configuration", "Tech", "Title", "HardpointShip"]
       }, {
         name: "Black Squadron Ace (T-70)",
         id: 256,
@@ -5172,7 +5247,7 @@ exportObj.basicCardData = function() {
         ship: "T-70 X-Wing",
         skill: 4,
         points: 49,
-        slots: ["Talent", "Astromech", "Modification", "Configuration", "Tech", "Title", "Hardpoint"]
+        slots: ["Talent", "Astromech", "Modification", "Configuration", "Tech", "Title", "HardpointShip"]
       }, {
         name: "Red Squadron Expert",
         id: 257,
@@ -5180,7 +5255,7 @@ exportObj.basicCardData = function() {
         ship: "T-70 X-Wing",
         skill: 3,
         points: 47,
-        slots: ["Talent", "Astromech", "Modification", "Configuration", "Tech", "Title", "Hardpoint"]
+        slots: ["Talent", "Astromech", "Modification", "Configuration", "Tech", "Title", "HardpointShip"]
       }, {
         name: "Blue Squadron Rookie",
         id: 258,
@@ -5188,7 +5263,7 @@ exportObj.basicCardData = function() {
         ship: "T-70 X-Wing",
         skill: 1,
         points: 45,
-        slots: ["Astromech", "Modification", "Configuration", "Tech", "Title", "Hardpoint"]
+        slots: ["Astromech", "Modification", "Configuration", "Tech", "Title", "HardpointShip"]
       }, {
         name: "Zeta Squadron Survivor",
         id: 259,
@@ -5535,7 +5610,7 @@ exportObj.basicCardData = function() {
         points: 51,
         charge: 1,
         recurring: true,
-        slots: ["Astromech", "Modification", "Configuration", "Tech", "Title", "Hardpoint"]
+        slots: ["Astromech", "Modification", "Configuration", "Tech", "Title", "HardpointShip"]
       }, {
         name: "Temmin Wexley",
         id: 297,
@@ -5544,7 +5619,7 @@ exportObj.basicCardData = function() {
         ship: "T-70 X-Wing",
         skill: 4,
         points: 54,
-        slots: ["Talent", "Astromech", "Modification", "Configuration", "Tech", "Title", "Hardpoint"]
+        slots: ["Talent", "Astromech", "Modification", "Configuration", "Tech", "Title", "HardpointShip"]
       }, {
         name: "Nien Nunb",
         id: 298,
@@ -5553,7 +5628,7 @@ exportObj.basicCardData = function() {
         ship: "T-70 X-Wing",
         skill: 5,
         points: 55,
-        slots: ["Talent", "Astromech", "Modification", "Configuration", "Tech", "Title", "Hardpoint"]
+        slots: ["Talent", "Astromech", "Modification", "Configuration", "Tech", "Title", "HardpointShip"]
       }, {
         name: "Ello Asty",
         id: 299,
@@ -5562,7 +5637,7 @@ exportObj.basicCardData = function() {
         ship: "T-70 X-Wing",
         skill: 5,
         points: 56,
-        slots: ["Talent", "Astromech", "Modification", "Configuration", "Tech", "Title", "Hardpoint"]
+        slots: ["Talent", "Astromech", "Modification", "Configuration", "Tech", "Title", "HardpointShip"]
       }, {
         name: "Green Squadron Expert",
         id: 300,
@@ -6182,6 +6257,96 @@ exportObj.basicCardData = function() {
         skill: 5,
         points: 44,
         slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Modification"]
+      }, {
+        name: "Republic Judiciary",
+        id: 367,
+        faction: "Galactic Republic",
+        ship: "CR90 Corellian Corvette",
+        skill: 8,
+        engagement: 0,
+        points: 146,
+        slots: ["Command", "Hardpoint", "Hardpoint", "Crew", "Crew", "Gunner", "Team", "Team", "Cargo"]
+      }, {
+        name: "Alderaanian Guard",
+        id: 368,
+        faction: "Rebel Alliance",
+        ship: "CR90 Corellian Corvette",
+        skill: 8,
+        engagement: 0,
+        points: 146,
+        slots: ["Command", "Hardpoint", "Hardpoint", "Crew", "Crew", "Gunner", "Team", "Team", "Cargo", "Title"]
+      }, {
+        name: "Outer Rim Patrol",
+        id: 369,
+        faction: "Galactic Empire",
+        ship: "Raider-class Corvette",
+        skill: 8,
+        engagement: 0,
+        points: 150,
+        slots: ["Command", "Torpedo", "Missile", "Hardpoint", "Hardpoint", "Crew", "Crew", "Team", "Cargo", "Title"]
+      }, {
+        name: "First Order Collaborators",
+        id: 370,
+        faction: "First Order",
+        ship: "Raider-class Corvette",
+        skill: 8,
+        engagement: 0,
+        points: 150,
+        slots: ["Command", "Hardpoint", "Turret", "Crew", "Crew", "Team", "Cargo", "Cargo"]
+      }, {
+        name: "Echo Base Evacuees",
+        id: 371,
+        faction: "Rebel Alliance",
+        ship: "GR-75 Medium Transport",
+        skill: 7,
+        engagement: 1,
+        points: 55,
+        slots: ["Command", "Hardpoint", "Turret", "Crew", "Crew", "Team", "Cargo", "Cargo", "Title"]
+      }, {
+        name: "New Republic Volunteers",
+        id: 372,
+        faction: "Resistance",
+        ship: "GR-75 Medium Transport",
+        skill: 7,
+        engagement: 1,
+        points: 55,
+        slots: ["Command", "Hardpoint", "Turret", "Crew", "Crew", "Team", "Cargo", "Cargo"]
+      }, {
+        name: "Outer Rim Garrison",
+        id: 373,
+        faction: "Galactic Empire",
+        ship: "Gozanti-class Cruiser",
+        skill: 7,
+        engagement: 1,
+        points: 60,
+        slots: ["Command", "Hardpoint", "Crew", "Crew", "Gunner", "Team", "Cargo", "Cargo", "Title"]
+      }, {
+        name: "First Order Sympathizers",
+        id: 374,
+        faction: "First Order",
+        ship: "Gozanti-class Cruiser",
+        skill: 7,
+        engagement: 1,
+        points: 60,
+        slots: ["Command", "Hardpoint", "Crew", "Crew", "Gunner", "Team", "Cargo", "Cargo"]
+      }, {
+        name: "Separatist Privateers",
+        id: 375,
+        faction: "Separatist Alliance",
+        ship: "C-ROC Cruiser",
+        skill: 7,
+        engagement: 1,
+        points: 58,
+        slots: ["Command", "Hardpoint", "Crew", "Crew", "Tactical Relay", "Gunner", "Team", "Cargo", "Device", "Configuration"]
+      }, {
+        name: "Syndicate Smugglers",
+        id: 376,
+        faction: "Scum and Villainy",
+        ship: "C-ROC Cruiser",
+        skill: 7,
+        engagement: 1,
+        points: 58,
+        slots: ["Command", "Hardpoint", "Crew", "Crew", "Team", "Cargo", "Device", "Illicit", "Title", "Configuration"]
       }
     ],
     upgradesById: [
@@ -6227,7 +6392,7 @@ exportObj.basicCardData = function() {
         slot: "Astromech",
         points: 2,
         restriction_func: function(ship) {
-          return !((ship.data.large != null) || (ship.data.medium != null));
+          return !((ship.data.large != null) || (ship.data.medium != null) || (ship.data.huge != null));
         },
         modifier_func: function(stats) {
           var turn, _i, _ref, _results;
@@ -6762,7 +6927,7 @@ exportObj.basicCardData = function() {
         name: "Seasoned Navigator",
         id: 59,
         slot: "Crew",
-        pointsarray: [2, 3, 4, 5, 6, 7, 8],
+        pointsarray: [2, 3, 4, 5, 6, 7, 8, 8, 9],
         variableinit: true
       }, {
         name: "Seventh Sister",
@@ -6907,7 +7072,7 @@ exportObj.basicCardData = function() {
         pointsarray: [4, 4, 4, 8, 16, 24, 32],
         variableinit: true,
         restriction_func: function(ship) {
-          return !((ship.data.large != null) || (ship.data.medium != null));
+          return !((ship.data.large != null) || (ship.data.medium != null) || (ship.data.huge != null));
         }
       }, {
         name: "Sense",
@@ -7066,7 +7231,7 @@ exportObj.basicCardData = function() {
         unique: true,
         charge: 2,
         restriction_func: function(ship) {
-          return !(ship.data.large != null);
+          return !((ship.data.large != null) || (ship.data.huge != null));
         }
       }, {
         name: "Contraband Cybernetics",
@@ -7088,7 +7253,7 @@ exportObj.basicCardData = function() {
         name: "Inertial Dampeners",
         id: 95,
         slot: "Illicit",
-        pointsarray: [2, 3, 4, 5, 6, 7, 8],
+        pointsarray: [2, 3, 4, 5, 6, 7, 8, 8, 9],
         variableinit: true
       }, {
         name: "Rigged Cargo Chute",
@@ -7184,8 +7349,7 @@ exportObj.basicCardData = function() {
         points: 6,
         charge: 2,
         restriction_func: function(ship) {
-          var _ref, _ref1;
-          return !(((_ref = ship.data.large) != null ? _ref : false) || ((_ref1 = ship.data.medium) != null ? _ref1 : false));
+          return !((ship.data.large != null) || (ship.data.medium != null) || (ship.data.huge != null));
         }
       }, {
         name: "Electronic Baffle",
@@ -7265,7 +7429,7 @@ exportObj.basicCardData = function() {
         slot: "Talent",
         points: 3,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.effectiveStats().actions, "Boost") >= 0 && !((ship.data.large != null) || (ship.data.medium != null));
+          return __indexOf.call(ship.effectiveStats().actions, "Boost") >= 0 && !((ship.data.large != null) || (ship.data.medium != null) || (ship.data.huge != null));
         }
       }, {
         name: "Debris Gambit",
@@ -7273,7 +7437,7 @@ exportObj.basicCardData = function() {
         slot: "Talent",
         points: 4,
         restriction_func: function(ship) {
-          return !(ship.data.large != null);
+          return !((ship.data.large != null) || (ship.data.huge != null));
         },
         modifier_func: function(stats) {
           if (__indexOf.call(stats.actionsred, 'Evade') < 0) {
@@ -7320,7 +7484,7 @@ exportObj.basicCardData = function() {
         slot: "Talent",
         points: 7,
         restriction_func: function(ship) {
-          return !(ship.data.large != null);
+          return !((ship.data.large != null) || (ship.data.huge != null));
         }
       }, {
         name: "Lone Wolf",
@@ -7369,7 +7533,7 @@ exportObj.basicCardData = function() {
         name: "Squad Leader",
         id: 131,
         slot: "Talent",
-        pointsarray: [2, 4, 6, 8, 10, 12, 14],
+        pointsarray: [2, 4, 6, 8, 10, 12, 14, 16, 18],
         variableinit: true,
         unique: true,
         modifier_func: function(stats) {
@@ -7383,7 +7547,7 @@ exportObj.basicCardData = function() {
         name: "Swarm Tactics",
         id: 132,
         slot: "Talent",
-        pointsarray: [3, 3, 3, 3, 3, 4, 5],
+        pointsarray: [3, 3, 3, 3, 3, 4, 5, 6, 7],
         variableinit: true
       }, {
         name: "Trick Shot",
@@ -7751,44 +7915,14 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         ship: ["Attack Shuttle", "Sheathipede-Class Shuttle"]
       }, {
-        name: "Hardpoint: Cannon",
         id: 168,
-        slot: "Hardpoint",
-        points: 0,
-        ignorecollection: true,
-        faction: [],
-        confersAddons: [
-          {
-            type: exportObj.Upgrade,
-            slot: "Cannon"
-          }
-        ]
+        skip: true
       }, {
-        name: "Hardpoint: Torpedo",
         id: 169,
-        slot: "Hardpoint",
-        ignorecollection: true,
-        faction: [],
-        points: 0,
-        confersAddons: [
-          {
-            type: exportObj.Upgrade,
-            slot: "Torpedo"
-          }
-        ]
+        skip: true
       }, {
-        name: "Hardpoint: Missile",
         id: 170,
-        slot: "Hardpoint",
-        ignorecollection: true,
-        faction: [],
-        points: 0,
-        confersAddons: [
-          {
-            type: exportObj.Upgrade,
-            slot: "Missile"
-          }
-        ]
+        skip: true
       }, {
         name: "Black One",
         id: 171,
@@ -7851,10 +7985,10 @@ exportObj.basicCardData = function() {
         name: "Primed Thrusters",
         id: 178,
         slot: "Tech",
-        pointsarray: [4, 5, 6, 7, 8, 9, 10],
+        pointsarray: [4, 5, 6, 7, 8, 9, 10, 11, 12],
         variableinit: true,
         restriction_func: function(ship) {
-          return !((ship.data.large != null) || (ship.data.medium != null));
+          return !((ship.data.large != null) || (ship.data.medium != null) || (ship.data.huge != null));
         }
       }, {
         name: "Kylo Ren",
@@ -8524,8 +8658,7 @@ exportObj.basicCardData = function() {
         pointsarray: [3, 3, 3, 4, 7, 10, 13],
         variableinit: true,
         restriction_func: function(ship) {
-          var _ref, _ref1;
-          return !(((_ref = ship.data.large) != null ? _ref : false) || ((_ref1 = ship.data.medium) != null ? _ref1 : false));
+          return !((ship.data.large != null) || (ship.data.medium != null) || (ship.data.huge != null));
         }
       }, {
         name: "Foresight",
@@ -8577,11 +8710,593 @@ exportObj.basicCardData = function() {
         name: "Snap Shot",
         id: 256,
         slot: "Talent",
-        pointsarray: [7, 8, 9],
+        pointsarray: [7, 8, 9, 12],
         variablebase: true,
         attack: 2,
         range: "2",
         rangebonus: true
+      }, {
+        name: "Agent of the Empire",
+        id: 257,
+        unique: true,
+        faction: "Galactic Empire",
+        slot: "Command",
+        points: 4,
+        ship: ["TIE Advanced", "TIE Advanced Prototype"],
+        restriction_func: function(ship) {
+          return !((ship.data.large != null) || (ship.data.medium != null) || (ship.data.huge != null));
+        }
+      }, {
+        name: "First Order Elite",
+        id: 258,
+        unique: true,
+        faction: "First Order",
+        slot: "Command",
+        points: 4,
+        restriction_func: function(ship) {
+          return !((ship.data.large != null) || (ship.data.medium != null) || (ship.data.huge != null));
+        }
+      }, {
+        name: "Veteran Wing Leader",
+        id: 259,
+        slot: "Command",
+        points: 4,
+        restriction_func: function(ship) {
+          return !((ship.data.large != null) || (ship.data.medium != null) || (ship.data.huge != null));
+        }
+      }, {
+        name: "Dreadnought Hunter",
+        id: 260,
+        slot: "Command",
+        points: 10,
+        max_per_squad: 2,
+        restriction_func: function(ship) {
+          return (!((ship.data.large != null) || (ship.data.medium != null) || (ship.data.huge != null))) && (ship.pilot.skill > 3);
+        }
+      }, {
+        name: "Admiral Ozzel",
+        id: 261,
+        unique: true,
+        slot: "Command",
+        points: 6,
+        faction: "Galactic Empire",
+        unequips_upgrades: ["Crew"],
+        also_occupies_upgrades: ["Crew"],
+        restriction_func: function(ship) {
+          return (ship.data.huge != null) && ship.doesSlotExist("Crew");
+        }
+      }, {
+        name: "Azmorigan",
+        id: 262,
+        unique: true,
+        slot: "Command",
+        points: 4,
+        faction: "Scum and Villainy",
+        unequips_upgrades: ["Crew"],
+        also_occupies_upgrades: ["Crew"],
+        restriction_func: function(ship) {
+          return (ship.data.huge != null) && ship.doesSlotExist("Crew");
+        }
+      }, {
+        name: "Captain Needa",
+        id: 263,
+        unique: true,
+        faction: "Galactic Empire",
+        slot: "Command",
+        points: 8,
+        unequips_upgrades: ["Crew"],
+        also_occupies_upgrades: ["Crew"],
+        restriction_func: function(ship) {
+          return (ship.data.huge != null) && ship.doesSlotExist("Crew");
+        }
+      }, {
+        name: "Carlist Rieekan",
+        id: 264,
+        unique: true,
+        faction: "Rebel Alliance",
+        slot: "Command",
+        points: 6,
+        unequips_upgrades: ["Crew"],
+        also_occupies_upgrades: ["Crew"],
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actionsred, 'Evade') < 0) {
+            return stats.actionsred.push('Evade');
+          }
+        },
+        restriction_func: function(ship) {
+          return (ship.data.huge != null) && ship.doesSlotExist("Crew");
+        }
+      }, {
+        name: "Jan Dodonna",
+        id: 265,
+        unique: true,
+        faction: "Rebel Alliance",
+        slot: "Command",
+        points: 4,
+        unequips_upgrades: ["Crew"],
+        also_occupies_upgrades: ["Crew"],
+        restriction_func: function(ship) {
+          return (ship.data.huge != null) && ship.doesSlotExist("Crew");
+        }
+      }, {
+        name: "Raymus Antilles",
+        id: 266,
+        unique: true,
+        slot: "Command",
+        points: 12,
+        faction: "Rebel Alliance",
+        unequips_upgrades: ["Crew"],
+        also_occupies_upgrades: ["Crew"],
+        restriction_func: function(ship) {
+          return (ship.data.huge != null) && ship.doesSlotExist("Crew");
+        }
+      }, {
+        name: "Stalwart Captain",
+        id: 267,
+        unique: true,
+        slot: "Command",
+        points: 6,
+        unequips_upgrades: ["Crew"],
+        also_occupies_upgrades: ["Crew"],
+        restriction_func: function(ship) {
+          return (ship.data.huge != null) && ship.doesSlotExist("Crew");
+        }
+      }, {
+        name: "Strategic Commander",
+        id: 268,
+        unique: true,
+        slot: "Command",
+        charge: 3,
+        points: 10,
+        unequips_upgrades: ["Crew"],
+        also_occupies_upgrades: ["Crew"],
+        restriction_func: function(ship) {
+          return (ship.data.huge != null) && ship.doesSlotExist("Crew");
+        }
+      }, {
+        name: "Ion Cannon Battery",
+        id: 269,
+        slot: "Hardpoint",
+        points: 6,
+        attackt: 4,
+        range: "2-4",
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'Rotate Arc') < 0) {
+            return stats.actions.push('Rotate Arc');
+          }
+        }
+      }, {
+        name: "Targeting Battery",
+        id: 270,
+        slot: "Hardpoint",
+        points: 9,
+        attackt: 3,
+        range: "2-5",
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'Rotate Arc') < 0) {
+            return stats.actions.push('Rotate Arc');
+          }
+        }
+      }, {
+        name: "Ordnance Tubes",
+        id: 271,
+        slot: "Hardpoint",
+        points: 2
+      }, {
+        name: "Point-Defense Battery",
+        id: 272,
+        slot: "Hardpoint",
+        points: 10,
+        attackdt: 2,
+        range: "1-2",
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'Rotate Arc') < 0) {
+            return stats.actions.push('Rotate Arc');
+          }
+        }
+      }, {
+        name: "Turbolaser Battery",
+        id: 273,
+        slot: "Hardpoint",
+        points: 15,
+        attackt: 3,
+        range: "3-5",
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'Rotate Arc') < 0) {
+            return stats.actions.push('Rotate Arc');
+          }
+        },
+        restriction_func: function(ship) {
+          return ship.effectiveStats().energy > 4;
+        }
+      }, {
+        name: "Toryn Farr",
+        id: 274,
+        unique: true,
+        faction: "Rebel Alliance",
+        slot: "Crew",
+        points: 4,
+        modifier_func: function(stats) {
+          stats.actions.push('Lock');
+          return stats.actions.push('R> Coordinate');
+        },
+        restriction_func: function(ship) {
+          return ship.data.huge != null;
+        }
+      }, {
+        name: "Bombardment Specialists",
+        id: 275,
+        slot: "Team",
+        points: 6,
+        modifier_func: function(stats) {
+          stats.actions.push('*Lock');
+          return stats.actions.push('> Calculate');
+        }
+      }, {
+        name: "Comms Team",
+        id: 276,
+        slot: "Team",
+        points: 8,
+        modifier_func: function(stats) {
+          stats.actions.push('*Coordinate');
+          stats.actions.push('> Calculate');
+          stats.actions.push('*Jam');
+          return stats.actions.push('> Calculate');
+        }
+      }, {
+        name: "Damage Control Team",
+        id: 277,
+        slot: "Team",
+        points: 3,
+        modifier_func: function(stats) {
+          stats.actions.push('*Reinforce');
+          return stats.actions.push('> Calculate');
+        }
+      }, {
+        name: "Gunnery Specialists",
+        id: 278,
+        slot: "Team",
+        points: 8,
+        modifier_func: function(stats) {
+          stats.actions.push('*Rotate Arc');
+          return stats.actions.push('> Calculate');
+        }
+      }, {
+        name: "IG-RM Droids",
+        id: 279,
+        slot: "Team",
+        faction: "Scum and Villainy",
+        points: 2,
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'Calculate') < 0) {
+            return stats.actions.push('Calculate');
+          }
+        }
+      }, {
+        name: "Ordnance Team",
+        id: 280,
+        slot: "Team",
+        points: 4
+      }, {
+        name: "Sensor Experts",
+        id: 281,
+        slot: "Team",
+        points: 10,
+        modifier_func: function(stats) {
+          stats.actions.push('*Lock');
+          return stats.actions.push('> Calculate');
+        }
+      }, {
+        name: "Adaptive Shields",
+        id: 282,
+        slot: "Cargo",
+        points: 10
+      }, {
+        name: "Boosted Scanners",
+        id: 283,
+        slot: "Cargo",
+        points: 8
+      }, {
+        id: 284,
+        skip: true
+      }, {
+        name: "Tibanna Reserves",
+        id: 285,
+        slot: "Cargo",
+        points: 3,
+        charge: 3
+      }, {
+        name: "Optimized Power Core",
+        id: 286,
+        slot: "Cargo",
+        points: 6
+      }, {
+        name: "Quick-Release Locks",
+        id: 287,
+        slot: "Illicit",
+        charge: 2,
+        points: 5,
+        restriction_func: function(ship) {
+          return ship.data.huge != null;
+        }
+      }, {
+        name: "Saboteur's Map",
+        id: 288,
+        slot: "Illicit",
+        points: 3,
+        restriction_func: function(ship) {
+          return ship.data.huge != null;
+        }
+      }, {
+        name: "Scanner Baffler",
+        id: 289,
+        slot: "Illicit",
+        points: 8,
+        restriction_func: function(ship) {
+          return ship.data.huge != null;
+        }
+      }, {
+        name: "Dodonna's Pride",
+        id: 290,
+        slot: "Title",
+        unique: true,
+        ship: "CR90 Corellian Corvette",
+        faction: "Rebel Alliance",
+        points: 8,
+        modifier_func: function(stats) {
+          stats.shields -= 2;
+          stats.actions.push('*Evade');
+          stats.actions.push('R> Coordinate');
+          stats.actions.push('*Focus');
+          return stats.actions.push('R> Coordinate');
+        },
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: 'Team'
+          }, {
+            type: exportObj.Upgrade,
+            slot: 'Cargo'
+          }
+        ]
+      }, {
+        name: "Jaina's Light",
+        id: 291,
+        slot: "Title",
+        unique: true,
+        ship: "CR90 Corellian Corvette",
+        faction: "Rebel Alliance",
+        points: 6,
+        modifier_func: function(stats) {
+          stats.shields += 1;
+          return stats.energy -= 1;
+        }
+      }, {
+        name: "Liberator",
+        id: 292,
+        slot: "Title",
+        unique: true,
+        ship: "CR90 Corellian Corvette",
+        faction: "Rebel Alliance",
+        points: 5,
+        modifier_func: function(stats) {
+          return stats.energy += 1;
+        }
+      }, {
+        name: "Tantive IV",
+        id: 293,
+        slot: "Title",
+        unique: true,
+        ship: "CR90 Corellian Corvette",
+        faction: "Rebel Alliance",
+        points: 6,
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: 'Crew'
+          }, {
+            type: exportObj.Upgrade,
+            slot: 'Crew'
+          }
+        ]
+      }, {
+        name: "Bright Hope",
+        id: 294,
+        slot: "Title",
+        unique: true,
+        ship: "GR-75 Medium Transport",
+        faction: "Rebel Alliance",
+        points: 5
+      }, {
+        name: "Luminous",
+        id: 295,
+        slot: "Title",
+        unique: true,
+        ship: "GR-75 Medium Transport",
+        faction: "Rebel Alliance",
+        points: 12,
+        modifier_func: function(stats) {
+          stats.shields -= 1;
+          return stats.energy += 2;
+        }
+      }, {
+        name: "Quantum Storm",
+        id: 296,
+        slot: "Title",
+        unique: true,
+        ship: "GR-75 Medium Transport",
+        faction: "Rebel Alliance",
+        points: 3
+      }, {
+        name: "Assailer",
+        id: 297,
+        slot: "Title",
+        unique: true,
+        ship: "CR90 Corellian Corvette",
+        faction: "Galactic Empire",
+        points: 7
+      }, {
+        name: "Corvus",
+        id: 298,
+        slot: "Title",
+        unique: true,
+        ship: "Raider-class Corvette",
+        faction: "Galactic Empire",
+        points: 3
+      }, {
+        name: "Impetuous",
+        id: 299,
+        slot: "Title",
+        unique: true,
+        ship: "Raider-class Corvette",
+        faction: "Galactic Empire",
+        points: 4
+      }, {
+        name: "Instigator",
+        id: 300,
+        slot: "Title",
+        unique: true,
+        ship: "Raider-class Corvette",
+        faction: "Galactic Empire",
+        points: 6
+      }, {
+        name: "Blood Crow",
+        id: 301,
+        slot: "Title",
+        unique: true,
+        ship: "Gozanti-class Cruiser",
+        faction: "Galactic Empire",
+        points: 5
+      }, {
+        name: "Requiem",
+        id: 302,
+        slot: "Title",
+        unique: true,
+        ship: "Gozanti-class Cruiser",
+        faction: "Galactic Empire",
+        points: 7
+      }, {
+        name: "Suppressor",
+        id: 303,
+        slot: "Title",
+        unique: true,
+        ship: "Gozanti-class Cruiser",
+        faction: "Galactic Empire",
+        points: 6
+      }, {
+        name: "Vector",
+        id: 304,
+        slot: "Title",
+        unique: true,
+        ship: "Gozanti-class Cruiser",
+        faction: "Galactic Empire",
+        points: 8
+      }, {
+        name: "Broken Horn",
+        id: 305,
+        slot: "Title",
+        unique: true,
+        ship: "C-ROC Cruiser",
+        faction: "Scum and Villainy",
+        points: 4,
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: 'Crew'
+          }, {
+            type: exportObj.Upgrade,
+            slot: 'Illicit'
+          }
+        ]
+      }, {
+        name: "Merchant One",
+        id: 306,
+        slot: "Title",
+        unique: true,
+        ship: "C-ROC Cruiser",
+        faction: "Scum and Villainy",
+        points: 8,
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actionsred, 'Evade') < 0) {
+            stats.actionsred.push('Evade');
+          }
+          if (__indexOf.call(stats.actions, 'Coordinate') < 0) {
+            return stats.actions.push('Coordinate');
+          }
+        },
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: 'Turret'
+          }, {
+            type: exportObj.Upgrade,
+            slot: 'Team'
+          }, {
+            type: exportObj.Upgrade,
+            slot: 'Cargo'
+          }
+        ]
+      }, {
+        name: "Insatiable Worrt",
+        id: 307,
+        slot: "Title",
+        unique: true,
+        ship: "C-ROC Cruiser",
+        faction: "Scum and Villainy",
+        points: 7,
+        modifier_func: function(stats) {
+          stats.hull += 3;
+          stats.shields -= 1;
+          return stats.energy -= 1;
+        },
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: 'Cargo'
+          }
+        ]
+      }, {
+        name: "Corsair Refit",
+        id: 308,
+        slot: "Configuration",
+        ship: "C-ROC Cruiser",
+        max_per_squad: 2,
+        points: 15,
+        modifier_func: function(stats) {
+          stats.hull += 2;
+          stats.shields -= 2;
+          return stats.energy += 1;
+        },
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: 'Cannon'
+          }, {
+            type: exportObj.Upgrade,
+            slot: 'Turret'
+          }, {
+            type: exportObj.Upgrade,
+            slot: 'Missile'
+          }
+        ]
+      }, {
+        name: "Thunderstrike",
+        id: 309,
+        slot: "Title",
+        unique: true,
+        ship: "CR90 Corellian Corvette",
+        faction: "Rebel Alliance",
+        points: 4,
+        modifier_func: function(stats) {
+          stats.hull += 3;
+          return stats.shields -= 3;
+        },
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: 'Gunner'
+          }
+        ]
       }
     ],
     conditionsById: [
@@ -11590,7 +12305,7 @@ exportObj.setupTranslationCardData = function(pilot_translations, upgrade_transl
 
 exportObj.fixIcons = function(data) {
   if (data.text != null) {
-    return data.text = data.text.replace(/%ASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>').replace(/%BULLSEYEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bullseyearc"></i>').replace(/%GUNNER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>').replace(/%SINGLETURRETARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>').replace(/%FRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>').replace(/%REARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reararc"></i>').replace(/%LEFTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-leftarc"></i>').replace(/%RIGHTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-rightarc"></i>').replace(/%ROTATEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>').replace(/%FULLFRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullfrontarc"></i>').replace(/%FULLREARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullreararc"></i>').replace(/%DEVICE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>').replace(/%MODIFICATION%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-modification"></i>').replace(/%RELOAD%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>').replace(/%CONFIG%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-config"></i>').replace(/%TALENT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-talent"></i>').replace(/%FORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>').replace(/%CHARGE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>').replace(/%CALCULATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>').replace(/%BANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankleft"></i>').replace(/%BANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankright"></i>').replace(/%BARRELROLL%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>').replace(/%BOMB%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bomb"></i>').replace(/%BOOST%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>').replace(/%CANNON%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cannon"></i>').replace(/%CARGO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cargo"></i>').replace(/%CLOAK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>').replace(/%F-COORDINATE%/g, '<i class="xwing-miniatures-font force xwing-miniatures-font-coordinate"></i>').replace(/%COORDINATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>').replace(/%CRIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crit"></i>').replace(/%CREW%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crew"></i>').replace(/%DUALCARD%/g, '<span class="card-restriction">Dual card.</span>').replace(/%ELITE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-elite"></i>').replace(/%TACTICALRELAY%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-tacticalrelay"></i>').replace(/%EVADE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>').replace(/%FOCUS%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>').replace(/%HARDPOINT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>').replace(/%HIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hit"></i>').replace(/%ILLICIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-illicit"></i>').replace(/%JAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i>').replace(/%KTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%MISSILE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-missile"></i>').replace(/%RECOVER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-recover"></i>').replace(/%REINFORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i>').replace(/%SALVAGEDASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-salvagedastromech"></i>').replace(/%SLAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>').replace(/%SLOOPLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopleft"></i>').replace(/%SLOOPRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopright"></i>').replace(/%STRAIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-straight"></i>').replace(/%STOP%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-stop"></i>').replace(/%SENSOR%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sensor"></i>').replace(/%LOCK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>').replace(/%TEAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-team"></i>').replace(/%TECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>').replace(/%TORPEDO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-torpedo"></i>').replace(/%TROLLLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollleft"></i>').replace(/%TROLLRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollright"></i>').replace(/%TURNLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnleft"></i>').replace(/%TURNRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnright"></i>').replace(/%TURRET%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turret"></i>').replace(/%UTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%LARGESHIPONLY%/g, '<span class="card-restriction">Large ship only.</span>').replace(/%SMALLSHIPONLY%/g, '<span class="card-restriction">Small ship only.</span>').replace(/%REBELONLY%/g, '<span class="card-restriction">Rebel only.</span>').replace(/%IMPERIALONLY%/g, '<span class="card-restriction">Imperial only.</span>').replace(/%SCUMONLY%/g, '<span class="card-restriction">Scum only.</span>').replace(/%LIMITED%/g, '<span class="card-restriction">Limited.</span>').replace(/%LINEBREAK%/g, '<br /><br />');
+    return data.text = data.text.replace(/%ASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>').replace(/%BULLSEYEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bullseyearc"></i>').replace(/%GUNNER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>').replace(/%SINGLETURRETARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>').replace(/%FRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>').replace(/%REARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reararc"></i>').replace(/%LEFTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-leftarc"></i>').replace(/%RIGHTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-rightarc"></i>').replace(/%ROTATEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>').replace(/%FULLFRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullfrontarc"></i>').replace(/%FULLREARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullreararc"></i>').replace(/%DEVICE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>').replace(/%MODIFICATION%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-modification"></i>').replace(/%RELOAD%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>').replace(/%CONFIG%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-config"></i>').replace(/%TALENT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-talent"></i>').replace(/%FORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>').replace(/%CHARGE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>').replace(/%ENERGY%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-energy"></i>').replace(/%CALCULATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>').replace(/%BANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankleft"></i>').replace(/%BANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankright"></i>').replace(/%BARRELROLL%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>').replace(/%BOMB%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bomb"></i>').replace(/%BOOST%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>').replace(/%CANNON%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cannon"></i>').replace(/%CARGO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cargo"></i>').replace(/%CLOAK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>').replace(/%F-COORDINATE%/g, '<i class="xwing-miniatures-font force xwing-miniatures-font-coordinate"></i>').replace(/%COORDINATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>').replace(/%CRIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crit"></i>').replace(/%CREW%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crew"></i>').replace(/%DUALCARD%/g, '<span class="card-restriction">Dual card.</span>').replace(/%ELITE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-elite"></i>').replace(/%TACTICALRELAY%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-tacticalrelay"></i>').replace(/%EVADE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>').replace(/%FOCUS%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>').replace(/%HARDPOINT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>').replace(/%HIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hit"></i>').replace(/%ILLICIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-illicit"></i>').replace(/%JAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i>').replace(/%KTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%MISSILE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-missile"></i>').replace(/%RECOVER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-recover"></i>').replace(/%REINFORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i>').replace(/%SALVAGEDASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-salvagedastromech"></i>').replace(/%SLAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>').replace(/%SLOOPLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopleft"></i>').replace(/%SLOOPRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopright"></i>').replace(/%STRAIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-straight"></i>').replace(/%STOP%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-stop"></i>').replace(/%SENSOR%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sensor"></i>').replace(/%LOCK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>').replace(/%TEAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-team"></i>').replace(/%TECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>').replace(/%TORPEDO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-torpedo"></i>').replace(/%TROLLLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollleft"></i>').replace(/%TROLLRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollright"></i>').replace(/%TURNLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnleft"></i>').replace(/%TURNRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnright"></i>').replace(/%TURRET%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turret"></i>').replace(/%UTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%LARGESHIPONLY%/g, '<span class="card-restriction">Large ship only.</span>').replace(/%SMALLSHIPONLY%/g, '<span class="card-restriction">Small ship only.</span>').replace(/%REBELONLY%/g, '<span class="card-restriction">Rebel only.</span>').replace(/%IMPERIALONLY%/g, '<span class="card-restriction">Imperial only.</span>').replace(/%SCUMONLY%/g, '<span class="card-restriction">Scum only.</span>').replace(/%LIMITED%/g, '<span class="card-restriction">Limited.</span>').replace(/%LINEBREAK%/g, '<br /><br />');
   }
 };
 
@@ -11757,6 +12472,19 @@ exportObj.hyperspaceShipInclusions = [
 exportObj.hyperspacePilotExclusions = ['Nashtah Pup'];
 
 exportObj.hyperspaceUpgradeExclusions = ['Freelance Slicer', 'Novice Technician', 'Cloaking Device', 'Feedback Array', 'Ablative Plating', 'Advanced SLAM', 'Debris Gambit', 'Saturation Salvo', 'Jyn Erso', 'Sabine Wren', 'Bistan', 'Ezra Bridger', 'Admiral Sloane', 'Grand Moff Tarkin', 'Minister Tua', 'Moff Jerjerrod', 'Emperor Palpatine', '"Genius"', 'R5-TK', '4-LOM', 'Cad Bane', 'Cikatro Vizago', 'IG-88D', 'Ketsu Onyo', 'Unkar Plutt', 'Zuckuss', 'Jabba the Hutt', 'Bossk', 'Greedo'];
+
+exportObj.epicExclusionsList = ['CR90 Corellian Corvette', 'Raider-class Corvette', 'GR-75 Medium Transport', 'Gozanti-class Cruiser', 'C-ROC Cruiser'];
+
+exportObj.epicExclusions = function(data) {
+  var _ref;
+  if ((data.ship != null) && (_ref = data.ship, __indexOf.call(exportObj.epicExclusionsList, _ref) >= 0)) {
+    return false;
+  } else if ((data.slot != null) && (data.slot === "Command")) {
+    return false;
+  } else {
+    return true;
+  }
+};
 
 exportObj.hyperspaceCheck = function(data, faction, shipCheck) {
   var ship, _i, _len, _ref, _ref1, _ref2, _ref3;
@@ -14457,15 +15185,6 @@ exportObj.cardLoaders.Deutsch = function() {
     '"Zeb" Orrelios': {
       display_name: "„Zeb“ Orrelios",
       text: "<i>Nur für Rebellen</i>%LINEBREAK%Du kannst Primärangriffe in Reichweite 0 durchführen. Feindliche Schiffe in Reichweite 0 können Primärangriffe gegen dich durchführen."
-    },
-    "Hardpoint: Cannon": {
-      text: "Fügt einen %CANNON% Slot hinzu"
-    },
-    "Hardpoint: Missile": {
-      text: "Fügt einen %MISSILE% Slot hinzu"
-    },
-    "Hardpoint: Torpedo": {
-      text: "Fügt einen %TORPEDO% Slot hinzu"
     }
   };
   condition_translations = {
@@ -14532,32 +15251,6 @@ if (exportObj.translations == null) {
 }
 
 exportObj.translations.English = {
-  action: {
-    "Barrel Roll": '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>',
-    "Boost": '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>',
-    "Evade": '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>',
-    "F-Evade": '<i class="xwing-miniatures-font force xwing-miniatures-font-evade"></i>',
-    "Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>',
-    "*Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>',
-    "Lock": '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>',
-    "Reload": '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>',
-    "Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>',
-    "Reinforce": '<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i>',
-    "Jam": '<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i>',
-    "Calculate": '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>',
-    "Coordinate": '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>',
-    "F-Coordinate": '<i class="xwing-miniatures-font force xwing-miniatures-font-coordinate"></i>',
-    "Cloak": '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>',
-    "Slam": '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>',
-    "R> Barrel Roll": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-barrelroll"></i>',
-    "R> Boost": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-boost"></i>',
-    "R> Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-focus"></i>',
-    "R> Lock": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-lock"></i>',
-    "> Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>',
-    "R> Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-rotatearc"></i>',
-    "R> Evade": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-evade"></i>',
-    "R> Calculate": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-calculate"></i>'
-  },
   sloticon: {
     "Astromech": '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>',
     "Force": '<i class="xwing-miniatures-font xwing-miniatures-font-forcepower"></i>',
@@ -14577,6 +15270,10 @@ exportObj.translations.English = {
     "Tech": '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>',
     "Title": '<i class="xwing-miniatures-font xwing-miniatures-font-title"></i>',
     "Hardpoint": '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>',
+    "Team": '<i class="xwing-miniatures-font xwing-miniatures-font-team"></i>',
+    "Cargo": '<i class="xwing-miniatures-font xwing-miniatures-font-cargo"></i>',
+    "Command": '<i class="xwing-miniatures-font xwing-miniatures-font-command"></i>',
+    "HardpointShip": '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>',
     "Tactical Relay": '<i class="xwing-miniatures-font xwing-miniatures-font-tacticalrelay"></i>'
   },
   slot: {
@@ -14589,6 +15286,7 @@ exportObj.translations.English = {
     "Sensor": "Sensor",
     "Torpedo": "Torpedo",
     "Turret": "Turret",
+    "HardpointShip": "Hardpoint",
     "Hardpoint": "Hardpoint",
     "Illicit": "Illicit",
     "Configuration": "Configuration",
@@ -16210,6 +16908,46 @@ exportObj.cardLoaders.English = function() {
     },
     "Gorgol": {
       text: "During the System Phase, you may gain 1 disarm token and choose a friendly ship at range 1-2. If you do, it gains 1 tractor token, then repairs 1 of its faceup <strong>Ship</strong> trait damage cards. %LINEBREAK%<strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."
+    },
+    "Republic Judiciary": {
+      display_name: "Republic Judiciary",
+      text: "<i class = flavor_text>The Galactic Republic uses small, swift warships such as the CR90 corvette to respond rapidly to Separatist incursions across the galaxy.</i> %LINEBREAK% <strong>Broadside Batteries:</strong> You can acquire locks and perform primary attacks at range 1-4."
+    },
+    "Alderaanian Guard": {
+      display_name: "Alderaanian Guard",
+      text: "<i class = flavor_text>A craft used since before the Clone Wars, the CR90 corvette is favored by the Royal House of Alderaan for its versatility.</i> %LINEBREAK% <strong>Broadside Batteries:</strong> You can acquire locks and perform primary attacks at range 1-4."
+    },
+    "Outer Rim Patrol": {
+      display_name: "Outer Rim Patrol",
+      text: "<i class = flavor_text>The <untalic>Raider</untalic>-class corvette is one of the Empire's smallest warships, often used for reconnaissance missions, surgical strikes, or suppressing enemy starfighters with its powerful ordnance.</i> %LINEBREAK% <strong>Concentrated Batteries:</strong> While you perform a primary, %TORPEDO%, or %MISSILE% attack, if the defender is in your %BULLSEYEARC%, roll 1 additional die."
+    },
+    "First Order Collaborators": {
+      display_name: "First Order Collaborators",
+      text: "<i class = flavor_text>The First Order's supporters make use of former Imperial vessels, such as the <untalic>Raider</untalic>-class corvette. Though it has outlived the regime that created it, this craft still spreads terror across the galaxy.</i> %LINEBREAK% <strong>Concentrated Batteries:</strong> While you perform a primary, %TORPEDO%, or %MISSILE% attack, if the defender is in your %BULLSEYEARC%, roll 1 additional die."
+    },
+    "Echo Base Evacuees": {
+      display_name: "Echo Base Evacuees",
+      text: "<i class = flavor_text>The GR-75 medium transport acquitted itself well at battles such as the evacuation of Hoth, where several of these ships were pivotal to the Rebel forces' escape.</i> %LINEBREAK% <strong>Resupply Craft:</strong> After another friendly ship at range 0-1 performs an action, you may spend 1 %ENERGY%. If you do, it removes 1 orange or red token, or recovers 1 shield."
+    },
+    "New Republic Volunteers": {
+      display_name: "New Republic Volunteers",
+      text: "<i class = flavor_text>In use since the Galactic Civil War, groups within the New Republic still utilize the GR-75 medium transport for supply and aid missions.</i> %LINEBREAK% <strong>Resupply Craft:</strong> After another friendly ship at range 0-1 performs an action, you may spend 1 %ENERGY%. If you do, it removes 1 orange or red token, or recovers 1 shield."
+    },
+    "Outer Rim Garrison": {
+      display_name: "Outer Rim Garrison",
+      text: "<i class = flavor_text>Capable of carrying TIE fighters and operating independently for long periods of time, the <untalic>Gozanti</untalic>-class cruiser is a common sight in the skies of downtrodden worlds across the Outer Rim.</i> %LINEBREAK% <strong>Docking Clamps:</strong> You can dock up to 4 small ships."
+    },
+    "First Order Sympathizers": {
+      display_name: "First Order Sympathizers",
+      text: "<i class = flavor_text>The First Order's swift rise to power rests upon ruthless innovation. However, sympathizers often repurpose Imperial designs, like the venerable <untalic>Gozanti</untalic>-class cruiser, in surveillance and patrol operations.</i> %LINEBREAK% <strong>Docking Clamps:</strong> You can dock up to 4 small ships."
+    },
+    "Separatist Privateers": {
+      display_name: "Separatist Privateers",
+      text: "<i class = flavor_text>The Separatist Alliance makes use of all manner of unsavory contacts in its fight against the Galactic Republic, including corsairs and criminal cartels.</i> %LINEBREAK% <strong>Overdrive Burners:</strong> While you defend, if your revealed maneuver is speed 3-5, roll 1 additional defense die."
+    },
+    "Syndicate Smugglers": {
+      display_name: "Syndicate Smugglers",
+      text: "<i class = flavor_text>Vessels like the C-ROC Cruiser allow criminal operations across the Outer Rim to move massive amounts of illicit materials, or project power that can bully small colonies into compliance.</i> %LINEBREAK% <strong>Overdrive Burners:</strong> While you defend, if your revealed maneuver is speed 3-5, roll 1 additional defense die."
     }
   };
   upgrade_translations = {
@@ -17219,14 +17957,157 @@ exportObj.cardLoaders.English = function() {
       display_name: "Snap Shot",
       text: "After an enemy ship executes a maneuver, you may perform this attack against it as a bonus attack. %LINEBREAK% <strong>Attack:</strong> Your dice cannot be modified."
     },
-    "Hardpoint: Cannon": {
-      text: "Adds a %CANNON% slot"
+    "Admiral Ozzel": {
+      display_name: "Admiral Ozzel",
+      text: "While a friendly large or huge ship at range 0-3 executes a maneuver, it may suffer 1 %HIT% damage to execute a maneuver of the same bearing and difficulty of a speed 1 higher or lower instead."
     },
-    "Hardpoint: Missile": {
-      text: "Adds a %MISSILE% slot"
+    "Azmorigan": {
+      display_name: "Azmorigan",
+      text: "During the End Phase, you may choose up to 2 friendly ships at range 0-1. If you do, each of these ships does not remove 1 calculate or evade token."
     },
-    "Hardpoint: Torpedo": {
-      text: "Adds a %TORPEDO% slot"
+    "Captain Needa": {
+      display_name: "Captain Needa",
+      text: "After a friendly ship at range 0-4 reveals its dial, you may spend 1 %CHARGE%. If you do, it sets its dial to another maneuver of the same difficulty and speed."
+    },
+    "Strategic Commander": {
+      display_name: "Strategic Commander",
+      text: "After a friendly ship at range 0-4 reveals its dial, you may spend 1 %CHARGE%. If you do, it sets its dial to another maneuver of the same difficulty and speed."
+    },
+    "Carlist Rieekan": {
+      display_name: "Carlist Rieekan",
+      text: "After a friendly ship at range 0-2 is destroyed, you may choose a friendly ship at range 0-2. If you do, it may perform a red %EVADE% action."
+    },
+    "Jan Dodonna": {
+      display_name: "Jan Dodonna",
+      text: "Friendly ships at range 0-3 can spend your focus and evade tokens."
+    },
+    "Raymus Antilles": {
+      display_name: "Raymus Antilles",
+      text: "After you are destroyed, each friendly ship at range 0-1 gains 1 focus token. After you are destroyed, you are not removed until the end of the End Phase."
+    },
+    "Agent of the Empire": {
+      display_name: "Agent of the Empire",
+      text: "You are a <strong>wing leader</strong>. Your wingmates must be 2, 3, 4, or 5 TIE/ln fighters. %LINEBREAK% While you defend, up to 2 of your wingmates in the attack arc may suffer 1 %HIT% or %CRIT% damage to cancel a matching result."
+    },
+    "First Order Elite": {
+      display_name: "First Order Elite",
+      text: "You are a <strong>wing leader</strong>. Your wingmates must be 2 or 3 TIE/fo fighters or TIE/sf fighters. %LINEBREAK% While you defend, up to 2 of your wingmates in the attack arc may suffer 1 %HIT% or %CRIT% damage to cancel a matching result."
+    },
+    "Dreadnought Hunter": {
+      display_name: "Dreadnought Hunter",
+      text: "While you perform an attack against a huge ship, if the attack deals a faceup damage card to the defender and the defender is in your %BULLSEYEARC%, you may apply the <strong>Precision Shot</strong> effect even if you are not in the specified arc."
+    },
+    "Ion Cannon Battery": {
+      display_name: "Ion Cannon Battery",
+      text: "<strong>Online: </strong> Setup: Equip this side faceup.%LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. If this attack hits, the defender suffers 1 %CRIT% damage, and all %HIT%/%CRIT% results inflict ion tokens instead of damage. %LINEBREAK%<strong>Offline: </strong> %LINEBREAK% "
+    },
+    "Targeting Battery": {
+      display_name: "Targeting Battery",
+      text: "<strong>Online: </strong> Setup: Equip this side faceup.%LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. After you perform this attack, you may acquire a lock on the defender. %LINEBREAK%<strong>Offline: </strong> %LINEBREAK% "
+    },
+    "Point-Defense Battery": {
+      display_name: "Point-Defense Battery",
+      text: "<strong>Online: </strong> Setup: Equip this side faceup. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK%<strong>Offline: </strong> %LINEBREAK% "
+    },
+    "Turbolaser Battery": {
+      display_name: "Turbolaser Battery",
+      text: "<strong>Online: </strong> Setup: Equip this side faceup.%LINEBREAK% Bonus Attack (%LOCK%): Spend 3 %ENERGY%. If this attack hits, add 3 %HIT% results. %LINEBREAK% <strong>Offline: </strong> %LINEBREAK% After you engage, you may spend 2 %ENERGY% to flip this card."
+    },
+    "Bombardment Specialists": {
+      display_name: "Bombardment Specialists",
+      text: "Adds %LOCK% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> %CALCULATE%. %LINEBREAK% While you perform an attack, you may spend 1 calculate token to increase or decrease the range requirement by 1, to a limit of 0-5."
+    },
+    "Comms Team": {
+      display_name: "Comms Team",
+      text: "Adds %COORDINATE% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> %CALCULATE%, %JAM% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> %CALCULATE%. %LINEBREAK% After you perform a %COORDINATE% action, you may spend up to 2 %ENERGY% to coordinate that many additional ships at range 0-1 of the ship you coordinated."
+    },
+    "IG-RM Droids": {
+      display_name: "IG-RM Droids",
+      text: "While you perform an attack, if you are calculating, you may change 1 %HI% result to a %CRIT% result."
+    },
+    "Gunnery Specialists": {
+      display_name: "Gunnery Specialists",
+      text: "Adds %ROTATEARC% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> %CALCULATE%. %LINEBREAK% While you perform a primary or %HARDPOINT% attack, you may spend 1 or more %ENERGY% to reroll that many attack dice."
+    },
+    "Damage Control Team": {
+      display_name: "Damage Control Team",
+      text: "Adds %REINFORCE% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> %CALCULATE%. %LINEBREAK% Before you engage, you may spend 1 or more %ENERGY% to flip that many of your <strong>Offline</strong> upgrade cards.%LINEBREAK% Action: Spend 1 or more %ENERGY% to repair that many of your faceup <strong>Ship</strong> damage cards."
+    },
+    "Sensor Experts": {
+      display_name: "Sensor Experts",
+      text: "Adds %LOCK% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> %CALCULATE%. %LINEBREAK% You can maintain up to 3 locks on different objects. %LINEBREAK% After you perform a %LOCK% action, you may spend up to 2 %ENERGY% to acquire a lock on that many other objects at range 0-1 of the object you locked, ignoring range restrictions."
+    },
+    "Quick-Release Locks": {
+      display_name: "Quick-Release Locks",
+      text: "During the System Phase, you may spend 1 %CHARGE% to drop 1 cargo crate drift using the [2 %BANKLEFT%], [2 %STRAIGHT%], or [2 %BANKRIGHT%] template. %LINEBREAK% This card's %CHARGE% cannot be recovered."
+    },
+    "Saboteur's Map": {
+      display_name: "Saboteur's Map",
+      text: "At the end of Setup, you may spend up to 1 %CHARGE% from each of your equipped <strong>Mine</strong> upgrades to place the corresponding device in the play area beyond range 2 of any enemy ship, strategic marker, or other device."
+    },
+    "Scanner Baffler": {
+      display_name: "Scanner Baffler",
+      text: "At the end of Setup, you may choose any number of other friendly, non-huge ships in your deployment area at range 0-1. If you do, place those ships anywhere in the same deployment area."
+    },
+    "Adaptive Shields": {
+      display_name: "Adaptive Shields",
+      text: "While another friendly ship at range 0-1 defends, if it is a smaller size than you, you may spend 1 shield or 2 %ENERGY% to cancel 1 %HIT% or %CRIT% result."
+    },
+    "Boosted Scanners": {
+      display_name: "Boosted Scanners",
+      text: "While you lock, coordinate, or jam, you may spend up to 3 %ENERGY% to increase the range at which you can choose an object by 1 per %ENERGY% spent this way, to a maximum of range 5."
+    },
+    "Tibanna Reserves": {
+      display_name: "Tibanna Reserves",
+      text: "Action: Spend 1 %CHARGE% to recover 2 %ENERGY%."
+    },
+    "Toryn Farr": {
+      display_name: "Toryn Farr",
+      text: "After you coordinate a friendly ship, it may acquire a lock on a ship you are locking, ignoring range restrictions."
+    },
+    "Dodonna's Pride": {
+      display_name: "Dodonna's Pride",
+      text: "Add %TEAM% and %CARGO% slots. Adds %EVADE% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> <r>%COORDINATE%</r>, %FOCUS% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> <r>%COORDINATE%</r>"
+    },
+    "Jaina's Light": {
+      display_name: "Jaina's Light",
+      text: "While a friendly ship at range 0-2 defends, if the attack is obstructed by an obstacle, you may spend 1 %ENERGY%. If you do, the defender rolls 1 additional defense die."
+    },
+    "Liberator": {
+      display_name: "Liberator",
+      text: "You can dock up to 2 small ships. %LINEBREAK% After a ship deploys from you, it may perform a %FOCUS% or %BARRELROLL% action."
+    },
+    "Tantive IV": {
+      display_name: "Tantive IV",
+      text: "Add 2 %CREW% slots. %LINEBREAK% While you defend, if the attacker is in your %REARARC%, you may roll 1 additional defense die."
+    },
+    "Thunderstrike": {
+      display_name: "Thunderstrike",
+      text: "Add %GUNNER% slot. %LINEBREAK% While you perform a bonus attack, if you have not attacked the defender this round, you may reroll 1 attack die."
+    },
+    "Luminous": {
+      display_name: "Luminous",
+      text: "Setup: You are placed in reserve. %LINEBREAK% At the end of setup, you are placed in the play area at range 0-2 of a friendly ship."
+    },
+    "Corvus": {
+      display_name: "Corvus",
+      text: "You can dock up to 2 small ships. %LINEBREAK% After you perform a %CALCULATE% action, gain 1 calculate token."
+    },
+    "Broken Horn": {
+      display_name: "Broken Horn",
+      text: "Add %CREW% and %ILLICIT% slots. %LINEBREAK% If you are damaged, reduce the difficulty of your speed 3-5 maneuvers."
+    },
+    "Merchant One": {
+      display_name: "Merchant One",
+      text: "Add %TURRET%, %TEAM%, and %CARGO% slots. %LINEBREAK% Bonus Attack: Perform a %TURRET% attack."
+    },
+    "Insatiable Worrt": {
+      display_name: "Insatiable Worrt",
+      text: "Add %CARGO% slot. %LINEBREAK% During the End Phase, you may recover 1 additional shield or 1 additional %ENERGY%."
+    },
+    "Corsair Refit": {
+      display_name: "Corsair Refit",
+      text: "Add %CANNON%, %TURRET%, and %MISSILE% slots. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY% to perform a %CANNON%, %TURRET%, or %MISSILE% attack."
     }
   };
   condition_translations = {
@@ -23942,15 +24823,6 @@ exportObj.cardLoaders.Magyar = function() {
     '"Zeb" Orrelios': {
       display_name: "“Zeb” Orrelios",
       text: "<i>csak Lázadók</i>%LINEBREAK%Végrehajthatsz elsődleges támadást 0-ás távolságban. Az ellenséges hajók 0-ás távolságban végrehajthatnak elsődleges támadást ellened."
-    },
-    "Hardpoint: Cannon": {
-      text: "Kapsz egy %CANNON% fejlesztés helyet."
-    },
-    "Hardpoint: Missile": {
-      text: "Kapsz egy %MISSILE% fejlesztés helyet."
-    },
-    "Hardpoint: Torpedo": {
-      text: "Kapsz egy %TORPEDO% fejlesztés helyet."
     },
     "Black One": {
       text: "<i>Kapott akció: %SLAM%</i> %LINEBREAK% Miután végrehajtasz egy %SLAM% akciót, elvesztesz 1&nbsp;%CHARGE% jelzőt. Ezután kaphatsz 1 ion jelzőt, hogy levedd az inaktív fegyverzet jelzőt. Ha a %CHARGE% nem aktív, nem hajthatsz végre %SLAM% akciót."
@@ -33508,10 +34380,6 @@ exportObj.manifestByExpansion = {
       type: 'ship',
       count: 2
     }, {
-      name: 'YT-1300',
-      type: 'ship',
-      count: 2
-    }, {
       name: 'Attack Shuttle',
       type: 'ship',
       count: 2
@@ -33609,6 +34477,26 @@ exportObj.manifestByExpansion = {
       count: 3
     }, {
       name: 'Scavenged YT-1300',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'Raider-class Corvette',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'CR90 Corellian Corvette',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'GR-75 Medium Transport',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'Gozanti-class Cruiser',
+      type: 'ship',
+      count: 3
+    }, {
+      name: 'C-ROC Cruiser',
       type: 'ship',
       count: 3
     }
@@ -34106,7 +34994,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 36202
+                    lineno: 37251
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -34212,7 +35100,7 @@ exportObj.slotsMatching = function(slota, slotb) {
   if (slota === slotb) {
     return true;
   }
-  if (slota !== 'Hardpoint' && slotb !== 'Hardpoint') {
+  if (slota !== 'HardpointShip' && slotb !== 'HardpointShip') {
     return false;
   }
   if (slota === 'Torpedo' || slota === 'Cannon' || slota === 'Missile') {
@@ -34320,7 +35208,7 @@ exportObj.SquadBuilder = (function() {
     this.updatePermaLink = __bind(this.updatePermaLink, this);
     this.getPermaLink = __bind(this.getPermaLink, this);
     this.getPermaLinkParams = __bind(this.getPermaLinkParams, this);
-    var _ref, _ref1, _ref2, _ref3, _ref4;
+    var _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6;
     this.container = $(args.container);
     this.faction = $.trim(args.faction);
     this.printable_container = $(args.printable_container);
@@ -34341,16 +35229,15 @@ exportObj.SquadBuilder = (function() {
     };
     this.total_points = 0;
     this.isHyperspace = (_ref = (_ref1 = exportObj.builders[0]) != null ? _ref1.isHyperspace : void 0) != null ? _ref : false;
-    this.isQuickbuild = (_ref2 = (_ref3 = exportObj.builders[0]) != null ? _ref3.isQuickbuild : void 0) != null ? _ref2 : false;
-    this.maxSmallShipsOfOneType = null;
-    this.maxLargeShipsOfOneType = null;
+    this.isEpic = (_ref2 = (_ref3 = exportObj.builders[0]) != null ? _ref3.isEpic : void 0) != null ? _ref2 : false;
+    this.isQuickbuild = (_ref4 = (_ref5 = exportObj.builders[0]) != null ? _ref5.isQuickbuild : void 0) != null ? _ref4 : false;
     this.backend = null;
     this.current_squad = {};
     this.language = 'English';
     this.collection = null;
     this.current_obstacles = [];
     this.setupUI();
-    this.game_type_selector.val(((_ref4 = exportObj.builders[0]) != null ? _ref4 : this).game_type_selector.val());
+    this.game_type_selector.val(((_ref6 = exportObj.builders[0]) != null ? _ref6 : this).game_type_selector.val());
     this.setupEventHandlers();
     window.setInterval(this.updatePermaLink, 250);
     this.isUpdatingPoints = false;
@@ -34426,7 +35313,7 @@ exportObj.SquadBuilder = (function() {
     DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES = 3;
     this.status_container = $(document.createElement('DIV'));
     this.status_container.addClass('container-fluid');
-    this.status_container.append($.trim('<div class="row-fluid">\n    <div class="span3 squad-name-container">\n        <div class="display-name">\n            <span class="squad-name"></span>\n            <i class="fa fa-pencil"></i>\n        </div>\n        <div class="input-append">\n            <input type="text" maxlength="64" placeholder="Name your squad..." />\n            <button class="btn save"><i class="fa fa-pencil-square-o"></i></button>\n        </div>\n    </div>\n    <div class="span4 points-display-container">\n        Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="200">\n        <select class="game-type-selector">\n            <option value="standard">Extended</option>\n            <option value="hyperspace">Hyperspace</option>\n            <option value="quickbuild">Quickbuild</option>\n        </select>\n        <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left)</span>\n        <span class="content-warning unreleased-content-used hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning loading-failed-container hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning collection-invalid hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning ship-number-invalid-container hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n    </div>\n    <div class="span5 pull-right button-container">\n        <div class="btn-group pull-right">\n\n            <button class="btn btn-primary view-as-text"><span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text</button>\n            <!-- <button class="btn btn-primary print-list hidden-phone hidden-tablet"><i class="fa fa-print"></i>&nbsp;Print</button> -->\n            <a class="btn btn-primary hidden collection"><i class="fa fa-folder-open hidden-phone hidden-tablet"></i>&nbsp;Your Collection</a>\n            \n            <button class="btn btn-primary randomize" ><i class="fa fa-random hidden-phone hidden-tablet"></i>&nbsp;Random!</button>\n            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">\n                <span class="caret"></span>\n            </button>\n            <ul class="dropdown-menu">\n                <li><a class="randomize-options">Randomizer Options</a></li>\n                <li><a class="misc-settings">Misc Settings</a></li>\n            </ul>\n            \n\n        </div>\n    </div>\n</div>\n\n<div class="row-fluid">\n    <div class="span12">\n        <button class="show-authenticated btn btn-primary save-list"><i class="fa fa-floppy-o"></i>&nbsp;Save</button>\n        <button class="show-authenticated btn btn-primary save-list-as"><i class="fa fa-files-o"></i>&nbsp;Save As...</button>\n        <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>\n        <button class="show-authenticated btn btn-primary backend-list-my-squads show-authenticated">Load Squad</button>\n        <button class="btn btn-danger clear-squad">New Squad</button>\n        <span class="show-authenticated backend-status"></span>\n    </div>\n</div>'));
+    this.status_container.append($.trim('<div class="row-fluid">\n    <div class="span3 squad-name-container">\n        <div class="display-name">\n            <span class="squad-name"></span>\n            <i class="fa fa-pencil"></i>\n        </div>\n        <div class="input-append">\n            <input type="text" maxlength="64" placeholder="Name your squad..." />\n            <button class="btn save"><i class="fa fa-pencil-square-o"></i></button>\n        </div>\n    </div>\n    <div class="span4 points-display-container">\n        Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="200">\n        <select class="game-type-selector">\n            <option value="standard">Extended</option>\n            <option value="hyperspace">Hyperspace</option>\n            <option value="epic">Epic</option>\n            <option value="quickbuild">Quickbuild</option>\n        </select>\n        <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left)</span>\n        <span class="content-warning unreleased-content-used hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning loading-failed-container hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning collection-invalid hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning ship-number-invalid-container hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n    </div>\n    <div class="span5 pull-right button-container">\n        <div class="btn-group pull-right">\n\n            <button class="btn btn-primary view-as-text"><span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text</button>\n            <!-- <button class="btn btn-primary print-list hidden-phone hidden-tablet"><i class="fa fa-print"></i>&nbsp;Print</button> -->\n            <a class="btn btn-primary hidden collection"><i class="fa fa-folder-open hidden-phone hidden-tablet"></i>&nbsp;Your Collection</a>\n            \n            <button class="btn btn-primary randomize" ><i class="fa fa-random hidden-phone hidden-tablet"></i>&nbsp;Random!</button>\n            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">\n                <span class="caret"></span>\n            </button>\n            <ul class="dropdown-menu">\n                <li><a class="randomize-options">Randomizer Options</a></li>\n                <li><a class="misc-settings">Misc Settings</a></li>\n            </ul>\n            \n\n        </div>\n    </div>\n</div>\n\n<div class="row-fluid">\n    <div class="span12">\n        <button class="show-authenticated btn btn-primary save-list"><i class="fa fa-floppy-o"></i>&nbsp;Save</button>\n        <button class="show-authenticated btn btn-primary save-list-as"><i class="fa fa-files-o"></i>&nbsp;Save As...</button>\n        <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>\n        <button class="show-authenticated btn btn-primary backend-list-my-squads show-authenticated">Load Squad</button>\n        <button class="btn btn-danger clear-squad">New Squad</button>\n        <span class="show-authenticated backend-status"></span>\n    </div>\n</div>'));
     this.container.append(this.status_container);
     this.list_modal = $(document.createElement('DIV'));
     this.list_modal.addClass('modal hide fade text-list-modal');
@@ -34937,7 +35824,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 37066
+              lineno: 38115
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -34976,7 +35863,7 @@ exportObj.SquadBuilder = (function() {
     this.obstacles_container = content_container.find('.obstacles-container');
     this.notes_container = $(content_container.find('.notes-container'));
     this.notes = $(this.notes_container.find('textarea.squad-notes'));
-    this.info_container.append($.trim("<div class=\"well well-small info-well\">\n    <span class=\"info-name\"></span>\n    <br />\n    <span class=\"info-collection\"></span>\n    <span class=\"info-solitary\"><br />Solitary</span>\n    <table>\n        <tbody>\n            <tr class=\"info-ship\">\n                <td class=\"info-header\">Ship</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-base\">\n                <td class=\"info-header\">Base</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-skill\">\n                <td class=\"info-header\">Initiative</td>\n                <td class=\"info-data info-skill\"></td>\n            </tr>\n            <tr class=\"info-energy\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                <td class=\"info-data info-energy\"></td>\n            </tr>\n            <tr class=\"info-attack\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-fullfront\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-bullseye\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-back\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-turret\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-doubleturret\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-agility\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                <td class=\"info-data info-agility\"></td>\n            </tr>\n            <tr class=\"info-hull\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                <td class=\"info-data info-hull\"></td>\n            </tr>\n            <tr class=\"info-shields\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                <td class=\"info-data info-shields\"></td>\n            </tr>\n            <tr class=\"info-force\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i></td>\n                <td class=\"info-data info-force\"></td>\n            </tr>\n            <tr class=\"info-charge\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                <td class=\"info-data info-charge\"></td>\n            </tr>\n            <tr class=\"info-range\">\n                <td class=\"info-header\">Range</td>\n                <td class=\"info-data info-range\"></td><td class=\"info-rangebonus\"><i class=\"xwing-miniatures-font red header-range xwing-miniatures-font-rangebonusindicator\"></i></td>\n            </tr>\n            <tr class=\"info-actions\">\n                <td class=\"info-header\">Actions</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-actions-red\">\n                <td></td>\n                <td class=\"info-data-red\"></td>\n            </tr>\n            <tr class=\"info-upgrades\">\n                <td class=\"info-header\">Upgrades</td>\n                <td class=\"info-data\"></td>\n            </tr>\n        </tbody>\n    </table>\n    <p class=\"info-text\" />\n    <p class=\"info-maneuvers\" />\n    <br />\n    <span class=\"info-header info-sources\">Sources</span>: \n    <span class=\"info-data info-sources\"></span>\n</div>"));
+    this.info_container.append($.trim("<div class=\"well well-small info-well\">\n    <span class=\"info-name\"></span>\n    <br />\n    <span class=\"info-collection\"></span>\n    <span class=\"info-solitary\"><br />Solitary</span>\n    <table>\n        <tbody>\n            <tr class=\"info-ship\">\n                <td class=\"info-header\">Ship</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-base\">\n                <td class=\"info-header\">Base</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-skill\">\n                <td class=\"info-header\">Initiative</td>\n                <td class=\"info-data info-skill\"></td>\n            </tr>\n            <tr class=\"info-engagement\">\n                <td class=\"info-header\">Engagement</td>\n                <td class=\"info-data info-engagement\"></td>\n            </tr>\n            <tr class=\"info-attack\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-fullfront\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-bullseye\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-left\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-leftarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-right\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-rightarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-back\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-turret\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-doubleturret\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-agility\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                <td class=\"info-data info-agility\"></td>\n            </tr>\n            <tr class=\"info-hull\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                <td class=\"info-data info-hull\"></td>\n            </tr>\n            <tr class=\"info-shields\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                <td class=\"info-data info-shields\"></td>\n            </tr>\n            <tr class=\"info-force\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i></td>\n                <td class=\"info-data info-force\"></td>\n            </tr>\n            <tr class=\"info-charge\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                <td class=\"info-data info-charge\"></td>\n            </tr>\n            <tr class=\"info-energy\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                <td class=\"info-data info-energy\"></td>\n            </tr>\n            <tr class=\"info-range\">\n                <td class=\"info-header\">Range</td>\n                <td class=\"info-data info-range\"></td><td class=\"info-rangebonus\"><i class=\"xwing-miniatures-font red header-range xwing-miniatures-font-rangebonusindicator\"></i></td>\n            </tr>\n            <tr class=\"info-actions\">\n                <td class=\"info-header\">Actions</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-actions-red\">\n                <td></td>\n                <td class=\"info-data-red\"></td>\n            </tr>\n            <tr class=\"info-upgrades\">\n                <td class=\"info-header\">Upgrades</td>\n                <td class=\"info-data\"></td>\n            </tr>\n        </tbody>\n    </table>\n    <p class=\"info-text\" />\n    <p class=\"info-maneuvers\" />\n    <br />\n    <span class=\"info-header info-sources\">Sources</span>: \n    <span class=\"info-data info-sources\"></span>\n</div>"));
     this.info_container.hide();
     this.print_list_button = $(this.container.find('button.print-list'));
     this.container.find('[rel=tooltip]').tooltip();
@@ -35319,44 +36206,41 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.onGameTypeChanged = function(gametype, cb) {
-    var oldHyperspace, oldQuickbuild, old_id;
+    var oldEpic, oldHyperspace, oldQuickbuild, old_id;
     if (cb == null) {
       cb = $.noop;
     }
     this.game_type_selector.val(gametype);
     oldHyperspace = this.isHyperspace;
+    oldEpic = this.isEpic;
     oldQuickbuild = this.isQuickbuild;
+    this.isHyperspace = false;
+    this.isEpic = false;
+    this.isQuickbuild = false;
     switch (gametype) {
       case 'standard':
-        this.isHyperspace = false;
-        this.isQuickbuild = false;
         this.desired_points_input.val(200);
-        this.maxSmallShipsOfOneType = null;
-        this.maxLargeShipsOfOneType = null;
         break;
       case 'hyperspace':
         this.isHyperspace = true;
-        this.isQuickbuild = false;
         this.desired_points_input.val(200);
-        this.maxSmallShipsOfOneType = null;
-        this.maxLargeShipsOfOneType = null;
+        break;
+      case 'epic':
+        this.isEpic = true;
+        this.desired_points_input.val(500);
         break;
       case 'quickbuild':
-        this.isHyperspace = false;
         this.isQuickbuild = true;
         this.desired_points_input.val(8);
-        this.maxSmallShipsOfOneType = null;
-        this.maxLargeShipsOfOneType = null;
     }
     if (oldQuickbuild !== this.isQuickbuild) {
       old_id = this.current_squad.id;
       this.newSquadFromScratch($.trim(this.current_squad.name));
       this.current_squad.id = old_id;
-    } else if (oldHyperspace !== this.isHyperspace) {
-      if (this.isHyperspace === true) {
-        old_id = this.current_squad.id;
-        this.container.trigger('xwing:pointsUpdated', cb);
-      }
+    } else {
+      old_id = this.current_squad.id;
+      this.container.trigger('xwing:pointsUpdated', cb);
+      this.container.trigger('xwing:shipUpdated');
     }
     return cb();
   };
@@ -35532,6 +36416,8 @@ exportObj.SquadBuilder = (function() {
           return 's';
         case 'hyperspace':
           return 'h';
+        case 'epic':
+          return 'e';
         case 'quickbuild':
           return 'q';
       }
@@ -35577,6 +36463,9 @@ exportObj.SquadBuilder = (function() {
           break;
         case 'h':
           this.changeGameTypeOnSquadLoad('hyperspace');
+          break;
+        case 'e':
+          this.changeGameTypeOnSquadLoad('epic');
           break;
         case 'q':
           this.changeGameTypeOnSquadLoad('quickbuild');
@@ -35709,7 +36598,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 37781
+              lineno: 38842
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -35719,7 +36608,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 37782
+                lineno: 38843
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -35762,10 +36651,12 @@ exportObj.SquadBuilder = (function() {
     if (shipCheck == null) {
       shipCheck = false;
     }
-    if (!this.isHyperspace) {
-      return true;
-    } else {
+    if (this.isHyperspace) {
       return exportObj.hyperspaceCheck(item_data, this.faction, shipCheck);
+    } else if (!this.isEpic) {
+      return exportObj.epicExclusions(item_data);
+    } else {
+      return true;
     }
   };
 
@@ -35783,27 +36674,16 @@ exportObj.SquadBuilder = (function() {
       ship_data = _ref[ship_name];
       if (this.isOurFaction(ship_data.factions) && (this.matcher(ship_data.name, term) || (ship_data.display_name && this.matcher(ship_data.display_name, term)))) {
         if (this.isItemAvailable(ship_data, true)) {
-          if (!ship_data.huge) {
-            if (ship_data.icon) {
-              ships.push({
-                id: ship_data.name,
-                name: ship_data.name,
-                display_name: ship_data.display_name,
-                text: ship_data.display_name ? ship_data.display_name : ship_data.name,
-                canonical_name: ship_data.canonical_name,
-                xws: ship_data.xws,
-                icon: ship_data.icon
-              });
-            } else {
-              ships.push({
-                id: ship_data.name,
-                name: ship_data.name,
-                display_name: ship_data.display_name,
-                text: ship_data.display_name ? ship_data.display_name : ship_data.name,
-                canonical_name: ship_data.canonical_name,
-                xws: ship_data.xws
-              });
-            }
+          if (this.isEpic || (!this.isEpic && !ship_data.huge)) {
+            ships.push({
+              id: ship_data.name,
+              name: ship_data.name,
+              display_name: ship_data.display_name,
+              text: ship_data.display_name ? ship_data.display_name : ship_data.name,
+              canonical_name: ship_data.canonical_name,
+              xws: ship_data.xws,
+              icon: ship_data.icon ? ship_data.icon : ship_data.xws
+            });
           }
         }
       }
@@ -36251,7 +37131,7 @@ exportObj.SquadBuilder = (function() {
             outlineColor = "mediumblue";
             maneuverClass2 = "svg-modified-maneuver";
           }
-          if (speed === 0) {
+          if (speed === 0 && turn === 2) {
             outTable += "<rect class=\"svg-maneuver-stop " + maneuverClass + " " + maneuverClass2 + "\" x=\"50\" y=\"50\" width=\"100\" height=\"100\" style=\"fill:" + color + "\" />";
           } else {
             transform = "";
@@ -36330,8 +37210,33 @@ exportObj.SquadBuilder = (function() {
     return outTable;
   };
 
+  SquadBuilder.prototype.formatActions = function(action) {
+    var actionname, color, prefix;
+    color = "";
+    actionname = "";
+    prefix = "";
+    if (action.search('F-') !== -1) {
+      color = "force ";
+      actionname = action.toLowerCase().replace(/F-/gi, '').replace(/[^0-9a-z]/gi, '');
+    } else if (action.search('R> ') !== -1) {
+      color = "red ";
+      actionname = action.toLowerCase().replace(/R> /gi, '').replace(/[^0-9a-z]/gi, '');
+      prefix = "<i class=\"xwing-miniatures-font xwing-miniatures-font-linked red\"></i> ";
+    } else if (action.search('> ') !== -1) {
+      actionname = action.toLowerCase().replace(/> /gi, '').replace(/[^0-9a-z]/gi, '');
+      prefix = "<i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> ";
+    } else {
+      actionname = action.toLowerCase().replace(/[^0-9a-z]/gi, '');
+    }
+    return prefix + "<i class=\"xwing-miniatures-font " + color + "xwing-miniatures-font-" + actionname + "\"></i> ";
+  };
+
+  SquadBuilder.prototype.formatRedActions = function(action) {
+    return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-" + action.toLowerCase().replace(/[^0-9a-z]/gi, '') + "\"></i> ";
+  };
+
   SquadBuilder.prototype.showTooltip = function(type, data, additional_opts, container) {
-    var a, action, addon_count, cls, count, effective_stats, extra_actions, extra_actions_red, first, ini, inis, name, pilot, pilot_count, point_info, possible_inis, ship, ship_count, slot, slot_types, source, sources, state, uniquedots, upgrade, _i, _j, _k, _l, _len, _len1, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref40, _ref41, _ref42, _ref43, _ref44, _ref45, _ref46, _ref47, _ref48, _ref49, _ref5, _ref50, _ref51, _ref52, _ref53, _ref54, _ref55, _ref56, _ref57, _ref58, _ref59, _ref6, _ref60, _ref61, _ref62, _ref7, _ref8, _ref9, _results, _results1;
+    var a, action, addon_count, cls, count, effective_stats, extra_actions, extra_actions_red, first, ini, inis, name, pilot, pilot_count, point_info, possible_inis, recurringicon, ship, ship_count, slot, slot_types, source, sources, state, uniquedots, upgrade, _i, _j, _k, _l, _len, _len1, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref40, _ref41, _ref42, _ref43, _ref44, _ref45, _ref46, _ref47, _ref48, _ref49, _ref5, _ref50, _ref51, _ref52, _ref53, _ref54, _ref55, _ref56, _ref57, _ref58, _ref59, _ref6, _ref60, _ref61, _ref62, _ref63, _ref64, _ref65, _ref66, _ref67, _ref68, _ref69, _ref7, _ref70, _ref71, _ref8, _ref9, _results, _results1;
     if (container == null) {
       container = this.info_container;
     }
@@ -36422,15 +37327,21 @@ exportObj.SquadBuilder = (function() {
           }
           container.find('tr.info-skill td.info-data').text(inis);
           container.find('tr.info-skill').show();
+          container.find('tr.info-engagement td.info-data').text(inis);
+          container.find('tr.info-engagement').show();
           container.find('tr.info-attack td.info-data').text(data.attack);
           container.find('tr.info-attack-bullseye td.info-data').text(data.attackbull);
           container.find('tr.info-attack-fullfront td.info-data').text(data.attackf);
+          container.find('tr.info-attack-left td.info-data').text(data.attackl);
+          container.find('tr.info-attack-right td.info-data').text(data.attackr);
           container.find('tr.info-attack-back td.info-data').text(data.attackb);
           container.find('tr.info-attack-turret td.info-data').text(data.attackt);
           container.find('tr.info-attack-doubleturret td.info-data').text(data.attackdt);
           container.find('tr.info-attack').toggle(data.attack != null);
           container.find('tr.info-attack-bullseye').toggle(data.attackbull != null);
           container.find('tr.info-attack-fullfront').toggle(data.attackf != null);
+          container.find('tr.info-attack-left').toggle(data.attackl != null);
+          container.find('tr.info-attack-right').toggle(data.attackr != null);
           container.find('tr.info-attack-back').toggle(data.attackb != null);
           container.find('tr.info-attack-turret').toggle(data.attackt != null);
           container.find('tr.info-attack-doubleturret').toggle(data.attackdt != null);
@@ -36440,6 +37351,8 @@ exportObj.SquadBuilder = (function() {
             container.find('tr.info-base td.info-data').text("Large");
           } else if (data.medium != null) {
             container.find('tr.info-base td.info-data').text("Medium");
+          } else if (data.huge != null) {
+            container.find('tr.info-base td.info-data').text("Huge");
           } else {
             container.find('tr.info-base td.info-data').text("Small");
           }
@@ -36452,27 +37365,47 @@ exportObj.SquadBuilder = (function() {
             }
           }
           container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass((_ref7 = data.attack_icon) != null ? _ref7 : 'xwing-miniatures-font-attack');
-          container.find('tr.info-energy td.info-data').text(data.energy);
-          container.find('tr.info-energy').toggle(data.energy != null);
           container.find('tr.info-range').hide();
           container.find('tr.info-agility td.info-data').text(data.agility);
           container.find('tr.info-agility').show();
           container.find('tr.info-hull td.info-data').text(data.hull);
           container.find('tr.info-hull').show();
-          container.find('tr.info-shields td.info-data').text(data.shields);
-          container.find('tr.info-shields').show();
+          if (data.shieldrecurr != null) {
+            count = 0;
+            recurringicon = '';
+            while (count < data.shieldrecurr) {
+              recurringicon += '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>';
+              ++count;
+            }
+            container.find('tr.info-shields td.info-data').html(data.shields + recurringicon);
+          } else {
+            container.find('tr.info-shields td.info-data').text(data.shields);
+          }
+          container.find('tr.info-shields').toggle(data.shields != null);
+          if (data.energyrecurr != null) {
+            count = 0;
+            recurringicon = '';
+            while (count < data.energyrecurr) {
+              recurringicon += '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>';
+              ++count;
+            }
+            container.find('tr.info-energy td.info-data').html(data.energy + recurringicon);
+          } else {
+            container.find('tr.info-energy td.info-data').text(data.energy);
+          }
+          container.find('tr.info-energy').toggle(data.energy != null);
           container.find('tr.info-force').hide();
           container.find('tr.info-charge').hide();
-          container.find('tr.info-actions td.info-data').html(((((function() {
+          container.find('tr.info-actions td.info-data').html((((function() {
             var _k, _len2, _ref8, _results;
             _ref8 = data.actions;
             _results = [];
             for (_k = 0, _len2 = _ref8.length; _k < _len2; _k++) {
               action = _ref8[_k];
-              _results.push(exportObj.translate(this.language, 'action', action));
+              _results.push(this.formatActions(action));
             }
             return _results;
-          }).call(this)).join(', ')).replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked red">/g, ' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked red">').replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">/g, ' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked red">/g, ' <i class="xwing-miniatures-font xwing-miniatures-font-linked red">').replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked">/g, ' <i class="xwing-miniatures-font xwing-miniatures-font-linked">'));
+          }).call(this)).join(', ')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g, ' <i class="xwing-miniatures-font xwing-miniatures-font-linked'));
           container.find('tr.info-actions').show();
           if (data.actionsred != null) {
             container.find('tr.info-actions-red td.info-data-red').html(((function() {
@@ -36481,7 +37414,7 @@ exportObj.SquadBuilder = (function() {
               _results = [];
               for (_k = 0, _len2 = _ref8.length; _k < _len2; _k++) {
                 action = _ref8[_k];
-                _results.push(exportObj.translate(this.language, 'action', action));
+                _results.push(this.formatRedActions(action));
               }
               return _results;
             }).call(this)).join(', '));
@@ -36573,12 +37506,20 @@ exportObj.SquadBuilder = (function() {
             container.find('tr.info-base td.info-data').text("Large");
           } else if (ship.medium != null) {
             container.find('tr.info-base td.info-data').text("Medium");
+          } else if (ship.huge != null) {
+            container.find('tr.info-base td.info-data').text("Huge");
           } else {
             container.find('tr.info-base td.info-data').text("Small");
           }
           container.find('tr.info-base').show();
-          container.find('tr.info-skill td.info-data').text(statAndEffectiveStat(data.skill, effective_stats, 'skill'));
+          container.find('tr.info-skill td.info-data').text(data.skill);
           container.find('tr.info-skill').show();
+          if (data.engagement != null) {
+            container.find('tr.info-engagement td.info-data').text(data.engagement);
+            container.find('tr.info-engagement').show();
+          } else {
+            container.find('tr.info-engagement').hide();
+          }
           container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass((_ref15 = ship.attack_icon) != null ? _ref15 : 'xwing-miniatures-font-attack');
           container.find('tr.info-attack td.info-data').text(statAndEffectiveStat((_ref16 = (_ref17 = data.ship_override) != null ? _ref17.attack : void 0) != null ? _ref16 : ship.attack, effective_stats, 'attack'));
           container.find('tr.info-attack').toggle((ship.attack != null) || ((effective_stats != null ? effective_stats.attack : void 0) != null));
@@ -36586,24 +37527,48 @@ exportObj.SquadBuilder = (function() {
           container.find('tr.info-attack-fullfront').toggle((ship.attackf != null) || ((effective_stats != null ? effective_stats.attackf : void 0) != null));
           container.find('tr.info-attack-bullseye td.info-data').text(statAndEffectiveStat((_ref20 = (_ref21 = data.ship_override) != null ? _ref21.attackbull : void 0) != null ? _ref20 : ship.attackbull, effective_stats, 'attackbull'));
           container.find('tr.info-attack-bullseye').toggle((ship.attackbull != null) || ((effective_stats != null ? effective_stats.attackbull : void 0) != null));
-          container.find('tr.info-attack-back td.info-data').text(statAndEffectiveStat((_ref22 = (_ref23 = data.ship_override) != null ? _ref23.attackb : void 0) != null ? _ref22 : ship.attackb, effective_stats, 'attackb'));
+          container.find('tr.info-attack-left td.info-data').text(statAndEffectiveStat((_ref22 = (_ref23 = data.ship_override) != null ? _ref23.attackl : void 0) != null ? _ref22 : ship.attackl, effective_stats, 'attackl'));
+          container.find('tr.info-attack-left').toggle((ship.attackl != null) || ((effective_stats != null ? effective_stats.attackl : void 0) != null));
+          container.find('tr.info-attack-right td.info-data').text(statAndEffectiveStat((_ref24 = (_ref25 = data.ship_override) != null ? _ref25.attackr : void 0) != null ? _ref24 : ship.attackr, effective_stats, 'attackr'));
+          container.find('tr.info-attack-right').toggle((ship.attackr != null) || ((effective_stats != null ? effective_stats.attackr : void 0) != null));
+          container.find('tr.info-attack-back td.info-data').text(statAndEffectiveStat((_ref26 = (_ref27 = data.ship_override) != null ? _ref27.attackb : void 0) != null ? _ref26 : ship.attackb, effective_stats, 'attackb'));
           container.find('tr.info-attack-back').toggle((ship.attackb != null) || ((effective_stats != null ? effective_stats.attackb : void 0) != null));
-          container.find('tr.info-attack-turret td.info-data').text(statAndEffectiveStat((_ref24 = (_ref25 = data.ship_override) != null ? _ref25.attackt : void 0) != null ? _ref24 : ship.attackt, effective_stats, 'attackt'));
+          container.find('tr.info-attack-turret td.info-data').text(statAndEffectiveStat((_ref28 = (_ref29 = data.ship_override) != null ? _ref29.attackt : void 0) != null ? _ref28 : ship.attackt, effective_stats, 'attackt'));
           container.find('tr.info-attack-turret').toggle((ship.attackt != null) || ((effective_stats != null ? effective_stats.attackt : void 0) != null));
-          container.find('tr.info-attack-doubleturret td.info-data').text(statAndEffectiveStat((_ref26 = (_ref27 = data.ship_override) != null ? _ref27.attackdt : void 0) != null ? _ref26 : ship.attackdt, effective_stats, 'attackdt'));
+          container.find('tr.info-attack-doubleturret td.info-data').text(statAndEffectiveStat((_ref30 = (_ref31 = data.ship_override) != null ? _ref31.attackdt : void 0) != null ? _ref30 : ship.attackdt, effective_stats, 'attackdt'));
           container.find('tr.info-attack-doubleturret').toggle((ship.attackdt != null) || ((effective_stats != null ? effective_stats.attackdt : void 0) != null));
-          container.find('tr.info-energy td.info-data').text(statAndEffectiveStat((_ref28 = (_ref29 = data.ship_override) != null ? _ref29.energy : void 0) != null ? _ref28 : ship.energy, effective_stats, 'energy'));
-          container.find('tr.info-energy').toggle((((_ref30 = data.ship_override) != null ? _ref30.energy : void 0) != null) || (ship.energy != null));
           container.find('tr.info-range').hide();
           container.find('td.info-rangebonus').hide();
-          container.find('tr.info-agility td.info-data').text(statAndEffectiveStat((_ref31 = (_ref32 = data.ship_override) != null ? _ref32.agility : void 0) != null ? _ref31 : ship.agility, effective_stats, 'agility'));
+          container.find('tr.info-agility td.info-data').text(statAndEffectiveStat((_ref32 = (_ref33 = data.ship_override) != null ? _ref33.agility : void 0) != null ? _ref32 : ship.agility, effective_stats, 'agility'));
           container.find('tr.info-agility').show();
-          container.find('tr.info-hull td.info-data').text(statAndEffectiveStat((_ref33 = (_ref34 = data.ship_override) != null ? _ref34.hull : void 0) != null ? _ref33 : ship.hull, effective_stats, 'hull'));
+          container.find('tr.info-hull td.info-data').text(statAndEffectiveStat((_ref34 = (_ref35 = data.ship_override) != null ? _ref35.hull : void 0) != null ? _ref34 : ship.hull, effective_stats, 'hull'));
           container.find('tr.info-hull').show();
-          container.find('tr.info-shields td.info-data').text(statAndEffectiveStat((_ref35 = (_ref36 = data.ship_override) != null ? _ref36.shields : void 0) != null ? _ref35 : ship.shields, effective_stats, 'shields'));
-          container.find('tr.info-shields').show();
+          if (ship.shieldrecurr != null) {
+            count = 0;
+            recurringicon = '';
+            while (count < ship.shieldrecurr) {
+              recurringicon += '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>';
+              ++count;
+            }
+            container.find('tr.info-shields td.info-data').html(statAndEffectiveStat((_ref36 = (_ref37 = data.ship_override) != null ? _ref37.shields : void 0) != null ? _ref36 : ship.shields, effective_stats, 'shields') + recurringicon);
+          } else {
+            container.find('tr.info-shields td.info-data').text(statAndEffectiveStat((_ref38 = (_ref39 = data.ship_override) != null ? _ref39.shields : void 0) != null ? _ref38 : ship.shields, effective_stats, 'shields'));
+          }
+          container.find('tr.info-shields').toggle((((_ref40 = data.ship_override) != null ? _ref40.shields : void 0) != null) || (ship.shields != null));
+          if (ship.energyrecurr != null) {
+            count = 0;
+            recurringicon = '';
+            while (count < ship.energyrecurr) {
+              recurringicon += '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>';
+              ++count;
+            }
+            container.find('tr.info-energy td.info-data').html(statAndEffectiveStat((_ref41 = (_ref42 = data.ship_override) != null ? _ref42.energy : void 0) != null ? _ref41 : ship.energy, effective_stats, 'energy') + recurringicon);
+          } else {
+            container.find('tr.info-energy td.info-data').text(statAndEffectiveStat((_ref43 = (_ref44 = data.ship_override) != null ? _ref44.energy : void 0) != null ? _ref43 : ship.energy, effective_stats, 'energy'));
+          }
+          container.find('tr.info-energy').toggle((((_ref45 = data.ship_override) != null ? _ref45.energy : void 0) != null) || (ship.energy != null));
           if ((((effective_stats != null ? effective_stats.force : void 0) != null) && effective_stats.force > 0) || (data.force != null)) {
-            container.find('tr.info-force td.info-data').html(statAndEffectiveStat((_ref37 = (_ref38 = data.ship_override) != null ? _ref38.force : void 0) != null ? _ref37 : data.force, effective_stats, 'force') + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>');
+            container.find('tr.info-force td.info-data').html(statAndEffectiveStat((_ref46 = (_ref47 = data.ship_override) != null ? _ref47.force : void 0) != null ? _ref46 : data.force, effective_stats, 'force') + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>');
             container.find('tr.info-force').show();
           } else {
             container.find('tr.info-force').hide();
@@ -36619,39 +37584,39 @@ exportObj.SquadBuilder = (function() {
             container.find('tr.info-charge').hide();
           }
           container.find('tr.info-actions td.info-data').html((((function() {
-            var _k, _len2, _ref39, _ref40, _ref41, _results;
-            _ref41 = ((_ref39 = (_ref40 = data.ship_override) != null ? _ref40.actions : void 0) != null ? _ref39 : ship.actions).concat((function() {
+            var _k, _len2, _ref48, _ref49, _ref50, _results;
+            _ref50 = ((_ref48 = (_ref49 = data.ship_override) != null ? _ref49.actions : void 0) != null ? _ref48 : ship.actions).concat((function() {
               var _l, _len2, _results1;
               _results1 = [];
               for (_l = 0, _len2 = extra_actions.length; _l < _len2; _l++) {
                 action = extra_actions[_l];
-                _results1.push("" + (exportObj.translate(this.language, 'action', action)));
+                _results1.push("" + action);
               }
               return _results1;
-            }).call(this));
+            })());
             _results = [];
-            for (_k = 0, _len2 = _ref41.length; _k < _len2; _k++) {
-              a = _ref41[_k];
-              _results.push(exportObj.translate(this.language, 'action', a));
+            for (_k = 0, _len2 = _ref50.length; _k < _len2; _k++) {
+              a = _ref50[_k];
+              _results.push(this.formatActions(a));
             }
             return _results;
           }).call(this)).join(', ')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g, ' <i class="xwing-miniatures-font xwing-miniatures-font-linked'));
           if (ship.actionsred != null) {
             container.find('tr.info-actions-red td.info-data-red').html(((function() {
-              var _k, _len2, _ref39, _ref40, _ref41, _results;
-              _ref41 = ((_ref39 = (_ref40 = data.ship_override) != null ? _ref40.actionsred : void 0) != null ? _ref39 : ship.actionsred).concat((function() {
+              var _k, _len2, _ref48, _ref49, _ref50, _results;
+              _ref50 = ((_ref48 = (_ref49 = data.ship_override) != null ? _ref49.actionsred : void 0) != null ? _ref48 : ship.actionsred).concat((function() {
                 var _l, _len2, _results1;
                 _results1 = [];
                 for (_l = 0, _len2 = extra_actions_red.length; _l < _len2; _l++) {
                   action = extra_actions_red[_l];
-                  _results1.push("<strong>" + (exportObj.translate(this.language, 'action', action)) + "</strong>");
+                  _results1.push("" + action);
                 }
                 return _results1;
-              }).call(this));
+              })());
               _results = [];
-              for (_k = 0, _len2 = _ref41.length; _k < _len2; _k++) {
-                a = _ref41[_k];
-                _results.push(exportObj.translate(this.language, 'action', a));
+              for (_k = 0, _len2 = _ref50.length; _k < _len2; _k++) {
+                a = _ref50[_k];
+                _results.push(this.formatRedActions(a));
               }
               return _results;
             }).call(this)).join(', '));
@@ -36663,18 +37628,18 @@ exportObj.SquadBuilder = (function() {
           } else {
             container.find('tr.info-upgrades').show();
             container.find('tr.info-upgrades td.info-data').html(((function() {
-              var _k, _len2, _ref39, _results;
-              _ref39 = data.slots;
+              var _k, _len2, _ref48, _results;
+              _ref48 = data.slots;
               _results = [];
-              for (_k = 0, _len2 = _ref39.length; _k < _len2; _k++) {
-                slot = _ref39[_k];
+              for (_k = 0, _len2 = _ref48.length; _k < _len2; _k++) {
+                slot = _ref48[_k];
                 _results.push(exportObj.translate(this.language, 'sloticon', slot));
               }
               return _results;
             }).call(this)).join(' ') || 'None');
           }
           container.find('p.info-maneuvers').show();
-          container.find('p.info-maneuvers').html(this.getManeuverTableHTML((_ref39 = effective_stats != null ? effective_stats.maneuvers : void 0) != null ? _ref39 : ship.maneuvers, ship.maneuvers));
+          container.find('p.info-maneuvers').html(this.getManeuverTableHTML((_ref48 = effective_stats != null ? effective_stats.maneuvers : void 0) != null ? _ref48 : ship.maneuvers, ship.maneuvers));
           break;
         case 'Quickbuild':
           container.find('.info-type').text('Quickbuild');
@@ -36696,7 +37661,7 @@ exportObj.SquadBuilder = (function() {
             uniquedots = "";
           }
           container.find('.info-name').html("" + uniquedots + (pilot.display_name ? pilot.display_name : pilot.name) + (data.suffix != null ? data.suffix : "") + (exportObj.isReleased(pilot) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
-          container.find('p.info-text').html((_ref40 = pilot.text) != null ? _ref40 : '');
+          container.find('p.info-text').html((_ref49 = pilot.text) != null ? _ref49 : '');
           container.find('p.info-text').show();
           container.find('tr.info-ship td.info-data').text(data.ship);
           container.find('tr.info-ship').show();
@@ -36711,30 +37676,36 @@ exportObj.SquadBuilder = (function() {
           container.find('tr.info-base').show();
           container.find('tr.info-skill td.info-data').text(pilot.skill);
           container.find('tr.info-skill').show();
-          container.find('tr.info-attack td.info-data').text((_ref41 = (_ref42 = pilot.ship_override) != null ? _ref42.attack : void 0) != null ? _ref41 : ship.attack);
-          container.find('tr.info-attack').toggle((((_ref43 = pilot.ship_override) != null ? _ref43.attack : void 0) != null) || (ship.attack != null));
+          container.find('tr.info-engagement td.info-data').text(pilot.skill);
+          container.find('tr.info-engagement').show();
+          container.find('tr.info-attack td.info-data').text((_ref50 = (_ref51 = pilot.ship_override) != null ? _ref51.attack : void 0) != null ? _ref50 : ship.attack);
+          container.find('tr.info-attack').toggle((((_ref52 = pilot.ship_override) != null ? _ref52.attack : void 0) != null) || (ship.attack != null));
           container.find('tr.info-attack-fullfront td.info-data').text(ship.attackf);
           container.find('tr.info-attack-fullfront').toggle(ship.attackf != null);
           container.find('tr.info-attack-bullseye').hide();
+          container.find('tr.info-attack-left td.info-data').text(ship.attackl);
+          container.find('tr.info-attack-left').toggle(ship.attackl != null);
+          container.find('tr.info-attack-left td.info-data').text(ship.attackr);
+          container.find('tr.info-attack-left').toggle(ship.attackr != null);
           container.find('tr.info-attack-back td.info-data').text(ship.attackb);
           container.find('tr.info-attack-back').toggle(ship.attackb != null);
           container.find('tr.info-attack-turret td.info-data').text(ship.attackt);
           container.find('tr.info-attack-turret').toggle(ship.attackt != null);
           container.find('tr.info-attack-doubleturret td.info-data').text(ship.attackdt);
           container.find('tr.info-attack-doubleturret').toggle(ship.attackdt != null);
-          container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass((_ref44 = ship.attack_icon) != null ? _ref44 : 'xwing-miniatures-font-frontarc');
-          container.find('tr.info-energy td.info-data').text((_ref45 = (_ref46 = pilot.ship_override) != null ? _ref46.energy : void 0) != null ? _ref45 : ship.energy);
-          container.find('tr.info-energy').toggle((((_ref47 = pilot.ship_override) != null ? _ref47.energy : void 0) != null) || (ship.energy != null));
+          container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass((_ref53 = ship.attack_icon) != null ? _ref53 : 'xwing-miniatures-font-frontarc');
+          container.find('tr.info-energy td.info-data').text((_ref54 = (_ref55 = pilot.ship_override) != null ? _ref55.energy : void 0) != null ? _ref54 : ship.energy);
+          container.find('tr.info-energy').toggle((((_ref56 = pilot.ship_override) != null ? _ref56.energy : void 0) != null) || (ship.energy != null));
           container.find('tr.info-range').hide();
           container.find('td.info-rangebonus').hide();
-          container.find('tr.info-agility td.info-data').text((_ref48 = (_ref49 = pilot.ship_override) != null ? _ref49.agility : void 0) != null ? _ref48 : ship.agility);
+          container.find('tr.info-agility td.info-data').text((_ref57 = (_ref58 = pilot.ship_override) != null ? _ref58.agility : void 0) != null ? _ref57 : ship.agility);
           container.find('tr.info-agility').show();
-          container.find('tr.info-hull td.info-data').text((_ref50 = (_ref51 = pilot.ship_override) != null ? _ref51.hull : void 0) != null ? _ref50 : ship.hull);
+          container.find('tr.info-hull td.info-data').text((_ref59 = (_ref60 = pilot.ship_override) != null ? _ref60.hull : void 0) != null ? _ref59 : ship.hull);
           container.find('tr.info-hull').show();
-          container.find('tr.info-shields td.info-data').text((_ref52 = (_ref53 = pilot.ship_override) != null ? _ref53.shields : void 0) != null ? _ref52 : ship.shields);
+          container.find('tr.info-shields td.info-data').text((_ref61 = (_ref62 = pilot.ship_override) != null ? _ref62.shields : void 0) != null ? _ref61 : ship.shields);
           container.find('tr.info-shields').show();
           if (((effective_stats != null ? effective_stats.force : void 0) != null) || (data.force != null)) {
-            container.find('tr.info-force td.info-data').html(((_ref54 = (_ref55 = pilot.ship_override) != null ? _ref55.force : void 0) != null ? _ref54 : pilot.force) + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>');
+            container.find('tr.info-force td.info-data').html(((_ref63 = (_ref64 = pilot.ship_override) != null ? _ref64.force : void 0) != null ? _ref63 : pilot.force) + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>');
             container.find('tr.info-force').show();
           } else {
             container.find('tr.info-force').hide();
@@ -36750,23 +37721,23 @@ exportObj.SquadBuilder = (function() {
             container.find('tr.info-charge').hide();
           }
           container.find('tr.info-actions td.info-data').html((((function() {
-            var _k, _len2, _ref56, _ref57, _ref58, _results;
-            _ref58 = (_ref56 = (_ref57 = pilot.ship_override) != null ? _ref57.actions : void 0) != null ? _ref56 : exportObj.ships[data.ship].actions;
+            var _k, _len2, _ref65, _ref66, _ref67, _results;
+            _ref67 = (_ref65 = (_ref66 = pilot.ship_override) != null ? _ref66.actions : void 0) != null ? _ref65 : exportObj.ships[data.ship].actions;
             _results = [];
-            for (_k = 0, _len2 = _ref58.length; _k < _len2; _k++) {
-              action = _ref58[_k];
-              _results.push(exportObj.translate(this.language, 'action', action));
+            for (_k = 0, _len2 = _ref67.length; _k < _len2; _k++) {
+              action = _ref67[_k];
+              _results.push(this.formatActions(action));
             }
             return _results;
           }).call(this)).join(', ')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g, ' <i class="xwing-miniatures-font xwing-miniatures-font-linked'));
           if (ships[data.ship].actionsred != null) {
             container.find('tr.info-actions-red td.info-data-red').html(((function() {
-              var _k, _len2, _ref56, _ref57, _ref58, _results;
-              _ref58 = (_ref56 = (_ref57 = pilot.ship_override) != null ? _ref57.actionsred : void 0) != null ? _ref56 : exportObj.ships[data.ship].actionsred;
+              var _k, _len2, _ref65, _ref66, _ref67, _results;
+              _ref67 = (_ref65 = (_ref66 = pilot.ship_override) != null ? _ref66.actionsred : void 0) != null ? _ref65 : exportObj.ships[data.ship].actionsred;
               _results = [];
-              for (_k = 0, _len2 = _ref58.length; _k < _len2; _k++) {
-                action = _ref58[_k];
-                _results.push(exportObj.translate(this.language, 'action', action));
+              for (_k = 0, _len2 = _ref67.length; _k < _len2; _k++) {
+                action = _ref67[_k];
+                _results.push(this.formatRedActions(action));
               }
               return _results;
             }).call(this)).join(', '));
@@ -36777,11 +37748,11 @@ exportObj.SquadBuilder = (function() {
           container.find('tr.info-actions').show();
           container.find('tr.info-upgrades').show();
           container.find('tr.info-upgrades td.info-data').html(((function() {
-            var _k, _len2, _ref56, _ref57, _results;
-            _ref57 = (_ref56 = data.upgrades) != null ? _ref56 : [];
+            var _k, _len2, _ref65, _ref66, _results;
+            _ref66 = (_ref65 = data.upgrades) != null ? _ref65 : [];
             _results = [];
-            for (_k = 0, _len2 = _ref57.length; _k < _len2; _k++) {
-              upgrade = _ref57[_k];
+            for (_k = 0, _len2 = _ref66.length; _k < _len2; _k++) {
+              upgrade = _ref66[_k];
               _results.push(exportObj.upgrades[upgrade].display_name != null ? exportObj.upgrades[upgrade].display_name : upgrade);
             }
             return _results;
@@ -36792,11 +37763,11 @@ exportObj.SquadBuilder = (function() {
         case 'Addon':
           container.find('.info-type').text(additional_opts.addon_type);
           container.find('.info-sources.info-data').text(((function() {
-            var _k, _len2, _ref56, _results;
-            _ref56 = data.sources;
+            var _k, _len2, _ref65, _results;
+            _ref65 = data.sources;
             _results = [];
-            for (_k = 0, _len2 = _ref56.length; _k < _len2; _k++) {
-              source = _ref56[_k];
+            for (_k = 0, _len2 = _ref65.length; _k < _len2; _k++) {
+              source = _ref65[_k];
               _results.push(exportObj.translate(this.language, 'sources', source));
             }
             return _results;
@@ -36815,8 +37786,8 @@ exportObj.SquadBuilder = (function() {
           } else {
             uniquedots = "";
           }
-          if (((_ref56 = this.collection) != null ? _ref56.counts : void 0) != null) {
-            addon_count = (_ref57 = (_ref58 = this.collection.counts) != null ? (_ref59 = _ref58[additional_opts.addon_type.toLowerCase()]) != null ? _ref59[data.name] : void 0 : void 0) != null ? _ref57 : 0;
+          if (((_ref65 = this.collection) != null ? _ref65.counts : void 0) != null) {
+            addon_count = (_ref66 = (_ref67 = this.collection.counts) != null ? (_ref68 = _ref67[additional_opts.addon_type.toLowerCase()]) != null ? _ref68[data.name] : void 0 : void 0) != null ? _ref66 : 0;
             container.find('.info-collection').text("You have " + addon_count + " in your collection.");
           } else {
             container.find('.info-collection').text('');
@@ -36827,17 +37798,17 @@ exportObj.SquadBuilder = (function() {
             if ((data.variableagility != null) && data.variableagility) {
               point_info += "agility is " + (function() {
                 _results = [];
-                for (var _k = 0, _ref60 = data.pointsarray.length - 1; 0 <= _ref60 ? _k <= _ref60 : _k >= _ref60; 0 <= _ref60 ? _k++ : _k--){ _results.push(_k); }
+                for (var _k = 0, _ref69 = data.pointsarray.length - 1; 0 <= _ref69 ? _k <= _ref69 : _k >= _ref69; 0 <= _ref69 ? _k++ : _k--){ _results.push(_k); }
                 return _results;
               }).apply(this);
             } else if ((data.variableinit != null) && data.variableinit) {
               point_info += "initiative is " + (function() {
                 _results1 = [];
-                for (var _l = 0, _ref61 = data.pointsarray.length - 1; 0 <= _ref61 ? _l <= _ref61 : _l >= _ref61; 0 <= _ref61 ? _l++ : _l--){ _results1.push(_l); }
+                for (var _l = 0, _ref70 = data.pointsarray.length - 1; 0 <= _ref70 ? _l <= _ref70 : _l >= _ref70; 0 <= _ref70 ? _l++ : _l--){ _results1.push(_l); }
                 return _results1;
               }).apply(this);
             } else if ((data.variablebase != null) && data.variablebase) {
-              point_info += " base size is small, medium or large";
+              point_info += " base size is small, medium, large or huge";
             }
             point_info += "</i><br/><br/>";
           }
@@ -36846,11 +37817,12 @@ exportObj.SquadBuilder = (function() {
           } else {
             container.find('.info-solitary').hide();
           }
-          container.find('p.info-text').html((point_info != null ? point_info : '') + ((_ref62 = data.text) != null ? _ref62 : ''));
+          container.find('p.info-text').html((point_info != null ? point_info : '') + ((_ref71 = data.text) != null ? _ref71 : ''));
           container.find('p.info-text').show();
           container.find('tr.info-ship').hide();
           container.find('tr.info-base').hide();
           container.find('tr.info-skill').hide();
+          container.find('tr.info-engagement').hide();
           if (data.energy != null) {
             container.find('tr.info-energy td.info-data').text(data.energy);
             container.find('tr.info-energy').show();
@@ -36869,6 +37841,12 @@ exportObj.SquadBuilder = (function() {
           } else {
             container.find('tr.info-attack-turret').hide();
           }
+          if (data.attackdt != null) {
+            container.find('tr.info-attack-doubleturret td.info-data').text(data.attackdt);
+            container.find('tr.info-attack-doubleturret').show();
+          } else {
+            container.find('tr.info-attack-doubleturret').hide();
+          }
           if (data.attackbull != null) {
             container.find('tr.info-attack-bullseye td.info-data').text(data.attackbull);
             container.find('tr.info-attack-bullseye').show();
@@ -36876,8 +37854,9 @@ exportObj.SquadBuilder = (function() {
             container.find('tr.info-attack-bullseye').hide();
           }
           container.find('tr.info-attack-fullfront').hide();
+          container.find('tr.info-attack-right').hide();
+          container.find('tr.info-attack-left').hide();
           container.find('tr.info-attack-back').hide();
-          container.find('tr.info-attack-doubleturret').hide();
           if (data.recurring != null) {
             container.find('tr.info-charge td.info-data').html(data.charge + "<i class=\"xwing-miniatures-font xwing-miniatures-font-recurring\"></i>");
           } else {
@@ -37187,11 +38166,7 @@ exportObj.SquadBuilder = (function() {
         for (_j = 0, _len1 = _ref4.length; _j < _len1; _j++) {
           upgrade = _ref4[_j];
           if (upgrade.data != null) {
-            if (upgrade.data.ignorecollection != null) {
-              upgrade_is_available = true;
-            } else {
-              upgrade_is_available = this.collection.use('upgrade', upgrade.data.name);
-            }
+            upgrade_is_available = this.collection.use('upgrade', upgrade.data.name);
             if (!upgrade_is_available) {
               validity = false;
             }
@@ -37456,7 +38431,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 38962
+              lineno: 40108
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -37673,7 +38648,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 39078
+                          lineno: 40223
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -37702,7 +38677,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 39094
+                              lineno: 40239
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -37772,7 +38747,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 39136
+                      lineno: 40281
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -37852,7 +38827,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 39165
+                lineno: 40310
               })
             ]);
             __iced_deferrals._fulfill();
@@ -37921,7 +38896,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 39194
+              lineno: 40339
             }));
           }
         }
@@ -37965,20 +38940,12 @@ Ship = (function() {
   Ship.prototype.updateSelections = function() {
     var points, upgrade, _i, _len, _ref, _ref1, _results;
     if (this.pilot != null) {
-      if (exportObj.ships[this.pilot.ship].icon) {
-        this.ship_selector.select2('data', {
-          id: this.pilot.ship,
-          text: exportObj.ships[this.pilot.ship].display_name ? exportObj.ships[this.pilot.ship].display_name : this.pilot.ship,
-          xws: exportObj.ships[this.pilot.ship].xws,
-          icon: exportObj.ships[this.pilot.ship].icon
-        });
-      } else {
-        this.ship_selector.select2('data', {
-          id: this.pilot.ship,
-          text: exportObj.ships[this.pilot.ship].display_name ? exportObj.ships[this.pilot.ship].display_name : this.pilot.ship,
-          xws: exportObj.ships[this.pilot.ship].xws
-        });
-      }
+      this.ship_selector.select2('data', {
+        id: this.pilot.ship,
+        text: exportObj.ships[this.pilot.ship].display_name ? exportObj.ships[this.pilot.ship].display_name : this.pilot.ship,
+        xws: exportObj.ships[this.pilot.ship].xws,
+        icon: exportObj.ships[this.pilot.ship].icon ? exportObj.ships[this.pilot.ship].icon : exportObj.ships[this.pilot.ship].xws
+      });
       this.pilot_selector.select2('data', {
         id: this.pilot.id,
         text: "" + ((((_ref = exportObj.settings) != null ? _ref.initiative_prefix : void 0) != null) && exportObj.settings.initiative_prefix ? this.pilot.skill + ' - ' : '') + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + (this.quickbuildId !== -1 ? exportObj.quickbuildsById[this.quickbuildId].suffix : "") + " (" + (this.quickbuildId !== -1 ? (this.primary ? exportObj.quickbuildsById[this.quickbuildId].threat : 0) : this.pilot.points) + ")"
@@ -38007,11 +38974,7 @@ Ship = (function() {
     this.ship_selector = $(this.row.find('input.ship-selector-container'));
     this.pilot_selector = $(this.row.find('input.pilot-selector-container'));
     shipResultFormatter = function(object, container, query) {
-      if (object.icon != null) {
-        $(container).append("<i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + object.icon + "\"></i> " + object.text);
-      } else {
-        $(container).append("<i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + object.xws + "\"></i> " + object.text);
-      }
+      $(container).append("<i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + object.icon + "\"></i> " + object.text);
       return void 0;
     };
     this.ship_selector.select2({
@@ -38203,107 +39166,43 @@ Ship = (function() {
   };
 
   Ship.prototype.toHTML = function() {
-    var HalfPoints, Threshold, action, action_bar, action_bar_red, action_icons, action_icons_red, actionred, attackHTML, attack_icon, attackbHTML, attackdtHTML, attackfHTML, attacktHTML, chargeHTML, effective_stats, energyHTML, forceHTML, html, hullIconHTML, points, shieldIconHTML, slotted_upgrades, upgrade, _, _i, _j, _k, _l, _len, _len1, _len2, _m, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var HalfPoints, Threshold, action, action_bar, action_bar_red, action_icons, action_icons_red, actionname, actionred, attackHTML, attack_icon, attackbHTML, attackdtHTML, attackfHTML, attacktHTML, chargeHTML, color, effective_stats, energyHTML, engagementHTML, forceHTML, html, hullIconHTML, points, prefix, shieldIconHTML, slotted_upgrades, suffix, upgrade, _, _i, _j, _k, _l, _len, _len1, _len2, _m, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     effective_stats = this.effectiveStats();
     action_icons = [];
     action_icons_red = [];
     _ref = effective_stats.actions;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       action = _ref[_i];
-      action_icons.push((function() {
-        switch (action) {
-          case 'Focus':
-            return "<i class=\"xwing-miniatures-font xwing-miniatures-font-focus\"></i> ";
-          case '*Focus':
-            return "<i class=\"xwing-miniatures-font xwing-miniatures-font-focus\"></i> ";
-          case 'Evade':
-            return "<i class=\"xwing-miniatures-font xwing-miniatures-font-evade\"></i> ";
-          case 'F-Evade':
-            return "<i class=\"xwing-miniatures-font force xwing-miniatures-font-evade\"></i> ";
-          case 'Barrel Roll':
-            return "<i class=\"xwing-miniatures-font xwing-miniatures-font-barrelroll\"></i> ";
-          case 'Lock':
-            return "<i class=\"xwing-miniatures-font xwing-miniatures-font-lock\"></i> ";
-          case 'Boost':
-            return "<i class=\"xwing-miniatures-font xwing-miniatures-font-boost\"></i> ";
-          case 'Coordinate':
-            return "<i class=\"xwing-miniatures-font xwing-miniatures-font-coordinate\"></i> ";
-          case 'F-Coordinate':
-            return "<i class=\"xwing-miniatures-font force xwing-miniatures-font-coordinate\"></i> ";
-          case 'Jam':
-            return "<i class=\"xwing-miniatures-font xwing-miniatures-font-jam\"></i> ";
-          case 'Reinforce':
-            return "<i class=\"xwing-miniatures-font xwing-miniatures-font-reinforce\"></i> ";
-          case 'Cloak':
-            return "<i class=\"xwing-miniatures-font xwing-miniatures-font-cloak\"></i> ";
-          case 'Slam':
-            return "<i class=\"xwing-miniatures-font xwing-miniatures-font-slam\"></i> ";
-          case 'Rotate Arc':
-            return "<i class=\"xwing-miniatures-font xwing-miniatures-font-rotatearc\"></i> ";
-          case 'Reload':
-            return "<i class=\"xwing-miniatures-font xwing-miniatures-font-reload\"></i> ";
-          case 'Calculate':
-            return "<i class=\"xwing-miniatures-font xwing-miniatures-font-calculate\"></i> ";
-          case "R> Lock":
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-linked\"></i> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-lock\"></i>&nbsp;";
-          case "R> Barrel Roll":
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-linked\"></i> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-barrelroll\"></i>&nbsp;";
-          case "R> Boost":
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-linked\"></i> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-boost\"></i>&nbsp;";
-          case "R> Focus":
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-linked\"></i> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-focus\"></i>&nbsp;";
-          case "> Rotate Arc":
-            return "<i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> <i class=\"xwing-miniatures-font info-attack xwing-miniatures-font-rotatearc\"></i>&nbsp;";
-          case "R> Rotate Arc":
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-linked\"></i> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-rotatearc\"></i>&nbsp;";
-          case "R> Evade":
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-linked\"></i> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-evade\"></i>&nbsp;";
-          case "R> Calculate":
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-linked\"></i> <i class=\"xwing-miniatures-font info-attack red xwing-miniatures-font-calculate\"></i>&nbsp;";
-          default:
-            return "<span>&nbsp;" + action + "<span>";
-        }
-      })());
+      color = "action ";
+      actionname = "";
+      prefix = "";
+      suffix = "";
+      if (action.search('F-') !== -1) {
+        color = "force ";
+        actionname = action.toLowerCase().replace(/F-/gi, '').replace(/[^0-9a-z]/gi, '');
+      } else if (action.search('R> ') !== -1) {
+        color = "red ";
+        actionname = action.toLowerCase().replace(/R> /gi, '').replace(/[^0-9a-z]/gi, '');
+        prefix = "<i class=\"xwing-miniatures-font xwing-miniatures-font-linked red\"></i> ";
+        suffix = "&nbsp;";
+      } else if (action.search('> ') !== -1) {
+        actionname = action.toLowerCase().replace(/> /gi, '').replace(/[^0-9a-z]/gi, '');
+        prefix = "<i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> ";
+        suffix = "&nbsp;";
+      } else {
+        actionname = action.toLowerCase().replace(/[^0-9a-z]/gi, '');
+      }
+      action_icons.push(prefix + "<i class=\"xwing-miniatures-font " + color + "xwing-miniatures-font-" + actionname + "\"></i> " + suffix);
     }
     _ref1 = effective_stats.actionsred;
     for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
       actionred = _ref1[_j];
-      action_icons_red.push((function() {
-        switch (actionred) {
-          case 'Focus':
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-focus\"></i>";
-          case 'Evade':
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-evade\"></i>";
-          case 'Barrel Roll':
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-barrelroll\"></i>";
-          case 'Lock':
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-lock\"></i>";
-          case 'Boost':
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-boost\"></i>";
-          case 'Coordinate':
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-coordinate\"></i>";
-          case 'Jam':
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-jam\"></i>";
-          case 'Reinforce':
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-reinforce\"></i>";
-          case 'Cloak':
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-cloak\"></i>";
-          case 'Slam':
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-slam\"></i>";
-          case 'Rotate Arc':
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-rotatearc\"></i>";
-          case 'Reload':
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-reload\"></i>";
-          case 'Calculate':
-            return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-calculate\"></i>";
-          default:
-            return "<span>&nbsp;" + action + "<span>";
-        }
-      })());
+      action_icons.push("<i class=\"xwing-miniatures-font red xwing-miniatures-font-" + actionred.toLowerCase().replace(/[^0-9a-z]/gi, '') + "\"></i> ");
     }
     action_bar = action_icons.join(' ');
     action_bar_red = action_icons_red.join(' ');
     attack_icon = (_ref2 = this.data.attack_icon) != null ? _ref2 : 'xwing-miniatures-font-frontarc';
+    engagementHTML = (this.pilot.engagement != null) ? $.trim("<span class=\"info-data info-skill\">ENG " + this.pilot.engagement + "</span>") : '';
     attackHTML = (effective_stats.attack != null) ? $.trim("<i class=\"xwing-miniatures-font header-attack " + attack_icon + "\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref3 = (_ref4 = this.pilot.ship_override) != null ? _ref4.attack : void 0) != null ? _ref3 : this.data.attack, effective_stats, 'attack')) + "</span>") : '';
     if (effective_stats.attackb != null) {
       attackbHTML = $.trim("<i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref5 = (_ref6 = this.pilot.ship_override) != null ? _ref6.attackb : void 0) != null ? _ref5 : this.data.attackb, effective_stats, 'attackb')) + "</span>");
@@ -38348,7 +39247,7 @@ Ship = (function() {
         hullIconHTML += "<i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull expanded-hull-or-shield\"></i>";
       }
     }
-    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.xws + "\"></i><span class=\"fancy-ship-type\"> " + (this.data.display_name ? this.data.display_name : this.data.name) + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + (this.quickbuildId !== -1 ? (this.primary ? exportObj.quickbuildsById[this.quickbuildId].threat : 0) : this.pilot.points) + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">INI " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + attackHTML + "\n        " + attackbHTML + "\n        " + attackfHTML + "\n        " + attacktHTML + "\n        " + attackdtHTML + "\n        " + energyHTML + "\n        <i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref24 = (_ref25 = this.pilot.ship_override) != null ? _ref25.agility : void 0) != null ? _ref24 : this.data.agility, effective_stats, 'agility')) + "</span>                    \n        " + hullIconHTML + "\n        <i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull simple-hull-or-shield\"></i>\n        <span class=\"info-data info-hull simple-hull-or-shield\">" + (statAndEffectiveStat((_ref26 = (_ref27 = this.pilot.ship_override) != null ? _ref27.hull : void 0) != null ? _ref26 : this.data.hull, effective_stats, 'hull')) + "</span>\n        " + shieldIconHTML + "\n        <i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield simple-hull-or-shield\"></i>\n        <span class=\"info-data info-shields simple-hull-or-shield\">" + (statAndEffectiveStat((_ref28 = (_ref29 = this.pilot.ship_override) != null ? _ref29.shields : void 0) != null ? _ref28 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + forceHTML + "\n        " + chargeHTML + "\n        &nbsp;\n        " + action_bar + "\n        &nbsp;&nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
+    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.xws + "\"></i><span class=\"fancy-ship-type\"> " + (this.data.display_name ? this.data.display_name : this.data.name) + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + (this.quickbuildId !== -1 ? (this.primary ? exportObj.quickbuildsById[this.quickbuildId].threat : 0) : this.pilot.points) + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">INI " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + engagementHTML + "\n        " + attackHTML + "\n        " + attackbHTML + "\n        " + attackfHTML + "\n        " + attacktHTML + "\n        " + attackdtHTML + "\n        " + energyHTML + "\n        <i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref24 = (_ref25 = this.pilot.ship_override) != null ? _ref25.agility : void 0) != null ? _ref24 : this.data.agility, effective_stats, 'agility')) + "</span>                    \n        " + hullIconHTML + "\n        <i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull simple-hull-or-shield\"></i>\n        <span class=\"info-data info-hull simple-hull-or-shield\">" + (statAndEffectiveStat((_ref26 = (_ref27 = this.pilot.ship_override) != null ? _ref27.hull : void 0) != null ? _ref26 : this.data.hull, effective_stats, 'hull')) + "</span>\n        " + shieldIconHTML + "\n        <i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield simple-hull-or-shield\"></i>\n        <span class=\"info-data info-shields simple-hull-or-shield\">" + (statAndEffectiveStat((_ref28 = (_ref29 = this.pilot.ship_override) != null ? _ref29.shields : void 0) != null ? _ref28 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + forceHTML + "\n        " + chargeHTML + "\n        <br>\n        " + action_bar + "\n        &nbsp;&nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
     if (this.pilot.text) {
       html += $.trim("<div class=\"fancy-pilot-text\">" + this.pilot.text + "</div>");
     }
@@ -38702,7 +39601,6 @@ Ship = (function() {
   Ship.prototype.effectiveStats = function() {
     var s, stats, upgrade, _i, _j, _len, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     stats = {
-      skill: this.pilot.skill,
       attack: (_ref = (_ref1 = this.pilot.ship_override) != null ? _ref1.attack : void 0) != null ? _ref : this.data.attack,
       attackf: (_ref2 = (_ref3 = this.pilot.ship_override) != null ? _ref3.attackf : void 0) != null ? _ref2 : this.data.attackf,
       attackb: (_ref4 = (_ref5 = this.pilot.ship_override) != null ? _ref5.attackb : void 0) != null ? _ref4 : this.data.attackb,
@@ -38736,25 +39634,51 @@ Ship = (function() {
   };
 
   Ship.prototype.validate = function() {
-    var equipped_upgrades, func, i, max_checks, pilot_func, unchanged, upgrade, valid, _i, _j, _len, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var addCommand, equipped_upgrades, func, i, max_checks, pilot_func, unchanged, upgrade, valid, _i, _j, _k, _l, _len, _len1, _ref, _ref1, _ref10, _ref11, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     if (this.pilot == null) {
       return true;
     }
     unchanged = true;
-    max_checks = 128;
-    for (i = _i = 0; 0 <= max_checks ? _i < max_checks : _i > max_checks; i = 0 <= max_checks ? ++_i : --_i) {
+    max_checks = 32;
+    if (this.builder.isEpic) {
+      if (!(__indexOf.call(this.pilot.slots, "Command") >= 0)) {
+        addCommand = true;
+        _ref = this.upgrades;
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          upgrade = _ref[_i];
+          if (("Command" === upgrade.slot) && (this === upgrade.ship)) {
+            addCommand = false;
+          }
+        }
+        if (addCommand === true) {
+          this.upgrades.push(new exportObj.Upgrade({
+            ship: this,
+            container: this.addon_container,
+            slot: "Command"
+          }));
+        }
+      }
+    } else {
+      for (i = _j = _ref1 = this.upgrades.length - 1; _ref1 <= -1 ? _j < -1 : _j > -1; i = _ref1 <= -1 ? ++_j : --_j) {
+        upgrade = this.upgrades[i];
+        if (upgrade.slot === "Command") {
+          upgrade.setById(null);
+        }
+      }
+    }
+    for (i = _k = 0; 0 <= max_checks ? _k < max_checks : _k > max_checks; i = 0 <= max_checks ? ++_k : --_k) {
       valid = true;
-      pilot_func = (_ref = (_ref1 = (_ref2 = this.pilot) != null ? _ref2.validation_func : void 0) != null ? _ref1 : (_ref3 = this.pilot) != null ? _ref3.restriction_func : void 0) != null ? _ref : void 0;
+      pilot_func = (_ref2 = (_ref3 = (_ref4 = this.pilot) != null ? _ref4.validation_func : void 0) != null ? _ref3 : (_ref5 = this.pilot) != null ? _ref5.restriction_func : void 0) != null ? _ref2 : void 0;
       if (((pilot_func != null) && !pilot_func(this, this.pilot)) || !(this.builder.isItemAvailable(this.pilot))) {
         this.builder.removeShip(this);
         return false;
       }
       equipped_upgrades = [];
-      _ref4 = this.upgrades;
-      for (_j = 0, _len = _ref4.length; _j < _len; _j++) {
-        upgrade = _ref4[_j];
-        func = (_ref5 = (_ref6 = upgrade != null ? (_ref7 = upgrade.data) != null ? _ref7.validation_func : void 0 : void 0) != null ? _ref6 : upgrade != null ? (_ref8 = upgrade.data) != null ? _ref8.restriction_func : void 0 : void 0) != null ? _ref5 : void 0;
-        if ((((func != null) && !func(this, upgrade)) || (((upgrade != null ? upgrade.data : void 0) != null) && ((_ref9 = upgrade.data, __indexOf.call(equipped_upgrades, _ref9) >= 0) || !this.builder.isItemAvailable(upgrade.data)))) && !this.builder.isQuickbuild) {
+      _ref6 = this.upgrades;
+      for (_l = 0, _len1 = _ref6.length; _l < _len1; _l++) {
+        upgrade = _ref6[_l];
+        func = (_ref7 = (_ref8 = upgrade != null ? (_ref9 = upgrade.data) != null ? _ref9.validation_func : void 0 : void 0) != null ? _ref8 : upgrade != null ? (_ref10 = upgrade.data) != null ? _ref10.restriction_func : void 0 : void 0) != null ? _ref7 : void 0;
+        if ((((func != null) && !func(this, upgrade)) || (((upgrade != null ? upgrade.data : void 0) != null) && ((_ref11 = upgrade.data, __indexOf.call(equipped_upgrades, _ref11) >= 0) || !this.builder.isItemAvailable(upgrade.data)))) && !this.builder.isQuickbuild) {
           upgrade.setById(null);
           valid = false;
           unchanged = false;
@@ -38781,9 +39705,7 @@ Ship = (function() {
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       upgrade = _ref[_i];
       if (((upgrade != null ? upgrade.data : void 0) != null) && !exportObj.isReleased(upgrade.data)) {
-        if (upgrade.data.ignorecollection == null) {
-          return true;
-        }
+        return true;
       }
     }
     return false;
@@ -38831,7 +39753,7 @@ Ship = (function() {
   };
 
   Ship.prototype.toXWS = function() {
-    var upgrade, upgrade_obj, xws, _i, _len, _ref, _ref1, _ref2, _ref3;
+    var upgrade, upgrade_obj, xws, _i, _len, _ref, _ref1, _ref2;
     xws = {
       id: (_ref = this.pilot.xws) != null ? _ref : this.pilot.canonical_name,
       name: (_ref1 = this.pilot.xws) != null ? _ref1 : this.pilot.canonical_name,
@@ -38845,7 +39767,7 @@ Ship = (function() {
     _ref2 = this.upgrades;
     for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
       upgrade = _ref2[_i];
-      if (((upgrade != null ? upgrade.data : void 0) != null) && ((upgrade != null ? (_ref3 = upgrade.data) != null ? _ref3.ignorecollection : void 0 : void 0) == null)) {
+      if ((upgrade != null ? upgrade.data : void 0) != null) {
         upgrade.toXWS(upgrade_obj);
       }
     }
@@ -38942,7 +39864,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 40000
+                lineno: 41097
               })
             ]);
             __iced_deferrals._fulfill();
@@ -38975,19 +39897,11 @@ GenericAddon = (function() {
         if (_this.ship.builder.collection != null) {
           not_in_collection = false;
           if (obj.id === ((_ref = _this.data) != null ? _ref.id : void 0)) {
-            if (_this.data.ignorecollection != null) {
-              not_in_collection = false;
-            } else {
-              if (!(_this.ship.builder.collection.checkShelf(_this.type.toLowerCase(), obj.name) || _this.ship.builder.collection.checkTable(_this.type.toLowerCase(), obj.name))) {
-                not_in_collection = true;
-              }
+            if (!(_this.ship.builder.collection.checkShelf(_this.type.toLowerCase(), obj.name) || _this.ship.builder.collection.checkTable(_this.type.toLowerCase(), obj.name))) {
+              not_in_collection = true;
             }
           } else {
-            if ((obj.id === 168) || (obj.id === 169) || (obj.id === 170)) {
-              not_in_collection = false;
-            } else {
-              not_in_collection = !_this.ship.builder.collection.checkShelf(_this.type.toLowerCase(), obj.name);
-            }
+            not_in_collection = !_this.ship.builder.collection.checkShelf(_this.type.toLowerCase(), obj.name);
           }
           if (not_in_collection) {
             return 'select2-result-not-in-collection';
@@ -39079,7 +39993,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 40072
+                  lineno: 41163
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -39102,7 +40016,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 40077
+                      lineno: 41168
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -39194,7 +40108,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 40122
+            lineno: 41213
           }));
         }
         __iced_deferrals._fulfill();
@@ -39233,6 +40147,8 @@ GenericAddon = (function() {
         return data != null ? data.pointsarray[1] : void 0;
       } else if ((ship != null ? ship.data.large : void 0) != null) {
         return data != null ? data.pointsarray[2] : void 0;
+      } else if ((ship != null ? ship.data.huge : void 0) != null) {
+        return data != null ? data.pointsarray[3] : void 0;
       }
     } else if ((data != null ? data.variableinit : void 0) != null) {
       return data != null ? data.pointsarray[ship.pilot.skill] : void 0;
@@ -39263,7 +40179,11 @@ GenericAddon = (function() {
   GenericAddon.prototype.toHTML = function(points) {
     var attackHTML, attackrangebonus, chargeHTML, forceHTML, match_array, restriction_html, text_str, upgrade_slot_font, _base1, _ref;
     if (this.data != null) {
-      upgrade_slot_font = ((_ref = this.data.slot) != null ? _ref : this.type).toLowerCase().replace(/[^0-9a-z]/gi, '');
+      if ((this.data.slot != null) && this.data.slot === "HardpointShip") {
+        upgrade_slot_font = "hardpoint";
+      } else {
+        upgrade_slot_font = ((_ref = this.data.slot) != null ? _ref : this.type).toLowerCase().replace(/[^0-9a-z]/gi, '');
+      }
       match_array = typeof (_base1 = this.data).text === "function" ? _base1.text(match(/(<span.*<\/span>)<br \/><br \/>(.*)/)) : void 0;
       if (match_array) {
         restriction_html = '<div class="card-restriction-container">' + match_array[1] + '</div>';

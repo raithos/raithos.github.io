@@ -1717,9 +1717,6 @@ String::canonicalize = ->
         .replace(/[^a-z0-9]/g, '')
         .replace(/\s+/g, '-')
 
-exportObj.hugeOnly = (ship) ->
-    ship.data.huge ? false
-
 # Returns an independent copy of the data which can be modified by translation
 # modules.
 exportObj.basicCardData = ->
@@ -3261,12 +3258,12 @@ exportObj.basicCardData = ->
              "Evade"
            ]
            maneuvers: [
-                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
-                [ 1, 2, 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0 ]
-                [ 1, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0 ]
-                [ 1, 2, 2, 2, 1, 0, 3, 3, 0, 0, 0, 0, 0 ]
-                [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
-                [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0 ]
+                [ 0, 0, 0, 0, 0, 0, 0, 0]
+                [ 1, 2, 0, 2, 1, 0, 0, 0]
+                [ 1, 2, 2, 2, 1, 0, 0, 0]
+                [ 1, 2, 2, 2, 1, 0, 3, 3]
+                [ 0, 0, 1, 0, 0, 0, 0, 0]
+                [ 0, 0, 1, 0, 0, 3, 0, 0]
            ]
         "BTL-B Y-Wing":
            name: "BTL-B Y-Wing"               
@@ -3285,12 +3282,155 @@ exportObj.basicCardData = ->
              "Reload"
            ]
            maneuvers: [
-                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
-                [ 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
-                [ 1, 1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 ]
-                [ 3, 1, 1, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0 ]
-                [ 0, 0, 3, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0 ]
-                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+                [ 0, 0, 0, 0, 0, 0]
+                [ 0, 1, 2, 1, 0, 0]
+                [ 1, 1, 2, 1, 1, 0]
+                [ 3, 1, 1, 1, 3, 0]
+                [ 0, 0, 3, 0, 0, 3]
+                [ 0, 0, 0, 0, 0, 0]
+           ]
+
+        # Epic Section
+        "CR90 Corellian Corvette":
+           name: "CR90 Corellian Corvette"
+           xws: "CR90 Corellian Corvette".canonicalize()
+           icon: "cr90corvette"
+           factions: ["Galactic Republic", "Rebel Alliance"]
+           huge: true
+           attackl: 4
+           attackr: 4
+           agility: 0
+           hull: 18
+           shields: 7
+           shieldrecurr: 2
+           energy: 7
+           energyrecurr: 2
+           actions: [
+             "Focus"
+             "Reinforce"
+             "Lock"
+             "Jam"
+           ]
+           actionsred: [
+             "Coordinate"
+           ]
+           maneuvers: [
+                [ 0, 3, 3, 3, 0]
+                [ 0, 1, 1, 1, 0]
+                [ 0, 2, 2, 2, 0]
+                [ 0, 3, 2, 3, 0]
+                [ 0, 0, 3, 0, 0]
+                [ 0, 0, 3, 0, 0]
+           ]
+        "Raider-class Corvette":
+           name: "Raider-class Corvette"
+           xws: "Raider-class Corvette".canonicalize()
+           factions: ["Galactic Empire", "First Order"]
+           huge: true
+           attackf: 4
+           agility: 0
+           hull: 20
+           shields: 8
+           shieldrecurr: 2
+           energy: 6
+           energyrecurr: 2
+           actions: [
+             "Focus"
+             "Reinforce"
+             "Lock"
+             "Coordinate"
+             "Reload"
+           ]
+           maneuvers: [
+                [ 0, 3, 3, 3, 0]
+                [ 0, 2, 1, 2, 0]
+                [ 0, 1, 2, 1, 0]
+                [ 0, 3, 2, 3, 0]
+                [ 0, 0, 1, 0, 0]
+                [ 0, 0, 3, 0, 0]
+           ]
+        "GR-75 Medium Transport":
+           name: "GR-75 Medium Transport"
+           xws: "GR-75 Medium Transport".canonicalize()
+           factions: ["Rebel Alliance", "Resistance"]
+           huge: true
+           attack: 2
+           agility: 0
+           hull: 12
+           shields: 3
+           shieldrecurr: 1
+           energy: 4
+           energyrecurr: 1
+           actions: [
+             "Focus"
+             "Coordinate"
+             "Jam"
+           ]
+           actionsred: [
+             "Reinforce"
+             "Lock"
+           ]
+           maneuvers: [
+                [ 0, 3, 3, 3, 0]
+                [ 0, 2, 2, 2, 0]
+                [ 0, 1, 1, 1, 0]
+                [ 0, 0, 3, 0, 0]
+                [ 0, 0, 3, 0, 0]
+           ]
+        "Gozanti-class Cruiser":
+           name: "Gozanti-class Cruiser"
+           xws: "Gozanti-class Cruiser".canonicalize()
+           factions: ["Galactic Empire", "First Order"]
+           huge: true
+           attack: 3
+           agility: 0
+           hull: 11
+           shields: 5
+           shieldrecurr: 1
+           energy: 3
+           energyrecurr: 1
+           actions: [
+             "Focus"
+             "Reinforce"
+             "Lock"
+             "Coordinate"
+             "Jam"
+           ]
+           maneuvers: [
+                [ 0, 3, 3, 3, 0]
+                [ 0, 1, 2, 1, 0]
+                [ 0, 3, 2, 3, 0]
+                [ 0, 0, 2, 0, 0]
+                [ 0, 0, 3, 0, 0]
+           ]
+        "C-ROC Cruiser":
+           name: "C-ROC Cruiser"
+           xws: "C-ROC Cruiser".canonicalize()
+           factions: ["Separatist Alliance", "Scum and Villainy"]
+           huge: true
+           attack: 3
+           agility: 0
+           hull: 12
+           shields: 4
+           shieldrecurr: 1
+           energy: 4
+           energyrecurr: 1
+           actions: [
+             "Focus"
+             "Reinforce"
+             "Lock"
+             "Reload"
+           ]
+           actionsred: [
+             "Coordinate"
+           ]
+           maneuvers: [
+                [ 0, 3, 3, 3, 0]
+                [ 0, 1, 2, 1, 0]
+                [ 0, 1, 2, 1, 0]
+                [ 0, 3, 1, 3, 0]
+                [ 0, 0, 3, 0, 0]
+                [ 0, 0, 3, 0, 0]
            ]
         
     # name field is for convenience only
@@ -5521,7 +5661,7 @@ exportObj.basicCardData = ->
             slots: [
                 "Talent"
                 "Modification"
-                "Hardpoint"
+                "HardpointShip"
               ]
         }
         {
@@ -5535,7 +5675,7 @@ exportObj.basicCardData = ->
             slots: [
                 "Talent"
                 "Modification"
-                "Hardpoint"
+                "HardpointShip"
               ]
         }
         {
@@ -5549,7 +5689,7 @@ exportObj.basicCardData = ->
             slots: [
                 "Talent"
                 "Modification"
-                "Hardpoint"
+                "HardpointShip"
               ]
         }
         {
@@ -5563,7 +5703,7 @@ exportObj.basicCardData = ->
             slots: [
                 "Talent"
                 "Modification"
-                "Hardpoint"
+                "HardpointShip"
               ]
         }
         {
@@ -5576,7 +5716,7 @@ exportObj.basicCardData = ->
             slots: [
                 "Talent"
                 "Modification"
-                "Hardpoint"
+                "HardpointShip"
               ]
         }
         {
@@ -5589,7 +5729,7 @@ exportObj.basicCardData = ->
             points: 31
             slots: [
                 "Modification"
-                "Hardpoint"
+                "HardpointShip"
               ]
         }
         {
@@ -5602,7 +5742,7 @@ exportObj.basicCardData = ->
             points: 30
             slots: [
                 "Modification"
-                "Hardpoint"
+                "HardpointShip"
               ]
         }
         {
@@ -5614,7 +5754,7 @@ exportObj.basicCardData = ->
             points: 28
             slots: [
                 "Modification"
-                "Hardpoint"
+                "HardpointShip"
               ]
         }
         {
@@ -7062,7 +7202,7 @@ exportObj.basicCardData = ->
                 "Configuration"
                 "Tech"
                 "Title"
-                "Hardpoint"
+                "HardpointShip"
             ]
         }
         {
@@ -7390,7 +7530,7 @@ exportObj.basicCardData = ->
                 "Configuration"
                 "Tech"
                 "Title"
-                "Hardpoint"
+                "HardpointShip"
             ]
         }
         {
@@ -7408,7 +7548,7 @@ exportObj.basicCardData = ->
                 "Configuration"
                 "Tech"
                 "Title"
-                "Hardpoint"
+                "HardpointShip"
             ]
         }
         {
@@ -7425,7 +7565,7 @@ exportObj.basicCardData = ->
                 "Configuration"
                 "Tech"
                 "Title"
-                "Hardpoint"
+                "HardpointShip"
             ]
         }
         {
@@ -7442,7 +7582,7 @@ exportObj.basicCardData = ->
                 "Configuration"
                 "Tech"
                 "Title"
-                "Hardpoint"
+                "HardpointShip"
             ]
         }
         {
@@ -7460,7 +7600,7 @@ exportObj.basicCardData = ->
                 "Configuration"
                 "Tech"
                 "Title"
-                "Hardpoint"
+                "HardpointShip"
             ]
         }
         {
@@ -7477,7 +7617,7 @@ exportObj.basicCardData = ->
                 "Configuration"
                 "Tech"
                 "Title"
-                "Hardpoint"
+                "HardpointShip"
             ]
         }
         {
@@ -7493,7 +7633,7 @@ exportObj.basicCardData = ->
                 "Configuration"
                 "Tech"
                 "Title"
-                "Hardpoint"
+                "HardpointShip"
             ]
         }
         {
@@ -8101,7 +8241,7 @@ exportObj.basicCardData = ->
                 "Configuration"
                 "Tech"
                 "Title"
-                "Hardpoint"
+                "HardpointShip"
             ]
         }
         {
@@ -8119,7 +8259,7 @@ exportObj.basicCardData = ->
                 "Configuration"
                 "Tech"
                 "Title"
-                "Hardpoint"
+                "HardpointShip"
             ]
         }
         {
@@ -8137,7 +8277,7 @@ exportObj.basicCardData = ->
                 "Configuration"
                 "Tech"
                 "Title"
-                "Hardpoint"
+                "HardpointShip"
             ]
         }
         {
@@ -8155,7 +8295,7 @@ exportObj.basicCardData = ->
                 "Configuration"
                 "Tech"
                 "Title"
-                "Hardpoint"
+                "HardpointShip"
             ]
         }
         {
@@ -9210,6 +9350,208 @@ exportObj.basicCardData = ->
                 "Modification"
             ]
         }
+        {
+            name: "Republic Judiciary"
+            id: 367
+            faction: "Galactic Republic"
+            ship: "CR90 Corellian Corvette"
+            skill: 8
+            engagement: 0
+            points: 146
+            slots: [
+                "Command"
+                "Hardpoint"
+                "Hardpoint"
+                "Crew"
+                "Crew"
+                "Gunner"
+                "Team"
+                "Team"
+                "Cargo"
+            ]
+        }
+        {
+            name: "Alderaanian Guard"
+            id: 368
+            faction: "Rebel Alliance"
+            ship: "CR90 Corellian Corvette"
+            skill: 8
+            engagement: 0
+            points: 146
+            slots: [
+                "Command"
+                "Hardpoint"
+                "Hardpoint"
+                "Crew"
+                "Crew"
+                "Gunner"
+                "Team"
+                "Team"
+                "Cargo"
+                "Title"
+            ]
+        }
+        {
+            name: "Outer Rim Patrol"
+            id: 369
+            faction: "Galactic Empire"
+            ship: "Raider-class Corvette"
+            skill: 8
+            engagement: 0
+            points: 150
+            slots: [
+                "Command"
+                "Torpedo"
+                "Missile"
+                "Hardpoint"
+                "Hardpoint"
+                "Crew"
+                "Crew"
+                "Team"
+                "Cargo"
+                "Title"
+            ]
+        }
+        {
+            name: "First Order Collaborators"
+            id: 370
+            faction: "First Order"
+            ship: "Raider-class Corvette"
+            skill: 8
+            engagement: 0
+            points: 150
+            slots: [
+                "Command"
+                "Hardpoint"
+                "Turret"
+                "Crew"
+                "Crew"
+                "Team"
+                "Cargo"
+                "Cargo"
+            ]
+        }
+        {
+            name: "Echo Base Evacuees"
+            id: 371
+            faction: "Rebel Alliance"
+            ship: "GR-75 Medium Transport"
+            skill: 7
+            engagement: 1
+            points: 55
+            slots: [
+                "Command"
+                "Hardpoint"
+                "Turret"
+                "Crew"
+                "Crew"
+                "Team"
+                "Cargo"
+                "Cargo"
+                "Title"
+            ]
+        }
+        {
+            name: "New Republic Volunteers"
+            id: 372
+            faction: "Resistance"
+            ship: "GR-75 Medium Transport"
+            skill: 7
+            engagement: 1
+            points: 55
+            slots: [
+                "Command"
+                "Hardpoint"
+                "Turret"
+                "Crew"
+                "Crew"
+                "Team"
+                "Cargo"
+                "Cargo"
+            ]
+        }
+        {
+            name: "Outer Rim Garrison"
+            id: 373
+            faction: "Galactic Empire"
+            ship: "Gozanti-class Cruiser"
+            skill: 7
+            engagement: 1
+            points: 60
+            slots: [
+                "Command"
+                "Hardpoint"
+                "Crew"
+                "Crew"
+                "Gunner"
+                "Team"
+                "Cargo"
+                "Cargo"
+                "Title"
+            ]
+        }
+        {
+            name: "First Order Sympathizers"
+            id: 374
+            faction: "First Order"
+            ship: "Gozanti-class Cruiser"
+            skill: 7
+            engagement: 1
+            points: 60
+            slots: [
+                "Command"
+                "Hardpoint"
+                "Crew"
+                "Crew"
+                "Gunner"
+                "Team"
+                "Cargo"
+                "Cargo"
+            ]
+        }
+        {
+            name: "Separatist Privateers"
+            id: 375
+            faction: "Separatist Alliance"
+            ship: "C-ROC Cruiser"
+            skill: 7
+            engagement: 1
+            points: 58
+            slots: [
+                "Command"
+                "Hardpoint"
+                "Crew"
+                "Crew"
+                "Tactical Relay"
+                "Gunner"
+                "Team"
+                "Cargo"
+                "Device"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Syndicate Smugglers"
+            id: 376
+            faction: "Scum and Villainy"
+            ship: "C-ROC Cruiser"
+            skill: 7
+            engagement: 1
+            points: 58
+            slots: [
+                "Command"
+                "Hardpoint"
+                "Crew"
+                "Crew"
+                "Team"
+                "Cargo"
+                "Device"
+                "Illicit"
+                "Title"
+                "Configuration"
+            ]
+        }
+        
         
     ]
 
@@ -9262,7 +9604,7 @@ exportObj.basicCardData = ->
            slot: "Astromech"
            points: 2
            restriction_func: (ship) ->
-                not (ship.data.large? or ship.data.medium?)
+                not (ship.data.large? or ship.data.medium? or ship.data.huge?)
            modifier_func: (stats) ->
                 for turn in [0 ... stats.maneuvers[1].length]
                     if turn > 4
@@ -9781,7 +10123,7 @@ exportObj.basicCardData = ->
            name: "Seasoned Navigator"
            id: 59
            slot: "Crew"
-           pointsarray: [2,3,4,5,6,7,8]
+           pointsarray: [2,3,4,5,6,7,8,8,9]
            variableinit: true
        }
        {
@@ -9916,7 +10258,7 @@ exportObj.basicCardData = ->
            pointsarray: [4,4,4,8,16,24,32]
            variableinit: true
            restriction_func: (ship) ->
-                not (ship.data.large? or ship.data.medium?)
+                not (ship.data.large? or ship.data.medium? or ship.data.huge?)
        }
        {
            name: "Sense"
@@ -10069,7 +10411,7 @@ exportObj.basicCardData = ->
            unique: true
            charge: 2
            restriction_func: (ship) ->
-                not(ship.data.large?)
+                not (ship.data.large? or ship.data.huge?)
        }
        {
            name: "Contraband Cybernetics"
@@ -10094,7 +10436,7 @@ exportObj.basicCardData = ->
            name: "Inertial Dampeners"
            id: 95
            slot: "Illicit"
-           pointsarray: [2,3,4,5,6,7,8]
+           pointsarray: [2,3,4,5,6,7,8,8,9]
            variableinit: true
        }
        {
@@ -10195,7 +10537,7 @@ exportObj.basicCardData = ->
            points: 6
            charge: 2
            restriction_func: (ship) ->
-                not ((ship.data.large ? false) or (ship.data.medium ? false))
+                not (ship.data.large? or ship.data.medium? or ship.data.huge?)
        }
        {
            name: "Electronic Baffle"
@@ -10280,7 +10622,7 @@ exportObj.basicCardData = ->
            slot: "Talent"
            points: 3
            restriction_func: (ship) ->
-                "Boost" in ship.effectiveStats().actions and not (ship.data.large? or ship.data.medium?)
+                "Boost" in ship.effectiveStats().actions and not (ship.data.large? or ship.data.medium? or ship.data.huge?)
        }
        {
            name: "Debris Gambit"
@@ -10288,7 +10630,7 @@ exportObj.basicCardData = ->
            slot: "Talent"
            points: 4
            restriction_func: (ship) ->
-                not (ship.data.large?)
+                not (ship.data.large? or ship.data.huge?)
            modifier_func: (stats) ->
                 stats.actionsred.push 'Evade' if 'Evade' not in stats.actionsred
        }
@@ -10331,7 +10673,7 @@ exportObj.basicCardData = ->
            slot: "Talent"
            points: 7
            restriction_func: (ship) ->
-                not (ship.data.large?)
+                not (ship.data.large? or ship.data.huge?)
        }
        {
            name: "Lone Wolf"
@@ -10386,7 +10728,7 @@ exportObj.basicCardData = ->
            name: "Squad Leader"
            id: 131
            slot: "Talent"
-           pointsarray: [2,4,6,8,10,12,14] 
+           pointsarray: [2,4,6,8,10,12,14,16,18]
            variableinit: true
            unique: true
            modifier_func: (stats) ->
@@ -10397,7 +10739,7 @@ exportObj.basicCardData = ->
            name: "Swarm Tactics"
            id: 132
            slot: "Talent"
-           pointsarray: [3,3,3,3,3,4,5]
+           pointsarray: [3,3,3,3,3,4,5,6,7]
            variableinit: true
        }
        {
@@ -10790,46 +11132,16 @@ exportObj.basicCardData = ->
            ship: ["Attack Shuttle","Sheathipede-Class Shuttle"]
        }
        {
-            name: "Hardpoint: Cannon"
             id: 168
-            slot: "Hardpoint"
-            points: 0
-            ignorecollection: true
-            faction: []
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Cannon"
-                }
-            ]
+            skip: true
        }
        {
-            name: "Hardpoint: Torpedo"
             id: 169
-            slot: "Hardpoint"
-            ignorecollection: true
-            faction: []
-            points: 0
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Torpedo"
-                }
-            ]
+            skip: true
        }
        {
-            name: "Hardpoint: Missile"
             id: 170
-            slot: "Hardpoint"
-            ignorecollection: true
-            faction: []
-            points: 0
-            confersAddons: [
-                {
-                    type: exportObj.Upgrade
-                    slot: "Missile"
-                }
-            ]
+            skip: true
        }
        {
             name: "Black One"
@@ -10895,10 +11207,10 @@ exportObj.basicCardData = ->
             name: "Primed Thrusters"
             id: 178
             slot: "Tech"
-            pointsarray: [4,5,6,7,8,9,10]
+            pointsarray: [4,5,6,7,8,9,10,11,12]
             variableinit: true
             restriction_func: (ship) ->
-                not (ship.data.large? or ship.data.medium?)
+                not (ship.data.large? or ship.data.medium? or ship.data.huge?)
        }
        {
             name: "Kylo Ren"
@@ -11577,7 +11889,7 @@ exportObj.basicCardData = ->
             pointsarray: [3,3,3,4,7,10,13]
             variableinit: true
             restriction_func: (ship) ->
-                not ((ship.data.large ? false) or (ship.data.medium ? false))
+                not (ship.data.large? or ship.data.medium? or ship.data.huge?)
        }
        {
             name: "Foresight"
@@ -11630,14 +11942,602 @@ exportObj.basicCardData = ->
             name: "Snap Shot"
             id: 256
             slot: "Talent"
-            pointsarray: [7,8,9]
+            pointsarray: [7,8,9,12]
             variablebase: true
             attack: 2
             range: """2"""
             rangebonus: true
             
        }
-
+       {
+            name: "Agent of the Empire"
+            id: 257
+            unique: true
+            faction: "Galactic Empire"
+            slot: "Command"
+            points: 4
+            ship: ["TIE Advanced","TIE Advanced Prototype"]
+            restriction_func: (ship) ->
+                not (ship.data.large? or ship.data.medium? or ship.data.huge?)
+       }
+       {
+            name: "First Order Elite"
+            id: 258
+            unique: true
+            faction: "First Order"
+            slot: "Command"
+            points: 4
+            restriction_func: (ship) ->
+                not (ship.data.large? or ship.data.medium? or ship.data.huge?)
+       }
+       {
+            name: "Veteran Wing Leader"
+            id: 259
+            slot: "Command"
+            points: 4
+            restriction_func: (ship) ->
+                not (ship.data.large? or ship.data.medium? or ship.data.huge?)
+       }
+       {
+            name: "Dreadnought Hunter"
+            id: 260
+            slot: "Command"
+            points: 10
+            max_per_squad: 2
+            restriction_func: (ship) ->
+                (not (ship.data.large? or ship.data.medium? or ship.data.huge?)) and (ship.pilot.skill > 3)
+       }
+       {
+            name: "Admiral Ozzel"
+            id: 261
+            unique: true
+            slot: "Command"
+            points: 6
+            faction: "Galactic Empire"
+            unequips_upgrades: [ "Crew" ]
+            also_occupies_upgrades: [ "Crew" ]
+            restriction_func: (ship) ->
+                ship.data.huge? and ship.doesSlotExist "Crew"
+       }
+       {
+            name: "Azmorigan"
+            id: 262
+            unique: true
+            slot: "Command"
+            points: 4
+            faction: "Scum and Villainy"
+            unequips_upgrades: [ "Crew" ]
+            also_occupies_upgrades: [ "Crew" ]
+            restriction_func: (ship) ->
+                ship.data.huge? and ship.doesSlotExist "Crew"
+       }
+       {
+            name: "Captain Needa"
+            id: 263
+            unique: true
+            faction: "Galactic Empire"
+            slot: "Command"
+            points: 8
+            unequips_upgrades: [ "Crew" ]
+            also_occupies_upgrades: [ "Crew" ]
+            restriction_func: (ship) ->
+                ship.data.huge? and ship.doesSlotExist "Crew"
+       }
+       {
+            name: "Carlist Rieekan"
+            id: 264
+            unique: true
+            faction: "Rebel Alliance"
+            slot: "Command"
+            points: 6
+            unequips_upgrades: [ "Crew" ]
+            also_occupies_upgrades: [ "Crew" ]
+            modifier_func: (stats) ->
+                stats.actionsred.push 'Evade' if 'Evade' not in stats.actionsred
+            restriction_func: (ship) ->
+                ship.data.huge? and ship.doesSlotExist "Crew"
+       }
+       {
+            name: "Jan Dodonna"
+            id: 265
+            unique: true
+            faction: "Rebel Alliance"
+            slot: "Command"
+            points: 4
+            unequips_upgrades: [ "Crew" ]
+            also_occupies_upgrades: [ "Crew" ]
+            restriction_func: (ship) ->
+                ship.data.huge? and ship.doesSlotExist "Crew"
+       }
+       {
+            name: "Raymus Antilles"
+            id: 266
+            unique: true
+            slot: "Command"
+            points: 12
+            faction: "Rebel Alliance"
+            unequips_upgrades: [ "Crew" ]
+            also_occupies_upgrades: [ "Crew" ]
+            restriction_func: (ship) ->
+                ship.data.huge? and ship.doesSlotExist "Crew"
+       }
+       {
+            name: "Stalwart Captain"
+            id: 267
+            unique: true
+            slot: "Command"
+            points: 6
+            unequips_upgrades: [ "Crew" ]
+            also_occupies_upgrades: [ "Crew" ]
+            restriction_func: (ship) ->
+                ship.data.huge? and ship.doesSlotExist "Crew"
+       }
+       {
+            name: "Strategic Commander"
+            id: 268
+            unique: true
+            slot: "Command"
+            charge: 3
+            points: 10
+            unequips_upgrades: [ "Crew" ]
+            also_occupies_upgrades: [ "Crew" ]
+            restriction_func: (ship) ->
+                ship.data.huge? and ship.doesSlotExist "Crew"
+       }
+       {
+            name: "Ion Cannon Battery"
+            id: 269
+            slot: "Hardpoint"
+            points: 6
+            attackt: 4
+            range: """2-4"""
+            modifier_func: (stats) ->
+                stats.actions.push 'Rotate Arc' if 'Rotate Arc' not in stats.actions
+       }
+       {
+            name: "Targeting Battery"
+            id: 270
+            slot: "Hardpoint"
+            points: 9
+            attackt: 3
+            range: """2-5"""
+            modifier_func: (stats) ->
+                stats.actions.push 'Rotate Arc' if 'Rotate Arc' not in stats.actions
+       }
+       {
+            name: "Ordnance Tubes"
+            id: 271
+            slot: "Hardpoint"
+            points: 2
+       }
+       {
+            name: "Point-Defense Battery"
+            id: 272
+            slot: "Hardpoint"
+            points: 10
+            attackdt: 2
+            range: """1-2"""
+            modifier_func: (stats) ->
+                stats.actions.push 'Rotate Arc' if 'Rotate Arc' not in stats.actions
+       }
+       {
+            name: "Turbolaser Battery"
+            id: 273
+            slot: "Hardpoint"
+            points: 15
+            attackt: 3
+            range: """3-5"""
+            modifier_func: (stats) ->
+                stats.actions.push 'Rotate Arc' if 'Rotate Arc' not in stats.actions
+            restriction_func: (ship) ->
+                ship.effectiveStats().energy > 4
+       }
+       {
+            name: "Toryn Farr"
+            id: 274
+            unique: true
+            faction: "Rebel Alliance"
+            slot: "Crew"
+            points: 4
+            modifier_func: (stats) ->
+                stats.actions.push 'Lock'
+                stats.actions.push 'R> Coordinate'
+            restriction_func: (ship) ->
+                ship.data.huge?
+       }
+       {
+            name: "Bombardment Specialists"
+            id: 275
+            slot: "Team"
+            points: 6
+            modifier_func: (stats) ->
+                stats.actions.push '*Lock'
+                stats.actions.push '> Calculate'
+       }
+       {
+            name: "Comms Team"
+            id: 276
+            slot: "Team"
+            points: 8
+            modifier_func: (stats) ->
+                stats.actions.push '*Coordinate'
+                stats.actions.push '> Calculate'
+                stats.actions.push '*Jam'
+                stats.actions.push '> Calculate'
+       }
+       {
+            name: "Damage Control Team"
+            id: 277
+            slot: "Team"
+            points: 3
+            modifier_func: (stats) ->
+                stats.actions.push '*Reinforce'
+                stats.actions.push '> Calculate'
+       }
+       {
+            name: "Gunnery Specialists"
+            id: 278
+            slot: "Team"
+            points: 8
+            modifier_func: (stats) ->
+                stats.actions.push '*Rotate Arc'
+                stats.actions.push '> Calculate'
+       }
+       {
+            name: "IG-RM Droids"
+            id: 279
+            slot: "Team"
+            faction: "Scum and Villainy"
+            points: 2
+            modifier_func: (stats) ->
+                stats.actions.push 'Calculate' if 'Calculate' not in stats.actions
+       }
+       {
+            name: "Ordnance Team"
+            id: 280
+            slot: "Team"
+            points: 4
+       }
+       {
+            name: "Sensor Experts"
+            id: 281
+            slot: "Team"
+            points: 10
+            modifier_func: (stats) ->
+                stats.actions.push '*Lock'
+                stats.actions.push '> Calculate'
+       }
+       {
+            name: "Adaptive Shields"
+            id: 282
+            slot: "Cargo"
+            points: 10
+       }
+       {
+            name: "Boosted Scanners"
+            id: 283
+            slot: "Cargo"
+            points: 8
+       }
+       {
+            id: 284
+            skip: true
+       }
+       {
+            name: "Tibanna Reserves"
+            id: 285
+            slot: "Cargo"
+            points: 3
+            charge: 3
+       }
+       {
+            name: "Optimized Power Core"
+            id: 286
+            slot: "Cargo"
+            points: 6
+       }
+       {
+            name: "Quick-Release Locks"
+            id: 287
+            slot: "Illicit"
+            charge: 2
+            points: 5
+            restriction_func: (ship) ->
+                ship.data.huge?
+       }
+       {
+            name: "Saboteur's Map"
+            id: 288
+            slot: "Illicit"
+            points: 3
+            restriction_func: (ship) ->
+                ship.data.huge?
+       }
+       {
+            name: "Scanner Baffler"
+            id: 289
+            slot: "Illicit"
+            points: 8
+            restriction_func: (ship) ->
+                ship.data.huge?
+       }
+       {
+            name: "Dodonna's Pride"
+            id: 290
+            slot: "Title"
+            unique: true
+            ship: "CR90 Corellian Corvette"
+            faction: "Rebel Alliance"
+            points: 8
+            modifier_func: (stats) ->
+                stats.shields -= 2
+                stats.actions.push '*Evade'
+                stats.actions.push 'R> Coordinate'
+                stats.actions.push '*Focus'
+                stats.actions.push 'R> Coordinate'
+            confersAddons: [
+                {
+                    type: exportObj.Upgrade
+                    slot: 'Team'
+                }
+                {
+                    type: exportObj.Upgrade
+                    slot: 'Cargo'
+                }
+            ]
+       }
+       {
+            name: "Jaina's Light"
+            id: 291
+            slot: "Title"
+            unique: true
+            ship: "CR90 Corellian Corvette"
+            faction: "Rebel Alliance"
+            points: 6
+            modifier_func: (stats) ->
+                stats.shields += 1
+                stats.energy -= 1
+       }
+       {
+            name: "Liberator"
+            id: 292
+            slot: "Title"
+            unique: true
+            ship: "CR90 Corellian Corvette"
+            faction: "Rebel Alliance"
+            points: 5
+            modifier_func: (stats) ->
+                stats.energy += 1
+       }
+       {
+            name: "Tantive IV"
+            id: 293
+            slot: "Title"
+            unique: true
+            ship: "CR90 Corellian Corvette"
+            faction: "Rebel Alliance"
+            points: 6
+            confersAddons: [
+                {
+                    type: exportObj.Upgrade
+                    slot: 'Crew'
+                }
+                {
+                    type: exportObj.Upgrade
+                    slot: 'Crew'
+                }
+            ]
+       }
+       {
+            name: "Bright Hope"
+            id: 294
+            slot: "Title"
+            unique: true
+            ship: "GR-75 Medium Transport"
+            faction: "Rebel Alliance"
+            points: 5
+       }
+       {
+            name: "Luminous"
+            id: 295
+            slot: "Title"
+            unique: true
+            ship: "GR-75 Medium Transport"
+            faction: "Rebel Alliance"
+            points: 12
+            modifier_func: (stats) ->
+                stats.shields -= 1
+                stats.energy += 2
+       }
+       {
+            name: "Quantum Storm"
+            id: 296
+            slot: "Title"
+            unique: true
+            ship: "GR-75 Medium Transport"
+            faction: "Rebel Alliance"
+            points: 3
+       }
+       {
+            name: "Assailer"
+            id: 297
+            slot: "Title"
+            unique: true
+            ship: "CR90 Corellian Corvette"
+            faction: "Galactic Empire"
+            points: 7
+       }
+       {
+            name: "Corvus"
+            id: 298
+            slot: "Title"
+            unique: true
+            ship: "Raider-class Corvette"
+            faction: "Galactic Empire"
+            points: 3
+       }
+       {
+            name: "Impetuous"
+            id: 299
+            slot: "Title"
+            unique: true
+            ship: "Raider-class Corvette"
+            faction: "Galactic Empire"
+            points: 4
+       }
+       {
+            name: "Instigator"
+            id: 300
+            slot: "Title"
+            unique: true
+            ship: "Raider-class Corvette"
+            faction: "Galactic Empire"
+            points: 6
+       }
+       {
+            name: "Blood Crow"
+            id: 301
+            slot: "Title"
+            unique: true
+            ship: "Gozanti-class Cruiser"
+            faction: "Galactic Empire"
+            points: 5
+       }
+       {
+            name: "Requiem"
+            id: 302
+            slot: "Title"
+            unique: true
+            ship: "Gozanti-class Cruiser"
+            faction: "Galactic Empire"
+            points: 7
+       }
+       {
+            name: "Suppressor"
+            id: 303
+            slot: "Title"
+            unique: true
+            ship: "Gozanti-class Cruiser"
+            faction: "Galactic Empire"
+            points: 6
+       }
+       {
+            name: "Vector"
+            id: 304
+            slot: "Title"
+            unique: true
+            ship: "Gozanti-class Cruiser"
+            faction: "Galactic Empire"
+            points: 8
+       }
+       {
+            name: "Broken Horn"
+            id: 305
+            slot: "Title"
+            unique: true
+            ship: "C-ROC Cruiser"
+            faction: "Scum and Villainy"
+            points: 4
+            confersAddons: [
+                {
+                    type: exportObj.Upgrade
+                    slot: 'Crew'
+                }
+                {
+                    type: exportObj.Upgrade
+                    slot: 'Illicit'
+                }
+            ]
+       }
+       {
+            name: "Merchant One"
+            id: 306
+            slot: "Title"
+            unique: true
+            ship: "C-ROC Cruiser"
+            faction: "Scum and Villainy"
+            points: 8
+            modifier_func: (stats) ->
+                stats.actionsred.push 'Evade' if 'Evade' not in stats.actionsred
+                stats.actions.push 'Coordinate' if 'Coordinate' not in stats.actions
+            confersAddons: [
+                {
+                    type: exportObj.Upgrade
+                    slot: 'Turret'
+                }
+                {
+                    type: exportObj.Upgrade
+                    slot: 'Team'
+                }
+                {
+                    type: exportObj.Upgrade
+                    slot: 'Cargo'
+                }
+            ]
+       }
+       {
+            name: "Insatiable Worrt"
+            id: 307
+            slot: "Title"
+            unique: true
+            ship: "C-ROC Cruiser"
+            faction: "Scum and Villainy"
+            points: 7
+            modifier_func: (stats) ->
+                stats.hull += 3
+                stats.shields -= 1
+                stats.energy -= 1
+            confersAddons: [
+                {
+                    type: exportObj.Upgrade
+                    slot: 'Cargo'
+                }
+            ]
+       }
+       {
+            name: "Corsair Refit"
+            id: 308
+            slot: "Configuration"
+            ship: "C-ROC Cruiser"
+            max_per_squad: 2
+            points: 15
+            modifier_func: (stats) ->
+                stats.hull += 2
+                stats.shields -= 2
+                stats.energy += 1
+            confersAddons: [
+                {
+                    type: exportObj.Upgrade
+                    slot: 'Cannon'
+                }
+                {
+                    type: exportObj.Upgrade
+                    slot: 'Turret'
+                }
+                {
+                    type: exportObj.Upgrade
+                    slot: 'Missile'
+                }
+            ]
+       }
+       {
+            name: "Thunderstrike"
+            id: 309
+            slot: "Title"
+            unique: true
+            ship: "CR90 Corellian Corvette"
+            faction: "Rebel Alliance"
+            points: 4
+            modifier_func: (stats) ->
+                stats.hull += 3
+                stats.shields -= 3
+            confersAddons: [
+                {
+                    type: exportObj.Upgrade
+                    slot: 'Gunner'
+                }
+            ]
+       }
     ]
 
 
@@ -16380,6 +17280,7 @@ exportObj.fixIcons = (data) ->
             .replace(/%TALENT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-talent"></i>')
             .replace(/%FORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>')
             .replace(/%CHARGE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>')
+            .replace(/%ENERGY%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-energy"></i>')
             .replace(/%CALCULATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>')
             .replace(/%BANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankleft"></i>')
             .replace(/%BANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankright"></i>')
@@ -16540,6 +17441,23 @@ exportObj.hyperspaceUpgradeExclusions = [
 
     # FO
 ]
+
+exportObj.epicExclusionsList = [
+    'CR90 Corellian Corvette',
+    'Raider-class Corvette',
+    'GR-75 Medium Transport',
+    'Gozanti-class Cruiser',
+    'C-ROC Cruiser'
+]
+
+
+exportObj.epicExclusions = (data) ->
+    if data.ship? and (data.ship in exportObj.epicExclusionsList)
+        return false
+    else if data.slot? and (data.slot == "Command")
+        return false
+    else
+        return true
 
 # Ships/Pilots excluded unless in the included list (with further excluded pilots list for included ships, i.e u-wing)
 # while upgrades assumed included unless on the excluded list
@@ -18626,13 +19544,6 @@ exportObj.cardLoaders.Deutsch = () ->
 
 
 
-        "Hardpoint: Cannon":
-           text: """Fügt einen %CANNON% Slot hinzu"""
-        "Hardpoint: Missile":
-           text: """Fügt einen %MISSILE% Slot hinzu"""
-        "Hardpoint: Torpedo":
-           text: """Fügt einen %TORPEDO% Slot hinzu"""
-
             
     condition_translations =
         'Suppressive Fire':
@@ -18679,31 +19590,6 @@ exportObj.codeToLanguage.en = 'English'
 exportObj.translations ?= {}
 # This is here mostly as a template for other languages.
 exportObj.translations.English =
-    action: #do not change this anymore. We use Icons instead of words
-        "Barrel Roll": '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>'
-        "Boost": '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>'
-        "Evade": '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>'
-        "F-Evade": '<i class="xwing-miniatures-font force xwing-miniatures-font-evade"></i>'
-        "Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>'
-        "*Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>'
-        "Lock": '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>'
-        "Reload": '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>'
-        "Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>'
-        "Reinforce": '<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i>'
-        "Jam": '<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i>'
-        "Calculate": '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>'
-        "Coordinate": '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>'
-        "F-Coordinate": '<i class="xwing-miniatures-font force xwing-miniatures-font-coordinate"></i>'
-        "Cloak": '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>'
-        "Slam": '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>'
-        "R> Barrel Roll": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-barrelroll"></i>'
-        "R> Boost": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-boost"></i>'
-        "R> Focus": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-focus"></i>'
-        "R> Lock": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-lock"></i>'
-        "> Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>'
-        "R> Rotate Arc": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-rotatearc"></i>'
-        "R> Evade": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-evade"></i>'
-        "R> Calculate": '<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> <i class="xwing-miniatures-font red xwing-miniatures-font-calculate"></i>'
     sloticon:
         "Astromech": '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>'
         "Force": '<i class="xwing-miniatures-font xwing-miniatures-font-forcepower"></i>'
@@ -18723,6 +19609,10 @@ exportObj.translations.English =
         "Tech": '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>'
         "Title": '<i class="xwing-miniatures-font xwing-miniatures-font-title"></i>'
         "Hardpoint": '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>'
+        "Team": '<i class="xwing-miniatures-font xwing-miniatures-font-team"></i>'
+        "Cargo": '<i class="xwing-miniatures-font xwing-miniatures-font-cargo"></i>'
+        "Command": '<i class="xwing-miniatures-font xwing-miniatures-font-command"></i>'
+        "HardpointShip": '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>'
         "Tactical Relay": '<i class="xwing-miniatures-font xwing-miniatures-font-tacticalrelay"></i>'
 
     slot:
@@ -18735,6 +19625,7 @@ exportObj.translations.English =
         "Sensor": "Sensor"
         "Torpedo": "Torpedo"
         "Turret": "Turret"
+        "HardpointShip": "Hardpoint"
         "Hardpoint": "Hardpoint"
         "Illicit": "Illicit"
         "Configuration": "Configuration"
@@ -19994,6 +20885,41 @@ exportObj.cardLoaders.English = () ->
         "Gorgol":
            text: """During the System Phase, you may gain 1 disarm token and choose a friendly ship at range 1-2. If you do, it gains 1 tractor token, then repairs 1 of its faceup <strong>Ship</strong> trait damage cards. %LINEBREAK%<strong>Pinpoint Tractor Array:</strong> You cannot rotate your %SINGLETURRETARC% to your %REARARC%. After you execute a maneuver, you may gain 1 tractor token to perform a %ROTATEARC% action."""
 
+            
+        # Epic Ships
+        "Republic Judiciary":
+           display_name: """Republic Judiciary"""
+           text: """<i class = flavor_text>The Galactic Republic uses small, swift warships such as the CR90 corvette to respond rapidly to Separatist incursions across the galaxy.</i> %LINEBREAK% <strong>Broadside Batteries:</strong> You can acquire locks and perform primary attacks at range 1-4."""
+        "Alderaanian Guard":
+           display_name: """Alderaanian Guard"""
+           text: """<i class = flavor_text>A craft used since before the Clone Wars, the CR90 corvette is favored by the Royal House of Alderaan for its versatility.</i> %LINEBREAK% <strong>Broadside Batteries:</strong> You can acquire locks and perform primary attacks at range 1-4."""
+        "Outer Rim Patrol":
+           display_name: """Outer Rim Patrol"""
+           text: """<i class = flavor_text>The <untalic>Raider</untalic>-class corvette is one of the Empire's smallest warships, often used for reconnaissance missions, surgical strikes, or suppressing enemy starfighters with its powerful ordnance.</i> %LINEBREAK% <strong>Concentrated Batteries:</strong> While you perform a primary, %TORPEDO%, or %MISSILE% attack, if the defender is in your %BULLSEYEARC%, roll 1 additional die."""
+        "First Order Collaborators":
+           display_name: """First Order Collaborators"""
+           text: """<i class = flavor_text>The First Order's supporters make use of former Imperial vessels, such as the <untalic>Raider</untalic>-class corvette. Though it has outlived the regime that created it, this craft still spreads terror across the galaxy.</i> %LINEBREAK% <strong>Concentrated Batteries:</strong> While you perform a primary, %TORPEDO%, or %MISSILE% attack, if the defender is in your %BULLSEYEARC%, roll 1 additional die."""
+        "Echo Base Evacuees":
+           display_name: """Echo Base Evacuees"""
+           text: """<i class = flavor_text>The GR-75 medium transport acquitted itself well at battles such as the evacuation of Hoth, where several of these ships were pivotal to the Rebel forces' escape.</i> %LINEBREAK% <strong>Resupply Craft:</strong> After another friendly ship at range 0-1 performs an action, you may spend 1 %ENERGY%. If you do, it removes 1 orange or red token, or recovers 1 shield."""
+        "New Republic Volunteers":
+           display_name: """New Republic Volunteers"""
+           text: """<i class = flavor_text>In use since the Galactic Civil War, groups within the New Republic still utilize the GR-75 medium transport for supply and aid missions.</i> %LINEBREAK% <strong>Resupply Craft:</strong> After another friendly ship at range 0-1 performs an action, you may spend 1 %ENERGY%. If you do, it removes 1 orange or red token, or recovers 1 shield."""
+        "Outer Rim Garrison":
+           display_name: """Outer Rim Garrison"""
+           text: """<i class = flavor_text>Capable of carrying TIE fighters and operating independently for long periods of time, the <untalic>Gozanti</untalic>-class cruiser is a common sight in the skies of downtrodden worlds across the Outer Rim.</i> %LINEBREAK% <strong>Docking Clamps:</strong> You can dock up to 4 small ships."""
+        "First Order Sympathizers":
+           display_name: """First Order Sympathizers"""
+           text: """<i class = flavor_text>The First Order's swift rise to power rests upon ruthless innovation. However, sympathizers often repurpose Imperial designs, like the venerable <untalic>Gozanti</untalic>-class cruiser, in surveillance and patrol operations.</i> %LINEBREAK% <strong>Docking Clamps:</strong> You can dock up to 4 small ships."""
+        "Separatist Privateers":
+           display_name: """Separatist Privateers"""
+           text: """<i class = flavor_text>The Separatist Alliance makes use of all manner of unsavory contacts in its fight against the Galactic Republic, including corsairs and criminal cartels.</i> %LINEBREAK% <strong>Overdrive Burners:</strong> While you defend, if your revealed maneuver is speed 3-5, roll 1 additional defense die."""
+        "Syndicate Smugglers":
+           display_name: """Syndicate Smugglers"""
+           text: """<i class = flavor_text>Vessels like the C-ROC Cruiser allow criminal operations across the Outer Rim to move massive amounts of illicit materials, or project power that can bully small colonies into compliance.</i> %LINEBREAK% <strong>Overdrive Burners:</strong> While you defend, if your revealed maneuver is speed 3-5, roll 1 additional defense die."""
+            
+            
+
     upgrade_translations =
         "0-0-0":
            display_name: """0-0-0"""
@@ -20749,15 +21675,124 @@ exportObj.cardLoaders.English = () ->
         "Snap Shot":
            display_name: """Snap Shot"""
            text: """After an enemy ship executes a maneuver, you may perform this attack against it as a bonus attack. %LINEBREAK% <strong>Attack:</strong> Your dice cannot be modified."""
+
+        # Epic upgrades
+        "Admiral Ozzel":
+           display_name: """Admiral Ozzel"""
+           text: """While a friendly large or huge ship at range 0-3 executes a maneuver, it may suffer 1 %HIT% damage to execute a maneuver of the same bearing and difficulty of a speed 1 higher or lower instead."""
+        "Azmorigan":
+           display_name: """Azmorigan"""
+           text: """During the End Phase, you may choose up to 2 friendly ships at range 0-1. If you do, each of these ships does not remove 1 calculate or evade token."""
+        "Captain Needa":
+           display_name: """Captain Needa"""
+           text: """After a friendly ship at range 0-4 reveals its dial, you may spend 1 %CHARGE%. If you do, it sets its dial to another maneuver of the same difficulty and speed."""
+        "Strategic Commander":
+           display_name: """Strategic Commander"""
+           text: """After a friendly ship at range 0-4 reveals its dial, you may spend 1 %CHARGE%. If you do, it sets its dial to another maneuver of the same difficulty and speed."""
+        "Carlist Rieekan":
+           display_name: """Carlist Rieekan"""
+           text: """After a friendly ship at range 0-2 is destroyed, you may choose a friendly ship at range 0-2. If you do, it may perform a red %EVADE% action."""
+        "Jan Dodonna":
+           display_name: """Jan Dodonna"""
+           text: """Friendly ships at range 0-3 can spend your focus and evade tokens."""
+        "Raymus Antilles":
+           display_name: """Raymus Antilles"""
+           text: """After you are destroyed, each friendly ship at range 0-1 gains 1 focus token. After you are destroyed, you are not removed until the end of the End Phase."""
+        "Agent of the Empire":
+           display_name: """Agent of the Empire"""
+           text: """You are a <strong>wing leader</strong>. Your wingmates must be 2, 3, 4, or 5 TIE/ln fighters. %LINEBREAK% While you defend, up to 2 of your wingmates in the attack arc may suffer 1 %HIT% or %CRIT% damage to cancel a matching result."""
+        "First Order Elite":
+           display_name: """First Order Elite"""
+           text: """You are a <strong>wing leader</strong>. Your wingmates must be 2 or 3 TIE/fo fighters or TIE/sf fighters. %LINEBREAK% While you defend, up to 2 of your wingmates in the attack arc may suffer 1 %HIT% or %CRIT% damage to cancel a matching result."""
+        "Dreadnought Hunter":
+           display_name: """Dreadnought Hunter"""
+           text: """While you perform an attack against a huge ship, if the attack deals a faceup damage card to the defender and the defender is in your %BULLSEYEARC%, you may apply the <strong>Precision Shot</strong> effect even if you are not in the specified arc."""
+        "Ion Cannon Battery":
+           display_name: """Ion Cannon Battery"""
+           text: """<strong>Online: </strong> Setup: Equip this side faceup.%LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. If this attack hits, the defender suffers 1 %CRIT% damage, and all %HIT%/%CRIT% results inflict ion tokens instead of damage. %LINEBREAK%<strong>Offline: </strong> %LINEBREAK% """
+        "Targeting Battery":
+           display_name: """Targeting Battery"""
+           text: """<strong>Online: </strong> Setup: Equip this side faceup.%LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. After you perform this attack, you may acquire a lock on the defender. %LINEBREAK%<strong>Offline: </strong> %LINEBREAK% """
+        "Point-Defense Battery":
+           display_name: """Point-Defense Battery"""
+           text: """<strong>Online: </strong> Setup: Equip this side faceup. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK%<strong>Offline: </strong> %LINEBREAK% """
+        "Turbolaser Battery":
+           display_name: """Turbolaser Battery"""
+           text: """<strong>Online: </strong> Setup: Equip this side faceup.%LINEBREAK% Bonus Attack (%LOCK%): Spend 3 %ENERGY%. If this attack hits, add 3 %HIT% results. %LINEBREAK% <strong>Offline: </strong> %LINEBREAK% After you engage, you may spend 2 %ENERGY% to flip this card."""
+        "Bombardment Specialists":
+           display_name: """Bombardment Specialists"""
+           text: """Adds %LOCK% <i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> %CALCULATE%. %LINEBREAK% While you perform an attack, you may spend 1 calculate token to increase or decrease the range requirement by 1, to a limit of 0-5."""
+        "Comms Team":
+           display_name: """Comms Team"""
+           text: """Adds %COORDINATE% <i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> %CALCULATE%, %JAM% <i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> %CALCULATE%. %LINEBREAK% After you perform a %COORDINATE% action, you may spend up to 2 %ENERGY% to coordinate that many additional ships at range 0-1 of the ship you coordinated."""
+        "IG-RM Droids":
+           display_name: """IG-RM Droids"""
+           text: """While you perform an attack, if you are calculating, you may change 1 %HI% result to a %CRIT% result."""
+        "Gunnery Specialists":
+           display_name: """Gunnery Specialists"""
+           text: """Adds %ROTATEARC% <i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> %CALCULATE%. %LINEBREAK% While you perform a primary or %HARDPOINT% attack, you may spend 1 or more %ENERGY% to reroll that many attack dice."""
+        "Damage Control Team":
+           display_name: """Damage Control Team"""
+           text: """Adds %REINFORCE% <i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> %CALCULATE%. %LINEBREAK% Before you engage, you may spend 1 or more %ENERGY% to flip that many of your <strong>Offline</strong> upgrade cards.%LINEBREAK% Action: Spend 1 or more %ENERGY% to repair that many of your faceup <strong>Ship</strong> damage cards."""
+        "Sensor Experts":
+           display_name: """Sensor Experts"""
+           text: """Adds %LOCK% <i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> %CALCULATE%. %LINEBREAK% You can maintain up to 3 locks on different objects. %LINEBREAK% After you perform a %LOCK% action, you may spend up to 2 %ENERGY% to acquire a lock on that many other objects at range 0-1 of the object you locked, ignoring range restrictions."""
+        "Quick-Release Locks":
+           display_name: """Quick-Release Locks"""
+           text: """During the System Phase, you may spend 1 %CHARGE% to drop 1 cargo crate drift using the [2 %BANKLEFT%], [2 %STRAIGHT%], or [2 %BANKRIGHT%] template. %LINEBREAK% This card's %CHARGE% cannot be recovered."""
+        "Saboteur's Map":
+           display_name: """Saboteur's Map"""
+           text: """At the end of Setup, you may spend up to 1 %CHARGE% from each of your equipped <strong>Mine</strong> upgrades to place the corresponding device in the play area beyond range 2 of any enemy ship, strategic marker, or other device."""
+        "Scanner Baffler":
+           display_name: """Scanner Baffler"""
+           text: """At the end of Setup, you may choose any number of other friendly, non-huge ships in your deployment area at range 0-1. If you do, place those ships anywhere in the same deployment area."""
+        "Adaptive Shields":
+           display_name: """Adaptive Shields"""
+           text: """While another friendly ship at range 0-1 defends, if it is a smaller size than you, you may spend 1 shield or 2 %ENERGY% to cancel 1 %HIT% or %CRIT% result."""
+        "Boosted Scanners":
+           display_name: """Boosted Scanners"""
+           text: """While you lock, coordinate, or jam, you may spend up to 3 %ENERGY% to increase the range at which you can choose an object by 1 per %ENERGY% spent this way, to a maximum of range 5."""
+        "Tibanna Reserves":
+           display_name: """Tibanna Reserves"""
+           text: """Action: Spend 1 %CHARGE% to recover 2 %ENERGY%."""
+        "Toryn Farr":
+           display_name: """Toryn Farr"""
+           text: """After you coordinate a friendly ship, it may acquire a lock on a ship you are locking, ignoring range restrictions."""
+        "Dodonna's Pride":
+           display_name: """Dodonna's Pride"""
+           text: """Add %TEAM% and %CARGO% slots. Adds %EVADE% <i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <r>%COORDINATE%</r>, %FOCUS% <i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <r>%COORDINATE%</r>"""
+        "Jaina's Light":
+           display_name: """Jaina's Light"""
+           text: """While a friendly ship at range 0-2 defends, if the attack is obstructed by an obstacle, you may spend 1 %ENERGY%. If you do, the defender rolls 1 additional defense die."""
+        "Liberator":
+           display_name: """Liberator"""
+           text: """You can dock up to 2 small ships. %LINEBREAK% After a ship deploys from you, it may perform a %FOCUS% or %BARRELROLL% action."""
+        "Tantive IV":
+           display_name: """Tantive IV"""
+           text: """Add 2 %CREW% slots. %LINEBREAK% While you defend, if the attacker is in your %REARARC%, you may roll 1 additional defense die."""
+        "Thunderstrike":
+           display_name: """Thunderstrike"""
+           text: """Add %GUNNER% slot. %LINEBREAK% While you perform a bonus attack, if you have not attacked the defender this round, you may reroll 1 attack die."""
+        "Luminous":
+           display_name: """Luminous"""
+           text: """Setup: You are placed in reserve. %LINEBREAK% At the end of setup, you are placed in the play area at range 0-2 of a friendly ship."""
+        "Corvus":
+           display_name: """Corvus"""
+           text: """You can dock up to 2 small ships. %LINEBREAK% After you perform a %CALCULATE% action, gain 1 calculate token."""
+        "Broken Horn":
+           display_name: """Broken Horn"""
+           text: """Add %CREW% and %ILLICIT% slots. %LINEBREAK% If you are damaged, reduce the difficulty of your speed 3-5 maneuvers."""
+        "Merchant One":
+           display_name: """Merchant One"""
+           text: """Add %TURRET%, %TEAM%, and %CARGO% slots. %LINEBREAK% Bonus Attack: Perform a %TURRET% attack."""
+        "Insatiable Worrt":
+           display_name: """Insatiable Worrt"""
+           text: """Add %CARGO% slot. %LINEBREAK% During the End Phase, you may recover 1 additional shield or 1 additional %ENERGY%."""
+        "Corsair Refit":
+           display_name: """Corsair Refit"""
+           text: """Add %CANNON%, %TURRET%, and %MISSILE% slots. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY% to perform a %CANNON%, %TURRET%, or %MISSILE% attack."""
             
-
-        "Hardpoint: Cannon":
-           text: """Adds a %CANNON% slot"""
-        "Hardpoint: Missile":
-           text: """Adds a %MISSILE% slot"""
-        "Hardpoint: Torpedo":
-           text: """Adds a %TORPEDO% slot"""
-
+            
         
     condition_translations =
         'Suppressive Fire':
@@ -25915,12 +26950,6 @@ exportObj.cardLoaders.Magyar = () ->
            display_name: """“Zeb” Orrelios"""
            text: """<i>csak Lázadók</i>%LINEBREAK%Végrehajthatsz elsődleges támadást 0-ás távolságban. Az ellenséges hajók 0-ás távolságban végrehajthatnak elsődleges támadást ellened."""
 
-        "Hardpoint: Cannon":
-           text: """Kapsz egy %CANNON% fejlesztés helyet."""
-        "Hardpoint: Missile":
-           text: """Kapsz egy %MISSILE% fejlesztés helyet."""
-        "Hardpoint: Torpedo":
-           text: """Kapsz egy %TORPEDO% fejlesztés helyet."""
         "Black One":
            text: """<i>Kapott akció: %SLAM%</i> %LINEBREAK% Miután végrehajtasz egy %SLAM% akciót, elvesztesz 1&nbsp;%CHARGE% jelzőt. Ezután kaphatsz 1 ion jelzőt, hogy levedd az inaktív fegyverzet jelzőt. Ha a %CHARGE% nem aktív, nem hajthatsz végre %SLAM% akciót."""
         "Heroic":
@@ -35655,11 +36684,6 @@ exportObj.manifestByExpansion =
             count: 2
         }
         {
-            name: 'YT-1300'
-            type: 'ship'
-            count: 2
-        }
-        {
             name: 'Attack Shuttle'
             type: 'ship'
             count: 2
@@ -35781,6 +36805,31 @@ exportObj.manifestByExpansion =
         }
         {
             name: 'Scavenged YT-1300'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'Raider-class Corvette'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'CR90 Corellian Corvette'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'GR-75 Medium Transport'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'Gozanti-class Cruiser'
+            type: 'ship'
+            count: 3
+        }
+        {
+            name: 'C-ROC Cruiser'
             type: 'ship'
             count: 3
         }
@@ -36251,7 +37300,7 @@ exportObj.toTTS = (txt) ->
 
 exportObj.slotsMatching = (slota, slotb) ->
     return true if slota == slotb
-    return false if slota != 'Hardpoint' and slotb != 'Hardpoint'
+    return false if slota != 'HardpointShip' and slotb != 'HardpointShip'
     return true if slota == 'Torpedo' or slota == 'Cannon' or slota == 'Missile'
     return true if slotb == 'Torpedo' or slotb == 'Cannon' or slotb == 'Missile'
     return false
@@ -36347,9 +37396,8 @@ class exportObj.SquadBuilder
         @total_points = 0
         # a squad given in the link is loaded on construction of that builder. It will set all gamemodes of already existing builders accordingly, but we did not exists back than. So we copy over the gamemode
         @isHyperspace = exportObj.builders[0]?.isHyperspace ? false
+        @isEpic = exportObj.builders[0]?.isEpic ? false
         @isQuickbuild = exportObj.builders[0]?.isQuickbuild ? false
-        @maxSmallShipsOfOneType = null
-        @maxLargeShipsOfOneType = null
 
         @backend = null
         @current_squad = {}
@@ -36442,6 +37490,7 @@ class exportObj.SquadBuilder
                     <select class="game-type-selector">
                         <option value="standard">Extended</option>
                         <option value="hyperspace">Hyperspace</option>
+                        <option value="epic">Epic</option>
                         <option value="quickbuild">Quickbuild</option>
                     </select>
                     <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left)</span>
@@ -37140,9 +38189,9 @@ class exportObj.SquadBuilder
                             <td class="info-header">Initiative</td>
                             <td class="info-data info-skill"></td>
                         </tr>
-                        <tr class="info-energy">
-                            <td class="info-header"><i class="xwing-miniatures-font header-energy xwing-miniatures-font-energy"></i></td>
-                            <td class="info-data info-energy"></td>
+                        <tr class="info-engagement">
+                            <td class="info-header">Engagement</td>
+                            <td class="info-data info-engagement"></td>
                         </tr>
                         <tr class="info-attack">
                             <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-frontarc"></i></td>
@@ -37154,6 +38203,14 @@ class exportObj.SquadBuilder
                         </tr>
                         <tr class="info-attack-bullseye">
                             <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc"></i></td>
+                            <td class="info-data info-attack"></td>
+                        </tr>
+                        <tr class="info-attack-left">
+                            <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-leftarc"></i></td>
+                            <td class="info-data info-attack"></td>
+                        </tr>
+                        <tr class="info-attack-right">
+                            <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-rightarc"></i></td>
                             <td class="info-data info-attack"></td>
                         </tr>
                         <tr class="info-attack-back">
@@ -37187,6 +38244,10 @@ class exportObj.SquadBuilder
                         <tr class="info-charge">
                             <td class="info-header"><i class="xwing-miniatures-font header-charge xwing-miniatures-font-charge"></i></td>
                             <td class="info-data info-charge"></td>
+                        </tr>
+                        <tr class="info-energy">
+                            <td class="info-header"><i class="xwing-miniatures-font header-energy xwing-miniatures-font-energy"></i></td>
+                            <td class="info-data info-energy"></td>
                         </tr>
                         <tr class="info-range">
                             <td class="info-header">Range</td>
@@ -37451,43 +38512,39 @@ class exportObj.SquadBuilder
     onGameTypeChanged: (gametype, cb=$.noop) =>
         @game_type_selector.val gametype
         oldHyperspace = @isHyperspace
+        oldEpic = @isEpic
         oldQuickbuild = @isQuickbuild
+        @isHyperspace = false
+        @isEpic = false
+        @isQuickbuild = false
         switch gametype
             when 'standard'
-                @isHyperspace = false
-                @isQuickbuild = false
                 @desired_points_input.val 200
-                @maxSmallShipsOfOneType = null
-                @maxLargeShipsOfOneType = null
             when 'hyperspace'
                 @isHyperspace = true
-                @isQuickbuild = false
                 @desired_points_input.val 200
-                @maxSmallShipsOfOneType = null
-                @maxLargeShipsOfOneType = null
+            when 'epic'
+                @isEpic = true
+                @desired_points_input.val 500
             when 'quickbuild'
-                @isHyperspace = false
                 @isQuickbuild = true
                 @desired_points_input.val 8
-                @maxSmallShipsOfOneType = null
-                @maxLargeShipsOfOneType = null
         if oldQuickbuild != @isQuickbuild
             old_id = @current_squad.id
             @newSquadFromScratch($.trim(@current_squad.name))
             @current_squad.id = old_id # we want to keep the ID, so we allow people to use the save button
-        else if oldHyperspace != @isHyperspace
-            if @isHyperspace == true
-                old_id = @current_squad.id
-                #@newSquadFromScratch($.trim(@current_squad.name)) # need to change this to a new function to check hyperspace and remove
-                #@current_squad.id = old_id # we want to keep the ID, so we allow people to use the save button
-                @container.trigger 'xwing:pointsUpdated', cb
-        #@onPointsUpdated cb
+        else
+            old_id = @current_squad.id
+            @container.trigger 'xwing:pointsUpdated', cb
+            @container.trigger 'xwing:shipUpdated'
+        # @onPointsUpdated cb
         cb()
 
     onPointsUpdated: (cb=$.noop) =>
         tot_points = 0
         unreleased_content_used = false
         # validating may remove the ship, if not only some upgrade, but the pilot himself is not valid. Thus iterate backwards over the array, so that is probably fine?
+        
         for i in [@ships.length - 1 ... -1]
             ship = @ships[i]
             ship.validate()
@@ -37495,6 +38552,7 @@ class exportObj.SquadBuilder
             tot_points += ship.getPoints()
             ship_uses_unreleased_content = ship.checkUnreleasedContent()
             unreleased_content_used = ship_uses_unreleased_content if ship_uses_unreleased_content
+            
         @total_points = tot_points
         @total_points_span.text @total_points
         points_left = parseInt(@desired_points_input.val()) - @total_points
@@ -37635,6 +38693,8 @@ class exportObj.SquadBuilder
                 's'
             when 'hyperspace'
                 'h'
+            when 'epic'
+                'e'
             when 'quickbuild'
                 'q'
         selected_points = $.trim @desired_points_input.val()
@@ -37685,6 +38745,8 @@ class exportObj.SquadBuilder
                     @changeGameTypeOnSquadLoad 'standard'
                 when 'h'
                     @changeGameTypeOnSquadLoad 'hyperspace'
+                when 'e'
+                    @changeGameTypeOnSquadLoad 'epic'
                 when 'q'
                     @changeGameTypeOnSquadLoad 'quickbuild'
             @desired_points_input.val desired_points
@@ -37776,7 +38838,6 @@ class exportObj.SquadBuilder
         @ship_number_invalid_container.toggleClass 'hidden', (@ships.length < 10 and @ships.length > 2) # bounds are 2..10 as we always have a "empty" ship at the bottom
         new_ship
 
-
     removeShip: (ship, cb=$.noop) ->
         if ship?.destroy?
             await ship.destroy defer()
@@ -37785,7 +38846,7 @@ class exportObj.SquadBuilder
             @container.trigger 'xwing-backend:squadDirtinessChanged'
             @ship_number_invalid_container.toggleClass 'hidden', (@ships.length < 10 and @ships.length > 2)
         cb()
-
+    
     matcher: (item, term) ->
         item.toUpperCase().indexOf(term.toUpperCase()) >= 0
 
@@ -37800,34 +38861,27 @@ class exportObj.SquadBuilder
 
     isItemAvailable: (item_data, shipCheck=false) ->
         # this method is not invoked to check availability for quickbuild squads, as they don't care about hyperspace. Keep that in mind when adding stuff here.
-        if (not @isHyperspace)
-            return true
-        else # hyperspace
+        if @isHyperspace
             return exportObj.hyperspaceCheck(item_data, @faction, shipCheck)
+        else if (not @isEpic)
+            return exportObj.epicExclusions(item_data)
+        else
+            return true
 
     getAvailableShipsMatching: (term='',sorted = true) ->
         ships = []
         for ship_name, ship_data of exportObj.ships
             if @isOurFaction(ship_data.factions) and (@matcher(ship_data.name, term) or (ship_data.display_name and @matcher(ship_data.display_name, term)))
                 if (@isItemAvailable(ship_data, true))
-                    if not ship_data.huge
-                        if ship_data.icon
-                            ships.push
-                                id: ship_data.name
-                                name: ship_data.name
-                                display_name: ship_data.display_name
-                                text: if ship_data.display_name then ship_data.display_name else ship_data.name
-                                canonical_name: ship_data.canonical_name
-                                xws: ship_data.xws
-                                icon: ship_data.icon
-                        else                        
-                            ships.push
-                                id: ship_data.name
-                                name: ship_data.name
-                                display_name: ship_data.display_name
-                                text: if ship_data.display_name then ship_data.display_name else ship_data.name
-                                canonical_name: ship_data.canonical_name
-                                xws: ship_data.xws
+                    if @isEpic or (not @isEpic and not ship_data.huge)
+                        ships.push
+                            id: ship_data.name
+                            name: ship_data.name
+                            display_name: ship_data.display_name
+                            text: if ship_data.display_name then ship_data.display_name else ship_data.name
+                            canonical_name: ship_data.canonical_name
+                            xws: ship_data.xws
+                            icon: if ship_data.icon then ship_data.icon else ship_data.xws
         if sorted
             ships.sort exportObj.sortHelper
         return ships
@@ -37957,6 +39011,7 @@ class exportObj.SquadBuilder
 
         eligible_upgrades = (upgrade for upgrade_name, upgrade of available_upgrades when (not upgrade.unique? or upgrade not in @uniques_in_use['Upgrade']) and (not (ship? and upgrade.restriction_func?) or upgrade.restriction_func(ship, this_upgrade_obj)) and upgrade not in upgrades_in_use and ((not upgrade.max_per_squad?) or ship.builder.countUpgrades(upgrade.canonical_name) < upgrade.max_per_squad) and (not upgrade.solitary? or (upgrade.slot not in @uniques_in_use['Slot'] or include_upgrade?.solitary?)))
         
+        
 
         for equipped_upgrade in (upgrade.data for upgrade in ship.upgrades when upgrade?.data?)
             eligible_upgrades.removeItem equipped_upgrade
@@ -38052,7 +39107,7 @@ class exportObj.SquadBuilder
                         outlineColor = "mediumblue" # highlight manuevers modified by another card (e.g. R2 Astromech makes all 1 & 2 speed maneuvers green)
                         maneuverClass2 = "svg-modified-maneuver"
 
-                    if speed == 0
+                    if speed == 0 and turn == 2
                         outTable += """<rect class="svg-maneuver-stop #{maneuverClass} #{maneuverClass2}" x="50" y="50" width="100" height="100" style="fill:#{color}" />"""
                     else                      
 
@@ -38135,6 +39190,28 @@ class exportObj.SquadBuilder
         outTable += "</tbody></table>"
         outTable
 
+    formatActions: (action) ->
+        color = ""
+        actionname = ""
+        prefix = ""
+        # Search and filter each type of action by its prefix and then reformat it for html
+        if action.search('F-') != -1 
+            color = "force "
+            actionname = action.toLowerCase().replace(/F-/gi, '').replace(/[^0-9a-z]/gi, '')
+        else if action.search('R> ') != -1
+            color = "red "
+            actionname = action.toLowerCase().replace(/R> /gi, '').replace(/[^0-9a-z]/gi, '')
+            prefix = """<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> """
+        else if action.search('> ') != -1
+            actionname = action.toLowerCase().replace(/> /gi, '').replace(/[^0-9a-z]/gi, '')
+            prefix = """<i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> """
+        else
+            actionname = action.toLowerCase().replace(/[^0-9a-z]/gi, '')
+        return (prefix + """<i class="xwing-miniatures-font """ + color + """xwing-miniatures-font-""" + actionname + """"></i> """)
+
+    formatRedActions: (action) ->
+        return ("""<i class="xwing-miniatures-font red xwing-miniatures-font-""" + action.toLowerCase().replace(/[^0-9a-z]/gi, '') + """"></i> """)
+        
         
     showTooltip: (type, data, additional_opts, container = @info_container) ->
         if data != @tooltip_currently_displaying
@@ -38196,10 +39273,14 @@ class exportObj.SquadBuilder
                         first = false
                     container.find('tr.info-skill td.info-data').text inis
                     container.find('tr.info-skill').show()
+                    container.find('tr.info-engagement td.info-data').text inis
+                    container.find('tr.info-engagement').show()
                 
                     container.find('tr.info-attack td.info-data').text(data.attack)
                     container.find('tr.info-attack-bullseye td.info-data').text(data.attackbull)
                     container.find('tr.info-attack-fullfront td.info-data').text(data.attackf)
+                    container.find('tr.info-attack-left td.info-data').text(data.attackl)
+                    container.find('tr.info-attack-right td.info-data').text(data.attackr)
                     container.find('tr.info-attack-back td.info-data').text(data.attackb)
                     container.find('tr.info-attack-turret td.info-data').text(data.attackt)
                     container.find('tr.info-attack-doubleturret td.info-data').text(data.attackdt)
@@ -38207,6 +39288,8 @@ class exportObj.SquadBuilder
                     container.find('tr.info-attack').toggle(data.attack?)
                     container.find('tr.info-attack-bullseye').toggle(data.attackbull?)
                     container.find('tr.info-attack-fullfront').toggle(data.attackf?)
+                    container.find('tr.info-attack-left').toggle(data.attackl?)
+                    container.find('tr.info-attack-right').toggle(data.attackr?)
                     container.find('tr.info-attack-back').toggle(data.attackb?)
                     container.find('tr.info-attack-turret').toggle(data.attackt?)
                     container.find('tr.info-attack-doubleturret').toggle(data.attackdt?)
@@ -38217,6 +39300,8 @@ class exportObj.SquadBuilder
                         container.find('tr.info-base td.info-data').text "Large"
                     else if data.medium?
                         container.find('tr.info-base td.info-data').text "Medium"
+                    else if data.huge?
+                        container.find('tr.info-base td.info-data').text "Huge"
                     else
                         container.find('tr.info-base td.info-data').text "Small"
                     container.find('tr.info-base').show()
@@ -38227,27 +39312,45 @@ class exportObj.SquadBuilder
                         container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-attack')
                     container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass(data.attack_icon ? 'xwing-miniatures-font-attack')
         
-                    container.find('tr.info-energy td.info-data').text(data.energy)
-                    container.find('tr.info-energy').toggle(data.energy?)
                     container.find('tr.info-range').hide()
                     container.find('tr.info-agility td.info-data').text(data.agility)
                     container.find('tr.info-agility').show()
                     container.find('tr.info-hull td.info-data').text(data.hull)
                     container.find('tr.info-hull').show()
-                    container.find('tr.info-shields td.info-data').text(data.shields)
-                    container.find('tr.info-shields').show()
-                
+                    
+                    if data.shieldrecurr?
+                        count = 0
+                        recurringicon = ''
+                        while count < data.shieldrecurr
+                            recurringicon += '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>'
+                            ++count
+                        container.find('tr.info-shields td.info-data').html (data.shields + recurringicon)
+                    else
+                        container.find('tr.info-shields td.info-data').text(data.shields)
+                    container.find('tr.info-shields').toggle(data.shields?)
+
+                    if data.energyrecurr?
+                        count = 0
+                        recurringicon = ''
+                        while count < data.energyrecurr
+                            recurringicon += '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>'
+                            ++count
+                        container.find('tr.info-energy td.info-data').html (data.energy + recurringicon)
+                    else
+                        container.find('tr.info-energy td.info-data').text(data.energy)
+                    container.find('tr.info-energy').toggle(data.energy?)
+                    
+                    
                     # One may want to check for force sensitive pilots and display the possible values here (like done for ini), but I'll skip this for now. 
                     container.find('tr.info-force').hide() 
         
                     container.find('tr.info-charge').hide()
         
-                
-                    container.find('tr.info-actions td.info-data').html (((exportObj.translate(@language, 'action', action) for action in data.actions).join(', ')).replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked red">/g,' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked red">').replace(/, <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <r><i class="xwing-miniatures-font xwing-miniatures-font-linked">')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked red">/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked red">').replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked">/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked">') #super ghetto quadruple replace for linked actions
+                    container.find('tr.info-actions td.info-data').html (((@formatActions(action) for action in data.actions).join(', ')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked'))
                     container.find('tr.info-actions').show()
 
                     if data.actionsred?
-                        container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', action) for action in data.actionsred).join(', ')
+                        container.find('tr.info-actions-red td.info-data-red').html (@formatRedActions(action) for action in data.actionsred).join(', ')
                         container.find('tr.info-actions-red').show()
                     else
                         container.find('tr.info-actions-red').hide()
@@ -38309,13 +39412,21 @@ class exportObj.SquadBuilder
                         container.find('tr.info-base td.info-data').text "Large"
                     else if ship.medium?
                         container.find('tr.info-base td.info-data').text "Medium"
+                    else if ship.huge?
+                        container.find('tr.info-base td.info-data').text "Huge"
                     else
                         container.find('tr.info-base td.info-data').text "Small"
                     container.find('tr.info-base').show()
 
                     
-                    container.find('tr.info-skill td.info-data').text statAndEffectiveStat(data.skill, effective_stats, 'skill')
+                    container.find('tr.info-skill td.info-data').text data.skill
                     container.find('tr.info-skill').show()
+                    if data.engagement?
+                        container.find('tr.info-engagement td.info-data').text data.engagement
+                        container.find('tr.info-engagement').show()
+                    else
+                        container.find('tr.info-engagement').hide()
+                    
                     
 #                    for cls in container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
 #                        container.find('tr.info-attack td.info-header i.xwing-miniatures-font').removeClass(cls) if cls.startsWith('xwing-miniatures-font-attack')
@@ -38330,6 +39441,12 @@ class exportObj.SquadBuilder
                     container.find('tr.info-attack-bullseye td.info-data').text statAndEffectiveStat((data.ship_override?.attackbull ? ship.attackbull), effective_stats, 'attackbull')
                     container.find('tr.info-attack-bullseye').toggle(ship.attackbull? or effective_stats?.attackbull?)
 
+                    container.find('tr.info-attack-left td.info-data').text statAndEffectiveStat((data.ship_override?.attackl ? ship.attackl), effective_stats, 'attackl')
+                    container.find('tr.info-attack-left').toggle(ship.attackl? or effective_stats?.attackl?)
+
+                    container.find('tr.info-attack-right td.info-data').text statAndEffectiveStat((data.ship_override?.attackr ? ship.attackr), effective_stats, 'attackr')
+                    container.find('tr.info-attack-right').toggle(ship.attackr? or effective_stats?.attackr?)
+                    
                     container.find('tr.info-attack-back td.info-data').text statAndEffectiveStat((data.ship_override?.attackb ? ship.attackb), effective_stats, 'attackb')
                     container.find('tr.info-attack-back').toggle(ship.attackb? or effective_stats?.attackb?)
 
@@ -38339,17 +39456,36 @@ class exportObj.SquadBuilder
                     container.find('tr.info-attack-doubleturret td.info-data').text statAndEffectiveStat((data.ship_override?.attackdt ? ship.attackdt), effective_stats, 'attackdt')
                     container.find('tr.info-attack-doubleturret').toggle(ship.attackdt? or effective_stats?.attackdt?)
 
-                    container.find('tr.info-energy td.info-data').text statAndEffectiveStat((data.ship_override?.energy ? ship.energy), effective_stats, 'energy')
-                    container.find('tr.info-energy').toggle(data.ship_override?.energy? or ship.energy?)
                     container.find('tr.info-range').hide()
                     container.find('td.info-rangebonus').hide()
                     container.find('tr.info-agility td.info-data').text statAndEffectiveStat((data.ship_override?.agility ? ship.agility), effective_stats, 'agility')
                     container.find('tr.info-agility').show()
                     container.find('tr.info-hull td.info-data').text statAndEffectiveStat((data.ship_override?.hull ? ship.hull), effective_stats, 'hull')
                     container.find('tr.info-hull').show()
-                    container.find('tr.info-shields td.info-data').text statAndEffectiveStat((data.ship_override?.shields ? ship.shields), effective_stats, 'shields')
-                    container.find('tr.info-shields').show()
 
+                    if ship.shieldrecurr?
+                        count = 0
+                        recurringicon = ''
+                        while count < ship.shieldrecurr
+                            recurringicon += '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>'
+                            ++count
+                        container.find('tr.info-shields td.info-data').html (statAndEffectiveStat((data.ship_override?.shields ? ship.shields), effective_stats, 'shields') + recurringicon)
+                    else
+                        container.find('tr.info-shields td.info-data').text statAndEffectiveStat((data.ship_override?.shields ? ship.shields), effective_stats, 'shields')
+                    container.find('tr.info-shields').toggle(data.ship_override?.shields? or ship.shields?)
+
+                    if ship.energyrecurr?
+                        count = 0
+                        recurringicon = ''
+                        while count < ship.energyrecurr
+                            recurringicon += '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>'
+                            ++count
+                        container.find('tr.info-energy td.info-data').html (statAndEffectiveStat((data.ship_override?.energy ? ship.energy), effective_stats, 'energy') + recurringicon)
+                    else
+                        container.find('tr.info-energy td.info-data').text statAndEffectiveStat((data.ship_override?.energy ? ship.energy), effective_stats, 'energy')
+                    container.find('tr.info-energy').toggle(data.ship_override?.energy? or ship.energy?)
+                    
+                    
                     if (effective_stats?.force? and effective_stats.force > 0) or data.force?
                         container.find('tr.info-force td.info-data').html (statAndEffectiveStat((data.ship_override?.force ? data.force), effective_stats, 'force') + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
                         container.find('tr.info-force').show()
@@ -38365,10 +39501,10 @@ class exportObj.SquadBuilder
                     else
                         container.find('tr.info-charge').hide()
 
-                    container.find('tr.info-actions td.info-data').html ((exportObj.translate(@language, 'action', a) for a in (data.ship_override?.actions ? ship.actions).concat( ("#{exportObj.translate @language, 'action', action}" for action in extra_actions))).join ', ').replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked')
-
+                    container.find('tr.info-actions td.info-data').html ((@formatActions(a) for a in (data.ship_override?.actions ? ship.actions).concat("#{action}" for action in extra_actions)).join ', ').replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked')
+                    
                     if ship.actionsred?
-                        container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', a) for a in (data.ship_override?.actionsred ? ship.actionsred).concat( ("<strong>#{exportObj.translate @language, 'action', action}</strong>" for action in extra_actions_red))).join ', '       
+                        container.find('tr.info-actions-red td.info-data-red').html (@formatRedActions(a) for a in (data.ship_override?.actionsred ? ship.actionsred).concat( ("#{action}" for action in extra_actions_red))).join ', '       
                     container.find('tr.info-actions-red').toggle(ship.actionsred?)
 
                     container.find('tr.info-actions').show()
@@ -38416,10 +39552,11 @@ class exportObj.SquadBuilder
                         container.find('tr.info-base td.info-data').text "Small"
                     container.find('tr.info-base').show()
 
-                    
                     container.find('tr.info-skill td.info-data').text pilot.skill
                     container.find('tr.info-skill').show()
-                    
+                    container.find('tr.info-engagement td.info-data').text pilot.skill
+                    container.find('tr.info-engagement').show()
+
                     container.find('tr.info-attack td.info-data').text(pilot.ship_override?.attack ? ship.attack)
                     container.find('tr.info-attack').toggle(pilot.ship_override?.attack? or ship.attack?)
 
@@ -38428,6 +39565,10 @@ class exportObj.SquadBuilder
                     
                     container.find('tr.info-attack-bullseye').hide()
                     
+                    container.find('tr.info-attack-left td.info-data').text(ship.attackl)
+                    container.find('tr.info-attack-left').toggle(ship.attackl?)
+                    container.find('tr.info-attack-left td.info-data').text(ship.attackr)
+                    container.find('tr.info-attack-left').toggle(ship.attackr?)
                     container.find('tr.info-attack-back td.info-data').text(ship.attackb)
                     container.find('tr.info-attack-back').toggle(ship.attackb?)
                     container.find('tr.info-attack-turret td.info-data').text(ship.attackt)
@@ -38465,10 +39606,10 @@ class exportObj.SquadBuilder
                     else
                         container.find('tr.info-charge').hide()
 
-                    container.find('tr.info-actions td.info-data').html ((exportObj.translate(@language, 'action', action) for action in (pilot.ship_override?.actions ? exportObj.ships[data.ship].actions)).join(', ')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked')
+                    container.find('tr.info-actions td.info-data').html ((@formatActions(action) for action in (pilot.ship_override?.actions ? exportObj.ships[data.ship].actions)).join(', ')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g,' <i class="xwing-miniatures-font xwing-miniatures-font-linked')
     
                     if ships[data.ship].actionsred?
-                        container.find('tr.info-actions-red td.info-data-red').html (exportObj.translate(@language, 'action', action) for action in (pilot.ship_override?.actionsred ? exportObj.ships[data.ship].actionsred)).join(', ')
+                        container.find('tr.info-actions-red td.info-data-red').html (@formatRedActions(action) for action in (pilot.ship_override?.actionsred ? exportObj.ships[data.ship].actionsred)).join(', ')
                         container.find('tr.info-actions-red').show()
                     else
                         container.find('tr.info-actions-red').hide()
@@ -38510,7 +39651,7 @@ class exportObj.SquadBuilder
                         else if data.variableinit? and data.variableinit
                             point_info += "initiative is " + [0..data.pointsarray.length-1]
                         else if data.variablebase? and data.variablebase
-                            point_info += " base size is small, medium or large"
+                            point_info += " base size is small, medium, large or huge"
                         point_info += "</i><br/><br/>"
 
                     if data.solitary?
@@ -38523,6 +39664,7 @@ class exportObj.SquadBuilder
                     container.find('tr.info-ship').hide()
                     container.find('tr.info-base').hide()
                     container.find('tr.info-skill').hide()
+                    container.find('tr.info-engagement').hide()
                     if data.energy?
                         container.find('tr.info-energy td.info-data').text data.energy
                         container.find('tr.info-energy').show()
@@ -38544,6 +39686,12 @@ class exportObj.SquadBuilder
                     else
                         container.find('tr.info-attack-turret').hide()
 
+                    if data.attackdt?
+                        container.find('tr.info-attack-doubleturret td.info-data').text data.attackdt
+                        container.find('tr.info-attack-doubleturret').show()
+                    else
+                        container.find('tr.info-attack-doubleturret').hide()
+                        
                     if data.attackbull?
                         container.find('tr.info-attack-bullseye td.info-data').text data.attackbull
                         container.find('tr.info-attack-bullseye').show()
@@ -38551,8 +39699,9 @@ class exportObj.SquadBuilder
                         container.find('tr.info-attack-bullseye').hide()
 
                     container.find('tr.info-attack-fullfront').hide()
+                    container.find('tr.info-attack-right').hide()
+                    container.find('tr.info-attack-left').hide()
                     container.find('tr.info-attack-back').hide()
-                    container.find('tr.info-attack-doubleturret').hide()
 
                     if data.recurring?
                         container.find('tr.info-charge td.info-data').html (data.charge + """<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>""")
@@ -38756,10 +39905,7 @@ class exportObj.SquadBuilder
                 validity = false unless ship_is_available and pilot_is_available
                 for upgrade in ship.upgrades
                     if upgrade.data?
-                        if upgrade.data.ignorecollection? #ignore hardpoints
-                            upgrade_is_available = true
-                        else
-                            upgrade_is_available = @collection.use('upgrade', upgrade.data.name)
+                        upgrade_is_available = @collection.use('upgrade', upgrade.data.name)
                         # console.log "#{@faction}: Upgrade #{upgrade.data.name} available: #{upgrade_is_available}"
                         validity = false unless upgrade_is_available
         validity
@@ -38983,7 +40129,6 @@ class Ship
                         if upgrade?.data? and not upgrade.data.unique and ((not upgrade.data.max_per_squad?) or @builder.countUpgrades(upgrade.data.canonical_name) < upgrade.data.max_per_squad)
                             other_upgrades[upgrade.slot] ?= []
                             other_upgrades[upgrade.slot].push upgrade
-                            
                     delayed_upgrades = {}
                     for upgrade in @upgrades
                         other_upgrade = (other_upgrades[upgrade.slot] ? []).shift()
@@ -39217,17 +40362,11 @@ class Ship
 
     updateSelections: ->
         if @pilot?
-            if exportObj.ships[@pilot.ship].icon
-                @ship_selector.select2 'data',
-                    id: @pilot.ship
-                    text: if exportObj.ships[@pilot.ship].display_name then exportObj.ships[@pilot.ship].display_name else @pilot.ship
-                    xws: exportObj.ships[@pilot.ship].xws
-                    icon: exportObj.ships[@pilot.ship].icon
-            else
-                @ship_selector.select2 'data',
-                    id: @pilot.ship
-                    text: if exportObj.ships[@pilot.ship].display_name then exportObj.ships[@pilot.ship].display_name else @pilot.ship
-                    xws: exportObj.ships[@pilot.ship].xws
+            @ship_selector.select2 'data',
+                id: @pilot.ship
+                text: if exportObj.ships[@pilot.ship].display_name then exportObj.ships[@pilot.ship].display_name else @pilot.ship
+                xws: exportObj.ships[@pilot.ship].xws
+                icon: if exportObj.ships[@pilot.ship].icon then exportObj.ships[@pilot.ship].icon else exportObj.ships[@pilot.ship].xws
 
             @pilot_selector.select2 'data',
                 id: @pilot.id
@@ -39267,10 +40406,7 @@ class Ship
 
         shipResultFormatter = (object, container, query) ->
             # Append directly so we don't have to disable markup escaping
-            if object.icon?
-                $(container).append """<i class="xwing-miniatures-ship xwing-miniatures-ship-#{object.icon}"></i> #{object.text}"""
-            else
-                $(container).append """<i class="xwing-miniatures-ship xwing-miniatures-ship-#{object.xws}"></i> #{object.text}"""
+            $(container).append """<i class="xwing-miniatures-ship xwing-miniatures-ship-#{object.icon}"></i> #{object.text}"""
             # If you return a string, Select2 will render it
             undefined
 
@@ -39395,94 +40531,39 @@ class Ship
         action_icons = []
         action_icons_red = []
         for action in effective_stats.actions
-            action_icons.push switch action
-                when 'Focus'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i> """
-                when '*Focus'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i> """
-                when 'Evade'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i> """
-                when 'F-Evade'
-                    """<i class="xwing-miniatures-font force xwing-miniatures-font-evade"></i> """
-                when 'Barrel Roll'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i> """
-                when 'Lock'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i> """
-                when 'Boost'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i> """
-                when 'Coordinate'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i> """
-                when 'F-Coordinate'
-                    """<i class="xwing-miniatures-font force xwing-miniatures-font-coordinate"></i> """
-                when 'Jam'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i> """
-                when 'Reinforce'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i> """
-                when 'Cloak'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i> """
-                when 'Slam'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i> """
-                when 'Rotate Arc'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i> """
-                when 'Reload'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i> """
-                when 'Calculate'
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i> """
-                when "R> Lock"
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-lock"></i>&nbsp;"""
-                when "R> Barrel Roll"
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-barrelroll"></i>&nbsp;"""
-                when "R> Boost"
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-boost"></i>&nbsp;"""
-                when "R> Focus"
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-focus"></i>&nbsp;"""
-                when "> Rotate Arc"
-                    """<i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack xwing-miniatures-font-rotatearc"></i>&nbsp;"""
-                when "R> Rotate Arc"
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-rotatearc"></i>&nbsp;"""
-                when "R> Evade"
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-evade"></i>&nbsp;"""
-                when "R> Calculate"
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-linked"></i> <i class="xwing-miniatures-font info-attack red xwing-miniatures-font-calculate"></i>&nbsp;"""
-                else
-                    """<span>&nbsp;#{action}<span>"""
+            color = "action "
+            actionname = ""
+            prefix = ""
+            suffix = ""
+            # Search and filter each type of action by its prefix and then reformat it for html
+            if action.search('F-') != -1 
+                color = "force "
+                actionname = action.toLowerCase().replace(/F-/gi, '').replace(/[^0-9a-z]/gi, '')
+            else if action.search('R> ') != -1
+                color = "red "
+                actionname = action.toLowerCase().replace(/R> /gi, '').replace(/[^0-9a-z]/gi, '')
+                prefix = """<i class="xwing-miniatures-font xwing-miniatures-font-linked red"></i> """
+                suffix = "&nbsp;"
+            else if action.search('> ') != -1
+                actionname = action.toLowerCase().replace(/> /gi, '').replace(/[^0-9a-z]/gi, '')
+                prefix = """<i class="xwing-miniatures-font xwing-miniatures-font-linked"></i> """
+                suffix = "&nbsp;"
+            else
+                actionname = action.toLowerCase().replace(/[^0-9a-z]/gi, '')
+            action_icons.push (prefix + """<i class="xwing-miniatures-font """ + color + """xwing-miniatures-font-""" + actionname + """"></i> """ + suffix)
 
         for actionred in effective_stats.actionsred
-            action_icons_red.push switch actionred
-                when 'Focus'
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-focus"></i>"""
-                when 'Evade'
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-evade"></i>"""
-                when 'Barrel Roll'
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-barrelroll"></i>"""
-                when 'Lock'
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-lock"></i>"""
-                when 'Boost'
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-boost"></i>"""
-                when 'Coordinate'
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-coordinate"></i>"""
-                when 'Jam'
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-jam"></i>"""
-                when 'Reinforce'
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-reinforce"></i>"""
-                when 'Cloak'
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-cloak"></i>"""
-                when 'Slam'
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-slam"></i>"""
-                when 'Rotate Arc'
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-rotatearc"></i>"""
-                when 'Reload'
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-reload"></i>"""
-                when 'Calculate'
-                    """<i class="xwing-miniatures-font red xwing-miniatures-font-calculate"></i>"""
-                else
-                    """<span>&nbsp;#{action}<span>"""
+            action_icons.push ("""<i class="xwing-miniatures-font red xwing-miniatures-font-""" + actionred.toLowerCase().replace(/[^0-9a-z]/gi, '') + """"></i> """)
     
         action_bar = action_icons.join ' '
         action_bar_red = action_icons_red.join ' '
 
         attack_icon = @data.attack_icon ? 'xwing-miniatures-font-frontarc'
 
+        engagementHTML = if (@pilot.engagement?) then $.trim """
+            <span class="info-data info-skill">ENG #{@pilot.engagement}</span>
+        """ else ''
+            
         attackHTML = if (effective_stats.attack?) then $.trim """
             <i class="xwing-miniatures-font header-attack #{attack_icon}"></i>
             <span class="info-data info-attack">#{statAndEffectiveStat((@pilot.ship_override?.attack ? @data.attack), effective_stats, 'attack')}</span>
@@ -39554,6 +40635,7 @@ class Ship
             <div class="fancy-pilot-stats">
                 <div class="pilot-stats-content">
                     <span class="info-data info-skill">INI #{statAndEffectiveStat(@pilot.skill, effective_stats, 'skill')}</span>
+                    #{engagementHTML}
                     #{attackHTML}
                     #{attackbHTML}
                     #{attackfHTML}
@@ -39570,7 +40652,7 @@ class Ship
                     <span class="info-data info-shields simple-hull-or-shield">#{statAndEffectiveStat((@pilot.ship_override?.shields ? @data.shields), effective_stats, 'shields')}</span>
                     #{forceHTML}
                     #{chargeHTML}
-                    &nbsp;
+                    <br>
                     #{action_bar}
                     &nbsp;&nbsp;
                     #{action_bar_red}
@@ -39832,7 +40914,6 @@ class Ship
 
     effectiveStats: ->
         stats =
-            skill: @pilot.skill
             attack: @pilot.ship_override?.attack ? @data.attack
             attackf: @pilot.ship_override?.attackf ? @data.attackf
             attackb: @pilot.ship_override?.attackb ? @data.attackb
@@ -39868,7 +40949,25 @@ class Ship
         if not @pilot?
             return true 
         unchanged = true
-        max_checks = 128 # that's a lot of addons
+        max_checks = 32 # that's a lot of addons
+        
+        if @builder.isEpic #Command Epic adding
+            if not ("Command" in @pilot.slots)
+                addCommand = true
+                for upgrade in @upgrades
+                    if ("Command" == upgrade.slot) and (this == upgrade.ship)
+                        addCommand = false
+                if addCommand == true
+                    @upgrades.push new exportObj.Upgrade
+                        ship: this
+                        container: @addon_container
+                        slot: "Command"
+        else #cleanup Command upgrades
+            for i in [@upgrades.length - 1 ... -1]
+                upgrade = @upgrades[i]
+                if upgrade.slot == "Command"
+                    upgrade.setById null
+
         for i in [0...max_checks]
             valid = true
             pilot_func = @pilot?.validation_func ? @pilot?.restriction_func ? undefined
@@ -39890,7 +40989,6 @@ class Ship
                     break
                 if upgrade?.data? and upgrade.data
                     equipped_upgrades.push(upgrade?.data)
-
             break if valid
         @updateSelections()
         unchanged
@@ -39903,8 +41001,7 @@ class Ship
         for upgrade in @upgrades
             if upgrade?.data? and not exportObj.isReleased upgrade.data
                 #console.log "#{upgrade.data.id} is unreleased"
-                unless upgrade.data.ignorecollection? #ignore hardpoints
-                    return true
+                return true
 
         false
 
@@ -39942,7 +41039,7 @@ class Ship
         upgrade_obj = {}
 
         for upgrade in @upgrades
-            if upgrade?.data? and (not upgrade?.data?.ignorecollection?)
+            if upgrade?.data?
                 upgrade.toXWS upgrade_obj
 
         if Object.keys(upgrade_obj).length > 0
@@ -40014,19 +41111,13 @@ class GenericAddon
             if @ship.builder.collection?
                 not_in_collection = false
                 if obj.id == @data?.id
-                    if @data.ignorecollection? #ignore hardpoints
-                        not_in_collection = false
-                    else
-                        # Currently selected card; mark as not in collection if it's neither
-                        # on the shelf nor on the table
-                        unless (@ship.builder.collection.checkShelf(@type.toLowerCase(), obj.name) or @ship.builder.collection.checkTable(@type.toLowerCase(), obj.name)) 
-                            not_in_collection = true
+                    # Currently selected card; mark as not in collection if it's neither
+                    # on the shelf nor on the table
+                    unless (@ship.builder.collection.checkShelf(@type.toLowerCase(), obj.name) or @ship.builder.collection.checkTable(@type.toLowerCase(), obj.name)) 
+                        not_in_collection = true
                 else
-                    if (obj.id == 168) or (obj.id == 169) or (obj.id == 170) #ignore hardpoints
-                        not_in_collection = false
-                    else
-                        # Not currently selected; check shelf only
-                        not_in_collection = not @ship.builder.collection.checkShelf(@type.toLowerCase(), obj.name)
+                    # Not currently selected; check shelf only
+                    not_in_collection = not @ship.builder.collection.checkShelf(@type.toLowerCase(), obj.name)
                 if not_in_collection then 'select2-result-not-in-collection' else ''
                     #and (@ship.builder.collection.checkcollection?) 
             else
@@ -40116,7 +41207,7 @@ class GenericAddon
                 else
                     throw new Error("Unexpected addon type for addon #{addon}")
                 @conferredAddons.push addon
-
+                
     rescindAddons: ->
         await
             for addon in @conferredAddons
@@ -40139,6 +41230,8 @@ class GenericAddon
                 data?.pointsarray[1]
             else if ship?.data.large?
                 data?.pointsarray[2]
+            else if ship?.data.huge?
+                data?.pointsarray[3]
         else if data?.variableinit?
             data?.pointsarray[ship.pilot.skill]
         else
@@ -40160,7 +41253,10 @@ class GenericAddon
 
     toHTML: (points) ->
         if @data?
-            upgrade_slot_font = (@data.slot ? @type).toLowerCase().replace(/[^0-9a-z]/gi, '')
+            if @data.slot? and @data.slot == "HardpointShip"
+                upgrade_slot_font = "hardpoint"
+            else
+                upgrade_slot_font = (@data.slot ? @type).toLowerCase().replace(/[^0-9a-z]/gi, '')
 
             match_array = @data.text?match(/(<span.*<\/span>)<br \/><br \/>(.*)/)
 

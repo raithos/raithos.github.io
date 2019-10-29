@@ -19,6 +19,8 @@ body {
     color: white; }
   #printable .bw .fancy-pilot-stats .xwing-miniatures-font {
     color: black; }
+  #printable .bw .fancy-pilot-stats .red {
+    -webkit-text-stroke: 0.2px gray; }
   #printable .bw .fancy-dial .svg-maneuver-triangle.svg-base-maneuver {
     fill: black;
     stroke: black; }
@@ -91,7 +93,6 @@ body {
       right: 0.984375in;
       font-weight: 100; }
       #printable .fancy-header .squad-faction .xwing-miniatures-font {
-        color: white;
         font-size: 0.3in; }
     #printable .fancy-header .mask {
       position: absolute;
@@ -190,8 +191,8 @@ body {
         margin-top: -0.2in; }
         #printable .fancy-ship .fancy-pilot-stats .pilot-stats-content .xwing-miniatures-font {
           vertical-align: middle; }
-        #printable .fancy-ship .fancy-pilot-stats .pilot-stats-content .red {
-          -webkit-text-stroke: 0.1px white; }
+        #printable .fancy-ship .fancy-pilot-stats .pilot-stats-content .action {
+          color: black; }
       #printable .fancy-ship .fancy-pilot-stats .info-data, #printable .fancy-ship .fancy-pilot-stats .xwing-miniatures-font {
         position: relative;
         bottom: 0.048in; }
