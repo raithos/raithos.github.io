@@ -8745,7 +8745,7 @@ exportObj.basicCardData = function() {
         name: "Veteran Wing Leader",
         id: 259,
         slot: "Command",
-        points: 4,
+        points: 2,
         restriction_func: function(ship) {
           return !((ship.data.large != null) || (ship.data.medium != null) || (ship.data.huge != null));
         }
