@@ -9426,13 +9426,15 @@ exportObj.basicCardData = ->
             points: 150
             slots: [
                 "Command"
+                "Torpedo"
+                "Missile"
                 "Hardpoint"
-                "Turret"
+                "Hardpoint"
                 "Crew"
                 "Team"
                 "Team"
                 "Cargo"
-                "Cargo"
+                "Title"
             ]
         }
         {
