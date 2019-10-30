@@ -9434,7 +9434,6 @@ exportObj.basicCardData = ->
                 "Team"
                 "Team"
                 "Cargo"
-                "Title"
             ]
         }
         {
