@@ -3420,7 +3420,7 @@ exportObj.basicCardData = ->
              "Focus"
              "Reinforce"
              "Lock"
-             "Reload"
+             "Jam"
            ]
            actionsred: [
              "Coordinate"

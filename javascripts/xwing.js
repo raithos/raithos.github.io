@@ -2899,7 +2899,7 @@ exportObj.basicCardData = function() {
         shieldrecurr: 1,
         energy: 4,
         energyrecurr: 1,
-        actions: ["Focus", "Reinforce", "Lock", "Reload"],
+        actions: ["Focus", "Reinforce", "Lock", "Jam"],
         actionsred: ["Coordinate"],
         maneuvers: [[0, 3, 3, 3, 0], [0, 1, 2, 1, 0], [0, 1, 2, 1, 0], [0, 3, 1, 3, 0], [0, 0, 3, 0, 0], [0, 0, 3, 0, 0]]
       }
