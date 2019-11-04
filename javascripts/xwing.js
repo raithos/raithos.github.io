@@ -8737,6 +8737,7 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "First Order",
         slot: "Command",
+        ship: ["TIE/SF Fighter", "TIE/VN Silencer"],
         points: 4,
         restriction_func: function(ship) {
           return !((ship.data.large != null) || (ship.data.medium != null) || (ship.data.huge != null));
@@ -8981,7 +8982,11 @@ exportObj.basicCardData = function() {
         name: "Ordnance Team",
         id: 280,
         slot: "Team",
-        points: 4
+        points: 4,
+        modifier_func: function(stats) {
+          stats.actions.push('*Reload');
+          return stats.actions.push('> Calculate');
+        }
       }, {
         name: "Sensor Experts",
         id: 281,
@@ -9131,7 +9136,19 @@ exportObj.basicCardData = function() {
         unique: true,
         ship: "GR-75 Medium Transport",
         faction: "Rebel Alliance",
-        points: 3
+        points: 3,
+        modifier_func: function(stats) {
+          return stats.energy += 1;
+        },
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: 'Team'
+          }, {
+            type: exportObj.Upgrade,
+            slot: 'Cargo'
+          }
+        ]
       }, {
         name: "Assailer",
         id: 297,
@@ -9139,7 +9156,17 @@ exportObj.basicCardData = function() {
         unique: true,
         ship: "Raider-class Corvette",
         faction: "Galactic Empire",
-        points: 7
+        points: 7,
+        modifier_func: function(stats) {
+          stats.shields -= 2;
+          return stats.hull += 2;
+        },
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: 'Gunner'
+          }
+        ]
       }, {
         name: "Corvus",
         id: 298,
@@ -9155,7 +9182,17 @@ exportObj.basicCardData = function() {
         unique: true,
         ship: "Raider-class Corvette",
         faction: "Galactic Empire",
-        points: 4
+        points: 4,
+        modifier_func: function(stats) {
+          stats.shields -= 2;
+          return stats.energy += 2;
+        },
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: 'Crew'
+          }
+        ]
       }, {
         name: "Instigator",
         id: 300,
@@ -9163,7 +9200,13 @@ exportObj.basicCardData = function() {
         unique: true,
         ship: "Raider-class Corvette",
         faction: "Galactic Empire",
-        points: 6
+        points: 6,
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: 'Team'
+          }
+        ]
       }, {
         name: "Blood Crow",
         id: 301,
@@ -9171,7 +9214,17 @@ exportObj.basicCardData = function() {
         unique: true,
         ship: "Gozanti-class Cruiser",
         faction: "Galactic Empire",
-        points: 5
+        points: 5,
+        modifier_func: function(stats) {
+          stats.shields -= 1;
+          return stats.energy += 2;
+        },
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: 'Gunner'
+          }
+        ]
       }, {
         name: "Requiem",
         id: 302,
@@ -9179,7 +9232,11 @@ exportObj.basicCardData = function() {
         unique: true,
         ship: "Gozanti-class Cruiser",
         faction: "Galactic Empire",
-        points: 7
+        points: 7,
+        modifier_func: function(stats) {
+          stats.hull -= 1;
+          return stats.energy += 1;
+        }
       }, {
         name: "Suppressor",
         id: 303,
@@ -9187,7 +9244,17 @@ exportObj.basicCardData = function() {
         unique: true,
         ship: "Gozanti-class Cruiser",
         faction: "Galactic Empire",
-        points: 6
+        points: 6,
+        modifier_func: function(stats) {
+          stats.shields += 2;
+          return stats.hull -= 2;
+        },
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: 'Sensor'
+          }
+        ]
       }, {
         name: "Vector",
         id: 304,
@@ -9195,7 +9262,16 @@ exportObj.basicCardData = function() {
         unique: true,
         ship: "Gozanti-class Cruiser",
         faction: "Galactic Empire",
-        points: 8
+        points: 8,
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: 'Crew'
+          }, {
+            type: exportObj.Upgrade,
+            slot: 'Cargo'
+          }
+        ]
       }, {
         name: "Broken Horn",
         id: 305,
@@ -17990,6 +18066,10 @@ exportObj.cardLoaders.English = function() {
       display_name: "Raymus Antilles",
       text: "After you are destroyed, each friendly ship at range 0-1 gains 1 focus token. After you are destroyed, you are not removed until the end of the End Phase."
     },
+    "Stalwart Captain": {
+      display_name: "Stalwart Captain",
+      text: "After you are destroyed, you are not removed until the end of the End Phase."
+    },
     "Agent of the Empire": {
       display_name: "Agent of the Empire",
       text: "You are a <strong>wing leader</strong>. Your wingmates must be 2, 3, 4, or 5 TIE/ln fighters. %LINEBREAK% While you defend, up to 2 of your wingmates in the attack arc may suffer 1 %HIT% or %CRIT% damage to cancel a matching result."
@@ -17998,21 +18078,29 @@ exportObj.cardLoaders.English = function() {
       display_name: "First Order Elite",
       text: "You are a <strong>wing leader</strong>. Your wingmates must be 2 or 3 TIE/fo fighters or TIE/sf fighters. %LINEBREAK% While you defend, up to 2 of your wingmates in the attack arc may suffer 1 %HIT% or %CRIT% damage to cancel a matching result."
     },
+    "Veteran Wing Leader": {
+      display_name: "Veteran Wing Leader",
+      text: "You are a <strong>wing leader</strong>. Your wingmates must be 2, 3, 4, or 5 other ships of your ship type. %LINEBREAK% While you defend, up to 2 of your wingmates in the attack arc may suffer 1 %HIT% or %CRIT% damage to cancel a matching result."
+    },
     "Dreadnought Hunter": {
       display_name: "Dreadnought Hunter",
       text: "While you perform an attack against a huge ship, if the attack deals a faceup damage card to the defender and the defender is in your %BULLSEYEARC%, you may apply the <strong>Precision Shot</strong> effect even if you are not in the specified arc."
     },
     "Ion Cannon Battery": {
       display_name: "Ion Cannon Battery",
-      text: "<strong>Online: </strong> Setup: Equip this side faceup.%LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. If this attack hits, the defender suffers 1 %CRIT% damage, and all %HIT%/%CRIT% results inflict ion tokens instead of damage. %LINEBREAK%<strong>Offline: </strong> %LINEBREAK% "
+      text: "<strong>Online: </strong> Setup: Equip this side faceup.%LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. If this attack hits, the defender suffers 1 %CRIT% damage, and all %HIT%/%CRIT% results inflict ion tokens instead of damage. %LINEBREAK%<strong>Offline: </strong> %LINEBREAK% After you engage, you may spend 2 %ENERGY% to flip this card."
     },
     "Targeting Battery": {
       display_name: "Targeting Battery",
-      text: "<strong>Online: </strong> Setup: Equip this side faceup.%LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. After you perform this attack, you may acquire a lock on the defender. %LINEBREAK%<strong>Offline: </strong> %LINEBREAK% "
+      text: "<strong>Online: </strong> Setup: Equip this side faceup.%LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. After you perform this attack, you may acquire a lock on the defender. %LINEBREAK%<strong>Offline: </strong> %LINEBREAK% After you engage, you may spend 2 %ENERGY% to flip this card."
+    },
+    "Ordnance Tubes": {
+      display_name: "Ordnance Tubes",
+      text: "<strong>Online: </strong> Setup: Equip this side faceup. %LINEBREAK% You can perform %TORPEDO% and %MISSILE% attacks only as bonus attacks. You <strong>must</strong> treat the %FRONTARC% requirement of your equipped %TORPEDO% and %MISSILE% upgrades as %FULLFRONTARC%. %LINEBREAK% Bonus Attack: Perform a %TORPEDO% attack. %LINEBREAK% Bonus Attack: Perform a %MISSILE% attack. %LINEBREAK%<strong>Offline: </strong> %LINEBREAK% You must treat the %FRONTARC% requirement of your equipped %TORPEDO% and %MISSILE% upgrades as %BULLSEYEARC%. %LINEBREAK% Action: Spend 2 %ENERGY% to flip this card."
     },
     "Point-Defense Battery": {
       display_name: "Point-Defense Battery",
-      text: "<strong>Online: </strong> Setup: Equip this side faceup. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK%<strong>Offline: </strong> %LINEBREAK% "
+      text: "<strong>Online: </strong> Setup: Equip this side faceup. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK%<strong>Offline: </strong> %LINEBREAK% After you engage, you may spend 2 %ENERGY% to flip this card."
     },
     "Turbolaser Battery": {
       display_name: "Turbolaser Battery",
@@ -18038,6 +18126,10 @@ exportObj.cardLoaders.English = function() {
       display_name: "Damage Control Team",
       text: "Adds %REINFORCE% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> %CALCULATE%. %LINEBREAK% Before you engage, you may spend 1 or more %ENERGY% to flip that many of your <strong>Offline</strong> upgrade cards.%LINEBREAK% Action: Spend 1 or more %ENERGY% to repair that many of your faceup <strong>Ship</strong> damage cards."
     },
+    "Ordnance Team": {
+      display_name: "Ordnance Team",
+      text: "Adds %RELOAD% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> %CALCULATE%. %LINEBREAK% While you perform a %RELOAD% action, you may spend up to 3 %ENERGY% to reload that many additional %CHARGE% on your equipped %MISSILE%/%TORPEDO% upgrades. %LINEBREAK% After you perform a %RELOAD% action, you may spend 1 %ENERGY% to remove 1 disarm token."
+    },
     "Sensor Experts": {
       display_name: "Sensor Experts",
       text: "Adds %LOCK% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> %CALCULATE%. %LINEBREAK% You can maintain up to 3 locks on different objects. %LINEBREAK% After you perform a %LOCK% action, you may spend up to 2 %ENERGY% to acquire a lock on that many other objects at range 0-1 of the object you locked, ignoring range restrictions."
@@ -18061,6 +18153,10 @@ exportObj.cardLoaders.English = function() {
     "Boosted Scanners": {
       display_name: "Boosted Scanners",
       text: "While you lock, coordinate, or jam, you may spend up to 3 %ENERGY% to increase the range at which you can choose an object by 1 per %ENERGY% spent this way, to a maximum of range 5."
+    },
+    "Optimized Power Core": {
+      display_name: "Optimized Power Core",
+      text: "After you execute a blue maneuver, recover 1 %ENERGY%."
     },
     "Tibanna Reserves": {
       display_name: "Tibanna Reserves",
@@ -18090,13 +18186,49 @@ exportObj.cardLoaders.English = function() {
       display_name: "Thunderstrike",
       text: "Add %GUNNER% slot. %LINEBREAK% While you perform a bonus attack, if you have not attacked the defender this round, you may reroll 1 attack die."
     },
+    "Bright Hope": {
+      display_name: "Bright Hope",
+      text: "You can reinforce only your %FULLFRONTARC%. %LINEBREAK% While you defend, if you are reinforced and the attacker is in your %FULLFRONTARC%, you may roll 1 additional defense die."
+    },
     "Luminous": {
       display_name: "Luminous",
       text: "Setup: You are placed in reserve. %LINEBREAK% At the end of setup, you are placed in the play area at range 0-2 of a friendly ship."
     },
+    "Quantum Storm": {
+      display_name: "Quantum Storm",
+      text: "Add %TEAM% and %CARGO% slots .%LINEBREAK% After you fully execute a white maneuver, recover 1 %ENERGY%."
+    },
+    "Assailer": {
+      display_name: "Assailer",
+      text: "Add %GUNNER% slot.%LINEBREAK%While you defend, if the attack range is 1, you may roll 1 additional defense die."
+    },
     "Corvus": {
       display_name: "Corvus",
       text: "You can dock up to 2 small ships. %LINEBREAK% After you perform a %CALCULATE% action, gain 1 calculate token."
+    },
+    "Impetuous": {
+      display_name: "Impetuous",
+      text: "Add %CREW% slot. %LINEBREAK% After you perform an attack, if the defender was destroyed, you may perform a %FOCUS% or %LOCK% action."
+    },
+    "Instigator": {
+      display_name: "Instigator",
+      text: "Add %TEAM% slot. %LINEBREAK% While you perform an attack, if the defender has an orange or red token, you may reroll up to 2 attack dice."
+    },
+    "Blood Crow": {
+      display_name: "Blood Crow",
+      text: "Add %GUNNER% slot. %LINEBREAK% While you perform an attack at attack range 1-2, you may add 1 %FOCUS% result."
+    },
+    "Requiem": {
+      display_name: "Requiem",
+      text: "After a ship deploys from you, it may acquire a lock on one ship you are locking, ignoring range restrictions."
+    },
+    "Suppressor": {
+      display_name: "Suppressor",
+      text: "Add %SENSOR% slot. %LINEBREAK% After you coordinate a friendly ship, you may spend 1 %ENERGY% to jam an enemy ship at range 0-2 of that ship, ignoring range restrictions."
+    },
+    "Vector": {
+      display_name: "Vector",
+      text: "Add %CREW% and %CARGO% slots. %LINEBREAK% After a ship deploys from you, it may perform a %EVADE% or %BOOST% action."
     },
     "Broken Horn": {
       display_name: "Broken Horn",
@@ -35063,7 +35195,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 37301
+                    lineno: 37414
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -35893,7 +36025,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 38165
+              lineno: 38278
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -36667,7 +36799,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 38892
+              lineno: 39005
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -36677,7 +36809,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 38893
+                lineno: 39006
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -38572,7 +38704,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 40211
+              lineno: 40324
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -38789,7 +38921,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 40326
+                          lineno: 40439
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -38818,7 +38950,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 40342
+                              lineno: 40455
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -38888,7 +39020,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 40384
+                      lineno: 40497
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -38968,7 +39100,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 40413
+                lineno: 40526
               })
             ]);
             __iced_deferrals._fulfill();
@@ -39037,7 +39169,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 40442
+              lineno: 40555
             }));
           }
         }
@@ -40006,7 +40138,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 41201
+                lineno: 41314
               })
             ]);
             __iced_deferrals._fulfill();
@@ -40135,7 +40267,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 41267
+                  lineno: 41380
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -40158,7 +40290,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 41272
+                      lineno: 41385
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -40250,7 +40382,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 41317
+            lineno: 41430
           }));
         }
         __iced_deferrals._fulfill();
