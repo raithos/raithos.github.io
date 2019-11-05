@@ -35919,12 +35919,12 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'Han Solo'
+            name: 'Chewbacca'
             type: 'pilot'
             count: 1
         }
         {
-            name: 'Chewbacca'
+            name: 'Han Solo'
             type: 'pilot'
             count: 1
         }
@@ -35949,6 +35949,21 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
+            name: 'Engine Upgrade'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Han Solo'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Homing Missiles'
+            type: 'upgrade'
+            count: 1
+        }
+        {
             name: 'Informant'
             type: 'upgrade'
             count: 1
@@ -35964,22 +35979,32 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'Nien Nunb'
-            type: 'upgrade'
-            count: 1
-        }
-        {
-            name: 'Homing Missiles'
-            type: 'upgrade'
-            count: 1
-        }
-        {
-            name: 'Swarm Tactics'
+            name: 'Luke Skywalker'
             type: 'upgrade'
             count: 1
         }
         {
             name: 'Millennium Falcon'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Nien Nunb'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'R2-D2 (Crew)'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Rigged Cargo Chute'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Swarm Tactics'
             type: 'upgrade'
             count: 1
         }
@@ -35992,12 +36017,12 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'Rear Admiral Chiraneau'
+            name: 'Captain Oicunn'
             type: 'pilot'
             count: 1
         }
         {
-            name: 'Captain Oicunn'
+            name: 'Rear Admiral Chiraneau'
             type: 'pilot'
             count: 1
         }
@@ -36007,7 +36032,7 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'Lone Wolf'
+            name: '0-0-0'
             type: 'upgrade'
             count: 1
         }
@@ -36017,7 +36042,22 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
+            name: 'BT-1'
+            type: 'upgrade'
+            count: 1
+        }
+        {
             name: 'Darth Vader'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Dauntless'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Fifth Brother'
             type: 'upgrade'
             count: 1
         }
@@ -36032,17 +36072,27 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
+            name: 'Lone Wolf'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Proximity Mines'
+            type: 'upgrade'
+            count: 1
+        }
+        {
             name: 'Seventh Sister'
             type: 'upgrade'
             count: 1
         }
         {
-            name: 'BT-1'
+            name: 'Tactical Scrambler'
             type: 'upgrade'
             count: 1
         }
         {
-            name: '0-0-0'
+            name: 'Veteran Turret Gunner'
             type: 'upgrade'
             count: 1
         }
