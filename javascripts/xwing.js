@@ -6858,22 +6858,22 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "Rebel Alliance",
         modifier_func: function(stats) {
-          var s, spd, _i, _len, _ref, _ref1, _results;
-          _ref1 = (_ref = stats.maneuvers) != null ? _ref : [];
+          var s, _i, _len, _ref, _results;
+          _ref = stats.maneuvers;
           _results = [];
-          for (spd = _i = 0, _len = _ref1.length; _i < _len; spd = ++_i) {
-            s = _ref1[spd];
+          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            s = _ref[_i];
             if (s[1] > 0) {
-              if (s[1] = 1) {
+              if (s[1] === 1) {
                 s[1] = 2;
-              } else if (s[1] = 3) {
+              } else if (s[1] === 3) {
                 s[1] = 1;
               }
             }
             if (s[3] > 0) {
-              if (s[3] = 1) {
+              if (s[3] === 1) {
                 _results.push(s[3] = 2);
-              } else if (s[3] = 3) {
+              } else if (s[3] === 3) {
                 _results.push(s[3] = 1);
               } else {
                 _results.push(void 0);

@@ -82,7 +82,7 @@ body {
     border-right-color: transparent;
     font-family: EurostileStandard, Impact, sans-serif; }
     #printable .fancy-header .squad-name {
-      color: white;
+      color: white !important;
       position: absolute;
       font-size: 0.3in;
       margin-top: 0.09375in;
