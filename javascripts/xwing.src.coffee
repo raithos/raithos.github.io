@@ -10066,7 +10066,6 @@ exportObj.basicCardData = ->
            faction: "Rebel Alliance"
            modifier_func: (stats) ->
                 for s, spd in (stats.maneuvers ? [])
-                    continue if spd == 0
                     if s[1] > 0 
                         if s[1] = 1
                             s[1] = 2
@@ -11948,7 +11947,7 @@ exportObj.basicCardData = ->
             name: "Snap Shot"
             id: 256
             slot: "Talent"
-            pointsarray: [7,8,9,12]
+            pointsarray: [7,8,9]
             variablebase: true
             attack: 2
             range: """2"""
@@ -39317,13 +39316,12 @@ class exportObj.SquadBuilder
                     outlineColor = "black"
                     maneuverClass2 = "svg-base-maneuver"
                     if maneuvers[speed][turn] != baseManeuvers[speed][turn]
-                        outlineColor = "mediumblue" # highlight manuevers modified by another card (e.g. R2 Astromech makes all 1 & 2 speed maneuvers green)
+                        outlineColor = "DarkSlateGrey" # highlight manuevers modified by another card (e.g. R2 Astromech makes all 1 & 2 speed maneuvers green)
                         maneuverClass2 = "svg-modified-maneuver"
 
                     if speed == 0 and turn == 2
                         outTable += """<rect class="svg-maneuver-stop #{maneuverClass} #{maneuverClass2}" x="50" y="50" width="100" height="100" style="fill:#{color}" />"""
-                    else                      
-
+                    else
                         transform = ""
                         className = ""
                         switch turn

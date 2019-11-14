@@ -6863,9 +6863,6 @@ exportObj.basicCardData = function() {
           _results = [];
           for (spd = _i = 0, _len = _ref1.length; _i < _len; spd = ++_i) {
             s = _ref1[spd];
-            if (spd === 0) {
-              continue;
-            }
             if (s[1] > 0) {
               if (s[1] = 1) {
                 s[1] = 2;
@@ -8715,7 +8712,7 @@ exportObj.basicCardData = function() {
         name: "Snap Shot",
         id: 256,
         slot: "Talent",
-        pointsarray: [7, 8, 9, 12],
+        pointsarray: [7, 8, 9],
         variablebase: true,
         attack: 2,
         range: "2",
@@ -35235,7 +35232,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 37464
+                    lineno: 37463
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -36065,7 +36062,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 38328
+              lineno: 38327
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -36839,7 +36836,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 39055
+              lineno: 39054
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -36849,7 +36846,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 39056
+                lineno: 39055
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -37369,7 +37366,7 @@ exportObj.SquadBuilder = (function() {
           outlineColor = "black";
           maneuverClass2 = "svg-base-maneuver";
           if (maneuvers[speed][turn] !== baseManeuvers[speed][turn]) {
-            outlineColor = "mediumblue";
+            outlineColor = "DarkSlateGrey";
             maneuverClass2 = "svg-modified-maneuver";
           }
           if (speed === 0 && turn === 2) {
@@ -38744,7 +38741,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 40374
+              lineno: 40372
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -38961,7 +38958,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 40489
+                          lineno: 40487
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -38990,7 +38987,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 40505
+                              lineno: 40503
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -39060,7 +39057,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 40547
+                      lineno: 40545
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -39140,7 +39137,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 40576
+                lineno: 40574
               })
             ]);
             __iced_deferrals._fulfill();
@@ -39209,7 +39206,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 40605
+              lineno: 40603
             }));
           }
         }
@@ -40178,7 +40175,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 41364
+                lineno: 41362
               })
             ]);
             __iced_deferrals._fulfill();
@@ -40307,7 +40304,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 41430
+                  lineno: 41428
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -40330,7 +40327,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 41435
+                      lineno: 41433
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -40422,7 +40419,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 41480
+            lineno: 41478
           }));
         }
         __iced_deferrals._fulfill();
