@@ -40905,7 +40905,6 @@ class Ship
                     #{attackfHTML}
                     #{attacktHTML}
                     #{attackdtHTML}
-                    #{energyHTML}
                     <i class="xwing-miniatures-font header-agility xwing-miniatures-font-agility"></i>
                     <span class="info-data info-agility">#{statAndEffectiveStat((@pilot.ship_override?.agility ? @data.agility), effective_stats, 'agility')}</span>                    
                     #{hullIconHTML}
@@ -40914,6 +40913,7 @@ class Ship
                     #{shieldIconHTML}
                     <i class="xwing-miniatures-font header-shield xwing-miniatures-font-shield simple-hull-or-shield"></i>
                     <span class="info-data info-shields simple-hull-or-shield">#{statAndEffectiveStat((@pilot.ship_override?.shields ? @data.shields), effective_stats, 'shields')}</span>
+                    #{energyHTML}
                     #{forceHTML}
                     #{chargeHTML}
                     <br>
