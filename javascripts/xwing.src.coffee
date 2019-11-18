@@ -3340,7 +3340,7 @@ exportObj.basicCardData = ->
              "Reinforce"
              "Lock"
              "Coordinate"
-             "Reload"
+             "Jam"
            ]
            maneuvers: [
                 [ 0, 3, 3, 3, 0]
@@ -9528,7 +9528,6 @@ exportObj.basicCardData = ->
                 "Crew"
                 "Crew"
                 "Tactical Relay"
-                "Gunner"
                 "Team"
                 "Cargo"
                 "Device"
@@ -40856,12 +40855,14 @@ class Ship
             <span class="info-data info-attack">#{statAndEffectiveStat((@pilot.ship_override?.attackdt ? @data.attackdt), effective_stats, 'attackdt')}</span>""" 
         else
             attackdtHTML = ''
-            
+
+        
         energyHTML = if (@pilot.ship_override?.energy? or @data.energy?) then $.trim """
             <i class="xwing-miniatures-font header-energy xwing-miniatures-font-energy"></i>
             <span class="info-data info-energy">#{statAndEffectiveStat((@pilot.ship_override?.energy ? @data.energy), effective_stats, 'energy')}</span>
         """ else ''
-            
+        
+    
         forceHTML = if (@pilot.force?) then $.trim """
             <i class="xwing-miniatures-font header-force xwing-miniatures-font-forcecharge"></i>
             <span class="info-data info-force">#{statAndEffectiveStat((@pilot.ship_override?.force ? @pilot.force), effective_stats, 'force')}<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i></span>
