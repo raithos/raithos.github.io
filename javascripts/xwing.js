@@ -35463,7 +35463,8 @@ exportObj.SquadBuilder = (function() {
       sources: null,
       points: 200,
       bid_goal: 5,
-      ships_or_upgrades: 3
+      ships_or_upgrades: 3,
+      collection_only: true
     };
     this.total_points = 0;
     this.isHyperspace = (_ref = (_ref1 = exportObj.builders[0]) != null ? _ref1.isHyperspace : void 0) != null ? _ref : false;
@@ -35895,7 +35896,7 @@ exportObj.SquadBuilder = (function() {
     this.randomizer_options_modal = $(document.createElement('DIV'));
     this.randomizer_options_modal.addClass('modal hide fade randomizer-modal');
     $('body').append(this.randomizer_options_modal);
-    this.randomizer_options_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>Random Squad Builder Options</h3>\n</div>\n<div class=\"modal-body\">\n    <form>\n        <label>\n            Desired Points\n            <input type=\"number\" class=\"randomizer-points\" value=\"" + DEFAULT_RANDOMIZER_POINTS + "\" placeholder=\"" + DEFAULT_RANDOMIZER_POINTS + "\" />\n        </label>\n        <label>\n            Left bid to stop randomizing\n            <input type=\"number\" class=\"randomizer-bid-goal\" value=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" placeholder=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" />\n        </label>\n        <label>\n            More upgrades\n            <input type=\"range\" min=\"0\" max=\"10\" class=\"randomizer-ships-or-upgrades\" value=\"" + DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES + "\" placeholder=\"" + DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES + "\" />\n            Less upgrades\n        </label>\n        <label>\n            Sets and Expansions (default all)\n            <select class=\"randomizer-sources\" multiple=\"1\" data-placeholder=\"Use all sets and expansions\">\n            </select>\n        </label>\n        <label>\n            Maximum Seconds to Spend Randomizing\n            <input type=\"number\" class=\"randomizer-timeout\" value=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" placeholder=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" />\n        </label>\n    </form>\n</div>\n<div class=\"modal-footer\">\n    <button class=\"btn btn-primary do-randomize\" aria-hidden=\"true\">Randomize!</button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.randomizer_options_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>Random Squad Builder Options</h3>\n</div>\n<div class=\"modal-body\">\n    <form>\n        <label>\n            Maximal desired bid\n            <input type=\"number\" class=\"randomizer-bid-goal\" value=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" placeholder=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" />\n        </label>\n        <label>\n            More upgrades\n            <input type=\"range\" min=\"0\" max=\"10\" class=\"randomizer-ships-or-upgrades\" value=\"" + DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES + "\" placeholder=\"" + DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES + "\" />\n            Less upgrades\n        </label>\n        <label>\n            <input type=\"checkbox\" class=\"randomizer-collection-only\" checked=\"checked\"/> \n            Only use items from collection\n        </label>\n        <label>\n            Sets and Expansions (default all)\n            <select class=\"randomizer-sources\" multiple=\"1\" data-placeholder=\"Use all sets and expansions\">\n            </select>\n        </label>\n        <label>\n            Maximum Seconds to Spend Randomizing\n            <input type=\"number\" class=\"randomizer-timeout\" value=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" placeholder=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" />\n        </label>\n    </form>\n</div>\n<div class=\"modal-footer\">\n    <button class=\"btn btn-primary do-randomize\" aria-hidden=\"true\">Randomize!</button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
     this.randomizer_source_selector = $(this.randomizer_options_modal.find('select.randomizer-sources'));
     _ref = exportObj.expansions;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -35908,6 +35909,7 @@ exportObj.SquadBuilder = (function() {
       width: "100%",
       minimumResultsForSearch: $.isMobile() ? -1 : 0
     });
+    this.randomizer_collection_selector = ($(this.randomizer_options_modal.find('.randomizer-collection-only')))[0];
     this.randomize_button.click((function(_this) {
       return function(e) {
         var bid_goal, points, ships_or_upgrades, timeout_sec;
@@ -35917,7 +35919,7 @@ exportObj.SquadBuilder = (function() {
             return _this.randomize_button.click();
           });
         } else {
-          points = parseInt($(_this.randomizer_options_modal.find('.randomizer-points')).val());
+          points = parseInt(_this.desired_points_input.val());
           if (isNaN(points) || points <= 0) {
             points = DEFAULT_RANDOMIZER_POINTS;
           }
@@ -35933,7 +35935,7 @@ exportObj.SquadBuilder = (function() {
           if (isNaN(timeout_sec) || timeout_sec <= 0) {
             timeout_sec = DEFAULT_RANDOMIZER_TIMEOUT_SEC;
           }
-          return _this.randomSquad(points, _this.randomizer_source_selector.val(), timeout_sec * 1000, bid_goal, ships_or_upgrades);
+          return _this.randomSquad(points, _this.randomizer_source_selector.val(), timeout_sec * 1000, bid_goal, ships_or_upgrades, _this.randomizer_collection_selector.checked);
         }
       };
     })(this));
@@ -36062,7 +36064,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 38326
+              lineno: 38328
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -36836,7 +36838,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 39053
+              lineno: 39055
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -36846,7 +36848,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 39054
+                lineno: 39056
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -36898,13 +36900,16 @@ exportObj.SquadBuilder = (function() {
     }
   };
 
-  SquadBuilder.prototype.getAvailableShipsMatching = function(term, sorted) {
+  SquadBuilder.prototype.getAvailableShipsMatching = function(term, sorted, collection_only) {
     var ship_data, ship_name, ships, _ref;
     if (term == null) {
       term = '';
     }
     if (sorted == null) {
       sorted = true;
+    }
+    if (collection_only == null) {
+      collection_only = false;
     }
     ships = [];
     _ref = exportObj.ships;
@@ -36913,15 +36918,17 @@ exportObj.SquadBuilder = (function() {
       if (this.isOurFaction(ship_data.factions) && (this.matcher(ship_data.name, term) || (ship_data.display_name && this.matcher(ship_data.display_name, term)))) {
         if (this.isItemAvailable(ship_data, true)) {
           if (this.isEpic || (!this.isEpic && !ship_data.huge)) {
-            ships.push({
-              id: ship_data.name,
-              name: ship_data.name,
-              display_name: ship_data.display_name,
-              text: ship_data.display_name ? ship_data.display_name : ship_data.name,
-              canonical_name: ship_data.canonical_name,
-              xws: ship_data.xws,
-              icon: ship_data.icon ? ship_data.icon : ship_data.xws
-            });
+            if (!collection_only || ((this.collection != null) && (this.collection.checks.collectioncheck === "true") && this.collection.checkShelf('ship', ship_data.name))) {
+              ships.push({
+                id: ship_data.name,
+                name: ship_data.name,
+                display_name: ship_data.display_name,
+                text: ship_data.display_name ? ship_data.display_name : ship_data.name,
+                canonical_name: ship_data.canonical_name,
+                xws: ship_data.xws,
+                icon: ship_data.icon ? ship_data.icon : ship_data.xws
+              });
+            }
           }
         }
       }
@@ -36932,7 +36939,7 @@ exportObj.SquadBuilder = (function() {
     return ships;
   };
 
-  SquadBuilder.prototype.getAvailableShipsMatchingAndCheapEnough = function(points, term, sorted) {
+  SquadBuilder.prototype.getAvailableShipsMatchingAndCheapEnough = function(points, term, sorted, collection_only) {
     var cheap_ships, pilots, possible_ships, ship, _i, _len;
     if (term == null) {
       term = '';
@@ -36940,7 +36947,10 @@ exportObj.SquadBuilder = (function() {
     if (sorted == null) {
       sorted = false;
     }
-    possible_ships = this.getAvailableShipsMatching(term, sorted);
+    if (collection_only == null) {
+      collection_only = false;
+    }
+    possible_ships = this.getAvailableShipsMatching(term, sorted, collection_only);
     cheap_ships = [];
     for (_i = 0, _len = possible_ships.length; _i < _len; _i++) {
       ship = possible_ships[_i];
@@ -38026,7 +38036,7 @@ exportObj.SquadBuilder = (function() {
             uniquedots = "";
           }
           if (((_ref65 = this.collection) != null ? _ref65.counts : void 0) != null) {
-            addon_count = (_ref66 = (_ref67 = this.collection.counts) != null ? (_ref68 = _ref67[additional_opts.addon_type.toLowerCase()]) != null ? _ref68[data.name] : void 0 : void 0) != null ? _ref66 : 0;
+            addon_count = (_ref66 = (_ref67 = this.collection.counts) != null ? (_ref68 = _ref67['upgrade']) != null ? _ref68[data.name] : void 0 : void 0) != null ? _ref66 : 0;
             container.find('.info-collection').text("You have " + addon_count + " in your collection.");
             container.find('.info-collection').show();
           } else {
@@ -38197,12 +38207,12 @@ exportObj.SquadBuilder = (function() {
         }
         idx = $.randomInt(data.ships_or_upgrades + unused_addons.length);
         if (idx < data.ships_or_upgrades || unused_addons.length === 0) {
-          available_ships = this.getAvailableShipsMatchingAndCheapEnough(data.max_points - this.total_points);
+          available_ships = this.getAvailableShipsMatchingAndCheapEnough(data.max_points - this.total_points, '', false, data.collection_only);
           if (available_ships.length === 0) {
             if (unused_addons.length > 0) {
               idx = $.randomInt(unused_addons.length) + data.ships_or_upgrades;
             } else {
-              available_ships = this.getAvailableShipsMatching('', false);
+              available_ships = this.getAvailableShipsMatching('', false, data.collection_only);
             }
           }
           if (available_ships.length > 0) {
@@ -38212,7 +38222,7 @@ exportObj.SquadBuilder = (function() {
               return;
             }
             pilot = available_pilots[$.randomInt(available_pilots.length)];
-            if (!pilot.disabled && (this.isQuickbuild ? exportObj.pilots[exportObj.quickbuildsById[pilot.id].pilot] : exportObj.pilotsById[pilot.id]).sources.intersects(data.allowed_sources)) {
+            if (!pilot.disabled && (this.isQuickbuild ? exportObj.pilots[exportObj.quickbuildsById[pilot.id].pilot] : exportObj.pilotsById[pilot.id]).sources.intersects(data.allowed_sources) && ((!data.collection_only) || this.collection.checkShelf('pilot', (this.isQuickbuild ? exportObj.quickbuildsById[pilot.id] : pilot.name)))) {
               new_ship = this.addShip();
               new_ship.setPilotById(pilot.id);
             }
@@ -38228,7 +38238,7 @@ exportObj.SquadBuilder = (function() {
                 _results = [];
                 for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
                   upgrade = _ref2[_k];
-                  if (exportObj.upgradesById[upgrade.id].sources.intersects(data.allowed_sources)) {
+                  if (exportObj.upgradesById[upgrade.id].sources.intersects(data.allowed_sources) && ((!data.collection_only) || this.collection.checkShelf('upgrade', upgrade.name))) {
                     _results.push(upgrade);
                   }
                 }
@@ -38324,7 +38334,7 @@ exportObj.SquadBuilder = (function() {
     })(this);
   };
 
-  SquadBuilder.prototype.randomSquad = function(max_points, allowed_sources, timeout_ms, bid_goal, ships_or_upgrades) {
+  SquadBuilder.prototype.randomSquad = function(max_points, allowed_sources, timeout_ms, bid_goal, ships_or_upgrades, collection_only) {
     var data, stopHandler;
     if (max_points == null) {
       max_points = 200;
@@ -38341,6 +38351,9 @@ exportObj.SquadBuilder = (function() {
     if (ships_or_upgrades == null) {
       ships_or_upgrades = 3;
     }
+    if (collection_only == null) {
+      collection_only = true;
+    }
     this.backend_status.fadeOut('slow');
     this.suppress_automatic_new_ship = true;
     while (this.ships.length > 0) {
@@ -38354,7 +38367,8 @@ exportObj.SquadBuilder = (function() {
       bid_goal: bid_goal,
       ships_or_upgrades: ships_or_upgrades,
       keep_running: true,
-      allowed_sources: allowed_sources != null ? allowed_sources : exportObj.expansions
+      allowed_sources: allowed_sources != null ? allowed_sources : exportObj.expansions,
+      collection_only: (this.collection != null) && (this.collection.checks.collectioncheck === "true") && collection_only
     };
     stopHandler = (function(_this) {
       return function() {
@@ -38741,7 +38755,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 40371
+              lineno: 40375
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -38958,7 +38972,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 40486
+                          lineno: 40490
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -38987,7 +39001,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 40502
+                              lineno: 40506
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -39057,7 +39071,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 40544
+                      lineno: 40548
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -39137,7 +39151,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 40573
+                lineno: 40577
               })
             ]);
             __iced_deferrals._fulfill();
@@ -39206,7 +39220,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 40602
+              lineno: 40606
             }));
           }
         }
@@ -40175,7 +40189,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 41363
+                lineno: 41367
               })
             ]);
             __iced_deferrals._fulfill();
@@ -40304,7 +40318,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 41429
+                  lineno: 41433
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -40327,7 +40341,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 41434
+                      lineno: 41438
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -40419,7 +40433,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 41479
+            lineno: 41483
           }));
         }
         __iced_deferrals._fulfill();
