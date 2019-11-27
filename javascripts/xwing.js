@@ -34596,6 +34596,562 @@ exportObj.manifestByExpansion = {
       count: 1
     }
   ],
+  "Huge Ship Conversion Kit": [
+    {
+      name: 'Alderaanian Guard',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Echo Base Evacuees',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'First Order Collaborators',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'New Republic Volunteers',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Outer Rim Garrison',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Outer Rim Patrol',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Republic Judiciary',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Separatist Privateers',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Syndicate Smugglers',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Admiral Ozzel',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Azmorigan',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Captain Needa',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Carlist Rieekan',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Jan Dodonna',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Raymus Antilles',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Stalwart Captain',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Strategic Commander',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Fire-Control System',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Ion Cannon Battery',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Ordnance Tubes',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Point-Defense Battery',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Targeting Battery',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Turbolaser Battery',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Heavy Laser Cannon',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Dorsal Turret',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Adv. Proton Torpedoes',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Cluster Missiles',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Concussion Missiles',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Novice Technician',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Seasoned Navigator',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Toryn Farr',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Agile Gunner',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Hotshot Gunner',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Adaptive Shields',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Boosted Scanners',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Optimized Power Core',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Tibanna Reserves',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Bombardment Specialists',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Comms Team',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Damage Control Team',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Gunnery Specialists',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'IG-RM Droids',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Ordnance Team',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Sensor Experts',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Quick-Release Locks',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: "Saboteur's Map",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Scanner Baffler',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Proximity Mines',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Assailer',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Blood Crow',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Bright Hope',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Broken Horn',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Corvus',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: "Dodonna's Pride",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Impetuous',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Insatiable Worrt',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Instigator',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: "Jaina's Light",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Liberator',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Luminous',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Merchant One',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Quantum Storm',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Requiem',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Suppressor',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Tantive IV',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Thunderstrike',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Vector',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Corsair Refit',
+      type: 'upgrade',
+      count: 2
+    }
+  ],
+  'Tantive IV Expansion Pack': [
+    {
+      name: 'CR90 Corellian Corvette',
+      type: 'ship',
+      count: 1
+    }, {
+      name: 'Alderaanian Guard',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Republic Judiciary',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Carlist Rieekan',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Jan Dodonna',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Raymus Antilles',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Stalwart Captain',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Strategic Commander',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Ion Cannon Battery',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Point-Defense Battery',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Targeting Battery',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Turbolaser Battery',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Novice Technician',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Seasoned Navigator',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Toryn Farr',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Agile Gunner',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Hotshot Gunner',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Bombardment Specialists',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Comms Team',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Damage Control Team',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Gunnery Specialists',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Sensor Experts',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Adaptive Shields',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Boosted Scanners',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Optimized Power Core',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Tibanna Reserves',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: "Dodonna's Pride",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: "Jaina's Light",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Liberator',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Tantive IV',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Thunderstrike',
+      type: 'upgrade',
+      count: 1
+    }
+  ],
+  'C-ROC Cruiser Expansion Pack': [
+    {
+      name: 'C-ROC Cruiser',
+      type: 'ship',
+      count: 1
+    }, {
+      name: 'Separatist Privateers',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Syndicate Smugglers',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Carlist Rieekan',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Azmorigan',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Stalwart Captain',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Strategic Commander',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Ion Cannon Battery',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Point-Defense Battery',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Targeting Battery',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Turbolaser Battery',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Novice Technician',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Seasoned Navigator',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Agile Gunner',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Hotshot Gunner',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Bombardment Specialists',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Comms Team',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Damage Control Team',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Gunnery Specialists',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'IG-RM Droids',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Sensor Experts',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Adaptive Shields',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Boosted Scanners',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Optimized Power Core',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Tibanna Reserves',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Quick-Release Locks',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: "Saboteur's Map",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Scanner Baffler',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Proximity Mines',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Broken Horn',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Insatiable Worrt',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Merchant One',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Corsair Refit',
+      type: 'upgrade',
+      count: 1
+    }
+  ],
+  'Epic Battles Multiplayer Expansion': [
+    {
+      name: 'Agent of the Empire',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Dreadnought Hunter',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'First Order Elite',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Veteran Wing Leader',
+      type: 'upgrade',
+      count: 4
+    }
+  ],
   'Loose Ships': [
     {
       name: 'A-Wing',
@@ -34722,19 +35278,11 @@ exportObj.manifestByExpansion = {
       type: 'ship',
       count: 3
     }, {
-      name: 'CR90 Corellian Corvette',
-      type: 'ship',
-      count: 3
-    }, {
       name: 'GR-75 Medium Transport',
       type: 'ship',
       count: 3
     }, {
       name: 'Gozanti-class Cruiser',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'C-ROC Cruiser',
       type: 'ship',
       count: 3
     }
@@ -35232,7 +35780,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 37462
+                    lineno: 38140
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -36064,7 +36612,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 38328
+              lineno: 39006
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -36838,7 +37386,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 39055
+              lineno: 39733
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -36848,7 +37396,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 39056
+                lineno: 39734
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -38755,7 +39303,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 40375
+              lineno: 41053
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -38972,7 +39520,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 40490
+                          lineno: 41168
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -39001,7 +39549,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 40506
+                              lineno: 41184
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -39071,7 +39619,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 40548
+                      lineno: 41226
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -39151,7 +39699,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 40577
+                lineno: 41255
               })
             ]);
             __iced_deferrals._fulfill();
@@ -39220,7 +39768,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 40606
+              lineno: 41284
             }));
           }
         }
@@ -40189,7 +40737,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 41367
+                lineno: 42045
               })
             ]);
             __iced_deferrals._fulfill();
@@ -40318,7 +40866,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 41433
+                  lineno: 42111
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -40341,7 +40889,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 41438
+                      lineno: 42116
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -40433,7 +40981,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 41483
+            lineno: 42161
           }));
         }
         __iced_deferrals._fulfill();
