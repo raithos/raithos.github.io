@@ -16,7 +16,10 @@ body {
   #printable .bw .fancy-pilot-stats .xwing-miniatures-font {
     color: black; }
   #printable .bw .fancy-pilot-stats .red {
-    -webkit-text-stroke: 0.2px gray; }
+    -webkit-text-stroke: 0.3px black;
+    color: white; }
+  #printable .bw .fancy-pilot-stats .force {
+    color: gray; }
   #printable .bw .fancy-dial .svg-maneuver-triangle.svg-base-maneuver {
     fill: black;
     stroke: black; }
