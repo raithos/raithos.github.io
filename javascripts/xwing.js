@@ -15769,8 +15769,8 @@ exportObj.cardLoaders.English = function() {
       text: "At the start of the Activation Phase, you may choose 1 friendly ship at range 1-3. If you do, that ship removes 1 stress token."
     },
     "Cat": {
-      display_name: "Cat",
-      text: "While you perform a primary attack, if the defender is at range 0-1 of at least 1&nbsp;friendly device, roll 1 additional die."
+      display_name: "Salami Cat",
+      text: "While you perform a primary attack, if the defender is at range 0-1 of at least 1&nbsp;friendly device, roll 1 additional die.%LINEBREAK%<i>Dee Yun is the worst</i>"
     },
     "Cavern Angels Zealot": {
       display_name: "Cavern Angels Zealot",
