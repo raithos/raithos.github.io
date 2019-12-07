@@ -313,6 +313,16 @@
   background-repeat: no-repeat;
   background-position: 0px -10px; }
 
+.ship-btlbywing{
+  background-image: url("../images/btlbywing0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-nantexclassstarfighter {
+  background-image: url("../images/nantexclassstarfighter0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
 .ship-vultureclassdroidfighter {
   background-image: url("../images/vultureclassdroidfighter0.png");
   background-repeat: no-repeat;
