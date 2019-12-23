@@ -6481,6 +6481,57 @@ exportObj.basicCardData = function() {
         ship: "RZ-2 A-Wing",
         points: 200,
         slots: ["Talent", "Missile", "Tech"]
+      }, {
+        name: "Paige Tico",
+        id: 389,
+        faction: "Resistance",
+        unique: true,
+        skill: 5,
+        ship: "MG-100 StarFortress",
+        points: 200,
+        charge: 1,
+        recurring: true,
+        slots: ["Sensor", "Tech", "Crew", "Gunner", "Gunner", "Device", "Device", "Modification"]
+      }, {
+        name: "K-2SO",
+        id: 390,
+        faction: "Rebel Alliance",
+        unique: true,
+        skill: 3,
+        ship: "U-Wing",
+        points: 200,
+        slots: ["Talent", "Sensor", "Crew", "Crew", "Modification", "Configuration"],
+        ship_override: {
+          actions: ["Calculate", "Lock"]
+        }
+      }, {
+        name: "Gina Moonsong",
+        id: 391,
+        faction: "Rebel Alliance",
+        unique: true,
+        skill: 5,
+        ship: "B-Wing",
+        points: 200,
+        slots: ["Talent", "Sensor", "Cannon", "Cannon", "Torpedo", "Modification", "Configuration"]
+      }, {
+        name: "Alexsandr Kallus",
+        id: 392,
+        faction: "Rebel Alliance",
+        unique: true,
+        skill: 4,
+        ship: "VCX-100",
+        points: 200,
+        slots: ["Torpedo", "Sensor", "Turret", "Crew", "Crew", "Modification", "Gunner", "Title"]
+      }, {
+        name: "Leia Organa",
+        id: 393,
+        faction: "Rebel Alliance",
+        unique: true,
+        skill: 5,
+        ship: "YT-1300",
+        points: 200,
+        force: 1,
+        slots: ["Force", "Missile", "Gunner", "Crew", "Crew", "Modification", "Modification", "Title"]
       }
     ],
     upgradesById: [
@@ -9541,6 +9592,17 @@ exportObj.basicCardData = function() {
           stats.actions.push('*Barrel Roll');
           stats.actions.push('R> Lock');
           return stats.actionsred.push('Reload');
+        }
+      }, {
+        name: "K-2SO",
+        id: 314,
+        slot: "Crew",
+        faction: "Rebel Alliance",
+        unique: true,
+        points: 200,
+        modifier_func: function(stats) {
+          stats.actions.push('Calculate');
+          return stats.actions.push('Jam');
         }
       }
     ],
@@ -17175,6 +17237,21 @@ exportObj.cardLoaders.English = function() {
     "Ronith Blario": {
       text: "While you defend or perform an attack, if the enemy ship is in another friendly ship's %SINGLETURRETARC%, you may spend 1 focus token from that friendly ship to change 1 of your %FOCUS% results to an %EVADE% or %HIT% result. %LINEBREAK%<strong>Refined Gyrostabilizers:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. After you perform an action, you may perform a red %BOOST% or red %ROTATEARC% action."
     },
+    "Gina Moonsong": {
+      text: "At the start of the Engagement Phase, you <b>must</b> transfer 1 of your stress tokens to another friendly ship at range 0-2."
+    },
+    "K-2SO": {
+      text: "After you gain a stress token, gain 1 calculate token."
+    },
+    "Alexsandr Kallus": {
+      text: "While you defend, if the attacker modified any attack dice, you may roll 1 additional defense die."
+    },
+    "Leia Organa": {
+      text: "After a friendly ship fully executes a red maneuver, if it is at range 0-3, you may spend 1 %FORCE%. If you do, that ship gains 1 focus token or recovers 1 %FORCE%."
+    },
+    "Paige Tico": {
+      text: "After you drop a device, you may spend 1 %CHARGE% to drop an additional device."
+    },
     "Republic Judiciary": {
       display_name: "Republic Judiciary",
       text: "<i class = flavor_text>The Galactic Republic uses small, swift warships such as the CR90 corvette to respond rapidly to Separatist incursions across the galaxy.</i> %LINEBREAK% <strong>Broadside Batteries:</strong> You can acquire locks and perform primary attacks at range 1-4."
@@ -18238,6 +18315,9 @@ exportObj.cardLoaders.English = function() {
     "Stabilized S-Foils": {
       display_name: "Stabilized S-Foils",
       text: "<strong>Closed: </strong><i>Adds <r>%RELOAD%</r>, %BARRELROLL% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i><r> %EVADE%</r></i>%LINEBREAK% Before you activate, if you are not critically damaged, you may flip this card. %LINEBREAK% <strong>Open:</strong> <i>Adds %BARRELROLL% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i><r> %LOCK%</r></i>%LINEBREAK% After you perform an attack, you may spend your lock on the defender to perform a bonus %CANNON% attack against that ship using a %CANNON% upgrade you have not attacked with this turn. %LINEBREAK% Before you activate, if you are not critically damaged, you may flip this card."
+    },
+    "K-2SO": {
+      text: "Adds %CALCULATE%, %JAM% %LINEBREAK% During the System Phase, you may choose a friendly ship at range 0-3. That ship gains 1 calculate token and 1 stress token."
     },
     "Admiral Ozzel": {
       display_name: "Admiral Ozzel",
@@ -35984,7 +36064,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 38434
+                    lineno: 38557
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -36816,7 +36896,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 39300
+              lineno: 39423
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -37590,7 +37670,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 40027
+              lineno: 40150
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -37600,7 +37680,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 40028
+                lineno: 40151
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -39507,7 +39587,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 41348
+              lineno: 41471
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -39724,7 +39804,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 41463
+                          lineno: 41586
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -39753,7 +39833,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 41479
+                              lineno: 41602
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -39823,7 +39903,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 41521
+                      lineno: 41644
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -39903,7 +39983,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 41550
+                lineno: 41673
               })
             ]);
             __iced_deferrals._fulfill();
@@ -39972,7 +40052,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 41579
+              lineno: 41702
             }));
           }
         }
@@ -40941,7 +41021,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 42340
+                lineno: 42463
               })
             ]);
             __iced_deferrals._fulfill();
@@ -41070,7 +41150,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 42406
+                  lineno: 42529
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -41093,7 +41173,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 42411
+                      lineno: 42534
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -41185,7 +41265,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 42456
+            lineno: 42579
           }));
         }
         __iced_deferrals._fulfill();
