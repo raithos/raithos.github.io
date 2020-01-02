@@ -6990,7 +6990,7 @@ exportObj.basicCardData = ->
             ship: "TIE Striker"
             skill: 1
             points: 34
-            slots: [    
+            slots: [
                 "Gunner"
                 "Device"
                 "Modification"
@@ -7024,7 +7024,7 @@ exportObj.basicCardData = ->
             ship: "VT-49 Decimator"
             skill: 3
             points: 74
-            slots: [       
+            slots: [
                 "Talent"
                 "Torpedo"
                 "Crew"
@@ -7043,7 +7043,7 @@ exportObj.basicCardData = ->
             ship: "VT-49 Decimator"
             skill: 2
             points: 68
-            slots: [    
+            slots: [
                 "Torpedo"
                 "Crew"
                 "Crew"
@@ -9886,7 +9886,119 @@ exportObj.basicCardData = ->
                 "Title"
             ]
         }
-        
+        {
+            name: "Fifth Brother"
+            id: 394
+            faction: "Galactic Empire"
+            unique: true
+            skill: 4
+            ship: "TIE Advanced Prototype"
+            points: 200
+            force: 2
+            slots: [
+                "Force"
+                "Sensor"
+                "Missile"
+            ]
+        }
+        {
+            name: '"Vagabond"'
+            id: 395
+            faction: "Galactic Empire"
+            unique: true
+            skill: 2
+            ship: "TIE Striker"
+            points: 200
+            slots: [
+                "Gunner"
+                "Device"
+                "Modification"
+            ]
+        }
+        {
+            name: "Morna Kee"
+            id: 396
+            faction: "Galactic Empire"
+            unique: true
+            skill: 4
+            ship: "VT-49 Decimator"
+            points: 200
+            charge: 3
+            slots: [
+                "Talent"
+                "Torpedo"
+                "Crew"
+                "Crew"
+                "Crew"
+                "Gunner"
+                "Device"
+                "Modification"
+                "Title"
+            ]
+        }
+        {
+            name: "Lieutenant LeHuse"
+            id: 397
+            faction: "First Order"
+            unique: true
+            skill: 5
+            ship: "TIE/SF Fighter"
+            points: 200
+            slots: [
+                "Talent"
+                "Tech"
+                "Gunner"
+                "Missile"
+                "Sensor"
+                "Modification"
+            ]
+        }
+        {
+            name: "Bossk (Z-95 Headhunter)"
+            xws: "bossk-z-95headhunter"
+            id: 398
+            faction: "Scum and Villainy"
+            unique: true
+            skill: 4
+            ship: "Z-95 Headhunter"
+            points: 200
+            slots: [
+                "Talent"
+                "Missile"
+                "Illicit"
+                "Modification"
+            ]
+        }
+        {
+            name: "G4R-GOR V/M"
+            id: 399
+            faction: "Scum and Villainy"
+            unique: true
+            skill: 0
+            ship: "M3-A Interceptor"
+            points: 200
+            slots: [
+                "Modification"
+                "HardpointShip"
+            ]
+        }
+        {
+            name: "Nom Lumb"
+            id: 400
+            faction: "Scum and Villainy"
+            unique: true
+            skill: 1
+            ship: "JumpMaster 5000"
+            points: 200
+            slots: [
+                "Torpedo"
+                "Crew"
+                "Gunner"
+                "Illicit"
+                "Modification"
+                "Title"
+            ]
+        }
     ]
 
 
@@ -21363,6 +21475,21 @@ exportObj.cardLoaders.English = () ->
            text: """After a friendly ship fully executes a red maneuver, if it is at range 0-3, you may spend 1 %FORCE%. If you do, that ship gains 1 focus token or recovers 1 %FORCE%."""
         "Paige Tico":
            text: """After you drop a device, you may spend 1 %CHARGE% to drop an additional device."""
+        "Fifth Brother":
+           text: """While you perform an attack, after the Neutralize Results step, if the attack hit, you may spend 2 %FORCE% to add 1 %CRIT% result."""
+        '"Vagabond"':
+           text: """After you fully execute a maneuver using your <strong>Adaptive Ailerons</strong>, if you are not stressed you may drop 1 device. %LINEBREAK%<strong>Adaptive Ailerons:</strong> Before you reveal your dial, if you are not stressed, you <b>must</b> execute a white [1&nbsp;%BANKLEFT%], [1&nbsp;%STRAIGHT%], or [1&nbsp;%BANKRIGHT%] maneuver."""
+        "Morna Kee":
+           text: """During the End Phase, you may spend 1 %CHARGE% to flip 1 of your reinforce tokens to the other full arc instead of removing it."""
+        "Lieutenant LeHuse":
+           text: """While you perform an attack, you may spend another friendly ship's lock on the defender to reroll any number of your results. %LINEBREAK%<strong>Heavy Weapon Turret:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. You <b>must</b> treat the %FRONTARC% requirement of your equipped %MISSILE% upgrades as %SINGLETURRETARC%."""
+        "Bossk (Z-95 Headhunter)":
+           display_name: """Bossk"""
+           text: """While you perform a primary attack, after the Neutralize Results step, you may spend 1 %CRIT% result to add 2 %HIT% results. %LINEBREAK%<strong>Pursuit Craft:</strong> After you deploy, you may acquire a lock on a ship the friendly <strong>Hound's Tooth</strong> has locked."""
+        "G4R-GOR V/M":
+           text: """After you defend, each other ship at range 0 suffers 1 %CRIT% damage. %LINEBREAK%<strong>Weapon Hardpoint:</strong> You can equip 1&nbsp;%CANNON%, %TORPEDO%, or %MISSILE% upgrade."""
+        "Nom Lumb":
+           text: """After you become the defender, if the attacker is not in your %SINGLETURRETARC%, you <b>must</b> rotate your %SINGLETURRETARC% indicator to a standard arc the attacker is in."""
             
         # Epic Ships
         "Republic Judiciary":
