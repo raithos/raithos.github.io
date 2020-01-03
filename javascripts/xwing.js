@@ -5294,7 +5294,7 @@ exportObj.basicCardData = function() {
         ship: "TIE/SF Fighter",
         skill: 2,
         points: 32,
-        slots: ["Tech", "Gunner", "Missile", "Sensor", "Modification"]
+        slots: ["Tech", "Missile", "Gunner", "Sensor", "Modification"]
       }, {
         name: "Cobalt Squadron Bomber",
         id: 260,
@@ -5533,7 +5533,7 @@ exportObj.basicCardData = function() {
         ship: "TIE/SF Fighter",
         skill: 3,
         points: 34,
-        slots: ["Talent", "Tech", "Gunner", "Missile", "Sensor", "Modification"]
+        slots: ["Talent", "Tech", "Missile", "Gunner", "Sensor", "Modification"]
       }, {
         name: "Sienar-Jaemus Engineer",
         id: 286,
@@ -6451,7 +6451,7 @@ exportObj.basicCardData = function() {
         skill: 4,
         ship: "TIE/SF Fighter",
         points: 200,
-        slots: ["Talent", "Tech", "Gunner", "Missile", "Sensor", "Modification"]
+        slots: ["Talent", "Tech", "Missile", "Gunner", "Sensor", "Modification"]
       }, {
         name: '"Rush"',
         id: 386,
@@ -6569,7 +6569,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         ship: "TIE/SF Fighter",
         points: 200,
-        slots: ["Talent", "Tech", "Gunner", "Missile", "Sensor", "Modification"]
+        slots: ["Talent", "Tech", "Missile", "Gunner", "Sensor", "Modification"]
       }, {
         name: "Bossk (Z-95 Headhunter)",
         xws: "bossk-z-95headhunter",
