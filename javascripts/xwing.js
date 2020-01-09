@@ -12875,7 +12875,7 @@ exportObj.hyperspaceCheck = function(data, faction, shipCheck) {
   if (shipCheck == null) {
     shipCheck = false;
   }
-  if (shipCheck || (data.ship != null)) {
+  if (shipCheck) {
     if ((_ref = data.name, __indexOf.call(exportObj.hyperspacePilotExclusions, _ref) >= 0)) {
       return false;
     }
