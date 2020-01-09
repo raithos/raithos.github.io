@@ -8394,7 +8394,7 @@ exportObj.basicCardData = function() {
         name: "Rey's Millennium Falcon",
         id: 193,
         slot: "Title",
-        points: 5,
+        points: 2,
         unique: true,
         ship: "Scavenged YT-1300",
         faction: "Resistance"
