@@ -6321,7 +6321,7 @@ exportObj.basicCardData = function() {
         ship: "Raider-class Corvette",
         skill: 8,
         engagement: 0,
-        points: 150,
+        points: 146,
         slots: ["Command", "Torpedo", "Missile", "Hardpoint", "Hardpoint", "Crew", "Team", "Team", "Cargo"]
       }, {
         name: "Echo Base Evacuees",
