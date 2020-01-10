@@ -6486,7 +6486,7 @@ exportObj.basicCardData = function() {
         unique: true,
         skill: 2,
         ship: "RZ-2 A-Wing",
-        points: 200,
+        points: 34,
         slots: ["Talent", "Missile", "Tech"]
       }, {
         name: "Paige Tico",
@@ -6609,15 +6609,6 @@ exportObj.basicCardData = function() {
         ship: "JumpMaster 5000",
         points: 38,
         slots: ["Torpedo", "Cannon", "Crew", "Gunner", "Illicit", "Modification", "Title"]
-      }, {
-        name: "Ronnith Blario",
-        id: 401,
-        faction: "Resistance",
-        unique: true,
-        skill: 2,
-        ship: "RZ-2 A-Wing",
-        points: 34,
-        slots: ["Talent", "Missile", "Tech"]
       }
     ],
     upgradesById: [
@@ -9697,7 +9688,8 @@ exportObj.basicCardData = function() {
         name: "Cluster Mines",
         id: 316,
         slot: "Device",
-        points: 8
+        points: 8,
+        applies_condition: 'Cluster Mine'.canonicalize()
       }, {
         name: "Ion Bombs",
         id: 317,
@@ -9788,6 +9780,9 @@ exportObj.basicCardData = function() {
         name: 'Compromising Intel',
         id: 18,
         unique: true
+      }, {
+        name: 'Cluster Mine',
+        id: 19
       }
     ],
     quickbuildsById: [
@@ -17312,7 +17307,7 @@ exportObj.cardLoaders.English = function() {
       text: "While you defend, after the Neutralize Results step, another friendly ship at range 0-1 <b>must</b> suffer 1 %HIT%/%CRIT% damage to cancel 1 matching result. %LINEBREAK%<strong>Heavy Weapon Turret:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. You <b>must</b> treat the %FRONTARC% requirement of your equipped %MISSILE% upgrades as %SINGLETURRETARC%."
     },
     '"Rush"': {
-      text: "While you are damaged, treat your initiative as 6. %LINEBREAK%<strong>Heavy Weapon Turret:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. You <b>must</b> treat the %FRONTARC% requirement of your equipped %MISSILE% upgrades as %SINGLETURRETARC%."
+      text: "While you are damaged, treat your initiative as 6. %LINEBREAK%<strong>Autothrusters:</strong> After you perform an action, you may perform a red %BARRELROLL% or red %BOOST% action."
     },
     "Zizi Tlo": {
       text: "After you defend or perform an attack, you may spend 1 %CHARGE% to gain 1 focus or evade token. %LINEBREAK%<strong>Refined Gyrostabilizers:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. After you perform an action, you may perform a red %BOOST% or red %ROTATEARC% action."
@@ -18440,6 +18435,9 @@ exportObj.cardLoaders.English = function() {
     "Proud Tradition": {
       text: "<strong>Proud Tradition</strong>%LINEBREAK%<strong>Setup:</strong> Equip this side faceup. %LINEBREAK% While you have 2 or fewer stress tokens, you may peform %FOCUS% actions even while stressed. After you perform an attack, if you are stressed, the defender may spend 1 focus token or suffer 1 %CRIT% damage to flip this card. %LINEBREAK% <strong>False Tradition</strong>%LINEBREAK% Treat your %FOCUS% actions as red."
     },
+    "Cluster Mines": {
+      text: "During the System Phase, you may spend 1 %CHARGE% to drop a Cluster Mine set using the [1 %STRAIGHT%] template. %LINEBREAK% This card's %CHARGE% cannot be recovered."
+    },
     "Admiral Ozzel": {
       display_name: "Admiral Ozzel",
       text: "While a friendly large or huge ship at range 0-3 executes a maneuver, it may suffer 1 %HIT% damage to execute a maneuver of the same bearing and difficulty of a speed 1 higher or lower instead."
@@ -18703,6 +18701,9 @@ exportObj.cardLoaders.English = function() {
     },
     'Compromising Intel': {
       text: 'During the System Phase, if the enemy <strong>Vi Morandi</strong> is at range 0-3, flip your dial faceup. %LINEBREAK% While you defend or perform an attack against the enemy <strong>Vi Morandi</strong>, you cannot spend focus tokens.'
+    },
+    'Cluster Mine': {
+      text: '(Mine Tokens) - A Cluster Mine Set consists of 3 individual Cluster Mine devices. %LINEBREAK% When a Cluster Mines set is placed, the center Cluster Mine is placed as normal, then two additional Cluster Mines are placed in the recesses as shown. After a ship overlaps or moves through any individual Cluster Mine, it detonates. Other Cluster Mines in the set that were not overlapped or moved through do not detonate. %LINEBREAK% When each of these devices detonates, that ship rolls 2 attack dice. That ship then suffers 1 %HIT%/%CRIT% damage for each matching result.'
     }
   };
   return exportObj.setupTranslationCardData(pilot_translations, upgrade_translations, condition_translations);
@@ -36185,7 +36186,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 38919
+                    lineno: 38914
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -37017,7 +37018,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 39785
+              lineno: 39780
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -37305,9 +37306,11 @@ exportObj.SquadBuilder = (function() {
         }
         _this.printable_container.find('.printable-body').append($.trim("<div class=\"print-conditions\"></div>"));
         _this.printable_container.find('.printable-body .print-conditions').html(_this.condition_container.html());
+        _this.printable_container.find('.printable-body').append($.trim("<h5 class=\"print-notes\">Notes:</h5>\n<pre class=\"print-notes\"></pre>\n<div class=\"version\">Points Version: 1.6 January 2020</div>"));
         if ($.trim(_this.notes.val()) !== '') {
-          _this.printable_container.find('.printable-body').append($.trim("<h5 class=\"print-notes\">Notes:</h5>\n<pre class=\"print-notes\"></pre>\n<div class=\"version\">Points Version: 1.6 January 2020</div>"));
           _this.printable_container.find('.printable-body pre.print-notes').text(_this.notes.val());
+        } else {
+
         }
         if (_this.list_modal.find('.toggle-obstacles').prop('checked')) {
           _this.printable_container.find('.printable-body').append($.trim("<div class=\"obstacles\">\n    <div>Mark the three obstacles you are using.</div>\n    <img class=\"obstacle-silhouettes\" src=\"images/xws-obstacles.png\" />\n</div>"));
@@ -37791,7 +37794,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 40512
+              lineno: 40508
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -37801,7 +37804,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 40513
+                lineno: 40509
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -39708,7 +39711,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 41833
+              lineno: 41829
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -39925,7 +39928,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 41948
+                          lineno: 41944
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -39954,7 +39957,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 41964
+                              lineno: 41960
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -40024,7 +40027,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 42006
+                      lineno: 42002
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -40104,7 +40107,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 42035
+                lineno: 42031
               })
             ]);
             __iced_deferrals._fulfill();
@@ -40173,7 +40176,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 42064
+              lineno: 42060
             }));
           }
         }
@@ -41142,7 +41145,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 42825
+                lineno: 42821
               })
             ]);
             __iced_deferrals._fulfill();
@@ -41271,7 +41274,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 42891
+                  lineno: 42887
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -41294,7 +41297,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 42896
+                      lineno: 42892
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -41386,7 +41389,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 42941
+            lineno: 42937
           }));
         }
         __iced_deferrals._fulfill();

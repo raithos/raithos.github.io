@@ -9803,7 +9803,7 @@ exportObj.basicCardData = ->
             unique: true
             skill: 2
             ship: "RZ-2 A-Wing"
-            points: 200
+            points: 34
             slots: [
                 "Talent"
                 "Missile"
@@ -10032,20 +10032,6 @@ exportObj.basicCardData = ->
                 "Illicit"
                 "Modification"
                 "Title"
-            ]
-        }
-        {
-            name: "Ronnith Blario"
-            id: 401
-            faction: "Resistance"
-            unique: true
-            skill: 2
-            ship: "RZ-2 A-Wing"
-            points: 34
-            slots: [
-                "Talent"
-                "Missile"
-                "Tech"
             ]
         }
     ]
@@ -13163,6 +13149,7 @@ exportObj.basicCardData = ->
             id: 316
             slot: "Device"
             points: 8
+            applies_condition: 'Cluster Mine'.canonicalize()
        }
        {
             name: "Ion Bombs"
@@ -13275,6 +13262,10 @@ exportObj.basicCardData = ->
             name: 'Compromising Intel'
             id: 18
             unique: true
+        }
+        {
+            name: 'Cluster Mine'
+            id: 19
         }
     ]
 
@@ -21684,7 +21675,7 @@ exportObj.cardLoaders.English = () ->
         "Captain Phasma":
            text: """While you defend, after the Neutralize Results step, another friendly ship at range 0-1 <b>must</b> suffer 1 %HIT%/%CRIT% damage to cancel 1 matching result. %LINEBREAK%<strong>Heavy Weapon Turret:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. You <b>must</b> treat the %FRONTARC% requirement of your equipped %MISSILE% upgrades as %SINGLETURRETARC%."""
         '"Rush"':
-           text: """While you are damaged, treat your initiative as 6. %LINEBREAK%<strong>Heavy Weapon Turret:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. You <b>must</b> treat the %FRONTARC% requirement of your equipped %MISSILE% upgrades as %SINGLETURRETARC%."""
+           text: """While you are damaged, treat your initiative as 6. %LINEBREAK%<strong>Autothrusters:</strong> After you perform an action, you may perform a red %BARRELROLL% or red %BOOST% action."""
         "Zizi Tlo":
            text: """After you defend or perform an attack, you may spend 1 %CHARGE% to gain 1 focus or evade token. %LINEBREAK%<strong>Refined Gyrostabilizers:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. After you perform an action, you may perform a red %BOOST% or red %ROTATEARC% action."""
         "Ronith Blario":
@@ -22529,6 +22520,8 @@ exportObj.cardLoaders.English = () ->
            text: """Adds %CALCULATE%, %JAM% %LINEBREAK% During the System Phase, you may choose a friendly ship at range 0-3. That ship gains 1 calculate token and 1 stress token."""
         "Proud Tradition":
            text: """<strong>Proud Tradition</strong>%LINEBREAK%<strong>Setup:</strong> Equip this side faceup. %LINEBREAK% While you have 2 or fewer stress tokens, you may peform %FOCUS% actions even while stressed. After you perform an attack, if you are stressed, the defender may spend 1 focus token or suffer 1 %CRIT% damage to flip this card. %LINEBREAK% <strong>False Tradition</strong>%LINEBREAK% Treat your %FOCUS% actions as red."""
+        "Cluster Mines":
+           text: """During the System Phase, you may spend 1 %CHARGE% to drop a Cluster Mine set using the [1 %STRAIGHT%] template. %LINEBREAK% This card's %CHARGE% cannot be recovered."""
             
         # Epic upgrades
         "Admiral Ozzel":
@@ -22727,6 +22720,8 @@ exportObj.cardLoaders.English = () ->
            text: '''While you defend, each friendly <strong>Naboo Handmaiden</strong> in the attack arc may spend 1 evade token to change one of your results to an %EVADE% result. %LINEBREAK% If you are a Naboo Royal N-1 Starfighter, each friendly <strong>Naboo Handmaiden</strong> in the attack arc may spend 1 evade token to add 1 %EVADE% result instead.'''
         'Compromising Intel':
            text: '''During the System Phase, if the enemy <strong>Vi Morandi</strong> is at range 0-3, flip your dial faceup. %LINEBREAK% While you defend or perform an attack against the enemy <strong>Vi Morandi</strong>, you cannot spend focus tokens.'''
+        'Cluster Mine':
+           text: '''(Mine Tokens) - A Cluster Mine Set consists of 3 individual Cluster Mine devices. %LINEBREAK% When a Cluster Mines set is placed, the center Cluster Mine is placed as normal, then two additional Cluster Mines are placed in the recesses as shown. After a ship overlaps or moves through any individual Cluster Mine, it detonates. Other Cluster Mines in the set that were not overlapped or moved through do not detonate. %LINEBREAK% When each of these devices detonates, that ship rolls 2 attack dice. That ship then suffers 1 %HIT%/%CRIT% damage for each matching result.'''
             
     exportObj.setupTranslationCardData pilot_translations, upgrade_translations, condition_translations
 
@@ -40104,13 +40099,14 @@ class exportObj.SquadBuilder
 
 
             # Notes, if present
+            @printable_container.find('.printable-body').append $.trim """
+                <h5 class="print-notes">Notes:</h5>
+                <pre class="print-notes"></pre>
+                <div class="version">Points Version: 1.6 January 2020</div>
+            """            
             if $.trim(@notes.val()) != ''
-                @printable_container.find('.printable-body').append $.trim """
-                    <h5 class="print-notes">Notes:</h5>
-                    <pre class="print-notes"></pre>
-                    <div class="version">Points Version: 1.6 January 2020</div>
-                """            
                 @printable_container.find('.printable-body pre.print-notes').text @notes.val()
+            else
 
             # Obstacles
             if @list_modal.find('.toggle-obstacles').prop('checked')

@@ -1,0 +1,391 @@
+body {
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact !important;
+  background-color: transparent !important;
+  zoom: 75%; }
+
+.modal-backdrop {
+  display: none; }
+
+#printable {
+  overflow: hidden; }
+  #printable .bw .info-data {
+    color: black; }
+  #printable .bw .fancy-pilot-stats .info-data {
+    color: white; }
+  #printable .bw .fancy-pilot-stats .xwing-miniatures-font {
+    color: black; }
+  #printable .bw .fancy-pilot-stats .red {
+    -webkit-text-stroke: 0.5px black;
+    color: white; }
+  #printable .bw .fancy-pilot-stats .force {
+    color: gray; }
+  #printable .bw .fancy-dial .svg-maneuver-triangle.svg-base-maneuver {
+    fill: black;
+    stroke: black; }
+  #printable .bw .fancy-dial .svg-maneuver-triangle.svg-modified-maneuver {
+    fill: black;
+    stroke: gray; }
+  #printable .bw .fancy-dial .svg-maneuver-inner.svg-white-maneuver {
+    stroke: white; }
+  #printable .bw .fancy-dial .svg-maneuver-inner.svg-blue-maneuver {
+    stroke: gray; }
+  #printable .bw .fancy-dial .svg-maneuver-inner.svg-red-maneuver {
+    stroke: black; }
+  #printable .bw .fancy-dial .svg-maneuver-outer.svg-base-maneuver {
+    stroke: black; }
+  #printable .bw .fancy-dial .svg-maneuver-outer.svg-modified-maneuver {
+    stroke: gray; }
+  #printable .bw .fancy-dial .svg-maneuver-stop.svg-red-maneuver {
+    fill: black !important; }
+  #printable .bw .fancy-dial .svg-maneuver-stop.svg-white-maneuver {
+    fill: white !important;
+    stroke: black !important; }
+  #printable .bw .fancy-dial .svg-maneuver-stop.svg-blue-maneuver {
+    fill: gray !important;
+    stroke: black !important; }
+  #printable .bw .fancy-dial .svg-maneuver-stop.svg-modified-maneuver {
+    stroke: gray !important;
+    stroke-width: 10px; }
+  #printable .bw .fancy-dial .svg-maneuver-stop.svg-base-maneuver {
+    stroke: black !important;
+    stroke-width: 10px; }
+  #printable .bw .fancy-dial table > tbody > tr > td ~ td {
+    background-color: white !important; }
+  #printable .bw .fancy-dial table > tbody > tr > td {
+    border: 2px solid gray !important; }
+  #printable .bw i.xwing-miniatures-font-agility, #printable .bw i.xwing-miniatures-font-hull, #printable .bw i.xwing-miniatures-font-energy, #printable .bw i.xwing-miniatures-font-shield, #printable .bw i.xwing-miniatures-font-attack-bullseye, #printable .bw i.xwing-miniatures-font-forcecharge, #printable .bw i.xwing-miniatures-font-charge, #printable .bw i.xwing-miniatures-font-doubleturretarc, #printable .bw i.xwing-miniatures-font-singleturretarc, #printable .bw i.xwing-miniatures-font-frontarc, #printable .bw i.xwing-miniatures-font-reararc, #printable .bw i.xwing-miniatures-font-fullfrontarc {
+    background: white; }
+  #printable .bw .upgrade-attack .xwing-miniatures-font-attack, #printable .bw .upgrade-attack i.xwing-miniatures-font-doublearcturret, #printable .bw .upgrade-attack i.xwing-miniatures-font-singleturretarc, #printable .bw .upgrade-attack i.xwing-miniatures-font-frontarc, #printable .bw .upgrade-attack i.xwing-miniatures-font-reararc, #printable .bw .upgrade-attack i.xwing-miniatures-font-fullfrontarc {
+    background: black;
+    color: white; }
+  #printable .bw .upgrade-energy .xwing-miniatures-font-energy {
+    background: black;
+    color: white; }
+  #printable .bw .upgrade-force .xwing-miniatures-font-forcecharge {
+    background: black;
+    color: white; }
+  #printable .bw .upgrade-charge .xwing-miniatures-font-charge {
+    background: black;
+    color: white; }
+  #printable .info-data {
+    vertical-align: middle;
+    -webkit-text-stroke: 0.5px black;
+    font-size: 0.225in !important;
+    position: relative; }
+  #printable .fancy-header {
+    border: 0.375in solid #4e4e4e;
+    color: white;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    font-family: EurostileStandard, Impact, sans-serif; }
+    #printable .fancy-header .squad-name {
+      color: white !important;
+      position: absolute;
+      font-size: 0.3in;
+      margin-top: 0.09375in;
+      font-weight: 100; }
+    #printable .fancy-header .squad-faction {
+      position: absolute;
+      margin-top: 0.075in;
+      right: 0.984375in;
+      font-weight: 100; }
+      #printable .fancy-header .squad-faction .xwing-miniatures-font {
+        font-size: 0.3in; }
+    #printable .fancy-header .mask {
+      position: absolute;
+      right: 0;
+      width: 0.5625in;
+      background-color: white;
+      height: 0.5625in;
+      z-index: 999; }
+    #printable .fancy-header .outer-circle {
+      width: 0.5625in;
+      height: 0.5625in;
+      border-radius: 0.28125in;
+      margin-left: -0.28125in;
+      background-color: white; }
+      #printable .fancy-header .outer-circle .inner-circle {
+        width: 0.5in;
+        height: 0.5in;
+        border-radius: 0.25in;
+        background-color: gray;
+        position: relative;
+        top: 0.03125in;
+        left: 0.03125in;
+        line-height: 0.5in;
+        font-size: 0.1875in;
+        text-align: center; }
+  #printable .fancy-under-header {
+    border: 0.1875in solid gray;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    position: relative;
+    left: 0.375in; }
+  #printable .tall {
+    min-height: 2.5in; }
+  #printable .fancy-ship {
+    overflow: hidden;
+    margin-bottom: 10px;
+    page-break-inside: avoid;
+    position: relative; }
+    #printable .fancy-ship .fancy-pilot-header {
+      border: 0.3in solid lightgray;
+      color: black;
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      border-right-color: transparent;
+      font-family: EurostileStandard, Impact, sans-serif;
+      height: 0px; }
+      #printable .fancy-ship .fancy-pilot-header .pilot-header-text {
+        position: absolute;
+        font-size: 0.24in;
+        margin-top: -0.24in;
+        font-weight: 100; }
+        #printable .fancy-ship .fancy-pilot-header .pilot-header-text .fancy-ship-type {
+          font-style: italic;
+          font-variant: small-caps;
+          font-size: 0.18in; }
+      #printable .fancy-ship .fancy-pilot-header .mask {
+        position: relative;
+        float: right;
+        clear: both;
+        right: -0.45in;
+        top: -0.3in;
+        width: 0.45in;
+        background-color: white;
+        height: 0.6in;
+        z-index: 999; }
+      #printable .fancy-ship .fancy-pilot-header .outer-circle {
+        width: 0.45in;
+        height: 0.45in;
+        border-radius: 0.225in;
+        margin-left: -0.225in;
+        background-color: white; }
+        #printable .fancy-ship .fancy-pilot-header .outer-circle .inner-circle {
+          width: 0.3875in;
+          height: 0.3875in;
+          border-radius: 0.19375in;
+          background-color: gray;
+          position: relative;
+          top: 0.03125in;
+          left: 0.03125in;
+          line-height: 0.41875in;
+          font-size: 0.15in;
+          text-align: center;
+          color: white; }
+    #printable .fancy-ship .fancy-pilot-stats {
+      position: relative;
+      left: 0.3in;
+      top: -0.3in;
+      border: 0.3in solid gray;
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      border-right-color: transparent;
+      margin-bottom: -0.6in; }
+      #printable .fancy-ship .fancy-pilot-stats .pilot-stats-content {
+        position: relative;
+        margin-top: -0.2in; }
+        #printable .fancy-ship .fancy-pilot-stats .pilot-stats-content .xwing-miniatures-font {
+          vertical-align: middle; }
+        #printable .fancy-ship .fancy-pilot-stats .pilot-stats-content .action {
+          color: black; }
+      #printable .fancy-ship .fancy-pilot-stats .info-data, #printable .fancy-ship .fancy-pilot-stats .xwing-miniatures-font {
+        position: relative;
+        bottom: 0.048in; }
+    #printable .fancy-ship .fancy-pilot-text {
+      margin-left: 0.6in;
+      padding: 5px;
+      color: black; }
+    #printable .fancy-ship .fancy-upgrade-container {
+      color: black;
+      position: relative; }
+      #printable .fancy-ship .fancy-upgrade-container .upgrade-container {
+        position: relative;
+        margin-bottom: 0.04in;
+        margin-left: 0.75in;
+        margin-right: 0.365in;
+        border: 1px dotted lightgray;
+        clear: both; }
+        #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-stats {
+          min-height: 0.38in; }
+        #printable .fancy-ship .fancy-upgrade-container .upgrade-container .card-restriction-container {
+          padding-top: 0.10in; }
+        #printable .fancy-ship .fancy-upgrade-container .upgrade-container .mask {
+          float: right;
+          text-align: right;
+          display: inline-block;
+          vertical-align: middle;
+          width: 0.3375in;
+          height: 0.3375in;
+          z-index: 999;
+          margin-right: 0.04in; }
+        #printable .fancy-ship .fancy-upgrade-container .upgrade-container .outer-circle {
+          width: 0.3375in;
+          height: 0.3375in;
+          border-radius: 0.16875in;
+          background-color: white; }
+          #printable .fancy-ship .fancy-upgrade-container .upgrade-container .outer-circle .inner-circle {
+            width: 0.275in;
+            height: 0.275in;
+            border-radius: 0.1375in;
+            background-color: gray;
+            position: relative;
+            top: 0.03125in;
+            left: 0.03125in;
+            line-height: 0.3375in;
+            font-size: 0.15in;
+            text-align: center;
+            color: white; }
+        #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-name {
+          display: inline-block;
+          vertical-align: middle;
+          line-height: 0.3375in;
+          float: left;
+          text-align: left;
+          margin-left: 0.10in;
+          margin-right: 0.05in;
+          min-width: 1.50in;
+          font-family: EurostileStandardBold; }
+          #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-name i {
+            display: inline-block;
+            min-width: 0.27in; }
+        #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-energy, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-charge, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-force {
+          float: right;
+          text-align: right;
+          margin-right: 0.07in;
+          margin-top: 0.02in;
+          height: 0.28in; }
+          #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack .upgrade-attack-range, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-energy .upgrade-attack-range, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-charge .upgrade-attack-range, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-force .upgrade-attack-range {
+            vertical-align: middle;
+            padding: 2px 8px;
+            color: white;
+            background-color: black;
+            font-family: kimberley;
+            font-size: 1.2em; }
+          #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack .upgrade-attack-rangebonus, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-energy .upgrade-attack-rangebonus, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-charge .upgrade-attack-rangebonus, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-force .upgrade-attack-rangebonus {
+            vertical-align: middle;
+            padding: 2px 8px;
+            color: white;
+            background-color: black;
+            font-family: kimberley;
+            font-size: 1.2em; }
+          #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack .xwing-miniatures-font-attack, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack .xwing-miniatures-font-attack-turret, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack .xwing-miniatures-font-attack-frontback, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack .xwing-miniatures-font-attack-180, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack i.xwing-miniatures-font-attack-bullseye, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack i.xwing-miniatures-font-forcecharge, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack i.xwing-miniatures-font-charge, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack i.xwing-miniatures-font-doubleturretarc, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack i.xwing-miniatures-font-singleturretarc, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack i.xwing-miniatures-font-frontarc, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack i.xwing-miniatures-font-reararc, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-energy .xwing-miniatures-font-attack, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-energy .xwing-miniatures-font-attack-turret, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-energy .xwing-miniatures-font-attack-frontback, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-energy .xwing-miniatures-font-attack-180, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-energy i.xwing-miniatures-font-attack-bullseye, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-energy i.xwing-miniatures-font-forcecharge, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-energy i.xwing-miniatures-font-charge, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-energy i.xwing-miniatures-font-doubleturretarc, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-energy i.xwing-miniatures-font-singleturretarc, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-energy i.xwing-miniatures-font-frontarc, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-energy i.xwing-miniatures-font-reararc, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-charge .xwing-miniatures-font-attack, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-charge .xwing-miniatures-font-attack-turret, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-charge .xwing-miniatures-font-attack-frontback, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-charge .xwing-miniatures-font-attack-180, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-charge i.xwing-miniatures-font-attack-bullseye, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-charge i.xwing-miniatures-font-forcecharge, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-charge i.xwing-miniatures-font-charge, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-charge i.xwing-miniatures-font-doubleturretarc, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-charge i.xwing-miniatures-font-singleturretarc, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-charge i.xwing-miniatures-font-frontarc, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-charge i.xwing-miniatures-font-reararc, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-force .xwing-miniatures-font-attack, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-force .xwing-miniatures-font-attack-turret, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-force .xwing-miniatures-font-attack-frontback, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-force .xwing-miniatures-font-attack-180, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-force i.xwing-miniatures-font-attack-bullseye, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-force i.xwing-miniatures-font-forcecharge, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-force i.xwing-miniatures-font-charge, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-force i.xwing-miniatures-font-doubleturretarc, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-force i.xwing-miniatures-font-singleturretarc, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-force i.xwing-miniatures-font-frontarc, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-force i.xwing-miniatures-font-reararc {
+            vertical-align: middle; }
+          #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack .info-attack, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-energy .info-attack, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-charge .info-attack, #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-force .info-attack {
+            margin-right: 0.02in; }
+        #printable .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-text {
+          padding-right: 0.3375in;
+          padding-left: 0.27in;
+          margin-left: 0.10in; }
+    #printable .fancy-ship .ship-points-total {
+      color: black;
+      text-align: right;
+      margin-bottom: 0.04in;
+      margin-left: 0.75in;
+      margin-right: 0.365in;
+      clear: both; }
+  #printable .print-dials-container {
+    overflow: auto;
+    text-align: center;
+    page-break-inside: avoid; }
+    #printable .print-dials-container .fancy-dial {
+      padding: 5px;
+      table-layout: fixed;
+      display: inline-block; }
+      #printable .print-dials-container .fancy-dial .ship-name-dial {
+        color: black; }
+    #printable .print-dials-container .fancy-dial table > tbody > tr > td {
+      border: 2px solid #d6c9d2; }
+    #printable .print-dials-container .fancy-dial table > tbody > tr > td:first-child {
+      color: white;
+      text-align: center;
+      padding: 3px;
+      background-color: #888888;
+      background-image: linear-gradient(rgba(45, 45, 45, 0.2) 50%, transparent 50%, transparent);
+      background-size: 5px 5px; }
+    #printable .print-dials-container .fancy-dial table > tbody > tr > td ~ td {
+      background-color: #a29199; }
+  #printable .printable-footer {
+    position: fixed;
+    bottom: 0;
+    color: black;
+    width: 8.5in;
+    text-align: right;
+    display: none; }
+  #printable .simple-table {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 1.25em;
+    color: black;
+    width: 95%;
+    font-size: 1.5em; }
+    #printable .simple-table tr {
+      height: 1.25em; }
+    #printable .simple-table .name {
+      font-style: oblique; }
+    #printable .simple-table .points {
+      text-align: right; }
+    #printable .simple-table .simple-pilot .name {
+      font-weight: bold; }
+    #printable .simple-table .simple-addon .name {
+      padding-left: 20px; }
+    #printable .simple-table .simple-ship-total {
+      font-weight: bold;
+      text-align: right; }
+  #printable .print-notes {
+    color: black; }
+  #printable .version {
+    color: black; }
+  #printable .qrcode-container {
+    color: black;
+    width: 7in;
+    margin-left: auto;
+    margin-right: auto;
+    page-break-inside: avoid;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; }
+  #printable .qrcode-container:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%; }
+  #printable .qrcode-container > div {
+    display: inline-block;
+    vertical-align: middle; }
+  #printable .qrcode-text {
+    width: 3.25in;
+    text-align: center; }
+  #printable .qrcode {
+    width: 144px;
+    margin-left: auto;
+    margin-right: auto; }
+  #printable .obstacles {
+    color: black;
+    page-break-inside: avoid; }
+  #printable .obstacles > div {
+    width: 6in;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto; }
+
+.conditions-container {
+  width: 6in; }
+
+.condition {
+  float: left;
+  width: 2.5in;
+  margin: 0.125in;
+  padding: 1em;
+  border-radius: 10px;
+  border: thin solid black;
+  background: white;
+  color: black;
+  page-break-inside: avoid; }
+  .condition > .name {
+    font-family: EurostileStandardBold;
+    font-weight: 100;
+    font-style: italic; }
