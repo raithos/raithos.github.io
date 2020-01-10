@@ -18193,7 +18193,7 @@ exportObj.hyperspaceUpgradeExclusions = [
     'Feedback Array',
     'Barrage Rockets',
     'Cluster Missiles',
-    'Diamon-Boron Missiles',
+    'Diamond-Boron Missiles',
     'Homing Missiles',
     'Proton Rockets',
     'Afterburners',
