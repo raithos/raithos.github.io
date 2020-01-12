@@ -328,6 +328,21 @@
   background-repeat: no-repeat;
   background-position: 0px -30px; }
 
+.ship-ewing {
+  background-image: url("../images/ewing0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-fireball {
+  background-image: url("../images/fireball.png");
+  background-repeat: no-repeat;
+  background-position: 0px -20px; }
+
+.ship-tiebainterceptor {
+  background-image: url("../images/tiebainterceptor.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
 .its-working {
   background-image: url("../images/its_working.png");
   background-repeat: no-repeat;
