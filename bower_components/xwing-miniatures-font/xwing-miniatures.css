@@ -62,6 +62,9 @@ i.xwing-miniatures-font-charge:before {
 i.xwing-miniatures-font-cloak:before {
   content: "k"; }
 
+i.xwing-miniatures-font-command:before {
+  content: "V"; }
+
 i.xwing-miniatures-font-condition-outline:before {
   content: "Æ"; }
 
@@ -89,6 +92,9 @@ i.xwing-miniatures-font-dalan-bankright:before {
 i.xwing-miniatures-font-device:before {
   content: "B"; }
 
+i.xwing-miniatures-font-doublerecurring:before {
+  content: "_"; }
+
 i.xwing-miniatures-font-doubleturretarc:before {
   content: "q"; }
 
@@ -107,6 +113,30 @@ i.xwing-miniatures-font-evade:before {
 i.xwing-miniatures-font-firstorder:before {
   content: "+"; }
 
+i.xwing-miniatures-font-first-player-1-outline:before {
+  content: "Ĺ"; }
+
+i.xwing-miniatures-font-first-player-1:before {
+  content: "ĺ"; }
+
+i.xwing-miniatures-font-first-player-2-outline:before {
+  content: "Ļ"; }
+
+i.xwing-miniatures-font-first-player-2:before {
+  content: "ļ"; }
+
+i.xwing-miniatures-font-first-player-3-outline:before {
+  content: "Ľ"; }
+
+i.xwing-miniatures-font-first-player-3:before {
+  content: "ľ"; }
+
+i.xwing-miniatures-font-first-player-4-outline:before {
+  content: "Ŀ"; }
+
+i.xwing-miniatures-font-first-player-4:before {
+  content: "ŀ"; }
+
 i.xwing-miniatures-font-focus:before {
   content: "f"; }
 
@@ -124,6 +154,9 @@ i.xwing-miniatures-font-fullfrontarc:before {
 
 i.xwing-miniatures-font-fullreararc:before {
   content: "¡"; }
+
+i.xwing-miniatures-font-fuse:before {
+  content: ","; }
 
 i.xwing-miniatures-font-gunner:before {
   content: "Y"; }
@@ -284,6 +317,27 @@ i.xwing-miniatures-font-obstacle-yt2400debris2-outline:before {
 i.xwing-miniatures-font-obstacle-yt2400debris2:before {
   content: "Ģ"; }
 
+i.xwing-miniatures-font-obstacle-gascloud1:before {
+  content: "Į"; }
+
+i.xwing-miniatures-font-obstacle-gascloud1-outline:before {
+  content: "Ē"; }
+
+i.xwing-miniatures-font-obstacle-gascloud2:before {
+  content: "į"; }
+
+i.xwing-miniatures-font-obstacle-gascloud2-outline:before {
+  content: "ē"; }
+
+i.xwing-miniatures-font-obstacle-gascloud3:before {
+  content: "İ"; }
+
+i.xwing-miniatures-font-obstacle-gascloud3-outline:before {
+  content: "Ĕ"; }
+
+i.xwing-miniatures-font-point:before {
+  content: "Ì"; }
+
 i.xwing-miniatures-font-rangebonusindicator:before {
   content: "?"; }
 
@@ -398,6 +452,12 @@ i.xwing-miniatures-font-token-cloak-outline:before {
 i.xwing-miniatures-font-token-cloak:before {
   content: "å"; }
 
+i.xwing-miniatures-font-token-deplete-outline:before {
+  content: "÷"; }
+
+i.xwing-miniatures-font-token-deplete:before {
+  content: "ø"; }
+
 i.xwing-miniatures-font-token-evade-outline:before {
   content: "é"; }
 
@@ -440,6 +500,18 @@ i.xwing-miniatures-font-token-lock-outline:before {
 i.xwing-miniatures-font-token-lock:before {
   content: "ã"; }
 
+i.xwing-miniatures-font-token-point-1-outline:before {
+  content: "Î"; }
+
+i.xwing-miniatures-font-token-point-1:before {
+  content: "Ð"; }
+
+i.xwing-miniatures-font-token-point-3-outline:before {
+  content: "Í"; }
+
+i.xwing-miniatures-font-token-point-3:before {
+  content: "Ï"; }
+
 i.xwing-miniatures-font-token-reinforce-outline:before {
   content: "ì"; }
 
@@ -457,6 +529,12 @@ i.xwing-miniatures-font-token-shield-outline:before {
 
 i.xwing-miniatures-font-token-shield:before {
   content: "Ñ"; }
+
+i.xwing-miniatures-font-token-strain-outline:before {
+  content: "õ"; }
+
+i.xwing-miniatures-font-token-strain:before {
+  content: "ö"; }
 
 i.xwing-miniatures-font-token-stress-outline:before {
   content: "ê"; }
@@ -530,6 +608,9 @@ i.xwing-miniatures-ship-belbullab22starfighter:before {
 i.xwing-miniatures-ship-btla4ywing:before {
   content: "y"; }
 
+i.xwing-miniatures-ship-btlbywing:before {
+  content: ":"; }
+
 i.xwing-miniatures-ship-btls8kwing:before {
   content: "k"; }
 
@@ -569,6 +650,9 @@ i.xwing-miniatures-ship-gr75mediumtransport:before {
 i.xwing-miniatures-ship-hwk290lightfreighter:before {
   content: "h"; }
 
+i.xwing-miniatures-ship-hyenaclassdroidbomber:before {
+  content: "="; }
+
 i.xwing-miniatures-ship-jumpmaster5000:before {
   content: "p"; }
 
@@ -596,6 +680,12 @@ i.xwing-miniatures-ship-modifiedtielnfighter:before {
 i.xwing-miniatures-ship-modifiedyt1300lightfreighter:before {
   content: "m"; }
 
+i.xwing-miniatures-ship-nabooroyaln1starfighter:before {
+  content: "<"; }
+
+i.xwing-miniatures-ship-nantexclassstarfighter:before {
+  content: ";"; }
+
 i.xwing-miniatures-ship-quadrijettransferspacetug:before {
   content: "q"; }
 
@@ -603,10 +693,10 @@ i.xwing-miniatures-ship-raiderclasscorvette:before {
   content: "3"; }
 
 i.xwing-miniatures-ship-resistancetransport:before {
-  content: "{"; }
+  content: ">"; }
 
 i.xwing-miniatures-ship-resistancetransportpod:before {
-  content: "}"; }
+  content: "?"; }
 
 i.xwing-miniatures-ship-rz1awing:before {
   content: "a"; }
