@@ -39204,9 +39204,7 @@ exportObj.SquadBuilder = (function() {
                 }
                 return _results;
               }).call(this);
-              if (available_upgrades.length > 0) {
-                upgrade = available_upgrades[$.randomInt(available_upgrades.length)];
-              }
+              upgrade = available_upgrades.length > 0 ? available_upgrades[$.randomInt(available_upgrades.length)] : void 0;
               if (upgrade && !upgrade.disabled) {
                 addon.setById(upgrade.id);
               }
