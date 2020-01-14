@@ -75,24 +75,25 @@ body {
     position: relative; }
   #printable .fancy-header {
     border: 0.375in solid #4e4e4e;
-    color: white;
+    color: white !important;
     border-left-color: transparent;
     border-top-color: transparent;
     border-right-color: transparent;
     font-family: EurostileStandard, Impact, sans-serif; }
     #printable .fancy-header .squad-name {
-      color: white !important;
       position: absolute;
-      font-size: 0.3in;
-      margin-top: 0.09375in;
+      font-size: 0.28125in;
+      margin-top: 0.075in;
       font-weight: 100; }
+      #printable .fancy-header .squad-name .xwing-miniatures-font {
+        font-size: 0.2625in; }
     #printable .fancy-header .squad-faction {
       position: absolute;
       margin-top: 0.075in;
       right: 0.984375in;
       font-weight: 100; }
       #printable .fancy-header .squad-faction .xwing-miniatures-font {
-        font-size: 0.3in; }
+        font-size: 0.2625in; }
     #printable .fancy-header .mask {
       position: absolute;
       right: 0;
@@ -141,8 +142,8 @@ body {
       height: 0px; }
       #printable .fancy-ship .fancy-pilot-header .pilot-header-text {
         position: absolute;
-        font-size: 0.24in;
-        margin-top: -0.24in;
+        font-size: 0.225in;
+        margin-top: -0.225in;
         font-weight: 100; }
         #printable .fancy-ship .fancy-pilot-header .pilot-header-text .fancy-ship-type {
           font-style: italic;

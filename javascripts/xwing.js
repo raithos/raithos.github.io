@@ -36515,7 +36515,7 @@ exportObj.SquadBuilder = (function() {
     this.list_modal = $(document.createElement('DIV'));
     this.list_modal.addClass('modal hide fade text-list-modal');
     this.container.append(this.list_modal);
-    this.list_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n\n    <div class=\"hidden-phone hidden-print\">\n        <h3><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)<h3>\n    </div>\n\n    <div class=\"visible-phone hidden-print\">\n        <h4><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)<h4>\n    </div>\n\n    <div class=\"visible-print\">\n        <div class=\"fancy-header\">\n            <div class=\"squad-name\"></div>\n            <div class=\"squad-faction\"></div>\n            <div class=\"mask\">\n                <div class=\"outer-circle\">\n                    <div class=\"inner-circle\">\n                        <span class=\"total-points\"></span>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"fancy-under-header\"></div>\n    </div>\n\n</div>\n<div class=\"modal-body\">\n    <div class=\"fancy-list hidden-phone\"></div>\n    <div class=\"simple-list\"></div>\n    <div class=\"simplecopy-list\">\n        <p>Copy the below and paste it elsewhere.</p>\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n    <div class=\"reddit-list\">\n        <p>Copy the below and paste it into your reddit post.</p>\n        <p>Make sure that the post editor is set to markdown mode.</p>\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n    <div class=\"tts-list\">\n        <p>Copy the below and paste it into the Tabletop Simulator.</p>\n        <textarea></textarea><br><button class=\"btn btn-copy\">Copy</button>\n    </div>\n    <div class=\"bbcode-list\">\n        <p>Copy the BBCode below and paste it into your forum post.</p>\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n    <div class=\"html-list\">\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <label class=\"vertical-space-checkbox hidden-phone\">\n        Add Space for Cards<input type=\"checkbox\" class=\"toggle-vertical-space\" />\n    </label>\n    <label class=\"maneuver-print-checkbox hidden-phone\">\n        Include Maneuvers Chart <input type=\"checkbox\" class=\"toggle-maneuver-print\" checked=\"checked\" />\n    </label>\n    <label class=\"expanded-shield-hull-print-checkbox hidden-phone\">\n        Expand Shield and Hull <input type=\"checkbox\" class=\"toggle-expanded-shield-hull-print\" />\n    </label>\n    <label class=\"color-print-checkbox hidden-phone\">\n        Print Color <input type=\"checkbox\" class=\"toggle-color-print\" checked=\"checked\" />\n    </label>\n    <label class=\"color-skip-text-checkbox hidden-phone\">\n        Skip Card Text <input type=\"checkbox\" class=\"toggle-skip-text-print\" />\n    </label>\n    <label class=\"qrcode-checkbox hidden-phone\">\n        Include QR codes <input type=\"checkbox\" class=\"toggle-juggler-qrcode\" checked=\"checked\" />\n    </label>\n    <label class=\"obstacles-checkbox hidden-phone\">\n        Include Obstacle Choices <input type=\"checkbox\" class=\"toggle-obstacles\" />\n    </label>\n    <div class=\"btn-group list-display-mode\">\n        <button class=\"btn select-simple-view\">Simple</button>\n        <button class=\"btn select-fancy-view hidden-phone\">Fancy</button>\n        <button class=\"btn select-simplecopy-view\">Text</button>\n        <button class=\"btn select-reddit-view\">Reddit</button>\n        <button class=\"btn select-tts-view\">TTS</button>\n        <button class=\"btn select-bbcode-view\">BBCode</button>\n        <button class=\"btn select-html-view\">HTML</button>\n    </div>\n    <button class=\"btn print-list hidden-phone\"><i class=\"fa fa-print\"></i>&nbsp;Print</button>\n    <button class=\"btn close-print-dialog\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.list_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n\n    <div class=\"hidden-phone hidden-print\">\n        <h3><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)<h3>\n    </div>\n\n    <div class=\"visible-phone hidden-print\">\n        <h4><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)<h4>\n    </div>\n\n    <div class=\"visible-print\">\n        <div class=\"fancy-header\">\n            <div class=\"squad-name\"></div>\n            <div class=\"squad-faction\"></div>\n            <div class=\"mask\">\n                <div class=\"outer-circle\">\n                    <div class=\"inner-circle\">\n                        <span class=\"total-points\"></span>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"fancy-under-header\"></div>\n    </div>\n\n</div>\n<div class=\"modal-body\">\n    <div class=\"fancy-list hidden-phone\"></div>\n    <div class=\"simple-list\"></div>\n    <div class=\"simplecopy-list\">\n        <p>Copy the below and paste it elsewhere.</p>\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n    <div class=\"reddit-list\">\n        <p>Copy the below and paste it into your reddit post.</p>\n        <p>Make sure that the post editor is set to markdown mode.</p>\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n    <div class=\"tts-list\">\n        <p>Copy the below and paste it into the Tabletop Simulator.</p>\n        <textarea></textarea><br><button class=\"btn btn-copy\">Copy</button>\n    </div>\n    <div class=\"bbcode-list\">\n        <p>Copy the BBCode below and paste it into your forum post.</p>\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n    <div class=\"html-list\">\n        <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <label class=\"vertical-space-checkbox hidden-phone\">\n        Add Space for Cards<input type=\"checkbox\" class=\"toggle-vertical-space\" />\n    </label>\n    <label class=\"maneuver-print-checkbox hidden-phone\">\n        Include Maneuvers Chart <input type=\"checkbox\" class=\"toggle-maneuver-print\" />\n    </label>\n    <label class=\"expanded-shield-hull-print-checkbox hidden-phone\">\n        Expand Shield and Hull <input type=\"checkbox\" class=\"toggle-expanded-shield-hull-print\" />\n    </label>\n    <label class=\"color-print-checkbox hidden-phone\">\n        Print Color <input type=\"checkbox\" class=\"toggle-color-print\" checked=\"checked\" />\n    </label>\n    <label class=\"color-skip-text-checkbox hidden-phone\">\n        Skip Card Text <input type=\"checkbox\" class=\"toggle-skip-text-print\" />\n    </label>\n    <label class=\"qrcode-checkbox hidden-phone\">\n        Include QR codes <input type=\"checkbox\" class=\"toggle-juggler-qrcode\" checked=\"checked\" />\n    </label>\n    <label class=\"obstacles-checkbox hidden-phone\">\n        Include Obstacle Choices <input type=\"checkbox\" class=\"toggle-obstacles\" />\n    </label>\n    <div class=\"btn-group list-display-mode\">\n        <button class=\"btn select-simple-view\">Simple</button>\n        <button class=\"btn select-fancy-view hidden-phone\">Fancy</button>\n        <button class=\"btn select-simplecopy-view\">Text</button>\n        <button class=\"btn select-reddit-view\">Reddit</button>\n        <button class=\"btn select-tts-view\">TTS</button>\n        <button class=\"btn select-bbcode-view\">BBCode</button>\n        <button class=\"btn select-html-view\">HTML</button>\n    </div>\n    <button class=\"btn print-list hidden-phone\"><i class=\"fa fa-print\"></i>&nbsp;Print</button>\n    <button class=\"btn close-print-dialog\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
     this.fancy_container = $(this.list_modal.find('div.modal-body .fancy-list'));
     this.fancy_total_points_container = $(this.list_modal.find('div.modal-header .total-points'));
     this.simple_container = $(this.list_modal.find('div.modal-body .simple-list'));
@@ -37297,25 +37297,32 @@ exportObj.SquadBuilder = (function() {
                 case 'Scum and Villainy':
                   return 'scum';
                 case 'Resistance':
-                  return 'resistance';
+                  return 'rebel-outline';
                 case 'First Order':
                   return 'firstorder';
                 case 'Galactic Republic':
-                  return 'galacticrepublic';
+                  return 'republic';
                 case 'Separatist Alliance':
-                  return 'separatistalliance';
+                  return 'separatists';
               }
             }).call(_this);
             _this.printable_container.find('.squad-faction').html("<i class=\"xwing-miniatures-font xwing-miniatures-font-" + faction + "\"></i>");
+            if (_this.isHyperspace) {
+              _this.printable_container.find('.squad-name').append(" <i class=\"xwing-miniatures-font xwing-miniatures-font-first-player-1\"></i>");
+            }
+            if (_this.isEpic) {
+              _this.printable_container.find('.squad-name').append(" <i class=\"xwing-miniatures-font xwing-miniatures-font-energy\"></i>");
+            }
         }
-        _this.printable_container.find('.printable-body').append($.trim("<div class=\"print-conditions\"></div>"));
-        _this.printable_container.find('.printable-body .print-conditions').html(_this.condition_container.html());
-        _this.printable_container.find('.printable-body').append($.trim("<h5 class=\"print-notes\">Notes:</h5>\n<pre class=\"print-notes\"></pre>\n<div class=\"version\">Points Version: 1.6 January 2020</div>"));
+        _this.printable_container.find('.printable-body').append($.trim("<div class=\"version\">Points Version: 1.6 January 2020</div>"));
         if ($.trim(_this.notes.val()) !== '') {
+          _this.printable_container.find('.printable-body').append($.trim("<h5 class=\"print-notes\">Notes:</h5>\n<pre class=\"print-notes\"></pre>"));
           _this.printable_container.find('.printable-body pre.print-notes').text(_this.notes.val());
         } else {
 
         }
+        _this.printable_container.find('.printable-body').append($.trim("<div class=\"print-conditions\"></div>"));
+        _this.printable_container.find('.printable-body .print-conditions').html(_this.condition_container.html());
         if (_this.list_modal.find('.toggle-obstacles').prop('checked')) {
           _this.printable_container.find('.printable-body').append($.trim("<div class=\"obstacles\">\n    <div>Mark the three obstacles you are using.</div>\n    <img class=\"obstacle-silhouettes\" src=\"images/xws-obstacles.png\" />\n</div>"));
         }
@@ -37798,7 +37805,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 40512
+              lineno: 40519
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -37808,7 +37815,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 40513
+                lineno: 40520
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -39713,7 +39720,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 41833
+              lineno: 41840
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -39930,7 +39937,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 41948
+                          lineno: 41955
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -39959,7 +39966,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 41964
+                              lineno: 41971
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -40029,7 +40036,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 42006
+                      lineno: 42013
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -40109,7 +40116,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 42035
+                lineno: 42042
               })
             ]);
             __iced_deferrals._fulfill();
@@ -40178,7 +40185,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 42064
+              lineno: 42071
             }));
           }
         }
@@ -41147,7 +41154,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 42825
+                lineno: 42832
               })
             ]);
             __iced_deferrals._fulfill();
@@ -41276,7 +41283,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 42891
+                  lineno: 42898
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -41299,7 +41306,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 42896
+                      lineno: 42903
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -41391,7 +41398,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 42941
+            lineno: 42948
           }));
         }
         __iced_deferrals._fulfill();
