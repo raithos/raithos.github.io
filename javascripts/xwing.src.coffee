@@ -9937,6 +9937,7 @@ exportObj.basicCardData = ->
             ship: "TIE Striker"
             points: 35
             slots: [
+                "Talent"
                 "Gunner"
                 "Device"
                 "Modification"
@@ -36234,6 +36235,11 @@ exportObj.manifestByExpansion =
         }
         {
             name: 'Expert Handling'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Veteran Tail Gunner'
             type: 'upgrade'
             count: 1
         }
