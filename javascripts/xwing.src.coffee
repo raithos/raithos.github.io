@@ -95,8 +95,8 @@ class exportObj.SquadBuilderBackend
         else
             post_args =
                 name: $.trim(name)
+                faction: $.trim(faction)
                 serialized: serialized
-                faction: faction
                 additional_data: additional_data
             if id?
                 post_url = "#{@server}/squads/#{id}"
@@ -39118,7 +39118,7 @@ class exportObj.SquadBuilder
             additional_data:
                 points: @total_points
                 description: ''
-                cards: []
+                # cards: []
                 notes: ''
                 obstacles: squad_obstacles
             faction: @faction
@@ -39778,7 +39778,7 @@ class exportObj.SquadBuilder
                 additional_data =
                     points: @total_points
                     description: @describeSquad()
-                    cards: @listCards()
+                    # cards: @listCards()
                     notes: @notes.val().substr(0, 1024)
                     obstacles: @getObstacles()
                 @backend_status.html $.trim """

@@ -159,8 +159,8 @@ exportObj.SquadBuilderBackend = (function() {
     } else {
       post_args = {
         name: $.trim(name),
+        faction: $.trim(faction),
         serialized: serialized,
-        faction: faction,
         additional_data: additional_data
       };
       if (id != null) {
@@ -36476,7 +36476,6 @@ exportObj.SquadBuilder = (function() {
       additional_data: {
         points: this.total_points,
         description: '',
-        cards: [],
         notes: '',
         obstacles: squad_obstacles
       },
@@ -37009,7 +37008,6 @@ exportObj.SquadBuilder = (function() {
           additional_data = {
             points: _this.total_points,
             description: _this.describeSquad(),
-            cards: _this.listCards(),
             notes: _this.notes.val().substr(0, 1024),
             obstacles: _this.getObstacles()
           };
