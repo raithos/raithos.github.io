@@ -159,15 +159,15 @@ exportObj.SquadBuilderBackend = (function() {
     } else {
       post_args = {
         name: $.trim(name),
+        faction: $.trim(faction),
         serialized: serialized,
-        faction: faction,
         additional_data: additional_data
       };
       if (id != null) {
         post_url = "" + this.server + "/squads/" + id;
       } else {
         post_url = "" + this.server + "/squads/new";
-        post_args['_method'] = 'put';
+        post_args['_method'] = 'post';
       }
       return $.post(post_url, post_args, (function(_this) {
         return function(data, textStatus, jqXHR) {
