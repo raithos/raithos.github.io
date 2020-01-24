@@ -158,12 +158,12 @@ class exportObj.SquadBuilderBackend
                             <h4>#{squad.name}</h4>
                         </div>
                         <div class="span3">
-                            <h5>#{squad.additional_data.points} Points</h5>
+                            <h5>#{squad.additional_data?.points} Points</h5>
                         </div>
                     </div>
                     <div class="row-fluid squad-description">
                         <div class="span8">
-                            #{squad.additional_data.description}
+                            #{squad.additional_data?.description}
                         </div>
                         <div class="span4">
                             <button class="btn load-squad">Load</button>
@@ -18385,7 +18385,7 @@ exportObj.translations.Deutsch =
         '#aboutTab' : 'Impressum'
         # Obstacles
         '.choose-obstacles' : 'Wähle Hindernisse'
-        '.choose-obstacles-description' : 'Wähle bis zu drei Hindernisse, die im Link für externe Programme eingebunden werden. (Dies ist eine Beta-Funktion, aktuell ist es nicht möglich die gewählten Hindernisse im Ausdruck anzuzeigen.)'
+        '.choose-obstacles-description' : 'Wähle bis zu drei Hindernisse, die im Link für externe Programme eingebunden werden. (Aktuell ist es nicht möglich die gewählten Hindernisse im Ausdruck anzuzeigen.)'
         '.coreasteroid0-select' : 'Grundspiel Asteroid 0'
         '.coreasteroid1-select' : 'Grundspiel Asteroid 1'
         '.coreasteroid2-select' : 'Grundspiel Asteroid 2'
@@ -20491,7 +20491,7 @@ exportObj.translations.English =
         '#aboutTab' : 'About'
         # Obstacles
         '.choose-obstacles' : 'Choose Obstacles'
-        '.choose-obstacles-description' : 'Choose up to three obstacles to include in the permalink for use in external programs. (This feature is in BETA; support for displaying which obstacles were selected in the printout is not yet supported.)'
+        '.choose-obstacles-description' : 'Choose up to three obstacles to include in the permalink for use in external programs. (Support for displaying which obstacles were selected in the printout is not yet supported.)'
         '.coreasteroid0-select' : 'Core Asteroid 0'
         '.coreasteroid1-select' : 'Core Asteroid 1'
         '.coreasteroid2-select' : 'Core Asteroid 2'
@@ -22852,7 +22852,7 @@ exportObj.translations['Español'] =
         '#aboutTab' : 'Acerca de'
         # Obstacles
         '.choose-obstacles' : 'Elegir Obstáculos'
-        '.choose-obstacles-description' : 'Elige hasta tres obstáculos para incluirlos el enlace para programas externos (función en modo Beta, aún no se muestran los obstáculos elegidos al imprimir).'
+        '.choose-obstacles-description' : 'Elige hasta tres obstáculos para incluirlos el enlace para programas externos (Aún no se muestran los obstáculos elegidos al imprimir).'
         '.coreasteroid0-select' : 'Asteroide del Core 0'
         '.coreasteroid1-select' : 'Asteroide del Core 1'
         '.coreasteroid2-select' : 'Asteroide del Core 2'
@@ -24268,7 +24268,7 @@ exportObj.translations['Français'] =
         '#aboutTab' : 'À propos'
         # Obstacles
         '.choose-obstacles' : 'Choisir des obstacles'
-        '.choose-obstacles-description' : 'Choisir jusqu\'à trois obstacles à inclure dans le lien permanent à utiliser dans des programmes externes. (Cette fonctionnalité est en beta ; l\'affichage des obstacles sélectionnés dans l\'impression n\'est pas encore supporté.)'
+        '.choose-obstacles-description' : 'Choisir jusqu\'à trois obstacles à inclure dans le lien permanent à utiliser dans des programmes externes. (l\'affichage des obstacles sélectionnés dans l\'impression n\'est pas encore supporté.)'
         '.coreasteroid0-select' : 'Core Asteroid 0'
         '.coreasteroid1-select' : 'Core Asteroid 1'
         '.coreasteroid2-select' : 'Core Asteroid 2'
@@ -26321,7 +26321,7 @@ exportObj.translations.Magyar =
         '#aboutTab' : 'Rólunk'
         # Obstacles
         '.choose-obstacles' : 'Válassz akadályt'
-        '.choose-obstacles-description' : 'Choose up to three obstacles to include in the permalink for use in external programs. (This feature is in BETA; support for displaying which obstacles were selected in the printout is not yet supported.)'
+        '.choose-obstacles-description' : 'Choose up to three obstacles to include in the permalink for use in external programs. (Support for displaying which obstacles were selected in the printout is not yet supported.)'
         '.coreasteroid0-select' : 'Core Asteroid 0'
         '.coreasteroid1-select' : 'Core Asteroid 1'
         '.coreasteroid2-select' : 'Core Asteroid 2'
@@ -39748,6 +39748,9 @@ class exportObj.SquadBuilder
                         <option class="gascloud1-select" value="gascloud1">Gas Cloud 1</option>
                         <option class="gascloud2-select" value="gascloud2">Gas Cloud 2</option>
                         <option class="gascloud3-select" value="gascloud3">Gas Cloud 3</option>
+                        <option class="gascloud4-select" value="gascloud4">Gas Cloud 4</option>
+                        <option class="gascloud5-select" value="gascloud5">Gas Cloud 5</option>
+                        <option class="gascloud6-select" value="gascloud6">Gas Cloud 6</option>
                     </select>
                 </div>
                 <div class="obstacle-image-container" style="display:none;">
@@ -39768,11 +39771,6 @@ class exportObj.SquadBuilder
             e.preventDefault()
             if @backend?
                 @backend.list this
-        #@backend_list_all_squads_button = $ @container.find('button.backend-list-all-squads')
-        #@backend_list_all_squads_button.click (e) =>
-        #    e.preventDefault()
-        #    if @backend?
-        #        @backend.list this, true
         @backend_save_list_button = $ @container.find('button.save-list')
         @backend_save_list_button.click (e) =>
             e.preventDefault()

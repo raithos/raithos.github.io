@@ -222,7 +222,7 @@ exportObj.SquadBuilderBackend = (function() {
     url = all ? "" + this.server + "/all" : "" + this.server + "/squads/list";
     return $.get(url, (function(_this) {
       return function(data, textStatus, jqXHR) {
-        var hasNotArchivedSquads, li, squad, _i, _len, _ref, _ref1;
+        var hasNotArchivedSquads, li, squad, _i, _len, _ref, _ref1, _ref2, _ref3;
         hasNotArchivedSquads = false;
         _ref = data[builder.faction];
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -238,7 +238,7 @@ exportObj.SquadBuilderBackend = (function() {
           } else {
             hasNotArchivedSquads = true;
           }
-          li.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span9\">\n        <h4>" + squad.name + "</h4>\n    </div>\n    <div class=\"span3\">\n        <h5>" + squad.additional_data.points + " Points</h5>\n    </div>\n</div>\n<div class=\"row-fluid squad-description\">\n    <div class=\"span8\">\n        " + squad.additional_data.description + "\n    </div>\n    <div class=\"span4\">\n        <button class=\"btn load-squad\">Load</button>\n        &nbsp;\n        <button class=\"btn btn-danger delete-squad\">Delete</button>\n    </div>\n</div>\n<div class=\"row-fluid squad-delete-confirm\">\n    <div class=\"span8\">\n        Really delete <em>" + squad.name + "</em>?\n    </div>\n    <div class=\"span4\">\n        <button class=\"btn btn-danger confirm-delete-squad\">Delete</button>\n        &nbsp;\n        <button class=\"btn cancel-delete-squad\">Cancel</button>\n    </div>\n</div>"));
+          li.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span9\">\n        <h4>" + squad.name + "</h4>\n    </div>\n    <div class=\"span3\">\n        <h5>" + ((_ref2 = squad.additional_data) != null ? _ref2.points : void 0) + " Points</h5>\n    </div>\n</div>\n<div class=\"row-fluid squad-description\">\n    <div class=\"span8\">\n        " + ((_ref3 = squad.additional_data) != null ? _ref3.description : void 0) + "\n    </div>\n    <div class=\"span4\">\n        <button class=\"btn load-squad\">Load</button>\n        &nbsp;\n        <button class=\"btn btn-danger delete-squad\">Delete</button>\n    </div>\n</div>\n<div class=\"row-fluid squad-delete-confirm\">\n    <div class=\"span8\">\n        Really delete <em>" + squad.name + "</em>?\n    </div>\n    <div class=\"span4\">\n        <button class=\"btn btn-danger confirm-delete-squad\">Delete</button>\n        &nbsp;\n        <button class=\"btn cancel-delete-squad\">Cancel</button>\n    </div>\n</div>"));
           li.find('.squad-delete-confirm').hide();
           li.find('button.load-squad').click(function(e) {
             var button;
@@ -13018,7 +13018,7 @@ exportObj.translations.Deutsch = {
     '#browserTab': 'Kartendatenbank',
     '#aboutTab': 'Impressum',
     '.choose-obstacles': 'Wähle Hindernisse',
-    '.choose-obstacles-description': 'Wähle bis zu drei Hindernisse, die im Link für externe Programme eingebunden werden. (Dies ist eine Beta-Funktion, aktuell ist es nicht möglich die gewählten Hindernisse im Ausdruck anzuzeigen.)',
+    '.choose-obstacles-description': 'Wähle bis zu drei Hindernisse, die im Link für externe Programme eingebunden werden. (Aktuell ist es nicht möglich die gewählten Hindernisse im Ausdruck anzuzeigen.)',
     '.coreasteroid0-select': 'Grundspiel Asteroid 0',
     '.coreasteroid1-select': 'Grundspiel Asteroid 1',
     '.coreasteroid2-select': 'Grundspiel Asteroid 2',
@@ -15746,7 +15746,7 @@ exportObj.translations.English = {
     '#browserTab': 'Card Browser',
     '#aboutTab': 'About',
     '.choose-obstacles': 'Choose Obstacles',
-    '.choose-obstacles-description': 'Choose up to three obstacles to include in the permalink for use in external programs. (This feature is in BETA; support for displaying which obstacles were selected in the printout is not yet supported.)',
+    '.choose-obstacles-description': 'Choose up to three obstacles to include in the permalink for use in external programs. (Support for displaying which obstacles were selected in the printout is not yet supported.)',
     '.coreasteroid0-select': 'Core Asteroid 0',
     '.coreasteroid1-select': 'Core Asteroid 1',
     '.coreasteroid2-select': 'Core Asteroid 2',
@@ -18835,7 +18835,7 @@ exportObj.translations['Español'] = {
     '#browserTab': 'Explorador de Cartas',
     '#aboutTab': 'Acerca de',
     '.choose-obstacles': 'Elegir Obstáculos',
-    '.choose-obstacles-description': 'Elige hasta tres obstáculos para incluirlos el enlace para programas externos (función en modo Beta, aún no se muestran los obstáculos elegidos al imprimir).',
+    '.choose-obstacles-description': 'Elige hasta tres obstáculos para incluirlos el enlace para programas externos (Aún no se muestran los obstáculos elegidos al imprimir).',
     '.coreasteroid0-select': 'Asteroide del Core 0',
     '.coreasteroid1-select': 'Asteroide del Core 1',
     '.coreasteroid2-select': 'Asteroide del Core 2',
@@ -20654,7 +20654,7 @@ exportObj.translations['Français'] = {
     '#browserTab': 'Cartes',
     '#aboutTab': 'À propos',
     '.choose-obstacles': 'Choisir des obstacles',
-    '.choose-obstacles-description': 'Choisir jusqu\'à trois obstacles à inclure dans le lien permanent à utiliser dans des programmes externes. (Cette fonctionnalité est en beta ; l\'affichage des obstacles sélectionnés dans l\'impression n\'est pas encore supporté.)',
+    '.choose-obstacles-description': 'Choisir jusqu\'à trois obstacles à inclure dans le lien permanent à utiliser dans des programmes externes. (l\'affichage des obstacles sélectionnés dans l\'impression n\'est pas encore supporté.)',
     '.coreasteroid0-select': 'Core Asteroid 0',
     '.coreasteroid1-select': 'Core Asteroid 1',
     '.coreasteroid2-select': 'Core Asteroid 2',
@@ -23332,7 +23332,7 @@ exportObj.translations.Magyar = {
     '#browserTab': 'Kártya tallózó',
     '#aboutTab': 'Rólunk',
     '.choose-obstacles': 'Válassz akadályt',
-    '.choose-obstacles-description': 'Choose up to three obstacles to include in the permalink for use in external programs. (This feature is in BETA; support for displaying which obstacles were selected in the printout is not yet supported.)',
+    '.choose-obstacles-description': 'Choose up to three obstacles to include in the permalink for use in external programs. (Support for displaying which obstacles were selected in the printout is not yet supported.)',
     '.coreasteroid0-select': 'Core Asteroid 0',
     '.coreasteroid1-select': 'Core Asteroid 1',
     '.coreasteroid2-select': 'Core Asteroid 2',
@@ -36986,7 +36986,7 @@ exportObj.SquadBuilder = (function() {
     this.choose_obstacles_modal = $(document.createElement('DIV'));
     this.choose_obstacles_modal.addClass('modal hide fade choose-obstacles-modal');
     this.container.append(this.choose_obstacles_modal);
-    this.choose_obstacles_modal.append($.trim("<div class=\"modal-header\">\n    <label class='choose-obstacles-description'>Choose up to three obstacles, to include in the permalink for use in external programs</label>\n</div>\n<div class=\"modal-body\">\n    <div class=\"obstacle-select-container\" style=\"float:left\">\n        <select multiple class='obstacle-select' size=\"18\">\n            <option class=\"coreasteroid0-select\" value=\"coreasteroid0\">Core Asteroid 0</option>\n            <option class=\"coreasteroid1-select\" value=\"coreasteroid1\">Core Asteroid 1</option>\n            <option class=\"coreasteroid2-select\" value=\"coreasteroid2\">Core Asteroid 2</option>\n            <option class=\"coreasteroid3-select\" value=\"coreasteroid3\">Core Asteroid 3</option>\n            <option class=\"coreasteroid4-select\" value=\"coreasteroid4\">Core Asteroid 4</option>\n            <option class=\"coreasteroid5-select\" value=\"coreasteroid5\">Core Asteroid 5</option>\n            <option class=\"yt2400debris0-select\" value=\"yt2400debris0\">YT2400 Debris 0</option>\n            <option class=\"yt2400debris1-select\" value=\"yt2400debris1\">YT2400 Debris 1</option>\n            <option class=\"yt2400debris2-select\" value=\"yt2400debris2\">YT2400 Debris 2</option>\n            <option class=\"vt49decimatordebris0-select\" value=\"vt49decimatordebris0\">VT49 Debris 0</option>\n            <option class=\"vt49decimatordebris1-select\" value=\"vt49decimatordebris1\">VT49 Debris 1</option>\n            <option class=\"vt49decimatordebris2-select\" value=\"vt49decimatordebris2\">VT49 Debris 2</option>\n            <option class=\"core2asteroid0-select\" value=\"core2asteroid0\">Force Awakens Asteroid 0</option>\n            <option class=\"core2asteroid1-select\" value=\"core2asteroid1\">Force Awakens Asteroid 1</option>\n            <option class=\"core2asteroid2-select\" value=\"core2asteroid2\">Force Awakens Asteroid 2</option>\n            <option class=\"core2asteroid3-select\" value=\"core2asteroid3\">Force Awakens Asteroid 3</option>\n            <option class=\"core2asteroid4-select\" value=\"core2asteroid4\">Force Awakens Asteroid 4</option>\n            <option class=\"core2asteroid5-select\" value=\"core2asteroid5\">Force Awakens Asteroid 5</option>\n            <option class=\"gascloud1-select\" value=\"gascloud1\">Gas Cloud 1</option>\n            <option class=\"gascloud2-select\" value=\"gascloud2\">Gas Cloud 2</option>\n            <option class=\"gascloud3-select\" value=\"gascloud3\">Gas Cloud 3</option>\n        </select>\n    </div>\n    <div class=\"obstacle-image-container\" style=\"display:none;\">\n        <img class=\"obstacle-image\" src=\"images/core2asteroid0.png\" />\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <button class=\"btn close-print-dialog\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.choose_obstacles_modal.append($.trim("<div class=\"modal-header\">\n    <label class='choose-obstacles-description'>Choose up to three obstacles, to include in the permalink for use in external programs</label>\n</div>\n<div class=\"modal-body\">\n    <div class=\"obstacle-select-container\" style=\"float:left\">\n        <select multiple class='obstacle-select' size=\"18\">\n            <option class=\"coreasteroid0-select\" value=\"coreasteroid0\">Core Asteroid 0</option>\n            <option class=\"coreasteroid1-select\" value=\"coreasteroid1\">Core Asteroid 1</option>\n            <option class=\"coreasteroid2-select\" value=\"coreasteroid2\">Core Asteroid 2</option>\n            <option class=\"coreasteroid3-select\" value=\"coreasteroid3\">Core Asteroid 3</option>\n            <option class=\"coreasteroid4-select\" value=\"coreasteroid4\">Core Asteroid 4</option>\n            <option class=\"coreasteroid5-select\" value=\"coreasteroid5\">Core Asteroid 5</option>\n            <option class=\"yt2400debris0-select\" value=\"yt2400debris0\">YT2400 Debris 0</option>\n            <option class=\"yt2400debris1-select\" value=\"yt2400debris1\">YT2400 Debris 1</option>\n            <option class=\"yt2400debris2-select\" value=\"yt2400debris2\">YT2400 Debris 2</option>\n            <option class=\"vt49decimatordebris0-select\" value=\"vt49decimatordebris0\">VT49 Debris 0</option>\n            <option class=\"vt49decimatordebris1-select\" value=\"vt49decimatordebris1\">VT49 Debris 1</option>\n            <option class=\"vt49decimatordebris2-select\" value=\"vt49decimatordebris2\">VT49 Debris 2</option>\n            <option class=\"core2asteroid0-select\" value=\"core2asteroid0\">Force Awakens Asteroid 0</option>\n            <option class=\"core2asteroid1-select\" value=\"core2asteroid1\">Force Awakens Asteroid 1</option>\n            <option class=\"core2asteroid2-select\" value=\"core2asteroid2\">Force Awakens Asteroid 2</option>\n            <option class=\"core2asteroid3-select\" value=\"core2asteroid3\">Force Awakens Asteroid 3</option>\n            <option class=\"core2asteroid4-select\" value=\"core2asteroid4\">Force Awakens Asteroid 4</option>\n            <option class=\"core2asteroid5-select\" value=\"core2asteroid5\">Force Awakens Asteroid 5</option>\n            <option class=\"gascloud1-select\" value=\"gascloud1\">Gas Cloud 1</option>\n            <option class=\"gascloud2-select\" value=\"gascloud2\">Gas Cloud 2</option>\n            <option class=\"gascloud3-select\" value=\"gascloud3\">Gas Cloud 3</option>\n            <option class=\"gascloud4-select\" value=\"gascloud4\">Gas Cloud 4</option>\n            <option class=\"gascloud5-select\" value=\"gascloud5\">Gas Cloud 5</option>\n            <option class=\"gascloud6-select\" value=\"gascloud6\">Gas Cloud 6</option>\n        </select>\n    </div>\n    <div class=\"obstacle-image-container\" style=\"display:none;\">\n        <img class=\"obstacle-image\" src=\"images/core2asteroid0.png\" />\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <button class=\"btn close-print-dialog\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
     this.obstacles_select = this.choose_obstacles_modal.find('.obstacle-select');
     this.obstacles_select_image = this.choose_obstacles_modal.find('.obstacle-image-container');
     this.backend_list_squads_button = $(this.container.find('button.backend-list-my-squads'));
@@ -37026,7 +37026,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 39790
+              lineno: 39788
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -37809,7 +37809,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 40525
+              lineno: 40523
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -37819,7 +37819,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 40526
+                lineno: 40524
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -39724,7 +39724,7 @@ Ship = (function() {
               funcname: "Ship.destroy"
             });
             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 41846
+              lineno: 41844
             }));
             __iced_deferrals._fulfill();
           })(__iced_k);
@@ -39941,7 +39941,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 41961
+                          lineno: 41959
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -39970,7 +39970,7 @@ Ship = (function() {
                               funcname: "Ship.setPilotById"
                             });
                             _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 41977
+                              lineno: 41975
                             }));
                             __iced_deferrals._fulfill();
                           })(function() {
@@ -40040,7 +40040,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 42019
+                      lineno: 42017
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -40120,7 +40120,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 42048
+                lineno: 42046
               })
             ]);
             __iced_deferrals._fulfill();
@@ -40189,7 +40189,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 42077
+              lineno: 42075
             }));
           }
         }
@@ -41158,7 +41158,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 42838
+                lineno: 42836
               })
             ]);
             __iced_deferrals._fulfill();
@@ -41287,7 +41287,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 42904
+                  lineno: 42902
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -41310,7 +41310,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 42909
+                      lineno: 42907
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -41402,7 +41402,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 42954
+            lineno: 42952
           }));
         }
         __iced_deferrals._fulfill();
