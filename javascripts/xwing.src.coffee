@@ -95,14 +95,14 @@ class exportObj.SquadBuilderBackend
         else
             post_args =
                 name: $.trim(name)
-                faction: $.trim(faction)
                 serialized: serialized
+                faction: faction
                 additional_data: additional_data
             if id?
                 post_url = "#{@server}/squads/#{id}"
             else
                 post_url = "#{@server}/squads/new"
-                post_args['_method'] = 'post'
+                post_args['_method'] = 'put'
             $.post post_url, post_args, (data, textStatus, jqXHR) =>
                 cb
                     id: data.id
