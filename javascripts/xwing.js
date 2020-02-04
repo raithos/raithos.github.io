@@ -665,7 +665,7 @@ exportObj.SquadBuilderBackend = (function() {
         if (_this.squad_display_mode !== 'epic') {
           _this.squad_display_mode = 'epic';
           _this.squad_list_modal.find('.squad-display-mode .btn').removeClass('btn-inverse');
-          _this.show_extended_squads_button.addClass('btn-inverse');
+          _this.show_epic_squads_button.addClass('btn-inverse');
           return _this.squad_list_modal.find('.squad-list li').each(function(idx, elem) {
             return $(elem).toggle($(elem).data().squad.serialized.search(/v\d+Ze/) !== -1);
           });
@@ -1086,7 +1086,7 @@ exportObj.CardBrowser = (function() {
 
   CardBrowser.prototype.setupUI = function() {
     var action, faction, factionless_option, linkedaction, opt, pilot, slot, _i, _j, _len, _len1, _ref, _ref1, _ref2;
-    this.container.append($.trim("<div class=\"container-fluid xwing-card-browser\">\n    <div class=\"row-fluid\">\n        <div class=\"span4\">\n            <div class=\"well card-search-container\">\n            <h3>Card Search</h3>\n                <div class=\"advanced-search-container\">\n                    <div class = \"well search-container general-search-container\">\n                        <h4>General</h4>\n                        <lable class = \"text-search advanced-search-label\">\n                        <strong>Textsearch: </strong>\n                            <input type=\"search\" placeholder=\"Search for name, text or ship\" class = \"card-search-text\">\n                        </label>\n                        <div class= \"advanced-search-faction-selection-container\">\n                            <label class = \"advanced-search-label select-available-slots\">\n                                <strong>Factions: </strong>\n                                <select class=\"advanced-search-selection faction-selection\" multiple=\"1\" data-placeholder=\"All factions\"></select>\n                            </label>\n                        </div>\n                        <div class = \"advanced-search-point-selection-container\">\n                            <strong>Point costs:</strong>\n                            <label class = \"advanced-search-label set-minimum-points\">\n                                from <input type=\"number\" class=\"minimum-point-cost advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-points\">\n                                to <input type=\"number\" class=\"maximum-point-cost advanced-search-number-input\" value=\"200\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-collection-container\">\n                            <strong>Owned copies:</strong>\n                            <label class = \"advanced-search-label set-minimum-owned-copies\">\n                                from <input type=\"number\" class=\"minimum-owned-copies advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-owened-copies\">\n                                to <input type=\"number\" class=\"maximum-owned-copies advanced-search-number-input\" value=\"100\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-misc-container\">\n                            <strong>Misc:</strong>\n                            <label class = \"advanced-search-label toggle-unique\">\n                                <input type=\"checkbox\" class=\"unique-checkbox advanced-search-checkbox\" /> Is unique\n                            </label>\n                            <label class = \"advanced-search-label toggle-non-unique\">\n                                <input type=\"checkbox\" class=\"non-unique-checkbox advanced-search-checkbox\" /> Is not unique\n                            </label>\n                            <label class = \"advanced-search-label toggle-hyperspace\">\n                                <input type=\"checkbox\" class=\"hyperspace-checkbox advanced-search-checkbox\" /> Hyperspace legal\n                            </label>\n                        </div>\n                    </div>\n                    <div class = \"well search-container ship-search-container\">\n                        <h4>Ships and Pilots</h4>\n                        <div class = \"advanced-search-slot-available-container\">\n                            <label class = \"advanced-search-label select-available-slots\">\n                                <strong>Slots: </strong>\n                                <select class=\"advanced-search-selection slot-available-selection\" multiple=\"1\" data-placeholder=\"No slots selected\"></select>\n                            </label>\n                        </div>\n                        <div class = \"advanced-search-actions-available-container\">\n                            <label class = \"advanced-search-label select-available-actions\">\n                                <strong>Actions: </strong>\n                                <select class=\"advanced-search-selection action-available-selection\" multiple=\"1\" data-placeholder=\"No actions selected\"></select>\n                            </label>\n                        </div>\n                        <div class = \"advanced-search-linkedactions-available-container\">\n                            <label class = \"advanced-search-label select-available-linkedactions\">\n                                <strong>Linked actions: </strong>\n                                <select class=\"advanced-search-selection linkedaction-available-selection\" multiple=\"1\" data-placeholder=\"No actions selected\"></select>\n                            </label>\n                        </div>\n                        <div class = \"advanced-search-ini-container\">\n                            <strong>Initiative:</strong>\n                            <label class = \"advanced-search-label set-minimum-ini\">\n                                from <input type=\"number\" class=\"minimum-ini advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-ini\">\n                                to <input type=\"number\" class=\"maximum-ini advanced-search-number-input\" value=\"6\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-hull-container\">\n                            <strong>Hull:</strong>\n                            <label class = \"advanced-search-label set-minimum-hull\">\n                                from <input type=\"number\" class=\"minimum-hull advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-hull\">\n                                to <input type=\"number\" class=\"maximum-hull advanced-search-number-input\" value=\"12\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-shields-container\">\n                            <strong>Shields:</strong>\n                            <label class = \"advanced-search-label set-minimum-shields\">\n                                from <input type=\"number\" class=\"minimum-shields advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-shields\">\n                                to <input type=\"number\" class=\"maximum-shields advanced-search-number-input\" value=\"6\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-agility-container\">\n                            <strong>Agility:</strong>\n                            <label class = \"advanced-search-label set-minimum-agility\">\n                                from <input type=\"number\" class=\"minimum-agility advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-agility\">\n                                to <input type=\"number\" class=\"maximum-agility advanced-search-number-input\" value=\"3\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-base-size-container\">\n                            <strong>Base size:</strong>\n                            <label class = \"advanced-search-label toggle-small-base\">\n                                <input type=\"checkbox\" class=\"small-base-checkbox advanced-search-checkbox\" checked=\"checked\"/> Small\n                            </label>\n                            <label class = \"advanced-search-label toggle-medium-base\">\n                                <input type=\"checkbox\" class=\"medium-base-checkbox advanced-search-checkbox\" checked=\"checked\"/> Medium\n                            </label>\n                            <label class = \"advanced-search-label toggle-large-base\">\n                                <input type=\"checkbox\" class=\"large-base-checkbox advanced-search-checkbox\" checked=\"checked\"/> Large\n                            </label>\n                        </div>\n                        <div class = \"advanced-search-attack-container\">\n                            <strong>Attack  <i class=\"xwing-miniatures-font xwing-miniatures-font-frontarc\"></i>:</strong>\n                            <label class = \"advanced-search-label set-minimum-attack\">\n                                from <input type=\"number\" class=\"minimum-attack advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-attack\">\n                                to <input type=\"number\" class=\"maximum-attack advanced-search-number-input\" value=\"5\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-attackt-container\">\n                            <strong>Attack  <i class=\"xwing-miniatures-font xwing-miniatures-font-singleturretarc\"></i>:</strong>\n                            <label class = \"advanced-search-label set-minimum-attackt\">\n                                from <input type=\"number\" class=\"minimum-attackt advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-attackt\">\n                                to <input type=\"number\" class=\"maximum-attackt advanced-search-number-input\" value=\"5\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-attackdt-container\">\n                            <strong>Attack <i class=\"xwing-miniatures-font xwing-miniatures-font-doubleturretarc\"></i>:</strong>\n                            <label class = \"advanced-search-label set-minimum-attackdt\">\n                                from <input type=\"number\" class=\"minimum-attackdt advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-attackdt\">\n                                to <input type=\"number\" class=\"maximum-attackdt advanced-search-number-input\" value=\"5\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-attackf-container\">\n                            <strong>Attack <i class=\"xwing-miniatures-font xwing-miniatures-font-fullfrontarc\"></i>:</strong>\n                            <label class = \"advanced-search-label set-minimum-attackf\">\n                                from <input type=\"number\" class=\"minimum-attackf advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-attackf\">\n                                to <input type=\"number\" class=\"maximum-attackf advanced-search-number-input\" value=\"5\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-attackb-container\">\n                            <strong>Attack <i class=\"xwing-miniatures-font xwing-miniatures-font-reararc\"></i>:</strong>\n                            <label class = \"advanced-search-label set-minimum-attackb\">\n                                from <input type=\"number\" class=\"minimum-attackb advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-attackb\">\n                                to <input type=\"number\" class=\"maximum-attackb advanced-search-number-input\" value=\"5\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-attackbull-container\">\n                            <strong>Attack <i class=\"xwing-miniatures-font xwing-miniatures-font-bullseyearc\"></i>:</strong>\n                            <label class = \"advanced-search-label set-minimum-attackbull\">\n                                from <input type=\"number\" class=\"minimum-attackbull advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-attackbull\">\n                                to <input type=\"number\" class=\"maximum-attackbull advanced-search-number-input\" value=\"5\" /> \n                            </label>\n                        </div>\n                    </div>\n                    <div class = \"well search-container other-stuff-search-container\">\n                        <h4>Other Stuff</h4>\n                        <div class = \"advanced-search-slot-used-container\">\n                            <label class = \"advanced-search-label select-used-slots\">\n                                <strong>Used slot: </strong>\n                                <select class=\"advanced-search-selection slot-used-selection\" multiple=\"1\" data-placeholder=\"No slots selected\"></select>\n                            </label>\n                        </div>\n                        <div class = \"advanced-search-charge-container\">\n                            <strong>Charges:</strong>\n                            <label class = \"advanced-search-label set-minimum-charge\">\n                                from <input type=\"number\" class=\"minimum-charge advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-charge\">\n                                to <input type=\"number\" class=\"maximum-charge advanced-search-number-input\" value=\"5\" /> \n                            </label>\n                            <label class = \"advanced-search-label has-recurring-charge\">\n                                <input type=\"checkbox\" class=\"advanced-search-checkbox has-recurring-charge-checkbox\" checked=\"checked\"/> recurring\n                            </label>\n                            <label class = \"advanced-search-label has-not-recurring-charge\">\n                                <input type=\"checkbox\" class=\"advanced-search-checkbox has-not-recurring-charge-checkbox\" checked=\"checked\"/> not recurring\n                            </label>\n                        <div class = \"advanced-search-force-container\">\n                            <strong>Force:</strong>\n                            <label class = \"advanced-search-label set-minimum-force\">\n                                from <input type=\"number\" class=\"minimum-force advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-force\">\n                                to <input type=\"number\" class=\"maximum-force advanced-search-number-input\" value=\"3\" /> \n                            </label>\n                        </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"span4 card-selecting-area\">\n            <span class=\"translate sort-cards-by\">Sort cards by</span>: <select class=\"sort-by\">\n                <option value=\"name\">Name</option>\n                <option value=\"source\">Source</option>\n                <option value=\"type-by-points\">Type (by Points)</option>\n                <option value=\"type-by-name\" selected=\"1\">Type (by Name)</option>\n            </select>\n            <div class=\"card-selector-container\">\n\n            </div>\n        </div>\n        <div class=\"span4\">\n            <div class=\"well card-viewer-placeholder info-well\">\n                <p class=\"translate select-a-card\">Select a card from the list at the left.</p>\n            </div>\n            <div class=\"well card-viewer-container info-well\">\n                <span class=\"info-name\"></span>\n                <br />\n                <span class=\"info-type\"></span>\n                <br />\n                <span class=\"info-collection\"></span>\n                <table>\n                    <tbody>\n                        <tr class=\"info-ship\">\n                            <td class=\"info-header\">Ship</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                        <tr class=\"info-base\">\n                            <td class=\"info-header\">Base</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                        <tr class=\"info-skill\">\n                            <td class=\"info-header\">Initiative</td>\n                            <td class=\"info-data info-skill\"></td>\n                        </tr>\n                        <tr class=\"info-energy\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                            <td class=\"info-data info-energy\"></td>\n                        </tr>\n                        <tr class=\"info-attack\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-fullfront\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-bullseye\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-back\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-turret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-doubleturret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-agility\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                            <td class=\"info-data info-agility\"></td>\n                        </tr>\n                        <tr class=\"info-hull\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                            <td class=\"info-data info-hull\"></td>\n                        </tr>\n                        <tr class=\"info-shields\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                            <td class=\"info-data info-shields\"></td>\n                        </tr>\n                        <tr class=\"info-force\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i></td>\n                            <td class=\"info-data info-force\"></td>\n                        </tr>\n                        <tr class=\"info-charge\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                            <td class=\"info-data info-charge\"></td>\n                        </tr>\n                        <tr class=\"info-range\">\n                            <td class=\"info-header\">Range</td>\n                            <td class=\"info-data info-range\"></td>\n                        </tr>\n                        <tr class=\"info-actions\">\n                            <td class=\"info-header\">Actions</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                        <tr class=\"info-actions-red\">\n                            <td></td>\n                            <td class=\"info-data-red\"></td>\n                        </tr>\n                        <tr class=\"info-upgrades\">\n                            <td class=\"info-header\">Upgrades</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                    </tbody>\n                </table>\n                <p class=\"info-text\" />\n                <p class=\"info-maneuvers\" />\n                <br />\n                <span class=\"info-header info-sources\">Sources</span>: \n                <span class=\"info-data info-sources\"></span>\n            </div>\n        </div>\n    </div>\n</div>"));
+    this.container.append($.trim("<div class=\"container-fluid xwing-card-browser\">\n    <div class=\"row-fluid\">\n        <div class=\"span4\">\n            <div class=\"well card-search-container\">\n            <h3>Card Search</h3>\n                <div class=\"advanced-search-container\">\n                    <div class = \"well search-container general-search-container\">\n                        <h4>General</h4>\n                        <label class = \"text-search advanced-search-label\">\n                        <strong>Textsearch: </strong>\n                            <input type=\"search\" placeholder=\"Search for name, text or ship\" class = \"card-search-text\">\n                        </label>\n                        <div class= \"advanced-search-faction-selection-container\">\n                            <label class = \"advanced-search-label select-available-slots\">\n                                <strong>Factions: </strong>\n                                <select class=\"advanced-search-selection faction-selection\" multiple=\"1\" data-placeholder=\"All factions\"></select>\n                            </label>\n                        </div>\n                        <div class = \"advanced-search-point-selection-container\">\n                            <strong>Point costs:</strong>\n                            <label class = \"advanced-search-label set-minimum-points\">\n                                from <input type=\"number\" class=\"minimum-point-cost advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-points\">\n                                to <input type=\"number\" class=\"maximum-point-cost advanced-search-number-input\" value=\"200\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-collection-container\">\n                            <strong>Owned copies:</strong>\n                            <label class = \"advanced-search-label set-minimum-owned-copies\">\n                                from <input type=\"number\" class=\"minimum-owned-copies advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-owened-copies\">\n                                to <input type=\"number\" class=\"maximum-owned-copies advanced-search-number-input\" value=\"100\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-misc-container\">\n                            <strong>Misc:</strong>\n                            <label class = \"advanced-search-label toggle-unique\">\n                                <input type=\"checkbox\" class=\"unique-checkbox advanced-search-checkbox\" /> Is unique\n                            </label>\n                            <label class = \"advanced-search-label toggle-non-unique\">\n                                <input type=\"checkbox\" class=\"non-unique-checkbox advanced-search-checkbox\" /> Is not unique\n                            </label>\n                            <label class = \"advanced-search-label toggle-hyperspace\">\n                                <input type=\"checkbox\" class=\"hyperspace-checkbox advanced-search-checkbox\" /> Hyperspace legal\n                            </label>\n                        </div>\n                    </div>\n                    <div class = \"well search-container ship-search-container\">\n                        <h4>Ships and Pilots</h4>\n                        <div class = \"advanced-search-slot-available-container\">\n                            <label class = \"advanced-search-label select-available-slots\">\n                                <strong>Slots: </strong>\n                                <select class=\"advanced-search-selection slot-available-selection\" multiple=\"1\" data-placeholder=\"No slots selected\"></select>\n                            </label>\n                        </div>\n                        <div class = \"advanced-search-actions-available-container\">\n                            <label class = \"advanced-search-label select-available-actions\">\n                                <strong>Actions: </strong>\n                                <select class=\"advanced-search-selection action-available-selection\" multiple=\"1\" data-placeholder=\"No actions selected\"></select>\n                            </label>\n                        </div>\n                        <div class = \"advanced-search-linkedactions-available-container\">\n                            <label class = \"advanced-search-label select-available-linkedactions\">\n                                <strong>Linked actions: </strong>\n                                <select class=\"advanced-search-selection linkedaction-available-selection\" multiple=\"1\" data-placeholder=\"No actions selected\"></select>\n                            </label>\n                        </div>\n                        <div class = \"advanced-search-ini-container\">\n                            <strong>Initiative:</strong>\n                            <label class = \"advanced-search-label set-minimum-ini\">\n                                from <input type=\"number\" class=\"minimum-ini advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-ini\">\n                                to <input type=\"number\" class=\"maximum-ini advanced-search-number-input\" value=\"6\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-hull-container\">\n                            <strong>Hull:</strong>\n                            <label class = \"advanced-search-label set-minimum-hull\">\n                                from <input type=\"number\" class=\"minimum-hull advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-hull\">\n                                to <input type=\"number\" class=\"maximum-hull advanced-search-number-input\" value=\"12\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-shields-container\">\n                            <strong>Shields:</strong>\n                            <label class = \"advanced-search-label set-minimum-shields\">\n                                from <input type=\"number\" class=\"minimum-shields advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-shields\">\n                                to <input type=\"number\" class=\"maximum-shields advanced-search-number-input\" value=\"6\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-agility-container\">\n                            <strong>Agility:</strong>\n                            <label class = \"advanced-search-label set-minimum-agility\">\n                                from <input type=\"number\" class=\"minimum-agility advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-agility\">\n                                to <input type=\"number\" class=\"maximum-agility advanced-search-number-input\" value=\"3\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-base-size-container\">\n                            <strong>Base size:</strong>\n                            <label class = \"advanced-search-label toggle-small-base\">\n                                <input type=\"checkbox\" class=\"small-base-checkbox advanced-search-checkbox\" checked=\"checked\"/> Small\n                            </label>\n                            <label class = \"advanced-search-label toggle-medium-base\">\n                                <input type=\"checkbox\" class=\"medium-base-checkbox advanced-search-checkbox\" checked=\"checked\"/> Medium\n                            </label>\n                            <label class = \"advanced-search-label toggle-large-base\">\n                                <input type=\"checkbox\" class=\"large-base-checkbox advanced-search-checkbox\" checked=\"checked\"/> Large\n                            </label>\n                        </div>\n                        <div class = \"advanced-search-attack-container\">\n                            <strong>Attack  <i class=\"xwing-miniatures-font xwing-miniatures-font-frontarc\"></i>:</strong>\n                            <label class = \"advanced-search-label set-minimum-attack\">\n                                from <input type=\"number\" class=\"minimum-attack advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-attack\">\n                                to <input type=\"number\" class=\"maximum-attack advanced-search-number-input\" value=\"5\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-attackt-container\">\n                            <strong>Attack  <i class=\"xwing-miniatures-font xwing-miniatures-font-singleturretarc\"></i>:</strong>\n                            <label class = \"advanced-search-label set-minimum-attackt\">\n                                from <input type=\"number\" class=\"minimum-attackt advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-attackt\">\n                                to <input type=\"number\" class=\"maximum-attackt advanced-search-number-input\" value=\"5\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-attackdt-container\">\n                            <strong>Attack <i class=\"xwing-miniatures-font xwing-miniatures-font-doubleturretarc\"></i>:</strong>\n                            <label class = \"advanced-search-label set-minimum-attackdt\">\n                                from <input type=\"number\" class=\"minimum-attackdt advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-attackdt\">\n                                to <input type=\"number\" class=\"maximum-attackdt advanced-search-number-input\" value=\"5\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-attackf-container\">\n                            <strong>Attack <i class=\"xwing-miniatures-font xwing-miniatures-font-fullfrontarc\"></i>:</strong>\n                            <label class = \"advanced-search-label set-minimum-attackf\">\n                                from <input type=\"number\" class=\"minimum-attackf advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-attackf\">\n                                to <input type=\"number\" class=\"maximum-attackf advanced-search-number-input\" value=\"5\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-attackb-container\">\n                            <strong>Attack <i class=\"xwing-miniatures-font xwing-miniatures-font-reararc\"></i>:</strong>\n                            <label class = \"advanced-search-label set-minimum-attackb\">\n                                from <input type=\"number\" class=\"minimum-attackb advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-attackb\">\n                                to <input type=\"number\" class=\"maximum-attackb advanced-search-number-input\" value=\"5\" /> \n                            </label>\n                        </div>\n                        <div class = \"advanced-search-attackbull-container\">\n                            <strong>Attack <i class=\"xwing-miniatures-font xwing-miniatures-font-bullseyearc\"></i>:</strong>\n                            <label class = \"advanced-search-label set-minimum-attackbull\">\n                                from <input type=\"number\" class=\"minimum-attackbull advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-attackbull\">\n                                to <input type=\"number\" class=\"maximum-attackbull advanced-search-number-input\" value=\"5\" /> \n                            </label>\n                        </div>\n                    </div>\n                    <div class = \"well search-container other-stuff-search-container\">\n                        <h4>Other Stuff</h4>\n                        <div class = \"advanced-search-slot-used-container\">\n                            <label class = \"advanced-search-label select-used-slots\">\n                                <strong>Used slot: </strong>\n                                <select class=\"advanced-search-selection slot-used-selection\" multiple=\"1\" data-placeholder=\"No slots selected\"></select>\n                            </label>\n                        </div>\n                        <div class = \"advanced-search-charge-container\">\n                            <strong>Charges:</strong>\n                            <label class = \"advanced-search-label set-minimum-charge\">\n                                from <input type=\"number\" class=\"minimum-charge advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-charge\">\n                                to <input type=\"number\" class=\"maximum-charge advanced-search-number-input\" value=\"5\" /> \n                            </label>\n                            <label class = \"advanced-search-label has-recurring-charge\">\n                                <input type=\"checkbox\" class=\"advanced-search-checkbox has-recurring-charge-checkbox\" checked=\"checked\"/> recurring\n                            </label>\n                            <label class = \"advanced-search-label has-not-recurring-charge\">\n                                <input type=\"checkbox\" class=\"advanced-search-checkbox has-not-recurring-charge-checkbox\" checked=\"checked\"/> not recurring\n                            </label>\n                        <div class = \"advanced-search-force-container\">\n                            <strong>Force:</strong>\n                            <label class = \"advanced-search-label set-minimum-force\">\n                                from <input type=\"number\" class=\"minimum-force advanced-search-number-input\" value=\"0\" /> \n                            </label>\n                            <label class = \"advanced-search-label set-maximum-force\">\n                                to <input type=\"number\" class=\"maximum-force advanced-search-number-input\" value=\"3\" /> \n                            </label>\n                        </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"span4 card-selecting-area\">\n            <span class=\"translate sort-cards-by\">Sort cards by</span>: <select class=\"sort-by\">\n                <option value=\"name\">Name</option>\n                <option value=\"source\">Source</option>\n                <option value=\"type-by-points\">Type (by Points)</option>\n                <option value=\"type-by-name\" selected=\"1\">Type (by Name)</option>\n            </select>\n            <div class=\"card-selector-container\">\n\n            </div>\n        </div>\n        <div class=\"span4\">\n            <div class=\"well card-viewer-placeholder info-well\">\n                <p class=\"translate select-a-card\">Select a card from the list at the left.</p>\n            </div>\n            <div class=\"well card-viewer-container info-well\">\n                <span class=\"info-name\"></span>\n                <br />\n                <span class=\"info-type\"></span>\n                <br />\n                <span class=\"info-collection\"></span>\n                <table>\n                    <tbody>\n                        <tr class=\"info-ship\">\n                            <td class=\"info-header\">Ship</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                        <tr class=\"info-base\">\n                            <td class=\"info-header\">Base</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                        <tr class=\"info-skill\">\n                            <td class=\"info-header\">Initiative</td>\n                            <td class=\"info-data info-skill\"></td>\n                        </tr>\n                        <tr class=\"info-energy\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                            <td class=\"info-data info-energy\"></td>\n                        </tr>\n                        <tr class=\"info-attack\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-fullfront\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-bullseye\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-back\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-turret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-doubleturret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-agility\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                            <td class=\"info-data info-agility\"></td>\n                        </tr>\n                        <tr class=\"info-hull\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                            <td class=\"info-data info-hull\"></td>\n                        </tr>\n                        <tr class=\"info-shields\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                            <td class=\"info-data info-shields\"></td>\n                        </tr>\n                        <tr class=\"info-force\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i></td>\n                            <td class=\"info-data info-force\"></td>\n                        </tr>\n                        <tr class=\"info-charge\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                            <td class=\"info-data info-charge\"></td>\n                        </tr>\n                        <tr class=\"info-range\">\n                            <td class=\"info-header\">Range</td>\n                            <td class=\"info-data info-range\"></td>\n                        </tr>\n                        <tr class=\"info-actions\">\n                            <td class=\"info-header\">Actions</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                        <tr class=\"info-actions-red\">\n                            <td></td>\n                            <td class=\"info-data-red\"></td>\n                        </tr>\n                        <tr class=\"info-upgrades\">\n                            <td class=\"info-header\">Upgrades</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                    </tbody>\n                </table>\n                <p class=\"info-text\" />\n                <p class=\"info-maneuvers\" />\n                <br />\n                <span class=\"info-header info-sources\">Sources</span>: \n                <span class=\"info-data info-sources\"></span>\n            </div>\n        </div>\n    </div>\n</div>"));
     this.card_selector_container = $(this.container.find('.xwing-card-browser .card-selector-container'));
     this.card_viewer_container = $(this.container.find('.xwing-card-browser .card-viewer-container'));
     this.card_viewer_container.hide();
@@ -10411,7 +10411,7 @@ exportObj.basicCardData = function() {
         pilot: "Norra Wexley (Y-Wing)",
         ship: "Y-Wing",
         threat: 3,
-        upgrades: ["Expert Handling", "Ion Cannon Turret", "Veterna Turret Gunner", "R3 Astromech"]
+        upgrades: ["Expert Handling", "Ion Cannon Turret", "Veteran Turret Gunner", "R3 Astromech"]
       }, {
         id: 86,
         faction: "Rebel Alliance",
@@ -10446,7 +10446,7 @@ exportObj.basicCardData = function() {
         pilot: "Gray Squadron Bomber",
         ship: "Y-Wing",
         threat: 2,
-        upgrades: ["Ion Cannon Turret", "Proton Bomb", "R5 Astromech"]
+        upgrades: ["Ion Cannon Turret", "Proton Bombs", "R5 Astromech"]
       }, {
         id: 91,
         faction: "Rebel Alliance",
@@ -12466,6 +12466,370 @@ exportObj.basicCardData = function() {
         ship: "Hyena-Class Droid Bomber",
         threat: 2,
         upgrades: ["Proton Torpedoes", "Electro-Proton Bomb", "Delayed Fuses"]
+      }, {
+        id: 373,
+        faction: "Galactic Republic",
+        pilot: "Plo Koon",
+        ship: "Delta-7 Aethersprite",
+        threat: [5, 6, 7, 8],
+        wingmates: [2, 3, 4, 5],
+        suffix: " and his wing",
+        upgrades: ["Veteran Wing Leader", "Synchronized Console", "Brilliant Evasion", "Delta-7B"],
+        linkedId: 374,
+        wingleader: true
+      }, {
+        id: 374,
+        faction: "Galactic Republic",
+        pilot: "Gold Squadron Trooper",
+        ship: "V-19 Torrent",
+        suffix: ", Plo Koons wing",
+        threat: '*',
+        upgrades: ["Concussion Missiles", "Synchronized Console"],
+        linkedId: 373,
+        wingmate: true
+      }, {
+        id: 375,
+        faction: "Rebel Alliance",
+        pilot: "Echo Base Evacuees",
+        ship: "GR-75 Medium Transport",
+        threat: 4,
+        upgrades: ["Bright Hope", "Optimized Power Core", "Adaptive Shields", "Comms Team", "Point-Defense Battery", "Carlist Rieekan", "Novice Technician"]
+      }, {
+        id: 376,
+        faction: "Rebel Alliance",
+        pilot: "Alderaanian Guard",
+        ship: "CR90 Corellian Corvette",
+        threat: 9,
+        upgrades: ["Dodonna's Pride", "Comms Team", "Boosted Scanners", "Sensor Experts", "Turbolaser Battery", "Ion Cannon Battery", "Jan Dodonna", "Toryn Farr"]
+      }, {
+        id: 377,
+        faction: "Galactic Empire",
+        pilot: "Outer Rim Garrison",
+        ship: "Gozanti-class Cruiser",
+        threat: 5,
+        upgrades: ["Requiem", "Optimized Power Core", "Boosted Scanners", "Sensor Experts", "Comms Team", "Dorsal Turret", "Targeting Battery", "Strategic Commander"]
+      }, {
+        id: 378,
+        faction: "Galactic Empire",
+        pilot: "Outer Rim Patrol",
+        ship: "Raider-class Corvette",
+        threat: 9,
+        upgrades: ["Impetuous", "Boosted Scanners", "Bombardment Specialists", "Ordnance Team", "Concussion Missiles", "Adv. Proton Torpedoes", "Turbolaser Battery", "Ordnance Tubes", "Captain Needa"]
+      }, {
+        id: 379,
+        faction: "Scum and Villainy",
+        pilot: "Syndicate Smugglers",
+        ship: "C-ROC Cruiser",
+        threat: 5,
+        upgrades: ["Merchant One", "Quick-Release Locks", "Tibanna Reserves", "Adaptive Shields", "IG-RM Droids", "Comms Team", "Dorsal Turret", "Point-Defense Battery", "Azmorigan", "Novice Technician"]
+      }, {
+        id: 380,
+        faction: "Resistance",
+        pilot: "Colossus Station Mechanic",
+        ship: "Fireball",
+        threat: 1,
+        upgrades: ["Kaz's Fireball", "Advanced SLAM", "Mag-Pulse Warheads", "Coaxium Hyperfuel", "R1-J5", "Outmaneuver"]
+      }, {
+        id: 381,
+        faction: "Resistance",
+        pilot: "Jarek Yeager",
+        ship: "Fireball",
+        threat: 2,
+        upgrades: ["Targeting Computer", "Advanced SLAM", "Mag-Pulse Warheads", "Elusive"]
+      }, {
+        id: 382,
+        faction: "Resistance",
+        pilot: "Kazuda Xiono",
+        ship: "Fireball",
+        threat: 2,
+        upgrades: ["Kaz's Fireball", "Advanced SLAM", "Mag-Pulse Warheads", "Coaxium Hyperfuel", "R1-J5", "Outmaneuver"]
+      }, {
+        id: 383,
+        faction: "Resistance",
+        pilot: "R1-J5",
+        ship: "Fireball",
+        threat: 2,
+        upgrades: ["Targeting Computer", "Advanced SLAM", "Mag-Pulse Warheads", "Coaxium Hyperfuel"]
+      }, {
+        id: 384,
+        faction: "Resistance",
+        pilot: "New Republic Volunteers",
+        ship: "GR-75 Medium Transport",
+        threat: 4,
+        upgrades: ["Tibanna Reserves", "Boosted Scanners", "Sensor Experts", "Dorsal Turret", "Ion Cannon Battery", "Stalwart Captain"]
+      }, {
+        id: 385,
+        faction: "First Order",
+        pilot: "Major Vonreg",
+        ship: "TIE/Ba Interceptor",
+        threat: 3,
+        upgrades: ["Mag-Pulse Warheads", "Deuterium Power Cells", "Outmaneuver"]
+      }, {
+        id: 386,
+        faction: "First Order",
+        pilot: '"Holo"',
+        ship: "TIE/Ba Interceptor",
+        threat: 3,
+        upgrades: ["Hull Upgrade", "Munitions Failsafe", "Mag-Pulse Warheads", "Proud Tradition"]
+      }, {
+        id: 387,
+        faction: "First Order",
+        pilot: '"Ember"',
+        ship: "TIE/Ba Interceptor",
+        threat: 3,
+        upgrades: ["Afterburners", "Concussion Missiles", "Predator", "Elusive"]
+      }, {
+        id: 388,
+        faction: "First Order",
+        pilot: "First Order Provocateur",
+        ship: "TIE/Ba Interceptor",
+        threat: 2,
+        upgrades: ["Snap Shot"]
+      }, {
+        id: 389,
+        faction: "First Order",
+        pilot: "First Order Sympathizers",
+        ship: "Gozanti-class Cruiser",
+        threat: 4,
+        upgrades: ["Adaptive Shields", "Gunnery Specialists", "Damage Control Team", "Point-Defense Battery", "Strategic Commander"]
+      }, {
+        id: 390,
+        faction: "First Order",
+        pilot: "First Order Collaborators",
+        ship: "Raider-class Corvette",
+        threat: 8,
+        upgrades: ["Boosted Scanners", "Comms Team", "Bombardment Specialists", "Point-Defense Battery", "Ion Cannon Battery", "Stalwart Captain", "Novice Technician"]
+      }, {
+        id: 391,
+        faction: "Galactic Republic",
+        pilot: "Shadow Squadron Veteran",
+        ship: "BTL-B Y-Wing",
+        threat: 3,
+        upgrades: ["R5 Astromech", "Proton Torpedoes", "Ion Cannon Turret", "Snap Shot"]
+      }, {
+        id: 392,
+        faction: "Galactic Republic",
+        pilot: "Anakin Skywalker",
+        ship: "BTL-B Y-Wing",
+        threat: 4,
+        upgrades: ["Proton Bombs", "R2 Astromech", "Ahsoka Tano", "Proton Torpedoes", "Ion Cannon Turret", "Precognitive Reflexes"]
+      }, {
+        id: 393,
+        faction: "Galactic Republic",
+        pilot: "R2-D2",
+        ship: "BTL-B Y-Wing",
+        threat: 2,
+        upgrades: ["Proton Bombs", "C-3PO", "Ion Cannon Turret"]
+      }, {
+        id: 394,
+        faction: "Galactic Republic",
+        pilot: '"Odd Ball"',
+        ship: "BTL-B Y-Wing",
+        threat: 3,
+        upgrades: ["Hull Upgrade", "R3 Astromech", "Proton Torpedoes", "Ion Cannon Turret", "Predator"]
+      }, {
+        id: 395,
+        faction: "Galactic Republic",
+        pilot: '"Matchstick"',
+        ship: "BTL-B Y-Wing",
+        threat: 3,
+        upgrades: ["Shield Upgrade", "Delayed Fuses", "Proton Bombs", "R2 Astromech", "Ion Cannon Turret", "Elusive"]
+      }, {
+        id: 396,
+        faction: "Galactic Republic",
+        pilot: '"Broadside"',
+        ship: "BTL-B Y-Wing",
+        threat: 2,
+        upgrades: ["Hull Upgrade", "R5 Astromech", "Ion Cannon Turret", "Snap Shot"]
+      }, {
+        id: 397,
+        faction: "Galactic Republic",
+        pilot: '"Goji"',
+        ship: "BTL-B Y-Wing",
+        threat: 2,
+        upgrades: ["Afterburners", "Electro-Proton Bomb"]
+      }, {
+        id: 398,
+        faction: "Galactic Republic",
+        pilot: "Red Squadron Bomber",
+        ship: "BTL-B Y-Wing",
+        threat: 2,
+        upgrades: ["Delayed Fuses", "Proton Bombs", "R2 Astromech", "Ion Cannon Turret"]
+      }, {
+        id: 399,
+        faction: "Galactic Republic",
+        pilot: "Republic Judiciary",
+        ship: "CR90 Corellian Corvette",
+        threat: 9,
+        upgrades: ["Strategic Commander", "Targeting Battery", "Turbolaser Battery", "Damage Control Team", "Agile Gunner", "Boosted Scanners", "Gunnery Specialists", "Seasoned Navigator"]
+      }, {
+        id: 400,
+        faction: "Separatist Alliance",
+        pilot: "Stalgasin Hive Guard",
+        ship: "Nantex-Class Starfighter",
+        threat: 2,
+        upgrades: ["Targeting Computer", "Gravitic Deflection", "Ensnare"]
+      }, {
+        id: 401,
+        faction: "Separatist Alliance",
+        pilot: "Sun Fac",
+        ship: "Nantex-Class Starfighter",
+        threat: 3,
+        upgrades: ["Shield Upgrade", "Afterburners", "Predator", "Ensnare"]
+      }, {
+        id: 402,
+        faction: "Separatist Alliance",
+        pilot: "Berwer Kret",
+        ship: "Nantex-Class Starfighter",
+        threat: 2,
+        upgrades: ["Hull Upgrade", "Snap Shot", "Ensnare"]
+      }, {
+        id: 403,
+        faction: "Separatist Alliance",
+        pilot: "Chertek",
+        ship: "Nantex-Class Starfighter",
+        threat: 2,
+        upgrades: ["Targeting Computer", "Juke", "Gravitic Deflection"]
+      }, {
+        id: 404,
+        faction: "Separatist Alliance",
+        pilot: "Gorgol",
+        ship: "Nantex-Class Starfighter",
+        threat: 2,
+        upgrades: ["Stealth Device", "Shield Upgrade", "Gravitic Deflection"]
+      }, {
+        id: 405,
+        faction: "Separatist Alliance",
+        pilot: "Separatist Privateers",
+        ship: "C-ROC Cruiser",
+        threat: 6,
+        upgrades: ["Stalwart Captain", "Turbolaser Battery", "Dorsal Turret", "Heavy Laser Cannon", "Cluster Missiles", "Bombardment Specialists", "Boosted Scanners", "Tibanna Reserves", "Corsair Refit"]
+      }, {
+        id: 406,
+        faction: "Galactic Empire",
+        pilot: "Darth Vader",
+        ship: "TIE Advanced",
+        threat: [6, 7, 8, 9],
+        wingmates: [2, 3, 4, 5],
+        suffix: " and his wing",
+        upgrades: ["Agent of the Empire", "Fire-Control System", "Supernatural Reflexes", "Cluster Missiles"],
+        linkedId: 407,
+        wingleader: true
+      }, {
+        id: 407,
+        faction: "Galactic Empire",
+        pilot: "Black Squadron Ace",
+        ship: "TIE Fighter",
+        suffix: ", Darth Vaders wing",
+        threat: '*',
+        upgrades: ["Crack Shot"],
+        linkedId: 406,
+        wingmate: true
+      }, {
+        id: 408,
+        faction: "Resistance",
+        pilot: "Poe Dameron",
+        ship: "T-70 X-Wing",
+        threat: [9, 11, 13, 15],
+        wingmates: [2, 3, 4, 5],
+        suffix: " and his wing",
+        upgrades: ["Veteran Wing Leader", "Targeting Synchronizer", "BB-8", "Black One"],
+        linkedId: 409,
+        wingleader: true
+      }, {
+        id: 409,
+        faction: "Resistance",
+        pilot: "Black Squadron Ace (T-70)",
+        ship: "T-70 X-Wing",
+        suffix: ", Poe Damerons wing",
+        threat: '*',
+        upgrades: ["Proton Torpedoes"],
+        linkedId: 408,
+        wingmate: true
+      }, {
+        id: 410,
+        faction: "First Order",
+        pilot: "Kylo Ren",
+        ship: "TIE Silencer",
+        threat: [6, 8],
+        wingmates: [2, 3],
+        suffix: " and his wing",
+        upgrades: ["First Order Elite", "Heightened Perception", "Dreadnought Hunter", "Proton Torpedoes"],
+        linkedId: 411,
+        wingleader: true
+      }, {
+        id: 411,
+        faction: "First Order",
+        pilot: "Omega Squadron Expert",
+        ship: "TIE/SF Fighter",
+        suffix: ", Kylo Rens wing",
+        threat: '*',
+        upgrades: ["Ion Missiles", "Special Forces Gunner"],
+        linkedId: 410,
+        wingmate: true
+      }, {
+        id: 412,
+        faction: "Separatist Alliance",
+        pilot: "General Grievous",
+        ship: "Belbullab-22 Starfighter",
+        threat: [5, 6, 7, 8],
+        wingmates: [2, 3, 4, 5],
+        suffix: " and his wing",
+        upgrades: ["Veteran Wing Leader", "Kraken", "Predator", "Soulless One"],
+        linkedId: 413,
+        wingleader: true
+      }, {
+        id: 413,
+        faction: "Separatist Alliance",
+        pilot: "Separatist Drone",
+        ship: "Vulture-class Droid Fighter",
+        suffix: ", General Grievous wing",
+        threat: '*',
+        upgrades: ["Energy-Shell Charges"],
+        linkedId: 412,
+        wingmate: true
+      }, {
+        id: 414,
+        faction: "Rebel Alliance",
+        pilot: "Luke Skywalker",
+        ship: "X-Wing",
+        threat: [8, 10, 12, 14],
+        wingmates: [2, 3, 4, 5],
+        suffix: " and his wing",
+        upgrades: ["Veteran Wing Leader", "Proton Torpedoes", "Instinctive Aim", "R2-D2", "Servomotor S-Foils"],
+        linkedId: 415,
+        wingleader: true
+      }, {
+        id: 415,
+        faction: "Rebel Alliance",
+        pilot: "Red Squadron Veteran",
+        ship: "X-Wing",
+        suffix: ", Luke Skywalkers wing",
+        threat: '*',
+        upgrades: ["Proton Torpedoes"],
+        linkedId: 414,
+        wingmate: true
+      }, {
+        id: 416,
+        faction: "Scum and Villainy",
+        pilot: "Fenn Rau",
+        ship: "Fang Fighter",
+        threat: [8, 10, 12, 14],
+        wingmates: [2, 3, 4, 5],
+        suffix: " and his wing",
+        upgrades: ["Veteran Wing Leader", "Fearless", "Daredevil", "Afterburners"],
+        linkedId: 417,
+        wingleader: true
+      }, {
+        id: 417,
+        faction: "Scum and Villainy",
+        pilot: "Skull Squadron Pilot",
+        ship: "Fang Fighter",
+        suffix: ", Fenn Raus wing",
+        threat: '*',
+        upgrades: ["Fearless"],
+        linkedId: 416,
+        wingmate: true
       }
     ]
   };
@@ -36207,7 +36571,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 38935
+                    lineno: 39585
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -37039,7 +37403,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 39799
+              lineno: 40449
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -37822,7 +38186,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 40534
+              lineno: 41184
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -37832,7 +38196,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 40535
+                lineno: 41185
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -37875,7 +38239,9 @@ exportObj.SquadBuilder = (function() {
     if (shipCheck == null) {
       shipCheck = false;
     }
-    if (this.isHyperspace) {
+    if (this.isQuickbuild) {
+      return true;
+    } else if (this.isHyperspace) {
       return exportObj.hyperspaceCheck(item_data, this.faction, shipCheck);
     } else if (!this.isEpic) {
       return exportObj.epicExclusions(item_data);
@@ -37901,7 +38267,7 @@ exportObj.SquadBuilder = (function() {
       ship_data = _ref[ship_name];
       if (this.isOurFaction(ship_data.factions) && (this.matcher(ship_data.name, term) || (ship_data.display_name && this.matcher(ship_data.display_name, term)))) {
         if (this.isItemAvailable(ship_data, true)) {
-          if (this.isEpic || (!this.isEpic && !ship_data.huge)) {
+          if (this.isEpic || this.isQuickbuild || (!this.isEpic && !ship_data.huge)) {
             if (!collection_only || ((this.collection != null) && (this.collection.checks.collectioncheck === "true") && this.collection.checkShelf('ship', ship_data.name))) {
               ships.push({
                 id: ship_data.name,
@@ -39712,6 +40078,7 @@ Ship = (function() {
     this.linkedShip = null;
     this.primary = true;
     this.upgrades = [];
+    this.wingmates = [];
     this.setupUI();
   }
 
@@ -39729,20 +40096,33 @@ Ship = (function() {
     this.builder.ships.splice(idx, 1);
     (function(_this) {
       return (function(__iced_k) {
-        if (_this.linkedShip !== null) {
-          _this.linkedShip.linkedShip = null;
-          (function(__iced_k) {
-            __iced_deferrals = new iced.Deferrals(__iced_k, {
-              parent: ___iced_passed_deferral,
-              funcname: "Ship.destroy"
-            });
-            _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-              lineno: 41855
-            }));
-            __iced_deferrals._fulfill();
-          })(__iced_k);
+        if (_this.wingmates.length > 0) {
+          return __iced_k(_this.setWingmates(0));
         } else {
-          return __iced_k();
+          (function(__iced_k) {
+            if (_this.linkedShip !== null) {
+              _this.linkedShip.linkedShip = null;
+              (function(__iced_k) {
+                var _ref;
+                if (((_ref = _this.linkedShip.wingmates) != null ? _ref.length : void 0) > 0) {
+                  return __iced_k(_this.linkedShip.removeFromWing(_this));
+                } else {
+                  (function(__iced_k) {
+                    __iced_deferrals = new iced.Deferrals(__iced_k, {
+                      parent: ___iced_passed_deferral,
+                      funcname: "Ship.destroy"
+                    });
+                    _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
+                      lineno: 42513
+                    }));
+                    __iced_deferrals._fulfill();
+                  })(__iced_k);
+                }
+              })(__iced_k);
+            } else {
+              return __iced_k();
+            }
+          })(__iced_k);
         }
       });
     })(this)((function(_this) {
@@ -39923,7 +40303,7 @@ Ship = (function() {
   };
 
   Ship.prototype.setPilotById = function(id, noautoequip) {
-    var new_pilot, quickbuild, ___iced_passed_deferral, __iced_deferrals, __iced_k;
+    var new_pilot, quickbuild, ship, ___iced_passed_deferral, __iced_deferrals, __iced_k;
     __iced_k = __iced_k_noop;
     ___iced_passed_deferral = iced.findDeferral(arguments);
     if (noautoequip == null) {
@@ -39935,6 +40315,11 @@ Ship = (function() {
       (function(_this) {
         return (function(__iced_k) {
           if (id !== _this.quickbuildId) {
+            _this.wingmate_selector.parent().hide();
+            if ((_this.wingmates != null) && _this.wingmates.length > 0) {
+              _this.setWingmates(0);
+              _this.linkedShip = null;
+            }
             _this.quickbuildId = id;
             _this.builder.current_squad.dirty = true;
             _this.resetPilot();
@@ -39954,7 +40339,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 41970
+                          lineno: 42633
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -39963,39 +40348,69 @@ Ship = (function() {
                     return __iced_k();
                   }
                 })(function() {
+                  var _i, _len, _ref;
                   _this.pilot = new_pilot;
                   if (_this.pilot != null) {
                     _this.setupAddons();
                   }
                   _this.copy_button.show();
                   _this.setShipType(_this.pilot.ship);
+                  if ((quickbuild.wingmate != null) && (_this.linkedShip == null)) {
+                    _ref = _this.builder.ships;
+                    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                      ship = _ref[_i];
+                      if (ship.quickbuildId === quickbuild.linkedId) {
+                        ship.joinWing(_this);
+                        _this.linkedShip = ship;
+                        _this.primary = false;
+                        _this.builder.isUpdatingPoints = false;
+                        _this.builder.container.trigger('xwing:pointsUpdated');
+                        _this.builder.container.trigger('xwing-backend:squadDirtinessChanged');
+                        return;
+                      }
+                    }
+                  }
                   (function(__iced_k) {
                     if (_this.linkedShip) {
                       (function(__iced_k) {
                         if (quickbuild.linkedId != null) {
                           _this.linkedShip.setPilotById(quickbuild.linkedId);
-                          return __iced_k(_this.linkedShip.primary = false);
+                          return __iced_k(quickbuild.wingmate == null ? _this.linkedShip.primary = false : void 0);
                         } else {
-                          _this.linkedShip.linkedShip = null;
                           (function(__iced_k) {
-                            __iced_deferrals = new iced.Deferrals(__iced_k, {
-                              parent: ___iced_passed_deferral,
-                              funcname: "Ship.setPilotById"
-                            });
-                            _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                              lineno: 41986
-                            }));
-                            __iced_deferrals._fulfill();
+                            var _ref1;
+                            if (((_ref1 = _this.linkedShip.wingmates) != null ? _ref1.length : void 0) > 0) {
+                              return __iced_k(_this.linkedShip.removeFromWing(_this));
+                            } else {
+                              _this.linkedShip.linkedShip = null;
+                              (function(__iced_k) {
+                                __iced_deferrals = new iced.Deferrals(__iced_k, {
+                                  parent: ___iced_passed_deferral,
+                                  funcname: "Ship.setPilotById"
+                                });
+                                _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
+                                  lineno: 42666
+                                }));
+                                __iced_deferrals._fulfill();
+                              })(__iced_k);
+                            }
                           })(function() {
                             return __iced_k(_this.linkedShip = null);
                           });
                         }
                       })(__iced_k);
                     } else {
-                      return __iced_k(quickbuild.linkedId != null ? (_this.linkedShip = _this.builder.ships.slice(-1)[0], _this.linkedShip.data !== null ? _this.linkedShip = _this.builder.addShip() : _this.builder.addShip(), _this.linkedShip.linkedShip = _this, _this.linkedShip.setPilotById(quickbuild.linkedId), _this.linkedShip.primary = false) : void 0);
+                      return __iced_k(quickbuild.linkedId != null ? (_this.linkedShip = _this.builder.ships.slice(-1)[0], _this.linkedShip.data !== null ? _this.linkedShip = _this.builder.addShip() : _this.builder.addShip(), _this.linkedShip.linkedShip = _this, _this.linkedShip.setPilotById(quickbuild.linkedId), quickbuild.wingmate == null ? _this.linkedShip.primary = false : void 0) : void 0);
                     }
                   })(function() {
-                    _this.primary = true;
+                    _this.primary = quickbuild.wingmate == null;
+                    if ((quickbuild != null ? quickbuild.wingleader : void 0) != null) {
+                      _this.wingmate_selector.parent().show();
+                      _this.wingmate_selector.val(quickbuild.wingmates[0]);
+                      _this.wingmate_selector.attr("min", quickbuild.wingmates[0]);
+                      _this.wingmate_selector.attr("max", quickbuild.wingmates[quickbuild.wingmates.length - 1]);
+                      _this.setWingmates(quickbuild.wingmates[0]);
+                    }
                     _this.builder.isUpdatingPoints = false;
                     return __iced_k(_this.builder.container.trigger('xwing:pointsUpdated'));
                   });
@@ -40053,7 +40468,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 42028
+                      lineno: 42717
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -40133,7 +40548,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 42057
+                lineno: 42746
               })
             ]);
             __iced_deferrals._fulfill();
@@ -40202,7 +40617,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 42086
+              lineno: 42775
             }));
           }
         }
@@ -40216,7 +40631,7 @@ Ship = (function() {
   };
 
   Ship.prototype.getPoints = function() {
-    var points, threat, upgrade, _i, _len, _ref, _ref1, _ref2, _ref3, _ref4;
+    var points, quickbuild, threat, upgrade, _i, _len, _ref, _ref1, _ref2, _ref3;
     if (!this.builder.isQuickbuild) {
       points = (_ref = (_ref1 = this.pilot) != null ? _ref1.points : void 0) != null ? _ref : 0;
       _ref2 = this.upgrades;
@@ -40232,7 +40647,11 @@ Ship = (function() {
       }
       return points;
     } else {
-      threat = this.primary ? (_ref3 = (_ref4 = exportObj.quickbuildsById[this.quickbuildId]) != null ? _ref4.threat : void 0) != null ? _ref3 : 0 : 0;
+      quickbuild = exportObj.quickbuildsById[this.quickbuildId];
+      threat = this.primary ? (_ref3 = quickbuild != null ? quickbuild.threat : void 0) != null ? _ref3 : 0 : 0;
+      if ((quickbuild != null ? quickbuild.wingleader : void 0) != null) {
+        threat = quickbuild.threat[quickbuild.wingmates.indexOf(this.wingmates.length)];
+      }
       this.points_container.find('span').text(threat);
       if (threat > 0) {
         this.points_container.fadeTo('fast', 1);
@@ -40241,6 +40660,89 @@ Ship = (function() {
       }
       return threat;
     }
+  };
+
+  Ship.prototype.setWingmates = function(wingmates) {
+    var dyingMate, newMate, quickbuild, ___iced_passed_deferral, __iced_deferrals, __iced_k, _ref;
+    __iced_k = __iced_k_noop;
+    ___iced_passed_deferral = iced.findDeferral(arguments);
+    if (((_ref = this.wingmates) != null ? _ref.length : void 0) === wingmates) {
+      return;
+    }
+    if ((this.wingmates == null) || this.wingmates.length === 0) {
+      this.wingmates = [this.linkedShip];
+    }
+    quickbuild = exportObj.quickbuildsById[this.quickbuildId];
+    while (this.wingmates.length < wingmates) {
+      newMate = this.builder.ships.slice(-1)[0];
+      if (newMate.data !== null) {
+        newMate = this.builder.addShip();
+      } else {
+        this.builder.addShip();
+      }
+      newMate.linkedShip = this;
+      this.wingmates.push(newMate);
+      newMate.setPilotById(quickbuild.linkedId);
+      newMate.primary = false;
+      this.primary = true;
+    }
+    (function(_this) {
+      return (function(__iced_k) {
+        var _while;
+        _while = function(__iced_k) {
+          var _break, _continue, _next;
+          _break = __iced_k;
+          _continue = function() {
+            return iced.trampoline(function() {
+              return _while(__iced_k);
+            });
+          };
+          _next = _continue;
+          if (!(_this.wingmates.length > wingmates)) {
+            return _break();
+          } else {
+            dyingMate = _this.wingmates.pop();
+            dyingMate.linkedShip = null;
+            (function(__iced_k) {
+              __iced_deferrals = new iced.Deferrals(__iced_k, {
+                parent: ___iced_passed_deferral,
+                funcname: "Ship.setWingmates"
+              });
+              _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
+                lineno: 42831
+              }));
+              __iced_deferrals._fulfill();
+            })(_next);
+          }
+        };
+        _while(__iced_k);
+      });
+    })(this)((function(_this) {
+      return function() {
+        return _this.wingmate_selector.val(wingmates);
+      };
+    })(this));
+  };
+
+  Ship.prototype.removeFromWing = function(ship) {
+    var quickbuild, _ref;
+    this.wingmates.removeItem(ship);
+    quickbuild = exportObj.quickbuildsById[this.quickbuildId];
+    if (!(_ref = this.wingmates.length, __indexOf.call(quickbuild.wingmates, _ref) >= 0)) {
+      this.destroy($.noop);
+    }
+    return this.wingmate_selector.val(this.wingmates.length);
+  };
+
+  Ship.prototype.joinWing = function(ship) {
+    var quickbuild, _ref;
+    this.wingmates.push(ship);
+    quickbuild = exportObj.quickbuildsById[this.quickbuildId];
+    if (!(_ref = this.wingmates.length, __indexOf.call(quickbuild.wingmates, _ref) >= 0)) {
+      ship.destroy($.noop);
+      this.removeFromWing(ship);
+    }
+    return this.wingmate_selector.val(this.wingmates.length);
   };
 
   Ship.prototype.updateSelections = function() {
@@ -40275,10 +40777,11 @@ Ship = (function() {
     this.row = $(document.createElement('DIV'));
     this.row.addClass('row-fluid ship');
     this.row.insertBefore(this.builder.notes_container);
-    this.row.append($.trim('<div class="span3">\n    <input class="ship-selector-container" type="hidden" />\n    <br />\n    <input type="hidden" class="pilot-selector-container" />\n</div>\n<div class="span1 points-display-container">\n    <span></span>\n</div>\n<div class="span6 addon-container" />\n<div class="span2 button-container">\n    <button class="btn btn-danger remove-pilot"><span class="visible-desktop visible-tablet hidden-phone" data-toggle="tooltip" title="Remove Pilot"><i class="fa fa-times"></i></span><span class="hidden-desktop hidden-tablet visible-phone">Remove Pilot</span></button>\n    <button class="btn copy-pilot"><span class="visible-desktop visible-tablet hidden-phone" data-toggle="tooltip" title="Clone Pilot"><i class="fa fa-files-o"></i></span><span class="hidden-desktop hidden-tablet visible-phone">Clone Pilot</span></button>\n</div>'));
+    this.row.append($.trim('<div class="span3">\n    <input class="ship-selector-container" type="hidden" />\n    <br />\n    <input type="hidden" class="pilot-selector-container" />\n    <br />\n    <label class="wingmate-label">\n    Wingmates: \n        <input type="number" class="wingmate-selector" />\n    </label>\n</div>\n<div class="span1 points-display-container">\n    <span></span>\n</div>\n<div class="span6 addon-container" />\n<div class="span2 button-container">\n    <button class="btn btn-danger remove-pilot"><span class="visible-desktop visible-tablet hidden-phone" data-toggle="tooltip" title="Remove Pilot"><i class="fa fa-times"></i></span><span class="hidden-desktop hidden-tablet visible-phone">Remove Pilot</span></button>\n    <button class="btn copy-pilot"><span class="visible-desktop visible-tablet hidden-phone" data-toggle="tooltip" title="Clone Pilot"><i class="fa fa-files-o"></i></span><span class="hidden-desktop hidden-tablet visible-phone">Clone Pilot</span></button>\n</div>'));
     this.row.find('.button-container span').tooltip();
     this.ship_selector = $(this.row.find('input.ship-selector-container'));
     this.pilot_selector = $(this.row.find('input.pilot-selector-container'));
+    this.wingmate_selector = $(this.row.find('input.wingmate-selector'));
     shipResultFormatter = function(object, container, query) {
       $(container).append("<i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + object.icon + "\"></i> " + object.text);
       return void 0;
@@ -40432,6 +40935,20 @@ Ship = (function() {
       };
     })(this));
     this.pilot_selector.data('select2').container.hide();
+    if (this.builder.isQuickbuild) {
+      this.wingmate_selector.on('change', (function(_this) {
+        return function(e) {
+          _this.setWingmates(parseInt(_this.wingmate_selector.val()));
+          _this.builder.current_squad.dirty = true;
+          _this.builder.container.trigger('xwing-backend:squadDirtinessChanged');
+          return _this.builder.backend_status.fadeOut('slow');
+        };
+      })(this));
+      this.wingmate_selector.on('mousemove-filtered', (function(_this) {
+        return function(e) {};
+      })(this));
+    }
+    this.wingmate_selector.parent().hide();
     this.points_container = $(this.row.find('.points-display-container'));
     this.points_container.fadeTo(0, 0);
     this.addon_container = $(this.row.find('div.addon-container'));
@@ -40553,7 +41070,7 @@ Ship = (function() {
         hullIconHTML += "<i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull expanded-hull-or-shield\"></i>";
       }
     }
-    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.xws + "\"></i><span class=\"fancy-ship-type\"> " + (this.data.display_name ? this.data.display_name : this.data.name) + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + (this.quickbuildId !== -1 ? (this.primary ? exportObj.quickbuildsById[this.quickbuildId].threat : 0) : this.pilot.points) + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">INI " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + engagementHTML + "\n        " + attackHTML + "\n        " + attackbHTML + "\n        " + attackfHTML + "\n        " + attacktHTML + "\n        " + attackdtHTML + "\n        <i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref24 = (_ref25 = this.pilot.ship_override) != null ? _ref25.agility : void 0) != null ? _ref24 : this.data.agility, effective_stats, 'agility')) + "</span>                    \n        " + hullIconHTML + "\n        <i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull simple-hull-or-shield\"></i>\n        <span class=\"info-data info-hull simple-hull-or-shield\">" + (statAndEffectiveStat((_ref26 = (_ref27 = this.pilot.ship_override) != null ? _ref27.hull : void 0) != null ? _ref26 : this.data.hull, effective_stats, 'hull')) + "</span>\n        " + shieldIconHTML + "\n        <i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield simple-hull-or-shield\"></i>\n        <span class=\"info-data info-shields simple-hull-or-shield\">" + (statAndEffectiveStat((_ref28 = (_ref29 = this.pilot.ship_override) != null ? _ref29.shields : void 0) != null ? _ref28 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + energyHTML + "\n        " + forceHTML + "\n        " + chargeHTML + "\n        <br>\n        " + action_bar + "\n        &nbsp;&nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
+    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.xws + "\"></i><span class=\"fancy-ship-type\"> " + (this.data.display_name ? this.data.display_name : this.data.name) + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + (this.quickbuildId !== -1 ? (this.primary ? this.getPoints() : '*') : this.pilot.points) + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">INI " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + engagementHTML + "\n        " + attackHTML + "\n        " + attackbHTML + "\n        " + attackfHTML + "\n        " + attacktHTML + "\n        " + attackdtHTML + "\n        <i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref24 = (_ref25 = this.pilot.ship_override) != null ? _ref25.agility : void 0) != null ? _ref24 : this.data.agility, effective_stats, 'agility')) + "</span>                    \n        " + hullIconHTML + "\n        <i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull simple-hull-or-shield\"></i>\n        <span class=\"info-data info-hull simple-hull-or-shield\">" + (statAndEffectiveStat((_ref26 = (_ref27 = this.pilot.ship_override) != null ? _ref27.hull : void 0) != null ? _ref26 : this.data.hull, effective_stats, 'hull')) + "</span>\n        " + shieldIconHTML + "\n        <i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield simple-hull-or-shield\"></i>\n        <span class=\"info-data info-shields simple-hull-or-shield\">" + (statAndEffectiveStat((_ref28 = (_ref29 = this.pilot.ship_override) != null ? _ref29.shields : void 0) != null ? _ref28 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + energyHTML + "\n        " + forceHTML + "\n        " + chargeHTML + "\n        <br>\n        " + action_bar + "\n        &nbsp;&nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
     if (this.pilot.text) {
       html += $.trim("<div class=\"fancy-pilot-text\">" + this.pilot.text + "</div>");
     }
@@ -40771,7 +41288,11 @@ Ship = (function() {
   Ship.prototype.toSerialized = function() {
     var i, upgrade, upgrades;
     if (this.builder.isQuickbuild) {
-      return "" + this.quickbuildId + "X";
+      if ((this.wingmates == null) || this.wingmates.length === 0) {
+        return "" + this.quickbuildId + "X";
+      } else {
+        return "" + this.quickbuildId + "X" + this.wingmates.length;
+      }
     } else {
       upgrades = ("" + ((function() {
         var _i, _len, _ref, _ref1, _ref2, _results;
@@ -40873,29 +41394,35 @@ Ship = (function() {
         if (!this.validate) {
           return false;
         }
-        for (_ = _n = 1; _n < 3; _ = ++_n) {
-          for (i = _o = _ref8 = upgrade_ids.length - 1; _ref8 <= -1 ? _o < -1 : _o > -1; i = _ref8 <= -1 ? ++_o : --_o) {
-            upgrade_id = upgrade_ids[i];
-            upgrade = exportObj.upgradesById[upgrade_id];
-            if (upgrade == null) {
-              upgrade_ids.splice(i, 1);
-              if (upgrade_id !== "") {
-                console.log("Unknown upgrade id " + upgrade_id + " could not be added. Please report that error");
-                everythingadded = false;
-              }
-              continue;
-            }
-            _ref9 = this.upgrades;
-            for (_p = 0, _len5 = _ref9.length; _p < _len5; _p++) {
-              upgrade_selection = _ref9[_p];
-              if (exportObj.slotsMatching(upgrade.slot, upgrade_selection.slot) && !upgrade_selection.isOccupied()) {
-                upgrade_selection.setById(upgrade_id);
-                if (upgrade_selection.lastSetValid) {
-                  upgrade_ids.splice(i, 1);
+        if (!this.builder.isQuickbuild) {
+          for (_ = _n = 1; _n < 3; _ = ++_n) {
+            for (i = _o = _ref8 = upgrade_ids.length - 1; _ref8 <= -1 ? _o < -1 : _o > -1; i = _ref8 <= -1 ? ++_o : --_o) {
+              upgrade_id = upgrade_ids[i];
+              upgrade = exportObj.upgradesById[upgrade_id];
+              if (upgrade == null) {
+                upgrade_ids.splice(i, 1);
+                if (upgrade_id !== "") {
+                  console.log("Unknown upgrade id " + upgrade_id + " could not be added. Please report that error");
+                  everythingadded = false;
                 }
-                break;
+                continue;
+              }
+              _ref9 = this.upgrades;
+              for (_p = 0, _len5 = _ref9.length; _p < _len5; _p++) {
+                upgrade_selection = _ref9[_p];
+                if (exportObj.slotsMatching(upgrade.slot, upgrade_selection.slot) && !upgrade_selection.isOccupied()) {
+                  upgrade_selection.setById(upgrade_id);
+                  if (upgrade_selection.lastSetValid) {
+                    upgrade_ids.splice(i, 1);
+                  }
+                  break;
+                }
               }
             }
+          }
+        } else {
+          if (upgrade_ids.length > 0 && this.wingmates.length > 0) {
+            this.setWingmates(upgrade_ids[0]);
           }
         }
         everythingadded &= upgrade_ids.length === 0;
@@ -40964,7 +41491,7 @@ Ship = (function() {
           }));
         }
       }
-    } else {
+    } else if (!this.builder.isQuickbuild) {
       for (i = _j = _ref1 = this.upgrades.length - 1; _ref1 <= -1 ? _j < -1 : _j > -1; i = _ref1 <= -1 ? ++_j : --_j) {
         upgrade = this.upgrades[i];
         if (upgrade.slot === "Command") {
@@ -41171,7 +41698,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 42847
+                lineno: 43624
               })
             ]);
             __iced_deferrals._fulfill();
@@ -41300,7 +41827,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 42913
+                  lineno: 43690
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -41323,7 +41850,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 42918
+                      lineno: 43695
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -41363,7 +41890,7 @@ GenericAddon = (function() {
 
   GenericAddon.prototype.conferAddons = function() {
     var addon, args, cls, _i, _len, _ref, _results;
-    if ((this.data.confersAddons != null) && this.data.confersAddons.length > 0) {
+    if ((this.data.confersAddons != null) && !this.ship.builder.isQuickbuild && this.data.confersAddons.length > 0) {
       _ref = this.data.confersAddons;
       _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -41415,7 +41942,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 42963
+            lineno: 43740
           }));
         }
         __iced_deferrals._fulfill();

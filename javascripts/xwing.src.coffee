@@ -575,7 +575,7 @@ class exportObj.SquadBuilderBackend
             unless @squad_display_mode == 'epic'
                 @squad_display_mode = 'epic'
                 @squad_list_modal.find('.squad-display-mode .btn').removeClass 'btn-inverse'
-                @show_extended_squads_button.addClass 'btn-inverse'
+                @show_epic_squads_button.addClass 'btn-inverse'
                 @squad_list_modal.find('.squad-list li').each (idx, elem) ->
                     $(elem).toggle $(elem).data().squad.serialized.search(/v\d+Ze/) != -1
 
@@ -918,7 +918,7 @@ class exportObj.CardBrowser
                             <div class="advanced-search-container">
                                 <div class = "well search-container general-search-container">
                                     <h4>General</h4>
-                                    <lable class = "text-search advanced-search-label">
+                                    <label class = "text-search advanced-search-label">
                                     <strong>Textsearch: </strong>
                                         <input type="search" placeholder="Search for name, text or ship" class = "card-search-text">
                                     </label>
@@ -14287,7 +14287,7 @@ exportObj.basicCardData = ->
             upgrades: [
                 "Expert Handling"
                 "Ion Cannon Turret"
-                "Veterna Turret Gunner"
+                "Veteran Turret Gunner"
                 "R3 Astromech"
             ]
         }
@@ -14346,7 +14346,7 @@ exportObj.basicCardData = ->
             threat: 2
             upgrades: [
                 "Ion Cannon Turret"
-                "Proton Bomb"
+                "Proton Bombs"
                 "R5 Astromech"
             ]
         }
@@ -17741,7 +17741,657 @@ exportObj.basicCardData = ->
                 "Delayed Fuses"
             ]
         }
-
+        {
+            id: 373
+            faction: "Galactic Republic"
+            pilot: "Plo Koon"
+            ship: "Delta-7 Aethersprite"
+            threat: [5,6,7,8]
+            wingmates: [2,3,4,5]
+            suffix: " and his wing"
+            upgrades: [
+                "Veteran Wing Leader"
+                "Synchronized Console"
+                "Brilliant Evasion"
+                "Delta-7B"
+            ]
+            linkedId: 374
+            wingleader: true
+        }
+        {
+            id: 374
+            faction: "Galactic Republic"
+            pilot: "Gold Squadron Trooper"
+            ship: "V-19 Torrent"
+            suffix: ", Plo Koons wing"
+            threat: '*'
+            upgrades: [
+                "Concussion Missiles"
+                "Synchronized Console"
+            ]
+            linkedId: 373
+            wingmate: true
+        }
+        {
+            id: 375
+            faction: "Rebel Alliance"
+            pilot: "Echo Base Evacuees"
+            ship: "GR-75 Medium Transport"
+            threat: 4
+            upgrades: [
+                "Bright Hope"
+                "Optimized Power Core"
+                "Adaptive Shields"
+                "Comms Team"
+                "Point-Defense Battery"
+                "Carlist Rieekan"
+                "Novice Technician"
+            ]
+        }
+        {
+            id: 376
+            faction: "Rebel Alliance"
+            pilot: "Alderaanian Guard"
+            ship: "CR90 Corellian Corvette"
+            threat: 9
+            upgrades: [
+                "Dodonna's Pride"
+                "Comms Team"
+                "Boosted Scanners"
+                "Sensor Experts"
+                "Turbolaser Battery"
+                "Ion Cannon Battery"
+                "Jan Dodonna"
+                "Toryn Farr"
+            ]
+        }
+        {
+            id: 377
+            faction: "Galactic Empire"
+            pilot: "Outer Rim Garrison"
+            ship: "Gozanti-class Cruiser"
+            threat: 5
+            upgrades: [
+                "Requiem"
+                "Optimized Power Core"
+                "Boosted Scanners"
+                "Sensor Experts"
+                "Comms Team"
+                "Dorsal Turret"
+                "Targeting Battery"
+                "Strategic Commander"
+            ]
+        }
+        {
+            id: 378
+            faction: "Galactic Empire"
+            pilot: "Outer Rim Patrol"
+            ship: "Raider-class Corvette"
+            threat: 9
+            upgrades: [
+                "Impetuous"
+                "Boosted Scanners"
+                "Bombardment Specialists"
+                "Ordnance Team"
+                "Concussion Missiles"
+                "Adv. Proton Torpedoes"
+                "Turbolaser Battery"
+                "Ordnance Tubes"
+                "Captain Needa"
+            ]
+        }
+        {
+            id: 379
+            faction: "Scum and Villainy"
+            pilot: "Syndicate Smugglers"
+            ship: "C-ROC Cruiser"
+            threat: 5
+            upgrades: [
+                "Merchant One"
+                "Quick-Release Locks"
+                "Tibanna Reserves"
+                "Adaptive Shields"
+                "IG-RM Droids"
+                "Comms Team"
+                "Dorsal Turret"
+                "Point-Defense Battery"
+                "Azmorigan"
+                "Novice Technician"
+            ]
+        }
+        {
+            id: 380
+            faction: "Resistance"
+            pilot: "Colossus Station Mechanic"
+            ship: "Fireball"
+            threat: 1
+            upgrades: [
+                "Kaz's Fireball"
+                "Advanced SLAM"
+                "Mag-Pulse Warheads"
+                "Coaxium Hyperfuel"
+                "R1-J5"
+                "Outmaneuver"
+            ]
+        }
+        {
+            id: 381
+            faction: "Resistance"
+            pilot: "Jarek Yeager"
+            ship: "Fireball"
+            threat: 2
+            upgrades: [
+                "Targeting Computer"
+                "Advanced SLAM"
+                "Mag-Pulse Warheads"
+                "Elusive"
+            ]
+        }
+        {
+            id: 382
+            faction: "Resistance"
+            pilot: "Kazuda Xiono"
+            ship: "Fireball"
+            threat: 2
+            upgrades: [
+                "Kaz's Fireball"
+                "Advanced SLAM"
+                "Mag-Pulse Warheads"
+                "Coaxium Hyperfuel"
+                "R1-J5"
+                "Outmaneuver"
+            ]
+        }
+        {
+            id: 383
+            faction: "Resistance"
+            pilot: "R1-J5"
+            ship: "Fireball"
+            threat: 2
+            upgrades: [
+                "Targeting Computer"
+                "Advanced SLAM"
+                "Mag-Pulse Warheads"
+                "Coaxium Hyperfuel"
+            ]
+        }
+        {
+            id: 384
+            faction: "Resistance"
+            pilot: "New Republic Volunteers"
+            ship: "GR-75 Medium Transport"
+            threat: 4
+            upgrades: [
+                "Tibanna Reserves"
+                "Boosted Scanners"
+                "Sensor Experts"
+                "Dorsal Turret"
+                "Ion Cannon Battery"
+                "Stalwart Captain"
+            ]
+        }
+        {
+            id: 385
+            faction: "First Order"
+            pilot: "Major Vonreg"
+            ship: "TIE/Ba Interceptor"
+            threat: 3
+            upgrades: [
+                "Mag-Pulse Warheads"
+                "Deuterium Power Cells"
+                "Outmaneuver"
+            ]
+        }
+        {
+            id: 386
+            faction: "First Order"
+            pilot: '"Holo"'
+            ship: "TIE/Ba Interceptor"
+            threat: 3
+            upgrades: [
+                "Hull Upgrade"
+                "Munitions Failsafe"
+                "Mag-Pulse Warheads"
+                "Proud Tradition"
+            ]
+        }
+        {
+            id: 387
+            faction: "First Order"
+            pilot: '"Ember"'
+            ship: "TIE/Ba Interceptor"
+            threat: 3
+            upgrades: [
+                "Afterburners"
+                "Concussion Missiles"
+                "Predator"
+                "Elusive"
+            ]
+        }
+        {
+            id: 388
+            faction: "First Order"
+            pilot: "First Order Provocateur"
+            ship: "TIE/Ba Interceptor"
+            threat: 2
+            upgrades: [
+                "Snap Shot"
+            ]
+        }
+        {
+            id: 389
+            faction: "First Order"
+            pilot: "First Order Sympathizers"
+            ship: "Gozanti-class Cruiser"
+            threat: 4
+            upgrades: [
+                "Adaptive Shields"
+                "Gunnery Specialists"
+                "Damage Control Team"
+                "Point-Defense Battery"
+                "Strategic Commander"
+            ]
+        }
+        {
+            id: 390
+            faction: "First Order"
+            pilot: "First Order Collaborators"
+            ship: "Raider-class Corvette"
+            threat: 8
+            upgrades: [
+                "Boosted Scanners"
+                "Comms Team"
+                "Bombardment Specialists"
+                "Point-Defense Battery"
+                "Ion Cannon Battery"
+                "Stalwart Captain"
+                "Novice Technician"
+            ]
+        }
+        {
+            id: 391
+            faction: "Galactic Republic"
+            pilot: "Shadow Squadron Veteran"
+            ship: "BTL-B Y-Wing"
+            threat: 3
+            upgrades: [
+                "R5 Astromech"
+                "Proton Torpedoes"
+                "Ion Cannon Turret"
+                "Snap Shot"
+            ]
+        }
+        {
+            id: 392
+            faction: "Galactic Republic"
+            pilot: "Anakin Skywalker"
+            ship: "BTL-B Y-Wing"
+            threat: 4
+            upgrades: [
+                "Proton Bombs"
+                "R2 Astromech"
+                "Ahsoka Tano"
+                "Proton Torpedoes"
+                "Ion Cannon Turret"
+                "Precognitive Reflexes"
+            ]
+        }
+        {
+            id: 393
+            faction: "Galactic Republic"
+            pilot: "R2-D2"
+            ship: "BTL-B Y-Wing"
+            threat: 2
+            upgrades: [
+                "Proton Bombs"
+                "C-3PO"
+                "Ion Cannon Turret"
+            ]
+        }
+        {
+            id: 394
+            faction: "Galactic Republic"
+            pilot: '"Odd Ball"'
+            ship: "BTL-B Y-Wing"
+            threat: 3
+            upgrades: [
+                "Hull Upgrade"
+                "R3 Astromech"
+                "Proton Torpedoes"
+                "Ion Cannon Turret"
+                "Predator"
+            ]
+        }
+        {
+            id: 395
+            faction: "Galactic Republic"
+            pilot: '"Matchstick"'
+            ship: "BTL-B Y-Wing"
+            threat: 3
+            upgrades: [
+                "Shield Upgrade"
+                "Delayed Fuses"
+                "Proton Bombs"
+                "R2 Astromech"
+                "Ion Cannon Turret"
+                "Elusive"
+            ]
+        }
+        {
+            id: 396
+            faction: "Galactic Republic"
+            pilot: '"Broadside"'
+            ship: "BTL-B Y-Wing"
+            threat: 2
+            upgrades: [
+                "Hull Upgrade"
+                "R5 Astromech"
+                "Ion Cannon Turret"
+                "Snap Shot"
+            ]
+        }
+        {
+            id: 397
+            faction: "Galactic Republic"
+            pilot: '"Goji"'
+            ship: "BTL-B Y-Wing"
+            threat: 2
+            upgrades: [
+                "Afterburners"
+                "Electro-Proton Bomb"
+            ]
+        }
+        {
+            id: 398
+            faction: "Galactic Republic"
+            pilot: "Red Squadron Bomber"
+            ship: "BTL-B Y-Wing"
+            threat: 2
+            upgrades: [
+                "Delayed Fuses"
+                "Proton Bombs"
+                "R2 Astromech"
+                "Ion Cannon Turret"
+            ]
+        }
+        {
+            id: 399
+            faction: "Galactic Republic"
+            pilot: "Republic Judiciary"
+            ship: "CR90 Corellian Corvette"
+            threat: 9
+            upgrades: [
+                "Strategic Commander"
+                "Targeting Battery"
+                "Turbolaser Battery"
+                "Damage Control Team"
+                "Agile Gunner"
+                "Boosted Scanners"
+                "Gunnery Specialists"
+                "Seasoned Navigator"
+            ]
+        }
+        {
+            id: 400
+            faction: "Separatist Alliance"
+            pilot: "Stalgasin Hive Guard"
+            ship: "Nantex-Class Starfighter"
+            threat: 2
+            upgrades: [
+                "Targeting Computer"
+                "Gravitic Deflection"
+                "Ensnare"
+            ]
+        }
+        {
+            id: 401
+            faction: "Separatist Alliance"
+            pilot: "Sun Fac"
+            ship: "Nantex-Class Starfighter"
+            threat: 3
+            upgrades: [
+                "Shield Upgrade"
+                "Afterburners"
+                "Predator"
+                "Ensnare"
+            ]
+        }
+        {
+            id: 402
+            faction: "Separatist Alliance"
+            pilot: "Berwer Kret"
+            ship: "Nantex-Class Starfighter"
+            threat: 2
+            upgrades: [
+                "Hull Upgrade"
+                "Snap Shot"
+                "Ensnare"
+            ]
+        }
+        {
+            id: 403
+            faction: "Separatist Alliance"
+            pilot: "Chertek"
+            ship: "Nantex-Class Starfighter"
+            threat: 2
+            upgrades: [
+                "Targeting Computer"
+                "Juke"
+                "Gravitic Deflection"
+            ]
+        }
+        {
+            id: 404
+            faction: "Separatist Alliance"
+            pilot: "Gorgol"
+            ship: "Nantex-Class Starfighter"
+            threat: 2
+            upgrades: [
+                "Stealth Device"
+                "Shield Upgrade"
+                "Gravitic Deflection"
+            ]
+        }
+        {
+            id: 405
+            faction: "Separatist Alliance"
+            pilot: "Separatist Privateers"
+            ship: "C-ROC Cruiser"
+            threat: 6
+            upgrades: [
+                "Stalwart Captain"
+                "Turbolaser Battery"
+                "Dorsal Turret"
+                "Heavy Laser Cannon"
+                "Cluster Missiles"
+                "Bombardment Specialists"
+                "Boosted Scanners"
+                "Tibanna Reserves"
+                "Corsair Refit"
+            ]
+        }
+        {
+            id: 406
+            faction: "Galactic Empire"
+            pilot: "Darth Vader"
+            ship: "TIE Advanced"
+            threat: [6,7,8,9]
+            wingmates: [2,3,4,5]
+            suffix: " and his wing"
+            upgrades: [
+                "Agent of the Empire"
+                "Fire-Control System"
+                "Supernatural Reflexes"
+                "Cluster Missiles"
+            ]
+            linkedId: 407
+            wingleader: true
+        }
+        {
+            id: 407
+            faction: "Galactic Empire"
+            pilot: "Black Squadron Ace"
+            ship: "TIE Fighter"
+            suffix: ", Darth Vaders wing"
+            threat: '*'
+            upgrades: [
+                "Crack Shot"
+            ]
+            linkedId: 406
+            wingmate: true
+        }
+        {
+            id: 408
+            faction: "Resistance"
+            pilot: "Poe Dameron"
+            ship: "T-70 X-Wing"
+            threat: [9,11,13,15]
+            wingmates: [2,3,4,5]
+            suffix: " and his wing"
+            upgrades: [
+                "Veteran Wing Leader"
+                "Targeting Synchronizer"
+                "BB-8"
+                "Black One"
+            ]
+            linkedId: 409
+            wingleader: true
+        }
+        {
+            id: 409
+            faction: "Resistance"
+            pilot: "Black Squadron Ace (T-70)"
+            ship: "T-70 X-Wing"
+            suffix: ", Poe Damerons wing"
+            threat: '*'
+            upgrades: [
+                "Proton Torpedoes"
+            ]
+            linkedId: 408
+            wingmate: true
+        }
+        {
+            id: 410
+            faction: "First Order"
+            pilot: "Kylo Ren"
+            ship: "TIE Silencer"
+            threat: [6,8]
+            wingmates: [2,3]
+            suffix: " and his wing"
+            upgrades: [
+                "First Order Elite"
+                "Heightened Perception"
+                "Dreadnought Hunter"
+                "Proton Torpedoes"
+            ]
+            linkedId: 411
+            wingleader: true
+        }
+        {
+            id: 411
+            faction: "First Order"
+            pilot: "Omega Squadron Expert"
+            ship: "TIE/SF Fighter"
+            suffix: ", Kylo Rens wing"
+            threat: '*'
+            upgrades: [
+                "Ion Missiles"
+                "Special Forces Gunner"
+            ]
+            linkedId: 410
+            wingmate: true
+        }
+        {
+            id: 412
+            faction: "Separatist Alliance"
+            pilot: "General Grievous"
+            ship: "Belbullab-22 Starfighter"
+            threat: [5,6,7,8]
+            wingmates: [2,3,4,5]
+            suffix: " and his wing"
+            upgrades: [
+                "Veteran Wing Leader"
+                "Kraken"
+                "Predator"
+                "Soulless One"
+            ]
+            linkedId: 413
+            wingleader: true
+        }
+        {
+            id: 413
+            faction: "Separatist Alliance"
+            pilot: "Separatist Drone"
+            ship: "Vulture-class Droid Fighter"
+            suffix: ", General Grievous wing"
+            threat: '*'
+            upgrades: [
+                "Energy-Shell Charges"
+            ]
+            linkedId: 412
+            wingmate: true
+        }
+        {
+            id: 414
+            faction: "Rebel Alliance"
+            pilot: "Luke Skywalker"
+            ship: "X-Wing"
+            threat: [8,10,12,14]
+            wingmates: [2,3,4,5]
+            suffix: " and his wing"
+            upgrades: [
+                "Veteran Wing Leader"
+                "Proton Torpedoes"
+                "Instinctive Aim"
+                "R2-D2"
+                "Servomotor S-Foils"
+            ]
+            linkedId: 415
+            wingleader: true
+        }
+        {
+            id: 415
+            faction: "Rebel Alliance"
+            pilot: "Red Squadron Veteran"
+            ship: "X-Wing"
+            suffix: ", Luke Skywalkers wing"
+            threat: '*'
+            upgrades: [
+                "Proton Torpedoes"
+            ]
+            linkedId: 414
+            wingmate: true
+        }
+        {
+            id: 416
+            faction: "Scum and Villainy"
+            pilot: "Fenn Rau"
+            ship: "Fang Fighter"
+            threat: [8,10,12,14]
+            wingmates: [2,3,4,5]
+            suffix: " and his wing"
+            upgrades: [
+                "Veteran Wing Leader"
+                "Fearless"
+                "Daredevil"
+                "Afterburners"
+            ]
+            linkedId: 417
+            wingleader: true
+        }
+        {
+            id: 417
+            faction: "Scum and Villainy"
+            pilot: "Skull Squadron Pilot"
+            ship: "Fang Fighter"
+            suffix: ", Fenn Raus wing"
+            threat: '*'
+            upgrades: [
+                "Fearless"
+            ]
+            linkedId: 416
+            wingmate: true
+        }
     ]
 
 
@@ -40552,8 +41202,10 @@ class exportObj.SquadBuilder
             getPrimaryFaction(faction) == @faction
 
     isItemAvailable: (item_data, shipCheck=false) ->
-        # this method is not invoked to check availability for quickbuild squads, as they don't care about hyperspace. Keep that in mind when adding stuff here.
-        if @isHyperspace
+        # this method is not even invoked by most quickbuild stuff to check availability for quickbuild squads, as the method was formerly just telling apart extended/hyperspace
+        if @isQuickbuild
+            return true
+        else if @isHyperspace
             return exportObj.hyperspaceCheck(item_data, @faction, shipCheck)
         else if (not @isEpic)
             return exportObj.epicExclusions(item_data)
@@ -40565,7 +41217,7 @@ class exportObj.SquadBuilder
         for ship_name, ship_data of exportObj.ships
             if @isOurFaction(ship_data.factions) and (@matcher(ship_data.name, term) or (ship_data.display_name and @matcher(ship_data.display_name, term)))
                 if (@isItemAvailable(ship_data, true))
-                    if @isEpic or (not @isEpic and not ship_data.huge)
+                    if @isEpic or @isQuickbuild or (not @isEpic and not ship_data.huge)
                         if (not collection_only or (@collection? and (@collection.checks.collectioncheck == "true") and @collection.checkShelf('ship', ship_data.name)))
                             ships.push
                                 id: ship_data.name
@@ -40609,7 +41261,7 @@ class exportObj.SquadBuilder
             # filter for faction and ship
             quickbuilds_matching_ship_and_faction = (quickbuild for id, quickbuild of exportObj.quickbuildsById when (not ship? or quickbuild.ship == ship) and @isOurFaction(quickbuild.faction) and (@matcher(quickbuild.pilot, term) or (exportObj.pilots[quickbuild.pilot].display_name? and @matcher(exportObj.pilots[quickbuild.pilot].display_name, term)) ))
 
-            # create a list of the uniques blonging to the currently selected pilot
+            # create a list of the uniques belonging to the currently selected pilot
             uniques_in_use_by_pilot_in_use = []
             if include_pilot? and include_pilot != -1
                 include_quickbuild = exportObj.quickbuildsById[include_pilot]
@@ -41840,6 +42492,7 @@ class Ship
         @linkedShip = null # some quickbuilds contain two ships, this variable may reference a Ship beeing part of the same quickbuild card
         @primary = true # only the primary ship of a linked ship pair will contribute points and serialization id
         @upgrades = []
+        @wingmates = [] # stores wingmates (quickbuild stuff only) 
 
         @setupUI()
 
@@ -41851,9 +42504,14 @@ class Ship
         if idx < 0
             throw new Error("Ship not registered with builder")
         @builder.ships.splice idx, 1
-        if @linkedShip != null
+        if @wingmates.length > 0
+            @setWingmates(0)
+        else if @linkedShip != null
             @linkedShip.linkedShip = null
-            await @builder.removeShip @linkedShip, defer()
+            if @linkedShip.wingmates?.length > 0
+                @linkedShip.removeFromWing(this)
+            else
+                await @builder.removeShip @linkedShip, defer()
         cb()
 
     copyFrom: (other) ->
@@ -41958,6 +42616,11 @@ class Ship
             @setPilot exportObj.pilotsById[parseInt id], noautoequip
         else
             if id != @quickbuildId
+                @wingmate_selector.parent().hide()
+                if @wingmates? and @wingmates.length > 0
+                    # remove any wingmates, as the wing leader was just removed from the list
+                    @setWingmates(0)
+                    @linkedShip = null
                 @quickbuildId = id
                 @builder.current_squad.dirty = true
                 @resetPilot()
@@ -41975,16 +42638,33 @@ class Ship
                     @setShipType @pilot.ship
 
                     # if this card contains more than one ship, make sure the other one is added as well
+                    if quickbuild.wingmate? && not @linkedShip?
+                        # try to join wingleader, if we have not been created by him
+                        for ship in @builder.ships
+                            if ship.quickbuildId == quickbuild.linkedId
+                                # found our leader. join him.
+                                ship.joinWing(this)
+                                @linkedShip = ship
+                                @primary = false
+                                @builder.isUpdatingPoints = false
+                                @builder.container.trigger 'xwing:pointsUpdated'
+                                @builder.container.trigger 'xwing-backend:squadDirtinessChanged'
+                                return # we are done.
                     if @linkedShip
                         # we are already linked to some other ship
                         if quickbuild.linkedId? 
                             # we will stay linked to another ship, so just set the linked one to an new pilot es well
                             @linkedShip.setPilotById quickbuild.linkedId
-                            @linkedShip.primary = false
+                            @linkedShip.primary = false unless quickbuild.wingmate?
                         else
-                            # we are no longer part of a linked pair, so the linked ship should be removed
-                            @linkedShip.linkedShip = null
-                            await @builder.removeShip @linkedShip, defer()
+                            # take care of associated ship
+                            if @linkedShip.wingmates?.length > 0
+                                # we are no longer part of a wing
+                                @linkedShip.removeFromWing(this)
+                            else
+                                # we are no longer part of a linked pair, so the linked ship should be removed
+                                @linkedShip.linkedShip = null
+                                await @builder.removeShip @linkedShip, defer()
                             @linkedShip = null
                     else if quickbuild.linkedId?
                         # we nare not already linked to another ship, but need one. Let's set one up
@@ -41997,10 +42677,19 @@ class Ship
                             @builder.addShip()
                         @linkedShip.linkedShip = this
                         @linkedShip.setPilotById quickbuild.linkedId
-                        @linkedShip.primary = false
-                    @primary = true
+                        # for pairs the first selected ship is master, so as we have been created first, we set the other ship to false
+                        # for wings the wingleader is always master, so we don't set the other ship to false, if we are just a wingmate
+                        @linkedShip.primary = false unless quickbuild.wingmate?
+                    @primary = !quickbuild.wingmate?
+                    if quickbuild?.wingleader? 
+                        @wingmate_selector.parent().show()
+                        @wingmate_selector.val quickbuild.wingmates[0]
+                        @wingmate_selector.attr "min", quickbuild.wingmates[0]
+                        @wingmate_selector.attr "max", quickbuild.wingmates[quickbuild.wingmates.length - 1]
+                        @setWingmates quickbuild.wingmates[0]
                     @builder.isUpdatingPoints = false
                     @builder.container.trigger 'xwing:pointsUpdated'
+
 
                 else
                     @copy_button.hide()
@@ -42098,14 +42787,70 @@ class Ship
             else
                 @points_container.fadeTo 0, 0
             points
-        else            
-            threat = if @primary then exportObj.quickbuildsById[@quickbuildId]?.threat ? 0 else 0 
+        else    
+            quickbuild = exportObj.quickbuildsById[@quickbuildId]
+            threat = if @primary then quickbuild?.threat ? 0 else 0 
+            if quickbuild?.wingleader?
+                threat = quickbuild.threat[quickbuild.wingmates.indexOf(@wingmates.length)]
             @points_container.find('span').text threat
             if threat > 0
                 @points_container.fadeTo 'fast', 1
             else
                 @points_container.fadeTo 0, 0
             threat
+
+    setWingmates: (wingmates) ->
+        # creates/destroys wingmates to match number given as argument
+        # todo: Check if number is valid for this quickbuild wing?
+        if @wingmates?.length == wingmates
+            # nothing to do, we already have correct number of wingmates. 
+            return
+        if !@wingmates? || @wingmates.length == 0
+            # if no wingmates are set yet, use the linked buddy
+            @wingmates = [@linkedShip]
+        quickbuild = exportObj.quickbuildsById[@quickbuildId]
+        while @wingmates.length < wingmates 
+            # create more wingmates
+            newMate = @builder.ships.slice(-1)[0]
+            # during squad building there is an empty ship at the bottom, use that one and add a new empty one. 
+            # during squad loading there is no empty ship at the bottom, so we just create a new one and use it
+            if newMate.data != null
+                newMate = @builder.addShip()
+            else 
+                @builder.addShip()
+            newMate.linkedShip = this # link new mate to us
+            @wingmates.push(newMate)
+            newMate.setPilotById quickbuild.linkedId
+            # for pairs the first selected ship is master, so as we have been created first, we set the other ship to false
+            # for wings the wingleader is always master, so we don't set the other ship to false, if we are just a wingmate
+            newMate.primary = false
+            @primary = true # he should not try to steal our primary position, as he is aware of beeing not squad leader, but in case he's not just set it. 
+        while @wingmates.length > wingmates
+            # destroy wingmates
+            dyingMate = @wingmates.pop()
+            dyingMate.linkedShip = null # prevent the mate from killing us
+            await @builder.removeShip dyingMate, defer()
+        @wingmate_selector.val wingmates
+
+    removeFromWing: (ship) ->
+        # remove requested ship from wing
+        @wingmates.removeItem(ship)
+        # check if the wing is still valid, otherwise destroy it. 
+        quickbuild = exportObj.quickbuildsById[@quickbuildId]
+        if !(@wingmates.length in quickbuild.wingmates)
+            @destroy $.noop
+        @wingmate_selector.val @wingmates.length
+
+    joinWing: (ship) ->
+        # remove requested ship from wing
+        @wingmates.push(ship)
+        # check if the wing is still valid, otherwise destroy the added ship
+        quickbuild = exportObj.quickbuildsById[@quickbuildId]
+        if !(@wingmates.length in quickbuild.wingmates)
+            ship.destroy $.noop
+            @removeFromWing(ship)
+        @wingmate_selector.val @wingmates.length
+
 
     updateSelections: ->
         if @pilot?
@@ -42136,6 +42881,11 @@ class Ship
                 <input class="ship-selector-container" type="hidden" />
                 <br />
                 <input type="hidden" class="pilot-selector-container" />
+                <br />
+                <label class="wingmate-label">
+                Wingmates: 
+                    <input type="number" class="wingmate-selector" />
+                </label>
             </div>
             <div class="span1 points-display-container">
                 <span></span>
@@ -42150,6 +42900,7 @@ class Ship
 
         @ship_selector = $ @row.find('input.ship-selector-container')
         @pilot_selector = $ @row.find('input.pilot-selector-container')
+        @wingmate_selector = $ @row.find('input.wingmate-selector')
 
         shipResultFormatter = (object, container, query) ->
             # Append directly so we don't have to disable markup escaping
@@ -42242,6 +42993,27 @@ class Ship
             @builder.showTooltip 'Pilot', @pilot, @ if @pilot
 
         @pilot_selector.data('select2').container.hide()
+
+        if @builder.isQuickbuild
+            @wingmate_selector.on 'change', (e) =>
+                @setWingmates parseInt @wingmate_selector.val()
+                @builder.current_squad.dirty = true
+                @builder.container.trigger 'xwing-backend:squadDirtinessChanged'
+                @builder.backend_status.fadeOut 'slow'
+            @wingmate_selector.on 'mousemove-filtered', (e) =>
+                return
+                # TODO: show tooltip of wingmate
+#                select2_data = $(e.target).closest('.select2-result').data 'select2-data'
+#                if @builder.isQuickbuild
+#                    @builder.showTooltip 'Quickbuild', exportObj.quickbuildsById[select2_data.id], {ship: @data?.name} if select2_data?.id?
+#                else
+#                    @builder.showTooltip 'Pilot', exportObj.wingmatesById[select2_data.id] if select2_data?.id?
+#            @wingmate_selector.on 'mouseover', (e) =>
+#                @builder.showTooltip 'Pilot', @wingmate, @ if @wingmate
+#            @wingmate_selector.on 'touchstart', (e) =>
+#                @builder.showTooltip 'Pilot', @wingmate, @ if @wingmate
+#    
+        @wingmate_selector.parent().hide()
 
         @points_container = $ @row.find('.points-display-container')
         @points_container.fadeTo 0, 0
@@ -42377,7 +43149,7 @@ class Ship
                 <div class="pilot-header-text">#{if @pilot.display_name then @pilot.display_name else @pilot.name} <i class="xwing-miniatures-ship xwing-miniatures-ship-#{@data.xws}"></i><span class="fancy-ship-type"> #{if @data.display_name then @data.display_name else @data.name}</span></div>
                 <div class="mask">
                     <div class="outer-circle">
-                        <div class="inner-circle pilot-points">#{if @quickbuildId != -1 then (if @primary then exportObj.quickbuildsById[@quickbuildId].threat else 0) else @pilot.points}</div>
+                        <div class="inner-circle pilot-points">#{if @quickbuildId != -1 then (if @primary then @getPoints() else '*') else @pilot.points}</div>
                     </div>
                 </div>
             </div>
@@ -42551,7 +43323,7 @@ class Ship
     toSerialized: ->
         # PILOT_ID:UPGRADEID1,UPGRADEID2:CONFERREDADDONTYPE1.CONFERREDADDONID1,CONFERREDADDONTYPE2.CONFERREDADDONID2
         if @builder.isQuickbuild
-            """#{@quickbuildId}X"""
+            if (!@wingmates? || @wingmates.length == 0) then """#{@quickbuildId}X""" else """#{@quickbuildId}X#{@wingmates.length}"""
         else
             upgrades = """#{upgrade?.data?.id ? "" for upgrade, i in @upgrades}""".replace(/,/g, "W")
             [
@@ -42636,24 +43408,29 @@ class Ship
                 @setPilotById parseInt(pilot_id), true
                 # make sure the pilot is valid 
                 return false unless @validate
-
-                # iterate over upgrades to be added, and remove all that have been successfully added
-                for _ in [1 ... 3] # try adding each upgrade a few times, as the required slots might be added in by titles etc and are not yet available on the first try
-                    for i in [upgrade_ids.length - 1 ... -1]
-                        upgrade_id = upgrade_ids[i]
-                        upgrade = exportObj.upgradesById[upgrade_id]
-                        if not upgrade? 
-                            upgrade_ids.splice(i,1) # Remove unknown or empty ID
-                            if upgrade_id != ""
-                                console.log("Unknown upgrade id " + upgrade_id + " could not be added. Please report that error")
-                                everythingadded = false
-                            continue
-                        for upgrade_selection in @upgrades
-                            if exportObj.slotsMatching(upgrade.slot, upgrade_selection.slot) and not upgrade_selection.isOccupied()
-                                upgrade_selection.setById upgrade_id
-                                if upgrade_selection.lastSetValid
-                                    upgrade_ids.splice(i,1) # added successfully, remove from list
-                                break
+                
+                if !@builder.isQuickbuild
+                    # iterate over upgrades to be added, and remove all that have been successfully added
+                    for _ in [1 ... 3] # try adding each upgrade a few times, as the required slots might be added in by titles etc and are not yet available on the first try
+                        for i in [upgrade_ids.length - 1 ... -1]
+                            upgrade_id = upgrade_ids[i]
+                            upgrade = exportObj.upgradesById[upgrade_id]
+                            if not upgrade? 
+                                upgrade_ids.splice(i,1) # Remove unknown or empty ID
+                                if upgrade_id != ""
+                                    console.log("Unknown upgrade id " + upgrade_id + " could not be added. Please report that error")
+                                    everythingadded = false
+                                continue
+                            for upgrade_selection in @upgrades
+                                if exportObj.slotsMatching(upgrade.slot, upgrade_selection.slot) and not upgrade_selection.isOccupied()
+                                    upgrade_selection.setById upgrade_id
+                                    if upgrade_selection.lastSetValid
+                                        upgrade_ids.splice(i,1) # added successfully, remove from list
+                                    break
+                else 
+                    # we are in quickbuild. Number of wingmates might be provided as upgrade ID of a quickbuild
+                    if upgrade_ids.length > 0 && @wingmates.length > 0 # check if we are actually a wingleader
+                        @setWingmates(upgrade_ids[0])
                 everythingadded &= upgrade_ids.length == 0
 
                             
@@ -42711,7 +43488,7 @@ class Ship
                         ship: this
                         container: @addon_container
                         slot: "Command"
-        else #cleanup Command upgrades
+        else if !@builder.isQuickbuild #cleanup Command upgrades
             for i in [@upgrades.length - 1 ... -1]
                 upgrade = @upgrades[i]
                 if upgrade.slot == "Command"
@@ -42940,7 +43717,7 @@ class GenericAddon
             @ship.builder.container.trigger 'xwing:pointsUpdated'
 
     conferAddons: ->
-        if @data.confersAddons? and @data.confersAddons.length > 0
+        if @data.confersAddons? and !@ship.builder.isQuickbuild and @data.confersAddons.length > 0
             for addon in @data.confersAddons
                 cls = addon.type
                 args =
