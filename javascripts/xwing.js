@@ -6416,7 +6416,7 @@ exportObj.basicCardData = function() {
         ship: "Fireball",
         skill: 1,
         points: 29,
-        slots: ["Missile", "Astromech", "Illicit", "Modification", "Modification", "Title"],
+        slots: ["Missile", "Crew", "Illicit", "Modification", "Modification", "Title"],
         ship_override: {
           actions: ["Calculate", "Evade", "Barrel Roll", "Slam"]
         }
