@@ -37688,12 +37688,12 @@ exportObj.SquadBuilder = (function() {
               }
             }).call(_this);
             _this.printable_container.find('.squad-faction').html("<i class=\"xwing-miniatures-font xwing-miniatures-font-" + faction + "\"></i>");
-            if (_this.isHyperspace) {
-              _this.printable_container.find('.squad-name').append(" <i class=\"xwing-miniatures-font xwing-miniatures-font-first-player-1\"></i>");
-            }
-            if (_this.isEpic) {
-              _this.printable_container.find('.squad-name').append(" <i class=\"xwing-miniatures-font xwing-miniatures-font-energy\"></i>");
-            }
+        }
+        if (_this.isHyperspace) {
+          _this.printable_container.find('.squad-name').append(" <i class=\"xwing-miniatures-font xwing-miniatures-font-first-player-1\"></i>");
+        }
+        if (_this.isEpic) {
+          _this.printable_container.find('.squad-name').append(" <i class=\"xwing-miniatures-font xwing-miniatures-font-energy\"></i>");
         }
         _this.printable_container.find('.printable-body').append($.trim("<div class=\"version\">Points Version: 1.6 January 2020</div>"));
         if ($.trim(_this.notes.val()) !== '') {
