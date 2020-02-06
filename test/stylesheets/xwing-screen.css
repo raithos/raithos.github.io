@@ -1,0 +1,253 @@
+.text-list-modal .modal-header {
+  overflow: hidden; }
+
+.modal-body {
+  height: calc(100vh - 430px); }
+
+.fancy-header {
+  border: 38px solid black;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  font-family: BankGothicHD, Impact, sans-serif; }
+  .fancy-header .squad-name {
+    position: absolute;
+    font-size: 30.4px;
+    margin-top: 7.6px;
+    font-weight: 100; }
+  .fancy-header .mask {
+    position: absolute;
+    right: 0;
+    width: 57px;
+    background-color: white;
+    height: 57px;
+    z-index: 999; }
+  .fancy-header .outer-circle {
+    width: 57px;
+    height: 57px;
+    border-radius: 28.5px;
+    margin-left: -28.5px;
+    background-color: white; }
+    .fancy-header .outer-circle .inner-circle {
+      width: 47px;
+      height: 47px;
+      border-radius: 23.5px;
+      background-color: gray;
+      position: relative;
+      top: 5px;
+      left: 5px;
+      line-height: 47px;
+      font-size: 19px;
+      text-align: center; }
+
+.fancy-under-header {
+  border: 19px solid gray;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  position: relative;
+  left: 38px; }
+
+.fancy-ship {
+  overflow: hidden;
+  margin-bottom: 10px; }
+  .fancy-ship .fancy-pilot-header {
+    border: 30px solid lightgray;
+    color: black;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    font-family: EurostileStandard, Impact, sans-serif;
+    height: 0px; }
+    .fancy-ship .fancy-pilot-header .pilot-header-text {
+      position: absolute;
+      font-size: 24px;
+      margin-top: -24px;
+      font-weight: 100; }
+      .fancy-ship .fancy-pilot-header .pilot-header-text .fancy-ship-type {
+        display: none; }
+    .fancy-ship .fancy-pilot-header .mask {
+      position: relative;
+      float: right;
+      clear: both;
+      right: -45px;
+      top: -30px;
+      width: 45px;
+      background-color: white;
+      height: 60px;
+      z-index: 999; }
+    .fancy-ship .fancy-pilot-header .outer-circle {
+      width: 45px;
+      height: 45px;
+      border-radius: 22.5px;
+      margin-left: -22.5px;
+      background-color: white; }
+      .fancy-ship .fancy-pilot-header .outer-circle .inner-circle {
+        width: 35px;
+        height: 35px;
+        border-radius: 17.5px;
+        background-color: gray;
+        position: relative;
+        top: 5px;
+        left: 5px;
+        line-height: 40px;
+        font-size: 15px;
+        text-align: center;
+        color: white; }
+  .fancy-ship .fancy-pilot-stats {
+    position: relative;
+    left: 30px;
+    top: -30px;
+    border: 30px solid gray;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    margin-bottom: -60px; }
+    .fancy-ship .fancy-pilot-stats .pilot-stats-content {
+      position: relative;
+      margin-top: -25px; }
+      .fancy-ship .fancy-pilot-stats .pilot-stats-content .xwing-miniatures-font {
+        vertical-align: middle; }
+  .fancy-ship .expanded-hull-or-shield {
+    display: none; }
+  .fancy-ship .fancy-dial {
+    display: none;
+    float: right;
+    padding: 10px;
+    table-layout: fixed; }
+  .fancy-ship .fancy-dial table > tbody > tr > td {
+    border: 2px solid #d6c9d2; }
+  .fancy-ship .fancy-dial table > tbody > tr > td:first-child {
+    color: white;
+    text-align: center;
+    padding: 3px;
+    background-color: #888888;
+    background-image: linear-gradient(rgba(45, 45, 45, 0.2) 50%, transparent 50%, transparent);
+    background-size: 5px 5px; }
+  .fancy-ship .fancy-dial table > tbody > tr > td ~ td {
+    background-color: #a29199; }
+  .fancy-ship .fancy-pilot-text {
+    clear: both;
+    margin-left: 60px;
+    padding: 5px; }
+  .fancy-ship .fancy-upgrade-container {
+    color: black;
+    position: relative; }
+    .fancy-ship .fancy-upgrade-container .upgrade-container {
+      position: relative;
+      padding-bottom: 3px;
+      margin-left: 60px;
+      margin-bottom: 5px;
+      margin-right: 30px;
+      clear: both;
+      border: 1px dotted lightgray; }
+      .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-stats {
+        min-height: 38px; }
+      .fancy-ship .fancy-upgrade-container .upgrade-container .card-restriction-container {
+        padding-top: 10px; }
+      .fancy-ship .fancy-upgrade-container .upgrade-container .mask {
+        float: right;
+        text-align: right;
+        margin-left: 10px;
+        display: inline-block;
+        vertical-align: middle;
+        width: 33.75px;
+        height: 33.75px;
+        z-index: 999;
+        margin-right: 5px; }
+      .fancy-ship .fancy-upgrade-container .upgrade-container .outer-circle {
+        width: 33.75px;
+        height: 33.75px;
+        border-radius: 16.875px;
+        background-color: white; }
+        .fancy-ship .fancy-upgrade-container .upgrade-container .outer-circle .inner-circle {
+          width: 28.75px;
+          height: 28.75px;
+          border-radius: 14.375px;
+          background-color: gray;
+          position: relative;
+          top: 2.5px;
+          left: 2.5px;
+          line-height: 33.75px;
+          font-size: 15px;
+          text-align: center;
+          color: white; }
+      .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-name {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 33.75px;
+        float: left;
+        text-align: left;
+        margin-left: 10px;
+        margin-right: 5px;
+        min-width: 150px;
+        font-family: EurostileStandardBold; }
+        .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-name i {
+          display: inline-block;
+          min-width: 26px; }
+      .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack, .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-energy, .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-charge, .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-force {
+        float: right;
+        text-align: right;
+        margin-top: 4px;
+        margin-right: 8px;
+        height: 28px; }
+      .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack-range {
+        vertical-align: middle;
+        padding: 2px 8px;
+        color: white;
+        background-color: black;
+        font-family: kimberley;
+        font-size: 1.2em; }
+      .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-attack-rangebonus {
+        vertical-align: middle;
+        padding: 2px 8px;
+        color: red;
+        background-color: black;
+        font-family: kimberley; }
+      .fancy-ship .fancy-upgrade-container .upgrade-container .info-attack {
+        margin-right: 2px; }
+      .fancy-ship .fancy-upgrade-container .upgrade-container .xwing-miniatures-font {
+        vertical-align: middle; }
+      .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-text {
+        padding-right: 33.75px;
+        padding-left: 26px;
+        margin-left: 10px; }
+  .fancy-ship .ship-points-total {
+    text-align: right;
+    padding-bottom: 3px;
+    margin-left: 60px;
+    margin-bottom: 5px;
+    margin-right: 30px;
+    clear: both; }
+
+.bbcode-list textarea, textarea.xws-content, .html-list textarea, .reddit-list textarea, .tts-list textarea, .simplecopy-list textarea {
+  width: 95%;
+  height: 200px;
+  cursor: text; }
+
+.indent {
+  padding-left: 10px; }
+
+.conditions-container {
+  width: 90em; }
+
+.condition {
+  float: left;
+  width: 20em;
+  margin: 5px;
+  padding: 1em;
+  border-radius: 10px;
+  background: white;
+  color: black; }
+  .condition > .name {
+    font-family: EurostileStandardBold;
+    font-weight: 100;
+    font-style: italic; }
+
+.obstacle-select-container {
+  float: left; }
+
+.obstacle-image-container {
+  float: left;
+  margin-left: 10px;
+  background-repeat: no-repeat; }
