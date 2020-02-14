@@ -18865,7 +18865,7 @@ exportObj.cardLoaders.English = function() {
     },
     "Dreadnought Hunter": {
       display_name: "Dreadnought Hunter",
-      text: "<strong>Requires:</strong> Small ship and initiative 4 or higher.</i>%LINEBREAK%<i> While you perform an attack against a huge ship, if the attack deals a faceup damage card to the defender and the defender is in your %BULLSEYEARC%, you may apply the <strong>Precision Shot</strong> effect even if you are not in the specified arc."
+      text: "<strong>Requires:</strong> Small ship and initiative 4 or higher.</i>%LINEBREAK% While you perform an attack against a huge ship, if the attack deals a faceup damage card to the defender and the defender is in your %BULLSEYEARC%, you may apply the <strong>Precision Shot</strong> effect even if you are not in the specified arc."
     },
     "Ion Cannon Battery": {
       display_name: "Ion Cannon Battery",
