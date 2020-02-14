@@ -12750,7 +12750,7 @@ exportObj.basicCardData = function() {
         id: 410,
         faction: "First Order",
         pilot: "Kylo Ren",
-        ship: "TIE Silencer",
+        ship: "TIE/VN Silencer",
         threat: [6, 8],
         wingmates: [2, 3],
         suffix: " and his wing",
@@ -17926,7 +17926,7 @@ exportObj.cardLoaders.English = function() {
     },
     "Battle Meditation": {
       display_name: "Battle Meditation",
-      text: "<i>Adds %COORDINATE%</i>%LINEBREAK%<i>Galactic Republic only</i>%LINEBREAK%You cannot coordinate limited ships.%LINEBREAK% While you perform a purple %COORDINATE% action, you may coordinate 1 additional friendly non-limited ship of the same type. Both ships must perform the same action."
+      text: "<i>Adds %F-COORDINATE%</i>%LINEBREAK%<i>Galactic Republic only</i>%LINEBREAK%You cannot coordinate limited ships.%LINEBREAK% While you perform a purple %COORDINATE% action, you may coordinate 1 additional friendly non-limited ship of the same type. Both ships must perform the same action."
     },
     "Baze Malbus": {
       display_name: "Baze Malbus",
@@ -18865,7 +18865,7 @@ exportObj.cardLoaders.English = function() {
     },
     "Dreadnought Hunter": {
       display_name: "Dreadnought Hunter",
-      text: "While you perform an attack against a huge ship, if the attack deals a faceup damage card to the defender and the defender is in your %BULLSEYEARC%, you may apply the <strong>Precision Shot</strong> effect even if you are not in the specified arc."
+      text: "<strong>Requires:</strong> Small ship and initiative 4 or higher.</i>%LINEBREAK%<i> While you perform an attack against a huge ship, if the attack deals a faceup damage card to the defender and the defender is in your %BULLSEYEARC%, you may apply the <strong>Precision Shot</strong> effect even if you are not in the specified arc."
     },
     "Ion Cannon Battery": {
       display_name: "Ion Cannon Battery",
@@ -24239,7 +24239,7 @@ exportObj.cardLoaders.Magyar = function() {
     },
     "Fenn Rau (Sheathipede)": {
       display_name: "Fenn Rau",
-      text: "Miután egy ellenséges hajó a tűzívedben sorra kerül az Ütközet fázisban, ha nem vagy stresszes, kaphatsz 1 stressz jelzőt. Ha így teszel, az a hajó nem költhet el jelzőt, hogy módosítsa támadókockáit e fázis alatt.%LINEBREAK%<sasmall><strong>Comms Shuttle:</strong> Amikor dokkolva vagy az anyahajód %COORDINATE% akció lehetőséget kap. Az anyahajód aktiválása előtt végrehajthat egy %COORDINATE% akciót.</sasmall>"
+      text: "Mielőtt egy ellenséges hajó a tűzívedben sorra kerül az Ütközet fázisban, ha nem vagy stresszes, kaphatsz 1 stressz jelzőt. Ha így teszel, az a hajó nem költhet el jelzőt, hogy módosítsa támadókockáit e fázis alatt.%LINEBREAK%<sasmall><strong>Comms Shuttle:</strong> Amikor dokkolva vagy az anyahajód %COORDINATE% akció lehetőséget kap. Az anyahajód aktiválása előtt végrehajthat egy %COORDINATE% akciót.</sasmall>"
     },
     "Fenn Rau": {
       display_name: "Fenn Rau",
@@ -24475,11 +24475,11 @@ exportObj.cardLoaders.Magyar = function() {
     },
     "Norra Wexley (Y-Wing)": {
       display_name: "Norra Wexley",
-      text: "Amikor védekezel, ha az ellenség 0-1-es távolságban van, adj 1&nbsp;%EVADE% eredményt a dobásodhoz."
+      text: "Amikor védekezel, ha van egy ellenséges hajó 0-1-es távolságban van, adj 1&nbsp;%EVADE% eredményt a dobásodhoz."
     },
     "Norra Wexley": {
       display_name: "Norra Wexley",
-      text: "Amikor védekezel, ha az ellenség 0-1-es távolságban van, adj 1&nbsp;%EVADE% eredményt a dobásodhoz."
+      text: "Amikor védekezel, ha van egy ellenséges hajó 0-1-es távolságban van, adj 1&nbsp;%EVADE% eredményt a dobásodhoz."
     },
     "N'dru Suhlak": {
       display_name: "N’dru Suhlak",
@@ -24738,13 +24738,13 @@ exportObj.cardLoaders.Magyar = function() {
       text: "<strong>Felhelyezés:</strong> Miután  felhelyezésre kerültél, a többi baráti hajó bárhova helyezhető a játékterületen tőled 0-2-es távolságban.%LINEBREAK%<strong>Linked battery:</strong> Amikor végrehajtasz egy %CANNON% támadást, dobj 1-gyel több támadókockával."
     },
     '"Backdraft"': {
-      text: "Amikor végrehajtasz egy %SINGLETURRETARC% elsődleges támadást, ha a védekező benne van a %REARARC% tűzívedben dobj 1-gyel több kockával.%LINEBREAK%<strong>Heavy Weapon Turret:</strong> A %SINGLETURRETARC% mutatódat csak %FRONTARC% vagy %REARARC% irányba forgathatod. A felszerelt %MISSILE% fejlesztésed %FRONTARC% követelményét kezeld úgy mintha %SINGLETURRETARC% lenne."
+      text: "Amikor végrehajtasz egy %SINGLETURRETARC% elsődleges támadást, ha a védekező benne van a %REARARC% tűzívedben dobj 1-gyel több kockával.%LINEBREAK%<strong>Heavy Weapon Turret:</strong> A %SINGLETURRETARC% mutatódat csak %FRONTARC% vagy %REARARC% irányba forgathatod. A felszerelt %MISSILE% fejlesztésed %FRONTARC% követelményét úgy <b>kell</b> kezelned mintha %SINGLETURRETARC% lenne."
     },
     '"Quickdraw"': {
-      text: "Miután elvesztesz egy pajzsot, elkölthetsz 1&nbsp;%CHARGE% jelzőt. Ha így teszel, végrehajthatsz egy bónusz elsődleges támadást.%LINEBREAK%<strong>Heavy Weapon Turret:</strong> A %SINGLETURRETARC% mutatódat csak %FRONTARC% vagy %REARARC% irányba forgathatod. A felszerelt %MISSILE% fejlesztésed %FRONTARC% követelményét kezeld úgy mintha %SINGLETURRETARC% lenne."
+      text: "Miután elvesztesz egy pajzsot, elkölthetsz 1&nbsp;%CHARGE% jelzőt. Ha így teszel, végrehajthatsz egy bónusz elsődleges támadást.%LINEBREAK%<strong>Heavy Weapon Turret:</strong> A %SINGLETURRETARC% mutatódat csak %FRONTARC% vagy %REARARC% irányba forgathatod. A felszerelt %MISSILE% fejlesztésed %FRONTARC% követelményét úgy <b>kell</b> kezelned mintha %SINGLETURRETARC% lenne."
     },
     "Zeta Squadron Survivor": {
-      text: "<strong>Heavy Weapon Turret:</strong> A %SINGLETURRETARC% mutatódat csak %FRONTARC% vagy %REARARC% irányba forgathatod. A felszerelt %MISSILE% fejlesztésed %FRONTARC% követelményét kezeld úgy mintha %SINGLETURRETARC% lenne."
+      text: "<strong>Heavy Weapon Turret:</strong> A %SINGLETURRETARC% mutatódat csak %FRONTARC% vagy %REARARC% irányba forgathatod. A felszerelt %MISSILE% fejlesztésed %FRONTARC% követelményét úgy <b>kell</b> kezelned mintha %SINGLETURRETARC% lenne."
     },
     "Rey": {
       text: "Amikor védekezel vagy támadást hajtasz végre, ha az ellenséges hajó benne van a %FRONTARC% tűzívedben, elkölthetsz 1&nbsp;%FORCE% jelzőt, hogy 1 üres eredményed %EVADE% vagy %HIT% eredményre változtasd."
@@ -24851,13 +24851,13 @@ exportObj.cardLoaders.Magyar = function() {
       text: "Amikor egy baráti hajó 1-2-es távolságban, a tiédnél alacsonyabb kezdeményezéssel védekezik vagy támadást hajt végre, ha van legalább 1&nbsp;%CHARGE% jelződ, az a hajó újradobhat 1&nbsp;%FOCUS% eredményét. Miután egy ellenséges hajó 0-3-as távolságban megsemmisül, elvesztesz 1&nbsp;%CHARGE% jelzőt.%LINEBREAK%<strong>Linked battery:</strong> Amikor végrehajtasz egy %CANNON% támadást, dobj 1-gyel több támadókockával."
     },
     '"Avenger"': {
-      text: "Miután egy ellenséges hajó 0-3-as távolságban megsemmisül végrehajthatsz egy akciót, akkor is ha stresszes vagy. %LINEBREAK%<strong>Autothrusters:</strong> Miután végrehajtasz egy akciót, végrehajthatsz egy piros %BARRELROLL% vagy piros %BOOST% akciót."
+      text: "Miután egy másik baráti hajó megsemmisül végrehajthatsz egy akciót, akkor is ha stresszes vagy. %LINEBREAK%<strong>Autothrusters:</strong> Miután végrehajtasz egy akciót, végrehajthatsz egy piros %BARRELROLL% vagy piros %BOOST% akciót."
     },
     '"Recoil"': {
       text: "Amikor stresszes vagy kezelheted úgy a %FRONTARC% tűzívedben 0-1-es távolságban lévő ellenséges hajókat, mintha a %BULLSEYEARC% tűzívedben lennének.%LINEBREAK%<strong>Autothrusters:</strong> Miután végrehajtasz egy akciót, végrehajthatsz egy piros %BARRELROLL% vagy piros %BOOST% akciót."
     },
     "Omega Squadron Expert": {
-      text: "<strong>Heavy Weapon Turret:</strong> A %SINGLETURRETARC% mutatódat csak %FRONTARC% vagy %REARARC% irányba forgathatod. A felszerelt %MISSILE% fejlesztésed %FRONTARC% követelményét kezeld úgy mintha %SINGLETURRETARC% lenne."
+      text: "<strong>Heavy Weapon Turret:</strong> A %SINGLETURRETARC% mutatódat csak %FRONTARC% vagy %REARARC% irányba forgathatod. A felszerelt %MISSILE% fejlesztésed %FRONTARC% követelményét úgy <b>kell</b> kezelned mintha %SINGLETURRETARC% lenne."
     },
     "Sienar-Jaemus Engineer": {
       text: "<strong>Autothrusters:</strong> Miután végrehajtasz egy akciót, végrehajthatsz egy piros %BARRELROLL% vagy piros %BOOST% akciót."
@@ -25118,6 +25118,119 @@ exportObj.cardLoaders.Magyar = function() {
     },
     "Gorgol": {
       text: "A Rendszer fázis alatt, kaphatsz 1 'inaktív fegyverzet' jelzőt, hogy válassz egy baráti hajót 1-2-es távolságban. Ha így teszel, az kap 1 vonósugár jelzőt, hogy megjavítsa 1 felfordított <strong>Ship</strong> sérüléskártyáját. %LINEBREAK%<strong>Pinpoint Tractor Array:</strong> A %SINGLETURRETARC% fegyveredet nem forgathatod a %REARARC% tűzívedbe. Miután végrehajtasz egy manővert, kaphatsz 1 vonósugár jelzőt, hogy végrehajts egy %ROTATEARC% akciót."
+    },
+    "Kazuda Xiono": {
+      text: "Amikor védekezel vagy elsődleges támadást hajtasz végre, ha az ellenséges hajó kezdeményezése nagyobb mint a sérüléskártyáid száma, dobj 1-gyel több támadókockával. %LINEBREAK%<strong>Explosion with Wings:</strong> Kapsz 1 lefordított sérüléskártyát. Miután végrehajtasz egy %SLAM% akciót, felfordíthatsz 1 sérüléskártyát, hogy levegyél 1 'inaktív fegyverzet' jelzőt."
+    },
+    "Major Vonreg": {
+      text: "A Rendszer fázis alatt választhatsz 1 ellenséges hajót a %BULLSEYEARC% tűzívedben. Az a hajó kap 1 kimerültség (-támadás) vagy feszültség(-védekezés) jelzőt a választásod szerint.%LINEBREAK%<strong>Fine-Tuned Thrusters:</strong> Miután teljesen végrehajtasz egy manővert, ha nem vagy kimerült vagy feszült, kaphatsz 1 kimerültség vagy feszültség jelzőt, hogy végrehajts egy %LOCK% vagy %BARRELROLL% akciót."
+    },
+    "First Order Provocateur": {
+      text: "<strong>Fine-Tuned Thrusters:</strong> Miután teljesen végrehajtasz egy manővert, ha nem vagy kimerült vagy feszült, kaphatsz 1 kimerültség vagy feszültség jelzőt, hogy végrehajts egy %LOCK% vagy %BARRELROLL% akciót."
+    },
+    '"Ember"': {
+      text: "Amikor végrehajtasz egy támadást, ha van egy sérült baráti hajó a védekezőtől 0-1-es távolságra, a védekező nem költhet %FOCUS% vagy %CALCULATE% jelzőt.%LINEBREAK%<strong>Fine-Tuned Thrusters:</strong> Miután teljesen végrehajtasz egy manővert, ha nem vagy kimerült vagy feszült, kaphatsz 1 kimerültség vagy feszültség jelzőt, hogy végrehajts egy %LOCK% vagy %BARRELROLL% akciót."
+    },
+    '"Holo"': {
+      text: "A Ütközet fázis elején át <b>kell</b> adnod 1 jelződet egy másik baráti hajónak 0-2-es távolságban.%LINEBREAK%<strong>Fine-Tuned Thrusters:</strong> Miután teljesen végrehajtasz egy manővert, ha nem vagy kimerült vagy feszült, kaphatsz 1 kimerültség vagy feszültség jelzőt, hogy végrehajts egy %LOCK% vagy %BARRELROLL% akciót."
+    },
+    "Captain Phasma": {
+      text: "Amikor védekezel, az <strong>Eredmények semlegesítése</strong> lépés után egy másik baráti hajónak el kell szenvednie 1 %HIT%/%CRIT% sérülést, hogy semlegesítsen 1 vele egyező sérülést.%LINEBREAK%<strong>Heavy Weapon Turret:</strong> A %SINGLETURRETARC% mutatódat csak %FRONTARC% vagy %REARARC% irányba forgathatod. A felszerelt %MISSILE% fejlesztésed %FRONTARC% követelményét úgy <b>kell</b> kezelned mintha %SINGLETURRETARC% lenne."
+    },
+    '"Rush"': {
+      text: "Amikor sérült vagy, kezeld a kezdeményezés értéked 6-osként. %LINEBREAK%<strong>Autothrusters:</strong> Miután végrehajtasz egy akciót, végrehajthatsz egy piros %BARRELROLL% vagy piros %BOOST% akciót."
+    },
+    "Zizi Tlo": {
+      text: "Miután védekezel vagy végrehajtasz egy támadást, elkölthetsz 1 %CHARGE% jelzőt, hogy szerezz 1 %FOCUS% vagy %EVADE% jelzőt. %LINEBREAK%<strong>Refined Gyrostabilizers:</strong> A %SINGLETURRETARC% mutatódat csak %FRONTARC% vagy %REARARC% irányba forgathatod. Miután végrehajtasz egy akciót, végrehajthatsz egy piros %BOOST% vagy %ROTATEARC% akciót."
+    },
+    "Ronith Blario": {
+      text: "Miután védekezel vagy végrehajtasz egy támadást, ha az ellenséges hajó benne van baráti hajó %SINGLETURRETARC% tűzívében, elkölthetsz 1 %FOCUS% jelzőt attól a baráti hajótól, hogy megváltoztass 1 %FOCUS% eredményed %EVADE% vagy %HIT% eredményre.%LINEBREAK%<strong>Refined Gyrostabilizers:</strong> A %SINGLETURRETARC% mutatódat csak %FRONTARC% vagy %REARARC% irányba forgathatod. Miután végrehajtasz egy akciót, végrehajthatsz egy piros %BOOST% vagy %ROTATEARC% akciót."
+    },
+    "Gina Moonsong": {
+      text: "Az Ütközet fázis elején, át kell adnod 1 stressz jelződ egy másik baráti hajónak 0-2-es távolságban."
+    },
+    "K-2SO": {
+      text: "Miután kapsz egy stressz jelzőt, kapsz 1 %CALCULATE% jelzőt."
+    },
+    "Alexsandr Kallus": {
+      text: "Amikor védekezel, ha a támadó támadókockát módosít, 1-gyel több védezekőkockával dobhatsz."
+    },
+    "Leia Organa": {
+      text: "Miután egy baráti hajó teljesen végrehajt egy piros manővert, ha az 0-3-as távolságban van, elkölthetsz 1 %FORCE% jelzőt. Ha így teszel, az a hajó kap 1 %FOCUS% jelzőt vagy visszatölt 1 %FORCE% jelzőt."
+    },
+    "Paige Tico": {
+      text: "Miután kidobsz egy eszközt, elkölthetsz 1 %CHARGE% jelzőt, hogy kidobj egy további eszközt."
+    },
+    "Fifth Brother": {
+      text: "Amikor végrehajtasz egy támadást, az <strong>Eredmények semlegesítése</strong> lépés után, ha a támadás talált, elkölthetsz 2 %FORCE% jelzőt, hogy hozzáadj 1 %CRIT% eredményt a dobáshoz."
+    },
+    '"Vagabond"': {
+      text: "Miután teljesen végrehajtasz egy manővert az <strong>Adaptive Ailerons</strong> használatával, ha nem vagy stresszes, kidobhatsz 1 eszközt.%LINEBREAK%<strong>Adaptive Ailerons:</strong> Mielőtt felfednéd a tárcsád, ha nem vagy stresszes, végre <b>kell</b> hajtanod egy fehér [1&nbsp;%BANKLEFT%), [1&nbsp;%STRAIGHT%] vagy [1&nbsp;%BANKRIGHT%] manővert."
+    },
+    "Morna Kee": {
+      text: "A Vége fázis alatt, elkölthetsz 1 %CHARGE% jelzőt, hogy átfordíts 1 erősítés jelződet ahelyett, hogy levennéd."
+    },
+    "Lieutenant LeHuse": {
+      text: "Amikor végrehajtasz egy támadást, elköltheted egy másik baráti hajó védekezőn lévő bemérőjét, hogy újradobj bármennyi kockádat.%LINEBREAK%<strong>Heavy Weapon Turret:</strong> A %SINGLETURRETARC% mutatódat csak %FRONTARC% vagy %REARARC% irányba forgathatod. A felszerelt %MISSILE% fejlesztésed %FRONTARC% követelményét úgy <b>kell</b> kezelned mintha %SINGLETURRETARC% lenne."
+    },
+    "Bossk (Z-95 Headhunter)": {
+      display_name: "Bossk",
+      text: "Amikor végrehajtasz egy elsődleges támadást, az <strong>Eredmények semlegesítése</strong> lépés után, elkölthetsz egy %CRIT% eredményt, hogy hozzáadj 2 %HIT% eredményt a dobásodhoz. %LINEBREAK%<strong>Pursuit Craft:</strong> Miután kidokkoltál, bemérőt tehetsz arra a hajóra , amin a baráti <strong>Hound's Tooth</strong> hajónak is van bemérője."
+    },
+    "G4R-GOR V/M": {
+      text: "Miután védekezel, minden másik 0-ás távolságra lévő hajó elszenved 1 %CRIT% sérülést.%LINEBREAK%<strong>Weapon Hardpoint:</strong> Felszerelhetsz 1&nbsp;%CANNON%, %TORPEDO% vagy %MISSILE% fejlesztést."
+    },
+    "Nom Lumb": {
+      text: "Miután védekező lettél, ha a támadó nincs a %SINGLETURRETARC% tűzívedben, át kell forgasd a %SINGLETURRETARC% tűzív jelződ, abba a standard tűzívbe, ahol a támadó van."
+    },
+    "Jarek Yeager": {
+      text: "Amikor 2 vagy kevesebb stressz jelződ van, ha sérült vagy, végrehajthatsz piros alapmanővereket még stresszesen is. Ha kritikus sérülésed van, végrehajthatsz fejlett piros manővereket is, még stresszesen is. %LINEBREAK%<strong>Explosion with Wings:</strong> Kapsz 1 lefordított sérüléskártyát. Miután végrehajtasz egy %SLAM% akciót, felfordíthatsz 1 sérüléskártyát, hogy levegyél 1 'inaktív fegyverzet' jelzőt."
+    },
+    "R1-J5": {
+      text: "Mielőtt felfordítasz 1 sérüléskártyád, nézd meg a lefordított sérüléskártyáid, válassz 1-et és azt fordítsd fel.%LINEBREAK%<strong>Explosion with Wings:</strong> Kapsz 1 lefordított sérüléskártyát. Miután végrehajtasz egy %SLAM% akciót, felfordíthatsz 1 sérüléskártyát, hogy levegyél 1 'inaktív fegyverzet' jelzőt."
+    },
+    "Colossus Station Mechanic": {
+      text: "<strong>Explosion with Wings:</strong> Kapsz 1 lefordított sérüléskártyát. Miután végrehajtasz egy %SLAM% akciót, felfordíthatsz 1 sérüléskártyát, hogy levegyél 1 'inaktív fegyverzet' jelzőt."
+    },
+    "Republic Judiciary": {
+      display_name: "Republic Judiciary",
+      text: "<i class = flavor_text>The Galactic Republic uses small, swift warships such as the CR90 corvette to respond rapidly to Separatist incursions across the galaxy.</i> %LINEBREAK% <strong>Broadside Batteries:</strong> You can acquire locks and perform primary attacks at range 1-4."
+    },
+    "Alderaanian Guard": {
+      display_name: "Alderaanian Guard",
+      text: "<i class = flavor_text>A craft used since before the Clone Wars, the CR90 corvette is favored by the Royal House of Alderaan for its versatility.</i> %LINEBREAK% <strong>Broadside Batteries:</strong> You can acquire locks and perform primary attacks at range 1-4."
+    },
+    "Outer Rim Patrol": {
+      display_name: "Outer Rim Patrol",
+      text: "<i class = flavor_text>The <untalic>Raider</untalic>-class corvette is one of the Empire's smallest warships, often used for reconnaissance missions, surgical strikes, or suppressing enemy starfighters with its powerful ordnance.</i> %LINEBREAK% <strong>Concentrated Batteries:</strong> While you perform a primary, %TORPEDO%, or %MISSILE% attack, if the defender is in your %BULLSEYEARC%, roll 1 additional die."
+    },
+    "First Order Collaborators": {
+      display_name: "First Order Collaborators",
+      text: "<i class = flavor_text>The First Order's supporters make use of former Imperial vessels, such as the <untalic>Raider</untalic>-class corvette. Though it has outlived the regime that created it, this craft still spreads terror across the galaxy.</i> %LINEBREAK% <strong>Concentrated Batteries:</strong> While you perform a primary, %TORPEDO%, or %MISSILE% attack, if the defender is in your %BULLSEYEARC%, roll 1 additional die."
+    },
+    "Echo Base Evacuees": {
+      display_name: "Echo Base Evacuees",
+      text: "<i class = flavor_text>The GR-75 medium transport acquitted itself well at battles such as the evacuation of Hoth, where several of these ships were pivotal to the Rebel forces' escape.</i> %LINEBREAK% <strong>Resupply Craft:</strong> After another friendly ship at range 0-1 performs an action, you may spend 1 %ENERGY%. If you do, it removes 1 orange or red token, or recovers 1 shield."
+    },
+    "New Republic Volunteers": {
+      display_name: "New Republic Volunteers",
+      text: "<i class = flavor_text>In use since the Galactic Civil War, groups within the New Republic still utilize the GR-75 medium transport for supply and aid missions.</i> %LINEBREAK% <strong>Resupply Craft:</strong> After another friendly ship at range 0-1 performs an action, you may spend 1 %ENERGY%. If you do, it removes 1 orange or red token, or recovers 1 shield."
+    },
+    "Outer Rim Garrison": {
+      display_name: "Outer Rim Garrison",
+      text: "<i class = flavor_text>Capable of carrying TIE fighters and operating independently for long periods of time, the <untalic>Gozanti</untalic>-class cruiser is a common sight in the skies of downtrodden worlds across the Outer Rim.</i> %LINEBREAK% <strong>Docking Clamps:</strong> You can dock up to 4 small ships."
+    },
+    "First Order Sympathizers": {
+      display_name: "First Order Sympathizers",
+      text: "<i class = flavor_text>The First Order's swift rise to power rests upon ruthless innovation. However, sympathizers often repurpose Imperial designs, like the venerable <untalic>Gozanti</untalic>-class cruiser, in surveillance and patrol operations.</i> %LINEBREAK% <strong>Docking Clamps:</strong> You can dock up to 4 small ships."
+    },
+    "Separatist Privateers": {
+      display_name: "Separatist Privateers",
+      text: "<i class = flavor_text>The Separatist Alliance makes use of all manner of unsavory contacts in its fight against the Galactic Republic, including corsairs and criminal cartels.</i> %LINEBREAK% <strong>Overdrive Burners:</strong> While you defend, if your revealed maneuver is speed 3-5, roll 1 additional defense die."
+    },
+    "Syndicate Smugglers": {
+      display_name: "Syndicate Smugglers",
+      text: "<i class = flavor_text>Vessels like the C-ROC Cruiser allow criminal operations across the Outer Rim to move massive amounts of illicit materials, or project power that can bully small colonies into compliance.</i> %LINEBREAK% <strong>Overdrive Burners:</strong> While you defend, if your revealed maneuver is speed 3-5, roll 1 additional defense die."
     }
   };
   upgrade_translations = {
@@ -25227,7 +25340,7 @@ exportObj.cardLoaders.Magyar = function() {
     },
     "Agent Kallus": {
       display_name: "Agent Kallus",
-      text: "<i>csak Birodalom</i>%LINEBREAK%<strong>Felhelyezés:</strong> rendelt hozzá a <strong>Hunted</strong> kondíciót 1 ellenséges hajóhoz. Amikor végrehajtasz egy támadást a <strong>Hunted</strong> kondícióval rendelkező hajó ellen, 1&nbsp;%FOCUS% eredményed %HIT% eredményre változtathatod."
+      text: "<i>csak Birodalom</i>%LINEBREAK%<strong>Felhelyezés:</strong> felhelyezés után rendelt hozzá a <strong>Hunted</strong> kondíciót 1 ellenséges hajóhoz. Amikor végrehajtasz egy támadást a <strong>Hunted</strong> kondícióval rendelkező hajó ellen, 1&nbsp;%FOCUS% eredményed %HIT% eredményre változtathatod."
     },
     "Agile Gunner": {
       display_name: "Agile Gunner",
@@ -25303,7 +25416,7 @@ exportObj.cardLoaders.Magyar = function() {
     },
     "Composure": {
       display_name: "Composure",
-      text: "<i>Követelmény <r>%FOCUS%</r> vagy %FOCUS%</i>%LINEBREAK%Ha nem sikerül végrehajtani egy akciót és nincs zöld jelződ, végrehajthatsz egy %FOCUS% akciót."
+      text: "<i>Követelmény <r>%FOCUS%</r> vagy %FOCUS%</i>%LINEBREAK%Ha nem sikerül végrehajtani egy akciót és nincs zöld jelződ, végrehajthatsz egy %FOCUS% akciót. Ha így teszel, nem hajthatsz végre további akciót ebben a körben."
     },
     "Concussion Missiles": {
       display_name: "Concussion Missiles",
@@ -25523,7 +25636,7 @@ exportObj.cardLoaders.Magyar = function() {
     },
     "Lando's Millennium Falcon": {
       display_name: "Lando’s Millennium Falcon",
-      text: "<i>csak Söpredék</i>%LINEBREAK%1 Escape Craft be lehet dokkolva. Amikor egy Escape Craft be van dokkolva, elköltheted a pajzsait, mintha a te hajódon lenne. Amikor végrehajtasz egy elsődleges támadást stresszelt hajó ellen, dobj 1-gyel több támadókockával."
+      text: "<i>csak Söpredék</i>%LINEBREAK%1 Escape Craft be lehet dokkolva. Amikor egy Escape Craft be van dokkolva, kezelheted úgy a pajzsait, mintha a te hajódon lenne. Amikor végrehajtasz egy elsődleges támadást stresszelt hajó ellen, dobj 1-gyel több támadókockával."
     },
     "Latts Razzi": {
       display_name: "Latts Razzi",
@@ -25575,7 +25688,7 @@ exportObj.cardLoaders.Magyar = function() {
     },
     "Os-1 Arsenal Loadout": {
       display_name: "Os-1 Arsenal Loadout",
-      text: "<i>Kapsz egy %TORPEDO% és egy %MISSILE% fejlesztés helyet.</i>%LINEBREAK%Amikor pontosan 1 'inaktív fegyverzet' jelződ van, akkor is végre tudsz hajtani %TORPEDO% és %MISSILE% támadást bemért célpontok ellen. Ha így teszel, nem használhatod el a bemérődet a támadás alatt."
+      text: "<i>Kapsz egy %TORPEDO% és egy %MISSILE% fejlesztés helyet.</i>%LINEBREAK%Amikor pontosan 1 'inaktív fegyverzet' jelződ van, akkor is végre tudsz hajtani %TORPEDO% és %MISSILE% támadást a bemért célpontjaid ellen. Ha így teszel, nem használhatod el a bemérődet a támadás alatt."
     },
     "Outmaneuver": {
       display_name: "Outmaneuver",
@@ -25707,7 +25820,7 @@ exportObj.cardLoaders.Magyar = function() {
     },
     "Static Discharge Vanes": {
       display_name: "Static Discharge Vanes",
-      text: "Mielőtt kapnál 1 ion vagy zavarás jelzőt, ha nem vagy stresszes, választhatsz egy másik hajót 0-1-es távolságban és kapsz 1 stressz jelzőt. Ha így teszel, a kiválasztott hajó kapja meg az ion vagy zavarás jelzőt helyetted."
+      text: "Mielőtt kapnál 1 ion vagy zavarás jelzőt, ha nem vagy stresszes, választhatsz egy másik hajót 0-1-es távolságban és kapsz 1 stressz jelzőt. Ha így teszel, a kiválasztott hajó kapja meg az ion vagy zavarás jelzőt helyetted, majd szenvedj el egy %HIT% sérülést."
     },
     "Stealth Device": {
       display_name: "Stealth Device",
@@ -26053,7 +26166,247 @@ exportObj.cardLoaders.Magyar = function() {
     },
     "Snap Shot": {
       display_name: "Snap Shot",
-      text: "Miután egy ellenséges hajó végrehajt egy manővert, végrehajthatsz egy támadást ellene, mint bónusz támadás. <br> <strong>Támadás:</strong> A kockáid nem módosíthatók."
+      text: "Miután egy ellenséges hajó végrehajt egy manővert, végrehajthatsz egy támadást ellene, mint bónusz támadás.<br><strong>Támadás:</strong> A kockáid nem módosíthatók."
+    },
+    "Deuterium Power Cells": {
+      display_name: "Deuterium Power Cells",
+      text: "A Rendszer fázis alatt elkölthetsz 1 %CHARGE% jelzőt, kapsz 1 inaktív fegyverzet jelzőt, hogy visszatölts 1 %SHIELD% jelzőt. Mielőtt kapnál 1 nem bemérő jelzőt, ha nem vagy stresszes, elkölthetsz 1 %CHARGE% jelzőt, hogy stressz jelzőt kapjál helyette."
+    },
+    "Mag-Pulse Warheads": {
+      display_name: "Mag-Pulse Warheads",
+      text: "<strong>Támadás (%LOCK%):</strong> Költs el 1 %CHARGE% jelzőt. Ha a támadás talált, a védekező elszenved 1 %CRIT% sérülés és kap egy kimerültség és 1 zavarás jelzőt. Aztán semlegesíts minden %HIT%/%CRIT% eredményt."
+    },
+    "Coaxium Hyperfuel": {
+      display_name: "Coaxium Hyperfuel",
+      text: "Akkor is tudsz %SLAM% akciót végrehajtani, ha stresszes vagy. Ha így teszel, elszenvedsz 1 %CRIT% sérülést, hacsak nem fordítasz fel 1 sérüléskártyád. Miután részlegesen végrehejtasz egy manővert, felfordíthatsz 1 sérüléskártyád, vagy elszenvedhetsz 1 %CRIT% sérülést, hogy végrehajts egy %SLAM% akciót."
+    },
+    "R1-J5": {
+      display_name: "R1-J5",
+      text: "Amikor 2 vagy kevesebb stressz jelződ van, végrehajthatsz sérüléskártyákon lévő akciókat még stressesen is. Miután megjavítasz egy <b>Ship</b> sérüléskártyát, elkölthetsz 1 %CHARGE% jelzőt, hogy újra megjavítsd azt a kártyát."
+    },
+    "Stabilized S-Foils": {
+      display_name: "Stabilized S-Foils",
+      text: "<strong>Zárva: </strong><i>Kapott akciók: <r>%RELOAD%</r>, %BARRELROLL% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i><r> %EVADE%</r></i>%LINEBREAK% Mielőtt aktiválódsz, ha nincs kritikus sérülésed, átfordíthatod ezt a kártyát. %LINEBREAK% <strong>Nyitva:</strong> <i>Kapott akciók: %BARRELROLL% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i><r> %LOCK%</r></i>%LINEBREAK% Miután végrehajtasz egy támadást, elköltheted a védekezőn lévő bemérődet, hogy végrehajts egy bónusz %CANNON% támadást azon hajó ellen azzal a %CANNON% fejlesztéssel, amelyet még nem használtál ebben a körben. %LINEBREAK% Mielőtt aktiválódsz, ha nincs kritikus sérülésed, átfordíthatod ezt a kártyát."
+    },
+    "K-2SO": {
+      text: "Kapott akciók: %CALCULATE%, %JAM% %LINEBREAK% A Rendszer fázis alatt kiválaszthatsz egy baráti hajót 0-3-as távolságban. Az a hajó kap 1 %CALCULATE% jelzőt és 1 stressz jelzőt."
+    },
+    "Proud Tradition": {
+      text: "<strong>Proud Tradition</strong>%LINEBREAK%<strong>Felhelyezés:</strong> ezzel az oldalával szereld fel. %LINEBREAK% Amíg 2 vagy kevesebb stressz jelződ van, végrehajthatsz %FOCUS% akciót még stresszesen is. Miután végrehajtasz egy támadást, ha stresszes vagy, a védekező elkölthet 1 %FOCUS% jelzőt vagy elszenvedhet 1 %CRIT% sérülést, hogy megfordítsa ezt a kártyát.%LINEBREAK% <strong>False Tradition</strong>%LINEBREAK% Kezeld a %FOCUS% akciód pirosként."
+    },
+    "Cluster Mines": {
+      text: "A Rendszer fázisban elkölthetsz 1&nbsp;%CHARGE% jelzőt, hogy ledobj egy Cluster aknát az [1&nbsp;%STRAIGHT%] sablonnal. Ennek a kártyának a %CHARGE% jelzője <strong>nem</strong> újratölthető."
+    },
+    "Kaz's Fireball": {
+      text: "<strong>Felhelyezés:</strong> Amikor végrehajtod a <strong>Explosion with Wings</strong> hatást, kikereshetsz a sérülkártya paklidból egy <b>Ship</b> sérüléskártyát, hogy azt osszad ki magadnak. Aztán keverd meg a paklit.%LINEBREAK% Végrehajthatsz sérüléskártya akciót ionozáltan is."
+    },
+    "Admiral Ozzel": {
+      display_name: "Admiral Ozzel",
+      text: "While a friendly large or huge ship at range 0-3 executes a maneuver, it may suffer 1 %HIT% damage to execute a maneuver of the same bearing and difficulty of a speed 1 higher or lower instead."
+    },
+    "Azmorigan": {
+      display_name: "Azmorigan",
+      text: "During the End Phase, you may choose up to 2 friendly ships at range 0-1. If you do, each of these ships does not remove 1 calculate or evade token."
+    },
+    "Captain Needa": {
+      display_name: "Captain Needa",
+      text: "After a friendly ship at range 0-4 reveals its dial, you may spend 1 %CHARGE%. If you do, it sets its dial to another maneuver of the same difficulty and speed."
+    },
+    "Strategic Commander": {
+      display_name: "Strategic Commander",
+      text: "After a friendly ship at range 0-4 reveals its dial, you may spend 1 %CHARGE%. If you do, it sets its dial to another maneuver of the same difficulty and speed."
+    },
+    "Carlist Rieekan": {
+      display_name: "Carlist Rieekan",
+      text: "After a friendly ship at range 0-2 is destroyed, you may choose a friendly ship at range 0-2. If you do, it may perform a red %EVADE% action."
+    },
+    "Jan Dodonna": {
+      display_name: "Jan Dodonna",
+      text: "Friendly ships at range 0-3 can spend your focus and evade tokens."
+    },
+    "Raymus Antilles": {
+      display_name: "Raymus Antilles",
+      text: "After you are destroyed, each friendly ship at range 0-1 gains 1 focus token. After you are destroyed, you are not removed until the end of the End Phase."
+    },
+    "Stalwart Captain": {
+      display_name: "Stalwart Captain",
+      text: "After you are destroyed, you are not removed until the end of the End Phase."
+    },
+    "Agent of the Empire": {
+      display_name: "Agent of the Empire",
+      text: "You are a <strong>wing leader</strong>. Your wingmates must be 2, 3, 4, or 5 TIE/ln fighters. %LINEBREAK% While you defend, up to 2 of your wingmates in the attack arc may suffer 1 %HIT% or %CRIT% damage to cancel a matching result."
+    },
+    "First Order Elite": {
+      display_name: "First Order Elite",
+      text: "You are a <strong>wing leader</strong>. Your wingmates must be 2 or 3 TIE/fo fighters or TIE/sf fighters. %LINEBREAK% While you defend, up to 2 of your wingmates in the attack arc may suffer 1 %HIT% or %CRIT% damage to cancel a matching result."
+    },
+    "Veteran Wing Leader": {
+      display_name: "Veteran Wing Leader",
+      text: "You are a <strong>wing leader</strong>. Your wingmates must be 2, 3, 4, or 5 other ships of your ship type. %LINEBREAK% While you defend, up to 2 of your wingmates in the attack arc may suffer 1 %HIT% or %CRIT% damage to cancel a matching result."
+    },
+    "Dreadnought Hunter": {
+      display_name: "Dreadnought Hunter",
+      text: "While you perform an attack against a huge ship, if the attack deals a faceup damage card to the defender and the defender is in your %BULLSEYEARC%, you may apply the <strong>Precision Shot</strong> effect even if you are not in the specified arc."
+    },
+    "Ion Cannon Battery": {
+      display_name: "Ion Cannon Battery",
+      text: "<strong>Online: </strong> Setup: Equip this side faceup.%LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. If this attack hits, the defender suffers 1 %CRIT% damage, and all %HIT%/%CRIT% results inflict ion tokens instead of damage. %LINEBREAK%<strong>Offline: </strong> %LINEBREAK% After you engage, you may spend 2 %ENERGY% to flip this card."
+    },
+    "Targeting Battery": {
+      display_name: "Targeting Battery",
+      text: "<strong>Online: </strong> Setup: Equip this side faceup.%LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. After you perform this attack, you may acquire a lock on the defender. %LINEBREAK%<strong>Offline: </strong> %LINEBREAK% After you engage, you may spend 2 %ENERGY% to flip this card."
+    },
+    "Ordnance Tubes": {
+      display_name: "Ordnance Tubes",
+      text: "<strong>Online: </strong> Setup: Equip this side faceup. %LINEBREAK% You can perform %TORPEDO% and %MISSILE% attacks only as bonus attacks. You <strong>must</strong> treat the %FRONTARC% requirement of your equipped %TORPEDO% and %MISSILE% upgrades as %FULLFRONTARC%. %LINEBREAK% Bonus Attack: Perform a %TORPEDO% attack. %LINEBREAK% Bonus Attack: Perform a %MISSILE% attack. %LINEBREAK%<strong>Offline: </strong> %LINEBREAK% You must treat the %FRONTARC% requirement of your equipped %TORPEDO% and %MISSILE% upgrades as %BULLSEYEARC%. %LINEBREAK% Action: Spend 2 %ENERGY% to flip this card."
+    },
+    "Point-Defense Battery": {
+      display_name: "Point-Defense Battery",
+      text: "<strong>Online: </strong> Setup: Equip this side faceup. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK%<strong>Offline: </strong> %LINEBREAK% After you engage, you may spend 2 %ENERGY% to flip this card."
+    },
+    "Turbolaser Battery": {
+      display_name: "Turbolaser Battery",
+      text: "<strong>Requires:</strong> 5 or more energy</i>%LINEBREAK%<i><strong>Online: </strong> Setup: Equip this side faceup.%LINEBREAK% Bonus Attack (%LOCK%): Spend 3 %ENERGY%. If this attack hits, add 3 %HIT% results. %LINEBREAK% <strong>Offline: </strong> %LINEBREAK% After you engage, you may spend 2 %ENERGY% to flip this card."
+    },
+    "Bombardment Specialists": {
+      display_name: "Bombardment Specialists",
+      text: "Adds %LOCK% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> %CALCULATE%. %LINEBREAK% While you perform an attack, you may spend 1 calculate token to increase or decrease the range requirement by 1, to a limit of 0-5."
+    },
+    "Comms Team": {
+      display_name: "Comms Team",
+      text: "Adds %COORDINATE% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> %CALCULATE%, %JAM% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> %CALCULATE%. %LINEBREAK% After you perform a %COORDINATE% action, you may spend up to 2 %ENERGY% to coordinate that many additional ships at range 0-1 of the ship you coordinated."
+    },
+    "IG-RM Droids": {
+      display_name: "IG-RM Droids",
+      text: "While you perform an attack, if you are calculating, you may change 1 %HI% result to a %CRIT% result."
+    },
+    "Gunnery Specialists": {
+      display_name: "Gunnery Specialists",
+      text: "Adds %ROTATEARC% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> %CALCULATE%. %LINEBREAK% While you perform a primary or %HARDPOINT% attack, you may spend 1 or more %ENERGY% to reroll that many attack dice."
+    },
+    "Damage Control Team": {
+      display_name: "Damage Control Team",
+      text: "Adds %REINFORCE% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> %CALCULATE%. %LINEBREAK% Before you engage, you may spend 1 or more %ENERGY% to flip that many of your <strong>Offline</strong> upgrade cards.%LINEBREAK% Action: Spend 1 or more %ENERGY% to repair that many of your faceup <strong>Ship</strong> damage cards."
+    },
+    "Ordnance Team": {
+      display_name: "Ordnance Team",
+      text: "Adds %RELOAD% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> %CALCULATE%. %LINEBREAK% While you perform a %RELOAD% action, you may spend up to 3 %ENERGY% to reload that many additional %CHARGE% on your equipped %MISSILE%/%TORPEDO% upgrades. %LINEBREAK% After you perform a %RELOAD% action, you may spend 1 %ENERGY% to remove 1 disarm token."
+    },
+    "Sensor Experts": {
+      display_name: "Sensor Experts",
+      text: "Adds %LOCK% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> %CALCULATE%. %LINEBREAK% You can maintain up to 3 locks on different objects. %LINEBREAK% After you perform a %LOCK% action, you may spend up to 2 %ENERGY% to acquire a lock on that many other objects at range 0-1 of the object you locked, ignoring range restrictions."
+    },
+    "Quick-Release Locks": {
+      display_name: "Quick-Release Locks",
+      text: "During the System Phase, you may spend 1 %CHARGE% to drop 1 cargo crate drift using the [2 %BANKLEFT%], [2 %STRAIGHT%], or [2 %BANKRIGHT%] template. %LINEBREAK% This card's %CHARGE% cannot be recovered."
+    },
+    "Saboteur's Map": {
+      display_name: "Saboteur's Map",
+      text: "At the end of Setup, you may spend up to 1 %CHARGE% from each of your equipped <strong>Mine</strong> upgrades to place the corresponding device in the play area beyond range 2 of any enemy ship, strategic marker, or other device."
+    },
+    "Scanner Baffler": {
+      display_name: "Scanner Baffler",
+      text: "At the end of Setup, you may choose any number of other friendly, non-huge ships in your deployment area at range 0-1. If you do, place those ships anywhere in the same deployment area."
+    },
+    "Adaptive Shields": {
+      display_name: "Adaptive Shields",
+      text: "While another friendly ship at range 0-1 defends, if it is a smaller size than you, you may spend 1 shield or 2 %ENERGY% to cancel 1 %HIT% or %CRIT% result."
+    },
+    "Boosted Scanners": {
+      display_name: "Boosted Scanners",
+      text: "While you lock, coordinate, or jam, you may spend up to 3 %ENERGY% to increase the range at which you can choose an object by 1 per %ENERGY% spent this way, to a maximum of range 5."
+    },
+    "Optimized Power Core": {
+      display_name: "Optimized Power Core",
+      text: "After you execute a blue maneuver, recover 1 %ENERGY%."
+    },
+    "Tibanna Reserves": {
+      display_name: "Tibanna Reserves",
+      text: "Action: Spend 1 %CHARGE% to recover 2 %ENERGY%."
+    },
+    "Toryn Farr": {
+      display_name: "Toryn Farr",
+      text: "<i>Adds %LOCK% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> <r>%COORDINATE%</r> %LINEBREAK%After you coordinate a friendly ship, it may acquire a lock on a ship you are locking, ignoring range restrictions."
+    },
+    "Dodonna's Pride": {
+      display_name: "Dodonna's Pride",
+      text: "<i>Adds %EVADE% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> <r>%COORDINATE%</r>, %FOCUS% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> <r>%COORDINATE%</r> %LINEBREAK% Removes 2 shields</i> %LINEBREAK% Adds %TEAM% and %CARGO% slots."
+    },
+    "Jaina's Light": {
+      display_name: "Jaina's Light",
+      text: "<i>Adds 1 shield. Removes 1 energy. %LINEBREAK%</i> While a friendly ship at range 0-2 defends, if the attack is obstructed by an obstacle, you may spend 1 %ENERGY%. If you do, the defender rolls 1 additional defense die."
+    },
+    "Liberator": {
+      display_name: "Liberator",
+      text: "<i>Adds 1 energy. %LINEBREAK%</i>You can dock up to 2 small ships. %LINEBREAK% After a ship deploys from you, it may perform a %FOCUS% or %BARRELROLL% action."
+    },
+    "Tantive IV": {
+      display_name: "Tantive IV",
+      text: "Add 2 %CREW% slots. %LINEBREAK% While you defend, if the attacker is in your %REARARC%, you may roll 1 additional defense die."
+    },
+    "Thunderstrike": {
+      display_name: "Thunderstrike",
+      text: "<i>Adds 3 hull. Removes 3 shields. %LINEBREAK%</i> Adds %GUNNER% slot. %LINEBREAK% While you perform a bonus attack, if you have not attacked the defender this round, you may reroll 1 attack die."
+    },
+    "Bright Hope": {
+      display_name: "Bright Hope",
+      text: "You can reinforce only your %FULLFRONTARC%. %LINEBREAK% While you defend, if you are reinforced and the attacker is in your %FULLFRONTARC%, you may roll 1 additional defense die."
+    },
+    "Luminous": {
+      display_name: "Luminous",
+      text: "<i>Adds 2 energy. Removes 1 shield. %LINEBREAK%</i>Setup: You are placed in reserve. %LINEBREAK% At the end of setup, you are placed in the play area at range 0-2 of a friendly ship."
+    },
+    "Quantum Storm": {
+      display_name: "Quantum Storm",
+      text: "<i>Adds 1 energy. %LINEBREAK%</i>Adds %TEAM% and %CARGO% slots. %LINEBREAK% After you fully execute a white maneuver, recover 1 %ENERGY%."
+    },
+    "Assailer": {
+      display_name: "Assailer",
+      text: "<i>Adds 2 hull. Removes 2 shields. %LINEBREAK%</i> Adds %GUNNER% slot. %LINEBREAK% While you defend, if the attack range is 1, you may roll 1 additional defense die."
+    },
+    "Corvus": {
+      display_name: "Corvus",
+      text: "You can dock up to 2 small ships. %LINEBREAK% After you perform a %CALCULATE% action, gain 1 calculate token."
+    },
+    "Impetuous": {
+      display_name: "Impetuous",
+      text: "<i>Adds 2 energy. Removes 2 shields. %LINEBREAK%</i> Adds %CREW% slot. %LINEBREAK% After you perform an attack, if the defender was destroyed, you may perform a %FOCUS% or %LOCK% action."
+    },
+    "Instigator": {
+      display_name: "Instigator",
+      text: "Adds %TEAM% slot. %LINEBREAK% While you perform an attack, if the defender has an orange or red token, you may reroll up to 2 attack dice."
+    },
+    "Blood Crow": {
+      display_name: "Blood Crow",
+      text: "<i>Adds 2 energy. Removes 1 shield. %LINEBREAK%</i> Adds %GUNNER% slot. %LINEBREAK% While you perform an attack at attack range 1-2, you may add 1 %FOCUS% result."
+    },
+    "Requiem": {
+      display_name: "Requiem",
+      text: "<i>Adds 1 energy. Removes 1 hull. %LINEBREAK%</i> After a ship deploys from you, it may acquire a lock on one ship you are locking, ignoring range restrictions."
+    },
+    "Suppressor": {
+      display_name: "Suppressor",
+      text: "<i>Adds 2 shields. Removes 2 hull. %LINEBREAK%</i> Adds %SENSOR% slot. %LINEBREAK% After you coordinate a friendly ship, you may spend 1 %ENERGY% to jam an enemy ship at range 0-2 of that ship, ignoring range restrictions."
+    },
+    "Vector": {
+      display_name: "Vector",
+      text: "Adds %CREW% and %CARGO% slots. %LINEBREAK% After a ship deploys from you, it may perform a %EVADE% or %BOOST% action."
+    },
+    "Broken Horn": {
+      display_name: "Broken Horn",
+      text: "Adds %CREW% and %ILLICIT% slots. %LINEBREAK% If you are damaged, reduce the difficulty of your speed 3-5 maneuvers."
+    },
+    "Merchant One": {
+      display_name: "Merchant One",
+      text: "Adds %TURRET%, %TEAM%, and %CARGO% slots. %LINEBREAK% Bonus Attack: Perform a %TURRET% attack."
+    },
+    "Insatiable Worrt": {
+      display_name: "Insatiable Worrt",
+      text: "<i>Adds 3 hull. Removes 1 shield and 1 energy. %LINEBREAK%</i> Adds %CARGO% slot. %LINEBREAK% During the End Phase, you may recover 1 additional shield or 1 additional %ENERGY%."
+    },
+    "Corsair Refit": {
+      display_name: "Corsair Refit",
+      text: "<i>Adds 2 hull and 1 energy. Removes 2 shields. %LINEBREAK%</i> Adds %CANNON%, %TURRET%, and %MISSILE% slots. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY% to perform a %CANNON%, %TURRET%, or %MISSILE% attack."
     }
   };
   condition_translations = {
@@ -26103,13 +26456,16 @@ exportObj.cardLoaders.Magyar = function() {
       text: "<strong>Felhelyezés:</strong> tartalékban kezdesz. %LINEBREAK% Amikor beszállsz a csatába, helyezd a hajót 1-es távolságra a játékterület bármely szélétől és 3-as távolságon túl bármely ellenséges hajótól.%LINEBREAK%A kör kezdetén ha a baráti <strong>GA-97</strong> összes %CHARGE% jelzője aktív, be <strong>kell</strong> szállnod a csatába. Ezután vedd le ezt a kártyát. Miután a baráti <strong>GA-97</strong> megsemmisül, csatába <strong>kell</strong> szállnod, majd kapsz 1 'inaktív fegyvezet' jelzőt és vedd le ezt a kártyát."
     },
     'Electro-Proton Bomb': {
-      text: "(Bomba jelző) - Az Aktivációs fázis végén ez az eszköz felrobban. Amikor ez az eszköz felrobban, minden hajó 0–2-es távolságban dob 4 támadókockával. Minden hajó elveszti 1 pajzsát minden üres eredmény után, kap 1 ion jelzőt minden %FOCUS%/%HIT% eredmény után és kap 1 'inaktív fegyvezet' minden %CRIT% eredmény után."
+      text: "(Bomba jelző) - Az Aktivációs fázis végén ez az eszköz felrobban. Amikor ez az eszköz felrobban, minden hajó és távérzékelő 0–2-es távolságban dob 4 támadókockával. Minden hajó elveszti 1 pajzsát minden üres eredmény után, kap 1 ion jelzőt minden %FOCUS%/%HIT% eredmény után és kap 1 'inaktív fegyvezet' minden %CRIT% eredmény után. MInden távérzékelő 0-1-es távolságban elveszít 1 pajzsot minden üres eredmény után és elszenved 1 sérülést minden %FOCUS%/%HIT% eredmény után."
     },
     'Decoyed': {
       text: 'Amikor védekezel, minden baráti <strong>Naboo Handmaiden</strong> a támadó tűzívében elkölthet 1 %EVADE% jelzőt, hogy megváltoztass egy dobás eredményed %EVADE% eredményre.%LINEBREAK% Ha Naboo Royal N-1 Starfighter vagy, minden minden baráti <strong>Naboo Handmaiden</strong> a támadó tűzívében elkölthet 1 %EVADE% jelzőt, hogy hozzáadj 1 %EVADE% eredményt a dobásodhoz.'
     },
     'Compromising Intel': {
       text: 'A Rendszer fázis alatt, ha az ellenséges <strong>Vi Morandi</strong> 0-3-as távolságban van, fordítsd fel a tárcsád. Amikor védekezel vagy támadsz ellenséges <strong>Vi Morandi</strong> pilótát, nem költhetsz %FOCUS" jelzőt.'
+    },
+    'Cluster Mine': {
+      text: '(Akna jelzők) - Egy Cluster Mine készlet 3 különálló Cluster Mine eszközből áll.%LINEBREAK%Amikor egy Cluster Mine készlet lehelyezésre kerül, a középső elemet a szokásos módon tesszük le, majd a két további elemet elhelyezzük a középső elem oldalvájataiba illesztve. Miután egy hajó átmozog vagy átfedésbe kerül bármelyik különálló Cluster Mine elemmel, az felrobban. A többi elem, amelyeken nem mozogtak át vagy kerültek átfedésbe, nem robban fel. Amikor bármelyik elem felrobban, a hajó dob 2 támadó kockával és elszenved 1 %HIT%/%CRIT% sérülést a dobott eredmény szerint.'
     }
   };
   return exportObj.setupTranslationCardData(pilot_translations, upgrade_translations, condition_translations);
@@ -37082,7 +37438,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 40208
+                    lineno: 40471
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -37914,7 +38270,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 41072
+              lineno: 41335
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -38697,7 +39053,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 41807
+              lineno: 42070
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -38707,7 +39063,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 41808
+                lineno: 42071
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -39952,6 +40308,18 @@ exportObj.SquadBuilder = (function() {
           } else {
             container.find('tr.info-attack-turret').hide();
           }
+          if (data.attackr != null) {
+            container.find('tr.info-attack-right td.info-data').text(data.attackl);
+            container.find('tr.info-attack-right').show();
+          } else {
+            container.find('tr.info-attack-right').hide();
+          }
+          if (data.attackl != null) {
+            container.find('tr.info-attack-left td.info-data').text(data.attackr);
+            container.find('tr.info-attack-left').show();
+          } else {
+            container.find('tr.info-attack-right').hide();
+          }
           if (data.attackdt != null) {
             container.find('tr.info-attack-doubleturret td.info-data').text(data.attackdt);
             container.find('tr.info-attack-doubleturret').show();
@@ -40624,7 +40992,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 43136
+                      lineno: 43411
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -40850,7 +41218,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 43256
+                          lineno: 43531
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -40900,7 +41268,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 43289
+                                  lineno: 43564
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -40979,7 +41347,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 43340
+                      lineno: 43615
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -41059,7 +41427,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 43369
+                lineno: 43644
               })
             ]);
             __iced_deferrals._fulfill();
@@ -41128,7 +41496,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 43398
+              lineno: 43673
             }));
           }
         }
@@ -41220,7 +41588,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 43454
+                lineno: 43729
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -41500,7 +41868,7 @@ Ship = (function() {
   };
 
   Ship.prototype.toHTML = function() {
-    var HalfPoints, Threshold, action, action_bar, action_bar_red, action_icons, action_icons_red, actionname, actionred, attackHTML, attack_icon, attackbHTML, attackdtHTML, attackfHTML, attacktHTML, chargeHTML, color, effective_stats, energyHTML, engagementHTML, forceHTML, html, hullIconHTML, points, prefix, shieldIconHTML, slotted_upgrades, suffix, upgrade, _, _i, _j, _k, _l, _len, _len1, _len2, _m, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var HalfPoints, Threshold, action, action_bar, action_bar_red, action_icons, action_icons_red, actionname, actionred, attackHTML, attack_icon, attackbHTML, attackdtHTML, attackfHTML, attacklHTML, attackrHTML, attacktHTML, chargeHTML, color, effective_stats, energyHTML, engagementHTML, forceHTML, html, hullIconHTML, points, prefix, shieldIconHTML, slotted_upgrades, suffix, upgrade, _, _i, _j, _k, _l, _len, _len1, _len2, _m, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     effective_stats = this.effectiveStats();
     action_icons = [];
     action_icons_red = [];
@@ -41553,44 +41921,54 @@ Ship = (function() {
     } else {
       attacktHTML = '';
     }
+    if (effective_stats.attackl != null) {
+      attacklHTML = $.trim("<i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-leftarc\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref11 = (_ref12 = this.pilot.ship_override) != null ? _ref12.attackl : void 0) != null ? _ref11 : this.data.attackl, effective_stats, 'attackl')) + "</span>");
+    } else {
+      attacklHTML = '';
+    }
+    if (effective_stats.attackr != null) {
+      attackrHTML = $.trim("<i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-rightarc\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref13 = (_ref14 = this.pilot.ship_override) != null ? _ref14.attackr : void 0) != null ? _ref13 : this.data.attackr, effective_stats, 'attackr')) + "</span>");
+    } else {
+      attackrHTML = '';
+    }
     if (effective_stats.attackdt != null) {
-      attackdtHTML = $.trim("<i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref11 = (_ref12 = this.pilot.ship_override) != null ? _ref12.attackdt : void 0) != null ? _ref11 : this.data.attackdt, effective_stats, 'attackdt')) + "</span>");
+      attackdtHTML = $.trim("<i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref15 = (_ref16 = this.pilot.ship_override) != null ? _ref16.attackdt : void 0) != null ? _ref15 : this.data.attackdt, effective_stats, 'attackdt')) + "</span>");
     } else {
       attackdtHTML = '';
     }
-    energyHTML = (((_ref13 = this.pilot.ship_override) != null ? _ref13.energy : void 0) != null) || (this.data.energy != null) ? $.trim("<i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i>\n<span class=\"info-data info-energy\">" + (statAndEffectiveStat((_ref14 = (_ref15 = this.pilot.ship_override) != null ? _ref15.energy : void 0) != null ? _ref14 : this.data.energy, effective_stats, 'energy')) + "</span>") : '';
-    forceHTML = (this.pilot.force != null) ? $.trim("<i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i>\n<span class=\"info-data info-force\">" + (statAndEffectiveStat((_ref16 = (_ref17 = this.pilot.ship_override) != null ? _ref17.force : void 0) != null ? _ref16 : this.pilot.force, effective_stats, 'force')) + "<i class=\"xwing-miniatures-font xwing-miniatures-font-recurring\"></i></span>") : '';
+    energyHTML = (((_ref17 = this.pilot.ship_override) != null ? _ref17.energy : void 0) != null) || (this.data.energy != null) ? $.trim("<i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i>\n<span class=\"info-data info-energy\">" + (statAndEffectiveStat((_ref18 = (_ref19 = this.pilot.ship_override) != null ? _ref19.energy : void 0) != null ? _ref18 : this.data.energy, effective_stats, 'energy')) + "</span>") : '';
+    forceHTML = (this.pilot.force != null) ? $.trim("<i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i>\n<span class=\"info-data info-force\">" + (statAndEffectiveStat((_ref20 = (_ref21 = this.pilot.ship_override) != null ? _ref21.force : void 0) != null ? _ref20 : this.pilot.force, effective_stats, 'force')) + "<i class=\"xwing-miniatures-font xwing-miniatures-font-recurring\"></i></span>") : '';
     if (this.pilot.charge != null) {
       if (this.pilot.recurring != null) {
-        chargeHTML = $.trim("<i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i>\n<span class=\"info-data info-charge\">" + (statAndEffectiveStat((_ref18 = (_ref19 = this.pilot.ship_override) != null ? _ref19.charge : void 0) != null ? _ref18 : this.pilot.charge, effective_stats, 'charge')) + "<i class=\"xwing-miniatures-font xwing-miniatures-font-recurring\"></i></span>");
+        chargeHTML = $.trim("<i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i>\n<span class=\"info-data info-charge\">" + (statAndEffectiveStat((_ref22 = (_ref23 = this.pilot.ship_override) != null ? _ref23.charge : void 0) != null ? _ref22 : this.pilot.charge, effective_stats, 'charge')) + "<i class=\"xwing-miniatures-font xwing-miniatures-font-recurring\"></i></span>");
       } else {
-        chargeHTML = $.trim("<i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i>\n<span class=\"info-data info-charge\">" + (statAndEffectiveStat((_ref20 = (_ref21 = this.pilot.ship_override) != null ? _ref21.charge : void 0) != null ? _ref20 : this.pilot.charge, effective_stats, 'charge')) + "</span>");
+        chargeHTML = $.trim("<i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i>\n<span class=\"info-data info-charge\">" + (statAndEffectiveStat((_ref24 = (_ref25 = this.pilot.ship_override) != null ? _ref25.charge : void 0) != null ? _ref24 : this.pilot.charge, effective_stats, 'charge')) + "</span>");
       }
     } else {
       chargeHTML = '';
     }
     shieldIconHTML = '';
     if (effective_stats.shields) {
-      for (_ = _k = 1, _ref22 = effective_stats.shields; 1 <= _ref22 ? _k <= _ref22 : _k >= _ref22; _ = 1 <= _ref22 ? ++_k : --_k) {
+      for (_ = _k = 1, _ref26 = effective_stats.shields; 1 <= _ref26 ? _k <= _ref26 : _k >= _ref26; _ = 1 <= _ref26 ? ++_k : --_k) {
         shieldIconHTML += "<i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield expanded-hull-or-shield\"></i>";
       }
     }
     hullIconHTML = '';
     if (effective_stats.hull) {
-      for (_ = _l = 1, _ref23 = effective_stats.hull; 1 <= _ref23 ? _l <= _ref23 : _l >= _ref23; _ = 1 <= _ref23 ? ++_l : --_l) {
+      for (_ = _l = 1, _ref27 = effective_stats.hull; 1 <= _ref27 ? _l <= _ref27 : _l >= _ref27; _ = 1 <= _ref27 ? ++_l : --_l) {
         hullIconHTML += "<i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull expanded-hull-or-shield\"></i>";
       }
     }
-    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.xws + "\"></i><span class=\"fancy-ship-type\"> " + (this.data.display_name ? this.data.display_name : this.data.name) + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + (this.quickbuildId !== -1 ? (this.primary ? this.getPoints() : '*') : this.pilot.points) + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">INI " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + engagementHTML + "\n        " + attackHTML + "\n        " + attackbHTML + "\n        " + attackfHTML + "\n        " + attacktHTML + "\n        " + attackdtHTML + "\n        <i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref24 = (_ref25 = this.pilot.ship_override) != null ? _ref25.agility : void 0) != null ? _ref24 : this.data.agility, effective_stats, 'agility')) + "</span>                    \n        " + hullIconHTML + "\n        <i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull simple-hull-or-shield\"></i>\n        <span class=\"info-data info-hull simple-hull-or-shield\">" + (statAndEffectiveStat((_ref26 = (_ref27 = this.pilot.ship_override) != null ? _ref27.hull : void 0) != null ? _ref26 : this.data.hull, effective_stats, 'hull')) + "</span>\n        " + shieldIconHTML + "\n        <i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield simple-hull-or-shield\"></i>\n        <span class=\"info-data info-shields simple-hull-or-shield\">" + (statAndEffectiveStat((_ref28 = (_ref29 = this.pilot.ship_override) != null ? _ref29.shields : void 0) != null ? _ref28 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + energyHTML + "\n        " + forceHTML + "\n        " + chargeHTML + "\n        <br>\n        " + action_bar + "\n        &nbsp;&nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
+    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.xws + "\"></i><span class=\"fancy-ship-type\"> " + (this.data.display_name ? this.data.display_name : this.data.name) + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + (this.quickbuildId !== -1 ? (this.primary ? this.getPoints() : '*') : this.pilot.points) + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">INI " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + engagementHTML + "\n        " + attackHTML + "\n        " + attackbHTML + "\n        " + attackfHTML + "\n        " + attacktHTML + "\n        " + attacklHTML + "\n        " + attackrHTML + "\n        " + attackdtHTML + "\n        <i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref28 = (_ref29 = this.pilot.ship_override) != null ? _ref29.agility : void 0) != null ? _ref28 : this.data.agility, effective_stats, 'agility')) + "</span>                    \n        " + hullIconHTML + "\n        <i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull simple-hull-or-shield\"></i>\n        <span class=\"info-data info-hull simple-hull-or-shield\">" + (statAndEffectiveStat((_ref30 = (_ref31 = this.pilot.ship_override) != null ? _ref31.hull : void 0) != null ? _ref30 : this.data.hull, effective_stats, 'hull')) + "</span>\n        " + shieldIconHTML + "\n        <i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield simple-hull-or-shield\"></i>\n        <span class=\"info-data info-shields simple-hull-or-shield\">" + (statAndEffectiveStat((_ref32 = (_ref33 = this.pilot.ship_override) != null ? _ref33.shields : void 0) != null ? _ref32 : this.data.shields, effective_stats, 'shields')) + "</span>\n        " + energyHTML + "\n        " + forceHTML + "\n        " + chargeHTML + "\n        <br>\n        " + action_bar + "\n        &nbsp;&nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
     if (this.pilot.text) {
       html += $.trim("<div class=\"fancy-pilot-text\">" + this.pilot.text + "</div>");
     }
     slotted_upgrades = (function() {
-      var _len2, _m, _ref30, _results;
-      _ref30 = this.upgrades;
+      var _len2, _m, _ref34, _results;
+      _ref34 = this.upgrades;
       _results = [];
-      for (_m = 0, _len2 = _ref30.length; _m < _len2; _m++) {
-        upgrade = _ref30[_m];
+      for (_m = 0, _len2 = _ref34.length; _m < _len2; _m++) {
+        upgrade = _ref34[_m];
         if (upgrade.data != null) {
           _results.push(upgrade);
         }
@@ -41943,35 +42321,37 @@ Ship = (function() {
   };
 
   Ship.prototype.effectiveStats = function() {
-    var s, stats, upgrade, _i, _j, _len, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var s, stats, upgrade, _i, _j, _len, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     stats = {
       attack: (_ref = (_ref1 = this.pilot.ship_override) != null ? _ref1.attack : void 0) != null ? _ref : this.data.attack,
       attackf: (_ref2 = (_ref3 = this.pilot.ship_override) != null ? _ref3.attackf : void 0) != null ? _ref2 : this.data.attackf,
       attackb: (_ref4 = (_ref5 = this.pilot.ship_override) != null ? _ref5.attackb : void 0) != null ? _ref4 : this.data.attackb,
       attackt: (_ref6 = (_ref7 = this.pilot.ship_override) != null ? _ref7.attackt : void 0) != null ? _ref6 : this.data.attackt,
-      attackdt: (_ref8 = (_ref9 = this.pilot.ship_override) != null ? _ref9.attackdt : void 0) != null ? _ref8 : this.data.attackdt,
-      energy: (_ref10 = (_ref11 = this.pilot.ship_override) != null ? _ref11.energy : void 0) != null ? _ref10 : this.data.energy,
-      agility: (_ref12 = (_ref13 = this.pilot.ship_override) != null ? _ref13.agility : void 0) != null ? _ref12 : this.data.agility,
-      hull: (_ref14 = (_ref15 = this.pilot.ship_override) != null ? _ref15.hull : void 0) != null ? _ref14 : this.data.hull,
-      shields: (_ref16 = (_ref17 = this.pilot.ship_override) != null ? _ref17.shields : void 0) != null ? _ref16 : this.data.shields,
-      force: (_ref18 = (_ref19 = (_ref20 = this.pilot.ship_override) != null ? _ref20.force : void 0) != null ? _ref19 : this.pilot.force) != null ? _ref18 : 0,
-      charge: (_ref21 = (_ref22 = this.pilot.ship_override) != null ? _ref22.charge : void 0) != null ? _ref21 : this.pilot.charge,
-      darkside: (_ref23 = (_ref24 = (_ref25 = this.pilot.ship_override) != null ? _ref25.darkside : void 0) != null ? _ref24 : this.pilot.darkside) != null ? _ref23 : false,
-      actions: ((_ref26 = (_ref27 = this.pilot.ship_override) != null ? _ref27.actions : void 0) != null ? _ref26 : this.data.actions).slice(0),
-      actionsred: ((_ref28 = (_ref29 = (_ref30 = this.pilot.ship_override) != null ? _ref30.actionsred : void 0) != null ? _ref29 : this.data.actionsred) != null ? _ref28 : []).slice(0)
+      attackl: (_ref8 = (_ref9 = this.pilot.ship_override) != null ? _ref9.attackl : void 0) != null ? _ref8 : this.data.attackl,
+      attackr: (_ref10 = (_ref11 = this.pilot.ship_override) != null ? _ref11.attackr : void 0) != null ? _ref10 : this.data.attackr,
+      attackdt: (_ref12 = (_ref13 = this.pilot.ship_override) != null ? _ref13.attackdt : void 0) != null ? _ref12 : this.data.attackdt,
+      energy: (_ref14 = (_ref15 = this.pilot.ship_override) != null ? _ref15.energy : void 0) != null ? _ref14 : this.data.energy,
+      agility: (_ref16 = (_ref17 = this.pilot.ship_override) != null ? _ref17.agility : void 0) != null ? _ref16 : this.data.agility,
+      hull: (_ref18 = (_ref19 = this.pilot.ship_override) != null ? _ref19.hull : void 0) != null ? _ref18 : this.data.hull,
+      shields: (_ref20 = (_ref21 = this.pilot.ship_override) != null ? _ref21.shields : void 0) != null ? _ref20 : this.data.shields,
+      force: (_ref22 = (_ref23 = (_ref24 = this.pilot.ship_override) != null ? _ref24.force : void 0) != null ? _ref23 : this.pilot.force) != null ? _ref22 : 0,
+      charge: (_ref25 = (_ref26 = this.pilot.ship_override) != null ? _ref26.charge : void 0) != null ? _ref25 : this.pilot.charge,
+      darkside: (_ref27 = (_ref28 = (_ref29 = this.pilot.ship_override) != null ? _ref29.darkside : void 0) != null ? _ref28 : this.pilot.darkside) != null ? _ref27 : false,
+      actions: ((_ref30 = (_ref31 = this.pilot.ship_override) != null ? _ref31.actions : void 0) != null ? _ref30 : this.data.actions).slice(0),
+      actionsred: ((_ref32 = (_ref33 = (_ref34 = this.pilot.ship_override) != null ? _ref34.actionsred : void 0) != null ? _ref33 : this.data.actionsred) != null ? _ref32 : []).slice(0)
     };
     stats.maneuvers = [];
-    for (s = _i = 0, _ref31 = ((_ref32 = this.data.maneuvers) != null ? _ref32 : []).length; 0 <= _ref31 ? _i < _ref31 : _i > _ref31; s = 0 <= _ref31 ? ++_i : --_i) {
+    for (s = _i = 0, _ref35 = ((_ref36 = this.data.maneuvers) != null ? _ref36 : []).length; 0 <= _ref35 ? _i < _ref35 : _i > _ref35; s = 0 <= _ref35 ? ++_i : --_i) {
       stats.maneuvers[s] = this.data.maneuvers[s].slice(0);
     }
-    _ref33 = this.upgrades;
-    for (_j = 0, _len = _ref33.length; _j < _len; _j++) {
-      upgrade = _ref33[_j];
-      if ((upgrade != null ? (_ref34 = upgrade.data) != null ? _ref34.modifier_func : void 0 : void 0) != null) {
+    _ref37 = this.upgrades;
+    for (_j = 0, _len = _ref37.length; _j < _len; _j++) {
+      upgrade = _ref37[_j];
+      if ((upgrade != null ? (_ref38 = upgrade.data) != null ? _ref38.modifier_func : void 0 : void 0) != null) {
         upgrade.data.modifier_func(stats);
       }
     }
-    if (((_ref35 = this.pilot) != null ? _ref35.modifier_func : void 0) != null) {
+    if (((_ref39 = this.pilot) != null ? _ref39.modifier_func : void 0) != null) {
       this.pilot.modifier_func(stats);
     }
     return stats;
@@ -42209,7 +42589,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 44247
+                lineno: 44538
               })
             ]);
             __iced_deferrals._fulfill();
@@ -42338,7 +42718,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 44313
+                  lineno: 44604
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -42361,7 +42741,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 44318
+                      lineno: 44609
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -42453,7 +42833,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 44363
+            lineno: 44654
           }));
         }
         __iced_deferrals._fulfill();
@@ -42542,7 +42922,7 @@ GenericAddon = (function() {
       } else {
         attackrangebonus = '';
       }
-      attackHTML = (this.data.attack != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    " + attackrangebonus + "\n    <span class=\"info-data info-attack\">" + this.data.attack + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-frontarc\"></i>\n</div>") : (this.data.attackt != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attackt + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-singleturretarc\"></i>\n</div>") : (this.data.attackbull != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attackbull + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-bullseyearc\"></i>\n</div>") : '';
+      attackHTML = (this.data.attack != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    " + attackrangebonus + "\n    <span class=\"info-data info-attack\">" + this.data.attack + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-frontarc\"></i>\n</div>") : (this.data.attackt != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attackt + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-singleturretarc\"></i>\n</div>") : (this.data.attackl != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attackl + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-leftarc\"></i>\n</div>") : (this.data.attackr != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attackr + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-rightarc\"></i>\n</div>") : (this.data.attackbull != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attackbull + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-bullseyearc\"></i>\n</div>") : '';
       if ((this.data.charge != null)) {
         if ((this.data.recurring != null)) {
           chargeHTML = $.trim("<div class=\"upgrade-charge\">\n    <span class=\"info-data info-charge\">" + this.data.charge + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-charge\"></i><i class=\"xwing-miniatures-font xwing-miniatures-font-recurring\"></i>\n</div>");
