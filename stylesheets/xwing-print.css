@@ -56,7 +56,7 @@ body {
     border: 2px solid gray !important; }
   #printable .bw i.xwing-miniatures-font-agility, #printable .bw i.xwing-miniatures-font-hull, #printable .bw i.xwing-miniatures-font-energy, #printable .bw i.xwing-miniatures-font-shield, #printable .bw i.xwing-miniatures-font-attack-bullseye, #printable .bw i.xwing-miniatures-font-forcecharge, #printable .bw i.xwing-miniatures-font-charge, #printable .bw i.xwing-miniatures-font-doubleturretarc, #printable .bw i.xwing-miniatures-font-singleturretarc, #printable .bw i.xwing-miniatures-font-frontarc, #printable .bw i.xwing-miniatures-font-reararc, #printable .bw i.xwing-miniatures-font-fullfrontarc {
     background: white; }
-  #printable .bw .upgrade-attack .xwing-miniatures-font-attack, #printable .bw .upgrade-attack i.xwing-miniatures-font-doublearcturret, #printable .bw .upgrade-attack i.xwing-miniatures-font-singleturretarc, #printable .bw .upgrade-attack i.xwing-miniatures-font-frontarc, #printable .bw .upgrade-attack i.xwing-miniatures-font-reararc, #printable .bw .upgrade-attack i.xwing-miniatures-font-fullfrontarc {
+  #printable .bw .upgrade-attack .xwing-miniatures-font-attack, #printable .bw .upgrade-attack i.xwing-miniatures-font-doubleturretarc, #printable .bw .upgrade-attack i.xwing-miniatures-font-singleturretarc, #printable .bw .upgrade-attack i.xwing-miniatures-font-frontarc, #printable .bw .upgrade-attack i.xwing-miniatures-font-reararc, #printable .bw .upgrade-attack i.xwing-miniatures-font-fullfrontarc {
     background: black;
     color: white; }
   #printable .bw .upgrade-energy .xwing-miniatures-font-energy {
