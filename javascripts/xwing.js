@@ -26278,7 +26278,7 @@ exportObj.cardLoaders.Magyar = function() {
     },
     "IG-RM Droids": {
       display_name: "IG-RM Droids",
-      text: "While you perform an attack, if you are calculating, you may change 1 %HI% result to a %CRIT% result."
+      text: "While you perform an attack, if you are calculating, you may change 1 %HIT% result to a %CRIT% result."
     },
     "Gunnery Specialists": {
       display_name: "Gunnery Specialists",
