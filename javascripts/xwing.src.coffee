@@ -40697,7 +40697,7 @@ class exportObj.SquadBuilder
         @status_container = $ document.createElement 'DIV'
         @status_container.addClass 'container-fluid'
         @status_container.append $.trim '''
-            <div class="row-fluid">
+            <div class="row-fluid squad-name-and-points-row">
                 <div class="span3 squad-name-container">
                     <div class="display-name">
                         <span class="squad-name"></span>
@@ -40728,9 +40728,9 @@ class exportObj.SquadBuilder
                         <button class="btn btn-primary view-as-text"><span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text</button>
                         <!-- <button class="btn btn-primary print-list hidden-phone hidden-tablet"><i class="fa fa-print"></i>&nbsp;Print</button> -->
                         <a class="btn btn-primary hidden collection"><i class="fa fa-folder-open hidden-phone hidden-tablet"></i>&nbsp;Your Collection</a>
-                        
-                        <button class="btn btn-primary randomize" ><i class="fa fa-random hidden-phone hidden-tablet"></i>&nbsp;Random!</button>
-                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        <!-- Randomize button is marked as danger, since it creates a new squad -->
+                        <button class="btn btn-danger randomize" ><i class="fa fa-random hidden-phone hidden-tablet"></i>&nbsp;Random!</button>
+                        <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
@@ -41378,7 +41378,8 @@ class exportObj.SquadBuilder
                         <textarea class="squad-notes"></textarea>
                     </label>
                     <span class="obstacles-container">
-                        <button class="btn btn-primary choose-obstacles">Choose Obstacles</button>
+                        <!-- Since this is an optional button, usually, it's shown in a different color -->
+                        <button class="btn btn-info choose-obstacles">Choose Obstacles</button>
                     </span>
                  </div>
                <div class="span3 info-container" id="info-container" />
@@ -45012,7 +45013,8 @@ class exportObj.XWSManager
         @container.html $.trim """
             <div class="row-fluid span9">
                 <div>
-                    <button class="btn btn-primary from-xws">Import from XWS</button>
+                    <!-- Import is marked in red since it creates something new -->
+                    <button class="btn btn-danger from-xws">Import from XWS</button>
                     <button class="btn btn-primary to-xws">Export to XWS</button>
                 </div>
             </div>
@@ -45067,7 +45069,7 @@ class exportObj.XWSManager
             </div>
             <div class="modal-footer hidden-print">
                 <span class="xws-import-status"></span>&nbsp;
-                <button class="btn btn-primary import-xws">Import It!</button>
+                <button class="btn btn-danger import-xws">Import It!</button>
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         """

@@ -382,3 +382,38 @@ li.squad-summary {
 
 svg > g.maneuver.backwards {
   transform: translate(200px, 200px) rotate(180deg); }
+
+.main-top-nav-bar {
+  background-color: #101010;
+  padding-bottom: 1px;
+  padding-left: 4px;
+  margin-bottom: 10px; }
+
+#rebelTab, #empireTab, #scumTab, #resistanceTab, #firstorderTab, #republicTab, #separatistTab {
+  padding-top: 5px; }
+
+#xws {
+  margin-top: 10px; }
+
+.view-as-text {
+  margin-right: 10px; }
+
+.obstacles-container {
+  padding-left: 10px; }
+
+.conditions-container {
+  margin-left: 15px;
+  padding-left: 10px; }
+
+.row-fluid .ship {
+  margin-top: 10px;
+  padding-left: 10px; }
+
+.squad-name-and-points-row {
+  background-color: #151515;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: -10px; }
+
+.main-top-nav-bar-button-right {
+  float: right !important; }
