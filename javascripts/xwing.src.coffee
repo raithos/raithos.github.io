@@ -44902,7 +44902,7 @@ class exportObj.Upgrade extends GenericAddon
             placeholder: @placeholderMod_func(exportObj.translate @ship.builder.language, 'ui', 'upgradePlaceholder', @slot)
             allowClear: true
             query: (query) =>
-                @ship.builder.checkCollection()
+                # @ship.builder.checkCollection()
                 query.callback
                     more: false
                     results: @ship.builder.getAvailableUpgradesIncluding(@slot, @data, @ship, this, query.term, @filter_func)

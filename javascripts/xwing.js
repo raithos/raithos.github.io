@@ -43118,7 +43118,6 @@ exportObj.Upgrade = (function(_super) {
       allowClear: true,
       query: (function(_this) {
         return function(query) {
-          _this.ship.builder.checkCollection();
           return query.callback({
             more: false,
             results: _this.ship.builder.getAvailableUpgradesIncluding(_this.slot, _this.data, _this.ship, _this, query.term, _this.filter_func)
