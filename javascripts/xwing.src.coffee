@@ -41863,7 +41863,8 @@ class exportObj.SquadBuilder
         @squad_name_placeholder.text @current_squad.name
         @current_obstacles = @current_squad.additional_data.obstacles
         @updateObstacleSelect(@current_squad.additional_data.obstacles)
-        @loadFromSerialized squad.serialized
+        if squad.serialized.length?
+            @loadFromSerialized squad.serialized
         @notes.val(squad.additional_data.notes ? '')
         @backend_status.fadeOut 'slow'
         @current_squad.dirty = false
