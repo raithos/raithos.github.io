@@ -41769,7 +41769,6 @@ class exportObj.SquadBuilder
             old_id = @current_squad.id
             @container.trigger 'xwing:pointsUpdated', $.noop
             @container.trigger 'xwing:shipUpdated'
-        # @onPointsUpdated cb
         cb()
 
     onPointsUpdated: (cb=$.noop) =>
@@ -44563,7 +44562,6 @@ class GenericAddon
                     # Not currently selected; check shelf only
                     not_in_collection = not @ship.builder.collection.checkShelf(@type.toLowerCase(), obj.name)
                 if not_in_collection then 'select2-result-not-in-collection' else ''
-                    #and (@ship.builder.collection.checkcollection?) 
             else
                 ''
         args.formatSelection = (obj, container) =>
@@ -44933,7 +44931,7 @@ class exportObj.QuickbuildUpgrade extends GenericAddon
             width: '50%'
             allowClear: false
             query: (query) =>
-                @ship.builder.checkCollection()
+                # @ship.builder.checkCollection()
                 query.callback
                     more: false
                     results: [{
