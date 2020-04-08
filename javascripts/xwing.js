@@ -41676,7 +41676,6 @@ Ship = (function() {
       placeholder: exportObj.translate(this.builder.language, 'ui', 'shipSelectorPlaceholder'),
       query: (function(_this) {
         return function(query) {
-          _this.builder.checkCollection();
           return query.callback({
             more: false,
             results: _this.builder.getAvailableShipsMatching(query.term)
@@ -41743,7 +41742,6 @@ Ship = (function() {
       placeholder: exportObj.translate(this.builder.language, 'ui', 'pilotSelectorPlaceholder'),
       query: (function(_this) {
         return function(query) {
-          _this.builder.checkCollection();
           return query.callback({
             more: false,
             results: _this.builder.getAvailablePilotsForShipIncluding(_this.ship_selector.val(), (!_this.builder.isQuickbuild ? _this.pilot : _this.quickbuildId), query.term, true, _this)
@@ -42595,7 +42593,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 44543
+                lineno: 44541
               })
             ]);
             __iced_deferrals._fulfill();
@@ -42724,7 +42722,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 44609
+                  lineno: 44607
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -42747,7 +42745,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 44614
+                      lineno: 44612
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -42839,7 +42837,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 44659
+            lineno: 44657
           }));
         }
         __iced_deferrals._fulfill();

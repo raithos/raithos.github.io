@@ -43815,7 +43815,6 @@ class Ship
             width: '100%'
             placeholder: exportObj.translate @builder.language, 'ui', 'shipSelectorPlaceholder'
             query: (query) =>
-                @builder.checkCollection()
                 query.callback
                     more: false
                     results: @builder.getAvailableShipsMatching(query.term)
@@ -43854,7 +43853,6 @@ class Ship
             width: '100%'
             placeholder: exportObj.translate @builder.language, 'ui', 'pilotSelectorPlaceholder'
             query: (query) =>
-                @builder.checkCollection()
                 query.callback
                     more: false
                     results: @builder.getAvailablePilotsForShipIncluding(@ship_selector.val(), (if not @builder.isQuickbuild then @pilot else @quickbuildId), query.term, true, @)
