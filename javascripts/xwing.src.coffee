@@ -41572,7 +41572,7 @@ class exportObj.SquadBuilder
             @collection = collection
             # console.log "#{@faction}: Collection created, checking squad"
             @collection.onLanguageChange null, @language
-            @checkCollection()
+            # @checkCollection()
             @collection_button.removeClass 'hidden'
         .on 'xwing-collection:changed', (e, collection) =>
             # console.log "#{@faction}: Collection changed, checking squad"
@@ -43814,6 +43814,7 @@ class Ship
             width: '100%'
             placeholder: exportObj.translate @builder.language, 'ui', 'shipSelectorPlaceholder'
             query: (query) =>
+                # @builder.checkCollection()
                 query.callback
                     more: false
                     results: @builder.getAvailableShipsMatching(query.term)
@@ -43852,6 +43853,7 @@ class Ship
             width: '100%'
             placeholder: exportObj.translate @builder.language, 'ui', 'pilotSelectorPlaceholder'
             query: (query) =>
+                # @builder.checkCollection()
                 query.callback
                     more: false
                     results: @builder.getAvailablePilotsForShipIncluding(@ship_selector.val(), (if not @builder.isQuickbuild then @pilot else @quickbuildId), query.term, true, @)
