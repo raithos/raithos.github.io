@@ -11731,7 +11731,7 @@ exportObj.basicCardData = function() {
         pilot: "Green Squadron Expert",
         ship: "RZ-2 A-Wing",
         threat: 2,
-        upgrades: ["Heroic", "Primed Thursters", "Hull Upgrade"]
+        upgrades: ["Heroic", "Primed Thrusters", "Hull Upgrade"]
       }, {
         id: 270,
         faction: "Resistance",
@@ -21158,6 +21158,10 @@ exportObj.cardLoaders['Français'] = function() {
       display_name: "Airen Cracken",
       text: "Après avoir effectué une attaque, vous pouvez choisir 1 vaisseau allié à portée 1. Ce vaisseau peut effectuer une action, en la considérant comme rouge."
     },
+    "Alexsandr Kallus": {
+      display_name: "Alexsandr Kallus",
+      text: "Tant que vous défendez, si l’attaquant a modifié n’importe quel dé d’attaque, vous pouvez lancer 1&nbsp;dé de défense supplémentaire."
+    },
     "Alpha Squadron Pilot": {
       display_name: "Pilote de l’Escadron Alpha",
       text: "<i class = flavor_text>Sienar Fleet Systems a doté les ailes de l’intercepteur TIE de quatre canons laser qui lui confèrent une puissance de feu bien supérieure à celle des précédents modèles.</i>%LINEBREAK%<strong>Autopropulseurs :</strong> après avoir effectué une action, vous pouvez effectuer une action %BARRELROLL% rouge ou %BOOST% rouge."
@@ -21290,6 +21294,10 @@ exportObj.cardLoaders['Français'] = function() {
       display_name: "Bossk",
       text: "Tant que vous effectuez une attaque principale, après l’étape «&nbsp;Neutraliser les résultats&nbsp;», vous pouvez dépenser 1 résultat %CRIT% pour ajouter 2 résultats&nbsp;%HIT%."
     },
+    "Bossk": {
+      display_name: "Bossk",
+      text: "Tant que vous effectuez une attaque principale, après l’étape «&nbsp;Neutraliser les résultats&nbsp;», vous pouvez dépenser 1&nbsp;résultat %CRIT% pour ajouter 2 résultats %HIT%.%LINEBREAK%<strong>Appareil de Poursuite :</strong> après avoir été déployé, vous pouvez verrouiller un vaisseau que le <strong>Hound’s&nbsp;Tooth</strong> allié a verrouillé."
+    },
     "Bounty Hunter": {
       display_name: "Chasseur de Primes",
       text: "<i class = flavor_text>La sinistre réputation du Patrouilleur de Classe Firespray a pour origine les chasseurs de primes Jango Fett et Boba Fett, qui modifièrent leur appareil avec d’innombrables armes terrifiantes.</i>"
@@ -21329,6 +21337,10 @@ exportObj.cardLoaders['Français'] = function() {
     "Captain Oicunn": {
       display_name: "Capitaine Oicunn",
       text: "Vous pouvez effectuer vos attaques principales à portée 0."
+    },
+    "Captain Phasma": {
+      display_name: "Capitaine Phasma",
+      text: "Tant que vous défendez, après l’étape «&nbsp;Neutraliser les résultats&nbsp;», un autre vaisseau allié à portée&nbsp;0-1 <b>doit</b> subir 1 dégât %HIT%/%CRIT% pour annuler 1 résultat correspondant.%LINEBREAK%<strong>Tourelle d’Arme lourde :</strong> vous pouvez pivoter votre indicateur %SINGLETURRETARC% uniquement vers votre %FRONTARC% ou %REARARC%. Vous <b>devez</b> considérer le prérequis %FRONTARC% de vos améliorations %MISSILE% équipées comme étant %SINGLETURRETARC%."
     },
     "Captain Rex": {
       display_name: "Capitaine Rex",
@@ -21389,6 +21401,10 @@ exportObj.cardLoaders['Français'] = function() {
     "Colonel Vessery": {
       display_name: "Colonel Vessery",
       text: "Tant que vous effectuez une attaque contre un vaisseau verrouillé, après avoir lancé vos dés d’attaque, vous pouvez verrouiller le défenseur. %LINEBREAK%<strong>Plein Gaz :</strong> après avoir entièrement exécuté une manœuvre à vitesse 3-5, vous pouvez effectuer une action %EVADE%."
+    },
+    "Colossus Station Mechanic": {
+      display_name: "Mécanicien de la Station Colossus",
+      text: "<i class = flavor_text>Certains pilotes ambitieux et talentueux commencent leur carrière en tant qu’équipier au sol, travaillant sans relâche pour permettre à des vaisseaux rafistolés de voler dans les cieux de mondes éloignés comme Castilon.</i>%LINEBREAK%<strong>Explosion En Vol :</strong> <strong>Mise en Place :</strong> 1&nbsp;carte de dégât face cachée vous est attribuée. Après avoir effectué une action <SLAM>, vous pouvez exposer 1&nbsp;carte de dégât pour retirer 1 marqueur de désarmement."
     },
     "Commander Malarus": {
       display_name: "Commander Malarus",
@@ -21542,6 +21558,10 @@ exportObj.cardLoaders['Français'] = function() {
       display_name: "Fenn Rau",
       text: "Tant que vous défendez ou effectuez une attaque, si la portée d’attaque est 1, vous pouvez lancer 1 dé supplémentaire. %LINEBREAK%<strong>Opposition Concordia :</strong> tant que vous défendez, si la portée d’attaque est 1 et que vous êtes dans l’%FRONTARC% de l’attaquant, changez 1 résultat en un résultat %EVADE%."
     },
+    "Fifth Brother": {
+      display_name: "Le Cinquième Frère",
+      text: "Tant que vous effectuez une attaque, après l’étape «&nbsp;Neutraliser les résultats&nbsp;», si l’attaque touche, vous pouvez dépenser 2&nbsp;%FORCE% pour ajouter 1&nbsp;résultat&nbsp;%CRIT%."
+    },
     "Finch Dallow": {
       display_name: "Finch Dallow",
       text: "Avant que vous ne larguiez une bombe, vous pouvez la placer dans la zone de jeu au contact de votre vaisseau à la place."
@@ -21549,6 +21569,10 @@ exportObj.cardLoaders['Français'] = function() {
     "Finn": {
       display_name: "Finn",
       text: "Tant que vous défendez ou effectuez une attaque, vous pouvez ajouter 1&nbsp;résultat vierge, ou vous pouvez gagner 1&nbsp;marqueur de contrainte pour ajouter 1&nbsp;résultat concentration à la place."
+    },
+    "First Order Provocateur": {
+      display_name: "Provocateur du Premier Ordre",
+      text: "<i class = flavor_text>Les idées du Major Vonreg ont guidé l’amélioration de modèles déjà éprouvés lors de la conception de cet appareil unique en son genre, précis et mortel, par Sienar-Jaemus Fleet Systems.</i>%LINEBREAK%<strong>Propulseurs Réactifs :</strong> après avoir entièrement exécuté une manœuvre, si vous n’êtes pas épuisé ou contraint, vous pouvez gagner 1&nbsp;marqueur d’épuisement ou de contrainte pour effectuer une action %LOCK% ou %BARRELROLL%."
     },
     "First Order Test Pilot": {
       display_name: "Pilote d’Essai du Premier Ordre",
@@ -21561,6 +21585,10 @@ exportObj.cardLoaders['Français'] = function() {
     "Freighter Captain": {
       display_name: "Capitaine de Cargo",
       text: "<i class = flavor_text>De nombreux astropilotes gagnent leur vie en parcourant la Bordure Extérieure, un secteur où la différence entre contrebandier et marchand honnête est souvent ténue. Aux frontières de la civilisation, les clients sont beaucoup moins exigeants sur l’origine des marchandises, tant que les prix sont suffisamment attractifs.</i>"
+    },
+    "G4R-GOR V/M": {
+      display_name: "G4R-G0R V/M",
+      text: "Après que vous avez défendu, chaque autre vaisseau à portée&nbsp;0 subit 1 dégât&nbsp;%CRIT%.%LINEBREAK%<strong>Emplacement d’Arme :</strong> vous pouvez vous équiper de 1 amélioration %CANNON%, %TORPEDO% ou %MISSILE%."
     },
     "Gamma Squadron Ace": {
       display_name: "As de l’Escadron Gamma",
@@ -21593,6 +21621,10 @@ exportObj.cardLoaders['Français'] = function() {
     "Gideon Hask": {
       display_name: "Gideon Hask",
       text: "Tant que vous effectuez une attaque contre un défenseur endommagé, lancez 1 dé d’attaque supplémentaire."
+    },
+    "Gina Moonsong": {
+      display_name: "Gina Moonsong",
+      text: "Au début de la phase d’engagement, vous <b>devez</b> transférer 1&nbsp;de vos marqueurs de stress à un autre vaisseau allié à portée&nbsp;0-2."
     },
     "Gold Squadron Trooper": {
       display_name: "Soldat de l’Escadron Or",
@@ -21714,6 +21746,10 @@ exportObj.cardLoaders['Français'] = function() {
       display_name: "Jan Ors",
       text: "Tant qu’un vaisseau allié situé dans votre arc de tir effectue une attaque principale, si vous n’êtes pas stressé, vous pouvez gagner 1 marqueur de stress. Dans ce cas, ce vaisseau peut lancer 1 dé d’attaque supplémentaire."
     },
+    "Jarek Yeager": {
+      display_name: "Jarek Yeager",
+      text: "Tant que vous avez 2 marqueurs de stress ou moins, si vous êtes endommagé, vous pouvez exécuter des manœuvres basiques rouges, même si vous êtes stressé ; si vous êtes critiquement endommagé, vous pouvez exécuter des manœuvres avancées rouges, même si vous êtes stressé.%LINEBREAK%<strong>Explosion En Vol :</strong> <strong>Mise en Place :</strong> 1&nbsp;carte de dégât face cachée vous est attribuée. Après avoir effectué une action <SLAM>, vous pouvez exposer 1&nbsp;carte de dégât pour retirer 1 marqueur de désarmement."
+    },
     "Jaycris Tubbs": {
       display_name: "Jaycris Tubbs",
       text: "Après avoir entièrement exécuté une manœuvre bleue, vous pouvez choisir un vaisseau allié à portée 0-1. Dans ce cas, ce vaisseau allié retire 1 marqueur de stress.%LINEBREAK%<strong>Emplacement d’Arme :</strong> vous pouvez vous équiper de 1 amélioration&nbsp;%CANNON%, %TORPEDO% ou %MISSILE%."
@@ -21737,6 +21773,10 @@ exportObj.cardLoaders['Français'] = function() {
     "Joy Rekkoff": {
       display_name: "Joy Rekkoff",
       text: "Tant que vous effectuez une attaque, vous pouvez dépenser 1 %CHARGE% d’une amélioration %TORPEDO% équipée. Dans ce cas, le défenseur lance 1 dé de défense en moins. %LINEBREAK%<strong>Opposition Concordia :</strong> tant que vous défendez, si la portée d’attaque est 1 et que vous êtes dans l’%FRONTARC% de l’attaquant, changez 1 résultat en un résultat %EVADE%."
+    },
+    "K-2SO": {
+      display_name: "K-2SO",
+      text: "Après avoir gagné un marqueur de stress, gagnez 1&nbsp;marqueur de calcul."
     },
     "Kaa'to Leeachos": {
       display_name: "Kaa’to Leeachos",
@@ -21765,6 +21805,10 @@ exportObj.cardLoaders['Français'] = function() {
     "Kavil": {
       display_name: "Kavil",
       text: "Tant que vous effectuez une attaque non-%FRONTARC%, lancez 1 dé d’attaque supplémentaire."
+    },
+    "Kazuda Xiono": {
+      display_name: "Kazuda Xiono",
+      text: "Tant que vous défendez ou effectuez une attaque principale, si l’initiative du vaisseau ennemi est plus élevée que le nombre de cartes de dégât que vous avez, vous pouvez lancer 1 dé supplémentaire.%LINEBREAK%<strong>Explosion En Vol :</strong> <strong>Mise en Place :</strong> 1&nbsp;carte de dégât face cachée vous est attribuée. Après avoir effectué une action <SLAM>, vous pouvez exposer 1&nbsp;carte de dégât pour retirer 1 marqueur de désarmement."
     },
     "Ketsu Onyo": {
       display_name: "Ketsu Onyo",
@@ -21826,6 +21870,10 @@ exportObj.cardLoaders['Français'] = function() {
       display_name: "Leevan Tenza",
       text: "Après avoir effectué une action %BARRELROLL% ou %BOOST%, vous pouvez effectuer une action %EVADE% rogue."
     },
+    "Leia Organa": {
+      display_name: "Leia Organa",
+      text: "Après qu’un vaisseau allié a entièrement exécuté une manœuvre rouge, s’il est à portée&nbsp;0-3, vous pouvez dépenser 1&nbsp;%FORCE%. Dans ce cas, ce vaisseau gagne 1&nbsp;marqueur de concentration ou récupère 1&nbsp;%FORCE%."
+    },
     "Lieutenant Bastian": {
       display_name: "Lieutenant Bastian",
       text: "Après qu’une carte de dégât a été attribuée à un vaisseau à portée 1-2, vous pouvez verrouiller ce vaisseau.%LINEBREAK%<strong>Emplacement d’Arme :</strong> vous pouvez vous équiper de 1 amélioration&nbsp;%CANNON%, %TORPEDO% ou %MISSILE%."
@@ -21845,6 +21893,10 @@ exportObj.cardLoaders['Français'] = function() {
     "Lieutenant Kestal": {
       display_name: "Lieutenant Kestal",
       text: "Tant que vous effectuez une attaque, après que le défenseur a lancé les dés de défense, vous pouvez dépenser 1 marqueur de concentration pour annuler tous les résultats Vierge/%FOCUS% du défenseur."
+    },
+    "Lieutenant LeHuse": {
+      display_name: "Lieutenant LeHuse",
+      text: "Tant que vous effectuez une attaque, vous pouvez dépenser le verrouillage d’un autre vaisseau allié sur le défenseur pour relancer n’importe quel nombre de vos résultats.%LINEBREAK%<strong>Tourelle d’Arme lourde :</strong> vous pouvez pivoter votre indicateur %SINGLETURRETARC% uniquement vers votre %FRONTARC% ou %REARARC%. Vous <b>devez</b> considérer le prérequis %FRONTARC% de vos améliorations %MISSILE% équipées comme étant %SINGLETURRETARC%."
     },
     "Lieutenant Rivas": {
       display_name: "Lieutenant Rivas",
@@ -21910,6 +21962,10 @@ exportObj.cardLoaders['Français'] = function() {
       display_name: "Major Vermeil",
       text: "Tant que vous effectuez une attaque, si le défenseur n’a aucun marqueur vert, vous pouvez changer 1 de vos résultats Vierge ou %FOCUS% en un résultat %HIT%.%LINEBREAK% %LINEBREAK%<strong>Ailerons Adaptables :</strong> avant de révéler votre cadran, si vous n’êtes pas stressé, vous <b>devez</b> exécuter une manœuvre blanche [1&nbsp;%BANKLEFT%], [1&nbsp;%STRAIGHT%], ou [1&nbsp;%BANKRIGHT%]."
     },
+    "Major Vonreg": {
+      display_name: "Major Vonreg",
+      text: "Pendant la phase de système, vous pouvez choisir 1&nbsp;vaisseau ennemi dans votre&nbsp;%BULLSEYEARC%. Ce vaisseau ennemi gagne 1&nbsp;marqueur d’épuisement ou de contrainte (vous choisissez) .%LINEBREAK%<strong>Propulseurs Réactifs :</strong> après avoir entièrement exécuté une manœuvre, si vous n’êtes pas épuisé ou contraint, vous pouvez gagner 1&nbsp;marqueur d’épuisement ou de contrainte pour effectuer une action %LOCK% ou %BARRELROLL%."
+    },
     "Major Vynder": {
       display_name: "Major Vynder",
       text: "Tant que vous défendez, si vous êtes désarmé, lancez 1 dé de défense supplémentaire."
@@ -21934,6 +21990,10 @@ exportObj.cardLoaders['Français'] = function() {
       display_name: "Moralo Eval",
       text: "Si vous êtes censé fuir, vous pouvez dépenser 1 %CHARGE%. Dans ce cas, mettez-vous en réserve à la place. Au début de la prochaine phase de préparation, placez-vous intégralement à portée 1 du bord de la zone de jeu par lequel vous auriez dû fuir."
     },
+    "Morna Kee": {
+      display_name: "Morna Kee",
+      text: "Pendant la phase de dénouement, vous pouvez dépenser 1&nbsp;%CHARGE% pour retourner 1 de vos marqueurs de renforcement vers votre autre arc entier au lieu de le retirer."
+    },
     "Nien Nunb": {
       display_name: "Nien Nunb",
       text: "Après avoir gagné un marqueur de stress, si un vaisseau ennemi est dans votre %FRONTARC% à portée 0-1, vous pouvez retirer ce marqueur de stress.%LINEBREAK%<strong>Emplacement d’Arme:</strong> vous pouvez vous équiper de 1 amélioration %CANNON%, %TORPEDO% ou %MISSILE%."
@@ -21941,6 +22001,10 @@ exportObj.cardLoaders['Français'] = function() {
     "Nodin Chavdri": {
       display_name: "Nodin Chavdri",
       text: "Après avoir coordonné ou avoir été coordonné, si vous avez 2 marqueurs de stress ou moins, vous pouvez effectuer 1&nbsp;action de votre barre d’action en tant qu’action rouge, même si vous êtes stressé."
+    },
+    "Nom Lumb": {
+      display_name: "Nom Lumb",
+      text: "Après être devenu le défenseur, si l’attaquant n’est pas dans votre&nbsp;%SINGLETURRETARC%, vous <b>devez</b> pivoter votre indicateur %SINGLETURRETARC% vers un arc standard dans lequel se trouve l’attaquant."
     },
     "Norra Wexley (Y-Wing)": {
       display_name: "Norra Wexley",
@@ -22006,6 +22070,10 @@ exportObj.cardLoaders['Français'] = function() {
       display_name: "Padmé Amidala",
       text: "Tant qu’un vaisseau ennemi dans votre %FRONTARC% défend ou effectue une attaque, ce vaisseau ennemi ne peut modifier que 1 seul résultat&nbsp;%FOCUS% (les autres résultats peuvent toujours être modifiés).%LINEBREAK%<strong>Plein Gaz :</strong> après avoir entièrement exécuté une manœuvre à vitesse 3-5, vous pouvez effectuer une action&nbsp;%EVADE%."
     },
+    "Paige Tico": {
+      display_name: "Paige Tico",
+      text: "Après avoir largué un engin, vous pouvez dépenser 1&nbsp;%CHARGE% pour larguer un engin supplémentaire."
+    },
     "Palob Godalhi": {
       display_name: "Palob Godalhi",
       text: "Au début de la phase d’engagement, vous pouvez choisir 1 vaisseau ennemi dans votre arc de tir, à portée 0-2. Dans ce cas, transférez 1 marqueur de concentration ou d’évasion de ce vaisseau au vôtre."
@@ -22053,6 +22121,10 @@ exportObj.cardLoaders['Français'] = function() {
     "Quinn Jast": {
       display_name: "Quinn Jast",
       text: "Au début de la phase d’engagement, vous pouvez gagner 1 marqueur de désarmement pour récupérer 1 %CHARGE% sur 1 de vos améliorations équipées.%LINEBREAK%<strong>Emplacement d’Arme :</strong> vous pouvez vous équiper de 1 amélioration %CANNON%, %TORPEDO% ou %MISSILE%."
+    },
+    "R1-J5": {
+      display_name: "R1-J5",
+      text: "Avant d’exposer 1 de vos cartes de dégât, vous pouvez regarder vos cartes de dégât face cachée, en choisir 1 et l’exposer à la place.%LINEBREAK%<strong>Explosion En Vol :</strong> <strong>Mise en Place :</strong> 1&nbsp;carte de dégât face cachée vous est attribuée. Après avoir effectué une action <SLAM>, vous pouvez exposer 1&nbsp;carte de dégât pour retirer 1 marqueur de désarmement."
     },
     "R2-D2": {
       display_name: "R2-D2",
@@ -22105,6 +22177,10 @@ exportObj.cardLoaders['Français'] = function() {
     "Rogue Squadron Escort": {
       display_name: "Escorte de l’Escadron Rogue",
       text: "<i class = flavor_text>Les pilotes d’élite de l’Escadron Rogue font partie des meilleurs pilotes de la Rébellion.</i>%LINEBREAK%<strong>Scanners Expérimentaux :</strong> vous pouvez verrouiller une cible au-delà de la portée 3. Vous ne pouvez pas verrouiller de cible à portée 1."
+    },
+    "Ronith Blario": {
+      display_name: "Ronith Blario",
+      text: "Tant que vous défendez ou effectuez une attaque, si le vaisseau ennemi est dans l’&nbsp;%SINGLETURRETARC% d’un autre vaisseau allié, vous pouvez dépenser 1&nbsp;marqueur de concentration de ce vaisseau allié pour changer 1 de vos résultats %FOCUS% en un résultat %EVADE% ou %HIT%.%LINEBREAK%<strong> Gyrostabilisateurs Perfectionnés :</strong> vous pouvez pivoter votre indicateur%SINGLETURRETARC% uniquement vers votre %FRONTARC% ou %REARARC%. Après avoir effectué une action, vous pouvez effectuer une action %BOOST% rouge ou %ROTATEARC% rouge."
     },
     "Rose Tico": {
       display_name: "Rose Tico",
@@ -22366,6 +22442,10 @@ exportObj.cardLoaders['Français'] = function() {
       display_name: "Survivant de l’Escadron Zeta",
       text: "<i class = flavor_text>Humiliés par leur défaite, les pilotes rescapés de la base Starkiller sont impatients de démontrer leur talent face aux combattants de la Résistance.</i>%LINEBREAK%<strong>Tourelle d’Arme Lourde: </strong> vous pouvez pivoter votre indicateur %SINGLETURRETARC% uniquement vers votre %FRONTARC% ou %REARARC%. Vous devez considérer le prérequis %FRONTARC% de vos améliorations %MISSILE% équipées comme étant %SINGLETURRETARC%."
     },
+    "Zizi Tlo": {
+      display_name: "Zizi Tlo",
+      text: "Après avoir défendu ou effectué une attaque, vous pouvez dépenser 1&nbsp;%CHARGE% pour gagner 1&nbsp;marqueur de concentration ou d’évasion.%LINEBREAK%<strong> Gyrostabilisateurs Perfectionnés :</strong> vous pouvez pivoter votre indicateur%SINGLETURRETARC% uniquement vers votre %FRONTARC% ou %REARARC%. Après avoir effectué une action, vous pouvez effectuer une action %BOOST% rouge ou %ROTATEARC% rouge."
+    },
     "Zuckuss": {
       display_name: "Zuckuss",
       text: "Tant que vous effectuez une attaque principale, vous pouvez lancer 1 dé d’attaque supplémentaire. Dans ce cas, le défenseur lance 1 dé de défense supplémentaire."
@@ -22422,9 +22502,17 @@ exportObj.cardLoaders['Français'] = function() {
       display_name: "“Echo”",
       text: "Lorsque vous vous désoccultez, vous devez utiliser le gabarit [2&nbsp;%BANKLEFT%] ou [2&nbsp;%BANKRIGHT%] à la place du gabarit [2&nbsp;%STRAIGHT%].%LINEBREAK%<strong>Réseau de Stygium :</strong> après vous être désocculté, vous pouvez effectuer une action %EVADE%. Au début de la phase de dénouement, vous pouvez dépenser 1 marqueur d’évasion pour gagner 1 marqueur d’occultation. "
     },
+    '"Ember"': {
+      display_name: "“Ember”",
+      text: "Tant que vous effectuez une attaque, si un vaisseau endommagé, allié du défenseur, est à portée&nbsp;0-1 de ce dernier, le défenseur ne peut pas dépenser de marqueur de concentration ou de calcul.%LINEBREAK%<strong>Propulseurs Réactifs :</strong> après avoir entièrement exécuté une manœuvre, si vous n’êtes pas épuisé ou contraint, vous pouvez gagner 1&nbsp;marqueur d’épuisement ou de contrainte pour effectuer une action %LOCK% ou %BARRELROLL%."
+    },
     '"Goji"': {
       display_name: "“Goji”",
       text: "Tant qu’un vaisseau allié à portée&nbsp;0-3 défend, il peut lancer 1 dé de défense supplémentaire pour chaque bombe ou mine alliée à portée&nbsp;0-1 de lui.%LINEBREAK%<strong>Coque Blindée :</strong> tant que vous défendez, si vous n’êtes pas critiquement endommagé, changez 1 résultat&nbsp;%CRIT% en un résultat&nbsp;%HIT%."
+    },
+    '"Holo"': {
+      display_name: "“Holo”",
+      text: "Au début de la phase d’engagement, vous <b>devez</b> transférer 1 de vos marqueurs à un autre vaisseau allié à portée 0-2.%LINEBREAK%<strong>Propulseurs Réactifs :</strong> après avoir entièrement exécuté une manœuvre, si vous n’êtes pas épuisé ou contraint, vous pouvez gagner 1&nbsp;marqueur d’épuisement ou de contrainte pour effectuer une action %LOCK% ou %BARRELROLL%."
     },
     '"Howlrunner"': {
       display_name: "“Howlrunner”",
@@ -22498,6 +22586,10 @@ exportObj.cardLoaders['Français'] = function() {
       display_name: "“Redline”",
       text: "Vous pouvez maintenir jusqu’à 2 cibles verrouillées.%LINEBREAK% Après avoir effectué une action, vous pouvez verrouiller une cible."
     },
+    '"Rush"': {
+      display_name: "“Rush”",
+      text: "Tant que vous êtes endommagé, considérez votre initiative comme étant de 6.%LINEBREAK%<strong> Autopropulseurs :</strong> après avoir effectué une action, vous pouvez effectuer une action %BARRELROLL% rouge ou une action %BOOST% rouge."
+    },
     '"Scorch"': {
       display_name: "“Scorch”",
       text: "Tant que vous effectuez une attaque principale, si vous n’êtes pas stressé, vous pouvez gagner 1 marqueur de stress pour lancer 1 dé d’attaque supplémentaire."
@@ -22521,6 +22613,10 @@ exportObj.cardLoaders['Français'] = function() {
     '"Tucker"': {
       display_name: "“Tucker”",
       text: "Après qu’un vaisseau allié à portée&nbsp;1-2 a effectué une attaque contre un vaisseau ennemi dans votre %FRONTARC%, vous pouvez effectuer une action&nbsp;%FOCUS%."
+    },
+    '"Vagabond"': {
+      display_name: "“Vagabond”",
+      text: "Après avoir entièrement exécuté une manœuvre en utilisant vos <strong>Ailerons Adaptables</strong>, si vous n’êtes pas stressé, vous pouvez larguer 1&nbsp;engin.%LINEBREAK%<strong>Ailerons Adaptables :</strong> avant de révéler votre cadran, si vous n’êtes pas stressé, vous <b>devez</b> exécuter une manœuvre blanche [1 %BANKLEFT%], [1 %STRAIGHT%] ou [1 %BANKRIGHT%]."
     },
     '"Vizier"': {
       display_name: "“Vizier”",
@@ -22824,9 +22920,17 @@ exportObj.cardLoaders['Français'] = function() {
       display_name: "Commandant Clone Cody",
       text: "<i>Galactic Republic uniquement</i>%LINEBREAK%Après avoir effectué une attaque qui a raté, si au moins 1 résultat %HIT%/%CRIT% a été neutralisé, le défenseur gagne 1 marqueur de contrainte."
     },
+    "Cluster Mines": {
+      display_name: "Mines Groupées",
+      text: "<strong>Mine</strong>%LINEBREAK%Pendant la phase de système, vous pouvez dépenser 1&nbsp;%CHARGE% pour larguer une série de mines groupées en utilisant le gabarit [1&nbsp;%STRAIGHT%].%LINEBREAK%La %CHARGE% de cette carte ne peut pas être récupérée."
+    },
     "Cluster Missiles": {
       display_name: "Missiles Groupés",
       text: "<strong>Attaque (%LOCK%) :</strong> dépensez 1 %CHARGE%. Après cette attaque, vous pouvez effectuer cette attaque en tant qu’attaque bonus contre une cible différente à portée 0-1 du défenseur, en ignorant le prérequis %LOCK%."
+    },
+    "Coaxium Hyperfuel": {
+      display_name: "Hypercarburant Coaxium",
+      text: "<i>Requiert %SLAM% ou <r>%SLAM%</r></i>%LINEBREAK%Vous pouvez effectuer l’action <SLAM>, même si vous êtes stressé. Dans ce cas, vous subissez 1 dégât&nbsp;%CRIT% à moins que vous n’exposiez 1 de vos cartes de dégât.%LINEBREAK%Après avoir partiellement exécuté une manœuvre, vous pouvez exposer 1 de vos cartes de dégât ou subir 1 dégât&nbsp;%CRIT% pour effectuer une action <SLAM>."
     },
     "Collision Detector": {
       display_name: "Détecteur Anti-Collision",
@@ -22895,6 +22999,10 @@ exportObj.cardLoaders['Français'] = function() {
     "Dengar": {
       display_name: "Dengar",
       text: "<i>Racailles et Scélérats uniquement</i>%LINEBREAK%Après avoir défendu, si l’attaquant est dans votre arc de tir, vous pouvez dépenser 1&nbsp;%CHARGE%. Dans ce cas, lancez 1 dé d’attaque sauf si l’attaquant choisit de retirer 1 marqueur vert. Sur un résultat %HIT% ou %CRIT%, l’attaquant subit 1 dégât&nbsp;%HIT%."
+    },
+    "Deuterium Power Cells": {
+      display_name: "Cellules Énergétiques au Deutérium",
+      text: "<i>CHANGE ME uniquement</i>%LINEBREAK%Pendant la phase de système, vous pouvez dépenser 1&nbsp;%CHARGE% et gagner 1 marqueur de désarmement pour récupérer 1&nbsp;<shield>.%LINEBREAK%Avant que vous ne gagniez 1 marqueur autre qu’un marqueur de verrouillage, si vous n’êtes pas stressé, vous pouvez dépenser 1&nbsp;%CHARGE% pour gagner 1 marqueur de stress à la place."
     },
     "Diamond-Boron Missiles": {
       display_name: "Missiles Diamant-Bore",
@@ -23096,6 +23204,10 @@ exportObj.cardLoaders['Français'] = function() {
       display_name: "Intimidation",
       text: "Tant qu’un vaisseau ennemi à portée 0 défend, il lance un dé de défense en moins."
     },
+    "Ion Bombs": {
+      display_name: "Bombe Ionique",
+      text: "<strong>Bombe</strong>%LINEBREAK%Pendant la phase de système, vous pouvez dépenser 1&nbsp;%CHARGE% pour larguer une bombe ionique en utilisant le gabarit [1&nbsp;%STRAIGHT%]."
+    },
     "Ion Cannon": {
       display_name: "Canon Ionique",
       text: "<strong>Attaque :</strong> si cette attaque touche, dépensez 1 résultat&nbsp;%HIT% ou %CRIT% pour faire subir 1 dégât %HIT% au défenseur. Tous les résultats %HIT%/%CRIT% restants infligent des marqueurs ioniques au lieu des dégâts."
@@ -23128,6 +23240,10 @@ exportObj.cardLoaders['Français'] = function() {
       display_name: "Jyn Erso",
       text: "<i>Alliance Rebelle uniquement</i>%LINEBREAK%Si un vaisseau allié à portée 0-3 est censé gagner un marqueur de concentration, il peut gagner 1 marqueur d’évasion à la place."
     },
+    "K-2SO": {
+      display_name: "K-2SO",
+      text: "<i>Ajoute %CALCULATE% ,  %JAM%</i>%LINEBREAK%<i>Alliance Rebelle uniquement</i>%LINEBREAK%Pendant la phase de système, vous pouvez choisir un vaisseau allié à portée&nbsp;0-3. Ce vaisseau gagne 1&nbsp;marqueur de calcul et 1&nbsp;marqueur de stress."
+    },
     "K2-B4": {
       display_name: "K2-B4",
       text: "<i>Separatist Alliance uniquement</i>%LINEBREAK%Tant qu’un vaisseau allié à portée&nbsp;0-3 défend, il peut dépenser 1 marqueur de calcul. Dans ce cas, ajoutez 1 résultat %EVADE% sauf si l’attaquant choisit de gagner 1 marqueur de contrainte."
@@ -23139,6 +23255,10 @@ exportObj.cardLoaders['Français'] = function() {
     "Kaydel Connix": {
       display_name: "Kaydel Connix",
       text: "<i>CHANGE ME uniquement</i>%LINEBREAK%Après avoir révélé votre cadran, vous pouvez régler votre cadran sur une manœuvre de base à la vitesse supérieure suivante. Tant que vous exécutez cette manœuvre, augmentez sa difficulté."
+    },
+    "Kaz's Fireball": {
+      display_name: "Fireball de Kaz",
+      text: "<i>CHANGE ME uniquement</i>%LINEBREAK%<strong>Mise en Place :</strong> lorsque vous résolvez <strong>Explosion en Vol</strong>, vous pouvez chercher et choisir dans le paquet de dégâts une carte de dégât avec le trait <strong>Vaisseau</strong>&nbsp;; cette carte vous est attribuée à la place. Puis mélangez le paquet de dégâts. %LINEBREAK%Vous pouvez effectuer des actions des cartes de dégât, même si vous êtes ionisé."
     },
     "Ketsu Onyo": {
       display_name: "Ketsu Onyo",
@@ -23203,6 +23323,10 @@ exportObj.cardLoaders['Français'] = function() {
     "M9-G8": {
       display_name: "M9-G8",
       text: "<i>CHANGE ME uniquement</i>%LINEBREAK%Tant qu’un vaisseau que vous avez verrouillé effectue une attaque, vous pouvez choisir 1 dé d’attaque. Dans ce cas, l’attaquant relance ce dé."
+    },
+    "Mag-Pulse Warheads": {
+      display_name: "Ogives à Impulsion Magnétique",
+      text: "<strong>Attaque (%LOCK%) :</strong> dépensez 1&nbsp;%CHARGE%. Si cette attaque touche, le défenseur subit 1 dégât&nbsp;%CRIT% et gagne 1&nbsp;marqueur d’épuisement et 1&nbsp;marqueur de brouillage. Puis annulez tous les résultats&nbsp;%HIT%/%CRIT%."
     },
     "Magva Yarro": {
       display_name: "Magva Yarro",
@@ -23304,6 +23428,10 @@ exportObj.cardLoaders['Français'] = function() {
       display_name: "Torpilles à Protons",
       text: "<strong>Attaque (%LOCK%) :</strong> dépensez 1 %CHARGE%. Changez 1 résultat&nbsp;%HIT% en un résultat %CRIT%."
     },
+    "Proud Tradition": {
+      display_name: "Noble Tradition",
+      text: "<i>CHANGE ME uniquement</i>%LINEBREAK%<strong>Noble Tradition</strong>%LINEBREAK%<strong>Mise en Place :</strong> à équiper avec cette face visible.%LINEBREAK%Tant que vous avez 2 marqueurs de stress ou moins, vous pouvez effectuer des actions&nbsp;%FOCUS%, même si vous êtes stressé.%LINEBREAK%Après que vous avez effectué une attaque, si vous êtes stressé, le défenseur peut dépenser 1 marqueur de concentration ou subir 1 dégât&nbsp;%CRIT% pour retourner cette carte.%LINEBREAK%<strong>False Tradition</strong>%LINEBREAK%<i>CHANGE ME uniquement</i>%LINEBREAK%Considérez vos actions %FOCUS% comme rouge."
+    },
     "Proximity Mines": {
       display_name: "Mine de Proximité",
       text: "<strong>Mine</strong>%LINEBREAK%Pendant la phase de système, vous pouvez dépenser 1 %CHARGE% pour larguer une mine de proximité en utilisant le gabarit [1&nbsp;%STRAIGHT%].%LINEBREAK%Les %CHARGE% de cette carte ne peuvent pas être récupérées."
@@ -23311,6 +23439,10 @@ exportObj.cardLoaders['Français'] = function() {
     "Qi'ra": {
       display_name: "Qi’ra",
       text: "<i>Racailles et Scélérats uniquement</i>%LINEBREAK%Tant que vous vous déplacez et effectuez des attaques, vous ignorez les obstacles que vous verrouillez."
+    },
+    "R1-J5": {
+      display_name: "R1-J5",
+      text: "<i>CHANGE ME uniquement</i>%LINEBREAK%Tant que vous avez 2&nbsp;marqueurs de stress ou moins, vous pouvez effectuer des actions des cartes de dégât, même si vous êtes stressé.%LINEBREAK%Après avoir réparé une carte de dégât avec le trait <strong>Vaisseau</strong>, vous pouvez dépenser 1&nbsp;%CHARGE% pour réparer cette carte à nouveau."
     },
     "R2 Astromech": {
       display_name: "Astromech R2",
@@ -23459,6 +23591,10 @@ exportObj.cardLoaders['Français'] = function() {
     "Squad Leader": {
       display_name: "Chef d’Escouade",
       text: "<i>Ajoute <r>%COORDINATE%</r></i>%LINEBREAK%Tant que vous coordonnez, le vaisseau que vous avez choisi peut effectuer une action seulement si celle-ci est également dans votre barre d’action. "
+    },
+    "Stabilized S-Foils": {
+      display_name: "S-foils Stabilisés (Repliés)",
+      text: "<strong>S-foils Stabilisés (Repliés)</strong>%LINEBREAK%<i>Ajoute %BARRELROLL%&nbsp;<i class=\"xwing-miniatures-font xwing-miniatures-font-linked red\"></i>&nbsp;<r>%EVADE%</r> ,  <r>%RELOAD%</r></i>%LINEBREAK%Avant de vous activer, si vous n’êtes pas critiquement endommagé, vous pouvez retourner cette carte.%LINEBREAK%<strong>S-foils Stabilisés (Dépliés)</strong>%LINEBREAK%<i>Ajoute %BARRELROLL%&nbsp;<i class=\"xwing-miniatures-font xwing-miniatures-font-linked red\"></i>&nbsp;<r>%LOCK%</r></i>%LINEBREAK%Après avoir effectué une attaque, vous pouvez dépenser votre verrouillage sur le défenseur pour effectuer une attaque bonus&nbsp;%CANNON% contre ce vaisseau en utilisant une amélioration&nbsp;%CANNON% avec laquelle vous n’avez pas attaqué à ce round.%LINEBREAK%Avant de vous activer, si vous n’êtes pas critiquement endommagé, vous pouvez retourner cette carte."
     },
     "Static Discharge Vanes": {
       display_name: "Ailettes Statiques de Décharge",
@@ -37440,7 +37576,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 40473
+                    lineno: 40575
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -37672,7 +37808,8 @@ exportObj.SquadBuilder = (function() {
       points: 200,
       bid_goal: 5,
       ships_or_upgrades: 3,
-      collection_only: true
+      collection_only: true,
+      fill_zero_pts: false
     };
     this.total_points = 0;
     this.isHyperspace = (_ref = (_ref1 = exportObj.builders[0]) != null ? _ref1.isHyperspace : void 0) != null ? _ref : false;
@@ -38104,7 +38241,7 @@ exportObj.SquadBuilder = (function() {
     this.randomizer_options_modal = $(document.createElement('DIV'));
     this.randomizer_options_modal.addClass('modal hide fade randomizer-modal');
     $('body').append(this.randomizer_options_modal);
-    this.randomizer_options_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>Random Squad Builder Options</h3>\n</div>\n<div class=\"modal-body\">\n    <form>\n        <label>\n            Maximal desired bid\n            <input type=\"number\" class=\"randomizer-bid-goal\" value=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" placeholder=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" />\n        </label>\n        <label>\n            More upgrades\n            <input type=\"range\" min=\"0\" max=\"10\" class=\"randomizer-ships-or-upgrades\" value=\"" + DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES + "\" placeholder=\"" + DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES + "\" />\n            Less upgrades\n        </label>\n        <label>\n            <input type=\"checkbox\" class=\"randomizer-collection-only\" checked=\"checked\"/> \n            Only use items from collection\n        </label>\n        <label>\n            Sets and Expansions (default all)\n            <select class=\"randomizer-sources\" multiple=\"1\" data-placeholder=\"Use all sets and expansions\">\n            </select>\n        </label>\n        <label>\n            Maximum Seconds to Spend Randomizing\n            <input type=\"number\" class=\"randomizer-timeout\" value=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" placeholder=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" />\n        </label>\n    </form>\n</div>\n<div class=\"modal-footer\">\n    <button class=\"btn btn-primary do-randomize\" aria-hidden=\"true\">Randomize!</button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.randomizer_options_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>Random Squad Builder Options</h3>\n</div>\n<div class=\"modal-body\">\n    <form>\n        <label>\n            Maximal desired bid\n            <input type=\"number\" class=\"randomizer-bid-goal\" value=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" placeholder=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" />\n        </label>\n        <label>\n            More upgrades\n            <input type=\"range\" min=\"0\" max=\"10\" class=\"randomizer-ships-or-upgrades\" value=\"" + DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES + "\" placeholder=\"" + DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES + "\" />\n            Less upgrades\n        </label>\n        <label>\n            <input type=\"checkbox\" class=\"randomizer-collection-only\" checked=\"checked\"/> \n            Only use items from collection\n        </label>\n        <label>\n            Sets and Expansions (default all)\n            <select class=\"randomizer-sources\" multiple=\"1\" data-placeholder=\"Use all sets and expansions\">\n            </select>\n        </label>\n        <label>\n            <input type=\"checkbox\" class=\"randomizer-fill-zero-pts\" /> \n            Always fill 0-point slots\n        </label>\n        <label>\n            Maximum Seconds to Spend Randomizing\n            <input type=\"number\" class=\"randomizer-timeout\" value=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" placeholder=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" />\n        </label>\n    </form>\n</div>\n<div class=\"modal-footer\">\n    <button class=\"btn btn-primary do-randomize\" aria-hidden=\"true\">Randomize!</button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
     this.randomizer_source_selector = $(this.randomizer_options_modal.find('select.randomizer-sources'));
     _ref = exportObj.expansions;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -38118,6 +38255,7 @@ exportObj.SquadBuilder = (function() {
       minimumResultsForSearch: $.isMobile() ? -1 : 0
     });
     this.randomizer_collection_selector = ($(this.randomizer_options_modal.find('.randomizer-collection-only')))[0];
+    this.randomizer_fill_zero_pts = ($(this.randomizer_options_modal.find('.randomizer-fill-zero-pts')))[0];
     this.randomize_button.click((function(_this) {
       return function(e) {
         var bid_goal, points, ships_or_upgrades, timeout_sec;
@@ -38143,7 +38281,7 @@ exportObj.SquadBuilder = (function() {
           if (isNaN(timeout_sec) || timeout_sec <= 0) {
             timeout_sec = DEFAULT_RANDOMIZER_TIMEOUT_SEC;
           }
-          return _this.randomSquad(points, _this.randomizer_source_selector.val(), timeout_sec * 1000, bid_goal, ships_or_upgrades, _this.randomizer_collection_selector.checked);
+          return _this.randomSquad(points, _this.randomizer_source_selector.val(), timeout_sec * 1000, bid_goal, ships_or_upgrades, _this.randomizer_collection_selector.checked, _this.randomizer_fill_zero_pts.checked);
         }
       };
     })(this));
@@ -38272,7 +38410,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 41343
+              lineno: 41451
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -39060,7 +39198,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 42081
+              lineno: 42189
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -39070,7 +39208,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 42082
+                lineno: 42190
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -40424,7 +40562,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype._randomizerLoopBody = function(data) {
-    var addon, available_pilots, available_ships, available_upgrades, idx, new_ship, pilot, removable_things, ship, ship_type, sorted, thing_to_remove, unused_addons, upgrade, _, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _len6, _len7, _m, _n, _o, _p, _q, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8;
+    var addon, available_pilots, available_ships, available_upgrades, idx, new_ship, pilot, removable_things, ship, ship_type, sorted, thing_to_remove, unused_addons, upgrade, _, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _len9, _m, _n, _o, _p, _q, _r, _ref, _ref1, _ref10, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _s;
     if (data.keep_running) {
       if (data.max_points - this.total_points <= data.bid_goal && this.total_points <= data.max_points) {
         data.keep_running = false;
@@ -40549,10 +40687,39 @@ exportObj.SquadBuilder = (function() {
           }
         }
       }
+      if (data.fill_zero_pts) {
+        _ref8 = this.ships;
+        for (_q = 0, _len7 = _ref8.length; _q < _len7; _q++) {
+          ship = _ref8[_q];
+          _ref9 = ship.upgrades;
+          for (_r = 0, _len8 = _ref9.length; _r < _len8; _r++) {
+            addon = _ref9[_r];
+            if (!!((addon.data != null) || ((addon.occupied_by != null) && addon.occupied_by !== null))) {
+              continue;
+            }
+            available_upgrades = (function() {
+              var _len9, _ref10, _results, _s;
+              _ref10 = this.getAvailableUpgradesIncluding(addon.slot, null, addon.ship, addon, '', this.dfl_filter_func, sorted = false);
+              _results = [];
+              for (_s = 0, _len9 = _ref10.length; _s < _len9; _s++) {
+                upgrade = _ref10[_s];
+                if (exportObj.upgradesById[upgrade.id].sources.intersects(data.allowed_sources) && (upgrade.points < 1) && ((!data.collection_only) || this.collection.checkShelf('upgrade', upgrade.name))) {
+                  _results.push(upgrade);
+                }
+              }
+              return _results;
+            }).call(this);
+            upgrade = available_upgrades.length > 0 ? available_upgrades[$.randomInt(available_upgrades.length)] : void 0;
+            if (upgrade && !upgrade.disabled) {
+              addon.setById(upgrade.id);
+            }
+          }
+        }
+      }
       window.clearTimeout(data.timer);
-      _ref8 = this.ships;
-      for (_q = 0, _len7 = _ref8.length; _q < _len7; _q++) {
-        ship = _ref8[_q];
+      _ref10 = this.ships;
+      for (_s = 0, _len9 = _ref10.length; _s < _len9; _s++) {
+        ship = _ref10[_s];
         ship.updateSelections();
       }
       this.suppress_automatic_new_ship = false;
@@ -40568,7 +40735,7 @@ exportObj.SquadBuilder = (function() {
     })(this);
   };
 
-  SquadBuilder.prototype.randomSquad = function(max_points, allowed_sources, timeout_ms, bid_goal, ships_or_upgrades, collection_only) {
+  SquadBuilder.prototype.randomSquad = function(max_points, allowed_sources, timeout_ms, bid_goal, ships_or_upgrades, collection_only, fill_zero_pts) {
     var data, stopHandler;
     if (max_points == null) {
       max_points = 200;
@@ -40588,6 +40755,9 @@ exportObj.SquadBuilder = (function() {
     if (collection_only == null) {
       collection_only = true;
     }
+    if (fill_zero_pts == null) {
+      fill_zero_pts = false;
+    }
     this.backend_status.fadeOut('slow');
     this.suppress_automatic_new_ship = true;
     while (this.ships.length > 0) {
@@ -40602,7 +40772,8 @@ exportObj.SquadBuilder = (function() {
       ships_or_upgrades: ships_or_upgrades,
       keep_running: true,
       allowed_sources: allowed_sources != null ? allowed_sources : exportObj.expansions,
-      collection_only: (this.collection != null) && (this.collection.checks.collectioncheck === "true") && collection_only
+      collection_only: (this.collection != null) && (this.collection.checks.collectioncheck === "true") && collection_only,
+      fill_zero_pts: fill_zero_pts
     };
     stopHandler = (function(_this) {
       return function() {
@@ -40999,7 +41170,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 43422
+                      lineno: 43542
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -41225,7 +41396,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 43542
+                          lineno: 43662
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -41275,7 +41446,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 43575
+                                  lineno: 43695
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -41354,7 +41525,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 43626
+                      lineno: 43746
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -41434,7 +41605,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 43655
+                lineno: 43775
               })
             ]);
             __iced_deferrals._fulfill();
@@ -41503,7 +41674,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 43684
+              lineno: 43804
             }));
           }
         }
@@ -41595,7 +41766,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 43740
+                lineno: 43860
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -42594,7 +42765,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 44549
+                lineno: 44669
               })
             ]);
             __iced_deferrals._fulfill();
@@ -42723,7 +42894,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 44614
+                  lineno: 44734
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -42746,7 +42917,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 44619
+                      lineno: 44739
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -42838,7 +43009,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 44664
+            lineno: 44784
           }));
         }
         __iced_deferrals._fulfill();
