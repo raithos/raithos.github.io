@@ -445,9 +445,9 @@ class exportObj.SquadBuilderBackend
                 </div>
                 <div class="btn-group squad-display-mode">
                     <button class="btn btn-inverse show-all-squads">All</button>
-                    <button class="btn show-extended-squads">Extended</button>
-                    <button class="btn show-hyperspace-squads">Hyperspace</button>
-                    <button class="btn show-quickbuild-squads">Quickbuild</button>
+                    <button class="btn show-extended-squads">Ext<span class="hidden-phone">ended</span></button>
+                    <button class="btn show-hyperspace-squads">Hyper<span class="hidden-phone">space</span></button>
+                    <button class="btn show-quickbuild-squads">Quick<span class="hidden-phone">build</span></button>
                     <button class="btn show-epic-squads">Epic</button>
                     <button class="btn show-archived-squads">Archived</button>
                 </div>
@@ -40814,20 +40814,9 @@ class exportObj.SquadBuilder
             <div class="modal-footer hidden-print">
                 <div class="row">
                     <div class="column">
-                        <label class="vertical-space-checkbox hidden-phone">
-                            Add Space for Cards<input type="checkbox" class="toggle-vertical-space" />
-                        </label>
-                        <label class="maneuver-print-checkbox hidden-phone">
-                            Include Maneuvers Chart <input type="checkbox" class="toggle-maneuver-print" />
-                        </label>
-                        <label class="expanded-shield-hull-print-checkbox hidden-phone">
-                            Expand Shield and Hull <input type="checkbox" class="toggle-expanded-shield-hull-print" />
-                        </label>
                         <label class="color-print-checkbox hidden-phone">
                             Print Color <input type="checkbox" class="toggle-color-print" checked="checked" />
                         </label>
-                    </div>
-                    <div class="column">
                         <label class="color-skip-text-checkbox hidden-phone">
                             Skip Card Text <input type="checkbox" class="toggle-skip-text-print" />
                         </label>
@@ -40838,13 +40827,24 @@ class exportObj.SquadBuilder
                             Include Obstacle Choices <input type="checkbox" class="toggle-obstacles" />
                         </label>
                     </div>
+                    <div class="column">
+                        <label class="vertical-space-checkbox hidden-phone">
+                            Add Space for Cards<input type="checkbox" class="toggle-vertical-space" />
+                        </label>
+                        <label class="maneuver-print-checkbox hidden-phone">
+                            Include Maneuvers Chart <input type="checkbox" class="toggle-maneuver-print" />
+                        </label>
+                        <label class="expanded-shield-hull-print-checkbox hidden-phone">
+                            Expand Shield and Hull <input type="checkbox" class="toggle-expanded-shield-hull-print" />
+                        </label>
+                    </div>
                 </div>
                 <div class="btn-group list-display-mode">
                     <button class="btn select-simple-view">Simple</button>
                     <button class="btn select-fancy-view hidden-phone">Fancy</button>
                     <button class="btn select-simplecopy-view">Text</button>
-                    <button class="btn select-reddit-view">Reddit</button>
                     <button class="btn select-tts-view hidden-phone">TTS</button>
+                    <button class="btn select-reddit-view">Reddit</button>
                     <button class="btn select-bbcode-view">BBCode</button>
                     <button class="btn select-html-view">HTML</button>
                 </div>
