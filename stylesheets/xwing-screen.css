@@ -8,7 +8,10 @@
   flex: 50%; }
 
 .modal-body {
-  height: 60%; }
+  max-height: calc(45vh); }
+
+.modal.fade.in {
+  top: 5%; }
 
 .fancy-header {
   border: 38px solid black;

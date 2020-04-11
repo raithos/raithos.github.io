@@ -21144,7 +21144,7 @@ exportObj.translations.English =
         # Print/View modal
         '.bbcode-list' : 'Copy the BBCode below and paste it into your forum post.<textarea></textarea><button class="btn btn-copy">Copy</button>'
         '.html-list' : '<textarea></textarea><button class="btn btn-copy">Copy</button>'
-        '.vertical-space-checkbox' : """Add space for damage/upgrade cards when printing <input type="checkbox" class="toggle-vertical-space" />"""
+        '.vertical-space-checkbox' : """Add space for cards <input type="checkbox" class="toggle-vertical-space" />"""
         '.color-print-checkbox' : """Print color <input type="checkbox" class="toggle-color-print" checked="checked" />"""
         '.print-list' : '<i class="fa fa-print"></i>&nbsp;Print'
         # Randomizer options
@@ -40814,28 +40814,28 @@ class exportObj.SquadBuilder
             <div class="modal-footer hidden-print">
                 <div class="row">
                     <div class="column">
-                        <label class="color-print-checkbox hidden-phone">
-                            Print Color <input type="checkbox" class="toggle-color-print" checked="checked" />
-                        </label>
                         <label class="color-skip-text-checkbox hidden-phone">
                             Skip Card Text <input type="checkbox" class="toggle-skip-text-print" />
                         </label>
-                        <label class="qrcode-checkbox hidden-phone">
-                            Include QR codes <input type="checkbox" class="toggle-juggler-qrcode" checked="checked" />
-                        </label>
-                        <label class="obstacles-checkbox hidden-phone">
-                            Include Obstacle Choices <input type="checkbox" class="toggle-obstacles" />
-                        </label>
-                    </div>
-                    <div class="column">
                         <label class="vertical-space-checkbox hidden-phone">
-                            Add Space for Cards<input type="checkbox" class="toggle-vertical-space" />
+                            Add Space for Cards <input type="checkbox" class="toggle-vertical-space" />
                         </label>
                         <label class="maneuver-print-checkbox hidden-phone">
                             Include Maneuvers Chart <input type="checkbox" class="toggle-maneuver-print" />
                         </label>
                         <label class="expanded-shield-hull-print-checkbox hidden-phone">
                             Expand Shield and Hull <input type="checkbox" class="toggle-expanded-shield-hull-print" />
+                        </label>
+                    </div>
+                    <div class="column">
+                        <label class="color-print-checkbox hidden-phone">
+                            Print Color <input type="checkbox" class="toggle-color-print" checked="checked" />
+                        </label>
+                        <label class="qrcode-checkbox hidden-phone">
+                            Include QR codes <input type="checkbox" class="toggle-juggler-qrcode" checked="checked" />
+                        </label>
+                        <label class="obstacles-checkbox hidden-phone">
+                            Include Obstacle Choices <input type="checkbox" class="toggle-obstacles" />
                         </label>
                     </div>
                 </div>
