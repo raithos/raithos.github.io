@@ -2,7 +2,7 @@
   overflow: hidden; }
 
 .modal-body {
-  height: calc(100vh - 430px); }
+  height: calc(100vh - 200px); }
 
 .fancy-header {
   border: 38px solid black;
