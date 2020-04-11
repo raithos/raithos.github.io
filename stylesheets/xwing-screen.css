@@ -1,8 +1,14 @@
 .text-list-modal .modal-header {
   overflow: hidden; }
 
+.row {
+  display: flex; }
+
+.column {
+  flex: 50%; }
+
 .modal-body {
-  height: calc(100vh - 200px); }
+  height: 60%; }
 
 .fancy-header {
   border: 38px solid black;
