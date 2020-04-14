@@ -9994,6 +9994,7 @@ exportObj.basicCardData = ->
         {
             name: "Bossk (Z-95 Headhunter)"
             xws: "bossk-z95af4headhunter"
+            canonical_name: 'Bossk'.canonicalize()
             id: 398
             faction: "Scum and Villainy"
             unique: true
