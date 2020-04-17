@@ -6870,10 +6870,10 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "Galactic Empire",
         restriction_func: function(ship, upgrade_obj) {
-          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj);
+          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot);
         },
         validation_func: function(ship, upgrade_obj) {
-          return upgrade_obj.occupiesAnotherUpgradeSlot();
+          return upgrade_obj.occupiesAnUpgradeSlot(upgrade_obj.slot);
         },
         also_occupies_upgrades: ["Crew"]
       }, {
@@ -6898,10 +6898,10 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "Galactic Empire",
         restriction_func: function(ship, upgrade_obj) {
-          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj);
+          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot);
         },
         validation_func: function(ship, upgrade_obj) {
-          return upgrade_obj.occupiesAnotherUpgradeSlot();
+          return upgrade_obj.occupiesAnUpgradeSlot(upgrade_obj.slot);
         },
         also_occupies_upgrades: ["Crew"],
         modifier_func: function(stats) {
@@ -6989,10 +6989,10 @@ exportObj.basicCardData = function() {
         faction: "Scum and Villainy",
         charge: 4,
         restriction_func: function(ship, upgrade_obj) {
-          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj);
+          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot);
         },
         validation_func: function(ship, upgrade_obj) {
-          return upgrade_obj.occupiesAnotherUpgradeSlot();
+          return upgrade_obj.occupiesAnUpgradeSlot(upgrade_obj.slot);
         },
         also_occupies_upgrades: ["Crew"]
       }, {
@@ -7295,10 +7295,10 @@ exportObj.basicCardData = function() {
         charge: 2,
         applies_condition: 'Bomblet'.canonicalize(),
         restriction_func: function(ship, upgrade_obj) {
-          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj);
+          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot);
         },
         validation_func: function(ship, upgrade_obj) {
-          return upgrade_obj.occupiesAnotherUpgradeSlot();
+          return upgrade_obj.occupiesAnUpgradeSlot(upgrade_obj.slot);
         },
         also_occupies_upgrades: ["Device"]
       }, {
@@ -7548,10 +7548,10 @@ exportObj.basicCardData = function() {
         rangebonus: true,
         charge: 5,
         restriction_func: function(ship, upgrade_obj) {
-          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj);
+          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot);
         },
         validation_func: function(ship, upgrade_obj) {
-          return upgrade_obj.occupiesAnotherUpgradeSlot();
+          return upgrade_obj.occupiesAnUpgradeSlot(upgrade_obj.slot);
         },
         also_occupies_upgrades: ['Missile']
       }, {
@@ -8308,10 +8308,10 @@ exportObj.basicCardData = function() {
         force: 1,
         faction: "First Order",
         restriction_func: function(ship, upgrade_obj) {
-          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj);
+          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot);
         },
         validation_func: function(ship, upgrade_obj) {
-          return upgrade_obj.occupiesAnotherUpgradeSlot();
+          return upgrade_obj.occupiesAnUpgradeSlot(upgrade_obj.slot);
         },
         also_occupies_upgrades: ["Crew"],
         modifier_func: function(stats) {
@@ -8452,7 +8452,12 @@ exportObj.basicCardData = function() {
         ship: "Delta-7 Aethersprite",
         pointsarray: [0, 0, 1, 2, 3, 4, 5],
         variableinit: true,
-        unequips_upgrades: ["Modification"],
+        restriction_func: function(ship, upgrade_obj) {
+          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Modification");
+        },
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Modification");
+        },
         also_occupies_upgrades: ["Modification"]
       }, {
         name: "Delta-7B",
@@ -8778,12 +8783,14 @@ exportObj.basicCardData = function() {
         slot: "Device",
         points: 12,
         charge: 1,
-        unequips_upgrades: ["Modification"],
+        restriction_func: function(ship, upgrade_obj) {
+          return (__indexOf.call(ship.effectiveStats().actions, "Reload") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Reload") >= 0) && ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Modification");
+        },
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Modification");
+        },
         also_occupies_upgrades: ["Modification"],
-        applies_condition: 'Electro-Proton Bomb'.canonicalize(),
-        restriction_func: function(ship) {
-          return __indexOf.call(ship.effectiveStats().actions, "Reload") >= 0 || __indexOf.call(ship.effectiveStats().actionsred, "Reload") >= 0;
-        }
+        applies_condition: 'Electro-Proton Bomb'.canonicalize()
       }, {
         name: "Delayed Fuses",
         id: 236,
@@ -8806,10 +8813,10 @@ exportObj.basicCardData = function() {
         rangebonus: true,
         charge: 3,
         restriction_func: function(ship, upgrade_obj) {
-          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj);
+          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot);
         },
         validation_func: function(ship, upgrade_obj) {
-          return upgrade_obj.occupiesAnotherUpgradeSlot();
+          return upgrade_obj.occupiesAnUpgradeSlot(upgrade_obj.slot);
         },
         also_occupies_upgrades: ['Missile']
       }, {
@@ -8858,10 +8865,10 @@ exportObj.basicCardData = function() {
         force: 1,
         points: 17,
         restriction_func: function(ship, upgrade_obj) {
-          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj);
+          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot);
         },
         validation_func: function(ship, upgrade_obj) {
-          return upgrade_obj.occupiesAnotherUpgradeSlot();
+          return upgrade_obj.occupiesAnUpgradeSlot(upgrade_obj.slot);
         },
         also_occupies_upgrades: ["Crew"],
         modifier_func: function(stats) {
@@ -9031,11 +9038,13 @@ exportObj.basicCardData = function() {
         slot: "Command",
         points: 6,
         faction: "Galactic Empire",
-        unequips_upgrades: ["Crew"],
-        also_occupies_upgrades: ["Crew"],
-        restriction_func: function(ship) {
-          return (ship.data.huge != null) && ship.doesSlotExist("Crew");
-        }
+        restriction_func: function(ship, upgrade_obj) {
+          return (ship.data.huge != null) && ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Crew");
+        },
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Crew");
+        },
+        also_occupies_upgrades: ["Crew"]
       }, {
         name: "Azmorigan",
         id: 262,
@@ -9043,11 +9052,13 @@ exportObj.basicCardData = function() {
         slot: "Command",
         points: 4,
         faction: "Scum and Villainy",
-        unequips_upgrades: ["Crew"],
-        also_occupies_upgrades: ["Crew"],
-        restriction_func: function(ship) {
-          return (ship.data.huge != null) && ship.doesSlotExist("Crew");
-        }
+        restriction_func: function(ship, upgrade_obj) {
+          return (ship.data.huge != null) && ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Crew");
+        },
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Crew");
+        },
+        also_occupies_upgrades: ["Crew"]
       }, {
         name: "Captain Needa",
         id: 263,
@@ -9055,11 +9066,13 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         slot: "Command",
         points: 8,
-        unequips_upgrades: ["Crew"],
-        also_occupies_upgrades: ["Crew"],
-        restriction_func: function(ship) {
-          return (ship.data.huge != null) && ship.doesSlotExist("Crew");
-        }
+        restriction_func: function(ship, upgrade_obj) {
+          return (ship.data.huge != null) && ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Crew");
+        },
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Crew");
+        },
+        also_occupies_upgrades: ["Crew"]
       }, {
         name: "Carlist Rieekan",
         id: 264,
@@ -9067,16 +9080,13 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         slot: "Command",
         points: 6,
-        unequips_upgrades: ["Crew"],
-        also_occupies_upgrades: ["Crew"],
-        modifier_func: function(stats) {
-          if (__indexOf.call(stats.actionsred, 'Evade') < 0) {
-            return stats.actionsred.push('Evade');
-          }
+        restriction_func: function(ship, upgrade_obj) {
+          return (ship.data.huge != null) && ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Crew");
         },
-        restriction_func: function(ship) {
-          return (ship.data.huge != null) && ship.doesSlotExist("Crew");
-        }
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Crew");
+        },
+        also_occupies_upgrades: ["Crew"]
       }, {
         name: "Jan Dodonna",
         id: 265,
@@ -9084,11 +9094,13 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         slot: "Command",
         points: 4,
-        unequips_upgrades: ["Crew"],
-        also_occupies_upgrades: ["Crew"],
-        restriction_func: function(ship) {
-          return (ship.data.huge != null) && ship.doesSlotExist("Crew");
-        }
+        restriction_func: function(ship, upgrade_obj) {
+          return (ship.data.huge != null) && ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Crew");
+        },
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Crew");
+        },
+        also_occupies_upgrades: ["Crew"]
       }, {
         name: "Raymus Antilles",
         id: 266,
@@ -9096,22 +9108,26 @@ exportObj.basicCardData = function() {
         slot: "Command",
         points: 12,
         faction: "Rebel Alliance",
-        unequips_upgrades: ["Crew"],
-        also_occupies_upgrades: ["Crew"],
-        restriction_func: function(ship) {
-          return (ship.data.huge != null) && ship.doesSlotExist("Crew");
-        }
+        restriction_func: function(ship, upgrade_obj) {
+          return (ship.data.huge != null) && ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Crew");
+        },
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Crew");
+        },
+        also_occupies_upgrades: ["Crew"]
       }, {
         name: "Stalwart Captain",
         id: 267,
         unique: true,
         slot: "Command",
         points: 6,
-        unequips_upgrades: ["Crew"],
-        also_occupies_upgrades: ["Crew"],
-        restriction_func: function(ship) {
-          return (ship.data.huge != null) && ship.doesSlotExist("Crew");
-        }
+        restriction_func: function(ship, upgrade_obj) {
+          return (ship.data.huge != null) && ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Crew");
+        },
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Crew");
+        },
+        also_occupies_upgrades: ["Crew"]
       }, {
         name: "Strategic Commander",
         id: 268,
@@ -9119,11 +9135,13 @@ exportObj.basicCardData = function() {
         slot: "Command",
         charge: 3,
         points: 6,
-        unequips_upgrades: ["Crew"],
-        also_occupies_upgrades: ["Crew"],
-        restriction_func: function(ship) {
-          return (ship.data.huge != null) && ship.doesSlotExist("Crew");
-        }
+        restriction_func: function(ship, upgrade_obj) {
+          return (ship.data.huge != null) && ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Crew");
+        },
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Crew");
+        },
+        also_occupies_upgrades: ["Crew"]
       }, {
         name: "Ion Cannon Battery",
         id: 269,
@@ -9718,11 +9736,13 @@ exportObj.basicCardData = function() {
         points: 9,
         charge: 2,
         faction: "First Order",
-        unequips_upgrades: ["Modification"],
-        also_occupies_upgrades: ["Modification"],
-        restriction_func: function(ship) {
-          return ship.doesSlotExist("Modification");
-        }
+        restriction_func: function(ship, upgrade_obj) {
+          return ship.doesSlotExist("Modification" && ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Modification"));
+        },
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Modification");
+        },
+        also_occupies_upgrades: ["Modification"]
       }, {
         name: "Proud Tradition",
         id: 319,
@@ -37577,7 +37597,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 40576
+                    lineno: 40587
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -38411,7 +38431,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 41452
+              lineno: 41463
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -39199,7 +39219,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 42190
+              lineno: 42201
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -39209,7 +39229,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 42191
+                lineno: 42202
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -41171,7 +41191,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 43543
+                      lineno: 43554
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -41397,7 +41417,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 43663
+                          lineno: 43674
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -41447,7 +41467,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 43696
+                                  lineno: 43707
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -41526,7 +41546,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 43747
+                      lineno: 43758
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -41606,7 +41626,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 43776
+                lineno: 43787
               })
             ]);
             __iced_deferrals._fulfill();
@@ -41675,7 +41695,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 43805
+              lineno: 43816
             }));
           }
         }
@@ -41767,7 +41787,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 43861
+                lineno: 43872
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -42613,12 +42633,12 @@ Ship = (function() {
     return false;
   };
 
-  Ship.prototype.hasAnotherUnoccupiedSlotLike = function(upgrade_obj) {
+  Ship.prototype.hasAnotherUnoccupiedSlotLike = function(upgrade_obj, upgradeslot) {
     var upgrade, _i, _len, _ref;
     _ref = this.upgrades;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       upgrade = _ref[_i];
-      if (upgrade === upgrade_obj || upgrade.slot !== upgrade_obj.slot) {
+      if (upgrade === upgrade_obj || upgrade.slot !== upgradeslot) {
         continue;
       }
       if (!upgrade.isOccupied()) {
@@ -42766,7 +42786,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 44670
+                lineno: 44681
               })
             ]);
             __iced_deferrals._fulfill();
@@ -42895,7 +42915,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 44735
+                  lineno: 44746
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -42918,7 +42938,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 44740
+                      lineno: 44751
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -43010,7 +43030,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 44785
+            lineno: 44796
           }));
         }
         __iced_deferrals._fulfill();
@@ -43247,12 +43267,12 @@ GenericAddon = (function() {
     return upgrade.selector.select2('enable', true);
   };
 
-  GenericAddon.prototype.occupiesAnotherUpgradeSlot = function() {
+  GenericAddon.prototype.occupiesAnUpgradeSlot = function(upgradeslot) {
     var upgrade, _i, _len, _ref;
     _ref = this.ship.upgrades;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       upgrade = _ref[_i];
-      if (upgrade.slot !== this.slot || upgrade === this || (upgrade.data != null)) {
+      if (upgrade.slot !== upgradeslot || upgrade === this || (upgrade.data != null)) {
         continue;
       }
       if ((upgrade.occupied_by != null) && upgrade.occupied_by === this) {

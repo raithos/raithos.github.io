@@ -10303,9 +10303,9 @@ exportObj.basicCardData = ->
            unique: true
            faction: "Galactic Empire"
            restriction_func: (ship, upgrade_obj) ->
-                ship.hasAnotherUnoccupiedSlotLike upgrade_obj
+                ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot)
            validation_func: (ship, upgrade_obj) ->
-                upgrade_obj.occupiesAnotherUpgradeSlot()
+                upgrade_obj.occupiesAnUpgradeSlot upgrade_obj.slot
            also_occupies_upgrades: [ "Crew" ]
        }
        {
@@ -10328,9 +10328,9 @@ exportObj.basicCardData = ->
            unique: true
            faction: "Galactic Empire"
            restriction_func: (ship, upgrade_obj) ->
-                ship.hasAnotherUnoccupiedSlotLike upgrade_obj
+                ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot)
            validation_func: (ship, upgrade_obj) ->
-                upgrade_obj.occupiesAnotherUpgradeSlot()
+                upgrade_obj.occupiesAnUpgradeSlot upgrade_obj.slot
            also_occupies_upgrades: [ "Crew" ]
            modifier_func: (stats) ->
                 stats.force += 1
@@ -10422,9 +10422,9 @@ exportObj.basicCardData = ->
            faction: "Scum and Villainy"
            charge: 4
            restriction_func: (ship, upgrade_obj) ->
-                ship.hasAnotherUnoccupiedSlotLike upgrade_obj
+                ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot)
            validation_func: (ship, upgrade_obj) ->
-                upgrade_obj.occupiesAnotherUpgradeSlot()
+                upgrade_obj.occupiesAnUpgradeSlot upgrade_obj.slot
            also_occupies_upgrades: [ "Crew" ]
        }
        {
@@ -10695,9 +10695,9 @@ exportObj.basicCardData = ->
            charge: 2
            applies_condition: 'Bomblet'.canonicalize()
            restriction_func: (ship, upgrade_obj) ->
-                ship.hasAnotherUnoccupiedSlotLike upgrade_obj
+                ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot)
            validation_func: (ship, upgrade_obj) ->
-                upgrade_obj.occupiesAnotherUpgradeSlot()
+                upgrade_obj.occupiesAnUpgradeSlot upgrade_obj.slot
            also_occupies_upgrades: [ "Device" ]
        }
        {
@@ -10951,9 +10951,9 @@ exportObj.basicCardData = ->
            rangebonus: true 
            charge: 5
            restriction_func: (ship, upgrade_obj) ->
-               ship.hasAnotherUnoccupiedSlotLike upgrade_obj
+               ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot)
            validation_func: (ship, upgrade_obj) ->
-               upgrade_obj.occupiesAnotherUpgradeSlot()
+               upgrade_obj.occupiesAnUpgradeSlot upgrade_obj.slot
            also_occupies_upgrades: [ 'Missile' ]
        }
        {
@@ -11403,7 +11403,7 @@ exportObj.basicCardData = ->
            ship: "Scurrg H-6 Bomber"
            unequips_upgrades: [
                 'Crew'
-            ]
+           ]
            also_occupies_upgrades: [
                 'Crew'
            ]
@@ -11752,9 +11752,9 @@ exportObj.basicCardData = ->
             force: 1
             faction: "First Order"
             restriction_func: (ship, upgrade_obj) ->
-                ship.hasAnotherUnoccupiedSlotLike upgrade_obj
+                ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot)
             validation_func: (ship, upgrade_obj) ->
-                upgrade_obj.occupiesAnotherUpgradeSlot()
+                upgrade_obj.occupiesAnUpgradeSlot upgrade_obj.slot
             also_occupies_upgrades: [ "Crew" ]
             modifier_func: (stats) ->
                 stats.force += 1
@@ -11899,7 +11899,10 @@ exportObj.basicCardData = ->
             ship: "Delta-7 Aethersprite"
             pointsarray: [0,0,1,2,3,4,5]
             variableinit: true
-            unequips_upgrades: [ "Modification" ]
+            restriction_func: (ship, upgrade_obj) ->
+                ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Modification")
+            validation_func: (ship, upgrade_obj) ->
+                upgrade_obj.occupiesAnUpgradeSlot "Modification"
             also_occupies_upgrades: [ "Modification" ]
        }
        {
@@ -12231,11 +12234,12 @@ exportObj.basicCardData = ->
             slot: "Device"
             points: 12
             charge: 1
-            unequips_upgrades: [ "Modification" ]
+            restriction_func: (ship, upgrade_obj) ->
+                ("Reload" in ship.effectiveStats().actions or "Reload" in ship.effectiveStats().actionsred) and ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Modification")
+            validation_func: (ship, upgrade_obj) ->
+                upgrade_obj.occupiesAnUpgradeSlot "Modification"
             also_occupies_upgrades: [ "Modification" ]
             applies_condition: 'Electro-Proton Bomb'.canonicalize()
-            restriction_func: (ship) ->
-                "Reload" in ship.effectiveStats().actions or "Reload" in ship.effectiveStats().actionsred
        }
        {
             name: "Delayed Fuses"
@@ -12261,9 +12265,9 @@ exportObj.basicCardData = ->
             rangebonus: true 
             charge: 3
             restriction_func: (ship, upgrade_obj) ->
-                ship.hasAnotherUnoccupiedSlotLike upgrade_obj
+                ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot)
             validation_func: (ship, upgrade_obj) ->
-                upgrade_obj.occupiesAnotherUpgradeSlot()
+                upgrade_obj.occupiesAnUpgradeSlot upgrade_obj.slot
             also_occupies_upgrades: [ 'Missile' ]
        }
        {
@@ -12317,9 +12321,9 @@ exportObj.basicCardData = ->
             force: 1
             points: 17
             restriction_func: (ship, upgrade_obj) ->
-                ship.hasAnotherUnoccupiedSlotLike upgrade_obj
+                ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot)
             validation_func: (ship, upgrade_obj) ->
-                upgrade_obj.occupiesAnotherUpgradeSlot()
+                upgrade_obj.occupiesAnUpgradeSlot upgrade_obj.slot
             also_occupies_upgrades: [ "Crew" ]
             modifier_func: (stats) ->
                 stats.force += 1
@@ -12484,10 +12488,11 @@ exportObj.basicCardData = ->
             slot: "Command"
             points: 6
             faction: "Galactic Empire"
-            unequips_upgrades: [ "Crew" ]
+            restriction_func: (ship, upgrade_obj) ->
+                ship.data.huge? and ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Crew")
+            validation_func: (ship, upgrade_obj) ->
+                upgrade_obj.occupiesAnUpgradeSlot "Crew"
             also_occupies_upgrades: [ "Crew" ]
-            restriction_func: (ship) ->
-                ship.data.huge? and ship.doesSlotExist "Crew"
        }
        {
             name: "Azmorigan"
@@ -12496,10 +12501,11 @@ exportObj.basicCardData = ->
             slot: "Command"
             points: 4
             faction: "Scum and Villainy"
-            unequips_upgrades: [ "Crew" ]
+            restriction_func: (ship, upgrade_obj) ->
+                ship.data.huge? and ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Crew")
+            validation_func: (ship, upgrade_obj) ->
+                upgrade_obj.occupiesAnUpgradeSlot "Crew"
             also_occupies_upgrades: [ "Crew" ]
-            restriction_func: (ship) ->
-                ship.data.huge? and ship.doesSlotExist "Crew"
        }
        {
             name: "Captain Needa"
@@ -12508,10 +12514,11 @@ exportObj.basicCardData = ->
             faction: "Galactic Empire"
             slot: "Command"
             points: 8
-            unequips_upgrades: [ "Crew" ]
+            restriction_func: (ship, upgrade_obj) ->
+                ship.data.huge? and ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Crew")
+            validation_func: (ship, upgrade_obj) ->
+                upgrade_obj.occupiesAnUpgradeSlot "Crew"
             also_occupies_upgrades: [ "Crew" ]
-            restriction_func: (ship) ->
-                ship.data.huge? and ship.doesSlotExist "Crew"
        }
        {
             name: "Carlist Rieekan"
@@ -12520,12 +12527,11 @@ exportObj.basicCardData = ->
             faction: "Rebel Alliance"
             slot: "Command"
             points: 6
-            unequips_upgrades: [ "Crew" ]
+            restriction_func: (ship, upgrade_obj) ->
+                ship.data.huge? and ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Crew")
+            validation_func: (ship, upgrade_obj) ->
+                upgrade_obj.occupiesAnUpgradeSlot "Crew"
             also_occupies_upgrades: [ "Crew" ]
-            modifier_func: (stats) ->
-                stats.actionsred.push 'Evade' if 'Evade' not in stats.actionsred
-            restriction_func: (ship) ->
-                ship.data.huge? and ship.doesSlotExist "Crew"
        }
        {
             name: "Jan Dodonna"
@@ -12534,10 +12540,11 @@ exportObj.basicCardData = ->
             faction: "Rebel Alliance"
             slot: "Command"
             points: 4
-            unequips_upgrades: [ "Crew" ]
+            restriction_func: (ship, upgrade_obj) ->
+                ship.data.huge? and ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Crew")
+            validation_func: (ship, upgrade_obj) ->
+                upgrade_obj.occupiesAnUpgradeSlot "Crew"
             also_occupies_upgrades: [ "Crew" ]
-            restriction_func: (ship) ->
-                ship.data.huge? and ship.doesSlotExist "Crew"
        }
        {
             name: "Raymus Antilles"
@@ -12546,10 +12553,11 @@ exportObj.basicCardData = ->
             slot: "Command"
             points: 12
             faction: "Rebel Alliance"
-            unequips_upgrades: [ "Crew" ]
+            restriction_func: (ship, upgrade_obj) ->
+                ship.data.huge? and ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Crew")
+            validation_func: (ship, upgrade_obj) ->
+                upgrade_obj.occupiesAnUpgradeSlot "Crew"
             also_occupies_upgrades: [ "Crew" ]
-            restriction_func: (ship) ->
-                ship.data.huge? and ship.doesSlotExist "Crew"
        }
        {
             name: "Stalwart Captain"
@@ -12557,10 +12565,11 @@ exportObj.basicCardData = ->
             unique: true
             slot: "Command"
             points: 6
-            unequips_upgrades: [ "Crew" ]
+            restriction_func: (ship, upgrade_obj) ->
+                ship.data.huge? and ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Crew")
+            validation_func: (ship, upgrade_obj) ->
+                upgrade_obj.occupiesAnUpgradeSlot "Crew"
             also_occupies_upgrades: [ "Crew" ]
-            restriction_func: (ship) ->
-                ship.data.huge? and ship.doesSlotExist "Crew"
        }
        {
             name: "Strategic Commander"
@@ -12569,10 +12578,11 @@ exportObj.basicCardData = ->
             slot: "Command"
             charge: 3
             points: 6
-            unequips_upgrades: [ "Crew" ]
+            restriction_func: (ship, upgrade_obj) ->
+                ship.data.huge? and ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Crew")
+            validation_func: (ship, upgrade_obj) ->
+                upgrade_obj.occupiesAnUpgradeSlot "Crew"
             also_occupies_upgrades: [ "Crew" ]
-            restriction_func: (ship) ->
-                ship.data.huge? and ship.doesSlotExist "Crew"
        }
        {
             name: "Ion Cannon Battery"
@@ -13178,10 +13188,11 @@ exportObj.basicCardData = ->
             points: 9
             charge: 2
             faction: "First Order"
-            unequips_upgrades: [ "Modification" ]
+            restriction_func: (ship, upgrade_obj) ->
+                ship.doesSlotExist "Modification" and ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Modification")
+            validation_func: (ship, upgrade_obj) ->
+                upgrade_obj.occupiesAnUpgradeSlot "Modification"
             also_occupies_upgrades: [ "Modification" ]
-            restriction_func: (ship) ->
-                ship.doesSlotExist "Modification"
        }
        {
             name: "Proud Tradition"
@@ -44578,9 +44589,9 @@ class Ship
 
         false
 
-    hasAnotherUnoccupiedSlotLike: (upgrade_obj) ->
+    hasAnotherUnoccupiedSlotLike: (upgrade_obj, upgradeslot) ->
         for upgrade in @upgrades
-            continue if upgrade == upgrade_obj or upgrade.slot != upgrade_obj.slot
+            continue if upgrade == upgrade_obj or upgrade.slot != upgradeslot
             return true unless upgrade.isOccupied()
         false
 
@@ -45004,9 +45015,9 @@ class GenericAddon
         upgrade.occupied_by = null
         upgrade.selector.select2 'enable', true
 
-    occupiesAnotherUpgradeSlot: ->
+    occupiesAnUpgradeSlot: (upgradeslot) ->
         for upgrade in @ship.upgrades
-            continue if upgrade.slot != @slot or upgrade == this or upgrade.data?
+            continue if upgrade.slot != upgradeslot or upgrade == this or upgrade.data?
             if upgrade.occupied_by? and upgrade.occupied_by == this
                 return true
         false
