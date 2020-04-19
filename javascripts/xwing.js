@@ -9737,7 +9737,7 @@ exportObj.basicCardData = function() {
         charge: 2,
         faction: "First Order",
         restriction_func: function(ship, upgrade_obj) {
-          return ship.doesSlotExist("Modification" && ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Modification"));
+          return (ship.doesSlotExist("Modification")) && (ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Modification"));
         },
         validation_func: function(ship, upgrade_obj) {
           return upgrade_obj.occupiesAnUpgradeSlot("Modification");
