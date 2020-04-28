@@ -21169,7 +21169,7 @@ exportObj.translations.English =
         '#browserTab' : 'Card Browser'
         '#aboutTab' : 'About'
         # Obstacles
-        '.choose-obstacles' : 'Choose Obstacles'
+        '.choose-obstacles' : '<i class="fa fa-cloud"></i>&nbsp;Choose Obstacles'
         '.choose-obstacles-description' : 'Choose up to three obstacles to include in the permalink for use in external programs. (Support for displaying which obstacles were selected in the printout is not yet supported.)'
         '.coreasteroid0-select' : 'Core Asteroid 0'
         '.coreasteroid1-select' : 'Core Asteroid 1'
@@ -41509,7 +41509,7 @@ class exportObj.SquadBuilder
                     </label>
                     <span class="obstacles-container">
                         <!-- Since this is an optional button, usually, it's shown in a different color -->
-                        <button class="btn btn-info choose-obstacles">Choose Obstacles</button>
+                        <button class="btn btn-info choose-obstacles"><i class="fa fa-cloud"></i>&nbsp;Choose Obstacles</button>
                     </span>
                  </div>
                <div class="span3 info-container" id="info-container" />
@@ -45157,8 +45157,8 @@ class exportObj.XWSManager
             <div class="row-fluid span9">
                 <div>
                     <!-- Import is marked in red since it creates something new -->
-                    <button class="btn btn-danger from-xws">Import from XWS</button>
-                    <button class="btn btn-primary to-xws">Export to XWS</button>
+                    <button class="btn btn-danger from-xws"><i class="fa fa-file-import"></i>&nbsp;Import from XWS</button>
+                    <button class="btn btn-primary to-xws"><i class="fa fa-file-export"></i>&nbsp;Export to XWS</button>
                 </div>
             </div>
         """

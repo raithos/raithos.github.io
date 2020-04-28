@@ -16150,7 +16150,7 @@ exportObj.translations.English = {
     '.do-randomize': 'Randomize!',
     '#browserTab': 'Card Browser',
     '#aboutTab': 'About',
-    '.choose-obstacles': 'Choose Obstacles',
+    '.choose-obstacles': '<i class="fa fa-cloud"></i>&nbsp;Choose Obstacles',
     '.choose-obstacles-description': 'Choose up to three obstacles to include in the permalink for use in external programs. (Support for displaying which obstacles were selected in the printout is not yet supported.)',
     '.coreasteroid0-select': 'Core Asteroid 0',
     '.coreasteroid1-select': 'Core Asteroid 1',
@@ -38469,7 +38469,7 @@ exportObj.SquadBuilder = (function() {
     content_container = $(document.createElement('DIV'));
     content_container.addClass('container-fluid');
     this.container.append(content_container);
-    content_container.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span9 ship-container\">\n        <label class=\"notes-container show-authenticated\">\n            <span>Squad Notes:</span>\n            <br />\n            <textarea class=\"squad-notes\"></textarea>\n        </label>\n        <span class=\"obstacles-container\">\n            <!-- Since this is an optional button, usually, it's shown in a different color -->\n            <button class=\"btn btn-info choose-obstacles\">Choose Obstacles</button>\n        </span>\n     </div>\n   <div class=\"span3 info-container\" id=\"info-container\" />\n</div>"));
+    content_container.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span9 ship-container\">\n        <label class=\"notes-container show-authenticated\">\n            <span>Squad Notes:</span>\n            <br />\n            <textarea class=\"squad-notes\"></textarea>\n        </label>\n        <span class=\"obstacles-container\">\n            <!-- Since this is an optional button, usually, it's shown in a different color -->\n            <button class=\"btn btn-info choose-obstacles\"><i class=\"fa fa-cloud\"></i>&nbsp;Choose Obstacles</button>\n        </span>\n     </div>\n   <div class=\"span3 info-container\" id=\"info-container\" />\n</div>"));
     this.ship_container = $(content_container.find('div.ship-container'));
     this.info_container = $(content_container.find('div.info-container'));
     this.obstacles_container = content_container.find('.obstacles-container');
@@ -43459,7 +43459,7 @@ exportObj.XWSManager = (function() {
 
   XWSManager.prototype.setupUI = function() {
     this.container.addClass('hidden-print');
-    this.container.html($.trim("<div class=\"row-fluid span9\">\n    <div>\n        <!-- Import is marked in red since it creates something new -->\n        <button class=\"btn btn-danger from-xws\">Import from XWS</button>\n        <button class=\"btn btn-primary to-xws\">Export to XWS</button>\n    </div>\n</div>"));
+    this.container.html($.trim("<div class=\"row-fluid span9\">\n    <div>\n        <!-- Import is marked in red since it creates something new -->\n        <button class=\"btn btn-danger from-xws\"><i class=\"fa fa-file-import\"></i>&nbsp;Import from XWS</button>\n        <button class=\"btn btn-primary to-xws\"><i class=\"fa fa-file-export\"></i>&nbsp;Export to XWS</button>\n    </div>\n</div>"));
     this.xws_export_modal = $(document.createElement('DIV'));
     this.xws_export_modal.addClass('modal hide fade xws-modal hidden-print');
     this.container.append(this.xws_export_modal);
