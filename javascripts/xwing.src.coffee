@@ -653,7 +653,7 @@ class exportObj.SquadBuilderBackend
                     obstacles: builder.getObstacles()
                 builder.backend_save_list_as_button.addClass 'disabled'
                 builder.backend_status.html $.trim """
-                    <i class="fa fa-refresh fa-spin"></i>&nbsp;Saving squad...
+                    <i class="fa fa-sync fa-spin"></i>&nbsp;Saving squad...
                 """
                 builder.backend_status.show()
                 new_name = $.trim @save_as_input.val()
@@ -712,7 +712,7 @@ class exportObj.SquadBuilderBackend
             e.preventDefault()
             builder = @delete_modal.data 'builder'
             builder.backend_status.html $.trim """
-                <i class="fa fa-refresh fa-spin"></i>&nbsp;Deleting squad...
+                <i class="fa fa-sync fa-spin"></i>&nbsp;Deleting squad...
             """
             builder.backend_status.show()
             builder.backend_delete_list_button.addClass 'disabled'
@@ -41461,7 +41461,7 @@ class exportObj.SquadBuilder
                     notes: @notes.val().substr(0, 1024)
                     obstacles: @getObstacles()
                 @backend_status.html $.trim """
-                    <i class="fa fa-refresh fa-spin"></i>&nbsp;Saving squad...
+                    <i class="fa fa-sync fa-spin"></i>&nbsp;Saving squad...
                 """
                 @backend_status.show()
                 @backend_save_list_button.addClass 'disabled'
@@ -43938,7 +43938,7 @@ class Ship
             <div class="span6 addon-container" />
             <div class="span2 button-container">
                 <button class="btn btn-danger remove-pilot"><span class="visible-desktop visible-tablet hidden-phone" data-toggle="tooltip" title="Remove Pilot"><i class="fa fa-times"></i></span><span class="hidden-desktop hidden-tablet visible-phone">Remove Pilot</span></button>
-                <button class="btn copy-pilot"><span class="visible-desktop visible-tablet hidden-phone" data-toggle="tooltip" title="Clone Pilot"><i class="fa fa-files-o"></i></span><span class="hidden-desktop hidden-tablet visible-phone">Clone Pilot</span></button>
+                <button class="btn copy-pilot"><span class="visible-desktop visible-tablet hidden-phone" data-toggle="tooltip" title="Clone Pilot"><i class="far fa-copy"></i></span><span class="hidden-desktop hidden-tablet visible-phone">Clone Pilot</span></button>
             </div>
         '''
         @row.find('.button-container span').tooltip()

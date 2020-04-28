@@ -748,7 +748,7 @@ exportObj.SquadBuilderBackend = (function() {
             obstacles: builder.getObstacles()
           };
           builder.backend_save_list_as_button.addClass('disabled');
-          builder.backend_status.html($.trim("<i class=\"fa fa-refresh fa-spin\"></i>&nbsp;Saving squad..."));
+          builder.backend_status.html($.trim("<i class=\"fa fa-sync fa-spin\"></i>&nbsp;Saving squad..."));
           builder.backend_status.show();
           new_name = $.trim(_this.save_as_input.val());
           return _this.save(builder.serialize(), null, new_name, builder.faction, additional_data, function(results) {
@@ -797,7 +797,7 @@ exportObj.SquadBuilderBackend = (function() {
         var builder;
         e.preventDefault();
         builder = _this.delete_modal.data('builder');
-        builder.backend_status.html($.trim("<i class=\"fa fa-refresh fa-spin\"></i>&nbsp;Deleting squad..."));
+        builder.backend_status.html($.trim("<i class=\"fa fa-sync fa-spin\"></i>&nbsp;Deleting squad..."));
         builder.backend_status.show();
         builder.backend_delete_list_button.addClass('disabled');
         _this.delete_modal.modal('hide');
@@ -38423,7 +38423,7 @@ exportObj.SquadBuilder = (function() {
             notes: _this.notes.val().substr(0, 1024),
             obstacles: _this.getObstacles()
           };
-          _this.backend_status.html($.trim("<i class=\"fa fa-refresh fa-spin\"></i>&nbsp;Saving squad..."));
+          _this.backend_status.html($.trim("<i class=\"fa fa-sync fa-spin\"></i>&nbsp;Saving squad..."));
           _this.backend_status.show();
           _this.backend_save_list_button.addClass('disabled');
           (function(__iced_k) {
@@ -41860,7 +41860,7 @@ Ship = (function() {
     this.row = $(document.createElement('DIV'));
     this.row.addClass('row-fluid ship');
     this.row.insertBefore(this.builder.notes_container);
-    this.row.append($.trim('<div class="span3">\n    <input class="ship-selector-container" type="hidden" />\n    <br />\n    <input type="hidden" class="pilot-selector-container" />\n    <br />\n    <label class="wingmate-label">\n    Wingmates: \n        <input type="number" class="wingmate-selector" />\n    </label>\n</div>\n<div class="span1 points-display-container">\n    <span></span>\n</div>\n<div class="span6 addon-container" />\n<div class="span2 button-container">\n    <button class="btn btn-danger remove-pilot"><span class="visible-desktop visible-tablet hidden-phone" data-toggle="tooltip" title="Remove Pilot"><i class="fa fa-times"></i></span><span class="hidden-desktop hidden-tablet visible-phone">Remove Pilot</span></button>\n    <button class="btn copy-pilot"><span class="visible-desktop visible-tablet hidden-phone" data-toggle="tooltip" title="Clone Pilot"><i class="fa fa-files-o"></i></span><span class="hidden-desktop hidden-tablet visible-phone">Clone Pilot</span></button>\n</div>'));
+    this.row.append($.trim('<div class="span3">\n    <input class="ship-selector-container" type="hidden" />\n    <br />\n    <input type="hidden" class="pilot-selector-container" />\n    <br />\n    <label class="wingmate-label">\n    Wingmates: \n        <input type="number" class="wingmate-selector" />\n    </label>\n</div>\n<div class="span1 points-display-container">\n    <span></span>\n</div>\n<div class="span6 addon-container" />\n<div class="span2 button-container">\n    <button class="btn btn-danger remove-pilot"><span class="visible-desktop visible-tablet hidden-phone" data-toggle="tooltip" title="Remove Pilot"><i class="fa fa-times"></i></span><span class="hidden-desktop hidden-tablet visible-phone">Remove Pilot</span></button>\n    <button class="btn copy-pilot"><span class="visible-desktop visible-tablet hidden-phone" data-toggle="tooltip" title="Clone Pilot"><i class="far fa-copy"></i></span><span class="hidden-desktop hidden-tablet visible-phone">Clone Pilot</span></button>\n</div>'));
     this.row.find('.button-container span').tooltip();
     this.ship_selector = $(this.row.find('input.ship-selector-container'));
     this.pilot_selector = $(this.row.find('input.pilot-selector-container'));
