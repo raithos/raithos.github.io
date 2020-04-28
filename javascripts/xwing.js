@@ -93,19 +93,19 @@ exportObj.SquadBuilderBackend = (function() {
     this.oauth_window = null;
     this.method_metadata = {
       google_oauth2: {
-        icon: 'far fa-google',
+        icon: 'fab fa-google',
         text: 'Google'
       },
       facebook: {
-        icon: 'far fa-facebook',
+        icon: 'fab fa-facebook',
         text: 'Facebook'
       },
       twitter: {
-        icon: 'far fa-twitter',
+        icon: 'fab fa-twitter',
         text: 'Twitter'
       },
       discord: {
-        icon: 'far fa-discord',
+        icon: 'fab fa-discord',
         text: 'Discord'
       }
     };
