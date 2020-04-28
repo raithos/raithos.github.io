@@ -42,16 +42,16 @@ class exportObj.SquadBuilderBackend
 
         @method_metadata =
             google_oauth2:
-                icon: 'fa fa-google-plus-square'
+                icon: 'fa fa-google'
                 text: 'Google'
             facebook:
-                icon: 'fa fa-facebook-square'
+                icon: 'fa fa-facebook'
                 text: 'Facebook'
             twitter:
-                icon: 'fa fa-twitter-square'
+                icon: 'fa fa-twitter'
                 text: 'Twitter'
             discord:
-                icon: 'fa fa-discord-square'
+                icon: 'fa fa-discord'
                 text: 'Discord'
 
         @squad_display_mode = 'all'
@@ -40820,11 +40820,11 @@ class exportObj.SquadBuilder
                 <div class="span3 squad-name-container">
                     <div class="display-name">
                         <span class="squad-name"></span>
-                        <i class="fa fa-pencil"></i>
+                        <i class="far fa-edit"></i>
                     </div>
                     <div class="input-append">
                         <input type="text" maxlength="64" placeholder="Name your squad..." />
-                        <button class="btn save"><i class="fa fa-pencil-square-o"></i></button>
+                        <button class="btn save"><i class="fa fa-pen-square"></i></button>
                     </div>
                 </div>
                 <div class="span4 points-display-container">
@@ -40864,11 +40864,11 @@ class exportObj.SquadBuilder
 
             <div class="row-fluid">
                 <div class="span12">
-                    <button class="show-authenticated btn btn-primary save-list"><i class="fa fa-floppy-o"></i>&nbsp;Save</button>
-                    <button class="show-authenticated btn btn-primary save-list-as"><i class="fa fa-files-o"></i>&nbsp;Save As...</button>
-                    <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>
-                    <button class="show-authenticated btn btn-primary backend-list-my-squads show-authenticated">Load Squad</button>
-                    <button class="btn btn-danger clear-squad">New Squad</button>
+                    <button class="show-authenticated btn btn-primary save-list"><i class="far fa-save"></i>&nbsp;Save</button>
+                    <button class="show-authenticated btn btn-primary save-list-as"><i class="far fa-file"></i>&nbsp;Save As...</button>
+                    <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash"></i>&nbsp;Delete</button>
+                    <button class="show-authenticated btn btn-primary backend-list-my-squads show-authenticated"><i class="fa fa-download"></i>&nbsp;Load Squad</button>
+                    <button class="btn btn-danger clear-squad"><i class="fa fa-plus-circle"></i>&nbsp;New Squad</button>
                     <span class="show-authenticated backend-status"></span>
                 </div>
             </div>
