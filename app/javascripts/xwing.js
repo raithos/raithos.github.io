@@ -443,7 +443,7 @@ exportObj.SquadBuilderBackend = (function() {
     this.login_modal = $(document.createElement('DIV'));
     this.login_modal.addClass('modal hide fade hidden-print');
     $(document.body).append(this.login_modal);
-    this.login_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>Log in with OAuth</h3>\n</div>\n<div class=\"modal-body\">\n    <p>\n        Select one of the OAuth providers below to log in and start saving squads.\n        <a class=\"login-help\" href=\"#\">What's this?</a>\n    </p>\n    <div class=\"well well-small oauth-explanation\">\n        <p>\n            <a href=\"http://en.wikipedia.org/wiki/OAuth\" target=\"_blank\">OAuth</a> is an authorization system which lets you prove your identity at a web site without having to create a new account.  Instead, you tell some provider with whom you already have an account (e.g. Google or Facebook) to prove to this web site that you say who you are.  That way, the next time you visit, this site remembers that you're that user from Google.\n        </p>\n        <p>\n            The best part about this is that you don't have to come up with a new username and password to remember.  And don't worry, I'm not collecting any data from the providers about you.  I've tried to set the scope of data to be as small as possible, but some places send a bunch of data at minimum.  I throw it away.  All I look at is a unique identifier (usually some giant number).\n        </p>\n        <p>\n            For more information, check out this <a href=\"http://hueniverse.com/oauth/guide/intro/\" target=\"_blank\">introduction to OAuth</a>.\n        </p>\n        <button class=\"btn\">Got it!</button>\n    </div>\n    <ul class=\"login-providers inline\"></ul>\n    <p>\n        This will open a new window to let you authenticate with the chosen provider.  You may have to allow pop ups for this site.  (Sorry.)\n    </p>\n    <p class=\"login-in-progress\">\n        <em>OAuth login is in progress.  Please finish authorization at the specified provider using the window that was just created.</em>\n        <iframe src=\"blank.htm\" name=\"iframe_a\" style=\"height:200px;width:300px;\"></iframe>\n    </p>\n</div>\n<div class=\"modal-footer\">\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.login_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3>Log in with OAuth</h3>\n</div>\n<div class=\"modal-body\">\n    <p>\n        Select one of the OAuth providers below to log in and start saving squads.\n        <a class=\"login-help\" href=\"#\">What's this?</a>\n    </p>\n    <div class=\"well well-small oauth-explanation\">\n        <p>\n            <a href=\"http://en.wikipedia.org/wiki/OAuth\" target=\"_blank\">OAuth</a> is an authorization system which lets you prove your identity at a web site without having to create a new account.  Instead, you tell some provider with whom you already have an account (e.g. Google or Facebook) to prove to this web site that you say who you are.  That way, the next time you visit, this site remembers that you're that user from Google.\n        </p>\n        <p>\n            The best part about this is that you don't have to come up with a new username and password to remember.  And don't worry, I'm not collecting any data from the providers about you.  I've tried to set the scope of data to be as small as possible, but some places send a bunch of data at minimum.  I throw it away.  All I look at is a unique identifier (usually some giant number).\n        </p>\n        <p>\n            For more information, check out this <a href=\"http://hueniverse.com/oauth/guide/intro/\" target=\"_blank\">introduction to OAuth</a>.\n        </p>\n        <button class=\"btn\">Got it!</button>\n    </div>\n    <ul class=\"login-providers inline\"></ul>\n    <p>\n        This will open a new window to let you authenticate with the chosen provider.  You may have to allow pop ups for this site.  (Sorry.)\n    </p>\n    <p class=\"login-in-progress\">\n        <em>OAuth login is in progress.  Please finish authorization at the specified provider using the window that was just created.</em>\n        <iframe src=\"blank.htm\" name=\"iframe_a\" style=\"height:300px;\"></iframe>\n    </p>\n</div>\n<div class=\"modal-footer\">\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
     oauth_explanation = $(this.login_modal.find('.oauth-explanation'));
     oauth_explanation.hide();
     this.login_modal.find('.login-in-progress').hide();
@@ -476,7 +476,7 @@ exportObj.SquadBuilderBackend = (function() {
             e.preventDefault();
             methods_ul.slideUp('fast');
             _this.login_modal.find('.login-in-progress').slideDown('fast');
-            return _this.oauth_window = window.switchToIframe($(e.target).data('url'), "iframe_a");
+            return window.frames[0].location($(e.target).data('url'));
           });
           li = $(document.createElement('LI'));
           li.append(a);
@@ -957,7 +957,7 @@ exportObj.SquadBuilderBackend = (function() {
                 return headers = arguments[0];
               };
             })(),
-            lineno: 818
+            lineno: 819
           }));
           __iced_deferrals._fulfill();
         });
@@ -37602,7 +37602,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 40592
+                    lineno: 40593
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -38437,7 +38437,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 41470
+              lineno: 41471
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -39234,7 +39234,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 42216
+              lineno: 42217
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -39244,7 +39244,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 42217
+                lineno: 42218
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -41207,7 +41207,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 43570
+                      lineno: 43571
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -41435,7 +41435,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 43692
+                          lineno: 43693
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -41485,7 +41485,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 43725
+                                  lineno: 43726
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -41564,7 +41564,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 43776
+                      lineno: 43777
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -41644,7 +41644,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 43805
+                lineno: 43806
               })
             ]);
             __iced_deferrals._fulfill();
@@ -41713,7 +41713,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 43834
+              lineno: 43835
             }));
           }
         }
@@ -41805,7 +41805,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 43890
+                lineno: 43891
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -42825,7 +42825,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 44719
+                lineno: 44720
               })
             ]);
             __iced_deferrals._fulfill();
@@ -42954,7 +42954,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 44784
+                  lineno: 44785
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -42977,7 +42977,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 44789
+                      lineno: 44790
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -43069,7 +43069,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 44834
+            lineno: 44835
           }));
         }
         __iced_deferrals._fulfill();

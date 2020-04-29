@@ -374,7 +374,7 @@ class exportObj.SquadBuilderBackend
                 </p>
                 <p class="login-in-progress">
                     <em>OAuth login is in progress.  Please finish authorization at the specified provider using the window that was just created.</em>
-                    <iframe src="blank.htm" name="iframe_a" style="height:200px;width:300px;"></iframe>
+                    <iframe src="blank.htm" name="iframe_a" style="height:300px;"></iframe>
                 </p>
             </div>
             <div class="modal-footer">
@@ -402,7 +402,8 @@ class exportObj.SquadBuilderBackend
                     e.preventDefault()
                     methods_ul.slideUp 'fast'
                     @login_modal.find('.login-in-progress').slideDown 'fast'
-                    @oauth_window = window.switchToIframe $(e.target).data('url'), "iframe_a"
+                    # @oauth_window = 
+                    window.frames[0].location $(e.target).data('url')
                 li = $ document.createElement('LI')
                 li.append a
                 methods_ul.append li
