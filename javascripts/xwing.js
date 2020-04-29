@@ -37923,7 +37923,7 @@ exportObj.SquadBuilder = (function() {
     DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES = 3;
     this.status_container = $(document.createElement('DIV'));
     this.status_container.addClass('container-fluid');
-    this.status_container.append($.trim('<div class="row-fluid squad-name-and-points-row">\n    <div class="span3 squad-name-container">\n        <div class="display-name">\n            <span class="squad-name"></span>\n            <i class="far fa-edit"></i>\n        </div>\n        <div class="input-append">\n            <input type="text" maxlength="64" placeholder="Name your squad..." />\n            <button class="btn save"><i class="fa fa-pen-square"></i></button>\n        </div>\n    </div>\n    <div class="span4 points-display-container">\n        Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="200">\n        <select class="game-type-selector">\n            <option value="standard">Extended</option>\n            <option value="hyperspace">Hyperspace</option>\n            <option value="epic">Epic</option>\n            <option value="quickbuild">Quickbuild</option>\n        </select>\n        <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left)</span>\n        <span class="content-warning unreleased-content-used hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning loading-failed-container hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning collection-invalid hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning ship-number-invalid-container hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated">A tournament legal squad must contain 2-8 ships!</span></span>\n    </div>\n    <div class="span5 pull-right button-container">\n        <div class="btn-group pull-right">\n\n            <button class="btn btn-primary view-as-text"><span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text</button>\n            <!-- <button class="btn btn-primary print-list hidden-phone hidden-tablet"><i class="fa fa-print"></i>&nbsp;Print</button> -->\n            <a class="btn btn-primary hidden collection"><i class="fa fa-folder-open hidden-phone hidden-tablet"></i>&nbsp;Your Collection</a>\n            <!-- Randomize button is marked as danger, since it creates a new squad -->\n            <button class="btn btn-danger randomize" ><i class="fa fa-random hidden-phone hidden-tablet"></i>&nbsp;Random!</button>\n            <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">\n                <span class="caret"></span>\n            </button>\n            <ul class="dropdown-menu">\n                <li><a class="randomize-options">Randomizer Options</a></li>\n                <li><a class="misc-settings">Misc Settings</a></li>\n            </ul>\n            \n\n        </div>\n    </div>\n</div>\n\n<div class="row-fluid">\n    <div class="span12">\n        <button class="show-authenticated btn btn-primary save-list"><i class="far fa-save"></i>&nbsp;Save</button>\n        <button class="show-authenticated btn btn-primary save-list-as"><i class="far fa-file"></i>&nbsp;Save As...</button>\n        <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash"></i>&nbsp;Delete</button>\n        <button class="show-authenticated btn btn-primary backend-list-my-squads show-authenticated"><i class="fa fa-download"></i>&nbsp;Load Squad</button>\n        <button class="btn btn-danger clear-squad"><i class="fa fa-plus-circle"></i>&nbsp;New Squad</button>\n        <span class="show-authenticated backend-status"></span>\n    </div>\n</div>'));
+    this.status_container.append($.trim('<div class="row-fluid squad-name-and-points-row">\n    <div class="span3 squad-name-container">\n        <div class="display-name">\n            <span class="squad-name"></span>\n            <i class="far fa-edit"></i>\n        </div>\n        <div class="input-append">\n            <input type="text" maxlength="64" placeholder="Name your squad..." />\n            <button class="btn save"><i class="fa fa-pen-square"></i></button>\n        </div>\n        <br>\n        <select class="game-type-selector">\n            <option value="standard">Extended</option>\n            <option value="hyperspace">Hyperspace</option>\n            <option value="epic">Epic</option>\n            <option value="quickbuild">Quickbuild</option>\n        </select>\n    </div>\n    <div class="span4 points-display-container">\n        Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="200">\n        <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left) <span class="points-destroyed red"></span></span>\n        <span class="content-warning unreleased-content-used hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning loading-failed-container hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning collection-invalid hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning ship-number-invalid-container hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated">A tournament legal squad must contain 2-8 ships!</span></span>\n    </div>\n    <div class="span5 pull-right button-container">\n        <div class="btn-group pull-right">\n\n            <button class="btn btn-primary view-as-text"><span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text</button>\n            <!-- <button class="btn btn-primary print-list hidden-phone hidden-tablet"><i class="fa fa-print"></i>&nbsp;Print</button> -->\n            <a class="btn btn-primary hidden collection"><i class="fa fa-folder-open hidden-phone hidden-tablet"></i>&nbsp;Your Collection</a>\n            <!-- Randomize button is marked as danger, since it creates a new squad -->\n            <button class="btn btn-danger randomize" ><i class="fa fa-random hidden-phone hidden-tablet"></i>&nbsp;Random!</button>\n            <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">\n                <span class="caret"></span>\n            </button>\n            <ul class="dropdown-menu">\n                <li><a class="randomize-options">Randomizer Options</a></li>\n                <li><a class="misc-settings">Misc Settings</a></li>\n            </ul>\n            \n\n        </div>\n    </div>\n</div>\n\n<div class="row-fluid">\n    <div class="span12">\n        <button class="show-authenticated btn btn-primary save-list"><i class="far fa-save"></i>&nbsp;Save</button>\n        <button class="show-authenticated btn btn-primary save-list-as"><i class="far fa-file"></i>&nbsp;Save As...</button>\n        <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash"></i>&nbsp;Delete</button>\n        <button class="show-authenticated btn btn-primary backend-list-my-squads show-authenticated"><i class="fa fa-download"></i>&nbsp;Load Squad</button>\n        <button class="btn btn-danger clear-squad"><i class="fa fa-plus-circle"></i>&nbsp;New Squad</button>\n        <span class="show-authenticated backend-status"></span>\n    </div>\n</div>'));
     this.container.append(this.status_container);
     this.list_modal = $(document.createElement('DIV'));
     this.list_modal.addClass('modal hide fade text-list-modal');
@@ -38199,6 +38199,7 @@ exportObj.SquadBuilder = (function() {
       };
     })(this));
     this.points_remaining_span = $(this.points_container.find('.points-remaining'));
+    this.points_destroyed_span = $(this.points_container.find('.points-destroyed'));
     this.points_remaining_container = $(this.points_container.find('.points-remaining-container'));
     this.unreleased_content_used_container = $(this.points_container.find('.unreleased-content-used'));
     this.loading_failed_container = $(this.points_container.find('.loading-failed-container'));
@@ -38436,7 +38437,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 41467
+              lineno: 41469
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -38868,11 +38869,12 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.onPointsUpdated = function(cb) {
-    var bbcode_ships, conditions, conditions_set, htmlview_ships, i, points_left, reddit_ships, ship, ship_uses_unreleased_content, simplecopy_ships, tot_points, tts_ships, unreleased_content_used, _i, _j, _k, _len, _len1, _ref, _ref1, _ref2;
+    var bbcode_ships, conditions, conditions_set, htmlview_ships, i, points_dest, points_destroyed, points_left, reddit_ships, ship, ship_uses_unreleased_content, simplecopy_ships, tot_points, tts_ships, unreleased_content_used, _i, _j, _k, _len, _len1, _ref, _ref1, _ref2;
     if (cb == null) {
       cb = $.noop;
     }
     tot_points = 0;
+    points_dest = 0;
     unreleased_content_used = false;
     for (i = _i = _ref = this.ships.length - 1; _ref <= -1 ? _i < -1 : _i > -1; i = _ref <= -1 ? ++_i : --_i) {
       ship = this.ships[i];
@@ -38881,15 +38883,23 @@ exportObj.SquadBuilder = (function() {
         continue;
       }
       tot_points += ship.getPoints();
+      if (ship.destroystate === 1) {
+        points_dest += Math.ceil(ship.getPoints() / 2);
+      } else if (ship.destroystate === 2) {
+        points_dest += ship.getPoints();
+      }
       ship_uses_unreleased_content = ship.checkUnreleasedContent();
       if (ship_uses_unreleased_content) {
         unreleased_content_used = ship_uses_unreleased_content;
       }
     }
     this.total_points = tot_points;
+    this.points_destroyed = points_dest;
     this.total_points_span.text(this.total_points);
     points_left = parseInt(this.desired_points_input.val()) - this.total_points;
+    points_destroyed = parseInt(this.total_points);
     this.points_remaining_span.text(points_left);
+    this.points_destroyed_span.html(points_dest !== 0 ? "<i class=\"xwing-miniatures-font xwing-miniatures-font-hit\"></i>" + points_dest : "");
     this.points_remaining_container.toggleClass('red', points_left < 0);
     this.unreleased_content_used_container.toggleClass('hidden', !unreleased_content_used);
     this.fancy_total_points_container.text(this.total_points);
@@ -39224,7 +39234,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 42205
+              lineno: 42215
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -39234,7 +39244,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 42206
+                lineno: 42216
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -41162,6 +41172,7 @@ Ship = (function() {
     this.primary = true;
     this.upgrades = [];
     this.wingmates = [];
+    this.destroystate = null;
     this.setupUI();
   }
 
@@ -41196,7 +41207,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 43558
+                      lineno: 43569
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -41381,6 +41392,8 @@ Ship = (function() {
       }
     }
     this.remove_button.fadeIn('fast');
+    this.copy_button.fadeIn('fast');
+    this.points_destroyed_button.fadeIn('fast');
     this.row.addClass("ship-" + (ship_type.toLowerCase().replace(/[^a-z0-9]/gi, '')));
     return this.builder.container.trigger('xwing:shipUpdated');
   };
@@ -41422,7 +41435,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 43678
+                          lineno: 43691
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -41472,7 +41485,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 43711
+                                  lineno: 43724
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -41551,7 +41564,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 43762
+                      lineno: 43775
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -41631,7 +41644,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 43791
+                lineno: 43804
               })
             ]);
             __iced_deferrals._fulfill();
@@ -41700,7 +41713,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 43820
+              lineno: 43833
             }));
           }
         }
@@ -41792,7 +41805,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 43876
+                lineno: 43889
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -41856,11 +41869,14 @@ Ship = (function() {
   };
 
   Ship.prototype.setupUI = function() {
-    var shipResultFormatter;
+    var shipResultFormatter, shipicon;
     this.row = $(document.createElement('DIV'));
     this.row.addClass('row-fluid ship');
     this.row.insertBefore(this.builder.notes_container);
-    this.row.append($.trim('<div class="span3">\n    <input class="ship-selector-container" type="hidden" />\n    <br />\n    <input type="hidden" class="pilot-selector-container" />\n    <br />\n    <label class="wingmate-label">\n    Wingmates: \n        <input type="number" class="wingmate-selector" />\n    </label>\n</div>\n<div class="span1 points-display-container">\n    <span></span>\n</div>\n<div class="span6 addon-container" />\n<div class="span2 button-container">\n    <button class="btn btn-danger remove-pilot"><span class="visible-desktop visible-tablet hidden-phone" data-toggle="tooltip" title="Remove Pilot"><i class="fa fa-times"></i></span><span class="hidden-desktop hidden-tablet visible-phone">Remove Pilot</span></button>\n    <button class="btn copy-pilot"><span class="visible-desktop visible-tablet hidden-phone" data-toggle="tooltip" title="Clone Pilot"><i class="far fa-copy"></i></span><span class="hidden-desktop hidden-tablet visible-phone">Clone Pilot</span></button>\n</div>'));
+    if (this.pilot != null) {
+      shipicon = exportObj.ships[this.pilot.ship].icon ? exportObj.ships[this.pilot.ship].icon : exportObj.ships[this.pilot.ship].xws;
+    }
+    this.row.append($.trim('<div class="span3">\n    <input class="ship-selector-container" type="hidden" />\n    <br />\n    <input type="hidden" class="pilot-selector-container" />\n    <br />\n    <label class="wingmate-label">\n    Wingmates: \n        <input type="number" class="wingmate-selector" />\n    </label>\n</div>\n<div class="span1 points-display-container">\n    <span></span>\n</div>\n<div class="span6 addon-container" />\n<div class="span2 button-container">\n    <button class="btn btn-danger remove-pilot side-button"><span class="visible-desktop visible-tablet visible-phone" data-toggle="tooltip" title="Remove Pilot"><i class="fa fa-times"></i></span><span class="hidden-desktop hidden-tablet visible-phone">Remove Pilot</span></button>\n    <button class="btn copy-pilot side-button"><span class="visible-desktop visible-tablet visible-phone" data-toggle="tooltip" title="Clone Pilot"><i class="far fa-copy"></i></span><span class="hidden-desktop hidden-tablet visible-phone">Clone Pilot</span></button>&nbsp;&nbsp;&nbsp;\n    <button class="btn points-destroyed side-button" points-state"><span class="visible-desktop visible-tablet visible-phone destroyed-type" data-toggle="tooltip" title="Destroyed Points"><i class="xwing-miniatures-font xwing-miniatures-font-title"></i></span><span class="hidden-desktop hidden-tablet visible-phone">: Destroyed</span></button>\n</div>'));
     this.row.find('.button-container span').tooltip();
     this.ship_selector = $(this.row.find('input.ship-selector-container'));
     this.pilot_selector = $(this.row.find('input.pilot-selector-container'));
@@ -42053,7 +42069,25 @@ Ship = (function() {
         return clone.copyFrom(_this);
       };
     })(this));
-    return this.copy_button.hide();
+    this.copy_button.hide();
+    this.points_destroyed_button_span = $(this.row.find('.destroyed-type'));
+    this.points_destroyed_button = $(this.row.find('button.points-destroyed'));
+    this.points_destroyed_button.click((function(_this) {
+      return function(e) {
+        if (_this.destroystate === 1) {
+          _this.destroystate = 2;
+          _this.points_destroyed_button_span.html('<i class="xwing-miniatures-font xwing-miniatures-font-crit"></i>');
+        } else if (_this.destroystate === 2) {
+          _this.destroystate = 0;
+          _this.points_destroyed_button_span.html('<i class="xwing-miniatures-font xwing-miniatures-font-title"></i>');
+        } else {
+          _this.destroystate = 1;
+          _this.points_destroyed_button_span.html('<i class="xwing-miniatures-font xwing-miniatures-font-hit"></i>');
+        }
+        return _this.builder.onPointsUpdated();
+      };
+    })(this));
+    return this.points_destroyed_button.hide();
   };
 
   Ship.prototype.teardownUI = function() {
@@ -42791,7 +42825,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 44685
+                lineno: 44718
               })
             ]);
             __iced_deferrals._fulfill();
@@ -42920,7 +42954,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 44750
+                  lineno: 44783
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -42943,7 +42977,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 44755
+                      lineno: 44788
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -43035,7 +43069,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 44800
+            lineno: 44833
           }));
         }
         __iced_deferrals._fulfill();
