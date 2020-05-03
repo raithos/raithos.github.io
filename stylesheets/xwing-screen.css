@@ -7,6 +7,9 @@
 .column {
   flex: 50%; }
 
+.desired-points {
+  margin-bottom: 5px; }
+
 .modal-body {
   max-height: calc(45vh); }
 
