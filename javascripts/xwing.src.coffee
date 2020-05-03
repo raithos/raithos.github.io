@@ -40736,6 +40736,8 @@ class exportObj.SquadBuilder
             collection_only: true
             fill_zero_pts: false
         @total_points = 0
+        @tags = ''
+
         # a squad given in the link is loaded on construction of that builder. It will set all gamemodes of already existing builders accordingly, but we did not exists back than. So we copy over the gamemode
         @isHyperspace = exportObj.builders[0]?.isHyperspace ? false
         @isEpic = exportObj.builders[0]?.isEpic ? false
@@ -40785,6 +40787,7 @@ class exportObj.SquadBuilder
             dirty: false
             additional_data:
                 points: @total_points
+                tags: ''
                 description: ''
                 cards: []
                 notes: ''
@@ -41458,6 +41461,7 @@ class exportObj.SquadBuilder
             if @backend? and not @backend_save_list_button.hasClass('disabled')
                 additional_data =
                     points: @total_points
+                    tags: @tags
                     description: @describeSquad()
                     cards: @listCards()
                     notes: @notes.val().substr(0, 1024)
@@ -41508,6 +41512,7 @@ class exportObj.SquadBuilder
                         <span>Squad Notes:</span>
                         <br />
                         <textarea class="squad-notes"></textarea>
+                        <span class='hidden'>Tags: <input class="squad-tags" /></span>
                     </label>
                     <span class="obstacles-container">
                         <!-- Since this is an optional button, usually, it's shown in a different color -->
@@ -41523,6 +41528,7 @@ class exportObj.SquadBuilder
         @obstacles_container = content_container.find('.obstacles-container')
         @notes_container = $ content_container.find('.notes-container')
         @notes = $ @notes_container.find('textarea.squad-notes')
+        @tags = $ @notes_container.find('.squad-tags')
 
         @info_container.append $.trim """
             <div class="well well-small info-well">
@@ -42006,6 +42012,7 @@ class exportObj.SquadBuilder
         if squad.serialized.length?
             @loadFromSerialized squad.serialized
         @notes.val(squad.additional_data.notes ? '')
+        @tags.val(squad.additional_data.tags ? '')
         @backend_status.fadeOut 'slow'
         @current_squad.dirty = false
         @container.trigger 'xwing-backend:squadDirtinessChanged'
