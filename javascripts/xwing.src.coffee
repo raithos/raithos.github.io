@@ -40613,7 +40613,7 @@ exportObj.registerBuilderForTranslation = (builder) ->
     builders.push(builder) if builder not in builders
 
 ###
-    X-Wing Squad Builder 2.0
+    X-Wing Squad Builder 2.0 (whyyyyy)
     Stephen Kim <raithos@gmail.com>
     https://raithos.github.io
 ###
