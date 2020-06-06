@@ -599,7 +599,8 @@ exportObj.SquadBuilderBackend = (function() {
                   description: builder.describeSquad(),
                   cards: builder.listCards(),
                   notes: builder.notes.val().substr(0, 1024),
-                  obstacles: builder.getObstacles()
+                  obstacles: builder.getObstacles(),
+                  tag: builder.tag.val().substr(0, 1024)
                 };
                 return _this.save(builder.serialize(), builder.current_squad.id, builder.current_squad.name, builder.faction, additional_data, squadProcessingStack.pop());
               }
@@ -745,7 +746,8 @@ exportObj.SquadBuilderBackend = (function() {
             description: builder.describeSquad(),
             cards: builder.listCards(),
             notes: builder.getNotes(),
-            obstacles: builder.getObstacles()
+            obstacles: builder.getObstacles(),
+            tag: builder.getTag()
           };
           builder.backend_save_list_as_button.addClass('disabled');
           builder.backend_status.html($.trim("<i class=\"fa fa-sync fa-spin\"></i>&nbsp;Saving squad..."));
@@ -957,7 +959,7 @@ exportObj.SquadBuilderBackend = (function() {
                 return headers = arguments[0];
               };
             })(),
-            lineno: 817
+            lineno: 819
           }));
           __iced_deferrals._fulfill();
         });
@@ -38333,7 +38335,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 41189
+                    lineno: 41191
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -38644,7 +38646,8 @@ exportObj.SquadBuilder = (function() {
     }
     this.current_obstacles = [];
     this.resetCurrentSquad();
-    return this.notes.val('');
+    this.notes.val('');
+    return this.tag.val('');
   };
 
   SquadBuilder.prototype.setupUI = function() {
@@ -39155,7 +39158,7 @@ exportObj.SquadBuilder = (function() {
             cards: _this.listCards(),
             notes: _this.notes.val().substr(0, 1024),
             obstacles: _this.getObstacles(),
-            tag: ''
+            tag: _this.tag.val().substr(0, 1024)
           };
           _this.backend_status.html($.trim("<i class=\"fa fa-sync fa-spin\"></i>&nbsp;Saving squad..."));
           _this.backend_status.show();
@@ -39170,7 +39173,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 42069
+              lineno: 42072
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -39203,12 +39206,13 @@ exportObj.SquadBuilder = (function() {
     content_container = $(document.createElement('DIV'));
     content_container.addClass('container-fluid');
     this.container.append(content_container);
-    content_container.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span9 ship-container\">\n        <label class=\"notes-container show-authenticated\">\n            <span>Squad Notes:</span>\n            <br />\n            <textarea class=\"squad-notes\"></textarea>\n        </label>\n        <span class=\"obstacles-container\">\n            <!-- Since this is an optional button, usually, it's shown in a different color -->\n            <button class=\"btn btn-info choose-obstacles\"><i class=\"fa fa-cloud\"></i>&nbsp;Choose Obstacles</button>\n        </span>\n     </div>\n   <div class=\"span3 info-container\" id=\"info-container\" />\n</div>"));
+    content_container.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span9 ship-container\">\n        <label class=\"notes-container show-authenticated\">\n            <span>Tag:</span>\n            <input type=\"search\" class=\"squad-tag\"></input>\n            <span>Squad Notes:</span>\n            <br />\n            <textarea class=\"squad-notes\"></textarea>\n        </label>\n        <span class=\"obstacles-container\">\n            <!-- Since this is an optional button, usually, it's shown in a different color -->\n            <button class=\"btn btn-info choose-obstacles\"><i class=\"fa fa-cloud\"></i>&nbsp;Choose Obstacles</button>\n        </span>\n     </div>\n   <div class=\"span3 info-container\" id=\"info-container\" />\n</div>"));
     this.ship_container = $(content_container.find('div.ship-container'));
     this.info_container = $(content_container.find('div.info-container'));
     this.obstacles_container = content_container.find('.obstacles-container');
     this.notes_container = $(content_container.find('.notes-container'));
     this.notes = $(this.notes_container.find('textarea.squad-notes'));
+    this.tag = $(this.notes_container.find('input.squad-tag'));
     this.info_container.append($.trim("<div class=\"well well-small info-well\">\n    <span class=\"info-name\"></span>\n    <br />\n    <span class=\"info-collection\"></span>\n    <span class=\"info-solitary\"><br />Solitary</span>\n    <table>\n        <tbody>\n            <tr class=\"info-ship\">\n                <td class=\"info-header\">Ship</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-base\">\n                <td class=\"info-header\">Base</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-skill\">\n                <td class=\"info-header\">Initiative</td>\n                <td class=\"info-data info-skill\"></td>\n            </tr>\n            <tr class=\"info-engagement\">\n                <td class=\"info-header\">Engagement</td>\n                <td class=\"info-data info-engagement\"></td>\n            </tr>\n            <tr class=\"info-attack\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-fullfront\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-bullseye\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-left\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-leftarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-right\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-rightarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-back\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-turret\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-doubleturret\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-agility\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                <td class=\"info-data info-agility\"></td>\n            </tr>\n            <tr class=\"info-hull\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                <td class=\"info-data info-hull\"></td>\n            </tr>\n            <tr class=\"info-shields\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                <td class=\"info-data info-shields\"></td>\n            </tr>\n            <tr class=\"info-force\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i></td>\n                <td class=\"info-data info-force\"></td>\n            </tr>\n            <tr class=\"info-charge\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                <td class=\"info-data info-charge\"></td>\n            </tr>\n            <tr class=\"info-energy\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                <td class=\"info-data info-energy\"></td>\n            </tr>\n            <tr class=\"info-range\">\n                <td class=\"info-header\">Range</td>\n                <td class=\"info-data info-range\"></td><td class=\"info-rangebonus\"><i class=\"xwing-miniatures-font red header-range xwing-miniatures-font-rangebonusindicator\"></i></td>\n            </tr>\n            <tr class=\"info-actions\">\n                <td class=\"info-header\">Actions</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-actions-red\">\n                <td></td>\n                <td class=\"info-data-red\"></td>\n            </tr>\n            <tr class=\"info-upgrades\">\n                <td class=\"info-header\">Upgrades</td>\n                <td class=\"info-data\"></td>\n            </tr>\n        </tbody>\n    </table>\n    <p class=\"info-text\" />\n    <p class=\"info-maneuvers\" />\n    <br />\n    <span class=\"info-header info-sources\">Sources:</span> \n    <span class=\"info-data info-sources\"></span>\n</div>"));
     this.info_container.hide();
     this.print_list_button = $(this.container.find('button.print-list'));
@@ -39504,7 +39508,9 @@ exportObj.SquadBuilder = (function() {
       };
     })(this));
     this.notes.change(this.onNotesUpdated);
-    return this.notes.on('keyup', this.onNotesUpdated);
+    this.tag.change(this.onNotesUpdated);
+    this.notes.on('keyup', this.onNotesUpdated);
+    return this.tag.on('keyup', this.onNotesUpdated);
   };
 
   SquadBuilder.prototype.getPermaLinkParams = function(ignored_params) {
@@ -39695,7 +39701,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.onSquadLoadRequested = function(squad) {
-    var _ref;
+    var _ref, _ref1;
     this.current_squad = squad;
     this.backend_delete_list_button.removeClass('disabled');
     this.squad_name_input.val(this.current_squad.name);
@@ -39706,6 +39712,7 @@ exportObj.SquadBuilder = (function() {
       this.loadFromSerialized(squad.serialized);
     }
     this.notes.val((_ref = squad.additional_data.notes) != null ? _ref : '');
+    this.tag.val((_ref1 = squad.additional_data.tag) != null ? _ref1 : '');
     this.backend_status.fadeOut('slow');
     this.current_squad.dirty = false;
     this.container.trigger('xwing-backend:squadDirtinessChanged');
@@ -39967,7 +39974,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 42815
+              lineno: 42825
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -39977,7 +39984,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 42816
+                lineno: 42826
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -41637,6 +41644,10 @@ exportObj.SquadBuilder = (function() {
     return this.notes.val();
   };
 
+  SquadBuilder.prototype.getTag = function() {
+    return this.tag.val();
+  };
+
   SquadBuilder.prototype.getObstacles = function() {
     return this.current_obstacles;
   };
@@ -41963,7 +41974,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 44191
+                      lineno: 44204
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -42191,7 +42202,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 44313
+                          lineno: 44326
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -42241,7 +42252,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 44346
+                                  lineno: 44359
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -42320,7 +42331,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 44397
+                      lineno: 44410
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -42400,7 +42411,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 44426
+                lineno: 44439
               })
             ]);
             __iced_deferrals._fulfill();
@@ -42469,7 +42480,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 44455
+              lineno: 44468
             }));
           }
         }
@@ -42561,7 +42572,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 44511
+                lineno: 44524
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -43599,7 +43610,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 45352
+                lineno: 45365
               })
             ]);
             __iced_deferrals._fulfill();
@@ -43728,7 +43739,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 45417
+                  lineno: 45430
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -43751,7 +43762,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 45422
+                      lineno: 45435
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -43843,7 +43854,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 45467
+            lineno: 45480
           }));
         }
         __iced_deferrals._fulfill();

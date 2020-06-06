@@ -534,6 +534,7 @@ class exportObj.SquadBuilderBackend
                             cards: builder.listCards()
                             notes: builder.notes.val().substr(0, 1024)
                             obstacles: builder.getObstacles()
+                            tag: builder.tag.val().substr(0, 1024)
                         # console.log("saving " + builder.current_squad.name)
                         @save builder.serialize(), builder.current_squad.id, builder.current_squad.name, builder.faction, additional_data, squadProcessingStack.pop() ]
                         
@@ -651,6 +652,7 @@ class exportObj.SquadBuilderBackend
                     cards: builder.listCards()
                     notes: builder.getNotes()
                     obstacles: builder.getObstacles()
+                    tag: builder.getTag()
                 builder.backend_save_list_as_button.addClass 'disabled'
                 builder.backend_status.html $.trim """
                     <i class="fa fa-sync fa-spin"></i>&nbsp;Saving squad...
@@ -41405,6 +41407,7 @@ class exportObj.SquadBuilder
         @current_obstacles = []
         @resetCurrentSquad()
         @notes.val ''
+        @tag.val ''
 
     setupUI: ->
         DEFAULT_RANDOMIZER_POINTS = 200
@@ -42061,7 +42064,7 @@ class exportObj.SquadBuilder
                     cards: @listCards()
                     notes: @notes.val().substr(0, 1024)
                     obstacles: @getObstacles()
-                    tag: ''
+                    tag: @tag.val().substr(0, 1024)
                 @backend_status.html $.trim """
                     <i class="fa fa-sync fa-spin"></i>&nbsp;Saving squad...
                 """
@@ -42105,6 +42108,8 @@ class exportObj.SquadBuilder
             <div class="row-fluid">
                 <div class="span9 ship-container">
                     <label class="notes-container show-authenticated">
+                        <span>Tag:</span>
+                        <input type="search" class="squad-tag"></input>
                         <span>Squad Notes:</span>
                         <br />
                         <textarea class="squad-notes"></textarea>
@@ -42123,6 +42128,7 @@ class exportObj.SquadBuilder
         @obstacles_container = content_container.find('.obstacles-container')
         @notes_container = $ content_container.find('.notes-container')
         @notes = $ @notes_container.find('textarea.squad-notes')
+        @tag = $ @notes_container.find('input.squad-tag')
 
         @info_container.append $.trim """
             <div class="well well-small info-well">
@@ -42449,8 +42455,11 @@ class exportObj.SquadBuilder
             @select_simple_view_button.click() if $(window).width() < 768 and @list_display_mode != 'simple'
 
          @notes.change @onNotesUpdated
+                
+         @tag.change @onNotesUpdated
 
          @notes.on 'keyup', @onNotesUpdated
+         @tag.on 'keyup', @onNotesUpdated
 
     getPermaLinkParams: (ignored_params=[]) =>
         params = {}
@@ -42472,7 +42481,7 @@ class exportObj.SquadBuilder
         if @total_points > 0
             @current_squad.dirty = true
             @container.trigger 'xwing-backend:squadDirtinessChanged'
-
+            
     onGameTypeChanged: (gametype, cb=$.noop) =>
         @game_type_selector.val gametype
         oldHyperspace = @isHyperspace
@@ -42606,6 +42615,7 @@ class exportObj.SquadBuilder
         if squad.serialized.length?
             @loadFromSerialized squad.serialized
         @notes.val(squad.additional_data.notes ? '')
+        @tag.val(squad.additional_data.tag ? '')
         @backend_status.fadeOut 'slow'
         @current_squad.dirty = false
         @container.trigger 'xwing-backend:squadDirtinessChanged'
@@ -43947,6 +43957,9 @@ class exportObj.SquadBuilder
     getNotes: ->
         @notes.val()
 
+    getTag: ->
+        @tag.val()
+        
     getObstacles: ->
         @current_obstacles
 
