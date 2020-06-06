@@ -176,11 +176,11 @@ class exportObj.SquadBuilderBackend
                             #{squad.additional_data?.description}
                         </div>
                         <div class="span4">
-                            <button class="btn convert-squad"><i class="xwing-miniatures-font xwing-miniatures-font-reload"></i></button>
+                            <button class="btn convert-squad"><i class="xwing-miniatures-font xwing-miniatures-font-first-player-1"></i></button>
                             &nbsp;
-                            <button class="btn load-squad">Load</button>
+                            <button class="btn load-squad"><i class="fa fa-download"></i></button>
                             &nbsp;
-                            <button class="btn btn-danger delete-squad">Delete</button>
+                            <button class="btn btn-danger delete-squad"><i class="fa fa-times"></i></button>
                         </div>
                     </div>
                     <div class="row-fluid squad-convert-confirm">
@@ -241,6 +241,7 @@ class exportObj.SquadBuilderBackend
                     new_serialized = li.data('squad').serialized.replace('Zh','Zs')
                     @save new_serialized, li.data('squad').id, li.data('squad').name, li.data('builder').faction, li.data('squad').additional_data, (results) =>
                         if results.success
+                            li.data('squad').serialized = new_serialized 
                             li.find('.squad-convert-confirm').fadeOut 'fast', ->
                                 li.find('.squad-description').fadeIn 'fast'
                                 li.find('button.convert-squad').fadeOut 'fast'
@@ -331,7 +332,7 @@ class exportObj.SquadBuilderBackend
                 """
                 
             #setup Tags
-            @squad_list_tags.empty
+            @squad_list_tags.empty()
             for tag in tag_list
                 tagclean = tag.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-')
                 
@@ -408,19 +409,19 @@ class exportObj.SquadBuilderBackend
         if name.length == 0
             @name_availability_container.text ''
             @name_availability_container.append $.trim """
-                <i class="fa fa-thumbs-down"> A name is required
+                <i class="fa fa-thumbs-down"></i> A name is required
             """
         else
             $.post "#{@server}/squads/namecheck", { name: name }, (data) =>
                 @name_availability_container.text ''
                 if data.available
                     @name_availability_container.append $.trim """
-                        <i class="fa fa-thumbs-up"> Name is available
+                        <i class="fa fa-thumbs-up"></i> Name is available
                     """
                     @save_as_save_button.removeClass 'disabled'
                 else
                     @name_availability_container.append $.trim """
-                        <i class="fa fa-thumbs-down"> You already have a squad with that name
+                        <i class="fa fa-thumbs-down"></i> You already have a squad with that name
                     """
                     @save_as_save_button.addClass 'disabled'
 
