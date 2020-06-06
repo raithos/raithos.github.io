@@ -6,11 +6,6 @@
 
 exportObj = exports ? this
 
-String::canonicalize = ->
-    this.toLowerCase()
-        .replace(/[^a-z0-9]/g, '')
-        .replace(/\s+/g, '-')
-
 class exportObj.SquadBuilderBackend
     ###
         Usage:
@@ -287,7 +282,8 @@ class exportObj.SquadBuilderBackend
                 
             #setup Tags
             for tag in tag_list
-                tagclean = tag.canonicalize()
+                tagclean = tag.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-')
+                
                 @squad_list_tags.append $.trim """ 
                     <button class="btn btn-inverse #{tagclean}">#{tag}</button>
                 """
