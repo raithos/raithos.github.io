@@ -188,7 +188,7 @@ class exportObj.SquadBuilderBackend
                             Convert to Extended?
                         </div>
                         <div class="span4">
-                            <button class="btn btn-danger confirm-convert-squad">Delete</button>
+                            <button class="btn btn-danger confirm-convert-squad">Convert</button>
                             &nbsp;
                             <button class="btn cancel-convert-squad">Cancel</button>
                         </div>
@@ -238,7 +238,8 @@ class exportObj.SquadBuilderBackend
                     li.find('.cancel-convert-squad').fadeOut 'fast'
                     li.find('.confirm-convert-squad').addClass 'disabled'
                     li.find('.confirm-convert-squad').text 'Converting...'
-                    @save li.data('squad').serialized, li.data('squad').id, li.data('squad').name, li.data('builder').faction, li.data('squad').additional_data, (results) =>
+                    new_serialized = li.data('squad').serialized.replace('Zh','Zs')
+                    @save new_serialized, li.data('squad').id, li.data('squad').name, li.data('builder').faction, li.data('squad').additional_data, (results) =>
                         if results.success
                             li.find('.squad-convert-confirm').fadeOut 'fast', ->
                                 li.find('.squad-description').fadeIn 'fast'
@@ -344,7 +345,7 @@ class exportObj.SquadBuilderBackend
                     @squad_list_tags.find('.btn').removeClass 'btn-inverse'
                     button.addClass 'btn-inverse'
                     @squad_list_modal.find('.squad-list li').each (idx, elem) ->
-                        $(elem).toggle $(elem).data().squad.serialized.search("#{tagclean}") != -1
+                        $(elem).toggle $(elem).data().squad.additional_data?.tags?.search("#{tagclean}") != -1
 
             loading_pane.fadeOut 'fast'
             list_ul.fadeIn 'fast'
