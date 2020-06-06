@@ -47,6 +47,9 @@ strong {
 [tooltip]:hover:before {
   opacity: 1; }
 
+.squad-description .span4 {
+  text-align: right; }
+
 em {
   font-family: EurostileStandardOblique;
   font-style: normal; }
