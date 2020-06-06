@@ -282,7 +282,7 @@ class exportObj.SquadBuilderBackend
                 
             #setup Tags
             for tag in tag_list
-                tagclean = tag.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-')
+                tagclean = tag.toString().toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-')
                 
                 @squad_list_tags.append $.trim """ 
                     <button class="btn btn-inverse #{tagclean}">#{tag}</button>
