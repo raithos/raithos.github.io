@@ -141,6 +141,9 @@ class exportObj.SquadBuilderBackend
         # This counter keeps tracked of the number of squads marked to be deleted (to hide the delete-selected button if none is selected)
         @number_of_selected_squads_to_be_deleted = 0
 
+        #setup tag list
+        @tag_list = []
+
         url = if all then "#{@server}/all" else "#{@server}/squads/list"
         $.get url, (data, textStatus, jqXHR) =>
             hasNotArchivedSquads = false
@@ -169,6 +172,8 @@ class exportObj.SquadBuilderBackend
                             #{squad.additional_data?.description}
                         </div>
                         <div class="span4">
+                            <button class="btn convert-squad">Convert</button>
+                            &nbsp;
                             <button class="btn load-squad">Load</button>
                             &nbsp;
                             <button class="btn btn-danger delete-squad">Delete</button>
@@ -185,8 +190,23 @@ class exportObj.SquadBuilderBackend
                         </div>
                     </div>
                 """
-                li.find('.squad-delete-confirm').hide()
-
+                
+                if squad.serialized.search(/v\d+Zh/) != -1
+                    li.find('.squad-delete-confirm').hide()
+                
+                li.find('button.load-squad').hide()
+                li.find('button.load-squad').click (e) =>
+                    e.preventDefault()
+                    button = $ e.target
+                    li = button.closest 'li'
+                    builder = li.data('builder')
+                    @squad_list_modal.modal 'hide'
+                    if builder.current_squad.dirty
+                        @warnUnsaved builder, () ->
+                            builder.container.trigger 'xwing-backend:squadLoadRequested', li.data('squad')
+                    else
+                        builder.container.trigger 'xwing-backend:squadLoadRequested', li.data('squad')
+                    
                 li.find('button.load-squad').click (e) =>
                     e.preventDefault()
                     button = $ e.target
@@ -454,12 +474,17 @@ class exportObj.SquadBuilderBackend
                     <button class="btn show-epic-squads">Epic</button>
                     <button class="btn show-archived-squads">Archived</button>
                 </div>
+                <div class="btn-group tags-display">
+                </div>
                 <button class="btn btn reload-all">Reload<span class="hidden-phone"> all squads (this might take a while)</span></button>
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         """
         @squad_list_modal.find('ul.squad-list').hide()
 
+        @squad_list_tags = $ @squad_list_modal.find('div.tags-display')
+
+        
         # The delete multiple section only appeares, when somebody hits the delete button of one squad. 
         @squad_list_modal.find('div.delete-multiple-squads').hide() 
 
@@ -19045,7 +19070,8 @@ exportObj.translations.Deutsch =
         '.view-as-text' : '<span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Drucken/Als </span>Text ansehen'
         '.randomize' : '<i class="fa fa-random"></i>&nbsp;Zufall!'
         '.randomize-options' : 'Zufallsgenerator Optionen'
-        '.notes-container > span' : 'Staffel Notizen'
+        '.notes-container .notes-name' : 'Staffel Notizen:'
+        '.notes-container .tag-name' : 'Tag:'
         '.choose-obstacles' : 'Hindernisse wählen'
         '.from-xws' : 'Importieren aus XWS-Datei'
         '.to-xws' : 'Exportieren als XWS-Datei'
@@ -23523,7 +23549,8 @@ exportObj.translations['Español'] =
         '.view-as-text' : '<span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Imprimir/Ver como </span>texto'
         '.randomize' : 'Aleatorio!'
         '.randomize-options' : 'Opciones del aleatorizador…'
-        '.notes-container > span' : 'Notas del Escuadrón'
+        '.notes-container .notes-name' : 'Notas del Escuadrón:'
+        '.notes-container .tag-name' : 'Tag:'        
         '.choose-obstacles' : 'Elige Obstáculos'
         '.from-xws' : 'Importa de XWS (Beta)'
         '.to-xws' : 'Exporta a XWS (Beta)'
@@ -24949,7 +24976,8 @@ exportObj.translations['Français'] =
         '.collection': '<i class="fa fa-folder-open hidden-phone hidden-tabler"></i>&nbsp;Votre collection</a>'
         '.randomize' : 'Aléatoire !'
         '.randomize-options' : 'Options…'
-        '.notes-container > span' : 'Notes sur l\'escadron'
+        '.notes-container .notes-name' : 'Notes sur l\'escadron:'
+        '.notes-container .tag-name' : 'Tag:'        
         # Print/View modal
         '.bbcode-list' : 'Copiez le BBCode ci-dessous et collez-le dans votre post.<textarea></textarea><button class="btn btn-copy">Copiez</button>'
         '.html-list' : '<textarea></textarea><button class="btn btn-copy">Copiez</button>'
@@ -27104,7 +27132,8 @@ exportObj.translations.Magyar =
         '.view-as-text' : '<span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Nyomtatás/Szövegnézet </span>'
         '.randomize' : '<i class="fa fa-random"></i>&nbsp;Random!'
         '.randomize-options' : 'Randomizer opciók…'
-        '.notes-container > span' : 'Jegyzetek'
+        '.notes-container .notes-name' : 'Jegyzetek:'
+        '.notes-container .tag-name' : 'Tag:'        
         # Print/View modal
         '.bbcode-list' : 'Copy the BBCode below and paste it into your forum post.<textarea></textarea><button class="btn btn-copy">Másolás</button>'
         '.html-list' : '<textarea></textarea><button class="btn btn-copy">Másolás</button>'
@@ -42109,12 +42138,12 @@ class exportObj.SquadBuilder
             <div class="row-fluid">
                 <div class="span9 ship-container">
                     <label class="notes-container show-authenticated">
-                        <span class="tag-name">Tag:</span>
-                        <input type="search" class="squad-tag"></input>
-                        <br />
                         <span class="notes-name">Squad Notes:</span>
                         <br />
                         <textarea class="squad-notes"></textarea>
+                        <br />
+                        <span class="tag-name">Tag:</span>
+                        <input type="search" class="squad-tag"></input>
                     </label>
                     <span class="obstacles-container">
                         <!-- Since this is an optional button, usually, it's shown in a different color -->
