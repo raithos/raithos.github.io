@@ -119,7 +119,7 @@ class exportObj.SquadBuilderBackend
             cb
                 success: data.success
                 error: data.error
-
+                
     archive: (data, faction, cb) ->
         data.additional_data["archived"] = true
         @save(data.serialized, data.id, data.name, faction, data.additional_data, cb)
@@ -176,11 +176,21 @@ class exportObj.SquadBuilderBackend
                             #{squad.additional_data?.description}
                         </div>
                         <div class="span4">
-                            <button class="btn convert-squad">Convert</button>
+                            <button class="btn convert-squad"><i class="xwing-miniatures-font-reload"></i></button>
                             &nbsp;
                             <button class="btn load-squad">Load</button>
                             &nbsp;
                             <button class="btn btn-danger delete-squad">Delete</button>
+                        </div>
+                    </div>
+                    <div class="row-fluid squad-convert-confirm">
+                        <div class="span8">
+                            Convert to Extended?
+                        </div>
+                        <div class="span4">
+                            <button class="btn btn-danger confirm-convert-squad">Delete</button>
+                            &nbsp;
+                            <button class="btn cancel-convert-squad">Cancel</button>
                         </div>
                     </div>
                     <div class="row-fluid squad-delete-confirm">
@@ -199,7 +209,44 @@ class exportObj.SquadBuilderBackend
                 if squad.serialized.search(/v\d+Zh/) == -1
                     li.find('button.convert-squad').hide()
                 
-                li.find('button.load-squad').hide()
+                li.find('button.convert-squad').click (e) =>
+                    e.preventDefault()
+                    button = $ e.target
+                    li = button.closest 'li'
+                    builder = li.data('builder')
+                    li.data 'selectedToConvert', true
+                    do (li) =>
+                        li.find('.squad-description').fadeOut 'fast', ->
+                            li.find('.squad-convert-confirm').fadeIn 'fast'
+                        
+                li.find('button.cancel-convert-squad').click (e) =>
+                    e.preventDefault()
+                    button = $ e.target
+                    li = button.closest 'li'
+                    builder = li.data('builder')
+                    li.data 'selectedToConvert', false
+                    do (li) =>
+                        li.find('.squad-convert-confirm').fadeOut 'fast', ->
+                            li.find('.squad-description').fadeIn 'fast'
+
+                li.find('button.confirm-convert-squad').click (e) =>
+                    e.preventDefault()
+                    button = $ e.target
+                    li = button.closest 'li'
+                    builder = li.data('builder')
+                    li.find('.cancel-convert-squad').fadeOut 'fast'
+                    li.find('.confirm-convert-squad').addClass 'disabled'
+                    li.find('.confirm-convert-squad').text 'Converting...'
+                    @save li.data('squad').serialized, li.data('squad').id, li.data('squad').name, li.data('squad').faction, li.data('squad').additional_data, (results) =>
+                        if results.success
+                            li.find('.squad-convert-confirm').fadeOut 'fast', ->
+                                li.find('.squad-description').fadeIn 'fast'
+                                li.find('button.convert-squad').fadeOut 'fast'
+                        else
+                            li.html $.trim """
+                                Error converting #{li.data('squad').name}: <em>#{results.error}</em>
+                            """
+                
                 li.find('button.load-squad').click (e) =>
                     e.preventDefault()
                     button = $ e.target
@@ -291,7 +338,12 @@ class exportObj.SquadBuilderBackend
                 """
                 tag_button = $ @squad_list_tags.find(".#{tagclean}")
                 tag_button.click (e) =>
-                    console.log "#{tagclean}"
+                    button = $ e.target
+                    @squad_list_modal.find('.squad-display-mode .btn').removeClass 'btn-inverse'
+                    @squad_list_tags.find('.btn').removeClass 'btn-inverse'
+                    button.addClass 'btn-inverse'
+                    @squad_list_modal.find('.squad-list li').each (idx, elem) ->
+                        $(elem).toggle $(elem).data().squad.serialized.search("#{tagclean}") != -1
 
             loading_pane.fadeOut 'fast'
             list_ul.fadeIn 'fast'
@@ -491,6 +543,7 @@ class exportObj.SquadBuilderBackend
                     <button class="btn show-epic-squads">Epic</button>
                     <button class="btn show-archived-squads">Archived</button>
                 </div>
+                <br>
                 <div class="btn-group tags-display">
                 </div>
                 <button class="btn btn reload-all">Reload<span class="hidden-phone"> all squads (this might take a while)</span></button>
