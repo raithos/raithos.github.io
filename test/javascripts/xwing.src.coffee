@@ -282,11 +282,12 @@ class exportObj.SquadBuilderBackend
                 """
                 
             #setup Tags
+            @squad_list_tags.empty
             for tag in tag_list
                 tagclean = tag.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-')
                 
                 @squad_list_tags.append $.trim """ 
-                    <button class="btn btn-inverse #{tagclean}">#{tag}</button>
+                    <button class="btn #{tagclean}">#{tag}</button>
                 """
                 tag_button = $ @squad_list_tags.find(".#{tagclean}")
                 tag_button.click (e) =>
