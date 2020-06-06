@@ -21166,7 +21166,8 @@ exportObj.translations.English =
         '.view-as-text' : '<span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text'
         '.randomize' : '<i class="fa fa-random"></i>&nbsp;Random!'
         '.randomize-options' : 'Randomizer options…'
-        '.notes-container > span' : 'Squad Notes'
+        '.notes-container .notes-name' : 'Squad Notes:'
+        '.notes-container .tag-name' : 'Tag:'
         # Print/View modal
         '.bbcode-list' : 'Copy the BBCode below and paste it into your forum post.<textarea></textarea><button class="btn btn-copy">Copy</button>'
         '.html-list' : '<textarea></textarea><button class="btn btn-copy">Copy</button>'
@@ -42108,9 +42109,10 @@ class exportObj.SquadBuilder
             <div class="row-fluid">
                 <div class="span9 ship-container">
                     <label class="notes-container show-authenticated">
-                        <span>Tag:</span>
+                        <span class="tag-name">Tag:</span>
                         <input type="search" class="squad-tag"></input>
-                        <span>Squad Notes:</span>
+                        <br />
+                        <span class="notes-name">Squad Notes:</span>
                         <br />
                         <textarea class="squad-notes"></textarea>
                     </label>

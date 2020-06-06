@@ -16148,7 +16148,8 @@ exportObj.translations.English = {
     '.view-as-text': '<span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text',
     '.randomize': '<i class="fa fa-random"></i>&nbsp;Random!',
     '.randomize-options': 'Randomizer options…',
-    '.notes-container > span': 'Squad Notes',
+    '.notes-container .notes-name': 'Squad Notes:',
+    '.notes-container .tag-name': 'Tag:',
     '.bbcode-list': 'Copy the BBCode below and paste it into your forum post.<textarea></textarea><button class="btn btn-copy">Copy</button>',
     '.html-list': '<textarea></textarea><button class="btn btn-copy">Copy</button>',
     '.vertical-space-checkbox': "Add space for cards <input type=\"checkbox\" class=\"toggle-vertical-space\" />",
@@ -38335,7 +38336,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 41191
+                    lineno: 41192
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -39173,7 +39174,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 42072
+              lineno: 42073
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -39206,7 +39207,7 @@ exportObj.SquadBuilder = (function() {
     content_container = $(document.createElement('DIV'));
     content_container.addClass('container-fluid');
     this.container.append(content_container);
-    content_container.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span9 ship-container\">\n        <label class=\"notes-container show-authenticated\">\n            <span>Tag:</span>\n            <input type=\"search\" class=\"squad-tag\"></input>\n            <span>Squad Notes:</span>\n            <br />\n            <textarea class=\"squad-notes\"></textarea>\n        </label>\n        <span class=\"obstacles-container\">\n            <!-- Since this is an optional button, usually, it's shown in a different color -->\n            <button class=\"btn btn-info choose-obstacles\"><i class=\"fa fa-cloud\"></i>&nbsp;Choose Obstacles</button>\n        </span>\n     </div>\n   <div class=\"span3 info-container\" id=\"info-container\" />\n</div>"));
+    content_container.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span9 ship-container\">\n        <label class=\"notes-container show-authenticated\">\n            <span class=\"tag-name\">Tag:</span>\n            <input type=\"search\" class=\"squad-tag\"></input>\n            <br />\n            <span class=\"notes-name\">Squad Notes:</span>\n            <br />\n            <textarea class=\"squad-notes\"></textarea>\n        </label>\n        <span class=\"obstacles-container\">\n            <!-- Since this is an optional button, usually, it's shown in a different color -->\n            <button class=\"btn btn-info choose-obstacles\"><i class=\"fa fa-cloud\"></i>&nbsp;Choose Obstacles</button>\n        </span>\n     </div>\n   <div class=\"span3 info-container\" id=\"info-container\" />\n</div>"));
     this.ship_container = $(content_container.find('div.ship-container'));
     this.info_container = $(content_container.find('div.info-container'));
     this.obstacles_container = content_container.find('.obstacles-container');
@@ -39974,7 +39975,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 42825
+              lineno: 42827
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -39984,7 +39985,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 42826
+                lineno: 42828
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -41974,7 +41975,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 44204
+                      lineno: 44206
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -42202,7 +42203,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 44326
+                          lineno: 44328
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -42252,7 +42253,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 44359
+                                  lineno: 44361
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -42331,7 +42332,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 44410
+                      lineno: 44412
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -42411,7 +42412,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 44439
+                lineno: 44441
               })
             ]);
             __iced_deferrals._fulfill();
@@ -42480,7 +42481,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 44468
+              lineno: 44470
             }));
           }
         }
@@ -42572,7 +42573,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 44524
+                lineno: 44526
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -43610,7 +43611,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 45365
+                lineno: 45367
               })
             ]);
             __iced_deferrals._fulfill();
@@ -43739,7 +43740,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 45430
+                  lineno: 45432
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -43762,7 +43763,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 45435
+                      lineno: 45437
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -43854,7 +43855,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 45480
+            lineno: 45482
           }));
         }
         __iced_deferrals._fulfill();
