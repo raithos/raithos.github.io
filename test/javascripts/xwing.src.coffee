@@ -6,6 +6,11 @@
 
 exportObj = exports ? this
 
+String::cleanstring = ->
+    this.toLowerCase()
+        .replace(/[^a-z0-9]/g, '')
+        .replace(/\s+/g, '-')
+
 class exportObj.SquadBuilderBackend
     ###
         Usage:
@@ -195,7 +200,7 @@ class exportObj.SquadBuilderBackend
                 """
                 
                 if squad.serialized.search(/v\d+Zh/) == -1
-                    li.find('.squad-delete-confirm').hide()
+                    li.find('button.convert-squad').hide()
                 
                 li.find('button.load-squad').hide()
                 li.find('button.load-squad').click (e) =>
@@ -283,11 +288,11 @@ class exportObj.SquadBuilderBackend
             @squad_list_tags.replace = ""
             for tag in tag_list
                 @squad_list_tags.append $.trim """ 
-                    <button class="btn btn-inverse #{tag.serialize()}">#{tag}</button>
+                    <button class="btn btn-inverse #{tag.cleanstring()}">#{tag}</button>
                 """
-                tag_button = $ @squad_list_tags.find('.#{tag.serialize()}')
+                tag_button = $ @squad_list_tags.find('.#{tag.cleanstring()}')
                 tag_button.click (e) =>
-                    console.log "#{tag.serialize()}"
+                    console.log "#{tag.cleanstring()}"
 
             loading_pane.fadeOut 'fast'
             list_ul.fadeIn 'fast'
