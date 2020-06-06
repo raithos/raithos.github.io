@@ -6,6 +6,11 @@
 
 exportObj = exports ? this
 
+String::canonicalize = ->
+    this.toLowerCase()
+        .replace(/[^a-z0-9]/g, '')
+        .replace(/\s+/g, '-')
+
 class exportObj.SquadBuilderBackend
     ###
         Usage:
@@ -193,6 +198,7 @@ class exportObj.SquadBuilderBackend
                         </div>
                     </div>
                 """
+                li.find('.squad-delete-confirm').hide()
                 
                 if squad.serialized.search(/v\d+Zh/) == -1
                     li.find('button.convert-squad').hide()
@@ -281,12 +287,13 @@ class exportObj.SquadBuilderBackend
                 
             #setup Tags
             for tag in tag_list
+                tagclean = tag.canonicalize()
                 @squad_list_tags.append $.trim """ 
-                    <button class="btn btn-inverse #{tag.replace(/\s+/g, '-')}">#{tag}</button>
+                    <button class="btn btn-inverse #{tagclean}">#{tag}</button>
                 """
-                tag_button = $ @squad_list_tags.find(".#{tag.replace(/\s+/g, '-')}")
+                tag_button = $ @squad_list_tags.find(".#{tagclean}")
                 tag_button.click (e) =>
-                    console.log "#{tag.replace(/\s+/g, '-')}"
+                    console.log "#{tagclean}"
 
             loading_pane.fadeOut 'fast'
             list_ul.fadeIn 'fast'
