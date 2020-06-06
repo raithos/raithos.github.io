@@ -176,7 +176,7 @@ class exportObj.SquadBuilderBackend
                             #{squad.additional_data?.description}
                         </div>
                         <div class="span4">
-                            <button class="btn convert-squad"><i class="xwing-miniatures-font-reload"></i></button>
+                            <button class="btn convert-squad"><i class="xwing-miniatures-font xwing-miniatures-font-reload"></i></button>
                             &nbsp;
                             <button class="btn load-squad">Load</button>
                             &nbsp;
@@ -204,6 +204,7 @@ class exportObj.SquadBuilderBackend
                         </div>
                     </div>
                 """
+                li.find('.squad-convert-confirm').hide()
                 li.find('.squad-delete-confirm').hide()
                 
                 if squad.serialized.search(/v\d+Zh/) == -1
