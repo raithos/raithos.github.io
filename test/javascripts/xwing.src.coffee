@@ -238,7 +238,7 @@ class exportObj.SquadBuilderBackend
                     li.find('.cancel-convert-squad').fadeOut 'fast'
                     li.find('.confirm-convert-squad').addClass 'disabled'
                     li.find('.confirm-convert-squad').text 'Converting...'
-                    @save li.data('squad').serialized, li.data('squad').id, li.data('squad').name, li.data('squad').faction, li.data('squad').additional_data, (results) =>
+                    @save li.data('squad').serialized, li.data('squad').id, li.data('squad').name, li.data('builder').faction, li.data('squad').additional_data, (results) =>
                         if results.success
                             li.find('.squad-convert-confirm').fadeOut 'fast', ->
                                 li.find('.squad-description').fadeIn 'fast'
