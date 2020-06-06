@@ -155,7 +155,8 @@ class exportObj.SquadBuilderBackend
                 li.data 'selectedForDeletion', false
                 list_ul.append li
                 
-                tag_list.push squad.additional_data?.tag? 
+                if squad.additional_data?.tag? and (squad.additional_data?.tag != "")
+                    tag_list.push squad.additional_data?.tag
                 
                 if squad.additional_data?.archived?
                     li.hide()
@@ -282,7 +283,7 @@ class exportObj.SquadBuilderBackend
                 
             #setup Tags
             for tag in tag_list
-                tagclean = tag.toString().toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-')
+                tagclean = tag.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-')
                 
                 @squad_list_tags.append $.trim """ 
                     <button class="btn btn-inverse #{tagclean}">#{tag}</button>
