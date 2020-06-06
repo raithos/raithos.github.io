@@ -142,7 +142,7 @@ class exportObj.SquadBuilderBackend
         @number_of_selected_squads_to_be_deleted = 0
 
         #setup tag list
-        @tag_list = []
+        tag_list = []
 
         url = if all then "#{@server}/all" else "#{@server}/squads/list"
         $.get url, (data, textStatus, jqXHR) =>
@@ -154,6 +154,9 @@ class exportObj.SquadBuilderBackend
                 li.data 'builder', builder
                 li.data 'selectedForDeletion', false
                 list_ul.append li
+                
+                tag_list.push squad.additional_data?.tag? 
+                
                 if squad.additional_data?.archived?
                     li.hide()
                 else
@@ -191,7 +194,7 @@ class exportObj.SquadBuilderBackend
                     </div>
                 """
                 
-                if squad.serialized.search(/v\d+Zh/) != -1
+                if squad.serialized.search(/v\d+Zh/) == -1
                     li.find('.squad-delete-confirm').hide()
                 
                 li.find('button.load-squad').hide()
@@ -275,6 +278,16 @@ class exportObj.SquadBuilderBackend
                 list_ul.append $.trim """
                     <li>Nothing to see here. Go save a squad!</li>
                 """
+                
+            #setup Tags
+            @squad_list_tags.replace = ""
+            for tag in tag_list
+                @squad_list_tags.append $.trim """ 
+                    <button class="btn btn-inverse #{tag.serialize()}">#{tag}</button>
+                """
+                tag_button = $ @squad_list_tags.find('.#{tag.serialize()}')
+                tag_button.click (e) =>
+                    console.log "#{tag.serialize()}"
 
             loading_pane.fadeOut 'fast'
             list_ul.fadeIn 'fast'
@@ -483,7 +496,6 @@ class exportObj.SquadBuilderBackend
         @squad_list_modal.find('ul.squad-list').hide()
 
         @squad_list_tags = $ @squad_list_modal.find('div.tags-display')
-
         
         # The delete multiple section only appeares, when somebody hits the delete button of one squad. 
         @squad_list_modal.find('div.delete-multiple-squads').hide() 
