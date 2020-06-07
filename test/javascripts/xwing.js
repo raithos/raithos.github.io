@@ -405,7 +405,7 @@ exportObj.SquadBuilderBackend = (function() {
             button.addClass('btn-inverse');
             return _this.squad_list_modal.find('.squad-list li').each(function(idx, elem) {
               var _ref7, _ref8;
-              return $(elem).toggle(((_ref7 = $(elem).data().squad.additional_data) != null ? (_ref8 = _ref7.tags) != null ? _ref8.search("" + tagclean) : void 0 : void 0) !== -1);
+              return $(elem).toggle(((_ref7 = $(elem).data().squad.additional_data) != null ? (_ref8 = _ref7.tag) != null ? _ref8.search("" + tag) : void 0 : void 0) !== -1);
             });
           });
         }

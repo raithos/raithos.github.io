@@ -119,7 +119,7 @@ class exportObj.SquadBuilderBackend
             cb
                 success: data.success
                 error: data.error
-                
+
     archive: (data, faction, cb) ->
         data.additional_data["archived"] = true
         @save(data.serialized, data.id, data.name, faction, data.additional_data, cb)
@@ -346,7 +346,7 @@ class exportObj.SquadBuilderBackend
                     @squad_list_tags.find('.btn').removeClass 'btn-inverse'
                     button.addClass 'btn-inverse'
                     @squad_list_modal.find('.squad-list li').each (idx, elem) ->
-                        $(elem).toggle $(elem).data().squad.additional_data?.tags?.search("#{tagclean}") != -1
+                        $(elem).toggle $(elem).data().squad.additional_data?.tag?.search("#{tag}") != -1
 
             loading_pane.fadeOut 'fast'
             list_ul.fadeIn 'fast'
