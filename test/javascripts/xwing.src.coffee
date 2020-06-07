@@ -346,7 +346,7 @@ class exportObj.SquadBuilderBackend
                     @squad_list_tags.find('.btn').removeClass 'btn-inverse'
                     button.addClass 'btn-inverse'
                     @squad_list_modal.find('.squad-list li').each (idx, elem) ->
-                        $(elem).toggle $(elem).data().squad.additional_data.tag.search("#{tag}") == -1
+                        $(elem).toggle $(elem).data().squad.additional_data.tag.search("#{tag}") != -1
 
             loading_pane.fadeOut 'fast'
             list_ul.fadeIn 'fast'
@@ -699,6 +699,7 @@ class exportObj.SquadBuilderBackend
             unless @squad_display_mode == 'quickbuild'
                 @squad_display_mode = 'quickbuild'
                 @squad_list_modal.find('.squad-display-mode .btn').removeClass 'btn-inverse'
+                @squad_list_tags.find('.btn').removeClass 'btn-inverse'
                 @show_quickbuild_squads_button.addClass 'btn-inverse'
                 @squad_list_modal.find('.squad-list li').each (idx, elem) ->
                     $(elem).toggle $(elem).data().squad.serialized.search(/v\d+Zq/) != -1
@@ -710,6 +711,7 @@ class exportObj.SquadBuilderBackend
                 @show_archived_squads_button.addClass 'btn-inverse'
             else
                 @show_archived_squads_button.removeClass 'btn-inverse'
+            @squad_list_tags.find('.btn').removeClass 'btn-inverse'
             @squad_list_modal.find('.squad-list li').each (idx, elem) =>
                 $(elem).toggle (($(elem).data().squad.additional_data.archived?) == @show_archived)
 
