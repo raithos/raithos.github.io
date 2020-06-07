@@ -397,15 +397,15 @@ exportObj.SquadBuilderBackend = (function() {
           tagclean = tag.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-');
           _this.squad_list_tags.append($.trim(" \n<button class=\"btn " + tagclean + "\">" + tag + "</button>"));
           tag_button = $(_this.squad_list_tags.find("." + tagclean));
-          tag_button.tag = tag;
           tag_button.click(function(e) {
-            var button;
+            var button, buttontag;
             button = $(e.target);
+            buttontag = button.attr('class').replace('btn ', '');
             _this.squad_list_modal.find('.squad-display-mode .btn').removeClass('btn-inverse');
             _this.squad_list_tags.find('.btn').removeClass('btn-inverse');
             button.addClass('btn-inverse');
             return _this.squad_list_modal.find('.squad-list li').each(function(idx, elem) {
-              return $(elem).toggle(($(elem).data().squad.additional_data.tag != null) && ((button.tag != null) === $(elem).data().squad.additional_data.tag));
+              return $(elem).toggle(($(elem).data().squad.additional_data.tag != null) && (buttontag === $(elem).data().squad.additional_data.tag.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-')));
             });
           });
         }

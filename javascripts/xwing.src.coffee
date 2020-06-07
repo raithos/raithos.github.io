@@ -340,14 +340,14 @@ class exportObj.SquadBuilderBackend
                     <button class="btn #{tagclean}">#{tag}</button>
                 """
                 tag_button = $ @squad_list_tags.find(".#{tagclean}")
-                tag_button.tag = tag
                 tag_button.click (e) =>
                     button = $ e.target
+                    buttontag = button.attr('class').replace('btn ','')
                     @squad_list_modal.find('.squad-display-mode .btn').removeClass 'btn-inverse'
                     @squad_list_tags.find('.btn').removeClass 'btn-inverse'
                     button.addClass 'btn-inverse'
                     @squad_list_modal.find('.squad-list li').each (idx, elem) ->
-                        $(elem).toggle ($(elem).data().squad.additional_data.tag? and (button.tag? == $(elem).data().squad.additional_data.tag))
+                        $(elem).toggle ($(elem).data().squad.additional_data.tag? and (buttontag == $(elem).data().squad.additional_data.tag.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-')))
 
 
             loading_pane.fadeOut 'fast'
