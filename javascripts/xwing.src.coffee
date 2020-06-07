@@ -347,7 +347,7 @@ class exportObj.SquadBuilderBackend
                     @squad_list_tags.find('.btn').removeClass 'btn-inverse'
                     button.addClass 'btn-inverse'
                     @squad_list_modal.find('.squad-list li').each (idx, elem) ->
-                        $(elem).toggle ($(elem).data().squad.additional_data.tag? and (this.tag? == $(elem).data().squad.additional_data.tag))
+                        $(elem).toggle ($(elem).data().squad.additional_data.tag? and (button.tag? == $(elem).data().squad.additional_data.tag))
 
 
             loading_pane.fadeOut 'fast'

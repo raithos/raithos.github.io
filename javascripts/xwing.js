@@ -405,7 +405,7 @@ exportObj.SquadBuilderBackend = (function() {
             _this.squad_list_tags.find('.btn').removeClass('btn-inverse');
             button.addClass('btn-inverse');
             return _this.squad_list_modal.find('.squad-list li').each(function(idx, elem) {
-              return $(elem).toggle(($(elem).data().squad.additional_data.tag != null) && ((this.tag != null) === $(elem).data().squad.additional_data.tag));
+              return $(elem).toggle(($(elem).data().squad.additional_data.tag != null) && ((button.tag != null) === $(elem).data().squad.additional_data.tag));
             });
           });
         }
