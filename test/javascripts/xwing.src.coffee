@@ -346,7 +346,10 @@ class exportObj.SquadBuilderBackend
                     @squad_list_tags.find('.btn').removeClass 'btn-inverse'
                     button.addClass 'btn-inverse'
                     @squad_list_modal.find('.squad-list li').each (idx, elem) ->
-                        $(elem).toggle $(elem).data().squad.additional_data.tag.search("#{tag}") != -1
+                        if $(elem).data().squad.additional_data.tag? and (tag == $(elem).data().squad.additional_data.tag)
+                            $(elem).toggle true
+                        else
+                            $(elem).toggle false
 
             loading_pane.fadeOut 'fast'
             list_ul.fadeIn 'fast'
@@ -547,9 +550,9 @@ class exportObj.SquadBuilderBackend
                     <button class="btn show-archived-squads">Archived</button>
                 </div>
                 <div class="btn-group tags-display">
-                <br>
+                <br />
                 </div>
-                <br>
+                <br />
                 <button class="btn btn reload-all">Reload<span class="hidden-phone"> all squads (this might take a while)</span></button>
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
@@ -41537,7 +41540,7 @@ class exportObj.SquadBuilder
                         <input type="text" maxlength="64" placeholder="Name your squad..." />
                         <button class="btn save"><i class="fa fa-pen-square"></i></button>
                     </div>
-                    <br>
+                    <br />
                     <select class="game-type-selector">
                         <option value="standard">Extended</option>
                         <option value="hyperspace">Hyperspace</option>
@@ -41632,7 +41635,7 @@ class exportObj.SquadBuilder
                 </div>
                 <div class="tts-list">
                     <p>Copy the below and paste it into the Tabletop Simulator.</p>
-                    <textarea></textarea><br><button class="btn btn-copy">Copy</button>
+                    <textarea></textarea><br /><button class="btn btn-copy">Copy</button>
                 </div>
                 <div class="bbcode-list">
                     <p>Copy the BBCode below and paste it into your forum post.</p>
@@ -42591,7 +42594,7 @@ class exportObj.SquadBuilder
         if @total_points > 0
             @current_squad.dirty = true
             @container.trigger 'xwing-backend:squadDirtinessChanged'
-            
+
     onGameTypeChanged: (gametype, cb=$.noop) =>
         @game_type_selector.val gametype
         oldHyperspace = @isHyperspace
@@ -45022,7 +45025,7 @@ class Ship
                     #{energyHTML}
                     #{forceHTML}
                     #{chargeHTML}
-                    <br>
+                    <br />
                     #{action_bar}
                     &nbsp;&nbsp;
                     #{action_bar_red}
