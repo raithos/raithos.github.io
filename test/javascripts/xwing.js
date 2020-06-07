@@ -404,7 +404,7 @@ exportObj.SquadBuilderBackend = (function() {
             _this.squad_list_tags.find('.btn').removeClass('btn-inverse');
             button.addClass('btn-inverse');
             return _this.squad_list_modal.find('.squad-list li').each(function(idx, elem) {
-              return $(elem).toggle($(elem).data().squad.additional_data.tag.search("" + tag) !== -1);
+              return $(elem).toggle($(elem).data().squad.additional_data.tag.search("" + tag) === -1);
             });
           });
         }
@@ -580,7 +580,7 @@ exportObj.SquadBuilderBackend = (function() {
     this.squad_list_modal = $(document.createElement('DIV'));
     this.squad_list_modal.addClass('modal hide fade hidden-print squad-list');
     $(document.body).append(this.squad_list_modal);
-    this.squad_list_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3 class=\"squad-list-header-placeholder hidden-phone hidden-tablet\"></h3>\n    <h4 class=\"squad-list-header-placeholder hidden-desktop\"></h4>\n</div>\n<div class=\"modal-body\">\n    <ul class=\"squad-list\"></ul>\n    <p class=\"pagination-centered squad-list-loading\">\n        <i class=\"fa fa-spinner fa-spin fa-3x\"></i>\n        <br />\n        Fetching squads...\n    </p>\n</div>\n<div class=\"modal-footer\">\n    <div class=\"btn-group delete-multiple-squads\">\n        <button class=\"btn select-all\">Select All</button>\n        <button class=\"btn archive-selected\">Archive Selected</button>\n        <button class=\"btn btn-danger delete-selected\">Delete Selected</button>\n    </div>\n    <div class=\"btn-group squad-display-mode\">\n        <button class=\"btn btn-inverse show-all-squads\">All</button>\n        <button class=\"btn show-extended-squads\">Ext<span class=\"hidden-phone\">ended</span></button>\n        <button class=\"btn show-hyperspace-squads\">Hyper<span class=\"hidden-phone\">space</span></button>\n        <button class=\"btn show-quickbuild-squads\">Quick<span class=\"hidden-phone\">build</span></button>\n        <button class=\"btn show-epic-squads\">Epic</button>\n        <button class=\"btn show-archived-squads\">Archived</button>\n    </div>\n    <br>\n    <div class=\"btn-group tags-display\">\n    </div>\n    <button class=\"btn btn reload-all\">Reload<span class=\"hidden-phone\"> all squads (this might take a while)</span></button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.squad_list_modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h3 class=\"squad-list-header-placeholder hidden-phone hidden-tablet\"></h3>\n    <h4 class=\"squad-list-header-placeholder hidden-desktop\"></h4>\n</div>\n<div class=\"modal-body\">\n    <ul class=\"squad-list\"></ul>\n    <p class=\"pagination-centered squad-list-loading\">\n        <i class=\"fa fa-spinner fa-spin fa-3x\"></i>\n        <br />\n        Fetching squads...\n    </p>\n</div>\n<div class=\"modal-footer\">\n    <div class=\"btn-group delete-multiple-squads\">\n        <button class=\"btn select-all\">Select All</button>\n        <button class=\"btn archive-selected\">Archive Selected</button>\n        <button class=\"btn btn-danger delete-selected\">Delete Selected</button>\n    </div>\n    <div class=\"btn-group squad-display-mode\">\n        <button class=\"btn btn-inverse show-all-squads\">All</button>\n        <button class=\"btn show-extended-squads\">Ext<span class=\"hidden-phone\">ended</span></button>\n        <button class=\"btn show-hyperspace-squads\">Hyper<span class=\"hidden-phone\">space</span></button>\n        <button class=\"btn show-quickbuild-squads\">Quick<span class=\"hidden-phone\">build</span></button>\n        <button class=\"btn show-epic-squads\">Epic</button>\n        <button class=\"btn show-archived-squads\">Archived</button>\n    </div>\n    <div class=\"btn-group tags-display\">\n    <br>\n    </div>\n    <br>\n    <button class=\"btn btn reload-all\">Reload<span class=\"hidden-phone\"> all squads (this might take a while)</span></button>\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
     this.squad_list_modal.find('ul.squad-list').hide();
     this.squad_list_tags = $(this.squad_list_modal.find('div.tags-display'));
     this.squad_list_modal.find('div.delete-multiple-squads').hide();
@@ -735,6 +735,7 @@ exportObj.SquadBuilderBackend = (function() {
         if (_this.squad_display_mode !== 'all') {
           _this.squad_display_mode = 'all';
           _this.squad_list_modal.find('.squad-display-mode .btn').removeClass('btn-inverse');
+          _this.squad_list_tags.find('.btn').removeClass('btn-inverse');
           _this.show_all_squads_button.addClass('btn-inverse');
           return _this.squad_list_modal.find('.squad-list li').show();
         }
@@ -746,6 +747,7 @@ exportObj.SquadBuilderBackend = (function() {
         if (_this.squad_display_mode !== 'extended') {
           _this.squad_display_mode = 'extended';
           _this.squad_list_modal.find('.squad-display-mode .btn').removeClass('btn-inverse');
+          _this.squad_list_tags.find('.btn').removeClass('btn-inverse');
           _this.show_extended_squads_button.addClass('btn-inverse');
           return _this.squad_list_modal.find('.squad-list li').each(function(idx, elem) {
             return $(elem).toggle($(elem).data().squad.serialized.search(/v\d+Zs/) !== -1);
@@ -759,6 +761,7 @@ exportObj.SquadBuilderBackend = (function() {
         if (_this.squad_display_mode !== 'epic') {
           _this.squad_display_mode = 'epic';
           _this.squad_list_modal.find('.squad-display-mode .btn').removeClass('btn-inverse');
+          _this.squad_list_tags.find('.btn').removeClass('btn-inverse');
           _this.show_epic_squads_button.addClass('btn-inverse');
           return _this.squad_list_modal.find('.squad-list li').each(function(idx, elem) {
             return $(elem).toggle($(elem).data().squad.serialized.search(/v\d+Ze/) !== -1);
@@ -772,6 +775,7 @@ exportObj.SquadBuilderBackend = (function() {
         if (_this.squad_display_mode !== 'hyperspace') {
           _this.squad_display_mode = 'hyperspace';
           _this.squad_list_modal.find('.squad-display-mode .btn').removeClass('btn-inverse');
+          _this.squad_list_tags.find('.btn').removeClass('btn-inverse');
           _this.show_hyperspace_squads_button.addClass('btn-inverse');
           return _this.squad_list_modal.find('.squad-list li').each(function(idx, elem) {
             return $(elem).toggle($(elem).data().squad.serialized.search(/v\d+Zh/) !== -1);
@@ -1048,7 +1052,7 @@ exportObj.SquadBuilderBackend = (function() {
                 return headers = arguments[0];
               };
             })(),
-            lineno: 916
+            lineno: 921
           }));
           __iced_deferrals._fulfill();
         });
@@ -38429,7 +38433,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 41293
+                    lineno: 41298
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -39267,7 +39271,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 42174
+              lineno: 42179
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -40068,7 +40072,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 42928
+              lineno: 42933
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -40078,7 +40082,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 42929
+                lineno: 42934
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -42068,7 +42072,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 44307
+                      lineno: 44312
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -42296,7 +42300,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 44429
+                          lineno: 44434
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -42346,7 +42350,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 44462
+                                  lineno: 44467
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -42425,7 +42429,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 44513
+                      lineno: 44518
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -42505,7 +42509,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 44542
+                lineno: 44547
               })
             ]);
             __iced_deferrals._fulfill();
@@ -42574,7 +42578,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 44571
+              lineno: 44576
             }));
           }
         }
@@ -42666,7 +42670,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 44627
+                lineno: 44632
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -43704,7 +43708,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 45468
+                lineno: 45473
               })
             ]);
             __iced_deferrals._fulfill();
@@ -43833,7 +43837,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 45533
+                  lineno: 45538
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -43856,7 +43860,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 45538
+                      lineno: 45543
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -43948,7 +43952,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 45583
+            lineno: 45588
           }));
         }
         __iced_deferrals._fulfill();

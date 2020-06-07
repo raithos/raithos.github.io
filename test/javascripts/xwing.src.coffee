@@ -346,7 +346,7 @@ class exportObj.SquadBuilderBackend
                     @squad_list_tags.find('.btn').removeClass 'btn-inverse'
                     button.addClass 'btn-inverse'
                     @squad_list_modal.find('.squad-list li').each (idx, elem) ->
-                        $(elem).toggle $(elem).data().squad.additional_data.tag.search("#{tag}") != -1
+                        $(elem).toggle $(elem).data().squad.additional_data.tag.search("#{tag}") == -1
 
             loading_pane.fadeOut 'fast'
             list_ul.fadeIn 'fast'
@@ -546,9 +546,10 @@ class exportObj.SquadBuilderBackend
                     <button class="btn show-epic-squads">Epic</button>
                     <button class="btn show-archived-squads">Archived</button>
                 </div>
-                <br>
                 <div class="btn-group tags-display">
+                <br>
                 </div>
+                <br>
                 <button class="btn btn reload-all">Reload<span class="hidden-phone"> all squads (this might take a while)</span></button>
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
@@ -659,6 +660,7 @@ class exportObj.SquadBuilderBackend
             unless @squad_display_mode == 'all'
                 @squad_display_mode = 'all'
                 @squad_list_modal.find('.squad-display-mode .btn').removeClass 'btn-inverse'
+                @squad_list_tags.find('.btn').removeClass 'btn-inverse'
                 @show_all_squads_button.addClass 'btn-inverse'
                 @squad_list_modal.find('.squad-list li').show()
 
@@ -667,6 +669,7 @@ class exportObj.SquadBuilderBackend
             unless @squad_display_mode == 'extended'
                 @squad_display_mode = 'extended'
                 @squad_list_modal.find('.squad-display-mode .btn').removeClass 'btn-inverse'
+                @squad_list_tags.find('.btn').removeClass 'btn-inverse'
                 @show_extended_squads_button.addClass 'btn-inverse'
                 @squad_list_modal.find('.squad-list li').each (idx, elem) ->
                     $(elem).toggle $(elem).data().squad.serialized.search(/v\d+Zs/) != -1
@@ -676,6 +679,7 @@ class exportObj.SquadBuilderBackend
             unless @squad_display_mode == 'epic'
                 @squad_display_mode = 'epic'
                 @squad_list_modal.find('.squad-display-mode .btn').removeClass 'btn-inverse'
+                @squad_list_tags.find('.btn').removeClass 'btn-inverse'
                 @show_epic_squads_button.addClass 'btn-inverse'
                 @squad_list_modal.find('.squad-list li').each (idx, elem) ->
                     $(elem).toggle $(elem).data().squad.serialized.search(/v\d+Ze/) != -1
@@ -685,6 +689,7 @@ class exportObj.SquadBuilderBackend
             unless @squad_display_mode == 'hyperspace'
                 @squad_display_mode = 'hyperspace'
                 @squad_list_modal.find('.squad-display-mode .btn').removeClass 'btn-inverse'
+                @squad_list_tags.find('.btn').removeClass 'btn-inverse'
                 @show_hyperspace_squads_button.addClass 'btn-inverse'
                 @squad_list_modal.find('.squad-list li').each (idx, elem) ->
                     $(elem).toggle $(elem).data().squad.serialized.search(/v\d+Zh/) != -1
