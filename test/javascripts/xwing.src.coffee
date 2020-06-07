@@ -350,6 +350,8 @@ class exportObj.SquadBuilderBackend
                             $(elem).toggle true
                         else
                             $(elem).toggle false
+                        # $(elem).toggle $(elem).data().squad.additional_data.tag.search("#{tag}") != -1
+
 
             loading_pane.fadeOut 'fast'
             list_ul.fadeIn 'fast'
@@ -549,10 +551,9 @@ class exportObj.SquadBuilderBackend
                     <button class="btn show-epic-squads">Epic</button>
                     <button class="btn show-archived-squads">Archived</button>
                 </div>
+                <br />
                 <div class="btn-group tags-display">
-                <br />
                 </div>
-                <br />
                 <button class="btn btn reload-all">Reload<span class="hidden-phone"> all squads (this might take a while)</span></button>
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
