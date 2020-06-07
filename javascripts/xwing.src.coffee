@@ -349,7 +349,6 @@ class exportObj.SquadBuilderBackend
                     @squad_list_modal.find('.squad-list li').each (idx, elem) ->
                         $(elem).toggle ($(elem).data().squad.additional_data.tag? and (buttontag == $(elem).data().squad.additional_data.tag.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-')))
 
-
             loading_pane.fadeOut 'fast'
             list_ul.fadeIn 'fast'
 
@@ -14136,7 +14135,7 @@ exportObj.basicCardData = ->
             threat: 2
             upgrades: [
                 "Fire-Control System"
-                "Proton Torpedos"
+                "Proton Torpedoes"
                 "Advanced SLAM"
                 "Os-1 Arsenal Loadout"
             ]
@@ -14516,7 +14515,7 @@ exportObj.basicCardData = ->
             ship: "K-Wing"
             threat: 2
             upgrades: [
-                "Barrage Rocktes"
+                "Barrage Rockets"
                 "Bomblet Generator"
             ]
         }
@@ -14854,7 +14853,7 @@ exportObj.basicCardData = ->
             threat: 2
             upgrades: [
                 "Supernatural Reflexes"
-                """"Zeb" Orrelios"""
+                '"Zeb" Orrelios'
                 "Hull Upgrade"
             ]
         }
