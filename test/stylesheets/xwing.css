@@ -454,7 +454,7 @@ svg > g.maneuver.backwards {
   overflow: hidden;
   visibility: hidden; }
 
-.notes-container {
+.notes-container, .squad-notes, .search, .tag-name {
   display: inline;
   padding: 15px; }
 
