@@ -8741,7 +8741,7 @@ exportObj.Collection = (function() {
       if (singletonsByType[type] != null) {
         card_totals_by_type[type] = 0;
         card_different_by_type[type] = 0;
-        contents = component_content.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\"><h5>" + (type.capitalize()) + "</h5></div>\n</div>\n<div class=\"row-fluid\">\n    <ul id=\"counts-" + type + "\" class=\"span12\"></ul>\n</div>"));
+        contents = component_content.append($.trim("<div class=\"row-fluid\">\n    <div class=\"col-md-12\"><h5>" + (type.capitalize()) + "</h5></div>\n</div>\n<div class=\"row-fluid\">\n    <ul id=\"counts-" + type + "\" class=\"col-md-12\"></ul>\n</div>"));
         ul = $(contents.find("ul#counts-" + type));
         _ref9 = Object.keys(things).sort(function(a, b) {
           return sortWithoutQuotes(a, b, type);
@@ -8770,7 +8770,7 @@ exportObj.Collection = (function() {
       type = _ref10[_p];
       summary += "<li>" + (type.capitalize()) + " - " + card_totals_by_type[type] + " (" + card_different_by_type[type] + " different)</li>";
     }
-    return component_content.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\"><h5>Summary</h5></div>\n</div>\n<div class = \"row-fluid\">\n    <ul id=\"counts-summary\" class=\"span12\">\n        " + summary + "\n    </ul>\n</div>"));
+    return component_content.append($.trim("<div class=\"row-fluid\">\n    <div class=\"col-md-12\"><h5>Summary</h5></div>\n</div>\n<div class = \"row-fluid\">\n    <ul id=\"counts-summary\" class=\"col-md-12\">\n        " + summary + "\n    </ul>\n</div>"));
   };
 
   Collection.prototype.check = function(where, type, name) {
@@ -8863,7 +8863,7 @@ exportObj.Collection = (function() {
     this.modal = $(document.createElement('DIV'));
     this.modal.addClass('modal hide fade collection-modal hidden-print');
     $('body').append(this.modal);
-    this.modal.append($.trim("<div class=\"modal-header\">\n    <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n    <h4>Your Collection</h4>\n</div>\n<div class=\"modal-body\">\n    <ul class=\"nav nav-tabs\">\n        <li class=\"active\"><a data-target=\"#collection-expansions\" data-toggle=\"tab\">Expansions</a><li>\n        <li><a data-target=\"#collection-ships\" data-toggle=\"tab\">Ships</a><li>\n        <li><a data-target=\"#collection-pilots\" data-toggle=\"tab\">Pilots</a><li>\n        <li><a data-target=\"#collection-upgrades\" data-toggle=\"tab\">Upgrades</a><li>\n        <li><a data-target=\"#collection-components\" data-toggle=\"tab\">Inventory</a><li>\n    </ul>\n    <div class=\"tab-content\">\n        <div id=\"collection-expansions\" class=\"tab-pane active container-fluid collection-content\"></div>\n        <div id=\"collection-ships\" class=\"tab-pane container-fluid collection-ship-content\"></div>\n        <div id=\"collection-pilots\" class=\"tab-pane container-fluid collection-pilot-content\"></div>\n        <div id=\"collection-upgrades\" class=\"tab-pane container-fluid collection-upgrade-content\"></div>\n        <div id=\"collection-components\" class=\"tab-pane container-fluid collection-inventory-content\"></div>\n    </div>\n</div>\n<div class=\"modal-footer hidden-print\">\n    <span class=\"collection-status\"></span>\n    &nbsp;\n    <label class=\"checkbox-check-collection\">\n        Check Collection Requirements <input type=\"checkbox\" class=\"check-collection\"/>\n    </label>\n    &nbsp;\n    <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n</div>"));
+    this.modal.append($.trim("<div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n            <h4>Your Collection</h4>\n        </div>\n        <div class=\"modal-body\">\n            <ul class=\"nav nav-tabs\">\n                <li class=\"active\"><a data-target=\"#collection-expansions\" data-toggle=\"tab\">Expansions</a><li>\n                <li><a data-target=\"#collection-ships\" data-toggle=\"tab\">Ships</a><li>\n                <li><a data-target=\"#collection-pilots\" data-toggle=\"tab\">Pilots</a><li>\n                <li><a data-target=\"#collection-upgrades\" data-toggle=\"tab\">Upgrades</a><li>\n                <li><a data-target=\"#collection-components\" data-toggle=\"tab\">Inventory</a><li>\n            </ul>\n            <div class=\"tab-content\">\n                <div id=\"collection-expansions\" class=\"tab-pane active container-fluid collection-content\"></div>\n                <div id=\"collection-ships\" class=\"tab-pane container-fluid collection-ship-content\"></div>\n                <div id=\"collection-pilots\" class=\"tab-pane container-fluid collection-pilot-content\"></div>\n                <div id=\"collection-upgrades\" class=\"tab-pane container-fluid collection-upgrade-content\"></div>\n                <div id=\"collection-components\" class=\"tab-pane container-fluid collection-inventory-content\"></div>\n            </div>\n        </div>\n        <div class=\"modal-footer hidden-print\">\n            <span class=\"collection-status\"></span>\n            &nbsp;\n            <label class=\"checkbox-check-collection\">\n                Check Collection Requirements <input type=\"checkbox\" class=\"check-collection\"/>\n            </label>\n            &nbsp;\n            <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n        </div>\n    </div>\n</div>"));
     this.modal_status = $(this.modal.find('.collection-status'));
     if (this.checks.collectioncheck != null) {
       if (this.checks.collectioncheck !== "false") {
@@ -8879,7 +8879,7 @@ exportObj.Collection = (function() {
     for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
       expansion = _ref1[_j];
       count = parseInt((_ref2 = this.expansions[expansion]) != null ? _ref2 : 0);
-      row = $.parseHTML($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\">\n        <label>\n            <input class=\"expansion-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"expansion-name\">" + expansion + "</span>\n        </label>\n    </div>\n</div>"));
+      row = $.parseHTML($.trim("<div class=\"row-fluid\">\n    <div class=\"col-md-12\">\n        <label>\n            <input class=\"expansion-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"expansion-name\">" + expansion + "</span>\n        </label>\n    </div>\n</div>"));
       input = $($(row).find('input'));
       input.data('expansion', expansion);
       input.closest('div').css('background-color', this.countToBackgroundColor(input.val()));
@@ -8893,7 +8893,7 @@ exportObj.Collection = (function() {
     for (_k = 0, _len2 = _ref3.length; _k < _len2; _k++) {
       ship = _ref3[_k];
       count = parseInt((_ref4 = (_ref5 = this.singletons.ship) != null ? _ref5[ship] : void 0) != null ? _ref4 : 0);
-      row = $.parseHTML($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"ship-name\">" + (exportObj.ships[ship].display_name ? exportObj.ships[ship].display_name : ship) + "</span>\n        </label>\n    </div>\n</div>"));
+      row = $.parseHTML($.trim("<div class=\"row-fluid\">\n    <div class=\"col-md-12\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"ship-name\">" + (exportObj.ships[ship].display_name ? exportObj.ships[ship].display_name : ship) + "</span>\n        </label>\n    </div>\n</div>"));
       input = $($(row).find('input'));
       input.data('singletonType', 'ship');
       input.data('singletonName', ship);
@@ -8906,7 +8906,7 @@ exportObj.Collection = (function() {
     for (_l = 0, _len3 = _ref6.length; _l < _len3; _l++) {
       pilot = _ref6[_l];
       count = parseInt((_ref7 = (_ref8 = this.singletons.pilot) != null ? _ref8[pilot] : void 0) != null ? _ref7 : 0);
-      row = $.parseHTML($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"pilot-name\">" + (exportObj.pilots[pilot].display_name ? exportObj.pilots[pilot].display_name : pilot) + "</span>\n        </label>\n    </div>\n</div>"));
+      row = $.parseHTML($.trim("<div class=\"row-fluid\">\n    <div class=\"col-md-12\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"pilot-name\">" + (exportObj.pilots[pilot].display_name ? exportObj.pilots[pilot].display_name : pilot) + "</span>\n        </label>\n    </div>\n</div>"));
       input = $($(row).find('input'));
       input.data('singletonType', 'pilot');
       input.data('singletonName', pilot);
@@ -8920,7 +8920,7 @@ exportObj.Collection = (function() {
     for (_m = 0, _len4 = _ref9.length; _m < _len4; _m++) {
       upgrade = _ref9[_m];
       count = parseInt((_ref10 = (_ref11 = this.singletons.upgrade) != null ? _ref11[upgrade] : void 0) != null ? _ref10 : 0);
-      row = $.parseHTML($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"upgrade-name\">" + (exportObj.upgrades[upgrade].display_name ? exportObj.upgrades[upgrade].display_name : upgrade) + "</span>\n        </label>\n    </div>\n</div>"));
+      row = $.parseHTML($.trim("<div class=\"row-fluid\">\n    <div class=\"col-md-12\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"upgrade-name\">" + (exportObj.upgrades[upgrade].display_name ? exportObj.upgrades[upgrade].display_name : upgrade) + "</span>\n        </label>\n    </div>\n</div>"));
       input = $($(row).find('input'));
       input.data('singletonType', 'upgrade');
       input.data('singletonName', upgrade);
@@ -9255,7 +9255,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 10471
+                    lineno: 10475
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -9872,7 +9872,7 @@ exportObj.SquadBuilder = (function() {
       return function(e) {
         e.preventDefault();
         if (!_this.collection_button.prop('disabled')) {
-          return _this.collection.modal('show');
+          return _this.collection.modal.modal('show');
         }
       };
     })(this));
@@ -10100,7 +10100,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 11359
+              lineno: 11363
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -10901,7 +10901,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 12114
+              lineno: 12118
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -10911,7 +10911,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 12115
+                lineno: 12119
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -12904,7 +12904,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 13497
+                      lineno: 13501
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -13132,7 +13132,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 13619
+                          lineno: 13623
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -13182,7 +13182,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 13652
+                                  lineno: 13656
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -13261,7 +13261,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 13703
+                      lineno: 13707
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -13341,7 +13341,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 13732
+                lineno: 13736
               })
             ]);
             __iced_deferrals._fulfill();
@@ -13410,7 +13410,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 13761
+              lineno: 13765
             }));
           }
         }
@@ -13502,7 +13502,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 13817
+                lineno: 13821
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -14545,7 +14545,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 14653
+                lineno: 14657
               })
             ]);
             __iced_deferrals._fulfill();
@@ -14674,7 +14674,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 14718
+                  lineno: 14722
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -14697,7 +14697,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 14723
+                      lineno: 14727
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -14789,7 +14789,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 14768
+            lineno: 14772
           }));
         }
         __iced_deferrals._fulfill();

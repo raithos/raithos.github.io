@@ -9985,10 +9985,10 @@ class exportObj.Collection
                 card_different_by_type[type] = 0
                 contents = component_content.append $.trim """
                     <div class="row-fluid">
-                        <div class="span12"><h5>#{type.capitalize()}</h5></div>
+                        <div class="col-md-12"><h5>#{type.capitalize()}</h5></div>
                     </div>
                     <div class="row-fluid">
-                        <ul id="counts-#{type}" class="span12"></ul>
+                        <ul id="counts-#{type}" class="col-md-12"></ul>
                     </div>
                 """
                 ul = $ contents.find("ul#counts-#{type}")
@@ -10009,10 +10009,10 @@ class exportObj.Collection
 
         component_content.append $.trim """
             <div class="row-fluid">
-                <div class="span12"><h5>Summary</h5></div>
+                <div class="col-md-12"><h5>Summary</h5></div>
             </div>
             <div class = "row-fluid">
-                <ul id="counts-summary" class="span12">
+                <ul id="counts-summary" class="col-md-12">
                     #{summary}
                 </ul>
             </div>
@@ -10072,6 +10072,8 @@ class exportObj.Collection
         @modal.addClass 'modal hide fade collection-modal hidden-print'
         $('body').append @modal
         @modal.append $.trim """
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close hidden-print" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4>Your Collection</h4>
@@ -10101,6 +10103,8 @@ class exportObj.Collection
                 &nbsp;
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
+        </div>
+    </div>
         """
         @modal_status = $ @modal.find('.collection-status')
 
@@ -10117,7 +10121,7 @@ class exportObj.Collection
             count = parseInt(@expansions[expansion] ? 0)
             row = $.parseHTML $.trim """
                 <div class="row-fluid">
-                    <div class="span12">
+                    <div class="col-md-12">
                         <label>
                             <input class="expansion-count" type="number" size="3" value="#{count}" />
                             <span class="expansion-name">#{expansion}</span>
@@ -10137,7 +10141,7 @@ class exportObj.Collection
             count = parseInt(@singletons.ship?[ship] ? 0)
             row = $.parseHTML $.trim """
                 <div class="row-fluid">
-                    <div class="span12">
+                    <div class="col-md-12">
                         <label>
                             <input class="singleton-count" type="number" size="3" value="#{count}" />
                             <span class="ship-name">#{if exportObj.ships[ship].display_name then exportObj.ships[ship].display_name else ship}</span>
@@ -10157,7 +10161,7 @@ class exportObj.Collection
             count = parseInt(@singletons.pilot?[pilot] ? 0)
             row = $.parseHTML $.trim """
                 <div class="row-fluid">
-                    <div class="span12">
+                    <div class="col-md-12">
                         <label>
                             <input class="singleton-count" type="number" size="3" value="#{count}" />
                             <span class="pilot-name">#{if exportObj.pilots[pilot].display_name then exportObj.pilots[pilot].display_name else pilot}</span>
@@ -10177,7 +10181,7 @@ class exportObj.Collection
             count = parseInt(@singletons.upgrade?[upgrade] ? 0)
             row = $.parseHTML $.trim """
                 <div class="row-fluid">
-                    <div class="span12">
+                    <div class="col-md-12">
                         <label>
                             <input class="singleton-count" type="number" size="3" value="#{count}" />
                             <span class="upgrade-name">#{if exportObj.upgrades[upgrade].display_name then exportObj.upgrades[upgrade].display_name else upgrade}</span>
@@ -11099,7 +11103,7 @@ class exportObj.SquadBuilder
         @collection_button.click (e) =>
             e.preventDefault()
             unless @collection_button.prop('disabled')
-                @collection.modal 'show'
+                @collection.modal.modal 'show'
 
         @squad_name_input.keypress (e) =>
             if e.which == 13
