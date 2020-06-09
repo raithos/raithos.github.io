@@ -8741,7 +8741,7 @@ exportObj.Collection = (function() {
       if (singletonsByType[type] != null) {
         card_totals_by_type[type] = 0;
         card_different_by_type[type] = 0;
-        contents = component_content.append($.trim("<div class=\"row-fluid\">\n    <div class=\"col-md-12\"><h5>" + (type.capitalize()) + "</h5></div>\n</div>\n<div class=\"row-fluid\">\n    <ul id=\"counts-" + type + "\" class=\"col-md-12\"></ul>\n</div>"));
+        contents = component_content.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\"><h5>" + (type.capitalize()) + "</h5></div>\n</div>\n<div class=\"row-fluid\">\n    <ul id=\"counts-" + type + "\" class=\"span12\"></ul>\n</div>"));
         ul = $(contents.find("ul#counts-" + type));
         _ref9 = Object.keys(things).sort(function(a, b) {
           return sortWithoutQuotes(a, b, type);
@@ -8770,7 +8770,7 @@ exportObj.Collection = (function() {
       type = _ref10[_p];
       summary += "<li>" + (type.capitalize()) + " - " + card_totals_by_type[type] + " (" + card_different_by_type[type] + " different)</li>";
     }
-    return component_content.append($.trim("<div class=\"row-fluid\">\n    <div class=\"col-md-12\"><h5>Summary</h5></div>\n</div>\n<div class = \"row-fluid\">\n    <ul id=\"counts-summary\" class=\"col-md-12\">\n        " + summary + "\n    </ul>\n</div>"));
+    return component_content.append($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\"><h5>Summary</h5></div>\n</div>\n<div class = \"row-fluid\">\n    <ul id=\"counts-summary\" class=\"span12\">\n        " + summary + "\n    </ul>\n</div>"));
   };
 
   Collection.prototype.check = function(where, type, name) {
@@ -8879,7 +8879,7 @@ exportObj.Collection = (function() {
     for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
       expansion = _ref1[_j];
       count = parseInt((_ref2 = this.expansions[expansion]) != null ? _ref2 : 0);
-      row = $.parseHTML($.trim("<div class=\"row-fluid\">\n    <div class=\"col-md-12\">\n        <label>\n            <input class=\"expansion-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"expansion-name\">" + expansion + "</span>\n        </label>\n    </div>\n</div>"));
+      row = $.parseHTML($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\">\n        <label>\n            <input class=\"expansion-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"expansion-name\">" + expansion + "</span>\n        </label>\n    </div>\n</div>"));
       input = $($(row).find('input'));
       input.data('expansion', expansion);
       input.closest('div').css('background-color', this.countToBackgroundColor(input.val()));
@@ -8893,7 +8893,7 @@ exportObj.Collection = (function() {
     for (_k = 0, _len2 = _ref3.length; _k < _len2; _k++) {
       ship = _ref3[_k];
       count = parseInt((_ref4 = (_ref5 = this.singletons.ship) != null ? _ref5[ship] : void 0) != null ? _ref4 : 0);
-      row = $.parseHTML($.trim("<div class=\"row-fluid\">\n    <div class=\"col-md-12\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"ship-name\">" + (exportObj.ships[ship].display_name ? exportObj.ships[ship].display_name : ship) + "</span>\n        </label>\n    </div>\n</div>"));
+      row = $.parseHTML($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"ship-name\">" + (exportObj.ships[ship].display_name ? exportObj.ships[ship].display_name : ship) + "</span>\n        </label>\n    </div>\n</div>"));
       input = $($(row).find('input'));
       input.data('singletonType', 'ship');
       input.data('singletonName', ship);
@@ -8906,7 +8906,7 @@ exportObj.Collection = (function() {
     for (_l = 0, _len3 = _ref6.length; _l < _len3; _l++) {
       pilot = _ref6[_l];
       count = parseInt((_ref7 = (_ref8 = this.singletons.pilot) != null ? _ref8[pilot] : void 0) != null ? _ref7 : 0);
-      row = $.parseHTML($.trim("<div class=\"row-fluid\">\n    <div class=\"col-md-12\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"pilot-name\">" + (exportObj.pilots[pilot].display_name ? exportObj.pilots[pilot].display_name : pilot) + "</span>\n        </label>\n    </div>\n</div>"));
+      row = $.parseHTML($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"pilot-name\">" + (exportObj.pilots[pilot].display_name ? exportObj.pilots[pilot].display_name : pilot) + "</span>\n        </label>\n    </div>\n</div>"));
       input = $($(row).find('input'));
       input.data('singletonType', 'pilot');
       input.data('singletonName', pilot);
@@ -8920,7 +8920,7 @@ exportObj.Collection = (function() {
     for (_m = 0, _len4 = _ref9.length; _m < _len4; _m++) {
       upgrade = _ref9[_m];
       count = parseInt((_ref10 = (_ref11 = this.singletons.upgrade) != null ? _ref11[upgrade] : void 0) != null ? _ref10 : 0);
-      row = $.parseHTML($.trim("<div class=\"row-fluid\">\n    <div class=\"col-md-12\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"upgrade-name\">" + (exportObj.upgrades[upgrade].display_name ? exportObj.upgrades[upgrade].display_name : upgrade) + "</span>\n        </label>\n    </div>\n</div>"));
+      row = $.parseHTML($.trim("<div class=\"row-fluid\">\n    <div class=\"span12\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"upgrade-name\">" + (exportObj.upgrades[upgrade].display_name ? exportObj.upgrades[upgrade].display_name : upgrade) + "</span>\n        </label>\n    </div>\n</div>"));
       input = $($(row).find('input'));
       input.data('singletonType', 'upgrade');
       input.data('singletonName', upgrade);

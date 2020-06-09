@@ -462,8 +462,8 @@ svg > g.maneuver.backwards {
   margin-left: 15px; }
 
 .squad-tag {
-  padding-top: 15px;
-  padding-bottom: 15px; }
+  margin-top: 15px;
+  margin-bottom: 15px; }
 
 .squad-notes {
   margin-left: 15px;

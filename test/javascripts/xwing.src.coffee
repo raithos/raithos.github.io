@@ -9985,10 +9985,10 @@ class exportObj.Collection
                 card_different_by_type[type] = 0
                 contents = component_content.append $.trim """
                     <div class="row-fluid">
-                        <div class="col-md-12"><h5>#{type.capitalize()}</h5></div>
+                        <div class="span12"><h5>#{type.capitalize()}</h5></div>
                     </div>
                     <div class="row-fluid">
-                        <ul id="counts-#{type}" class="col-md-12"></ul>
+                        <ul id="counts-#{type}" class="span12"></ul>
                     </div>
                 """
                 ul = $ contents.find("ul#counts-#{type}")
@@ -10009,10 +10009,10 @@ class exportObj.Collection
 
         component_content.append $.trim """
             <div class="row-fluid">
-                <div class="col-md-12"><h5>Summary</h5></div>
+                <div class="span12"><h5>Summary</h5></div>
             </div>
             <div class = "row-fluid">
-                <ul id="counts-summary" class="col-md-12">
+                <ul id="counts-summary" class="span12">
                     #{summary}
                 </ul>
             </div>
@@ -10121,7 +10121,7 @@ class exportObj.Collection
             count = parseInt(@expansions[expansion] ? 0)
             row = $.parseHTML $.trim """
                 <div class="row-fluid">
-                    <div class="col-md-12">
+                    <div class="span12">
                         <label>
                             <input class="expansion-count" type="number" size="3" value="#{count}" />
                             <span class="expansion-name">#{expansion}</span>
@@ -10141,7 +10141,7 @@ class exportObj.Collection
             count = parseInt(@singletons.ship?[ship] ? 0)
             row = $.parseHTML $.trim """
                 <div class="row-fluid">
-                    <div class="col-md-12">
+                    <div class="span12">
                         <label>
                             <input class="singleton-count" type="number" size="3" value="#{count}" />
                             <span class="ship-name">#{if exportObj.ships[ship].display_name then exportObj.ships[ship].display_name else ship}</span>
@@ -10161,7 +10161,7 @@ class exportObj.Collection
             count = parseInt(@singletons.pilot?[pilot] ? 0)
             row = $.parseHTML $.trim """
                 <div class="row-fluid">
-                    <div class="col-md-12">
+                    <div class="span12">
                         <label>
                             <input class="singleton-count" type="number" size="3" value="#{count}" />
                             <span class="pilot-name">#{if exportObj.pilots[pilot].display_name then exportObj.pilots[pilot].display_name else pilot}</span>
@@ -10181,7 +10181,7 @@ class exportObj.Collection
             count = parseInt(@singletons.upgrade?[upgrade] ? 0)
             row = $.parseHTML $.trim """
                 <div class="row-fluid">
-                    <div class="col-md-12">
+                    <div class="span12">
                         <label>
                             <input class="singleton-count" type="number" size="3" value="#{count}" />
                             <span class="upgrade-name">#{if exportObj.upgrades[upgrade].display_name then exportObj.upgrades[upgrade].display_name else upgrade}</span>

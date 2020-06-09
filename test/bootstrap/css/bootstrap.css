@@ -196,10 +196,6 @@ th {
   *,
   *:before,
   *:after {
-    text-shadow: none !important;
-    background: transparent !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
   }
   a,
   a:visited {
