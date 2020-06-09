@@ -1,0 +1,345 @@
+.ship-xwing {
+  background-image: url("../images/xwing0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-ywing {
+  background-image: url("../images/ywing1.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-awing {
+  background-image: url("../images/awing0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-tiefighter {
+  background-image: url("../images/tiefighter0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-tieadvanced {
+  background-image: url("../images/tieadvanced0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -10px; }
+
+.ship-tieinterceptor {
+  background-image: url("../images/tieinterceptor0.png");
+  background-repeat: no-repeat;
+  background-position: -10px -30px; }
+
+.ship-yt1300 {
+  background-image: url("../images/millennium_falcon.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-firespray31 {
+  background-image: url("../images/slave_i1.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-bwing {
+  background-image: url("../images/bwing.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-tiebomber {
+  background-image: url("../images/tie_bomber.png");
+  background-repeat: no-repeat;
+  background-position: 0px -00px; }
+
+.ship-lambdaclassshuttle {
+  background-image: url("../images/lambda_shuttle.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-hwk290 {
+  background-image: url("../images/hwk290.png");
+  background-repeat: no-repeat;
+  background-position: 0px -10px; }
+
+.ship-starviper {
+  background-image: url("../images/starviper0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-z95headhunter {
+  background-image: url("../images/z95headhunter0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-m3ainterceptor {
+  background-image: url("../images/m3ainterceptor0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-yt2400 {
+  background-image: url("../images/yt2400.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-vt49decimator {
+  background-image: url("../images/vt49decimator0.png");
+  background-repeat: no-repeat;
+  background-position: -20px -30px; }
+
+.ship-tiedefender {
+  background-image: url("../images/tiedefender0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-tiephantom {
+  background-image: url("../images/tiephantom0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-aggressor {
+  background-image: url("../images/aggressor0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-tiefofighter {
+  background-image: url("../images/tiefofighter0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -40px; }
+
+.ship-t70xwing {
+  background-image: url("../images/t70xwing0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-tieadvancedprototype {
+  background-image: url("../images/tieadvancedprototype0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-vcx100 {
+  background-image: url("../images/vcx1000.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-attackshuttle {
+  background-image: url("../images/attackshuttle0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-arc170 {
+  background-image: url("../images/arc170.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-lancerclasspursuitcraft {
+  background-image: url("../images/lancerclasspursuitcraft.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-fangfighter {
+  background-image: url("../images/fangfighter.png");
+  background-repeat: no-repeat;
+  background-position: 0px -15px; }
+
+.ship-tiesffighter {
+  background-image: url("../images/tiesffighter.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-upsilonclasscommandshuttle {
+  background-image: url("../images/upsilonclassshuttle.png");
+  background-repeat: no-repeat;
+  background-position: 0px -25px; }
+
+.ship-tieaggressor {
+  background-image: url("../images/tieaggressor.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-kwing {
+  background-image: url("../images/kwing0.png");
+  background-repeat: no-repeat;
+  background-position: -25px -20px; }
+
+.ship-sheathipedeclassshuttle {
+  background-image: url("../images/sheathipedeclassshuttle.png");
+  background-repeat: no-repeat;
+  background-position: -10px -35px; }
+
+.ship-auzituckgunship {
+  background-image: url("../images/auzituckgunship.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-uwing {
+  background-image: url("../images/uwing.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-alphaclassstarwing {
+  background-image: url("../images/starwing.png");
+  background-repeat: no-repeat;
+  background-position: -20px -10px; }
+
+.ship-tiepunisher {
+  background-image: url("../images/tiepunisher.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-tiestriker {
+  background-image: url("../images/tiestriker.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-g1astarfighter {
+  background-image: url("../images/g1astarfighter.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-jumpmaster5000 {
+  background-image: url("../images/jumpmaster5000.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-kihraxzfighter {
+  background-image: url("../images/kihraxzfighter.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-m12lkimogilafighter {
+  background-image: url("../images/m12lkimogilafighter.png");
+  background-repeat: no-repeat;
+  background-position: 0px -15px; }
+
+.ship-customizedyt1300 {
+  background-image: url("../images/landos_millennium_falcon.png");
+  background-repeat: no-repeat;
+  background-position: -20px -00px; }
+
+.ship-miningguildtiefighter {
+  background-image: url("../images/miningguildtie.png");
+  background-repeat: no-repeat;
+  background-position: 0px -20px; }
+
+.ship-quadjumper {
+  background-image: url("../images/quadjumper.png");
+  background-repeat: no-repeat;
+  background-position: 0px -20px; }
+
+.ship-scurrgh6bomber {
+  background-image: url("../images/scurrgh6bomber.png");
+  background-repeat: no-repeat;
+  background-position: 0px -40px; }
+
+.ship-yv666 {
+  background-image: url("../images/houndstooth.png");
+  background-repeat: no-repeat;
+  background-position: 0px -20px; }
+
+.ship-tiesffighter {
+  background-image: url("../images/tiesf.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-tievnsilencer {
+  background-image: url("../images/tiesilencer.png");
+  background-repeat: no-repeat;
+  background-position: 0px -35px; }
+
+.ship-scavengedyt1300 {
+  background-image: url("../images/millennium_falcon_resistance.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-mg100starfortress {
+  background-image: url("../images/resistancebomber.png");
+  background-repeat: no-repeat;
+  background-position: 0px -15px; }
+
+.ship-rz2awing {
+  background-image: url("../images/rz2awing.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-escapecraft {
+  background-image: url("../images/escapecraft0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-resistancetransport {
+  background-image: url("../images/resistancetransport0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-nabooroyaln1starfighter {
+  background-image: url("../images/nabooroyaln1starfighter0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-hyenaclassdroidbomber {
+  background-image: url("../images/hyenaclassdroidbomber0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-delta7aethersprite {
+  background-image: url("../images/delta7aethersprite0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-v19torrent {
+  background-image: url("../images/v19torrent0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -10px; }
+
+.ship-belbullab22starfighter {
+  background-image: url("../images/belbullab22starfighter0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-sithinfiltrator {
+  background-image: url("../images/sithinfiltrator0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -10px; }
+
+.ship-btlbywing{
+  background-image: url("../images/btlbywing0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-nantexclassstarfighter {
+  background-image: url("../images/nantexclassstarfighter0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-vultureclassdroidfighter {
+  background-image: url("../images/vultureclassdroidfighter0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-ewing {
+  background-image: url("../images/ewing0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-tiereaper {
+  background-image: url("../images/tiereaper.png");
+  background-repeat: no-repeat;
+  background-position: 0px -35px; }
+
+.ship-fireball {
+  background-image: url("../images/fireball.png");
+  background-repeat: no-repeat;
+  background-position: 0px -20px; }
+
+.ship-tiebainterceptor {
+  background-image: url("../images/tiebainterceptor.png");
+  background-repeat: no-repeat;
+  background-position: 0px -30px; }
+
+.ship-resistancetransportpod {
+  background-image: url("../images/resistancetransportpod0.png");
+  background-repeat: no-repeat;
+  background-position: 0px -40px; }
+
+.its-working {
+  background-image: url("../images/its_working.png");
+  background-repeat: no-repeat;
+  background-position: 0px -50px; }
+}

@@ -10069,7 +10069,9 @@ class exportObj.Collection
             singletonsByType[type] = sorted_names
         
         @modal = $ document.createElement 'DIV'
-        @modal.addClass 'modal hide fade collection-modal hidden-print'
+        @modal.addClass 'modal fade collection-modal hidden-print'
+        @modal.tabindex = "-1"
+        @modal.role = "dialog"
         $('body').append @modal
         @modal.append $.trim """
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -11103,7 +11105,7 @@ class exportObj.SquadBuilder
         @collection_button.click (e) =>
             e.preventDefault()
             unless @collection_button.prop('disabled')
-                @collection.modal.modal 'show'
+                @collection.modal()
 
         @squad_name_input.keypress (e) =>
             if e.which == 13
@@ -11398,7 +11400,7 @@ class exportObj.SquadBuilder
         content_container.append $.trim """
             <div class="row-fluid">
                 <div class="col-md-9 ship-container">
-                    <label class="notes-container show-authenticated">
+                    <label class="notes-container col-md-6 show-authenticated">
                         <span class="notes-name">Squad Notes:</span>
                         <br />
                         <textarea class="squad-notes"></textarea>

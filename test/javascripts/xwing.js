@@ -8861,7 +8861,9 @@ exportObj.Collection = (function() {
       singletonsByType[type] = sorted_names;
     }
     this.modal = $(document.createElement('DIV'));
-    this.modal.addClass('modal hide fade collection-modal hidden-print');
+    this.modal.addClass('modal fade collection-modal hidden-print');
+    this.modal.tabindex = "-1";
+    this.modal.role = "dialog";
     $('body').append(this.modal);
     this.modal.append($.trim("<div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n            <h4>Your Collection</h4>\n        </div>\n        <div class=\"modal-body\">\n            <ul class=\"nav nav-tabs\">\n                <li class=\"active\"><a data-target=\"#collection-expansions\" data-toggle=\"tab\">Expansions</a><li>\n                <li><a data-target=\"#collection-ships\" data-toggle=\"tab\">Ships</a><li>\n                <li><a data-target=\"#collection-pilots\" data-toggle=\"tab\">Pilots</a><li>\n                <li><a data-target=\"#collection-upgrades\" data-toggle=\"tab\">Upgrades</a><li>\n                <li><a data-target=\"#collection-components\" data-toggle=\"tab\">Inventory</a><li>\n            </ul>\n            <div class=\"tab-content\">\n                <div id=\"collection-expansions\" class=\"tab-pane active container-fluid collection-content\"></div>\n                <div id=\"collection-ships\" class=\"tab-pane container-fluid collection-ship-content\"></div>\n                <div id=\"collection-pilots\" class=\"tab-pane container-fluid collection-pilot-content\"></div>\n                <div id=\"collection-upgrades\" class=\"tab-pane container-fluid collection-upgrade-content\"></div>\n                <div id=\"collection-components\" class=\"tab-pane container-fluid collection-inventory-content\"></div>\n            </div>\n        </div>\n        <div class=\"modal-footer hidden-print\">\n            <span class=\"collection-status\"></span>\n            &nbsp;\n            <label class=\"checkbox-check-collection\">\n                Check Collection Requirements <input type=\"checkbox\" class=\"check-collection\"/>\n            </label>\n            &nbsp;\n            <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n        </div>\n    </div>\n</div>"));
     this.modal_status = $(this.modal.find('.collection-status'));
@@ -9255,7 +9257,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 10475
+                    lineno: 10477
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -9872,7 +9874,7 @@ exportObj.SquadBuilder = (function() {
       return function(e) {
         e.preventDefault();
         if (!_this.collection_button.prop('disabled')) {
-          return _this.collection.modal.modal('show');
+          return _this.collection.modal();
         }
       };
     })(this));
@@ -10100,7 +10102,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 11363
+              lineno: 11365
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -10133,7 +10135,7 @@ exportObj.SquadBuilder = (function() {
     content_container = $(document.createElement('DIV'));
     content_container.addClass('container-fluid');
     this.container.append(content_container);
-    content_container.append($.trim("<div class=\"row-fluid\">\n    <div class=\"col-md-9 ship-container\">\n        <label class=\"notes-container show-authenticated\">\n            <span class=\"notes-name\">Squad Notes:</span>\n            <br />\n            <textarea class=\"squad-notes\"></textarea>\n            <br />\n            <span class=\"tag-name\">Tag:</span>\n            <input type=\"search\" class=\"squad-tag\"></input>\n        </label>\n    </div>\n    <div class=\"col-md-3 info-container\" id=\"info-container\">\n    </div>\n    <div class=\"col-md-12 obstacles-container\">\n            <!-- Since this is an optional button, usually, it's shown in a different color -->\n            <button class=\"btn btn-info choose-obstacles\"><i class=\"fa fa-cloud\"></i>&nbsp;Choose Obstacles</button>\n    </div>\n</div>"));
+    content_container.append($.trim("<div class=\"row-fluid\">\n    <div class=\"col-md-9 ship-container\">\n        <label class=\"notes-container col-md-6 show-authenticated\">\n            <span class=\"notes-name\">Squad Notes:</span>\n            <br />\n            <textarea class=\"squad-notes\"></textarea>\n            <br />\n            <span class=\"tag-name\">Tag:</span>\n            <input type=\"search\" class=\"squad-tag\"></input>\n        </label>\n    </div>\n    <div class=\"col-md-3 info-container\" id=\"info-container\">\n    </div>\n    <div class=\"col-md-12 obstacles-container\">\n            <!-- Since this is an optional button, usually, it's shown in a different color -->\n            <button class=\"btn btn-info choose-obstacles\"><i class=\"fa fa-cloud\"></i>&nbsp;Choose Obstacles</button>\n    </div>\n</div>"));
     this.ship_container = $(content_container.find('div.ship-container'));
     this.info_container = $(content_container.find('div.info-container'));
     this.obstacles_container = content_container.find('.obstacles-container');
@@ -10901,7 +10903,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 12118
+              lineno: 12120
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -10911,7 +10913,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 12119
+                lineno: 12121
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -12904,7 +12906,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 13501
+                      lineno: 13503
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -13132,7 +13134,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 13623
+                          lineno: 13625
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -13182,7 +13184,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 13656
+                                  lineno: 13658
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -13261,7 +13263,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 13707
+                      lineno: 13709
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -13341,7 +13343,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 13736
+                lineno: 13738
               })
             ]);
             __iced_deferrals._fulfill();
@@ -13410,7 +13412,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 13765
+              lineno: 13767
             }));
           }
         }
@@ -13502,7 +13504,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 13821
+                lineno: 13823
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -14545,7 +14547,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 14657
+                lineno: 14659
               })
             ]);
             __iced_deferrals._fulfill();
@@ -14674,7 +14676,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 14722
+                  lineno: 14724
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -14697,7 +14699,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 14727
+                      lineno: 14729
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -14789,7 +14791,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 14772
+            lineno: 14774
           }));
         }
         __iced_deferrals._fulfill();
