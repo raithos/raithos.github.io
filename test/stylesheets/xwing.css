@@ -454,6 +454,10 @@ svg > g.maneuver.backwards {
   overflow: hidden;
   visibility: hidden; }
 
+.notes-container {
+  display: inline;
+  padding: 15px; }
+
 .squad-name-and-points-row {
   background-color: #151515;
   padding: 10px;
