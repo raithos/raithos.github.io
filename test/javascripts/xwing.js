@@ -9586,7 +9586,7 @@ exportObj.SquadBuilder = (function() {
     this.list_modal.tabindex = "-1";
     this.list_modal.role = "dialog";
     this.container.append(this.list_modal);
-    this.list_modal.append($.trim("<div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n\n            <div class=\"hidden-xs hidden-print\">\n                <h3><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)</h3>\n            </div>\n\n            <div class=\"visible-xs hidden-print\">\n                <h4><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)</h4>\n            </div>\n        </div>\n        <div class=\"modal-body\">\n            <div class=\"fancy-list hidden-xs\"></div>\n            <div class=\"simple-list\"></div>\n            <div class=\"simplecopy-list\">\n                <p>Copy the below and paste it elsewhere.</p>\n                <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n            </div>\n            <div class=\"reddit-list\">\n                <p>Copy the below and paste it into your reddit post.</p>\n                <p>Make sure that the post editor is set to markdown mode.</p>\n                <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n            </div>\n            <div class=\"tts-list\">\n                <p>Copy the below and paste it into the Tabletop Simulator.</p>\n                <textarea></textarea><br /><button class=\"btn btn-copy\">Copy</button>\n            </div>\n            <div class=\"bbcode-list\">\n                <p>Copy the BBCode below and paste it into your forum post.</p>\n                <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n            </div>\n            <div class=\"html-list\">\n                <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n            </div>\n        </div>\n        <div class=\"modal-footer hidden-print\">\n            <div class=\"row\">\n                <div class=\"col-sm-6\">\n                    <label class=\"color-skip-text-checkbox hidden-xs\">\n                        Skip Card Text <input type=\"checkbox\" class=\"toggle-skip-text-print\" />\n                    </label><br />\n                    <label class=\"vertical-space-checkbox hidden-xs\">\n                        Add Space for Cards <input type=\"checkbox\" class=\"toggle-vertical-space\" />\n                    </label><br />\n                    <label class=\"maneuver-print-checkbox hidden-xs\">\n                        Include Maneuvers Chart <input type=\"checkbox\" class=\"toggle-maneuver-print\" />\n                    </label><br />\n                    <label class=\"expanded-shield-hull-print-checkbox hidden-xs\">\n                        Expand Shield and Hull <input type=\"checkbox\" class=\"toggle-expanded-shield-hull-print\" />\n                    </label>\n                </div>\n                <div class=\"col-sm-6\">\n                    <label class=\"color-print-checkbox hidden-xs\">\n                        Print Color <input type=\"checkbox\" class=\"toggle-color-print\" checked=\"checked\" />\n                    </label><br />\n                    <label class=\"qrcode-checkbox hidden-xs\">\n                        Include QR codes <input type=\"checkbox\" class=\"toggle-juggler-qrcode\" checked=\"checked\" />\n                    </label><br />\n                    <label class=\"obstacles-checkbox hidden-xs\">\n                        Include Obstacle Choices <input type=\"checkbox\" class=\"toggle-obstacles\" />\n                    </label>\n                </div>\n            </div>\n            <div class=\"btn-group list-display-mode\">\n                <button class=\"btn select-simple-view\">Simple</button>\n                <button class=\"btn select-fancy-view hidden-xs\">Fancy</button>\n                <button class=\"btn select-simplecopy-view\">Text</button>\n                <button class=\"btn select-tts-view hidden-xs\">TTS</button>\n                <button class=\"btn select-reddit-view\">Reddit</button>\n                <button class=\"btn select-bbcode-view\">BBCode</button>\n                <button class=\"btn select-html-view\">HTML</button>\n            </div>\n            <button class=\"btn print-list hidden-xs\"><i class=\"fa fa-print\"></i>&nbsp;Print</button>\n            <button class=\"btn close-print-dialog\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n        </div>\n    </div>\n</div>"));
+    this.list_modal.append($.trim("<div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <button type=\"button\" class=\"close hidden-print\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n\n            <div class=\"hidden-xs hidden-print\">\n                <h3><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)</h3>\n            </div>\n            <div class=\"visible-print-block\">\n                <div class=\"fancy-header\">\n                    <div class=\"squad-name\"></div>\n                    <div class=\"squad-faction\"></div>\n                    <div class=\"mask\">\n                        <div class=\"outer-circle\">\n                            <div class=\"inner-circle\">\n                                <span class=\"total-points\"></span>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n                <div class=\"fancy-under-header\"></div>\n            </div>\n            <div class=\"visible-xs hidden-print\">\n                <h4><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)</h4>\n            </div>\n        </div>\n        <div class=\"modal-body\">\n            <div class=\"fancy-list hidden-xs\"></div>\n            <div class=\"simple-list\"></div>\n            <div class=\"simplecopy-list\">\n                <p>Copy the below and paste it elsewhere.</p>\n                <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n            </div>\n            <div class=\"reddit-list\">\n                <p>Copy the below and paste it into your reddit post.</p>\n                <p>Make sure that the post editor is set to markdown mode.</p>\n                <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n            </div>\n            <div class=\"tts-list\">\n                <p>Copy the below and paste it into the Tabletop Simulator.</p>\n                <textarea></textarea><br /><button class=\"btn btn-copy\">Copy</button>\n            </div>\n            <div class=\"bbcode-list\">\n                <p>Copy the BBCode below and paste it into your forum post.</p>\n                <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n            </div>\n            <div class=\"html-list\">\n                <textarea></textarea><button class=\"btn btn-copy\">Copy</button>\n            </div>\n        </div>\n        <div class=\"modal-footer hidden-print\">\n            <div class=\"row\">\n                <div class=\"col-sm-6\">\n                    <label class=\"color-skip-text-checkbox hidden-xs\">\n                        Skip Card Text <input type=\"checkbox\" class=\"toggle-skip-text-print\" />\n                    </label><br />\n                    <label class=\"vertical-space-checkbox hidden-xs\">\n                        Add Space for Cards <input type=\"checkbox\" class=\"toggle-vertical-space\" />\n                    </label><br />\n                    <label class=\"maneuver-print-checkbox hidden-xs\">\n                        Include Maneuvers Chart <input type=\"checkbox\" class=\"toggle-maneuver-print\" />\n                    </label><br />\n                    <label class=\"expanded-shield-hull-print-checkbox hidden-xs\">\n                        Expand Shield and Hull <input type=\"checkbox\" class=\"toggle-expanded-shield-hull-print\" />\n                    </label>\n                </div>\n                <div class=\"col-sm-6\">\n                    <label class=\"color-print-checkbox hidden-xs\">\n                        Print Color <input type=\"checkbox\" class=\"toggle-color-print\" checked=\"checked\" />\n                    </label><br />\n                    <label class=\"qrcode-checkbox hidden-xs\">\n                        Include QR codes <input type=\"checkbox\" class=\"toggle-juggler-qrcode\" checked=\"checked\" />\n                    </label><br />\n                    <label class=\"obstacles-checkbox hidden-xs\">\n                        Include Obstacle Choices <input type=\"checkbox\" class=\"toggle-obstacles\" />\n                    </label>\n                </div>\n            </div>\n            <div class=\"btn-group list-display-mode\">\n                <button class=\"btn select-simple-view\">Simple</button>\n                <button class=\"btn select-fancy-view hidden-xs\">Fancy</button>\n                <button class=\"btn select-simplecopy-view\">Text</button>\n                <button class=\"btn select-tts-view hidden-xs\">TTS</button>\n                <button class=\"btn select-reddit-view\">Reddit</button>\n                <button class=\"btn select-bbcode-view\">BBCode</button>\n                <button class=\"btn select-html-view\">HTML</button>\n            </div>\n            <button class=\"btn print-list hidden-xs\"><i class=\"fa fa-print\"></i>&nbsp;Print</button>\n            <button class=\"btn close-print-dialog\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n        </div>\n    </div>\n</div>"));
     this.fancy_container = $(this.list_modal.find('div.modal-body .fancy-list'));
     this.fancy_total_points_container = $(this.list_modal.find('div.modal-header .total-points'));
     this.simple_container = $(this.list_modal.find('div.modal-body .simple-list'));
@@ -10102,7 +10102,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 11365
+              lineno: 11378
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -10903,7 +10903,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 12120
+              lineno: 12133
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -10913,7 +10913,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 12121
+                lineno: 12134
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -12906,7 +12906,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 13503
+                      lineno: 13516
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -13134,7 +13134,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 13625
+                          lineno: 13638
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -13184,7 +13184,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 13658
+                                  lineno: 13671
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -13263,7 +13263,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 13709
+                      lineno: 13722
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -13343,7 +13343,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 13738
+                lineno: 13751
               })
             ]);
             __iced_deferrals._fulfill();
@@ -13412,7 +13412,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 13767
+              lineno: 13780
             }));
           }
         }
@@ -13504,7 +13504,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 13823
+                lineno: 13836
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -14547,7 +14547,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 14659
+                lineno: 14672
               })
             ]);
             __iced_deferrals._fulfill();
@@ -14676,7 +14676,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 14724
+                  lineno: 14737
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -14699,7 +14699,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 14729
+                      lineno: 14742
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -14791,7 +14791,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 14774
+            lineno: 14787
           }));
         }
         __iced_deferrals._fulfill();

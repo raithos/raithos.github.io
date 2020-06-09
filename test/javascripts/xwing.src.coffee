@@ -10777,7 +10777,20 @@ class exportObj.SquadBuilder
                 <div class="hidden-xs hidden-print">
                     <h3><span class="squad-name"></span> (<span class="total-points"></span>)</h3>
                 </div>
-
+                <div class="visible-print-block">
+                    <div class="fancy-header">
+                        <div class="squad-name"></div>
+                        <div class="squad-faction"></div>
+                        <div class="mask">
+                            <div class="outer-circle">
+                                <div class="inner-circle">
+                                    <span class="total-points"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fancy-under-header"></div>
+                </div>
                 <div class="visible-xs hidden-print">
                     <h4><span class="squad-name"></span> (<span class="total-points"></span>)</h4>
                 </div>

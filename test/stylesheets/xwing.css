@@ -461,6 +461,9 @@ svg > g.maneuver.backwards {
 .tag-name {
   margin-left: 15px; }
 
+.squad-notes {
+  color: black; }
+
 .squad-tag {
   margin-top: 15px;
   margin-bottom: 15px; }
