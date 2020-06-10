@@ -66,7 +66,7 @@ class exportObj.SquadBuilderBackend
         # Check initial authentication status
         @authenticate () =>
             @auth_status.hide()
-            @login_logout_button.removeClass 'd-none'
+            @login_logout_button.removeClass 'hidden'
 
         # Finally, hook up the builders
         for builder in @builders
@@ -163,19 +163,19 @@ class exportObj.SquadBuilderBackend
                 else
                     hasNotArchivedSquads = true
                 li.append $.trim """
-                    <div class="row">
-                        <div class="col-md-9">
+                    <div class="row-fluid">
+                        <div class="span9">
                             <h4>#{squad.name}</h4>
                         </div>
-                        <div class="col-md-3">
+                        <div class="span3">
                             <h5>#{squad.additional_data?.points} Points</h5>
                         </div>
                     </div>
-                    <div class="row squad-description">
-                        <div class="col-md-8">
+                    <div class="row-fluid squad-description">
+                        <div class="span8">
                             #{squad.additional_data?.description}
                         </div>
-                        <div class="col-md-4">
+                        <div class="span4">
                             <button class="btn convert-squad"><i class="xwing-miniatures-font xwing-miniatures-font-first-player-1"></i></button>
                             &nbsp;
                             <button class="btn load-squad"><i class="fa fa-download"></i></button>
@@ -183,21 +183,21 @@ class exportObj.SquadBuilderBackend
                             <button class="btn btn-danger delete-squad"><i class="fa fa-times"></i></button>
                         </div>
                     </div>
-                    <div class="row squad-convert-confirm">
-                        <div class="col-md-8">
+                    <div class="row-fluid squad-convert-confirm">
+                        <div class="span8">
                             Convert to Extended?
                         </div>
-                        <div class="col-md-4">
+                        <div class="span4">
                             <button class="btn btn-danger confirm-convert-squad">Convert</button>
                             &nbsp;
                             <button class="btn cancel-convert-squad">Cancel</button>
                         </div>
                     </div>
-                    <div class="row squad-delete-confirm">
-                        <div class="col-md-8">
+                    <div class="row-fluid squad-delete-confirm">
+                        <div class="span8">
                             Really delete <em>#{squad.name}</em>?
                         </div>
-                        <div class="col-md-4">
+                        <div class="span4">
                             <button class="btn btn-danger confirm-delete-squad">Delete</button>
                             &nbsp;
                             <button class="btn cancel-delete-squad">Cancel</button>
@@ -437,16 +437,12 @@ class exportObj.SquadBuilderBackend
             false
 
         @login_modal = $ document.createElement('DIV')
-        @login_modal.addClass 'modal fade d-print-none'
-        @login_modal.tabindex = "-1"
-        @login_modal.role = "dialog"
+        @login_modal.addClass 'modal hide fade hidden-print'
         $(document.body).append @login_modal
         @login_modal.append $.trim """
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
             <div class="modal-header">
-                <h3>Log in with OAuth</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Log in with OAuth</h3>
             </div>
             <div class="modal-body">
                 <p>
@@ -476,8 +472,6 @@ class exportObj.SquadBuilderBackend
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
-        </div>
-    </div>
         """
         oauth_explanation = $ @login_modal.find('.oauth-explanation')
         oauth_explanation.hide()
@@ -507,16 +501,12 @@ class exportObj.SquadBuilderBackend
             @ui_ready = true
 
         @reload_done_modal = $ document.createElement('DIV')
-        @reload_done_modal.addClass 'modal fade d-print-none'
-        @reload_done_modal.tabindex = "-1"
-        @reload_done_modal.role = "dialog"
+        @reload_done_modal.addClass 'modal hide fade hidden-print'
         $(document.body).append @reload_done_modal
         @reload_done_modal.append $.trim """
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
             <div class="modal-header">
-                <h3>Reload Done</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Reload Done</h3>
             </div>
             <div class="modal-body">
                 <p>All squads of that faction have been reloaded.</p>
@@ -524,22 +514,16 @@ class exportObj.SquadBuilderBackend
             <div class="modal-footer">
                 <button class="btn btn-primary" aria-hidden="true" data-dismiss="modal">Well done!</button>
             </div>
-        </div>
-    </div>
         """
 
         @squad_list_modal = $ document.createElement('DIV')
-        @squad_list_modal.addClass 'modal fade d-print-none squad-list'
-        @squad_list_modal.tabindex = "-1"
-        @squad_list_modal.role = "dialog"
+        @squad_list_modal.addClass 'modal hide fade hidden-print squad-list'
         $(document.body).append @squad_list_modal
         @squad_list_modal.append $.trim """
-    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
-        <div class="modal-content">
             <div class="modal-header">
-                <h3 class="squad-list-header-placeholder d-none d-lg-block"></h3>
-                <h4 class="squad-list-header-placeholder d-lg-none"></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="squad-list-header-placeholder hidden-phone hidden-tablet"></h3>
+                <h4 class="squad-list-header-placeholder hidden-desktop"></h4>
             </div>
             <div class="modal-body">
                 <ul class="squad-list"></ul>
@@ -557,9 +541,9 @@ class exportObj.SquadBuilderBackend
                 </div>
                 <div class="btn-group squad-display-mode">
                     <button class="btn btn-inverse show-all-squads">All</button>
-                    <button class="btn show-extended-squads">Ext<span class="d-none d-sm-block">ended</span></button>
-                    <button class="btn show-hyperspace-squads">Hyper<span class="d-none d-sm-block">space</span></button>
-                    <button class="btn show-quickbuild-squads">Quick<span class="d-none d-sm-block">build</span></button>
+                    <button class="btn show-extended-squads">Ext<span class="hidden-phone">ended</span></button>
+                    <button class="btn show-hyperspace-squads">Hyper<span class="hidden-phone">space</span></button>
+                    <button class="btn show-quickbuild-squads">Quick<span class="hidden-phone">build</span></button>
                     <button class="btn show-epic-squads">Epic</button>
                     <button class="btn show-archived-squads">Archived</button>
                 </div>
@@ -567,11 +551,9 @@ class exportObj.SquadBuilderBackend
                 <div class="btn-group tags-display">
                 </div>
                 <br />
-                <button class="btn btn reload-all">Reload<span class="d-none d-sm-block"> all squads (this might take a while)</span></button>
+                <button class="btn btn reload-all">Reload<span class="hidden-phone"> all squads (this might take a while)</span></button>
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
-        </div>
-    </div>
         """
         @squad_list_modal.find('ul.squad-list').hide()
 
@@ -735,16 +717,12 @@ class exportObj.SquadBuilderBackend
                 $(elem).toggle (($(elem).data().squad.additional_data.archived?) == @show_archived)
 
         @save_as_modal = $ document.createElement('DIV')
-        @save_as_modal.addClass 'modal fade d-print-none'
-        @save_as_modal.tabindex = "-1"
-        @save_as_modal.role = "dialog"
+        @save_as_modal.addClass 'modal hide fade hidden-print'
         $(document.body).append @save_as_modal
         @save_as_modal.append $.trim """
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
             <div class="modal-header">
-                <h3>Save Squad As...</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Save Squad As...</h3>
             </div>
             <div class="modal-body">
                 <label for="xw-be-squad-save-as">
@@ -757,8 +735,6 @@ class exportObj.SquadBuilderBackend
                 <button class="btn btn-primary save" aria-hidden="true">Save</button>
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
-        </div>
-    </div>
         """
         @save_as_modal.on 'shown', () =>
             # Because Firefox handles this badly
@@ -821,16 +797,12 @@ class exportObj.SquadBuilderBackend
         @name_availability_container = $ @save_as_modal.find('.name-availability')
 
         @delete_modal = $ document.createElement('DIV')
-        @delete_modal.addClass 'modal fade d-print-none'
-        @delete_modal.tabindex = "-1"
-        @delete_modal.role = "dialog"
+        @delete_modal.addClass 'modal hide fade hidden-print'
         $(document.body).append @delete_modal
         @delete_modal.append $.trim """
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
             <div class="modal-header">
-                <h3>Really Delete <span class="squad-name-placeholder"></span>?</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Really Delete <span class="squad-name-placeholder"></span>?</h3>
             </div>
             <div class="modal-body">
                 <p>Are you sure you want to delete this squad?</p>
@@ -839,8 +811,6 @@ class exportObj.SquadBuilderBackend
                 <button class="btn btn-danger delete" aria-hidden="true">Yes, Delete <i class="squad-name-placeholder"></i></button>
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Never Mind</button>
             </div>
-        </div>
-    </div>
         """
 
         @delete_name_container = $ @delete_modal.find('.squad-name-placeholder')
@@ -870,16 +840,12 @@ class exportObj.SquadBuilderBackend
                     builder.backend_delete_list_button.removeClass 'disabled'
 
         @unsaved_modal = $ document.createElement('DIV')
-        @unsaved_modal.addClass 'modal fade d-print-none'
-        @unsaved_modal.tabindex = "-1"
-        @unsaved_modal.role = "dialog"
+        @unsaved_modal.addClass 'modal hide fade hidden-print'
         $(document.body).append @unsaved_modal
         @unsaved_modal.append $.trim """
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
             <div class="modal-header">
-                <h3>Unsaved Changes</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Unsaved Changes</h3>
             </div>
             <div class="modal-body">
                 <p>You have not saved changes to this squad.  Do you want to go back and save?</p>
@@ -888,8 +854,6 @@ class exportObj.SquadBuilderBackend
                 <button class="btn btn-primary" aria-hidden="true" data-dismiss="modal">Go Back</button>
                 <button class="btn btn-danger discard" aria-hidden="true">Discard Changes</button>
             </div>
-        </div>
-    </div>
         """
         @unsaved_discard_button = $ @unsaved_modal.find('button.discard')
         @unsaved_discard_button.click (e) =>
@@ -1057,13 +1021,13 @@ class exportObj.CardBrowser
     setupUI: () ->
         @container.append $.trim """
             <div class="container-fluid xwing-card-browser">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card card-search-container">
-                        <h5 class="card-title">Card Search</h5>
+                <div class="row-fluid">
+                    <div class="span4">
+                        <div class="well card-search-container">
+                        <h3>Card Search</h3>
                             <div class="advanced-search-container">
-                                <div class = "card search-container general-search-container">
-                                    <h6 class="card-subtitle mb-2 text-muted version">General</h6>
+                                <div class = "well search-container general-search-container">
+                                    <h4>General</h4>
                                     <label class = "text-search advanced-search-label">
                                     <strong>Textsearch: </strong>
                                         <input type="search" placeholder="Search for name, text or ship" class = "card-search-text">
@@ -1105,8 +1069,8 @@ class exportObj.CardBrowser
                                         </label>
                                     </div>
                                 </div>
-                                <div class = "card search-container ship-search-container">
-                                    <h6 class="card-subtitle mb-2 text-muted version">Ships and Pilots</h6>
+                                <div class = "well search-container ship-search-container">
+                                    <h4>Ships and Pilots</h4>
                                     <div class = "advanced-search-slot-available-container">
                                         <label class = "advanced-search-label select-available-slots">
                                             <strong>Slots: </strong>
@@ -1228,8 +1192,8 @@ class exportObj.CardBrowser
                                         </label>
                                     </div>
                                 </div>
-                                <div class = "card search-container other-stuff-search-container">
-                                    <h6 class="card-subtitle mb-2 text-muted version">Other Stuff</h6>
+                                <div class = "well search-container other-stuff-search-container">
+                                    <h4>Other Stuff</h4>
                                     <div class = "advanced-search-slot-used-container">
                                         <label class = "advanced-search-label select-used-slots">
                                             <strong>Used slot: </strong>
@@ -1244,7 +1208,6 @@ class exportObj.CardBrowser
                                         <label class = "advanced-search-label set-maximum-charge">
                                             to <input type="number" class="maximum-charge advanced-search-number-input" value="5" /> 
                                         </label>
-                                        <br />
                                         <label class = "advanced-search-label has-recurring-charge">
                                             <input type="checkbox" class="advanced-search-checkbox has-recurring-charge-checkbox" checked="checked"/> recurring
                                         </label>
@@ -1265,7 +1228,7 @@ class exportObj.CardBrowser
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 card-selecting-area">
+                    <div class="span4 card-selecting-area">
                         <span class="translate sort-cards-by">Sort cards by</span>: <select class="sort-by">
                             <option value="name">Name</option>
                             <option value="source">Source</option>
@@ -1276,11 +1239,11 @@ class exportObj.CardBrowser
 
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card card-viewer-placeholder info-well">
+                    <div class="span4">
+                        <div class="well card-viewer-placeholder info-well">
                             <p class="translate select-a-card">Select a card from the list at the left.</p>
                         </div>
-                        <div class="card card-viewer-container info-well">
+                        <div class="well card-viewer-container info-well">
                             <span class="info-name"></span>
                             <br />
                             <span class="info-type"></span>
@@ -1400,7 +1363,6 @@ class exportObj.CardBrowser
         @faction_selection.append factionless_option
         @faction_selection.select2
             minimumResultsForSearch: if $.isMobile() then -1 else 0
-        
         @minimum_point_costs = ($ @container.find('.xwing-card-browser .minimum-point-cost'))[0]
         @maximum_point_costs = ($ @container.find('.xwing-card-browser .maximum-point-cost'))[0]
         @hyperspace_checkbox = ($ @container.find('.xwing-card-browser .hyperspace-checkbox'))[0]
@@ -1687,10 +1649,11 @@ class exportObj.CardBrowser
     
         # prevent the three virtual hardpoint cards from beeing displayed
         return false unless card.data.slot != "Hardpoint"
+
         
         all_factions = (faction for faction, pilot of exportObj.pilotsByFactionXWS)
         selected_factions = @faction_selection.val()
-        if selected_factions.length > 0
+        if selected_factions
             if "Factionless" in selected_factions
                 selected_factions.push undefined
             return false unless card.data.faction in selected_factions or card.orig_type == 'Ship' or card.data.faction instanceof Array
@@ -1708,6 +1671,7 @@ class exportObj.CardBrowser
                        break
                return false unless faction_matches
 
+
         # check if hyperspace only matches
         if @hyperspace_checkbox.checked
             # check all factions specified by the card (which might be a single faction or an array of factions), or all selected factions if card does not specify any
@@ -1718,7 +1682,7 @@ class exportObj.CardBrowser
 
         # check for slot requirements
         required_slots = @slot_available_selection.val()
-        if required_slots.length > 0
+        if required_slots
             slots = card.data.slots
             if card.orig_type == 'Ship'
                 slots = []
@@ -1734,7 +1698,7 @@ class exportObj.CardBrowser
         # check for action requirements
         required_actions = @action_available_selection.val()
         required_linked_actions = @linkedaction_available_selection.val()
-        if (required_actions.length > 0) or (required_linked_actions.length > 0)
+        if required_actions or required_linked_actions
             actions = card.data.actions ? []
             actions = actions.concat (card.data.actionsred ? [])
             if card.orig_type == 'Pilot'
@@ -1770,7 +1734,7 @@ class exportObj.CardBrowser
 
         # check if used slot matches
         used_slots = @slot_used_selection.val()
-        if used_slots.length > 0
+        if used_slots
             return false unless card.data.slot?
             matches = false
             for slot in used_slots
@@ -1779,9 +1743,6 @@ class exportObj.CardBrowser
                     break
             return false unless matches
 
-
-            
-            
         # check for uniqueness
         return false unless not @unique_checkbox.checked or card.data.unique
         return false unless not @non_unique_checkbox.checked or not card.data.unique
@@ -10069,16 +10030,12 @@ class exportObj.Collection
             singletonsByType[type] = sorted_names
         
         @modal = $ document.createElement 'DIV'
-        @modal.addClass 'modal fade collection-modal d-print-none'
-        @modal.tabindex = "-1"
-        @modal.role = "dialog"
+        @modal.addClass 'modal hide fade collection-modal hidden-print'
         $('body').append @modal
         @modal.append $.trim """
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
-        <div class="modal-content">
             <div class="modal-header">
+                <button type="button" class="close hidden-print" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4>Your Collection</h4>
-                <button type="button" class="close d-print-none" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
                 <ul class="nav nav-tabs">
@@ -10096,7 +10053,7 @@ class exportObj.Collection
                     <div id="collection-components" class="tab-pane container-fluid collection-inventory-content"></div>
                 </div>
             </div>
-            <div class="modal-footer d-print-none">
+            <div class="modal-footer hidden-print">
                 <span class="collection-status"></span>
                 &nbsp;
                 <label class="checkbox-check-collection">
@@ -10105,8 +10062,6 @@ class exportObj.Collection
                 &nbsp;
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
-        </div>
-    </div>
         """
         @modal_status = $ @modal.find('.collection-status')
 
@@ -10306,24 +10261,26 @@ class exportObj.RulesBrowser
     setupRuleUI: () ->
         @container.append $.trim """
             <div class="container-fluid xwing-rules-browser">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card card-search-container">
-                            <h5 class="card-title">Rules Search</h5>
+                <div class="row-fluid">
+                    <div class="span4">
+                        <div class="well card-search-container">
+                            <h3>Rules Search</h3>
                             <div class="advanced-search-container">
-                                <h6 class="card-subtitle mb-2 text-muted version">Version: </h6>
-                                <label class = "text-search advanced-search-label">
-                                    <strong>Term: </strong>
-                                    <input type="search" placeholder="Search for game term or card" class = "rule-search-text">
-                                </label>
+                                <div class = "well search-container general-search-container">
+                                    <h4 class="version">Version: </h4>
+                                    <label class = "text-search advanced-search-label">
+                                        <strong>Term: </strong>
+                                        <input type="search" placeholder="Search for game term or card" class = "rule-search-text">
+                                    </label>
+                                </div>
                             </div>
                             <div class="rules-container card-selector-container">
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-8">
-                        <div class="card card-viewer-container card-search-container">
-                            <h4 class="card-title info-name"></h4>
+                    <div class="span8">
+                        <div class="well card-viewer-container card-search-container">
+                            <span class="info-name"></span>
                             <br />
                             <p class="info-text" />
                         </div>
@@ -10645,6 +10602,7 @@ class exportObj.SquadBuilder
             @resetCurrentSquad(true)
             @loadFromSerialized $.getParameterByName('d')
         else
+            @
             @resetCurrentSquad()
             @addShip()
 
@@ -10701,8 +10659,8 @@ class exportObj.SquadBuilder
         @status_container = $ document.createElement 'DIV'
         @status_container.addClass 'container-fluid'
         @status_container.append $.trim '''
-            <div class="row squad-name-and-points-row">
-                <div class="col-md-3 squad-name-container">
+            <div class="row-fluid squad-name-and-points-row">
+                <div class="span3 squad-name-container">
                     <div class="display-name">
                         <span class="squad-name"></span>
                         <i class="far fa-edit"></i>
@@ -10719,22 +10677,22 @@ class exportObj.SquadBuilder
                         <option value="quickbuild">Quickbuild</option>
                     </select>
                 </div>
-                <div class="col-md-4 points-display-container">
+                <div class="span4 points-display-container">
                     Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="200">
                     <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left) <span class="points-destroyed red"></span></span>
-                    <span class="content-warning unreleased-content-used d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>
-                    <span class="content-warning loading-failed-container d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>
-                    <span class="content-warning collection-invalid d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>
-                    <span class="content-warning ship-number-invalid-container d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated">A tournament legal squad must contain 2-8 ships!</span></span>
+                    <span class="content-warning unreleased-content-used hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>
+                    <span class="content-warning loading-failed-container hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>
+                    <span class="content-warning collection-invalid hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>
+                    <span class="content-warning ship-number-invalid-container hidden"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated">A tournament legal squad must contain 2-8 ships!</span></span>
                 </div>
-                <div class="col-md-5 float-right button-container">
-                    <div class="btn-group float-right">
+                <div class="span5 pull-right button-container">
+                    <div class="btn-group pull-right">
 
-                        <button class="btn btn-primary view-as-text"><span class="hidden-xs"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text</button>
-                        <!-- <button class="btn btn-primary print-list hidden-xs hidden-md"><i class="fa fa-print"></i>&nbsp;Print</button> -->
-                        <a class="btn btn-primary d-none collection"><i class="fa fa-folder-open hidden-xs hidden-md"></i>&nbsp;Your Collection</a>
+                        <button class="btn btn-primary view-as-text"><span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text</button>
+                        <!-- <button class="btn btn-primary print-list hidden-phone hidden-tablet"><i class="fa fa-print"></i>&nbsp;Print</button> -->
+                        <a class="btn btn-primary hidden collection"><i class="fa fa-folder-open hidden-phone hidden-tablet"></i>&nbsp;Your Collection</a>
                         <!-- Randomize button is marked as danger, since it creates a new squad -->
-                        <button class="btn btn-danger randomize" ><i class="fa fa-random hidden-xs hidden-md"></i>&nbsp;Random!</button>
+                        <button class="btn btn-danger randomize" ><i class="fa fa-random hidden-phone hidden-tablet"></i>&nbsp;Random!</button>
                         <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
                             <span class="caret"></span>
                         </button>
@@ -10748,8 +10706,8 @@ class exportObj.SquadBuilder
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
+            <div class="row-fluid">
+                <div class="span12">
                     <button class="show-authenticated btn btn-primary save-list"><i class="far fa-save"></i>&nbsp;Save</button>
                     <button class="show-authenticated btn btn-primary save-list-as"><i class="far fa-file"></i>&nbsp;Save As...</button>
                     <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash"></i>&nbsp;Delete</button>
@@ -10762,18 +10720,21 @@ class exportObj.SquadBuilder
         @container.append @status_container
 
         @list_modal = $ document.createElement 'DIV'
-        @list_modal.addClass 'modal fade text-list-modal'
-        @list_modal.tabindex = "-1"
-        @list_modal.role = "dialog"
+        @list_modal.addClass 'modal hide fade text-list-modal'
         @container.append @list_modal
         @list_modal.append $.trim """
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
-        <div class="modal-content">
             <div class="modal-header">
-                <div class="d-print-none">
-                    <h4 class="modal-title"><span class="squad-name"></span> (<span class="total-points"></span>)</h4>
+                <button type="button" class="close hidden-print" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                <div class="hidden-phone hidden-print">
+                    <h3><span class="squad-name"></span> (<span class="total-points"></span>)<h3>
                 </div>
-                <div class="d-none d-print-block">
+
+                <div class="visible-phone hidden-print">
+                    <h4><span class="squad-name"></span> (<span class="total-points"></span>)<h4>
+                </div>
+
+                <div class="visible-print">
                     <div class="fancy-header">
                         <div class="squad-name"></div>
                         <div class="squad-faction"></div>
@@ -10787,10 +10748,10 @@ class exportObj.SquadBuilder
                     </div>
                     <div class="fancy-under-header"></div>
                 </div>
-                <button type="button" class="close d-print-none" data-dismiss="modal" aria-hidden="true">&times;</button>
+
             </div>
             <div class="modal-body">
-                <div class="fancy-list hidden-xs"></div>
+                <div class="fancy-list hidden-phone"></div>
                 <div class="simple-list"></div>
                 <div class="simplecopy-list">
                     <p>Copy the below and paste it elsewhere.</p>
@@ -10813,48 +10774,46 @@ class exportObj.SquadBuilder
                     <textarea></textarea><button class="btn btn-copy">Copy</button>
                 </div>
             </div>
-            <div class="modal-footer d-print-none">
+            <div class="modal-footer hidden-print">
                 <div class="row">
-                    <div class="col">
-                        <label class="color-skip-text-checkbox hidden-xs">
+                    <div class="column">
+                        <label class="color-skip-text-checkbox hidden-phone">
                             Skip Card Text <input type="checkbox" class="toggle-skip-text-print" />
-                        </label><br />
-                        <label class="vertical-space-checkbox hidden-xs">
+                        </label>
+                        <label class="vertical-space-checkbox hidden-phone">
                             Add Space for Cards <input type="checkbox" class="toggle-vertical-space" />
-                        </label><br />
-                        <label class="maneuver-print-checkbox hidden-xs">
+                        </label>
+                        <label class="maneuver-print-checkbox hidden-phone">
                             Include Maneuvers Chart <input type="checkbox" class="toggle-maneuver-print" />
-                        </label><br />
-                        <label class="expanded-shield-hull-print-checkbox hidden-xs">
+                        </label>
+                        <label class="expanded-shield-hull-print-checkbox hidden-phone">
                             Expand Shield and Hull <input type="checkbox" class="toggle-expanded-shield-hull-print" />
                         </label>
                     </div>
-                    <div class="col">
-                        <label class="color-print-checkbox hidden-xs">
+                    <div class="column">
+                        <label class="color-print-checkbox hidden-phone">
                             Print Color <input type="checkbox" class="toggle-color-print" checked="checked" />
-                        </label><br />
-                        <label class="qrcode-checkbox hidden-xs">
+                        </label>
+                        <label class="qrcode-checkbox hidden-phone">
                             Include QR codes <input type="checkbox" class="toggle-juggler-qrcode" checked="checked" />
-                        </label><br />
-                        <label class="obstacles-checkbox hidden-xs">
+                        </label>
+                        <label class="obstacles-checkbox hidden-phone">
                             Include Obstacle Choices <input type="checkbox" class="toggle-obstacles" />
                         </label>
                     </div>
                 </div>
-                <div class="row btn-group list-display-mode">
+                <div class="btn-group list-display-mode">
                     <button class="btn select-simple-view">Simple</button>
-                    <button class="btn select-fancy-view hidden-xs">Fancy</button>
+                    <button class="btn select-fancy-view hidden-phone">Fancy</button>
                     <button class="btn select-simplecopy-view">Text</button>
-                    <button class="btn select-tts-view hidden-xs">TTS</button>
+                    <button class="btn select-tts-view hidden-phone">TTS</button>
                     <button class="btn select-reddit-view">Reddit</button>
                     <button class="btn select-bbcode-view">BBCode</button>
                     <button class="btn select-html-view">HTML</button>
                 </div>
-                <button class="btn print-list hidden-xs"><i class="fa fa-print"></i>&nbsp;Print</button>
+                <button class="btn print-list hidden-phone"><i class="fa fa-print"></i>&nbsp;Print</button>
                 <button class="btn close-print-dialog" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
-        </div>
-    </div>
         """
         @fancy_container = $ @list_modal.find('div.modal-body .fancy-list')
         @fancy_total_points_container = $ @list_modal.find('div.modal-header .total-points')
@@ -11112,7 +11071,7 @@ class exportObj.SquadBuilder
         @collection_button.click (e) =>
             e.preventDefault()
             unless @collection_button.prop('disabled')
-                @collection.modal()
+                @collection.modal.modal 'show'
 
         @squad_name_input.keypress (e) =>
             if e.which == 13
@@ -11147,52 +11106,46 @@ class exportObj.SquadBuilder
                 @squad_name_input.closest('div').hide()
 
         @randomizer_options_modal = $ document.createElement('DIV')
-        @randomizer_options_modal.addClass 'modal fade randomizer-modal'
-        @randomizer_options_modal.tabindex = "-1"
-        @randomizer_options_modal.role = "dialog"
+        @randomizer_options_modal.addClass 'modal hide fade randomizer-modal'
         $('body').append @randomizer_options_modal
         @randomizer_options_modal.append $.trim """
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3>Random Squad Builder Options</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <label>
-                                Maximal desired bid
-                                <input type="number" class="randomizer-bid-goal" value="#{DEFAULT_RANDOMIZER_BID_GOAL}" placeholder="#{DEFAULT_RANDOMIZER_BID_GOAL}" />
-                            </label><br />
-                            <label>
-                                More upgrades
-                                <input type="range" min="0" max="10" class="randomizer-ships-or-upgrades" value="#{DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES}" placeholder="#{DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES}" />
-                                Less upgrades
-                            </label><br />
-                            <label>
-                                <input type="checkbox" class="randomizer-collection-only" checked="checked"/> 
-                                Only use items from collection
-                            </label><br />
-                            <label>
-                                Sets and Expansions (default all)
-                                <select class="randomizer-sources" multiple="1" data-placeholder="Use all sets and expansions">
-                                </select>
-                            </label><br />
-                            <label>
-                                <input type="checkbox" class="randomizer-fill-zero-pts" /> 
-                                Always fill 0-point slots
-                            </label><br />
-                            <label>
-                                Maximum Seconds to Spend Randomizing
-                                <input type="number" class="randomizer-timeout" value="#{DEFAULT_RANDOMIZER_TIMEOUT_SEC}" placeholder="#{DEFAULT_RANDOMIZER_TIMEOUT_SEC}" />
-                            </label>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary do-randomize" aria-hidden="true">Randomize!</button>
-                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                    </div>
-                </div>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Random Squad Builder Options</h3>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <label>
+                        Maximal desired bid
+                        <input type="number" class="randomizer-bid-goal" value="#{DEFAULT_RANDOMIZER_BID_GOAL}" placeholder="#{DEFAULT_RANDOMIZER_BID_GOAL}" />
+                    </label>
+                    <label>
+                        More upgrades
+                        <input type="range" min="0" max="10" class="randomizer-ships-or-upgrades" value="#{DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES}" placeholder="#{DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES}" />
+                        Less upgrades
+                    </label>
+                    <label>
+                        <input type="checkbox" class="randomizer-collection-only" checked="checked"/> 
+                        Only use items from collection
+                    </label>
+                    <label>
+                        Sets and Expansions (default all)
+                        <select class="randomizer-sources" multiple="1" data-placeholder="Use all sets and expansions">
+                        </select>
+                    </label>
+                    <label>
+                        <input type="checkbox" class="randomizer-fill-zero-pts" /> 
+                        Always fill 0-point slots
+                    </label>
+                    <label>
+                        Maximum Seconds to Spend Randomizing
+                        <input type="number" class="randomizer-timeout" value="#{DEFAULT_RANDOMIZER_TIMEOUT_SEC}" placeholder="#{DEFAULT_RANDOMIZER_TIMEOUT_SEC}" />
+                    </label>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary do-randomize" aria-hidden="true">Randomize!</button>
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         """
         @randomizer_source_selector = $ @randomizer_options_modal.find('select.randomizer-sources')
@@ -11220,7 +11173,7 @@ class exportObj.SquadBuilder
                 ships_or_upgrades = DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES if (isNaN(ships_or_upgrades) or ships_or_upgrades < 0)
                 timeout_sec = parseInt $(@randomizer_options_modal.find('.randomizer-timeout')).val()
                 timeout_sec = DEFAULT_RANDOMIZER_TIMEOUT_SEC if (isNaN(timeout_sec) or timeout_sec <= 0)
-                # console.log "points=#{points}, sources=#{@randomizer_source_selector.val()}, timeout=#{timeout_sec}"
+                #console.log "points=#{points}, sources=#{@randomizer_source_selector.val()}, timeout=#{timeout_sec}"
                 @randomSquad(points, @randomizer_source_selector.val(), timeout_sec * 1000, bid_goal, ships_or_upgrades, @randomizer_collection_selector.checked, @randomizer_fill_zero_pts.checked)
 
         @randomizer_options_modal.find('button.do-randomize').click (e) =>
@@ -11233,23 +11186,16 @@ class exportObj.SquadBuilder
             @randomizer_options_modal.modal()
 
         @misc_settings_modal = $ document.createElement('DIV')
-        @misc_settings_modal.addClass 'modal fade'
-        @misc_settings_modal.tabindex = "-1"
-        @misc_settings_modal.role = "dialog"
+        @misc_settings_modal.addClass 'modal hide fade'
         $('body').append @misc_settings_modal
         @misc_settings_modal.append $.trim """
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-        <div class="modal-content">
             <div class="modal-header">
-                <h3>Miscellaneous Settings</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Miscellaneous Settings</h3>
             </div>
             <div class="modal-body">
                 <label class = "toggle-initiative-prefix-names misc-settings-label">
                     <input type="checkbox" class="initiative-prefix-names-checkbox misc-settings-checkbox" /> Put INI as prefix in front of names. 
-                </label><br />
-                <label class = "dee">
-                    <input type="checkbox" class="initiative-prefix-names-checkbox misc-settings-checkbox" checked /> Is Dee Yun the worst?
                 </label>
             </div>
             <div class="modal-footer">
@@ -11257,8 +11203,6 @@ class exportObj.SquadBuilder
                 &nbsp;
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
-        </div>
-    </div>
         """
         @misc_settings_infoline = $ @misc_settings_modal.find('.misc-settings-infoline')
         @misc_settings_initiative_prefix = $ @misc_settings_modal.find('.initiative-prefix-names-checkbox')
@@ -11298,13 +11242,9 @@ class exportObj.SquadBuilder
             @misc_settings_initiative_prefix.prop('checked', exportObj.settings?.initiative_prefix? and exportObj.settings.initiative_prefix)
 
         @choose_obstacles_modal = $ document.createElement 'DIV'
-        @choose_obstacles_modal.addClass 'modal fade choose-obstacles-modal'
-        @choose_obstacles_modal.tabindex = "-1"
-        @choose_obstacles_modal.role = "dialog"
+        @choose_obstacles_modal.addClass 'modal hide fade choose-obstacles-modal'
         @container.append @choose_obstacles_modal
         @choose_obstacles_modal.append $.trim """
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-        <div class="modal-content">
             <div class="modal-header">
                 <label class='choose-obstacles-description'>Choose up to three obstacles, to include in the permalink for use in external programs</label>
             </div>
@@ -11341,11 +11281,9 @@ class exportObj.SquadBuilder
                     <img class="obstacle-image" src="images/core2asteroid0.png" />
                 </div>
             </div>
-            <div class="modal-footer d-print-none">
+            <div class="modal-footer hidden-print">
                 <button class="btn close-print-dialog" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
-        </div>
-    </div>
         """
         @obstacles_select = @choose_obstacles_modal.find('.obstacle-select')
         @obstacles_select_image = @choose_obstacles_modal.find('.obstacle-image-container')
@@ -11408,9 +11346,9 @@ class exportObj.SquadBuilder
         content_container.addClass 'container-fluid'
         @container.append content_container
         content_container.append $.trim """
-            <div class="row">
-                <div class="col-md-9 ship-container">
-                    <label class="notes-container col-md-8">
+            <div class="row-fluid">
+                <div class="span9 ship-container">
+                    <label class="notes-container show-authenticated">
                         <span class="notes-name">Squad Notes:</span>
                         <br />
                         <textarea class="squad-notes"></textarea>
@@ -11418,13 +11356,12 @@ class exportObj.SquadBuilder
                         <span class="tag-name">Tag:</span>
                         <input type="search" class="squad-tag"></input>
                     </label>
-                </div>
-                <div class="col-md-3 info-container" id="info-container">
-                </div>
-                <div class="col-md-12 obstacles-container">
+                    <span class="obstacles-container">
                         <!-- Since this is an optional button, usually, it's shown in a different color -->
                         <button class="btn btn-info choose-obstacles"><i class="fa fa-cloud"></i>&nbsp;Choose Obstacles</button>
-                </div>
+                    </span>
+                 </div>
+               <div class="span3 info-container" id="info-container" />
             </div>
         """
 
@@ -11436,11 +11373,12 @@ class exportObj.SquadBuilder
         @tag = $ @notes_container.find('input.squad-tag')
 
         @info_container.append $.trim """
-            <div class="card info-well">
-                <div class="info-name"></div>
+            <div class="well well-small info-well">
+                <span class="info-name"></span>
+                <br />
                 <span class="info-collection"></span>
                 <span class="info-solitary"><br />Solitary</span>
-                <table class="table-sm">
+                <table>
                     <tbody>
                         <tr class="info-ship">
                             <td class="info-header">Ship</td>
@@ -11615,13 +11553,13 @@ class exportObj.SquadBuilder
             # console.log "#{@faction}: Collection created, checking squad"
             @collection.onLanguageChange null, @language
             # @checkCollection()
-            @collection_button.removeClass 'd-none'
+            @collection_button.removeClass 'hidden'
         .on 'xwing-collection:changed', (e, collection) =>
             # console.log "#{@faction}: Collection changed, checking squad"
             @checkCollection()
         .on 'xwing-collection:destroyed', (e, collection) =>
             @collection = null
-            @collection_button.addClass 'd-none'
+            @collection_button.addClass 'hidden'
         .on 'xwing:pingActiveBuilder', (e, cb) =>
             cb(this) if @container.is(':visible')
         .on 'xwing:activateBuilder', (e, faction, cb) =>
@@ -11842,7 +11780,7 @@ class exportObj.SquadBuilder
         @points_remaining_span.text points_left
         @points_destroyed_span.html if points_dest != 0 then """<i class="xwing-miniatures-font xwing-miniatures-font-hit"></i>#{points_dest}""" else ""
         @points_remaining_container.toggleClass 'red', (points_left < 0)
-        @unreleased_content_used_container.toggleClass 'd-none', not unreleased_content_used
+        @unreleased_content_used_container.toggleClass 'hidden', not unreleased_content_used
 
         @fancy_total_points_container.text @total_points
 
@@ -12024,7 +11962,7 @@ class exportObj.SquadBuilder
 
             # check if there are serialized ships to load
             if !serialized_ships? # something went wrong, we can't load that serialization
-                @loading_failed_container.toggleClass 'd-none', false
+                @loading_failed_container.toggleClass 'hidden', false
                 return
             switch game_type_abbrev
                 when 's'
@@ -12122,7 +12060,7 @@ class exportObj.SquadBuilder
             builder: this
             container: @ship_container
         @ships.push new_ship
-        @ship_number_invalid_container.toggleClass 'd-none', (@ships.length < 10 and @ships.length > 2) # bounds are 2..10 as we always have a "empty" ship at the bottom
+        @ship_number_invalid_container.toggleClass 'hidden', (@ships.length < 10 and @ships.length > 2) # bounds are 2..10 as we always have a "empty" ship at the bottom
         new_ship
 
     removeShip: (ship, cb=$.noop) ->
@@ -12131,7 +12069,7 @@ class exportObj.SquadBuilder
             await @container.trigger 'xwing:pointsUpdated', defer()
             @current_squad.dirty = true
             @container.trigger 'xwing-backend:squadDirtinessChanged'
-            @ship_number_invalid_container.toggleClass 'd-none', (@ships.length < 10 and @ships.length > 2)
+            @ship_number_invalid_container.toggleClass 'hidden', (@ships.length < 10 and @ships.length > 2)
         cb()
     
     matcher: (item, term) ->
@@ -12166,9 +12104,9 @@ class exportObj.SquadBuilder
                         if (not collection_only or (@collection? and (@collection.checks.collectioncheck == "true") and @collection.checkShelf('ship', ship_data.name)))
                             ships.push
                                 id: ship_data.name
-                                text: if ship_data.display_name then ship_data.display_name else ship_data.name
                                 name: ship_data.name
                                 display_name: ship_data.display_name
+                                text: if ship_data.display_name then ship_data.display_name else ship_data.name
                                 canonical_name: ship_data.canonical_name
                                 xws: ship_data.xws
                                 icon: if ship_data.icon then ship_data.icon else ship_data.xws
@@ -13218,10 +13156,6 @@ class exportObj.SquadBuilder
     randomSquad: (max_points=200, allowed_sources=null, timeout_ms=1000, bid_goal=5, ships_or_upgrades=3, collection_only=true, fill_zero_pts=false) ->
         @backend_status.fadeOut 'slow'
         @suppress_automatic_new_ship = true
-        
-        if allowed_sources.length < 1
-            allowed_sources = null
-        
         # Clear all existing ships
         while @ships.length > 0
             @removeShip @ships[0]
@@ -13306,7 +13240,7 @@ class exportObj.SquadBuilder
         # console.log "#{@faction}: Checking validity of squad against collection..."
         if @collection?
             [squadPossible, missingStuff] = @isSquadPossibleWithCollection()
-            @collection_invalid_container.toggleClass 'd-none', squadPossible
+            @collection_invalid_container.toggleClass 'hidden', squadPossible
             @collection_invalid_container.on 'mouseover', (e) =>
                 @showTooltip 'MissingStuff', missingStuff
             @collection_invalid_container.on 'touchstart', (e) =>
@@ -13874,31 +13808,31 @@ class Ship
 
     setupUI: ->
         @row = $ document.createElement 'DIV'
-        @row.addClass 'row ship'
+        @row.addClass 'row-fluid ship'
         @row.insertBefore @builder.notes_container
 
         if @pilot?
             shipicon = if exportObj.ships[@pilot.ship].icon then exportObj.ships[@pilot.ship].icon else exportObj.ships[@pilot.ship].xws
         
         @row.append $.trim '''
-            <div class="col-md-3">
-                <input class="ship-selector-container" type="hidden"></input>
+            <div class="span3">
+                <input class="ship-selector-container" type="hidden" />
                 <br />
-                <input type="hidden" class="pilot-selector-container"></input>
+                <input type="hidden" class="pilot-selector-container" />
                 <br />
                 <label class="wingmate-label">
                 Wingmates: 
-                    <input type="number" class="wingmate-selector"></input>
+                    <input type="number" class="wingmate-selector" />
                 </label>
             </div>
-            <div class="col-md-1 points-display-container">
-                 <span></span>
+            <div class="span1 points-display-container">
+                <span></span>
             </div>
-            <div class="col-md-6 addon-container">  </div>
-            <div class="col-md-2 button-container">
-                <button class="btn btn-danger remove-pilot side-button"><span class="d-none d-sm-block" data-toggle="tooltip" title="Remove Pilot"><i class="fa fa-times"></i></span><span class="d.block d-sm-none"> Remove Pilot</span></button>
-                <button class="btn btn-light copy-pilot side-button"><span class="d-none d-sm-block" data-toggle="tooltip" title="Clone Pilot"><i class="far fa-copy"></i></span><span class="d.block d-sm-none"> Clone Pilot</span></button>&nbsp;&nbsp;&nbsp;
-                <button class="btn btn-light points-destroyed side-button" points-state"><span class="d-none d-sm-block destroyed-type" data-toggle="tooltip" title="Destroyed Points"><i class="xwing-miniatures-font xwing-miniatures-font-title"></i></span><span class="d.block d-sm-none">: Destroyed</span></button>
+            <div class="span6 addon-container" />
+            <div class="span2 button-container">
+                <button class="btn btn-danger remove-pilot side-button"><span class="visible-desktop visible-tablet visible-phone" data-toggle="tooltip" title="Remove Pilot"><i class="fa fa-times"></i></span><span class="hidden-desktop hidden-tablet visible-phone"> Remove Pilot</span></button>
+                <button class="btn copy-pilot side-button"><span class="visible-desktop visible-tablet visible-phone" data-toggle="tooltip" title="Clone Pilot"><i class="far fa-copy"></i></span><span class="hidden-desktop hidden-tablet visible-phone"> Clone Pilot</span></button>&nbsp;&nbsp;&nbsp;
+                <button class="btn points-destroyed side-button" points-state"><span class="visible-desktop visible-tablet visible-phone destroyed-type" data-toggle="tooltip" title="Destroyed Points"><i class="xwing-miniatures-font xwing-miniatures-font-title"></i></span><span class="hidden-desktop hidden-tablet visible-phone">: Destroyed</span></button>
             </div>
         '''
         @row.find('.button-container span').tooltip()
@@ -13908,18 +13842,19 @@ class Ship
         @wingmate_selector = $ @row.find('input.wingmate-selector')
 
         shipResultFormatter = (object, container, query) ->
-            return """<i class="xwing-miniatures-ship xwing-miniatures-ship-#{object.icon}"></i> #{object.text}"""
+            # Append directly so we don't have to disable markup escaping
+            $(container).append """<i class="xwing-miniatures-ship xwing-miniatures-ship-#{object.icon}"></i> #{object.text}"""
+            # If you return a string, Select2 will render it
+            undefined
 
-        shipSelectionFormatter = (object, container) ->
-            return """<i class="xwing-miniatures-ship xwing-miniatures-ship-#{object.icon}"></i> #{object.text}"""
-            
         @ship_selector.select2
             width: '100%'
             placeholder: exportObj.translate @builder.language, 'ui', 'shipSelectorPlaceholder'
             query: (query) =>
-                data = {results: []}
-                data.results = @builder.getAvailableShipsMatching(query.term)
-                query.callback(data)
+                # @builder.checkCollection()
+                query.callback
+                    more: false
+                    results: @builder.getAvailableShipsMatching(query.term)
             minimumResultsForSearch: if $.isMobile() then -1 else 0
             formatResultCssClass: (obj) =>
                 if @builder.collection? and (@builder.collection.checks.collectioncheck == "true")
@@ -13948,13 +13883,17 @@ class Ship
         @ship_selector.data('select2').container.on 'touchstart', (e) =>
             @builder.showTooltip 'Ship', exportObj.ships[@pilot.ship] if @pilot
 
+        # assign ship row an id for testing purposes
+        @row.attr 'id', "row-#{@ship_selector.data('select2').container.attr('id')}"
+
         @pilot_selector.select2
             width: '100%'
             placeholder: exportObj.translate @builder.language, 'ui', 'pilotSelectorPlaceholder'
             query: (query) =>
-                data = {results: []}
-                data.results = @builder.getAvailablePilotsForShipIncluding(@ship_selector.val(), (if not @builder.isQuickbuild then @pilot else @quickbuildId), query.term, true, @)
-                query.callback(data)
+                # @builder.checkCollection()
+                query.callback
+                    more: false
+                    results: @builder.getAvailablePilotsForShipIncluding(@ship_selector.val(), (if not @builder.isQuickbuild then @pilot else @quickbuildId), query.term, true, @)
             minimumResultsForSearch: if $.isMobile() then -1 else 0
             formatResultCssClass: (obj) =>
                 if @builder.collection? and (@builder.collection.checks.collectioncheck == "true")
@@ -14921,7 +14860,7 @@ class GenericAddon
                     #{attackHTML}
                     #{chargeHTML}
                     #{forceHTML}
-                    <div class="row upgrade-text">#{text_str}</div>
+                    <div class="upgrade-text">#{text_str}</div>
                     <div style="clear: both;"></div>
                 </div>
             """
@@ -15030,9 +14969,10 @@ class exportObj.Upgrade extends GenericAddon
             placeholder: @placeholderMod_func(exportObj.translate @ship.builder.language, 'ui', 'upgradePlaceholder', @slot)
             allowClear: true
             query: (query) =>
-                data = {results: []}
-                data.results = @ship.builder.getAvailableUpgradesIncluding(@slot, @data, @ship, this, query.term, @filter_func)
-                query.callback(data)
+                # @ship.builder.checkCollection()
+                query.callback
+                    more: false
+                    results: @ship.builder.getAvailableUpgradesIncluding(@slot, @data, @ship, this, query.term, @filter_func)
 
 class exportObj.RestrictedUpgrade extends exportObj.Upgrade
     constructor: (args) ->
@@ -15058,7 +14998,9 @@ class exportObj.QuickbuildUpgrade extends GenericAddon
             width: '50%'
             allowClear: false
             query: (query) =>
-                data = {
+                # @ship.builder.checkCollection()
+                query.callback
+                    more: false
                     results: [{
                             id: @upgrade.id
                             text: if @upgrade.display_name then @upgrade.display_name else @upgrade.name
@@ -15066,8 +15008,6 @@ class exportObj.QuickbuildUpgrade extends GenericAddon
                             name: @upgrade.name
                             display_name: @upgrade.display_name
                         }]
-                }
-                query.callback(data)
 
     getPoints: (args) ->
         0
@@ -15134,26 +15074,24 @@ class exportObj.XWSManager
         @setupHandlers()
 
     setupUI: ->
-        @container.addClass 'd-print-none'
+        @container.addClass 'hidden-print'
         @container.html $.trim """
-            <div class="row col-md-12 xws-space">
-                <!-- Import is marked in red since it creates something new -->
-                <button class="btn btn-danger from-xws"><i class="fa fa-file-import"></i>&nbsp;Import from XWS</button>
-                <button class="btn btn-primary to-xws"><i class="fa fa-file-export"></i>&nbsp;Export to XWS</button>
+            <div class="row-fluid span9">
+                <div>
+                    <!-- Import is marked in red since it creates something new -->
+                    <button class="btn btn-danger from-xws"><i class="fa fa-file-import"></i>&nbsp;Import from XWS</button>
+                    <button class="btn btn-primary to-xws"><i class="fa fa-file-export"></i>&nbsp;Export to XWS</button>
+                </div>
             </div>
         """
 
         @xws_export_modal = $ document.createElement 'DIV'
-        @xws_export_modal.addClass 'modal fade xws-modal d-print-none'
-        @xws_export_modal.tabindex = "-1"
-        @xws_export_modal.role = "dialog"
+        @xws_export_modal.addClass 'modal hide fade xws-modal hidden-print'
         @container.append @xws_export_modal
         @xws_export_modal.append $.trim """
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
             <div class="modal-header">
+                <button type="button" class="close hidden-print" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3>XWS Export</h3>
-                <button type="button" class="close d-print-none" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
                 <ul class="nav nav-pills">
@@ -15174,24 +15112,18 @@ class exportObj.XWSManager
                     </div>
                 </div>
             </div>
-            <div class="modal-footer d-print-none">
+            <div class="modal-footer hidden-print">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
-        </div>
-    </div>
         """
 
         @xws_import_modal = $ document.createElement 'DIV'
-        @xws_import_modal.addClass 'modal fade xws-modal d-print-none'
-        @xws_import_modal.tabindex = "-1"
-        @xws_import_modal.role = "dialog"
+        @xws_import_modal.addClass 'modal hide fade xws-modal hidden-print'
         @container.append @xws_import_modal
         @xws_import_modal.append $.trim """
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
             <div class="modal-header">
+                <button type="button" class="close hidden-print" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3>XWS Import</h3>
-                <button type="button" class="close d-print-none" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
                 Paste XWS here to load a list exported from another application.
@@ -15200,13 +15132,11 @@ class exportObj.XWSManager
                     <textarea class="xws-content" placeholder="Paste XWS here..."></textarea>
                 </div>
             </div>
-            <div class="modal-footer d-print-none">
+            <div class="modal-footer hidden-print">
                 <span class="xws-import-status"></span>&nbsp;
                 <button class="btn btn-danger import-xws">Import It!</button>
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
-        </div>
-    </div>
         """
 
     setupHandlers: ->
