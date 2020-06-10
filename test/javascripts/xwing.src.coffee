@@ -11413,7 +11413,7 @@ class exportObj.SquadBuilder
         content_container.append $.trim """
             <div class="row-fluid">
                 <div class="col-md-9 ship-container">
-                    <label class="notes-container col-md-6 show-authenticated">
+                    <label class="notes-container col-md-6">
                         <span class="notes-name">Squad Notes:</span>
                         <br />
                         <textarea class="squad-notes"></textarea>

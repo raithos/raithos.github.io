@@ -458,9 +458,6 @@ svg > g.maneuver.backwards {
   display: inline;
   padding: 15px; }
 
-.tag-name {
-  margin-left: 15px; }
-
 .squad-notes {
   color: black; }
 
@@ -484,3 +481,15 @@ svg > g.maneuver.backwards {
   clear: both;
   overflow: hidden;
   visibility: hidden; }
+
+::-webkit-scrollbar {
+  width: 5px; }
+
+::-webkit-scrollbar-track {
+  background: inherit; }
+
+::-webkit-scrollbar-thumb {
+  background: #888; }
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; }

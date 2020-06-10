@@ -56,7 +56,7 @@
   overflow: hidden;
   margin-bottom: 10px; }
   .fancy-ship .fancy-pilot-header {
-    border: 36px solid lightgray;
+    border: 34px solid lightgray;
     color: black;
     border-left-color: transparent;
     border-bottom-color: transparent;
@@ -65,8 +65,8 @@
     height: 0px; }
     .fancy-ship .fancy-pilot-header .pilot-header-text {
       position: absolute;
-      font-size: 28.8px;
-      margin-top: -43.2px;
+      font-size: 27.2px;
+      margin-top: -40.8px;
       font-weight: 100; }
       .fancy-ship .fancy-pilot-header .pilot-header-text .fancy-ship-type {
         display: none; }
@@ -74,42 +74,42 @@
       position: relative;
       float: right;
       clear: both;
-      right: -54px;
-      top: -36px;
-      width: 54px;
+      right: -51px;
+      top: -34px;
+      width: 51px;
       background-color: white;
-      height: 72px;
+      height: 68px;
       z-index: 999; }
     .fancy-ship .fancy-pilot-header .outer-circle {
-      width: 54px;
-      height: 54px;
-      border-radius: 27px;
-      margin-left: -27px;
+      width: 51px;
+      height: 51px;
+      border-radius: 25.5px;
+      margin-left: -25.5px;
       background-color: white; }
       .fancy-ship .fancy-pilot-header .outer-circle .inner-circle {
-        width: 44px;
-        height: 44px;
-        border-radius: 22px;
+        width: 41px;
+        height: 41px;
+        border-radius: 20.5px;
         background-color: gray;
         position: relative;
         top: 5px;
         left: 5px;
-        line-height: 49px;
-        font-size: 18px;
+        line-height: 46px;
+        font-size: 17px;
         text-align: center;
         color: white; }
   .fancy-ship .fancy-pilot-stats {
     position: relative;
-    left: 36px;
-    top: -36px;
-    border: 36px solid gray;
+    left: 34px;
+    top: -34px;
+    border: 34px solid gray;
     border-left-color: transparent;
     border-bottom-color: transparent;
     border-right-color: transparent;
-    margin-bottom: -72px; }
+    margin-bottom: -68px; }
     .fancy-ship .fancy-pilot-stats .pilot-stats-content {
       position: relative;
-      margin-top: -31px; }
+      margin-top: -29px; }
       .fancy-ship .fancy-pilot-stats .pilot-stats-content .xwing-miniatures-font {
         vertical-align: middle; }
   .fancy-ship .expanded-hull-or-shield {
@@ -132,7 +132,7 @@
     background-color: #a29199; }
   .fancy-ship .fancy-pilot-text {
     clear: both;
-    margin-left: 72px;
+    margin-left: 68px;
     padding: 5px; }
   .fancy-ship .fancy-upgrade-container {
     color: black;
@@ -155,31 +155,31 @@
         margin-left: 10px;
         display: inline-block;
         vertical-align: middle;
-        width: 40.5px;
-        height: 40.5px;
+        width: 38.25px;
+        height: 38.25px;
         z-index: 999;
         margin-right: 5px; }
       .fancy-ship .fancy-upgrade-container .upgrade-container .outer-circle {
-        width: 40.5px;
-        height: 40.5px;
-        border-radius: 20.25px;
+        width: 38.25px;
+        height: 38.25px;
+        border-radius: 19.125px;
         background-color: white; }
         .fancy-ship .fancy-upgrade-container .upgrade-container .outer-circle .inner-circle {
-          width: 35.5px;
-          height: 35.5px;
-          border-radius: 17.75px;
+          width: 33.25px;
+          height: 33.25px;
+          border-radius: 16.625px;
           background-color: gray;
           position: relative;
           top: 2.5px;
           left: 2.5px;
-          line-height: 40.5px;
-          font-size: 18px;
+          line-height: 38.25px;
+          font-size: 17px;
           text-align: center;
           color: white; }
       .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-name {
         display: inline-block;
         vertical-align: middle;
-        line-height: 40.5px;
+        line-height: 38.25px;
         float: left;
         text-align: left;
         margin-left: 10px;
@@ -213,7 +213,7 @@
       .fancy-ship .fancy-upgrade-container .upgrade-container .xwing-miniatures-font {
         vertical-align: middle; }
       .fancy-ship .fancy-upgrade-container .upgrade-container .upgrade-text {
-        padding-right: 40.5px;
+        padding-right: 38.25px;
         padding-left: 26px;
         margin-left: 10px; }
   .fancy-ship .ship-points-total {
