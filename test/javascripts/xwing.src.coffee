@@ -10074,7 +10074,7 @@ class exportObj.Collection
         @modal.role = "dialog"
         $('body').append @modal
         @modal.append $.trim """
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4>Your Collection</h4>

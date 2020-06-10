@@ -34,25 +34,6 @@ body {
   overflow-y: scroll;
   font-size: 0.9em; }
 
-.nav {
-  display: table;
-  width: 100%; }
-
-.nav-item {
-  float: left; }
-
-.nav-pills .nav-link.active {
-  background-color: #337ab7; }
-
-.nav-pills > .a:hover {
-  background-color: #000; }
-
-.nav-link {
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  padding-bottom: 0.25em;
-  color: #337ab7; }
-
 .notes-container {
   padding-right: 0px;
   padding-left: 0px; }
@@ -440,12 +421,6 @@ li.squad-summary {
 svg > g.maneuver.backwards {
   transform: translate(200px, 200px) rotate(180deg); }
 
-.main-top-nav-bar {
-  background-color: #101010;
-  padding-bottom: 1px;
-  padding-left: 4px;
-  margin-bottom: 10px; }
-
 #rebelTab, #empireTab, #scumTab, #resistanceTab, #firstorderTab, #republicTab, #separatistTab {
   padding-top: 5px; }
 
@@ -454,6 +429,26 @@ svg > g.maneuver.backwards {
 
 .xws-space {
   padding-left: 30px; }
+
+.main-top-nav-bar {
+  background-color: #101010;
+  padding-bottom: 1px;
+  padding-left: 4px;
+  margin-bottom: 10px; }
+
+.tabbable > .nav {
+  display: table;
+  width: 100%; }
+
+.main-top-nav-bar > .nav-item {
+  float: left; }
+
+.nav-pills .nav-link.active {
+  background-color: #337ab7; }
+
+.nav-item > .nav-link {
+  padding-left: 0.75em;
+  padding-right: 0.75em; }
 
 .conditions-container {
   padding-left: 10px; }
