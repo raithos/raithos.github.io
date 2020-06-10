@@ -9984,11 +9984,11 @@ class exportObj.Collection
                 card_totals_by_type[type] = 0
                 card_different_by_type[type] = 0
                 contents = component_content.append $.trim """
-                    <div class="row-fluid">
-                        <div class="span12"><h5>#{type.capitalize()}</h5></div>
+                    <div class="row">
+                        <div class="col"><h5>#{type.capitalize()}</h5></div>
                     </div>
-                    <div class="row-fluid">
-                        <ul id="counts-#{type}" class="span12"></ul>
+                    <div class="row">
+                        <ul id="counts-#{type}" class="col"></ul>
                     </div>
                 """
                 ul = $ contents.find("ul#counts-#{type}")
@@ -10008,11 +10008,11 @@ class exportObj.Collection
             summary += """<li>#{type.capitalize()} - #{card_totals_by_type[type]} (#{card_different_by_type[type]} different)</li>"""
 
         component_content.append $.trim """
-            <div class="row-fluid">
-                <div class="span12"><h5>Summary</h5></div>
+            <div class="row">
+                <div class="col"><h5>Summary</h5></div>
             </div>
-            <div class = "row-fluid">
-                <ul id="counts-summary" class="span12">
+            <div class = "row">
+                <ul id="counts-summary" class="col">
                     #{summary}
                 </ul>
             </div>
@@ -10122,8 +10122,8 @@ class exportObj.Collection
         for expansion in exportObj.expansions
             count = parseInt(@expansions[expansion] ? 0)
             row = $.parseHTML $.trim """
-                <div class="row-fluid">
-                    <div class="span12">
+                <div class="row">
+                    <div class="col">
                         <label>
                             <input class="expansion-count" type="number" size="3" value="#{count}" />
                             <span class="expansion-name">#{expansion}</span>
@@ -10142,8 +10142,8 @@ class exportObj.Collection
         for ship in singletonsByType.ship
             count = parseInt(@singletons.ship?[ship] ? 0)
             row = $.parseHTML $.trim """
-                <div class="row-fluid">
-                    <div class="span12">
+                <div class="row">
+                    <div class="col">
                         <label>
                             <input class="singleton-count" type="number" size="3" value="#{count}" />
                             <span class="ship-name">#{if exportObj.ships[ship].display_name then exportObj.ships[ship].display_name else ship}</span>
@@ -10162,8 +10162,8 @@ class exportObj.Collection
         for pilot in singletonsByType.pilot
             count = parseInt(@singletons.pilot?[pilot] ? 0)
             row = $.parseHTML $.trim """
-                <div class="row-fluid">
-                    <div class="span12">
+                <div class="row">
+                    <div class="col">
                         <label>
                             <input class="singleton-count" type="number" size="3" value="#{count}" />
                             <span class="pilot-name">#{if exportObj.pilots[pilot].display_name then exportObj.pilots[pilot].display_name else pilot}</span>
@@ -10182,8 +10182,8 @@ class exportObj.Collection
         for upgrade in singletonsByType.upgrade
             count = parseInt(@singletons.upgrade?[upgrade] ? 0)
             row = $.parseHTML $.trim """
-                <div class="row-fluid">
-                    <div class="span12">
+                <div class="row">
+                    <div class="col">
                         <label>
                             <input class="singleton-count" type="number" size="3" value="#{count}" />
                             <span class="upgrade-name">#{if exportObj.upgrades[upgrade].display_name then exportObj.upgrades[upgrade].display_name else upgrade}</span>
@@ -11112,7 +11112,7 @@ class exportObj.SquadBuilder
         @collection_button.click (e) =>
             e.preventDefault()
             unless @collection_button.prop('disabled')
-                @collection.modal()
+                @collection.modal.modal 'show'
 
         @squad_name_input.keypress (e) =>
             if e.which == 13
