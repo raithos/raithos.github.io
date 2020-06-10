@@ -175,7 +175,7 @@ class exportObj.SquadBuilderBackend
                         <div class="col-md-9">
                             #{squad.additional_data?.description}
                         </div>
-                        <div class="col-md-3">
+                        <div class="squad-buttons col-md-3">
                             <button class="btn convert-squad"><i class="xwing-miniatures-font xwing-miniatures-font-first-player-1"></i></button>
                             &nbsp;
                             <button class="btn load-squad"><i class="fa fa-download"></i></button>
@@ -187,7 +187,7 @@ class exportObj.SquadBuilderBackend
                         <div class="col-md-9">
                             Convert to Extended?
                         </div>
-                        <div class="col-md-3">
+                        <div class="squad-buttons col-md-3">
                             <button class="btn btn-danger confirm-convert-squad">Convert</button>
                             &nbsp;
                             <button class="btn cancel-convert-squad">Cancel</button>
@@ -1063,7 +1063,7 @@ class exportObj.CardBrowser
                         <h5 class="card-title">Card Search</h5>
                             <div class="advanced-search-container">
                                 <div class = "card search-container general-search-container">
-                                    <h6 class="card-subtitle mb-2 text-muted version">General</h6>
+                                    <h6 class="card-subtitle mb-3 text-muted version">General</h6>
                                     <label class = "text-search advanced-search-label">
                                     <strong>Textsearch: </strong>
                                         <input type="search" placeholder="Search for name, text or ship" class = "card-search-text">
@@ -1106,7 +1106,7 @@ class exportObj.CardBrowser
                                     </div>
                                 </div>
                                 <div class = "card search-container ship-search-container">
-                                    <h6 class="card-subtitle mb-2 text-muted version">Ships and Pilots</h6>
+                                    <h6 class="card-subtitle mb-3 text-muted version">Ships and Pilots</h6>
                                     <div class = "advanced-search-slot-available-container">
                                         <label class = "advanced-search-label select-available-slots">
                                             <strong>Slots: </strong>
@@ -1229,7 +1229,7 @@ class exportObj.CardBrowser
                                     </div>
                                 </div>
                                 <div class = "card search-container other-stuff-search-container">
-                                    <h6 class="card-subtitle mb-2 text-muted version">Other Stuff</h6>
+                                    <h6 class="card-subtitle mb-3 text-muted version">Other Stuff</h6>
                                     <div class = "advanced-search-slot-used-container">
                                         <label class = "advanced-search-label select-used-slots">
                                             <strong>Used slot: </strong>
@@ -11248,8 +11248,8 @@ class exportObj.SquadBuilder
                 <label class = "toggle-initiative-prefix-names misc-settings-label">
                     <input type="checkbox" class="initiative-prefix-names-checkbox misc-settings-checkbox" /> Put INI as prefix in front of names. 
                 </label><br />
-                <label class = "dee">
-                    <input type="checkbox" class="initiative-prefix-names-checkbox misc-settings-checkbox" checked /> Is Dee Yun the worst?
+                <label>
+                    <input type="checkbox" checked /> Is Dee Yun the worst?
                 </label>
             </div>
             <div class="modal-footer">

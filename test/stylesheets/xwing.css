@@ -34,10 +34,24 @@ body {
   overflow-y: scroll;
   font-size: 0.9em; }
 
+.nav {
+  display: table;
+  width: 100%; }
+
+.nav-item {
+  float: left; }
+
+.nav-pills .nav-link.active {
+  background-color: #337ab7; }
+
+.nav-pills > .a:hover {
+  background-color: #000; }
+
 .nav-link {
   padding-left: 0.5em;
   padding-right: 0.5em;
-  padding-bottom: 0.25em; }
+  padding-bottom: 0.25em;
+  color: #337ab7; }
 
 .notes-container {
   padding-right: 0px;
@@ -132,7 +146,7 @@ i.xwing-miniatures-font-attack, i.xwing-miniatures-font-attack-turret, i.xwing-m
 i.header-attack {
   color: #EF232B; }
 
-i.xwing-miniatures-font-frontarc, i.xwing-miniatures-font-reararc, i.xwing-miniatures-font-bullseyearc, i.xwing-miniatures-font-fullfrontarc {
+i.xwing-miniatures-font-frontarc, i.xwing-miniatures-font-reararc, i.xwing-miniatures-font-bullseyearc, i.xwing-miniatures-font-fullfrontarc, i.xwing-miniatures-font-rightarc, i.xwing-miniatures-font-leftarc {
   padding-left: 9px;
   padding-right: 9px;
   padding-bottom: 7px; }
@@ -252,7 +266,7 @@ f {
 
 .info-well {
   color: black;
-  margin: 15px 0px;
+  margin-bottom: 15px;
   padding: 8px; }
 
 .info-well table > tbody > tr > td:first-child {
@@ -448,6 +462,9 @@ svg > g.maneuver.backwards {
   padding-top: 5px;
   padding-bottom: 5px; }
 
+h6 {
+  padding-top: 10px; }
+
 .squad-tag {
   margin-top: 15px;
   margin-bottom: 15px; }
@@ -456,8 +473,8 @@ svg > g.maneuver.backwards {
   background-color: #151515;
   margin-bottom: 10px; }
 
-.main-top-nav-bar-button-right {
-  float: right !important; }
+.squad-buttons {
+  text-align: right; }
 
 ::-webkit-scrollbar {
   width: 5px; }
