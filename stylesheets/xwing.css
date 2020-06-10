@@ -29,8 +29,25 @@
 body {
   background-color: #202020;
   font-family: EurostileStandard;
+  color: white;
   overflow-x: hidden;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  font-size: 0.9em; }
+
+.nav-link {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-bottom: 0.25em; }
+
+.notes-container {
+  padding-right: 0px;
+  padding-left: 0px; }
+
+.btn {
+  font-size: 1em; }
+
+.button-container {
+  padding-right: 0px; }
 
 button {
   font-family: EurostileStandard; }
@@ -74,7 +91,7 @@ strong em, em strong {
 .xwing-card-browser .flavor_text {
   display: unset; }
 
-.ship-container > .row-fluid {
+.ship-container > .row {
   padding: 10px 0px; }
 
 .card-stat, .info-data.info-skill, .info-data.info-engagement, .info-data.info-attack, .info-data.info-energy, .info-data.info-agility, .info-data.info-hull, .info-data.info-shields, .info-data.info-force, .info-data.info-charge, .info-maneuvers table > tbody > tr > td:first-child {
@@ -99,8 +116,12 @@ strong em, em strong {
 td.info-header {
   padding: 3px; }
 
+i.xwing-miniatures-font {
+  position: relative;
+  bottom: 0.2em; }
+
 i.xwing-miniatures-font-focus {
-  font-size: 8px; }
+  font-size: 0.8em; }
 
 i.xwing-miniatures-font-rebel, i.xwing-miniatures-font-empire, i.xwing-miniatures-font-scum, i.xwing-miniatures-font-rebel-outline, i.xwing-miniatures-font-firstorder, i.xwing-miniatures-font-republic, i.xwing-miniatures-font-separatists {
   font-size: 2.0em !important; }
@@ -112,48 +133,53 @@ i.header-attack {
   color: #EF232B; }
 
 i.xwing-miniatures-font-frontarc, i.xwing-miniatures-font-reararc, i.xwing-miniatures-font-bullseyearc, i.xwing-miniatures-font-fullfrontarc {
-  padding-left: 6px;
-  padding-right: 6px; }
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-bottom: 7px; }
 
 i.xwing-miniatures-font-singleturretarc, i.xwing-miniatures-font-doubleturretarc {
-  padding-left: 9px;
-  padding-right: 10px; }
+  padding-left: 11px;
+  padding-right: 11px;
+  padding-bottom: 7px; }
 
 i.xwing-miniatures-font-rangebonusindicator {
   font-size: 1.1em; }
 
 i.header-energy {
   color: #C7B5E2;
-  padding-left: 5px;
-  padding-right: 5px; }
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-bottom: 8px; }
 
 i.header-agility {
   color: #6BBE44;
-  padding-left: 5px;
-  padding-right: 4px; }
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-bottom: 6px; }
 
 i.header-hull {
   color: #B6B335;
-  padding-left: 7px;
-  padding-right: 7px; }
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 7px; }
 
 i.header-shield {
   color: #7ED3E5;
-  padding-left: 6px;
-  padding-right: 6.5px;
-  padding-bottom: 2px; }
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px; }
 
 i.header-force {
   color: #9D899D;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-bottom: 5px; }
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-bottom: 7px; }
 
 i.header-charge {
   color: #C2B230;
-  padding-left: 7px;
-  padding-right: 7px;
-  padding-bottom: 3px; }
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-bottom: 7px; }
 
 i.header-range {
   vertical-align: middle;
@@ -226,7 +252,8 @@ f {
 
 .info-well {
   color: black;
-  margin-top: 10px; }
+  margin: 15px 0px;
+  padding: 8px; }
 
 .info-well table > tbody > tr > td:first-child {
   font-weight: bold;
@@ -306,7 +333,8 @@ ul.nav li.dropdown ul.dropdown-menu li:hover {
   background-color: #333; }
 
 input[type=number] {
-  width: 3em; }
+  width: 4em;
+  font-size: 15px; }
 
 input[type=search].card-search-text {
   width: 90%;
@@ -347,6 +375,9 @@ input[type=search].card-search-text {
 
 .misc-settings-infoline {
   color: green; }
+
+span.select2-chosen > i.xwing-miniatures-font {
+  font-size: 1.1em; }
 
 .select2-results .select2-result-not-in-collection {
   color: #a00; }
@@ -407,22 +438,34 @@ svg > g.maneuver.backwards {
 #xws {
   margin-top: 10px; }
 
-.obstacles-container {
-  padding-left: 10px; }
+.xws-space {
+  padding-left: 30px; }
 
 .conditions-container {
-  margin-left: 15px;
   padding-left: 10px; }
 
-.row-fluid .ship {
-  margin-top: 10px;
-  padding-left: 10px; }
+.row .ship {
+  margin-top: 10px; }
+
+.squad-tag {
+  margin-top: 15px;
+  margin-bottom: 15px; }
 
 .squad-name-and-points-row {
   background-color: #151515;
-  padding: 10px;
-  margin-bottom: 10px;
-  margin-left: -10px; }
+  margin-bottom: 10px; }
 
 .main-top-nav-bar-button-right {
   float: right !important; }
+
+::-webkit-scrollbar {
+  width: 5px; }
+
+::-webkit-scrollbar-track {
+  background: inherit; }
+
+::-webkit-scrollbar-thumb {
+  background: #888; }
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; }

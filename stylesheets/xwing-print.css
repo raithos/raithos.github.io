@@ -1,7 +1,6 @@
 body {
   -webkit-print-color-adjust: exact;
   color-adjust: exact !important;
-  background-color: transparent !important;
   zoom: 75%; }
 
 .modal-backdrop {
@@ -83,7 +82,7 @@ body {
     #printable .fancy-header .squad-name {
       position: absolute;
       font-size: 0.28125in;
-      margin-top: 0.075in;
+      margin-top: 0.0375in;
       font-weight: 100; }
       #printable .fancy-header .squad-name .xwing-miniatures-font {
         font-size: 0.2625in; }
@@ -143,7 +142,7 @@ body {
       #printable .fancy-ship .fancy-pilot-header .pilot-header-text {
         position: absolute;
         font-size: 0.225in;
-        margin-top: -0.225in;
+        margin-top: -0.36in;
         font-weight: 100; }
         #printable .fancy-ship .fancy-pilot-header .pilot-header-text .fancy-ship-type {
           font-style: italic;
