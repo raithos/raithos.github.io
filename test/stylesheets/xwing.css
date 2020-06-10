@@ -445,7 +445,8 @@ svg > g.maneuver.backwards {
   padding-left: 10px; }
 
 .row .ship {
-  margin-top: 10px; }
+  padding-top: 5px;
+  padding-bottom: 5px; }
 
 .squad-tag {
   margin-top: 15px;

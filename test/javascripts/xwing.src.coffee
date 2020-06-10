@@ -172,10 +172,10 @@ class exportObj.SquadBuilderBackend
                         </div>
                     </div>
                     <div class="row squad-description">
-                        <div class="col-md-8">
+                        <div class="col-md-9">
                             #{squad.additional_data?.description}
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <button class="btn convert-squad"><i class="xwing-miniatures-font xwing-miniatures-font-first-player-1"></i></button>
                             &nbsp;
                             <button class="btn load-squad"><i class="fa fa-download"></i></button>
@@ -184,20 +184,20 @@ class exportObj.SquadBuilderBackend
                         </div>
                     </div>
                     <div class="row squad-convert-confirm">
-                        <div class="col-md-8">
+                        <div class="col-md-9">
                             Convert to Extended?
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <button class="btn btn-danger confirm-convert-squad">Convert</button>
                             &nbsp;
                             <button class="btn cancel-convert-squad">Cancel</button>
                         </div>
                     </div>
                     <div class="row squad-delete-confirm">
-                        <div class="col-md-8">
+                        <div class="col-md-9">
                             Really delete <em>#{squad.name}</em>?
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <button class="btn btn-danger confirm-delete-squad">Delete</button>
                             &nbsp;
                             <button class="btn cancel-delete-squad">Cancel</button>
