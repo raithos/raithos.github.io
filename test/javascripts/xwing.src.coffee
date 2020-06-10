@@ -163,7 +163,7 @@ class exportObj.SquadBuilderBackend
                 else
                     hasNotArchivedSquads = true
                 li.append $.trim """
-                    <div class="row-fluid">
+                    <div class="row">
                         <div class="col-md-9">
                             <h4>#{squad.name}</h4>
                         </div>
@@ -171,7 +171,7 @@ class exportObj.SquadBuilderBackend
                             <h5>#{squad.additional_data?.points} Points</h5>
                         </div>
                     </div>
-                    <div class="row-fluid squad-description">
+                    <div class="row squad-description">
                         <div class="col-md-8">
                             #{squad.additional_data?.description}
                         </div>
@@ -183,7 +183,7 @@ class exportObj.SquadBuilderBackend
                             <button class="btn btn-danger delete-squad"><i class="fa fa-times"></i></button>
                         </div>
                     </div>
-                    <div class="row-fluid squad-convert-confirm">
+                    <div class="row squad-convert-confirm">
                         <div class="col-md-8">
                             Convert to Extended?
                         </div>
@@ -193,7 +193,7 @@ class exportObj.SquadBuilderBackend
                             <button class="btn cancel-convert-squad">Cancel</button>
                         </div>
                     </div>
-                    <div class="row-fluid squad-delete-confirm">
+                    <div class="row squad-delete-confirm">
                         <div class="col-md-8">
                             Really delete <em>#{squad.name}</em>?
                         </div>
