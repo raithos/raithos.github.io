@@ -10082,11 +10082,11 @@ class exportObj.Collection
             </div>
             <div class="modal-body">
                 <ul class="nav nav-tabs" id="collectionTabs" role="tablist">
-                    <li class="nav-item active" id="collection-expansions-tab" role="presentation"><a data-target="#collection-expansions" data-toggle="tab" role="tab" aria-controls="collection-expansions" aria-selected="true">Expansions</a><li>
-                    <li class="nav-item" id="collection-ships-tab" role="presentation"><a href="#collection-ships" data-toggle="tab" role="tab" aria-controls="collection-ships" aria-selected="false">Ships</a><li>
-                    <li class="nav-item" id="collection-pilots-tab" role="presentation"><a href="#collection-pilots" data-toggle="tab" role="tab" aria-controls="collection-pilots" aria-selected="false">Pilots</a><li>
-                    <li class="nav-item" id="collection-upgrades-tab" role="presentation"><a href="#collection-upgrades" data-toggle="tab" role="tab" aria-controls="collection-upgrades" aria-selected="false">Upgrades</a><li>
-                    <li class="nav-item" id="collection-components-tab" role="presentation"><a href="#collection-components" data-toggle="tab" role="tab" aria-controls="collection-components" aria-selected="false">Inventory</a><li>
+                    <li class="nav-item active" id="collection-expansions-tab" role="presentation"><a data-target="#collection-expansions" class="nav-link" data-toggle="tab" role="tab" aria-controls="collection-expansions" aria-selected="true">Expansions</a><li>
+                    <li class="nav-item" id="collection-ships-tab" role="presentation"><a href="#collection-ships" class="nav-link" data-toggle="tab" role="tab" aria-controls="collection-ships" aria-selected="false">Ships</a><li>
+                    <li class="nav-item" id="collection-pilots-tab" role="presentation"><a href="#collection-pilots" class="nav-link" data-toggle="tab" role="tab" aria-controls="collection-pilots" aria-selected="false">Pilots</a><li>
+                    <li class="nav-item" id="collection-upgrades-tab" role="presentation"><a href="#collection-upgrades" class="nav-link" data-toggle="tab" role="tab" aria-controls="collection-upgrades" aria-selected="false">Upgrades</a><li>
+                    <li class="nav-item" id="collection-components-tab" role="presentation"><a href="#collection-components" class="nav-link" data-toggle="tab" role="tab" aria-controls="collection-components" aria-selected="false">Inventory</a><li>
                 </ul>
                 <div class="tab-content" id="collectionTabContent">
                     <div id="collection-expansions" role="tabpanel" aria-labelledby="collection-expansions-tab" class="tab-pane fade show active container-fluid collection-content"></div>
