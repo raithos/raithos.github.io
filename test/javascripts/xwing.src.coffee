@@ -550,25 +550,25 @@ class exportObj.SquadBuilderBackend
                 </p>
             </div>
             <div class="modal-footer">
-                <div class="btn-group delete-multiple-squads">
+                <div class="btn-group delete-multiple-squads full-row">
                     <button class="btn select-all">Select All</button>
                     <button class="btn archive-selected">Archive Selected</button>
                     <button class="btn btn-danger delete-selected">Delete Selected</button>
                 </div>
-                <div class="btn-group squad-display-mode">
+                <div class="btn-group squad-display-mode full-row">
                     <button class="btn btn-inverse show-all-squads">All</button>
-                    <button class="btn show-extended-squads">Ext<span class="d-none d-sm-block">ended</span></button>
-                    <button class="btn show-hyperspace-squads">Hyper<span class="d-none d-sm-block">space</span></button>
-                    <button class="btn show-quickbuild-squads">Quick<span class="d-none d-sm-block">build</span></button>
+                    <button class="btn show-extended-squads"><span class="d-none d-lg-block">Extended</span><span class="d-lg-none">Ext</span></button>
+                    <button class="btn show-hyperspace-squads"><span class="d-none d-lg-block">Hyperspace</span><span class="d-lg-none">Hyper</span></button>
+                    <button class="btn show-quickbuild-squads"><span class="d-none d-lg-block">Quickbuild</span><span class="d-lg-none">QB</span></button>
                     <button class="btn show-epic-squads">Epic</button>
                     <button class="btn show-archived-squads">Archived</button>
                 </div>
-                <br />
-                <div class="btn-group tags-display">
+                <div class="btn-group tags-display full-row">
                 </div>
-                <br />
-                <button class="btn btn reload-all">Reload<span class="d-none d-sm-block"> all squads (this might take a while)</span></button>
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <div class="full-row">
+                    <button class="btn btn reload-all">Reload<span class="d-none d-sm-block"> all squads (this might take a while)</span></button>
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
             </div>
         </div>
     </div>
@@ -10739,8 +10739,8 @@ class exportObj.SquadBuilder
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="randomize-options">Randomizer Options</a></li>
-                            <li><a class="misc-settings">Misc Settings</a></li>
+                            <li><a class="dropdown-item randomize-options">Randomizer Options</a></li>
+                            <li><a class="dropdown-item misc-settings">Misc Settings</a></li>
                         </ul>
                         
 
@@ -10748,7 +10748,7 @@ class exportObj.SquadBuilder
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row squad-save-buttons">
                 <div class="col-md-12">
                     <button class="show-authenticated btn btn-primary save-list"><i class="far fa-save"></i>&nbsp;Save</button>
                     <button class="show-authenticated btn btn-primary save-list-as"><i class="far fa-file"></i>&nbsp;Save As...</button>
@@ -10814,8 +10814,8 @@ class exportObj.SquadBuilder
                 </div>
             </div>
             <div class="container-fluid modal-footer d-print-none">
-                <div class="row">
-                    <div class="col">
+                <div class="row full-row">
+                    <div class="col right-col">
                         <label class="color-skip-text-checkbox hidden-xs">
                             Skip Card Text <input type="checkbox" class="toggle-skip-text-print" />
                         </label><br />
@@ -10829,7 +10829,7 @@ class exportObj.SquadBuilder
                             Expand Shield and Hull <input type="checkbox" class="toggle-expanded-shield-hull-print" />
                         </label>
                     </div>
-                    <div class="col">
+                    <div class="col right-col">
                         <label class="color-print-checkbox hidden-xs">
                             Print Color <input type="checkbox" class="toggle-color-print" checked="checked" />
                         </label><br />
@@ -11410,7 +11410,7 @@ class exportObj.SquadBuilder
         content_container.append $.trim """
             <div class="row">
                 <div class="col-md-9 ship-container">
-                    <label class="notes-container col-md-8">
+                    <label class="notes-container col-md-10">
                         <span class="notes-name">Squad Notes:</span>
                         <br />
                         <textarea class="squad-notes"></textarea>
@@ -14921,7 +14921,7 @@ class GenericAddon
                     #{attackHTML}
                     #{chargeHTML}
                     #{forceHTML}
-                    <div class="row upgrade-text">#{text_str}</div>
+                    <div class="upgrade-text">#{text_str}</div>
                     <div style="clear: both;"></div>
                 </div>
             """

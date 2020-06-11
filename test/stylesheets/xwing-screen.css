@@ -66,7 +66,7 @@
     .fancy-ship .fancy-pilot-header .pilot-header-text {
       position: absolute;
       font-size: 27.2px;
-      margin-top: -51px;
+      margin-top: -44.2px;
       font-weight: 100; }
       .fancy-ship .fancy-pilot-header .pilot-header-text .fancy-ship-type {
         display: none; }
@@ -109,7 +109,7 @@
     margin-bottom: -68px; }
     .fancy-ship .fancy-pilot-stats .pilot-stats-content {
       position: relative;
-      margin-top: -29px; }
+      margin-top: -32px; }
       .fancy-ship .fancy-pilot-stats .pilot-stats-content .xwing-miniatures-font {
         vertical-align: middle; }
   .fancy-ship .expanded-hull-or-shield {
@@ -133,7 +133,8 @@
   .fancy-ship .fancy-pilot-text {
     clear: both;
     margin-left: 68px;
-    padding: 5px; }
+    padding: 5px;
+    width: 80%; }
   .fancy-ship .fancy-upgrade-container {
     color: black;
     position: relative; }

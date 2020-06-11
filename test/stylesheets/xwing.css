@@ -89,6 +89,12 @@ strong em, em strong {
 .ship-container > .row {
   padding: 10px 0px; }
 
+.right-col {
+  text-align: right; }
+
+.full-row {
+  width: 100%; }
+
 .card-stat, .info-data.info-skill, .info-data.info-engagement, .info-data.info-attack, .info-data.info-energy, .info-data.info-agility, .info-data.info-hull, .info-data.info-shields, .info-data.info-force, .info-data.info-charge, .info-maneuvers table > tbody > tr > td:first-child {
   font-family: kimberley;
   font-size: 1.5em; }
@@ -291,6 +297,10 @@ div.tab-content {
 .squad-list > li:hover {
   background-color: #ccc; }
 
+upgrade-text {
+  float: left;
+  width: 90%; }
+
 select.card-selector {
   width: 100%; }
 
@@ -410,10 +420,8 @@ li.squad-summary {
 .card-search-container {
   color: black; }
 
-.nav-tabs > .active > a,
-.nav-tabs > .active > a:focus,
-.nav-tabs > .active > a:hover {
-  background-color: lightgray; }
+squad-save-buttons {
+  margin-bottom: 10px; }
 
 .collection-inventory-content ul {
   list-style-type: none; }
@@ -451,8 +459,21 @@ svg > g.maneuver.backwards {
   padding-right: 0.75em;
   color: #337ab7; }
 
+.nav-item > .nav-link:hover {
+  color: #FFF;
+  background-color: #337ab7; }
+
+a.dropdown-item:Hover {
+  color: #FFF;
+  background-color: #337ab7; }
+
 .conditions-container {
   padding-left: 10px; }
+
+.upgrade-text {
+  float: left;
+  width: 80%;
+  margin: 5px; }
 
 .row .ship {
   padding-top: 5px;
