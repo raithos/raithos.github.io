@@ -10724,10 +10724,10 @@ class exportObj.SquadBuilder
                 <div class="col-md-5 float-right button-container">
                     <div class="btn-group float-right">
 
-                        <button class="btn btn-primary view-as-text"><span class="d-none d-sm-block"><i class="fa fa-print"></i>&nbsp;Print/View as Text</span><span class="d-block d-sm-none">Text</span></button>
-                        <a class="btn btn-primary d-none collection"><span class="d-none d-sm-block"><i class="fa fa-folder-open"></i> Your Collection</span><span class="d-block d-sm-none">Collection</span></a>
+                        <button class="btn btn-primary view-as-text"><span class="d-none d-lg-block"><i class="fa fa-print"></i>&nbsp;Print/View as Text</span><span class="d-lg-none"><i class="fa fa-print"></i></span></button>
+                        <a class="btn btn-primary d-none collection"><span class="d-none d-lg-block"><i class="fa fa-folder-open"></i> Your Collection</span><span class="d-lg-none"><i class="fa fa-folder-open"></i></span></a>
                         <!-- Randomize button is marked as danger, since it creates a new squad -->
-                        <button class="btn btn-danger randomize"><span class="d-none d-sm-block"><i class="fa fa-random"></i> Randomize!</span><span class="d-block d-sm-none">Random!</span></button>
+                        <button class="btn btn-danger randomize"><span class="d-none d-lg-block"><i class="fa fa-random"></i> Randomize!</span><span class="d-lg-none"><i class="fa fa-random"></i></span></button>
                         <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
                             <span class="caret"></span>
                         </button>
@@ -13890,7 +13890,7 @@ class Ship
             <div class="col-md-2 button-container">
                 <button class="btn btn-danger remove-pilot side-button"><span class="d-none d-sm-block" data-toggle="tooltip" title="Remove Pilot"><i class="fa fa-times"></i></span><span class="d.block d-sm-none"> Remove Pilot</span></button>
                 <button class="btn btn-light copy-pilot side-button"><span class="d-none d-sm-block" data-toggle="tooltip" title="Clone Pilot"><i class="far fa-copy"></i></span><span class="d.block d-sm-none"> Clone Pilot</span></button>&nbsp;&nbsp;&nbsp;
-                <button class="btn btn-light points-destroyed side-button" points-state"><span class="d-none d-sm-block destroyed-type" data-toggle="tooltip" title="Destroyed Points"><i class="xwing-miniatures-font xwing-miniatures-font-title"></i></span><span class="d.block d-sm-none">: Destroyed</span></button>
+                <button class="btn btn-light points-destroyed side-button" points-state"><span class="destroyed-type" data-toggle="tooltip" title="Calculate Half/Full Points Destroyed"><i class="xwing-miniatures-font xwing-miniatures-font-title"></i></span></button>
             </div>
         '''
         @row.find('.button-container span').tooltip()
