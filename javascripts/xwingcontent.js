@@ -8748,7 +8748,7 @@ exportObj.basicCardData = function() {
         pilot: "Chewbacca",
         ship: "YT-1300",
         threat: 6,
-        upgrades: ["Predator", "C-3PO", "Leia Organa", "R2-D2", "Han Solo", "Luke Skywalker", "Engine Upgrade", "Millennium Falcon"]
+        upgrades: ["Predator", "C-3PO", "Leia Organa", "R2-D2 (Crew)", "Han Solo", "Luke Skywalker", "Engine Upgrade", "Millennium Falcon"]
       }, {
         id: 130,
         faction: "Rebel Alliance",
@@ -9331,7 +9331,7 @@ exportObj.basicCardData = function() {
         faction: "Scum and Villainy",
         pilot: "Captain Jostero",
         ship: "Kihraxz Fighter",
-        threat: 3,
+        threat: 2,
         upgrades: ["Ion Missiles", "Munitions Failsafe"]
       }, {
         id: 212,
@@ -9573,7 +9573,7 @@ exportObj.basicCardData = function() {
         pilot: "Kaa'to Leeachos",
         ship: "Z-95 Headhunter",
         threat: 2,
-        upgrades: ["Expert Handling", "Concussion Missiles", "Contraband Cybernetics", "Afterburners"]
+        upgrades: ["Expert Handling", "Cluster Missiles", "Contraband Cybernetics", "Afterburners"]
       }, {
         id: 245,
         faction: "Scum and Villainy",
@@ -9936,7 +9936,7 @@ exportObj.basicCardData = function() {
         pilot: "Resistance Sympathizer",
         ship: "Scavenged YT-1300",
         threat: 4,
-        upgrades: ["Debris Gambit", "C-3PO", "Chewbacca", "Han Solo"]
+        upgrades: ["Debris Gambit", "C-3PO", "Chewbacca", "Han Solo (Resistance)"]
       }, {
         id: 295,
         faction: "Rebel Alliance",
@@ -10023,7 +10023,7 @@ exportObj.basicCardData = function() {
         linkedId: 306,
         suffix: " + Lando Calrissian",
         threat: 5,
-        upgrades: ["Han Solo (Scum)", "Qi'ra", "Hull Upgrade", "Outmaneuver"]
+        upgrades: ["Han Solo (Scum)", "Qi'ra", "Hull Upgrade", "Outmaneuver", "Lando's Millennium Falcon"]
       }, {
         id: 306,
         faction: "Scum and Villainy",
@@ -10380,7 +10380,7 @@ exportObj.basicCardData = function() {
         pilot: "Nodin Chavdri",
         ship: "Resistance Transport",
         threat: 2,
-        upgrades: ["Proton Torpedoes", "R2-HA", "Angled Deflectors"]
+        upgrades: ["Plasma Torpedoes", "R2-HA", "Angled Deflectors"]
       }, {
         id: 356,
         faction: "Resistance",
@@ -10576,14 +10576,14 @@ exportObj.basicCardData = function() {
         pilot: "Kazuda Xiono",
         ship: "Fireball",
         threat: 2,
-        upgrades: ["Kaz's Fireball", "Advanced SLAM", "Mag-Pulse Warheads", "Coaxium Hyperfuel", "R1-J5", "Outmaneuver"]
+        upgrades: ["Kaz's Fireball", "Advanced SLAM", "Coaxium Hyperfuel", "R1-J5", "Outmaneuver"]
       }, {
         id: 383,
         faction: "Resistance",
         pilot: "R1-J5",
         ship: "Fireball",
         threat: 2,
-        upgrades: ["Targeting Computer", "Advanced SLAM", "Mag-Pulse Warheads", "Coaxium Hyperfuel"]
+        upgrades: ["Targeting Computer", "Afterburners", "Mag-Pulse Warheads", "Coaxium Hyperfuel"]
       }, {
         id: 384,
         faction: "Resistance",
@@ -10864,6 +10864,251 @@ exportObj.basicCardData = function() {
         upgrades: ["Fearless"],
         linkedId: 416,
         wingmate: true
+      }, {
+        id: 418,
+        faction: "Rebel Alliance",
+        pilot: "Gina Moonsong",
+        ship: "B-Wing",
+        threat: 3,
+        upgrades: ["Elusive", "Afterburners", "Passive Sensors", "Stabilized S-Foils", "Autoblasters"]
+      }, {
+        id: 419,
+        faction: "Rebel Alliance",
+        pilot: "Leia Organa",
+        ship: "YT-1300",
+        threat: 4,
+        upgrades: ["Chewbacca", "Millennium Falcon", "Lando Calrissian", "Engine Upgrade", "R2-D2"]
+      }, {
+        id: 420,
+        faction: "Rebel Alliance",
+        pilot: "Blue Squadron Pilot",
+        ship: "B-Wing",
+        threat: 2,
+        upgrades: ["Passive Sensors", "Stabilized S-Foils", "Plasma Torpedoes"]
+      }, {
+        id: 421,
+        faction: "Rebel Alliance",
+        pilot: "Blade Squadron Veteran",
+        ship: "B-Wing",
+        threat: 3,
+        upgrades: ["Snap Shot", "Stabilized S-Foils", "Autoblasters", "Proton Torpedoes", "Angled Deflectors"]
+      }, {
+        id: 422,
+        faction: "Rebel Alliance",
+        pilot: "Outer Rim Smuggler",
+        ship: "YT-1300",
+        threat: 3,
+        upgrades: ["Homing Missiles", "Shield Upgrade"]
+      }, {
+        id: 423,
+        faction: "Rebel Alliance",
+        pilot: "Alexsandr Kallus",
+        ship: "VCX-100",
+        threat: 4,
+        upgrades: ["Passive Sensors", "Ghost", "Proton Torpedoes", "Shield Upgrade", '"Zeb" Orrelios']
+      }, {
+        id: 424,
+        faction: "Rebel Alliance",
+        pilot: "Lothal Rebel",
+        ship: "VCX-100",
+        threat: 3,
+        upgrades: ["Passive Sensors", "Plasma Torpedoes"]
+      }, {
+        id: 425,
+        faction: "Rebel Alliance",
+        pilot: "Partisan Renegade",
+        ship: "U-Wing",
+        threat: 3,
+        upgrades: ["Magva Yarro", "Deadman's Switch", "Pivot Wing", "Saw Gerrera"]
+      }, {
+        id: 426,
+        faction: "Resistance",
+        pilot: "Blue Squadron Recruit",
+        ship: "RZ-2 A-Wing",
+        threat: 2,
+        upgrades: ["Primed Thrusters", "Composure", "Snap Shot"]
+      }, {
+        id: 427,
+        faction: "Resistance",
+        pilot: "Ronith Blario",
+        ship: "RZ-2 A-Wing",
+        threat: 2,
+        upgrades: ["Mag-Pulse Warheads", "Pattern Analyzer", "Snap Shot"]
+      }, {
+        id: 428,
+        faction: "Resistance",
+        pilot: "Zizi Tlo",
+        ship: "RZ-2 A-Wing",
+        threat: 2,
+        upgrades: ["Elusive", "Advanced Optics", "Snap Shot", "Afterburners"]
+      }, {
+        id: 429,
+        faction: "Resistance",
+        pilot: "Cobalt Squadron Bomber",
+        ship: "MG-100 StarFortress",
+        threat: 3,
+        upgrades: ["Passive Sensors", "Conner Nets", "Hull Upgrade", "Agile Gunner"]
+      }, {
+        id: 430,
+        faction: "Resistance",
+        pilot: "Paige Tico",
+        ship: "MG-100 StarFortress",
+        threat: 3,
+        upgrades: ["Rose Tico", "Proton Bombs", "Skilled Bombardier"]
+      }, {
+        id: 431,
+        faction: "Scum and Villainy",
+        pilot: "Bossk",
+        ship: "Z-95 Headhunter",
+        threat: 2,
+        upgrades: ["Predator", "Snap Shot", "Afterburners"]
+      }, {
+        id: 432,
+        faction: "Scum and Villainy",
+        pilot: "Binayre Pirate",
+        ship: "Z-95 Headhunter",
+        threat: 2,
+        upgrades: ["Concussion Missiles", "Snap Shot", "Afterburners"]
+      }, {
+        id: 433,
+        faction: "Scum and Villainy",
+        pilot: "Black Sun Soldier",
+        ship: "Z-95 Headhunter",
+        threat: 1,
+        upgrades: ["Composure"]
+      }, {
+        id: 434,
+        faction: "Scum and Villainy",
+        pilot: "Contracted Scout",
+        ship: "JumpMaster 5000",
+        threat: 2,
+        upgrades: ["Plasma Torpedoes"]
+      }, {
+        id: 435,
+        faction: "Scum and Villainy",
+        pilot: "Nom Lumb",
+        ship: "JumpMaster 5000",
+        threat: 3,
+        upgrades: ["Proton Torpedoes", "Snap Shot", "Afterburners", "Dengar", "Deadman's Switch"]
+      }, {
+        id: 436,
+        faction: "Scum and Villainy",
+        pilot: "Tansarii Point Veteran",
+        ship: "M3-A Interceptor",
+        threat: 2,
+        upgrades: ["Outmaneuver", "Munitions Failsafe", "Plasma Torpedoes"]
+      }, {
+        id: 437,
+        faction: "Scum and Villainy",
+        pilot: "G4R-GOR V/M",
+        ship: "M3-A Interceptor",
+        threat: 2,
+        upgrades: ["Intimidation", "Shield Upgrade", "Deadman's Switch", "Autoblasters"]
+      }, {
+        id: 438,
+        faction: "Scum and Villainy",
+        pilot: "Cartel Spacer",
+        ship: "M3-A Interceptor",
+        threat: 2,
+        upgrades: ["Snap Shot", "Shield Upgrade", "Autoblasters"]
+      }, {
+        id: 439,
+        faction: "Galactic Empire",
+        pilot: "Patrol Leader",
+        ship: "VT-49 Decimator",
+        threat: 3,
+        upgrades: ["Hull Upgrade", "Tactical Scrambler"]
+      }, {
+        id: 440,
+        faction: "Galactic Empire",
+        pilot: "Morna Kee",
+        ship: "VT-49 Decimator",
+        threat: 4,
+        upgrades: ["Shield Upgrade", "Plasma Torpedoes", "Proximity Mines", 'GNK "Gonk" Droid']
+      }, {
+        id: 441,
+        faction: "Galactic Empire",
+        pilot: "Black Squadron Scout",
+        ship: "TIE Striker",
+        threat: 2,
+        upgrades: ["Snap Shot", "Targeting Computer"]
+      }, {
+        id: 442,
+        faction: "Galactic Empire",
+        pilot: '"Vagabond"',
+        ship: "TIE Striker",
+        threat: 3,
+        upgrades: ["Outmaneuver", "Afterburners", "Skilled Bombardier", "Proton Bombs"]
+      }, {
+        id: 443,
+        faction: "Galactic Empire",
+        pilot: "Planetary Sentinel",
+        ship: "TIE Striker",
+        threat: 2,
+        upgrades: ["Conner Nets", "Trick Shot"]
+      }, {
+        id: 444,
+        faction: "Galactic Empire",
+        pilot: "Inquisitor",
+        ship: "TIE Advanced Prototype",
+        threat: 2,
+        upgrades: ["Brilliant Evasion", "Afterburners"]
+      }, {
+        id: 445,
+        faction: "Galactic Empire",
+        pilot: "Baron of the Empire",
+        ship: "TIE Advanced Prototype",
+        threat: 2,
+        upgrades: ["Snap Shot", "Mag-Pulse Warheads"]
+      }, {
+        id: 446,
+        faction: "Galactic Empire",
+        pilot: "Fifth Brother",
+        ship: "TIE Advanced Prototype",
+        threat: 2,
+        upgrades: ["Foresight"]
+      }, {
+        id: 447,
+        faction: "First Order",
+        pilot: "Zeta Squadron Survivor",
+        ship: "TIE/SF Fighter",
+        threat: 2,
+        upgrades: ["Passive Sensors", "Advanced Optics", "Proud Tradition"]
+      }, {
+        id: 448,
+        faction: "First Order",
+        pilot: "Lieutenant LeHuse",
+        ship: "TIE/SF Fighter",
+        threat: 2,
+        upgrades: ["Elusive", "Mag-Pulse Warheads", "Angled Deflectors"]
+      }, {
+        id: 449,
+        faction: "First Order",
+        pilot: "Captain Phasma",
+        ship: "TIE/SF Fighter",
+        threat: 3,
+        upgrades: ["Advanced Optics", "Ion Missiles", "Special Forces Gunner", "Outmaneuver", "Shield Upgrade"]
+      }, {
+        id: 450,
+        faction: "First Order",
+        pilot: "First Order Test Pilot",
+        ship: "TIE/VN Silencer",
+        threat: 3,
+        upgrades: ["Proud Tradition", "Plasma Torpedoes", "Passive Sensors"]
+      }, {
+        id: 451,
+        faction: "First Order",
+        pilot: "Sienar-Jaemus Engineer",
+        ship: "TIE/VN Silencer",
+        threat: 3,
+        upgrades: ["Afterburners", "Mag-Pulse Warheads", "Passive Sensors", "Snap Shot"]
+      }, {
+        id: 452,
+        faction: "First Order",
+        pilot: '"Rush"',
+        ship: "TIE/VN Silencer",
+        threat: 3,
+        upgrades: ["Primed Thrusters", "Angled Deflectors", "Proton Torpedoes"]
       }
     ]
   };
