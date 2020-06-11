@@ -1273,97 +1273,7 @@ class exportObj.CardBrowser
                         <div class="card card-viewer-placeholder info-well">
                             <p class="translate select-a-card">Select a card from the list at the left.</p>
                         </div>
-                        <div class="card card-viewer-container info-well">
-                            <span class="info-name"></span>
-                            <br />
-                            <span class="info-type"></span>
-                            <br />
-                            <span class="info-collection"></span>
-                            <table class="table-sm">
-                                <tbody>
-                                    <tr class="info-ship">
-                                        <td class="col-3 info-header">Ship</td>
-                                        <td class="col-9 info-data"></td>
-                                    </tr>
-                                    <tr class="info-base">
-                                        <td class="col-3 info-header">Base</td>
-                                        <td class="col-9 info-data"></td>
-                                    </tr>
-                                    <tr class="info-skill">
-                                        <td class="col-3 info-header">Initiative</td>
-                                        <td class="col-9 info-data info-skill"></td>
-                                    </tr>
-                                    <tr class="info-energy">
-                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-energy xwing-miniatures-font-energy"></i></td>
-                                        <td class="col-9 info-data info-energy"></td>
-                                    </tr>
-                                    <tr class="info-attack">
-                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-frontarc"></i></td>
-                                        <td class="col-9 info-data info-attack"></td>
-                                    </tr>
-                                    <tr class="info-attack-fullfront">
-                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc"></i></td>
-                                        <td class="col-9 info-data info-attack"></td>
-                                    </tr>
-                                    <tr class="info-attack-bullseye">
-                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc"></i></td>
-                                        <td class="col-9 info-data info-attack"></td>
-                                    </tr>
-                                    <tr class="info-attack-back">
-                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-reararc"></i></td>
-                                        <td class="col-9 info-data info-attack"></td>
-                                    </tr>
-                                    <tr class="info-attack-turret">
-                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc"></i></td>
-                                        <td class="col-9 info-data info-attack"></td>
-                                    </tr>
-                                    <tr class="info-attack-doubleturret">
-                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc"></i></td>
-                                        <td class="col-9 info-data info-attack"></td>
-                                    </tr>
-                                    <tr class="info-agility">
-                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-agility xwing-miniatures-font-agility"></i></td>
-                                        <td class="col-9 info-data info-agility"></td>
-                                    </tr>
-                                    <tr class="info-hull">
-                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-hull xwing-miniatures-font-hull"></i></td>
-                                        <td class="col-9 info-data info-hull"></td>
-                                    </tr>
-                                    <tr class="info-shields">
-                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-shield xwing-miniatures-font-shield"></i></td>
-                                        <td class="col-9 info-data info-shields"></td>
-                                    </tr>
-                                    <tr class="info-force">
-                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-force xwing-miniatures-font-forcecharge"></i></td>
-                                        <td class="col-9 info-data info-force"></td>
-                                    </tr>
-                                    <tr class="info-charge">
-                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-charge xwing-miniatures-font-charge"></i></td>
-                                        <td class="col-9 info-data info-charge"></td>
-                                    </tr>
-                                    <tr class="info-range">
-                                        <td class="col-3 info-header">Range</td>
-                                        <td class="col-9 info-data info-range"></td>
-                                    </tr>
-                                    <tr class="info-actions">
-                                        <td class="col-3 info-header">Actions</td>
-                                        <td class="col-9 info-data"></td>
-                                    </tr>
-                                    <tr class="info-actions-red">
-                                        <td></td>
-                                        <td class="col-9 info-data-red"></td>
-                                    </tr>
-                                    <tr class="info-upgrades">
-                                        <td class="col-3 info-header">Upgrades</td>
-                                        <td class="col-9 info-data"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <p class="info-text" />
-                            <p class="info-maneuvers" />
-                            <br />
-                            <span class="info-header info-sources">Sources</span>: 
-                            <span class="info-data info-sources"></span>
+                        <div class="card card-viewer-container">
                         </div>
                     </div>
                 </div>
@@ -1372,6 +1282,7 @@ class exportObj.CardBrowser
 
         @card_selector_container = $ @container.find('.xwing-card-browser .card-selector-container')
         @card_viewer_container = $ @container.find('.xwing-card-browser .card-viewer-container')
+        @card_viewer_container.append $.trim exportObj.builders[0].createInfoContainerUI()
         @card_viewer_container.hide()
         @card_viewer_placeholder = $ @container.find('.xwing-card-browser .card-viewer-placeholder')
         @advanced_search_container = $ @container.find('.xwing-card-browser .advanced-search-container')
@@ -10528,6 +10439,18 @@ $.isMobile = ->
 $.randomInt = (n) ->
     Math.floor(Math.random() * n)
 
+$.isElementInView = (element, fullyInView) ->
+    pageTop = $(window).scrollTop()
+    pageBottom = pageTop + $(window).height()
+    elementTop = $(element).offset().top
+    elementBottom = elementTop + $(element).height()
+
+    if fullyInView
+        return ((pageTop < elementTop) && (pageBottom > elementBottom))
+    else
+        return ((elementTop <= pageBottom) && (elementBottom >= pageTop))
+
+
 # ripped from http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values
 $.getParameterByName = (name) ->
     name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]")
@@ -11401,7 +11324,7 @@ class exportObj.SquadBuilder
         content_container.append $.trim """
             <div class="row">
                 <div class="col-md-9 ship-container">
-                    <label class="notes-container col-md-10">
+                    <label class="notes-container show-authenticated col-md-10">
                         <span class="notes-name">Squad Notes:</span>
                         <br />
                         <textarea class="squad-notes"></textarea>
@@ -11426,9 +11349,29 @@ class exportObj.SquadBuilder
         @notes = $ @notes_container.find('textarea.squad-notes')
         @tag = $ @notes_container.find('input.squad-tag')
 
-        @info_container.append $.trim """
+        @info_container.append $.trim @createInfoContainerUI()
+        @info_container.hide()
+
+        @print_list_button = $ @container.find('button.print-list')
+
+        @container.find('[rel=tooltip]').tooltip()
+
+        # obstacles
+        @obstacles_button = $ @container.find('button.choose-obstacles')
+        @obstacles_button.click (e) =>
+            e.preventDefault()
+            @showChooseObstaclesModal()
+
+        # conditions
+        @condition_container = $ document.createElement('div')
+        @condition_container.addClass 'conditions-container'
+        @container.append @condition_container
+
+    createInfoContainerUI: ->
+        return """
             <div class="card info-well">
                 <div class="info-name"></div>
+                <div class="info-type"></div>
                 <span class="info-collection"></span>
                 <span class="info-solitary"><br />Solitary</span>
                 <table class="table-sm">
@@ -11439,7 +11382,7 @@ class exportObj.SquadBuilder
                         </tr>
                         <tr class="info-base">
                             <td class="info-header">Base</td>
-                            <td class="info-data"></td>
+                            <td class="info-data"></td> 
                         </tr>
                         <tr class="info-skill">
                             <td class="info-header">Initiative</td>
@@ -11530,22 +11473,6 @@ class exportObj.SquadBuilder
                 <span class="info-data info-sources"></span>
             </div>
         """
-        @info_container.hide()
-
-        @print_list_button = $ @container.find('button.print-list')
-
-        @container.find('[rel=tooltip]').tooltip()
-
-        # obstacles
-        @obstacles_button = $ @container.find('button.choose-obstacles')
-        @obstacles_button.click (e) =>
-            e.preventDefault()
-            @showChooseObstaclesModal()
-
-        # conditions
-        @condition_container = $ document.createElement('div')
-        @condition_container.addClass 'conditions-container'
-        @container.append @condition_container
 
     setupEventHandlers: ->
         @container.on 'xwing:claimUnique', (e, unique, type, cb) =>
@@ -13091,6 +13018,13 @@ class exportObj.SquadBuilder
                     container.find('tr.info-force').hide()
             container.show()
             @tooltip_currently_displaying = data
+
+            # fix card viewer to view, if it is fully visible (it might not be e.g. on mobile devices. In that case keep it on its static position, so you can scroll to see it)
+            well = container.find('.info-well')
+            if $.isElementInView(well, true)
+                well.css('position','fixed')
+            else
+                well.css('position','static')
         
     _randomizerLoopBody: (data) =>
         if data.keep_running
@@ -13889,7 +13823,7 @@ class Ship
             <div class="col-md-2 button-container">
                 <button class="btn btn-danger remove-pilot side-button"><span class="d-none d-sm-block" data-toggle="tooltip" title="Remove Pilot"><i class="fa fa-times"></i></span><span class="d.block d-sm-none"> Remove Pilot</span></button>
                 <button class="btn btn-light copy-pilot side-button"><span class="d-none d-sm-block" data-toggle="tooltip" title="Clone Pilot"><i class="far fa-copy"></i></span><span class="d.block d-sm-none"> Clone Pilot</span></button>&nbsp;&nbsp;&nbsp;
-                <button class="btn btn-light points-destroyed side-button" points-state"><span class="destroyed-type" data-toggle="tooltip" title="Calculate Half/Full Points Destroyed"><i class="xwing-miniatures-font xwing-miniatures-font-title"></i></span></button>
+                <button class="btn btn-light points-destroyed side-button" points-state"><span class="destroyed-type" title="Points Destroyed"><i class="xwing-miniatures-font xwing-miniatures-font-title"></i></span></button>
             </div>
         '''
         @row.find('.button-container span').tooltip()
