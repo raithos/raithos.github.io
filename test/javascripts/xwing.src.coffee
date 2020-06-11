@@ -559,7 +559,7 @@ class exportObj.SquadBuilderBackend
                     <button class="btn btn-modal show-quickbuild-squads"><span class="d-none d-lg-block">Quickbuild</span><span class="d-lg-none">QB</span></button>
                     <button class="btn btn-modal show-epic-squads">Epic</button>
                     <button class="btn btn-modal show-archived-squads">Archived</button>
-                    <button class="btn btn-modal reload-all"> <span class="d-none d-lg-block">Reload all squads (this might take a while)</span><span class="d-lg-none">Reload</span></button>
+                    <button class="btn btn-modal reload-all">Reload Squads (Long!)</button>
                 </div>
                 <div class="btn-group tags-display full-row">
                 </div>
@@ -10724,10 +10724,10 @@ class exportObj.SquadBuilder
                 <div class="col-md-5 float-right button-container">
                     <div class="btn-group float-right">
 
-                        <button class="btn btn-primary view-as-text"><span class="d-none d-sm-block"><i class="fa fa-print"></i>&nbsp;Print/View as Text</span><span class="d-none d-sm-block">Text</span></button>
-                        <a class="btn btn-primary d-none collection"><i class="fa fa-folder-open d-none d-sm-block"></i>&nbsp;Your Collection</span><span class="d-none d-sm-block">&nbsp;Your Collection</span></a>
+                        <button class="btn btn-primary view-as-text"><span class="d-none d-sm-block"><i class="fa fa-print"></i>&nbsp;Print/View as Text</span><span class="d-block d-sm-none">Text</span></button>
+                        <a class="btn btn-primary d-none collection"><span class="d-none d-sm-block"><i class="fa fa-folder-open"></i> Your Collection</span><span class="d-block d-sm-none">Collection</span></a>
                         <!-- Randomize button is marked as danger, since it creates a new squad -->
-                        <button class="btn btn-danger randomize" ><i class="fa fa-random d-inline d-none d-sm-block"></i>&nbsp;Random!</span><span class="d-none d-sm-block">&nbsp;Random!</span></button>
+                        <button class="btn btn-danger randomize"><span class="d-none d-sm-block"><i class="fa fa-random"></i> Randomize!</span><span class="d-block d-sm-none">Random!</span></button>
                         <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
                             <span class="caret"></span>
                         </button>
@@ -10787,28 +10787,28 @@ class exportObj.SquadBuilder
                 <div class="simple-list"></div>
                 <div class="simplecopy-list">
                     <p>Copy the below and paste it elsewhere.</p>
-                    <textarea></textarea><button class="btn btn-copy">Copy</button>
+                    <textarea></textarea><button class="btn btn-modal btn-copy">Copy</button>
                 </div>
                 <div class="reddit-list">
                     <p>Copy the below and paste it into your reddit post.</p>
                     <p>Make sure that the post editor is set to markdown mode.</p>
-                    <textarea></textarea><button class="btn btn-copy">Copy</button>
+                    <textarea></textarea><button class="btn btn-modal btn-copy">Copy</button>
                 </div>
                 <div class="tts-list">
                     <p>Copy the below and paste it into the Tabletop Simulator.</p>
-                    <textarea></textarea><br /><button class="btn btn-copy">Copy</button>
+                    <textarea></textarea><br /><button class="btn btn-modal btn-copy">Copy</button>
                 </div>
                 <div class="bbcode-list">
                     <p>Copy the BBCode below and paste it into your forum post.</p>
-                    <textarea></textarea><button class="btn btn-copy">Copy</button>
+                    <textarea></textarea><button class="btn btn-modal btn-copy">Copy</button>
                 </div>
                 <div class="html-list">
-                    <textarea></textarea><button class="btn btn-copy">Copy</button>
+                    <textarea></textarea><button class="btn btn-modal btn-copy">Copy</button>
                 </div>
             </div>
             <div class="container-fluid modal-footer d-print-none">
-                <div class="row full-row d-none d-sm-block">
-                    <div class="col right-col">
+                <div class="row full-row">
+                    <div class="col d-inline-block d-none d-sm-block right-col">
                         <label class="color-skip-text-checkbox">
                             Skip Card Text <input type="checkbox" class="toggle-skip-text-print" />
                         </label><br />
@@ -10818,11 +10818,11 @@ class exportObj.SquadBuilder
                         <label class="maneuver-print-checkbox">
                             Include Maneuvers Chart <input type="checkbox" class="toggle-maneuver-print" />
                         </label><br />
-                        <label class="expanded-shield-hull-print-checkbox d-none d-sm-block">
+                        <label class="expanded-shield-hull-print-checkbox">
                             Expand Shield and Hull <input type="checkbox" class="toggle-expanded-shield-hull-print" />
                         </label>
                     </div>
-                    <div class="col right-col">
+                    <div class="col d-inline-block d-none d-sm-block right-col">
                         <label class="color-print-checkbox">
                             Print Color <input type="checkbox" class="toggle-color-print" checked="checked" />
                         </label><br />

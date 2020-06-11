@@ -41,7 +41,7 @@ body {
 .btn {
   font-size: 1em; }
 
-.btn-modal:active, .btn-modal:hover {
+.btn-inverse, .btn-modal:hover {
   font-size: 1em;
   background-color: #337ab7;
   color: white; }
@@ -357,9 +357,10 @@ input[type=search].card-search-text, input[type=search].rule-search-text {
   color: white;
   border: none; }
 
-input::-webkit-outer-spin-button, .desired-points input::-webkit-inner-spin-button {
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   -webkit-appearance: none;
-  margin: 0; }
+  margin: 0;
+  background-color: #151515; }
 
 .advanced-search-selection {
   width: 90%;
