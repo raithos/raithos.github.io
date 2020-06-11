@@ -457,6 +457,7 @@ svg > g.maneuver.backwards {
 .nav-item > .nav-link {
   padding-left: 0.75em;
   padding-right: 0.75em;
+  padding-bottom: 0.0em;
   color: #337ab7; }
 
 .nav-item > .nav-link:hover {
