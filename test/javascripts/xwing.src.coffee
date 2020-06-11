@@ -176,9 +176,9 @@ class exportObj.SquadBuilderBackend
                             #{squad.additional_data?.description}
                         </div>
                         <div class="squad-buttons col-md-3">
-                            <button class="btn convert-squad"><i class="xwing-miniatures-font xwing-miniatures-font-first-player-1"></i></button>
+                            <button class="btn btn-modal convert-squad"><i class="xwing-miniatures-font xwing-miniatures-font-first-player-1"></i></button>
                             &nbsp;
-                            <button class="btn load-squad"><i class="fa fa-download"></i></button>
+                            <button class="btn btn-modal load-squad"><i class="fa fa-download"></i></button>
                             &nbsp;
                             <button class="btn btn-danger delete-squad"><i class="fa fa-times"></i></button>
                         </div>
@@ -190,7 +190,7 @@ class exportObj.SquadBuilderBackend
                         <div class="squad-buttons col-md-3">
                             <button class="btn btn-danger confirm-convert-squad">Convert</button>
                             &nbsp;
-                            <button class="btn cancel-convert-squad">Cancel</button>
+                            <button class="btn btn-modal cancel-convert-squad">Cancel</button>
                         </div>
                     </div>
                     <div class="row squad-delete-confirm">
@@ -200,7 +200,7 @@ class exportObj.SquadBuilderBackend
                         <div class="col-md-3">
                             <button class="btn btn-danger confirm-delete-squad">Delete</button>
                             &nbsp;
-                            <button class="btn cancel-delete-squad">Cancel</button>
+                            <button class="btn btn-modal cancel-delete-squad">Cancel</button>
                         </div>
                     </div>
                 """
@@ -463,7 +463,7 @@ class exportObj.SquadBuilderBackend
                     <p>
                         For more information, check out this <a href="http://hueniverse.com/oauth/guide/intro/" target="_blank">introduction to OAuth</a>.
                     </p>
-                    <button class="btn">Got it!</button>
+                    <button class="btn btn-modal">Got it!</button>
                 </div>
                 <ul class="login-providers inline"></ul>
                 <p>
@@ -472,9 +472,6 @@ class exportObj.SquadBuilderBackend
                 <p class="login-in-progress">
                     <em>OAuth login is in progress.  Please finish authorization at the specified provider using the window that was just created.</em>
                 </p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         </div>
     </div>
@@ -493,7 +490,7 @@ class exportObj.SquadBuilderBackend
             methods_ul = $ @login_modal.find('ul.login-providers')
             for method in data.methods
                 a = $ document.createElement('A')
-                a.addClass 'btn btn-inverse'
+                a.addClass 'btn btn-modal'
                 a.data 'url', "#{@server}/auth/#{method}"
                 a.append """<i class="#{@method_metadata[method].icon}"></i>&nbsp;#{@method_metadata[method].text}"""
                 a.click (e) =>
@@ -522,7 +519,7 @@ class exportObj.SquadBuilderBackend
                 <p>All squads of that faction have been reloaded.</p>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" aria-hidden="true" data-dismiss="modal">Well done!</button>
+                <button class="btn btn-modal btn-primary" aria-hidden="true" data-dismiss="modal">Well done!</button>
             </div>
         </div>
     </div>
@@ -551,23 +548,20 @@ class exportObj.SquadBuilderBackend
             </div>
             <div class="modal-footer">
                 <div class="btn-group delete-multiple-squads full-row">
-                    <button class="btn select-all">Select All</button>
-                    <button class="btn archive-selected">Archive Selected</button>
-                    <button class="btn btn-danger delete-selected">Delete Selected</button>
+                    <button class="btn btn-modal select-all">Select All</button>
+                    <button class="btn btn-modal archive-selected">Archive Selected</button>
+                    <button class="btn btn-modal btn-danger delete-selected">Delete Selected</button>
                 </div>
                 <div class="btn-group squad-display-mode full-row">
-                    <button class="btn btn-inverse show-all-squads">All</button>
-                    <button class="btn show-extended-squads"><span class="d-none d-lg-block">Extended</span><span class="d-lg-none">Ext</span></button>
-                    <button class="btn show-hyperspace-squads"><span class="d-none d-lg-block">Hyperspace</span><span class="d-lg-none">Hyper</span></button>
-                    <button class="btn show-quickbuild-squads"><span class="d-none d-lg-block">Quickbuild</span><span class="d-lg-none">QB</span></button>
-                    <button class="btn show-epic-squads">Epic</button>
-                    <button class="btn show-archived-squads">Archived</button>
+                    <button class="btn btn-modal btn-inverse show-all-squads">All</button>
+                    <button class="btn btn-modal show-extended-squads"><span class="d-none d-lg-block">Extended</span><span class="d-lg-none">Ext</span></button>
+                    <button class="btn btn-modal show-hyperspace-squads"><span class="d-none d-lg-block">Hyperspace</span><span class="d-lg-none">Hyper</span></button>
+                    <button class="btn btn-modal show-quickbuild-squads"><span class="d-none d-lg-block">Quickbuild</span><span class="d-lg-none">QB</span></button>
+                    <button class="btn btn-modal show-epic-squads">Epic</button>
+                    <button class="btn btn-modal show-archived-squads">Archived</button>
+                    <button class="btn btn-modal reload-all"> <span class="d-none d-lg-block">Reload all squads (this might take a while)</span><span class="d-lg-none">Reload</span></button>
                 </div>
                 <div class="btn-group tags-display full-row">
-                </div>
-                <div class="full-row">
-                    <button class="btn btn reload-all">Reload<span class="d-none d-sm-block"> all squads (this might take a while)</span></button>
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
                 </div>
             </div>
         </div>
@@ -837,7 +831,7 @@ class exportObj.SquadBuilderBackend
             </div>
             <div class="modal-footer">
                 <button class="btn btn-danger delete" aria-hidden="true">Yes, Delete <i class="squad-name-placeholder"></i></button>
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Never Mind</button>
+                <button class="btn btn-modal" data-dismiss="modal" aria-hidden="true">Never Mind</button>
             </div>
         </div>
     </div>
@@ -885,7 +879,7 @@ class exportObj.SquadBuilderBackend
                 <p>You have not saved changes to this squad.  Do you want to go back and save?</p>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" aria-hidden="true" data-dismiss="modal">Go Back</button>
+                <button class="btn btn-modal btn-primary" aria-hidden="true" data-dismiss="modal">Go Back</button>
                 <button class="btn btn-danger discard" aria-hidden="true">Discard Changes</button>
             </div>
         </div>
@@ -10081,7 +10075,7 @@ class exportObj.Collection
                 <button type="button" class="close d-print-none" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
-                <ul class="nav nav-tabs" id="collectionTabs" role="tablist">
+                <ul class="nav nav-pills mb-2" id="collectionTabs" role="tablist">
                     <li class="nav-item active" id="collection-expansions-tab" role="presentation"><a data-target="#collection-expansions" class="nav-link" data-toggle="tab" role="tab" aria-controls="collection-expansions" aria-selected="true">Expansions</a><li>
                     <li class="nav-item" id="collection-ships-tab" role="presentation"><a href="#collection-ships" class="nav-link" data-toggle="tab" role="tab" aria-controls="collection-ships" aria-selected="false">Ships</a><li>
                     <li class="nav-item" id="collection-pilots-tab" role="presentation"><a href="#collection-pilots" class="nav-link" data-toggle="tab" role="tab" aria-controls="collection-pilots" aria-selected="false">Pilots</a><li>
@@ -10730,11 +10724,10 @@ class exportObj.SquadBuilder
                 <div class="col-md-5 float-right button-container">
                     <div class="btn-group float-right">
 
-                        <button class="btn btn-primary view-as-text"><span class="hidden-xs"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text</button>
-                        <!-- <button class="btn btn-primary print-list hidden-xs hidden-md"><i class="fa fa-print"></i>&nbsp;Print</button> -->
-                        <a class="btn btn-primary d-none collection"><i class="fa fa-folder-open hidden-xs hidden-md"></i>&nbsp;Your Collection</a>
+                        <button class="btn btn-primary view-as-text"><span class="d-none d-sm-block"><i class="fa fa-print"></i>&nbsp;Print/View as Text</span><span class="d-none d-sm-block">Text</span></button>
+                        <a class="btn btn-primary d-none collection"><i class="fa fa-folder-open d-none d-sm-block"></i>&nbsp;Your Collection</span><span class="d-none d-sm-block">&nbsp;Your Collection</span></a>
                         <!-- Randomize button is marked as danger, since it creates a new squad -->
-                        <button class="btn btn-danger randomize" ><i class="fa fa-random hidden-xs hidden-md"></i>&nbsp;Random!</button>
+                        <button class="btn btn-danger randomize" ><i class="fa fa-random d-inline d-none d-sm-block"></i>&nbsp;Random!</span><span class="d-none d-sm-block">&nbsp;Random!</span></button>
                         <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
                             <span class="caret"></span>
                         </button>
@@ -10790,7 +10783,7 @@ class exportObj.SquadBuilder
                 <button type="button" class="close d-print-none" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="fancy-list hidden-xs"></div>
+                <div class="fancy-list"></div>
                 <div class="simple-list"></div>
                 <div class="simplecopy-list">
                     <p>Copy the below and paste it elsewhere.</p>
@@ -10814,49 +10807,48 @@ class exportObj.SquadBuilder
                 </div>
             </div>
             <div class="container-fluid modal-footer d-print-none">
-                <div class="row full-row">
+                <div class="row full-row d-none d-sm-block">
                     <div class="col right-col">
-                        <label class="color-skip-text-checkbox hidden-xs">
+                        <label class="color-skip-text-checkbox">
                             Skip Card Text <input type="checkbox" class="toggle-skip-text-print" />
                         </label><br />
-                        <label class="vertical-space-checkbox hidden-xs">
+                        <label class="vertical-space-checkbox">
                             Add Space for Cards <input type="checkbox" class="toggle-vertical-space" />
                         </label><br />
-                        <label class="maneuver-print-checkbox hidden-xs">
+                        <label class="maneuver-print-checkbox">
                             Include Maneuvers Chart <input type="checkbox" class="toggle-maneuver-print" />
                         </label><br />
-                        <label class="expanded-shield-hull-print-checkbox hidden-xs">
+                        <label class="expanded-shield-hull-print-checkbox d-none d-sm-block">
                             Expand Shield and Hull <input type="checkbox" class="toggle-expanded-shield-hull-print" />
                         </label>
                     </div>
                     <div class="col right-col">
-                        <label class="color-print-checkbox hidden-xs">
+                        <label class="color-print-checkbox">
                             Print Color <input type="checkbox" class="toggle-color-print" checked="checked" />
                         </label><br />
-                        <label class="qrcode-checkbox hidden-xs">
+                        <label class="qrcode-checkbox">
                             Include QR codes <input type="checkbox" class="toggle-juggler-qrcode" checked="checked" />
                         </label><br />
-                        <label class="obstacles-checkbox hidden-xs">
+                        <label class="obstacles-checkbox">
                             Include Obstacle Choices <input type="checkbox" class="toggle-obstacles" />
                         </label>
                     </div>
                 </div>
                 <div class="row btn-group list-display-mode">
-                    <button class="btn select-simple-view">Simple</button>
-                    <button class="btn select-fancy-view hidden-xs">Fancy</button>
-                    <button class="btn select-simplecopy-view">Text</button>
-                    <button class="btn select-tts-view hidden-xs">TTS</button>
-                    <button class="btn select-reddit-view">Reddit</button>
-                    <button class="btn select-bbcode-view">BBCode</button>
-                    <button class="btn select-html-view">HTML</button>
+                    <button class="btn btn-modal select-simple-view">Simple</button>
+                    <button class="btn btn-modal select-fancy-view d-none d-sm-block">Fancy</button>
+                    <button class="btn btn-modal select-simplecopy-view">Text</button>
+                    <button class="btn btn-modal select-tts-view d-none d-sm-block">TTS</button>
+                    <button class="btn btn-modal select-reddit-view">Reddit</button>
+                    <button class="btn btn-modal select-bbcode-view">BBCode</button>
+                    <button class="btn btn-modal select-html-view">HTML</button>
                 </div>
-                <button class="btn print-list hidden-xs"><i class="fa fa-print"></i>&nbsp;Print</button>
-                <button class="btn close-print-dialog" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-modal print-list d-none d-sm-block"><i class="fa fa-print"></i>&nbsp;Print</button>
             </div>
         </div>
     </div>
         """
-        @fancy_container = $ @list_modal.find('div.modal-body .fancy-list')
+        @fancy_container = $ @list_modal.find('.fancy-list')
         @fancy_total_points_container = $ @list_modal.find('div.modal-header .total-points')
         @simple_container = $ @list_modal.find('div.modal-body .simple-list')
         @reddit_container = $ @list_modal.find('div.modal-body .reddit-list')

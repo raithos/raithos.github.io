@@ -41,6 +41,11 @@ body {
 .btn {
   font-size: 1em; }
 
+.btn-modal:active, .btn-modal:hover {
+  font-size: 1em;
+  background-color: #337ab7;
+  color: white; }
+
 .button-container {
   padding-right: 0px; }
 
@@ -339,12 +344,22 @@ ul.nav li.dropdown ul.dropdown-menu li:hover {
 
 input[type=number] {
   width: 4em;
-  font-size: 15px; }
+  font-size: 1em;
+  -moz-appearance: textfield; }
 
-input[type=search].card-search-text {
+input[type=search].card-search-text, input[type=search].rule-search-text {
   width: 90%;
   min-width: 100px;
   max-width: 230px; }
+
+.desired-points {
+  background-color: #151515;
+  color: white;
+  border: none; }
+
+input::-webkit-outer-spin-button, .desired-points input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
 
 .advanced-search-selection {
   width: 90%;
