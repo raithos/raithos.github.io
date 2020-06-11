@@ -448,7 +448,8 @@ svg > g.maneuver.backwards {
 
 .nav-item > .nav-link {
   padding-left: 0.75em;
-  padding-right: 0.75em; }
+  padding-right: 0.75em;
+  color: #337ab7; }
 
 .conditions-container {
   padding-left: 10px; }
