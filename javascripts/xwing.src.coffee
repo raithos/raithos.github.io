@@ -749,7 +749,6 @@ class exportObj.SquadBuilderBackend
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary save" aria-hidden="true">Save</button>
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         </div>
     </div>
