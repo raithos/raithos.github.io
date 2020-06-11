@@ -11415,8 +11415,9 @@ exportObj.translations.English = {
     '.save-list-as': '<i class="far fa-file"></i>&nbsp;Save as…',
     '.delete-list': '<i class="fa fa-trash"></i>&nbsp;Delete',
     '.backend-list-my-squads': '<i class="fa fa-download"></i>&nbsp;Load Squad',
-    '.view-as-text': '<span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Print/View as </span>Text',
-    '.randomize': '<i class="fa fa-random"></i>&nbsp;Random!',
+    '.view-as-text': '<span class="d-none d-lg-block"><i class="fa fa-print"></i>&nbsp;Print/View as Text</span><span class="d-lg-none"><i class="fa fa-print"></i></span>',
+    '.collection': '<span class="d-none d-lg-block"><i class="fa fa-folder-open"></i> Your Collection</span><span class="d-lg-none"><i class="fa fa-folder-open"></i></span>',
+    '.randomize': '<span class="d-none d-lg-block"><i class="fa fa-random"></i> Randomize!</span><span class="d-lg-none"><i class="fa fa-random"></i></span>',
     '.randomize-options': 'Randomizer options…',
     '.notes-container .notes-name': 'Squad Notes:',
     '.notes-container .tag-name': 'Tag:',
@@ -11447,8 +11448,7 @@ exportObj.translations.English = {
     '.core2asteroid2-select': 'Force Awakens Asteroid 2',
     '.core2asteroid3-select': 'Force Awakens Asteroid 3',
     '.core2asteroid4-select': 'Force Awakens Asteroid 4',
-    '.core2asteroid5-select': 'Force Awakens Asteroid 5',
-    '.collection': '<i class="fa fa-folder-open hidden-phone hidden-tabler"></i>&nbsp;Your Collection'
+    '.core2asteroid5-select': 'Force Awakens Asteroid 5'
   },
   singular: {
     'pilots': 'Pilot',

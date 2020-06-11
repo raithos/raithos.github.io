@@ -120,6 +120,7 @@ strong em, em strong {
   cellspacing: 3px; }
 
 td.info-header {
+  width: 50px;
   padding: 3px; }
 
 i.xwing-miniatures-font {
@@ -263,7 +264,6 @@ f {
 
 .info-well table > tbody > tr > td:first-child {
   font-weight: bold;
-  vertical-align: top;
   padding-right: 5px; }
 
 .info-text {
@@ -343,7 +343,7 @@ ul.nav li.dropdown ul.dropdown-menu li:hover {
   background-color: #333; }
 
 input[type=number] {
-  width: 4em;
+  width: 3em;
   font-size: 1em;
   -moz-appearance: textfield; }
 

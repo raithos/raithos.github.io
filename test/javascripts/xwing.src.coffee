@@ -1280,83 +1280,83 @@ class exportObj.CardBrowser
                             <span class="info-type"></span>
                             <br />
                             <span class="info-collection"></span>
-                            <table>
+                            <table class="table-sm">
                                 <tbody>
                                     <tr class="info-ship">
-                                        <td class="info-header">Ship</td>
-                                        <td class="info-data"></td>
+                                        <td class="col-3 info-header">Ship</td>
+                                        <td class="col-9 info-data"></td>
                                     </tr>
                                     <tr class="info-base">
-                                        <td class="info-header">Base</td>
-                                        <td class="info-data"></td>
+                                        <td class="col-3 info-header">Base</td>
+                                        <td class="col-9 info-data"></td>
                                     </tr>
                                     <tr class="info-skill">
-                                        <td class="info-header">Initiative</td>
-                                        <td class="info-data info-skill"></td>
+                                        <td class="col-3 info-header">Initiative</td>
+                                        <td class="col-9 info-data info-skill"></td>
                                     </tr>
                                     <tr class="info-energy">
-                                        <td class="info-header"><i class="xwing-miniatures-font header-energy xwing-miniatures-font-energy"></i></td>
-                                        <td class="info-data info-energy"></td>
+                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-energy xwing-miniatures-font-energy"></i></td>
+                                        <td class="col-9 info-data info-energy"></td>
                                     </tr>
                                     <tr class="info-attack">
-                                        <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-frontarc"></i></td>
-                                        <td class="info-data info-attack"></td>
+                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-frontarc"></i></td>
+                                        <td class="col-9 info-data info-attack"></td>
                                     </tr>
                                     <tr class="info-attack-fullfront">
-                                        <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc"></i></td>
-                                        <td class="info-data info-attack"></td>
+                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc"></i></td>
+                                        <td class="col-9 info-data info-attack"></td>
                                     </tr>
                                     <tr class="info-attack-bullseye">
-                                        <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc"></i></td>
-                                        <td class="info-data info-attack"></td>
+                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc"></i></td>
+                                        <td class="col-9 info-data info-attack"></td>
                                     </tr>
                                     <tr class="info-attack-back">
-                                        <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-reararc"></i></td>
-                                        <td class="info-data info-attack"></td>
+                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-reararc"></i></td>
+                                        <td class="col-9 info-data info-attack"></td>
                                     </tr>
                                     <tr class="info-attack-turret">
-                                        <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc"></i></td>
-                                        <td class="info-data info-attack"></td>
+                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc"></i></td>
+                                        <td class="col-9 info-data info-attack"></td>
                                     </tr>
                                     <tr class="info-attack-doubleturret">
-                                        <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc"></i></td>
-                                        <td class="info-data info-attack"></td>
+                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc"></i></td>
+                                        <td class="col-9 info-data info-attack"></td>
                                     </tr>
                                     <tr class="info-agility">
-                                        <td class="info-header"><i class="xwing-miniatures-font header-agility xwing-miniatures-font-agility"></i></td>
-                                        <td class="info-data info-agility"></td>
+                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-agility xwing-miniatures-font-agility"></i></td>
+                                        <td class="col-9 info-data info-agility"></td>
                                     </tr>
                                     <tr class="info-hull">
-                                        <td class="info-header"><i class="xwing-miniatures-font header-hull xwing-miniatures-font-hull"></i></td>
-                                        <td class="info-data info-hull"></td>
+                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-hull xwing-miniatures-font-hull"></i></td>
+                                        <td class="col-9 info-data info-hull"></td>
                                     </tr>
                                     <tr class="info-shields">
-                                        <td class="info-header"><i class="xwing-miniatures-font header-shield xwing-miniatures-font-shield"></i></td>
-                                        <td class="info-data info-shields"></td>
+                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-shield xwing-miniatures-font-shield"></i></td>
+                                        <td class="col-9 info-data info-shields"></td>
                                     </tr>
                                     <tr class="info-force">
-                                        <td class="info-header"><i class="xwing-miniatures-font header-force xwing-miniatures-font-forcecharge"></i></td>
-                                        <td class="info-data info-force"></td>
+                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-force xwing-miniatures-font-forcecharge"></i></td>
+                                        <td class="col-9 info-data info-force"></td>
                                     </tr>
                                     <tr class="info-charge">
-                                        <td class="info-header"><i class="xwing-miniatures-font header-charge xwing-miniatures-font-charge"></i></td>
-                                        <td class="info-data info-charge"></td>
+                                        <td class="col-3 info-header"><i class="xwing-miniatures-font header-charge xwing-miniatures-font-charge"></i></td>
+                                        <td class="col-9 info-data info-charge"></td>
                                     </tr>
                                     <tr class="info-range">
-                                        <td class="info-header">Range</td>
-                                        <td class="info-data info-range"></td>
+                                        <td class="col-3 info-header">Range</td>
+                                        <td class="col-9 info-data info-range"></td>
                                     </tr>
                                     <tr class="info-actions">
-                                        <td class="info-header">Actions</td>
-                                        <td class="info-data"></td>
+                                        <td class="col-3 info-header">Actions</td>
+                                        <td class="col-9 info-data"></td>
                                     </tr>
                                     <tr class="info-actions-red">
                                         <td></td>
-                                        <td class="info-data-red"></td>
+                                        <td class="col-9 info-data-red"></td>
                                     </tr>
                                     <tr class="info-upgrades">
-                                        <td class="info-header">Upgrades</td>
-                                        <td class="info-data"></td>
+                                        <td class="col-3 info-header">Upgrades</td>
+                                        <td class="col-9 info-data"></td>
                                     </tr>
                                 </tbody>
                             </table>

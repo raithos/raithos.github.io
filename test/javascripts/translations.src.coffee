@@ -96,8 +96,8 @@ exportObj.translations.Deutsch =
         '.show-epic-squads' : 'Episch'
         '.show-team-epic-squads' : 'Team Episch'
         '.show-all-squads' : 'Alle'
-        '.view-as-text' : '<span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Drucken/Als </span>Text ansehen'
-        '.randomize' : '<i class="fa fa-random"></i>&nbsp;Zufall!'
+        '.view-as-text' : '<span class="d-none d-lg-block"><i class="fa fa-print"></i> Drucken/Als Text ansehen</span><span class="d-lg-none"><i class="fa fa-print"></i></span>'
+        '.randomize' : '<span class="d-none d-lg-block"><i class="fa fa-random"></i> Zufall!</span><span class="d-lg-none"><i class="fa fa-random"></i></span>'        
         '.randomize-options' : 'Zufallsgenerator Optionen'
         '.notes-container .notes-name' : 'Staffel Notizen:'
         '.notes-container .tag-name' : 'Tag:'
@@ -149,7 +149,7 @@ exportObj.translations.Deutsch =
         '.core2asteroid4-select' : 'Erwachen der Macht Asteroid 4'
         '.core2asteroid5-select' : 'Erwachen der Macht Asteroid 5'
         # Collection
-        '.collection': '<i class="fa fa-folder-open hidden-phone hidden-tabler"></i>&nbsp;Deine Sammlung'
+        '.collection': '<span class="d-none d-lg-block"><i class="fa fa-folder-open"></i> Deine Sammlung</span><span class="d-lg-none"><i class="fa fa-folder-open"></i></span>'
         '.checkbox-check-collection' : 'Überprüfe Staffeln auf Verfügbarkeit <input class="check-collection" type="checkbox">'
 
     singular:
@@ -2204,8 +2204,8 @@ exportObj.translations['Español'] =
         '.show-epic-squads' : 'Épico'
         '.show-team-epic-squads' : 'Épico por Equipos'
         '.show-all-squads' : 'Todos'
-        '.view-as-text' : '<span class="hidden-phone"><i class="fa fa-print"></i>&nbsp;Imprimir/Ver como </span>texto'
-        '.randomize' : 'Aleatorio!'
+        '.view-as-text' : '<span class="d-none d-lg-block"><i class="fa fa-print"></i>Imprimir/Ver como texto</span><span class="d-lg-none"><i class="fa fa-print"></i></span>'
+        '.randomize' : '<span class="d-none d-lg-block"><i class="fa fa-random"></i> Aleatorio!</span><span class="d-lg-none"><i class="fa fa-random"></i></span>'        
         '.randomize-options' : 'Opciones del aleatorizador…'
         '.notes-container .notes-name' : 'Notas del Escuadrón:'
         '.notes-container .tag-name' : 'Tag:'        
@@ -2252,7 +2252,7 @@ exportObj.translations['Español'] =
         '.core2asteroid4-select' : 'Asteroide del Despertar de la Fuerza 4'
         '.core2asteroid5-select' : 'Asteroide del Despertar de la Fuerza 5'
         # Collection
-        '.collection': '<i class="fa fa-folder-open hidden-phone hidden-tabler"></i>&nbsp;Mi colección'
+        '.collection': '<span class="d-none d-lg-block"><i class="fa fa-folder-open"></i> Mi colección</span><span class="d-lg-none"><i class="fa fa-folder-open"></i></span>'
         '.checkbox-check-collection' : 'Comprobar coincidencia con colección <input class="check-collection" type="checkbox">'
 
     singular:
