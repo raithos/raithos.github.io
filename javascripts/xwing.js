@@ -10169,7 +10169,13 @@ exportObj.SquadBuilder = (function() {
     })(this));
     this.condition_container = $(document.createElement('div'));
     this.condition_container.addClass('conditions-container');
-    return this.container.append(this.condition_container);
+    this.container.append(this.condition_container);
+    this.mobile_tooltip_modal = $(document.createElement('DIV'));
+    this.mobile_tooltip_modal.addClass('modal fade choose-obstacles-modal d-print-none');
+    this.mobile_tooltip_modal.tabindex = "-1";
+    this.mobile_tooltip_modal.role = "dialog";
+    this.container.append(this.mobile_tooltip_modal);
+    return this.mobile_tooltip_modal.append($.trim("<div class=\"modal-dialog modal-dialog-centered modal-dialog-scrollable\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n        </div>\n        <div class=\"modal-body\">" + this.createInfoContainerUI() + "        </div>\n        <div class=\"modal-footer\">\n            <button class=\"btn btn-danger close-print-dialog\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n        </div>\n    </div>\n</div>"));
   };
 
   SquadBuilder.prototype.createInfoContainerUI = function() {
@@ -10449,9 +10455,17 @@ exportObj.SquadBuilder = (function() {
     })(this));
     $(window).resize((function(_this) {
       return function() {
+        var ship, _i, _len, _ref, _results;
         if ($(window).width() < 768 && _this.list_display_mode !== 'simple') {
-          return _this.select_simple_view_button.click();
+          _this.select_simple_view_button.click();
         }
+        _ref = _this.ships;
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          ship = _ref[_i];
+          _results.push(ship.checkPilotSelectorQueryModal());
+        }
+        return _results;
       };
     })(this));
     this.notes.change(this.onNotesUpdated);
@@ -10921,7 +10935,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 12047
+              lineno: 12071
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -10931,7 +10945,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 12048
+                lineno: 12072
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -11568,12 +11582,15 @@ exportObj.SquadBuilder = (function() {
     return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-" + action.toLowerCase().replace(/[^0-9a-z]/gi, '') + "\"></i> ";
   };
 
-  SquadBuilder.prototype.showTooltip = function(type, data, additional_opts, container) {
+  SquadBuilder.prototype.showTooltip = function(type, data, additional_opts, container, force_update) {
     var a, action, addon_count, cls, count, effective_stats, extra_actions, extra_actions_red, first, ini, inis, item, missingStuffInfoText, name, pilot, pilot_count, point_info, possible_inis, recurringicon, ship, ship_count, slot, slot_types, source, sources, state, uniquedots, upgrade, well, _i, _j, _k, _l, _len, _len1, _len2, _len3, _m, _n, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref40, _ref41, _ref42, _ref43, _ref44, _ref45, _ref46, _ref47, _ref48, _ref49, _ref5, _ref50, _ref51, _ref52, _ref53, _ref54, _ref55, _ref56, _ref57, _ref58, _ref59, _ref6, _ref60, _ref61, _ref62, _ref63, _ref64, _ref65, _ref66, _ref67, _ref68, _ref7, _ref8, _ref9, _results, _results1;
     if (container == null) {
       container = this.info_container;
     }
-    if (data !== this.tooltip_currently_displaying) {
+    if (force_update == null) {
+      force_update = false;
+    }
+    if (data !== this.tooltip_currently_displaying || force_update) {
       switch (type) {
         case 'Ship':
           possible_inis = [];
@@ -12302,13 +12319,17 @@ exportObj.SquadBuilder = (function() {
           container.find('tr.info-range').hide();
           container.find('tr.info-force').hide();
       }
-      container.show();
+      if (container !== this.mobile_tooltip_modal) {
+        container.show();
+      }
       this.tooltip_currently_displaying = data;
-      well = container.find('.info-well');
-      if ($.isElementInView(well, true)) {
-        return well.css('position', 'fixed');
-      } else {
-        return well.css('position', 'static');
+      if ($(window).width() >= 768) {
+        well = container.find('.info-well');
+        if ($.isElementInView(well, true)) {
+          return well.css('position', 'fixed');
+        } else {
+          return well.css('position', 'static');
+        }
       }
     }
   };
@@ -12930,7 +12951,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 13437
+                      lineno: 13466
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -13107,6 +13128,7 @@ Ship = (function() {
         this.setPilotById(quickbuild_id);
       }
     }
+    this.checkPilotSelectorQueryModal();
     _ref1 = this.row.attr('class').split(/\s+/);
     for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
       cls = _ref1[_i];
@@ -13158,7 +13180,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 13559
+                          lineno: 13590
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -13208,7 +13230,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 13592
+                                  lineno: 13623
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -13287,7 +13309,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 13643
+                      lineno: 13674
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -13367,7 +13389,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 13672
+                lineno: 13703
               })
             ]);
             __iced_deferrals._fulfill();
@@ -13436,7 +13458,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 13701
+              lineno: 13732
             }));
           }
         }
@@ -13528,7 +13550,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 13757
+                lineno: 13788
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -13591,6 +13613,16 @@ Ship = (function() {
     }
   };
 
+  Ship.prototype.checkPilotSelectorQueryModal = function() {
+    if ($(window).width() >= 768) {
+      return this.pilot_query_modal.hide();
+    } else {
+      if (this.pilot) {
+        return this.pilot_query_modal.show();
+      }
+    }
+  };
+
   Ship.prototype.setupUI = function() {
     var shipResultFormatter, shipSelectionFormatter, shipicon;
     this.row = $(document.createElement('DIV'));
@@ -13599,11 +13631,29 @@ Ship = (function() {
     if (this.pilot != null) {
       shipicon = exportObj.ships[this.pilot.ship].icon ? exportObj.ships[this.pilot.ship].icon : exportObj.ships[this.pilot.ship].xws;
     }
-    this.row.append($.trim('<div class="col-md-3">\n    <input class="ship-selector-container" type="hidden"></input>\n    <br />\n    <input type="hidden" class="pilot-selector-container"></input>\n    <br />\n    <label class="wingmate-label">\n    Wingmates: \n        <input type="number" class="wingmate-selector"></input>\n    </label>\n</div>\n<div class="col-md-1 points-display-container">\n     <span></span>\n</div>\n<div class="col-md-6 addon-container">  </div>\n<div class="col-md-2 button-container">\n    <button class="btn btn-danger remove-pilot side-button"><span class="d-none d-sm-block" data-toggle="tooltip" title="Remove Pilot"><i class="fa fa-times"></i></span><span class="d.block d-sm-none"> Remove Pilot</span></button>\n    <button class="btn btn-light copy-pilot side-button"><span class="d-none d-sm-block" data-toggle="tooltip" title="Clone Pilot"><i class="far fa-copy"></i></span><span class="d.block d-sm-none"> Clone Pilot</span></button>&nbsp;&nbsp;&nbsp;\n    <button class="btn btn-light points-destroyed side-button" points-state"><span class="destroyed-type" title="Points Destroyed"><i class="xwing-miniatures-font xwing-miniatures-font-title"></i></span></button>\n</div>'));
+    this.row.append($.trim('<div class="col-md-3">\n    <div class="form-group d-flex">\n        <input class="ship-selector-container" type="hidden"></input>\n        <div class="input-group-append">\n            <button class="btn btn-secondary d-block d-md-none ship-query-modal"><i class="fas fa-question"></i></button>\n        </div>\n    <br />\n    </div>\n    <div class="form-group d-flex">\n        <input type="hidden" class="pilot-selector-container"></input>\n        <div class="input-group-append">\n            <button class="btn btn-secondary pilot-query-modal"><i class="fas fa-question"></i></button>\n        <br />\n        </div>\n    </div>\n    <label class="wingmate-label">\n    Wingmates: \n        <input type="number" class="wingmate-selector"></input>\n    </label>\n</div>\n<div class="col-md-1 points-display-container">\n     <span></span>\n</div>\n<div class="col-md-6 addon-container">  </div>\n<div class="col-md-2 button-container">\n    <button class="btn btn-danger remove-pilot side-button"><span class="d-none d-sm-block" data-toggle="tooltip" title="Remove Pilot"><i class="fa fa-times"></i></span><span class="d-block d-sm-none"> Remove Pilot</span></button>\n    <button class="btn btn-light copy-pilot side-button"><span class="d-none d-sm-block" data-toggle="tooltip" title="Clone Pilot"><i class="far fa-copy"></i></span><span class="d-block d-sm-none"> Clone Pilot</span></button>&nbsp;&nbsp;&nbsp;\n    <button class="btn btn-light points-destroyed side-button" points-state"><span class="destroyed-type" title="Points Destroyed"><i class="xwing-miniatures-font xwing-miniatures-font-title"></i></span></button>\n</div>'));
     this.row.find('.button-container span').tooltip();
     this.ship_selector = $(this.row.find('input.ship-selector-container'));
     this.pilot_selector = $(this.row.find('input.pilot-selector-container'));
     this.wingmate_selector = $(this.row.find('input.wingmate-selector'));
+    this.ship_query_modal = $(this.row.find('button.ship-query-modal'));
+    this.pilot_query_modal = $(this.row.find('button.pilot-query-modal'));
+    this.ship_query_modal.click((function(_this) {
+      return function(e) {
+        if (_this.pilot) {
+          _this.builder.showTooltip('Ship', exportObj.ships[_this.pilot.ship], null, _this.builder.mobile_tooltip_modal, true);
+          return _this.builder.mobile_tooltip_modal.modal('show');
+        }
+      };
+    })(this));
+    this.pilot_query_modal.click((function(_this) {
+      return function(e) {
+        if (_this.pilot) {
+          _this.builder.showTooltip('Pilot', _this.pilot, (_this.pilot ? _this : void 0), _this.builder.mobile_tooltip_modal, true);
+          return _this.builder.mobile_tooltip_modal.modal('show');
+        }
+      };
+    })(this));
     shipResultFormatter = function(object, container, query) {
       return "<i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + object.icon + "\"></i> " + object.text;
     };
@@ -13798,6 +13848,7 @@ Ship = (function() {
       };
     })(this));
     this.copy_button.hide();
+    this.checkPilotSelectorQueryModal();
     this.points_destroyed_button_span = $(this.row.find('.destroyed-type'));
     this.points_destroyed_button = $(this.row.find('button.points-destroyed'));
     this.points_destroyed_button.click((function(_this) {
@@ -14571,7 +14622,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 14593
+                lineno: 14656
               })
             ]);
             __iced_deferrals._fulfill();
@@ -14592,9 +14643,14 @@ GenericAddon = (function() {
   };
 
   GenericAddon.prototype.setupSelector = function(args) {
+    this.selectorwrap = $(document.createElement('div'));
+    this.selectorwrap.addClass('form-group d-flex upgrade-box');
     this.selector = $(document.createElement('INPUT'));
     this.selector.attr('type', 'hidden');
-    this.container.append(this.selector);
+    this.selectorwrap.append(this.selector);
+    this.selectorwrap.append($.trim('<div class="input-group-addon">\n    <button class="btn btn-secondary d-block d-md-none upgrade-query-modal"><i class="fas fa-question"></i></button>\n</div>'));
+    this.upgrade_query_modal = $(this.selectorwrap.find('button.upgrade-query-modal'));
+    this.container.append(this.selectorwrap);
     if ($.isMobile()) {
       args.minimumResultsForSearch = -1;
     }
@@ -14637,6 +14693,17 @@ GenericAddon = (function() {
       };
     })(this);
     this.selector.select2(args);
+    this.upgrade_query_modal.click((function(_this) {
+      return function(e) {
+        if (_this.data) {
+          console.log("" + _this.data.name);
+          _this.ship.builder.showTooltip('Addon', _this.data, (_this.data != null ? {
+            addon_type: _this.type
+          } : void 0), _this.ship.builder.mobile_tooltip_modal, true);
+          return _this.ship.builder.mobile_tooltip_modal.modal('show');
+        }
+      };
+    })(this));
     this.selector.on('change', (function(_this) {
       return function(e) {
         _this.setById(_this.selector.select2('val'));
@@ -14700,7 +14767,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 14658
+                  lineno: 14741
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -14723,7 +14790,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 14663
+                      lineno: 14746
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -14815,7 +14882,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 14708
+            lineno: 14791
           }));
         }
         __iced_deferrals._fulfill();
@@ -15091,7 +15158,7 @@ exportObj.Upgrade = (function(_super) {
 
   Upgrade.prototype.setupSelector = function() {
     return Upgrade.__super__.setupSelector.call(this, {
-      width: '50%',
+      width: '100%',
       placeholder: this.placeholderMod_func(exportObj.translate(this.ship.builder.language, 'ui', 'upgradePlaceholder', this.slot)),
       allowClear: true,
       query: (function(_this) {
@@ -15143,7 +15210,7 @@ exportObj.QuickbuildUpgrade = (function(_super) {
 
   QuickbuildUpgrade.prototype.setupSelector = function() {
     return QuickbuildUpgrade.__super__.setupSelector.call(this, {
-      width: '50%',
+      width: '100%',
       allowClear: false,
       query: (function(_this) {
         return function(query) {

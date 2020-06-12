@@ -11367,6 +11367,26 @@ class exportObj.SquadBuilder
         @condition_container.addClass 'conditions-container'
         @container.append @condition_container
 
+        @mobile_tooltip_modal = $ document.createElement 'DIV'
+        @mobile_tooltip_modal.addClass 'modal fade choose-obstacles-modal d-print-none'
+        @mobile_tooltip_modal.tabindex = "-1"
+        @mobile_tooltip_modal.role = "dialog"
+        @container.append @mobile_tooltip_modal
+        @mobile_tooltip_modal.append $.trim """
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                """ + @createInfoContainerUI() + """
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger close-print-dialog" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+    </div>
+        """        
+        
     createInfoContainerUI: ->
         return """
             <div class="card info-well">
@@ -11675,6 +11695,10 @@ class exportObj.SquadBuilder
 
         $(window).resize =>
             @select_simple_view_button.click() if $(window).width() < 768 and @list_display_mode != 'simple'
+            for ship in @ships
+                ship.checkPilotSelectorQueryModal()
+
+
 
          @notes.change @onNotesUpdated
                 
@@ -12420,8 +12444,9 @@ class exportObj.SquadBuilder
         return ("""<i class="xwing-miniatures-font red xwing-miniatures-font-""" + action.toLowerCase().replace(/[^0-9a-z]/gi, '') + """"></i> """)
         
         
-    showTooltip: (type, data, additional_opts, container = @info_container) ->
-        if data != @tooltip_currently_displaying
+    showTooltip: (type, data, additional_opts, container = @info_container, force_update = false) ->
+
+        if data != @tooltip_currently_displaying or force_update
             switch type
                 when 'Ship'
             # we get all pilots for the ship, to display stuff like available slots which are treated as pilot properties, not ship properties (which makes sense, as they depend on the pilot, e.g. talent or force slots)
@@ -13016,15 +13041,19 @@ class exportObj.SquadBuilder
                     container.find('td.info-rangebonus').hide()
                     container.find('tr.info-range').hide()
                     container.find('tr.info-force').hide()
-            container.show()
+
+            if container != @mobile_tooltip_modal
+                container.show()
             @tooltip_currently_displaying = data
 
             # fix card viewer to view, if it is fully visible (it might not be e.g. on mobile devices. In that case keep it on its static position, so you can scroll to see it)
-            well = container.find('.info-well')
-            if $.isElementInView(well, true)
-                well.css('position','fixed')
-            else
-                well.css('position','static')
+            
+            if $(window).width() >= 768
+                well = container.find('.info-well')
+                if $.isElementInView(well, true)
+                    well.css('position','fixed')
+                else
+                    well.css('position','static')
         
     _randomizerLoopBody: (data) =>
         if data.keep_running
@@ -13520,7 +13549,9 @@ class Ship
                 # get the first available pilot
                 quickbuild_id = (result.id for result in @builder.getAvailablePilotsForShipIncluding(ship_type) when not result.disabled)[0]
                 @setPilotById quickbuild_id
-
+                
+        @checkPilotSelectorQueryModal()
+                
         # Clear ship background class
         for cls in @row.attr('class').split(/\s+/)
             if cls.indexOf('ship-') == 0
@@ -13796,6 +13827,12 @@ class Ship
         else
             @pilot_selector.select2 'data', null
             #@pilot_selector.data('select2').container.toggle(@ship_selector.val() != '')
+            
+    checkPilotSelectorQueryModal: ->    
+        if $(window).width() >= 768
+            @pilot_query_modal.hide()
+        else 
+            if @pilot then @pilot_query_modal.show()
 
     setupUI: ->
         @row = $ document.createElement 'DIV'
@@ -13807,10 +13844,20 @@ class Ship
         
         @row.append $.trim '''
             <div class="col-md-3">
-                <input class="ship-selector-container" type="hidden"></input>
+                <div class="form-group d-flex">
+                    <input class="ship-selector-container" type="hidden"></input>
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary d-block d-md-none ship-query-modal"><i class="fas fa-question"></i></button>
+                    </div>
                 <br />
-                <input type="hidden" class="pilot-selector-container"></input>
-                <br />
+                </div>
+                <div class="form-group d-flex">
+                    <input type="hidden" class="pilot-selector-container"></input>
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary pilot-query-modal"><i class="fas fa-question"></i></button>
+                    <br />
+                    </div>
+                </div>
                 <label class="wingmate-label">
                 Wingmates: 
                     <input type="number" class="wingmate-selector"></input>
@@ -13821,8 +13868,8 @@ class Ship
             </div>
             <div class="col-md-6 addon-container">  </div>
             <div class="col-md-2 button-container">
-                <button class="btn btn-danger remove-pilot side-button"><span class="d-none d-sm-block" data-toggle="tooltip" title="Remove Pilot"><i class="fa fa-times"></i></span><span class="d.block d-sm-none"> Remove Pilot</span></button>
-                <button class="btn btn-light copy-pilot side-button"><span class="d-none d-sm-block" data-toggle="tooltip" title="Clone Pilot"><i class="far fa-copy"></i></span><span class="d.block d-sm-none"> Clone Pilot</span></button>&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-danger remove-pilot side-button"><span class="d-none d-sm-block" data-toggle="tooltip" title="Remove Pilot"><i class="fa fa-times"></i></span><span class="d-block d-sm-none"> Remove Pilot</span></button>
+                <button class="btn btn-light copy-pilot side-button"><span class="d-none d-sm-block" data-toggle="tooltip" title="Clone Pilot"><i class="far fa-copy"></i></span><span class="d-block d-sm-none"> Clone Pilot</span></button>&nbsp;&nbsp;&nbsp;
                 <button class="btn btn-light points-destroyed side-button" points-state"><span class="destroyed-type" title="Points Destroyed"><i class="xwing-miniatures-font xwing-miniatures-font-title"></i></span></button>
             </div>
         '''
@@ -13831,7 +13878,21 @@ class Ship
         @ship_selector = $ @row.find('input.ship-selector-container')
         @pilot_selector = $ @row.find('input.pilot-selector-container')
         @wingmate_selector = $ @row.find('input.wingmate-selector')
-
+        @ship_query_modal = $ @row.find('button.ship-query-modal')
+        @pilot_query_modal = $ @row.find('button.pilot-query-modal')
+        
+        
+        @ship_query_modal.click (e) =>
+            if @pilot
+                @builder.showTooltip 'Ship', exportObj.ships[@pilot.ship], null, @builder.mobile_tooltip_modal, true
+                @builder.mobile_tooltip_modal.modal 'show'
+                
+        @pilot_query_modal.click (e) =>
+            if @pilot
+                @builder.showTooltip 'Pilot', @pilot, (@ if @pilot), @builder.mobile_tooltip_modal, true
+                @builder.mobile_tooltip_modal.modal 'show'
+            
+            
         shipResultFormatter = (object, container, query) ->
             return """<i class="xwing-miniatures-ship xwing-miniatures-ship-#{object.icon}"></i> #{object.text}"""
 
@@ -13960,6 +14021,8 @@ class Ship
                 
         @copy_button.hide()
 
+        @checkPilotSelectorQueryModal()
+        
         @points_destroyed_button_span = $ @row.find('.destroyed-type')
 
         @points_destroyed_button = $ @row.find('button.points-destroyed')
@@ -13975,7 +14038,7 @@ class Ship
                 @points_destroyed_button_span.html '<i class="xwing-miniatures-font xwing-miniatures-font-hit"></i>'
             @builder.onPointsUpdated()
         @points_destroyed_button.hide()
-            
+    
     teardownUI: ->
         @row.text ''
         @row.remove()
@@ -14599,9 +14662,21 @@ class GenericAddon
         cb args
 
     setupSelector: (args) ->
+        @selectorwrap = $ document.createElement 'div'
+        @selectorwrap.addClass 'form-group d-flex upgrade-box'
+        
         @selector = $ document.createElement 'INPUT'
         @selector.attr 'type', 'hidden'
-        @container.append @selector
+
+        @selectorwrap.append @selector
+        @selectorwrap.append $.trim '''
+            <div class="input-group-addon">
+                <button class="btn btn-secondary d-block d-md-none upgrade-query-modal"><i class="fas fa-question"></i></button>
+            </div>
+        '''
+        @upgrade_query_modal = $ @selectorwrap.find('button.upgrade-query-modal')
+        
+        @container.append @selectorwrap
         args.minimumResultsForSearch = -1 if $.isMobile()
         args.formatResultCssClass = (obj) =>
             if @ship.builder.collection?
@@ -14617,6 +14692,7 @@ class GenericAddon
                 if not_in_collection then 'select2-result-not-in-collection' else ''
             else
                 ''
+        
         args.formatSelection = (obj, container) =>
             icon = switch @type
                 when 'Upgrade'
@@ -14633,6 +14709,13 @@ class GenericAddon
             undefined
 
         @selector.select2 args
+        
+        @upgrade_query_modal.click (e) =>
+            if @data
+                console.log "#{@data.name}"
+                @ship.builder.showTooltip 'Addon', @data, ({addon_type: @type} if @data?) , @ship.builder.mobile_tooltip_modal, true
+                @ship.builder.mobile_tooltip_modal.modal 'show'
+        
         @selector.on 'change', (e) =>
             @setById @selector.select2('val')
             @ship.builder.current_squad.dirty = true
@@ -14951,7 +15034,7 @@ class exportObj.Upgrade extends GenericAddon
 
     setupSelector: ->
         super
-            width: '50%'
+            width: '100%'
             placeholder: @placeholderMod_func(exportObj.translate @ship.builder.language, 'ui', 'upgradePlaceholder', @slot)
             allowClear: true
             query: (query) =>
@@ -14980,7 +15063,7 @@ class exportObj.QuickbuildUpgrade extends GenericAddon
 
     setupSelector: ->
         super
-            width: '50%'
+            width: '100%'
             allowClear: false
             query: (query) =>
                 data = {
