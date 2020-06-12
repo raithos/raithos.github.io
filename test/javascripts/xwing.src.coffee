@@ -11378,109 +11378,7 @@ class exportObj.SquadBuilder
             <div class="modal-header">
             </div>
             <div class="modal-body">
-                <div class="card info-well">
-                    <div class="info-name"></div>
-                    <div class="info-type"></div>
-                    <span class="info-collection"></span>
-                    <span class="info-solitary"><br />Solitary</span>
-                    <table class="table-sm">
-                        <tbody>
-                            <tr class="info-ship">
-                                <td class="info-header">Ship</td>
-                                <td class="info-data"></td>
-                            </tr>
-                            <tr class="info-base">
-                                <td class="info-header">Base</td>
-                                <td class="info-data"></td> 
-                            </tr>
-                            <tr class="info-skill">
-                                <td class="info-header">Initiative</td>
-                                <td class="info-data info-skill"></td>
-                            </tr>
-                            <tr class="info-engagement">
-                                <td class="info-header">Engagement</td>
-                                <td class="info-data info-engagement"></td>
-                            </tr>
-                            <tr class="info-attack">
-                                <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-frontarc"></i></td>
-                                <td class="info-data info-attack"></td>
-                            </tr>
-                            <tr class="info-attack-fullfront">
-                                <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc"></i></td>
-                                <td class="info-data info-attack"></td>
-                            </tr>
-                            <tr class="info-attack-bullseye">
-                                <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc"></i></td>
-                                <td class="info-data info-attack"></td>
-                            </tr>
-                            <tr class="info-attack-left">
-                                <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-leftarc"></i></td>
-                                <td class="info-data info-attack"></td>
-                            </tr>
-                            <tr class="info-attack-right">
-                                <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-rightarc"></i></td>
-                                <td class="info-data info-attack"></td>
-                            </tr>
-                            <tr class="info-attack-back">
-                                <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-reararc"></i></td>
-                                <td class="info-data info-attack"></td>
-                            </tr>
-                            <tr class="info-attack-turret">
-                                <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc"></i></td>
-                                <td class="info-data info-attack"></td>
-                            </tr>
-                            <tr class="info-attack-doubleturret">
-                                <td class="info-header"><i class="xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc"></i></td>
-                                <td class="info-data info-attack"></td>
-                            </tr>
-                            <tr class="info-agility">
-                                <td class="info-header"><i class="xwing-miniatures-font header-agility xwing-miniatures-font-agility"></i></td>
-                                <td class="info-data info-agility"></td>
-                            </tr>
-                            <tr class="info-hull">
-                                <td class="info-header"><i class="xwing-miniatures-font header-hull xwing-miniatures-font-hull"></i></td>
-                                <td class="info-data info-hull"></td>
-                            </tr>
-                            <tr class="info-shields">
-                                <td class="info-header"><i class="xwing-miniatures-font header-shield xwing-miniatures-font-shield"></i></td>
-                                <td class="info-data info-shields"></td>
-                            </tr>
-                            <tr class="info-force">
-                                <td class="info-header"><i class="xwing-miniatures-font header-force xwing-miniatures-font-forcecharge"></i></td>
-                                <td class="info-data info-force"></td>
-                            </tr>
-                            <tr class="info-charge">
-                                <td class="info-header"><i class="xwing-miniatures-font header-charge xwing-miniatures-font-charge"></i></td>
-                                <td class="info-data info-charge"></td>
-                            </tr>
-                            <tr class="info-energy">
-                                <td class="info-header"><i class="xwing-miniatures-font header-energy xwing-miniatures-font-energy"></i></td>
-                                <td class="info-data info-energy"></td>
-                            </tr>
-                            <tr class="info-range">
-                                <td class="info-header">Range</td>
-                                <td class="info-data info-range"></td><td class="info-rangebonus"><i class="xwing-miniatures-font red header-range xwing-miniatures-font-rangebonusindicator"></i></td>
-                            </tr>
-                            <tr class="info-actions">
-                                <td class="info-header">Actions</td>
-                                <td class="info-data"></td>
-                            </tr>
-                            <tr class="info-actions-red">
-                                <td></td>
-                                <td class="info-data-red"></td>
-                            </tr>
-                            <tr class="info-upgrades">
-                                <td class="info-header">Upgrades</td>
-                                <td class="info-data"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="info-text" />
-                    <p class="info-maneuvers" />
-                    <br />
-                    <span class="info-header info-sources">Sources:</span> 
-                    <span class="info-data info-sources"></span>
-                </div>
+                """ + @createInfoContainerUI() + """
             </div>
             <div class="modal-footer">
                 <button class="btn btn-danger close-print-dialog" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -12546,9 +12444,9 @@ class exportObj.SquadBuilder
         return ("""<i class="xwing-miniatures-font red xwing-miniatures-font-""" + action.toLowerCase().replace(/[^0-9a-z]/gi, '') + """"></i> """)
         
         
-    showTooltip: (type, data, additional_opts, container = @info_container) ->
+    showTooltip: (type, data, additional_opts, container = @info_container, force_update = false) ->
 
-        if data != @tooltip_currently_displaying
+        if data != @tooltip_currently_displaying or force_update
             switch type
                 when 'Ship'
             # we get all pilots for the ship, to display stuff like available slots which are treated as pilot properties, not ship properties (which makes sense, as they depend on the pilot, e.g. talent or force slots)
@@ -13986,12 +13884,12 @@ class Ship
         
         @ship_query_modal.click (e) =>
             if @pilot
-                @builder.showTooltip 'Ship', exportObj.ships[@pilot.ship], null, @builder.mobile_tooltip_modal
+                @builder.showTooltip 'Ship', exportObj.ships[@pilot.ship], null, @builder.mobile_tooltip_modal, true
                 @builder.mobile_tooltip_modal.modal 'show'
                 
         @pilot_query_modal.click (e) =>
             if @pilot
-                @builder.showTooltip 'Pilot', @pilot, (@ if @pilot), @builder.mobile_tooltip_modal
+                @builder.showTooltip 'Pilot', @pilot, (@ if @pilot), @builder.mobile_tooltip_modal, true
                 @builder.mobile_tooltip_modal.modal 'show'
             
             
@@ -14026,7 +13924,6 @@ class Ship
             formatResult: shipResultFormatter
             formatSelection: shipResultFormatter
 
-            
         @ship_selector.on 'change', (e) =>
             @setShipType @ship_selector.val()
         @ship_selector.data('select2').results.on 'mousemove-filtered', (e) =>
@@ -14036,11 +13933,6 @@ class Ship
             @builder.showTooltip 'Ship', exportObj.ships[@pilot.ship] if @pilot
         @ship_selector.data('select2').container.on 'touchstart', (e) =>
             @builder.showTooltip 'Ship', exportObj.ships[@pilot.ship] if @pilot
-            # Apparently removes keyboard prompt for Select2
-        @ship_selector.on 'select2:open', (e) =>
-            $('.select2-search input').prop('focus',false)
-        
-        
 
         @pilot_selector.select2
             width: '100%'
@@ -14069,7 +13961,7 @@ class Ship
                     if not_in_collection then 'select2-result-not-in-collection' else ''
                 else
                     ''
-                    
+
         @pilot_selector.on 'change', (e) =>
             @setPilotById @pilot_selector.select2('val')
             @builder.current_squad.dirty = true
@@ -14085,9 +13977,7 @@ class Ship
             @builder.showTooltip 'Pilot', @pilot, @ if @pilot
         @pilot_selector.data('select2').container.on 'touchstart', (e) =>
             @builder.showTooltip 'Pilot', @pilot, @ if @pilot
-        @pilot_selector.data('select2').container.on 'select2:open', (e) =>
-            $('.select2-search input').prop('focus',false)
-                        
+
         @pilot_selector.data('select2').container.hide()
 
         if @builder.isQuickbuild
@@ -14823,7 +14713,7 @@ class GenericAddon
         @upgrade_query_modal.click (e) =>
             if @data
                 console.log "#{@data.name}"
-                @ship.builder.showTooltip 'Addon', @data, ({addon_type: @type} if @data?) , @ship.builder.mobile_tooltip_modal
+                @ship.builder.showTooltip 'Addon', @data, ({addon_type: @type} if @data?) , @ship.builder.mobile_tooltip_modal, true
                 @ship.builder.mobile_tooltip_modal.modal 'show'
         
         @selector.on 'change', (e) =>
@@ -14838,9 +14728,6 @@ class GenericAddon
             @ship.builder.showTooltip 'Addon', @data, {addon_type: @type} if @data?
         @selector.data('select2').container.on 'touchstart', (e) =>
             @ship.builder.showTooltip 'Addon', @data, {addon_type: @type} if @data?
-        @selector.data('select2').container.on 'select2:open', (e) =>
-            $('.select2-search input').prop('focus',false)
-                
 
     setById: (id) ->
         @setData @dataById[parseInt id]

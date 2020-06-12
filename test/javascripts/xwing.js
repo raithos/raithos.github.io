@@ -10175,7 +10175,7 @@ exportObj.SquadBuilder = (function() {
     this.mobile_tooltip_modal.tabindex = "-1";
     this.mobile_tooltip_modal.role = "dialog";
     this.container.append(this.mobile_tooltip_modal);
-    return this.mobile_tooltip_modal.append($.trim("<div class=\"modal-dialog modal-dialog-centered modal-dialog-scrollable\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n        </div>\n        <div class=\"modal-body\">\n            <div class=\"card info-well\">\n                <div class=\"info-name\"></div>\n                <div class=\"info-type\"></div>\n                <span class=\"info-collection\"></span>\n                <span class=\"info-solitary\"><br />Solitary</span>\n                <table class=\"table-sm\">\n                    <tbody>\n                        <tr class=\"info-ship\">\n                            <td class=\"info-header\">Ship</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                        <tr class=\"info-base\">\n                            <td class=\"info-header\">Base</td>\n                            <td class=\"info-data\"></td> \n                        </tr>\n                        <tr class=\"info-skill\">\n                            <td class=\"info-header\">Initiative</td>\n                            <td class=\"info-data info-skill\"></td>\n                        </tr>\n                        <tr class=\"info-engagement\">\n                            <td class=\"info-header\">Engagement</td>\n                            <td class=\"info-data info-engagement\"></td>\n                        </tr>\n                        <tr class=\"info-attack\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-fullfront\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-bullseye\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-left\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-leftarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-right\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-rightarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-back\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-turret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-attack-doubleturret\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                            <td class=\"info-data info-attack\"></td>\n                        </tr>\n                        <tr class=\"info-agility\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                            <td class=\"info-data info-agility\"></td>\n                        </tr>\n                        <tr class=\"info-hull\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                            <td class=\"info-data info-hull\"></td>\n                        </tr>\n                        <tr class=\"info-shields\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                            <td class=\"info-data info-shields\"></td>\n                        </tr>\n                        <tr class=\"info-force\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i></td>\n                            <td class=\"info-data info-force\"></td>\n                        </tr>\n                        <tr class=\"info-charge\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                            <td class=\"info-data info-charge\"></td>\n                        </tr>\n                        <tr class=\"info-energy\">\n                            <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                            <td class=\"info-data info-energy\"></td>\n                        </tr>\n                        <tr class=\"info-range\">\n                            <td class=\"info-header\">Range</td>\n                            <td class=\"info-data info-range\"></td><td class=\"info-rangebonus\"><i class=\"xwing-miniatures-font red header-range xwing-miniatures-font-rangebonusindicator\"></i></td>\n                        </tr>\n                        <tr class=\"info-actions\">\n                            <td class=\"info-header\">Actions</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                        <tr class=\"info-actions-red\">\n                            <td></td>\n                            <td class=\"info-data-red\"></td>\n                        </tr>\n                        <tr class=\"info-upgrades\">\n                            <td class=\"info-header\">Upgrades</td>\n                            <td class=\"info-data\"></td>\n                        </tr>\n                    </tbody>\n                </table>\n                <p class=\"info-text\" />\n                <p class=\"info-maneuvers\" />\n                <br />\n                <span class=\"info-header info-sources\">Sources:</span> \n                <span class=\"info-data info-sources\"></span>\n            </div>\n        </div>\n        <div class=\"modal-footer\">\n            <button class=\"btn btn-danger close-print-dialog\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n        </div>\n    </div>\n</div>"));
+    return this.mobile_tooltip_modal.append($.trim("<div class=\"modal-dialog modal-dialog-centered modal-dialog-scrollable\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n        </div>\n        <div class=\"modal-body\">" + this.createInfoContainerUI() + "        </div>\n        <div class=\"modal-footer\">\n            <button class=\"btn btn-danger close-print-dialog\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n        </div>\n    </div>\n</div>"));
   };
 
   SquadBuilder.prototype.createInfoContainerUI = function() {
@@ -10935,7 +10935,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 12173
+              lineno: 12071
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -10945,7 +10945,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 12174
+                lineno: 12072
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -11582,12 +11582,15 @@ exportObj.SquadBuilder = (function() {
     return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-" + action.toLowerCase().replace(/[^0-9a-z]/gi, '') + "\"></i> ";
   };
 
-  SquadBuilder.prototype.showTooltip = function(type, data, additional_opts, container) {
+  SquadBuilder.prototype.showTooltip = function(type, data, additional_opts, container, force_update) {
     var a, action, addon_count, cls, count, effective_stats, extra_actions, extra_actions_red, first, ini, inis, item, missingStuffInfoText, name, pilot, pilot_count, point_info, possible_inis, recurringicon, ship, ship_count, slot, slot_types, source, sources, state, uniquedots, upgrade, well, _i, _j, _k, _l, _len, _len1, _len2, _len3, _m, _n, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref40, _ref41, _ref42, _ref43, _ref44, _ref45, _ref46, _ref47, _ref48, _ref49, _ref5, _ref50, _ref51, _ref52, _ref53, _ref54, _ref55, _ref56, _ref57, _ref58, _ref59, _ref6, _ref60, _ref61, _ref62, _ref63, _ref64, _ref65, _ref66, _ref67, _ref68, _ref7, _ref8, _ref9, _results, _results1;
     if (container == null) {
       container = this.info_container;
     }
-    if (data !== this.tooltip_currently_displaying) {
+    if (force_update == null) {
+      force_update = false;
+    }
+    if (data !== this.tooltip_currently_displaying || force_update) {
       switch (type) {
         case 'Ship':
           possible_inis = [];
@@ -12948,7 +12951,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 13568
+                      lineno: 13466
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -13177,7 +13180,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 13692
+                          lineno: 13590
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -13227,7 +13230,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 13725
+                                  lineno: 13623
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -13306,7 +13309,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 13776
+                      lineno: 13674
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -13386,7 +13389,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 13805
+                lineno: 13703
               })
             ]);
             __iced_deferrals._fulfill();
@@ -13455,7 +13458,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 13834
+              lineno: 13732
             }));
           }
         }
@@ -13547,7 +13550,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 13890
+                lineno: 13788
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -13638,7 +13641,7 @@ Ship = (function() {
     this.ship_query_modal.click((function(_this) {
       return function(e) {
         if (_this.pilot) {
-          _this.builder.showTooltip('Ship', exportObj.ships[_this.pilot.ship], null, _this.builder.mobile_tooltip_modal);
+          _this.builder.showTooltip('Ship', exportObj.ships[_this.pilot.ship], null, _this.builder.mobile_tooltip_modal, true);
           return _this.builder.mobile_tooltip_modal.modal('show');
         }
       };
@@ -13646,7 +13649,7 @@ Ship = (function() {
     this.pilot_query_modal.click((function(_this) {
       return function(e) {
         if (_this.pilot) {
-          _this.builder.showTooltip('Pilot', _this.pilot, (_this.pilot ? _this : void 0), _this.builder.mobile_tooltip_modal);
+          _this.builder.showTooltip('Pilot', _this.pilot, (_this.pilot ? _this : void 0), _this.builder.mobile_tooltip_modal, true);
           return _this.builder.mobile_tooltip_modal.modal('show');
         }
       };
@@ -13722,11 +13725,6 @@ Ship = (function() {
         if (_this.pilot) {
           return _this.builder.showTooltip('Ship', exportObj.ships[_this.pilot.ship]);
         }
-      };
-    })(this));
-    this.ship_selector.on('select2:open', (function(_this) {
-      return function(e) {
-        return $('.select2-search input').prop('focus', false);
       };
     })(this));
     this.pilot_selector.select2({
@@ -13809,11 +13807,6 @@ Ship = (function() {
         if (_this.pilot) {
           return _this.builder.showTooltip('Pilot', _this.pilot, _this);
         }
-      };
-    })(this));
-    this.pilot_selector.data('select2').container.on('select2:open', (function(_this) {
-      return function(e) {
-        return $('.select2-search input').prop('focus', false);
       };
     })(this));
     this.pilot_selector.data('select2').container.hide();
@@ -14629,7 +14622,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 14766
+                lineno: 14656
               })
             ]);
             __iced_deferrals._fulfill();
@@ -14706,7 +14699,7 @@ GenericAddon = (function() {
           console.log("" + _this.data.name);
           _this.ship.builder.showTooltip('Addon', _this.data, (_this.data != null ? {
             addon_type: _this.type
-          } : void 0), _this.ship.builder.mobile_tooltip_modal);
+          } : void 0), _this.ship.builder.mobile_tooltip_modal, true);
           return _this.ship.builder.mobile_tooltip_modal.modal('show');
         }
       };
@@ -14739,18 +14732,13 @@ GenericAddon = (function() {
         }
       };
     })(this));
-    this.selector.data('select2').container.on('touchstart', (function(_this) {
+    return this.selector.data('select2').container.on('touchstart', (function(_this) {
       return function(e) {
         if (_this.data != null) {
           return _this.ship.builder.showTooltip('Addon', _this.data, {
             addon_type: _this.type
           });
         }
-      };
-    })(this));
-    return this.selector.data('select2').container.on('select2:open', (function(_this) {
-      return function(e) {
-        return $('.select2-search input').prop('focus', false);
       };
     })(this));
   };
@@ -14779,7 +14767,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 14854
+                  lineno: 14741
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -14802,7 +14790,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 14859
+                      lineno: 14746
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -14894,7 +14882,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 14904
+            lineno: 14791
           }));
         }
         __iced_deferrals._fulfill();
