@@ -1045,8 +1045,7 @@ class exportObj.CardBrowser
         @setupUI()
         @setupHandlers()
 
-        #@sort_selector.change()
-        @renderList @sort_selector.val()
+        # @renderList @sort_selector.val()
 
     setupUI: () ->
         @container.append $.trim """
@@ -1379,11 +1378,11 @@ class exportObj.CardBrowser
             @renderList @sort_selector.val()
 
         $(window).on 'xwing:afterLanguageLoad', (e, language, cb=$.noop) =>
-            if @language != language
-                @language = language
-                @prepareData()
+            #if @language != language
+            @language = language
+            @prepareData()
             
-                @renderList @sort_selector.val()
+            @renderList @sort_selector.val()
                 
         .on 'xwing-collection:created', (e, collection) =>
             @collection = collection
