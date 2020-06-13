@@ -1263,7 +1263,7 @@ class exportObj.CardBrowser
                             <option value="name">Name</option>
                             <option value="source">Source</option>
                             <option value="type-by-points">Type (by Points)</option>
-                            <option value="type-by-name" selected="1">Type (by Name)</option>
+                            <option value="type-by-name" selected>Type (by Name)</option>
                         </select>
                         <div class="card-selector-container">
 
