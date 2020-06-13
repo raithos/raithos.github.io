@@ -10172,7 +10172,7 @@ exportObj.SquadBuilder = (function() {
       };
     })(this));
     this.condition_container = $(document.createElement('div'));
-    this.condition_container.addClass('conditions-container');
+    this.condition_container.addClass('conditions-container d-flex flex-wrap');
     this.container.append(this.condition_container);
     this.mobile_tooltip_modal = $(document.createElement('DIV'));
     this.mobile_tooltip_modal.addClass('modal fade choose-obstacles-modal d-print-none');
