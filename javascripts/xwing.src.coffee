@@ -14659,6 +14659,7 @@ class GenericAddon
         @rescindAddons()
         @deoccupyOtherUpgrades()
         @selector.select2 'destroy'
+        @selectorwrap.remove()
         cb args
 
     setupSelector: (args) ->
