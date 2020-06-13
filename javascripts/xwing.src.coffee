@@ -11524,10 +11524,6 @@ class exportObj.SquadBuilder
             @onSquadNameChanged()
         .on 'xwing:beforeLanguageLoad', (e, cb=$.noop) =>
             @pretranslation_serialized = @serialize()
-            # Need to remove ships here because the cards will change when the
-            # new language is loaded, and we don't want to have problems with
-            # unclaiming uniques.
-            # Preserve squad dirtiness
             cb()
         .on 'xwing:afterLanguageLoad', (e, language, cb=$.noop) =>
             if @language != language
