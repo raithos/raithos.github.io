@@ -1045,7 +1045,8 @@ class exportObj.CardBrowser
         @setupUI()
         @setupHandlers()
 
-        @sort_selector.change()
+        #@sort_selector.change()
+        @renderList @sort_selector.val()
 
     setupUI: () ->
         @container.append $.trim """
@@ -1263,7 +1264,7 @@ class exportObj.CardBrowser
                             <option value="name">Name</option>
                             <option value="source">Source</option>
                             <option value="type-by-points">Type (by Points)</option>
-                            <option value="type-by-name" selected>Type (by Name)</option>
+                            <option value="type-by-name" selected="1">Type (by Name)</option>
                         </select>
                         <div class="card-selector-container">
 
@@ -1378,9 +1379,12 @@ class exportObj.CardBrowser
             @renderList @sort_selector.val()
 
         $(window).on 'xwing:afterLanguageLoad', (e, language, cb=$.noop) =>
-            @language = language
-            @prepareData()
-            @renderList @sort_selector.val()
+            if @language != language
+                @language = language
+                @prepareData()
+            
+                @renderList @sort_selector.val()
+                
         .on 'xwing-collection:created', (e, collection) =>
             @collection = collection
         .on 'xwing-collection:destroyed', (e, collection) =>
@@ -1475,11 +1479,14 @@ class exportObj.CardBrowser
         #
         # Renders multiselect to container
         # Selects previously selected card if there is one
-        @card_selector.remove() if @card_selector?
-        @card_selector = $ document.createElement('SELECT')
-        @card_selector.addClass 'card-selector'
-        @card_selector.attr 'size', 25
-        @card_selector_container.append @card_selector
+        
+        if @card_selector?
+            @card_selector.empty()
+        else
+            @card_selector = $ document.createElement('SELECT')
+            @card_selector.addClass 'card-selector'
+            @card_selector.attr 'size', 25
+            @card_selector_container.append @card_selector
 
         switch sort_by
             when 'type-by-name'
