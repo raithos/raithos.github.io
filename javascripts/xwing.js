@@ -10637,7 +10637,7 @@ exportObj.SquadBuilder = (function() {
       for (_k = 0, _len1 = obstacles.length; _k < _len1; _k++) {
         obstacle = obstacles[_k];
         if (obstacle != null) {
-          tts_obstacles += " " + obstacle + " +";
+          tts_obstacles += " " + obstacle + " /";
         }
       }
       tts_obstacles = tts_obstacles.slice(0, -1);
@@ -13643,7 +13643,7 @@ Ship = (function() {
   Ship.prototype.setupUI = function() {
     var shipResultFormatter, shipSelectionFormatter, shipicon;
     this.row = $(document.createElement('DIV'));
-    this.row.addClass('row ship');
+    this.row.addClass('row ship mb-5 mb-sm-0');
     this.row.insertBefore(this.builder.notes_container);
     if (this.pilot != null) {
       shipicon = exportObj.ships[this.pilot.ship].icon ? exportObj.ships[this.pilot.ship].icon : exportObj.ships[this.pilot.ship].xws;
