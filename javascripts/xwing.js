@@ -10346,7 +10346,8 @@ exportObj.SquadBuilder = (function() {
           }
           _this.current_squad.additional_data.obstacles = _this.current_obstacles;
           _this.current_squad.dirty = true;
-          return _this.container.trigger('xwing-backend:squadDirtinessChanged');
+          _this.container.trigger('xwing-backend:squadDirtinessChanged');
+          return _this.container.trigger('xwing:pointsUpdated');
         }
       };
     })(this));
@@ -10572,7 +10573,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.onPointsUpdated = function(cb) {
-    var bbcode_ships, conditions, conditions_set, htmlview_ships, i, points_dest, points_destroyed, points_left, reddit_ships, ship, ship_uses_unreleased_content, simplecopy_ships, tot_points, tts_ships, unreleased_content_used, _i, _j, _k, _len, _len1, _ref, _ref1, _ref2;
+    var bbcode_ships, conditions, conditions_set, htmlview_ships, i, obstacle, obstacles, points_dest, points_destroyed, points_left, reddit_ships, ship, ship_uses_unreleased_content, simplecopy_ships, tot_points, tts_obstacles, tts_ships, unreleased_content_used, _i, _j, _k, _l, _len, _len1, _len2, _ref, _ref1, _ref2;
     if (cb == null) {
       cb = $.noop;
     }
@@ -10629,14 +10630,27 @@ exportObj.SquadBuilder = (function() {
     this.htmlview_container.find('textarea').val($.trim("" + (htmlview_ships.join('<br />')) + "\n<br />\n<b><i>Total: " + this.total_points + "</i></b>\n<br />\n<a href=\"" + (this.getPermaLink()) + "\">View in Yet Another Squad Builder 2.0</a>"));
     this.reddit_container.find('textarea').val($.trim("" + (reddit_ships.join("    \n")) + "    \n**Total:** *" + this.total_points + "*    \n    \n[View in Yet Another Squad Builder 2.0](" + (this.getPermaLink()) + ")"));
     this.simplecopy_container.find('textarea').val($.trim("" + (simplecopy_ships.join("")) + "    \nTotal: " + this.total_points + "    \n    \nView in Yet Another Squad Builder 2.0: " + (this.getPermaLink())));
+    obstacles = this.getObstacles();
+    if (((obstacles != null) && obstacles.length > 0) && (tts_ships.length > 0)) {
+      tts_ships[tts_ships.length - 1] = tts_ships[tts_ships.length - 1].slice(0, -2);
+      tts_obstacles = ' |';
+      for (_k = 0, _len1 = obstacles.length; _k < _len1; _k++) {
+        obstacle = obstacles[_k];
+        if (obstacle != null) {
+          tts_obstacles += " " + obstacle + " +";
+        }
+      }
+      tts_obstacles = tts_obstacles.slice(0, -1);
+      tts_ships.push(tts_obstacles);
+    }
     this.tts_container.find('textarea').val($.trim("" + (tts_ships.join(""))));
     this.bbcode_container.find('textarea').val($.trim("" + (bbcode_ships.join("\n\n")) + "\n[b][i]Total: " + this.total_points + "[/i][/b]\n\n[url=" + (this.getPermaLink()) + "]View in Yet Another Squad Builder 2.0[/url]"));
     this.checkCollection();
     if (typeof Set !== "undefined" && Set !== null) {
       conditions_set = new Set();
       _ref2 = this.ships;
-      for (_k = 0, _len1 = _ref2.length; _k < _len1; _k++) {
-        ship = _ref2[_k];
+      for (_l = 0, _len2 = _ref2.length; _l < _len2; _l++) {
+        ship = _ref2[_l];
         ship.getConditions().forEach(function(condition) {
           return conditions_set.add(condition);
         });
@@ -10938,7 +10952,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 12074
+              lineno: 12087
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -10948,7 +10962,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 12075
+                lineno: 12088
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -12954,7 +12968,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 13469
+                      lineno: 13482
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -13183,7 +13197,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 13593
+                          lineno: 13606
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -13233,7 +13247,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 13626
+                                  lineno: 13639
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -13312,7 +13326,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 13677
+                      lineno: 13690
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -13392,7 +13406,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 13706
+                lineno: 13719
               })
             ]);
             __iced_deferrals._fulfill();
@@ -13461,7 +13475,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 13735
+              lineno: 13748
             }));
           }
         }
@@ -13553,7 +13567,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 13791
+                lineno: 13804
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -14147,8 +14161,7 @@ Ship = (function() {
         }
       }
     }
-    tts += " / ";
-    return tts;
+    return tts += " / ";
   };
 
   Ship.prototype.toBBCode = function() {
@@ -14625,7 +14638,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 14659
+                lineno: 14671
               })
             ]);
             __iced_deferrals._fulfill();
@@ -14771,7 +14784,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 14745
+                  lineno: 14757
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -14794,7 +14807,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 14750
+                      lineno: 14762
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -14886,7 +14899,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 14795
+            lineno: 14807
           }));
         }
         __iced_deferrals._fulfill();
