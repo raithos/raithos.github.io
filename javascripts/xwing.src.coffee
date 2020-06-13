@@ -1376,14 +1376,16 @@ class exportObj.CardBrowser
     setupHandlers: () ->
         @sort_selector.change (e) =>
             @renderList @sort_selector.val()
+        
+        #apparently @renderList takes a long time to load, so moving the loading to on button press
+        $("#browserTab").on 'click', (e) =>
+            @renderList @sort_selector.val()
 
         $(window).on 'xwing:afterLanguageLoad', (e, language, cb=$.noop) =>
             #if @language != language
             @language = language
             @prepareData()
             
-            @renderList @sort_selector.val()
-                
         .on 'xwing-collection:created', (e, collection) =>
             @collection = collection
         .on 'xwing-collection:destroyed', (e, collection) =>
