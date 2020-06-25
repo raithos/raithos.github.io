@@ -89,7 +89,7 @@ body {
         font-size: 0.2625in; }
     #printable .fancy-header .squad-faction {
       position: absolute;
-      margin-top: 0.075in;
+      margin-top: 0;
       right: 0.984375in;
       font-weight: 100; }
       #printable .fancy-header .squad-faction .xwing-miniatures-font {
@@ -143,7 +143,7 @@ body {
       #printable .fancy-ship .fancy-pilot-header .pilot-header-text {
         position: absolute;
         font-size: 0.225in;
-        margin-top: -0.36in;
+        margin-top: -0.39in;
         font-weight: 100; }
         #printable .fancy-ship .fancy-pilot-header .pilot-header-text .fancy-ship-type {
           font-style: italic;
@@ -157,7 +157,7 @@ body {
         top: -0.3in;
         width: 0.45in;
         background-color: white;
-        height: 0.6in;
+        height: 0.66in;
         z-index: 999; }
       #printable .fancy-ship .fancy-pilot-header .outer-circle {
         width: 0.45in;
@@ -188,7 +188,7 @@ body {
       margin-bottom: -0.6in; }
       #printable .fancy-ship .fancy-pilot-stats .pilot-stats-content {
         position: relative;
-        margin-top: -0.25in; }
+        margin-top: -0.2in; }
         #printable .fancy-ship .fancy-pilot-stats .pilot-stats-content .xwing-miniatures-font {
           vertical-align: middle; }
         #printable .fancy-ship .fancy-pilot-stats .pilot-stats-content .action {
