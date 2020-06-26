@@ -10575,10 +10575,11 @@ class exportObj.SquadBuilder
     resetCurrentSquad: (initial_load=false) ->
         default_squad_name = 'Unnamed Squadron'
 
-        squad_name = $.trim(@squad_name_input.val()) or default_squad_name
-        if initial_load and $.trim $.getParameterByName('sn')
+        if (initial_load or (not @squad_name_input.val())) and $.trim $.getParameterByName('sn')
             squad_name = $.trim $.getParameterByName('sn')
-
+        else
+            squad_name = $.trim(@squad_name_input.val()) or default_squad_name
+            
         squad_obstacles = []
         if initial_load and $.trim $.getParameterByName('obs')
             squad_obstacles = ($.trim $.getParameterByName('obs')).split(",").slice(0, 3)
@@ -10600,8 +10601,6 @@ class exportObj.SquadBuilder
             faction: @faction
 
         if @total_points > 0
-            if squad_name == default_squad_name
-                @current_squad.name = 'Unsaved Squadron'
             @current_squad.dirty = true
 
         @container.trigger 'xwing-backend:squadNameChanged'
@@ -11900,7 +11899,6 @@ class exportObj.SquadBuilder
         @squad_name_placeholder.text ''
         @squad_name_placeholder.append short_name
         @squad_name_input.val @current_squad.name
-        return unless @container.is(':visible') 
         if @current_squad.name != "Unnamed Squadron" and @current_squad.name != "Unsaved Squadron"
             if (document.title != "YASB 2.0 - " + @current_squad.name) 
                 document.title = "YASB 2.0 - " + @current_squad.name
