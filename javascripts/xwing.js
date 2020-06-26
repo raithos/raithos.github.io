@@ -10718,7 +10718,7 @@ exportObj.SquadBuilder = (function() {
     this.squad_name_placeholder.text('');
     this.squad_name_placeholder.append(short_name);
     this.squad_name_input.val(this.current_squad.name);
-    if (!this.container.is(':visible')) {
+    if ($.getParameterByName('f') !== this.faction) {
       return;
     }
     if (this.current_squad.name !== "Unnamed Squadron" && this.current_squad.name !== "Unsaved Squadron") {
