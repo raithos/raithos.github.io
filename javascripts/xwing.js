@@ -9472,20 +9472,6 @@ $.getParameterByName = function(name) {
   }
 };
 
-jQuery.event.special.touchstart = {
-  setup: function(_, ns, handle) {
-    if (ns.includes('noPreventDefault')) {
-      this.addEventListener('touchstart', handle, {
-        passive: false
-      });
-    } else {
-      this.addEventListener('touchstart', handle, {
-        passive: true
-      });
-    }
-  }
-};
-
 Array.prototype.intersects = function(other) {
   var item, _i, _len;
   for (_i = 0, _len = this.length; _i < _len; _i++) {
