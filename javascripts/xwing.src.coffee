@@ -6220,11 +6220,6 @@ exportObj.manifestByExpansion =
             count: 2
         }
         {
-            name: 'Engine Upgrade'
-            type: 'upgrade'
-            count: 2
-        }
-        {
             name: 'Hull Upgrade'
             type: 'upgrade'
             count: 2
