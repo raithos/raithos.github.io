@@ -17640,7 +17640,6 @@ exportObj.hyperspaceUpgradeExclusions = [
     'GNK "Gonk" Droid',
     'Seasoned Navigator',
     'Bomblet Generator',
-    'Conner Nets',
     'Electro-Proton Bomb',
     'Proximity Mines',
     'Hate',
