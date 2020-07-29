@@ -13992,9 +13992,10 @@ class Ship
             formatResult: shipResultFormatter
             formatSelection: shipResultFormatter
 
-        @ship_selector.on 'select2-opening', (e) =>
+        @ship_selector.on 'select2-focus', (e) =>
             if $.isMobile()
-                $(@).siblings('.select2-container').find('.select2-search, .select2-focusser').remove()
+                $('.select2-container .select2-focusser').remove()
+                $('.select2-search input').prop('focus',false).removeClass('select2-focused')
         @ship_selector.on 'change', (e) =>
             @setShipType @ship_selector.val()
         @ship_selector.data('select2').results.on 'mousemove-filtered', (e) =>
@@ -14032,9 +14033,10 @@ class Ship
                     if not_in_collection then 'select2-result-not-in-collection' else ''
                 else
                     ''
-        @pilot_selector.on 'select2-opening', (e) =>
+        @pilot_selector.on 'select2-focus', (e) =>
             if $.isMobile()
-                $(@).siblings('.select2-container').find('.select2-search, .select2-focusser').remove()
+                $('.select2-container .select2-focusser').remove()
+                $('.select2-search input').prop('focus',false).removeClass('select2-focused')
         @pilot_selector.on 'change', (e) =>
             @setPilotById @pilot_selector.select2('val')
             @builder.current_squad.dirty = true
@@ -14789,9 +14791,10 @@ class GenericAddon
                 @ship.builder.showTooltip 'Addon', @data, ({addon_type: @type} if @data?) , @ship.builder.mobile_tooltip_modal, true
                 @ship.builder.mobile_tooltip_modal.modal 'show'
 
-        @selector.on 'select2-opening', (e) =>
+        @selector.on 'select2-focus', (e) =>
             if $.isMobile()
-                $(@).siblings('.select2-container').find('.select2-search, .select2-focusser').remove()
+                $('.select2-container .select2-focusser').remove()
+                $('.select2-search input').prop('focus',false).removeClass('select2-focused')
         @selector.on 'change', (e) =>
             @setById @selector.select2('val')
             @ship.builder.current_squad.dirty = true

@@ -13774,10 +13774,11 @@ Ship = (function() {
       formatResult: shipResultFormatter,
       formatSelection: shipResultFormatter
     });
-    this.ship_selector.on('select2-opening', (function(_this) {
+    this.ship_selector.on('select2-focus', (function(_this) {
       return function(e) {
         if ($.isMobile()) {
-          return $(_this).siblings('.select2-container').find('.select2-search, .select2-focusser').remove();
+          $('.select2-container .select2-focusser').remove();
+          return $('.select2-search input').prop('focus', false).removeClass('select2-focused');
         }
       };
     })(this));
@@ -13852,10 +13853,11 @@ Ship = (function() {
         };
       })(this)
     });
-    this.pilot_selector.on('select2-opening', (function(_this) {
+    this.pilot_selector.on('select2-focus', (function(_this) {
       return function(e) {
         if ($.isMobile()) {
-          return $(_this).siblings('.select2-container').find('.select2-search, .select2-focusser').remove();
+          $('.select2-container .select2-focusser').remove();
+          return $('.select2-search input').prop('focus', false).removeClass('select2-focused');
         }
       };
     })(this));
@@ -14710,7 +14712,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 14728
+                lineno: 14730
               })
             ]);
             __iced_deferrals._fulfill();
@@ -14793,10 +14795,11 @@ GenericAddon = (function() {
         }
       };
     })(this));
-    this.selector.on('select2-opening', (function(_this) {
+    this.selector.on('select2-focus', (function(_this) {
       return function(e) {
         if ($.isMobile()) {
-          return $(_this).siblings('.select2-container').find('.select2-search, .select2-focusser').remove();
+          $('.select2-container .select2-focusser').remove();
+          return $('.select2-search input').prop('focus', false).removeClass('select2-focused');
         }
       };
     })(this));
@@ -14863,7 +14866,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 14817
+                  lineno: 14820
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -14886,7 +14889,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 14822
+                      lineno: 14825
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -14978,7 +14981,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 14867
+            lineno: 14870
           }));
         }
         __iced_deferrals._fulfill();
