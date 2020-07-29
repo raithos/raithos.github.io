@@ -13992,6 +13992,9 @@ class Ship
             formatResult: shipResultFormatter
             formatSelection: shipResultFormatter
 
+        @ship_selector.on 'select2-opening', (e) =>
+            if $.isMobile()
+                $(@).siblings('.select2-container').find('.select2-search, .select2-focusser').remove()
         @ship_selector.on 'change', (e) =>
             @setShipType @ship_selector.val()
         @ship_selector.data('select2').results.on 'mousemove-filtered', (e) =>
@@ -14029,7 +14032,9 @@ class Ship
                     if not_in_collection then 'select2-result-not-in-collection' else ''
                 else
                     ''
-
+        @pilot_selector.on 'select2-opening', (e) =>
+            if $.isMobile()
+                $(@).siblings('.select2-container').find('.select2-search, .select2-focusser').remove()
         @pilot_selector.on 'change', (e) =>
             @setPilotById @pilot_selector.select2('val')
             @builder.current_squad.dirty = true
@@ -14783,7 +14788,10 @@ class GenericAddon
                 console.log "#{@data.name}"
                 @ship.builder.showTooltip 'Addon', @data, ({addon_type: @type} if @data?) , @ship.builder.mobile_tooltip_modal, true
                 @ship.builder.mobile_tooltip_modal.modal 'show'
-        
+
+        @selector.on 'select2-opening', (e) =>
+            if $.isMobile()
+                $(@).siblings('.select2-container').find('.select2-search, .select2-focusser').remove()
         @selector.on 'change', (e) =>
             @setById @selector.select2('val')
             @ship.builder.current_squad.dirty = true
