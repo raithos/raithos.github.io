@@ -10486,7 +10486,8 @@ exportObj.slotsMatching = (slota, slotb) ->
     return false
 
 $.isMobile = ->
-    navigator.userAgent.match /(iPhone|iPod|iPad|Android)/i
+    return navigator.userAgent.match /(iPhone|iPod|iPad|Android)/i
+    
 
 $.randomInt = (n) ->
     Math.floor(Math.random() * n)
