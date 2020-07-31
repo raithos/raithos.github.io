@@ -864,6 +864,53 @@ exportObj.basicCardData = function() {
         actions: ["Focus", "Evade", "Lock", "Barrel Roll", "Boost"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 2, 0, 2, 2, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 3, 3, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
       },
+      "Xi-class Light Shuttle": {
+        name: "Xi-class Light Shuttle",
+        xws: "Xi-class Light Shuttle".canonicalize(),
+        factions: ["First Order"],
+        attack: 2,
+        agility: 2,
+        hull: 5,
+        shields: 2,
+        actions: ["Focus", "Jam"],
+        actionsred: ["Lock", "Coordinate"],
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+      },
+      "HMP Droid Gunship": {
+        name: "HMP Droid Gunship",
+        xws: "HMP Droid Gunship".canonicalize(),
+        factions: ["Separatist Alliance"],
+        attackf: 2,
+        agility: 1,
+        hull: 5,
+        shields: 3,
+        actions: ["Calculate", "Lock", "Reload", "R> Calculate"],
+        actionsred: ["Roll"],
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 3, 2, 3, 0, 0, 0, 0, 0, 0], [2, 1, 2, 1, 2, 0, 0, 0, 0, 0], [1, 3, 1, 3, 1, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
+      },
+      "LAAT/i Gunship": {
+        name: "LAAT/i Gunship",
+        xws: "LAAT/i Gunship".canonicalize(),
+        factions: ["Galactic Republic"],
+        attackt: 2,
+        agility: 1,
+        hull: 8,
+        shields: 2,
+        actions: ["Focus", "Lock", "Rotate", "Reload"],
+        actionsred: ["Reinforce"],
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+      },
+      "TIE/rb Heavy": {
+        name: "TIE/rb Heavy",
+        xws: "TIE/rb Heavy".canonicalize(),
+        factions: ["Galactic Empire"],
+        attackt: 2,
+        agility: 1,
+        hull: 8,
+        actions: ["Focus", "Reinforce", "Lock", "Rotate", "R> Calculate"],
+        actionsred: ["Barrel Roll"],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [3, 1, 3, 1, 3, 3, 0, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+      },
       "CR90 Corellian Corvette": {
         name: "CR90 Corellian Corvette",
         xws: "CR90 Corellian Corvette".canonicalize(),
@@ -4629,6 +4676,167 @@ exportObj.basicCardData = function() {
         ship: "JumpMaster 5000",
         points: 38,
         slots: ["Torpedo", "Cannon", "Crew", "Gunner", "Illicit", "Modification", "Title"]
+      }, {
+        name: "First Order Courier",
+        id: 401,
+        faction: "First Order",
+        unique: true,
+        skill: 2,
+        ship: "Xi-class Light Shuttle",
+        points: 200,
+        slots: ["Modification"]
+      }, {
+        name: "Agent Terex",
+        id: 402,
+        faction: "First Order",
+        skill: 3,
+        ship: "Xi-class Light Shuttle",
+        points: 200,
+        slots: ["Crew", "Modification"]
+      }, {
+        name: "Unnamed I4",
+        id: 403,
+        faction: "First Order",
+        unique: true,
+        skill: 4,
+        ship: "Xi-class Light Shuttle",
+        points: 200,
+        slots: ["Crew", "Modification"]
+      }, {
+        name: "Commander Malarus",
+        id: 404,
+        faction: "First Order",
+        unique: true,
+        skill: 5,
+        ship: "Xi-class Light Shuttle",
+        points: 200,
+        slots: ["Crew", "Modification"]
+      }, {
+        name: "Generic I1",
+        id: 405,
+        faction: "Separatist Alliance",
+        skill: 1,
+        ship: "HMP Droid Gunship",
+        points: 200,
+        slots: ["Crew", "Modification"]
+      }, {
+        name: "Unnamed I1",
+        id: 406,
+        faction: "Separatist Alliance",
+        skill: 1,
+        ship: "HMP Droid Gunship",
+        points: 200,
+        slots: ["Crew", "Modification"]
+      }, {
+        name: "Separatist Predator",
+        id: 407,
+        faction: "Separatist Alliance",
+        skill: 3,
+        ship: "HMP Droid Gunship",
+        points: 200,
+        slots: ["Crew", "Modification"]
+      }, {
+        name: "Unnamed I2",
+        id: 408,
+        faction: "Separatist Alliance",
+        skill: 2,
+        ship: "HMP Droid Gunship",
+        points: 200,
+        slots: ["Crew", "Modification"]
+      }, {
+        name: "Unnamed I1",
+        id: 409,
+        faction: "Separatist Alliance",
+        skill: 1,
+        ship: "HMP Droid Gunship",
+        points: 200,
+        slots: ["Crew", "Modification"]
+      }, {
+        name: "Unnamed I3",
+        id: 410,
+        faction: "Separatist Alliance",
+        skill: 3,
+        ship: "HMP Droid Gunship",
+        points: 200,
+        slots: ["Crew", "Modification"]
+      }, {
+        name: "Onderon Exterminator",
+        id: 411,
+        faction: "Separatist Alliance",
+        skill: 3,
+        max_per_squad: 2,
+        ship: "HMP Droid Gunship",
+        points: 200,
+        slots: ["Crew", "Modification"]
+      }, {
+        name: "212th Battalion Pilot",
+        id: 412,
+        faction: "Galactic Republic",
+        skill: 2,
+        ship: "LAAT/i Gunship",
+        points: 200,
+        slots: ["Crew", "Modification"]
+      }, {
+        name: '"Halo"',
+        id: 413,
+        faction: "Galactic Republic",
+        skill: 2,
+        unique: true,
+        ship: "LAAT/i Gunship",
+        points: 200,
+        slots: ["Crew", "Modification"]
+      }, {
+        name: '"Warthog"',
+        id: 414,
+        faction: "Galactic Republic",
+        skill: 3,
+        unique: true,
+        ship: "LAAT/i Gunship",
+        points: 200,
+        slots: ["Crew", "Modification"]
+      }, {
+        name: '"Hawk"',
+        id: 415,
+        faction: "Galactic Republic",
+        skill: 4,
+        unique: true,
+        ship: "LAAT/i Gunship",
+        points: 200,
+        slots: ["Crew", "Modification"]
+      }, {
+        name: "Cardia Academy Pilot",
+        id: 416,
+        faction: "Galactic Empire",
+        skill: 1,
+        ship: "TIE/rb Heavy",
+        points: 200,
+        slots: ["Crew", "Modification", "Configuration"]
+      }, {
+        name: "Onyx Squadron Sentry",
+        id: 417,
+        faction: "Galactic Empire",
+        skill: 3,
+        ship: "TIE/rb Heavy",
+        points: 200,
+        slots: ["Talent", "Cannon", "Modification", "Configuration"]
+      }, {
+        name: "Lytham Dree",
+        id: 418,
+        faction: "Galactic Empire",
+        skill: 3,
+        unique: true,
+        ship: "TIE/rb Heavy",
+        points: 200,
+        slots: ["Talent", "Cannon", "Modification", "Configuration"]
+      }, {
+        name: '"Rampage"',
+        id: 419,
+        faction: "Galactic Empire",
+        skill: 4,
+        unique: true,
+        ship: "TIE/rb Heavy",
+        points: 200,
+        slots: ["Talent", "Cannon", "Modification", "Configuration"]
       }
     ],
     upgradesById: [
@@ -5207,7 +5415,7 @@ exportObj.basicCardData = function() {
         name: "Seasoned Navigator",
         id: 59,
         slot: "Crew",
-        pointsarray: [2, 3, 4, 5, 6, 7, 8, 8, 9],
+        pointsarray: [2, 3, 4, 5, 6, 7, 8, 9, 10],
         variableinit: true
       }, {
         name: "Seventh Sister",
@@ -6472,7 +6680,7 @@ exportObj.basicCardData = function() {
         id: 201,
         slot: "Configuration",
         ship: "Delta-7 Aethersprite",
-        pointsarray: [15, 15, 15, 15, 18, 21, 24],
+        pointsarray: [6, 9, 12, 15, 18, 21, 24],
         variableinit: true,
         modifier_func: function(stats) {
           stats.attack += 1;
@@ -6564,7 +6772,7 @@ exportObj.basicCardData = function() {
         id: 212,
         faction: "Galactic Republic",
         slot: "Force",
-        pointsarray: [0, 2, 4, 6, 8, 10, 12],
+        pointsarray: [4, 4, 4, 4, 6, 8, 10],
         variableinit: true,
         modifier_func: function(stats) {
           if (__indexOf.call(stats.actions, 'F-Coordinate') < 0) {
@@ -6841,7 +7049,7 @@ exportObj.basicCardData = function() {
         slot: "Sensor",
         charge: 1,
         recurring: true,
-        pointsarray: [2, 2, 2, 2, 2, 4, 6],
+        pointsarray: [2, 2, 2, 2, 2, 4, 6, 7, 8],
         variableinit: true
       }, {
         name: "R2-A6",
@@ -7761,6 +7969,104 @@ exportObj.basicCardData = function() {
         slot: "Talent",
         faction: "First Order",
         points: 2
+      }, {
+        name: "Commander Pyre",
+        id: 320,
+        slot: "Crew",
+        unique: true,
+        faction: "First Order",
+        points: 200
+      }, {
+        name: "Clone Captain Rex",
+        id: 321,
+        slot: "Crew",
+        unique: true,
+        faction: "Galactic Republic",
+        points: 200
+      }, {
+        name: "Yoda",
+        id: 322,
+        slot: "Crew",
+        unique: true,
+        force: 2,
+        faction: "Galactic Republic",
+        points: 200,
+        modifier_func: function(stats) {
+          stats.force += 2;
+          if (__indexOf.call(stats.actions, 'F-Coordinate') < 0) {
+            return stats.actions.push('F-Coordinate');
+          }
+        }
+      }, {
+        name: "Repulsorlift Stabilizers",
+        id: 323,
+        slot: "Config",
+        faction: "Separatist Alliance",
+        points: 200
+      }, {
+        name: "Agent Terex",
+        id: 324,
+        slot: "Crew",
+        unique: true,
+        faction: "First Order",
+        points: 200
+      }, {
+        name: "Plo Koon",
+        id: 325,
+        slot: "Crew",
+        unique: true,
+        force: 1,
+        faction: "Galactic Republic",
+        points: 200,
+        modifier_func: function(stats) {
+          stats.force += 1;
+          if (__indexOf.call(stats.actions, 'F-Reinforce') < 0) {
+            return stats.actions.push('F-Reinforce');
+          }
+        }
+      }, {
+        name: "Multi-Missle Pods",
+        id: 326,
+        slot: "Missile",
+        points: 200,
+        attackf: 2,
+        range: "1-2",
+        rangebonus: true,
+        charge: 5,
+        restriction_func: function(ship, upgrade_obj) {
+          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot);
+        },
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot(upgrade_obj.slot);
+        },
+        also_occupies_upgrades: ['Missile']
+      }, {
+        name: "Kit Fisto",
+        id: 327,
+        slot: "Crew",
+        unique: true,
+        force: 1,
+        faction: "Galactic Republic",
+        points: 200,
+        modifier_func: function(stats) {
+          stats.force += 1;
+          if (__indexOf.call(stats.actions, 'F-Evade') < 0) {
+            return stats.actions.push('F-Evade');
+          }
+        }
+      }, {
+        name: "Aayla Secura",
+        id: 328,
+        slot: "Crew",
+        unique: true,
+        force: 1,
+        faction: "Galactic Republic",
+        points: 200,
+        modifier_func: function(stats) {
+          stats.force += 1;
+          stats.actions.push('Focus');
+          return stats.actions.push('> F-Coordinate');
+        }
       }
     ],
     conditionsById: [
@@ -11412,7 +11718,7 @@ exportObj.setupTranslationCardData = function(pilot_translations, upgrade_transl
 
 exportObj.fixIcons = function(data) {
   if (data.text != null) {
-    return data.text = data.text.replace(/%BULLSEYEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bullseyearc"></i>').replace(/%SINGLETURRETARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>').replace(/%DOUBLETURRETARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-doubleturretarc"></i>').replace(/%FRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>').replace(/%REARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reararc"></i>').replace(/%LEFTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-leftarc"></i>').replace(/%RIGHTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-rightarc"></i>').replace(/%ROTATEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>').replace(/%FULLFRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullfrontarc"></i>').replace(/%FULLREARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullreararc"></i>').replace(/%DEVICE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>').replace(/%MODIFICATION%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-modification"></i>').replace(/%RELOAD%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>').replace(/%CONFIG%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-config"></i>').replace(/%FORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>').replace(/%CHARGE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>').replace(/%ENERGY%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-energy"></i>').replace(/%CALCULATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>').replace(/%BANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankleft"></i>').replace(/%BANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankright"></i>').replace(/%BARRELROLL%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>').replace(/%BOOST%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>').replace(/%CANNON%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cannon"></i>').replace(/%CARGO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cargo"></i>').replace(/%CLOAK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>').replace(/%F-COORDINATE%/g, '<i class="xwing-miniatures-font force xwing-miniatures-font-coordinate"></i>').replace(/%COORDINATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>').replace(/%CRIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crit"></i>').replace(/%ASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>').replace(/%GUNNER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>').replace(/%CREW%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crew"></i>').replace(/%DUALCARD%/g, '<span class="card-restriction">Dual card.</span>').replace(/%ELITE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-elite"></i>').replace(/%TACTICALRELAY%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-tacticalrelay"></i>').replace(/%SALVAGEDASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-salvagedastromech"></i>').replace(/%HARDPOINT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>').replace(/%EVADE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>').replace(/%FOCUS%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>').replace(/%HIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hit"></i>').replace(/%ILLICIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-illicit"></i>').replace(/%JAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i>').replace(/%KTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%MISSILE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-missile"></i>').replace(/%RECOVER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-recover"></i>').replace(/%REINFORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i>').replace(/%REVERSESTRAIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reversestraight"></i>').replace(/%REVERSEBANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reversebankleft"></i>').replace(/%REVERSEBANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reversebankright"></i>').replace(/%SHIELD%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-shield"></i>').replace(/%SLAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>').replace(/%SLOOPLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopleft"></i>').replace(/%SLOOPRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopright"></i>').replace(/%STRAIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-straight"></i>').replace(/%STOP%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-stop"></i>').replace(/%SENSOR%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sensor"></i>').replace(/%LOCK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>').replace(/%TORPEDO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-torpedo"></i>').replace(/%TROLLLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollleft"></i>').replace(/%TROLLRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollright"></i>').replace(/%TURNLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnleft"></i>').replace(/%TURNRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnright"></i>').replace(/%TURRET%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turret"></i>').replace(/%UTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%TALENT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-talent"></i>').replace(/%TITLE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-title"></i>').replace(/%TEAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-team"></i>').replace(/%TECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>').replace(/%FORCEPOWER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcepower"></i>').replace(/%LARGESHIPONLY%/g, '<span class="card-restriction">Large ship only.</span>').replace(/%SMALLSHIPONLY%/g, '<span class="card-restriction">Small ship only.</span>').replace(/%REBELONLY%/g, '<span class="card-restriction">Rebel only.</span>').replace(/%IMPERIALONLY%/g, '<span class="card-restriction">Imperial only.</span>').replace(/%SCUMONLY%/g, '<span class="card-restriction">Scum only.</span>').replace(/%LIMITED%/g, '<span class="card-restriction">Limited.</span>').replace(/%CONFIGURATION%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-config"></i>').replace(/%LINEBREAK%/g, '<br /><br />');
+    return data.text = data.text.replace(/%BULLSEYEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bullseyearc"></i>').replace(/%SINGLETURRETARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>').replace(/%DOUBLETURRETARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-doubleturretarc"></i>').replace(/%FRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>').replace(/%REARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reararc"></i>').replace(/%LEFTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-leftarc"></i>').replace(/%RIGHTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-rightarc"></i>').replace(/%ROTATEARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-rotatearc"></i>').replace(/%FULLFRONTARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullfrontarc"></i>').replace(/%FULLREARARC%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-fullreararc"></i>').replace(/%DEVICE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>').replace(/%MODIFICATION%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-modification"></i>').replace(/%RELOAD%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>').replace(/%CONFIG%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-config"></i>').replace(/%FORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>').replace(/%CHARGE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>').replace(/%ENERGY%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-energy"></i>').replace(/%CALCULATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-calculate"></i>').replace(/%BANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankleft"></i>').replace(/%BANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-bankright"></i>').replace(/%BARRELROLL%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-barrelroll"></i>').replace(/%BOOST%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-boost"></i>').replace(/%CANNON%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cannon"></i>').replace(/%CARGO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cargo"></i>').replace(/%CLOAK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-cloak"></i>').replace(/%F-COORDINATE%/g, '<i class="xwing-miniatures-font force xwing-miniatures-font-coordinate"></i>').replace(/%COORDINATE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-coordinate"></i>').replace(/%CRIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crit"></i>').replace(/%ASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-astromech"></i>').replace(/%GUNNER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-gunner"></i>').replace(/%CREW%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-crew"></i>').replace(/%DUALCARD%/g, '<span class="card-restriction">Dual card.</span>').replace(/%ELITE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-elite"></i>').replace(/%TACTICALRELAY%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-tacticalrelay"></i>').replace(/%SALVAGEDASTROMECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-salvagedastromech"></i>').replace(/%HARDPOINT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hardpoint"></i>').replace(/%EVADE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-evade"></i>').replace(/%FOCUS%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-focus"></i>').replace(/%HIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-hit"></i>').replace(/%ILLICIT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-illicit"></i>').replace(/%JAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-jam"></i>').replace(/%KTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%MISSILE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-missile"></i>').replace(/%RECOVER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-recover"></i>').replace(/%F-REINFORCE%/g, '<i class="xwing-miniatures-font force xwing-miniatures-font-reinforce"></i>').replace(/%REINFORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reinforce"></i>').replace(/%REVERSESTRAIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reversestraight"></i>').replace(/%REVERSEBANKLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reversebankleft"></i>').replace(/%REVERSEBANKRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reversebankright"></i>').replace(/%SHIELD%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-shield"></i>').replace(/%SLAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-slam"></i>').replace(/%SLOOPLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopleft"></i>').replace(/%SLOOPRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sloopright"></i>').replace(/%STRAIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-straight"></i>').replace(/%STOP%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-stop"></i>').replace(/%SENSOR%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-sensor"></i>').replace(/%LOCK%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-lock"></i>').replace(/%TORPEDO%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-torpedo"></i>').replace(/%TROLLLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollleft"></i>').replace(/%TROLLRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-trollright"></i>').replace(/%TURNLEFT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnleft"></i>').replace(/%TURNRIGHT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turnright"></i>').replace(/%TURRET%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-turret"></i>').replace(/%UTURN%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-kturn"></i>').replace(/%TALENT%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-talent"></i>').replace(/%TITLE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-title"></i>').replace(/%TEAM%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-team"></i>').replace(/%TECH%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-tech"></i>').replace(/%FORCEPOWER%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcepower"></i>').replace(/%LARGESHIPONLY%/g, '<span class="card-restriction">Large ship only.</span>').replace(/%SMALLSHIPONLY%/g, '<span class="card-restriction">Small ship only.</span>').replace(/%REBELONLY%/g, '<span class="card-restriction">Rebel only.</span>').replace(/%IMPERIALONLY%/g, '<span class="card-restriction">Imperial only.</span>').replace(/%SCUMONLY%/g, '<span class="card-restriction">Scum only.</span>').replace(/%LIMITED%/g, '<span class="card-restriction">Limited.</span>').replace(/%CONFIGURATION%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-config"></i>').replace(/%LINEBREAK%/g, '<br /><br />');
   }
 };
 
@@ -13356,6 +13662,18 @@ exportObj.cardLoaders.English = function() {
     "Colossus Station Mechanic": {
       text: "<strong>Explosion with Wings:</strong> You are dealt 1 facedown damage card. After you perform a %SLAM% action, you may expose 1 damage card to remove 1 disarm token."
     },
+    "212th Battalion Pilot": {
+      text: "<strong>Fire Ordinance:</strong> While a friendly ship performs a non-%SINGLETURRETARC% attack, if the defender is in your turret arc you may spend 1 charge token, if you do the attacker may reroll up to 2 results."
+    },
+    "Hawk": {
+      text: "At the start of the end phase if a friendly ship at range 0-1 has a revealed maneuver higher than this one it may gain 1 strain token to perform a boost action. %LINEBREAK%<strong>Fire Ordinance:</strong> While a friendly ship performs a non-%SINGLETURRETARC% attack, if the defender is in your turret arc you may spend 1 charge token, if you do the attacker may reroll up to 2 results."
+    },
+    "Separatist Predator": {
+      text: "After you barrel roll or maneuver you are stressed. Gain 1 calculate token. %LINEBREAK%<strong>Networked Aim:</strong> You cannot spend your locks to reroll attack dice. While you perform an attack, you may reroll a number of attack dice up to the number of friendly locks on the defender."
+    },
+    '"Rampage"': {
+      text: "After you execute a speed 3-4 maneuver, you may choose a ship in your %SINGLETURRETARC% at range 0-1. If you do, that ship gains 1 strain token, or 2 strain tokens if you are damaged. %LINEBREAK% <strong>Rotating Cannons:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %BACKARC%. You must treat the %FRONTARC% requirement of your equipped %CANNON% upgrades as %SINGLETURRETARC%."
+    },
     "Republic Judiciary": {
       display_name: "Republic Judiciary",
       text: "<i class = flavor_text>The Galactic Republic uses small, swift warships such as the CR90 corvette to respond rapidly to Separatist incursions across the galaxy.</i> %LINEBREAK% <strong>Broadside Batteries:</strong> You can acquire locks and perform primary attacks at range 1-4."
@@ -14439,6 +14757,27 @@ exportObj.cardLoaders.English = function() {
     },
     "Kaz's Fireball": {
       text: "<strong>Setup:</strong> When you resolve <strong>Explosion with Wings</strong>, you may search the damage deck and choose a damage card with the <b>Ship</b> trait: you are dealt that card instead. Then, shuffle the damage deck. %LINEBREAK% You can perform actions of damage cards even while ionized."
+    },
+    "Agent Terex": {
+      text: "<strong>Cyborg: Setup:</strong> Equip this side faceup and place 3 calculate tokens on this card. %LINEBREAK% At the start of the Engagement Phase, you may choose a friendly ship at range 0-3 and remove 1 calculate token from this card to have that ship gain a matching token. Then, if there are no calculate tokens on this card, flip it. %LINEBREAK%<strong>Cyborg:</strong> During the System Phase, roll 1 attack die. On a %HIT% or %CRIT% result, gain 1 calculate token. Otherwise gain 1 jam token. %LINEBREAK% <strong>Action:</strong> Transfer 1 calculate token or 1 jam token to a ship at range 0-3."
+    },
+    "Plo Koon": {
+      text: "At the start of the End Phase, if you are reinforced, you may choose 1 friendly ship at range 0 or in your %LEFTARC% or %RIGHTARC% at range 1. That ship removes 1 deplete or strain token, or repairs 1 faceup damage card."
+    },
+    "Commander Pyre": {
+      text: "<strong>Setup:</strong> After placing forces, choose an enemy ship. It gains 2 stress tokens. While you defend, if the attacker is stressed, you may reroll 1 defense die."
+    },
+    "Clone Captain Rex": {
+      text: "While you perform an attack, you may spend 1 %FOCUS% result. If you do, each friendly ship that has the defender in its %BULLSEYEARC% may gain 1 strain token to perform a %FOCUS% action."
+    },
+    "Yoda": {
+      text: "After another friendly ship at range 0-2 fully executes a purple maneuver or performs a purple action, you may spend 1 %FORCE%. If you do, that ship recovers 1 %FORCE%."
+    },
+    "Repulsorlift Stabilizers": {
+      text: "<strong>Inactive: Setup:</strong>Equip this side faceup. Reduce the difficulty of your straight %STRAIGHT% maneuvers.%LINEBREAK% After you fully execute a maneuver, you may flip this card. %LINEBREAK%<strong>Active: </strong>After you reveal a bank (%BANKLEFT% or %BANKRIGHT%) or turn (%TURNLEFT% or %TURNRIGHT%), you must perform that maneuver as a slideslip, then flip this card. %LINEBREAK%After you fully execute a non-sideslip maneuver, you may flip this card."
+    },
+    "Multi-Missle Pods": {
+      text: "<strong>Attack (%CALCULATE% or %LOCK%):</strong> Spend 1 %CHARGE%. If the defender is in your %FRONTARC%, you may spend 1 %CHARGE% to roll 1 additional attack die. If the defender is in your %BULLSEYEARC%, you may spend up to 2 %CHARGE% to roll that many additional attack dice instead."
     },
     "Admiral Ozzel": {
       display_name: "Admiral Ozzel",
