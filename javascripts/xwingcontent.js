@@ -4703,7 +4703,7 @@ exportObj.basicCardData = function() {
         points: 200,
         slots: ["Crew", "Modification"]
       }, {
-        name: "Commander Malarus",
+        name: "Commander Malarus (Xi-class Light Shuttle)",
         id: 404,
         faction: "First Order",
         unique: true,
