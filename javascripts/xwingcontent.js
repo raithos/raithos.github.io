@@ -7204,7 +7204,7 @@ exportObj.basicCardData = function() {
         name: "Snap Shot",
         id: 256,
         slot: "Talent",
-        pointsarray: [8, 9, 10, 12],
+        pointsarray: [7, 8, 9, 12],
         variablebase: true,
         attack: 2,
         range: "2",
