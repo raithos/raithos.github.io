@@ -408,12 +408,13 @@ span.select2-chosen > i.xwing-miniatures-font {
   width: 100%;
   margin-right: -200px; }
 
-.select2-results .select2-result-not-in-collection {
-  color: #a00; }
-
-.select2-results .select2-disabled {
-  color: gray;
-  background-color: lightgray; }
+.select2-results {
+  max-height: 250px !important; }
+  .select2-results .select2-result-not-in-collection {
+    color: #a00; }
+  .select2-results .select2-disabled {
+    color: gray;
+    background-color: lightgray; }
 
 .card-restriction {
   font-style: italic;

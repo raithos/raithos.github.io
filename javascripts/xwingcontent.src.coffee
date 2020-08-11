@@ -1733,6 +1733,30 @@ exportObj.basicCardData = ->
                 [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
            ]
+        "Droid Tri-Fighter":
+           name: "Droid Tri-Fighter"
+           xws: "Droid Tri-Fighter".canonicalize()
+           factions: ["Separatist Alliance"]
+           attack: 3
+           agility: 3
+           hull: 3
+           actions: [
+             "Calculate"
+             "Evade"
+             "Lock"
+             "Barrel Roll"
+             "R> Evade"
+             "Boost"
+             "R> Calculate"
+           ]
+           maneuvers: [
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+                [ 1, 0, 0, 0, 1, 0, 0, 0, 3, 3 ]
+                [ 2, 1, 2, 1, 2, 0, 0, 0, 0, 0 ]
+                [ 2, 1, 2, 1, 2, 3, 0, 0, 0, 0 ]
+                [ 0, 0, 2, 0, 0, 0, 0, 0, 0, 0 ]
+                [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0 ]
+           ]
 
         # Epic Section
         "CR90 Corellian Corvette":
@@ -8678,6 +8702,94 @@ exportObj.basicCardData = ->
                 "Configuration"
             ]
         }
+        {
+            name: "Limited I3"
+            id: 420
+            faction: "Separatist Alliance"
+            max_per_squad: 3
+            skill: 3
+            ship: "Droid Tri-Fighter"
+            points: 200
+            slots: [
+                "Talent"
+                "Missile"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Unnamed I3"
+            id: 421
+            faction: "Separatist Alliance"
+            skill: 3
+            unique: true
+            ship: "Droid Tri-Fighter"
+            points: 200
+            slots: [
+                "Talent"
+                "Missile"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "DIS-T8114"
+            id: 422
+            faction: "Separatist Alliance"
+            skill: 4
+            unique: true
+            ship: "Droid Tri-Fighter"
+            points: 200
+            slots: [
+                "Talent"
+                "Missile"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Limited I5"
+            id: 423
+            faction: "Separatist Alliance"
+            skill: 5
+            max_per_squad: 2
+            ship: "Droid Tri-Fighter"
+            points: 200
+            slots: [
+                "Talent"
+                "Missile"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Colicoid Interceptor"
+            id: 424
+            faction: "Separatist Alliance"
+            skill: 1
+            ship: "Droid Tri-Fighter"
+            points: 200
+            slots: [
+                "Talent"
+                "Missile"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Separatist Interceptor"
+            id: 425
+            faction: "Separatist Alliance"
+            skill: 3
+            ship: "Droid Tri-Fighter"
+            points: 200
+            slots: [
+                "Talent"
+                "Missile"
+                "Modification"
+                "Configuration"
+            ]
+        }
 
     ]
 
@@ -11934,6 +12046,46 @@ exportObj.basicCardData = ->
                 stats.force += 1
                 stats.actions.push 'Focus'
                 stats.actions.push '> F-Coordinate'
+       }
+       {
+            name: "Maneuver-Assist MGK-300"
+            id: 329
+            slot: "Configuration"
+            ship: "TIE/rb Heavy"
+            faction: "Galactic Empire"
+            points: 200
+            modifier_func: (stats) ->
+                stats.actions.push 'Calculate'
+                stats.actions.push 'Barrel Roll'
+                stats.actions.push '> F-Coordinate'
+       }
+       {
+            name: "Ion Limiter Override"
+            id: 330
+            slot: "Talent"
+            points: 200
+            restriction_func: (ship) ->
+               ship.data.name?.includes("TIE")
+       }
+       {
+            name: "Marg Sable Closure"
+            id: 331
+            slot: "Talent"
+            points: 200
+            restriction_func: (ship) ->
+                not (ship.data.large? or ship.data.huge?)
+       }
+       {
+            name: "XX-23 S-Thread Tracers"
+            id: 332
+            slot: "Missile"
+            attack: 3
+            range: """1-3"""
+            rangebonus: true
+            charge: 2
+            points: 200
+            restriction_func: (ship) ->
+                not (ship.data.large? or ship.data.huge?)
        }
     ]
 
