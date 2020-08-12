@@ -1322,7 +1322,7 @@ exportObj.basicCardData = function() {
         points: 76,
         slots: ["Talent", "Missile", "Gunner", "Modification", "Title", "Illicit"],
         ship_override: {
-          actions: ["Calculate", "Lock", "Rotate Arc"]
+          actions: ["Calculate", "Lock", "R-Barrel Roll", "Rotate Arc"]
         }
       }, {
         name: "Wild Space Fringer",
@@ -1851,7 +1851,7 @@ exportObj.basicCardData = function() {
         points: 12,
         slots: [],
         ship_override: {
-          actions: ["Calculate", "Barrel Roll"]
+          actions: ["Calculate", "Barrel Roll", "R-Coordinate"]
         }
       }, {
         name: "Fenn Rau",
@@ -4031,7 +4031,7 @@ exportObj.basicCardData = function() {
         points: 49,
         slots: ["Talent", "Cannon", "Torpedo", "Crew", "Crew", "Device", "Modification", "Title", "Tactical Relay"],
         ship_override: {
-          actions: ["Calculate", "Lock"]
+          actions: ["Calculate", "Lock", "R-Barrel Roll"]
         }
       }, {
         name: "Dark Courier",
@@ -4158,7 +4158,7 @@ exportObj.basicCardData = function() {
         points: 26,
         slots: ["Talent", "Tech", "Crew", "Modification"],
         ship_override: {
-          actions: ["Calculate"]
+          actions: ["Calculate", "R-Lock", "R-Barrel Roll", "R-Jam"]
         }
       }, {
         name: "Finn",
@@ -4277,7 +4277,7 @@ exportObj.basicCardData = function() {
         points: 32,
         slots: ["Talent", "Turret", "Torpedo", "Gunner", "Crew", "Device", "Modification"],
         ship_override: {
-          actions: ["Calculate", "Lock"]
+          actions: ["Calculate", "Lock", "R-Barrel Roll", "R-Reload"]
         }
       }, {
         name: '"Goji"',
@@ -4539,7 +4539,7 @@ exportObj.basicCardData = function() {
         points: 46,
         slots: ["Talent", "Sensor", "Crew", "Crew", "Modification", "Configuration"],
         ship_override: {
-          actions: ["Calculate", "Lock"]
+          actions: ["Calculate", "Lock", "R-Coordinate"]
         }
       }, {
         name: "Gina Moonsong",
@@ -4656,7 +4656,7 @@ exportObj.basicCardData = function() {
         skill: 3,
         ship: "Xi-class Light Shuttle",
         points: 200,
-        slots: ["Crew", "Modification"]
+        slots: ["Talent", "Crew", "Modification"]
       }, {
         name: "Unnamed I4",
         id: 403,
@@ -4665,7 +4665,7 @@ exportObj.basicCardData = function() {
         skill: 4,
         ship: "Xi-class Light Shuttle",
         points: 200,
-        slots: ["Crew", "Modification"]
+        slots: ["Talent", "Crew", "Modification"]
       }, {
         name: "Commander Malarus (Xi Shuttle)",
         canonical_name: "Commander Malarus".canonicalize(),
@@ -4675,7 +4675,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         ship: "Xi-class Light Shuttle",
         points: 200,
-        slots: ["Crew", "Modification"]
+        slots: ["Talent", "Crew", "Modification"]
       }, {
         name: "Generic I1",
         id: 405,
