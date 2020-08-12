@@ -31,8 +31,6 @@ exportObj.basicCardData = ->
                 "Lock"
                 "Barrel Roll"
             ]
-            actionsred: [
-            ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
               [ 0, 2, 2, 2, 0, 0, 0, 0, 0, 0]
@@ -54,10 +52,8 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Lock"
-            ]
-            actionsred: [
-                "Barrel Roll"
-                "Reload"
+                "R-Barrel Roll"
+                "R-Reload"
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0]
@@ -81,8 +77,6 @@ exportObj.basicCardData = ->
                 "Barrel Roll"
                 "Boost"
             ]
-            actionsred: [
-            ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0]
               [ 1, 0, 0, 0, 1, 0, 0, 0]
@@ -103,9 +97,7 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Lock"
                 "Rotate Arc"
-            ]
-            actionsred: [
-                "Boost"
+                "R-Boost"
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0]
@@ -128,9 +120,7 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Lock"
                 "Rotate Arc"
-            ]
-            actionsred: [
-                "Boost"
+                "R-Boost"
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0]
@@ -153,8 +143,6 @@ exportObj.basicCardData = ->
                 "Barrel Roll"
                 "Evade"
             ]
-            actionsred: [
-            ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0]
               [ 1, 0, 0, 0, 1, 0]
@@ -176,8 +164,6 @@ exportObj.basicCardData = ->
                 "R> Barrel Roll"
                 "Lock"
                 "Barrel Roll"
-            ]
-            actionsred: [
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -202,8 +188,6 @@ exportObj.basicCardData = ->
                 "Boost"
                 "Evade"
             ]
-            actionsred: [
-            ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0]
               [ 1, 0, 0, 0, 1, 0, 0, 0]
@@ -215,7 +199,7 @@ exportObj.basicCardData = ->
         "Firespray-31":
             name: "Firespray-31"
             xws: "Firespray-class Patrol Craft".canonicalize()
-            factions: [ "Scum and Villainy", ]
+            factions: [ "Scum and Villainy", "Separatist Alliance"]
             attack: 3
             attackb: 3
             agility: 2
@@ -226,9 +210,7 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Lock"
                 "Boost"
-            ]
-            actionsred: [
-                "Reinforce"
+                "R-Reinforce"
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -251,10 +233,8 @@ exportObj.basicCardData = ->
                 "Lock"
                 "R> Rotate Arc"
                 "Rotate Arc"
-            ]
-            actionsred: [
-                "Boost"
-                "Jam"
+                "R-Boost"
+                "R-Jam"
             ]
             maneuvers: [
               [ 0, 0, 3, 0, 0]
@@ -276,9 +256,7 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Coordinate"
                 "Reinforce"
-            ]
-            actionsred: [
-                "Jam"
+                "R-Jam"
             ]
             maneuvers: [
               [ 0, 0, 3, 0, 0]
@@ -301,8 +279,6 @@ exportObj.basicCardData = ->
                 "Lock"
                 "Barrel Roll"
             ]
-            actionsred: [
-            ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
               [ 3, 2, 2, 2, 3, 0, 0, 0, 3, 3]
@@ -323,9 +299,7 @@ exportObj.basicCardData = ->
                 "Lock"
                 "Barrel Roll"
                 "R> Lock"
-            ]
-            actionsred: [
-                "Reload"
+                "R-Reload"
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0]
@@ -346,9 +320,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Lock"
-            ]
-            actionsred: [
-                "Barrel Roll"
+                "R-Barrel Roll"
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0]
@@ -371,8 +343,6 @@ exportObj.basicCardData = ->
                 "Lock"
                 "Barrel Roll"
                 "Boost"
-            ]
-            actionsred: [
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0]
@@ -399,8 +369,6 @@ exportObj.basicCardData = ->
                 "Boost"
                 "R> Lock"
             ]
-            actionsred: [
-            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 3, 2, 2, 2, 3, 0, 0, 0 ]
@@ -423,8 +391,6 @@ exportObj.basicCardData = ->
                 "Barrel Roll"
                 "Cloak"
             ]
-            actionsred: [
-            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0]
                 [ 1, 1, 0, 1, 1, 0]
@@ -443,10 +409,8 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Lock"
+                "R-Barrel Roll"
                 "Rotate Arc"
-            ]
-            actionsred: [
-                "Barrel Roll"
             ]
             large: true
             maneuvers: [
@@ -469,9 +433,7 @@ exportObj.basicCardData = ->
                 "Lock"
                 "Reinforce"
                 "Rotate Arc"
-            ]
-            actionsred: [
-                "Coordinate"
+                "R-Coordinate"
             ]
             large: true
             maneuvers: [
@@ -497,8 +459,6 @@ exportObj.basicCardData = ->
                 "Boost"
                 "R> Focus"
             ]
-            actionsred: [
-            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0]
                 [ 1, 2, 2, 2, 1, 0, 0, 0]
@@ -519,8 +479,6 @@ exportObj.basicCardData = ->
                 "Evade"
                 "Lock"
                 "Barrel Roll"
-            ]
-            actionsred: [
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0 ]
@@ -544,8 +502,6 @@ exportObj.basicCardData = ->
                 "Lock"
                 "Boost"
             ]
-            actionsred: [
-            ]
             medium: true
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0 ]
@@ -568,8 +524,6 @@ exportObj.basicCardData = ->
                 "Reinforce"
                 "Lock"
             ]
-            actionsred: [
-            ]
             maneuvers: [
                 [ 0, 0, 3, 0, 0, 0 ]
                 [ 0, 2, 2, 2, 0, 0 ]
@@ -589,8 +543,6 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Lock"
                 "Barrel Roll"
-            ]
-            actionsred: [
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
@@ -615,8 +567,6 @@ exportObj.basicCardData = ->
                 "Rotate Arc"
                 "Reload"
             ]
-            actionsred: [
-            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0 ]
                 [ 0, 2, 2, 2, 0, 0 ]
@@ -635,12 +585,10 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Lock"
+                "R-Barrel Roll"
                 "Boost"
                 "R> Lock"
                 "Reload"
-            ]
-            actionsred: [
-                "Barrel Roll"
             ]
             maneuvers: [
                 [ 0, 0, 3, 0, 0, 0 ]
@@ -663,8 +611,6 @@ exportObj.basicCardData = ->
                 "Lock"
                 "Reinforce"
             ]
-            actionsred: [
-            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0 ]
                 [ 3, 1, 2, 1, 3, 0 ]
@@ -685,8 +631,6 @@ exportObj.basicCardData = ->
                 "Evade"
                 "Barrel Roll"
                 "R> Evade"
-            ]
-            actionsred: [
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0 ]
@@ -712,8 +656,6 @@ exportObj.basicCardData = ->
                 "Boost"
                 "R> Focus"
             ]
-            actionsred: [
-            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 2, 2, 0, 2, 2, 0, 0, 0, 0, 0 ]
@@ -736,8 +678,6 @@ exportObj.basicCardData = ->
                 "Lock"
                 "Jam"
             ]
-            actionsred: [
-            ]
             maneuvers: [
                 [ 0, 0, 3, 0, 0, 0 ]
                 [ 3, 2, 2, 2, 3, 0 ]
@@ -759,9 +699,7 @@ exportObj.basicCardData = ->
                 "R> Rotate Arc"
                 "Lock"
                 "R> Rotate Arc"
-            ]
-            actionsred: [
-                "Barrel Roll"
+                "R-Barrel Roll"
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0 ]
@@ -783,9 +721,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Lock"
-            ]
-            actionsred: [
-                "Barrel Roll"
+                "R-Barrel Roll"
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0 ]
@@ -811,8 +747,6 @@ exportObj.basicCardData = ->
                 "Boost"
                 "R> Focus"
             ]
-            actionsred: [
-            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 1, 0, 0, 0, 1, 0, 0, 0, 0, 0 ]
@@ -837,8 +771,6 @@ exportObj.basicCardData = ->
                 "Lock"
                 "Rotate Arc"
             ]
-            actionsred: [
-            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0]
                 [ 0, 1, 1, 1, 0, 0]
@@ -856,11 +788,9 @@ exportObj.basicCardData = ->
             hull: 5
             shields: 0
             actions: [
-                "Barrel Roll"
                 "Focus"
-            ]
-            actionsred: [
-                "Evade"
+                "R-Evade"
+                "Barrel Roll"
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
@@ -880,9 +810,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Lock"
-            ]
-            actionsred: [
-                "Coordinate"
+                "R-Coordinate"
             ]
             maneuvers: [
                 [ 0, 0, 3, 0, 0 ]
@@ -907,8 +835,6 @@ exportObj.basicCardData = ->
                 "Evade"
                 "Barrel Roll"
             ]
-            actionsred: [
-            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 1, 2, 2, 2, 1, 3, 0, 0 ]
@@ -925,10 +851,8 @@ exportObj.basicCardData = ->
             shields: 2
             actions: [
                 "Focus"
+                "R-Barrel Roll"
                 "Reinforce"
-            ]
-            actionsred: [
-                "Barrel Roll"
             ]
             maneuvers: [
                 [ 0, 0, 3, 0, 0, 0, 0, 0 ]
@@ -949,9 +873,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Lock"
-            ]
-            actionsred: [
-                "Barrel Roll"
+                "R-Barrel Roll"
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
@@ -974,8 +896,6 @@ exportObj.basicCardData = ->
                 "Barrel Roll"
                 "R> Evade"
             ]
-            actionsred: [
-            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 0, 1, 2, 1, 0, 0, 0, 0, 0, 0 ]
@@ -997,8 +917,6 @@ exportObj.basicCardData = ->
                 "Slam"
                 "Reload"
             ]
-            actionsred: [
-            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 0, 1, 2, 1, 0, 0, 0, 0 ]
@@ -1018,10 +936,8 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Lock"
+                "R-Barrel Roll"
                 "Reload"
-            ]
-            actionsred: [
-                "Barrel Roll"
             ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0]
@@ -1043,8 +959,6 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Coordinate"
             ]
-            actionsred: [
-            ]
             maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 [ 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0]
@@ -1065,9 +979,7 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Evade"
                 "Jam"
-            ]
-            actionsred: [
-                "Coordinate"
+                "R-Coordinate"
             ]
             maneuvers: [
                 [ 0, 0, 3, 0, 0, 0, 0, 0 ]
@@ -1086,9 +998,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Barrel Roll"
-            ]
-            actionsred: [
-                "Coordinate"
+                "R-Coordinate"
             ]
             maneuvers: [
                 [ 0, 0, 3, 0, 0, 0, 0, 0 ]
@@ -1108,8 +1018,6 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Lock"
                 "Boost"
-            ]
-            actionsred: [
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -1136,8 +1044,6 @@ exportObj.basicCardData = ->
                 "Barrel Roll"
                 "Boost"
             ]
-            actionsred: [
-            ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0]
               [ 1, 0, 0, 0, 1, 0, 0, 0]
@@ -1160,8 +1066,6 @@ exportObj.basicCardData = ->
                 "Lock"
                 "Barrel Roll"
             ]
-            actionsred: [
-            ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0]
               [ 1, 0, 0, 0, 1, 0, 0, 0]
@@ -1183,8 +1087,6 @@ exportObj.basicCardData = ->
                 "Boost"
                 "Lock"
                 "Barrel Roll"
-            ]
-            actionsred: [
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -1213,8 +1115,6 @@ exportObj.basicCardData = ->
                 "Barrel Roll"
                 "> Rotate Arc"
             ]
-            actionsred: [
-            ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
               [ 3, 2, 2, 2, 3, 0, 0, 0, 0, 0]
@@ -1237,8 +1137,6 @@ exportObj.basicCardData = ->
                 "Reinforce"
                 "Coordinate"
                 "Jam"
-            ]
-            actionsred: [
             ]
             maneuvers: [
               [ 0, 0, 3, 0, 0, 0, 0, 0, 0, 0]
@@ -1264,8 +1162,6 @@ exportObj.basicCardData = ->
                 "Rotate Arc"
                 "Reload"
             ]
-            actionsred: [
-            ]
             maneuvers: [
               [ 0, 0, 3, 0, 0, 0, 0, 0, 0, 0]
               [ 3, 2, 2, 2, 3, 0, 0, 0, 0, 0]
@@ -1287,10 +1183,8 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Lock"
-            ]
-            actionsred: [
-                "Boost"
-                "Rotate Arc"
+                "R-Boost"
+                "R-Rotate Arc"
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0]
@@ -1312,8 +1206,6 @@ exportObj.basicCardData = ->
                 "Focus"
                 "Barrel Roll"
                 "Evade"
-            ]
-            actionsred: [
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0]
@@ -1338,8 +1230,6 @@ exportObj.basicCardData = ->
                 "Barrel Roll"
                 "R> Evade"
             ]
-            actionsred: [
-            ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
               [ 3, 2, 2, 2, 3, 0, 0, 0, 0, 0]
@@ -1363,8 +1253,6 @@ exportObj.basicCardData = ->
                 "Barrel Roll"
                 "Boost"
             ]
-            actionsred: [
-            ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
               [ 1, 2, 0, 2, 1, 0, 0, 0, 0, 0]
@@ -1385,9 +1273,7 @@ exportObj.basicCardData = ->
             actions: [
                 "Focus"
                 "Lock"
-            ]
-            actionsred: [
-                "Barrel Roll"
+                "R-Barrel Roll"
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -1410,8 +1296,6 @@ exportObj.basicCardData = ->
                 "Lock"
                 "Barrel Roll"
                 "R> Calculate"
-            ]
-            actionsred: [
             ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -1437,8 +1321,6 @@ exportObj.basicCardData = ->
                 "Boost"
                 "R> Focus"
             ]
-            actionsred: [
-            ]
             maneuvers: [
               [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
               [ 1, 1, 0, 1, 1, 0, 0, 0, 0, 0]
@@ -1461,8 +1343,6 @@ exportObj.basicCardData = ->
              "Barrel Roll"
              "Boost"
            ]
-           actionsred: [
-           ]
            maneuvers: [
              [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
              [ 0, 1, 1, 1, 0, 0, 0, 0, 0, 0]
@@ -1484,9 +1364,7 @@ exportObj.basicCardData = ->
              "Lock"
              "Barrel Roll"
              "R> Lock"
-           ]
-           actionsred: [
-             "Reload"
+             "R-Reload"
            ]
            maneuvers: [
              [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -1506,11 +1384,9 @@ exportObj.basicCardData = ->
            shields: 1
            actions: [
              "Focus"
-           ]
-           actionsred: [
-             "Lock"
-             "Barrel Roll"
-             "Jam"
+             "R-Lock"
+             "R-Barrel Roll"
+             "R-Jam"
            ]
            maneuvers: [
              [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -1530,10 +1406,8 @@ exportObj.basicCardData = ->
            actions: [
              "Focus"
              "Lock"
-           ]
-           actionsred: [
-             "Coordinate"
-             "Jam"
+             "R-Coordinate"
+             "R-Jam"
            ]
            maneuvers: [
                 [ 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
@@ -1574,10 +1448,8 @@ exportObj.basicCardData = ->
            actions: [
              "Focus"
              "Lock"
-           ]
-           actionsred: [
-             "Barrel Roll"
-             "Reload"
+             "R-Barrel Roll"
+             "R-Reload"
            ]
            maneuvers: [
                 [ 0, 0, 0, 0, 0, 0]
@@ -1600,8 +1472,6 @@ exportObj.basicCardData = ->
              "Evade"
              "Barrel Roll"
              "Slam"
-           ]
-           actionsred: [
            ]
            maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
@@ -1642,13 +1512,12 @@ exportObj.basicCardData = ->
            agility: 2
            hull: 5
            shields: 2
+           medium: true
            actions: [
              "Focus"
+             "R-Lock"
+             "R-Coordinate"
              "Jam"
-           ]
-           actionsred: [
-             "Lock"
-             "Coordinate"
            ]
            maneuvers: [
                 [ 0, 0, 3, 0, 0, 0, 0, 0, 0, 0 ]
@@ -1666,14 +1535,13 @@ exportObj.basicCardData = ->
            agility: 1
            hull: 5
            shields: 3
+           medium: true
            actions: [
              "Calculate"
              "Lock"
+             "R-Barrel Roll"
              "Reload"
              "R> Calculate"
-           ]
-           actionsred: [
-             "Roll"
            ]
            maneuvers: [
                 [ 0, 0, 3, 0, 0, 0, 0, 0, 0, 0 ]
@@ -1691,14 +1559,13 @@ exportObj.basicCardData = ->
            agility: 1
            hull: 8
            shields: 2
+           medium: true
            actions: [
              "Focus"
              "Lock"
              "Rotate"
+             "R-Reinforce"
              "Reload"
-           ]
-           actionsred: [
-             "Reinforce"
            ]
            maneuvers: [
                 [ 0, 0, 3, 0, 0, 0, 0, 0, 0, 0 ]
@@ -1715,21 +1582,20 @@ exportObj.basicCardData = ->
            attackt: 2
            agility: 1
            hull: 8
+           medium: true
            actions: [
              "Focus"
              "Reinforce"
              "Lock"
+             "R-Barrel Roll"
              "Rotate"
              "R> Calculate"
-           ]
-           actionsred: [
-             "Barrel Roll"
            ]
            maneuvers: [
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 3, 1, 2, 1, 3, 0, 0, 0, 0, 0 ]
                 [ 1, 2, 2, 2, 1, 0, 0, 0, 0, 0 ]
-                [ 3, 1, 3, 1, 3, 3, 0, 0, 3, 3 ]
+                [ 3, 1, 1, 1, 3, 3, 0, 0, 3, 3 ]
                 [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
            ]
@@ -1757,7 +1623,53 @@ exportObj.basicCardData = ->
                 [ 0, 0, 2, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0 ]
            ]
-
+        "Nimbus-class V-Wing":
+           name: "Nimbus-class V-Wing"
+           xws: "Nimbus-class V-Wing".canonicalize()
+           factions: ["Galactic Republic"]
+           attack: 2
+           agility: 3
+           hull: 2
+           shields: 2
+           actions: [
+             "Focus"
+             "Lock"
+             "R-Barrel Roll"
+             "Boost"
+             "R> Lock"
+           ]
+           maneuvers: [
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+                [ 1, 3, 0, 3, 1, 0, 0, 0, 0, 0 ]
+                [ 2, 2, 2, 2, 2, 3, 0, 0, 0, 0 ]
+                [ 1, 1, 2, 1, 1, 0, 0, 0, 0, 0 ]
+                [ 0, 0, 2, 0, 0, 3, 0, 0, 0, 0 ]
+                [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 ]
+           ]
+        "ETA-2 Actis":
+           name: "ETA-2 Actis"
+           xws: "ETA-2 Actis".canonicalize()
+           factions: ["Galactic Republic"]
+           attackbull: 3
+           attack: 2
+           agility: 3
+           hull: 3
+           actions: [
+             "Focus"
+             "Evade"
+             "Lock"
+             "Barrel Roll"
+             "Boost"
+           ]
+           maneuvers: [
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+                [ 1, 0, 0, 0, 1, 0, 0, 0, 0, 0 ]
+                [ 1, 2, 2, 2, 1, 0, 0, 0, 4, 4 ]
+                [ 1, 2, 2, 2, 1, 0, 0, 0, 0, 0 ]
+                [ 0, 0, 2, 0, 0, 3, 0, 0, 0, 0 ]
+                [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 ]
+           ]
+    
         # Epic Section
         "CR90 Corellian Corvette":
            name: "CR90 Corellian Corvette"
@@ -1777,10 +1689,8 @@ exportObj.basicCardData = ->
              "Focus"
              "Reinforce"
              "Lock"
+             "R-Coordinate"
              "Jam"
-           ]
-           actionsred: [
-             "Coordinate"
            ]
            maneuvers: [
                 [ 0, 3, 3, 3, 0]
@@ -1831,12 +1741,10 @@ exportObj.basicCardData = ->
            energyrecurr: 1
            actions: [
              "Focus"
+             "R-Lock"
              "Coordinate"
+             "R-Reinforce"
              "Jam"
-           ]
-           actionsred: [
-             "Reinforce"
-             "Lock"
            ]
            maneuvers: [
                 [ 0, 3, 3, 3, 0]
@@ -1887,10 +1795,8 @@ exportObj.basicCardData = ->
              "Focus"
              "Reinforce"
              "Lock"
+             "R-Coordinate"
              "Jam"
-           ]
-           actionsred: [
-             "Coordinate"
            ]
            maneuvers: [
                 [ 0, 3, 3, 3, 0]
@@ -7201,8 +7107,12 @@ exportObj.basicCardData = ->
                 "Configuration"
             ]
             ship_override:
-                actionsred: [
-                    "Jam"
+                actions: [
+                     "Calculate"
+                     "Lock"
+                     "Barrel Roll"
+                     "R> Lock"
+                     "R-Jam"
                 ]
         }
         {
@@ -8463,7 +8373,6 @@ exportObj.basicCardData = ->
             name: "First Order Courier"
             id: 401
             faction: "First Order"
-            unique: true
             skill: 2
             ship: "Xi-class Light Shuttle"
             points: 200
@@ -8475,6 +8384,7 @@ exportObj.basicCardData = ->
             name: "Agent Terex"
             id: 402
             faction: "First Order"
+            unique: true
             skill: 3
             ship: "Xi-class Light Shuttle"
             points: 200
@@ -8497,7 +8407,8 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Commander Malarus (Xi-class Light Shuttle)"
+            name: "Commander Malarus (Xi Shuttle)"
+            canonical_name: "Commander Malarus".canonicalize()
             id: 404
             faction: "First Order"
             unique: true
@@ -8517,21 +8428,16 @@ exportObj.basicCardData = ->
             ship: "HMP Droid Gunship"
             points: 200
             slots: [
+                "Missile"
+                "Missile"
                 "Crew"
                 "Modification"
+                "Configuration"
             ]
         }
         {
-            name: "Unnamed I1"
             id: 406
-            faction: "Separatist Alliance"
-            skill: 1
-            ship: "HMP Droid Gunship"
-            points: 200
-            slots: [
-                "Crew"
-                "Modification"
-            ]
+            skip: true
         }
         {
             name: "Separatist Predator"
@@ -8541,20 +8447,28 @@ exportObj.basicCardData = ->
             ship: "HMP Droid Gunship"
             points: 200
             slots: [
+                "Talent"
+                "Missile"
+                "Missile"
                 "Crew"
                 "Modification"
+                "Configuration"
             ]
         }
         {
-            name: "Unnamed I2"
+            name: "Limited I2"
             id: 408
             faction: "Separatist Alliance"
             skill: 2
+            max_per_squad: 2
             ship: "HMP Droid Gunship"
             points: 200
             slots: [
+                "Missile"
+                "Missile"
                 "Crew"
                 "Modification"
+                "Configuration"
             ]
         }
         {
@@ -8562,11 +8476,15 @@ exportObj.basicCardData = ->
             id: 409
             faction: "Separatist Alliance"
             skill: 1
+            unique: true
             ship: "HMP Droid Gunship"
             points: 200
             slots: [
+                "Missile"
+                "Missile"
                 "Crew"
                 "Modification"
+                "Configuration"
             ]
         }
         {
@@ -8577,8 +8495,12 @@ exportObj.basicCardData = ->
             ship: "HMP Droid Gunship"
             points: 200
             slots: [
+                "Talent"
+                "Missile"
+                "Missile"
                 "Crew"
                 "Modification"
+                "Configuration"
             ]
         }
         {
@@ -8590,8 +8512,12 @@ exportObj.basicCardData = ->
             ship: "HMP Droid Gunship"
             points: 200
             slots: [
+                "Talent"
+                "Missile"
+                "Missile"
                 "Crew"
                 "Modification"
+                "Configuration"
             ]
         }
         {
@@ -8733,7 +8659,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "DIS-T8114"
+            name: "DIS-T81"
             id: 422
             faction: "Separatist Alliance"
             skill: 4
@@ -8788,6 +8714,314 @@ exportObj.basicCardData = ->
                 "Missile"
                 "Modification"
                 "Configuration"
+            ]
+        }
+        {
+            name: "Separatist Hunter"
+            id: 426
+            faction: "Separatist Alliance"
+            skill: 1
+            ship: "Firespray-31"
+            points: 200
+            slots: [
+                "Cannon"
+                "Missile"
+                "Crew"
+                "Device"
+                "Illicit"
+                "Modification"
+                "Title"
+            ]
+        }
+        {
+            name: "Boba Fett (Separatist)"
+            id: 427
+            faction: "Separatist Alliance"
+            unique: true
+            skill: 3
+            ship: "Firespray-31"
+            points: 200
+            slots: [
+                "Talent"
+                "Cannon"
+                "Missile"
+                "Crew"
+                "Device"
+                "Illicit"
+                "Modification"
+                "Title"
+            ]
+        }
+        {
+            name: "Zam Wesell"
+            id: 428
+            faction: "Separatist Alliance"
+            unique: true
+            skill: 5
+            ship: "Firespray-31"
+            points: 200
+            slots: [
+                "Talent"
+                "Cannon"
+                "Missile"
+                "Crew"
+                "Device"
+                "Illicit"
+                "Modification"
+                "Title"
+            ]
+        }
+        {
+            name: "Jango Fett"
+            id: 429
+            faction: "Separatist Alliance"
+            skill: 6
+            unique: true
+            ship: "Firespray-31"
+            points: 200
+            slots: [
+                "Talent"
+                "Cannon"
+                "Missile"
+                "Crew"
+                "Device"
+                "Illicit"
+                "Modification"
+                "Title"
+            ]
+        }
+        {
+            name: "Loyalist Vanguard"
+            id: 430
+            faction: "Galactic Republic"
+            skill: 2
+            ship: "Nimbus-class V-Wing"
+            points: 200
+            slots: [
+                "Astromech"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Shadow Squadron Scout"
+            id: 431
+            faction: "Galactic Republic"
+            skill: 3
+            ship: "Nimbus-class V-Wing"
+            points: 200
+            slots: [
+                "Talent"
+                "Astromech"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Wilhuff Tarkin"
+            id: 432
+            faction: "Galactic Republic"
+            skill: 3
+            unique: true
+            ship: "Nimbus-class V-Wing"
+            points: 200
+            slots: [
+                "Talent"
+                "Astromech"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Unnamed I4"
+            id: 433
+            faction: "Galactic Republic"
+            skill: 4
+            unique: true
+            ship: "Nimbus-class V-Wing"
+            points: 200
+            slots: [
+                "Talent"
+                "Astromech"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Unnamed I5"
+            id: 434
+            faction: "Galactic Republic"
+            skill: 5
+            unique: true
+            ship: "Nimbus-class V-Wing"
+            points: 200
+            slots: [
+                "Talent"
+                "Astromech"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: '"Oddball" (V-Wing)'
+            canonical_name: '"Oddball"'.canonicalize()
+            id: 435
+            faction: "Galactic Republic"
+            skill: 5
+            unique: true
+            ship: "Nimbus-class V-Wing"
+            points: 200
+            slots: [
+                "Talent"
+                "Astromech"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Jedi Knight"
+            id: 436
+            faction: "Galactic Republic"
+            skill: 4
+            ship: "ETA-2 Actis"
+            points: 200
+            slots: [
+                "Force"
+                "Astromech"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Yoda"
+            id: 437
+            faction: "Galactic Republic"
+            skill: 3
+            unique: true
+            ship: "ETA-2 Actis"
+            points: 200
+            slots: [
+                "Force"
+                "Astromech"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Shaak Ti"
+            id: 438
+            faction: "Galactic Republic"
+            skill: 4
+            unique: true
+            ship: "ETA-2 Actis"
+            points: 200
+            slots: [
+                "Force"
+                "Astromech"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Aayla Secura"
+            id: 439
+            faction: "Galactic Republic"
+            skill: 5
+            unique: true
+            ship: "ETA-2 Actis"
+            points: 200
+            slots: [
+                "Force"
+                "Astromech"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Obi-Wan Kenobi (ETA-2)"
+            canonical_name: 'Obi-Wan Kenobi'.canonicalize()
+            id: 440
+            faction: "Galactic Republic"
+            skill: 5
+            unique: true
+            ship: "ETA-2 Actis"
+            points: 200
+            slots: [
+                "Force"
+                "Astromech"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Anakin Skywalker (ETA-2)"
+            canonical_name: 'Anakin Skywalker'.canonicalize()
+            id: 441
+            faction: "Galactic Republic"
+            skill: 6
+            unique: true
+            ship: "ETA-2 Actis"
+            points: 200
+            slots: [
+                "Force"
+                "Astromech"
+                "Modification"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Poe Dameron (HoH)"
+            canonical_name: 'Poe Dameron'.canonicalize()
+            id: 442
+            unique: true
+            faction: "Resistance"
+            ship: "T-70 X-Wing"
+            skill: 6
+            points: 200
+            charge: 2
+            recurring: true
+            slots: [
+                "Talent"
+                "Astromech"
+                "Modification"
+                "Configuration"
+                "Tech"
+                "Title"
+                "HardpointShip"
+            ]
+        }
+        {
+            name: "Temmin Wexley (HoH)"
+            canonical_name: 'Temmin Wexley'.canonicalize()
+            id: 443
+            unique: true
+            faction: "Resistance"
+            ship: "T-70 X-Wing"
+            skill: 4
+            points: 200
+            slots: [
+                "Talent"
+                "Astromech"
+                "Modification"
+                "Configuration"
+                "Tech"
+                "Title"
+                "HardpointShip"
+            ]
+        }
+        {
+            name: "Merl Cobben"
+            id: 444
+            faction: "Resistance"
+            unique: true
+            skill: 1
+            ship: "RZ-2 A-Wing"
+            points: 200
+            slots: [
+                "Talent"
+                "Talent"
+                "Missile"
+                "Tech"
             ]
         }
 
@@ -9019,7 +9253,7 @@ exportObj.basicCardData = ->
            unique: true
            faction: "Galactic Empire"
            restriction_func: (ship) ->
-                "Coordinate" in ship.effectiveStats().actions or "Coordinate" in ship.effectiveStats().actionsred
+                ("Coordinate" or "R-Coordinate") in ship.effectiveStats().actions
        }
        {
            name: "Cikatro Vizago"
@@ -9122,7 +9356,7 @@ exportObj.basicCardData = ->
            charge: 2
            recurring: true
            restriction_func: (ship) ->
-                "Lock" in ship.effectiveStats().actions or "Lock" in ship.effectiveStats().actionsred
+                ("Lock" or "R-Lock") in ship.effectiveStats().actions
        }
        {
            name: "Hera Syndulla"
@@ -9281,7 +9515,7 @@ exportObj.basicCardData = ->
            charge: 2
            recurring: true
            restriction_func: (ship) ->
-                "Coordinate" in ship.effectiveStats().actions or "Coordinate" in ship.effectiveStats().actionsred
+                ("Coordinate" or "R-Coordinate") in ship.effectiveStats().actions
        }
        {
            name: "Magva Yarro"
@@ -9381,7 +9615,7 @@ exportObj.basicCardData = ->
            slot: "Crew"
            points: 6
            restriction_func: (ship) ->
-                "Coordinate" in ship.effectiveStats().actionsred
+                "R-Coordinate" in ship.effectiveStats().actions
            modifier_func: (stats) ->
                 stats.actions.push 'Coordinate' if 'Coordinate' not in stats.actions
        }
@@ -9641,7 +9875,7 @@ exportObj.basicCardData = ->
            pointsarray: [12,9,7,7]
            variablebase: true
            restriction_func: (ship) ->
-                "Rotate Arc" in ship.effectiveStats().actions or "Rotate Arc" in ship.effectiveStats().actionsred
+                ("Rotate Arc" or "R-Rotate Arc") in ship.effectiveStats().actions
        }
        {
            name: "Cloaking Device"
@@ -9768,7 +10002,7 @@ exportObj.basicCardData = ->
            slot: "Modification"
            points: 3
            restriction_func: (ship) ->
-                "Slam" in ship.effectiveStats().actions or "Slam" in ship.effectiveStats().actionsred
+                ("Slam" or "R-Slam") in ship.effectiveStats().actions
        }
        {
            name: "Afterburners"
@@ -9792,7 +10026,7 @@ exportObj.basicCardData = ->
            pointsarray: [2,4,7]
            variablebase: true
            restriction_func: (ship) ->
-                "Boost" in ship.effectiveStats().actionsred
+                "R-Boost" in ship.effectiveStats().actions
            modifier_func: (stats) ->
                 stats.actions.push 'Boost' if 'Boost' not in stats.actions
        }
@@ -9847,7 +10081,7 @@ exportObj.basicCardData = ->
            slot: "Talent"
            points: 1
            restriction_func: (ship) ->
-                "Focus" in ship.effectiveStats().actions or "Focus" in ship.effectiveStats().actionsred
+                ("Focus" or "R-Focus") in ship.effectiveStats().actions
        }
        {
            name: "Crack Shot"
@@ -9872,7 +10106,7 @@ exportObj.basicCardData = ->
            restriction_func: (ship) ->
                 not (ship.data.large? or ship.data.huge?)
            modifier_func: (stats) ->
-                stats.actionsred.push 'Evade' if 'Evade' not in stats.actionsred
+                stats.actions.push 'R-Evade' if 'R-Evade' not in stats.actions
        }
        {
            name: "Elusive"
@@ -9890,7 +10124,7 @@ exportObj.basicCardData = ->
            pointsarray: [2,3,4]
            variablebase: true
            restriction_func: (ship) ->
-                "Barrel Roll" in ship.effectiveStats().actionsred
+                "R-Barrel Roll" in ship.effectiveStats().actions
            modifier_func: (stats) ->
                 stats.actions.push 'Barrel Roll' if 'Barrel Roll' not in stats.actions
        }
@@ -9955,7 +10189,7 @@ exportObj.basicCardData = ->
            slot: "Talent"
            points: 4
            restriction_func: (ship) ->
-                "Reload" in ship.effectiveStats().actions or "Reload" in ship.effectiveStats().actionsred
+                ("Reload" or "R-Reload") in ship.effectiveStats().actions
        }
        {
            name: "Selfless"
@@ -9972,8 +10206,7 @@ exportObj.basicCardData = ->
            variableinit: true
            unique: true
            modifier_func: (stats) ->
-                if stats.actionsred?
-                    stats.actionsred.push 'Coordinate' if 'Coordinate' not in stats.actionsred
+                stats.actions.push 'R-Coordinate' if 'R-Coordinate' not in stats.actions
        }
        {
            name: "Swarm Tactics"
@@ -10434,7 +10667,7 @@ exportObj.basicCardData = ->
             slot: "Tech"
             points: 4
             restriction_func: (ship) ->
-                "Lock" in ship.effectiveStats().actions or "Lock" in ship.effectiveStats().actionsred
+                ("Lock" or "R-Lock") in ship.effectiveStats().actions
        }
        {
             name: "Primed Thrusters"
@@ -10569,7 +10802,7 @@ exportObj.basicCardData = ->
             faction: "Resistance"
             modifier_func: (stats) ->
                 stats.actions.push 'Calculate' if 'Calculate' not in stats.actions
-                stats.actionsred.push 'Coordinate' if 'Coordinate' not in stats.actionsred
+                stats.actions.push 'R-Coordinate' if 'R-Coordinate' not in stats.actions
        }
        {
             name: "Han Solo (Resistance)"
@@ -10580,7 +10813,7 @@ exportObj.basicCardData = ->
             unique: true
             faction: "Resistance"
             modifier_func: (stats) ->
-                stats.actionsred.push 'Evade' if 'Evade' not in stats.actionsred
+                stats.actions.push 'R-Evade' if 'R-Evade' not in stats.actions
        }
        {
             name: "Rey's Millennium Falcon"
@@ -10671,7 +10904,7 @@ exportObj.basicCardData = ->
             points: 1
             faction: "First Order"
             restriction_func: (ship) ->
-                "Lock" in ship.effectiveStats().actions or "Lock" in ship.effectiveStats().actionsred
+                ("Lock" or "R-Lock") in ship.effectiveStats().actions
        }
        {
             name: "Predictive Shot"
@@ -10729,7 +10962,7 @@ exportObj.basicCardData = ->
             charge: 1
             points: 5
             restriction_func: (ship) ->
-                "Calculate" in ship.effectiveStats().actions or "Calculate" in ship.effectiveStats().actionsred
+                ("Calculate" or "R-Calculate") in ship.effectiveStats().actions
        }
        {
             name: "Dedicated"
@@ -10747,7 +10980,7 @@ exportObj.basicCardData = ->
             slot: "Modification"
             points: 1
             restriction_func: (ship) ->
-                "Lock" in ship.effectiveStats().actions or "Lock" in ship.effectiveStats().actionsred
+                ("Lock" or "R-Lock") in ship.effectiveStats().actions
        }
        {
             name: "Battle Meditation"
@@ -10800,7 +11033,7 @@ exportObj.basicCardData = ->
             faction: "Separatist Alliance"
             points: 4
             modifier_func: (stats) ->
-                stats.actionsred.push 'Cloak' if 'Cloak' not in stats.actionsred
+                stats.actions.push 'R-Cloak' if 'R-Cloak' not in stats.actions
                 stats.actions.push 'Jam' if 'Jam' not in stats.actions
        }
        {
@@ -10982,7 +11215,7 @@ exportObj.basicCardData = ->
             points: 11
             charge: 1
             restriction_func: (ship, upgrade_obj) ->
-                ("Reload" in ship.effectiveStats().actions or "Reload" in ship.effectiveStats().actionsred) and ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Modification")
+                (("Reload" or "R-Reload") in ship.effectiveStats().actions) and ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Modification")
             validation_func: (ship, upgrade_obj) ->
                 upgrade_obj.occupiesAnUpgradeSlot "Modification"
             also_occupies_upgrades: [ "Modification" ]
@@ -11776,7 +12009,7 @@ exportObj.basicCardData = ->
             faction: "Scum and Villainy"
             points: 8
             modifier_func: (stats) ->
-                stats.actionsred.push 'Evade' if 'Evade' not in stats.actionsred
+                stats.actions.push 'R-Evade' if 'R-Evade' not in stats.actions
                 stats.actions.push 'Coordinate' if 'Coordinate' not in stats.actions
             confersAddons: [
                 {
@@ -11894,7 +12127,7 @@ exportObj.basicCardData = ->
                 stats.actions.push 'R> Evade'
                 stats.actions.push '*Barrel Roll'
                 stats.actions.push 'R> Lock'
-                stats.actionsred.push 'Reload'
+                stats.actions.push 'R-Reload'
        }
        {
             name: "K-2SO"
@@ -11983,7 +12216,7 @@ exportObj.basicCardData = ->
        {
             name: "Repulsorlift Stabilizers"
             id: 323
-            slot: "Config"
+            slot: "Configuration"
             faction: "Separatist Alliance"
             points: 200
        }
@@ -12068,7 +12301,7 @@ exportObj.basicCardData = ->
                ship.data.name?.includes("TIE")
        }
        {
-            name: "Marg Sable Closure"
+            name: "Marg Sabl Closure"
             id: 331
             slot: "Talent"
             points: 200
@@ -12084,8 +12317,109 @@ exportObj.basicCardData = ->
             rangebonus: true
             charge: 2
             points: 200
+       }
+       {
+            name: "Hondo Ohnaka"
+            id: 333
+            unique: true
+            slot: "Crew"
+            points: 200
+       }
+       {
+            name: "Boba Fett (Separatist)"
+            id: 334
+            slot: "Gunner"
+            unique: true
+            points: 200
+            faction: ["Scum and Villainy", "Separatist Alliance"]
+       }
+       {
+            name: "Jango Fett"
+            id: 335
+            slot: "Crew"
+            unique: true
+            faction: "Separatist Alliance"
+            points: 200
+       }
+       {
+            name: "Zam Wesell"
+            id: 336
+            slot: "Crew"
+            unique: true
+            charge: 2
+            faction: "Separatist Alliance"
+            points: 200
+       }
+       {
+            name: 'Alpha-3B "Besh"'
+            id: 337
+            slot: "Configuration"
+            ship: "Nimbus-class V-Wing"
+            points: 200
+       }
+       {
+            name: "Twin Ion Engines"
+            id: 338
+            skip: true
+            slot: "Modification"
+            points: 200
+       }
+       {
+            name: "Thermal Detonators"
+            id: 339
+            skip: true
+            slot: "Configuration"
+            points: 200
+       }
+       {
+            name: "R2-D2 (Republic)"
+            id: 340
+            charge: 2
+            unique: true
+            slot: "Astromech"
+            points: 200
+       }
+       {
+            name: "Evasive Maneuvers"
+            id: 341
+            slot: "Force"
+            points: 200
+       }
+       {
+            name: "Patience"
+            id: 342
+            slot: "Force"
+            points: 200
+       }
+       {
+            name: "Deadeye Shot"
+            id: 343
+            slot: "Talent"
+            points: 200
             restriction_func: (ship) ->
                 not (ship.data.large? or ship.data.huge?)
+       }
+       {
+            name: "Starbird Slash"
+            id: 344
+            slot: "Talent"
+            points: 200
+            restriction_func: (ship) ->
+               ship.data.name?.includes("A-Wing")
+       }
+       {
+            name: "Overdrive Thruster"
+            id: 345
+            ship: "T-70 X-Wing"
+            slot: "Modification"
+            points: 200
+       }
+       {
+            name: "Commander Pyre"
+            id: 346
+            faction: "First Order"
+            slot: "Crew"
+            points: 200
        }
     ]
 
@@ -17950,7 +18284,6 @@ exportObj.fixIcons = (data) ->
             .replace(/%DEVICE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-device"></i>')
             .replace(/%MODIFICATION%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-modification"></i>')
             .replace(/%RELOAD%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-reload"></i>')
-            .replace(/%CONFIG%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-config"></i>')
             .replace(/%FORCE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i>')
             .replace(/%CHARGE%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>')
             .replace(/%ENERGY%/g, '<i class="xwing-miniatures-font xwing-miniatures-font-energy"></i>')
@@ -19001,7 +19334,7 @@ exportObj.cardLoaders.English = () ->
            text: """You can perform %FRONTARC% special attacks from your %REARARC%.%LINEBREAK%While you perform a special attack, you may reroll 1 attack die."""
         "Kullbee Sperado":
            display_name: """Kullbee Sperado"""
-           text: """After you perform a %BARRELROLL% or %BOOST% action, you may flip your equipped %CONFIG% upgrade card."""
+           text: """After you perform a %BARRELROLL% or %BOOST% action, you may flip your equipped %CONFIGURATION% upgrade card."""
         "Kyle Katarn":
            display_name: """Kyle Katarn"""
            text: """At the start of the Engagement Phase, you may transfer 1 of your focus tokens to a friendly ship in your firing arc."""
@@ -19480,6 +19813,9 @@ exportObj.cardLoaders.English = () ->
         '"Odd Ball" (ARC-170)':
            display_name: """“Odd Ball”"""
            text: """After you fully execute a red maneuver or perform a red action, if there is an enemy ship in your %BULLSEYEARC%, you may acquire a lock on that ship."""
+        '"Odd Ball" (V-Wing)':
+           display_name: """“Odd Ball”"""
+           text: """After you fully execute a red maneuver or perform a red action, if there is an enemy ship in your %BULLSEYEARC%, you may acquire a lock on that ship. %LINEBREAK%<strong>Twin Ion Engines:</strong> Ignore the "TIE" ship restriction on upgrade cards."""
         '"Pure Sabacc"':
            display_name: """“Pure Sabacc”"""
            text: """While you perform an attack, if you have 1 or fewer damage cards, you may roll 1 additional attack die.%LINEBREAK%<strong>Adaptive Ailerons:</strong> Before you reveal your dial, if you are not stressed, you <b>must</b> execute a white [1&nbsp;%BANKLEFT%], [1&nbsp;%STRAIGHT%], or [1&nbsp;%BANKRIGHT%] maneuver."""
@@ -19661,9 +19997,46 @@ exportObj.cardLoaders.English = () ->
            text: """At the start of the end phase if a friendly ship at range 0-1 has a revealed maneuver higher than this one it may gain 1 strain token to perform a boost action. %LINEBREAK%<strong>Fire Ordinance:</strong> While a friendly ship performs a non-%SINGLETURRETARC% attack, if the defender is in your turret arc you may spend 1 charge token, if you do the attacker may reroll up to 2 results."""
         "Separatist Predator":
            text: """After you barrel roll or maneuver you are stressed. Gain 1 calculate token. %LINEBREAK%<strong>Networked Aim:</strong> You cannot spend your locks to reroll attack dice. While you perform an attack, you may reroll a number of attack dice up to the number of friendly locks on the defender."""
+        "Jedi Knight":
+           text: """<strong>Intuitive Controls:</strong> During the System Phase, you may perform a purple %BARRELROLL% or purple %BOOST% action."""
+        "Yoda":
+           text: """  %LINEBREAK%<strong>Intuitive Controls:</strong> During the System Phase, you may perform a purple %BARRELROLL% or purple %BOOST% action."""
+        "Shaak Ti":
+           text: """  %LINEBREAK%<strong>Intuitive Controls:</strong> During the System Phase, you may perform a purple %BARRELROLL% or purple %BOOST% action."""
+        "Aayla Secura":
+           text: """  %LINEBREAK%<strong>Intuitive Controls:</strong> During the System Phase, you may perform a purple %BARRELROLL% or purple %BOOST% action."""
+        "Obi-Wan Kenobi (ETA-2)":
+           display_name: """Obi-Wan Kenobi"""
+           text: """After you or a friendly <b>Anakin Skywalker</b> at range 0-3 executes a maneuver, if there are more enemy ships than other friendly ships at range 0-1 of that ship, you may spend 1 %FORCE%. If you do, that ship gains 1 focus token. %LINEBREAK%<strong>Intuitive Controls:</strong> During the System Phase, you may perform a purple %BARRELROLL% or purple %BOOST% action."""
+        "Anakin Skywalker (ETA-2)":
+           display_name: """Anakin Skywalker"""
+           text: """After you or a friendly <b>Obi-Wan Kenobi</b> ship at range 0-3 executes a maneuver, if there are more enemy ships than other friendly ships at range 0-1 of that ship, you may spend 1 %FORCE%. If you do, that ship removes 1 red token of your choice. %LINEBREAK%<strong>Intuitive Controls:</strong> During the System Phase, you may perform a purple %BARRELROLL% or purple %BOOST% action."""
+        "Wilhuff Tarkin":
+           text: """During the System Phase, you may choose an object that you have locked at range 1. Another friendly ship at range 1-3 may acquire a lock on that object. %LINEBREAK%<strong>Twin Ion Engines:</strong> Ignore the "TIE" ship restriction on upgrade cards."""
+        "Jango Fett":
+           text: """While you defend or perform a primary attack, if the difficulty of your revealed maneuver is less than that of the enemy ship's, you may change 1 of the enemy ship's %FOCUS% results to a blank result."""
+        "Separatist Interceptor":
+           text: """ %LINEBREAK%<strong>Networked Calculations:</strong> While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range&nbsp;0-1 to change 1&nbsp;%FOCUS% result to an %EVADE% or %HIT% result."""
+        "Colicoid Interceptor":
+           text: """ %LINEBREAK%<strong>Networked Calculations:</strong> While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range&nbsp;0-1 to change 1&nbsp;%FOCUS% result to an %EVADE% or %HIT% result."""
+        "DIS-T81":
+           text: """ %LINEBREAK%<strong>Networked Calculations:</strong> While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range&nbsp;0-1 to change 1&nbsp;%FOCUS% result to an %EVADE% or %HIT% result."""
+        "Lyttan Dree":
+           text: """While a friendly ship at range 0-2 performs an attack, if you are in the defender's %LEFTSIDEARC% or %RIGHTSIDEARC%, the attacker may reroll 1 attack die. %LINEBREAK% <strong>Rotating Cannons:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %BACKARC%. You must treat the %FRONTARC% requirement of your equipped %CANNON% upgrades as %SINGLETURRETARC%."""
         '"Rampage"':
            text: """After you execute a speed 3-4 maneuver, you may choose a ship in your %SINGLETURRETARC% at range 0-1. If you do, that ship gains 1 strain token, or 2 strain tokens if you are damaged. %LINEBREAK% <strong>Rotating Cannons:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %BACKARC%. You must treat the %FRONTARC% requirement of your equipped %CANNON% upgrades as %SINGLETURRETARC%."""
+        "Onyx Squadron Sentry":
+           text: """%LINEBREAK% <strong>Rotating Cannons:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %BACKARC%. You must treat the %FRONTARC% requirement of your equipped %CANNON% upgrades as %SINGLETURRETARC%."""
+        "Cardia Academy Pilot":
+           text: """%LINEBREAK% <strong>Rotating Cannons:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %BACKARC%. You must treat the %FRONTARC% requirement of your equipped %CANNON% upgrades as %SINGLETURRETARC%."""
+        "Poe Dameron (HoH)":
+           text: """After a friendly ship at range 0-2 performs an action during its activation, you may spend 2 %CHARGE%. If you do, that ship may perform a white action, treating it as red. %LINEBREAK%<strong>Weapon Hardpoint:</strong> You can equip 1&nbsp;%CANNON%, %TORPEDO%, or %MISSILE% upgrade."""
+        "Temmin Wexley (HoH)":
+           text: """At the start of the Engagement Phase, each friendly T-70 X-wing at range 0-3 may gain 1 strain token to flip its equipped %CONFIGURATION% upgrade. If it does, that ship gains 1 calculate token. %LINEBREAK%<strong>Weapon Hardpoint:</strong> You can equip 1&nbsp;%CANNON%, %TORPEDO%, or %MISSILE% upgrade."""
+        "Merl Cobben":
+           text: """While a friendly ship at range 0-2 performs a primary attack, if you are in the defender's %BULLSEYEARC%, the defender rolls 1 fewer defense die. %LINEBREAK%<strong>Refined Gyrostabilizers:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. After you perform an action, you may perform a red %BOOST% or red %ROTATEARC% action."""
 
+            
         # Epic Ships
         "Republic Judiciary":
            display_name: """Republic Judiciary"""
@@ -20480,7 +20853,7 @@ exportObj.cardLoaders.English = () ->
         "Kaz's Fireball":
            text: """<strong>Setup:</strong> When you resolve <strong>Explosion with Wings</strong>, you may search the damage deck and choose a damage card with the <b>Ship</b> trait: you are dealt that card instead. Then, shuffle the damage deck. %LINEBREAK% You can perform actions of damage cards even while ionized."""
         "Agent Terex":
-           text: """<strong>Cyborg: Setup:</strong> Equip this side faceup and place 3 calculate tokens on this card. %LINEBREAK% At the start of the Engagement Phase, you may choose a friendly ship at range 0-3 and remove 1 calculate token from this card to have that ship gain a matching token. Then, if there are no calculate tokens on this card, flip it. %LINEBREAK%<strong>Cyborg:</strong> During the System Phase, roll 1 attack die. On a %HIT% or %CRIT% result, gain 1 calculate token. Otherwise gain 1 jam token. %LINEBREAK% <strong>Action:</strong> Transfer 1 calculate token or 1 jam token to a ship at range 0-3."""
+           text: """<strong>Setup:</strong> Equip this side faceup and place 3 calculate tokens on this card. %LINEBREAK% At the start of the Engagement Phase, you may choose a friendly ship at range 0-3 and remove 1 calculate token from this card to have that ship gain a matching token. Then, if there are no calculate tokens on this card, flip it. %LINEBREAK%<strong>Cyborg:</strong> During the System Phase, roll 1 attack die. On a %HIT% or %CRIT% result, gain 1 calculate token. Otherwise gain 1 jam token. %LINEBREAK% <strong>Action:</strong> Transfer 1 calculate token or 1 jam token to a ship at range 0-3."""
         "Plo Koon":
            text: """At the start of the End Phase, if you are reinforced, you may choose 1 friendly ship at range 0 or in your %LEFTARC% or %RIGHTARC% at range 1. That ship removes 1 deplete or strain token, or repairs 1 faceup damage card."""
         "Commander Pyre":
@@ -20490,10 +20863,38 @@ exportObj.cardLoaders.English = () ->
         "Yoda":
            text: """After another friendly ship at range 0-2 fully executes a purple maneuver or performs a purple action, you may spend 1 %FORCE%. If you do, that ship recovers 1 %FORCE%."""
         "Repulsorlift Stabilizers":
-           text: """<strong>Inactive: Setup:</strong>Equip this side faceup. Reduce the difficulty of your straight %STRAIGHT% maneuvers.%LINEBREAK% After you fully execute a maneuver, you may flip this card. %LINEBREAK%<strong>Active: </strong>After you reveal a bank (%BANKLEFT% or %BANKRIGHT%) or turn (%TURNLEFT% or %TURNRIGHT%), you must perform that maneuver as a slideslip, then flip this card. %LINEBREAK%After you fully execute a non-sideslip maneuver, you may flip this card."""
+           text: """<strong>Inactive: Setup:</strong> Equip this side faceup. Reduce the difficulty of your straight %STRAIGHT% maneuvers.%LINEBREAK% After you fully execute a maneuver, you may flip this card. %LINEBREAK%<strong>Active: </strong>After you reveal a bank (%BANKLEFT% or %BANKRIGHT%) or turn (%TURNLEFT% or %TURNRIGHT%), you must perform that maneuver as a slideslip, then flip this card. %LINEBREAK%After you fully execute a non-sideslip maneuver, you may flip this card."""
         "Multi-Missle Pods":
            text: """<strong>Attack (%CALCULATE% or %LOCK%):</strong> Spend 1 %CHARGE%. If the defender is in your %FRONTARC%, you may spend 1 %CHARGE% to roll 1 additional attack die. If the defender is in your %BULLSEYEARC%, you may spend up to 2 %CHARGE% to roll that many additional attack dice instead."""
-            
+        "Maneuver-Assist MGK-300":
+           text: """Reduce the difficulty of your 3 straight [%STRAIGHT%] and bank [%BANKLEFT% or %BANKRIGHT%] maneuvers."""
+        "Deadeye Shot":
+           text: """While you perform a primary attack, if the defender is in your %BULLSEYEARC%, you may spend 1 %HIT% result or change 1 %CRIT% result to a %HIT% result. If you do, the defender exposes 1 of its damage cards."""
+        "Ion Limiter Override":
+           text: """After you fully execute a red maneuver, you may perform a %BARRELROLL% action, even while stressed. If you do, roll an attack die: On a %HIT% result gain 1 strain token, and on a %CRIT% result gain 1 ion token."""
+        "Marg Sabl Closure":
+           text: """After you fully execute a maneuver, if you moved through an obstacle, structure, or huge ship, or if you deployed, you may choose 1 enemy ship in your %FRONTARC% at range 1-2. That ship gains 1 strain token."""
+        "Hondo Ohnaka":
+           text: """<strong>Action:</strong> Choose 2 ships at range 1-3 of you that are friendly to each other. Coordinate one of the chosen ships, then jam the other, ignoring range restrictions."""
+        "Boba Fett (Separatist)":
+           text: """While you perform an attack, if there are no other ships in the attack arc, you may change 1 of your %FOCUS% results to a %HIT% result."""
+        'Alpha-3B "Besh"':
+           text: """While you perform a primary attack, you may spend your lock on the defender to change 1 of your blank or %FOCUS% results to a %HIT% result. %LINEBREAK% Add %DEVICE% slot."""
+        "R2-D2 (Republic)":
+           text: """After you activate, you may spend 1 %CHARGE% and gain 1 deplete token to repair 1 damage card, recover 1 shield or remove 1 device at range 0-1."""
+        "Patience":
+           text: """At the start of the Engagement Phase, if there is an enemy ship in your %FRONTARC%, you may gain 1 deplete token to revover 1 %FORCE%."""
+        "Evasive Maneuvers":
+           text: """While you perform a %BOOST% action, you may spend 1 %FORCE% to use the turn template instead."""
+        "Starbird Slash":
+           text: """After you fully execute a maneuver, you may choose 1 enemy ship you moved through. That ship gains 1 strain token. Then, if you are in that ship's firing arc, you gain 1 strain token."""
+        "Overdrive Thruster":
+           text: """While you perform a red %BOOST%. %BARRELROLL%, or %SLAM% action, you <b>must</b> use a template of 1 speed higher if able."""
+        "Commander Pyre":
+           text: """<strong>Setup:</strong> After placing forces, choose an enemy ship. It gains 2 stress tokens. %LINEBREAK% While you defend, if the attacker is stressed, you may reroll 1 defense die."""
+
+
+
         # Epic upgrades
         "Admiral Ozzel":
            display_name: """Admiral Ozzel"""
