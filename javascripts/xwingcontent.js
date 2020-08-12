@@ -1796,7 +1796,7 @@ exportObj.basicCardData = function() {
         points: 41,
         slots: ["Missile", "Crew", "Crew", "Gunner", "Illicit", "Modification", "Title"],
         ship_override: {
-          actions: ["Calculate", "Lock", "Rotate Arc"]
+          actions: ["Calculate", "Lock", "Rotate Arc", "R-Boost"]
         }
       }, {
         name: "Freighter Captain",
@@ -1838,7 +1838,7 @@ exportObj.basicCardData = function() {
         points: 26,
         slots: ["Talent", "Crew", "Modification"],
         ship_override: {
-          actions: ["Calculate", "Barrel Roll"]
+          actions: ["Calculate", "Barrel Roll", "R-Coordinate"]
         }
       }, {
         name: "Autopilot Drone",
@@ -4940,7 +4940,7 @@ exportObj.basicCardData = function() {
         points: 200,
         slots: ["Talent", "Astromech", "Modification", "Configuration"]
       }, {
-        name: "Jedi Knight",
+        name: "Jedi Knight (ETA-2)",
         id: 436,
         faction: "Galactic Republic",
         skill: 4,
@@ -14003,7 +14003,7 @@ exportObj.cardLoaders.English = function() {
     "Separatist Predator": {
       text: "After you barrel roll or maneuver you are stressed. Gain 1 calculate token. %LINEBREAK%<strong>Networked Aim:</strong> You cannot spend your locks to reroll attack dice. While you perform an attack, you may reroll a number of attack dice up to the number of friendly locks on the defender."
     },
-    "Jedi Knight": {
+    "Jedi Knight (ETA-2)": {
       text: "<strong>Intuitive Controls:</strong> During the System Phase, you may perform a purple %BARRELROLL% or purple %BOOST% action."
     },
     "Yoda": {
