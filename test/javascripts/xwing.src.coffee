@@ -355,6 +355,8 @@ class exportObj.SquadBuilderBackend
                             for tag in tag_array
                                 if buttontag == tag.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-') then found_tag = true
                             $(elem).toggle found_tag 
+                        else
+                            $(elem).toggle false
 
             loading_pane.fadeOut 'fast'
             list_ul.fadeIn 'fast'
