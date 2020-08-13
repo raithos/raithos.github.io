@@ -419,9 +419,13 @@ exportObj.SquadBuilderBackend = (function() {
                     found_tag = true;
                   }
                 }
-                return $(elem).toggle(found_tag);
+                if (found_tag) {
+                  return $(elem).show();
+                } else {
+                  return $(elem).hide();
+                }
               } else {
-                return $(elem).toggle(false);
+                return $(elem).hide();
               }
             });
           });
