@@ -349,7 +349,12 @@ class exportObj.SquadBuilderBackend
                     @squad_list_tags.find('.btn').removeClass 'btn-inverse'
                     button.addClass 'btn-inverse'
                     @squad_list_modal.find('.squad-list li').each (idx, elem) ->
-                        $(elem).toggle ($(elem).data().squad.additional_data.tag? and (buttontag == $(elem).data().squad.additional_data.tag.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-')))
+                        if $(elem).data().squad.additional_data.tag?
+                            tag_array = $(elem).data().squad.additional_data.tag.split(",")
+                            found_tag = false
+                            for tag in tag_array
+                                if buttontag == tag.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-') then found_tag = true
+                            $(elem).toggle found_tag 
 
             loading_pane.fadeOut 'fast'
             list_ul.fadeIn 'fast'
