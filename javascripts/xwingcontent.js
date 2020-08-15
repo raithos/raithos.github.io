@@ -5244,8 +5244,7 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "Galactic Empire",
         restriction_func: function(ship) {
-          var _ref;
-          return _ref = "Coordinate" || "R-Coordinate", __indexOf.call(ship.effectiveStats().actions, _ref) >= 0;
+          return (__indexOf.call(ship.effectiveStats().actions, "Coordinate") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Coordinate") >= 0);
         }
       }, {
         name: "Cikatro Vizago",
@@ -5349,8 +5348,7 @@ exportObj.basicCardData = function() {
         charge: 2,
         recurring: true,
         restriction_func: function(ship) {
-          var _ref;
-          return _ref = "Lock" || "R-Lock", __indexOf.call(ship.effectiveStats().actions, _ref) >= 0;
+          return (__indexOf.call(ship.effectiveStats().actions, "Lock") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Lock") >= 0);
         }
       }, {
         name: "Hera Syndulla",
@@ -5518,8 +5516,7 @@ exportObj.basicCardData = function() {
         charge: 2,
         recurring: true,
         restriction_func: function(ship) {
-          var _ref;
-          return _ref = "Coordinate" || "R-Coordinate", __indexOf.call(ship.effectiveStats().actions, _ref) >= 0;
+          return (__indexOf.call(ship.effectiveStats().actions, "Coordinate") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Coordinate") >= 0);
         }
       }, {
         name: "Magva Yarro",
@@ -5902,8 +5899,7 @@ exportObj.basicCardData = function() {
         pointsarray: [12, 9, 7, 7],
         variablebase: true,
         restriction_func: function(ship) {
-          var _ref;
-          return _ref = "Rotate Arc" || "R-Rotate Arc", __indexOf.call(ship.effectiveStats().actions, _ref) >= 0;
+          return (__indexOf.call(ship.effectiveStats().actions, "Rotate Arc") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Rotate Arc") >= 0);
         }
       }, {
         name: "Cloaking Device",
@@ -6022,8 +6018,7 @@ exportObj.basicCardData = function() {
         slot: "Modification",
         points: 3,
         restriction_func: function(ship) {
-          var _ref;
-          return _ref = "Slam" || "R-Slam", __indexOf.call(ship.effectiveStats().actions, _ref) >= 0;
+          return (__indexOf.call(ship.effectiveStats().actions, "Slam") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Slam") >= 0);
         }
       }, {
         name: "Afterburners",
@@ -6098,8 +6093,7 @@ exportObj.basicCardData = function() {
         slot: "Talent",
         points: 1,
         restriction_func: function(ship) {
-          var _ref;
-          return _ref = "Focus" || "R-Focus", __indexOf.call(ship.effectiveStats().actions, _ref) >= 0;
+          return (__indexOf.call(ship.effectiveStats().actions, "Focus") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Focus") >= 0);
         }
       }, {
         name: "Crack Shot",
@@ -6113,7 +6107,7 @@ exportObj.basicCardData = function() {
         slot: "Talent",
         points: 2,
         restriction_func: function(ship) {
-          return __indexOf.call(ship.effectiveStats().actions, "Boost") >= 0 && !((ship.data.large != null) || (ship.data.medium != null) || (ship.data.huge != null));
+          return (__indexOf.call(ship.effectiveStats().actions, "Boost") >= 0) && !((ship.data.large != null) || (ship.data.medium != null) || (ship.data.huge != null));
         }
       }, {
         name: "Debris Gambit",
@@ -6205,8 +6199,7 @@ exportObj.basicCardData = function() {
         slot: "Talent",
         points: 4,
         restriction_func: function(ship) {
-          var _ref;
-          return _ref = "Reload" || "R-Reload", __indexOf.call(ship.effectiveStats().actions, _ref) >= 0;
+          return (__indexOf.call(ship.effectiveStats().actions, "Reload") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Reload") >= 0);
         }
       }, {
         name: "Selfless",
@@ -6655,8 +6648,7 @@ exportObj.basicCardData = function() {
         slot: "Tech",
         points: 4,
         restriction_func: function(ship) {
-          var _ref;
-          return _ref = "Lock" || "R-Lock", __indexOf.call(ship.effectiveStats().actions, _ref) >= 0;
+          return (__indexOf.call(ship.effectiveStats().actions, "Lock") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Lock") >= 0);
         }
       }, {
         name: "Primed Thrusters",
@@ -6888,8 +6880,7 @@ exportObj.basicCardData = function() {
         points: 1,
         faction: "First Order",
         restriction_func: function(ship) {
-          var _ref;
-          return _ref = "Lock" || "R-Lock", __indexOf.call(ship.effectiveStats().actions, _ref) >= 0;
+          return (__indexOf.call(ship.effectiveStats().actions, "Lock") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Lock") >= 0);
         }
       }, {
         name: "Predictive Shot",
@@ -6942,8 +6933,7 @@ exportObj.basicCardData = function() {
         charge: 1,
         points: 5,
         restriction_func: function(ship) {
-          var _ref;
-          return _ref = "Calculate" || "R-Calculate", __indexOf.call(ship.effectiveStats().actions, _ref) >= 0;
+          return (__indexOf.call(ship.effectiveStats().actions, "Calculate") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Calculate") >= 0);
         }
       }, {
         name: "Dedicated",
@@ -6961,8 +6951,7 @@ exportObj.basicCardData = function() {
         slot: "Modification",
         points: 1,
         restriction_func: function(ship) {
-          var _ref;
-          return _ref = "Lock" || "R-Lock", __indexOf.call(ship.effectiveStats().actions, _ref) >= 0;
+          return (__indexOf.call(ship.effectiveStats().actions, "Lock") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Lock") >= 0);
         }
       }, {
         name: "Battle Meditation",
@@ -7197,8 +7186,7 @@ exportObj.basicCardData = function() {
         points: 11,
         charge: 1,
         restriction_func: function(ship, upgrade_obj) {
-          var _ref;
-          return (_ref = "Reload" || "R-Reload", __indexOf.call(ship.effectiveStats().actions, _ref) >= 0) && ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Modification");
+          return ((__indexOf.call(ship.effectiveStats().actions, "Reload") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Reload") >= 0)) && ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Modification");
         },
         validation_func: function(ship, upgrade_obj) {
           return upgrade_obj.occupiesAnUpgradeSlot("Modification");
