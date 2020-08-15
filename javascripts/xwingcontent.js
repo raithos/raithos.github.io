@@ -13732,7 +13732,7 @@ exportObj.cardLoaders.English = function() {
       display_name: "“Odd Ball”",
       text: "After you fully execute a red maneuver or perform a red action, if there is an enemy ship in your %BULLSEYEARC%, you may acquire a lock on that ship."
     },
-    '"Odd Ball" (V-Wing)': {
+    '"Odd Ball" (Y-Wing)': {
       display_name: "“Odd Ball”",
       text: "After you fully execute a red maneuver or perform a red action, if there is an enemy ship in your %BULLSEYEARC%, you may acquire a lock on that ship. %LINEBREAK%<strong>Twin Ion Engines:</strong> Ignore the \"TIE\" ship restriction on upgrade cards."
     },
@@ -13985,7 +13985,7 @@ exportObj.cardLoaders.English = function() {
     "212th Battalion Pilot": {
       text: "<strong>Fire Ordinance:</strong> While a friendly ship performs a non-%SINGLETURRETARC% attack, if the defender is in your turret arc you may spend 1 charge token, if you do the attacker may reroll up to 2 results."
     },
-    "Hawk": {
+    '"Hawk"': {
       text: "At the start of the end phase if a friendly ship at range 0-1 has a revealed maneuver higher than this one it may gain 1 strain token to perform a boost action. %LINEBREAK%<strong>Fire Ordinance:</strong> While a friendly ship performs a non-%SINGLETURRETARC% attack, if the defender is in your turret arc you may spend 1 charge token, if you do the attacker may reroll up to 2 results."
     },
     "Separatist Predator": {
