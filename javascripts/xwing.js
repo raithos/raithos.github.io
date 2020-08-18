@@ -14988,14 +14988,14 @@ GenericAddon = (function() {
     if ((data != null ? data.variableagility : void 0) != null) {
       return data != null ? data.pointsarray[ship.data.agility] : void 0;
     } else if ((data != null ? data.variablebase : void 0) != null) {
-      if (!((ship.data.medium != null) || (ship.data.large != null))) {
-        return data != null ? data.pointsarray[0] : void 0;
-      } else if ((ship != null ? ship.data.medium : void 0) != null) {
+      if ((ship != null ? ship.data.medium : void 0) != null) {
         return data != null ? data.pointsarray[1] : void 0;
       } else if ((ship != null ? ship.data.large : void 0) != null) {
         return data != null ? data.pointsarray[2] : void 0;
       } else if ((ship != null ? ship.data.huge : void 0) != null) {
         return data != null ? data.pointsarray[3] : void 0;
+      } else {
+        return data != null ? data.pointsarray[0] : void 0;
       }
     } else if ((data != null ? data.variableinit : void 0) != null) {
       return data != null ? data.pointsarray[ship.pilot.skill] : void 0;
