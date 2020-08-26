@@ -4647,7 +4647,7 @@ exportObj.basicCardData = function() {
         skill: 2,
         ship: "Xi-class Light Shuttle",
         points: 200,
-        slots: ["Tech", "Crew", "Crew", "Illicit", "Illicit", "Modification"]
+        slots: ["Tech", "Crew", "Crew", "Modification"]
       }, {
         name: "Agent Terex",
         id: 402,
@@ -4666,7 +4666,7 @@ exportObj.basicCardData = function() {
         skill: 4,
         ship: "Xi-class Light Shuttle",
         points: 200,
-        slots: ["Talent", "Tech", "Crew", "Crew", "Illicit", "Illicit", "Modification"]
+        slots: ["Talent", "Tech", "Crew", "Crew", "Modification"]
       }, {
         name: "Commander Malarus (Xi Shuttle)",
         canonical_name: "Commander Malarus".canonicalize(),
@@ -4676,7 +4676,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         ship: "Xi-class Light Shuttle",
         points: 200,
-        slots: ["Talent", "Tech", "Crew", "Crew", "Illicit", "Illicit", "Modification"]
+        slots: ["Talent", "Tech", "Crew", "Crew", "Modification"]
       }, {
         name: "Generic I1",
         id: 405,
