@@ -819,7 +819,6 @@ exportObj.basicCardData = function() {
         agility: 1,
         hull: 5,
         shields: 3,
-        medium: true,
         actions: ["Calculate", "Lock", "R-Barrel Roll", "Reload", "R> Calculate"],
         maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 3, 2, 3, 0, 0, 0, 0, 0, 0], [2, 1, 2, 1, 2, 0, 0, 0, 0, 0], [1, 3, 1, 3, 1, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
       },
@@ -844,7 +843,7 @@ exportObj.basicCardData = function() {
         hull: 8,
         medium: true,
         actions: ["Focus", "Reinforce", "Lock", "R-Barrel Roll", "Rotate Arc", "R> Calculate"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 3, 0, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       },
       "Droid Tri-Fighter": {
         name: "Droid Tri-Fighter",
@@ -865,7 +864,7 @@ exportObj.basicCardData = function() {
         hull: 2,
         shields: 2,
         actions: ["Focus", "Lock", "R-Barrel Roll", "Boost", "R> Lock"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 3, 0, 3, 1, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 3, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 3, 0, 3, 1, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 3, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
       "ETA-2 Actis": {
         name: "ETA-2 Actis",
@@ -8174,7 +8173,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Clone Captain Rex",
         id: 321,
-        slot: "Crew",
+        slot: "Gunner",
         unique: true,
         faction: "Galactic Republic",
         points: 200
@@ -12256,7 +12255,7 @@ exportObj.hyperspaceShipInclusions = [
   }
 ];
 
-exportObj.hyperspacePilotExclusions = ['Wedge Antilles', 'Biggs Darklighter', 'Kullbee Sperado', 'Leevan Tenza', 'Edrio Two Tubes', 'Cavern Angels Zealot', 'Outer Rim Smuggler', '"Chopper"', 'Lothal Rebel', 'Fenn Rau (Sheathipede)', 'AP-5', '"Wampa"', '"Howlrunner"', '"Night Beast"', '"Wampa"', 'Valen Rudor', 'Scarif Base Pilot', 'Patrol Leader', 'Grand Inquisitor', 'Inquisitor', 'Soontir Fel', 'Old Teroch', 'Foreman Proach', 'Captain Seevor', 'Lando Calrissian (Scum)', 'Freighter Captain', 'Outer Rim Pioneer', 'L3-37 (Escape Craft)', 'Autopilot Drone', 'Moralo Eval', 'Trandoshan Slaver', 'Binayre Pirate', 'Finn', "L'ulo L'ampar", '"Quickdraw"', '"Sinker"', '104th Battalion Pilot', 'Anakin Skywalker', 'Mace Windu', 'Saesee Tiin', '"Kickback"', '"Axe"', 'Gold Squadron Trooper', 'Dark Courier', 'Captain Sear'];
+exportObj.hyperspacePilotExclusions = ['Wedge Antilles', 'Biggs Darklighter', 'Kullbee Sperado', 'Cavern Angels Zealot', 'Outer Rim Smuggler', '"Chopper"', 'Lothal Rebel', 'Fenn Rau (Sheathipede)', 'AP-5', '"Wampa"', '"Howlrunner"', '"Night Beast"', '"Wampa"', 'Valen Rudor', 'Scarif Base Pilot', 'Patrol Leader', 'Grand Inquisitor', 'Inquisitor', 'Soontir Fel', 'Old Teroch', 'Foreman Proach', 'Captain Seevor', 'Lando Calrissian (Scum)', 'Freighter Captain', 'Outer Rim Pioneer', 'L3-37 (Escape Craft)', 'Autopilot Drone', 'Moralo Eval', 'Trandoshan Slaver', 'Binayre Pirate', 'Finn', "L'ulo L'ampar", '"Quickdraw"', '"Sinker"', '104th Battalion Pilot', 'Anakin Skywalker', 'Mace Windu', 'Saesee Tiin', '"Kickback"', '"Axe"', 'Gold Squadron Trooper', 'Dark Courier', 'Captain Sear'];
 
 exportObj.hyperspaceUpgradeExclusions = ['Jyn Erso', 'Bistan', 'Ezra Bridger', '"Chopper" (Astromech)', 'Pivot Wing', 'Baze Malbus', 'Cassian Andor', 'Hera Syndulla', 'Magva Yarro', 'R2-D2 (Crew)', 'Saw Gerrera', 'Han Solo', 'Luke Skywalker', 'Admiral Sloane', 'Ciena Ree', 'Darth Vader', 'Grand Moff Tarkin', 'Minister Tua', 'Moff Jerjerrod', 'ISB Slicer', 'Emperor Palpatine', '"Genius"', 'R5-TK', '4-LOM', 'Cad Bane', 'Cikatro Vizago', 'IG-88D', 'Ketsu Onyo', 'Unkar Plutt', 'Zuckuss', 'Jabba the Hutt', 'Greedo', 'Chewbacca (Scum)', 'L3-37', 'Lando Calrissian (Scum)', "Qi'ra", 'Tobias Beckett', 'Han Solo (Scum)', "Marauder", 'Virago', 'M9-G8', 'C-3PO (Resistance)', 'Chewbacca (Resistance)', 'GA-97', 'Han Solo (Resistance)', 'Rose Tico', 'Finn', 'Rey', 'Paige Tico', "Rey's Millennium Falcon", 'Captain Phasma', 'General Hux', 'Kylo Ren', 'Petty Officer Thanisson', 'Supreme Leader Snoke', 'Biohexacrypt Codes', 'Hyperspace Tracking Data', 'C1-10P', 'R2-A6', 'R2-C4', 'R4-P44', 'Delta-7B', 'Chancellor Palpatine', 'Ahsoka Tano', 'Clone Commander Cody', 'Chancellor Palpatine', 'Energy-Shell Charges', 'Impervium Plating', 'Ensnare', 'Jamming Beam', 'Heavy Laser Cannon', 'GNK "Gonk" Droid', 'Seasoned Navigator', 'Bomblet Generator', 'Electro-Proton Bomb', 'Proximity Mines', 'Hate', 'Precognitive Reflexes', 'Sense', 'Supernatural Reflexes', 'Freelance Slicer', 'Cloaking Device', 'Feedback Array', 'Ablative Plating', 'Debris Gambit', 'Saturation Salvo', 'Hotshot Gunner', 'Skilled Bombardier', 'Veteran Turret Gunner', 'Feedback Array', 'Barrage Rockets', 'Cluster Missiles', 'Homing Missiles', 'Proton Rockets', 'Afterburners', 'Electronic Baffle', 'Shield Upgrade', 'Static Discharge Vanes', 'Stealth Device', 'Tactical Scrambler', 'Advanced Sensors', 'Collision Detector', 'Trajectory Simulator', 'Composure', 'Crack Shot', 'Elusive', 'Juke', 'Lone Wolf', 'Predator', 'Swarm Tactics', 'Trick Shot', 'Pattern Analyzer', 'Ion Torpedoes'];
 
@@ -14053,7 +14052,7 @@ exportObj.cardLoaders.English = function() {
       text: "<strong>Fire Ordinance:</strong> While a friendly ship performs a non-%SINGLETURRETARC% attack, if the defender is in your turret arc you may spend 1 charge token, if you do the attacker may reroll up to 2 results."
     },
     '"Hawk"': {
-      text: "At the start of the end phase if a friendly ship at range 0-1 has a revealed maneuver higher than this one it may gain 1 strain token to perform a boost action. %LINEBREAK%<strong>Fire Ordinance:</strong> While a friendly ship performs a non-%SINGLETURRETARC% attack, if the defender is in your turret arc you may spend 1 charge token, if you do the attacker may reroll up to 2 results."
+      text: "At the start of the End Phase, each friendly ship at range 0-1 that has a revealed maneuver of speed 3-5 may gain 1 strain token to perform a %BARRELROLL% or %BOOST% action. %LINEBREAK%<strong>Fire Ordinance:</strong> While a friendly ship performs a non-%SINGLETURRETARC% attack, if the defender is in your turret arc you may spend 1 charge token, if you do the attacker may reroll up to 2 results."
     },
     '"Hound"': {
       text: "After a friendly ship in your %SINGLETURRETARC% gains a deplete or strain token, if you have no tokens of that type, you may transfer that token to yourself. %LINEBREAK%<strong>Fire Ordinance:</strong> While a friendly ship performs a non-%SINGLETURRETARC% attack, if the defender is in your turret arc you may spend 1 charge token, if you do the attacker may reroll up to 2 results."

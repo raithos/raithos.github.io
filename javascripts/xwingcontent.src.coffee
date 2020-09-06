@@ -1535,7 +1535,6 @@ exportObj.basicCardData = ->
            agility: 1
            hull: 5
            shields: 3
-           medium: true
            actions: [
              "Calculate"
              "Lock"
@@ -1595,7 +1594,7 @@ exportObj.basicCardData = ->
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 3, 1, 2, 1, 3, 0, 0, 0, 0, 0 ]
                 [ 1, 2, 2, 2, 1, 0, 0, 0, 0, 0 ]
-                [ 3, 1, 1, 1, 3, 3, 0, 0, 3, 3 ]
+                [ 3, 1, 1, 1, 3, 0, 0, 0, 3, 3 ]
                 [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
            ]
@@ -1643,7 +1642,7 @@ exportObj.basicCardData = ->
                 [ 1, 3, 0, 3, 1, 0, 0, 0, 0, 0 ]
                 [ 2, 2, 2, 2, 2, 3, 0, 0, 0, 0 ]
                 [ 1, 1, 2, 1, 1, 0, 0, 0, 0, 0 ]
-                [ 0, 0, 2, 0, 0, 3, 0, 0, 0, 0 ]
+                [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0 ]
                 [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 ]
            ]
         "ETA-2 Actis":
@@ -12240,7 +12239,7 @@ exportObj.basicCardData = ->
        {
             name: "Clone Captain Rex"
             id: 321
-            slot: "Crew"
+            slot: "Gunner"
             unique: true
             faction: "Galactic Republic"
             points: 200
@@ -18516,8 +18515,6 @@ exportObj.hyperspacePilotExclusions = [
     'Wedge Antilles',
     'Biggs Darklighter',
     'Kullbee Sperado',
-    'Leevan Tenza',
-    'Edrio Two Tubes',
     'Cavern Angels Zealot',
     'Outer Rim Smuggler',
     '"Chopper"',
@@ -20096,7 +20093,7 @@ exportObj.cardLoaders.English = () ->
         "212th Battalion Pilot":
            text: """<strong>Fire Ordinance:</strong> While a friendly ship performs a non-%SINGLETURRETARC% attack, if the defender is in your turret arc you may spend 1 charge token, if you do the attacker may reroll up to 2 results."""
         '"Hawk"':
-           text: """At the start of the end phase if a friendly ship at range 0-1 has a revealed maneuver higher than this one it may gain 1 strain token to perform a boost action. %LINEBREAK%<strong>Fire Ordinance:</strong> While a friendly ship performs a non-%SINGLETURRETARC% attack, if the defender is in your turret arc you may spend 1 charge token, if you do the attacker may reroll up to 2 results."""
+           text: """At the start of the End Phase, each friendly ship at range 0-1 that has a revealed maneuver of speed 3-5 may gain 1 strain token to perform a %BARRELROLL% or %BOOST% action. %LINEBREAK%<strong>Fire Ordinance:</strong> While a friendly ship performs a non-%SINGLETURRETARC% attack, if the defender is in your turret arc you may spend 1 charge token, if you do the attacker may reroll up to 2 results."""
         '"Hound"':
            text: """After a friendly ship in your %SINGLETURRETARC% gains a deplete or strain token, if you have no tokens of that type, you may transfer that token to yourself. %LINEBREAK%<strong>Fire Ordinance:</strong> While a friendly ship performs a non-%SINGLETURRETARC% attack, if the defender is in your turret arc you may spend 1 charge token, if you do the attacker may reroll up to 2 results."""
         '"Warthog"':
