@@ -4677,13 +4677,13 @@ exportObj.basicCardData = function() {
         points: 200,
         slots: ["Talent", "Tech", "Crew", "Crew", "Modification"]
       }, {
-        name: "Generic I1",
+        name: "Baktoid Drone",
         id: 405,
         faction: "Separatist Alliance",
         skill: 1,
         ship: "HMP Droid Gunship",
         points: 200,
-        slots: ["Missile", "Missile", "Crew", "Modification", "Configuration"]
+        slots: ["Cannon", "Cannon", "Missile", "Missile", "Tactical Relay", "Device", "Configuration"]
       }, {
         id: 406,
         skip: true
@@ -4694,42 +4694,43 @@ exportObj.basicCardData = function() {
         skill: 3,
         ship: "HMP Droid Gunship",
         points: 200,
-        slots: ["Talent", "Missile", "Missile", "Crew", "Modification", "Configuration"]
+        slots: ["Talent", "Cannon", "Cannon", "Missile", "Missile", "Tactical Relay", "Device", "Configuration"]
       }, {
-        name: "Limited I2",
+        name: "Geonosian Prototype",
         id: 408,
         faction: "Separatist Alliance",
         skill: 2,
         max_per_squad: 2,
         ship: "HMP Droid Gunship",
         points: 200,
-        slots: ["Missile", "Missile", "Crew", "Modification", "Configuration"]
+        slots: ["Cannon", "Cannon", "Missile", "Missile", "Tactical Relay", "Device", "Configuration"]
       }, {
-        name: "Unnamed I1",
+        name: "DGS-047",
         id: 409,
         faction: "Separatist Alliance",
         skill: 1,
         unique: true,
         ship: "HMP Droid Gunship",
         points: 200,
-        slots: ["Missile", "Missile", "Crew", "Modification", "Configuration"]
+        slots: ["Cannon", "Cannon", "Missile", "Missile", "Tactical Relay", "Device", "Configuration"]
       }, {
-        name: "Unnamed I3",
+        name: "DGS-286",
         id: 410,
         faction: "Separatist Alliance",
         skill: 3,
+        unique: true,
         ship: "HMP Droid Gunship",
         points: 200,
-        slots: ["Talent", "Missile", "Missile", "Crew", "Modification", "Configuration"]
+        slots: ["Talent", "Cannon", "Cannon", "Missile", "Missile", "Tactical Relay", "Device", "Configuration"]
       }, {
-        name: "Onderon Exterminator",
+        name: "Onderon Oppressor",
         id: 411,
         faction: "Separatist Alliance",
         skill: 3,
         max_per_squad: 2,
         ship: "HMP Droid Gunship",
         points: 200,
-        slots: ["Talent", "Missile", "Missile", "Crew", "Modification", "Configuration"]
+        slots: ["Talent", "Cannon", "Cannon", "Missile", "Missile", "Tactical Relay", "Device", "Configuration"]
       }, {
         name: "212th Battalion Pilot",
         id: 412,
@@ -8449,6 +8450,42 @@ exportObj.basicCardData = function() {
           return upgrade_obj.occupiesAnUpgradeSlot("Gunner");
         },
         also_occupies_upgrades: ["Gunner"]
+      }, {
+        name: "Kalani",
+        id: 353,
+        charge: 3,
+        unique: true,
+        recurring: true,
+        slot: "Tactical Relay",
+        solitary: true,
+        faction: "Separatist Alliance",
+        points: 200,
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'Calculate') < 0) {
+            return stats.actions.push('Calculate');
+          }
+        }
+      }, {
+        name: "Synced Laser Cannons",
+        id: 354,
+        slot: "Cannon",
+        points: 200,
+        attack: 3,
+        range: "2-3",
+        restriction_func: function(ship, upgrade_obj) {
+          return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot);
+        },
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot(upgrade_obj.slot);
+        },
+        also_occupies_upgrades: ['Cannon']
+      }, {
+        name: "Concussion Bombs",
+        id: 355,
+        slot: "Device",
+        charge: 3,
+        points: 200,
+        applies_condition: 'Concussion Bomb'.canonicalize()
       }
     ],
     conditionsById: [
@@ -8523,6 +8560,9 @@ exportObj.basicCardData = function() {
       }, {
         name: 'Ion Bomb',
         id: 20
+      }, {
+        name: 'Concussion Bomb',
+        id: 21
       }
     ],
     quickbuildsById: [
@@ -14060,8 +14100,23 @@ exportObj.cardLoaders.English = function() {
     '"Warthog"': {
       text: "After you or a friendly non-limited ship at range 0-2 are destroyed during the Engagement Phase, that ship is not removed until the end of that phase. %LINEBREAK%<strong>Fire Ordinance:</strong> While a friendly ship performs a non-%SINGLETURRETARC% attack, if the defender is in your turret arc you may spend 1 charge token, if you do the attacker may reroll up to 2 results."
     },
+    "Baktoid Drone": {
+      text: "%LINEBREAK%<strong>Networked Aim:</strong> You cannot spend your locks to reroll attack dice. While you perform an attack, you may reroll a number of attack dice up to the number of friendly locks on the defender."
+    },
     "Separatist Predator": {
-      text: "After you barrel roll or maneuver you are stressed. Gain 1 calculate token. %LINEBREAK%<strong>Networked Aim:</strong> You cannot spend your locks to reroll attack dice. While you perform an attack, you may reroll a number of attack dice up to the number of friendly locks on the defender."
+      text: "%LINEBREAK%<strong>Networked Aim:</strong> You cannot spend your locks to reroll attack dice. While you perform an attack, you may reroll a number of attack dice up to the number of friendly locks on the defender."
+    },
+    "DGS-286": {
+      text: "Before you engage, you may choose another friendly ship at range 0-1. That ship transfers 1 calculate token to you. %LINEBREAK%<strong>Networked Aim:</strong> You cannot spend your locks to reroll attack dice. While you perform an attack, you may reroll a number of attack dice up to the number of friendly locks on the defender."
+    },
+    "DGS-047": {
+      text: "After you perform an attack, if the defender is in your %FRONTARC%, you may acquire a lock on it. THen, if the defender is in your %BULLSEYEARC%, it gains 1 strain token. %LINEBREAK%<strong>Networked Aim:</strong> You cannot spend your locks to reroll attack dice. While you perform an attack, you may reroll a number of attack dice up to the number of friendly locks on the defender."
+    },
+    "Geonosian Prototype": {
+      text: "While you perform a %MISSILE% or %CANNON% attack, you may remove 1 tractor token from the defender to reroll up to 2 attack dice. %LINEBREAK%<strong>Networked Aim:</strong> You cannot spend your locks to reroll attack dice. While you perform an attack, you may reroll a number of attack dice up to the number of friendly locks on the defender."
+    },
+    "Onderon Oppressor": {
+      text: "After you barrel roll or sideslip, if you are stressed. Gain 1 calculate token. %LINEBREAK%<strong>Networked Aim:</strong> You cannot spend your locks to reroll attack dice. While you perform an attack, you may reroll a number of attack dice up to the number of friendly locks on the defender."
     },
     "Jedi Knight (ETA-2)": {
       text: "<strong>Intuitive Controls:</strong> During the System Phase, you may perform a purple %BARRELROLL% or purple %BOOST% action."
@@ -15245,13 +15300,19 @@ exportObj.cardLoaders.English = function() {
       text: "<i>Adds %FOCUS% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> <f>%COORDINATE%</f></i> %LINEBREAK% While an enemy ship in your %BULLSEYEARC% performs an attack, if the defender is friendly and at range 0-2, the defender may change 1 blank result to a %FOCUS% result."
     },
     "Repulsorlift Stabilizers": {
-      text: "<strong>Inactive: Setup:</strong> Equip this side faceup. Reduce the difficulty of your straight %STRAIGHT% maneuvers.%LINEBREAK% After you fully execute a maneuver, you may flip this card. %LINEBREAK%<strong>Active: </strong>After you reveal a bank (%BANKLEFT% or %BANKRIGHT%) or turn (%TURNLEFT% or %TURNRIGHT%), you must perform that maneuver as a slideslip, then flip this card. %LINEBREAK%After you fully execute a non-sideslip maneuver, you may flip this card."
+      text: "<strong>Inactive: Setup:</strong> Equip this side faceup. Reduce the difficulty of your straight (%STRAIGHT%) maneuvers. %LINEBREAK% After you fully execute a maneuver, you may flip this card. %LINEBREAK%<strong>Active: </strong> After you reveal a bank (%BANKLEFT% or %BANKRIGHT%) or turn (%TURNLEFT% or %TURNRIGHT%), you <b>must</b> perform that maneuver as a slideslip, then flip this card. %LINEBREAK% After you fully execute a non-sideslip maneuver, you may flip this card."
     },
     "Multi-Missle Pods": {
       text: "<strong>Attack (%CALCULATE% or %LOCK%):</strong> Spend 1 %CHARGE%. If the defender is in your %FRONTARC%, you may spend 1 %CHARGE% to roll 1 additional attack die. If the defender is in your %BULLSEYEARC%, you may spend up to 2 %CHARGE% to roll that many additional attack dice instead."
     },
+    "Synced Laser Cannons": {
+      text: "<strong>Attack:</strong> If you are calculating, the defender does not apply the range bonus."
+    },
+    "Concussion Bombs": {
+      text: "During the System Phase, if any of this card's %CHARGE% are inactive, you <b>must</b> spend 1 %CHARGE% to drop 1 concussion bomb, if able. Otherwise, you may spend 1 %CHARGE% to drop 1 concussion bomb."
+    },
     "Maneuver-Assist MGK-300": {
-      text: "Reduce the difficulty of your 3 straight [%STRAIGHT%] and bank [%BANKLEFT% or %BANKRIGHT%] maneuvers."
+      text: "Reduce the difficulty of your 3 straight (%STRAIGHT%) and bank (%BANKLEFT% or %BANKRIGHT%) maneuvers."
     },
     "Deadeye Shot": {
       text: "While you perform a primary attack, if the defender is in your %BULLSEYEARC%, you may spend 1 %HIT% result or change 1 %CRIT% result to a %HIT% result. If you do, the defender exposes 1 of its damage cards."
@@ -15298,8 +15359,8 @@ exportObj.cardLoaders.English = function() {
     "Sensor Buoy Suite": {
       text: "<strong>Setup:</strong> Before placing forces, place 2 sensor buoy remotes beyond range 2 of any edge. %LINEBREAK% Before you engage, you may acquire a lock on a ship at range 0-1 of a friendly sensor buoy, ignoring range restrictions."
     },
-    "Deadeye Shot": {
-      text: "While you perform a primary attack, if the defender is in your %BULLSEYEARC%, you may spend 1 %HIT% result or change 1 %CRIT% result to a %HIT% result. If you do, the defender exposes 1 of its damage cards."
+    "Kalani": {
+      text: "After an enemy ship executes a maneuver, if it is in the %BULLSEYEARC% of a friendly ship at range 0-3, you may spend 1 %CHARGE%. If you do, that friendly ship acquires a lock on that enemy ship, then gains 1 stress token."
     },
     "Admiral Ozzel": {
       display_name: "Admiral Ozzel",
@@ -15570,6 +15631,9 @@ exportObj.cardLoaders.English = function() {
     },
     'Ion Bomb': {
       text: '(Bomb Token) - At the end of the Activation Phase, this device detonates. When this device detonates, each ship at range 0–1 gains 3 ion tokens, and each remote at range 0–1 suffers 1 %HIT% damage.'
+    },
+    'Concussion Bomb': {
+      text: '(Bomb Token) - BOOM BOOM.'
     }
   };
   return exportObj.setupTranslationCardData(pilot_translations, upgrade_translations, condition_translations);
