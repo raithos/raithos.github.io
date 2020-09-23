@@ -4645,8 +4645,8 @@ exportObj.basicCardData = function() {
         faction: "First Order",
         skill: 2,
         ship: "Xi-class Light Shuttle",
-        points: 200,
-        slots: ["Tech", "Crew", "Crew", "Modification"]
+        points: 38,
+        slots: ["Tech", "Tech", "Crew", "Crew", "Modification"]
       }, {
         name: "Agent Terex",
         id: 402,
@@ -4654,8 +4654,8 @@ exportObj.basicCardData = function() {
         unique: true,
         skill: 3,
         ship: "Xi-class Light Shuttle",
-        points: 200,
-        slots: ["Talent", "Tech", "Crew", "Crew", "Illicit", "Illicit", "Modification"]
+        points: 42,
+        slots: ["Talent", "Tech", "Tech", "Crew", "Crew", "Illicit", "Illicit", "Illicit", "Modification"]
       }, {
         name: "Gideon Hask (Xi Shuttle)",
         canonical_name: "Gideon Hask".canonicalize(),
@@ -4664,8 +4664,8 @@ exportObj.basicCardData = function() {
         unique: true,
         skill: 4,
         ship: "Xi-class Light Shuttle",
-        points: 200,
-        slots: ["Talent", "Tech", "Crew", "Crew", "Modification"]
+        points: 40,
+        slots: ["Talent", "Tech", "Tech", "Crew", "Crew", "Modification"]
       }, {
         name: "Commander Malarus (Xi Shuttle)",
         canonical_name: "Commander Malarus".canonicalize(),
@@ -4674,16 +4674,16 @@ exportObj.basicCardData = function() {
         unique: true,
         skill: 5,
         ship: "Xi-class Light Shuttle",
-        points: 200,
-        slots: ["Talent", "Tech", "Crew", "Crew", "Modification"]
+        points: 43,
+        slots: ["Talent", "Tech", "Tech", "Crew", "Crew", "Modification"]
       }, {
         name: "Baktoid Drone",
         id: 405,
         faction: "Separatist Alliance",
         skill: 1,
         ship: "HMP Droid Gunship",
-        points: 200,
-        slots: ["Cannon", "Cannon", "Missile", "Missile", "Tactical Relay", "Device", "Configuration"]
+        points: 34,
+        slots: ["Missile", "Missile", "Tactical Relay", "Crew", "Device", "Modification", "Configuration"]
       }, {
         id: 406,
         skip: true
@@ -4693,8 +4693,8 @@ exportObj.basicCardData = function() {
         faction: "Separatist Alliance",
         skill: 3,
         ship: "HMP Droid Gunship",
-        points: 200,
-        slots: ["Talent", "Cannon", "Cannon", "Missile", "Missile", "Tactical Relay", "Device", "Configuration"]
+        points: 36,
+        slots: ["Missile", "Missile", "Tactical Relay", "Crew", "Device", "Modification", "Configuration"]
       }, {
         name: "Geonosian Prototype",
         id: 408,
@@ -4702,8 +4702,8 @@ exportObj.basicCardData = function() {
         skill: 2,
         max_per_squad: 2,
         ship: "HMP Droid Gunship",
-        points: 200,
-        slots: ["Cannon", "Cannon", "Missile", "Missile", "Tactical Relay", "Device", "Configuration"]
+        points: 35,
+        slots: ["Missile", "Missile", "Cannon", "Cannon", "Tactical Relay", "Modification", "Configuration"]
       }, {
         name: "DGS-047",
         id: 409,
@@ -4711,8 +4711,8 @@ exportObj.basicCardData = function() {
         skill: 1,
         unique: true,
         ship: "HMP Droid Gunship",
-        points: 200,
-        slots: ["Cannon", "Cannon", "Missile", "Missile", "Tactical Relay", "Device", "Configuration"]
+        points: 35,
+        slots: ["Missile", "Missile", "Tactical Relay", "Crew", "Device", "Modification", "Configuration"]
       }, {
         name: "DGS-286",
         id: 410,
@@ -4720,8 +4720,8 @@ exportObj.basicCardData = function() {
         skill: 3,
         unique: true,
         ship: "HMP Droid Gunship",
-        points: 200,
-        slots: ["Talent", "Cannon", "Cannon", "Missile", "Missile", "Tactical Relay", "Device", "Configuration"]
+        points: 42,
+        slots: ["Missile", "Missile", "Tactical Relay", "Crew", "Device", "Modification", "Configuration"]
       }, {
         name: "Onderon Oppressor",
         id: 411,
@@ -4729,7 +4729,7 @@ exportObj.basicCardData = function() {
         skill: 3,
         max_per_squad: 2,
         ship: "HMP Droid Gunship",
-        points: 200,
+        points: 40,
         slots: ["Talent", "Cannon", "Cannon", "Missile", "Missile", "Tactical Relay", "Device", "Configuration"]
       }, {
         name: "212th Battalion Pilot",
@@ -4739,8 +4739,8 @@ exportObj.basicCardData = function() {
         charge: 2,
         recurring: true,
         ship: "LAAT/i Gunship",
-        points: 200,
-        slots: ["Crew", "Crew", "Gunner", "Modification"]
+        points: 51,
+        slots: ["Missile", "Missile", "Crew", "Crew", "Gunner", "Gunner", "Modification"]
       }, {
         name: '"Hound"',
         id: 413,
@@ -4750,8 +4750,8 @@ exportObj.basicCardData = function() {
         charge: 2,
         recurring: true,
         ship: "LAAT/i Gunship",
-        points: 200,
-        slots: ["Crew", "Crew", "Gunner", "Modification"]
+        points: 52,
+        slots: ["Missile", "Missile", "Crew", "Crew", "Gunner", "Gunner", "Modification"]
       }, {
         name: '"Warthog"',
         id: 414,
@@ -4761,8 +4761,8 @@ exportObj.basicCardData = function() {
         charge: 2,
         recurring: true,
         ship: "LAAT/i Gunship",
-        points: 200,
-        slots: ["Talent", "Crew", "Crew", "Gunner", "Modification"]
+        points: 54,
+        slots: ["Missile", "Missile", "Crew", "Crew", "Gunner", "Gunner", "Modification"]
       }, {
         name: '"Hawk"',
         id: 415,
@@ -4772,8 +4772,8 @@ exportObj.basicCardData = function() {
         recurring: true,
         unique: true,
         ship: "LAAT/i Gunship",
-        points: 200,
-        slots: ["Talent", "Crew", "Crew", "Gunner", "Modification"]
+        points: 55,
+        slots: ["Talent", "Missile", "Missile", "Crew", "Crew", "Gunner", "Gunner", "Modification"]
       }, {
         name: "Cardia Academy Pilot",
         id: 416,
@@ -5033,7 +5033,52 @@ exportObj.basicCardData = function() {
         skill: 1,
         ship: "RZ-2 A-Wing",
         points: 200,
+        slots: ["Talent", "Missile", "Tech"]
+      }, {
+        name: "Suralinda Javos",
+        id: 445,
+        faction: "Resistance",
+        unique: true,
+        skill: 3,
+        ship: "RZ-2 A-Wing",
+        points: 200,
         slots: ["Talent", "Talent", "Missile", "Tech"]
+      }, {
+        name: "Wrobie Tyce",
+        id: 446,
+        faction: "Resistance",
+        unique: true,
+        skill: 4,
+        ship: "RZ-2 A-Wing",
+        points: 200,
+        slots: ["Talent", "Talent", "Missile", "Tech"]
+      }, {
+        name: "Seftin Vanik",
+        id: 447,
+        faction: "Resistance",
+        unique: true,
+        skill: 5,
+        ship: "RZ-2 A-Wing",
+        points: 200,
+        slots: ["Talent", "Talent", "Missile", "Tech"]
+      }, {
+        name: "Nimi Chereen",
+        id: 448,
+        unique: true,
+        faction: "Resistance",
+        ship: "T-70 X-Wing",
+        skill: 2,
+        points: 200,
+        slots: ["Astromech", "Tech", "Modification", "Configuration", "Title", "HardpointShip"]
+      }, {
+        name: "C'ai Threnalli",
+        id: 449,
+        unique: true,
+        faction: "Resistance",
+        ship: "T-70 X-Wing",
+        skill: 4,
+        points: 200,
+        slots: ["Talent", "Astromech", "Tech", "Modification", "Configuration", "Title", "HardpointShip"]
       }
     ],
     upgradesById: [
@@ -8170,14 +8215,14 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         unique: true,
         faction: "First Order",
-        points: 200
+        points: 5
       }, {
         name: "Clone Captain Rex",
         id: 321,
         slot: "Gunner",
         unique: true,
         faction: "Galactic Republic",
-        points: 200
+        points: 4
       }, {
         name: "Yoda",
         id: 322,
@@ -8185,7 +8230,7 @@ exportObj.basicCardData = function() {
         unique: true,
         force: 2,
         faction: "Galactic Republic",
-        points: 200,
+        points: 15,
         modifier_func: function(stats) {
           stats.force += 2;
           if (__indexOf.call(stats.actions, 'F-Coordinate') < 0) {
@@ -8197,14 +8242,14 @@ exportObj.basicCardData = function() {
         id: 323,
         slot: "Configuration",
         faction: "Separatist Alliance",
-        points: 200
+        points: 3
       }, {
         name: "Agent Terex",
         id: 324,
         slot: "Crew",
         unique: true,
         faction: "First Order",
-        points: 200
+        points: 6
       }, {
         name: "Plo Koon",
         id: 325,
@@ -8212,7 +8257,7 @@ exportObj.basicCardData = function() {
         unique: true,
         force: 1,
         faction: "Galactic Republic",
-        points: 200,
+        points: 10,
         modifier_func: function(stats) {
           stats.force += 1;
           if (__indexOf.call(stats.actions, 'F-Reinforce') < 0) {
@@ -8220,10 +8265,10 @@ exportObj.basicCardData = function() {
           }
         }
       }, {
-        name: "Multi-Missle Pods",
+        name: "Multi-Missile Pods",
         id: 326,
         slot: "Missile",
-        points: 200,
+        points: 8,
         attackf: 2,
         range: "1-2",
         rangebonus: true,
@@ -8242,7 +8287,7 @@ exportObj.basicCardData = function() {
         unique: true,
         force: 1,
         faction: "Galactic Republic",
-        points: 200,
+        points: 9,
         modifier_func: function(stats) {
           stats.force += 1;
           if (__indexOf.call(stats.actions, 'F-Evade') < 0) {
@@ -8256,7 +8301,7 @@ exportObj.basicCardData = function() {
         unique: true,
         force: 1,
         faction: "Galactic Republic",
-        points: 200,
+        points: 16,
         modifier_func: function(stats) {
           stats.force += 1;
           stats.actions.push('*Focus');
@@ -8368,7 +8413,7 @@ exportObj.basicCardData = function() {
         name: "Deadeye Shot",
         id: 343,
         slot: "Talent",
-        points: 200,
+        points: 1,
         restriction_func: function(ship) {
           return !((ship.data.large != null) || (ship.data.huge != null));
         }
@@ -8393,18 +8438,18 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "Galactic Republic",
         slot: "Crew",
-        points: 200
+        points: 3
       }, {
         name: "Commander Malarus",
         id: 347,
         faction: "First Order",
         slot: "Crew",
-        points: 200
+        points: 7
       }, {
         name: "Automated Target Priority",
         id: 348,
         slot: "Tech",
-        points: 200,
+        points: 1,
         restriction_func: function(ship) {
           return ship.pilot.skill < 4;
         }
@@ -8413,7 +8458,7 @@ exportObj.basicCardData = function() {
         id: 349,
         faction: "First Order",
         slot: "Tech",
-        points: 200,
+        points: 4,
         restriction_func: function(ship) {
           return (ship.data.large != null) || (ship.data.medium != null);
         }
@@ -8421,14 +8466,16 @@ exportObj.basicCardData = function() {
         name: "Suppressive Gunner",
         id: 350,
         slot: "Gunner",
-        points: 200
+        points: 200,
+        pointsarray: [8, 7, 6, 3],
+        variablebase: true
       }, {
         name: "Ghost Company",
         id: 351,
         faction: "Galactic Republic",
         unique: true,
         slot: "Crew",
-        points: 200,
+        points: 5,
         restriction_func: function(ship, upgrade_obj) {
           return ((__indexOf.call(ship.effectiveStats().actions, "Rotate Arc") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Rotate Arc") >= 0)) && ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Gunner");
         },
@@ -8442,7 +8489,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         unique: true,
         slot: "Crew",
-        points: 200,
+        points: 4,
         restriction_func: function(ship, upgrade_obj) {
           return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Gunner");
         },
@@ -8459,7 +8506,7 @@ exportObj.basicCardData = function() {
         slot: "Tactical Relay",
         solitary: true,
         faction: "Separatist Alliance",
-        points: 200,
+        points: 5,
         modifier_func: function(stats) {
           if (__indexOf.call(stats.actions, 'Calculate') < 0) {
             return stats.actions.push('Calculate');
@@ -8469,7 +8516,7 @@ exportObj.basicCardData = function() {
         name: "Synced Laser Cannons",
         id: 354,
         slot: "Cannon",
-        points: 200,
+        points: 6,
         attack: 3,
         range: "2-3",
         restriction_func: function(ship, upgrade_obj) {
@@ -8484,7 +8531,7 @@ exportObj.basicCardData = function() {
         id: 355,
         slot: "Device",
         charge: 3,
-        points: 200,
+        points: 3,
         applies_condition: 'Concussion Bomb'.canonicalize()
       }, {
         name: "Target-Assist MGK-300",
@@ -8497,6 +8544,48 @@ exportObj.basicCardData = function() {
           stats.actions.push('Calculate');
           stats.actions.push('*Rotate Arc');
           return stats.actions.push('> Calculate');
+        }
+      }, {
+        name: "Backwards Tailslide",
+        id: 357,
+        slot: "Talent",
+        points: 200,
+        restriction_func: function(ship, upgrade_obj) {
+          var _ref;
+          return ((_ref = ship.data.name) != null ? _ref.includes("X-Wing") : void 0) && (!ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, "Configuration"));
+        }
+      }, {
+        name: "R2-D2 (Resistance)",
+        id: 358,
+        slot: "Astromech",
+        points: 200,
+        unique: true,
+        charge: 4,
+        faction: "Resistance"
+      }, {
+        name: "R6-D8",
+        id: 359,
+        points: 200,
+        unique: true,
+        slot: "Astromech",
+        faction: "Resistance"
+      }, {
+        name: "Underslung Blaster Cannon",
+        id: 360,
+        points: 200,
+        slot: "Cannon",
+        attackt: 2,
+        range: "1",
+        rangebonus: true,
+        faction: "Resistance",
+        restriction_func: function(ship) {
+          var _ref;
+          return (_ref = ship.data.name) != null ? _ref.includes("X-Wing") : void 0;
+        },
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'Rotate Arc') < 0) {
+            return stats.actions.push('Rotate Arc');
+          }
         }
       }
     ],
@@ -12275,6 +12364,9 @@ exportObj.hyperspaceShipInclusions = [
     name: 'TIE/SF Fighter',
     faction: 'First Order'
   }, {
+    name: '"Xi-class Light Shuttle"',
+    faction: 'First Order'
+  }, {
     name: 'Delta-7 Aethersprite',
     faction: 'Galactic Republic'
   }, {
@@ -12290,6 +12382,9 @@ exportObj.hyperspaceShipInclusions = [
     name: 'V-19 Torrent',
     faction: 'Galactic Republic'
   }, {
+    name: 'LAAT/i Gunship',
+    faction: 'Galactic Republic'
+  }, {
     name: 'Vulture-class Droid Fighter',
     faction: 'Separatist Alliance'
   }, {
@@ -12300,6 +12395,9 @@ exportObj.hyperspaceShipInclusions = [
     faction: 'Separatist Alliance'
   }, {
     name: 'Nantex-Class Starfighter',
+    faction: 'Separatist Alliance'
+  }, {
+    name: '"HMP Droid Gunship"',
     faction: 'Separatist Alliance'
   }, {
     name: 'Belbullab-22 Starfighter',
@@ -14183,8 +14281,23 @@ exportObj.cardLoaders.English = function() {
     "Temmin Wexley (HoH)": {
       text: "At the start of the Engagement Phase, each friendly T-70 X-wing at range 0-3 may gain 1 strain token to flip its equipped %CONFIGURATION% upgrade. If it does, that ship gains 1 calculate token. %LINEBREAK%<strong>Weapon Hardpoint:</strong> You can equip 1&nbsp;%CANNON%, %TORPEDO%, or %MISSILE% upgrade."
     },
+    "C'ai Threnalli": {
+      text: "After you fully execute a maneuver, if you moved through a friendly ship, you may perform an %EVADE% action. %LINEBREAK%<strong>Weapon Hardpoint:</strong> You can equip 1&nbsp;%CANNON%, %TORPEDO%, or %MISSILE% upgrade."
+    },
+    "Nimi Chereen": {
+      text: "While you perform an attack, if the defender's initiative is higher than yours, you may change 1 blank result to a %FOCUS% result. %LINEBREAK%<strong>Weapon Hardpoint:</strong> You can equip 1&nbsp;%CANNON%, %TORPEDO%, or %MISSILE% upgrade."
+    },
     "Merl Cobben": {
       text: "While a friendly ship at range 0-2 performs a primary attack, if you are in the defender's %BULLSEYEARC%, the defender rolls 1 fewer defense die. %LINEBREAK%<strong>Refined Gyrostabilizers:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. After you perform an action, you may perform a red %BOOST% or red %ROTATEARC% action."
+    },
+    "Seftin Vanik": {
+      text: "After you perform a %BOOST% action, you may transfer 1 evade token to a friendly ship at range 1. %LINEBREAK%<strong>Refined Gyrostabilizers:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. After you perform an action, you may perform a red %BOOST% or red %ROTATEARC% action."
+    },
+    "Suralinda Javos": {
+      text: "After you partially execute a maneuver, you may gain 1 strain token to rogate 90º or 180º. %LINEBREAK%<strong>Refined Gyrostabilizers:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. After you perform an action, you may perform a red %BOOST% or red %ROTATEARC% action."
+    },
+    "Wrobie Tyce": {
+      text: "After you defend at attack range 1, if the attacker modified its dice, the attacker gains 1 deplete token. %LINEBREAK%<strong>Refined Gyrostabilizers:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. After you perform an action, you may perform a red %BOOST% or red %ROTATEARC% action."
     },
     "Agent Terex": {
       text: "<strong>Setup:</strong> After placing forces, choose any number of your equipped %ILLICIT% upgrades and equip them to friendly TIE/fo or TIE/sf fighters. Each ship can be assigned only 1 %ILLICIT% this way. %LINEBREAK% <strong>End of Game:</strong> Return all %ILLICIT% upgrades to their original ships."
@@ -15314,7 +15427,7 @@ exportObj.cardLoaders.English = function() {
     "Repulsorlift Stabilizers": {
       text: "<strong>Inactive: Setup:</strong> Equip this side faceup. Reduce the difficulty of your straight (%STRAIGHT%) maneuvers. %LINEBREAK% After you fully execute a maneuver, you may flip this card. %LINEBREAK%<strong>Active: </strong> After you reveal a bank (%BANKLEFT% or %BANKRIGHT%) or turn (%TURNLEFT% or %TURNRIGHT%), you <b>must</b> perform that maneuver as a slideslip, then flip this card. %LINEBREAK% After you fully execute a non-sideslip maneuver, you may flip this card."
     },
-    "Multi-Missle Pods": {
+    "Multi-Missile Pods": {
       text: "<strong>Attack (%CALCULATE% or %LOCK%):</strong> Spend 1 %CHARGE%. If the defender is in your %FRONTARC%, you may spend 1 %CHARGE% to roll 1 additional attack die. If the defender is in your %BULLSEYEARC%, you may spend up to 2 %CHARGE% to roll that many additional attack dice instead."
     },
     "Synced Laser Cannons": {
@@ -15359,8 +15472,20 @@ exportObj.cardLoaders.English = function() {
     "Starbird Slash": {
       text: "After you fully execute a maneuver, you may choose 1 enemy ship you moved through. That ship gains 1 strain token. Then, if you are in that ship's firing arc, you gain 1 strain token."
     },
+    "Backwards Tailslide": {
+      text: "While you boost or barrel roll, if your equipped %CONFIGURATION% upgrade has the \"(Closed)\" side faceup, you can move through and overlap obstacles. %LINEBREAK% After you boost or barrel roll through an obstacle, if you are not at range 0 of it, gain 1 evade token. "
+    },
     "Overdrive Thruster": {
       text: "While you perform a red %BOOST%. %BARRELROLL%, or %SLAM% action, you <b>must</b> use a template of 1 speed higher if able."
+    },
+    "R2-D2 (Resistance)": {
+      text: "During the End Phase, you may spend 1 %CHARGE% and 1 %SHIELD% to remove 1 red token. %LINEBREAK% During the End Phase, if you have no active %SHIELD%, you may spend 2 %CHARGE% to recover 1 %SHIELD% aqnd gain 1 deplete token."
+    },
+    "R6-D8": {
+      text: "While you perform an attack, you may reroll a number of attack dice up to the number of friendly ships at range 0-3 that have the defender in their %BULLSEYEARC%."
+    },
+    "Underslung Blaster Cannon": {
+      text: "After an enemy ship executes a maneuver, you may perform this attack against it as a bonus attack. %LINEBREAK% <strong>Attack (%LOCK%):</strong> Your dice can be modified only by spending a lock for the default effect."
     },
     "Commander Pyre": {
       text: "<strong>Setup:</strong> After placing forces, choose an enemy ship. It gains 2 stress tokens. %LINEBREAK% While you defend, if the attacker is stressed, you may reroll 1 defense die."
