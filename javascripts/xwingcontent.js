@@ -4730,7 +4730,7 @@ exportObj.basicCardData = function() {
         max_per_squad: 2,
         ship: "HMP Droid Gunship",
         points: 40,
-        slots: ["Talent", "Cannon", "Cannon", "Missile", "Missile", "Tactical Relay", "Device", "Configuration"]
+        slots: ["Missile", "Missile", "Tactical Relay", "Crew", "Device", "Modification", "Configuration"]
       }, {
         name: "212th Battalion Pilot",
         id: 412,
@@ -12364,7 +12364,7 @@ exportObj.hyperspaceShipInclusions = [
     name: 'TIE/SF Fighter',
     faction: 'First Order'
   }, {
-    name: '"Xi-class Light Shuttle"',
+    name: 'Xi-class Light Shuttle',
     faction: 'First Order'
   }, {
     name: 'Delta-7 Aethersprite',
@@ -12397,7 +12397,7 @@ exportObj.hyperspaceShipInclusions = [
     name: 'Nantex-Class Starfighter',
     faction: 'Separatist Alliance'
   }, {
-    name: '"HMP Droid Gunship"',
+    name: 'HMP Droid Gunship',
     faction: 'Separatist Alliance'
   }, {
     name: 'Belbullab-22 Starfighter',
@@ -14304,7 +14304,7 @@ exportObj.cardLoaders.English = function() {
     },
     "Commander Malarus (Xi Shuttle)": {
       display_name: "Commander Malarus",
-      text: "While a friendly ship at range 0-2 performs a primary attack, if it has 1 or more blank results, that ship <b>must</b> gain 1 strain token to reroll 1 bank result, if able."
+      text: "While a friendly ship at range 0-2 performs a primary attack, if it has 1 or more blank results, that ship <b>must</b> gain 1 strain token to reroll 1 blank result, if able."
     },
     "Gideon Hask (Xi Shuttle)": {
       display_name: "Gideon Hask",
