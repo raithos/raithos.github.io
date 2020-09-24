@@ -4730,7 +4730,7 @@ exportObj.basicCardData = function() {
         max_per_squad: 2,
         ship: "HMP Droid Gunship",
         points: 40,
-        slots: ["Missile", "Missile", "Tactical Relay", "Crew", "Device", "Modification", "Configuration"]
+        slots: ["Talent", "Cannon", "Cannon", "Missile", "Missile", "Tactical Relay", "Device", "Configuration"]
       }, {
         name: "212th Battalion Pilot",
         id: 412,

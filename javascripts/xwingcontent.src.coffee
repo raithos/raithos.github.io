@@ -8551,12 +8551,13 @@ exportObj.basicCardData = ->
             ship: "HMP Droid Gunship"
             points: 40
             slots: [
+                "Talent"
+                "Cannon"
+                "Cannon"
                 "Missile"
                 "Missile"
                 "Tactical Relay"
-                "Crew"
                 "Device"
-                "Modification"
                 "Configuration"
             ]
         }
