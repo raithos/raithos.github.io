@@ -826,7 +826,7 @@ exportObj.basicCardData = function() {
         name: "LAAT/i Gunship",
         xws: "LAAT/i Gunship".canonicalize(),
         factions: ["Galactic Republic"],
-        attackt: 2,
+        attackdt: 2,
         agility: 1,
         hull: 8,
         shields: 2,
