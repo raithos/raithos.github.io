@@ -8443,6 +8443,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Commander Malarus",
         id: 347,
+        unique: true,
         faction: "First Order",
         slot: "Crew",
         points: 7
@@ -8484,7 +8485,11 @@ exportObj.basicCardData = function() {
         validation_func: function(ship, upgrade_obj) {
           return upgrade_obj.occupiesAnUpgradeSlot("Gunner");
         },
-        also_occupies_upgrades: ["Gunner"]
+        also_occupies_upgrades: ["Gunner"],
+        modifier_func: function(stats) {
+          stats.actions.push('*Rotate Arc');
+          return stats.actions.push('R> Focus');
+        }
       }, {
         name: "Wolf Pack",
         id: 352,
@@ -15415,7 +15420,7 @@ exportObj.cardLoaders.English = function() {
       text: "While you perform an attack, you may spend 1 %FOCUS% result. If you do, the defender gains 1 deplete token unless it chooses to suffer 1 %HIT% damage."
     },
     "Ghost Company": {
-      text: "<i>Requires %ROTATEARC%</i> %LINEBREAK% After you perform a primary attack, if you are focused, you may perform a %SINGLETURRETARC% attack against a ship you have not attacked this round as a bonus attack."
+      text: "<i>Requires %ROTATEARC%</i>, <i>Adds %ROTATEARC% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> <r>%FOCUS%</r></i> %LINEBREAK% After you perform a primary attack, if you are focused, you may perform a %SINGLETURRETARC% attack against a ship you have not attacked this round as a bonus attack."
     },
     "Wolf Pack": {
       text: "After a friendly ship at range 0-3 defends, if the attacker is in your firing arc, the defender may gain 1 strain token to acquire a lock on the attacker."
