@@ -12221,7 +12221,7 @@ class exportObj.SquadBuilder
             render: 'canvas'
             text: JSON.stringify(@toMinimalXWS())
             ec: 'L'
-            size: 256
+            size: 128
 
         # console.log "#{@faction}: Squad updated, checking collection"
         @checkCollection()

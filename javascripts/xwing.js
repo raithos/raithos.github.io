@@ -10981,7 +10981,7 @@ exportObj.SquadBuilder = (function() {
       render: 'canvas',
       text: JSON.stringify(this.toMinimalXWS()),
       ec: 'L',
-      size: 256
+      size: 128
     });
     this.checkCollection();
     if (typeof Set !== "undefined" && Set !== null) {
