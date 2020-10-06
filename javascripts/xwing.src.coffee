@@ -9469,6 +9469,263 @@ exportObj.manifestByExpansion =
             count: 1
         }
     ]
+    "X-class Light Shuttle Expansion Pack": [
+        {
+            name: 'Xi-class Light Shuttle'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Commander Malarus (Xi Shuttle)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Gideon Hask (Xi Shuttle)'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Agent Terex'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'First Order Courier'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Agent Terex'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Commander Malarus'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Commander Pyre'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Tactical Officer'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Contraband Cybernetics'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: "Deadman's Switch"
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Inertial Dampeners'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Rigged Cargo Chute'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Deadeye Shot'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Snap Shot'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Automated Target Priority'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: "Sensor Buoy Suite"
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+    "LAAT/i Gunship Expansion Pack": [
+        {
+            name: 'LAAT/i Gunship'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: '"Hawk"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Warthog"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '"Hound"'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: '212th Battalion Pilot'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Aayla Secura'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: '"Fives"'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Kit Fisto'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Plo Koon'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Yoda'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ghost Company'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Wolfpack'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Agile Gunner'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Clone Captain Rex'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Suppressive Gunner'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Concussion Missiles'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ion Missiles'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Multi-Missile Pods'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Deadeye Shot'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+    "HMP Droid Gunship Expansion Pack": [
+        {
+            name: 'HMP Droid Gunship'
+            type: 'ship'
+            count: 1
+        }
+        {
+            name: 'Onderon Oppressor'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'DGS-286'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Geonosian Prototype'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'DGS-047'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Separatist Predator'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Baktoid Drone'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Synced Laser Cannons'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Repulsorlift Stabilizers'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Concussion Bombs'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Ion Missiles'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Multi-Missile Pods'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Delayed Fuses'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Kalani'
+            type: 'upgrade'
+            count: 1
+        }
+    ]
+
     "Hotshots and Aces Reinforcements Pack": [
         {
             name: 'Gina Moonsong'
@@ -10715,7 +10972,7 @@ class exportObj.SquadBuilder
                 <div class="col-md-5 float-right button-container">
                     <div class="btn-group float-right">
 
-                        <button class="btn btn-primary view-as-text"><span class="d-none d-lg-block"><i class="fa fa-print"></i>&nbsp;Print/View as Text</span><span class="d-lg-none"><i class="fa fa-print"></i></span></button>
+                        <button class="btn btn-info view-as-text"><span class="d-none d-lg-block"><i class="fa fa-print"></i>&nbsp;Print/Export</span><span class="d-lg-none"><i class="fa fa-print"></i></span></button>
                         <a class="btn btn-primary d-none collection"><span class="d-none d-lg-block"><i class="fa fa-folder-open"></i> Your Collection</span><span class="d-lg-none"><i class="fa fa-folder-open"></i></span></a>
                         <!-- Randomize button is marked as danger, since it creates a new squad -->
                         <button class="btn btn-danger randomize"><span class="d-none d-lg-block"><i class="fa fa-random"></i> Randomize!</span><span class="d-lg-none"><i class="fa fa-random"></i></span></button>
@@ -10737,14 +10994,51 @@ class exportObj.SquadBuilder
                     <button class="show-authenticated btn btn-primary save-list"><i class="far fa-save"></i>&nbsp;Save</button>
                     <button class="show-authenticated btn btn-primary save-list-as"><i class="far fa-file"></i>&nbsp;Save As...</button>
                     <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash"></i>&nbsp;Delete</button>
-                    <button class="show-authenticated btn btn-primary backend-list-my-squads show-authenticated"><i class="fa fa-download"></i>&nbsp;Load Squad</button>
+                    <button class="show-authenticated btn btn-info backend-list-my-squads show-authenticated"><i class="fa fa-download"></i>&nbsp;Load Squad</button>
+                    <button class="btn btn-info import-squad"><i class="fa fa-file-import"></i>&nbsp;Import</button>
                     <button class="btn btn-danger clear-squad"><i class="fa fa-plus-circle"></i>&nbsp;New Squad</button>
                     <span class="show-authenticated backend-status"></span>
                 </div>
             </div>
         '''
-
         @container.append @status_container
+
+        @xws_import_modal = $ document.createElement 'DIV'
+        @xws_import_modal.addClass 'modal fade import-modal d-print-none'
+        @xws_import_modal.tabindex = "-1"
+        @xws_import_modal.role = "dialog"
+        @xws_import_modal.append $.trim """
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>XWS Import</h3>
+                <button type="button" class="close d-print-none" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                Import your list via XWS into YASB.<br>
+                <i>XWS is a common format to share lists between applications.</i>
+                <div class="container-fluid">
+                    <textarea class="xws-content" placeholder="Paste XWS here"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer d-print-none">
+                <span class="xws-import-status"></span>&nbsp;
+                <button class="btn btn-danger import-xws">Import</button>
+            </div>
+        </div>
+    </div>
+        """
+        @from_xws_button = @container.find('button.import-squad')
+        @from_xws_button.click (e) =>
+            e.preventDefault()
+            @xws_import_modal.find('.xws-import-status').text ' '
+            @xws_import_modal.modal 'show'
+
+        @load_xws_button = $ @xws_import_modal.find('button.import-xws')
+        @load_xws_button.click (e) =>
+            e.preventDefault()
+            exportObj.loadXWSButton(@xws_import_modal)
+        @container.append @xws_import_modal
 
         @list_modal = $ document.createElement 'DIV'
         @list_modal.addClass 'modal fade text-list-modal'
@@ -10797,6 +11091,13 @@ class exportObj.SquadBuilder
                 <div class="html-list">
                     <textarea></textarea><button class="btn btn-modal btn-copy">Copy</button>
                 </div>
+                <div class="xws-list">
+                    <p>Copy and paste this into an XWS-compliant application.
+                    <div class="row full-row">
+                        <div class="col d-inline-block d-none d-sm-block"><textarea></textarea><br /><button class="btn btn-modal btn-copy">Copy</button></div>
+                        <div class="col d-inline-block d-none d-sm-block qrcode-container" id="xws-qrcode-container"></div>
+                    </div>
+                </div>
             </div>
             <div class="container-fluid modal-footer d-print-none">
                 <div class="row full-row">
@@ -10834,6 +11135,7 @@ class exportObj.SquadBuilder
                     <button class="btn btn-modal select-reddit-view">Reddit</button>
                     <button class="btn btn-modal select-bbcode-view">BBCode</button>
                     <button class="btn btn-modal select-html-view">HTML</button>
+                    <button class="btn btn-modal select-xws-view">XWS</button>
                 </div>
                 <button class="btn btn-modal print-list d-none d-sm-block"><i class="fa fa-print"></i>&nbsp;Print</button>
             </div>
@@ -10852,6 +11154,9 @@ class exportObj.SquadBuilder
         @tts_container = $ @list_modal.find('div.modal-body .tts-list')
         @tts_textarea = $ @tts_container.find('textarea')
         @tts_textarea.attr 'readonly', 'readonly'
+        @xws_container = $ @list_modal.find('div.modal-body .xws-list')
+        @xws_textarea = $ @xws_container.find('textarea')
+        @xws_textarea.attr 'readonly', 'readonly'
         @bbcode_container = $ @list_modal.find('div.modal-body .bbcode-list')
         @bbcode_textarea = $ @bbcode_container.find('textarea')
         @bbcode_textarea.attr 'readonly', 'readonly'
@@ -10889,6 +11194,7 @@ class exportObj.SquadBuilder
                 @simplecopy_container.hide()
                 @reddit_container.hide()
                 @tts_container.hide()
+                @xws_container.hide()
                 @bbcode_container.hide()
                 @htmlview_container.hide()
                 @toggle_vertical_space_container.hide()
@@ -10914,6 +11220,7 @@ class exportObj.SquadBuilder
                 @tts_container.hide()
                 @bbcode_container.hide()
                 @htmlview_container.hide()
+                @xws_container.hide()
                 @toggle_vertical_space_container.show()
                 @toggle_color_print_container.show()
                 @toggle_color_skip_text.show()
@@ -10935,6 +11242,7 @@ class exportObj.SquadBuilder
                 @bbcode_container.hide()
                 @tts_container.hide()
                 @htmlview_container.hide()
+                @xws_container.hide()
                 @simple_container.hide()
                 @fancy_container.hide()
                 @reddit_textarea.select()
@@ -10960,6 +11268,7 @@ class exportObj.SquadBuilder
                 @bbcode_container.hide()
                 @tts_container.hide()
                 @htmlview_container.hide()
+                @xws_container.hide()
                 @simple_container.hide()
                 @fancy_container.hide()
                 @simplecopy_textarea.select()
@@ -10984,6 +11293,7 @@ class exportObj.SquadBuilder
                 @tts_container.show()
                 @bbcode_container.hide()
                 @htmlview_container.hide()
+                @xws_container.hide()
                 @simple_container.hide()
                 @simplecopy_container.hide()
                 @reddit_container.hide()
@@ -11011,6 +11321,7 @@ class exportObj.SquadBuilder
                 @reddit_container.hide()
                 @tts_container.hide()
                 @htmlview_container.hide()
+                @xws_container.hide()
                 @simple_container.hide()
                 @fancy_container.hide()
                 @bbcode_textarea.select()
@@ -11038,6 +11349,7 @@ class exportObj.SquadBuilder
                 @htmlview_container.show()
                 @simple_container.hide()
                 @fancy_container.hide()
+                @xws_container.hide()
                 @html_textarea.select()
                 @html_textarea.focus()
                 @toggle_vertical_space_container.hide()
@@ -11048,6 +11360,10 @@ class exportObj.SquadBuilder
                 @toggle_qrcode_container.hide()
                 @toggle_obstacle_container.hide()
                 @btn_print_list.disabled = true;
+
+        @select_xws_view_button = $ @list_modal.find('.select-xws-view')
+        @select_xws_view_button.click (e) =>
+            @select_xws_view()
 
         if $(window).width() >= 768
             @simple_container.hide()
@@ -11404,12 +11720,11 @@ class exportObj.SquadBuilder
                         <span class="tag-name">Tag:</span>
                         <input type="search" class="squad-tag"></input>
                     </label>
+                    <div class="obstacles-container">
+                            <button class="btn btn-info choose-obstacles"><i class="fa fa-cloud"></i>&nbsp;Choose Obstacles</button>
+                    </div>
                 </div>
                 <div class="col-md-3 info-container" id="info-container">
-                </div>
-                <div class="col-md-12 obstacles-container">
-                        <!-- Since this is an optional button, usually, it's shown in a different color -->
-                        <button class="btn btn-info choose-obstacles"><i class="fa fa-cloud"></i>&nbsp;Choose Obstacles</button>
                 </div>
             </div>
         """
@@ -11896,9 +12211,17 @@ class exportObj.SquadBuilder
             tts_obstacles = tts_obstacles.slice(0, -1)
             tts_ships.push tts_obstacles
 
-        @tts_container.find('textarea').val $.trim """#{tts_ships.join ""}"""
+        @tts_textarea.val $.trim """#{tts_ships.join ""}"""
         
         @bbcode_container.find('textarea').val $.trim """#{bbcode_ships.join "\n\n"}\n[b][i]Total: #{@total_points}[/i][/b]\n\n[url=#{@getPermaLink()}]View in Yet Another Squad Builder 2.0[/url]"""
+
+        @xws_textarea.val $.trim JSON.stringify(@toXWS())
+        $('#xws-qrcode-container').text ''
+        $('#xws-qrcode-container').qrcode
+            render: 'canvas'
+            text: JSON.stringify(@toMinimalXWS())
+            ec: 'L'
+            size: 256
 
         # console.log "#{@faction}: Squad updated, checking collection"
         @checkCollection()
@@ -11974,8 +12297,13 @@ class exportObj.SquadBuilder
         throw new Error("Ships not emptied") if @ships.length > 0
 
     showTextListModal: ->
-        # Display modal
+        # Display print/text view modal
         @list_modal.modal 'show'
+
+    showXWSModal: (xws) ->
+        # Display xws view modal
+        @select_xws_view()
+        @showTextListModal()
 
     showChooseObstaclesModal: ->
         @obstacles_select.val(@current_squad.additional_data.obstacles)
@@ -12075,6 +12403,33 @@ class exportObj.SquadBuilder
         @suppress_automatic_new_ship = false
         # Finally, the unassigned ship
         @addShip()
+
+
+    select_xws_view: () ->
+        @select_xws_view_button.blur()
+        unless @list_display_mode == 'xws'
+            @list_modal.find('.list-display-mode .btn').removeClass 'btn-inverse'
+            @select_xws_view_button.addClass 'btn-inverse'
+            @list_display_mode = 'xws'
+            @xws_container.show()
+            @bbcode_container.hide()
+            @htmlview_container.hide()
+            @simple_container.hide()
+            @simplecopy_container.hide()
+            @reddit_container.hide()
+            @fancy_container.hide()
+            @tts_container.hide()
+            @xws_textarea.select()
+            @xws_textarea.focus()
+            @toggle_vertical_space_container.hide()
+            @toggle_color_print_container.hide()
+            @toggle_color_skip_text.hide()
+            @toggle_maneuver_dial_container.hide()
+            @toggle_expanded_shield_hull_container.hide()
+            @toggle_qrcode_container.hide()
+            @toggle_obstacle_container.hide()
+            @btn_print_list.disabled = true;
+
 
     uniqueIndex: (unique, type) ->
         if type not of @uniques_in_use
@@ -15198,8 +15553,8 @@ class exportObj.XWSManager
     constructor: (args) ->
         @container = $ args.container
 
-        @setupUI()
-        @setupHandlers()
+        # @setupUI()
+        # @setupHandlers()
 
     setupUI: ->
         @container.addClass 'd-print-none'
@@ -15211,42 +15566,6 @@ class exportObj.XWSManager
             </div>
         """
 
-        @xws_export_modal = $ document.createElement 'DIV'
-        @xws_export_modal.addClass 'modal fade xws-modal d-print-none'
-        @xws_export_modal.tabindex = "-1"
-        @xws_export_modal.role = "dialog"
-        @container.append @xws_export_modal
-        @xws_export_modal.append $.trim """
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>XWS Export</h3>
-                <button type="button" class="close d-print-none" data-dismiss="modal" aria-hidden="true">&times;</button>
-            </div>
-            <div class="modal-body">
-                <ul class="nav nav-pills">
-                    <li><a id="xws-text-tab" href="#xws-text" data-toggle="tab">Text</a></li>
-                    <li><a id="xws-qrcode-tab" href="#xws-qrcode" data-toggle="tab">QR Code</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane" id="xws-text">
-                        Copy and paste this into an XWS-compliant application to transfer your list.
-                        <i>XWS is a way to share X-Wing squads between applications, e.g. YASB and LaunchBay Next</i>
-                        <div class="container-fluid">
-                            <textarea class="xws-content"></textarea>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="xws-qrcode">
-                        Below is a QR Code of XWS</i>
-                        <div id="xws-qrcode-container"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer d-print-none">
-            </div>
-        </div>
-    </div>
-        """
 
         @xws_import_modal = $ document.createElement 'DIV'
         @xws_import_modal.addClass 'modal fade xws-modal d-print-none'
@@ -15285,19 +15604,7 @@ class exportObj.XWSManager
         @to_xws_button.click (e) =>
             e.preventDefault()
             $(window).trigger 'xwing:pingActiveBuilder', (builder) =>
-                textarea = $ @xws_export_modal.find('.xws-content')
-                textarea.attr 'readonly'
-                textarea.val JSON.stringify(builder.toXWS())
-                $('#xws-qrcode-container').text ''
-                $('#xws-qrcode-container').qrcode
-                    render: 'canvas'
-                    text: JSON.stringify(builder.toMinimalXWS())
-                    ec: 'L'
-                    size: 256
-                @xws_export_modal.modal 'show'
-                $('#xws-text-tab').tab 'show'
-                textarea.select()
-                textarea.focus()
+                builder.showXWSModal 'bla'
 
         $('#xws-qrcode-container').click (e) ->
             window.open $('#xws-qrcode-container canvas')[0].toDataURL()
@@ -15305,28 +15612,31 @@ class exportObj.XWSManager
         @load_xws_button = $ @xws_import_modal.find('button.import-xws')
         @load_xws_button.click (e) =>
             e.preventDefault()
-            import_status = $ @xws_import_modal.find('.xws-import-status')
-            import_status.text 'Loading...'
-            do (import_status) =>
-                try
-                    xws = JSON.parse @xws_import_modal.find('.xws-content').val()
-                catch e
-                    import_status.text 'Invalid JSON'
-                    return
+            exportObj.loadXWSButton(@xws_import_modal)
 
-                do (xws) =>
-                    $(window).trigger 'xwing:activateBuilder', [exportObj.fromXWSFaction[xws.faction], (builder) =>
-                        if builder.current_squad.dirty and builder.backend?
-                            @xws_import_modal.modal 'hide'
-                            builder.backend.warnUnsaved builder, =>
-                                builder.loadFromXWS xws, (res) =>
-                                    unless res.success
-                                        @xws_import_modal.modal 'show'
-                                        import_status.text res.error
-                        else
+exportObj.loadXWSButton = (xws_import_modal) ->
+        import_status = $ xws_import_modal.find('.xws-import-status')
+        import_status.text 'Loading...'
+        do (import_status) =>
+            try
+                xws = JSON.parse xws_import_modal.find('.xws-content').val()
+            catch e
+                import_status.text 'Invalid JSON'
+                return
+
+            do (xws) =>
+                $(window).trigger 'xwing:activateBuilder', [exportObj.fromXWSFaction[xws.faction], (builder) =>
+                    if builder.current_squad.dirty and builder.backend?
+                        xws_import_modal.modal 'hide'
+                        builder.backend.warnUnsaved builder, =>
                             builder.loadFromXWS xws, (res) =>
-                                if res.success
-                                    @xws_import_modal.modal 'hide'
-                                else
+                                unless res.success
+                                    @xws_import_modal.modal 'show'
                                     import_status.text res.error
-                    ]
+                    else
+                        builder.loadFromXWS xws, (res) =>
+                            if res.success
+                                @xws_import_modal.modal 'hide'
+                            else
+                                import_status.text res.error
+                ]

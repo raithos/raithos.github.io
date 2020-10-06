@@ -8494,7 +8494,7 @@ exportObj.basicCardData = function() {
           return stats.actions.push('R> Focus');
         }
       }, {
-        name: "Wolf Pack",
+        name: "Wolfpack",
         id: 352,
         faction: "Galactic Republic",
         unique: true,
@@ -12576,7 +12576,8 @@ exportObj.translations.English = {
     '.save-list-as': '<i class="far fa-file"></i>&nbsp;Save as…',
     '.delete-list': '<i class="fa fa-trash"></i>&nbsp;Delete',
     '.backend-list-my-squads': '<i class="fa fa-download"></i>&nbsp;Load Squad',
-    '.view-as-text': '<span class="d-none d-lg-block"><i class="fa fa-print"></i>&nbsp;Print/View as Text</span><span class="d-lg-none"><i class="fa fa-print"></i></span>',
+    '.import-squad': '<i class="fa fa-file-import"></i>&nbsp;Import',
+    '.view-as-text': '<span class="d-none d-lg-block"><i class="fa fa-print"></i>&nbsp;Print/Export List</span><span class="d-lg-none"><i class="fa fa-print"></i></span>',
     '.collection': '<span class="d-none d-lg-block"><i class="fa fa-folder-open"></i> Your Collection</span><span class="d-lg-none"><i class="fa fa-folder-open"></i></span>',
     '.randomize': '<span class="d-none d-lg-block"><i class="fa fa-random"></i> Randomize!</span><span class="d-lg-none"><i class="fa fa-random"></i></span>',
     '.randomize-options': 'Randomizer options…',
@@ -15425,7 +15426,7 @@ exportObj.cardLoaders.English = function() {
     "Ghost Company": {
       text: "<i>Requires %ROTATEARC%</i>, <i>Adds %ROTATEARC% <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> <r>%FOCUS%</r></i> %LINEBREAK% After you perform a primary attack, if you are focused, you may perform a %SINGLETURRETARC% attack against a ship you have not attacked this round as a bonus attack."
     },
-    "Wolf Pack": {
+    "Wolfpack": {
       text: "After a friendly ship at range 0-3 defends, if the attacker is in your firing arc, the defender may gain 1 strain token to acquire a lock on the attacker."
     },
     "Yoda": {
