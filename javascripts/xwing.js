@@ -11846,7 +11846,7 @@ exportObj.SquadBuilder = (function() {
                 return "dodgerblue";
               case 3:
                 return "red";
-              case 3:
+              case 4:
                 return "purple";
             }
           })();
@@ -11858,7 +11858,7 @@ exportObj.SquadBuilder = (function() {
                 return "svg-blue-maneuver";
               case 3:
                 return "svg-red-maneuver";
-              case 3:
+              case 4:
                 return "svg-purple-maneuver";
             }
           })();
