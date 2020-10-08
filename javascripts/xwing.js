@@ -8386,7 +8386,7 @@ exportObj.manifestByExpansion = {
       count: 1
     }
   ],
-  "X-class Light Shuttle Expansion Pack": [
+  "Xi-class Light Shuttle Expansion Pack": [
     {
       name: 'Xi-class Light Shuttle',
       type: 'ship',
