@@ -7502,7 +7502,7 @@ exportObj.basicCardData = ->
             ship: "Resistance Transport Pod"
             skill: 3
             points: 26
-            keyword: ["Clone"]
+            keyword: ["Droid"]
             slots: [
                 "Talent"
                 "Tech"
@@ -7666,6 +7666,7 @@ exportObj.basicCardData = ->
             ship: "BTL-B Y-Wing"
             skill: 3
             points: 31
+            keyword: ["Clone"]
             slots: [
                 "Talent"
                 "Turret"
@@ -7683,6 +7684,7 @@ exportObj.basicCardData = ->
             ship: "BTL-B Y-Wing"
             skill: 2
             points: 29
+            keyword: ["Clone"]
             slots: [
                 "Turret"
                 "Torpedo"
@@ -7700,6 +7702,7 @@ exportObj.basicCardData = ->
             ship: "BTL-B Y-Wing"
             skill: 2
             points: 32
+            keyword: ["Droid"]
             slots: [
                 "Talent"
                 "Turret"
@@ -7718,6 +7721,7 @@ exportObj.basicCardData = ->
             ship: "BTL-B Y-Wing"
             skill: 2
             points: 29
+            keyword: ["Clone"]
             slots: [
                 "Turret"
                 "Torpedo"
@@ -7735,6 +7739,7 @@ exportObj.basicCardData = ->
             ship: "BTL-B Y-Wing"
             skill: 3
             points: 36
+            keyword: ["Clone"]
             slots: [
                 "Talent"
                 "Turret"
@@ -7753,6 +7758,7 @@ exportObj.basicCardData = ->
             ship: "BTL-B Y-Wing"
             skill: 4
             points: 43
+            keyword: ["Clone"]
             slots: [
                 "Talent"
                 "Turret"
@@ -7773,6 +7779,7 @@ exportObj.basicCardData = ->
             ship: "BTL-B Y-Wing"
             skill: 5
             points: 42
+            keyword: ["Clone"]
             slots: [
                 "Talent"
                 "Turret"
@@ -8735,7 +8742,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Limited I3"
+            name: "Fearsome Predator"
             id: 420
             faction: "Separatist Alliance"
             max_per_squad: 3
@@ -8748,9 +8755,10 @@ exportObj.basicCardData = ->
                 "Modification"
                 "Configuration"
             ]
+            applies_condition: '''Fearful Prey'''.canonicalize()
         }
         {
-            name: "Unnamed I3"
+            name: "DIS-347"
             id: 421
             faction: "Separatist Alliance"
             skill: 3
@@ -8780,7 +8788,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Limited I5"
+            name: "Phlac-Arphocc Prototype"
             id: 423
             faction: "Separatist Alliance"
             skill: 5
@@ -12489,7 +12497,8 @@ exportObj.basicCardData = ->
             slot: "Missile"
             attack: 3
             range: """1-3"""
-            rangebonus: true
+            limited: 2
+            max_per_squad: 2
             charge: 2
             points: 200
        }
@@ -12797,6 +12806,27 @@ exportObj.basicCardData = ->
             slot: "Astromech"
             faction: "Galactic Republic"
        }
+       {
+            name: "Intercept Booster"
+            id: 366
+            points: 200
+            slot: "Configuration"
+            ship: "Droid Tri-Fighter"
+            faction: "Separatist Alliance"
+            charge: 3
+            modifier_func: (stats) ->
+                stats.actions.push '*Slam'
+                stats.actions.push 'R-> Lock'
+       }
+       {
+            name: "Independent Calculations"
+            id: 367
+            points: 200
+            standardized: true
+            slot: "Modification"
+            restriction_func: (ship) ->
+                ship.pilot.text?.includes("Networked Calculations:")
+       }
     ]
 
 
@@ -12904,6 +12934,10 @@ exportObj.basicCardData = ->
         {
             name: 'Sensor Buoy'
             id: 23
+        }
+        {
+            name: 'Fearful Prey'
+            id: 24
         }
     ]
 
@@ -20419,8 +20453,14 @@ exportObj.cardLoaders.English = () ->
            text: """ %LINEBREAK%<strong>Networked Calculations:</strong> While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range&nbsp;0-1 to change 1&nbsp;%FOCUS% result to an %EVADE% or %HIT% result."""
         "Colicoid Interceptor":
            text: """ %LINEBREAK%<strong>Networked Calculations:</strong> While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range&nbsp;0-1 to change 1&nbsp;%FOCUS% result to an %EVADE% or %HIT% result."""
+        "Phlac-Arphocc Prototype":
+           text: """During the System Phase, you may spend your lock on a ship to look at that ship's dial. %LINEBREAK%<strong>Networked Calculations:</strong> While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range&nbsp;0-1 to change 1&nbsp;%FOCUS% result to an %EVADE% or %HIT% result."""
+        "Fearsome Predator":
+           text: """<strong>Setup:</strong> After placing forces, assign the <b>Fearful Prey</b> condition to 1 enemy ship. %LINEBREAK%<strong>Networked Calculations:</strong> While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range&nbsp;0-1 to change 1&nbsp;%FOCUS% result to an %EVADE% or %HIT% result."""
+        "DIS-347":
+           text: """At the start of the Engagement Phase, you may acquire a lock on an object at range 1-3 that has a friendly lock. %LINEBREAK%<strong>Networked Calculations:</strong> While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range&nbsp;0-1 to change 1&nbsp;%FOCUS% result to an %EVADE% or %HIT% result."""
         "DIS-T81":
-           text: """ %LINEBREAK%<strong>Networked Calculations:</strong> While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range&nbsp;0-1 to change 1&nbsp;%FOCUS% result to an %EVADE% or %HIT% result."""
+           text: """While you defend or perform an attack, you may spend 1 calculate token from a friendly ship in the enemy ship's firing arc to change 1 %FOCUS% result to an %EVADE% or %HIT% result. %LINEBREAK%<strong>Networked Calculations:</strong> While you defend or perform an attack, you may spend 1 calculate token from a friendly ship at range&nbsp;0-1 to change 1&nbsp;%FOCUS% result to an %EVADE% or %HIT% result."""
         "Lyttan Dree":
            text: """While a friendly ship at range 0-2 performs an attack, if you are in the defender's %LEFTARC% or %RIGHTARC%, the attacker may reroll 1 attack die. %LINEBREAK% <strong>Rotating Cannons:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. You must treat the %FRONTARC% requirement of your equipped %CANNON% upgrades as %SINGLETURRETARC%."""
         '"Rampage"':
@@ -21368,7 +21408,12 @@ exportObj.cardLoaders.English = () ->
            text: """After you fully execute a red maneuver, you may perform a %BARRELROLL% action, even while stressed. If you do, roll an attack die: On a %HIT% result gain 1 strain token, and on a %CRIT% result gain 1 ion token."""
         "Precision Ion Engines":
            text: """Before you execute a speed 1-3 Koiogran Turn [%KTURN%] maneuver, you may spend 1 %CHARGE% to execute that maneuver as a Segnor's Loop [%SLOOPLEFT% or %SLOOPRIGHT%] maneuver instead."""
-
+        "Intercept Booster":
+           text: """<strong>Attached: Setup:</strong> Equip this side faceup. %LINEBREAK% During the System Phase, gain 1 disarm token unless you flip this card. %LINEBREAK% At the end of the End Phase, if you have no active %CHARGE%, flip this card. %LINEBREAK% <strong>Detached:</strong> <i>Empty</i>"""
+        "XX-23 S-Thread Tracers":
+           text: """<strong>Attack: [%FOCUS%, %CALCULATE%, or %LOCK%]</strong>Spend 1 %CHARGE%. If this attack hits, each friendly ship at range 1-3 of the defender may acquire a lock on the defender. Then cancel all dice results."""
+        "Independent Calculations":
+           text: """Replace your <strong>Networked Calculations</strong> ship ability with the following: %LINEBREAK% <strong>Independent Calculations:</strong> While you perform a white %CALCULATE% action, you may treat it as red to gain 1 additiional calculate token. Other ships cannot spend your caclulate tokens using the <strong>Networked Calculations</strong> ship ability."""
 
         # Epic upgrades
         "Admiral Ozzel":
@@ -21577,6 +21622,8 @@ exportObj.cardLoaders.English = () ->
            text: '''(Bomb Token) - At the end of the Activation Phase, this device detonates. When this device detonates, each ship and remote at range 0–1 rolls 1 attack die. Each ship gains 1 strain token for each %FOCUS% result, and each ship and remote suffers 1 %HIT%/%CRIT% damage for each matching result.'''
         'Sensor Buoy':
            text: '''INIT: 0 <br>AGILITY: 3 <br>HULL: 2 %LINEBREAK% (Remote) - Sensor buoys are remotes that come in pairs (one red, and one blue, each with its own remote card), and are placed by the <strong>Sensor Buoy Suite</strong> upgrade card. Beyond being remotes and interacting with that card, they have no additional rules.'''
+        'Fearful Prey':
+           text: '''After you defend against an enemy <strong>Fearsome Predator</strong>, if you did not spend at least 1 green token during the attack, gain 1 strain token.'''
 
     exportObj.setupTranslationCardData pilot_translations, upgrade_translations, condition_translations
 
