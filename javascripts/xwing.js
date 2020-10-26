@@ -9788,6 +9788,10 @@ exportObj.SquadBuilder = (function() {
       Upgrade: [],
       Slot: []
     };
+    this.standard_list = {
+      Upgrade: [],
+      Ship: []
+    };
     this.suppress_automatic_new_ship = false;
     this.tooltip_currently_displaying = null;
     this.randomizer_options = {
@@ -10448,7 +10452,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 11677
+              lineno: 11682
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -10902,6 +10906,27 @@ exportObj.SquadBuilder = (function() {
     return cb();
   };
 
+  SquadBuilder.prototype.addStandardizedToList = function(ship) {
+    var idx, ship_upgrade, _i, _len, _ref, _ref1, _results;
+    if (((_ref = ship.data) != null ? _ref.name : void 0) != null) {
+      idx = this.standard_list['Ship'].indexOf(ship.data.name);
+      if (idx > -1) {
+        _ref1 = ship.upgrades;
+        _results = [];
+        for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+          ship_upgrade = _ref1[_i];
+          if (ship_upgrade.slot === this.standard_list['Upgrade'][idx].slot) {
+            ship_upgrade.setData(this.standard_list['Upgrade'][idx]);
+            break;
+          } else {
+            _results.push(void 0);
+          }
+        }
+        return _results;
+      }
+    }
+  };
+
   SquadBuilder.prototype.onPointsUpdated = function(cb) {
     var bbcode_ships, conditions, conditions_set, htmlview_ships, i, obstacle, obstacles, points_dest, points_destroyed, points_left, reddit_ships, ship, ship_uses_unreleased_content, simplecopy_ships, tot_points, tts_obstacles, tts_ships, unreleased_content_used, _i, _j, _k, _l, _len, _len1, _len2, _ref, _ref1, _ref2;
     if (cb == null) {
@@ -10916,6 +10941,7 @@ exportObj.SquadBuilder = (function() {
       if (!ship) {
         continue;
       }
+      this.addStandardizedToList(ship);
       tot_points += ship.getPoints();
       if (ship.destroystate === 1) {
         points_dest += Math.ceil(ship.getPoints() / 2);
@@ -11322,7 +11348,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 12503
+              lineno: 12521
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -11332,7 +11358,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 12504
+                lineno: 12522
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -13254,7 +13280,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 13875
+                      lineno: 13893
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -13362,6 +13388,7 @@ Ship = (function() {
         upgrade = delayed_upgrades[id];
         upgrade.setById(id);
       }
+      this.addStandardizedUpgrades();
     }
     this.updateSelections();
     this.builder.container.trigger('xwing:pointsUpdated');
@@ -13470,7 +13497,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 13985
+                          lineno: 14003
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -13520,7 +13547,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 14018
+                                  lineno: 14036
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -13558,6 +13585,25 @@ Ship = (function() {
           }
         });
       })(this)(__iced_k);
+    }
+  };
+
+  Ship.prototype.addStandardizedUpgrades = function() {
+    var idx, upgrade, _i, _len, _ref, _results;
+    idx = this.builder.standard_list['Ship'].indexOf(this.data.name);
+    if (idx > -1) {
+      _ref = this.upgrades;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        upgrade = _ref[_i];
+        if (exportObj.slotsMatching(upgrade.slot, this.builder.standard_list['Upgrade'][idx].slot)) {
+          upgrade.setData(this.builder.standard_list['Upgrade'][idx]);
+          break;
+        } else {
+          _results.push(void 0);
+        }
+      }
+      return _results;
     }
   };
 
@@ -13599,7 +13645,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 14069
+                      lineno: 14094
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -13615,6 +13661,7 @@ Ship = (function() {
               }
               _this.copy_button.show();
               _this.setShipType(_this.pilot.ship);
+              _this.addStandardizedUpgrades();
               if (((_this.pilot.autoequip != null) || ((exportObj.ships[_this.pilot.ship].autoequip != null) && !same_ship)) && !noautoequip) {
                 autoequip = ((_ref2 = _this.pilot.autoequip) != null ? _ref2 : []).concat((_ref1 = exportObj.ships[_this.pilot.ship].autoequip) != null ? _ref1 : []);
                 for (_j = 0, _len1 = autoequip.length; _j < _len1; _j++) {
@@ -13679,7 +13726,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 14098
+                lineno: 14124
               })
             ]);
             __iced_deferrals._fulfill();
@@ -13748,7 +13795,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 14127
+              lineno: 14153
             }));
           }
         }
@@ -13840,7 +13887,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 14183
+                lineno: 14209
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -14955,7 +15002,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 15058
+                lineno: 15084
               })
             ]);
             __iced_deferrals._fulfill();
@@ -14966,6 +15013,10 @@ GenericAddon = (function() {
       });
     })(this)((function(_this) {
       return function() {
+        var _ref;
+        if (((_ref = _this.data) != null ? _ref.standardized : void 0) != null) {
+          _this.removeStandardized();
+        }
         _this.destroyed = true;
         _this.rescindAddons();
         _this.deoccupyOtherUpgrades();
@@ -15109,7 +15160,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 15148
+                  lineno: 15176
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -15120,6 +15171,10 @@ GenericAddon = (function() {
         });
       })(this)((function(_this) {
         return function() {
+          var _ref1;
+          if (((_ref1 = _this.data) != null ? _ref1.standardized : void 0) != null) {
+            _this.removeStandardized();
+          }
           _this.rescindAddons();
           _this.deoccupyOtherUpgrades();
           (function(__iced_k) {
@@ -15132,7 +15187,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 15153
+                      lineno: 15183
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -15157,6 +15212,9 @@ GenericAddon = (function() {
               _this.unequipOtherUpgrades();
               _this.occupyOtherUpgrades();
               _this.conferAddons();
+              if (_this.data.standardized != null) {
+                _this.addToStandardizedList();
+              }
             } else {
               _this.deoccupyOtherUpgrades();
             }
@@ -15167,6 +15225,54 @@ GenericAddon = (function() {
       })(this));
     } else {
       return __iced_k();
+    }
+  };
+
+  GenericAddon.prototype.addToStandardizedList = function() {
+    var idx, _ref;
+    idx = this.ship.builder.standard_list['Ship'].indexOf(this.ship.data.name);
+    if (idx > -1) {
+      if (((_ref = this.ship.builder.standard_list['Upgrade'][idx]) != null ? _ref.name : void 0) === this.data.name) {
+        return;
+      }
+    }
+    this.ship.builder.standard_list['Upgrade'].push(this.data);
+    return this.ship.builder.standard_list['Ship'].push(this.ship.data.name);
+  };
+
+  GenericAddon.prototype.removeStandardized = function() {
+    var idx, nameToRemove, ship, upgrade, _i, _len, _ref, _ref1, _ref2, _results;
+    idx = this.ship.builder.standard_list['Ship'].indexOf(this.ship.data.name);
+    if (idx > -1) {
+      if (((_ref = this.ship.builder.standard_list['Upgrade'][idx]) != null ? _ref.name : void 0) === this.data.name) {
+        this.ship.builder.standard_list['Upgrade'].splice(idx, 1);
+        this.ship.builder.standard_list['Ship'].splice(idx, 1);
+        nameToRemove = this.data.name;
+        _ref1 = this.ship.builder.ships;
+        _results = [];
+        for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+          ship = _ref1[_i];
+          if (((_ref2 = ship.data) != null ? _ref2.name : void 0) === this.ship.data.name) {
+            _results.push((function() {
+              var _j, _len1, _ref3, _ref4, _results1;
+              _ref3 = ship.upgrades;
+              _results1 = [];
+              for (_j = 0, _len1 = _ref3.length; _j < _len1; _j++) {
+                upgrade = _ref3[_j];
+                if (((_ref4 = upgrade.data) != null ? _ref4.name : void 0) === nameToRemove) {
+                  _results1.push(upgrade.data = null);
+                } else {
+                  _results1.push(void 0);
+                }
+              }
+              return _results1;
+            })());
+          } else {
+            _results.push(void 0);
+          }
+        }
+        return _results;
+      }
     }
   };
 
@@ -15224,7 +15330,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 15198
+            lineno: 15255
           }));
         }
         __iced_deferrals._fulfill();
