@@ -704,6 +704,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 3,
         shields: 0,
+        keyword: ["Networked Calculations"],
         actions: ["Calculate", "Lock", "Barrel Roll", "R-> Calculate"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 3, 0, 0, 0, 0], [2, 1, 2, 1, 2, 0, 0, 0, 3, 3], [1, 3, 2, 3, 1, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
@@ -737,6 +738,7 @@ exportObj.basicCardData = function() {
         agility: 2,
         hull: 5,
         shields: 0,
+        keyword: ["Networked Calculations"],
         actions: ["Calculate", "Lock", "Barrel Roll", "R-> Lock", "R-Reload"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 3, 1, 3, 1, 0, 0, 0, 0, 0], [2, 1, 2, 1, 2, 3, 0, 0, 3, 3], [1, 0, 2, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
       },
@@ -860,6 +862,7 @@ exportObj.basicCardData = function() {
         attack: 3,
         agility: 3,
         hull: 3,
+        keyword: ["Networked Calculations"],
         actions: ["Calculate", "Evade", "Lock", "Barrel Roll", "R-> Evade", "Boost", "R-> Calculate"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 3, 3], [2, 1, 2, 1, 2, 0, 0, 0, 0, 0], [2, 1, 2, 1, 2, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
       },
@@ -4871,7 +4874,7 @@ exportObj.basicCardData = function() {
         keyword: ["Clone"],
         slots: ["Talent", "Missile", "Missile", "Crew", "Crew", "Gunner", "Gunner", "Modification"]
       }, {
-        name: "Cardia Academy Pilot",
+        name: "Carida Academy Cadet",
         id: 416,
         faction: "Galactic Empire",
         skill: 1,
@@ -4958,10 +4961,10 @@ exportObj.basicCardData = function() {
         points: 200,
         slots: ["Talent", "Missile", "Modification", "Configuration"]
       }, {
-        name: "Separatist Hunter",
+        name: "Separatist Racketeer",
         id: 426,
         faction: "Separatist Alliance",
-        skill: 1,
+        skill: 2,
         ship: "Firespray-31",
         points: 200,
         slots: ["Cannon", "Missile", "Crew", "Device", "Illicit", "Modification", "Title"]
@@ -4980,6 +4983,7 @@ exportObj.basicCardData = function() {
         faction: "Separatist Alliance",
         unique: true,
         skill: 5,
+        charge: 4,
         ship: "Firespray-31",
         points: 200,
         slots: ["Talent", "Cannon", "Missile", "Crew", "Device", "Illicit", "Modification", "Title"]
@@ -8420,6 +8424,7 @@ exportObj.basicCardData = function() {
         points: 200
       }, {
         name: "Boba Fett (Separatist)",
+        canonical_name: 'Boba Fett'.canonicalize(),
         id: 334,
         slot: "Gunner",
         unique: true,
@@ -8430,7 +8435,7 @@ exportObj.basicCardData = function() {
         id: 335,
         slot: "Crew",
         unique: true,
-        faction: "Separatist Alliance",
+        faction: ["Scum and Villainy", "Separatist Alliance"],
         points: 200
       }, {
         name: "Zam Wesell",
@@ -8438,8 +8443,9 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         unique: true,
         charge: 2,
-        faction: "Separatist Alliance",
-        points: 200
+        faction: ["Scum and Villainy", "Separatist Alliance"],
+        points: 200,
+        applies_condition: 'You Should Thank Me'.canonicalize()
       }, {
         name: 'Alpha-3B "Besh"',
         id: 337,
@@ -8727,9 +8733,34 @@ exportObj.basicCardData = function() {
         standardized: true,
         slot: "Modification",
         restriction_func: function(ship) {
-          var _ref;
-          return (_ref = ship.pilot.text) != null ? _ref.includes("Networked Calculations:") : void 0;
+          return ship.checkKeyword("Networked Calculations");
         }
+      }, {
+        name: "Weapons System Officer",
+        id: 368,
+        points: 200,
+        slot: "Gunner"
+      }, {
+        name: "False Transponder Codes",
+        id: 369,
+        points: 200,
+        charge: 1,
+        slot: "Illicit"
+      }, {
+        name: "Slave I (Separatist)",
+        canonical_name: 'Slave I'.canonicalize(),
+        id: 370,
+        points: 200,
+        slot: "Title",
+        unique: true,
+        faction: ["Scum and Villainy", "Separatist Alliance"],
+        ship: "Firespray-31",
+        confersAddons: [
+          {
+            type: exportObj.Upgrade,
+            slot: "Gunner"
+          }
+        ]
       }
     ],
     conditionsById: [
@@ -8816,6 +8847,12 @@ exportObj.basicCardData = function() {
       }, {
         name: 'Fearful Prey',
         id: 24
+      }, {
+        name: 'You Should Thank Me',
+        id: 25
+      }, {
+        name: 'You\'d Better Mean Business',
+        id: 26
       }
     ],
     quickbuildsById: [
@@ -14434,7 +14471,7 @@ exportObj.cardLoaders.English = function() {
     "Onyx Squadron Sentry": {
       text: "%LINEBREAK% <strong>Rotating Cannons:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. You must treat the %FRONTARC% requirement of your equipped %CANNON% upgrades as %SINGLETURRETARC%."
     },
-    "Cardia Academy Pilot": {
+    "Carida Academy Cadet": {
       text: "%LINEBREAK% <strong>Rotating Cannons:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. You must treat the %FRONTARC% requirement of your equipped %CANNON% upgrades as %SINGLETURRETARC%."
     },
     "Poe Dameron (HoH)": {

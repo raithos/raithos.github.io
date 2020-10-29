@@ -9047,7 +9047,7 @@ exportObj.cardLoaders.Magyar = function() {
     "Onyx Squadron Sentry": {
       text: "%LINEBREAK% <strong>Rotating Cannons:</strong> A %SINGLETURRETARC% tűzívedet csak a %FRONTARC% vagy %REARARC% irányba forgathatod. A felszerelt %CANNON% %FRONTARC% követelményét %SINGLETURRETARC% tűzívként kell kezelned."
     },
-    "Cardia Academy Pilot": {
+    "Carida Academy Cadet": {
       text: "%LINEBREAK% <strong>Rotating Cannons:</strong> A %SINGLETURRETARC% tűzívedet csak a %FRONTARC% vagy %REARARC% irányba forgathatod. A felszerelt %CANNON% %FRONTARC% követelményét %SINGLETURRETARC% tűzívként kell kezelned."
     },
     "Poe Dameron (HoH)": {
