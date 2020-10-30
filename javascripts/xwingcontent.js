@@ -851,6 +851,7 @@ exportObj.basicCardData = function() {
         attackt: 2,
         agility: 1,
         hull: 8,
+        shields: 0,
         medium: true,
         actions: ["Focus", "Reinforce", "Lock", "R-Barrel Roll", "Rotate Arc", "R-> Calculate"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
@@ -862,6 +863,7 @@ exportObj.basicCardData = function() {
         attack: 3,
         agility: 3,
         hull: 3,
+        shields: 0,
         keyword: ["Networked Calculations"],
         actions: ["Calculate", "Evade", "Lock", "Barrel Roll", "R-> Evade", "Boost", "R-> Calculate"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 3, 3], [2, 1, 2, 1, 2, 0, 0, 0, 0, 0], [2, 1, 2, 1, 2, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
@@ -886,6 +888,7 @@ exportObj.basicCardData = function() {
         attack: 2,
         agility: 3,
         hull: 3,
+        shields: 0,
         actions: ["Focus", "Evade", "Lock", "Barrel Roll", "Boost"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 4, 4], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
@@ -8520,6 +8523,7 @@ exportObj.basicCardData = function() {
         name: "Overdrive Thruster",
         id: 345,
         ship: "T-70 X-Wing",
+        unique: true,
         slot: "Modification",
         pointsarray: [0, 1, 2, 3, 4, 5, 6],
         variableinit: true
