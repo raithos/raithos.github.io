@@ -5171,7 +5171,7 @@ exportObj.basicCardData = function() {
         points: 36,
         slots: ["Talent", "Talent", "Missile", "Tech"]
       }, {
-        name: "Nimi Chereen",
+        name: "Nimi Chireen",
         id: 448,
         unique: true,
         faction: "Resistance",
@@ -14488,7 +14488,7 @@ exportObj.cardLoaders.English = function() {
     "C'ai Threnalli": {
       text: "After you fully execute a maneuver, if you moved through a friendly ship, you may perform an %EVADE% action. %LINEBREAK%<strong>Weapon Hardpoint:</strong> You can equip 1&nbsp;%CANNON%, %TORPEDO%, or %MISSILE% upgrade."
     },
-    "Nimi Chereen": {
+    "Nimi Chireen": {
       text: "While you perform an attack, if the defender's initiative is higher than yours, you may change 1 blank result to a %FOCUS% result. %LINEBREAK%<strong>Weapon Hardpoint:</strong> You can equip 1&nbsp;%CANNON%, %TORPEDO%, or %MISSILE% upgrade."
     },
     "Merl Cobben": {
@@ -22512,27 +22512,95 @@ exportObj.manifestByExpansion = {
       type: 'pilot',
       count: 1
     }, {
-      name: 'Nimi Chereen',
+      name: 'Nimi Chireen',
       type: 'pilot',
       count: 1
+    }, {
+      name: 'Black Squadron Ace',
+      type: 'pilot',
+      count: 2
+    }, {
+      name: 'Red Squadron Expert',
+      type: 'pilot',
+      count: 2
+    }, {
+      name: 'Blue Squadron Rookie',
+      type: 'pilot',
+      count: 2
+    }, {
+      name: 'Green Squadron Expert',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Blue Squadron Recruit',
+      type: 'pilot',
+      count: 2
     }, {
       name: 'R2-D2 (Resistance)',
       type: 'upgrade',
       count: 1
     }, {
-      name: 'Underslung Blaster Cannon',
+      name: 'R6-D8',
       type: 'upgrade',
       count: 1
+    }, {
+      name: 'R4 Astromech',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Integrated S-Foils',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Backwards Tailslide',
+      type: 'upgrade',
+      count: 3
+    }, {
+      name: 'Daredevil',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Deadeye Shot',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Starbird Slash',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Snap Shot',
+      type: 'upgrade',
+      count: 2
     }, {
       name: 'Overdrive Thruster',
       type: 'upgrade',
       count: 1
     }, {
-      name: 'Backwards Tailslide',
+      name: 'Ion Missiles',
       type: 'upgrade',
       count: 1
     }, {
-      name: 'Starbird Slash',
+      name: 'Concussion Missiles',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Integrated S-Foils',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Underslung Blaster Cannon',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Automated Target Priority',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Primed Thrusters',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Black One',
       type: 'upgrade',
       count: 1
     }
@@ -22569,9 +22637,29 @@ exportObj.manifestByExpansion = {
     }, {
       name: 'Deadeye Shot',
       type: 'upgrade',
-      count: 1
+      count: 2
     }, {
       name: 'Ion Limiter Override',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Snap Shot',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Ablative Plating',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Ion Cannon',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Heavy Laser Cannon',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Synced Laser Cannons',
       type: 'upgrade',
       count: 1
     }

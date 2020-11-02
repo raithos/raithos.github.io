@@ -9192,7 +9192,7 @@ exportObj.basicCardData = ->
             ]
         }
         {
-            name: "Nimi Chereen"
+            name: "Nimi Chireen"
             id: 448
             unique: true
             faction: "Resistance"
@@ -20534,7 +20534,7 @@ exportObj.cardLoaders.English = () ->
            text: """At the start of the Engagement Phase, each friendly T-70 X-wing at range 0-3 may gain 1 strain token to flip its equipped %CONFIGURATION% upgrade. If it does, that ship gains 1 calculate token. %LINEBREAK%<strong>Weapon Hardpoint:</strong> You can equip 1&nbsp;%CANNON%, %TORPEDO%, or %MISSILE% upgrade."""
         "C'ai Threnalli":
            text: """After you fully execute a maneuver, if you moved through a friendly ship, you may perform an %EVADE% action. %LINEBREAK%<strong>Weapon Hardpoint:</strong> You can equip 1&nbsp;%CANNON%, %TORPEDO%, or %MISSILE% upgrade."""
-        "Nimi Chereen":
+        "Nimi Chireen":
            text: """While you perform an attack, if the defender's initiative is higher than yours, you may change 1 blank result to a %FOCUS% result. %LINEBREAK%<strong>Weapon Hardpoint:</strong> You can equip 1&nbsp;%CANNON%, %TORPEDO%, or %MISSILE% upgrade."""
         "Merl Cobben":
            text: """While a friendly ship at range 0-2 performs a primary attack, if you are in the defender's %BULLSEYEARC%, the defender rolls 1 fewer defense die. %LINEBREAK%<strong>Refined Gyrostabilizers:</strong> You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%. After you perform an action, you may perform a red %BOOST% or red %ROTATEARC% action."""
@@ -29653,9 +29653,34 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'Nimi Chereen'
+            name: 'Nimi Chireen'
             type: 'pilot'
             count: 1
+        }
+        {
+            name: 'Black Squadron Ace'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Red Squadron Expert'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Blue Squadron Rookie'
+            type: 'pilot'
+            count: 2
+        }
+        {
+            name: 'Green Squadron Expert'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Blue Squadron Recruit'
+            type: 'pilot'
+            count: 2
         }
         {
             name: 'R2-D2 (Resistance)'
@@ -29663,9 +29688,44 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'Underslung Blaster Cannon'
+            name: 'R6-D8'
             type: 'upgrade'
             count: 1
+        }
+        {
+            name: 'R4 Astromech'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Integrated S-Foils'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Backwards Tailslide'
+            type: 'upgrade'
+            count: 3
+        }
+        {
+            name: 'Daredevil'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Deadeye Shot'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Starbird Slash'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Snap Shot'
+            type: 'upgrade'
+            count: 2
         }
         {
             name: 'Overdrive Thruster'
@@ -29673,12 +29733,37 @@ exportObj.manifestByExpansion =
             count: 1
         }
         {
-            name: 'Backwards Tailslide'
+            name: 'Ion Missiles'
             type: 'upgrade'
             count: 1
         }
         {
-            name: 'Starbird Slash'
+            name: 'Concussion Missiles'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Integrated S-Foils'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Underslung Blaster Cannon'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Automated Target Priority'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Primed Thrusters'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Black One'
             type: 'upgrade'
             count: 1
         }
@@ -29722,10 +29807,35 @@ exportObj.manifestByExpansion =
         {
             name: 'Deadeye Shot'
             type: 'upgrade'
-            count: 1
+            count: 2
         }
         {
             name: 'Ion Limiter Override'
+            type: 'upgrade'
+            count: 2
+        }
+        {
+            name: 'Snap Shot'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ablative Plating'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Ion Cannon'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Heavy Laser Cannon'
+            type: 'upgrade'
+            count: 1
+        }
+        {
+            name: 'Synced Laser Cannons'
             type: 'upgrade'
             count: 1
         }
