@@ -5115,6 +5115,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Poe Dameron (HoH)",
         canonical_name: 'Poe Dameron'.canonicalize(),
+        xws: 'poedameron-swz68',
         id: 442,
         unique: true,
         faction: "Resistance",
@@ -5127,6 +5128,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Temmin Wexley (HoH)",
         canonical_name: 'Temmin Wexley'.canonicalize(),
+        xws: 'temminwexley-swz68',
         id: 443,
         unique: true,
         faction: "Resistance",
