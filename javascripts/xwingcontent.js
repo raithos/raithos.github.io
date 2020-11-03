@@ -15714,7 +15714,7 @@ exportObj.cardLoaders.English = function() {
       text: "While you perform a red %BOOST%. %BARRELROLL%, or %SLAM% action, you <b>must</b> use a template of 1 speed higher if able."
     },
     "R2-D2 (Resistance)": {
-      text: "During the End Phase, you may spend 1 %CHARGE% and 1 %SHIELD% to remove 1 red token. %LINEBREAK% During the End Phase, if you have no active %SHIELD%, you may spend 2 %CHARGE% to recover 1 %SHIELD% aqnd gain 1 deplete token."
+      text: "During the End Phase, you may spend 1 %CHARGE% and 1 %SHIELD% to remove 1 red token. %LINEBREAK% During the End Phase, if you have no active %SHIELD%, you may spend 2 %CHARGE% to recover 1 %SHIELD% and gain 1 deplete token."
     },
     "R6-D8": {
       text: "While you perform an attack, you may reroll a number of attack dice up to the number of friendly ships at range 0-3 that have the defender in their %BULLSEYEARC%."
@@ -22499,6 +22499,10 @@ exportObj.manifestByExpansion = {
       count: 1
     }, {
       name: 'Wrobie Tyce',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: "C'ai Threnalli",
       type: 'pilot',
       count: 1
     }, {
