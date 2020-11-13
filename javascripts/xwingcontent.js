@@ -5635,9 +5635,9 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: ["Scum and Villainy", "Rebel Alliance"],
         force: 1,
+        keyword: ["Dark Side"],
         modifier_func: function(stats) {
-          stats.force += 1;
-          return stats.darkside = true;
+          return stats.force += 1;
         },
         restriction_func: function(ship) {
           var builder;
