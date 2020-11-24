@@ -658,9 +658,12 @@ i.xwing-miniatures-ship-gozanticlasscruiser:before {
 i.xwing-miniatures-ship-gr75mediumtransport:before {
   content: "1"; }
 
+i.xwing-miniatures-ship-hmpdroidgunship:before {
+  content: "Q"; }
+
 i.xwing-miniatures-ship-hwk290lightfreighter:before {
   content: "h"; }
-
+  
 i.xwing-miniatures-ship-hyenaclassdroidbomber:before {
   content: "="; }
 
@@ -675,6 +678,9 @@ i.xwing-miniatures-ship-lambdaclasst4ashuttle:before {
 
 i.xwing-miniatures-ship-lancerclasspursuitcraft:before {
   content: "L"; }
+
+i.xwing-miniatures-ship-laatigunship:before {
+  content: "."; }
 
 i.xwing-miniatures-ship-m12lkimogilafighter:before {
   content: "K"; }
@@ -727,6 +733,9 @@ i.xwing-miniatures-ship-scavengedyt1300:before {
 i.xwing-miniatures-ship-sheathipedeclassshuttle:before {
   content: "%"; }
 
+i.xwing-miniatures-ship-syliureclasshyperspacering:before {
+  content: "*"; }
+  
 i.xwing-miniatures-ship-sithinfiltrator:before {
   content: "]"; }
 
@@ -774,7 +783,7 @@ i.xwing-miniatures-ship-tierbheavy:before {
 
 i.xwing-miniatures-ship-tiereaper:before {
   content: "V"; }
-  
+
 i.xwing-miniatures-ship-tiesabomber:before {
   content: "B"; }
 
@@ -805,6 +814,9 @@ i.xwing-miniatures-ship-vt49decimator:before {
 i.xwing-miniatures-ship-vultureclassdroidfighter:before {
   content: "_"; }
 
+i.xwing-miniatures-ship-xiclasslightshuttle:before {
+  content: "/"; }
+  
 i.xwing-miniatures-ship-yt2400lightfreighter:before {
   content: "o"; }
 
