@@ -644,7 +644,7 @@ i.xwing-miniatures-ship-fangfighter:before {
   content: "M"; }
 
 i.xwing-miniatures-ship-fireball:before {
-  content: "|"; }
+  content: "0"; }
   
 i.xwing-miniatures-ship-firesprayclasspatrolcraft:before {
   content: "f"; }
@@ -758,7 +758,7 @@ i.xwing-miniatures-ship-tieagaggressor:before {
   content: "`"; }
 
 i.xwing-miniatures-ship-tiebainterceptor:before {
-  content: "{"; }
+  content: "j"; }
 
 i.xwing-miniatures-ship-tiecapunisher:before {
   content: "N"; }
