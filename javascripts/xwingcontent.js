@@ -889,7 +889,7 @@ exportObj.basicCardData = function() {
         agility: 3,
         hull: 3,
         shields: 0,
-        actions: ["Focus", "Evade", "Lock", "Barrel Roll", "Boost"],
+        actions: ["Focus", "Evade", "F-Lock", "Barrel Roll", "Boost"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 4, 4], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
       "Syliure-class Hyperspace Ring": {
