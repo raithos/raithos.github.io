@@ -4,7 +4,7 @@
     Stephen Kim <raithos@gmail.com>
     https://raithos.github.io
  */
-var DFL_LANGUAGE, GenericAddon, SERIALIZATION_CODE_TO_CLASS, SND_LANGUAGE, SPEC_URL, SQUAD_DISPLAY_NAME_MAX_LENGTH, Ship, TYPES, URL_BASE, builders, byName, byPoints, conditionToHTML, displayName, exportObj, getPrimaryFaction, sortWithoutQuotes, statAndEffectiveStat, _base,
+var DFL_LANGUAGE, GenericAddon, SERIALIZATION_CODE_TO_CLASS, SND_LANGUAGE, SPEC_URL, SQUAD_DISPLAY_NAME_MAX_LENGTH, Ship, TYPES, URL_BASE, builders, byName, byPoints, conditionToHTML, exportObj, getPrimaryFaction, statAndEffectiveStat,
   __slice = [].slice,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
@@ -227,7 +227,7 @@ exportObj.SquadBuilderBackend = (function() {
     url = all ? "" + this.server + "/all" : "" + this.server + "/squads/list";
     return $.get(url, (function(_this) {
       return function(data, textStatus, jqXHR) {
-        var hasNotArchivedSquads, li, squad, tag, tag_button, tagclean, _i, _j, _len, _len1, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6;
+        var hasNotArchivedSquads, li, squad, tag, tag_array, tag_button, tag_entry, tagclean, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6;
         hasNotArchivedSquads = false;
         _ref = data[builder.faction];
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -239,7 +239,11 @@ exportObj.SquadBuilderBackend = (function() {
           li.data('selectedForDeletion', false);
           list_ul.append(li);
           if ((((_ref1 = squad.additional_data) != null ? _ref1.tag : void 0) != null) && (((_ref2 = squad.additional_data) != null ? _ref2.tag : void 0) !== "") && (tag_list.indexOf(squad.additional_data.tag) === -1)) {
-            tag_list.push((_ref3 = squad.additional_data) != null ? _ref3.tag : void 0);
+            tag_array = (_ref3 = squad.additional_data) != null ? _ref3.tag.split(",") : void 0;
+            for (_j = 0, _len1 = tag_array.length; _j < _len1; _j++) {
+              tag_entry = tag_array[_j];
+              tag_list.push(tag_entry);
+            }
           }
           if (((_ref4 = squad.additional_data) != null ? _ref4.archived : void 0) != null) {
             li.hide();
@@ -392,8 +396,8 @@ exportObj.SquadBuilderBackend = (function() {
           list_ul.append($.trim("<li>Nothing to see here. Go save a squad!</li>"));
         }
         _this.squad_list_tags.empty();
-        for (_j = 0, _len1 = tag_list.length; _j < _len1; _j++) {
-          tag = tag_list[_j];
+        for (_k = 0, _len2 = tag_list.length; _k < _len2; _k++) {
+          tag = tag_list[_k];
           tagclean = tag.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-');
           _this.squad_list_tags.append($.trim(" \n<button class=\"btn " + tagclean + "\">" + tag + "</button>"));
           tag_button = $(_this.squad_list_tags.find("." + tagclean));
@@ -405,7 +409,24 @@ exportObj.SquadBuilderBackend = (function() {
             _this.squad_list_tags.find('.btn').removeClass('btn-inverse');
             button.addClass('btn-inverse');
             return _this.squad_list_modal.find('.squad-list li').each(function(idx, elem) {
-              return $(elem).toggle(($(elem).data().squad.additional_data.tag != null) && (buttontag === $(elem).data().squad.additional_data.tag.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-')));
+              var found_tag, _l, _len3;
+              if ($(elem).data().squad.additional_data.tag != null) {
+                tag_array = $(elem).data().squad.additional_data.tag.split(",");
+                found_tag = false;
+                for (_l = 0, _len3 = tag_array.length; _l < _len3; _l++) {
+                  tag = tag_array[_l];
+                  if (buttontag === tag.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/\s+/g, '-')) {
+                    found_tag = true;
+                  }
+                }
+                if (found_tag) {
+                  return $(elem).show();
+                } else {
+                  return $(elem).hide();
+                }
+              } else {
+                return $(elem).hide();
+              }
             });
           });
         }
@@ -1067,7 +1088,7 @@ exportObj.SquadBuilderBackend = (function() {
                 return headers = arguments[0];
               };
             })(),
-            lineno: 953
+            lineno: 962
           }));
           __iced_deferrals._fulfill();
         });
@@ -2173,6939 +2194,6 @@ exportObj.CardBrowser = (function() {
 
 })();
 
-exportObj = typeof exports !== "undefined" && exports !== null ? exports : this;
-
-if ((_base = String.prototype).startsWith == null) {
-  _base.startsWith = function(t) {
-    return this.indexOf(t === 0);
-  };
-}
-
-sortWithoutQuotes = function(a, b, type) {
-  var a_name, b_name;
-  if (type == null) {
-    type = '';
-  }
-  a_name = displayName(a, type).replace(/[^a-z0-9]/ig, '');
-  b_name = displayName(b, type).replace(/[^a-z0-9]/ig, '');
-  if (a_name < b_name) {
-    return -1;
-  } else if (a_name > b_name) {
-    return 1;
-  } else {
-    return 0;
-  }
-};
-
-displayName = function(name, type) {
-  var obj;
-  obj = void 0;
-  if (type === 'ship') {
-    obj = exportObj.ships[name];
-  } else if (type === 'upgrade') {
-    obj = exportObj.upgrades[name];
-  } else if (type === 'pilot') {
-    obj = exportObj.pilots[name];
-  } else {
-    return name;
-  }
-  if (obj && obj.display_name) {
-    return obj.display_name;
-  }
-  return name;
-};
-
-exportObj.manifestBySettings = {
-  'collectioncheck': true
-};
-
-exportObj.manifestByExpansion = {
-  'Second Edition Core Set': [
-    {
-      name: 'X-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'TIE Fighter',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Luke Skywalker',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Jek Porkins',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Red Squadron Veteran',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Blue Squadron Escort',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Iden Versio',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Valen Rudor',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Squadron Ace',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: '"Night Beast"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Obsidian Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Academy Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Elusive',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Outmaneuver',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Predator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Heightened Perception',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Instinctive Aim',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Sense',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Supernatural Reflexes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proton Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R2 Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R2-D2',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R3 Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R5 Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R5-D8',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Servomotor S-Foils',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Afterburners',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Hull Upgrade',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Shield Upgrade',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  "Saw's Renegades Expansion Pack": [
-    {
-      name: 'U-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'X-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Saw Gerrera',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Magva Yarro',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Benthic Two Tubes',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Partisan Renegade',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kullbee Sperado',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Leevan Tenza',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Edrio Two Tubes',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Cavern Angels Zealot',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: 'R3 Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R4 Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Saw Gerrera',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Magva Yarro',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Pivot Wing',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Servomotor S-Foils',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Deadman's Switch",
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Advanced Sensors',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Trick Shot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proton Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'TIE Reaper Expansion Pack': [
-    {
-      name: 'TIE Reaper',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Major Vermeil',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Captain Feroph',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Vizier"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Scarif Base Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Director Krennic',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Death Troopers',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'ISB Slicer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Tactical Officer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Swarm Tactics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Juke',
-      type: 'upgrade',
-      count: 2
-    }
-  ],
-  'Rebel Alliance Conversion Kit': [
-    {
-      name: 'Thane Kyrell',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Norra Wexley (Y-Wing)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Evaan Verlaine',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Biggs Darklighter',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Garven Dreis (X-Wing)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Wedge Antilles',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Blue Squadron Escort',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Red Squadron Veteran',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: '"Dutch" Vander',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Horton Salm',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Gold Squadron Veteran',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Gray Squadron Bomber',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Arvel Crynyd',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Jake Farrell',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Green Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Phoenix Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Braylen Stramm',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ten Numb',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Blue Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Blade Squadron Veteran',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Airen Cracken',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lieutenant Blount',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Bandit Squadron Pilot',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: 'Tala Squadron Pilot',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: 'Lowhhrick',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Wullffwarro',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kashyyyk Defender',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Ezra Bridger',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Hera Syndulla',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sabine Wren',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Zeb" Orrelios',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'AP-5',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ezra Bridger (Sheathipede)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Fenn Rau (Sheathipede)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Zeb" Orrelios (Sheathipede)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Jan Ors',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kyle Katarn',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Roark Garnet',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Rebel Scout',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Captain Rex',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ezra Bridger (TIE Fighter)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sabine Wren (TIE Fighter)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Zeb" Orrelios (TIE Fighter)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Corran Horn',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Gavin Darklighter',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Knave Squadron Escort',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Rogue Squadron Escort',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Bodhi Rook',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Cassian Andor',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Heff Tobber',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Blue Squadron Scout',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Esege Tuketu',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Miranda Doni',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Warden Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Garven Dreis',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ibtisam',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Norra Wexley',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Shara Bey',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Chewbacca',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Han Solo',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lando Calrissian',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Outer Rim Smuggler',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Chopper"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Hera Syndulla (VCX-100)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kanan Jarrus',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lothal Rebel',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Dash Rendar',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Leebo"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Wild Space Fringer',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Crack Shot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Daredevil',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Debris Gambit',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Elusive',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Expert Handling',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Intimidation',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Juke',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Lone Wolf',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Marksmanship',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Outmaneuver',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Predator',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Saturation Salvo',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Selfless',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Squad Leader',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Swarm Tactics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Trick Shot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Advanced Sensors',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Collision Detector',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Fire-Control System',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Cloaking Device',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Contraband Cybernetics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: "Deadman's Switch",
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Feedback Array',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Inertial Dampeners',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Rigged Cargo Chute',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Heavy Laser Cannon',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Cannon',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Jamming Beam',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Tractor Beam',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Dorsal Turret',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Cannon Turret',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Adv. Proton Torpedoes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Torpedoes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proton Torpedoes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Baze Malbus',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'C-3PO',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cassian Andor',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Chewbacca',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: '"Chopper" (Crew)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Freelance Slicer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'GNK "Gonk" Droid',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Hera Syndulla',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Informant',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Jyn Erso',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Kanan Jarrus',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Lando Calrissian',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Leia Organa',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Nien Nunb',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Novice Technician',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Perceptive Copilot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'R2-D2 (Crew)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Sabine Wren',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Seasoned Navigator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tactical Officer',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: '"Zeb" Orrelios',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cluster Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Homing Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proton Rockets',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Bomblet Generator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Conner Nets',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proton Bombs',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proximity Mines',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Seismic Charges',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ghost',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Millennium Falcon',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Moldy Crow',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Outrider',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Phantom',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Pivot Wing',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Servomotor S-Foils',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Bistan',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ezra Bridger',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Han Solo',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Hotshot Gunner',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Luke Skywalker',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Skilled Bombardier',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Veteran Tail Gunner',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Veteran Turret Gunner',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: '"Chopper" (Astromech)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R2 Astromech',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'R3 Astromech',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'R4 Astromech',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'R5 Astromech',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ablative Plating',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Advanced SLAM',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Electronic Baffle',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Engine Upgrade',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Hull Upgrade',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Munitions Failsafe',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Shield Upgrade',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Static Discharge Vanes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Stealth Device',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Tactical Scrambler',
-      type: 'upgrade',
-      count: 2
-    }
-  ],
-  'Galactic Empire Conversion Kit': [
-    {
-      name: 'Ved Foslo',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Del Meeko',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Gideon Hask',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Seyn Marana',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Howlrunner"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Mauler" Mithel',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Scourge" Skutu',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Wampa"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Squadron Ace',
-      type: 'pilot',
-      count: 4
-    }, {
-      name: 'Obsidian Squadron Pilot',
-      type: 'pilot',
-      count: 4
-    }, {
-      name: 'Academy Pilot',
-      type: 'pilot',
-      count: 4
-    }, {
-      name: 'Darth Vader',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Maarek Stele',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Zertik Strom',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Storm Squadron Ace',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Tempest Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Grand Inquisitor',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Seventh Sister',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Baron of the Empire',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: 'Inquisitor',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: 'Soontir Fel',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Turr Phennir',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Alpha Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Saber Squadron Ace',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Tomax Bren',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Captain Jonus',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Major Rhymer',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Deathfire"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Gamma Squadron Ace',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: 'Scimitar Squadron Pilot',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: '"Duchess"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Countdown"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Pure Sabacc"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Squadron Scout',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: 'Planetary Sentinel',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: 'Rexler Brath',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Colonel Vessery',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Countess Ryad',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Onyx Squadron Ace',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Delta Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: '"Double Edge"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lieutenant Kestal',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Onyx Squadron Scout',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Sienar Specialist',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: '"Echo"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Whisper"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Imdaar Test Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: "Sigma Squadron Ace",
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Major Vynder',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lieutenant Karsabi',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Rho Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Nu Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: '"Redline"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Deathrain"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Cutlass Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Captain Kagi',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Colonel Jendon',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lieutenant Sai',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Omicron Group Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Rear Admiral Chiraneau',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Captain Oicunn',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Patrol Leader',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Crack Shot',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Daredevil',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Debris Gambit',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Elusive',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Expert Handling',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Intimidation',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Juke',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Lone Wolf',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Marksmanship',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Outmaneuver',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Predator',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Ruthless',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Saturation Salvo',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Squad Leader',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Swarm Tactics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Trick Shot',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Advanced Sensors',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Collision Detector',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Fire-Control System',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Trajectory Simulator',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Heavy Laser Cannon',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Cannon',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Jamming Beam',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Tractor Beam',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Dorsal Turret',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Cannon Turret',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Adv. Proton Torpedoes',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Ion Torpedoes',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Proton Torpedoes',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Barrage Rockets',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Cluster Missiles',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Homing Missiles',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Ion Missiles',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Proton Rockets',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Admiral Sloane',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Agent Kallus',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ciena Ree',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Darth Vader',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Emperor Palpatine',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Freelance Slicer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'GNK "Gonk" Droid',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Grand Inquisitor',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Grand Moff Tarkin',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Informant',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Minister Tua',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Moff Jerjerrod',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Novice Technician',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Perceptive Copilot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Seasoned Navigator',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Seventh Sister',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tactical Officer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Fifth Brother',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Hotshot Gunner',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Skilled Bombardier',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Veteran Turret Gunner',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Bomblet Generator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Conner Nets',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Proton Bombs',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Proximity Mines',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Seismic Charges',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Dauntless',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'ST-321',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Os-1 Arsenal Loadout',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Xg-1 Assault Configuration',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Ablative Plating',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Advanced SLAM',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Electronic Baffle',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Hull Upgrade',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Munitions Failsafe',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Shield Upgrade',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Static Discharge Vanes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Stealth Device',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Tactical Scrambler',
-      type: 'upgrade',
-      count: 2
-    }
-  ],
-  'Scum and Villainy Conversion Kit': [
-    {
-      name: 'Joy Rekkoff',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Koshka Frost',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Marauder',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Fenn Rau',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kad Solus',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Old Teroch',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Skull Squadron Pilot',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Zealous Recruit',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: 'Constable Zuvio',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sarco Plank',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Unkar Plutt',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Jakku Gunrunner',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: 'Drea Renthal',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kavil',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Crymorah Goon',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Hired Gun',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: "Kaa'to Leeachos",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Nashtah Pup',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "N'dru Suhlak",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Sun Soldier',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: 'Binayre Pirate',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: 'Dace Bonearm',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Palob Godalhi',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Torkil Mux',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Spice Runner',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: 'Dalan Oberos (StarViper)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Guri',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Prince Xizor',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Sun Assassin',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Black Sun Enforcer',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Genesis Red',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Inaldra',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Laetin A'shera",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Quinn Jast',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Serissu',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sunny Bounder',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Tansarii Point Veteran',
-      type: 'pilot',
-      count: 4
-    }, {
-      name: 'Cartel Spacer',
-      type: 'pilot',
-      count: 4
-    }, {
-      name: 'Captain Jostero',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Graz',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Talonbane Cobra',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Viktor Hel',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Sun Ace',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: 'Cartel Marauder',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: 'Boba Fett',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Emon Azzameen',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kath Scarlet',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Krassis Trelix',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Bounty Hunter',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'IG-88A',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'IG-88B',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'IG-88C',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'IG-88D',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '4-LOM',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Zuckuss',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Gand Findsman',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Captain Nym',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sol Sixxa',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lok Revenant',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Dalan Oberos',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Torani Kulda',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Cartel Executioner',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Bossk',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Latts Razzi',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Moralo Eval',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Trandoshan Slaver',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Dengar',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Manaroo',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Tel Trevura',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Contracted Scout',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Asajj Ventress',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ketsu Onyo',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sabine Wren (Scum)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Shadowport Hunter',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Crack Shot',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Daredevil',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Debris Gambit',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Elusive',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Expert Handling',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Fearless',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Intimidation',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Juke',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Lone Wolf',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Marksmanship',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Outmaneuver',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Predator',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Saturation Salvo',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Squad Leader',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Swarm Tactics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Trick Shot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Advanced Sensors',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Collision Detector',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Fire-Control System',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Trajectory Simulator',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Cloaking Device',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Contraband Cybernetics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: "Deadman's Switch",
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Feedback Array',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Inertial Dampeners',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Rigged Cargo Chute',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Heavy Laser Cannon',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Cannon',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Jamming Beam',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Tractor Beam',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Dorsal Turret',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Cannon Turret',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Adv. Proton Torpedoes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Torpedoes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proton Torpedoes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: '0-0-0',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: '4-LOM',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Boba Fett',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cad Bane',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cikatro Vizago',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Freelance Slicer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'GNK "Gonk" Droid',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'IG-88D',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Informant',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Jabba the Hutt',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ketsu Onyo',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Latts Razzi',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Maul',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Novice Technician',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Perceptive Copilot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Seasoned Navigator',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Tactical Officer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Unkar Plutt',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Zuckuss',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Bossk',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'BT-1',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Dengar',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Greedo',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Hotshot Gunner',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Skilled Bombardier',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Veteran Tail Gunner',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Veteran Turret Gunner',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Cluster Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Homing Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proton Rockets',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Bomblet Generator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Conner Nets',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proton Bombs',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proximity Mines',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Seismic Charges',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Andrasta',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Havoc',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Hound's Tooth",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'IG-2000',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Mist Hunter',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Punishing One',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Shadow Caster',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Slave I',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Virago',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ablative Plating',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Electronic Baffle',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Engine Upgrade',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Hull Upgrade',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Munitions Failsafe',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Shield Upgrade',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Static Discharge Vanes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Stealth Device',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Tactical Scrambler',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: '"Genius"',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R2 Astromech',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'R3 Astromech',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'R4 Astromech',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'R5 Astromech',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'R5-P8',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R5-TK',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'T-65 X-Wing Expansion Pack': [
-    {
-      name: 'X-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Wedge Antilles',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Thane Kyrell',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Garven Dreis (X-Wing)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Biggs Darklighter',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Red Squadron Veteran',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Blue Squadron Escort',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Selfless',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R2 Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R4 Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Servomotor S-Foils',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'BTL-A4 Y-Wing Expansion Pack': [
-    {
-      name: 'Y-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Horton Salm',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Norra Wexley (Y-Wing)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Dutch" Vander',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Evaan Verlaine',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Gold Squadron Veteran',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Gray Squadron Bomber',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'R5 Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Expert Handling',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Cannon Turret',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proton Bombs',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Seismic Charges',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Veteran Turret Gunner',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'TIE/ln Fighter Expansion Pack': [
-    {
-      name: 'TIE Fighter',
-      type: 'ship',
-      count: 1
-    }, {
-      name: '"Howlrunner"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Mauler" Mithel',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Gideon Hask',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Scourge" Skutu',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Seyn Marana',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Del Meeko',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Wampa"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Squadron Ace',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Obsidian Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Academy Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Crack Shot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Juke',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Marksmanship',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Stealth Device',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'TIE Advanced x1 Expansion Pack': [
-    {
-      name: 'TIE Advanced',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Darth Vader',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Maarek Stele',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ved Foslo',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Zertik Strom',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Storm Squadron Ace',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Tempest Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Heightened Perception',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Supernatural Reflexes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ruthless',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Squad Leader',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cluster Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Fire-Control System',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Slave I Expansion Pack': [
-    {
-      name: 'Firespray-31',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Boba Fett',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kath Scarlet',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Emon Azzameen',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Koshka Frost',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Krassis Trelix',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Bounty Hunter',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Heavy Laser Cannon',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Boba Fett',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Perceptive Copilot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proximity Mines',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Seismic Charges',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Veteran Tail Gunner',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Inertial Dampeners',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Lone Wolf',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Andrasta',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Marauder',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Slave I',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Fang Fighter Expansion Pack': [
-    {
-      name: 'Fang Fighter',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Fenn Rau',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Old Teroch',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kad Solus',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Joy Rekkoff',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Skull Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Zealous Recruit',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Afterburners',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Fearless',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Daredevil',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  "Lando's Millennium Falcon Expansion Pack": [
-    {
-      name: 'Customized YT-1300',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Escape Craft',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Han Solo (Scum)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lando Calrissian (Scum)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'L3-37',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Freighter Captain',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lando Calrissian (Scum) (Escape Craft)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Outer Rim Pioneer',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'L3-37 (Escape Craft)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Autopilot Drone',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'L3-37',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Chewbacca (Scum)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Lando Calrissian (Scum)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Qi'ra",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tobias Beckett',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Seasoned Navigator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Han Solo (Scum)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Agile Gunner',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Composure',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Intimidation',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Lando's Millennium Falcon",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Rigged Cargo Chute',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tactical Scrambler',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Resistance Conversion Kit': [
-    {
-      name: 'Finch Dallow',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Edon Kappehl',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ben Teene',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Vennie',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Cat',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Cobalt Squadron Bomber',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: 'Rey',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Han Solo (Resistance)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Chewbacca (Resistance)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Resistance Sympathizer',
-      type: 'pilot',
-      count: 3
-    }, {
-      name: 'Poe Dameron',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ello Asty',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Nien Nunb',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Temmin Wexley',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kare Kun',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Jessika Pava',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Joph Seastriker',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Jaycris Tubbs',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lieutenant Bastian',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Squadron Ace (T-70)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Red Squadron Expert',
-      type: 'pilot',
-      count: 4
-    }, {
-      name: 'Blue Squadron Rookie',
-      type: 'pilot',
-      count: 4
-    }, {
-      name: 'R2-HA',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'BB-8',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R5-X3',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'BB Astromech',
-      type: 'upgrade',
-      count: 4
-    }, {
-      name: 'R2 Astromech',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'R3 Astromech',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'R4 Astromech',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'R5 Astromech',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'M9-G8',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'C-3PO (Resistance)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Rey',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Finn',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Han Solo (Resistance)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Chewbacca (Resistance)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Rey's Millennium Falcon",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Black One',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Integrated S-Foils',
-      type: 'upgrade',
-      count: 4
-    }, {
-      name: 'Rose Tico',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Paige Tico',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Crack Shot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Daredevil',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Debris Gambit',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Elusive',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Heroic',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Intimidation',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Juke',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Lone Wolf',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Marksmanship',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Outmaneuver',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Predator',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Squad Leader',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Swarm Tactics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Trick Shot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Advanced Optics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Pattern Analyzer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Primed Thrusters',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Targeting Synchronizer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Advanced Sensors',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Collision Detector',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Fire-Control System',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Trajectory Simulator',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Heavy Laser Cannon',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Cannon',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Jamming Beam',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Tractor Beam',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Adv. Proton Torpedoes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proton Torpedoes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Torpedoes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Cluster Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Homing Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proton Rockets',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Freelance Slicer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'GNK "Gonk" Droid',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Informant',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Novice Technician',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Perceptive Copilot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Seasoned Navigator',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Tactical Officer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Hotshot Gunner',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Skilled Bombardier',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Veteran Turret Gunner',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Contraband Cybernetics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: "Deadman's Switch",
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Feedback Array',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Inertial Dampeners',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Rigged Cargo Chute',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Bomblet Generator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Conner Nets',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proton Bombs',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proximity Mines',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Seismic Charges',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ablative Plating',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Advanced SLAM',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Electronic Baffle',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Engine Upgrade',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Hull Upgrade',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Munitions Failsafe',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Shield Upgrade',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Static Discharge Vanes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Stealth Device',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Tactical Scrambler',
-      type: 'upgrade',
-      count: 2
-    }
-  ],
-  'T-70 X-Wing Expansion Pack': [
-    {
-      name: 'T-70 X-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Poe Dameron',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ello Asty',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Nien Nunb',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Temmin Wexley',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kare Kun',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Jessika Pava',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Joph Seastriker',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Jaycris Tubbs',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lieutenant Bastian',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Squadron Ace (T-70)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Red Squadron Expert',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Blue Squadron Rookie',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black One',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'BB-8',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'BB Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Integrated S-Foils',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'M9-G8',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Targeting Synchronizer',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'RZ-2 A-Wing Expansion Pack': [
-    {
-      name: 'RZ-2 A-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: "L'ulo L'ampar",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Greer Sonnel',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Tallissan Lintra',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Zari Bangel',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Green Squadron Expert',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Blue Squadron Recruit',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Heroic',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ferrosphere Paint',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Homing Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Primed Thrusters',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proton Rockets',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Mining Guild TIE Expansion Pack': [
-    {
-      name: 'Mining Guild TIE Fighter',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Foreman Proach',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ahhav',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Captain Seevor',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Overseer Yushyn',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Mining Guild Surveyor',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Mining Guild Sentry',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Hull Upgrade',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Static Discharge Vanes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Elusive',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Swarm Tactics',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Trick Shot',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'First Order Conversion Kit': [
-    {
-      name: 'Commander Malarus',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lieutenant Rivas',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'TN-3465',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Epsilon Squadron Cadet',
-      type: 'pilot',
-      count: 7
-    }, {
-      name: 'Zeta Squadron Pilot',
-      type: 'pilot',
-      count: 7
-    }, {
-      name: 'Omega Squadron Ace',
-      type: 'pilot',
-      count: 6
-    }, {
-      name: '"Null"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Muse"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Longshot"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Static"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Scorch"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Midnight"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Quickdraw"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Backdraft"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Omega Squadron Expert",
-      type: 'pilot',
-      count: 4
-    }, {
-      name: "Zeta Squadron Survivor",
-      type: 'pilot',
-      count: 5
-    }, {
-      name: "Kylo Ren",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Blackout"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Recoil"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Avenger"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "First Order Test Pilot",
-      type: 'pilot',
-      count: 3
-    }, {
-      name: "Sienar-Jaemus Engineer",
-      type: 'pilot',
-      count: 3
-    }, {
-      name: "Captain Cardinal",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Major Stridan",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Lieutenant Tavson",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Lieutenant Dormitz",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Petty Officer Thanisson",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Starkiller Base Pilot",
-      type: 'pilot',
-      count: 3
-    }, {
-      name: "Primed Thrusters",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Hyperspace Tracking Data",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Special Forces Gunner",
-      type: 'upgrade',
-      count: 4
-    }, {
-      name: "Supreme Leader Snoke",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Petty Officer Thanisson",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Kylo Ren",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "General Hux",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Captain Phasma",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Biohexacrypt Codes",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Predictive Shot",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Hate",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Crack Shot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Daredevil',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Debris Gambit',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Elusive',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Fanatical',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Intimidation',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Juke',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Lone Wolf',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Marksmanship',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Outmaneuver',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Predator',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Squad Leader',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Swarm Tactics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Trick Shot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Advanced Optics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Pattern Analyzer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Primed Thrusters',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Targeting Synchronizer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Hyperspace Tracking Data',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Advanced Sensors',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Collision Detector',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Fire-Control System',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Heavy Laser Cannon',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Cannon',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Jamming Beam',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Tractor Beam',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Adv. Proton Torpedoes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proton Torpedoes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Torpedoes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Cluster Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Homing Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ion Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proton Rockets',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Freelance Slicer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'GNK "Gonk" Droid',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Informant',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Novice Technician',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Perceptive Copilot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Seasoned Navigator',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Hotshot Gunner',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ablative Plating',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Electronic Baffle',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Hull Upgrade',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Munitions Failsafe',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Shield Upgrade',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Static Discharge Vanes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Stealth Device',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Tactical Scrambler',
-      type: 'upgrade',
-      count: 2
-    }
-  ],
-  'TIE/FO Fighter Expansion Pack': [
-    {
-      name: 'TIE/FO Fighter',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Epsilon Squadron Cadet',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Zeta Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Omega Squadron Ace',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Null"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lieutenant Rivas',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Muse"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'TN-3465',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Longshot"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Static"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Scorch"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Commander Malarus',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Midnight"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Fanatical',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Squad Leader',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Swarm Tactics',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Advanced Optics',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Targeting Synchronizer',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Servants of Strife Squadron Pack': [
-    {
-      name: 'Belbullab-22 Starfighter',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Vulture-class Droid Fighter',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'General Grievous',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Captain Sear',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Wat Tambor',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Skakoan Ace',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Feethan Ottraw Autopilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Trade Federation Drone',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Separatist Drone',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'DFS-081',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Precise Hunter',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Haor Chall Prototype',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Soulless One',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Grappling Struts',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'TV-94',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Kraken',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Composure',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Crack Shot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Daredevil',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Intimidation',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Juke',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Lone Wolf',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Marksmanship',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Swarm Tactics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Treacherous',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Trick Shot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Cluster Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Homing Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proton Rockets',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Energy-Shell Charges',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Cluster Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Afterburners',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Electronic Baffle',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Impervium Plating',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Munitions Failsafe',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Static Discharge Vanes',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Stealth Device',
-      type: 'upgrade',
-      count: 3
-    }
-  ],
-  'Sith Infiltrator Expansion Pack': [
-    {
-      name: 'Sith Infiltrator',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Dark Courier',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '0-66',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Count Dooku',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Darth Maul',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Brilliant Evasion',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Hate',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Adv. Proton Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Heavy Laser Cannon',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Count Dooku',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'General Grievous',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'K2-B4',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'DRK-1 Probe Droids',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Scimitar',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Chancellor Palpatine',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Vulture-class Droid Fighter Expansion': [
-    {
-      name: 'Vulture-class Droid Fighter',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Haor Chall Prototype',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Separatist Drone',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Precise Hunter',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'DFS-311',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Trade Federation Drone',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Grappling Struts',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Energy-Shell Charges',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Discord Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Munitions Failsafe',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Guardians of the Republic Squadron Pack': [
-    {
-      name: 'Delta-7 Aethersprite',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'V-19 Torrent',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Obi-Wan Kenobi',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Plo Koon',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Mace Windu',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Saesee Tiin',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Jedi Knight',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Odd Ball"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Kickback"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Swoop"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Axe"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Tucker"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Blue Squadron Protector',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'Gold Squadron Trooper',
-      type: 'pilot',
-      count: 2
-    }, {
-      name: 'R4 Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R4-P Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R5 Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R4-P17',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Delta-7B',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Calibrated Laser Targeting',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Brilliant Evasion',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Battle Meditation',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Predictive Shot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cluster Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Homing Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Proton Rockets',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Composure',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Crack Shot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Dedicated',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Expert Handling',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Intimidation',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Juke',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Lone Wolf',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Marksmanship',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Saturation Salvo',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Swarm Tactics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Trick Shot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Afterburners',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Electronic Baffle',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Munitions Failsafe',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Spare Parts Canisters',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Static Discharge Vanes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Stealth Device',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Synchronized Console',
-      type: 'upgrade',
-      count: 3
-    }
-  ],
-  'ARC-170 Starfighter Expansion': [
-    {
-      name: 'ARC-170',
-      type: 'ship',
-      count: 1
-    }, {
-      name: '"Wolffe"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Sinker"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Odd Ball" (ARC-170)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Jag"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Squad Seven Veteran',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '104th Battalion Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Dedicated',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R4-P44',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Chancellor Palpatine',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Clone Commander Cody',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proton Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Seventh Fleet Gunner',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Synchronized Console',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Expert Handling',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Veteran Tail Gunner',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Delta-7 Aethersprite Expansion': [
-    {
-      name: 'Delta-7 Aethersprite',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Anakin Skywalker',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ahsoka Tano',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Barriss Offee',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Luminara Unduli',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Jedi Knight',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Delta-7B',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Calibrated Laser Targeting',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R4-P Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R3 Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Brilliant Evasion',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Battle Meditation',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Composure',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Dedicated',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Expert Handling',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Juke',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Saturation Salvo',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Swarm Tactics',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cluster Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Z-95-AF4 Headhunter Expansion Pack': [
-    {
-      name: 'Z-95 Headhunter',
-      type: 'ship',
-      count: 1
-    }, {
-      name: "N'dru Suhlak",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Kaa'to Leeachos",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Sun Soldier',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Binayre Pirate',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Crack Shot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cluster Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Deadman's Switch",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Munitions Failsafe',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'TIE/sk Striker Expansion Pack': [
-    {
-      name: 'TIE Striker',
-      type: 'ship',
-      count: 1
-    }, {
-      name: '"Countdown"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Pure Sabacc"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Duchess"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Black Squadron Scout',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Planetary Sentinel',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Proton Bombs',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Conner Nets',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Skilled Bombardier',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Trick Shot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Intimidation',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Naboo Royal N-1 Starfighter Expansion Pack': [
-    {
-      name: 'Naboo Royal N-1 Starfighter',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Ric Olié',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Anakin Skywalker (N-1 Starfighter)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Padmé Amidala',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Dineé Ellberger',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Naboo Handmaiden',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Bravo Flight Officer',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Daredevil',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Collision Detector',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Passive Sensors',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Plasma Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R2-A6',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R2 Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R2-C4',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R4 Astromech',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Hyena-Class Droid Bomber Expansion Pack': [
-    {
-      name: 'Hyena-Class Droid Bomber',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'DBS-404',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'DBS-32C',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Bombardment Drone',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Baktoid Prototype',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Techno Union Bomber',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Separatist Bomber',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Passive Sensors',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Trajectory Simulator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Plasma Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Barrage Rockets',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Diamond-Boron Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'TA-175',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Bomblet Generator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Electro-Proton Bomb',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Delayed Fuses',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Landing Struts',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'A/SF-01 B-Wing Expansion Pack': [
-    {
-      name: 'B-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Braylen Stramm',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ten Numb',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Blade Squadron Veteran',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Blue Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Squad Leader',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Heavy Laser Cannon',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Cannon',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Jamming Beam',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Afterburners',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Electronic Baffle',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Fire-Control System',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Adv. Proton Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Millennium Falcon Expansion Pack': [
-    {
-      name: 'YT-1300',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Chewbacca',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Han Solo',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lando Calrissian',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Outer Rim Smuggler',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'C-3PO',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Chewbacca',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Engine Upgrade',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Han Solo',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Homing Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Informant',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Lando Calrissian',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Leia Organa',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Luke Skywalker',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Millennium Falcon',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Nien Nunb',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R2-D2 (Crew)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Rigged Cargo Chute',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Swarm Tactics',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'VT-49 Decimator Expansion Pack': [
-    {
-      name: 'VT-49 Decimator',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Captain Oicunn',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Rear Admiral Chiraneau',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Patrol Leader',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '0-0-0',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Agent Kallus',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'BT-1',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Darth Vader',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Dauntless',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Fifth Brother',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'GNK "Gonk" Droid',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Grand Inquisitor',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Lone Wolf',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proximity Mines',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Seventh Sister',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tactical Scrambler',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Veteran Turret Gunner',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'TIE/VN Silencer Expansion Pack': [
-    {
-      name: 'TIE/VN Silencer',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Kylo Ren',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Blackout"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Recoil"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Avenger"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'First Order Test Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sienar-Jaemus Engineer',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Hate',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Predictive Shot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Marksmanship',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Primed Thrusters',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Collision Detector',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Adv. Proton Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'TIE/SF Fighter Expansion Pack': [
-    {
-      name: 'TIE/SF Fighter',
-      type: 'ship',
-      count: 1
-    }, {
-      name: '"Quickdraw"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Backdraft"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Omega Squadron Expert',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Zeta Squadron Survivor',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Hotshot Gunner',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Special Forces Gunner',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Afterburners',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Collision Detector',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Juke',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Pattern Analyzer',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Resistance Transport Expansion Pack': [
-    {
-      name: 'Resistance Transport',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Resistance Transport Pod',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'BB-8',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Finn',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Rose Tico',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Vi Moradi',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Cova Nell',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Pammich Nerro Goode',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Nodin Chavdri',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Logistics Division Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Composure',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Expert Handling',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Plasma Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Autoblasters',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Amilyn Holdo',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Leia Organa (Resistance)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'GA-97',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Kaydel Connix',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Korr Sella',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Larma D'Acy",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'PZ-4CO',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R2-HA',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R5-X3',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Afterburners',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Angled Deflectors',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Spare Parts Canisters',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'BTL-B Y-Wing Expansion Pack': [
-    {
-      name: 'BTL-B Y-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Anakin Skywalker (Y-Wing)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Odd Ball" (Y-Wing)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Matchstick"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Broadside"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'R2-D2',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Goji"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Shadow Squadron Veteran',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Red Squadron Bomber',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Precognitive Reflexes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Foresight',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Snap Shot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ahsoka Tano',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'C-3PO (Republic)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'C1-10P',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Delayed Fuses',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Electro-Proton Bomb',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proton Bombs',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Cannon Turret',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Nantex-class Starfighter Expansion Pack': [
-    {
-      name: 'Nantex-Class Starfighter',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Sun Fac',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Berwer Kret',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Chertek',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Gorgol',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Petranaki Arena Ace',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Stalgasin Hive Guard',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ensnare',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Gravitic Deflection',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Juke',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Snap Shot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Stealth Device',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Targeting Computer',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Punishing One Expansion Pack': [
-    {
-      name: 'JumpMaster 5000',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Dengar',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Manaroo',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Tel Trevura',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Contracted Scout',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'R2 Astromech',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R5-P8',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: '0-0-0',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Informant',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Latts Razzi',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Dengar',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Lone Wolf',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Punishing One',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Adv. Proton Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Contraband Cybernetics',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Perceptive Copilot',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'M3-A Interceptor Expansion Pack': [
-    {
-      name: 'M3-A Interceptor',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Genesis Red',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Inaldra',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Laetin A'shera",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Quinn Jast',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Serissu',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Sunny Bounder',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Cartel Spacer',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Tansarii Point Veteran',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ion Cannon',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Jamming Beam',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proton Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Intimidation',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Ghost Expansion Pack': [
-    {
-      name: 'VCX-100',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Sheathipede-Class Shuttle',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'AP-5',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Fenn Rau (Sheathipede)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: "Ezra Bridger (Sheathipede)",
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Zeb" Orrelios (Sheathipede)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Hera Syndulla (VCX-100)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kanan Jarrus',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Chopper"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lothal Rebel',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Chopper" (Astromech)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: '"Chopper" (Crew)',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Hera Syndulla',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Kanan Jarrus',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Maul',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: '"Zeb" Orrelios',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Hate',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Predictive Shot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Agile Gunner',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tactical Scrambler',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Collision Detector',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Squad Leader',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ghost',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Phantom',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Torpedoes',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Dorsal Turret',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  "Inquisitors' TIE Expansion Pack": [
-    {
-      name: 'TIE Advanced Prototype',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Grand Inquisitor',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Seventh Sister',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Inquisitor',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Baron of the Empire',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Hate',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Predictive Shot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Heightened Perception',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proton Rockets',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Afterburners',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  "Huge Ship Conversion Kit": [
-    {
-      name: 'Alderaanian Guard',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Echo Base Evacuees',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'First Order Collaborators',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'New Republic Volunteers',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Outer Rim Garrison',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'First Order Sympathizers',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Outer Rim Patrol',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Republic Judiciary',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Separatist Privateers',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Syndicate Smugglers',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Admiral Ozzel',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Azmorigan',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Captain Needa',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Carlist Rieekan',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Jan Dodonna',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Raymus Antilles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Stalwart Captain',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Strategic Commander',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Fire-Control System',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Cannon Battery',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ordnance Tubes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Point-Defense Battery',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Targeting Battery',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Turbolaser Battery',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Heavy Laser Cannon',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Dorsal Turret',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Adv. Proton Torpedoes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Cluster Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Novice Technician',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Seasoned Navigator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Toryn Farr',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Agile Gunner',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Hotshot Gunner',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Adaptive Shields',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Boosted Scanners',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Optimized Power Core',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Tibanna Reserves',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Bombardment Specialists',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Comms Team',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Damage Control Team',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Gunnery Specialists',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'IG-RM Droids',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Ordnance Team',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Sensor Experts',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Quick-Release Locks',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Saboteur's Map",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Scanner Baffler',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proximity Mines',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Assailer',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Blood Crow',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Bright Hope',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Broken Horn',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Corvus',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Dodonna's Pride",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Impetuous',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Insatiable Worrt',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Instigator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Jaina's Light",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Liberator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Luminous',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Merchant One',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Quantum Storm',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Requiem',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Suppressor',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tantive IV',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Thunderstrike',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Vector',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Corsair Refit',
-      type: 'upgrade',
-      count: 2
-    }
-  ],
-  'Tantive IV Expansion Pack': [
-    {
-      name: 'CR90 Corellian Corvette',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Alderaanian Guard',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Republic Judiciary',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Carlist Rieekan',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Jan Dodonna',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Raymus Antilles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Stalwart Captain',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Strategic Commander',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Cannon Battery',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Point-Defense Battery',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Targeting Battery',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Turbolaser Battery',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Novice Technician',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Seasoned Navigator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Toryn Farr',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Agile Gunner',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Hotshot Gunner',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Bombardment Specialists',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Comms Team',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Damage Control Team',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Gunnery Specialists',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Sensor Experts',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Adaptive Shields',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Boosted Scanners',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Optimized Power Core',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tibanna Reserves',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Dodonna's Pride",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Jaina's Light",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Liberator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tantive IV',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Thunderstrike',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'C-ROC Cruiser Expansion Pack': [
-    {
-      name: 'C-ROC Cruiser',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Separatist Privateers',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Syndicate Smugglers',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Carlist Rieekan',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Azmorigan',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Stalwart Captain',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Strategic Commander',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Cannon Battery',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Point-Defense Battery',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Targeting Battery',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Turbolaser Battery',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Novice Technician',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Seasoned Navigator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Agile Gunner',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Hotshot Gunner',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Bombardment Specialists',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Comms Team',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Damage Control Team',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Gunnery Specialists',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'IG-RM Droids',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Sensor Experts',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Adaptive Shields',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Boosted Scanners',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Optimized Power Core',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tibanna Reserves',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Quick-Release Locks',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Saboteur's Map",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Scanner Baffler',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proximity Mines',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Broken Horn',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Insatiable Worrt',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Merchant One',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Corsair Refit',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Epic Battles Multiplayer Expansion': [
-    {
-      name: 'Agent of the Empire',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Dreadnought Hunter',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'First Order Elite',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Veteran Wing Leader',
-      type: 'upgrade',
-      count: 4
-    }
-  ],
-  "Major Vonreg's TIE Expansion Pack": [
-    {
-      name: 'TIE/Ba Interceptor',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Major Vonreg',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Holo"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Ember"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'First Order Provocateur',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Mag-Pulse Warheads',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Munitions Failsafe',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proud Tradition',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Deuterium Power Cells',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  "Fireball Expansion Pack": [
-    {
-      name: 'Fireball',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Jarek Yeager',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Kazuda Xiono',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'R1-J5',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Colossus Station Mechanic',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Mag-Pulse Warheads',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Coaxium Hyperfuel',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Advanced SLAM',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Targeting Computer',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Snap Shot',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Kaz's Fireball",
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'R1-J5',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  "RZ-1 A-Wing Expansion Pack": [
-    {
-      name: 'A-Wing',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Arvel Crynyd',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Jake Farrell',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Green Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Phoenix Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Concussion Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proton Rockets',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Daredevil',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Intimidation',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Juke',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  "TIE/D Defender Expansion Pack": [
-    {
-      name: 'TIE Defender',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Rexler Brath',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Colonel Vessery',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Countess Ryad',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Onyx Squadron Ace',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Delta Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Tractor Beam',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Advanced Sensors',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Elusive',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  "TIE/in Interceptor Expansion Pack": [
-    {
-      name: 'TIE Interceptor',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Soontir Fel',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Turr Phennir',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Saber Squadron Ace',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Alpha Squadron Pilot',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Hull Upgrade',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Daredevil',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Outmaneuver',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Predator',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  "Hound's Tooth Expansion Pack": [
-    {
-      name: 'YV-666',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Z-95 Headhunter',
-      type: 'ship',
-      count: 1
-    }, {
-      name: 'Bossk',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Moralo Eval',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Latts Razzi',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Trandoshan Slaver',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Bossk (Z-95 Headhunter)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Nashtah Pup',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Tractor Beam',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Cikatro Vizago',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Freelance Slicer',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'GNK "Gonk" Droid',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Jabba the Hutt',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Tactical Officer',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Bossk',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'BT-1',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Greedo',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Feedback Array',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Homing Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ablative Plating',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Squad Leader',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: "Hound's Tooth",
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  "Hotshots and Aces Reinforcements Pack": [
-    {
-      name: 'Gina Moonsong',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'K-2SO',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Leia Organa',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Alexsandr Kallus',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Fifth Brother',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Vagabond"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Morna Kee',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Nom Lumb',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'G4R-GOR V/M',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Bossk (Z-95 Headhunter)',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Paige Tico',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Ronith Blario',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Zizi Tlo',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Captain Phasma',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Lieutenant LeHuse',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: '"Rush"',
-      type: 'pilot',
-      count: 1
-    }, {
-      name: 'Composure',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Snap Shot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Brilliant Evasion',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Foresight',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Hate',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Precognitive Reflexes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Predictive Shot',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Advanced Optics',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Pattern Analyzer',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Primed Thrusters',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Passive Sensors',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Autoblasters',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Plasma Torpedoes',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Mag-Pulse Warheads',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Barrage Rockets',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Diamond-Boron Missiles',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: '0-0-0',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'K-2SO',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Maul',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Agile Gunner',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'BT-1',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Coaxium Hyperfuel',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Moldy Crow',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Angled Deflectors',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Targeting Computer',
-      type: 'upgrade',
-      count: 3
-    }, {
-      name: 'Stabilized S-Foils',
-      type: 'upgrade',
-      count: 2
-    }
-  ],
-  "Fully Loaded Devices Pack": [
-    {
-      name: 'Trajectory Simulator',
-      type: 'upgrade',
-      count: 2
-    }, {
-      name: 'Cluster Mines',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Conner Nets',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Ion Bombs',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proton Bombs',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Proximity Mines',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Seismic Charges',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Bomblet Generator',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Electro-Proton Bomb',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Delayed Fuses',
-      type: 'upgrade',
-      count: 2
-    }
-  ],
-  "Never Tell Me the Odds Obstacles Pack": [
-    {
-      name: 'Rigged Cargo Chute',
-      type: 'upgrade',
-      count: 1
-    }, {
-      name: 'Spare Parts Canisters',
-      type: 'upgrade',
-      count: 1
-    }
-  ],
-  'Loose Ships': [
-    {
-      name: 'Auzituck Gunship',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'E-Wing',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'HWK-290',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'K-Wing',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Attack Shuttle',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'YT-2400',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Alpha-Class Star Wing',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'Lambda-Class Shuttle',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'TIE Aggressor',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'TIE Bomber',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'TIE Phantom',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'TIE Punisher',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Kihraxz Fighter',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'Aggressor',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'HWK-290',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'M12-L Kimogila Fighter',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'G-1A Starfighter',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Quadjumper',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'Scurrg H-6 Bomber',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'Lancer-Class Pursuit Craft',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'StarViper',
-      type: 'ship',
-      count: 2
-    }, {
-      name: 'MG-100 StarFortress',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'Upsilon-Class Command Shuttle',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'Scavenged YT-1300',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'Raider-class Corvette',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'GR-75 Medium Transport',
-      type: 'ship',
-      count: 3
-    }, {
-      name: 'Gozanti-class Cruiser',
-      type: 'ship',
-      count: 3
-    }
-  ]
-};
-
-exportObj.Collection = (function() {
-  function Collection(args) {
-    this.onLanguageChange = __bind(this.onLanguageChange, this);
-    var _ref, _ref1, _ref2;
-    this.expansions = (_ref = args.expansions) != null ? _ref : {};
-    this.singletons = (_ref1 = args.singletons) != null ? _ref1 : {};
-    this.checks = (_ref2 = args.checks) != null ? _ref2 : {};
-    this.backend = args.backend;
-    this.setupUI();
-    this.setupHandlers();
-    this.reset();
-    this.language = 'English';
-  }
-
-  Collection.prototype.reset = function() {
-    var card, card_different_by_type, card_totals_by_type, component_content, contents, count, counts, expansion, expname, item, items, name, names, singletonsByType, sorted_names, summary, thing, things, type, ul, _, _base1, _base2, _base3, _base4, _base5, _base6, _base7, _base8, _i, _j, _k, _l, _len, _len1, _len2, _len3, _m, _n, _name, _name1, _name2, _o, _p, _ref, _ref1, _ref10, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
-    this.shelf = {};
-    this.table = {};
-    _ref = this.expansions;
-    for (expansion in _ref) {
-      count = _ref[expansion];
-      try {
-        count = parseInt(count);
-      } catch (_error) {
-        count = 0;
-      }
-      for (_ = _i = 0; 0 <= count ? _i < count : _i > count; _ = 0 <= count ? ++_i : --_i) {
-        _ref2 = (_ref1 = exportObj.manifestByExpansion[expansion]) != null ? _ref1 : [];
-        for (_j = 0, _len = _ref2.length; _j < _len; _j++) {
-          card = _ref2[_j];
-          for (_ = _k = 0, _ref3 = card.count; 0 <= _ref3 ? _k < _ref3 : _k > _ref3; _ = 0 <= _ref3 ? ++_k : --_k) {
-            ((_base1 = ((_base2 = this.shelf)[_name1 = card.type] != null ? _base2[_name1] : _base2[_name1] = {}))[_name = card.name] != null ? _base1[_name] : _base1[_name] = []).push(expansion);
-          }
-        }
-      }
-    }
-    _ref4 = this.singletons;
-    for (type in _ref4) {
-      counts = _ref4[type];
-      for (name in counts) {
-        count = counts[name];
-        if (count > 0) {
-          for (_ = _l = 0; 0 <= count ? _l < count : _l > count; _ = 0 <= count ? ++_l : --_l) {
-            ((_base3 = ((_base4 = this.shelf)[type] != null ? _base4[type] : _base4[type] = {}))[name] != null ? _base3[name] : _base3[name] = []).push('singleton');
-          }
-        } else if (count < 0) {
-          for (_ = _m = 0; 0 <= count ? _m < count : _m > count; _ = 0 <= count ? ++_m : --_m) {
-            if (((_base5 = ((_base6 = this.shelf)[type] != null ? _base6[type] : _base6[type] = {}))[name] != null ? _base5[name] : _base5[name] = []).length > 0) {
-              this.shelf[type][name].pop();
-            }
-          }
-        }
-      }
-    }
-    this.counts = {};
-    _ref5 = this.shelf;
-    for (type in _ref5) {
-      if (!__hasProp.call(_ref5, type)) continue;
-      _ref6 = this.shelf[type];
-      for (thing in _ref6) {
-        if (!__hasProp.call(_ref6, thing)) continue;
-        if ((_base7 = ((_base8 = this.counts)[type] != null ? _base8[type] : _base8[type] = {}))[thing] == null) {
-          _base7[thing] = 0;
-        }
-        this.counts[type][thing] += this.shelf[type][thing].length;
-      }
-    }
-    singletonsByType = {};
-    _ref7 = exportObj.manifestByExpansion;
-    for (expname in _ref7) {
-      items = _ref7[expname];
-      for (_n = 0, _len1 = items.length; _n < _len1; _n++) {
-        item = items[_n];
-        (singletonsByType[_name2 = item.type] != null ? singletonsByType[_name2] : singletonsByType[_name2] = {})[item.name] = true;
-      }
-    }
-    for (type in singletonsByType) {
-      names = singletonsByType[type];
-      sorted_names = ((function() {
-        var _results;
-        _results = [];
-        for (name in names) {
-          _results.push(name);
-        }
-        return _results;
-      })()).sort(function(a, b) {
-        return sortWithoutQuotes(a, b, type);
-      });
-      singletonsByType[type] = sorted_names;
-    }
-    component_content = $(this.modal.find('.collection-inventory-content'));
-    component_content.text('');
-    card_totals_by_type = {};
-    card_different_by_type = {};
-    _ref8 = this.counts;
-    for (type in _ref8) {
-      if (!__hasProp.call(_ref8, type)) continue;
-      things = _ref8[type];
-      if (singletonsByType[type] != null) {
-        card_totals_by_type[type] = 0;
-        card_different_by_type[type] = 0;
-        contents = component_content.append($.trim("<div class=\"row\">\n    <div class=\"col\"><h5>" + (type.capitalize()) + "</h5></div>\n</div>\n<div class=\"row\">\n    <ul id=\"counts-" + type + "\" class=\"col\"></ul>\n</div>"));
-        ul = $(contents.find("ul#counts-" + type));
-        _ref9 = Object.keys(things).sort(function(a, b) {
-          return sortWithoutQuotes(a, b, type);
-        });
-        for (_o = 0, _len2 = _ref9.length; _o < _len2; _o++) {
-          thing = _ref9[_o];
-          card_totals_by_type[type] += things[thing];
-          if (__indexOf.call(singletonsByType[type], thing) >= 0) {
-            card_different_by_type[type]++;
-            if (type === 'pilot') {
-              ul.append("<li>" + (exportObj.pilots[thing].display_name ? exportObj.pilots[thing].display_name : thing) + " - " + things[thing] + "</li>");
-            }
-            if (type === 'upgrade') {
-              ul.append("<li>" + (exportObj.upgrades[thing].display_name ? exportObj.upgrades[thing].display_name : thing) + " - " + things[thing] + "</li>");
-            }
-            if (type === 'ship') {
-              ul.append("<li>" + (exportObj.ships[thing].display_name ? exportObj.ships[thing].display_name : thing) + " - " + things[thing] + "</li>");
-            }
-          }
-        }
-      }
-    }
-    summary = "";
-    _ref10 = Object.keys(card_totals_by_type);
-    for (_p = 0, _len3 = _ref10.length; _p < _len3; _p++) {
-      type = _ref10[_p];
-      summary += "<li>" + (type.capitalize()) + " - " + card_totals_by_type[type] + " (" + card_different_by_type[type] + " different)</li>";
-    }
-    return component_content.append($.trim("<div class=\"row\">\n    <div class=\"col\"><h5>Summary</h5></div>\n</div>\n<div class = \"row\">\n    <ul id=\"counts-summary\" class=\"col\">\n        " + summary + "\n    </ul>\n</div>"));
-  };
-
-  Collection.prototype.check = function(where, type, name) {
-    var _ref, _ref1, _ref2;
-    return ((_ref = ((_ref1 = ((_ref2 = where[type]) != null ? _ref2 : {})[name]) != null ? _ref1 : []).length) != null ? _ref : 0) !== 0;
-  };
-
-  Collection.prototype.checkShelf = function(type, name) {
-    return this.check(this.shelf, type, name);
-  };
-
-  Collection.prototype.checkTable = function(type, name) {
-    return this.check(this.table, type, name);
-  };
-
-  Collection.prototype.use = function(type, name) {
-    var card, e, _base1, _base2;
-    try {
-      card = this.shelf[type][name].pop();
-    } catch (_error) {
-      e = _error;
-      if (card == null) {
-        return false;
-      }
-    }
-    if (card != null) {
-      ((_base1 = ((_base2 = this.table)[type] != null ? _base2[type] : _base2[type] = {}))[name] != null ? _base1[name] : _base1[name] = []).push(card);
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  Collection.prototype.release = function(type, name) {
-    var card, e, _base1, _base2;
-    try {
-      card = this.table[type][name].pop();
-    } catch (_error) {
-      e = _error;
-      if (card == null) {
-        return false;
-      }
-    }
-    if (card != null) {
-      ((_base1 = ((_base2 = this.shelf)[type] != null ? _base2[type] : _base2[type] = {}))[name] != null ? _base1[name] : _base1[name] = []).push(card);
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  Collection.prototype.save = function(cb) {
-    if (cb == null) {
-      cb = $.noop;
-    }
-    if (this.backend != null) {
-      return this.backend.saveCollection(this, cb);
-    }
-  };
-
-  Collection.load = function(backend, cb) {
-    return backend.loadCollection(cb);
-  };
-
-  Collection.prototype.setupUI = function() {
-    var collection_content, count, expansion, expname, input, item, items, name, names, pilot, pilotcollection_content, row, ship, shipcollection_content, singletonsByType, sorted_names, type, upgrade, upgradecollection_content, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _m, _name, _ref, _ref1, _ref10, _ref11, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _results;
-    singletonsByType = {};
-    _ref = exportObj.manifestByExpansion;
-    for (expname in _ref) {
-      items = _ref[expname];
-      for (_i = 0, _len = items.length; _i < _len; _i++) {
-        item = items[_i];
-        (singletonsByType[_name = item.type] != null ? singletonsByType[_name] : singletonsByType[_name] = {})[item.name] = true;
-      }
-    }
-    for (type in singletonsByType) {
-      names = singletonsByType[type];
-      sorted_names = ((function() {
-        var _results;
-        _results = [];
-        for (name in names) {
-          _results.push(name);
-        }
-        return _results;
-      })()).sort(function(a, b) {
-        return sortWithoutQuotes(a, b, type);
-      });
-      singletonsByType[type] = sorted_names;
-    }
-    this.modal = $(document.createElement('DIV'));
-    this.modal.addClass('modal fade collection-modal d-print-none');
-    this.modal.tabindex = "-1";
-    this.modal.role = "dialog";
-    $('body').append(this.modal);
-    this.modal.append($.trim("<div class=\"modal-dialog modal-dialog-centered modal-dialog-scrollable\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <h4>Your Collection</h4>\n            <button type=\"button\" class=\"close d-print-none\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n        </div>\n        <div class=\"modal-body\">\n            <ul class=\"nav nav-pills mb-2\" id=\"collectionTabs\" role=\"tablist\">\n                <li class=\"nav-item active\" id=\"collection-expansions-tab\" role=\"presentation\"><a data-target=\"#collection-expansions\" class=\"nav-link\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"collection-expansions\" aria-selected=\"true\">Expansions</a><li>\n                <li class=\"nav-item\" id=\"collection-ships-tab\" role=\"presentation\"><a href=\"#collection-ships\" class=\"nav-link\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"collection-ships\" aria-selected=\"false\">Ships</a><li>\n                <li class=\"nav-item\" id=\"collection-pilots-tab\" role=\"presentation\"><a href=\"#collection-pilots\" class=\"nav-link\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"collection-pilots\" aria-selected=\"false\">Pilots</a><li>\n                <li class=\"nav-item\" id=\"collection-upgrades-tab\" role=\"presentation\"><a href=\"#collection-upgrades\" class=\"nav-link\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"collection-upgrades\" aria-selected=\"false\">Upgrades</a><li>\n                <li class=\"nav-item\" id=\"collection-components-tab\" role=\"presentation\"><a href=\"#collection-components\" class=\"nav-link\" data-toggle=\"tab\" role=\"tab\" aria-controls=\"collection-components\" aria-selected=\"false\">Inventory</a><li>\n            </ul>\n            <div class=\"tab-content\" id=\"collectionTabContent\">\n                <div id=\"collection-expansions\" role=\"tabpanel\" aria-labelledby=\"collection-expansions-tab\" class=\"tab-pane fade show active container-fluid collection-content\"></div>\n                <div id=\"collection-ships\" role=\"tabpanel\" aria-labelledby=\"collection-ships-tab\" class=\"tab-pane fade container-fluid collection-ship-content\"></div>\n                <div id=\"collection-pilots\" role=\"tabpanel\" aria-labelledby=\"collection-pilots-tab\" class=\"tab-pane fade container-fluid collection-pilot-content\"></div>\n                <div id=\"collection-upgrades\" role=\"tabpanel\" aria-labelledby=\"collection-upgrades-tab\" class=\"tab-pane fade container-fluid collection-upgrade-content\"></div>\n                <div id=\"collection-components\" role=\"tabpanel\" aria-labelledby=\"collection-components-tab\" class=\"tab-pane fade container-fluid collection-inventory-content\"></div>\n            </div>\n        </div>\n        <div class=\"modal-footer d-print-none\">\n            <span class=\"collection-status\"></span>\n            &nbsp;\n            <label class=\"checkbox-check-collection\">\n                Check Collection Requirements <input type=\"checkbox\" class=\"check-collection\"/>\n            </label>\n            &nbsp;\n            <button class=\"btn\" data-dismiss=\"modal\" aria-hidden=\"true\">Close</button>\n        </div>\n    </div>\n</div>"));
-    this.modal_status = $(this.modal.find('.collection-status'));
-    if (this.checks.collectioncheck != null) {
-      if (this.checks.collectioncheck !== "false") {
-        this.modal.find('.check-collection').prop('checked', true);
-      }
-    } else {
-      this.checks.collectioncheck = true;
-      this.modal.find('.check-collection').prop('checked', true);
-    }
-    this.modal.find('.checkbox-check-collection').show();
-    collection_content = $(this.modal.find('.collection-content'));
-    _ref1 = exportObj.expansions;
-    for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-      expansion = _ref1[_j];
-      count = parseInt((_ref2 = this.expansions[expansion]) != null ? _ref2 : 0);
-      row = $.parseHTML($.trim("<div class=\"row\">\n    <div class=\"col\">\n        <label>\n            <input class=\"expansion-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"expansion-name\">" + expansion + "</span>\n        </label>\n    </div>\n</div>"));
-      input = $($(row).find('input'));
-      input.data('expansion', expansion);
-      input.closest('div').css('background-color', this.countToBackgroundColor(input.val()));
-      $(row).find('.expansion-name').data('name', expansion);
-      if (expansion !== 'Loose Ships' || 'Hyperspace') {
-        collection_content.append(row);
-      }
-    }
-    shipcollection_content = $(this.modal.find('.collection-ship-content'));
-    _ref3 = singletonsByType.ship;
-    for (_k = 0, _len2 = _ref3.length; _k < _len2; _k++) {
-      ship = _ref3[_k];
-      count = parseInt((_ref4 = (_ref5 = this.singletons.ship) != null ? _ref5[ship] : void 0) != null ? _ref4 : 0);
-      row = $.parseHTML($.trim("<div class=\"row\">\n    <div class=\"col\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"ship-name\">" + (exportObj.ships[ship].display_name ? exportObj.ships[ship].display_name : ship) + "</span>\n        </label>\n    </div>\n</div>"));
-      input = $($(row).find('input'));
-      input.data('singletonType', 'ship');
-      input.data('singletonName', ship);
-      input.closest('div').css('background-color', this.countToBackgroundColor(input.val()));
-      $(row).find('.ship-name').data('name', ship);
-      shipcollection_content.append(row);
-    }
-    pilotcollection_content = $(this.modal.find('.collection-pilot-content'));
-    _ref6 = singletonsByType.pilot;
-    for (_l = 0, _len3 = _ref6.length; _l < _len3; _l++) {
-      pilot = _ref6[_l];
-      count = parseInt((_ref7 = (_ref8 = this.singletons.pilot) != null ? _ref8[pilot] : void 0) != null ? _ref7 : 0);
-      row = $.parseHTML($.trim("<div class=\"row\">\n    <div class=\"col\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"pilot-name\">" + (exportObj.pilots[pilot].display_name ? exportObj.pilots[pilot].display_name : pilot) + "</span>\n        </label>\n    </div>\n</div>"));
-      input = $($(row).find('input'));
-      input.data('singletonType', 'pilot');
-      input.data('singletonName', pilot);
-      input.closest('div').css('background-color', this.countToBackgroundColor(input.val()));
-      $(row).find('.pilot-name').data('name', pilot);
-      pilotcollection_content.append(row);
-    }
-    upgradecollection_content = $(this.modal.find('.collection-upgrade-content'));
-    _ref9 = singletonsByType.upgrade;
-    _results = [];
-    for (_m = 0, _len4 = _ref9.length; _m < _len4; _m++) {
-      upgrade = _ref9[_m];
-      count = parseInt((_ref10 = (_ref11 = this.singletons.upgrade) != null ? _ref11[upgrade] : void 0) != null ? _ref10 : 0);
-      row = $.parseHTML($.trim("<div class=\"row\">\n    <div class=\"col\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"upgrade-name\">" + (exportObj.upgrades[upgrade].display_name ? exportObj.upgrades[upgrade].display_name : upgrade) + "</span>\n        </label>\n    </div>\n</div>"));
-      input = $($(row).find('input'));
-      input.data('singletonType', 'upgrade');
-      input.data('singletonName', upgrade);
-      input.closest('div').css('background-color', this.countToBackgroundColor(input.val()));
-      $(row).find('.upgrade-name').data('name', upgrade);
-      _results.push(upgradecollection_content.append(row));
-    }
-    return _results;
-  };
-
-  Collection.prototype.destroyUI = function() {
-    this.modal.modal('hide');
-    this.modal.remove();
-    return $(exportObj).trigger('xwing-collection:destroyed', this);
-  };
-
-  Collection.prototype.setupHandlers = function() {
-    $(exportObj).trigger('xwing-collection:created', this);
-    $(exportObj).on('xwing-backend:authenticationChanged', (function(_this) {
-      return function(e, authenticated, backend) {
-        if (!authenticated) {
-          return _this.destroyUI();
-        }
-      };
-    })(this)).on('xwing-collection:saved', (function(_this) {
-      return function(e, collection) {
-        _this.modal_status.text('Collection saved');
-        return _this.modal_status.fadeIn(100, function() {
-          return _this.modal_status.fadeOut(1000);
-        });
-      };
-    })(this)).on('xwing:languageChanged', this.onLanguageChange).on('xwing:CollectionCheck', this.onCollectionCheckSet);
-    $(this.modal.find('input.expansion-count').change((function(_this) {
-      return function(e) {
-        var target, val;
-        target = $(e.target);
-        val = target.val();
-        if (val < 0 || isNaN(parseInt(val))) {
-          target.val(0);
-        }
-        _this.expansions[target.data('expansion')] = parseInt(target.val());
-        target.closest('div').css('background-color', _this.countToBackgroundColor(target.val()));
-        return $(exportObj).trigger('xwing-collection:changed', _this);
-      };
-    })(this)));
-    $(this.modal.find('input.singleton-count').change((function(_this) {
-      return function(e) {
-        var target, val, _base1, _name;
-        target = $(e.target);
-        val = target.val();
-        if (isNaN(parseInt(val))) {
-          target.val(0);
-        }
-        ((_base1 = _this.singletons)[_name = target.data('singletonType')] != null ? _base1[_name] : _base1[_name] = {})[target.data('singletonName')] = parseInt(target.val());
-        target.closest('div').css('background-color', _this.countToBackgroundColor(target.val()));
-        return $(exportObj).trigger('xwing-collection:changed', _this);
-      };
-    })(this)));
-    return $(this.modal.find('.check-collection').change((function(_this) {
-      return function(e) {
-        var result;
-        if (_this.modal.find('.check-collection').prop('checked') === false) {
-          result = false;
-          _this.modal_status.text("Collection Tracking Disabled");
-        } else {
-          result = true;
-          _this.modal_status.text("Collection Tracking Active");
-        }
-        _this.checks.collectioncheck = result;
-        _this.modal_status.fadeIn(100, function() {
-          return _this.modal_status.fadeOut(1000);
-        });
-        return $(exportObj).trigger('xwing-collection:changed', _this);
-      };
-    })(this)));
-  };
-
-  Collection.prototype.countToBackgroundColor = function(count) {
-    var i;
-    count = parseInt(count);
-    switch (false) {
-      case !(count < 0):
-        return 'red';
-      case count !== 0:
-        return '';
-      case !(count > 0):
-        i = parseInt(200 * Math.pow(0.9, count - 1));
-        return "rgb(" + i + ", 255, " + i + ")";
-      default:
-        return '';
-    }
-  };
-
-  Collection.prototype.onLanguageChange = function(e, language) {
-    this.language = language;
-    if (language !== this.old_language) {
-      this.old_language = language;
-      return (function(_this) {
-        return function(language) {
-          _this.modal.find('.expansion-name').each(function() {
-            return $(this).text(exportObj.translate(language, 'sources', $(this).data('name')));
-          });
-          _this.modal.find('.ship-name').each(function() {
-            return $(this).text((exportObj.ships[$(this).data('name')].display_name ? exportObj.ships[$(this).data('name')].display_name : $(this).data('name')));
-          });
-          _this.modal.find('.pilot-name').each(function() {
-            return $(this).text((exportObj.pilots[$(this).data('name')].display_name ? exportObj.pilots[$(this).data('name')].display_name : $(this).data('name')));
-          });
-          return _this.modal.find('.upgrade-name').each(function() {
-            return $(this).text((exportObj.upgrades[$(this).data('name')].display_name ? exportObj.upgrades[$(this).data('name')].display_name : $(this).data('name')));
-          });
-        };
-      })(this)(language);
-    }
-  };
-
-  return Collection;
-
-})();
-
 
 /*
     X-Wing Rules Browser
@@ -9320,7 +2408,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 10431
+                    lineno: 2019
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -9439,7 +2527,10 @@ exportObj.slotsMatching = function(slota, slotb) {
 };
 
 $.isMobile = function() {
-  return navigator.userAgent.match(/(iPhone|iPod|iPad|Android)/i);
+  if ((navigator.userAgent.match(/(iPhone|iPod|iPad|Android)/i)) || navigator.maxTouchPoints > 1) {
+    return true;
+  }
+  return false;
 };
 
 $.randomInt = function(n) {
@@ -9558,6 +2649,10 @@ exportObj.SquadBuilder = (function() {
       Upgrade: [],
       Slot: []
     };
+    this.standard_list = {
+      Upgrade: [],
+      Ship: []
+    };
     this.suppress_automatic_new_ship = false;
     this.tooltip_currently_displaying = null;
     this.randomizer_options = {
@@ -9655,14 +2750,35 @@ exportObj.SquadBuilder = (function() {
     DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES = 3;
     this.status_container = $(document.createElement('DIV'));
     this.status_container.addClass('container-fluid');
-    this.status_container.append($.trim('<div class="row squad-name-and-points-row">\n    <div class="col-md-3 squad-name-container">\n        <div class="display-name">\n            <span class="squad-name"></span>\n            <i class="far fa-edit"></i>\n        </div>\n        <div class="input-append">\n            <input type="text" maxlength="64" placeholder="Name your squad..." />\n            <button class="btn save"><i class="fa fa-pen-square"></i></button>\n        </div>\n        <br />\n        <select class="game-type-selector">\n            <option value="standard">Extended</option>\n            <option value="hyperspace">Hyperspace</option>\n            <option value="epic">Epic</option>\n            <option value="quickbuild">Quickbuild</option>\n        </select>\n    </div>\n    <div class="col-md-4 points-display-container">\n        Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="200">\n        <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left) <span class="points-destroyed red"></span></span>\n        <span class="content-warning unreleased-content-used d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning loading-failed-container d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning collection-invalid d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning ship-number-invalid-container d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated">A tournament legal squad must contain 2-8 ships!</span></span>\n    </div>\n    <div class="col-md-5 float-right button-container">\n        <div class="btn-group float-right">\n\n            <button class="btn btn-primary view-as-text"><span class="d-none d-lg-block"><i class="fa fa-print"></i>&nbsp;Print/View as Text</span><span class="d-lg-none"><i class="fa fa-print"></i></span></button>\n            <a class="btn btn-primary d-none collection"><span class="d-none d-lg-block"><i class="fa fa-folder-open"></i> Your Collection</span><span class="d-lg-none"><i class="fa fa-folder-open"></i></span></a>\n            <!-- Randomize button is marked as danger, since it creates a new squad -->\n            <button class="btn btn-danger randomize"><span class="d-none d-lg-block"><i class="fa fa-random"></i> Randomize!</span><span class="d-lg-none"><i class="fa fa-random"></i></span></button>\n            <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">\n                <span class="caret"></span>\n            </button>\n            <ul class="dropdown-menu">\n                <li><a class="dropdown-item randomize-options">Randomizer Options</a></li>\n                <li><a class="dropdown-item misc-settings">Misc Settings</a></li>\n            </ul>\n            \n\n        </div>\n    </div>\n</div>\n\n<div class="row squad-save-buttons">\n    <div class="col-md-12">\n        <button class="show-authenticated btn btn-primary save-list"><i class="far fa-save"></i>&nbsp;Save</button>\n        <button class="show-authenticated btn btn-primary save-list-as"><i class="far fa-file"></i>&nbsp;Save As...</button>\n        <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash"></i>&nbsp;Delete</button>\n        <button class="show-authenticated btn btn-primary backend-list-my-squads show-authenticated"><i class="fa fa-download"></i>&nbsp;Load Squad</button>\n        <button class="btn btn-danger clear-squad"><i class="fa fa-plus-circle"></i>&nbsp;New Squad</button>\n        <span class="show-authenticated backend-status"></span>\n    </div>\n</div>'));
+    this.status_container.append($.trim('<div class="row squad-name-and-points-row">\n    <div class="col-md-3 squad-name-container">\n        <div class="display-name">\n            <span class="squad-name"></span>\n            <i class="far fa-edit"></i>\n        </div>\n        <div class="input-append">\n            <input type="text" maxlength="64" placeholder="Name your squad..." />\n            <button class="btn save"><i class="fa fa-pen-square"></i></button>\n        </div>\n        <br />\n        <select class="game-type-selector">\n            <option value="standard">Extended</option>\n            <option value="hyperspace">Hyperspace</option>\n            <option value="epic">Epic</option>\n            <option value="quickbuild">Quickbuild</option>\n        </select>\n    </div>\n    <div class="col-md-4 points-display-container">\n        Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="200">\n        <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left) <span class="points-destroyed red"></span></span>\n        <span class="content-warning unreleased-content-used d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning loading-failed-container d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning collection-invalid d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning ship-number-invalid-container d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated">A tournament legal squad must contain 2-8 ships!</span></span>\n    </div>\n    <div class="col-md-5 float-right button-container">\n        <div class="btn-group float-right">\n\n            <button class="btn btn-info view-as-text"><span class="d-none d-lg-block"><i class="fa fa-print"></i>&nbsp;Print/Export</span><span class="d-lg-none"><i class="fa fa-print"></i></span></button>\n            <a class="btn btn-primary d-none collection"><span class="d-none d-lg-block"><i class="fa fa-folder-open"></i> Your Collection</span><span class="d-lg-none"><i class="fa fa-folder-open"></i></span></a>\n            <!-- Randomize button is marked as danger, since it creates a new squad -->\n            <button class="btn btn-danger randomize"><span class="d-none d-lg-block"><i class="fa fa-random"></i> Randomize!</span><span class="d-lg-none"><i class="fa fa-random"></i></span></button>\n            <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">\n                <span class="caret"></span>\n            </button>\n            <ul class="dropdown-menu">\n                <li><a class="dropdown-item randomize-options">Randomizer Options</a></li>\n                <li><a class="dropdown-item misc-settings">Misc Settings</a></li>\n            </ul>\n            \n\n        </div>\n    </div>\n</div>\n\n<div class="row squad-save-buttons">\n    <div class="col-md-12">\n        <button class="show-authenticated btn btn-primary save-list"><i class="far fa-save"></i>&nbsp;Save</button>\n        <button class="show-authenticated btn btn-primary save-list-as"><i class="far fa-file"></i>&nbsp;Save As...</button>\n        <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash"></i>&nbsp;Delete</button>\n        <button class="show-authenticated btn btn-info backend-list-my-squads show-authenticated"><i class="fa fa-download"></i>&nbsp;Load Squad</button>\n        <button class="btn btn-info import-squad"><i class="fa fa-file-import"></i>&nbsp;Import</button>\n        <button class="btn btn-danger clear-squad"><i class="fa fa-plus-circle"></i>&nbsp;New Squad</button>\n        <span class="show-authenticated backend-status"></span>\n    </div>\n</div>'));
     this.container.append(this.status_container);
+    this.xws_import_modal = $(document.createElement('DIV'));
+    this.xws_import_modal.addClass('modal fade import-modal d-print-none');
+    this.xws_import_modal.tabindex = "-1";
+    this.xws_import_modal.role = "dialog";
+    this.xws_import_modal.append($.trim("<div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <h3>XWS Import</h3>\n            <button type=\"button\" class=\"close d-print-none\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n        </div>\n        <div class=\"modal-body\">\n            Import your list via XWS into YASB.<br>\n            <i>XWS is a common format to share lists between applications.</i>\n            <div class=\"container-fluid\">\n                <textarea class=\"xws-content\" placeholder=\"Paste XWS here\"></textarea>\n            </div>\n        </div>\n        <div class=\"modal-footer d-print-none\">\n            <span class=\"xws-import-status\"></span>&nbsp;\n            <button class=\"btn btn-danger import-xws\">Import</button>\n        </div>\n    </div>\n</div>"));
+    this.from_xws_button = this.container.find('button.import-squad');
+    this.from_xws_button.click((function(_this) {
+      return function(e) {
+        e.preventDefault();
+        _this.xws_import_modal.find('.xws-import-status').text(' ');
+        return _this.xws_import_modal.modal('show');
+      };
+    })(this));
+    this.load_xws_button = $(this.xws_import_modal.find('button.import-xws'));
+    this.load_xws_button.click((function(_this) {
+      return function(e) {
+        e.preventDefault();
+        return exportObj.loadXWSButton(_this.xws_import_modal);
+      };
+    })(this));
+    this.container.append(this.xws_import_modal);
     this.list_modal = $(document.createElement('DIV'));
     this.list_modal.addClass('modal fade text-list-modal');
     this.list_modal.tabindex = "-1";
     this.list_modal.role = "dialog";
     this.container.append(this.list_modal);
-    this.list_modal.append($.trim("<div class=\"modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <div class=\"d-print-none\">\n                <h4 class=\"modal-title\"><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)</h4>\n            </div>\n            <div class=\"d-none d-print-block\">\n                <div class=\"fancy-header\">\n                    <div class=\"squad-name\"></div>\n                    <div class=\"squad-faction\"></div>\n                    <div class=\"mask\">\n                        <div class=\"outer-circle\">\n                            <div class=\"inner-circle\">\n                                <span class=\"total-points\"></span>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n                <div class=\"fancy-under-header\"></div>\n            </div>\n            <button type=\"button\" class=\"close d-print-none\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n        </div>\n        <div class=\"modal-body\">\n            <div class=\"fancy-list\"></div>\n            <div class=\"simple-list\"></div>\n            <div class=\"simplecopy-list\">\n                <p>Copy the below and paste it elsewhere.</p>\n                <textarea></textarea><button class=\"btn btn-modal btn-copy\">Copy</button>\n            </div>\n            <div class=\"reddit-list\">\n                <p>Copy the below and paste it into your reddit post.</p>\n                <p>Make sure that the post editor is set to markdown mode.</p>\n                <textarea></textarea><button class=\"btn btn-modal btn-copy\">Copy</button>\n            </div>\n            <div class=\"tts-list\">\n                <p>Copy the below and paste it into the Tabletop Simulator.</p>\n                <textarea></textarea><br /><button class=\"btn btn-modal btn-copy\">Copy</button>\n            </div>\n            <div class=\"bbcode-list\">\n                <p>Copy the BBCode below and paste it into your forum post.</p>\n                <textarea></textarea><button class=\"btn btn-modal btn-copy\">Copy</button>\n            </div>\n            <div class=\"html-list\">\n                <textarea></textarea><button class=\"btn btn-modal btn-copy\">Copy</button>\n            </div>\n        </div>\n        <div class=\"container-fluid modal-footer d-print-none\">\n            <div class=\"row full-row\">\n                <div class=\"col d-inline-block d-none d-sm-block right-col\">\n                    <label class=\"color-skip-text-checkbox\">\n                        Skip Card Text <input type=\"checkbox\" class=\"toggle-skip-text-print\" />\n                    </label><br />\n                    <label class=\"vertical-space-checkbox\">\n                        Add Space for Cards <input type=\"checkbox\" class=\"toggle-vertical-space\" />\n                    </label><br />\n                    <label class=\"maneuver-print-checkbox\">\n                        Include Maneuvers Chart <input type=\"checkbox\" class=\"toggle-maneuver-print\" />\n                    </label><br />\n                    <label class=\"expanded-shield-hull-print-checkbox\">\n                        Expand Shield and Hull <input type=\"checkbox\" class=\"toggle-expanded-shield-hull-print\" />\n                    </label>\n                </div>\n                <div class=\"col d-inline-block d-none d-sm-block right-col\">\n                    <label class=\"color-print-checkbox\">\n                        Print Color <input type=\"checkbox\" class=\"toggle-color-print\" checked=\"checked\" />\n                    </label><br />\n                    <label class=\"qrcode-checkbox\">\n                        Include QR codes <input type=\"checkbox\" class=\"toggle-juggler-qrcode\" checked=\"checked\" />\n                    </label><br />\n                    <label class=\"obstacles-checkbox\">\n                        Include Obstacle Choices <input type=\"checkbox\" class=\"toggle-obstacles\" />\n                    </label>\n                </div>\n            </div>\n            <div class=\"row btn-group list-display-mode\">\n                <button class=\"btn btn-modal select-simple-view\">Simple</button>\n                <button class=\"btn btn-modal select-fancy-view d-none d-sm-block\">Fancy</button>\n                <button class=\"btn btn-modal select-simplecopy-view\">Text</button>\n                <button class=\"btn btn-modal select-tts-view d-none d-sm-block\">TTS</button>\n                <button class=\"btn btn-modal select-reddit-view\">Reddit</button>\n                <button class=\"btn btn-modal select-bbcode-view\">BBCode</button>\n                <button class=\"btn btn-modal select-html-view\">HTML</button>\n            </div>\n            <button class=\"btn btn-modal print-list d-none d-sm-block\"><i class=\"fa fa-print\"></i>&nbsp;Print</button>\n        </div>\n    </div>\n</div>"));
+    this.list_modal.append($.trim("<div class=\"modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <div class=\"d-print-none\">\n                <h4 class=\"modal-title\"><span class=\"squad-name\"></span> (<span class=\"total-points\"></span>)</h4>\n            </div>\n            <div class=\"d-none d-print-block\">\n                <div class=\"fancy-header\">\n                    <div class=\"squad-name\"></div>\n                    <div class=\"squad-faction\"></div>\n                    <div class=\"mask\">\n                        <div class=\"outer-circle\">\n                            <div class=\"inner-circle\">\n                                <span class=\"total-points\"></span>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n                <div class=\"fancy-under-header\"></div>\n            </div>\n            <button type=\"button\" class=\"close d-print-none\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n        </div>\n        <div class=\"modal-body\">\n            <div class=\"fancy-list\"></div>\n            <div class=\"simple-list\"></div>\n            <div class=\"simplecopy-list\">\n                <p>Copy the below and paste it elsewhere.</p>\n                <textarea></textarea><button class=\"btn btn-modal btn-copy\">Copy</button>\n            </div>\n            <div class=\"reddit-list\">\n                <p>Copy the below and paste it into your reddit post.</p>\n                <p>Make sure that the post editor is set to markdown mode.</p>\n                <textarea></textarea><button class=\"btn btn-modal btn-copy\">Copy</button>\n            </div>\n            <div class=\"tts-list\">\n                <p>Copy the below and paste it into the Tabletop Simulator.</p>\n                <textarea></textarea><br /><button class=\"btn btn-modal btn-copy\">Copy</button>\n            </div>\n            <div class=\"bbcode-list\">\n                <p>Copy the BBCode below and paste it into your forum post.</p>\n                <textarea></textarea><button class=\"btn btn-modal btn-copy\">Copy</button>\n            </div>\n            <div class=\"html-list\">\n                <textarea></textarea><button class=\"btn btn-modal btn-copy\">Copy</button>\n            </div>\n            <div class=\"xws-list\">\n                <p>Copy and paste this into an XWS-compliant application.\n                <div class=\"row full-row\">\n                    <div class=\"col d-inline-block d-none d-sm-block\"><textarea></textarea><br /><button class=\"btn btn-modal btn-copy\">Copy</button></div>\n                    <div class=\"col d-inline-block d-none d-sm-block qrcode-container\" id=\"xws-qrcode-container\"></div>\n                </div>\n            </div>\n        </div>\n        <div class=\"container-fluid modal-footer d-print-none\">\n            <div class=\"row full-row\">\n                <div class=\"col d-inline-block d-none d-sm-block right-col\">\n                    <label class=\"color-skip-text-checkbox\">\n                        Skip Card Text <input type=\"checkbox\" class=\"toggle-skip-text-print\" />\n                    </label><br />\n                    <label class=\"vertical-space-checkbox\">\n                        Add Space for Cards <input type=\"checkbox\" class=\"toggle-vertical-space\" />\n                    </label><br />\n                    <label class=\"maneuver-print-checkbox\">\n                        Include Maneuvers Chart <input type=\"checkbox\" class=\"toggle-maneuver-print\" />\n                    </label><br />\n                    <label class=\"expanded-shield-hull-print-checkbox\">\n                        Expand Shield and Hull <input type=\"checkbox\" class=\"toggle-expanded-shield-hull-print\" />\n                    </label>\n                </div>\n                <div class=\"col d-inline-block d-none d-sm-block right-col\">\n                    <label class=\"color-print-checkbox\">\n                        Print Color <input type=\"checkbox\" class=\"toggle-color-print\" checked=\"checked\" />\n                    </label><br />\n                    <label class=\"qrcode-checkbox\">\n                        Include QR codes <input type=\"checkbox\" class=\"toggle-juggler-qrcode\" checked=\"checked\" />\n                    </label><br />\n                    <label class=\"obstacles-checkbox\">\n                        Include Obstacle Choices <input type=\"checkbox\" class=\"toggle-obstacles\" />\n                    </label>\n                </div>\n            </div>\n            <div class=\"row btn-group list-display-mode\">\n                <button class=\"btn btn-modal select-simple-view\">Simple</button>\n                <button class=\"btn btn-modal select-fancy-view d-none d-sm-block\">Fancy</button>\n                <button class=\"btn btn-modal select-simplecopy-view\">Text</button>\n                <button class=\"btn btn-modal select-tts-view d-none d-sm-block\">TTS</button>\n                <button class=\"btn btn-modal select-reddit-view\">Reddit</button>\n                <button class=\"btn btn-modal select-bbcode-view\">BBCode</button>\n                <button class=\"btn btn-modal select-html-view\">HTML</button>\n                <button class=\"btn btn-modal select-xws-view\">XWS</button>\n            </div>\n            <button class=\"btn btn-modal print-list d-none d-sm-block\"><i class=\"fa fa-print\"></i>&nbsp;Print</button>\n        </div>\n    </div>\n</div>"));
     this.fancy_container = $(this.list_modal.find('.fancy-list'));
     this.fancy_total_points_container = $(this.list_modal.find('div.modal-header .total-points'));
     this.simple_container = $(this.list_modal.find('div.modal-body .simple-list'));
@@ -9675,6 +2791,9 @@ exportObj.SquadBuilder = (function() {
     this.tts_container = $(this.list_modal.find('div.modal-body .tts-list'));
     this.tts_textarea = $(this.tts_container.find('textarea'));
     this.tts_textarea.attr('readonly', 'readonly');
+    this.xws_container = $(this.list_modal.find('div.modal-body .xws-list'));
+    this.xws_textarea = $(this.xws_container.find('textarea'));
+    this.xws_textarea.attr('readonly', 'readonly');
     this.bbcode_container = $(this.list_modal.find('div.modal-body .bbcode-list'));
     this.bbcode_textarea = $(this.bbcode_container.find('textarea'));
     this.bbcode_textarea.attr('readonly', 'readonly');
@@ -9715,6 +2834,7 @@ exportObj.SquadBuilder = (function() {
           _this.simplecopy_container.hide();
           _this.reddit_container.hide();
           _this.tts_container.hide();
+          _this.xws_container.hide();
           _this.bbcode_container.hide();
           _this.htmlview_container.hide();
           _this.toggle_vertical_space_container.hide();
@@ -9743,6 +2863,7 @@ exportObj.SquadBuilder = (function() {
           _this.tts_container.hide();
           _this.bbcode_container.hide();
           _this.htmlview_container.hide();
+          _this.xws_container.hide();
           _this.toggle_vertical_space_container.show();
           _this.toggle_color_print_container.show();
           _this.toggle_color_skip_text.show();
@@ -9767,6 +2888,7 @@ exportObj.SquadBuilder = (function() {
           _this.bbcode_container.hide();
           _this.tts_container.hide();
           _this.htmlview_container.hide();
+          _this.xws_container.hide();
           _this.simple_container.hide();
           _this.fancy_container.hide();
           _this.reddit_textarea.select();
@@ -9795,6 +2917,7 @@ exportObj.SquadBuilder = (function() {
           _this.bbcode_container.hide();
           _this.tts_container.hide();
           _this.htmlview_container.hide();
+          _this.xws_container.hide();
           _this.simple_container.hide();
           _this.fancy_container.hide();
           _this.simplecopy_textarea.select();
@@ -9821,6 +2944,7 @@ exportObj.SquadBuilder = (function() {
           _this.tts_container.show();
           _this.bbcode_container.hide();
           _this.htmlview_container.hide();
+          _this.xws_container.hide();
           _this.simple_container.hide();
           _this.simplecopy_container.hide();
           _this.reddit_container.hide();
@@ -9851,6 +2975,7 @@ exportObj.SquadBuilder = (function() {
           _this.reddit_container.hide();
           _this.tts_container.hide();
           _this.htmlview_container.hide();
+          _this.xws_container.hide();
           _this.simple_container.hide();
           _this.fancy_container.hide();
           _this.bbcode_textarea.select();
@@ -9881,6 +3006,7 @@ exportObj.SquadBuilder = (function() {
           _this.htmlview_container.show();
           _this.simple_container.hide();
           _this.fancy_container.hide();
+          _this.xws_container.hide();
           _this.html_textarea.select();
           _this.html_textarea.focus();
           _this.toggle_vertical_space_container.hide();
@@ -9892,6 +3018,12 @@ exportObj.SquadBuilder = (function() {
           _this.toggle_obstacle_container.hide();
           return _this.btn_print_list.disabled = true;
         }
+      };
+    })(this));
+    this.select_xws_view_button = $(this.list_modal.find('.select-xws-view'));
+    this.select_xws_view_button.click((function(_this) {
+      return function(e) {
+        return _this.select_xws_view();
       };
     })(this));
     if ($(window).width() >= 768) {
@@ -9921,9 +3053,12 @@ exportObj.SquadBuilder = (function() {
     this.points_container = $(this.status_container.find('div.points-display-container'));
     this.total_points_span = $(this.points_container.find('.total-points'));
     this.game_type_selector = $(this.status_container.find('.game-type-selector'));
+    this.game_type_selector.select2({
+      minimumResultsForSearch: -1
+    });
     this.game_type_selector.change((function(_this) {
       return function(e) {
-        return $(window).trigger('xwing:gameTypeChanged', _this.game_type_selector.val());
+        return _this.onGameTypeChanged(_this.game_type_selector.val());
       };
     })(this));
     this.desired_points_input = $(this.points_container.find('.desired-points'));
@@ -10178,7 +3313,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 11349
+              lineno: 3006
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -10211,7 +3346,7 @@ exportObj.SquadBuilder = (function() {
     content_container = $(document.createElement('DIV'));
     content_container.addClass('container-fluid');
     this.container.append(content_container);
-    content_container.append($.trim("<div class=\"row\">\n    <div class=\"col-md-9 ship-container\">\n        <label class=\"notes-container show-authenticated col-md-10\">\n            <span class=\"notes-name\">Squad Notes:</span>\n            <br />\n            <textarea class=\"squad-notes\"></textarea>\n            <br />\n            <span class=\"tag-name\">Tag:</span>\n            <input type=\"search\" class=\"squad-tag\"></input>\n        </label>\n    </div>\n    <div class=\"col-md-3 info-container\" id=\"info-container\">\n    </div>\n    <div class=\"col-md-12 obstacles-container\">\n            <!-- Since this is an optional button, usually, it's shown in a different color -->\n            <button class=\"btn btn-info choose-obstacles\"><i class=\"fa fa-cloud\"></i>&nbsp;Choose Obstacles</button>\n    </div>\n</div>"));
+    content_container.append($.trim("<div class=\"row\">\n    <div class=\"col-md-9 ship-container\">\n        <label class=\"notes-container show-authenticated col-md-10\">\n            <span class=\"notes-name\">Squad Notes:</span>\n            <br />\n            <textarea class=\"squad-notes\"></textarea>\n            <br />\n            <span class=\"tag-name\">Tag:</span>\n            <input type=\"search\" class=\"squad-tag\"></input>\n        </label>\n        <div class=\"obstacles-container\">\n                <button class=\"btn btn-info choose-obstacles\"><i class=\"fa fa-cloud\"></i>&nbsp;Choose Obstacles</button>\n        </div>\n    </div>\n    <div class=\"col-md-3 info-container\" id=\"info-container\">\n    </div>\n</div>"));
     this.ship_container = $(content_container.find('div.ship-container'));
     this.info_container = $(content_container.find('div.info-container'));
     this.obstacles_container = content_container.find('.obstacles-container');
@@ -10241,7 +3376,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.createInfoContainerUI = function() {
-    return "<div class=\"card info-well\">\n    <div class=\"info-name\"></div>\n    <div class=\"info-type\"></div>\n    <span class=\"info-collection\"></span>\n    <span class=\"info-solitary\"><br />Solitary</span>\n    <table class=\"table-sm\">\n        <tbody>\n            <tr class=\"info-ship\">\n                <td class=\"info-header\">Ship</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-base\">\n                <td class=\"info-header\">Base</td>\n                <td class=\"info-data\"></td> \n            </tr>\n            <tr class=\"info-skill\">\n                <td class=\"info-header\">Initiative</td>\n                <td class=\"info-data info-skill\"></td>\n            </tr>\n            <tr class=\"info-engagement\">\n                <td class=\"info-header\">Engagement</td>\n                <td class=\"info-data info-engagement\"></td>\n            </tr>\n            <tr class=\"info-attack\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-fullfront\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-bullseye\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-left\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-leftarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-right\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-rightarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-back\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-turret\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-doubleturret\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-agility\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                <td class=\"info-data info-agility\"></td>\n            </tr>\n            <tr class=\"info-hull\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                <td class=\"info-data info-hull\"></td>\n            </tr>\n            <tr class=\"info-shields\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                <td class=\"info-data info-shields\"></td>\n            </tr>\n            <tr class=\"info-force\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i></td>\n                <td class=\"info-data info-force\"></td>\n            </tr>\n            <tr class=\"info-charge\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                <td class=\"info-data info-charge\"></td>\n            </tr>\n            <tr class=\"info-energy\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                <td class=\"info-data info-energy\"></td>\n            </tr>\n            <tr class=\"info-range\">\n                <td class=\"info-header\">Range</td>\n                <td class=\"info-data info-range\"></td><td class=\"info-rangebonus\"><i class=\"xwing-miniatures-font red header-range xwing-miniatures-font-rangebonusindicator\"></i></td>\n            </tr>\n            <tr class=\"info-actions\">\n                <td class=\"info-header\">Actions</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-actions-red\">\n                <td></td>\n                <td class=\"info-data-red\"></td>\n            </tr>\n            <tr class=\"info-upgrades\">\n                <td class=\"info-header\">Upgrades</td>\n                <td class=\"info-data\"></td>\n            </tr>\n        </tbody>\n    </table>\n    <p class=\"info-text\"></p>\n    <p class=\"info-maneuvers\"></p>\n    <br />\n    <span class=\"info-header info-sources\">Sources:</span> \n    <span class=\"info-data info-sources\"></span>\n</div>";
+    return "<div class=\"card info-well\">\n    <div class=\"info-name\"></div>\n    <div class=\"info-type\"></div>\n    <span class=\"info-collection\"></span>\n    <span class=\"info-solitary\"><br />Solitary</span>\n    <table class=\"table-sm\">\n        <tbody>\n            <tr class=\"info-ship\">\n                <td class=\"info-header\">Ship</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-base\">\n                <td class=\"info-header\">Base</td>\n                <td class=\"info-data\"></td> \n            </tr>\n            <tr class=\"info-skill\">\n                <td class=\"info-header\">Initiative</td>\n                <td class=\"info-data info-skill\"></td>\n            </tr>\n            <tr class=\"info-engagement\">\n                <td class=\"info-header\">Engagement</td>\n                <td class=\"info-data info-engagement\"></td>\n            </tr>\n            <tr class=\"info-attack-bullseye\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-frontarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-fullfront\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-left\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-leftarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-right\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-rightarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-back\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-turret\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-attack-doubleturret\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i></td>\n                <td class=\"info-data info-attack\"></td>\n            </tr>\n            <tr class=\"info-agility\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i></td>\n                <td class=\"info-data info-agility\"></td>\n            </tr>\n            <tr class=\"info-hull\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i></td>\n                <td class=\"info-data info-hull\"></td>\n            </tr>\n            <tr class=\"info-shields\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i></td>\n                <td class=\"info-data info-shields\"></td>\n            </tr>\n            <tr class=\"info-force\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i></td>\n                <td class=\"info-data info-force\"></td>\n            </tr>\n            <tr class=\"info-charge\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i></td>\n                <td class=\"info-data info-charge\"></td>\n            </tr>\n            <tr class=\"info-energy\">\n                <td class=\"info-header\"><i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i></td>\n                <td class=\"info-data info-energy\"></td>\n            </tr>\n            <tr class=\"info-range\">\n                <td class=\"info-header\">Range</td>\n                <td class=\"info-data info-range\"></td><td class=\"info-rangebonus\"><i class=\"xwing-miniatures-font red header-range xwing-miniatures-font-rangebonusindicator\"></i></td>\n            </tr>\n            <tr class=\"info-actions\">\n                <td class=\"info-header\">Actions</td>\n                <td class=\"info-data\"></td>\n            </tr>\n            <tr class=\"info-upgrades\">\n                <td class=\"info-header\">Upgrades</td>\n                <td class=\"info-data\"></td>\n            </tr>\n        </tbody>\n    </table>\n    <p class=\"info-text\"></p>\n    <p class=\"info-maneuvers\"></p>\n    <br />\n    <span class=\"info-header info-sources\">Sources:</span> \n    <span class=\"info-data info-sources\"></span>\n</div>";
   };
 
   SquadBuilder.prototype.setupEventHandlers = function() {
@@ -10372,7 +3507,10 @@ exportObj.SquadBuilder = (function() {
         if (cb == null) {
           cb = $.noop;
         }
-        return _this.onGameTypeChanged(gameType, cb);
+        _this.onGameTypeChanged(gameType, cb);
+        if (_this.game_type_selector.val() !== gameType) {
+          return _this.game_type_selector.val(gameType).trigger('change');
+        }
       };
     })(this));
     this.obstacles_select.change((function(_this) {
@@ -10482,7 +3620,7 @@ exportObj.SquadBuilder = (function() {
         if (_this.isEpic) {
           _this.printable_container.find('.squad-name').append(" <i class=\"xwing-miniatures-font xwing-miniatures-font-energy\"></i>");
         }
-        _this.printable_container.find('.printable-body').append($.trim("<div class=\"version\">Points Version: 1.6.1 July 2020</div>"));
+        _this.printable_container.find('.printable-body').append($.trim("<div class=\"version\">Points Version: 1.7.1 October 2020</div>"));
         if ($.trim(_this.notes.val()) !== '') {
           _this.printable_container.find('.printable-body').append($.trim("<h5 class=\"print-notes\">Notes:</h5>\n<pre class=\"print-notes\"></pre>"));
           _this.printable_container.find('.printable-body pre.print-notes').text(_this.notes.val());
@@ -10595,7 +3733,6 @@ exportObj.SquadBuilder = (function() {
     if (cb == null) {
       cb = $.noop;
     }
-    this.game_type_selector.val(gametype);
     oldHyperspace = this.isHyperspace;
     oldEpic = this.isEpic;
     oldQuickbuild = this.isQuickbuild;
@@ -10630,6 +3767,27 @@ exportObj.SquadBuilder = (function() {
     return cb();
   };
 
+  SquadBuilder.prototype.addStandardizedToList = function(ship) {
+    var idx, ship_upgrade, _i, _len, _ref, _ref1, _results;
+    if (((_ref = ship.data) != null ? _ref.name : void 0) != null) {
+      idx = this.standard_list['Ship'].indexOf(ship.data.name);
+      if (idx > -1) {
+        _ref1 = ship.upgrades;
+        _results = [];
+        for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+          ship_upgrade = _ref1[_i];
+          if (ship_upgrade.slot === this.standard_list['Upgrade'][idx].slot) {
+            ship_upgrade.setData(this.standard_list['Upgrade'][idx]);
+            break;
+          } else {
+            _results.push(void 0);
+          }
+        }
+        return _results;
+      }
+    }
+  };
+
   SquadBuilder.prototype.onPointsUpdated = function(cb) {
     var bbcode_ships, conditions, conditions_set, htmlview_ships, i, obstacle, obstacles, points_dest, points_destroyed, points_left, reddit_ships, ship, ship_uses_unreleased_content, simplecopy_ships, tot_points, tts_obstacles, tts_ships, unreleased_content_used, _i, _j, _k, _l, _len, _len1, _len2, _ref, _ref1, _ref2;
     if (cb == null) {
@@ -10644,6 +3802,7 @@ exportObj.SquadBuilder = (function() {
       if (!ship) {
         continue;
       }
+      this.addStandardizedToList(ship);
       tot_points += ship.getPoints();
       if (ship.destroystate === 1) {
         points_dest += Math.ceil(ship.getPoints() / 2);
@@ -10701,8 +3860,16 @@ exportObj.SquadBuilder = (function() {
       tts_obstacles = tts_obstacles.slice(0, -1);
       tts_ships.push(tts_obstacles);
     }
-    this.tts_container.find('textarea').val($.trim("" + (tts_ships.join(""))));
+    this.tts_textarea.val($.trim("" + (tts_ships.join(""))));
     this.bbcode_container.find('textarea').val($.trim("" + (bbcode_ships.join("\n\n")) + "\n[b][i]Total: " + this.total_points + "[/i][/b]\n\n[url=" + (this.getPermaLink()) + "]View in Yet Another Squad Builder 2.0[/url]"));
+    this.xws_textarea.val($.trim(JSON.stringify(this.toXWS())));
+    $('#xws-qrcode-container').text('');
+    $('#xws-qrcode-container').qrcode({
+      render: 'canvas',
+      text: JSON.stringify(this.toMinimalXWS()),
+      ec: 'L',
+      size: 128
+    });
     this.checkCollection();
     if (typeof Set !== "undefined" && Set !== null) {
       conditions_set = new Set();
@@ -10799,6 +3966,11 @@ exportObj.SquadBuilder = (function() {
 
   SquadBuilder.prototype.showTextListModal = function() {
     return this.list_modal.modal('show');
+  };
+
+  SquadBuilder.prototype.showXWSModal = function(xws) {
+    this.select_xws_view();
+    return this.showTextListModal();
   };
 
   SquadBuilder.prototype.showChooseObstaclesModal = function() {
@@ -10907,6 +4079,33 @@ exportObj.SquadBuilder = (function() {
     return this.addShip();
   };
 
+  SquadBuilder.prototype.select_xws_view = function() {
+    this.select_xws_view_button.blur();
+    if (this.list_display_mode !== 'xws') {
+      this.list_modal.find('.list-display-mode .btn').removeClass('btn-inverse');
+      this.select_xws_view_button.addClass('btn-inverse');
+      this.list_display_mode = 'xws';
+      this.xws_container.show();
+      this.bbcode_container.hide();
+      this.htmlview_container.hide();
+      this.simple_container.hide();
+      this.simplecopy_container.hide();
+      this.reddit_container.hide();
+      this.fancy_container.hide();
+      this.tts_container.hide();
+      this.xws_textarea.select();
+      this.xws_textarea.focus();
+      this.toggle_vertical_space_container.hide();
+      this.toggle_color_print_container.hide();
+      this.toggle_color_skip_text.hide();
+      this.toggle_maneuver_dial_container.hide();
+      this.toggle_expanded_shield_hull_container.hide();
+      this.toggle_qrcode_container.hide();
+      this.toggle_obstacle_container.hide();
+      return this.btn_print_list.disabled = true;
+    }
+  };
+
   SquadBuilder.prototype.uniqueIndex = function(unique, type) {
     if (!(type in this.uniques_in_use)) {
       throw new Error("Invalid unique type '" + type + "'");
@@ -11010,7 +4209,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 12139
+              lineno: 3845
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -11020,7 +4219,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 12140
+                lineno: 3846
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -11534,6 +4733,8 @@ exportObj.SquadBuilder = (function() {
                 return "dodgerblue";
               case 3:
                 return "red";
+              case 4:
+                return "purple";
             }
           })();
           maneuverClass = (function() {
@@ -11544,6 +4745,8 @@ exportObj.SquadBuilder = (function() {
                 return "svg-blue-maneuver";
               case 3:
                 return "svg-red-maneuver";
+              case 4:
+                return "svg-purple-maneuver";
             }
           })();
           outTable += "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"30px\" height=\"30px\" viewBox=\"0 0 200 200\">";
@@ -11632,33 +4835,39 @@ exportObj.SquadBuilder = (function() {
     return outTable;
   };
 
-  SquadBuilder.prototype.formatActions = function(action) {
-    var actionname, color, prefix;
-    color = "";
-    actionname = "";
-    prefix = "";
-    if (action.search('F-') !== -1) {
-      color = "force ";
-      actionname = action.toLowerCase().replace(/F-/gi, '').replace(/[^0-9a-z]/gi, '');
-    } else if (action.search('R> ') !== -1) {
-      color = "red ";
-      actionname = action.toLowerCase().replace(/R> /gi, '').replace(/[^0-9a-z]/gi, '');
-      prefix = "<i class=\"xwing-miniatures-font xwing-miniatures-font-linked red\"></i> ";
-    } else if (action.search('> ') !== -1) {
-      actionname = action.toLowerCase().replace(/> /gi, '').replace(/[^0-9a-z]/gi, '');
-      prefix = "<i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> ";
-    } else {
-      actionname = action.toLowerCase().replace(/[^0-9a-z]/gi, '');
+  SquadBuilder.prototype.formatActions = function(actions, seperation, keyword) {
+    var action, action_icons, actionlist, color, prefix, _i, _len;
+    if (keyword == null) {
+      keyword = [];
     }
-    return prefix + "<i class=\"xwing-miniatures-font " + color + "xwing-miniatures-font-" + actionname + "\"></i> ";
-  };
-
-  SquadBuilder.prototype.formatRedActions = function(action) {
-    return "<i class=\"xwing-miniatures-font red xwing-miniatures-font-" + action.toLowerCase().replace(/[^0-9a-z]/gi, '') + "\"></i> ";
+    action_icons = [];
+    for (_i = 0, _len = actions.length; _i < _len; _i++) {
+      action = actions[_i];
+      color = "";
+      prefix = seperation;
+      if (__indexOf.call(keyword, "Droid") >= 0) {
+        action = action.replace('Focus', 'Calculate');
+      }
+      if (action.search('> ') !== -1) {
+        action = action.replace(/> /gi, '');
+        prefix = " <i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> ";
+      }
+      if (action.search('F-') !== -1) {
+        color = "force ";
+        action = action.replace(/F-/gi, '');
+      } else if (action.search('R-') !== -1) {
+        color = "red ";
+        action = action.replace(/R-/gi, '');
+      }
+      action = action.toLowerCase().replace(/[^0-9a-z]/gi, '');
+      action_icons.push("" + prefix + "<i class=\"xwing-miniatures-font " + color + "xwing-miniatures-font-" + action + "\"></i>");
+    }
+    actionlist = action_icons.join('');
+    return actionlist.replace(seperation, '');
   };
 
   SquadBuilder.prototype.showTooltip = function(type, data, additional_opts, container, force_update) {
-    var a, action, addon_count, cls, count, effective_stats, extra_actions, extra_actions_red, first, ini, inis, item, missingStuffInfoText, name, pilot, pilot_count, point_info, possible_inis, recurringicon, ship, ship_count, slot, slot_types, source, sources, state, uniquedots, upgrade, well, _i, _j, _k, _l, _len, _len1, _len2, _len3, _m, _n, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref40, _ref41, _ref42, _ref43, _ref44, _ref45, _ref46, _ref47, _ref48, _ref49, _ref5, _ref50, _ref51, _ref52, _ref53, _ref54, _ref55, _ref56, _ref57, _ref58, _ref59, _ref6, _ref60, _ref61, _ref62, _ref63, _ref64, _ref65, _ref66, _ref67, _ref68, _ref7, _ref8, _ref9, _results, _results1;
+    var addon_count, cls, count, effective_stats, first, ini, inis, item, missingStuffInfoText, name, pilot, pilot_count, point_info, possible_inis, recurringicon, ship, ship_count, slot, slot_types, source, sources, state, uniquedots, upgrade, well, _i, _j, _k, _l, _len, _len1, _len2, _len3, _m, _n, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref40, _ref41, _ref42, _ref43, _ref44, _ref45, _ref46, _ref47, _ref48, _ref49, _ref5, _ref50, _ref51, _ref52, _ref53, _ref54, _ref55, _ref56, _ref57, _ref58, _ref59, _ref6, _ref60, _ref61, _ref62, _ref63, _ref64, _ref65, _ref66, _ref67, _ref68, _ref69, _ref7, _ref70, _ref71, _ref72, _ref73, _ref74, _ref8, _ref9, _results, _results1;
     if (container == null) {
       container = this.info_container;
     }
@@ -11817,32 +5026,8 @@ exportObj.SquadBuilder = (function() {
           container.find('tr.info-energy').toggle(data.energy != null);
           container.find('tr.info-force').hide();
           container.find('tr.info-charge').hide();
-          container.find('tr.info-actions td.info-data').html((((function() {
-            var _k, _len2, _ref8, _results;
-            _ref8 = data.actions;
-            _results = [];
-            for (_k = 0, _len2 = _ref8.length; _k < _len2; _k++) {
-              action = _ref8[_k];
-              _results.push(this.formatActions(action));
-            }
-            return _results;
-          }).call(this)).join(', ')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g, ' <i class="xwing-miniatures-font xwing-miniatures-font-linked'));
+          container.find('tr.info-actions td.info-data').html(this.formatActions(data.actions, ", ", (_ref8 = data.keyword) != null ? _ref8 : []));
           container.find('tr.info-actions').show();
-          if (data.actionsred != null) {
-            container.find('tr.info-actions-red td.info-data-red').html(((function() {
-              var _k, _len2, _ref8, _results;
-              _ref8 = data.actionsred;
-              _results = [];
-              for (_k = 0, _len2 = _ref8.length; _k < _len2; _k++) {
-                action = _ref8[_k];
-                _results.push(this.formatRedActions(action));
-              }
-              return _results;
-            }).call(this)).join(', '));
-            container.find('tr.info-actions-red').show();
-          } else {
-            container.find('tr.info-actions-red').hide();
-          }
           container.find('tr.info-upgrades').show();
           container.find('tr.info-upgrades td.info-data').html(((function() {
             var _results;
@@ -11857,11 +5042,11 @@ exportObj.SquadBuilder = (function() {
           container.find('p.info-maneuvers').show();
           container.find('p.info-maneuvers').html(this.getManeuverTableHTML(data.maneuvers, data.maneuvers));
           sources = ((function() {
-            var _k, _len2, _ref8, _results;
-            _ref8 = data.sources;
+            var _k, _len2, _ref9, _results;
+            _ref9 = data.sources;
             _results = [];
-            for (_k = 0, _len2 = _ref8.length; _k < _len2; _k++) {
-              source = _ref8[_k];
+            for (_k = 0, _len2 = _ref9.length; _k < _len2; _k++) {
+              source = _ref9[_k];
               _results.push(exportObj.translate(this.language, 'sources', source));
             }
             return _results;
@@ -11872,19 +5057,19 @@ exportObj.SquadBuilder = (function() {
         case 'Pilot':
           container.find('.info-type').text(type);
           container.find('.info-sources.info-data').text(((function() {
-            var _k, _len2, _ref8, _results;
-            _ref8 = data.sources;
+            var _k, _len2, _ref9, _results;
+            _ref9 = data.sources;
             _results = [];
-            for (_k = 0, _len2 = _ref8.length; _k < _len2; _k++) {
-              source = _ref8[_k];
+            for (_k = 0, _len2 = _ref9.length; _k < _len2; _k++) {
+              source = _ref9[_k];
               _results.push(exportObj.translate(this.language, 'sources', source));
             }
             return _results;
           }).call(this)).sort().join(', '));
           container.find('.info-sources').show();
-          if (((_ref8 = this.collection) != null ? _ref8.counts : void 0) != null) {
-            pilot_count = (_ref9 = (_ref10 = this.collection.counts) != null ? (_ref11 = _ref10.pilot) != null ? _ref11[data.name] : void 0 : void 0) != null ? _ref9 : 0;
-            ship_count = (_ref12 = (_ref13 = this.collection.counts.ship) != null ? _ref13[data.ship] : void 0) != null ? _ref12 : 0;
+          if (((_ref9 = this.collection) != null ? _ref9.counts : void 0) != null) {
+            pilot_count = (_ref10 = (_ref11 = this.collection.counts) != null ? (_ref12 = _ref11.pilot) != null ? _ref12[data.name] : void 0 : void 0) != null ? _ref10 : 0;
+            ship_count = (_ref13 = (_ref14 = this.collection.counts.ship) != null ? _ref14[data.ship] : void 0) != null ? _ref13 : 0;
             container.find('.info-collection').text("You have " + ship_count + " ship model" + (ship_count > 1 ? 's' : '') + " and " + pilot_count + " pilot card" + (pilot_count > 1 ? 's' : '') + " in your collection.");
             container.find('.info-collection').show();
           } else {
@@ -11892,17 +5077,6 @@ exportObj.SquadBuilder = (function() {
           }
           if ((additional_opts != null ? additional_opts.effectiveStats : void 0) != null) {
             effective_stats = additional_opts.effectiveStats();
-            extra_actions = $.grep(effective_stats.actions, function(el, i) {
-              var _ref14, _ref15;
-              return __indexOf.call((_ref14 = (_ref15 = data.ship_override) != null ? _ref15.actions : void 0) != null ? _ref14 : additional_opts.data.actions, el) < 0;
-            });
-            extra_actions_red = $.grep(effective_stats.actionsred, function(el, i) {
-              var _ref14, _ref15;
-              return __indexOf.call((_ref14 = (_ref15 = data.ship_override) != null ? _ref15.actionsred : void 0) != null ? _ref14 : additional_opts.data.actionsred, el) < 0;
-            });
-          } else {
-            extra_actions = [];
-            extra_actions_red = [];
           }
           if (data.unique != null) {
             uniquedots = "&middot;&nbsp;";
@@ -11918,7 +5092,7 @@ exportObj.SquadBuilder = (function() {
             uniquedots = "";
           }
           container.find('.info-name').html("" + uniquedots + (data.display_name ? data.display_name : data.name) + (exportObj.isReleased(data) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
-          container.find('p.info-text').html((_ref14 = data.text) != null ? _ref14 : '');
+          container.find('p.info-text').html((_ref15 = data.text) != null ? _ref15 : '');
           container.find('p.info-text').show();
           ship = exportObj.ships[data.ship];
           container.find('tr.info-ship td.info-data').text(data.ship);
@@ -11942,28 +5116,28 @@ exportObj.SquadBuilder = (function() {
           } else {
             container.find('tr.info-engagement').hide();
           }
-          container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass((_ref15 = ship.attack_icon) != null ? _ref15 : 'xwing-miniatures-font-attack');
-          container.find('tr.info-attack td.info-data').text(statAndEffectiveStat((_ref16 = (_ref17 = data.ship_override) != null ? _ref17.attack : void 0) != null ? _ref16 : ship.attack, effective_stats, 'attack'));
+          container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass((_ref16 = ship.attack_icon) != null ? _ref16 : 'xwing-miniatures-font-attack');
+          container.find('tr.info-attack td.info-data').text(statAndEffectiveStat((_ref17 = (_ref18 = data.ship_override) != null ? _ref18.attack : void 0) != null ? _ref17 : ship.attack, effective_stats, 'attack'));
           container.find('tr.info-attack').toggle((ship.attack != null) || ((effective_stats != null ? effective_stats.attack : void 0) != null));
-          container.find('tr.info-attack-fullfront td.info-data').text(statAndEffectiveStat((_ref18 = (_ref19 = data.ship_override) != null ? _ref19.attackf : void 0) != null ? _ref18 : ship.attackf, effective_stats, 'attackf'));
+          container.find('tr.info-attack-fullfront td.info-data').text(statAndEffectiveStat((_ref19 = (_ref20 = data.ship_override) != null ? _ref20.attackf : void 0) != null ? _ref19 : ship.attackf, effective_stats, 'attackf'));
           container.find('tr.info-attack-fullfront').toggle((ship.attackf != null) || ((effective_stats != null ? effective_stats.attackf : void 0) != null));
-          container.find('tr.info-attack-bullseye td.info-data').text(statAndEffectiveStat((_ref20 = (_ref21 = data.ship_override) != null ? _ref21.attackbull : void 0) != null ? _ref20 : ship.attackbull, effective_stats, 'attackbull'));
+          container.find('tr.info-attack-bullseye td.info-data').text(statAndEffectiveStat((_ref21 = (_ref22 = data.ship_override) != null ? _ref22.attackbull : void 0) != null ? _ref21 : ship.attackbull, effective_stats, 'attackbull'));
           container.find('tr.info-attack-bullseye').toggle((ship.attackbull != null) || ((effective_stats != null ? effective_stats.attackbull : void 0) != null));
-          container.find('tr.info-attack-left td.info-data').text(statAndEffectiveStat((_ref22 = (_ref23 = data.ship_override) != null ? _ref23.attackl : void 0) != null ? _ref22 : ship.attackl, effective_stats, 'attackl'));
+          container.find('tr.info-attack-left td.info-data').text(statAndEffectiveStat((_ref23 = (_ref24 = data.ship_override) != null ? _ref24.attackl : void 0) != null ? _ref23 : ship.attackl, effective_stats, 'attackl'));
           container.find('tr.info-attack-left').toggle((ship.attackl != null) || ((effective_stats != null ? effective_stats.attackl : void 0) != null));
-          container.find('tr.info-attack-right td.info-data').text(statAndEffectiveStat((_ref24 = (_ref25 = data.ship_override) != null ? _ref25.attackr : void 0) != null ? _ref24 : ship.attackr, effective_stats, 'attackr'));
+          container.find('tr.info-attack-right td.info-data').text(statAndEffectiveStat((_ref25 = (_ref26 = data.ship_override) != null ? _ref26.attackr : void 0) != null ? _ref25 : ship.attackr, effective_stats, 'attackr'));
           container.find('tr.info-attack-right').toggle((ship.attackr != null) || ((effective_stats != null ? effective_stats.attackr : void 0) != null));
-          container.find('tr.info-attack-back td.info-data').text(statAndEffectiveStat((_ref26 = (_ref27 = data.ship_override) != null ? _ref27.attackb : void 0) != null ? _ref26 : ship.attackb, effective_stats, 'attackb'));
+          container.find('tr.info-attack-back td.info-data').text(statAndEffectiveStat((_ref27 = (_ref28 = data.ship_override) != null ? _ref28.attackb : void 0) != null ? _ref27 : ship.attackb, effective_stats, 'attackb'));
           container.find('tr.info-attack-back').toggle((ship.attackb != null) || ((effective_stats != null ? effective_stats.attackb : void 0) != null));
-          container.find('tr.info-attack-turret td.info-data').text(statAndEffectiveStat((_ref28 = (_ref29 = data.ship_override) != null ? _ref29.attackt : void 0) != null ? _ref28 : ship.attackt, effective_stats, 'attackt'));
+          container.find('tr.info-attack-turret td.info-data').text(statAndEffectiveStat((_ref29 = (_ref30 = data.ship_override) != null ? _ref30.attackt : void 0) != null ? _ref29 : ship.attackt, effective_stats, 'attackt'));
           container.find('tr.info-attack-turret').toggle((ship.attackt != null) || ((effective_stats != null ? effective_stats.attackt : void 0) != null));
-          container.find('tr.info-attack-doubleturret td.info-data').text(statAndEffectiveStat((_ref30 = (_ref31 = data.ship_override) != null ? _ref31.attackdt : void 0) != null ? _ref30 : ship.attackdt, effective_stats, 'attackdt'));
+          container.find('tr.info-attack-doubleturret td.info-data').text(statAndEffectiveStat((_ref31 = (_ref32 = data.ship_override) != null ? _ref32.attackdt : void 0) != null ? _ref31 : ship.attackdt, effective_stats, 'attackdt'));
           container.find('tr.info-attack-doubleturret').toggle((ship.attackdt != null) || ((effective_stats != null ? effective_stats.attackdt : void 0) != null));
           container.find('tr.info-range').hide();
           container.find('td.info-rangebonus').hide();
-          container.find('tr.info-agility td.info-data').text(statAndEffectiveStat((_ref32 = (_ref33 = data.ship_override) != null ? _ref33.agility : void 0) != null ? _ref32 : ship.agility, effective_stats, 'agility'));
+          container.find('tr.info-agility td.info-data').text(statAndEffectiveStat((_ref33 = (_ref34 = data.ship_override) != null ? _ref34.agility : void 0) != null ? _ref33 : ship.agility, effective_stats, 'agility'));
           container.find('tr.info-agility').show();
-          container.find('tr.info-hull td.info-data').text(statAndEffectiveStat((_ref34 = (_ref35 = data.ship_override) != null ? _ref35.hull : void 0) != null ? _ref34 : ship.hull, effective_stats, 'hull'));
+          container.find('tr.info-hull td.info-data').text(statAndEffectiveStat((_ref35 = (_ref36 = data.ship_override) != null ? _ref36.hull : void 0) != null ? _ref35 : ship.hull, effective_stats, 'hull'));
           container.find('tr.info-hull').show();
           recurringicon = '';
           if (ship.shieldrecurr != null) {
@@ -11973,8 +5147,8 @@ exportObj.SquadBuilder = (function() {
               ++count;
             }
           }
-          container.find('tr.info-shields td.info-data').html(statAndEffectiveStat((_ref36 = (_ref37 = data.ship_override) != null ? _ref37.shields : void 0) != null ? _ref36 : ship.shields, effective_stats, 'shields') + recurringicon);
-          container.find('tr.info-shields').toggle((((_ref38 = data.ship_override) != null ? _ref38.shields : void 0) != null) || (ship.shields != null));
+          container.find('tr.info-shields td.info-data').html(statAndEffectiveStat((_ref37 = (_ref38 = data.ship_override) != null ? _ref38.shields : void 0) != null ? _ref37 : ship.shields, effective_stats, 'shields') + recurringicon);
+          container.find('tr.info-shields').toggle((((_ref39 = data.ship_override) != null ? _ref39.shields : void 0) != null) || (ship.shields != null));
           recurringicon = '';
           if (ship.energyrecurr != null) {
             count = 0;
@@ -11983,10 +5157,10 @@ exportObj.SquadBuilder = (function() {
               ++count;
             }
           }
-          container.find('tr.info-energy td.info-data').html(statAndEffectiveStat((_ref39 = (_ref40 = data.ship_override) != null ? _ref40.energy : void 0) != null ? _ref39 : ship.energy, effective_stats, 'energy') + recurringicon);
-          container.find('tr.info-energy').toggle((((_ref41 = data.ship_override) != null ? _ref41.energy : void 0) != null) || (ship.energy != null));
+          container.find('tr.info-energy td.info-data').html(statAndEffectiveStat((_ref40 = (_ref41 = data.ship_override) != null ? _ref41.energy : void 0) != null ? _ref40 : ship.energy, effective_stats, 'energy') + recurringicon);
+          container.find('tr.info-energy').toggle((((_ref42 = data.ship_override) != null ? _ref42.energy : void 0) != null) || (ship.energy != null));
           if ((((effective_stats != null ? effective_stats.force : void 0) != null) && effective_stats.force > 0) || (data.force != null)) {
-            container.find('tr.info-force td.info-data').html(statAndEffectiveStat((_ref42 = (_ref43 = data.ship_override) != null ? _ref43.force : void 0) != null ? _ref42 : data.force, effective_stats, 'force') + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>');
+            container.find('tr.info-force td.info-data').html(statAndEffectiveStat((_ref43 = (_ref44 = data.ship_override) != null ? _ref44.force : void 0) != null ? _ref43 : data.force, effective_stats, 'force') + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>');
             container.find('tr.info-force').show();
           } else {
             container.find('tr.info-force').hide();
@@ -12001,63 +5175,25 @@ exportObj.SquadBuilder = (function() {
           } else {
             container.find('tr.info-charge').hide();
           }
-          container.find('tr.info-actions td.info-data').html((((function() {
-            var _k, _len2, _ref44, _ref45, _ref46, _results;
-            _ref46 = ((_ref44 = (_ref45 = data.ship_override) != null ? _ref45.actions : void 0) != null ? _ref44 : ship.actions).concat((function() {
-              var _l, _len2, _results1;
-              _results1 = [];
-              for (_l = 0, _len2 = extra_actions.length; _l < _len2; _l++) {
-                action = extra_actions[_l];
-                _results1.push("" + action);
-              }
-              return _results1;
-            })());
-            _results = [];
-            for (_k = 0, _len2 = _ref46.length; _k < _len2; _k++) {
-              a = _ref46[_k];
-              _results.push(this.formatActions(a));
-            }
-            return _results;
-          }).call(this)).join(', ')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g, ' <i class="xwing-miniatures-font xwing-miniatures-font-linked'));
-          if (ship.actionsred != null) {
-            container.find('tr.info-actions-red td.info-data-red').html(((function() {
-              var _k, _len2, _ref44, _ref45, _ref46, _results;
-              _ref46 = ((_ref44 = (_ref45 = data.ship_override) != null ? _ref45.actionsred : void 0) != null ? _ref44 : ship.actionsred).concat((function() {
-                var _l, _len2, _results1;
-                _results1 = [];
-                for (_l = 0, _len2 = extra_actions_red.length; _l < _len2; _l++) {
-                  action = extra_actions_red[_l];
-                  _results1.push("" + action);
-                }
-                return _results1;
-              })());
-              _results = [];
-              for (_k = 0, _len2 = _ref46.length; _k < _len2; _k++) {
-                a = _ref46[_k];
-                _results.push(this.formatRedActions(a));
-              }
-              return _results;
-            }).call(this)).join(', '));
-          }
-          container.find('tr.info-actions-red').toggle(ship.actionsred != null);
+          container.find('tr.info-actions td.info-data').html(this.formatActions((_ref45 = effective_stats != null ? effective_stats.actions : void 0) != null ? _ref45 : ship.actions, ", ", (_ref46 = data.keyword) != null ? _ref46 : []));
           container.find('tr.info-actions').show();
           if (this.isQuickbuild) {
             container.find('tr.info-upgrades').hide();
           } else {
             container.find('tr.info-upgrades').show();
             container.find('tr.info-upgrades td.info-data').html(((function() {
-              var _k, _len2, _ref44, _results;
-              _ref44 = data.slots;
+              var _k, _len2, _ref47, _results;
+              _ref47 = data.slots;
               _results = [];
-              for (_k = 0, _len2 = _ref44.length; _k < _len2; _k++) {
-                slot = _ref44[_k];
+              for (_k = 0, _len2 = _ref47.length; _k < _len2; _k++) {
+                slot = _ref47[_k];
                 _results.push(exportObj.translate(this.language, 'sloticon', slot));
               }
               return _results;
             }).call(this)).join(' ') || 'None');
           }
           container.find('p.info-maneuvers').show();
-          container.find('p.info-maneuvers').html(this.getManeuverTableHTML((_ref44 = effective_stats != null ? effective_stats.maneuvers : void 0) != null ? _ref44 : ship.maneuvers, ship.maneuvers));
+          container.find('p.info-maneuvers').html(this.getManeuverTableHTML((_ref47 = effective_stats != null ? effective_stats.maneuvers : void 0) != null ? _ref47 : ship.maneuvers, ship.maneuvers));
           break;
         case 'Quickbuild':
           container.find('.info-type').text('Quickbuild');
@@ -12079,7 +5215,7 @@ exportObj.SquadBuilder = (function() {
             uniquedots = "";
           }
           container.find('.info-name').html("" + uniquedots + (pilot.display_name ? pilot.display_name : pilot.name) + (data.suffix != null ? data.suffix : "") + (exportObj.isReleased(pilot) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
-          container.find('p.info-text').html((_ref45 = pilot.text) != null ? _ref45 : '');
+          container.find('p.info-text').html((_ref48 = pilot.text) != null ? _ref48 : '');
           container.find('p.info-text').show();
           container.find('tr.info-ship td.info-data').text(data.ship);
           container.find('tr.info-ship').show();
@@ -12096,11 +5232,12 @@ exportObj.SquadBuilder = (function() {
           container.find('tr.info-skill').show();
           container.find('tr.info-engagement td.info-data').text(pilot.skill);
           container.find('tr.info-engagement').show();
-          container.find('tr.info-attack td.info-data').text((_ref46 = (_ref47 = pilot.ship_override) != null ? _ref47.attack : void 0) != null ? _ref46 : ship.attack);
-          container.find('tr.info-attack').toggle((((_ref48 = pilot.ship_override) != null ? _ref48.attack : void 0) != null) || (ship.attack != null));
+          container.find('tr.info-attack td.info-data').text((_ref49 = (_ref50 = pilot.ship_override) != null ? _ref50.attack : void 0) != null ? _ref49 : ship.attack);
+          container.find('tr.info-attack').toggle((((_ref51 = pilot.ship_override) != null ? _ref51.attack : void 0) != null) || (ship.attack != null));
           container.find('tr.info-attack-fullfront td.info-data').text(ship.attackf);
           container.find('tr.info-attack-fullfront').toggle(ship.attackf != null);
-          container.find('tr.info-attack-bullseye').hide();
+          container.find('tr.info-attack-bullseye td.info-data').text(ship.attackbull);
+          container.find('tr.info-attack-bullseye').toggle(ship.attackbull != null);
           container.find('tr.info-attack-left td.info-data').text(ship.attackl);
           container.find('tr.info-attack-left').toggle(ship.attackl != null);
           container.find('tr.info-attack-left td.info-data').text(ship.attackr);
@@ -12111,19 +5248,19 @@ exportObj.SquadBuilder = (function() {
           container.find('tr.info-attack-turret').toggle(ship.attackt != null);
           container.find('tr.info-attack-doubleturret td.info-data').text(ship.attackdt);
           container.find('tr.info-attack-doubleturret').toggle(ship.attackdt != null);
-          container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass((_ref49 = ship.attack_icon) != null ? _ref49 : 'xwing-miniatures-font-frontarc');
-          container.find('tr.info-energy td.info-data').text((_ref50 = (_ref51 = pilot.ship_override) != null ? _ref51.energy : void 0) != null ? _ref50 : ship.energy);
-          container.find('tr.info-energy').toggle((((_ref52 = pilot.ship_override) != null ? _ref52.energy : void 0) != null) || (ship.energy != null));
+          container.find('tr.info-attack td.info-header i.xwing-miniatures-font').addClass((_ref52 = ship.attack_icon) != null ? _ref52 : 'xwing-miniatures-font-frontarc');
+          container.find('tr.info-energy td.info-data').text((_ref53 = (_ref54 = pilot.ship_override) != null ? _ref54.energy : void 0) != null ? _ref53 : ship.energy);
+          container.find('tr.info-energy').toggle((((_ref55 = pilot.ship_override) != null ? _ref55.energy : void 0) != null) || (ship.energy != null));
           container.find('tr.info-range').hide();
           container.find('td.info-rangebonus').hide();
-          container.find('tr.info-agility td.info-data').text((_ref53 = (_ref54 = pilot.ship_override) != null ? _ref54.agility : void 0) != null ? _ref53 : ship.agility);
+          container.find('tr.info-agility td.info-data').text((_ref56 = (_ref57 = pilot.ship_override) != null ? _ref57.agility : void 0) != null ? _ref56 : ship.agility);
           container.find('tr.info-agility').show();
-          container.find('tr.info-hull td.info-data').text((_ref55 = (_ref56 = pilot.ship_override) != null ? _ref56.hull : void 0) != null ? _ref55 : ship.hull);
+          container.find('tr.info-hull td.info-data').text((_ref58 = (_ref59 = pilot.ship_override) != null ? _ref59.hull : void 0) != null ? _ref58 : ship.hull);
           container.find('tr.info-hull').show();
-          container.find('tr.info-shields td.info-data').text((_ref57 = (_ref58 = pilot.ship_override) != null ? _ref58.shields : void 0) != null ? _ref57 : ship.shields);
+          container.find('tr.info-shields td.info-data').text((_ref60 = (_ref61 = pilot.ship_override) != null ? _ref61.shields : void 0) != null ? _ref60 : ship.shields);
           container.find('tr.info-shields').show();
           if (((effective_stats != null ? effective_stats.force : void 0) != null) || (data.force != null)) {
-            container.find('tr.info-force td.info-data').html(((_ref59 = (_ref60 = pilot.ship_override) != null ? _ref60.force : void 0) != null ? _ref59 : pilot.force) + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>');
+            container.find('tr.info-force td.info-data').html(((_ref62 = (_ref63 = pilot.ship_override) != null ? _ref63.force : void 0) != null ? _ref62 : pilot.force) + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>');
             container.find('tr.info-force').show();
           } else {
             container.find('tr.info-force').hide();
@@ -12138,39 +5275,15 @@ exportObj.SquadBuilder = (function() {
           } else {
             container.find('tr.info-charge').hide();
           }
-          container.find('tr.info-actions td.info-data').html((((function() {
-            var _k, _len2, _ref61, _ref62, _ref63, _results;
-            _ref63 = (_ref61 = (_ref62 = pilot.ship_override) != null ? _ref62.actions : void 0) != null ? _ref61 : exportObj.ships[data.ship].actions;
-            _results = [];
-            for (_k = 0, _len2 = _ref63.length; _k < _len2; _k++) {
-              action = _ref63[_k];
-              _results.push(this.formatActions(action));
-            }
-            return _results;
-          }).call(this)).join(', ')).replace(/, <i class="xwing-miniatures-font xwing-miniatures-font-linked/g, ' <i class="xwing-miniatures-font xwing-miniatures-font-linked'));
-          if (ships[data.ship].actionsred != null) {
-            container.find('tr.info-actions-red td.info-data-red').html(((function() {
-              var _k, _len2, _ref61, _ref62, _ref63, _results;
-              _ref63 = (_ref61 = (_ref62 = pilot.ship_override) != null ? _ref62.actionsred : void 0) != null ? _ref61 : exportObj.ships[data.ship].actionsred;
-              _results = [];
-              for (_k = 0, _len2 = _ref63.length; _k < _len2; _k++) {
-                action = _ref63[_k];
-                _results.push(this.formatRedActions(action));
-              }
-              return _results;
-            }).call(this)).join(', '));
-            container.find('tr.info-actions-red').show();
-          } else {
-            container.find('tr.info-actions-red').hide();
-          }
+          container.find('tr.info-actions td.info-data').html(this.formatActions((_ref64 = (_ref65 = pilot.ship_override) != null ? _ref65.actions : void 0) != null ? _ref64 : exportObj.ships[data.ship].actions, ", ", (_ref66 = pilot.keyword) != null ? _ref66 : []));
           container.find('tr.info-actions').show();
           container.find('tr.info-upgrades').show();
           container.find('tr.info-upgrades td.info-data').html(((function() {
-            var _k, _len2, _ref61, _ref62, _results;
-            _ref62 = (_ref61 = data.upgrades) != null ? _ref61 : [];
+            var _k, _len2, _ref67, _ref68, _results;
+            _ref68 = (_ref67 = data.upgrades) != null ? _ref67 : [];
             _results = [];
-            for (_k = 0, _len2 = _ref62.length; _k < _len2; _k++) {
-              upgrade = _ref62[_k];
+            for (_k = 0, _len2 = _ref68.length; _k < _len2; _k++) {
+              upgrade = _ref68[_k];
               _results.push(exportObj.upgrades[upgrade].display_name != null ? exportObj.upgrades[upgrade].display_name : upgrade);
             }
             return _results;
@@ -12181,11 +5294,11 @@ exportObj.SquadBuilder = (function() {
         case 'Addon':
           container.find('.info-type').text(additional_opts.addon_type);
           container.find('.info-sources.info-data').text(((function() {
-            var _k, _len2, _ref61, _results;
-            _ref61 = data.sources;
+            var _k, _len2, _ref67, _results;
+            _ref67 = data.sources;
             _results = [];
-            for (_k = 0, _len2 = _ref61.length; _k < _len2; _k++) {
-              source = _ref61[_k];
+            for (_k = 0, _len2 = _ref67.length; _k < _len2; _k++) {
+              source = _ref67[_k];
               _results.push(exportObj.translate(this.language, 'sources', source));
             }
             return _results;
@@ -12204,8 +5317,8 @@ exportObj.SquadBuilder = (function() {
           } else {
             uniquedots = "";
           }
-          if (((_ref61 = this.collection) != null ? _ref61.counts : void 0) != null) {
-            addon_count = (_ref62 = (_ref63 = this.collection.counts) != null ? (_ref64 = _ref63['upgrade']) != null ? _ref64[data.name] : void 0 : void 0) != null ? _ref62 : 0;
+          if (((_ref67 = this.collection) != null ? _ref67.counts : void 0) != null) {
+            addon_count = (_ref68 = (_ref69 = this.collection.counts) != null ? (_ref70 = _ref69['upgrade']) != null ? _ref70[data.name] : void 0 : void 0) != null ? _ref68 : 0;
             container.find('.info-collection').text("You have " + addon_count + " in your collection.");
             container.find('.info-collection').show();
           } else {
@@ -12217,13 +5330,13 @@ exportObj.SquadBuilder = (function() {
             if ((data.variableagility != null) && data.variableagility) {
               point_info += "agility is " + (function() {
                 _results = [];
-                for (var _k = 0, _ref65 = data.pointsarray.length - 1; 0 <= _ref65 ? _k <= _ref65 : _k >= _ref65; 0 <= _ref65 ? _k++ : _k--){ _results.push(_k); }
+                for (var _k = 0, _ref71 = data.pointsarray.length - 1; 0 <= _ref71 ? _k <= _ref71 : _k >= _ref71; 0 <= _ref71 ? _k++ : _k--){ _results.push(_k); }
                 return _results;
               }).apply(this);
             } else if ((data.variableinit != null) && data.variableinit) {
               point_info += "initiative is " + (function() {
                 _results1 = [];
-                for (var _l = 0, _ref66 = data.pointsarray.length - 1; 0 <= _ref66 ? _l <= _ref66 : _l >= _ref66; 0 <= _ref66 ? _l++ : _l--){ _results1.push(_l); }
+                for (var _l = 0, _ref72 = data.pointsarray.length - 1; 0 <= _ref72 ? _l <= _ref72 : _l >= _ref72; 0 <= _ref72 ? _l++ : _l--){ _results1.push(_l); }
                 return _results1;
               }).apply(this);
             } else if ((data.variablebase != null) && data.variablebase) {
@@ -12236,7 +5349,7 @@ exportObj.SquadBuilder = (function() {
           } else {
             container.find('.info-solitary').hide();
           }
-          container.find('p.info-text').html((point_info != null ? point_info : '') + ((_ref67 = data.text) != null ? _ref67 : ''));
+          container.find('p.info-text').html((point_info != null ? point_info : '') + ((_ref73 = data.text) != null ? _ref73 : ''));
           container.find('p.info-text').show();
           container.find('tr.info-ship').hide();
           container.find('tr.info-base').hide();
@@ -12284,7 +5397,12 @@ exportObj.SquadBuilder = (function() {
           } else {
             container.find('tr.info-attack-bullseye').hide();
           }
-          container.find('tr.info-attack-fullfront').hide();
+          if (data.attackf != null) {
+            container.find('tr.info-attack-fullfront td.info-data').text(data.attackf);
+            container.find('tr.info-attack-fullfront').show();
+          } else {
+            container.find('tr.info-attack-fullfront').hide();
+          }
           container.find('tr.info-attack-right').hide();
           container.find('tr.info-attack-left').hide();
           container.find('tr.info-attack-back').hide();
@@ -12311,7 +5429,6 @@ exportObj.SquadBuilder = (function() {
           container.find('tr.info-hull').hide();
           container.find('tr.info-shields').hide();
           container.find('tr.info-actions').hide();
-          container.find('tr.info-actions-red').hide();
           container.find('tr.info-upgrades').hide();
           container.find('p.info-maneuvers').hide();
           break;
@@ -12331,7 +5448,6 @@ exportObj.SquadBuilder = (function() {
           container.find('tr.info-hull').hide();
           container.find('tr.info-shields').hide();
           container.find('tr.info-actions').hide();
-          container.find('tr.info-actions-red').hide();
           container.find('tr.info-upgrades').hide();
           container.find('p.info-maneuvers').hide();
           container.find('tr.info-energy').hide();
@@ -12358,9 +5474,9 @@ exportObj.SquadBuilder = (function() {
             item = data[_m];
             missingStuffInfoText += "<li><strong>" + (item.display_name != null ? item.display_name : item.name) + "</strong> (";
             first = true;
-            _ref68 = item.sources;
-            for (_n = 0, _len3 = _ref68.length; _n < _len3; _n++) {
-              source = _ref68[_n];
+            _ref74 = item.sources;
+            for (_n = 0, _len3 = _ref74.length; _n < _len3; _n++) {
+              source = _ref74[_n];
               if (!first) {
                 missingStuffInfoText += ", ";
               }
@@ -12379,7 +5495,6 @@ exportObj.SquadBuilder = (function() {
           container.find('tr.info-hull').hide();
           container.find('tr.info-shields').hide();
           container.find('tr.info-actions').hide();
-          container.find('tr.info-actions-red').hide();
           container.find('tr.info-upgrades').hide();
           container.find('p.info-maneuvers').hide();
           container.find('tr.info-energy').hide();
@@ -12876,7 +5991,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.loadFromXWS = function(xws, cb) {
-    var addons, error, key, new_ship, pilot, pilotxws, possible_pilot, possible_pilots, serialized_squad, slot, success, upgrade, upgrade_canonical, upgrade_canonicals, upgrade_type, version_list, x, xws_faction, _base1, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _ref3, _ref4;
+    var addons, error, key, new_ship, pilot, pilotxws, possible_pilot, possible_pilots, serialized_squad, slot, success, upgrade, upgrade_canonical, upgrade_canonicals, upgrade_type, version_list, x, xws_faction, _base, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _ref3, _ref4;
     success = null;
     error = null;
     if (xws.version != null) {
@@ -12952,7 +6067,7 @@ exportObj.SquadBuilder = (function() {
               upgrade_canonical = upgrade_canonicals[_k];
               slot = null;
               slot = (_ref4 = exportObj.fromXWSUpgrade[upgrade_type]) != null ? _ref4 : upgrade_type.capitalize();
-              upgrade = (_base1 = exportObj.upgradesBySlotXWSName[slot])[upgrade_canonical] != null ? _base1[upgrade_canonical] : _base1[upgrade_canonical] = exportObj.upgradesBySlotCanonicalName[slot][upgrade_canonical];
+              upgrade = (_base = exportObj.upgradesBySlotXWSName[slot])[upgrade_canonical] != null ? _base[upgrade_canonical] : _base[upgrade_canonical] = exportObj.upgradesBySlotCanonicalName[slot][upgrade_canonical];
               if (upgrade == null) {
                 console.log("Failed to load xws upgrade: " + upgrade_canonical);
                 error += "Skipped upgrade " + upgrade_canonical;
@@ -13026,7 +6141,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 13534
+                      lineno: 5217
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -13046,107 +6161,95 @@ Ship = (function() {
   };
 
   Ship.prototype.copyFrom = function(other) {
-    var available_pilots, delayed_upgrades, i, id, no_uniques_involved, other_upgrade, other_upgrades, pilot_data, upgrade, _i, _j, _k, _l, _len, _len1, _len2, _len3, _name, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
+    var available_pilots, delayed_upgrades, id, no_uniques_involved, other_upgrade, other_upgrades, pilot_data, upgrade, _i, _j, _k, _len, _len1, _len2, _name, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6;
     if (other === this) {
       throw new Error("Cannot copy from self");
     }
     if (!((other.pilot != null) && (other.data != null))) {
       return;
     }
-    if (other.pilot.unique || ((other.pilot.max_per_squad != null) && this.builder.countPilots(other.pilot.canonical_name) >= other.pilot.max_per_squad)) {
-      available_pilots = (function() {
-        var _i, _len, _ref, _results;
-        _ref = this.builder.getAvailablePilotsForShipIncluding(other.data.name);
-        _results = [];
+    if (this.builder.isQuickbuild) {
+      if (!(other.pilot.unique || ((other.pilot.max_per_squad != null) && this.builder.countPilots(other.pilot.canonical_name) >= other.pilot.max_per_squad))) {
+        no_uniques_involved = true;
+        _ref = other.upgrades;
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          pilot_data = _ref[_i];
-          if (!pilot_data.disabled) {
-            _results.push(pilot_data);
-          }
-        }
-        return _results;
-      }).call(this);
-      if (available_pilots.length > 0) {
-        this.setPilotById(available_pilots[0].id, true);
-        if (!this.builder.isQuickbuild) {
-          other_upgrades = {};
-          _ref = other.upgrades;
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            upgrade = _ref[_i];
-            if (((upgrade != null ? upgrade.data : void 0) != null) && !upgrade.data.unique && ((upgrade.data.max_per_squad == null) || this.builder.countUpgrades(upgrade.data.canonical_name) < upgrade.data.max_per_squad)) {
-              if (other_upgrades[_name = upgrade.slot] == null) {
-                other_upgrades[_name] = [];
+          upgrade = _ref[_i];
+          if (((((_ref1 = upgrade.data) != null ? _ref1.unique : void 0) != null) && upgrade.data.unique) || ((((_ref2 = upgrade.data) != null ? _ref2.max_per_squad : void 0) != null) && this.builder.countUpgrades(upgrade.data.canonical_name) >= upgrade.data.max_per_squad) || (((_ref3 = upgrade.data) != null ? _ref3.solitary : void 0) != null)) {
+            no_uniques_involved = false;
+            available_pilots = (function() {
+              var _j, _len1, _ref4, _results;
+              _ref4 = this.builder.getAvailablePilotsForShipIncluding(other.data.name);
+              _results = [];
+              for (_j = 0, _len1 = _ref4.length; _j < _len1; _j++) {
+                pilot_data = _ref4[_j];
+                if (!pilot_data.disabled) {
+                  _results.push(pilot_data);
+                }
               }
-              other_upgrades[upgrade.slot].push(upgrade);
+              return _results;
+            }).call(this);
+            if (available_pilots.length > 0) {
+              this.setPilotById(available_pilots[0].id, true);
+              break;
+            } else {
+              return;
             }
           }
-          delayed_upgrades = {};
-          _ref1 = this.upgrades;
-          for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-            upgrade = _ref1[_j];
-            other_upgrade = ((_ref2 = other_upgrades[upgrade.slot]) != null ? _ref2 : []).shift();
-            if (other_upgrade != null) {
-              upgrade.setById(other_upgrade.data.id);
-              if (!upgrades.lastSetValid) {
-                delayed_upgrades[other_upgrade.data.id] = upgrade;
-              }
-            }
-          }
-          for (id in delayed_upgrades) {
-            upgrade = delayed_upgrades[id];
-            upgrade.setById(id);
-          }
         }
-      } else {
-        return;
-      }
-    } else if (this.builder.isQuickbuild) {
-      no_uniques_involved = true;
-      _ref3 = other.upgrades;
-      for (_k = 0, _len2 = _ref3.length; _k < _len2; _k++) {
-        upgrade = _ref3[_k];
-        if (((((_ref4 = upgrade.data) != null ? _ref4.unique : void 0) != null) && upgrade.data.unique) || ((((_ref5 = upgrade.data) != null ? _ref5.max_per_squad : void 0) != null) && this.builder.countUpgrades(upgrade.data.canonical_name) >= upgrade.data.max_per_squad) || (((_ref6 = upgrade.data) != null ? _ref6.solitary : void 0) != null)) {
-          no_uniques_involved = false;
-          available_pilots = (function() {
-            var _l, _len3, _ref7, _results;
-            _ref7 = this.builder.getAvailablePilotsForShipIncluding(other.data.name);
-            _results = [];
-            for (_l = 0, _len3 = _ref7.length; _l < _len3; _l++) {
-              pilot_data = _ref7[_l];
-              if (!pilot_data.disabled) {
-                _results.push(pilot_data);
-              }
-            }
-            return _results;
-          }).call(this);
-          if (available_pilots.length > 0) {
-            this.setPilotById(available_pilots[0].id, true);
-            break;
-          } else {
-            return;
-          }
+        if (no_uniques_involved) {
+          this.setPilotById(other.quickbuildId);
         }
-      }
-      if (no_uniques_involved) {
-        this.setPilotById(other.quickbuildId);
       }
     } else {
-      this.setPilotById(other.pilot.id, true);
+      if (other.pilot.unique || ((other.pilot.max_per_squad != null) && this.builder.countPilots(other.pilot.canonical_name) >= other.pilot.max_per_squad)) {
+        available_pilots = (function() {
+          var _j, _len1, _ref4, _results;
+          _ref4 = this.builder.getAvailablePilotsForShipIncluding(other.data.name);
+          _results = [];
+          for (_j = 0, _len1 = _ref4.length; _j < _len1; _j++) {
+            pilot_data = _ref4[_j];
+            if (!pilot_data.disabled) {
+              _results.push(pilot_data);
+            }
+          }
+          return _results;
+        }).call(this);
+        if (available_pilots.length > 0) {
+          this.setPilotById(available_pilots[0].id, true);
+        } else {
+          return;
+        }
+      } else {
+        this.setPilotById(other.pilot.id, true);
+      }
+      other_upgrades = {};
+      _ref4 = other.upgrades;
+      for (_j = 0, _len1 = _ref4.length; _j < _len1; _j++) {
+        upgrade = _ref4[_j];
+        if (((upgrade != null ? upgrade.data : void 0) != null) && !upgrade.data.unique && ((upgrade.data.max_per_squad == null) || this.builder.countUpgrades(upgrade.data.canonical_name) < upgrade.data.max_per_squad)) {
+          if (other_upgrades[_name = upgrade.slot] == null) {
+            other_upgrades[_name] = [];
+          }
+          other_upgrades[upgrade.slot].push(upgrade);
+        }
+      }
       delayed_upgrades = {};
-      _ref7 = other.upgrades;
-      for (i = _l = 0, _len3 = _ref7.length; _l < _len3; i = ++_l) {
-        other_upgrade = _ref7[i];
-        if ((other_upgrade.data != null) && !other_upgrade.data.unique && i < this.upgrades.length && ((other_upgrade.data.max_per_squad == null) || this.builder.countUpgrades(other_upgrade.data.canonical_name) < other_upgrade.data.max_per_squad)) {
-          this.upgrades[i].setById(other_upgrade.data.id);
-          if (!this.upgrades[i].lastSetValid) {
-            delayed_upgrades[i] = other_upgrade.data.id;
+      _ref5 = this.upgrades;
+      for (_k = 0, _len2 = _ref5.length; _k < _len2; _k++) {
+        upgrade = _ref5[_k];
+        other_upgrade = ((_ref6 = other_upgrades[upgrade.slot]) != null ? _ref6 : []).shift();
+        if (other_upgrade != null) {
+          upgrade.setById(other_upgrade.data.id);
+          if (!upgrades.lastSetValid) {
+            delayed_upgrades[other_upgrade.data.id] = upgrade;
           }
         }
       }
-      for (i in delayed_upgrades) {
-        id = delayed_upgrades[i];
-        this.upgrades[i].setById(id);
+      for (id in delayed_upgrades) {
+        upgrade = delayed_upgrades[id];
+        upgrade.setById(id);
       }
+      this.addStandardizedUpgrades();
     }
     this.updateSelections();
     this.builder.container.trigger('xwing:pointsUpdated');
@@ -13255,7 +6358,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 13658
+                          lineno: 5327
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -13305,7 +6408,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 13691
+                                  lineno: 5360
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -13343,6 +6446,25 @@ Ship = (function() {
           }
         });
       })(this)(__iced_k);
+    }
+  };
+
+  Ship.prototype.addStandardizedUpgrades = function() {
+    var idx, upgrade, _i, _len, _ref, _results;
+    idx = this.builder.standard_list['Ship'].indexOf(this.data.name);
+    if (idx > -1) {
+      _ref = this.upgrades;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        upgrade = _ref[_i];
+        if (exportObj.slotsMatching(upgrade.slot, this.builder.standard_list['Upgrade'][idx].slot)) {
+          upgrade.setData(this.builder.standard_list['Upgrade'][idx]);
+          break;
+        } else {
+          _results.push(void 0);
+        }
+      }
+      return _results;
     }
   };
 
@@ -13384,7 +6506,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 13742
+                      lineno: 5418
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -13400,6 +6522,7 @@ Ship = (function() {
               }
               _this.copy_button.show();
               _this.setShipType(_this.pilot.ship);
+              _this.addStandardizedUpgrades();
               if (((_this.pilot.autoequip != null) || ((exportObj.ships[_this.pilot.ship].autoequip != null) && !same_ship)) && !noautoequip) {
                 autoequip = ((_ref2 = _this.pilot.autoequip) != null ? _ref2 : []).concat((_ref1 = exportObj.ships[_this.pilot.ship].autoequip) != null ? _ref1 : []);
                 for (_j = 0, _len1 = autoequip.length; _j < _len1; _j++) {
@@ -13464,7 +6587,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 13771
+                lineno: 5448
               })
             ]);
             __iced_deferrals._fulfill();
@@ -13533,7 +6656,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 13800
+              lineno: 5477
             }));
           }
         }
@@ -13625,7 +6748,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 13856
+                lineno: 5533
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -13974,71 +7097,44 @@ Ship = (function() {
   };
 
   Ship.prototype.toHTML = function() {
-    var HalfPoints, Threshold, action, action_bar, action_bar_red, action_icons, action_icons_red, actionname, actionred, attackHTML, attack_icon, attackbHTML, attackdtHTML, attackfHTML, attacklHTML, attackrHTML, attacktHTML, chargeHTML, color, count, effective_stats, energyHTML, engagementHTML, forceHTML, html, hullIconHTML, points, prefix, recurringicon, shieldIconHTML, shieldRECUR, slotted_upgrades, suffix, upgrade, _, _i, _j, _k, _l, _len, _len1, _len2, _m, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var HalfPoints, Threshold, action_bar, attackHTML, attack_icon, attackbHTML, attackbullHTML, attackdtHTML, attackfHTML, attacklHTML, attackrHTML, attacktHTML, chargeHTML, count, effective_stats, energyHTML, engagementHTML, forceHTML, html, hullIconHTML, points, recurringicon, shieldIconHTML, shieldRECUR, slotted_upgrades, upgrade, _, _i, _j, _k, _len, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     effective_stats = this.effectiveStats();
-    action_icons = [];
-    action_icons_red = [];
-    _ref = effective_stats.actions;
-    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      action = _ref[_i];
-      color = "action ";
-      actionname = "";
-      prefix = "";
-      suffix = "";
-      if (action.search('F-') !== -1) {
-        color = "force ";
-        actionname = action.toLowerCase().replace(/F-/gi, '').replace(/[^0-9a-z]/gi, '');
-      } else if (action.search('R> ') !== -1) {
-        color = "red ";
-        actionname = action.toLowerCase().replace(/R> /gi, '').replace(/[^0-9a-z]/gi, '');
-        prefix = "<i class=\"xwing-miniatures-font xwing-miniatures-font-linked red\"></i> ";
-        suffix = "&nbsp;";
-      } else if (action.search('> ') !== -1) {
-        actionname = action.toLowerCase().replace(/> /gi, '').replace(/[^0-9a-z]/gi, '');
-        prefix = "<i class=\"xwing-miniatures-font xwing-miniatures-font-linked\"></i> ";
-        suffix = "&nbsp;";
-      } else {
-        actionname = action.toLowerCase().replace(/[^0-9a-z]/gi, '');
-      }
-      action_icons.push(prefix + "<i class=\"xwing-miniatures-font " + color + "xwing-miniatures-font-" + actionname + "\"></i> " + suffix);
-    }
-    _ref1 = effective_stats.actionsred;
-    for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-      actionred = _ref1[_j];
-      action_icons.push("<i class=\"xwing-miniatures-font red xwing-miniatures-font-" + actionred.toLowerCase().replace(/[^0-9a-z]/gi, '') + "\"></i> ");
-    }
-    action_bar = action_icons.join(' ');
-    action_bar_red = action_icons_red.join(' ');
-    attack_icon = (_ref2 = this.data.attack_icon) != null ? _ref2 : 'xwing-miniatures-font-frontarc';
+    action_bar = this.builder.formatActions(effective_stats.actions, "&nbsp;&nbsp;", (_ref = this.pilot.keyword) != null ? _ref : []);
+    attack_icon = (_ref1 = this.data.attack_icon) != null ? _ref1 : 'xwing-miniatures-font-frontarc';
     engagementHTML = (this.pilot.engagement != null) ? $.trim("<span class=\"info-data info-skill\">ENG " + this.pilot.engagement + "</span>") : '';
-    attackHTML = (effective_stats.attack != null) ? $.trim("<i class=\"xwing-miniatures-font header-attack " + attack_icon + "\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref3 = (_ref4 = this.pilot.ship_override) != null ? _ref4.attack : void 0) != null ? _ref3 : this.data.attack, effective_stats, 'attack')) + "</span>") : '';
+    attackHTML = (effective_stats.attack != null) ? $.trim("<i class=\"xwing-miniatures-font header-attack " + attack_icon + "\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref2 = (_ref3 = this.pilot.ship_override) != null ? _ref3.attack : void 0) != null ? _ref2 : this.data.attack, effective_stats, 'attack')) + "</span>") : '';
+    if (effective_stats.attackbull != null) {
+      attackbullHTML = $.trim("<i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-bullseyearc\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref4 = (_ref5 = this.pilot.ship_override) != null ? _ref5.attackbull : void 0) != null ? _ref4 : this.data.attackbull, effective_stats, 'attackbull')) + "</span>");
+    } else {
+      attackbullHTML = '';
+    }
     if (effective_stats.attackb != null) {
-      attackbHTML = $.trim("<i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref5 = (_ref6 = this.pilot.ship_override) != null ? _ref6.attackb : void 0) != null ? _ref5 : this.data.attackb, effective_stats, 'attackb')) + "</span>");
+      attackbHTML = $.trim("<i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-reararc\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref6 = (_ref7 = this.pilot.ship_override) != null ? _ref7.attackb : void 0) != null ? _ref6 : this.data.attackb, effective_stats, 'attackb')) + "</span>");
     } else {
       attackbHTML = '';
     }
     if (effective_stats.attackf != null) {
-      attackfHTML = $.trim("<i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref7 = (_ref8 = this.pilot.ship_override) != null ? _ref8.attackf : void 0) != null ? _ref7 : this.data.attackf, effective_stats, 'attackf')) + "</span>");
+      attackfHTML = $.trim("<i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-fullfrontarc\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref8 = (_ref9 = this.pilot.ship_override) != null ? _ref9.attackf : void 0) != null ? _ref8 : this.data.attackf, effective_stats, 'attackf')) + "</span>");
     } else {
       attackfHTML = '';
     }
     if (effective_stats.attackt != null) {
-      attacktHTML = $.trim("<i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref9 = (_ref10 = this.pilot.ship_override) != null ? _ref10.attackt : void 0) != null ? _ref9 : this.data.attackt, effective_stats, 'attackt')) + "</span>");
+      attacktHTML = $.trim("<i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-singleturretarc\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref10 = (_ref11 = this.pilot.ship_override) != null ? _ref11.attackt : void 0) != null ? _ref10 : this.data.attackt, effective_stats, 'attackt')) + "</span>");
     } else {
       attacktHTML = '';
     }
     if (effective_stats.attackl != null) {
-      attacklHTML = $.trim("<i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-leftarc\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref11 = (_ref12 = this.pilot.ship_override) != null ? _ref12.attackl : void 0) != null ? _ref11 : this.data.attackl, effective_stats, 'attackl')) + "</span>");
+      attacklHTML = $.trim("<i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-leftarc\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref12 = (_ref13 = this.pilot.ship_override) != null ? _ref13.attackl : void 0) != null ? _ref12 : this.data.attackl, effective_stats, 'attackl')) + "</span>");
     } else {
       attacklHTML = '';
     }
     if (effective_stats.attackr != null) {
-      attackrHTML = $.trim("<i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-rightarc\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref13 = (_ref14 = this.pilot.ship_override) != null ? _ref14.attackr : void 0) != null ? _ref13 : this.data.attackr, effective_stats, 'attackr')) + "</span>");
+      attackrHTML = $.trim("<i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-rightarc\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref14 = (_ref15 = this.pilot.ship_override) != null ? _ref15.attackr : void 0) != null ? _ref14 : this.data.attackr, effective_stats, 'attackr')) + "</span>");
     } else {
       attackrHTML = '';
     }
     if (effective_stats.attackdt != null) {
-      attackdtHTML = $.trim("<i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref15 = (_ref16 = this.pilot.ship_override) != null ? _ref16.attackdt : void 0) != null ? _ref15 : this.data.attackdt, effective_stats, 'attackdt')) + "</span>");
+      attackdtHTML = $.trim("<i class=\"xwing-miniatures-font header-attack xwing-miniatures-font-doubleturretarc\"></i>\n<span class=\"info-data info-attack\">" + (statAndEffectiveStat((_ref16 = (_ref17 = this.pilot.ship_override) != null ? _ref17.attackdt : void 0) != null ? _ref16 : this.data.attackdt, effective_stats, 'attackdt')) + "</span>");
     } else {
       attackdtHTML = '';
     }
@@ -14050,14 +7146,14 @@ Ship = (function() {
         ++count;
       }
     }
-    energyHTML = (((_ref17 = this.pilot.ship_override) != null ? _ref17.energy : void 0) != null) || (this.data.energy != null) ? $.trim("<i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i>\n<span class=\"info-data info-energy\">" + (statAndEffectiveStat((_ref18 = (_ref19 = this.pilot.ship_override) != null ? _ref19.energy : void 0) != null ? _ref18 : this.data.energy, effective_stats, 'energy')) + recurringicon + "</span>") : '';
-    forceHTML = (this.pilot.force != null) ? $.trim("<i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i>\n<span class=\"info-data info-force\">" + (statAndEffectiveStat((_ref20 = (_ref21 = this.pilot.ship_override) != null ? _ref21.force : void 0) != null ? _ref20 : this.pilot.force, effective_stats, 'force')) + "<i class=\"xwing-miniatures-font xwing-miniatures-font-recurring\"></i></span>") : '';
+    energyHTML = (((_ref18 = this.pilot.ship_override) != null ? _ref18.energy : void 0) != null) || (this.data.energy != null) ? $.trim("<i class=\"xwing-miniatures-font header-energy xwing-miniatures-font-energy\"></i>\n<span class=\"info-data info-energy\">" + (statAndEffectiveStat((_ref19 = (_ref20 = this.pilot.ship_override) != null ? _ref20.energy : void 0) != null ? _ref19 : this.data.energy, effective_stats, 'energy')) + recurringicon + "</span>") : '';
+    forceHTML = (this.pilot.force != null) ? $.trim("<i class=\"xwing-miniatures-font header-force xwing-miniatures-font-forcecharge\"></i>\n<span class=\"info-data info-force\">" + (statAndEffectiveStat((_ref21 = (_ref22 = this.pilot.ship_override) != null ? _ref22.force : void 0) != null ? _ref21 : this.pilot.force, effective_stats, 'force')) + "<i class=\"xwing-miniatures-font xwing-miniatures-font-recurring\"></i></span>") : '';
     if (this.pilot.charge != null) {
       recurringicon = '';
       if (this.pilot.recurring != null) {
         recurringicon = "<i class=\"xwing-miniatures-font xwing-miniatures-font-recurring\"></i>";
       }
-      chargeHTML = $.trim("<i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i><span class=\"info-data info-charge\">" + (statAndEffectiveStat((_ref22 = (_ref23 = this.pilot.ship_override) != null ? _ref23.charge : void 0) != null ? _ref22 : this.pilot.charge, effective_stats, 'charge')) + recurringicon + "</span>");
+      chargeHTML = $.trim("<i class=\"xwing-miniatures-font header-charge xwing-miniatures-font-charge\"></i><span class=\"info-data info-charge\">" + (statAndEffectiveStat((_ref23 = (_ref24 = this.pilot.ship_override) != null ? _ref24.charge : void 0) != null ? _ref23 : this.pilot.charge, effective_stats, 'charge')) + recurringicon + "</span>");
     } else {
       chargeHTML = '';
     }
@@ -14071,28 +7167,28 @@ Ship = (function() {
     }
     shieldIconHTML = '';
     if (effective_stats.shields) {
-      for (_ = _k = 1, _ref24 = effective_stats.shields - 1; 1 <= _ref24 ? _k <= _ref24 : _k >= _ref24; _ = 1 <= _ref24 ? ++_k : --_k) {
+      for (_ = _i = 1, _ref25 = effective_stats.shields - 1; 1 <= _ref25 ? _i <= _ref25 : _i >= _ref25; _ = 1 <= _ref25 ? ++_i : --_i) {
         shieldIconHTML += "<i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield expanded-hull-or-shield\"></i>";
       }
       shieldIconHTML += "<i class=\"xwing-miniatures-font header-shield xwing-miniatures-font-shield\"></i>";
     }
     hullIconHTML = '';
     if (effective_stats.hull) {
-      for (_ = _l = 1, _ref25 = effective_stats.hull - 1; 1 <= _ref25 ? _l <= _ref25 : _l >= _ref25; _ = 1 <= _ref25 ? ++_l : --_l) {
+      for (_ = _j = 1, _ref26 = effective_stats.hull - 1; 1 <= _ref26 ? _j <= _ref26 : _j >= _ref26; _ = 1 <= _ref26 ? ++_j : --_j) {
         hullIconHTML += "<i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull expanded-hull-or-shield\"></i>";
       }
       hullIconHTML += "<i class=\"xwing-miniatures-font header-hull xwing-miniatures-font-hull\"></i>";
     }
-    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.xws + "\"></i><span class=\"fancy-ship-type\"> " + (this.data.display_name ? this.data.display_name : this.data.name) + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + (this.quickbuildId !== -1 ? (this.primary ? this.getPoints() : '*') : this.pilot.points) + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">INI " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + engagementHTML + "\n        " + attackHTML + "\n        " + attackbHTML + "\n        " + attackfHTML + "\n        " + attacktHTML + "\n        " + attacklHTML + "\n        " + attackrHTML + "\n        " + attackdtHTML + "\n        <i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref26 = (_ref27 = this.pilot.ship_override) != null ? _ref27.agility : void 0) != null ? _ref26 : this.data.agility, effective_stats, 'agility')) + "</span>                    \n        " + hullIconHTML + "\n        <span class=\"info-data info-hull\">" + (statAndEffectiveStat((_ref28 = (_ref29 = this.pilot.ship_override) != null ? _ref29.hull : void 0) != null ? _ref28 : this.data.hull, effective_stats, 'hull')) + "</span>\n        " + shieldIconHTML + "\n        <span class=\"info-data info-shields\">" + (statAndEffectiveStat((_ref30 = (_ref31 = this.pilot.ship_override) != null ? _ref31.shields : void 0) != null ? _ref30 : this.data.shields, effective_stats, 'shields')) + shieldRECUR + "</span>\n        " + energyHTML + "\n        " + forceHTML + "\n        " + chargeHTML + "\n        <br />\n        " + action_bar + "\n        &nbsp;&nbsp;\n        " + action_bar_red + "\n    </div>\n</div>");
+    html = $.trim("<div class=\"fancy-pilot-header\">\n    <div class=\"pilot-header-text\">" + (this.pilot.display_name ? this.pilot.display_name : this.pilot.name) + " <i class=\"xwing-miniatures-ship xwing-miniatures-ship-" + this.data.xws + "\"></i><span class=\"fancy-ship-type\"> " + (this.data.display_name ? this.data.display_name : this.data.name) + "</span></div>\n    <div class=\"mask\">\n        <div class=\"outer-circle\">\n            <div class=\"inner-circle pilot-points\">" + (this.quickbuildId !== -1 ? (this.primary ? this.getPoints() : '*') : this.pilot.points) + "</div>\n        </div>\n    </div>\n</div>\n<div class=\"fancy-pilot-stats\">\n    <div class=\"pilot-stats-content\">\n        <span class=\"info-data info-skill\">INI " + (statAndEffectiveStat(this.pilot.skill, effective_stats, 'skill')) + "</span>\n        " + engagementHTML + "\n        " + attackbullHTML + "\n        " + attackHTML + "\n        " + attackbHTML + "\n        " + attackfHTML + "\n        " + attacktHTML + "\n        " + attacklHTML + "\n        " + attackrHTML + "\n        " + attackdtHTML + "\n        <i class=\"xwing-miniatures-font header-agility xwing-miniatures-font-agility\"></i>\n        <span class=\"info-data info-agility\">" + (statAndEffectiveStat((_ref27 = (_ref28 = this.pilot.ship_override) != null ? _ref28.agility : void 0) != null ? _ref27 : this.data.agility, effective_stats, 'agility')) + "</span>                    \n        " + hullIconHTML + "\n        <span class=\"info-data info-hull\">" + (statAndEffectiveStat((_ref29 = (_ref30 = this.pilot.ship_override) != null ? _ref30.hull : void 0) != null ? _ref29 : this.data.hull, effective_stats, 'hull')) + "</span>\n        " + shieldIconHTML + "\n        <span class=\"info-data info-shields\">" + (statAndEffectiveStat((_ref31 = (_ref32 = this.pilot.ship_override) != null ? _ref32.shields : void 0) != null ? _ref31 : this.data.shields, effective_stats, 'shields')) + shieldRECUR + "</span>\n        " + energyHTML + "\n        " + forceHTML + "\n        " + chargeHTML + "\n        <br />\n        " + action_bar + "\n    </div>\n</div>");
     if (this.pilot.text) {
       html += $.trim("<div class=\"fancy-pilot-text\">" + this.pilot.text + "</div>");
     }
     slotted_upgrades = (function() {
-      var _len2, _m, _ref32, _results;
-      _ref32 = this.upgrades;
+      var _k, _len, _ref33, _results;
+      _ref33 = this.upgrades;
       _results = [];
-      for (_m = 0, _len2 = _ref32.length; _m < _len2; _m++) {
-        upgrade = _ref32[_m];
+      for (_k = 0, _len = _ref33.length; _k < _len; _k++) {
+        upgrade = _ref33[_k];
         if (upgrade.data != null) {
           _results.push(upgrade);
         }
@@ -14101,8 +7197,8 @@ Ship = (function() {
     }).call(this);
     if (slotted_upgrades.length > 0) {
       html += $.trim("<div class=\"fancy-upgrade-container\">");
-      for (_m = 0, _len2 = slotted_upgrades.length; _m < _len2; _m++) {
-        upgrade = slotted_upgrades[_m];
+      for (_k = 0, _len = slotted_upgrades.length; _k < _len; _k++) {
+        upgrade = slotted_upgrades[_k];
         points = upgrade.getPoints();
         html += upgrade.toHTML(points);
       }
@@ -14444,32 +7540,41 @@ Ship = (function() {
   };
 
   Ship.prototype.effectiveStats = function() {
-    var s, stats, upgrade, _i, _j, _len, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var new_stats, s, statentry, stats, upgrade, _i, _j, _k, _len, _len1, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     stats = {
       attack: (_ref = (_ref1 = this.pilot.ship_override) != null ? _ref1.attack : void 0) != null ? _ref : this.data.attack,
       attackf: (_ref2 = (_ref3 = this.pilot.ship_override) != null ? _ref3.attackf : void 0) != null ? _ref2 : this.data.attackf,
-      attackb: (_ref4 = (_ref5 = this.pilot.ship_override) != null ? _ref5.attackb : void 0) != null ? _ref4 : this.data.attackb,
-      attackt: (_ref6 = (_ref7 = this.pilot.ship_override) != null ? _ref7.attackt : void 0) != null ? _ref6 : this.data.attackt,
-      attackl: (_ref8 = (_ref9 = this.pilot.ship_override) != null ? _ref9.attackl : void 0) != null ? _ref8 : this.data.attackl,
-      attackr: (_ref10 = (_ref11 = this.pilot.ship_override) != null ? _ref11.attackr : void 0) != null ? _ref10 : this.data.attackr,
-      attackdt: (_ref12 = (_ref13 = this.pilot.ship_override) != null ? _ref13.attackdt : void 0) != null ? _ref12 : this.data.attackdt,
-      energy: (_ref14 = (_ref15 = this.pilot.ship_override) != null ? _ref15.energy : void 0) != null ? _ref14 : this.data.energy,
-      agility: (_ref16 = (_ref17 = this.pilot.ship_override) != null ? _ref17.agility : void 0) != null ? _ref16 : this.data.agility,
-      hull: (_ref18 = (_ref19 = this.pilot.ship_override) != null ? _ref19.hull : void 0) != null ? _ref18 : this.data.hull,
-      shields: (_ref20 = (_ref21 = this.pilot.ship_override) != null ? _ref21.shields : void 0) != null ? _ref20 : this.data.shields,
-      force: (_ref22 = (_ref23 = (_ref24 = this.pilot.ship_override) != null ? _ref24.force : void 0) != null ? _ref23 : this.pilot.force) != null ? _ref22 : 0,
-      charge: (_ref25 = (_ref26 = this.pilot.ship_override) != null ? _ref26.charge : void 0) != null ? _ref25 : this.pilot.charge,
-      darkside: (_ref27 = (_ref28 = (_ref29 = this.pilot.ship_override) != null ? _ref29.darkside : void 0) != null ? _ref28 : this.pilot.darkside) != null ? _ref27 : false,
-      actions: ((_ref30 = (_ref31 = this.pilot.ship_override) != null ? _ref31.actions : void 0) != null ? _ref30 : this.data.actions).slice(0),
-      actionsred: ((_ref32 = (_ref33 = (_ref34 = this.pilot.ship_override) != null ? _ref34.actionsred : void 0) != null ? _ref33 : this.data.actionsred) != null ? _ref32 : []).slice(0)
+      attackbull: (_ref4 = (_ref5 = this.pilot.ship_override) != null ? _ref5.attackbull : void 0) != null ? _ref4 : this.data.attackbull,
+      attackb: (_ref6 = (_ref7 = this.pilot.ship_override) != null ? _ref7.attackb : void 0) != null ? _ref6 : this.data.attackb,
+      attackt: (_ref8 = (_ref9 = this.pilot.ship_override) != null ? _ref9.attackt : void 0) != null ? _ref8 : this.data.attackt,
+      attackl: (_ref10 = (_ref11 = this.pilot.ship_override) != null ? _ref11.attackl : void 0) != null ? _ref10 : this.data.attackl,
+      attackr: (_ref12 = (_ref13 = this.pilot.ship_override) != null ? _ref13.attackr : void 0) != null ? _ref12 : this.data.attackr,
+      attackdt: (_ref14 = (_ref15 = this.pilot.ship_override) != null ? _ref15.attackdt : void 0) != null ? _ref14 : this.data.attackdt,
+      energy: (_ref16 = (_ref17 = this.pilot.ship_override) != null ? _ref17.energy : void 0) != null ? _ref16 : this.data.energy,
+      agility: (_ref18 = (_ref19 = this.pilot.ship_override) != null ? _ref19.agility : void 0) != null ? _ref18 : this.data.agility,
+      hull: (_ref20 = (_ref21 = this.pilot.ship_override) != null ? _ref21.hull : void 0) != null ? _ref20 : this.data.hull,
+      shields: (_ref22 = (_ref23 = this.pilot.ship_override) != null ? _ref23.shields : void 0) != null ? _ref22 : this.data.shields,
+      force: (_ref24 = (_ref25 = (_ref26 = this.pilot.ship_override) != null ? _ref26.force : void 0) != null ? _ref25 : this.pilot.force) != null ? _ref24 : 0,
+      charge: (_ref27 = (_ref28 = this.pilot.ship_override) != null ? _ref28.charge : void 0) != null ? _ref27 : this.pilot.charge,
+      darkside: (_ref29 = (_ref30 = (_ref31 = this.pilot.ship_override) != null ? _ref31.darkside : void 0) != null ? _ref30 : this.pilot.darkside) != null ? _ref29 : false,
+      actions: ((_ref32 = (_ref33 = this.pilot.ship_override) != null ? _ref33.actions : void 0) != null ? _ref32 : this.data.actions).slice(0)
     };
     stats.maneuvers = [];
-    for (s = _i = 0, _ref35 = ((_ref36 = this.data.maneuvers) != null ? _ref36 : []).length; 0 <= _ref35 ? _i < _ref35 : _i > _ref35; s = 0 <= _ref35 ? ++_i : --_i) {
+    for (s = _i = 0, _ref34 = ((_ref35 = this.data.maneuvers) != null ? _ref35 : []).length; 0 <= _ref34 ? _i < _ref34 : _i > _ref34; s = 0 <= _ref34 ? ++_i : --_i) {
       stats.maneuvers[s] = this.data.maneuvers[s].slice(0);
     }
+    if ((this.pilot.keyword != null) && (__indexOf.call(this.pilot.keyword, "Droid") >= 0) && (stats.actions != null)) {
+      new_stats = [];
+      _ref36 = stats.actions;
+      for (_j = 0, _len = _ref36.length; _j < _len; _j++) {
+        statentry = _ref36[_j];
+        new_stats.push(statentry.replace("Focus", "Calculate"));
+      }
+      stats.actions = new_stats;
+    }
     _ref37 = this.upgrades;
-    for (_j = 0, _len = _ref37.length; _j < _len; _j++) {
-      upgrade = _ref37[_j];
+    for (_k = 0, _len1 = _ref37.length; _k < _len1; _k++) {
+      upgrade = _ref37[_k];
       if ((upgrade != null ? (_ref38 = upgrade.data) != null ? _ref38.modifier_func : void 0 : void 0) != null) {
         upgrade.data.modifier_func(stats);
       }
@@ -14600,6 +7705,61 @@ Ship = (function() {
     return false;
   };
 
+  Ship.prototype.checkKeyword = function(keyword) {
+    var upgrade, word, words, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8;
+    if ((_ref = this.data.name) != null ? _ref.includes(keyword) : void 0) {
+      return true;
+    }
+    _ref2 = (_ref1 = this.data.keyword) != null ? _ref1 : [];
+    for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
+      words = _ref2[_i];
+      if (words === keyword) {
+        return true;
+      }
+    }
+    _ref4 = (_ref3 = this.pilot.keyword) != null ? _ref3 : [];
+    for (_j = 0, _len1 = _ref4.length; _j < _len1; _j++) {
+      words = _ref4[_j];
+      if (words === keyword) {
+        return true;
+      }
+    }
+    _ref5 = this.upgrades;
+    for (_k = 0, _len2 = _ref5.length; _k < _len2; _k++) {
+      upgrade = _ref5[_k];
+      _ref8 = (_ref6 = upgrade != null ? (_ref7 = upgrade.data) != null ? _ref7.keyword : void 0 : void 0) != null ? _ref6 : [];
+      for (_l = 0, _len3 = _ref8.length; _l < _len3; _l++) {
+        word = _ref8[_l];
+        if (word === keyword) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
+  Ship.prototype.checkListForUnique = function(name) {
+    var t, thing, things, _ref;
+    _ref = this.builder.uniques_in_use;
+    for (t in _ref) {
+      things = _ref[t];
+      if (t !== 'Slot') {
+        if (__indexOf.call((function() {
+          var _i, _len, _results;
+          _results = [];
+          for (_i = 0, _len = things.length; _i < _len; _i++) {
+            thing = things[_i];
+            _results.push(thing.canonical_name.getXWSBaseName());
+          }
+          return _results;
+        })(), name) >= 0) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
   Ship.prototype.toXWS = function() {
     var upgrade, upgrade_obj, xws, _i, _len, _ref, _ref1, _ref2;
     xws = {
@@ -14712,7 +7872,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 14730
+                lineno: 6410
               })
             ]);
             __iced_deferrals._fulfill();
@@ -14723,6 +7883,10 @@ GenericAddon = (function() {
       });
     })(this)((function(_this) {
       return function() {
+        var _ref;
+        if (((_ref = _this.data) != null ? _ref.standardized : void 0) != null) {
+          _this.removeStandardized();
+        }
         _this.destroyed = true;
         _this.rescindAddons();
         _this.deoccupyOtherUpgrades();
@@ -14866,7 +8030,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 14820
+                  lineno: 6502
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -14877,6 +8041,10 @@ GenericAddon = (function() {
         });
       })(this)((function(_this) {
         return function() {
+          var _ref1;
+          if (((_ref1 = _this.data) != null ? _ref1.standardized : void 0) != null) {
+            _this.removeStandardized();
+          }
           _this.rescindAddons();
           _this.deoccupyOtherUpgrades();
           (function(__iced_k) {
@@ -14889,7 +8057,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 14825
+                      lineno: 6509
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -14914,6 +8082,9 @@ GenericAddon = (function() {
               _this.unequipOtherUpgrades();
               _this.occupyOtherUpgrades();
               _this.conferAddons();
+              if (_this.data.standardized != null) {
+                _this.addToStandardizedList();
+              }
             } else {
               _this.deoccupyOtherUpgrades();
             }
@@ -14924,6 +8095,54 @@ GenericAddon = (function() {
       })(this));
     } else {
       return __iced_k();
+    }
+  };
+
+  GenericAddon.prototype.addToStandardizedList = function() {
+    var idx, _ref;
+    idx = this.ship.builder.standard_list['Ship'].indexOf(this.ship.data.name);
+    if (idx > -1) {
+      if (((_ref = this.ship.builder.standard_list['Upgrade'][idx]) != null ? _ref.name : void 0) === this.data.name) {
+        return;
+      }
+    }
+    this.ship.builder.standard_list['Upgrade'].push(this.data);
+    return this.ship.builder.standard_list['Ship'].push(this.ship.data.name);
+  };
+
+  GenericAddon.prototype.removeStandardized = function() {
+    var idx, nameToRemove, ship, upgrade, _i, _len, _ref, _ref1, _ref2, _results;
+    idx = this.ship.builder.standard_list['Ship'].indexOf(this.ship.data.name);
+    if (idx > -1) {
+      if (((_ref = this.ship.builder.standard_list['Upgrade'][idx]) != null ? _ref.name : void 0) === this.data.name) {
+        this.ship.builder.standard_list['Upgrade'].splice(idx, 1);
+        this.ship.builder.standard_list['Ship'].splice(idx, 1);
+        nameToRemove = this.data.name;
+        _ref1 = this.ship.builder.ships;
+        _results = [];
+        for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+          ship = _ref1[_i];
+          if (((_ref2 = ship.data) != null ? _ref2.name : void 0) === this.ship.data.name) {
+            _results.push((function() {
+              var _j, _len1, _ref3, _ref4, _results1;
+              _ref3 = ship.upgrades;
+              _results1 = [];
+              for (_j = 0, _len1 = _ref3.length; _j < _len1; _j++) {
+                upgrade = _ref3[_j];
+                if (((_ref4 = upgrade.data) != null ? _ref4.name : void 0) === nameToRemove) {
+                  _results1.push(upgrade.data = null);
+                } else {
+                  _results1.push(void 0);
+                }
+              }
+              return _results1;
+            })());
+          } else {
+            _results.push(void 0);
+          }
+        }
+        return _results;
+      }
     }
   };
 
@@ -14981,7 +8200,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 14870
+            lineno: 6581
           }));
         }
         __iced_deferrals._fulfill();
@@ -15014,14 +8233,14 @@ GenericAddon = (function() {
     if ((data != null ? data.variableagility : void 0) != null) {
       return data != null ? data.pointsarray[ship.data.agility] : void 0;
     } else if ((data != null ? data.variablebase : void 0) != null) {
-      if (!((ship.data.medium != null) || (ship.data.large != null))) {
-        return data != null ? data.pointsarray[0] : void 0;
-      } else if ((ship != null ? ship.data.medium : void 0) != null) {
+      if ((ship != null ? ship.data.medium : void 0) != null) {
         return data != null ? data.pointsarray[1] : void 0;
       } else if ((ship != null ? ship.data.large : void 0) != null) {
         return data != null ? data.pointsarray[2] : void 0;
       } else if ((ship != null ? ship.data.huge : void 0) != null) {
         return data != null ? data.pointsarray[3] : void 0;
+      } else {
+        return data != null ? data.pointsarray[0] : void 0;
       }
     } else if ((data != null ? data.variableinit : void 0) != null) {
       return data != null ? data.pointsarray[ship.pilot.skill] : void 0;
@@ -15050,14 +8269,14 @@ GenericAddon = (function() {
   };
 
   GenericAddon.prototype.toHTML = function(points) {
-    var attackHTML, attackrangebonus, chargeHTML, forceHTML, match_array, restriction_html, text_str, upgrade_slot_font, _base1, _ref;
+    var attackHTML, attackIcon, attackStats, attackrangebonus, chargeHTML, forceHTML, match_array, restriction_html, text_str, upgrade_slot_font, _base, _ref;
     if (this.data != null) {
       if ((this.data.slot != null) && this.data.slot === "HardpointShip") {
         upgrade_slot_font = "hardpoint";
       } else {
         upgrade_slot_font = ((_ref = this.data.slot) != null ? _ref : this.type).toLowerCase().replace(/[^0-9a-z]/gi, '');
       }
-      match_array = typeof (_base1 = this.data).text === "function" ? _base1.text(match(/(<span.*<\/span>)<br \/><br \/>(.*)/)) : void 0;
+      match_array = typeof (_base = this.data).text === "function" ? _base.text(match(/(<span.*<\/span>)<br \/><br \/>(.*)/)) : void 0;
       if (match_array) {
         restriction_html = '<div class="card-restriction-container">' + match_array[1] + '</div>';
         text_str = match_array[2];
@@ -15065,12 +8284,13 @@ GenericAddon = (function() {
         restriction_html = '';
         text_str = this.data.text;
       }
-      if (this.data.rangebonus != null) {
-        attackrangebonus = "<span class=\"upgrade-attack-rangebonus\"><i class=\"xwing-miniatures-font xwing-miniatures-font-rangebonusindicator\"></i></span>";
-      } else {
-        attackrangebonus = '';
+      attackHTML = "";
+      if (this.data.range != null) {
+        attackrangebonus = (this.data.rangebonus != null) ? "<span class=\"upgrade-attack-rangebonus\"><i class=\"xwing-miniatures-font xwing-miniatures-font-rangebonusindicator\"></i></span>" : '';
+        attackStats = $.trim("<span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n" + attackrangebonus);
+        attackIcon = (this.data.attack != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attack + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-frontarc\"></i>") : (this.data.attackt != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attackt + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-singleturretarc\"></i>") : (this.data.attackdt != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attackdt + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-doubleturretarc\"></i>") : (this.data.attackl != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attackl + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-leftarc\"></i>") : (this.data.attackr != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attackr + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-rightarc\"></i>") : (this.data.attackbull != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attackbull + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-bullseyearc\"></i>") : '';
+        attackHTML = $.trim("<div class=\"upgrade-attack\">\n    " + attackStats + "\n    " + attackIcon + "\n</div>");
       }
-      attackHTML = (this.data.attack != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    " + attackrangebonus + "\n    <span class=\"info-data info-attack\">" + this.data.attack + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-frontarc\"></i>\n</div>") : (this.data.attackt != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attackt + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-singleturretarc\"></i>\n</div>") : (this.data.attackdt != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attackdt + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-doubleturretarc\"></i>\n</div>") : (this.data.attackl != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attackl + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-leftarc\"></i>\n</div>") : (this.data.attackr != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attackr + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-rightarc\"></i>\n</div>") : (this.data.attackbull != null) ? $.trim("<div class=\"upgrade-attack\">\n    <span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n    <span class=\"info-data info-attack\">" + this.data.attackbull + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-bullseyearc\"></i>\n</div>") : '';
       if ((this.data.charge != null)) {
         if ((this.data.recurring != null)) {
           chargeHTML = $.trim("<div class=\"upgrade-charge\">\n    <span class=\"info-data info-charge\">" + this.data.charge + "</span>\n    <i class=\"xwing-miniatures-font xwing-miniatures-font-charge\"></i><i class=\"xwing-miniatures-font xwing-miniatures-font-recurring\"></i>\n</div>");
@@ -15402,19 +8622,11 @@ SPEC_URL = 'https://github.com/elistevens/xws-spec';
 exportObj.XWSManager = (function() {
   function XWSManager(args) {
     this.container = $(args.container);
-    this.setupUI();
-    this.setupHandlers();
   }
 
   XWSManager.prototype.setupUI = function() {
     this.container.addClass('d-print-none');
     this.container.html($.trim("<div class=\"row col-md-12 xws-space\">\n    <!-- Import is marked in red since it creates something new -->\n    <button class=\"btn btn-danger from-xws\"><i class=\"fa fa-file-import\"></i>&nbsp;Import from XWS</button>\n    <button class=\"btn btn-primary to-xws\"><i class=\"fa fa-file-export\"></i>&nbsp;Export to XWS</button>\n</div>"));
-    this.xws_export_modal = $(document.createElement('DIV'));
-    this.xws_export_modal.addClass('modal fade xws-modal d-print-none');
-    this.xws_export_modal.tabindex = "-1";
-    this.xws_export_modal.role = "dialog";
-    this.container.append(this.xws_export_modal);
-    this.xws_export_modal.append($.trim("<div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <h3>XWS Export</h3>\n            <button type=\"button\" class=\"close d-print-none\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n        </div>\n        <div class=\"modal-body\">\n            <ul class=\"nav nav-pills\">\n                <li><a id=\"xws-text-tab\" href=\"#xws-text\" data-toggle=\"tab\">Text</a></li>\n                <li><a id=\"xws-qrcode-tab\" href=\"#xws-qrcode\" data-toggle=\"tab\">QR Code</a></li>\n            </ul>\n            <div class=\"tab-content\">\n                <div class=\"tab-pane\" id=\"xws-text\">\n                    Copy and paste this into an XWS-compliant application to transfer your list.\n                    <i>XWS is a way to share X-Wing squads between applications, e.g. YASB and LaunchBay Next</i>\n                    <div class=\"container-fluid\">\n                        <textarea class=\"xws-content\"></textarea>\n                    </div>\n                </div>\n                <div class=\"tab-pane\" id=\"xws-qrcode\">\n                    Below is a QR Code of XWS</i>\n                    <div id=\"xws-qrcode-container\"></div>\n                </div>\n            </div>\n        </div>\n        <div class=\"modal-footer d-print-none\">\n        </div>\n    </div>\n</div>"));
     this.xws_import_modal = $(document.createElement('DIV'));
     this.xws_import_modal.addClass('modal fade xws-modal d-print-none');
     this.xws_import_modal.tabindex = "-1";
@@ -15436,21 +8648,7 @@ exportObj.XWSManager = (function() {
       return function(e) {
         e.preventDefault();
         return $(window).trigger('xwing:pingActiveBuilder', function(builder) {
-          var textarea;
-          textarea = $(_this.xws_export_modal.find('.xws-content'));
-          textarea.attr('readonly');
-          textarea.val(JSON.stringify(builder.toXWS()));
-          $('#xws-qrcode-container').text('');
-          $('#xws-qrcode-container').qrcode({
-            render: 'canvas',
-            text: JSON.stringify(builder.toMinimalXWS()),
-            ec: 'L',
-            size: 256
-          });
-          _this.xws_export_modal.modal('show');
-          $('#xws-text-tab').tab('show');
-          textarea.select();
-          return textarea.focus();
+          return builder.showXWSModal('bla');
         });
       };
     })(this));
@@ -15460,45 +8658,8 @@ exportObj.XWSManager = (function() {
     this.load_xws_button = $(this.xws_import_modal.find('button.import-xws'));
     return this.load_xws_button.click((function(_this) {
       return function(e) {
-        var import_status;
         e.preventDefault();
-        import_status = $(_this.xws_import_modal.find('.xws-import-status'));
-        import_status.text('Loading...');
-        return (function(import_status) {
-          var xws;
-          try {
-            xws = JSON.parse(_this.xws_import_modal.find('.xws-content').val());
-          } catch (_error) {
-            e = _error;
-            import_status.text('Invalid JSON');
-            return;
-          }
-          return (function(xws) {
-            return $(window).trigger('xwing:activateBuilder', [
-              exportObj.fromXWSFaction[xws.faction], function(builder) {
-                if (builder.current_squad.dirty && (builder.backend != null)) {
-                  _this.xws_import_modal.modal('hide');
-                  return builder.backend.warnUnsaved(builder, function() {
-                    return builder.loadFromXWS(xws, function(res) {
-                      if (!res.success) {
-                        _this.xws_import_modal.modal('show');
-                        return import_status.text(res.error);
-                      }
-                    });
-                  });
-                } else {
-                  return builder.loadFromXWS(xws, function(res) {
-                    if (res.success) {
-                      return _this.xws_import_modal.modal('hide');
-                    } else {
-                      return import_status.text(res.error);
-                    }
-                  });
-                }
-              }
-            ]);
-          })(xws);
-        })(import_status);
+        return exportObj.loadXWSButton(_this.xws_import_modal);
       };
     })(this));
   };
@@ -15506,6 +8667,49 @@ exportObj.XWSManager = (function() {
   return XWSManager;
 
 })();
+
+exportObj.loadXWSButton = function(xws_import_modal) {
+  var import_status;
+  import_status = $(xws_import_modal.find('.xws-import-status'));
+  import_status.text('Loading...');
+  return (function(_this) {
+    return function(import_status) {
+      var e, xws;
+      try {
+        xws = JSON.parse(xws_import_modal.find('.xws-content').val());
+      } catch (_error) {
+        e = _error;
+        import_status.text('Invalid JSON');
+        return;
+      }
+      return (function(xws) {
+        return $(window).trigger('xwing:activateBuilder', [
+          exportObj.fromXWSFaction[xws.faction], function(builder) {
+            if (builder.current_squad.dirty && (builder.backend != null)) {
+              xws_import_modal.modal('hide');
+              return builder.backend.warnUnsaved(builder, function() {
+                return builder.loadFromXWS(xws, function(res) {
+                  if (!res.success) {
+                    _this.xws_import_modal.modal('show');
+                    return import_status.text(res.error);
+                  }
+                });
+              });
+            } else {
+              return builder.loadFromXWS(xws, function(res) {
+                if (res.success) {
+                  return _this.xws_import_modal.modal('hide');
+                } else {
+                  return import_status.text(res.error);
+                }
+              });
+            }
+          }
+        ]);
+      })(xws);
+    };
+  })(this)(import_status);
+};
 
 /*
 //@ sourceMappingURL=xwing.js.map

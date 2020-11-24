@@ -2,6 +2,7 @@ body {
   -webkit-print-color-adjust: exact;
   color-adjust: exact !important;
   background-color: white;
+  color: black;
   zoom: 75%; }
 
 .modal-backdrop {
@@ -32,11 +33,15 @@ body {
     stroke: gray; }
   #printable .bw .fancy-dial .svg-maneuver-inner.svg-red-maneuver {
     stroke: black; }
+  #printable .bw .fancy-dial .svg-maneuver-inner.svg-purple-maneuver {
+    stroke: grey; }
   #printable .bw .fancy-dial .svg-maneuver-outer.svg-base-maneuver {
     stroke: black; }
   #printable .bw .fancy-dial .svg-maneuver-outer.svg-modified-maneuver {
     stroke: gray; }
   #printable .bw .fancy-dial .svg-maneuver-stop.svg-red-maneuver {
+    fill: black !important; }
+  #printable .bw .fancy-dial .svg-maneuver-stop.svg-purple-maneuver {
     fill: black !important; }
   #printable .bw .fancy-dial .svg-maneuver-stop.svg-white-maneuver {
     fill: white !important;
