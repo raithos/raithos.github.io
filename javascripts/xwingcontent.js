@@ -3244,6 +3244,7 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "Resistance",
         ship: "Scavenged YT-1300",
+        keyword: ["Light Side"],
         skill: 5,
         points: 68,
         force: 2,
@@ -4918,7 +4919,7 @@ exportObj.basicCardData = function() {
         skill: 3,
         ship: "Droid Tri-Fighter",
         points: 38,
-        slots: ["Talent", "Missile", "Modification", "Configuration"],
+        slots: ["Talent", "Sensor", "Missile", "Modification", "Configuration"],
         applies_condition: 'Fearful Prey'.canonicalize()
       }, {
         name: "DIS-347",
@@ -5062,6 +5063,7 @@ exportObj.basicCardData = function() {
         skill: 4,
         ship: "ETA-2 Actis",
         points: 41,
+        keyword: ["Jedi", "Light Side"],
         slots: ["Force", "Cannon", "Astromech", "Modification"]
       }, {
         name: "Yoda",
@@ -5071,6 +5073,7 @@ exportObj.basicCardData = function() {
         unique: true,
         ship: "ETA-2 Actis",
         points: 48,
+        keyword: ["Jedi", "Light Side"],
         slots: ["Force", "Force", "Cannon", "Astromech", "Modification"]
       }, {
         name: "Shaak Ti",
@@ -5080,6 +5083,7 @@ exportObj.basicCardData = function() {
         unique: true,
         ship: "ETA-2 Actis",
         points: 44,
+        keyword: ["Jedi", "Light Side"],
         slots: ["Force", "Talent", "Cannon", "Astromech", "Modification"]
       }, {
         name: "Aayla Secura",
@@ -5089,6 +5093,7 @@ exportObj.basicCardData = function() {
         unique: true,
         ship: "ETA-2 Actis",
         points: 51,
+        keyword: ["Jedi", "Light Side"],
         slots: ["Force", "Talent", "Cannon", "Astromech", "Modification"]
       }, {
         name: "Obi-Wan Kenobi (ETA-2)",
