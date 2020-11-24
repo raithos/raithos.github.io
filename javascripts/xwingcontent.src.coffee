@@ -18671,12 +18671,12 @@ exportObj.basicCardData = ->
         {
             id: 461
             faction: "Galactic Empire"
-            pilot: "Cardia Academy Cadet"
+            pilot: "Carida Academy Cadet"
             ship: "TIE/rb Heavy"
             threat: 2
             upgrades: [
                 "Snap Shot"
-                "Maneuver-Assists MGK-300"
+                "Maneuver-Assist MGK-300"
                 "Synced Laser Cannons"
             ]
         }

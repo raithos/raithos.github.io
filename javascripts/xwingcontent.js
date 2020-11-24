@@ -12212,10 +12212,10 @@ exportObj.basicCardData = function() {
       }, {
         id: 461,
         faction: "Galactic Empire",
-        pilot: "Cardia Academy Cadet",
+        pilot: "Carida Academy Cadet",
         ship: "TIE/rb Heavy",
         threat: 2,
-        upgrades: ["Snap Shot", "Maneuver-Assists MGK-300", "Synced Laser Cannons"]
+        upgrades: ["Snap Shot", "Maneuver-Assist MGK-300", "Synced Laser Cannons"]
       }, {
         id: 462,
         faction: "Galactic Empire",
