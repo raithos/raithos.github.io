@@ -1954,7 +1954,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         points: 86,
         keyword: ["Bounty Hunter"],
-        slots: ["Talent", "Cannon", "Missile", "Crew", "Device", "Illicit", "Modification", "Title"]
+        slots: ["Talent", "Cannon", "Missile", "Device", "Illicit", "Modification", "Modification", "Title"]
       }, {
         name: "Emon Azzameen",
         id: 104,
