@@ -11084,7 +11084,7 @@ exportObj.basicCardData = ->
             name: "M9-G8"
             id: 197
             slot: "Astromech"
-            points: 7
+            points: 6
             unique: true
             faction: "Resistance"
        }
@@ -11468,7 +11468,7 @@ exportObj.basicCardData = ->
             id: 238
             unique: true
             slot: "Missile"
-            points: 6
+            points: 5
             attack: 3
             range: """2-3"""
             rangebonus: true
@@ -21693,7 +21693,7 @@ exportObj.cardLoaders.English = () ->
         "R2-D2 (Republic)":
            text: """After you activate, you may spend 1 %CHARGE% and gain 1 deplete token to repair 1 damage card, recover 1 shield or remove 1 device at range 0-1."""
         "Patience":
-           text: """At the start of the Engagement Phase, if there is an enemy ship in your %FRONTARC%, you may gain 1 deplete token to revover 1 %FORCE%."""
+           text: """At the start of the Engagement Phase, if there is an enemy ship in your %FRONTARC%, you may gain 1 deplete token to recover 1 %FORCE%."""
         "Syliure-31 Hyperdrive":
            text: """<strong>Setup:</strong> You can be placed anywhere in the play area beyond range 1 of obstacles, beyond range 3 of enemy ships, and beyond range 3 of the enemy table edge."""
         "Jedi Commander":
