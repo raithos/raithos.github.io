@@ -8738,7 +8738,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Intercept Booster",
         id: 366,
-        points: 3,
+        points: 1,
         slot: "Configuration",
         ship: "Droid Tri-Fighter",
         faction: "Separatist Alliance",
