@@ -2188,6 +2188,7 @@ class exportObj.SquadBuilder
             points: 200
             bid_goal: 5
             ships_or_upgrades: 3
+            ship_limit: 0
             collection_only: true
             fill_zero_pts: false
         @total_points = 0
@@ -2268,6 +2269,7 @@ class exportObj.SquadBuilder
         DEFAULT_RANDOMIZER_TIMEOUT_SEC = 4
         DEFAULT_RANDOMIZER_BID_GOAL = 5
         DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES = 3
+        DEFAULT_RANDOMIZER_SHIP_LIMIT = 0
 
         @status_container = $ document.createElement 'DIV'
         @status_container.addClass 'container-fluid'
@@ -2796,6 +2798,10 @@ class exportObj.SquadBuilder
                                 <input type="number" class="randomizer-bid-goal" value="#{DEFAULT_RANDOMIZER_BID_GOAL}" placeholder="#{DEFAULT_RANDOMIZER_BID_GOAL}" />
                             </label><br />
                             <label>
+                                Maximum Ship Count (0 for no limit)
+                                <input type="number" class="randomizer-ship-limit" value="#{DEFAULT_RANDOMIZER_SHIP_LIMIT}" placeholder="#{DEFAULT_RANDOMIZER_SHIP_LIMIT}" />
+                            </label><br />
+                            <label>
                                 More upgrades
                                 <input type="range" min="0" max="10" class="randomizer-ships-or-upgrades" value="#{DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES}" placeholder="#{DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES}" />
                                 Less upgrades
@@ -2847,12 +2853,14 @@ class exportObj.SquadBuilder
                 points = DEFAULT_RANDOMIZER_POINTS if (isNaN(points) or points <= 0)
                 bid_goal = parseInt $(@randomizer_options_modal.find('.randomizer-bid-goal')).val()
                 bid_goal = DEFAULT_RANDOMIZER_BID_GOAL if (isNaN(bid_goal) or bid_goal < 0)
+                ship_limit = parseInt $(@randomizer_options_modal.find('.randomizer-ship-limit')).val()
+                ship_limit = DEFAULT_RANDOMIZER_SHIP_LIMIT if (isNaN(ship_limit) or ship_limit < 0)
                 ships_or_upgrades = parseInt $(@randomizer_options_modal.find('.randomizer-ships-or-upgrades')).val()
                 ships_or_upgrades = DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES if (isNaN(ships_or_upgrades) or ships_or_upgrades < 0)
                 timeout_sec = parseInt $(@randomizer_options_modal.find('.randomizer-timeout')).val()
                 timeout_sec = DEFAULT_RANDOMIZER_TIMEOUT_SEC if (isNaN(timeout_sec) or timeout_sec <= 0)
                 # console.log "points=#{points}, sources=#{@randomizer_source_selector.val()}, timeout=#{timeout_sec}"
-                @randomSquad(points, @randomizer_source_selector.val(), timeout_sec * 1000, bid_goal, ships_or_upgrades, @randomizer_collection_selector.checked, @randomizer_fill_zero_pts.checked)
+                @randomSquad(points, @randomizer_source_selector.val(), timeout_sec * 1000, bid_goal, ship_limit, ships_or_upgrades, @randomizer_collection_selector.checked, @randomizer_fill_zero_pts.checked)
 
         @randomizer_options_modal.find('button.do-randomize').click (e) =>
             e.preventDefault()
@@ -4093,16 +4101,16 @@ class exportObj.SquadBuilder
                 if maneuvers[speed][turn] > 0
 
                     color = switch maneuvers[speed][turn]
-                        when 1 then "white"
-                        when 2 then "dodgerblue"
+                        when 1 then "dodgerblue"
+                        when 2 then "white"
                         when 3 then "red"
                         when 4 then "purple"
 
                      # we need this to change the color to b/w in case we want to print b/w
 
                     maneuverClass = switch maneuvers[speed][turn]
-                        when 1 then "svg-white-maneuver"
-                        when 2 then "svg-blue-maneuver"
+                        when 1 then "svg-blue-maneuver"
+                        when 2 then "svg-white-maneuver"
                         when 3 then "svg-red-maneuver"
                         when 4 then "svg-purple-maneuver"
 
@@ -4832,7 +4840,7 @@ class exportObj.SquadBuilder
                             idx = $.randomInt(unused_addons.length) + data.ships_or_upgrades
                         else 
                             available_ships = @getAvailableShipsMatching('', false, data.collection_only)
-                    if available_ships.length > 0
+                    if (available_ships.length > 0) and ((@ships.length < data.ship_limit) or (data.ship_limit == 0))
                         ship_type = available_ships[$.randomInt available_ships.length].name
                         available_pilots = @getAvailablePilotsForShipIncluding(ship_type)
                         if available_pilots.length == 0 
@@ -4919,7 +4927,7 @@ class exportObj.SquadBuilder
         () =>
             @_randomizerLoopBody(data)
 
-    randomSquad: (max_points=200, allowed_sources=null, timeout_ms=1000, bid_goal=5, ships_or_upgrades=3, collection_only=true, fill_zero_pts=false) ->
+    randomSquad: (max_points=200, allowed_sources=null, timeout_ms=1000, bid_goal=5, ship_limit=0, ships_or_upgrades=3, collection_only=true, fill_zero_pts=false) ->
         @backend_status.fadeOut 'slow'
         @suppress_automatic_new_ship = true
         
@@ -4933,6 +4941,7 @@ class exportObj.SquadBuilder
         data =
             max_points: max_points
             bid_goal: bid_goal
+            ship_limit: ship_limit
             ships_or_upgrades: ships_or_upgrades
             keep_running: true
             allowed_sources: allowed_sources ? exportObj.expansions

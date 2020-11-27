@@ -35,7 +35,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 2,
         actions: ["Focus", "Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0]],
         autoequip: ["Servomotor S-Foils"]
       },
       "Y-Wing": {
@@ -47,7 +47,7 @@ exportObj.basicCardData = function() {
         hull: 6,
         shields: 2,
         actions: ["Focus", "Lock", "R-Barrel Roll", "R-Reload"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0], [1, 1, 2, 1, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 3, 0, 0, 3]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0], [2, 2, 1, 2, 2, 0], [3, 2, 2, 2, 3, 0], [0, 0, 3, 0, 0, 3]]
       },
       "A-Wing": {
         name: "A-Wing",
@@ -58,7 +58,7 @@ exportObj.basicCardData = function() {
         hull: 2,
         shields: 2,
         actions: ["Focus", "Evade", "Lock", "Barrel Roll", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0], [2, 2, 1, 2, 2, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0]]
       },
       "YT-1300": {
         name: "YT-1300",
@@ -70,7 +70,7 @@ exportObj.basicCardData = function() {
         shields: 5,
         keyword: ["Freighter"],
         actions: ["Focus", "Lock", "Rotate Arc", "R-Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0]],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0], [2, 2, 1, 2, 2, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0]],
         large: true
       },
       "Customized YT-1300": {
@@ -84,7 +84,7 @@ exportObj.basicCardData = function() {
         shields: 3,
         keyword: ["Freighter"],
         actions: ["Focus", "Lock", "Rotate Arc", "R-Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0]],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0], [2, 2, 1, 2, 2, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0]],
         large: true
       },
       "TIE Fighter": {
@@ -96,7 +96,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 0,
         actions: ["Focus", "Barrel Roll", "Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 3], [0, 0, 1, 0, 0, 3], [0, 0, 1, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0], [2, 1, 1, 1, 2, 0], [2, 2, 1, 2, 2, 3], [0, 0, 2, 0, 0, 3], [0, 0, 2, 0, 0, 0]]
       },
       "TIE Advanced": {
         name: "TIE Advanced",
@@ -107,7 +107,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 2,
         actions: ["Focus", "R-> Barrel Roll", "Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
       },
       "TIE Interceptor": {
         name: "TIE Interceptor",
@@ -119,7 +119,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 0,
         actions: ["Focus", "Barrel Roll", "Boost", "Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0], [2, 2, 1, 2, 2, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0]]
       },
       "Firespray-31": {
         name: "Firespray-31",
@@ -132,7 +132,7 @@ exportObj.basicCardData = function() {
         shields: 4,
         medium: true,
         actions: ["Focus", "Lock", "Boost", "R-Reinforce"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0]]
       },
       "HWK-290": {
         name: "HWK-290",
@@ -144,7 +144,7 @@ exportObj.basicCardData = function() {
         shields: 2,
         keyword: ["Freighter"],
         actions: ["Focus", "R-> Rotate Arc", "Lock", "R-> Rotate Arc", "Rotate Arc", "R-Boost", "R-Jam"],
-        maneuvers: [[0, 0, 3, 0, 0], [0, 2, 2, 2, 0], [1, 1, 2, 1, 1], [3, 1, 2, 1, 3], [0, 0, 1, 0, 0]]
+        maneuvers: [[0, 0, 3, 0, 0], [0, 1, 1, 1, 0], [2, 2, 1, 2, 2], [3, 2, 1, 2, 3], [0, 0, 2, 0, 0]]
       },
       "Lambda-Class Shuttle": {
         name: "Lambda-Class Shuttle",
@@ -156,7 +156,7 @@ exportObj.basicCardData = function() {
         hull: 6,
         shields: 4,
         actions: ["Focus", "Coordinate", "Reinforce", "R-Jam"],
-        maneuvers: [[0, 0, 3, 0, 0], [0, 2, 2, 2, 0], [3, 1, 2, 1, 3], [0, 3, 1, 3, 0]],
+        maneuvers: [[0, 0, 3, 0, 0], [0, 1, 1, 1, 0], [3, 2, 1, 2, 3], [0, 3, 2, 3, 0]],
         large: true
       },
       "B-Wing": {
@@ -168,7 +168,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 4,
         actions: ["Focus", "R-> Barrel Roll", "Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 3, 0, 0, 0, 0], [0, 3, 2, 3, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 3, 3], [2, 2, 1, 2, 2, 3, 0, 0, 0, 0], [0, 3, 1, 3, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
       },
       "TIE Bomber": {
         name: "TIE Bomber",
@@ -179,7 +179,7 @@ exportObj.basicCardData = function() {
         hull: 6,
         shields: 0,
         actions: ["Focus", "Lock", "Barrel Roll", "R-> Lock", "R-Reload"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 3], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 3]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0], [2, 1, 1, 1, 2, 0], [2, 2, 1, 2, 2, 3], [0, 0, 2, 0, 0, 0], [0, 0, 0, 0, 0, 3]]
       },
       "Z-95 Headhunter": {
         name: "Z-95 Headhunter",
@@ -190,7 +190,7 @@ exportObj.basicCardData = function() {
         hull: 2,
         shields: 2,
         actions: ["Focus", "Lock", "R-Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 3], [0, 0, 1, 0, 0, 3]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0], [2, 1, 1, 1, 2, 0], [2, 2, 1, 2, 2, 3], [0, 0, 2, 0, 0, 3]]
       },
       "TIE Defender": {
         name: "TIE Defender",
@@ -201,7 +201,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 4,
         actions: ["Focus", "Evade", "Lock", "Barrel Roll", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 2, 0, 2, 3, 0], [3, 1, 2, 1, 3, 3], [1, 1, 2, 1, 1, 0], [0, 0, 2, 0, 0, 1], [0, 0, 2, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 1, 0, 1, 3, 0], [3, 2, 1, 2, 3, 3], [2, 2, 1, 2, 2, 0], [0, 0, 1, 0, 0, 2], [0, 0, 1, 0, 0, 0]]
       },
       "E-Wing": {
         name: "E-Wing",
@@ -212,7 +212,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 3,
         actions: ["Focus", "Evade", "Lock", "Barrel Roll", "R-> Lock", "Boost", "R-> Lock"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0], [2, 2, 1, 2, 2, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0]]
       },
       "TIE Phantom": {
         name: "TIE Phantom",
@@ -223,7 +223,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 2,
         actions: ["Focus", "Evade", "Barrel Roll", "Cloak"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [1, 1, 0, 1, 1, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 3], [0, 0, 1, 0, 0, 3]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [2, 2, 0, 2, 2, 0], [2, 1, 1, 1, 2, 0], [2, 2, 1, 2, 2, 3], [0, 0, 2, 0, 0, 3]]
       },
       "YT-2400": {
         name: "YT-2400",
@@ -236,7 +236,7 @@ exportObj.basicCardData = function() {
         keyword: ["Freighter"],
         actions: ["Focus", "Lock", "R-Barrel Roll", "Rotate Arc"],
         large: true,
-        maneuvers: [[0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 0], [1, 1, 1, 1, 1, 0], [0, 0, 1, 0, 0, 3]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0], [2, 2, 1, 2, 2, 0], [2, 2, 2, 2, 2, 0], [0, 0, 2, 0, 0, 3]]
       },
       "VT-49 Decimator": {
         name: "VT-49 Decimator",
@@ -248,7 +248,7 @@ exportObj.basicCardData = function() {
         shields: 4,
         actions: ["Focus", "Lock", "Reinforce", "Rotate Arc", "R-Coordinate"],
         large: true,
-        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0], [1, 1, 2, 1, 1, 0], [1, 1, 1, 1, 1, 0], [0, 0, 1, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0], [2, 2, 1, 2, 2, 0], [2, 2, 2, 2, 2, 0], [0, 0, 2, 0, 0, 0]]
       },
       "StarViper": {
         name: "StarViper",
@@ -259,7 +259,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 1,
         actions: ["Focus", "Lock", "Barrel Roll", "R-> Focus", "Boost", "R-> Focus"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [0, 1, 2, 1, 0, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0], [0, 2, 1, 2, 0, 0, 3, 3], [0, 0, 2, 0, 0, 0, 0, 0]]
       },
       "M3-A Interceptor": {
         name: "M3-A Interceptor",
@@ -270,7 +270,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 1,
         actions: ["Focus", "Evade", "Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [1, 2, 0, 2, 1, 0], [1, 1, 2, 1, 1, 0], [0, 1, 2, 1, 0, 3], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 3]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [2, 1, 0, 1, 2, 0], [2, 2, 1, 2, 2, 0], [0, 2, 1, 2, 0, 3], [0, 0, 2, 0, 0, 0], [0, 0, 2, 0, 0, 3]]
       },
       "Aggressor": {
         name: "Aggressor",
@@ -282,7 +282,7 @@ exportObj.basicCardData = function() {
         shields: 3,
         actions: ["Calculate", "Evade", "Lock", "Boost"],
         medium: true,
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [0, 2, 2, 2, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0], [0, 1, 1, 1, 0, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0]]
       },
       "YV-666": {
         name: "YV-666",
@@ -294,7 +294,7 @@ exportObj.basicCardData = function() {
         shields: 3,
         large: true,
         actions: ["Focus", "Reinforce", "Lock"],
-        maneuvers: [[0, 0, 3, 0, 0, 0], [0, 2, 2, 2, 0, 0], [3, 1, 2, 1, 3, 0], [1, 1, 2, 1, 1, 0], [0, 0, 1, 0, 0, 0]]
+        maneuvers: [[0, 0, 3, 0, 0, 0], [0, 1, 1, 1, 0, 0], [3, 2, 1, 2, 3, 0], [2, 2, 1, 2, 2, 0], [0, 0, 2, 0, 0, 0]]
       },
       "Kihraxz Fighter": {
         name: "Kihraxz Fighter",
@@ -305,7 +305,7 @@ exportObj.basicCardData = function() {
         hull: 5,
         shields: 1,
         actions: ["Focus", "Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 0, 2, 1, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 3, 3], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 0, 1, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 3, 3], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0]]
       },
       "K-Wing": {
         name: "K-Wing",
@@ -317,7 +317,7 @@ exportObj.basicCardData = function() {
         shields: 3,
         medium: true,
         actions: ["Focus", "Lock", "Slam", "Rotate Arc", "Reload"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0], [1, 1, 2, 1, 1, 0], [0, 1, 1, 1, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0], [2, 2, 1, 2, 2, 0], [0, 2, 2, 2, 0, 0]]
       },
       "TIE Punisher": {
         name: "TIE Punisher",
@@ -329,7 +329,7 @@ exportObj.basicCardData = function() {
         shields: 3,
         medium: true,
         actions: ["Focus", "Lock", "R-Barrel Roll", "Boost", "R-> Lock", "Reload"],
-        maneuvers: [[0, 0, 3, 0, 0, 0], [0, 2, 2, 2, 0, 0], [1, 1, 2, 1, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 0, 0, 0, 3]]
+        maneuvers: [[0, 0, 3, 0, 0, 0], [0, 1, 1, 1, 0, 0], [2, 2, 1, 2, 2, 0], [3, 2, 2, 2, 3, 0], [0, 0, 0, 0, 0, 3]]
       },
       "VCX-100": {
         name: "VCX-100",
@@ -342,7 +342,7 @@ exportObj.basicCardData = function() {
         large: true,
         keyword: ["Freighter"],
         actions: ["Focus", "Lock", "Reinforce"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0], [1, 2, 2, 2, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 1, 0, 0, 3]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 2, 1, 2, 3, 0], [2, 1, 1, 1, 2, 0], [3, 2, 2, 2, 3, 0], [0, 0, 2, 0, 0, 3]]
       },
       "Attack Shuttle": {
         name: "Attack Shuttle",
@@ -353,7 +353,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 1,
         actions: ["Focus", "Evade", "Barrel Roll", "R-> Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0], [1, 1, 2, 1, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 1, 0, 0, 3]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0], [2, 2, 1, 2, 2, 0], [3, 2, 2, 2, 3, 0], [0, 0, 2, 0, 0, 3]]
       },
       "TIE Advanced Prototype": {
         name: "TIE Advanced Prototype",
@@ -364,7 +364,7 @@ exportObj.basicCardData = function() {
         hull: 2,
         shields: 2,
         actions: ["Focus", "Evade", "Lock", "Barrel Roll", "R-> Focus", "Boost", "R-> Focus"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 2, 0, 2, 2, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 1, 0, 1, 1, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 3, 3], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
       },
       "G-1A Starfighter": {
         name: "G-1A Starfighter",
@@ -376,7 +376,7 @@ exportObj.basicCardData = function() {
         shields: 4,
         medium: true,
         actions: ["Focus", "Lock", "Jam"],
-        maneuvers: [[0, 0, 3, 0, 0, 0], [3, 2, 2, 2, 3, 0], [1, 1, 2, 1, 1, 3], [0, 3, 1, 3, 0, 0], [0, 0, 3, 0, 0, 3]]
+        maneuvers: [[0, 0, 3, 0, 0, 0], [3, 1, 1, 1, 3, 0], [2, 2, 1, 2, 2, 3], [0, 3, 2, 3, 0, 0], [0, 0, 3, 0, 0, 3]]
       },
       "JumpMaster 5000": {
         name: "JumpMaster 5000",
@@ -388,7 +388,7 @@ exportObj.basicCardData = function() {
         hull: 6,
         shields: 3,
         actions: ["Focus", "R-> Rotate Arc", "Lock", "R-> Rotate Arc", "R-Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 1, 3, 0, 0, 0], [1, 2, 2, 1, 3, 0, 0, 0], [0, 2, 2, 1, 0, 0, 3, 0], [0, 0, 1, 0, 0, 3, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 1, 2, 3, 0, 0, 0], [2, 1, 1, 2, 3, 0, 0, 0], [0, 1, 1, 2, 0, 0, 3, 0], [0, 0, 2, 0, 0, 3, 0, 0]]
       },
       "ARC-170": {
         name: "ARC-170",
@@ -401,7 +401,7 @@ exportObj.basicCardData = function() {
         shields: 3,
         medium: true,
         actions: ["Focus", "Lock", "R-Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0], [1, 2, 2, 2, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 3, 0, 0, 3]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0], [2, 1, 1, 1, 2, 0], [3, 2, 2, 2, 3, 0], [0, 0, 3, 0, 0, 3]]
       },
       "Fang Fighter": {
         name: "Fang Fighter",
@@ -413,7 +413,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 0,
         actions: ["Focus", "Lock", "Barrel Roll", "R-> Focus", "Boost", "R-> Focus"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0, 3, 3], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
       },
       "Lancer-Class Pursuit Craft": {
         name: "Lancer-Class Pursuit Craft",
@@ -426,7 +426,7 @@ exportObj.basicCardData = function() {
         hull: 8,
         shields: 2,
         actions: ["Focus", "Evade", "Lock", "Rotate Arc"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0], [1, 1, 2, 1, 1, 0], [2, 2, 2, 2, 2, 0], [0, 0, 2, 0, 0, 0], [0, 0, 1, 0, 0, 3]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0], [2, 2, 1, 2, 2, 0], [1, 1, 1, 1, 1, 0], [0, 0, 1, 0, 0, 0], [0, 0, 2, 0, 0, 3]]
       },
       "Quadjumper": {
         name: "Quadjumper",
@@ -437,7 +437,7 @@ exportObj.basicCardData = function() {
         hull: 5,
         shields: 0,
         actions: ["Focus", "R-Evade", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 3, 0, 3], [1, 2, 2, 2, 1, 0, 3, 3, 0, 0, 0, 3, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 3, 0, 3], [2, 1, 1, 1, 2, 0, 3, 3, 0, 0, 0, 3, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       },
       "U-Wing": {
         name: "U-Wing",
@@ -449,7 +449,7 @@ exportObj.basicCardData = function() {
         hull: 5,
         shields: 3,
         actions: ["Focus", "Lock", "R-Coordinate"],
-        maneuvers: [[0, 0, 3, 0, 0], [0, 2, 2, 2, 0], [1, 2, 2, 2, 1], [0, 1, 1, 1, 0], [0, 0, 1, 0, 0]],
+        maneuvers: [[0, 0, 3, 0, 0], [0, 1, 1, 1, 0], [2, 1, 1, 1, 1], [0, 2, 2, 2, 0], [0, 0, 2, 0, 0]],
         autoequip: ["Pivot Wing"]
       },
       "TIE Striker": {
@@ -461,7 +461,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 0,
         actions: ["Focus", "Evade", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 3, 0, 0], [1, 2, 2, 2, 1, 0, 3, 3], [0, 1, 2, 1, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 3, 0, 0], [2, 1, 1, 1, 2, 0, 3, 3], [0, 2, 1, 2, 0, 0, 0, 0]]
       },
       "Auzituck Gunship": {
         name: "Auzituck Gunship",
@@ -472,7 +472,7 @@ exportObj.basicCardData = function() {
         hull: 6,
         shields: 2,
         actions: ["Focus", "R-Barrel Roll", "Reinforce"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0]]
       },
       "Scurrg H-6 Bomber": {
         name: "Scurrg H-6 Bomber",
@@ -484,7 +484,7 @@ exportObj.basicCardData = function() {
         shields: 4,
         medium: true,
         actions: ["Focus", "Lock", "R-Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 3, 3], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 3, 3], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
       },
       "TIE Aggressor": {
         name: "TIE Aggressor",
@@ -495,7 +495,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 1,
         actions: ["Focus", "Lock", "Barrel Roll", "R-> Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0]]
       },
       "Alpha-Class Star Wing": {
         name: "Alpha-Class Star Wing",
@@ -506,7 +506,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 3,
         actions: ["Focus", "Lock", "Slam", "Reload"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0]]
       },
       "M12-L Kimogila Fighter": {
         name: "M12-L Kimogila Fighter",
@@ -518,7 +518,7 @@ exportObj.basicCardData = function() {
         shields: 2,
         medium: true,
         actions: ["Focus", "Lock", "R-Barrel Roll", "Reload"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 0], [0, 0, 0, 0, 0, 3]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [3, 2, 1, 2, 3, 0], [2, 1, 1, 1, 2, 0], [2, 2, 1, 2, 2, 0], [0, 0, 0, 0, 0, 3]]
       },
       "Sheathipede-Class Shuttle": {
         name: "Sheathipede-Class Shuttle",
@@ -530,7 +530,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 1,
         actions: ["Focus", "Coordinate"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 3, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 1, 2, 3, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       },
       "TIE Reaper": {
         name: "TIE Reaper",
@@ -542,7 +542,7 @@ exportObj.basicCardData = function() {
         shields: 2,
         medium: true,
         actions: ["Focus", "Evade", "Jam", "R-Coordinate"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 3, 3], [3, 1, 2, 1, 3, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 3, 3], [3, 2, 1, 2, 3, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0]]
       },
       "Escape Craft": {
         name: "Escape Craft",
@@ -553,7 +553,7 @@ exportObj.basicCardData = function() {
         hull: 2,
         shields: 2,
         actions: ["Focus", "Barrel Roll", "R-Coordinate"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 0, 0], [0, 1, 1, 1, 0, 3, 0, 0]]
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0], [3, 2, 1, 2, 3, 0, 0, 0], [0, 2, 2, 2, 0, 3, 0, 0]]
       },
       "T-70 X-Wing": {
         name: "T-70 X-Wing",
@@ -564,7 +564,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 3,
         actions: ["Focus", "Lock", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0]],
         autoequip: ["Integrated S-Foils"]
       },
       "RZ-2 A-Wing": {
@@ -576,7 +576,7 @@ exportObj.basicCardData = function() {
         hull: 2,
         shields: 2,
         actions: ["Focus", "Evade", "Lock", "Barrel Roll", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0], [1, 2, 2, 2, 1, 0, 3, 3], [0, 0, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0], [2, 1, 1, 1, 2, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0]]
       },
       "TIE/FO Fighter": {
         name: "TIE/FO Fighter",
@@ -587,7 +587,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 1,
         actions: ["Focus", "Evade", "Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0], [2, 2, 2, 2, 2, 0, 3, 3], [1, 1, 2, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0], [1, 1, 1, 1, 1, 0, 3, 3], [2, 2, 1, 2, 2, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0]]
       },
       "TIE/VN Silencer": {
         name: "TIE/VN Silencer",
@@ -598,7 +598,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 2,
         actions: ["Focus", "Boost", "Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
       },
       "TIE/SF Fighter": {
         name: "TIE/SF Fighter",
@@ -610,7 +610,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 3,
         actions: ["Focus", "> Rotate Arc", "Evade", "> Rotate Arc", "Lock", "> Rotate Arc", "Barrel Roll", "> Rotate Arc"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 3, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 3, 3, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
       },
       "Upsilon-Class Command Shuttle": {
         name: "Upsilon-Class Command Shuttle",
@@ -621,7 +621,7 @@ exportObj.basicCardData = function() {
         hull: 6,
         shields: 6,
         actions: ["Focus", "Lock", "Reinforce", "Coordinate", "Jam"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [3, 2, 1, 2, 3, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
         large: true
       },
       "MG-100 StarFortress": {
@@ -634,7 +634,7 @@ exportObj.basicCardData = function() {
         hull: 9,
         shields: 3,
         actions: ["Focus", "Lock", "Rotate Arc", "Reload"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 3, 1, 3, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 3, 2, 3, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
         large: true
       },
       "Scavenged YT-1300": {
@@ -648,7 +648,7 @@ exportObj.basicCardData = function() {
         shields: 3,
         keyword: ["Freighter"],
         actions: ["Focus", "Lock", "R-Boost", "R-Rotate Arc"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 1, 1, 1, 1, 0, 3, 3], [0, 0, 3, 0, 0, 0, 0, 0]],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0], [2, 2, 2, 2, 2, 0, 3, 3], [0, 0, 3, 0, 0, 0, 0, 0]],
         large: true
       },
       "Mining Guild TIE Fighter": {
@@ -660,7 +660,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 0,
         actions: ["Focus", "Barrel Roll", "Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0], [1, 2, 2, 2, 1, 0], [1, 1, 2, 1, 1, 3], [0, 0, 1, 0, 0, 0], [0, 0, 3, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0], [2, 1, 1, 1, 2, 0], [2, 2, 1, 2, 2, 3], [0, 0, 2, 0, 0, 0], [0, 0, 3, 0, 0, 0]]
       },
       "V-19 Torrent": {
         name: "V-19 Torrent",
@@ -671,7 +671,7 @@ exportObj.basicCardData = function() {
         hull: 5,
         shields: 0,
         actions: ["Focus", "Evade", "Lock", "Barrel Roll", "R-> Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 3, 3], [0, 3, 2, 3, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 3, 3], [0, 3, 1, 3, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       },
       "Delta-7 Aethersprite": {
         name: "Delta-7 Aethersprite",
@@ -682,7 +682,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 1,
         actions: ["Focus", "F-Evade", "Lock", "Barrel Roll", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 0, 2, 1, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 3, 3, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 0, 1, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 3, 3, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0]]
       },
       "Sith Infiltrator": {
         name: "Sith Infiltrator",
@@ -694,7 +694,7 @@ exportObj.basicCardData = function() {
         large: true,
         shields: 4,
         actions: ["Focus", "Lock", "R-Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 3, 3, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 3, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 3, 3, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 3, 0, 0, 0, 0]]
       },
       "Vulture-class Droid Fighter": {
         name: "Vulture-class Droid Fighter",
@@ -706,7 +706,7 @@ exportObj.basicCardData = function() {
         shields: 0,
         keyword: ["Networked Calculations"],
         actions: ["Calculate", "Lock", "Barrel Roll", "R-> Calculate"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 3, 0, 0, 0, 0], [2, 1, 2, 1, 2, 0, 0, 0, 3, 3], [1, 3, 2, 3, 1, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 3, 0, 0, 0, 0], [1, 2, 1, 2, 1, 0, 0, 0, 3, 3], [2, 3, 1, 3, 2, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
       },
       "Belbullab-22 Starfighter": {
         name: "Belbullab-22 Starfighter",
@@ -717,7 +717,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 2,
         actions: ["Focus", "Lock", "Barrel Roll", "R-> Focus", "Boost", "R-> Focus"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 1, 0, 1, 1, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 3, 3, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 2, 0, 2, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [3, 2, 1, 2, 3, 0, 3, 3, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
       },
       "Naboo Royal N-1 Starfighter": {
         name: "Naboo Royal N-1 Starfighter",
@@ -728,7 +728,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 2,
         actions: ["Focus", "Lock", "Barrel Roll", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
       },
       "Hyena-Class Droid Bomber": {
         name: "Hyena-Class Droid Bomber",
@@ -740,7 +740,7 @@ exportObj.basicCardData = function() {
         shields: 0,
         keyword: ["Networked Calculations"],
         actions: ["Calculate", "Lock", "Barrel Roll", "R-> Lock", "R-Reload"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 3, 1, 3, 1, 0, 0, 0, 0, 0], [2, 1, 2, 1, 2, 3, 0, 0, 3, 3], [1, 0, 2, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 3, 2, 3, 2, 0, 0, 0, 0, 0], [1, 2, 1, 2, 1, 3, 0, 0, 3, 3], [2, 0, 1, 0, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
       },
       "Resistance Transport Pod": {
         name: "Resistance Transport Pod",
@@ -751,7 +751,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 1,
         actions: ["Focus", "R-Lock", "R-Barrel Roll", "R-Jam"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 3, 1, 3, 0, 3, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 3, 2, 3, 0, 3, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
       },
       "Resistance Transport": {
         name: "Resistance Transport",
@@ -762,7 +762,7 @@ exportObj.basicCardData = function() {
         hull: 5,
         shields: 3,
         actions: ["Focus", "Lock", "R-Coordinate", "R-Jam"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0, 3, 0, 3], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0], [0, 3, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0, 3, 0, 3], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0], [0, 3, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       },
       "Nantex-Class Starfighter": {
         name: "Nantex-Class Starfighter",
@@ -774,7 +774,7 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 0,
         actions: ["Focus", "Evade"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 0, 2, 1, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0], [1, 2, 2, 2, 1, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 0, 1, 2, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0], [2, 1, 1, 1, 2, 0, 3, 3], [0, 0, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0]]
       },
       "BTL-B Y-Wing": {
         name: "BTL-B Y-Wing",
@@ -785,7 +785,7 @@ exportObj.basicCardData = function() {
         hull: 5,
         shields: 3,
         actions: ["Focus", "Lock", "R-Barrel Roll", "R-Reload"],
-        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0], [1, 1, 2, 1, 1, 0], [3, 1, 1, 1, 3, 0], [0, 0, 3, 0, 0, 3], [0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0], [2, 2, 1, 2, 2, 0], [3, 2, 2, 2, 3, 0], [0, 0, 3, 0, 0, 3], [0, 0, 0, 0, 0, 0]]
       },
       "Fireball": {
         name: "Fireball",
@@ -796,7 +796,7 @@ exportObj.basicCardData = function() {
         hull: 6,
         shields: 0,
         actions: ["Focus", "Evade", "Barrel Roll", "Slam"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 3, 3], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 3, 3], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       },
       "TIE/Ba Interceptor": {
         name: "TIE/Ba Interceptor",
@@ -807,7 +807,7 @@ exportObj.basicCardData = function() {
         hull: 2,
         shields: 2,
         actions: ["Focus", "Evade", "Lock", "Barrel Roll", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 2, 0, 2, 2, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 3, 3, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 1, 0, 1, 1, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 3, 3, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0]]
       },
       "Xi-class Light Shuttle": {
         name: "Xi-class Light Shuttle",
@@ -819,7 +819,7 @@ exportObj.basicCardData = function() {
         shields: 2,
         medium: true,
         actions: ["Focus", "R-Lock", "R-Coordinate", "Jam"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 2, 2, 2, 0, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       },
       "HMP Droid Gunship": {
         name: "HMP Droid Gunship",
@@ -830,7 +830,7 @@ exportObj.basicCardData = function() {
         hull: 5,
         shields: 3,
         actions: ["Calculate", "Lock", "R-Barrel Roll", "Reload", "R-> Calculate"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 3, 2, 3, 0, 0, 0, 0, 0, 0], [2, 1, 2, 1, 2, 0, 0, 0, 0, 0], [1, 3, 1, 3, 1, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 3, 1, 3, 0, 0, 0, 0, 0, 0], [1, 2, 1, 2, 1, 0, 0, 0, 0, 0], [2, 3, 2, 3, 2, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
       },
       "LAAT/i Gunship": {
         name: "LAAT/i Gunship",
@@ -842,7 +842,7 @@ exportObj.basicCardData = function() {
         shields: 2,
         medium: true,
         actions: ["Focus", "Lock", "Rotate Arc", "R-Reinforce", "Reload"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 1, 0, 0, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       },
       "TIE/rb Heavy": {
         name: "TIE/rb Heavy",
@@ -854,7 +854,7 @@ exportObj.basicCardData = function() {
         shields: 0,
         medium: true,
         actions: ["Focus", "Reinforce", "Lock", "R-Barrel Roll", "Rotate Arc", "R-> Calculate"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 2, 1, 3, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 3, 3], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 1, 2, 3, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       },
       "Droid Tri-Fighter": {
         name: "Droid Tri-Fighter",
@@ -866,7 +866,7 @@ exportObj.basicCardData = function() {
         shields: 0,
         keyword: ["Networked Calculations"],
         actions: ["Calculate", "Evade", "Lock", "Barrel Roll", "R-> Evade", "Boost", "R-> Calculate"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 3, 3], [2, 1, 2, 1, 2, 0, 0, 0, 0, 0], [2, 1, 2, 1, 2, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0, 3, 3], [1, 2, 1, 2, 1, 0, 0, 0, 0, 0], [1, 2, 1, 2, 1, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0]]
       },
       "Nimbus-class V-Wing": {
         name: "Nimbus-class V-Wing",
@@ -878,7 +878,7 @@ exportObj.basicCardData = function() {
         shields: 2,
         keyword: ["TIE"],
         actions: ["Focus", "Lock", "R-Barrel Roll", "Boost", "R-> Lock"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 3, 0, 3, 1, 0, 0, 0, 0, 0], [2, 2, 2, 2, 2, 3, 0, 0, 0, 0], [1, 1, 2, 1, 1, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 3, 0, 3, 2, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 3, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
       },
       "ETA-2 Actis": {
         name: "ETA-2 Actis",
@@ -890,7 +890,7 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 0,
         actions: ["Focus", "Evade", "F-Lock", "Barrel Roll", "Boost"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 0, 0], [1, 2, 2, 2, 1, 0, 0, 0, 4, 4], [1, 2, 2, 2, 1, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 4, 4], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
       },
       "Syliure-class Hyperspace Ring": {
         name: "Syliure-class Hyperspace Ring",
@@ -917,7 +917,7 @@ exportObj.basicCardData = function() {
         energy: 7,
         energyrecurr: 2,
         actions: ["Focus", "Reinforce", "Lock", "R-Coordinate", "Jam"],
-        maneuvers: [[0, 3, 3, 3, 0], [0, 1, 1, 1, 0], [0, 2, 2, 2, 0], [0, 3, 2, 3, 0], [0, 0, 3, 0, 0], [0, 0, 3, 0, 0]]
+        maneuvers: [[0, 3, 3, 3, 0], [0, 2, 2, 2, 0], [0, 1, 1, 1, 0], [0, 3, 1, 3, 0], [0, 0, 3, 0, 0], [0, 0, 3, 0, 0]]
       },
       "Raider-class Corvette": {
         name: "Raider-class Corvette",
@@ -932,7 +932,7 @@ exportObj.basicCardData = function() {
         energy: 6,
         energyrecurr: 2,
         actions: ["Focus", "Reinforce", "Lock", "Coordinate", "Jam"],
-        maneuvers: [[0, 3, 3, 3, 0], [0, 2, 1, 2, 0], [0, 1, 2, 1, 0], [0, 3, 2, 3, 0], [0, 0, 1, 0, 0], [0, 0, 3, 0, 0]]
+        maneuvers: [[0, 3, 3, 3, 0], [0, 1, 2, 1, 0], [0, 2, 1, 2, 0], [0, 3, 1, 3, 0], [0, 0, 2, 0, 0], [0, 0, 3, 0, 0]]
       },
       "GR-75 Medium Transport": {
         name: "GR-75 Medium Transport",
@@ -947,7 +947,7 @@ exportObj.basicCardData = function() {
         energy: 4,
         energyrecurr: 1,
         actions: ["Focus", "R-Lock", "Coordinate", "R-Reinforce", "Jam"],
-        maneuvers: [[0, 3, 3, 3, 0], [0, 2, 2, 2, 0], [0, 1, 1, 1, 0], [0, 0, 3, 0, 0], [0, 0, 3, 0, 0]]
+        maneuvers: [[0, 3, 3, 3, 0], [0, 1, 1, 1, 0], [0, 2, 2, 2, 0], [0, 0, 3, 0, 0], [0, 0, 3, 0, 0]]
       },
       "Gozanti-class Cruiser": {
         name: "Gozanti-class Cruiser",
@@ -962,7 +962,7 @@ exportObj.basicCardData = function() {
         energy: 3,
         energyrecurr: 1,
         actions: ["Focus", "Reinforce", "Lock", "Coordinate", "Jam"],
-        maneuvers: [[0, 3, 3, 3, 0], [0, 1, 2, 1, 0], [0, 3, 2, 3, 0], [0, 0, 2, 0, 0], [0, 0, 3, 0, 0]]
+        maneuvers: [[0, 3, 3, 3, 0], [0, 2, 1, 2, 0], [0, 3, 1, 3, 0], [0, 0, 1, 0, 0], [0, 0, 3, 0, 0]]
       },
       "C-ROC Cruiser": {
         name: "C-ROC Cruiser",
@@ -977,7 +977,7 @@ exportObj.basicCardData = function() {
         energy: 4,
         energyrecurr: 1,
         actions: ["Focus", "Reinforce", "Lock", "R-Coordinate", "Jam"],
-        maneuvers: [[0, 3, 3, 3, 0], [0, 1, 2, 1, 0], [0, 1, 2, 1, 0], [0, 3, 1, 3, 0], [0, 0, 3, 0, 0], [0, 0, 3, 0, 0]]
+        maneuvers: [[0, 3, 3, 3, 0], [0, 2, 1, 2, 0], [0, 2, 1, 2, 0], [0, 3, 2, 3, 0], [0, 0, 3, 0, 0], [0, 0, 3, 0, 0]]
       }
     },
     pilotsById: [
@@ -5256,19 +5256,11 @@ exportObj.basicCardData = function() {
             if (turn > 4) {
               continue;
             }
-            if (stats.maneuvers[1][turn] > 0) {
-              if (stats.maneuvers[1][turn] === 3) {
-                stats.maneuvers[1][turn] = 1;
-              } else {
-                stats.maneuvers[1][turn] = 2;
-              }
+            if (stats.maneuvers[1][turn] > 1) {
+              stats.maneuvers[1][turn]--;
             }
-            if (stats.maneuvers[2][turn] > 0) {
-              if (stats.maneuvers[2][turn] === 3) {
-                _results.push(stats.maneuvers[2][turn] = 1);
-              } else {
-                _results.push(stats.maneuvers[2][turn] = 2);
-              }
+            if (stats.maneuvers[2][turn] > 1) {
+              _results.push(stats.maneuvers[2][turn]--);
             } else {
               _results.push(void 0);
             }
@@ -5698,21 +5690,11 @@ exportObj.basicCardData = function() {
           _results = [];
           for (_i = 0, _len = _ref.length; _i < _len; _i++) {
             s = _ref[_i];
-            if (s[1] > 0) {
-              if (s[1] === 1) {
-                s[1] = 2;
-              } else if (s[1] === 3) {
-                s[1] = 1;
-              }
+            if (s[1] > 1) {
+              s[1]--;
             }
-            if (s[3] > 0) {
-              if (s[3] === 1) {
-                _results.push(s[3] = 2);
-              } else if (s[3] === 3) {
-                _results.push(s[3] = 1);
-              } else {
-                _results.push(void 0);
-              }
+            if (s[3] > 1) {
+              _results.push(s[3]--);
             } else {
               _results.push(void 0);
             }
@@ -5738,9 +5720,9 @@ exportObj.basicCardData = function() {
         faction: "Scum and Villainy"
       }, {
         name: "R2-D2 (Crew)",
+        canonical_name: 'R2-D2'.canonicalize(),
         id: 56,
         slot: "Crew",
-        canonical_name: 'r2d2-crew',
         xws: "r2d2-crew",
         points: 8,
         unique: true,
@@ -6898,6 +6880,7 @@ exportObj.basicCardData = function() {
         faction: "Resistance"
       }, {
         name: "C-3PO (Resistance)",
+        canonical_name: 'C-3PO'.canonicalize(),
         id: 191,
         slot: "Crew",
         xws: "c3po-crew",
@@ -7497,6 +7480,7 @@ exportObj.basicCardData = function() {
         }
       }, {
         name: "C-3PO (Republic)",
+        canonical_name: 'C-3PO'.canonicalize(),
         id: 254,
         unique: true,
         slot: "Crew",
@@ -8396,14 +8380,8 @@ exportObj.basicCardData = function() {
           stats.actions.push('*R-> Calculate');
           _results = [];
           for (turn = _i = 1; _i < 4; turn = ++_i) {
-            if (stats.maneuvers[3][turn] > 0) {
-              if (stats.maneuvers[3][turn] === 1) {
-                _results.push(stats.maneuvers[3][turn] = 2);
-              } else if (stats.maneuvers[3][turn] === 3) {
-                _results.push(stats.maneuvers[3][turn] = 1);
-              } else {
-                _results.push(void 0);
-              }
+            if (stats.maneuvers[3][turn] > 1) {
+              _results.push(stats.maneuvers[3][turn]--);
             } else {
               _results.push(void 0);
             }
@@ -8496,6 +8474,7 @@ exportObj.basicCardData = function() {
         applies_condition: 'Thermal Detonator'.canonicalize()
       }, {
         name: "R2-D2 (Republic)",
+        canonical_name: 'R2-D2'.canonicalize(),
         id: 340,
         charge: 2,
         unique: true,
@@ -8673,6 +8652,7 @@ exportObj.basicCardData = function() {
         }
       }, {
         name: "R2-D2 (Resistance)",
+        canonical_name: 'R2-D2'.canonicalize(),
         id: 358,
         slot: "Astromech",
         points: 6,
