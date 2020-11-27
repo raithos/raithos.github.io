@@ -4975,6 +4975,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Boba Fett (Separatist)",
         canonical_name: 'Boba Fett'.canonicalize(),
+        xws: "bobafett-separatistalliance",
         id: 427,
         faction: "Separatist Alliance",
         unique: true,
@@ -5050,6 +5051,7 @@ exportObj.basicCardData = function() {
       }, {
         name: '"Odd Ball" (V-Wing)',
         canonical_name: '"Oddball"'.canonicalize(),
+        xws: "oddball-nimbusclassvwing",
         id: 435,
         faction: "Galactic Republic",
         skill: 5,
@@ -5103,6 +5105,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Obi-Wan Kenobi (ETA-2)",
         canonical_name: 'Obi-Wan Kenobi'.canonicalize(),
+        xws: "obiwankenobi-eta2actis",
         id: 440,
         faction: "Galactic Republic",
         skill: 5,
@@ -5115,6 +5118,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Anakin Skywalker (ETA-2)",
         canonical_name: 'Anakin Skywalker'.canonicalize(),
+        xws: "anakinskywalker-eta2actis",
         id: 441,
         faction: "Galactic Republic",
         skill: 6,
