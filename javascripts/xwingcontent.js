@@ -2484,6 +2484,7 @@ exportObj.basicCardData = function() {
         skill: "*",
         points: 6,
         slots: ["Missile", "Illicit", "Modification"],
+        restrictions: [["Unique", "Hound's Tooth"]],
         restriction_func: function(ship) {
           var builder, t, thing, things, _ref;
           builder = ship.builder;
@@ -5250,6 +5251,7 @@ exportObj.basicCardData = function() {
         id: 5,
         slot: "Astromech",
         points: 2,
+        restrictions: [["Base", "Small"]],
         restriction_func: function(ship) {
           return !((ship.data.large != null) || (ship.data.medium != null) || (ship.data.huge != null));
         },
@@ -5416,6 +5418,7 @@ exportObj.basicCardData = function() {
         points: 6,
         unique: true,
         faction: "Galactic Empire",
+        restrictions: [["Action", "Coordinate"]],
         restriction_func: function(ship) {
           return (__indexOf.call(ship.effectiveStats().actions, "Coordinate") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Coordinate") >= 0);
         }
@@ -5444,6 +5447,7 @@ exportObj.basicCardData = function() {
         points: 6,
         unique: true,
         faction: "Galactic Empire",
+        restrictions: [["Slot", "Crew"]],
         restriction_func: function(ship, upgrade_obj) {
           return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot);
         },
@@ -5472,6 +5476,7 @@ exportObj.basicCardData = function() {
         force: 1,
         unique: true,
         faction: "Galactic Empire",
+        restrictions: [["Slot", "Crew"]],
         restriction_func: function(ship, upgrade_obj) {
           return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot);
         },
@@ -5520,6 +5525,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         charge: 2,
         recurring: true,
+        restrictions: [["Action", "Lock"]],
         restriction_func: function(ship) {
           return (__indexOf.call(ship.effectiveStats().actions, "Lock") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Lock") >= 0);
         }
@@ -5563,6 +5569,7 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "Scum and Villainy",
         charge: 4,
+        restrictions: [["Slot", "Crew"]],
         restriction_func: function(ship, upgrade_obj) {
           return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot);
         },
@@ -5644,6 +5651,7 @@ exportObj.basicCardData = function() {
         faction: ["Scum and Villainy", "Rebel Alliance"],
         force: 1,
         keyword: ["Dark Side"],
+        restrictions: [["Faction", "Scum and Villainy"], ["or Unique", "Ezra Bridger"]],
         modifier_func: function(stats) {
           return stats.force += 1;
         },
@@ -5671,6 +5679,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         charge: 2,
         recurring: true,
+        restrictions: [["Action", "Coordinate"]],
         restriction_func: function(ship) {
           return (__indexOf.call(ship.effectiveStats().actions, "Coordinate") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Coordinate") >= 0);
         }
@@ -5767,6 +5776,7 @@ exportObj.basicCardData = function() {
         id: 61,
         slot: "Crew",
         points: 6,
+        restrictions: [["Action", "R-Coordinate"]],
         restriction_func: function(ship) {
           return __indexOf.call(ship.effectiveStats().actions, "R-Coordinate") >= 0;
         },
@@ -5789,6 +5799,7 @@ exportObj.basicCardData = function() {
         points: 5,
         unique: true,
         faction: ["Scum and Villainy", "Galactic Empire"],
+        restrictions: [["Faction", "Scum and Villainy"], ["or Unique", "Darth Vader"]],
         restriction_func: function(ship) {
           var builder;
           builder = ship.builder;
@@ -5825,6 +5836,7 @@ exportObj.basicCardData = function() {
         points: 2,
         charge: 2,
         applies_condition: 'Bomblet'.canonicalize(),
+        restrictions: [["Slot", "Device"]],
         restriction_func: function(ship, upgrade_obj) {
           return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot);
         },
@@ -5876,6 +5888,7 @@ exportObj.basicCardData = function() {
         slot: "Force",
         pointsarray: [4, 4, 4, 8, 16, 24, 32],
         variableinit: true,
+        restrictions: [["Base", "Small"]],
         restriction_func: function(ship) {
           return !((ship.data.large != null) || (ship.data.medium != null) || (ship.data.huge != null));
         }
@@ -5911,6 +5924,7 @@ exportObj.basicCardData = function() {
         points: 2,
         unique: true,
         faction: ["Scum and Villainy", "Galactic Empire"],
+        restrictions: [["Faction", "Scum and Villainy"], ["or Unique", "Darth Vader"]],
         restriction_func: function(ship) {
           var builder;
           builder = ship.builder;
@@ -6001,6 +6015,7 @@ exportObj.basicCardData = function() {
         id: 89,
         slot: "Gunner",
         points: 4,
+        restrictions: [["Attack", "Rear Arc"]],
         restriction_func: function(ship) {
           return ship.data.attackb != null;
         }
@@ -6010,6 +6025,7 @@ exportObj.basicCardData = function() {
         slot: "Gunner",
         pointsarray: [11, 8, 7, 7],
         variablebase: true,
+        restrictions: [["Action", "Rotate Arc"]],
         restriction_func: function(ship) {
           return (__indexOf.call(ship.effectiveStats().actions, "Rotate Arc") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Rotate Arc") >= 0);
         }
@@ -6020,6 +6036,7 @@ exportObj.basicCardData = function() {
         points: 4,
         unique: true,
         charge: 2,
+        restrictions: [["Base", "Small"], ["Base", "Medium"]],
         restriction_func: function(ship) {
           return !((ship.data.large != null) || (ship.data.huge != null));
         }
@@ -6051,6 +6068,7 @@ exportObj.basicCardData = function() {
         slot: "Illicit",
         points: 4,
         charge: 1,
+        restrictions: [["Base", "Medium"], ["Base", "Large"]],
         restriction_func: function(ship) {
           return (ship.data.medium != null) || (ship.data.large != null);
         }
@@ -6063,6 +6081,7 @@ exportObj.basicCardData = function() {
         range: "2-3",
         rangebonus: true,
         charge: 5,
+        restrictions: [["Slot", "Missile"]],
         restriction_func: function(ship, upgrade_obj) {
           return ship.hasAnotherUnoccupiedSlotLike(upgrade_obj, upgrade_obj.slot);
         },
@@ -6121,6 +6140,7 @@ exportObj.basicCardData = function() {
         slot: "Modification",
         points: 6,
         charge: 2,
+        restrictions: [["Base", "Medium"], ["Base", "Large"]],
         restriction_func: function(ship) {
           return (ship.data.medium != null) || (ship.data.large != null);
         }
@@ -6129,6 +6149,7 @@ exportObj.basicCardData = function() {
         id: 104,
         slot: "Modification",
         points: 3,
+        restrictions: [["Action", "Slam"]],
         restriction_func: function(ship) {
           return (__indexOf.call(ship.effectiveStats().actions, "Slam") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Slam") >= 0);
         }
@@ -6139,6 +6160,7 @@ exportObj.basicCardData = function() {
         pointsarray: [4, 4, 4, 4, 5, 6, 7],
         variableinit: true,
         charge: 2,
+        restrictions: [["Base", "Small"]],
         restriction_func: function(ship) {
           return !((ship.data.large != null) || (ship.data.medium != null) || (ship.data.huge != null));
         }
@@ -6153,6 +6175,7 @@ exportObj.basicCardData = function() {
         slot: "Modification",
         pointsarray: [2, 4, 7],
         variablebase: true,
+        restrictions: [["Action", "R-Boost"]],
         restriction_func: function(ship) {
           return __indexOf.call(ship.effectiveStats().actions, "R-Boost") >= 0;
         },
@@ -6176,6 +6199,7 @@ exportObj.basicCardData = function() {
         id: 110,
         slot: "Modification",
         points: 2,
+        restrictions: [["Base", "Medium"], ["Base", "Large"]],
         restriction_func: function(ship) {
           return (ship.data.medium != null) || (ship.data.large != null);
         }
@@ -6205,6 +6229,7 @@ exportObj.basicCardData = function() {
         id: 115,
         slot: "Talent",
         points: 1,
+        restrictions: [["Action", "Focus"]],
         restriction_func: function(ship) {
           return (__indexOf.call(ship.effectiveStats().actions, "Focus") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Focus") >= 0);
         }
@@ -6219,6 +6244,7 @@ exportObj.basicCardData = function() {
         id: 117,
         slot: "Talent",
         points: 2,
+        restrictions: [["Action", "Boost"], ["Base", "Small"]],
         restriction_func: function(ship) {
           return (__indexOf.call(ship.effectiveStats().actions, "Boost") >= 0) && !((ship.data.large != null) || (ship.data.medium != null) || (ship.data.huge != null));
         }
@@ -6227,6 +6253,7 @@ exportObj.basicCardData = function() {
         id: 118,
         slot: "Talent",
         points: 4,
+        restrictions: [["Base", "Small"], ["Base", "Medium"]],
         restriction_func: function(ship) {
           return !((ship.data.large != null) || (ship.data.huge != null));
         },
@@ -6241,6 +6268,7 @@ exportObj.basicCardData = function() {
         slot: "Talent",
         points: 3,
         charge: 1,
+        restrictions: [["Base", "Small"], ["Base", "Medium"]],
         restriction_func: function(ship) {
           return ship.data.large == null;
         }
@@ -6250,6 +6278,7 @@ exportObj.basicCardData = function() {
         slot: "Talent",
         pointsarray: [2, 3, 4],
         variablebase: true,
+        restrictions: [["Action", "R-Barrel Roll"]],
         restriction_func: function(ship) {
           return __indexOf.call(ship.effectiveStats().actions, "R-Barrel Roll") >= 0;
         },
@@ -6274,6 +6303,7 @@ exportObj.basicCardData = function() {
         id: 123,
         slot: "Talent",
         points: 7,
+        restrictions: [["Base", "Small"], ["Base", "Medium"]],
         restriction_func: function(ship) {
           return !((ship.data.large != null) || (ship.data.huge != null));
         }
@@ -6311,6 +6341,7 @@ exportObj.basicCardData = function() {
         id: 129,
         slot: "Talent",
         points: 4,
+        restrictions: [["Action", "Reload"]],
         restriction_func: function(ship) {
           return (__indexOf.call(ship.effectiveStats().actions, "Reload") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Reload") >= 0);
         }
@@ -6761,6 +6792,7 @@ exportObj.basicCardData = function() {
         id: 177,
         slot: "Tech",
         points: 4,
+        restrictions: [["Faction", "Scum and Villainy"], ["or Unique", "Ezra Bridger"]],
         restriction_func: function(ship) {
           return (__indexOf.call(ship.effectiveStats().actions, "Lock") >= 0) || (__indexOf.call(ship.effectiveStats().actions, "R-Lock") >= 0);
         }
@@ -7259,10 +7291,12 @@ exportObj.basicCardData = function() {
         unique: true,
         modifier_func: function(stats) {
           if (__indexOf.call(stats.actions, 'Calculate') < 0) {
-            return stats.actions.push('Calculate');
+            stats.actions.push('Calculate');
           }
-        },
-        applies_condition: 'It\'s the Resistance'.canonicalize()
+          return {
+            applies_condition: 'It\'s the Resistance'.canonicalize()
+          };
+        }
       }, {
         name: "Kaydel Connix",
         id: 231,
