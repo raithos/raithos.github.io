@@ -8449,6 +8449,7 @@ exportObj.basicCardData = function() {
         attack: 3,
         range: "1-3",
         limited: 2,
+        rangebonus: true,
         max_per_squad: 2,
         charge: 2,
         points: 2
