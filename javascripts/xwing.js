@@ -5095,7 +5095,7 @@ exportObj.SquadBuilder = (function() {
             uniquedots = "";
           }
           container.find('.info-name').html("" + uniquedots + (data.display_name ? data.display_name : data.name) + (exportObj.isReleased(data) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
-          restriction_info = this.restriction_text(data);
+          restriction_info = this.restriction_text(data) + this.upgrade_effect(data);
           if (restriction_info !== '') {
             container.find('p.info-restrictions').html(restriction_info != null ? restriction_info : '');
             container.find('p.info-restrictions').show();
@@ -5224,7 +5224,7 @@ exportObj.SquadBuilder = (function() {
             uniquedots = "";
           }
           container.find('.info-name').html("" + uniquedots + (pilot.display_name ? pilot.display_name : pilot.name) + (data.suffix != null ? data.suffix : "") + (exportObj.isReleased(pilot) ? "" : " (" + (exportObj.translate(this.language, 'ui', 'unreleased')) + ")"));
-          restriction_info = this.restriction_text(data);
+          restriction_info = this.restriction_text(data) + this.upgrade_effect(data);
           if (restriction_info !== '') {
             container.find('p.info-restrictions').html(restriction_info != null ? restriction_info : '');
             container.find('p.info-restrictions').show();
@@ -5359,7 +5359,7 @@ exportObj.SquadBuilder = (function() {
             }
             point_info += "</i>";
           }
-          restriction_info = this.restriction_text(data);
+          restriction_info = this.restriction_text(data) + this.upgrade_effect(data);
           if ((point_info != null) || (restriction_info !== '')) {
             if ((point_info != null) && (restriction_info !== '')) {
               point_info += "<br/>";
@@ -5788,6 +5788,98 @@ exportObj.SquadBuilder = (function() {
         _results.push(meth());
       }
       return _results;
+    }
+  };
+
+  SquadBuilder.prototype.upgrade_effect = function(card) {
+    var addonname, comma, data, statchange, text, _i, _len, _ref;
+    text = comma = '';
+    if (card.modifier_func) {
+      statchange = {
+        attack: 0,
+        attackf: 0,
+        attackbull: 0,
+        attackb: 0,
+        attackt: 0,
+        attackl: 0,
+        attackr: 0,
+        attackdt: 0,
+        energy: 0,
+        agility: 0,
+        hull: 0,
+        shields: 0,
+        force: 0,
+        actions: []
+      };
+      card.modifier_func(statchange);
+      if (statchange.attack !== 0) {
+        text += comma + ("%FRONTARC% (" + statchange.attack + ")");
+        comma = ', ';
+      }
+      if (statchange.attackf !== 0) {
+        text += comma + ("%FULLFRONTARC% (" + statchange.attackf + ")");
+        comma = ', ';
+      }
+      if (statchange.attackbull !== 0) {
+        text += comma + ("%BULLSEYEARC% (" + statchange.attackbull + ")");
+        comma = ', ';
+      }
+      if (statchange.attackb !== 0) {
+        text += comma + ("%REARARC% (" + statchange.attackb + ")");
+        comma = ', ';
+      }
+      if (statchange.attackt !== 0) {
+        text += comma + ("%SINGLETURRETARC% (" + statchange.attackt + ")");
+        comma = ', ';
+      }
+      if (statchange.attackl !== 0) {
+        text += comma + ("%LEFTARC% (" + statchange.attackl + ")");
+        comma = ', ';
+      }
+      if (statchange.attackr !== 0) {
+        text += comma + ("%RIGHTARC% (" + statchange.attackr + ")");
+        comma = ', ';
+      }
+      if (statchange.attackdt !== 0) {
+        text += comma + ("%DOUBLETURRETARC% (" + statchange.attackdt + ")");
+        comma = ', ';
+      }
+      if (statchange.energy !== 0) {
+        text += comma + ("%ENERGY% (" + statchange.energy + ")");
+        comma = ', ';
+      }
+      if (statchange.agility !== 0) {
+        text += comma + ("%AGILITY% (" + statchange.agility + ")");
+        comma = ', ';
+      }
+      if (statchange.hull !== 0) {
+        text += comma + ("%HULL% (" + statchange.hull + ")");
+        comma = ', ';
+      }
+      if (statchange.shields !== 0) {
+        text += comma + ("%SHIELD% (" + statchange.shields + ")");
+        comma = ', ';
+      }
+      if (statchange.actions.length > 0) {
+        text += comma + this.formatActions(statchange.actions, ", ", []);
+        comma = ', ';
+      }
+    }
+    if (card.confersAddons) {
+      _ref = card.confersAddons;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        addonname = _ref[_i];
+        text += comma + ("%" + (addonname.slot.toUpperCase().replace(/[^a-z0-9]/gi, '')) + "%");
+        comma = ', ';
+      }
+    }
+    if (text !== '') {
+      data = {
+        text: "</br><b>Adds:</b> " + text
+      };
+      return exportObj.fixIcons(data);
+    } else {
+      return '';
     }
   };
 
@@ -6269,7 +6361,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 5311
+                      lineno: 5380
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -6486,7 +6578,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 5421
+                          lineno: 5490
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -6536,7 +6628,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 5454
+                                  lineno: 5523
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -6634,7 +6726,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 5512
+                      lineno: 5581
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -6715,7 +6807,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 5542
+                lineno: 5611
               })
             ]);
             __iced_deferrals._fulfill();
@@ -6784,7 +6876,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 5571
+              lineno: 5640
             }));
           }
         }
@@ -6876,7 +6968,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 5627
+                lineno: 5696
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -7668,7 +7760,7 @@ Ship = (function() {
   };
 
   Ship.prototype.effectiveStats = function() {
-    var new_stats, s, statentry, stats, upgrade, _i, _j, _k, _len, _len1, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var new_stats, s, statentry, stats, upgrade, _i, _j, _k, _len, _len1, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     stats = {
       attack: (_ref = (_ref1 = this.pilot.ship_override) != null ? _ref1.attack : void 0) != null ? _ref : this.data.attack,
       attackf: (_ref2 = (_ref3 = this.pilot.ship_override) != null ? _ref3.attackf : void 0) != null ? _ref2 : this.data.attackf,
@@ -7684,30 +7776,29 @@ Ship = (function() {
       shields: (_ref22 = (_ref23 = this.pilot.ship_override) != null ? _ref23.shields : void 0) != null ? _ref22 : this.data.shields,
       force: (_ref24 = (_ref25 = (_ref26 = this.pilot.ship_override) != null ? _ref26.force : void 0) != null ? _ref25 : this.pilot.force) != null ? _ref24 : 0,
       charge: (_ref27 = (_ref28 = this.pilot.ship_override) != null ? _ref28.charge : void 0) != null ? _ref27 : this.pilot.charge,
-      darkside: (_ref29 = (_ref30 = (_ref31 = this.pilot.ship_override) != null ? _ref31.darkside : void 0) != null ? _ref30 : this.pilot.darkside) != null ? _ref29 : false,
-      actions: ((_ref32 = (_ref33 = this.pilot.ship_override) != null ? _ref33.actions : void 0) != null ? _ref32 : this.data.actions).slice(0)
+      actions: ((_ref29 = (_ref30 = this.pilot.ship_override) != null ? _ref30.actions : void 0) != null ? _ref29 : this.data.actions).slice(0)
     };
     stats.maneuvers = [];
-    for (s = _i = 0, _ref34 = ((_ref35 = this.data.maneuvers) != null ? _ref35 : []).length; 0 <= _ref34 ? _i < _ref34 : _i > _ref34; s = 0 <= _ref34 ? ++_i : --_i) {
+    for (s = _i = 0, _ref31 = ((_ref32 = this.data.maneuvers) != null ? _ref32 : []).length; 0 <= _ref31 ? _i < _ref31 : _i > _ref31; s = 0 <= _ref31 ? ++_i : --_i) {
       stats.maneuvers[s] = this.data.maneuvers[s].slice(0);
     }
     if ((this.pilot.keyword != null) && (__indexOf.call(this.pilot.keyword, "Droid") >= 0) && (stats.actions != null)) {
       new_stats = [];
-      _ref36 = stats.actions;
-      for (_j = 0, _len = _ref36.length; _j < _len; _j++) {
-        statentry = _ref36[_j];
+      _ref33 = stats.actions;
+      for (_j = 0, _len = _ref33.length; _j < _len; _j++) {
+        statentry = _ref33[_j];
         new_stats.push(statentry.replace("Focus", "Calculate"));
       }
       stats.actions = new_stats;
     }
-    _ref37 = this.upgrades;
-    for (_k = 0, _len1 = _ref37.length; _k < _len1; _k++) {
-      upgrade = _ref37[_k];
-      if ((upgrade != null ? (_ref38 = upgrade.data) != null ? _ref38.modifier_func : void 0 : void 0) != null) {
+    _ref34 = this.upgrades;
+    for (_k = 0, _len1 = _ref34.length; _k < _len1; _k++) {
+      upgrade = _ref34[_k];
+      if ((upgrade != null ? (_ref35 = upgrade.data) != null ? _ref35.modifier_func : void 0 : void 0) != null) {
         upgrade.data.modifier_func(stats);
       }
     }
-    if (((_ref39 = this.pilot) != null ? _ref39.modifier_func : void 0) != null) {
+    if (((_ref36 = this.pilot) != null ? _ref36.modifier_func : void 0) != null) {
       this.pilot.modifier_func(stats);
     }
     return stats;
@@ -8111,7 +8202,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 6553
+                lineno: 6621
               })
             ]);
             __iced_deferrals._fulfill();
@@ -8269,7 +8360,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 6644
+                  lineno: 6712
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -8296,7 +8387,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 6651
+                      lineno: 6719
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -8439,7 +8530,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 6723
+            lineno: 6791
           }));
         }
         __iced_deferrals._fulfill();
