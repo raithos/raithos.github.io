@@ -4956,7 +4956,7 @@ exportObj.basicCardData = function() {
         skill: 1,
         ship: "Droid Tri-Fighter",
         points: 35,
-        slots: ["Talent", "Sensor", "Missile", "Modification", "Configuration"]
+        slots: ["Sensor", "Missile", "Modification", "Configuration"]
       }, {
         name: "Separatist Interceptor",
         id: 425,
@@ -5254,21 +5254,23 @@ exportObj.basicCardData = function() {
         restrictions: [["Base", "Small"]],
         modifier_func: function(stats) {
           var turn, _i, _ref, _results;
-          _results = [];
-          for (turn = _i = 0, _ref = stats.maneuvers[1].length; 0 <= _ref ? _i < _ref : _i > _ref; turn = 0 <= _ref ? ++_i : --_i) {
-            if (turn > 4) {
-              continue;
+          if (stats.maneuvers[1] != null) {
+            _results = [];
+            for (turn = _i = 0, _ref = stats.maneuvers[1].length; 0 <= _ref ? _i < _ref : _i > _ref; turn = 0 <= _ref ? ++_i : --_i) {
+              if (turn > 4) {
+                continue;
+              }
+              if (stats.maneuvers[1][turn] > 1) {
+                stats.maneuvers[1][turn]--;
+              }
+              if (stats.maneuvers[2][turn] > 1) {
+                _results.push(stats.maneuvers[2][turn]--);
+              } else {
+                _results.push(void 0);
+              }
             }
-            if (stats.maneuvers[1][turn] > 1) {
-              stats.maneuvers[1][turn]--;
-            }
-            if (stats.maneuvers[2][turn] > 1) {
-              _results.push(stats.maneuvers[2][turn]--);
-            } else {
-              _results.push(void 0);
-            }
+            return _results;
           }
-          return _results;
         }
       }, {
         name: "R5 Astromech",
@@ -5670,20 +5672,22 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         modifier_func: function(stats) {
           var s, _i, _len, _ref, _results;
-          _ref = stats.maneuvers;
-          _results = [];
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            s = _ref[_i];
-            if (s[1] > 1) {
-              s[1]--;
+          if (stats.maneuvers[1] != null) {
+            _ref = stats.maneuvers;
+            _results = [];
+            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+              s = _ref[_i];
+              if (s[1] > 1) {
+                s[1]--;
+              }
+              if (s[3] > 1) {
+                _results.push(s[3]--);
+              } else {
+                _results.push(void 0);
+              }
             }
-            if (s[3] > 1) {
-              _results.push(s[3]--);
-            } else {
-              _results.push(void 0);
-            }
+            return _results;
           }
-          return _results;
         }
       }, {
         name: "Novice Technician",
@@ -8228,15 +8232,17 @@ exportObj.basicCardData = function() {
           stats.actions.push('Calculate');
           stats.actions.push('*Barrel Roll');
           stats.actions.push('*R-> Calculate');
-          _results = [];
-          for (turn = _i = 1; _i < 4; turn = ++_i) {
-            if (stats.maneuvers[3][turn] > 1) {
-              _results.push(stats.maneuvers[3][turn]--);
-            } else {
-              _results.push(void 0);
+          if (stats.maneuvers[3] != null) {
+            _results = [];
+            for (turn = _i = 1; _i < 4; turn = ++_i) {
+              if (stats.maneuvers[3][turn] > 1) {
+                _results.push(stats.maneuvers[3][turn]--);
+              } else {
+                _results.push(void 0);
+              }
             }
+            return _results;
           }
-          return _results;
         }
       }, {
         name: "Ion Limiter Override",

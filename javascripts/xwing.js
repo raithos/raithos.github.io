@@ -5255,11 +5255,11 @@ exportObj.SquadBuilder = (function() {
           container.find('tr.info-attack-bullseye').toggle(ship.attackbull != null);
           container.find('tr.info-attack-left td.info-data').text(ship.attackl);
           container.find('tr.info-attack-left').toggle(ship.attackl != null);
-          container.find('tr.info-attack-left td.info-data').text(ship.attackr);
-          container.find('tr.info-attack-left').toggle(ship.attackr != null);
-          container.find('tr.info-attack-back td.info-data').text(ship.attackb);
+          container.find('tr.info-attack-right td.info-data').text(ship.attackr);
+          container.find('tr.info-attack-right').toggle(ship.attackr != null);
+          container.find('tr.info-attack-back td.info-data').text(ship.attackb != null);
           container.find('tr.info-attack-back').toggle(ship.attackb != null);
-          container.find('tr.info-attack-turret td.info-data').text(ship.attackt);
+          container.find('tr.info-attack-turret td.info-data').text(ship.attackt != null);
           container.find('tr.info-attack-turret').toggle(ship.attackt != null);
           container.find('tr.info-attack-doubleturret td.info-data').text(ship.attackdt);
           container.find('tr.info-attack-doubleturret').toggle(ship.attackdt != null);
@@ -5394,13 +5394,13 @@ exportObj.SquadBuilder = (function() {
             container.find('tr.info-attack-turret').hide();
           }
           if (data.attackr != null) {
-            container.find('tr.info-attack-right td.info-data').text(data.attackl);
+            container.find('tr.info-attack-right td.info-data').text(data.attackr);
             container.find('tr.info-attack-right').show();
           } else {
             container.find('tr.info-attack-right').hide();
           }
           if (data.attackl != null) {
-            container.find('tr.info-attack-left td.info-data').text(data.attackr);
+            container.find('tr.info-attack-left td.info-data').text(data.attackl);
             container.find('tr.info-attack-left').show();
           } else {
             container.find('tr.info-attack-right').hide();
@@ -5809,7 +5809,8 @@ exportObj.SquadBuilder = (function() {
         hull: 0,
         shields: 0,
         force: 0,
-        actions: []
+        actions: [],
+        maneuvers: [0, 0]
       };
       card.modifier_func(statchange);
       if (statchange.attack !== 0) {
@@ -7996,7 +7997,7 @@ Ship = (function() {
           }
           break;
         case "notUnique":
-          if (this.pilot.unique == null) {
+          if (this.pilot.unique != null) {
             return false;
           }
           break;
