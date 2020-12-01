@@ -8577,6 +8577,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Slave I (Separatist)",
         canonical_name: 'Slave I'.canonicalize(),
+        xws: "slavei-separatist",
         id: 370,
         points: 3,
         slot: "Title",
