@@ -4022,7 +4022,7 @@ class exportObj.SquadBuilder
         if filter_func != @dfl_filter_func
             available_upgrades = (upgrade for upgrade in available_upgrades when filter_func(upgrade))
 
-        eligible_upgrades = (upgrade for upgrade_name, upgrade of available_upgrades when (not upgrade.unique? or upgrade not in @uniques_in_use['Upgrade']) and (not (ship? and upgrade.restrictions?) or ship.restriction_check(upgrade.restrictions)) and upgrade not in upgrades_in_use and ((not upgrade.max_per_squad?) or ship.builder.countUpgrades(upgrade.canonical_name) < upgrade.max_per_squad) and (not upgrade.solitary? or (upgrade.slot not in @uniques_in_use['Slot'] or include_upgrade?.solitary?)))
+        eligible_upgrades = (upgrade for upgrade_name, upgrade of available_upgrades when (not upgrade.unique? or upgrade not in @uniques_in_use['Upgrade']) and (not (ship? and upgrade.restrictions?) or ship.restriction_check(upgrade.restrictions, this_upgrade_obj)) and upgrade not in upgrades_in_use and ((not upgrade.max_per_squad?) or ship.builder.countUpgrades(upgrade.canonical_name) < upgrade.max_per_squad) and (not upgrade.solitary? or (upgrade.slot not in @uniques_in_use['Slot'] or include_upgrade?.solitary?)))
         
         
 
@@ -6436,7 +6436,7 @@ class Ship
             for upgrade in @upgrades
                 func = upgrade?.data?.validation_func ? undefined
                 if upgrade?.data?.restrictions and (not func?)
-                    func = @restriction_check(upgrade.data.restrictions)
+                    func = @restriction_check(upgrade.data.restrictions, upgrade)
                 # check if either a) validation func not met or b) upgrade already equipped (in 2.0 everything is limited) or c) upgrade is not available (e.g. not Hyperspace legal)
                 # ignore those checks if this is a quickbuild squad, as quickbuild does whatever it wants to do...
                 if ((func? and not func) or (upgrade?.data? and (upgrade.data in equipped_upgrades or not @builder.isItemAvailable(upgrade.data)))) and not @builder.isQuickbuild
@@ -6469,7 +6469,7 @@ class Ship
             return true unless upgrade.isOccupied()
         false
 
-    restriction_check: (restrictions) ->
+    restriction_check: (restrictions, upgrade_obj) ->
         effective_stats = @effectiveStats()
         for r in restrictions
             if r[0] == "orUnique"
@@ -6495,9 +6495,9 @@ class Ship
                 when "Keyword"
                     if not (@checkKeyword(r[1])) then return false
                 when "Equipped"
-                    if not ((@doesSlotExist(r[1]) and not @hasAnotherUnoccupiedSlotLike(this, r[1]))) then return false
+                    if not ((@doesSlotExist(r[1]) and not @hasAnotherUnoccupiedSlotLike(upgrade_obj, r[1]))) then return false
                 when "Slot"
-                    if not @hasAnotherUnoccupiedSlotLike(this, r[1]) then return false
+                    if not @hasAnotherUnoccupiedSlotLike(upgrade_obj, r[1]) then return false
                 when "AttackArc"
                     if not @data.attackb? then return false
                 when "ShieldsGreaterThan"

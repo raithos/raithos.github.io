@@ -4614,7 +4614,7 @@ exportObj.SquadBuilder = (function() {
       _results = [];
       for (upgrade_name in available_upgrades) {
         upgrade = available_upgrades[upgrade_name];
-        if (((upgrade.unique == null) || __indexOf.call(this.uniques_in_use['Upgrade'], upgrade) < 0) && (!((ship != null) && (upgrade.restrictions != null)) || ship.restriction_check(upgrade.restrictions)) && __indexOf.call(upgrades_in_use, upgrade) < 0 && ((upgrade.max_per_squad == null) || ship.builder.countUpgrades(upgrade.canonical_name) < upgrade.max_per_squad) && ((upgrade.solitary == null) || ((_ref = upgrade.slot, __indexOf.call(this.uniques_in_use['Slot'], _ref) < 0) || ((include_upgrade != null ? include_upgrade.solitary : void 0) != null)))) {
+        if (((upgrade.unique == null) || __indexOf.call(this.uniques_in_use['Upgrade'], upgrade) < 0) && (!((ship != null) && (upgrade.restrictions != null)) || ship.restriction_check(upgrade.restrictions, this_upgrade_obj)) && __indexOf.call(upgrades_in_use, upgrade) < 0 && ((upgrade.max_per_squad == null) || ship.builder.countUpgrades(upgrade.canonical_name) < upgrade.max_per_squad) && ((upgrade.solitary == null) || ((_ref = upgrade.slot, __indexOf.call(this.uniques_in_use['Slot'], _ref) < 0) || ((include_upgrade != null ? include_upgrade.solitary : void 0) != null)))) {
           _results.push(upgrade);
         }
       }
@@ -7852,7 +7852,7 @@ Ship = (function() {
         upgrade = _ref6[_l];
         func = (_ref7 = upgrade != null ? (_ref8 = upgrade.data) != null ? _ref8.validation_func : void 0 : void 0) != null ? _ref7 : void 0;
         if ((upgrade != null ? (_ref9 = upgrade.data) != null ? _ref9.restrictions : void 0 : void 0) && (func == null)) {
-          func = this.restriction_check(upgrade.data.restrictions);
+          func = this.restriction_check(upgrade.data.restrictions, upgrade);
         }
         if ((((func != null) && !func) || (((upgrade != null ? upgrade.data : void 0) != null) && ((_ref10 = upgrade.data, __indexOf.call(equipped_upgrades, _ref10) >= 0) || !this.builder.isItemAvailable(upgrade.data)))) && !this.builder.isQuickbuild) {
           upgrade.setById(null);
@@ -7902,7 +7902,7 @@ Ship = (function() {
     return false;
   };
 
-  Ship.prototype.restriction_check = function(restrictions) {
+  Ship.prototype.restriction_check = function(restrictions, upgrade_obj) {
     var effective_stats, r, _i, _len, _ref, _ref1;
     effective_stats = this.effectiveStats();
     for (_i = 0, _len = restrictions.length; _i < _len; _i++) {
@@ -7957,12 +7957,12 @@ Ship = (function() {
           }
           break;
         case "Equipped":
-          if (!(this.doesSlotExist(r[1]) && !this.hasAnotherUnoccupiedSlotLike(this, r[1]))) {
+          if (!(this.doesSlotExist(r[1]) && !this.hasAnotherUnoccupiedSlotLike(upgrade_obj, r[1]))) {
             return false;
           }
           break;
         case "Slot":
-          if (!this.hasAnotherUnoccupiedSlotLike(this, r[1])) {
+          if (!this.hasAnotherUnoccupiedSlotLike(upgrade_obj, r[1])) {
             return false;
           }
           break;
