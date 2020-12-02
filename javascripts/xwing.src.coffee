@@ -1654,12 +1654,14 @@ class exportObj.CardBrowser
                        faction_matches = true
                        break
                return false unless faction_matches
+        else
+            selected_factions = all_factions
 
         # check if hyperspace only matches
         if @hyperspace_checkbox.checked
             # check all factions specified by the card (which might be a single faction or an array of factions), or all selected factions if card does not specify any
-            for faction in (if card.data.faction? then (if Array.isArray(card.data.faction) then card.data.faction else [card.data.faction]) else (selected_factions ? all_factions))
-                continue unless faction in (selected_factions ? all_factions) # e.g. ships should only be displayed if a legal faction is selected
+            for faction in (if card.data.faction? then (if Array.isArray(card.data.faction) then card.data.faction else [card.data.faction]) else selected_factions)
+                continue unless faction in selected_factions # e.g. ships should only be displayed if a legal faction is selected
                 hyperspace_legal = hyperspace_legal or exportObj.hyperspaceCheck(card.data, faction, card.orig_type == 'Ship' )
             return false unless hyperspace_legal
 
@@ -1669,7 +1671,7 @@ class exportObj.CardBrowser
             slots = card.data.slots
             if card.orig_type == 'Ship'
                 slots = []
-                for faction in selected_factions ? all_factions
+                for faction in selected_factions
                     if faction != undefined
                         for name, pilots of exportObj.pilotsByFactionCanonicalName[faction]
                             for pilot in pilots # there are sometimes multiple pilots with the same name, so we have another array layer here
@@ -1710,7 +1712,7 @@ class exportObj.CardBrowser
                 return false unless matching_points
             if card.orig_type == 'Ship' # check if pilot matching points exist
                 matching_points = false
-                for faction in selected_factions ? all_factions
+                for faction in selected_factions
                     for name, pilots of exportObj.pilotsByFactionCanonicalName[faction]
                         for pilot in pilots
                             if pilot.ship == card.data.name
@@ -1825,6 +1827,7 @@ class exportObj.CardBrowser
         #TODO: Add logic of addiditional search criteria here. Have a look at card.data, to see what data is available. Add search inputs at the todo marks above. 
 
         return true
+
 ###
     X-Wing Rules Browser
     Stephen Kim <raithos@gmail.com>

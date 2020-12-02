@@ -1855,7 +1855,7 @@ exportObj.CardBrowser = (function() {
   };
 
   CardBrowser.prototype.checkSearchCriteria = function(card) {
-    var action, actions, adds, all_factions, faction, faction_matches, hasDuplicates, hyperspace_legal, matches, matching_points, name, owned_copies, pilot, pilots, points, required_actions, required_linked_actions, required_slots, s, search_text, selected_factions, ship, size_matches, slot, slots, text_in_ship, text_search, used_second_slots, used_slots, _i, _j, _k, _l, _len, _len1, _len10, _len11, _len12, _len13, _len14, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _len9, _m, _n, _o, _p, _q, _r, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _s, _t, _u, _v, _w;
+    var action, actions, adds, all_factions, faction, faction_matches, hasDuplicates, hyperspace_legal, matches, matching_points, name, owned_copies, pilot, pilots, points, required_actions, required_linked_actions, required_slots, s, search_text, selected_factions, ship, size_matches, slot, slots, text_in_ship, text_search, used_second_slots, used_slots, _i, _j, _k, _l, _len, _len1, _len10, _len11, _len12, _len13, _len14, _len2, _len3, _len4, _len5, _len6, _len7, _len8, _len9, _m, _n, _o, _p, _q, _r, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _s, _t, _u, _v, _w;
     search_text = this.card_search_text.value.toLowerCase();
     text_search = card.name.toLowerCase().indexOf(search_text) > -1 || (card.data.text && card.data.text.toLowerCase().indexOf(search_text)) > -1 || (card.display_name && card.display_name.toLowerCase().indexOf(search_text) > -1);
     if (!text_search) {
@@ -1927,12 +1927,14 @@ exportObj.CardBrowser = (function() {
           return false;
         }
       }
+    } else {
+      selected_factions = all_factions;
     }
     if (this.hyperspace_checkbox.checked) {
-      _ref3 = (card.data.faction != null ? (Array.isArray(card.data.faction) ? card.data.faction : [card.data.faction]) : selected_factions != null ? selected_factions : all_factions);
+      _ref3 = (card.data.faction != null ? (Array.isArray(card.data.faction) ? card.data.faction : [card.data.faction]) : selected_factions);
       for (_l = 0, _len3 = _ref3.length; _l < _len3; _l++) {
         faction = _ref3[_l];
-        if (__indexOf.call(selected_factions != null ? selected_factions : all_factions, faction) < 0) {
+        if (__indexOf.call(selected_factions, faction) < 0) {
           continue;
         }
         hyperspace_legal = hyperspace_legal || exportObj.hyperspaceCheck(card.data, faction, card.orig_type === 'Ship');
@@ -1946,13 +1948,12 @@ exportObj.CardBrowser = (function() {
       slots = card.data.slots;
       if (card.orig_type === 'Ship') {
         slots = [];
-        _ref4 = selected_factions != null ? selected_factions : all_factions;
-        for (_m = 0, _len4 = _ref4.length; _m < _len4; _m++) {
-          faction = _ref4[_m];
+        for (_m = 0, _len4 = selected_factions.length; _m < _len4; _m++) {
+          faction = selected_factions[_m];
           if (faction !== void 0) {
-            _ref5 = exportObj.pilotsByFactionCanonicalName[faction];
-            for (name in _ref5) {
-              pilots = _ref5[name];
+            _ref4 = exportObj.pilotsByFactionCanonicalName[faction];
+            for (name in _ref4) {
+              pilots = _ref4[name];
               for (_n = 0, _len5 = pilots.length; _n < _len5; _n++) {
                 pilot = pilots[_n];
                 if (pilot.ship === card.data.name) {
@@ -1981,24 +1982,24 @@ exportObj.CardBrowser = (function() {
     required_actions = this.action_available_selection.val();
     required_linked_actions = this.linkedaction_available_selection.val();
     if ((required_actions.length > 0) || (required_linked_actions.length > 0)) {
-      actions = (_ref6 = card.data.actions) != null ? _ref6 : [];
-      actions = actions.concat((_ref7 = card.data.actionsred) != null ? _ref7 : []);
+      actions = (_ref5 = card.data.actions) != null ? _ref5 : [];
+      actions = actions.concat((_ref6 = card.data.actionsred) != null ? _ref6 : []);
       if (card.orig_type === 'Pilot') {
-        actions = (_ref8 = (_ref9 = card.data.ship_override) != null ? _ref9.actions : void 0) != null ? _ref8 : exportObj.ships[card.data.ship].actions;
-        actions = actions.concat((_ref10 = (_ref11 = card.data.ship_override) != null ? _ref11.actionsred : void 0) != null ? _ref10 : exportObj.ships[card.data.ship].actionsred);
+        actions = (_ref7 = (_ref8 = card.data.ship_override) != null ? _ref8.actions : void 0) != null ? _ref7 : exportObj.ships[card.data.ship].actions;
+        actions = actions.concat((_ref9 = (_ref10 = card.data.ship_override) != null ? _ref10.actionsred : void 0) != null ? _ref9 : exportObj.ships[card.data.ship].actionsred);
       }
     }
-    _ref12 = required_actions != null ? required_actions : [];
-    for (_p = 0, _len7 = _ref12.length; _p < _len7; _p++) {
-      action = _ref12[_p];
-      if (!((actions != null) && ((__indexOf.call(actions, action) >= 0) || (_ref13 = "F-" + action, __indexOf.call(actions, _ref13) >= 0)))) {
+    _ref11 = required_actions != null ? required_actions : [];
+    for (_p = 0, _len7 = _ref11.length; _p < _len7; _p++) {
+      action = _ref11[_p];
+      if (!((actions != null) && ((__indexOf.call(actions, action) >= 0) || (_ref12 = "F-" + action, __indexOf.call(actions, _ref12) >= 0)))) {
         return false;
       }
     }
-    _ref14 = required_linked_actions != null ? required_linked_actions : [];
-    for (_q = 0, _len8 = _ref14.length; _q < _len8; _q++) {
-      action = _ref14[_q];
-      if (!((actions != null) && ((_ref15 = "R> " + action, __indexOf.call(actions, _ref15) >= 0) || (_ref16 = "> " + action, __indexOf.call(actions, _ref16) >= 0)))) {
+    _ref13 = required_linked_actions != null ? required_linked_actions : [];
+    for (_q = 0, _len8 = _ref13.length; _q < _len8; _q++) {
+      action = _ref13[_q];
+      if (!((actions != null) && ((_ref14 = "R> " + action, __indexOf.call(actions, _ref14) >= 0) || (_ref15 = "> " + action, __indexOf.call(actions, _ref15) >= 0)))) {
         return false;
       }
     }
@@ -2008,9 +2009,9 @@ exportObj.CardBrowser = (function() {
       }
       if (card.data.pointsarray != null) {
         matching_points = false;
-        _ref17 = card.data.pointsarray;
-        for (_r = 0, _len9 = _ref17.length; _r < _len9; _r++) {
-          points = _ref17[_r];
+        _ref16 = card.data.pointsarray;
+        for (_r = 0, _len9 = _ref16.length; _r < _len9; _r++) {
+          points = _ref16[_r];
           if (points >= this.minimum_point_costs.value && points <= this.maximum_point_costs.value) {
             matching_points = true;
             break;
@@ -2022,12 +2023,11 @@ exportObj.CardBrowser = (function() {
       }
       if (card.orig_type === 'Ship') {
         matching_points = false;
-        _ref18 = selected_factions != null ? selected_factions : all_factions;
-        for (_s = 0, _len10 = _ref18.length; _s < _len10; _s++) {
-          faction = _ref18[_s];
-          _ref19 = exportObj.pilotsByFactionCanonicalName[faction];
-          for (name in _ref19) {
-            pilots = _ref19[name];
+        for (_s = 0, _len10 = selected_factions.length; _s < _len10; _s++) {
+          faction = selected_factions[_s];
+          _ref17 = exportObj.pilotsByFactionCanonicalName[faction];
+          for (name in _ref17) {
+            pilots = _ref17[name];
             for (_t = 0, _len11 = pilots.length; _t < _len11; _t++) {
               pilot = pilots[_t];
               if (pilot.ship === card.data.name) {
@@ -2075,9 +2075,9 @@ exportObj.CardBrowser = (function() {
       matches = false;
       for (_v = 0, _len13 = used_second_slots.length; _v < _len13; _v++) {
         slot = used_second_slots[_v];
-        _ref20 = card.data.also_occupies_upgrades;
-        for (_w = 0, _len14 = _ref20.length; _w < _len14; _w++) {
-          adds = _ref20[_w];
+        _ref18 = card.data.also_occupies_upgrades;
+        for (_w = 0, _len14 = _ref18.length; _w < _len14; _w++) {
+          adds = _ref18[_w];
           if (adds === slot) {
             matches = true;
             break;
@@ -2106,7 +2106,7 @@ exportObj.CardBrowser = (function() {
     if (card.data.charge && !card.data.recurring && !this.not_recurring_charge.checked) {
       return false;
     }
-    if (((_ref21 = exportObj.builders[0].collection) != null ? _ref21.counts : void 0) != null) {
+    if (((_ref19 = exportObj.builders[0].collection) != null ? _ref19.counts : void 0) != null) {
       owned_copies = this.getCollectionNumber(card);
       if (!(owned_copies >= this.minimum_owned_copies.value && owned_copies <= this.maximum_owned_copies.value)) {
         return false;
@@ -2408,7 +2408,7 @@ exportObj.setupTranslationSupport = function() {
                     parent: ___iced_passed_deferral
                   });
                   builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                    lineno: 2019
+                    lineno: 2022
                   }));
                   __iced_deferrals._fulfill();
                 })(_next);
@@ -3319,7 +3319,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 3014
+              lineno: 3017
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -4215,7 +4215,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 3853
+              lineno: 3856
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -4225,7 +4225,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 3854
+                lineno: 3857
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -6362,7 +6362,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 5380
+                      lineno: 5383
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -6579,7 +6579,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 5490
+                          lineno: 5493
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -6629,7 +6629,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 5523
+                                  lineno: 5526
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -6727,7 +6727,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 5581
+                      lineno: 5584
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -6808,7 +6808,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 5611
+                lineno: 5614
               })
             ]);
             __iced_deferrals._fulfill();
@@ -6877,7 +6877,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 5640
+              lineno: 5643
             }));
           }
         }
@@ -6969,7 +6969,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 5696
+                lineno: 5699
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -8203,7 +8203,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 6621
+                lineno: 6624
               })
             ]);
             __iced_deferrals._fulfill();
@@ -8361,7 +8361,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 6712
+                  lineno: 6715
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -8388,7 +8388,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 6719
+                      lineno: 6722
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -8531,7 +8531,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 6791
+            lineno: 6794
           }));
         }
         __iced_deferrals._fulfill();
