@@ -7888,14 +7888,29 @@ Ship = (function() {
   };
 
   Ship.prototype.hasAnotherUnoccupiedSlotLike = function(upgrade_obj, upgradeslot) {
-    var upgrade, _i, _len, _ref;
-    _ref = this.upgrades;
-    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      upgrade = _ref[_i];
+    var extraslot, r, upgrade, _i, _j, _len, _len1, _ref, _ref1, _ref2;
+    if ((upgrade_obj != null ? (_ref = upgrade_obj.data) != null ? _ref.restrictions : void 0 : void 0) != null) {
+      _ref1 = upgrade_obj.data.restrictions;
+      for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+        r = _ref1[_i];
+        if (r[0] === "Slot") {
+          extraslot = r[1];
+        }
+      }
+    }
+    _ref2 = this.upgrades;
+    for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
+      upgrade = _ref2[_j];
       if (upgrade === upgrade_obj || upgrade.slot !== upgradeslot) {
         continue;
       }
-      if (!upgrade.isOccupied()) {
+      if (upgrade.isOccupied()) {
+        if (extraslot != null) {
+          if (extraslot === upgradeslot) {
+            return true;
+          }
+        }
+      } else {
         return true;
       }
     }
@@ -8203,7 +8218,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 6624
+                lineno: 6634
               })
             ]);
             __iced_deferrals._fulfill();
@@ -8361,7 +8376,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 6715
+                  lineno: 6725
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -8388,7 +8403,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 6722
+                      lineno: 6732
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -8531,7 +8546,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 6794
+            lineno: 6804
           }));
         }
         __iced_deferrals._fulfill();
