@@ -7935,7 +7935,7 @@ Ship = (function() {
                 return false;
               }
               break;
-            case "Small, Medium":
+            case "Small or Medium":
               if ((this.data.large != null) || (this.data.huge != null)) {
                 return false;
               }
@@ -7945,7 +7945,7 @@ Ship = (function() {
                 return false;
               }
               break;
-            case "Medium, Large":
+            case "Medium or Large":
               if (!((this.data.medium != null) || (this.data.large != null))) {
                 return false;
               }
