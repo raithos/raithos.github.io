@@ -7200,7 +7200,7 @@ exportObj.basicCardData = function() {
         slot: "Device",
         points: 10,
         charge: 1,
-        restrictions: [["Action", "Rotate Arc"], ["Slot", "Modification"]],
+        restrictions: [["Action", "Reload"], ["Slot", "Modification"]],
         validation_func: function(ship, upgrade_obj) {
           return upgrade_obj.occupiesAnUpgradeSlot("Modification");
         },
@@ -8391,7 +8391,7 @@ exportObj.basicCardData = function() {
         faction: "First Order",
         slot: "Tech",
         points: 4,
-        restrictions: [["Base", "Small"]],
+        restrictions: [["Base", "Medium or Large"]],
         applies_condition: 'Sensor Buoy'.canonicalize()
       }, {
         name: "Suppressive Gunner",

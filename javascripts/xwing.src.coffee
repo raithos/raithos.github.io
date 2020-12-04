@@ -1654,12 +1654,14 @@ class exportObj.CardBrowser
                        faction_matches = true
                        break
                return false unless faction_matches
+        else
+            selected_factions = all_factions
 
         # check if hyperspace only matches
         if @hyperspace_checkbox.checked
             # check all factions specified by the card (which might be a single faction or an array of factions), or all selected factions if card does not specify any
-            for faction in (if card.data.faction? then (if Array.isArray(card.data.faction) then card.data.faction else [card.data.faction]) else (selected_factions ? all_factions))
-                continue unless faction in (selected_factions ? all_factions) # e.g. ships should only be displayed if a legal faction is selected
+            for faction in (if card.data.faction? then (if Array.isArray(card.data.faction) then card.data.faction else [card.data.faction]) else selected_factions)
+                continue unless faction in selected_factions # e.g. ships should only be displayed if a legal faction is selected
                 hyperspace_legal = hyperspace_legal or exportObj.hyperspaceCheck(card.data, faction, card.orig_type == 'Ship' )
             return false unless hyperspace_legal
 
@@ -1669,7 +1671,7 @@ class exportObj.CardBrowser
             slots = card.data.slots
             if card.orig_type == 'Ship'
                 slots = []
-                for faction in selected_factions ? all_factions
+                for faction in selected_factions
                     if faction != undefined
                         for name, pilots of exportObj.pilotsByFactionCanonicalName[faction]
                             for pilot in pilots # there are sometimes multiple pilots with the same name, so we have another array layer here
@@ -1710,7 +1712,7 @@ class exportObj.CardBrowser
                 return false unless matching_points
             if card.orig_type == 'Ship' # check if pilot matching points exist
                 matching_points = false
-                for faction in selected_factions ? all_factions
+                for faction in selected_factions
                     for name, pilots of exportObj.pilotsByFactionCanonicalName[faction]
                         for pilot in pilots
                             if pilot.ship == card.data.name
@@ -1825,6 +1827,7 @@ class exportObj.CardBrowser
         #TODO: Add logic of addiditional search criteria here. Have a look at card.data, to see what data is available. Add search inputs at the todo marks above. 
 
         return true
+
 ###
     X-Wing Rules Browser
     Stephen Kim <raithos@gmail.com>
@@ -4022,7 +4025,7 @@ class exportObj.SquadBuilder
         if filter_func != @dfl_filter_func
             available_upgrades = (upgrade for upgrade in available_upgrades when filter_func(upgrade))
 
-        eligible_upgrades = (upgrade for upgrade_name, upgrade of available_upgrades when (not upgrade.unique? or upgrade not in @uniques_in_use['Upgrade']) and (not (ship? and upgrade.restrictions?) or ship.restriction_check(upgrade.restrictions)) and upgrade not in upgrades_in_use and ((not upgrade.max_per_squad?) or ship.builder.countUpgrades(upgrade.canonical_name) < upgrade.max_per_squad) and (not upgrade.solitary? or (upgrade.slot not in @uniques_in_use['Slot'] or include_upgrade?.solitary?)))
+        eligible_upgrades = (upgrade for upgrade_name, upgrade of available_upgrades when (not upgrade.unique? or upgrade not in @uniques_in_use['Upgrade']) and (not (ship? and upgrade.restrictions?) or ship.restriction_check(upgrade.restrictions, this_upgrade_obj)) and upgrade not in upgrades_in_use and ((not upgrade.max_per_squad?) or ship.builder.countUpgrades(upgrade.canonical_name) < upgrade.max_per_squad) and (not upgrade.solitary? or (upgrade.slot not in @uniques_in_use['Slot'] or include_upgrade?.solitary?)))
         
         
 
@@ -4980,7 +4983,7 @@ class exportObj.SquadBuilder
                 meth()
 
     upgrade_effect: (card) ->
-        text = comma = ''
+        removestext = text = comma = ''
         if card.modifier_func
             statchange =
                 attack: 0
@@ -5042,9 +5045,16 @@ class exportObj.SquadBuilder
             for addonname in card.confersAddons
                 text += comma + "%#{addonname.slot.toUpperCase().replace(/[^a-z0-9]/gi, '')}%" 
                 comma = ', '
+        if card.unequips_upgrades
+            comma = ''
+            for slot in card.unequips_upgrades
+                removestext += comma + "%#{slot.toUpperCase().replace(/[^a-z0-9]/gi, '')}%" 
+                comma = ', '
         if text != ''
             data = 
                 text: "</br><b>Adds:</b> #{text}"
+            if removestext != ''
+                data.text += "</br><b>Removes:</b> #{removestext}"
             return exportObj.fixIcons(data)
         else
             return ''
@@ -6436,7 +6446,7 @@ class Ship
             for upgrade in @upgrades
                 func = upgrade?.data?.validation_func ? undefined
                 if upgrade?.data?.restrictions and (not func?)
-                    func = @restriction_check(upgrade.data.restrictions)
+                    func = @restriction_check(upgrade.data.restrictions, upgrade)
                 # check if either a) validation func not met or b) upgrade already equipped (in 2.0 everything is limited) or c) upgrade is not available (e.g. not Hyperspace legal)
                 # ignore those checks if this is a quickbuild squad, as quickbuild does whatever it wants to do...
                 if ((func? and not func) or (upgrade?.data? and (upgrade.data in equipped_upgrades or not @builder.isItemAvailable(upgrade.data)))) and not @builder.isQuickbuild
@@ -6464,12 +6474,22 @@ class Ship
         false
 
     hasAnotherUnoccupiedSlotLike: (upgrade_obj, upgradeslot) ->
+        if upgrade_obj?.data?.restrictions?
+            for r in upgrade_obj.data.restrictions
+                if r[0] == "Slot"
+                    extraslot = r[1]
+
         for upgrade in @upgrades
             continue if upgrade == upgrade_obj or upgrade.slot != upgradeslot
-            return true unless upgrade.isOccupied()
+            if upgrade.isOccupied()
+                if extraslot?
+                    if extraslot == upgradeslot
+                        return true
+            else
+                return true
         false
 
-    restriction_check: (restrictions) ->
+    restriction_check: (restrictions, upgrade_obj) ->
         effective_stats = @effectiveStats()
         for r in restrictions
             if r[0] == "orUnique"
@@ -6495,9 +6515,9 @@ class Ship
                 when "Keyword"
                     if not (@checkKeyword(r[1])) then return false
                 when "Equipped"
-                    if not ((@doesSlotExist(r[1]) and not @hasAnotherUnoccupiedSlotLike(this, r[1]))) then return false
+                    if not ((@doesSlotExist(r[1]) and not @hasAnotherUnoccupiedSlotLike(upgrade_obj, r[1]))) then return false
                 when "Slot"
-                    if not @hasAnotherUnoccupiedSlotLike(this, r[1]) then return false
+                    if not @hasAnotherUnoccupiedSlotLike(upgrade_obj, r[1]) then return false
                 when "AttackArc"
                     if not @data.attackb? then return false
                 when "ShieldsGreaterThan"

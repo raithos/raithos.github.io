@@ -11477,7 +11477,7 @@ exportObj.basicCardData = ->
             points: 10
             charge: 1
             restrictions: [
-                ["Action", "Rotate Arc"]
+                ["Action", "Reload"]
                 ["Slot", "Modification"]
             ]
             validation_func: (ship, upgrade_obj) ->
@@ -12780,7 +12780,7 @@ exportObj.basicCardData = ->
             slot: "Tech"
             points: 4
             restrictions: [
-                ["Base", "Small"]
+                ["Base", "Medium or Large"]
             ]
             applies_condition: 'Sensor Buoy'.canonicalize()
         }
