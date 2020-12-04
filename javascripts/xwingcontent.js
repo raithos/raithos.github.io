@@ -2486,7 +2486,7 @@ exportObj.basicCardData = function() {
         slots: ["Missile", "Illicit", "Modification"],
         restrictions: [["Unique", "Hound's Tooth"]],
         restriction_func: function(ship) {
-          var builder, t, thing, things, _ref;
+          var builder, shiplist, t, thing, things, upgrade, _i, _j, _len, _len1, _ref, _ref1, _ref2;
           builder = ship.builder;
           _ref = builder.uniques_in_use;
           for (t in _ref) {
@@ -2501,6 +2501,20 @@ exportObj.basicCardData = function() {
                 }
                 return _results;
               })(), 'houndstooth') >= 0) {
+                _ref1 = ship.builder.ships;
+                for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+                  shiplist = _ref1[_i];
+                  _ref2 = shiplist.upgrades;
+                  for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
+                    upgrade = _ref2[_j];
+                    if ((upgrade.data != null) && (ship.pilot != null)) {
+                      if (upgrade.data.name === "Hound's Tooth") {
+                        ship.pilot.skill = shiplist.pilot.skill;
+                        break;
+                      }
+                    }
+                  }
+                }
                 return true;
               }
             }
@@ -8389,6 +8403,7 @@ exportObj.basicCardData = function() {
         name: "Sensor Buoy Suite",
         id: 349,
         faction: "First Order",
+        unique: true,
         slot: "Tech",
         points: 4,
         restrictions: [["Base", "Medium or Large"]],
