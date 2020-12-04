@@ -11477,7 +11477,7 @@ exportObj.basicCardData = ->
             points: 10
             charge: 1
             restrictions: [
-                ["Action", "Reload"]
+                ["Action", "Rotate Arc"]
                 ["Slot", "Modification"]
             ]
             validation_func: (ship, upgrade_obj) ->
