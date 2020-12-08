@@ -880,9 +880,9 @@ exportObj.basicCardData = function() {
         actions: ["Focus", "Lock", "R-Barrel Roll", "Boost", "R-> Lock"],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 3, 0, 3, 2, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 3, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
       },
-      "ETA-2 Actis": {
-        name: "ETA-2 Actis",
-        xws: "ETA-2 Actis".canonicalize(),
+      "Eta-2 Actis": {
+        name: "Eta-2 Actis",
+        xws: "Eta-2 Actis".canonicalize(),
         factions: ["Galactic Republic"],
         attackbull: 3,
         attack: 2,
@@ -5079,7 +5079,7 @@ exportObj.basicCardData = function() {
         id: 436,
         faction: "Galactic Republic",
         skill: 4,
-        ship: "ETA-2 Actis",
+        ship: "Eta-2 Actis",
         points: 41,
         force: 2,
         keyword: ["Jedi", "Light Side"],
@@ -5090,7 +5090,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         skill: 3,
         unique: true,
-        ship: "ETA-2 Actis",
+        ship: "Eta-2 Actis",
         points: 48,
         force: 3,
         keyword: ["Jedi", "Light Side"],
@@ -5101,7 +5101,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         skill: 4,
         unique: true,
-        ship: "ETA-2 Actis",
+        ship: "Eta-2 Actis",
         points: 44,
         force: 2,
         keyword: ["Jedi", "Light Side"],
@@ -5112,26 +5112,26 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         skill: 5,
         unique: true,
-        ship: "ETA-2 Actis",
+        ship: "Eta-2 Actis",
         points: 51,
         force: 2,
         keyword: ["Jedi", "Light Side"],
         slots: ["Force", "Talent", "Cannon", "Astromech", "Modification"]
       }, {
-        name: "Obi-Wan Kenobi (ETA-2)",
+        name: "Obi-Wan Kenobi (Eta-2)",
         canonical_name: 'Obi-Wan Kenobi'.canonicalize(),
         xws: "obiwankenobi-eta2actis",
         id: 440,
         faction: "Galactic Republic",
         skill: 5,
         unique: true,
-        ship: "ETA-2 Actis",
+        ship: "Eta-2 Actis",
         force: 3,
         points: 49,
         keyword: ["Jedi", "Light Side"],
         slots: ["Force", "Talent", "Cannon", "Astromech", "Modification"]
       }, {
-        name: "Anakin Skywalker (ETA-2)",
+        name: "Anakin Skywalker (Eta-2)",
         canonical_name: 'Anakin Skywalker'.canonicalize(),
         xws: "anakinskywalker-eta2actis",
         id: 441,
@@ -5139,7 +5139,7 @@ exportObj.basicCardData = function() {
         skill: 6,
         unique: true,
         force: 3,
-        ship: "ETA-2 Actis",
+        ship: "Eta-2 Actis",
         points: 56,
         keyword: ["Jedi", "Light Side", "Dark Side"],
         slots: ["Force", "Talent", "Cannon", "Astromech", "Modification"]
@@ -12478,7 +12478,7 @@ exportObj.hyperspaceShipInclusions = [
     name: 'V-19 Torrent',
     faction: 'Galactic Republic'
   }, {
-    name: 'ETA-2 Actis',
+    name: 'Eta-2 Actis',
     faction: 'Galactic Republic'
   }, {
     name: 'Nimbus-class V-Wing',
@@ -14366,11 +14366,11 @@ exportObj.cardLoaders.English = function() {
     "Aayla Secura": {
       text: "While and enemy ship in your %FRONTARC% at range 0-1 performs an attack, the defender may change 1 blank result to a %FOCUS% result. %LINEBREAK% <strong>Intuitive Controls:</strong> During the System Phase, you may perform a purple %BARRELROLL% or purple %BOOST% action."
     },
-    "Obi-Wan Kenobi (ETA-2)": {
+    "Obi-Wan Kenobi (Eta-2)": {
       display_name: "Obi-Wan Kenobi",
       text: "After you or a friendly <b>Anakin Skywalker</b> at range 0-3 executes a maneuver, if there are more enemy ships than other friendly ships at range 0-1 of that ship, you may spend 1 %FORCE%. If you do, that ship gains 1 focus token. %LINEBREAK% <strong>Intuitive Controls:</strong> During the System Phase, you may perform a purple %BARRELROLL% or purple %BOOST% action."
     },
-    "Anakin Skywalker (ETA-2)": {
+    "Anakin Skywalker (Eta-2)": {
       display_name: "Anakin Skywalker",
       text: "After you or a friendly <b>Obi-Wan Kenobi</b> ship at range 0-3 executes a maneuver, if there are more enemy ships than other friendly ships at range 0-1 of that ship, you may spend 1 %FORCE%. If you do, that ship removes 1 red token of your choice. %LINEBREAK% <strong>Intuitive Controls:</strong> During the System Phase, you may perform a purple %BARRELROLL% or purple %BOOST% action."
     },
