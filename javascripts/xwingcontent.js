@@ -449,7 +449,7 @@ exportObj.basicCardData = function() {
         hull: 5,
         shields: 3,
         actions: ["Focus", "Lock", "R-Coordinate"],
-        maneuvers: [[0, 0, 3, 0, 0], [0, 1, 1, 1, 0], [2, 1, 1, 1, 1], [0, 2, 2, 2, 0], [0, 0, 2, 0, 0]],
+        maneuvers: [[0, 0, 3, 0, 0], [0, 1, 1, 1, 0], [2, 1, 1, 1, 2], [0, 2, 2, 2, 0], [0, 0, 2, 0, 0]],
         autoequip: ["Pivot Wing"]
       },
       "TIE Striker": {
