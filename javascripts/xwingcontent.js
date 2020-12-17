@@ -8290,6 +8290,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Boba Fett (Separatist)",
         canonical_name: 'Boba Fett'.canonicalize(),
+        xws: 'bobafett-gunner',
         id: 334,
         slot: "Gunner",
         unique: true,
@@ -8592,7 +8593,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Slave I (Separatist)",
         canonical_name: 'Slave I'.canonicalize(),
-        xws: "slavei-separatist",
+        xws: "slavei-separatistalliance",
         id: 370,
         points: 3,
         slot: "Title",
