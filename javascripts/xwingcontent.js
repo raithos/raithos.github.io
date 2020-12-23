@@ -1615,7 +1615,7 @@ exportObj.basicCardData = function() {
         skill: 2,
         points: 32,
         keyword: ["Spectre"],
-        slots: ["Crew", "Modification", "Turret", "Title"]
+        slots: ["Talent", "Crew", "Modification", "Turret", "Title"]
       }, {
         name: "Fenn Rau (Sheathipede)",
         id: 69,
@@ -12165,6 +12165,13 @@ exportObj.basicCardData = function() {
         upgrades: ["Q7 Astromech", 'Alpha-3B "Besh"'],
         linkedId: 470,
         wingmate: true
+      }, {
+        id: 479,
+        faction: "Rebel Alliance",
+        pilot: "Han Solo",
+        ship: "YT-1300",
+        threat: 5,
+        upgrades: ["C-3PO", "Leia Organa", "Chewbacca", "Rigged Cargo Chute", "Millennium Falcon"]
       }
     ]
   };
