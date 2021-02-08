@@ -12928,6 +12928,7 @@ exportObj.basicCardData = ->
             name: "Jedi Commander"
             id: 361
             points: 5
+            ship: ["Eta-2 Actis","Delta-7 Aethersprite"]
             slot: "Command"
         }
         {
@@ -22004,7 +22005,7 @@ exportObj.cardLoaders.English = () ->
         "Syliure-31 Hyperdrive":
            text: """<strong>Setup:</strong> You can be placed anywhere in the play area beyond range 1 of obstacles, beyond range 3 of enemy ships, and beyond range 3 of the enemy table edge."""
         "Jedi Commander":
-           text: """While your wingmates execute purple maneuvers, they treat those maneuvers as red instead. %LINEBREAK% While you defend, up to 2 of your wingmates in the attack arc may each suffer 1 %HIT%/%CRIT% damage to cancel 1 matching result."""
+           text: """<strong>Setup Side:</strong>%LINEBREAK%Setup: Equip this side faceup. %LINEBREAK% You are a <b>wing leader</b>. Your wingmates must be 2-5 V-19 Torrents or 2-5 Nimbus-class V-wings. %LINEBREAK% After you are placed, flip this card. %LINEBREAK% <strong>Play Side:</strong>%LINEBREAK% While your wingmates execute purple maneuvers, they treat those maneuvers as red instead. %LINEBREAK% While you defend, up to 2 of your wingmates in the attack arc may each suffer 1 %HIT%/%CRIT% damage to cancel 1 matching result."""
         "Extreme Maneuvers":
            text: """While you perform a %BOOST% action, you may spend 1 %FORCE% to use the turn (%TURNLEFT% or %TURNRIGHT%) template instead."""
         "Starbird Slash":
@@ -30427,6 +30428,11 @@ exportObj.manifestByExpansion =
         }
         {
             name: 'Jango Fett'
+            type: 'pilot'
+            count: 1
+        }
+        {
+            name: 'Zam Wesell'
             type: 'pilot'
             count: 1
         }

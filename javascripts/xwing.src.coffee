@@ -4342,7 +4342,7 @@ class exportObj.SquadBuilder
                             recurringicon += '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>'
                             ++count
                     container.find('tr.info-shields td.info-data').html (data.shields + recurringicon)
-                    container.find('tr.info-shields').toggle(data.shields?)
+                    container.find('tr.info-shields').show()
 
                     recurringicon = ''
                     if data.energyrecurr?
@@ -4478,7 +4478,7 @@ class exportObj.SquadBuilder
                             recurringicon += '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>'
                             ++count
                     container.find('tr.info-shields td.info-data').html (statAndEffectiveStat((data.ship_override?.shields ? ship.shields), effective_stats, 'shields') + recurringicon)
-                    container.find('tr.info-shields').toggle(data.ship_override?.shields? or ship.shields?)
+                    container.find('tr.info-shields').show()
 
                     recurringicon = ''
                     if ship.energyrecurr?
@@ -6067,13 +6067,13 @@ class Ship
             
         shieldIconHTML = ''
         if effective_stats.shields
-            for _ in [1..(effective_stats.shields - 1)]
+            for _ in [effective_stats.shields..2] by -1
                 shieldIconHTML += """<i class="xwing-miniatures-font header-shield xwing-miniatures-font-shield expanded-hull-or-shield"></i>"""
             shieldIconHTML += """<i class="xwing-miniatures-font header-shield xwing-miniatures-font-shield"></i>"""
 
         hullIconHTML = ''
         if effective_stats.hull
-            for _ in [1..(effective_stats.hull - 1)]
+            for _ in [effective_stats.hull..2] by -1
                 hullIconHTML += """<i class="xwing-miniatures-font header-hull xwing-miniatures-font-hull expanded-hull-or-shield"></i>"""
             hullIconHTML += """<i class="xwing-miniatures-font header-hull xwing-miniatures-font-hull"></i>"""
 
@@ -6511,7 +6511,7 @@ class Ship
                         when "Huge" 
                             if not (@data.huge?) then return false
                 when "Action"
-                    if not ((r[1] in effective_stats.actions) or ("R-#{r[1]}" in effective_stats.actions)) then return false
+                    if not ((r[1] in effective_stats.actions) or ("*#{r[1]}" in effective_stats.actions) or ("R-#{r[1]}" in effective_stats.actions)) then return false
                 when "Keyword"
                     if not (@checkKeyword(r[1])) then return false
                 when "Equipped"
