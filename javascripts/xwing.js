@@ -5470,8 +5470,8 @@ exportObj.SquadBuilder = (function() {
             }
             chargeHTML = $.trim("" + data.charge + recurringicon);
             container.find('tr.info-charge td.info-data').html(chargeHTML);
-            container.find('tr.info-charge').toggle(data.charge != null);
           }
+          container.find('tr.info-charge').toggle(data.charge != null);
           if (data.range != null) {
             container.find('tr.info-range td.info-data').text(data.range);
             container.find('tr.info-range').show();
