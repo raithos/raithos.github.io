@@ -6735,10 +6735,7 @@ exportObj.basicCardData = function() {
         slot: "Modification",
         pointsarray: [3, 4, 6, 8],
         variableagility: true,
-        charge: 1,
-        modifier_func: function(stats) {
-          return stats.agility += 1;
-        }
+        charge: 1
       }, {
         name: "Phantom",
         id: 167,
