@@ -12236,7 +12236,7 @@ exportObj.cardLoaders.Italiano = function() {
     },
     "Lando's Millennium Falcon": {
       display_name: "Millennium Falcon di Lando",
-      text: "<i>CHANGE MECHANGE ME</i>%LINEBREAK%Puoi far attraccare 1 Facet. %LINEBREAK%Mentre possiedi una Facet attraccata, puoi spendere i suoi scudi come se fossero sulla tua carta nave.%LINEBREAK%Mentre effettui un attacco primario contro una nave in tensione, tira 1 dado di attacco aggiuntivo."
+      text: "<i>CHANGE MECHANGE ME</i>%LINEBREAK%Puoi far attraccare 1 Navetta di Fuga. %LINEBREAK%Mentre possiedi una Navetta di Fuga attraccata, puoi spendere i suoi scudi come se fossero sulla tua carta nave.%LINEBREAK%Mentre effettui un attacco primario contro una nave in tensione, tira 1 dado di attacco aggiuntivo."
     },
     "Latts Razzi": {
       display_name: "Latts Razzi",
