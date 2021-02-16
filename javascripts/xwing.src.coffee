@@ -4495,8 +4495,8 @@ class exportObj.SquadBuilder
                     else
                         container.find('tr.info-force').hide()
 
-                    recurringicon = ''
                     if data.charge?
+                        recurringicon = ''
                         if data.recurring?
                             if data.recurring > 0
                                 count = 0
@@ -4508,9 +4508,8 @@ class exportObj.SquadBuilder
                                 while count < 0
                                     recurringicon += '<sub><i class="fas fa-caret-down"></i></sub>'
                                     ++count
-                            container.find('tr.info-charge td.info-data').html (data.charge + recurringicon)
-                        else
-                            container.find('tr.info-charge td.info-data').text data.charge
+                        chargeHTML = $.trim """#{data.charge}#{recurringicon}"""
+                        container.find('tr.info-charge td.info-data').html (chargeHTML)
                         container.find('tr.info-charge').show()
                     else
                         container.find('tr.info-charge').hide()
@@ -4627,7 +4626,8 @@ class exportObj.SquadBuilder
                                 while count < 0
                                     recurringicon += '<sub><i class="fas fa-caret-down"></i></sub>'
                                     ++count
-                        container.find('tr.info-charge td.info-data').html (pilot.charge + recurringicon)
+                        chargeHTML = $.trim """#{data.charge}#{recurringicon}"""
+                        container.find('tr.info-charge td.info-data').html (chargeHTML)
                         container.find('tr.info-charge').show()
                     else
                         container.find('tr.info-charge').hide()
@@ -4741,21 +4741,23 @@ class exportObj.SquadBuilder
                     container.find('tr.info-attack-left').hide()
                     container.find('tr.info-attack-back').hide()
 
-                    reucrringicon = ''
-                    if data.recurring?
-                        if data.recurring > 0
-                            count = 0
-                            while count < data.recurring
-                                recurringicon += '<sup><i class="fas fa-caret-up"></i></sup>'
-                                ++count
-                        else
-                            count = data.recurring
-                            while count < 0
-                                recurringicon += '<sub><i class="fas fa-caret-down"></i></sub>'
-                                ++count
-                    container.find('tr.info-charge td.info-data').html (data.charge + recurringicon)
-                    container.find('tr.info-charge').toggle(data.charge?)                        
-                    
+                    if data.charge?
+                        recurringicon = ''
+                        if data.recurring?
+                            if data.recurring > 0
+                                count = 0
+                                while count < data.recurring
+                                    recurringicon += '<sup><i class="fas fa-caret-up"></i></sup>'
+                                    ++count
+                            else
+                                count = data.recurring
+                                while count < 0
+                                    recurringicon += '<sub><i class="fas fa-caret-down"></i></sub>'
+                                    ++count
+                        chargeHTML = $.trim """#{data.charge}#{recurringicon}"""
+                        container.find('tr.info-charge td.info-data').html (chargeHTML)
+                        container.find('tr.info-charge').toggle(data.charge?)
+
                     if data.range?
                         container.find('tr.info-range td.info-data').text data.range
                         container.find('tr.info-range').show()
@@ -6938,13 +6940,13 @@ class GenericAddon
             if @data.charge?
                 recurringicon = ''
                 if  @data.recurring?
-                    if data.recurring > 0
+                    if @data.recurring > 0
                         count = 0
-                        while count < data.recurring
+                        while count < @data.recurring
                             recurringicon += '<sup><i class="fas fa-caret-up"></i></sup>'
                             ++count
                     else
-                        count = data.recurring
+                        count = @data.recurring
                         while count < 0
                             recurringicon += '<sub><i class="fas fa-caret-down"></i></sub>'
                             ++count

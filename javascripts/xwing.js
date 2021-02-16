@@ -4870,7 +4870,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.showTooltip = function(type, data, additional_opts, container, force_update) {
-    var addon_count, cls, count, effective_stats, first, ini, inis, item, missingStuffInfoText, name, pilot, pilot_count, point_info, possible_inis, recurringicon, restriction_info, reucrringicon, ship, ship_count, slot, slot_types, source, sources, state, uniquedots, upgrade, well, _i, _j, _k, _l, _len, _len1, _len2, _len3, _m, _n, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref40, _ref41, _ref42, _ref43, _ref44, _ref45, _ref46, _ref47, _ref48, _ref49, _ref5, _ref50, _ref51, _ref52, _ref53, _ref54, _ref55, _ref56, _ref57, _ref58, _ref59, _ref6, _ref60, _ref61, _ref62, _ref63, _ref64, _ref65, _ref66, _ref67, _ref68, _ref69, _ref7, _ref70, _ref71, _ref72, _ref73, _ref74, _ref75, _ref8, _ref9, _results, _results1;
+    var addon_count, chargeHTML, cls, count, effective_stats, first, ini, inis, item, missingStuffInfoText, name, pilot, pilot_count, point_info, possible_inis, recurringicon, restriction_info, ship, ship_count, slot, slot_types, source, sources, state, uniquedots, upgrade, well, _i, _j, _k, _l, _len, _len1, _len2, _len3, _m, _n, _ref, _ref1, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18, _ref19, _ref2, _ref20, _ref21, _ref22, _ref23, _ref24, _ref25, _ref26, _ref27, _ref28, _ref29, _ref3, _ref30, _ref31, _ref32, _ref33, _ref34, _ref35, _ref36, _ref37, _ref38, _ref39, _ref4, _ref40, _ref41, _ref42, _ref43, _ref44, _ref45, _ref46, _ref47, _ref48, _ref49, _ref5, _ref50, _ref51, _ref52, _ref53, _ref54, _ref55, _ref56, _ref57, _ref58, _ref59, _ref6, _ref60, _ref61, _ref62, _ref63, _ref64, _ref65, _ref66, _ref67, _ref68, _ref69, _ref7, _ref70, _ref71, _ref72, _ref73, _ref74, _ref75, _ref8, _ref9, _results, _results1;
     if (container == null) {
       container = this.info_container;
     }
@@ -5173,8 +5173,8 @@ exportObj.SquadBuilder = (function() {
           } else {
             container.find('tr.info-force').hide();
           }
-          recurringicon = '';
           if (data.charge != null) {
+            recurringicon = '';
             if (data.recurring != null) {
               if (data.recurring > 0) {
                 count = 0;
@@ -5189,10 +5189,9 @@ exportObj.SquadBuilder = (function() {
                   ++count;
                 }
               }
-              container.find('tr.info-charge td.info-data').html(data.charge + recurringicon);
-            } else {
-              container.find('tr.info-charge td.info-data').text(data.charge);
             }
+            chargeHTML = $.trim("" + data.charge + recurringicon);
+            container.find('tr.info-charge td.info-data').html(chargeHTML);
             container.find('tr.info-charge').show();
           } else {
             container.find('tr.info-charge').hide();
@@ -5310,7 +5309,8 @@ exportObj.SquadBuilder = (function() {
                 }
               }
             }
-            container.find('tr.info-charge td.info-data').html(pilot.charge + recurringicon);
+            chargeHTML = $.trim("" + data.charge + recurringicon);
+            container.find('tr.info-charge td.info-data').html(chargeHTML);
             container.find('tr.info-charge').show();
           } else {
             container.find('tr.info-charge').hide();
@@ -5451,24 +5451,27 @@ exportObj.SquadBuilder = (function() {
           container.find('tr.info-attack-right').hide();
           container.find('tr.info-attack-left').hide();
           container.find('tr.info-attack-back').hide();
-          reucrringicon = '';
-          if (data.recurring != null) {
-            if (data.recurring > 0) {
-              count = 0;
-              while (count < data.recurring) {
-                recurringicon += '<sup><i class="fas fa-caret-up"></i></sup>';
-                ++count;
-              }
-            } else {
-              count = data.recurring;
-              while (count < 0) {
-                recurringicon += '<sub><i class="fas fa-caret-down"></i></sub>';
-                ++count;
+          if (data.charge != null) {
+            recurringicon = '';
+            if (data.recurring != null) {
+              if (data.recurring > 0) {
+                count = 0;
+                while (count < data.recurring) {
+                  recurringicon += '<sup><i class="fas fa-caret-up"></i></sup>';
+                  ++count;
+                }
+              } else {
+                count = data.recurring;
+                while (count < 0) {
+                  recurringicon += '<sub><i class="fas fa-caret-down"></i></sub>';
+                  ++count;
+                }
               }
             }
+            chargeHTML = $.trim("" + data.charge + recurringicon);
+            container.find('tr.info-charge td.info-data').html(chargeHTML);
+            container.find('tr.info-charge').toggle(data.charge != null);
           }
-          container.find('tr.info-charge td.info-data').html(data.charge + recurringicon);
-          container.find('tr.info-charge').toggle(data.charge != null);
           if (data.range != null) {
             container.find('tr.info-range td.info-data').text(data.range);
             container.find('tr.info-range').show();
@@ -6411,7 +6414,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 5418
+                      lineno: 5420
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -6628,7 +6631,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 5528
+                          lineno: 5530
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -6678,7 +6681,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 5561
+                                  lineno: 5563
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -6776,7 +6779,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 5619
+                      lineno: 5621
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -6857,7 +6860,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 5649
+                lineno: 5651
               })
             ]);
             __iced_deferrals._fulfill();
@@ -6926,7 +6929,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 5678
+              lineno: 5680
             }));
           }
         }
@@ -7018,7 +7021,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 5734
+                lineno: 5736
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -8279,7 +8282,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 6678
+                lineno: 6680
               })
             ]);
             __iced_deferrals._fulfill();
@@ -8437,7 +8440,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 6769
+                  lineno: 6771
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -8464,7 +8467,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 6776
+                      lineno: 6778
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -8607,7 +8610,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 6848
+            lineno: 6850
           }));
         }
         __iced_deferrals._fulfill();
@@ -8701,14 +8704,14 @@ GenericAddon = (function() {
       if (this.data.charge != null) {
         recurringicon = '';
         if (this.data.recurring != null) {
-          if (data.recurring > 0) {
+          if (this.data.recurring > 0) {
             count = 0;
-            while (count < data.recurring) {
+            while (count < this.data.recurring) {
               recurringicon += '<sup><i class="fas fa-caret-up"></i></sup>';
               ++count;
             }
           } else {
-            count = data.recurring;
+            count = this.data.recurring;
             while (count < 0) {
               recurringicon += '<sub><i class="fas fa-caret-down"></i></sub>';
               ++count;
