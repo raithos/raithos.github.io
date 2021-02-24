@@ -3318,7 +3318,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 3016
+              lineno: 3009
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -4215,7 +4215,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 3856
+              lineno: 3849
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -4225,7 +4225,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 3857
+                lineno: 3850
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -6143,12 +6143,7 @@ exportObj.SquadBuilder = (function() {
     if (this.collection != null) {
       _ref = this.isSquadPossibleWithCollection(), squadPossible = _ref[0], missingStuff = _ref[1];
       this.collection_invalid_container.toggleClass('d-none', squadPossible);
-      this.collection_invalid_container.on('mouseover', (function(_this) {
-        return function(e) {
-          return _this.showTooltip('MissingStuff', missingStuff);
-        };
-      })(this));
-      return this.collection_invalid_container.on('touchstart', (function(_this) {
+      return this.collection_invalid_container.on('mouseover', (function(_this) {
         return function(e) {
           return _this.showTooltip('MissingStuff', missingStuff);
         };
@@ -6415,7 +6410,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 5421
+                      lineno: 5412
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -6632,7 +6627,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 5531
+                          lineno: 5522
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -6682,7 +6677,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 5564
+                                  lineno: 5555
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -6780,7 +6775,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 5622
+                      lineno: 5613
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -6861,7 +6856,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 5652
+                lineno: 5643
               })
             ]);
             __iced_deferrals._fulfill();
@@ -6930,7 +6925,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 5681
+              lineno: 5672
             }));
           }
         }
@@ -7022,7 +7017,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 5737
+                lineno: 5728
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -7200,13 +7195,6 @@ Ship = (function() {
         }
       };
     })(this));
-    this.ship_selector.data('select2').container.on('touchstart', (function(_this) {
-      return function(e) {
-        if (_this.pilot) {
-          return _this.builder.showTooltip('Ship', exportObj.ships[_this.pilot.ship]);
-        }
-      };
-    })(this));
     this.pilot_selector.select2({
       width: '100%',
       placeholder: exportObj.translate(this.builder.language, 'ui', 'pilotSelectorPlaceholder'),
@@ -7284,13 +7272,6 @@ Ship = (function() {
       };
     })(this));
     this.pilot_selector.data('select2').container.on('mouseover', (function(_this) {
-      return function(e) {
-        if (_this.pilot) {
-          return _this.builder.showTooltip('Pilot', _this.pilot, _this);
-        }
-      };
-    })(this));
-    this.pilot_selector.data('select2').container.on('touchstart', (function(_this) {
       return function(e) {
         if (_this.pilot) {
           return _this.builder.showTooltip('Pilot', _this.pilot, _this);
@@ -8283,7 +8264,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 6681
+                lineno: 6666
               })
             ]);
             __iced_deferrals._fulfill();
@@ -8397,16 +8378,7 @@ GenericAddon = (function() {
         }
       };
     })(this));
-    this.selector.data('select2').container.on('mouseover', (function(_this) {
-      return function(e) {
-        if (_this.data != null) {
-          return _this.ship.builder.showTooltip('Addon', _this.data, {
-            addon_type: _this.type
-          });
-        }
-      };
-    })(this));
-    return this.selector.data('select2').container.on('touchstart', (function(_this) {
+    return this.selector.data('select2').container.on('mouseover', (function(_this) {
       return function(e) {
         if (_this.data != null) {
           return _this.ship.builder.showTooltip('Addon', _this.data, {
@@ -8441,7 +8413,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 6772
+                  lineno: 6755
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -8468,7 +8440,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 6779
+                      lineno: 6762
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -8611,7 +8583,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 6851
+            lineno: 6834
           }));
         }
         __iced_deferrals._fulfill();
