@@ -3755,6 +3755,7 @@ class exportObj.SquadBuilder
         @suppress_automatic_new_ship = false
         # Finally, the unassigned ship
         @addShip()
+        console.log("#{@uniques_in_use}")
 
 
     select_xws_view: () ->
