@@ -5226,6 +5226,7 @@ exportObj.basicCardData = function() {
         slots: ["Talent", "Astromech", "Tech", "Modification", "Configuration", "Title", "HardpointShip"]
       }, {
         name: "Hera Syndulla (B-Wing)",
+        canonical_name: 'Hera Syndulla'.canonicalize(),
         id: 450,
         unique: true,
         faction: "Rebel Alliance",
@@ -5235,6 +5236,7 @@ exportObj.basicCardData = function() {
         slots: ["Talent", "Sensor", "Cannon", "Cannon", "Torpedo", "Modification", "Configuration", "Title"]
       }, {
         name: "Hera Syndulla (A-Wing)",
+        canonical_name: 'Hera Syndulla'.canonicalize(),
         id: 451,
         unique: true,
         faction: "Rebel Alliance",
@@ -5244,6 +5246,7 @@ exportObj.basicCardData = function() {
         slots: ["Talent", "Talent", "Missile", "Configuration"]
       }, {
         name: "Wedge Antilles (A-Wing)",
+        canonical_name: 'Wedge Antilles'.canonicalize(),
         id: 452,
         unique: true,
         faction: "Rebel Alliance",
@@ -5253,6 +5256,7 @@ exportObj.basicCardData = function() {
         slots: ["Talent", "Talent", "Missile", "Configuration"]
       }, {
         name: "Sabine Wren (A-Wing)",
+        canonical_name: 'Sabine Wren'.canonicalize(),
         id: 453,
         unique: true,
         faction: "Rebel Alliance",
@@ -5282,6 +5286,7 @@ exportObj.basicCardData = function() {
         slots: ["Talent", "Modification", "Modification", "Configuration"]
       }, {
         name: "Gideon Hask (TIE Interceptor)",
+        canonical_name: 'Gideon Hask'.canonicalize(),
         id: 456,
         unique: true,
         faction: "Galactic Empire",
@@ -5291,6 +5296,7 @@ exportObj.basicCardData = function() {
         slots: ["Talent", "Modification", "Modification", "Configuration"]
       }, {
         name: "Kanan Jarrus (HWK-290)",
+        canonical_name: 'Kanan Jarrus'.canonicalize(),
         id: 457,
         unique: true,
         faction: "Scum and Villainy",
@@ -5337,6 +5343,7 @@ exportObj.basicCardData = function() {
         slots: ["Talent", "Talent", "Missile", "Configuration"]
       }, {
         name: "Shara Bey (A-Wing)",
+        canonical_name: 'Shara Bey'.canonicalize(),
         id: 462,
         unique: true,
         faction: "Rebel Alliance",
@@ -5346,6 +5353,7 @@ exportObj.basicCardData = function() {
         slots: ["Talent", "Talent", "Missile", "Configuration"]
       }, {
         name: "Ahsoka Tano (A-Wing)",
+        canonical_name: 'Ahsoka Tano'.canonicalize(),
         id: 463,
         unique: true,
         faction: "Rebel Alliance",
@@ -8817,6 +8825,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing"
       }, {
         name: "B6 Blade Wing Prototype (Epic)",
+        canonical_name: 'B6 Blade Wing Prototype'.canonicalize(),
         id: 377,
         points: 200,
         slot: "Command",
@@ -8842,6 +8851,7 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance"
       }, {
         name: "Sabine Wren (Gunner)",
+        canonical_name: 'Sabine Wren'.canonicalize(),
         id: 379,
         points: 200,
         slot: "Gunner",
@@ -16146,6 +16156,7 @@ exportObj.cardLoaders.English = function() {
       text: "After another friendly ship at range 0-3 is destroyed, if that ship is limited or has the <strong>Hopeful</strong> upgrade, you may perform a %FOCUS% or %BOOST% action."
     },
     "Sabine Wren (Gunner)": {
+      display_name: "Sabine Wren",
       text: "After you perform a special attack, you may choose a number of friendly ships at range 0-3 of the defender up to the number of damage cards dealt to the defender during that attack. Each chosen ship may remove 1 strain or stress token."
     },
     "Admiral Ozzel": {
