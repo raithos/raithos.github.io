@@ -3061,6 +3061,7 @@ exportObj.basicCardData = ->
                 "Torpedo"
                 "Modification"
                 "Configuration"
+                "Title"
             ]
         }
         {
@@ -3079,6 +3080,7 @@ exportObj.basicCardData = ->
                 "Torpedo"
                 "Modification"
                 "Configuration"
+                "Title"
             ]
         }
         {
@@ -3096,6 +3098,7 @@ exportObj.basicCardData = ->
                 "Torpedo"
                 "Modification"
                 "Configuration"
+                "Title"
             ]
         }
         {
@@ -3112,6 +3115,7 @@ exportObj.basicCardData = ->
                 "Torpedo"
                 "Modification"
                 "Configuration"
+                "Title"
             ]
         }
         {
@@ -8284,6 +8288,7 @@ exportObj.basicCardData = ->
                 "Torpedo"
                 "Modification"
                 "Configuration"
+                "Title"
             ]
         }
         {
@@ -9314,6 +9319,7 @@ exportObj.basicCardData = ->
                 "Torpedo"
                 "Modification"
                 "Configuration"
+                "Title"
             ]
         }
         {
@@ -9328,6 +9334,7 @@ exportObj.basicCardData = ->
                 "Talent"
                 "Talent"
                 "Missile"
+                "Configuration"
             ]
         }
         {
@@ -9342,6 +9349,7 @@ exportObj.basicCardData = ->
                 "Talent"
                 "Talent"
                 "Missile"
+                "Configuration"
             ]
         }
         {
@@ -9356,6 +9364,7 @@ exportObj.basicCardData = ->
                 "Talent"
                 "Talent"
                 "Missile"
+                "Configuration"
             ]
         }
         {
@@ -9481,7 +9490,71 @@ exportObj.basicCardData = ->
                 "Modification"
             ]
         }
-
+        {
+            name: "Derek Klivian"
+            id: 461
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "A-Wing"
+            skill: 3
+            points: 200
+            slots: [
+                "Talent"
+                "Talent"
+                "Missile"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Shara Bey (A-Wing)"
+            id: 462
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "A-Wing"
+            skill: 4
+            points: 200
+            slots: [
+                "Talent"
+                "Talent"
+                "Missile"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Ahsoka Tano (A-Wing)"
+            id: 463
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "A-Wing"
+            skill: 5
+            force: 3
+            points: 200
+            slots: [
+                "Talent"
+                "Talent"
+                "Missile"
+                "Configuration"
+            ]
+        }
+        {
+            name: "Unnamed I3"
+            id: 464
+            unique: true
+            faction: "Rebel Alliance"
+            ship: "B-Wing"
+            skill: 3
+            points: 200
+            slots: [
+                "Talent"
+                "Sensor"
+                "Cannon"
+                "Cannon"
+                "Torpedo"
+                "Modification"
+                "Configuration"
+                "Title"
+            ]
+        }
     ]
 
 
@@ -13236,17 +13309,12 @@ exportObj.basicCardData = ->
             slot: "Title"
             ship: "B-Wing"
             faction: "Rebel Alliance"
-            attack: 3
-            range: 2-4
             confersAddons: [
                 {
                     type: exportObj.Upgrade
                     slot: "Gunner"
                 }
             ]
-            validation_func: (ship, upgrade_obj) ->
-                upgrade_obj.occupiesAnUpgradeSlot "Command"
-            also_occupies_upgrades: [ "Command" ]
         }
         {
             name: "TIE Defender Elite"
@@ -13290,6 +13358,47 @@ exportObj.basicCardData = ->
             slot: "Talent"
             ship: "Y-Wing"
         }
+        {
+            name: "B6 Blade Wing Prototype (Epic)"
+            id: 377
+            points: 200
+            slot: "Command"
+            ship: "B-Wing"
+            faction: "Rebel Alliance"
+            attack: 3
+            range: 2-4
+            confersAddons: [
+                {
+                    type: exportObj.Upgrade
+                    slot: "Gunner"
+                }
+            ]
+            validation_func: (ship, upgrade_obj) ->
+                upgrade_obj.occupiesAnUpgradeSlot "Title"
+            also_occupies_upgrades: [ "Title" ]
+        }
+        {
+            name: "Hopeful"
+            id: 378
+            points: 200
+            slot: "Talent"
+            faction: "Rebel Alliance"
+        }
+        {
+            name: "Sabine Wren (Gunner)"
+            id: 379
+            points: 200
+            slot: "Gunner"
+            faction: "Rebel Alliance"
+        }
+        {
+            name: "Phoenix Squadron"
+            id: 380
+            points: 200
+            slot: "Command"
+            faction: "Rebel Alliance"
+        }
+        
     ]
 
 
@@ -19829,6 +19938,7 @@ exportObj.hyperspaceUpgradeExclusions = [
     # Galactic Republic
     'R2-A6'
     'R2-C4'
+    'R4-P17'
     'R4-P Astromech'
     'C1-10P'
     'Chancellor Palpatine'
@@ -21427,12 +21537,19 @@ exportObj.cardLoaders.English = () ->
            text: """While another friendly ship at range 1-2 defends or performs an attack, you may transfer 1 of your focus tokens, evade tokens, or locks to that ship.%LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action."""
         "Wedge Antilles (A-Wing)":
            display_name: """Wedge Antilles"""
-           text: """
-           %LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action."""
+           text: """While you perform an attack, if the defender is in your %FRONTARC%, the defender rolls 1 fewer defense die. %LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action."""
         "Sabine Wren (A-Wing)":
            display_name: """Sabine Wren"""
            text: """
            %LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action."""
+        "Derek Klivian":
+           text: """After you acquire or spend a lock, you may remove 1 red token from yourself. %LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action."""
+        "Ahsoka Tano (A-Wing)":
+           display_name: """Ahsoka Tano"""
+           text: """After you fully execute a maneuver, you may choose a friendly ship at range 1-2 and spend 2 %FORCE%. That ship may perform an action, even while stressed. %LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action."""
+        "Shara Bey (A-Wing)":
+           display_name: """Shara Bey"""
+           text: """While you defend or perform a primary attack, you may spend 1 lock you have on the enemy ship to add 1 %FOCUS% result to your dice results. %LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action."""
 
         "Vult Skerris":
            text: """<strong>Action:</strong> Gain 1 strain token to recover 1 %CHARGE%. %LINEBREAK% Before you engage, you may spend 1 %CHARGE% to perform an action. %LINEBREAK%<strong>Full Throttle:</strong> After you fully execute a speed 3-5 maneuver, you may perform an %EVADE% action."""
@@ -22373,7 +22490,7 @@ exportObj.cardLoaders.English = () ->
 
         "Vectored Cannons (RZ-1)":
            text: """Gain a %SINGLETURRETARC% indicator. Treat the arc requirement of your %FRONTARC% primary attack as %SINGLETURRETARC%. %LINEBREAK% Replace your <strong>Vectored Thrusters</strong> ship ability with the following: %LINEBREAK%<strong>Vectored Cannons:</strong> During the System Phase, you may perform a red %BOOST% or red %ROTATEARC% action. You can rotate your %SINGLETURRETARC% indicator only to your %FRONTARC% or %REARARC%."""
-        "B6 Blade Wing Prototype":
+        "B6 Blade Wing Prototype (Epic)":
            text: """Attack (%LOCK%): Gain 1 ion token to perform this attack. If this attack hits, the defender suffers 1 additional %HIT%/%CRIT% damage for each matching uncanceled result after the first."""
         "TIE Defender Elite":
            text: """Decrease the difficulty of your turn (%TURNLEFT% or %TURNRIGHT%) maneuvers. Increase the difficulty of your Koiogran Turn (%KTURN%) maneuvers. Replace your <strong>Full Throttle</strong> ship ability with the following: %LINEBREAK% <strong>Advanced Fire Control:</strong> After you perform a %CANNON% or %MISSILE% attack, if you have a lock on the defender, you may perform a bonus primary attack agaisnt the defender."""
@@ -22383,6 +22500,14 @@ exportObj.cardLoaders.English = () ->
            text: """After another friendly ship at range 0-3 is destroyed, if that ship is limited or has the <strong>Cutthroat</strong> upgrade, you may remove 1 of your orange or red tokens, or recover 1 non-recurring %CHARGE% on your ship card or one of your equipped upgrade cards."""
         "Tierfon Belly Run":
            text: """You can perform special attacks even while at range 0 of asteroids. %LINEBREAK% While you defend, if you are at range 0 of an obstacle, attack dice cannot be rerolled."""
+        "B6 Blade Wing Prototype":
+           text: """ """
+        "Phoenix Squadron":
+           text: """At the start of the Planning Phase, 1 of your wingmates that is docked with you may join your wing without gaining a stress token. %LINEBREAK% While you or your Attack Shuttle wingmate or Sheathipede-class wingmate defends, up to 2 of your RZ-1 A-Wing wingmates in the attack arc may each suffer 1 %HIT%/%CRIT% damage to cancel 1 matching result."""
+        "Hopeful":
+           text: """After another friendly ship at range 0-3 is destroyed, if that ship is limited or has the <strong>Hopeful</strong> upgrade, you may perform a %FOCUS% or %BOOST% action."""
+        "Sabine Wren (Gunner)":
+           text: """After you perform a special attack, you may choose a number of friendly ships at range 0-3 of the defender up to the number of damage cards dealt to the defender during that attack. Each chosen ship may remove 1 strain or stress token."""
 
         # Epic upgrades
         "Admiral Ozzel":
