@@ -8765,6 +8765,7 @@ exportObj.basicCardData = function() {
         name: "B6 Blade Wing Prototype",
         id: 372,
         points: 200,
+        unique: true,
         slot: "Title",
         ship: "B-Wing",
         faction: "Rebel Alliance",
@@ -8828,6 +8829,7 @@ exportObj.basicCardData = function() {
         canonical_name: 'B6 Blade Wing Prototype'.canonicalize(),
         id: 377,
         points: 200,
+        unique: true,
         slot: "Command",
         ship: "B-Wing",
         faction: "Rebel Alliance",
@@ -8854,12 +8856,14 @@ exportObj.basicCardData = function() {
         canonical_name: 'Sabine Wren'.canonicalize(),
         id: 379,
         points: 200,
+        unique: true,
         slot: "Gunner",
         faction: "Rebel Alliance"
       }, {
         name: "Phoenix Squadron",
         id: 380,
         points: 200,
+        unique: true,
         slot: "Command",
         faction: "Rebel Alliance"
       }
