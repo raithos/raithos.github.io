@@ -3237,12 +3237,10 @@ class exportObj.SquadBuilder
             @pretranslation_serialized = @serialize()
             cb()
         .on 'xwing:afterLanguageLoad', (e, language, cb=$.noop) =>
+            @language = language
             old_dirty = @current_squad.dirty
-            if @language != language
-                @language = language
-                if @pretranslation_serialized.length?
-                    @removeAllShips()
-                    @loadFromSerialized @pretranslation_serialized
+            if @pretranslation_serialized.length?
+                @loadFromSerialized @pretranslation_serialized
             for ship in @ships
                 ship.updateSelections()
             @current_squad.dirty = old_dirty
