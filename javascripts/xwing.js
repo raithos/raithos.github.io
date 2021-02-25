@@ -3454,7 +3454,10 @@ exportObj.SquadBuilder = (function() {
         _ref = _this.ships;
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           ship = _ref[_i];
-          ship.updateSelections();
+          ship.updateSelections().defer({
+            lineno: 3245,
+            context: __iced_deferrals
+          });
         }
         _this.current_squad.dirty = old_dirty;
         _this.pretranslation_serialized = void 0;

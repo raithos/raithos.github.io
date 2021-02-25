@@ -3243,7 +3243,7 @@ class exportObj.SquadBuilder
                 @removeAllShips()
                 @loadFromSerialized @pretranslation_serialized
             for ship in @ships
-                ship.updateSelections()
+                ship.updateSelections().defer()
             @current_squad.dirty = old_dirty
             @pretranslation_serialized = undefined
             cb()
