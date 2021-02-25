@@ -69,6 +69,7 @@ exportObj.translations.Deutsch =
         '.game-type-selector option[value="standard"]': 'Standard'
         '.game-type-selector option[value="hyperspace"]': 'Hyperspace'
         '.game-type-selector option[value="custom"]': 'Benutzerdefiniert'
+        '.game-type-selector option[value="Quickbuild"]': 'Quick Build'        
         # Card browser
         '.select2-choice' : '<span>Typ (nach Namen)</span><abbr class="select2-search-choice-close"></abbr>   <div><b></b></div></a>'  # default-option
         '.xwing-card-browser option[value="name"]': 'Name'
@@ -2179,6 +2180,7 @@ exportObj.translations['Español'] =
         '.game-type-selector option[value="standard"]': 'Ampliada'
         '.game-type-selector option[value="hyperspace"]': 'Hyperspace'
         '.game-type-selector option[value="custom"]': 'Personalizada'
+        '.game-type-selector option[value="Quickbuild"]': 'Quick Build'        
         # Card browser
         '.select2-choice' : '<span>Tipo (por Nombre)</span><abbr class="select2-search-choice-close"></abbr>   <div><b></b></div></a>'  # default-option
         '.xwing-card-browser option[value="name"]': 'Nombre'
@@ -3611,6 +3613,7 @@ exportObj.translations['Français'] =
         '.game-type-selector option[value="standard"]': 'Standard'
         '.game-type-selector option[value="hyperspace"]': 'Hyperspace'
         '.game-type-selector option[value="custom"]': 'Personnalisé'
+        '.game-type-selector option[value="Quickbuild"]': 'Quick Build'
         # Card browser
         '.select2-choice' : '<span>Type (par nom)</span><abbr class="select2-search-choice-close"></abbr>   <div><b></b></div></a>'  # default-option
         '.xwing-card-browser option[value="name"]': 'Nom'
@@ -5768,6 +5771,7 @@ exportObj.translations.Magyar =
         '.game-type-selector option[value="standard"]': 'Kiterjesztett'
         '.game-type-selector option[value="hyperspace"]': 'Hyperspace'
         '.game-type-selector option[value="custom"]': 'Egyéni'
+        '.game-type-selector option[value="Quickbuild"]': 'Quick Build'
         # Card browser
         '.xwing-card-browser option[value="name"]': 'Név'
         '.xwing-card-browser option[value="source"]': 'Forrás'
