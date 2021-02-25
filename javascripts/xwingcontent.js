@@ -5363,7 +5363,7 @@ exportObj.basicCardData = function() {
         points: 200,
         slots: ["Talent", "Talent", "Missile", "Configuration"]
       }, {
-        name: "Unnamed I3",
+        name: "Netrem Pollard",
         id: 464,
         unique: true,
         faction: "Rebel Alliance",
@@ -5371,6 +5371,63 @@ exportObj.basicCardData = function() {
         skill: 3,
         points: 200,
         slots: ["Talent", "Sensor", "Cannon", "Cannon", "Torpedo", "Modification", "Configuration", "Title"]
+      }, {
+        name: "Commandant Goran",
+        id: 465,
+        unique: true,
+        faction: "Galactic Empire",
+        ship: "TIE Interceptor",
+        skill: 4,
+        points: 200,
+        slots: ["Talent", "Modification", "Modification", "Configuration"]
+      }, {
+        name: "Nash Windrider",
+        id: 466,
+        unique: true,
+        faction: "Galactic Empire",
+        ship: "TIE Interceptor",
+        skill: 2,
+        points: 200,
+        slots: ["Modification", "Modification", "Configuration"]
+      }, {
+        name: "Lieutenant Lorrir",
+        id: 467,
+        unique: true,
+        faction: "Galactic Empire",
+        ship: "TIE Interceptor",
+        skill: 3,
+        points: 200,
+        slots: ["Talent", "Modification", "Modification", "Configuration"]
+      }, {
+        name: "Vult Skerris (TIE Interceptor)",
+        canonical_name: 'Vult Skerris'.canonicalize(),
+        id: 468,
+        unique: true,
+        faction: "Galactic Empire",
+        ship: "TIE Interceptor",
+        skill: 5,
+        points: 200,
+        slots: ["Talent", "Modification", "Modification", "Configuration"]
+      }, {
+        name: "Darth Vader (TIE Defender)",
+        canonical_name: 'Darth Vader'.canonicalize(),
+        id: 469,
+        unique: true,
+        faction: "Galactic Empire",
+        ship: "TIE Defender",
+        skill: 6,
+        force: 3,
+        points: 200,
+        slots: ["Force", "Sensor", "Cannon", "Missile", "Configuration"]
+      }, {
+        name: "Captain Dobbs",
+        id: 470,
+        unique: true,
+        faction: "Galactic Empire",
+        ship: "TIE Defender",
+        skill: 3,
+        points: 200,
+        slots: ["Talent", "Sensor", "Cannon", "Missile", "Configuration"]
       }
     ],
     upgradesById: [
@@ -8866,6 +8923,27 @@ exportObj.basicCardData = function() {
         unique: true,
         slot: "Command",
         faction: "Rebel Alliance"
+      }, {
+        name: "Disciplined",
+        id: 381,
+        points: 200,
+        slot: "Talent",
+        faction: "Galactic Empire"
+      }, {
+        name: "Skystrike Academy Class",
+        id: 382,
+        points: 200,
+        max_per_squad: 2,
+        slot: "Command",
+        faction: "Galactic Empire"
+      }, {
+        name: "Shadow Wing",
+        id: 383,
+        points: 200,
+        unique: true,
+        slot: "Command",
+        faction: "Galactic Empire",
+        ship: ["Tie Fighter", "TIE Interceptor", "TIE Bomber"]
       }
     ],
     conditionsById: [
@@ -14850,6 +14928,9 @@ exportObj.cardLoaders.English = function() {
       display_name: "Hera Syndulla",
       text: "While another friendly ship at range 1-2 defends or performs an attack, you may transfer 1 of your focus tokens, evade tokens, or locks to that ship."
     },
+    "Netrem Pollard": {
+      text: ""
+    },
     "Hera Syndulla (A-Wing)": {
       display_name: "Hera Syndulla",
       text: "While another friendly ship at range 1-2 defends or performs an attack, you may transfer 1 of your focus tokens, evade tokens, or locks to that ship.%LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action."
@@ -14873,14 +14954,34 @@ exportObj.cardLoaders.English = function() {
       display_name: "Shara Bey",
       text: "While you defend or perform a primary attack, you may spend 1 lock you have on the enemy ship to add 1 %FOCUS% result to your dice results. %LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action."
     },
+    "Darth Vader (TIE Defender)": {
+      display_name: "Darth Vader",
+      text: "You cannot spend %FORCE% charges while attacking. %LINEBREAK% When you perform an attack, you may spend 1 %FORCE% to change 1 blank result to a %HIT% result. %LINEBREAK%<strong>Full Throttle:</strong> After you fully execute a speed 3-5 maneuver, you may perform an %EVADE% action."
+    },
+    "Captain Dobbs": {
+      text: "%LINEBREAK%<strong>Full Throttle:</strong> After you fully execute a speed 3-5 maneuver, you may perform an %EVADE% action."
+    },
     "Vult Skerris": {
       text: "<strong>Action:</strong> Gain 1 strain token to recover 1 %CHARGE%. %LINEBREAK% Before you engage, you may spend 1 %CHARGE% to perform an action. %LINEBREAK%<strong>Full Throttle:</strong> After you fully execute a speed 3-5 maneuver, you may perform an %EVADE% action."
+    },
+    "Vult Skerris (TIE Interceptor)": {
+      display_name: "Vult Skerris",
+      text: "<strong>Action:</strong> Gain 1 strain token to recover 1 %CHARGE%. %LINEBREAK% Before you engage, you may spend 1 %CHARGE% to perform an action. %LINEBREAK%<strong>Autothrusters:</strong> After you perform an action, you may perform a red %BARRELROLL% or red %BOOST% action."
     },
     "Gideon Hask (TIE Interceptor)": {
       display_name: "Gideon Hask",
       text: "While you perform an attack against a damaged defender, roll 1 additional attack die.%LINEBREAK%<strong>Autothrusters:</strong> After you perform an action, you may perform a red %BARRELROLL% or red %BOOST% action."
     },
+    "Commandant Goran": {
+      text: "After a friendly ship at range 0-3 with a lower initiative than yours partially executes a maneuver, it may perform a red %FOCUS% action. %LINEBREAK%<strong>Autothrusters:</strong> After you perform an action, you may perform a red %BARRELROLL% or red %BOOST% action."
+    },
+    "Nash Windrider": {
+      text: "During the Engagement Phase, after a friendly small ship at range 0-3 is destroyed, if that ship has not engaged this phase, you may spend 1 %CHARGE%. If you do, that ship engages at the current initiative. %LINEBREAK%<strong>Autothrusters:</strong> After you perform an action, you may perform a red %BARRELROLL% or red %BOOST% action."
+    },
     "Ciena Ree": {
+      text: "After you perform an attack, if the defender was destroyed, gain 1 stress token. %LINEBREAK% After a friendly ship at range 0-3 is destroyed, remove 1 stress token. %LINEBREAK%<strong>Autothrusters:</strong> After you perform an action, you may perform a red %BARRELROLL% or red %BOOST% action."
+    },
+    "Lieutenant Lorrir": {
       text: "%LINEBREAK%<strong>Autothrusters:</strong> After you perform an action, you may perform a red %BARRELROLL% or red %BOOST% action."
     },
     "Kanan Jarrus (HWK-290)": {
@@ -16154,7 +16255,7 @@ exportObj.cardLoaders.English = function() {
       text: " "
     },
     "Phoenix Squadron": {
-      text: "At the start of the Planning Phase, 1 of your wingmates that is docked with you may join your wing without gaining a stress token. %LINEBREAK% While you or your Attack Shuttle wingmate or Sheathipede-class wingmate defends, up to 2 of your RZ-1 A-Wing wingmates in the attack arc may each suffer 1 %HIT%/%CRIT% damage to cancel 1 matching result."
+      text: "<strong>Setup Side:</strong>%LINEBREAK%Setup: Equip this side faceup. %LINEBREAK% You are a <b>wing leader</b>. ...  %LINEBREAK% After you are placed, flip this card. %LINEBREAK% <strong>Play Side:</strong>%LINEBREAK% At the start of the Planning Phase, 1 of your wingmates that is docked with you may join your wing without gaining a stress token. %LINEBREAK% While you or your Attack Shuttle wingmate or Sheathipede-class wingmate defends, up to 2 of your RZ-1 A-Wing wingmates in the attack arc may each suffer 1 %HIT%/%CRIT% damage to cancel 1 matching result."
     },
     "Hopeful": {
       text: "After another friendly ship at range 0-3 is destroyed, if that ship is limited or has the <strong>Hopeful</strong> upgrade, you may perform a %FOCUS% or %BOOST% action."
@@ -16162,6 +16263,15 @@ exportObj.cardLoaders.English = function() {
     "Sabine Wren (Gunner)": {
       display_name: "Sabine Wren",
       text: "After you perform a special attack, you may choose a number of friendly ships at range 0-3 of the defender up to the number of damage cards dealt to the defender during that attack. Each chosen ship may remove 1 strain or stress token."
+    },
+    "Disciplined": {
+      text: "After another friendly ship at range 0-3 is destroyed, if that ship is limited or has the <strong>Disciplined</strong> upgrade, you may perform a %LOCK% or %BARRELROLL% action."
+    },
+    "Shadow Wing": {
+      text: "<strong>Setup Side:</strong>%LINEBREAK%Setup: Equip this side faceup. %LINEBREAK% You are a <b>wing leader</b>. Your wingmates must be 2-5 other ships of your type. %LINEBREAK% After you are placed, flip this card. %LINEBREAK% <strong>Play Side:</strong>%LINEBREAK% Your wingmates can perform %BARRELROLL% or %BOOST% actions. If they do, they voluntarily split from the wing. %LINEBREAK% While you defend, up to 2 of your wingmates in the attack arc may each suffer 1 %HIT%/%CRIT% damage to cancel 1 matching result."
+    },
+    "Skystrike Academy Class": {
+      text: "<strong>Setup Side:</strong>%LINEBREAK%Setup: Equip this side faceup. %LINEBREAK% You are a <b>wing leader</b>. ... %LINEBREAK% <strong>Play Side:</strong>%LINEBREAK% After you barrel roll or boost, each of your wingmates is forced to split from the wing %LINEBREAK% While you defend, up to 5 of your wingmates in the attack arc may each suffer 1 %HIT%/%CRIT% damage to cancel 1 matching result."
     },
     "Admiral Ozzel": {
       display_name: "Admiral Ozzel",
