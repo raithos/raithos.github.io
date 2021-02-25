@@ -963,22 +963,9 @@ exportObj.SquadBuilderBackend = (function() {
   SquadBuilderBackend.prototype.setupHandlers = function() {
     $(window).on('xwing-backend:authenticationChanged', (function(_this) {
       return function(e, authenticated, backend) {
-        var ___iced_passed_deferral, __iced_deferrals, __iced_k;
-        __iced_k = __iced_k_noop;
-        ___iced_passed_deferral = iced.findDeferral(arguments);
         _this.updateAuthenticationVisibility();
         if (authenticated) {
-          (function(__iced_k) {
-            __iced_deferrals = new iced.Deferrals(__iced_k, {
-              parent: ___iced_passed_deferral
-            });
-            _this.loadCollection()(__iced_deferrals.defer({
-              lineno: 906
-            }));
-            __iced_deferrals._fulfill();
-          })(__iced_k);
-        } else {
-          return __iced_k();
+          return _this.loadCollection();
         }
       };
     })(this));

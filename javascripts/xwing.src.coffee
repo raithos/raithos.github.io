@@ -904,7 +904,7 @@ class exportObj.SquadBuilderBackend
         $(window).on 'xwing-backend:authenticationChanged', (e, authenticated, backend) =>
             @updateAuthenticationVisibility()
             if authenticated
-                await @loadCollection() defer()
+                @loadCollection()
 
         @login_logout_button.click (e) =>
             e.preventDefault()
