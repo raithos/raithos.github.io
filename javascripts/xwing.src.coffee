@@ -2023,8 +2023,9 @@ exportObj.setupTranslationSupport = ->
                 exportObj.loadCards language
                 for own selector, html of exportObj.translations[language].byCSSSelector
                     $(selector).html html
+                currentfaction = $.getParameterByName 'f'
                 for builder in builders
-                    if $.getParameterByName 'f' == builder.faction
+                    if currentfaction == builder.faction
                         builder.container.trigger 'xwing:afterLanguageLoad', language
                     else
                         builder.container.trigger 'xwing:afterLanguageLoad', language, defer()
@@ -3236,19 +3237,16 @@ class exportObj.SquadBuilder
             @pretranslation_serialized = @serialize()
             cb()
         .on 'xwing:afterLanguageLoad', (e, language, cb=$.noop) =>
-            if @language != language
-                @language = language
-                old_dirty = @current_squad.dirty
-                if @pretranslation_serialized.length?
-                    @removeAllShips()
-                    @loadFromSerialized @pretranslation_serialized
-                for ship in @ships
-                    ship.updateSelections()
-                @current_squad.dirty = old_dirty
-                @pretranslation_serialized = undefined
-                cb()
-            else
-                cb()
+            @language = language
+            old_dirty = @current_squad.dirty
+            if @pretranslation_serialized.length?
+                @removeAllShips()
+                @loadFromSerialized @pretranslation_serialized
+            for ship in @ships
+                ship.updateSelections()
+            @current_squad.dirty = old_dirty
+            @pretranslation_serialized = undefined
+            cb()
         # Recently moved this here.  Did this ever work?
         .on 'xwing:shipUpdated', (e, cb=$.noop) =>
             all_allocated = true
