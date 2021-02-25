@@ -2024,7 +2024,10 @@ exportObj.setupTranslationSupport = ->
                 for own selector, html of exportObj.translations[language].byCSSSelector
                     $(selector).html html
                 for builder in builders
-                    builder.container.trigger 'xwing:afterLanguageLoad', language
+                    if document.title == builder.faction 
+                        builder.container.trigger 'xwing:afterLanguageLoad', language
+                    else
+                        builder.container.trigger 'xwing:afterLanguageLoad', language, defer()
 
     exportObj.loadCards DFL_LANGUAGE
     $(exportObj).trigger 'xwing:languageChanged', DFL_LANGUAGE
@@ -2194,7 +2197,7 @@ class exportObj.SquadBuilder
 
         @backend = null
         @current_squad = {}
-        @language = ' '
+        @language = ''
 
         @collection = null
 
