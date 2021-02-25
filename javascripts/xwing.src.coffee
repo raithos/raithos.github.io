@@ -2194,7 +2194,7 @@ class exportObj.SquadBuilder
 
         @backend = null
         @current_squad = {}
-        @language = 'English'
+        @language = ' '
 
         @collection = null
 

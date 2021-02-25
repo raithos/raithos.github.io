@@ -2669,7 +2669,7 @@ exportObj.SquadBuilder = (function() {
     this.isQuickbuild = (_ref4 = (_ref5 = exportObj.builders[0]) != null ? _ref5.isQuickbuild : void 0) != null ? _ref4 : false;
     this.backend = null;
     this.current_squad = {};
-    this.language = 'English';
+    this.language = ' ';
     this.collection = null;
     this.current_obstacles = [];
     this.setupUI();
