@@ -965,7 +965,10 @@ exportObj.SquadBuilderBackend = (function() {
       return function(e, authenticated, backend) {
         _this.updateAuthenticationVisibility();
         if (authenticated) {
-          return _this.loadCollection();
+          return _this.loadCollection().defer({
+            lineno: 906,
+            context: __iced_deferrals
+          });
         }
       };
     })(this));
