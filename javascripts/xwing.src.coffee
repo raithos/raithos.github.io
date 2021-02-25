@@ -904,7 +904,7 @@ class exportObj.SquadBuilderBackend
         $(window).on 'xwing-backend:authenticationChanged', (e, authenticated, backend) =>
             @updateAuthenticationVisibility()
             if authenticated
-                @loadCollection().defer()
+                await @loadCollection() defer()
 
         @login_logout_button.click (e) =>
             e.preventDefault()
@@ -2028,7 +2028,7 @@ exportObj.setupTranslationSupport = ->
                     if currentfaction == builder.faction
                         builder.container.trigger 'xwing:afterLanguageLoad', language
                     else
-                        builder.container.trigger 'xwing:afterLanguageLoad', language, defer()
+                        await builder.container.trigger 'xwing:afterLanguageLoad', language, defer()
 
     exportObj.loadCards DFL_LANGUAGE
     $(exportObj).trigger 'xwing:languageChanged', DFL_LANGUAGE
@@ -3237,16 +3237,22 @@ class exportObj.SquadBuilder
             @pretranslation_serialized = @serialize()
             cb()
         .on 'xwing:afterLanguageLoad', (e, language, cb=$.noop) =>
-            @language = language
-            old_dirty = @current_squad.dirty
-            if @pretranslation_serialized.length?
-                @removeAllShips()
-                @loadFromSerialized @pretranslation_serialized
-            for ship in @ships
-                ship.updateSelections().defer()
-            @current_squad.dirty = old_dirty
-            @pretranslation_serialized = undefined
-            cb()
+            if @language != language
+                @language = language
+                old_dirty = @current_squad.dirty
+                if @pretranslation_serialized.length?
+                    @removeAllShips()
+                    @loadFromSerialized @pretranslation_serialized
+                for ship in @ships
+                    ship.updateSelections()
+                @current_squad.dirty = old_dirty
+                @pretranslation_serialized = undefined
+                cb()
+            else
+                for ship in @ships
+                    ship.updateSelections()
+                @pretranslation_serialized = undefined
+                cb()
         # Recently moved this here.  Did this ever work?
         .on 'xwing:shipUpdated', (e, cb=$.noop) =>
             all_allocated = true
