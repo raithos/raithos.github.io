@@ -2024,7 +2024,7 @@ exportObj.setupTranslationSupport = ->
                 for own selector, html of exportObj.translations[language].byCSSSelector
                     $(selector).html html
                 for builder in builders
-                    if document.title == builder.faction 
+                    if $.getParameterByName 'f' == builder.faction
                         builder.container.trigger 'xwing:afterLanguageLoad', language
                     else
                         builder.container.trigger 'xwing:afterLanguageLoad', language, defer()
@@ -2197,7 +2197,7 @@ class exportObj.SquadBuilder
 
         @backend = null
         @current_squad = {}
-        @language = ''
+        @language = 'English'
 
         @collection = null
 
@@ -3246,6 +3246,8 @@ class exportObj.SquadBuilder
                     ship.updateSelections()
                 @current_squad.dirty = old_dirty
                 @pretranslation_serialized = undefined
+                cb()
+            else
                 cb()
         # Recently moved this here.  Did this ever work?
         .on 'xwing:shipUpdated', (e, cb=$.noop) =>
