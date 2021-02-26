@@ -14937,7 +14937,7 @@ exportObj.cardLoaders.English = function() {
     },
     "Wedge Antilles (A-Wing)": {
       display_name: "Wedge Antilles",
-      text: "While you perform an attack, if the defender is in your %FRONTARC%, the defender rolls 1 fewer defense die. %LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action."
+      text: "While you perform a primary attack, if the defender is in your %FRONTARC%, the defender rolls 1 fewer defense die. %LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action."
     },
     "Sabine Wren (A-Wing)": {
       display_name: "Sabine Wren",

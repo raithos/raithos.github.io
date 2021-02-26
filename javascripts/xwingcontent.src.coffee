@@ -21671,7 +21671,7 @@ exportObj.cardLoaders.English = () ->
            text: """While another friendly ship at range 1-2 defends or performs an attack, you may transfer 1 of your focus tokens, evade tokens, or locks to that ship.%LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action."""
         "Wedge Antilles (A-Wing)":
            display_name: """Wedge Antilles"""
-           text: """While you perform an attack, if the defender is in your %FRONTARC%, the defender rolls 1 fewer defense die. %LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action."""
+           text: """While you perform a primary attack, if the defender is in your %FRONTARC%, the defender rolls 1 fewer defense die. %LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action."""
         "Sabine Wren (A-Wing)":
            display_name: """Sabine Wren"""
            text: """
