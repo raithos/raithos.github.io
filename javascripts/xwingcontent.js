@@ -7214,7 +7214,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Republic",
         slot: "Talent",
         points: 1,
-        restrictions: [["notUnique", false]]
+        restrictions: [["isUnique", false]]
       }, {
         name: "Synchronized Console",
         id: 211,
@@ -8975,13 +8975,15 @@ exportObj.basicCardData = function() {
         id: 384,
         points: 200,
         slot: "Command",
-        faction: "Scum and Villainy"
+        faction: "Scum and Villainy",
+        restrictions: [["isUnique", true], ["Format", "Standard"]]
       }, {
         name: "Bounty",
         id: 385,
         points: 200,
         slot: "Command",
-        faction: "Scum and Villainy"
+        faction: "Scum and Villainy",
+        restrictions: [["isUnique", true], ["Format", "Standard"]]
       }, {
         name: "Gamut Key",
         id: 386,
