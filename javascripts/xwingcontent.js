@@ -5304,7 +5304,7 @@ exportObj.basicCardData = function() {
         skill: 3,
         force: 1,
         points: 200,
-        slots: ["Crew", "Device", "Illicit", "Modification", "Modification", "Title"]
+        slots: ["Force", "Crew", "Device", "Illicit", "Modification", "Modification", "Title"]
       }, {
         name: "Leema Kai",
         id: 458,
@@ -5428,6 +5428,33 @@ exportObj.basicCardData = function() {
         skill: 3,
         points: 200,
         slots: ["Talent", "Sensor", "Cannon", "Missile", "Configuration"]
+      }, {
+        name: "Jinta Security Officer",
+        id: 471,
+        faction: "Scum and Villainy",
+        ship: "Y-Wing",
+        skill: 2,
+        points: 200,
+        slots: ["Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
+      }, {
+        name: "Amaxine Warrior",
+        id: 472,
+        faction: "Scum and Villainy",
+        ship: "Y-Wing",
+        skill: 3,
+        points: 200,
+        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
+      }, {
+        name: "Gamut Key",
+        id: 473,
+        unique: true,
+        faction: "Scum and Villainy",
+        ship: "HWK-290",
+        skill: 3,
+        charge: 2,
+        recurring: 1,
+        points: 200,
+        slots: ["Talent", "Crew", "Device", "Illicit", "Modification", "Modification", "Title"]
       }
     ],
     upgradesById: [
@@ -8480,7 +8507,6 @@ exportObj.basicCardData = function() {
         slot: "Missile",
         attack: 3,
         range: "1-3",
-        limited: 2,
         rangebonus: true,
         max_per_squad: 2,
         charge: 2,
@@ -8944,6 +8970,27 @@ exportObj.basicCardData = function() {
         slot: "Command",
         faction: "Galactic Empire",
         ship: ["Tie Fighter", "TIE Interceptor", "TIE Bomber"]
+      }, {
+        name: "In It For The Money",
+        id: 384,
+        points: 200,
+        slot: "Command",
+        faction: "Scum and Villainy"
+      }, {
+        name: "Bounty",
+        id: 385,
+        points: 200,
+        slot: "Command",
+        faction: "Scum and Villainy"
+      }, {
+        name: "Gamut Key",
+        id: 386,
+        unique: true,
+        points: 200,
+        slot: "Crew",
+        charge: 2,
+        recurring: 1,
+        faction: "Scum and Villainy"
       }
     ],
     conditionsById: [
@@ -14988,6 +15035,15 @@ exportObj.cardLoaders.English = function() {
       display_name: "Kanan Jarrus",
       text: "While you or a ship in your %SINGLETURRETARC% defends, you may spend 1 %FORCE%. If you do, the attacker rolls 1 fewer attack die."
     },
+    "Gamut Key": {
+      text: "At the start of the End Phase, you may spend 2 %CHARGE% to choose yourself or a ship in your %SINGLETURRETARC% with 1 or more circular tokens. During the End Phase, circular tokens are not removed from that ship."
+    },
+    "Arliz Hadrassian": {
+      text: "While you perform a %FRONTARC% attafck, if you are damaged, you may change 1 of your %FOCUS% results to a %CRIT% result. %LINEBREAK% While you defend, if you are damanged, you <b>must</b> change 1 of your %FOCUS% results to a blank result."
+    },
+    "Leema Kai": {
+      text: "Before you engage, if you are not in any ship's %FRONTARC%, you may acquire a lock on an enemy ship in your %FULLFRONTARC%."
+    },
     "Padric": {
       text: "After a friendly device that you have locked detonates, each enemy ship at range 0-1 of that device gains 1 strain token."
     },
@@ -16272,6 +16328,15 @@ exportObj.cardLoaders.English = function() {
     },
     "Skystrike Academy Class": {
       text: "<strong>Setup Side:</strong>%LINEBREAK%Setup: Equip this side faceup. %LINEBREAK% You are a <b>wing leader</b>. ... %LINEBREAK% <strong>Play Side:</strong>%LINEBREAK% After you barrel roll or boost, each of your wingmates is forced to split from the wing %LINEBREAK% While you defend, up to 5 of your wingmates in the attack arc may each suffer 1 %HIT%/%CRIT% damage to cancel 1 matching result."
+    },
+    "In It For The Money": {
+      text: "<strong>In It For The Money:</strong>%LINEBREAK%Setup: Equip this side faceup. %LINEBREAK% You can be included in Republic, Rebel, and Resistance squads. %LINEBREAK% After an allied limited ship in your squad is destroyed, gain 1 focus token and flip this card. %LINEBREAK% <strong>In It For Your Rebellion:</strong>%LINEBREAK% Non-Scum ships in your squad are treated as friendly instead of allied."
+    },
+    "Bounty": {
+      text: "<strong>Hired:</strong>%LINEBREAK%Setup: Equip this side faceup. %LINEBREAK% You can be included in Separatist, Imperial , and First Order squads. %LINEBREAK% After you perform an attack, if the defender was a limited ship and was destroyed, you may recover 1 %CHARGE% on your ship card and each of your upgrade cards. Then flip this card. %LINEBREAK% <strong>Paid:</strong>%LINEBREAK% "
+    },
+    "Gamut Key": {
+      text: "At the start of the End Phase, you may spend 2 %CHARGE% to choose a ship at range 0-1 with 1 or more circular tokens. During the End Phase, circular tokens are not removed from that ship."
     },
     "Admiral Ozzel": {
       display_name: "Admiral Ozzel",

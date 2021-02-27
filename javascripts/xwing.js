@@ -2781,7 +2781,7 @@ exportObj.SquadBuilder = (function() {
     DEFAULT_RANDOMIZER_SHIP_LIMIT = 0;
     this.status_container = $(document.createElement('DIV'));
     this.status_container.addClass('container-fluid');
-    this.status_container.append($.trim('<div class="row squad-name-and-points-row">\n    <div class="col-md-3 squad-name-container">\n        <div class="display-name">\n            <span class="squad-name"></span>\n            <i class="far fa-edit"></i>\n        </div>\n        <div class="input-append">\n            <input type="text" maxlength="64" placeholder="Name your squad..." />\n            <button class="btn save"><i class="fa fa-pen-square"></i></button>\n        </div>\n        <br />\n        <select class="game-type-selector">\n            <option value="standard">Extended</option>\n            <option value="hyperspace">Hyperspace</option>\n            <option value="epic">Epic</option>\n            <option value="quickbuild">Quickbuild</option>\n        </select>\n    </div>\n    <div class="col-md-4 points-display-container">\n        Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="200">\n        <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left) <span class="points-destroyed red"></span></span>\n        <span class="content-warning unreleased-content-used d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning loading-failed-container d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning collection-invalid d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning ship-number-invalid-container d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated">A tournament legal squad must contain 2-8 ships!</span></span>\n    </div>\n    <div class="col-md-5 float-right button-container">\n        <div class="btn-group float-right">\n\n            <button class="btn btn-info view-as-text"><span class="d-none d-lg-block"><i class="fa fa-print"></i>&nbsp;Print/Export</span><span class="d-lg-none"><i class="fa fa-print"></i></span></button>\n            <a class="btn btn-primary d-none collection"><span class="d-none d-lg-block"><i class="fa fa-folder-open"></i> Your Collection</span><span class="d-lg-none"><i class="fa fa-folder-open"></i></span></a>\n            <!-- Randomize button is marked as danger, since it creates a new squad -->\n            <button class="btn btn-danger randomize"><span class="d-none d-lg-block"><i class="fa fa-random"></i> Randomize!</span><span class="d-lg-none"><i class="fa fa-random"></i></span></button>\n            <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">\n                <span class="caret"></span>\n            </button>\n            <ul class="dropdown-menu">\n                <li><a class="dropdown-item randomize-options">Randomizer Options</a></li>\n                <li><a class="dropdown-item misc-settings">Misc Settings</a></li>\n            </ul>\n            \n\n        </div>\n    </div>\n</div>\n\n<div class="row squad-save-buttons">\n    <div class="col-md-12">\n        <button class="show-authenticated btn btn-primary save-list"><i class="far fa-save"></i>&nbsp;Save</button>\n        <button class="show-authenticated btn btn-primary save-list-as"><i class="far fa-file"></i>&nbsp;Save As...</button>\n        <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash"></i>&nbsp;Delete</button>\n        <button class="show-authenticated btn btn-info backend-list-my-squads show-authenticated"><i class="fa fa-download"></i>&nbsp;Load Squad</button>\n        <button class="btn btn-info import-squad"><i class="fa fa-file-import"></i>&nbsp;Import</button>\n        <button class="btn btn-danger clear-squad"><i class="fa fa-plus-circle"></i>&nbsp;New Squad</button>\n        <span class="show-authenticated backend-status"></span>\n    </div>\n</div>'));
+    this.status_container.append($.trim('<div class="row squad-name-and-points-row">\n    <div class="col-md-3 squad-name-container">\n        <div class="display-name">\n            <span class="squad-name"></span>\n            <i class="far fa-edit"></i>\n        </div>\n        <div class="input-append">\n            <input type="text" maxlength="64" placeholder="Name your squad..." />\n            <button class="btn save"><i class="fa fa-pen-square"></i></button>\n        </div>\n        <br />\n        <select class="game-type-selector">\n            <option value="standard">Extended</option>\n            <option value="hyperspace">Hyperspace</option>\n            <option value="epic">Epic</option>\n            <option value="quickbuild">Quickbuild</option>\n        </select>\n    </div>\n    <div class="col-md-4 points-display-container">\n        Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="200">\n        <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left) <span class="points-destroyed red"></span></span>\n        <span class="content-warning unreleased-content-used d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning loading-failed-container d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning collection-invalid d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>\n        <span class="content-warning ship-number-invalid-container d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated">A tournament legal squad must contain 2-8 ships!</span></span>\n        <span class="content-warning multi-faction-warning-container d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated">Multi-Faction Lists are NEVER tournament legal!</span></span>\n    </div>\n    <div class="col-md-5 float-right button-container">\n        <div class="btn-group float-right">\n\n            <button class="btn btn-info view-as-text"><span class="d-none d-lg-block"><i class="fa fa-print"></i>&nbsp;Print/Export</span><span class="d-lg-none"><i class="fa fa-print"></i></span></button>\n            <a class="btn btn-primary d-none collection"><span class="d-none d-lg-block"><i class="fa fa-folder-open"></i> Your Collection</span><span class="d-lg-none"><i class="fa fa-folder-open"></i></span></a>\n            <!-- Randomize button is marked as danger, since it creates a new squad -->\n            <button class="btn btn-danger randomize"><span class="d-none d-lg-block"><i class="fa fa-random"></i> Randomize!</span><span class="d-lg-none"><i class="fa fa-random"></i></span></button>\n            <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">\n                <span class="caret"></span>\n            </button>\n            <ul class="dropdown-menu">\n                <li><a class="dropdown-item randomize-options">Randomizer Options</a></li>\n                <li><a class="dropdown-item misc-settings">Misc Settings</a></li>\n            </ul>\n            \n\n        </div>\n    </div>\n</div>\n\n<div class="row squad-save-buttons">\n    <div class="col-md-12">\n        <button class="show-authenticated btn btn-primary save-list"><i class="far fa-save"></i>&nbsp;Save</button>\n        <button class="show-authenticated btn btn-primary save-list-as"><i class="far fa-file"></i>&nbsp;Save As...</button>\n        <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash"></i>&nbsp;Delete</button>\n        <button class="show-authenticated btn btn-info backend-list-my-squads show-authenticated"><i class="fa fa-download"></i>&nbsp;Load Squad</button>\n        <button class="btn btn-info import-squad"><i class="fa fa-file-import"></i>&nbsp;Import</button>\n        <button class="btn btn-danger clear-squad"><i class="fa fa-plus-circle"></i>&nbsp;New Squad</button>\n        <span class="show-authenticated backend-status"></span>\n    </div>\n</div>'));
     this.container.append(this.status_container);
     this.xws_import_modal = $(document.createElement('DIV'));
     this.xws_import_modal.addClass('modal fade import-modal d-print-none');
@@ -3104,6 +3104,7 @@ exportObj.SquadBuilder = (function() {
     this.unreleased_content_used_container = $(this.points_container.find('.unreleased-content-used'));
     this.loading_failed_container = $(this.points_container.find('.loading-failed-container'));
     this.ship_number_invalid_container = $(this.points_container.find('.ship-number-invalid-container'));
+    this.multi_faction_warning_container = $(this.points_container.find('.multi-faction-warning-container'));
     this.collection_invalid_container = $(this.points_container.find('.collection-invalid'));
     this.view_list_button = $(this.status_container.find('div.button-container button.view-as-text'));
     this.randomize_button = $(this.status_container.find('div.button-container button.randomize'));
@@ -3348,7 +3349,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 3006
+              lineno: 3008
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -3642,6 +3643,8 @@ exportObj.SquadBuilder = (function() {
                   return 'republic';
                 case 'Separatist Alliance':
                   return 'separatists';
+                case 'All':
+                  return 'first-player-4';
               }
             }).call(_this);
             _this.printable_container.find('.squad-faction').html("<i class=\"xwing-miniatures-font xwing-miniatures-font-" + faction + "\"></i>");
@@ -4222,6 +4225,7 @@ exportObj.SquadBuilder = (function() {
     });
     this.ships.push(new_ship);
     this.ship_number_invalid_container.toggleClass('d-none', this.ships.length < 10 && this.ships.length > 2);
+    this.multi_faction_warning_container.toggleClass('d-none', this.faction !== "All");
     return new_ship;
   };
 
@@ -4241,7 +4245,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 3843
+              lineno: 3848
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -4251,13 +4255,14 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 3844
+                lineno: 3849
               }));
               __iced_deferrals._fulfill();
             })(function() {
               _this.current_squad.dirty = true;
               _this.container.trigger('xwing-backend:squadDirtinessChanged');
-              return __iced_k(_this.ship_number_invalid_container.toggleClass('d-none', _this.ships.length < 10 && _this.ships.length > 2));
+              _this.ship_number_invalid_container.toggleClass('d-none', _this.ships.length < 10 && _this.ships.length > 2);
+              return __iced_k(_this.multi_faction_warning_container.toggleClass('d-none', _this.faction !== "All"));
             });
           });
         } else {
@@ -4275,18 +4280,29 @@ exportObj.SquadBuilder = (function() {
     return item.toUpperCase().indexOf(term.toUpperCase()) >= 0;
   };
 
-  SquadBuilder.prototype.isOurFaction = function(faction) {
-    var f, _i, _len;
+  SquadBuilder.prototype.isOurFaction = function(faction, alt_faction) {
+    var check_faction, f, _i, _len;
+    if (alt_faction == null) {
+      alt_faction = '';
+    }
+    check_faction = this.faction;
+    if (this.faction === "All") {
+      if (alt_faction !== '') {
+        check_faction = alt_faction;
+      } else {
+        return true;
+      }
+    }
     if (faction instanceof Array) {
       for (_i = 0, _len = faction.length; _i < _len; _i++) {
         f = faction[_i];
-        if (getPrimaryFaction(f) === this.faction) {
+        if (getPrimaryFaction(f) === check_faction) {
           return true;
         }
       }
       return false;
     } else {
-      return getPrimaryFaction(faction) === this.faction;
+      return getPrimaryFaction(faction) === check_faction;
     }
   };
 
@@ -4616,7 +4632,7 @@ exportObj.SquadBuilder = (function() {
       _results = [];
       for (upgrade_name in _ref) {
         upgrade = _ref[upgrade_name];
-        if (exportObj.slotsMatching(upgrade.slot, slot) && (this.matcher(upgrade_name, term) || (upgrade.display_name && this.matcher(upgrade.display_name, term))) && ((upgrade.ship == null) || this.isShip(upgrade.ship, ship.data.name)) && ((upgrade.faction == null) || this.isOurFaction(upgrade.faction)) && (this.isItemAvailable(upgrade))) {
+        if (exportObj.slotsMatching(upgrade.slot, slot) && (this.matcher(upgrade_name, term) || (upgrade.display_name && this.matcher(upgrade.display_name, term))) && ((upgrade.ship == null) || this.isShip(upgrade.ship, ship.data.name)) && ((upgrade.faction == null) || this.isOurFaction(upgrade.faction, ship.pilot.faction)) && (this.isItemAvailable(upgrade))) {
           _results.push(upgrade);
         }
       }
@@ -6436,7 +6452,7 @@ Ship = (function() {
                       funcname: "Ship.destroy"
                     });
                     _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                      lineno: 5406
+                      lineno: 5420
                     }));
                     __iced_deferrals._fulfill();
                   })(__iced_k);
@@ -6653,7 +6669,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 5516
+                          lineno: 5530
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -6703,7 +6719,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 5549
+                                  lineno: 5563
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -6801,7 +6817,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 5607
+                      lineno: 5621
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -6882,7 +6898,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 5637
+                lineno: 5651
               })
             ]);
             __iced_deferrals._fulfill();
@@ -6951,7 +6967,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 5666
+              lineno: 5680
             }));
           }
         }
@@ -7043,7 +7059,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 5722
+                lineno: 5736
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -7878,7 +7894,7 @@ Ship = (function() {
   };
 
   Ship.prototype.validate = function() {
-    var addCommand, equipped_upgrades, func, i, max_checks, pilot_func, unchanged, upgrade, valid, _i, _j, _k, _l, _len, _len1, _ref, _ref1, _ref10, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
+    var addCommand, equipped_upgrades, func, func_result, i, max_checks, pilot_func, unchanged, upgrade, valid, _i, _j, _k, _l, _len, _len1, _ref, _ref1, _ref10, _ref11, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9;
     if (this.pilot == null) {
       return true;
     }
@@ -7923,10 +7939,12 @@ Ship = (function() {
       for (_l = 0, _len1 = _ref6.length; _l < _len1; _l++) {
         upgrade = _ref6[_l];
         func = (_ref7 = upgrade != null ? (_ref8 = upgrade.data) != null ? _ref8.validation_func : void 0 : void 0) != null ? _ref7 : void 0;
-        if ((upgrade != null ? (_ref9 = upgrade.data) != null ? _ref9.restrictions : void 0 : void 0) && (func == null)) {
-          func = this.restriction_check(upgrade.data.restrictions, upgrade);
+        if (func != null) {
+          func_result = upgrade != null ? (_ref9 = upgrade.data) != null ? _ref9.validation_func(this, upgrade) : void 0 : void 0;
+        } else if (upgrade != null ? (_ref10 = upgrade.data) != null ? _ref10.restrictions : void 0 : void 0) {
+          func_result = this.restriction_check(upgrade.data.restrictions, upgrade);
         }
-        if ((((func != null) && !func) || (((upgrade != null ? upgrade.data : void 0) != null) && ((_ref10 = upgrade.data, __indexOf.call(equipped_upgrades, _ref10) >= 0) || !this.builder.isItemAvailable(upgrade.data)))) && !this.builder.isQuickbuild) {
+        if ((((func_result != null) && !func_result) || (((upgrade != null ? upgrade.data : void 0) != null) && ((_ref11 = upgrade.data, __indexOf.call(equipped_upgrades, _ref11) >= 0) || ((upgrade.data.faction != null) && !this.builder.isOurFaction(upgrade.data.faction, this.pilot.faction)) || !this.builder.isItemAvailable(upgrade.data)))) && !this.builder.isQuickbuild) {
           upgrade.setById(null);
           valid = false;
           unchanged = false;
@@ -7960,29 +7978,14 @@ Ship = (function() {
   };
 
   Ship.prototype.hasAnotherUnoccupiedSlotLike = function(upgrade_obj, upgradeslot) {
-    var extraslot, r, upgrade, _i, _j, _len, _len1, _ref, _ref1, _ref2;
-    if ((upgrade_obj != null ? (_ref = upgrade_obj.data) != null ? _ref.restrictions : void 0 : void 0) != null) {
-      _ref1 = upgrade_obj.data.restrictions;
-      for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
-        r = _ref1[_i];
-        if (r[0] === "Slot") {
-          extraslot = r[1];
-        }
-      }
-    }
-    _ref2 = this.upgrades;
-    for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
-      upgrade = _ref2[_j];
+    var upgrade, _i, _len, _ref;
+    _ref = this.upgrades;
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      upgrade = _ref[_i];
       if (upgrade === upgrade_obj || upgrade.slot !== upgradeslot) {
         continue;
       }
-      if (upgrade.isOccupied()) {
-        if (extraslot != null) {
-          if (extraslot === upgradeslot) {
-            return true;
-          }
-        }
-      } else {
+      if (!upgrade.isOccupied()) {
         return true;
       }
     }
@@ -8290,7 +8293,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 6660
+                lineno: 6666
               })
             ]);
             __iced_deferrals._fulfill();
@@ -8439,7 +8442,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 6749
+                  lineno: 6755
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -8466,7 +8469,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 6756
+                      lineno: 6762
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -8609,7 +8612,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 6828
+            lineno: 6834
           }));
         }
         __iced_deferrals._fulfill();
