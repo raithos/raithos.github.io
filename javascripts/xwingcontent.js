@@ -5361,7 +5361,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         force: 3,
         points: 200,
-        slots: ["Talent", "Talent", "Missile", "Configuration"]
+        slots: ["Force", "Talent", "Missile", "Configuration"]
       }, {
         name: "Netrem Pollard",
         id: 464,
