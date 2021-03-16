@@ -8139,7 +8139,7 @@ Ship = (function() {
           }
           break;
         case "Faction":
-          if (this.builder.faction !== r[1]) {
+          if (this.pilot.faction !== r[1]) {
             return false;
           }
       }
