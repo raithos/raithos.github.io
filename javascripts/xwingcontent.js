@@ -5456,6 +5456,17 @@ exportObj.basicCardData = function() {
         recurring: 1,
         points: 200,
         slots: ["Talent", "Crew", "Device", "Illicit", "Modification", "Modification", "Title"]
+      }, {
+        name: "Tápusk",
+        id: 474,
+        unique: true,
+        faction: "Scum and Villainy",
+        ship: "HWK-290",
+        skill: 5,
+        charge: 2,
+        recurring: 1,
+        points: 200,
+        slots: ["Talent", "Crew", "Device", "Illicit", "Modification", "Modification", "Title"]
       }
     ],
     upgradesById: [
@@ -14979,7 +14990,7 @@ exportObj.cardLoaders.English = function() {
       text: "While another friendly ship at range 1-2 defends or performs an attack, you may transfer 1 of your focus tokens, evade tokens, or locks to that ship."
     },
     "Netrem Pollard": {
-      text: ""
+      text: "After you barrel roll, you may choose 1 friendly ship that is not stressed at range 0-1. That ship gain's 1 stress token, then you rotate 180º."
     },
     "Hera Syndulla (A-Wing)": {
       display_name: "Hera Syndulla",
@@ -14991,7 +15002,7 @@ exportObj.cardLoaders.English = function() {
     },
     "Sabine Wren (A-Wing)": {
       display_name: "Sabine Wren",
-      text: "%LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action."
+      text: "While you defend or perform an attack, if the attack range is 1 and  you are in the enemy's %FRONTARC%, you may change 1 of your results to an %EVADE% or %HIT% result. %LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action."
     },
     "Derek Klivian": {
       text: "After you acquire or spend a lock, you may remove 1 red token from yourself. %LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action."
@@ -15009,7 +15020,7 @@ exportObj.cardLoaders.English = function() {
       text: "You cannot spend %FORCE% charges except while attacking. %LINEBREAK% When you perform an attack, you may spend 1 %FORCE% to change 1 blank result to a %HIT% result. %LINEBREAK%<strong>Full Throttle:</strong> After you fully execute a speed 3-5 maneuver, you may perform an %EVADE% action."
     },
     "Captain Dobbs": {
-      text: "%LINEBREAK%<strong>Full Throttle:</strong> After you fully execute a speed 3-5 maneuver, you may perform an %EVADE% action."
+      text: "While another friendly ship at range 0-1 defends, before the Neutralize Results step, if you are in the attack arc and are not ionized, you may gain 1 ion token to cancel 1 %HIT% result. %LINEBREAK%<strong>Full Throttle:</strong> After you fully execute a speed 3-5 maneuver, you may perform an %EVADE% action."
     },
     "Vult Skerris": {
       text: "<strong>Action:</strong> Gain 1 strain token to recover 1 %CHARGE%. %LINEBREAK% Before you engage, you may spend 1 %CHARGE% to perform an action. %LINEBREAK%<strong>Full Throttle:</strong> After you fully execute a speed 3-5 maneuver, you may perform an %EVADE% action."
@@ -15037,6 +15048,9 @@ exportObj.cardLoaders.English = function() {
     "Kanan Jarrus (HWK-290)": {
       display_name: "Kanan Jarrus",
       text: "While you or a ship in your %SINGLETURRETARC% defends, you may spend 1 %FORCE%. If you do, the attacker rolls 1 fewer attack die."
+    },
+    "Tápusk": {
+      text: "During the End Phase, before an enemy ship in your %SINGLETURRETARC% recovers 1 recurring %CHARGE% or %FORCE%, you may spend 1 %CHARGE%. If you do, that ship does not recover that %CHARGE% or %FORCE%"
     },
     "Gamut Key": {
       text: "At the start of the End Phase, you may spend 2 %CHARGE% to choose yourself or a ship in your %SINGLETURRETARC% with 1 or more circular tokens. During the End Phase, circular tokens are not removed from that ship."
