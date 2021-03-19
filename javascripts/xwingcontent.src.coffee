@@ -1833,6 +1833,33 @@ exportObj.basicCardData = ->
                 [ 0, 0, 3, 0, 0]
                 [ 0, 0, 3, 0, 0]
             ]
+        "Trident-class Assault Ship":
+            name: "Trident-class Assault Ship"
+            xws: "Trident-class Assault Ship".canonicalize()
+            factions: ["Separatist Alliance", "Scum and Villainy"]
+            huge: true
+            attack: 3
+            agility: 0
+            hull: 10
+            shields: 4
+            shieldrecurr: 1
+            energy: 3
+            energyrecurr: 2
+            actions: [
+                "Focus"
+                "R-Evade"
+                "R-Reinforce"
+                "Lock"
+                "R-Coordinate"
+            ]
+            maneuvers: [
+                [ 0, 3, 3, 3, 0]
+                [ 0, 2, 1, 2, 0]
+                [ 0, 2, 1, 2, 0]
+                [ 0, 3, 2, 3, 0]
+                [ 0, 0, 3, 0, 0]
+                [ 0, 0, 3, 0, 0]
+            ]
 
     # name field is for convenience only
     pilotsById: [
@@ -9637,7 +9664,7 @@ exportObj.basicCardData = ->
             points: 200
             slots: [
                 "Force"
-                "Sensor"
+                "Talent"
                 "Cannon"
                 "Missile"            
                 "Configuration"
@@ -13636,6 +13663,14 @@ exportObj.basicCardData = ->
             charge: 2
             recurring: 1
             faction: "Scum and Villainy"
+        }
+        {
+            name: "Interloper Turn"
+            id: 387
+            points: 200
+            slot: "Talent"
+            recurring: 1
+            ship: "TIE Defender"
         }
         
     ]
@@ -21817,7 +21852,7 @@ exportObj.cardLoaders.English = () ->
            display_name: """Kanan Jarrus"""
            text: """While you or a ship in your %SINGLETURRETARC% defends, you may spend 1 %FORCE%. If you do, the attacker rolls 1 fewer attack die."""
         "Tápusk":
-           text: """During the End Phase, before an enemy ship in your %SINGLETURRETARC% recovers 1 recurring %CHARGE% or %FORCE%, you may spend 1 %CHARGE%. If you do, that ship does not recover that %CHARGE% or %FORCE%"""
+           text: """During the End Phase, before an enemy ship in your %SINGLETURRETARC% recovers 1 recurring %CHARGE% or %FORCE%, you may spend 2 %CHARGE%. If you do, that ship does not recover that %CHARGE% or %FORCE%"""
         "Gamut Key":
            text: """At the start of the End Phase, you may spend 2 %CHARGE% to choose yourself or a ship in your %SINGLETURRETARC% with 1 or more circular tokens. During the End Phase, circular tokens are not removed from that ship."""
         "Arliz Hadrassian":
@@ -22782,6 +22817,8 @@ exportObj.cardLoaders.English = () ->
            text: """<strong>Hired:</strong>%LINEBREAK%Setup: Equip this side faceup. %LINEBREAK% You can be included in Separatist, Imperial , and First Order squads. %LINEBREAK% After you perform an attack, if the defender was a limited ship and was destroyed, you may recover 1 %CHARGE% on your ship card and each of your upgrade cards. Then flip this card. %LINEBREAK% <strong>Paid:</strong>%LINEBREAK% """
         "Gamut Key":
            text: """At the start of the End Phase, you may spend 2 %CHARGE% to choose a ship at range 0-1 with 1 or more circular tokens. During the End Phase, circular tokens are not removed from that ship."""
+        "Interloper Turn":
+           text: """Before you execute a speed 1-2 turn (%TURNLEFT% or %TURNRIGHT%) or speed 1-2 Koiogran Turn (%KTURN%), if you are at range 0-1 of an asteroid, structure, or huge ship, you may gain 1 tractor token."""
 
         # Epic upgrades
         "Admiral Ozzel":
