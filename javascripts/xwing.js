@@ -8027,7 +8027,7 @@ Ship = (function() {
   };
 
   Ship.prototype.restriction_check = function(restrictions, upgrade_obj) {
-    var effective_stats, r, _i, _len, _ref, _ref1, _ref2, _ref3, _ref4;
+    var effective_stats, r, _i, _len, _ref, _ref1, _ref2, _ref3, _ref4, _ref5;
     effective_stats = this.effectiveStats();
     for (_i = 0, _len = restrictions.length; _i < _len; _i++) {
       r = restrictions[_i];
@@ -8071,7 +8071,7 @@ Ship = (function() {
           }
           break;
         case "Action":
-          if (!((_ref = r[1], __indexOf.call(effective_stats.actions, _ref) >= 0) || (_ref1 = "*" + r[1], __indexOf.call(effective_stats.actions, _ref1) >= 0) || (_ref2 = "R-" + r[1], __indexOf.call(effective_stats.actions, _ref2) >= 0))) {
+          if (!((_ref = r[1], __indexOf.call(effective_stats.actions, _ref) >= 0) || (_ref1 = "*" + r[1], __indexOf.call(effective_stats.actions, _ref1) >= 0) || (_ref2 = "F-" + r[1], __indexOf.call(effective_stats.actions, _ref2) >= 0) || (_ref3 = "R-" + r[1], __indexOf.call(effective_stats.actions, _ref3) >= 0))) {
             return false;
           }
           break;
@@ -8128,12 +8128,12 @@ Ship = (function() {
         case "Format":
           switch (r[1]) {
             case "Epic":
-              if (!(_ref3 = this.data.name, __indexOf.call(exportObj.epicExclusionsList, _ref3) >= 0)) {
+              if (!(_ref4 = this.data.name, __indexOf.call(exportObj.epicExclusionsList, _ref4) >= 0)) {
                 return false;
               }
               break;
             case "Standard":
-              if (_ref4 = this.data.name, __indexOf.call(exportObj.epicExclusionsList, _ref4) >= 0) {
+              if (_ref5 = this.data.name, __indexOf.call(exportObj.epicExclusionsList, _ref5) >= 0) {
                 return false;
               }
           }
