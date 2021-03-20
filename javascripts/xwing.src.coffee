@@ -3257,6 +3257,9 @@ class exportObj.SquadBuilder
             @onSquadNameChanged()
         .on 'xwing:beforeLanguageLoad', (e, cb=$.noop) =>
             @pretranslation_serialized = @serialize()
+            old_dirty = @current_squad.dirty
+            @removeAllShips()
+            @current_squad.dirty = old_dirty
             cb()
         .on 'xwing:afterLanguageLoad', (e, language, cb=$.noop) =>
             @language = language
