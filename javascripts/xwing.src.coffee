@@ -4405,8 +4405,13 @@ class exportObj.SquadBuilder
                     container.find('.info-type').text type
                     container.find('.info-sources.info-data').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
                     container.find('.info-sources').show()
-
-                    container.find('.info-collection').hide()
+                    if @collection?.counts?
+                        pilot_count = @collection.counts?.pilot?[data.name] ? 0
+                        ship_count = @collection.counts.ship?[data.ship] ? 0
+                        container.find('.info-collection').text """You have #{ship_count} ship model#{if ship_count > 1 then 's' else ''} and #{pilot_count} pilot card#{if pilot_count > 1 then 's' else ''} in your collection."""
+                        container.find('.info-collection').show()
+                    else
+                        container.find('.info-collection').hide()
                         
                     # if the pilot is already selected and has uprades, some stats may be modified
                     if additional_opts?.effectiveStats?
@@ -4682,8 +4687,12 @@ class exportObj.SquadBuilder
                         uniquedots = ""
                     
                     
-
-                    container.find('.info-collection').hide()
+                    if @collection?.counts?
+                        addon_count = @collection.counts?['upgrade']?[data.name] ? 0
+                        container.find('.info-collection').text """You have #{addon_count} in your collection."""
+                        container.find('.info-collection').show()
+                    else
+                        container.find('.info-collection').hide()
                     container.find('.info-name').html """#{uniquedots}#{if data.display_name then data.display_name else data.name}#{if exportObj.isReleased(data) then  "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
                     if data.pointsarray? 
                         point_info = "<i><b>Point cost:</b> " + data.pointsarray + " when "
@@ -5237,11 +5246,6 @@ class exportObj.SquadBuilder
 
     checkCollection: ->
         # console.log "#{@faction}: Checking validity of squad against collection..."
-        if @collection?
-            [squadPossible, missingStuff] = @isSquadPossibleWithCollection()
-            @collection_invalid_container.toggleClass 'd-none', squadPossible
-            @collection_invalid_container.on 'mouseover', (e) =>
-                @showTooltip 'MissingStuff', missingStuff
 
     toXWS: ->
         # Often you will want JSON.stringify(builder.toXWS())
