@@ -3279,11 +3279,13 @@ class exportObj.SquadBuilder
             #console.log "should we add ship: #{all_allocated and not @suppress_automatic_new_ship}"
             @addShip() if all_allocated and not @suppress_automatic_new_ship
 
-        $(window).on 'xwing-collection:created', (e, collection) =>
+        $(window).on 'xwing-backend:authenticationChanged', (e) =>
+            @resetCurrentSquad()
+        .on 'xwing-collection:created', (e, collection) =>
             # console.log "#{@faction}: collection was created"
             @collection = collection
             # console.log "#{@faction}: Collection created, checking squad"
-            @collection.onLanguageChange null, @language
+            # @collection.onLanguageChange null, @language
             # @checkCollection()
             @collection_button.removeClass 'd-none'
         .on 'xwing-collection:changed', (e, collection) =>
