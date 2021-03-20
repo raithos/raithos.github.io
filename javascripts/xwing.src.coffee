@@ -4405,13 +4405,8 @@ class exportObj.SquadBuilder
                     container.find('.info-type').text type
                     container.find('.info-sources.info-data').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
                     container.find('.info-sources').show()
-                    if @collection?.counts?
-                        pilot_count = @collection.counts?.pilot?[data.name] ? 0
-                        ship_count = @collection.counts.ship?[data.ship] ? 0
-                        container.find('.info-collection').text """You have #{ship_count} ship model#{if ship_count > 1 then 's' else ''} and #{pilot_count} pilot card#{if pilot_count > 1 then 's' else ''} in your collection."""
-                        container.find('.info-collection').show()
-                    else
-                        container.find('.info-collection').hide()
+
+                    container.find('.info-collection').hide()
                         
                     # if the pilot is already selected and has uprades, some stats may be modified
                     if additional_opts?.effectiveStats?
@@ -4687,12 +4682,8 @@ class exportObj.SquadBuilder
                         uniquedots = ""
                     
                     
-                    if @collection?.counts?
-                        addon_count = @collection.counts?['upgrade']?[data.name] ? 0
-                        container.find('.info-collection').text """You have #{addon_count} in your collection."""
-                        container.find('.info-collection').show()
-                    else
-                        container.find('.info-collection').hide()
+
+                    container.find('.info-collection').hide()
                     container.find('.info-name').html """#{uniquedots}#{if data.display_name then data.display_name else data.name}#{if exportObj.isReleased(data) then  "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
                     if data.pointsarray? 
                         point_info = "<i><b>Point cost:</b> " + data.pointsarray + " when "
@@ -5888,7 +5879,19 @@ class Ship
                 query.callback(data)
             minimumResultsForSearch: if $.isMobile() then -1 else 0
             formatResultCssClass: (obj) =>
-                ''
+                if @builder.collection? and (@builder.collection.checks.collectioncheck == "true")
+                    not_in_collection = false
+                    if @pilot? and obj.id == exportObj.ships[@pilot.ship].id
+                        # Currently selected ship; mark as not in collection if it's neither
+                        # on the shelf nor on the table
+                        unless (@builder.collection.checkShelf('ship', obj.name) or @builder.collection.checkTable('pilot', obj.name))
+                            not_in_collection = true
+                    else
+                        # Not currently selected; check shelf only
+                        not_in_collection = not @builder.collection.checkShelf('ship', obj.name)
+                    if not_in_collection then 'select2-result-not-in-collection' else ''
+                else
+                    ''
             formatResult: shipResultFormatter
             formatSelection: shipResultFormatter
 
@@ -6718,7 +6721,19 @@ class GenericAddon
         @container.append @selectorwrap
         args.minimumResultsForSearch = -1 if $.isMobile()
         args.formatResultCssClass = (obj) =>
-            ''
+            if @ship.builder.collection?
+                not_in_collection = false
+                if obj.id == @data?.id
+                    # Currently selected card; mark as not in collection if it's neither
+                    # on the shelf nor on the table
+                    unless (@ship.builder.collection.checkShelf(@type.toLowerCase(), obj.name) or @ship.builder.collection.checkTable(@type.toLowerCase(), obj.name)) 
+                        not_in_collection = true
+                else
+                    # Not currently selected; check shelf only
+                    not_in_collection = not @ship.builder.collection.checkShelf(@type.toLowerCase(), obj.name)
+                if not_in_collection then 'select2-result-not-in-collection' else ''
+            else
+                ''
         
         args.formatSelection = (obj, container) =>
             icon = switch @type
