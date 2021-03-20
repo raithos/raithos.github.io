@@ -3279,9 +3279,7 @@ class exportObj.SquadBuilder
             #console.log "should we add ship: #{all_allocated and not @suppress_automatic_new_ship}"
             @addShip() if all_allocated and not @suppress_automatic_new_ship
 
-        $(window).on 'xwing-backend:authenticationChanged', (e) =>
-            @resetCurrentSquad()
-        .on 'xwing-collection:created', (e, collection) =>
+        $(window).on 'xwing-collection:created', (e, collection) =>
             # console.log "#{@faction}: collection was created"
             @collection = collection
             # console.log "#{@faction}: Collection created, checking squad"
@@ -5246,6 +5244,11 @@ class exportObj.SquadBuilder
 
     checkCollection: ->
         # console.log "#{@faction}: Checking validity of squad against collection..."
+        if @collection?
+            [squadPossible, missingStuff] = @isSquadPossibleWithCollection()
+            @collection_invalid_container.toggleClass 'd-none', squadPossible
+            @collection_invalid_container.on 'mouseover', (e) =>
+                @showTooltip 'MissingStuff', missingStuff
 
     toXWS: ->
         # Often you will want JSON.stringify(builder.toXWS())
