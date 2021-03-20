@@ -7225,24 +7225,7 @@ Ship = (function() {
       minimumResultsForSearch: $.isMobile() ? -1 : 0,
       formatResultCssClass: (function(_this) {
         return function(obj) {
-          var not_in_collection;
-          if ((_this.builder.collection != null) && (_this.builder.collection.checks.collectioncheck === "true")) {
-            not_in_collection = false;
-            if ((_this.pilot != null) && obj.id === exportObj.ships[_this.pilot.ship].id) {
-              if (!(_this.builder.collection.checkShelf('ship', obj.name) || _this.builder.collection.checkTable('pilot', obj.name))) {
-                not_in_collection = true;
-              }
-            } else {
-              not_in_collection = !_this.builder.collection.checkShelf('ship', obj.name);
-            }
-            if (not_in_collection) {
-              return 'select2-result-not-in-collection';
-            } else {
-              return '';
-            }
-          } else {
-            return '';
-          }
+          return '';
         };
       })(this),
       formatResult: shipResultFormatter,
@@ -8346,7 +8329,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 6704
+                lineno: 6692
               })
             ]);
             __iced_deferrals._fulfill();
@@ -8385,24 +8368,7 @@ GenericAddon = (function() {
     }
     args.formatResultCssClass = (function(_this) {
       return function(obj) {
-        var not_in_collection, _ref;
-        if (_this.ship.builder.collection != null) {
-          not_in_collection = false;
-          if (obj.id === ((_ref = _this.data) != null ? _ref.id : void 0)) {
-            if (!(_this.ship.builder.collection.checkShelf(_this.type.toLowerCase(), obj.name) || _this.ship.builder.collection.checkTable(_this.type.toLowerCase(), obj.name))) {
-              not_in_collection = true;
-            }
-          } else {
-            not_in_collection = !_this.ship.builder.collection.checkShelf(_this.type.toLowerCase(), obj.name);
-          }
-          if (not_in_collection) {
-            return 'select2-result-not-in-collection';
-          } else {
-            return '';
-          }
-        } else {
-          return '';
-        }
+        return '';
       };
     })(this);
     args.formatSelection = (function(_this) {
@@ -8495,7 +8461,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 6793
+                  lineno: 6769
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -8522,7 +8488,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 6800
+                      lineno: 6776
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -8665,7 +8631,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 6872
+            lineno: 6848
           }));
         }
         __iced_deferrals._fulfill();

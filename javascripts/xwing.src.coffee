@@ -5888,19 +5888,7 @@ class Ship
                 query.callback(data)
             minimumResultsForSearch: if $.isMobile() then -1 else 0
             formatResultCssClass: (obj) =>
-                if @builder.collection? and (@builder.collection.checks.collectioncheck == "true")
-                    not_in_collection = false
-                    if @pilot? and obj.id == exportObj.ships[@pilot.ship].id
-                        # Currently selected ship; mark as not in collection if it's neither
-                        # on the shelf nor on the table
-                        unless (@builder.collection.checkShelf('ship', obj.name) or @builder.collection.checkTable('pilot', obj.name))
-                            not_in_collection = true
-                    else
-                        # Not currently selected; check shelf only
-                        not_in_collection = not @builder.collection.checkShelf('ship', obj.name)
-                    if not_in_collection then 'select2-result-not-in-collection' else ''
-                else
-                    ''
+                ''
             formatResult: shipResultFormatter
             formatSelection: shipResultFormatter
 
@@ -6730,19 +6718,7 @@ class GenericAddon
         @container.append @selectorwrap
         args.minimumResultsForSearch = -1 if $.isMobile()
         args.formatResultCssClass = (obj) =>
-            if @ship.builder.collection?
-                not_in_collection = false
-                if obj.id == @data?.id
-                    # Currently selected card; mark as not in collection if it's neither
-                    # on the shelf nor on the table
-                    unless (@ship.builder.collection.checkShelf(@type.toLowerCase(), obj.name) or @ship.builder.collection.checkTable(@type.toLowerCase(), obj.name)) 
-                        not_in_collection = true
-                else
-                    # Not currently selected; check shelf only
-                    not_in_collection = not @ship.builder.collection.checkShelf(@type.toLowerCase(), obj.name)
-                if not_in_collection then 'select2-result-not-in-collection' else ''
-            else
-                ''
+            ''
         
         args.formatSelection = (obj, container) =>
             icon = switch @type
