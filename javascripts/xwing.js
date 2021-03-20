@@ -3543,6 +3543,8 @@ exportObj.SquadBuilder = (function() {
     })(this)).on('xwing-collection:created', (function(_this) {
       return function(e, collection) {
         _this.collection = collection;
+        _this.collection.onLanguageChange(null, _this.language);
+        _this.checkCollection();
         return _this.collection_button.removeClass('d-none');
       };
     })(this)).on('xwing-collection:changed', (function(_this) {
