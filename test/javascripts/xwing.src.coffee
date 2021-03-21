@@ -379,6 +379,8 @@ class exportObj.SquadBuilderBackend
                 @maybeAuthenticationChanged old_auth_state, cb
 
     maybeAuthenticationChanged: (old_auth_state, cb) =>
+        if old_auth_state != @authenticated
+            $(window).trigger 'xwing-backend:authenticationChanged', [ @authenticated, this ]
         @oauth_window = null
         @auth_status.hide()
         cb @authenticated
@@ -901,8 +903,6 @@ class exportObj.SquadBuilderBackend
     setupHandlers: () ->
         $(window).on 'xwing-backend:authenticationChanged', (e, authenticated, backend) =>
             @updateAuthenticationVisibility()
-            if authenticated
-                @loadCollection()
 
         @login_logout_button.click (e) =>
             e.preventDefault()

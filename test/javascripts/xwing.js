@@ -466,6 +466,9 @@ exportObj.SquadBuilderBackend = (function() {
   };
 
   SquadBuilderBackend.prototype.maybeAuthenticationChanged = function(old_auth_state, cb) {
+    if (old_auth_state !== this.authenticated) {
+      $(window).trigger('xwing-backend:authenticationChanged', [this.authenticated, this]);
+    }
     this.oauth_window = null;
     this.auth_status.hide();
     cb(this.authenticated);
@@ -960,10 +963,7 @@ exportObj.SquadBuilderBackend = (function() {
   SquadBuilderBackend.prototype.setupHandlers = function() {
     $(window).on('xwing-backend:authenticationChanged', (function(_this) {
       return function(e, authenticated, backend) {
-        _this.updateAuthenticationVisibility();
-        if (authenticated) {
-          return _this.loadCollection();
-        }
+        return _this.updateAuthenticationVisibility();
       };
     })(this));
     this.login_logout_button.click((function(_this) {
