@@ -365,7 +365,17 @@ class exportObj.SquadBuilderBackend
         $(@auth_status.find('.payload')).text 'Checking auth status...'
         @auth_status.show()
         old_auth_state = @authenticated
-        
+
+        $.ajax
+            url: "#{@server}/ping"
+            success: (data) =>
+                if data?.success
+                    @authenticated = true
+                else
+                    @authenticated = false
+            error: (jqXHR, textStatus, errorThrown) =>
+                @authenticated = false
+
     maybeAuthenticationChanged: (old_auth_state, cb) =>
         if old_auth_state != @authenticated
             $(window).trigger 'xwing-backend:authenticationChanged', [ @authenticated, this ]
