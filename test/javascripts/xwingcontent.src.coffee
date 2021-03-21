@@ -32113,6 +32113,26 @@ class exportObj.Collection
             if expansion != 'Loose Ships' or 'Hyperspace'
                 collection_content.append row
 
+        shipcollection_content = $ @modal.find('.collection-ship-content')
+        for ship in singletonsByType.ship
+            count = parseInt(@singletons.ship?[ship] ? 0)
+            row = $.parseHTML $.trim """
+                <div class="row">
+                    <div class="col">
+                        <label>
+                            <input class="singleton-count" type="number" size="3" value="#{count}" />
+                            <span class="ship-name">#{if exportObj.ships[ship].display_name then exportObj.ships[ship].display_name else ship}</span>
+                        </label>
+                    </div>
+                </div>
+            """
+            input = $ $(row).find('input')
+            input.data 'singletonType', 'ship'
+            input.data 'singletonName', ship
+            input.closest('div').css 'background-color', @countToBackgroundColor(input.val())
+            $(row).find('.ship-name').data 'name', ship
+            shipcollection_content.append row
+
 
     destroyUI: ->
         @modal.modal 'hide'
