@@ -75,12 +75,8 @@ class exportObj.SquadBuilderBackend
         @updateAuthenticationVisibility()
 
     updateAuthenticationVisibility: () ->
-        if @authenticated
-            $('.show-authenticated').show()
-            $('.hide-authenticated').hide()
-        else
-            $('.show-authenticated').hide()
-            $('.hide-authenticated').show()
+        $('.show-authenticated').hide()
+        $('.hide-authenticated').show()
 
     save: (serialized, id=null, name, faction, additional_data={}, cb) ->
         if serialized == ""
@@ -3283,7 +3279,7 @@ class exportObj.SquadBuilder
             @resetCurrentSquad()
         .on 'xwing-collection:created', (e, collection) =>
             # console.log "#{@faction}: collection was created"
-            # @collection = collection
+            @collection = collection
             # console.log "#{@faction}: Collection created, checking squad"
             @collection.onLanguageChange null, @language
             @checkCollection()
