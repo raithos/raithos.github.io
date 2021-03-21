@@ -31903,7 +31903,6 @@ class exportObj.Collection
         # To save collection (optional)
         @backend = args.backend
         
-        @setupUI()
         @setupHandlers()
 
         @reset()

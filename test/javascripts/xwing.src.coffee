@@ -993,8 +993,12 @@ class exportObj.SquadBuilderBackend
     loadCollection: ->
         # Backend provides an empty collection if none exists yet for the user.
         $.get("#{@server}/collection").done (data, textStatus, jqXHR) ->
-            console.log("Loading something?")
-
+            collection = data.collection
+            new exportObj.Collection
+                expansions: collection.expansions
+                singletons: collection.singletons
+                checks: collection.checks
+            
 
 ###
     X-Wing Card Browser
