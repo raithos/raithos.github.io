@@ -24049,7 +24049,7 @@ exportObj.Collection = (function() {
   };
 
   Collection.prototype.setupUI = function() {
-    var expname, item, items, name, names, singletonsByType, sorted_names, type, _i, _len, _name, _ref;
+    var collection_content, count, expansion, expname, input, item, items, name, names, row, singletonsByType, sorted_names, type, _i, _j, _len, _len1, _name, _ref, _ref1, _ref2, _results;
     singletonsByType = {};
     _ref = exportObj.manifestByExpansion;
     for (expname in _ref) {
@@ -24088,7 +24088,25 @@ exportObj.Collection = (function() {
       this.checks.collectioncheck = true;
       this.modal.find('.check-collection').prop('checked', true);
     }
-    return this.modal.find('.checkbox-check-collection').show();
+    this.modal.find('.checkbox-check-collection').show();
+    collection_content = $(this.modal.find('.collection-content'));
+    _ref1 = exportObj.expansions;
+    _results = [];
+    for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+      expansion = _ref1[_j];
+      count = parseInt((_ref2 = this.expansions[expansion]) != null ? _ref2 : 0);
+      row = $.parseHTML($.trim("<div class=\"row\">\n    <div class=\"col\">\n        <label>\n            <input class=\"expansion-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"expansion-name\">" + expansion + "</span>\n        </label>\n    </div>\n</div>"));
+      input = $($(row).find('input'));
+      input.data('expansion', expansion);
+      input.closest('div').css('background-color', this.countToBackgroundColor(input.val()));
+      $(row).find('.expansion-name').data('name', expansion);
+      if (expansion !== 'Loose Ships' || 'Hyperspace') {
+        _results.push(collection_content.append(row));
+      } else {
+        _results.push(void 0);
+      }
+    }
+    return _results;
   };
 
   Collection.prototype.destroyUI = function() {
