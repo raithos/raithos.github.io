@@ -23861,7 +23861,7 @@ exportObj.Collection = (function() {
     this.singletons = (_ref1 = args.singletons) != null ? _ref1 : {};
     this.checks = (_ref2 = args.checks) != null ? _ref2 : {};
     this.backend = args.backend;
-    this.setupHandlers();
+    this.setupUI();
     this.reset();
     this.language = 'English';
   }
