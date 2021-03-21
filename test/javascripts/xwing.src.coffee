@@ -903,6 +903,8 @@ class exportObj.SquadBuilderBackend
     setupHandlers: () ->
         $(window).on 'xwing-backend:authenticationChanged', (e, authenticated, backend) =>
             @updateAuthenticationVisibility()
+            if authenticated
+                @loadCollection()
 
         @login_logout_button.click (e) =>
             e.preventDefault()
@@ -991,12 +993,8 @@ class exportObj.SquadBuilderBackend
     loadCollection: ->
         # Backend provides an empty collection if none exists yet for the user.
         $.get("#{@server}/collection").done (data, textStatus, jqXHR) ->
-            collection = data.collection
-            new exportObj.Collection
-                expansions: collection.expansions
-                singletons: collection.singletons
-                checks: collection.checks
-            
+            console.log("Loading something?")
+
 
 ###
     X-Wing Card Browser
