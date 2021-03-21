@@ -373,12 +373,12 @@ class exportObj.SquadBuilderBackend
                     @authenticated = true
                 else
                     @authenticated = false
+                @maybeAuthenticationChanged old_auth_state, cb
             error: (jqXHR, textStatus, errorThrown) =>
                 @authenticated = false
+                @maybeAuthenticationChanged old_auth_state, cb
 
     maybeAuthenticationChanged: (old_auth_state, cb) =>
-        if old_auth_state != @authenticated
-            $(window).trigger 'xwing-backend:authenticationChanged', [ @authenticated, this ]
         @oauth_window = null
         @auth_status.hide()
         cb @authenticated

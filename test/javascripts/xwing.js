@@ -449,24 +449,23 @@ exportObj.SquadBuilderBackend = (function() {
       success: (function(_this) {
         return function(data) {
           if (data != null ? data.success : void 0) {
-            return _this.authenticated = true;
+            _this.authenticated = true;
           } else {
-            return _this.authenticated = false;
+            _this.authenticated = false;
           }
+          return _this.maybeAuthenticationChanged(old_auth_state, cb);
         };
       })(this),
       error: (function(_this) {
         return function(jqXHR, textStatus, errorThrown) {
-          return _this.authenticated = false;
+          _this.authenticated = false;
+          return _this.maybeAuthenticationChanged(old_auth_state, cb);
         };
       })(this)
     });
   };
 
   SquadBuilderBackend.prototype.maybeAuthenticationChanged = function(old_auth_state, cb) {
-    if (old_auth_state !== this.authenticated) {
-      $(window).trigger('xwing-backend:authenticationChanged', [this.authenticated, this]);
-    }
     this.oauth_window = null;
     this.auth_status.hide();
     cb(this.authenticated);
