@@ -23862,6 +23862,7 @@ exportObj.Collection = (function() {
     this.checks = (_ref2 = args.checks) != null ? _ref2 : {};
     this.backend = args.backend;
     this.setupUI();
+    this.setupHandlers();
     this.reset();
     this.language = 'English';
   }
@@ -24048,7 +24049,7 @@ exportObj.Collection = (function() {
   };
 
   Collection.prototype.setupUI = function() {
-    var collection_content, count, expansion, expname, input, item, items, name, names, pilot, pilotcollection_content, row, ship, shipcollection_content, singletonsByType, sorted_names, type, upgrade, upgradecollection_content, _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _m, _name, _ref, _ref1, _ref10, _ref11, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _ref9, _results;
+    var expname, item, items, name, names, singletonsByType, sorted_names, type, _i, _len, _name, _ref;
     singletonsByType = {};
     _ref = exportObj.manifestByExpansion;
     for (expname in _ref) {
@@ -24087,62 +24088,7 @@ exportObj.Collection = (function() {
       this.checks.collectioncheck = true;
       this.modal.find('.check-collection').prop('checked', true);
     }
-    this.modal.find('.checkbox-check-collection').show();
-    collection_content = $(this.modal.find('.collection-content'));
-    _ref1 = exportObj.expansions;
-    for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-      expansion = _ref1[_j];
-      count = parseInt((_ref2 = this.expansions[expansion]) != null ? _ref2 : 0);
-      row = $.parseHTML($.trim("<div class=\"row\">\n    <div class=\"col\">\n        <label>\n            <input class=\"expansion-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"expansion-name\">" + expansion + "</span>\n        </label>\n    </div>\n</div>"));
-      input = $($(row).find('input'));
-      input.data('expansion', expansion);
-      input.closest('div').css('background-color', this.countToBackgroundColor(input.val()));
-      $(row).find('.expansion-name').data('name', expansion);
-      if (expansion !== 'Loose Ships' || 'Hyperspace') {
-        collection_content.append(row);
-      }
-    }
-    shipcollection_content = $(this.modal.find('.collection-ship-content'));
-    _ref3 = singletonsByType.ship;
-    for (_k = 0, _len2 = _ref3.length; _k < _len2; _k++) {
-      ship = _ref3[_k];
-      count = parseInt((_ref4 = (_ref5 = this.singletons.ship) != null ? _ref5[ship] : void 0) != null ? _ref4 : 0);
-      row = $.parseHTML($.trim("<div class=\"row\">\n    <div class=\"col\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"ship-name\">" + (exportObj.ships[ship].display_name ? exportObj.ships[ship].display_name : ship) + "</span>\n        </label>\n    </div>\n</div>"));
-      input = $($(row).find('input'));
-      input.data('singletonType', 'ship');
-      input.data('singletonName', ship);
-      input.closest('div').css('background-color', this.countToBackgroundColor(input.val()));
-      $(row).find('.ship-name').data('name', ship);
-      shipcollection_content.append(row);
-    }
-    pilotcollection_content = $(this.modal.find('.collection-pilot-content'));
-    _ref6 = singletonsByType.pilot;
-    for (_l = 0, _len3 = _ref6.length; _l < _len3; _l++) {
-      pilot = _ref6[_l];
-      count = parseInt((_ref7 = (_ref8 = this.singletons.pilot) != null ? _ref8[pilot] : void 0) != null ? _ref7 : 0);
-      row = $.parseHTML($.trim("<div class=\"row\">\n    <div class=\"col\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"pilot-name\">" + (exportObj.pilots[pilot].display_name ? exportObj.pilots[pilot].display_name : pilot) + "</span>\n        </label>\n    </div>\n</div>"));
-      input = $($(row).find('input'));
-      input.data('singletonType', 'pilot');
-      input.data('singletonName', pilot);
-      input.closest('div').css('background-color', this.countToBackgroundColor(input.val()));
-      $(row).find('.pilot-name').data('name', pilot);
-      pilotcollection_content.append(row);
-    }
-    upgradecollection_content = $(this.modal.find('.collection-upgrade-content'));
-    _ref9 = singletonsByType.upgrade;
-    _results = [];
-    for (_m = 0, _len4 = _ref9.length; _m < _len4; _m++) {
-      upgrade = _ref9[_m];
-      count = parseInt((_ref10 = (_ref11 = this.singletons.upgrade) != null ? _ref11[upgrade] : void 0) != null ? _ref10 : 0);
-      row = $.parseHTML($.trim("<div class=\"row\">\n    <div class=\"col\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"upgrade-name\">" + (exportObj.upgrades[upgrade].display_name ? exportObj.upgrades[upgrade].display_name : upgrade) + "</span>\n        </label>\n    </div>\n</div>"));
-      input = $($(row).find('input'));
-      input.data('singletonType', 'upgrade');
-      input.data('singletonName', upgrade);
-      input.closest('div').css('background-color', this.countToBackgroundColor(input.val()));
-      $(row).find('.upgrade-name').data('name', upgrade);
-      _results.push(upgradecollection_content.append(row));
-    }
-    return _results;
+    return this.modal.find('.checkbox-check-collection').show();
   };
 
   Collection.prototype.destroyUI = function() {

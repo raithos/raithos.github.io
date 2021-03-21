@@ -31904,6 +31904,7 @@ class exportObj.Collection
         @backend = args.backend
         
         @setupUI()
+        @setupHandlers()
 
         @reset()
         
@@ -32092,85 +32093,6 @@ class exportObj.Collection
             @modal.find('.check-collection').prop('checked', true)
         @modal.find('.checkbox-check-collection').show()
         
-        collection_content = $ @modal.find('.collection-content')
-        for expansion in exportObj.expansions
-            count = parseInt(@expansions[expansion] ? 0)
-            row = $.parseHTML $.trim """
-                <div class="row">
-                    <div class="col">
-                        <label>
-                            <input class="expansion-count" type="number" size="3" value="#{count}" />
-                            <span class="expansion-name">#{expansion}</span>
-                        </label>
-                    </div>
-                </div>
-            """
-            input = $ $(row).find('input')
-            input.data 'expansion', expansion
-            input.closest('div').css 'background-color', @countToBackgroundColor(input.val())
-            $(row).find('.expansion-name').data 'name', expansion
-            if expansion != 'Loose Ships' or 'Hyperspace'
-                collection_content.append row
-
-        shipcollection_content = $ @modal.find('.collection-ship-content')
-        for ship in singletonsByType.ship
-            count = parseInt(@singletons.ship?[ship] ? 0)
-            row = $.parseHTML $.trim """
-                <div class="row">
-                    <div class="col">
-                        <label>
-                            <input class="singleton-count" type="number" size="3" value="#{count}" />
-                            <span class="ship-name">#{if exportObj.ships[ship].display_name then exportObj.ships[ship].display_name else ship}</span>
-                        </label>
-                    </div>
-                </div>
-            """
-            input = $ $(row).find('input')
-            input.data 'singletonType', 'ship'
-            input.data 'singletonName', ship
-            input.closest('div').css 'background-color', @countToBackgroundColor(input.val())
-            $(row).find('.ship-name').data 'name', ship
-            shipcollection_content.append row
-
-        pilotcollection_content = $ @modal.find('.collection-pilot-content')
-        for pilot in singletonsByType.pilot
-            count = parseInt(@singletons.pilot?[pilot] ? 0)
-            row = $.parseHTML $.trim """
-                <div class="row">
-                    <div class="col">
-                        <label>
-                            <input class="singleton-count" type="number" size="3" value="#{count}" />
-                            <span class="pilot-name">#{if exportObj.pilots[pilot].display_name then exportObj.pilots[pilot].display_name else pilot}</span>
-                        </label>
-                    </div>
-                </div>
-            """
-            input = $ $(row).find('input')
-            input.data 'singletonType', 'pilot'
-            input.data 'singletonName', pilot
-            input.closest('div').css 'background-color', @countToBackgroundColor(input.val())
-            $(row).find('.pilot-name').data 'name', pilot
-            pilotcollection_content.append row
-
-        upgradecollection_content = $ @modal.find('.collection-upgrade-content')
-        for upgrade in singletonsByType.upgrade
-            count = parseInt(@singletons.upgrade?[upgrade] ? 0)
-            row = $.parseHTML $.trim """
-                <div class="row">
-                    <div class="col">
-                        <label>
-                            <input class="singleton-count" type="number" size="3" value="#{count}" />
-                            <span class="upgrade-name">#{if exportObj.upgrades[upgrade].display_name then exportObj.upgrades[upgrade].display_name else upgrade}</span>
-                        </label>
-                    </div>
-                </div>
-            """
-            input = $ $(row).find('input')
-            input.data 'singletonType', 'upgrade'
-            input.data 'singletonName', upgrade
-            input.closest('div').css 'background-color', @countToBackgroundColor(input.val())
-            $(row).find('.upgrade-name').data 'name', upgrade
-            upgradecollection_content.append row
 
     destroyUI: ->
         @modal.modal 'hide'
