@@ -6183,7 +6183,6 @@ exportObj.SquadBuilder = (function() {
     } else if (((_ref2 = this.collection) != null ? _ref2.checks.collectioncheck : void 0) !== "true") {
       return [true, []];
     }
-    this.collection.reset();
     validity = true;
     missingStuff = [];
     _ref3 = this.ships;
