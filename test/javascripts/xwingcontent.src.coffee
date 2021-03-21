@@ -32133,28 +32133,6 @@ class exportObj.Collection
             $(row).find('.ship-name').data 'name', ship
             shipcollection_content.append row
 
-        pilotcollection_content = $ @modal.find('.collection-pilot-content')
-        for pilot in singletonsByType.pilot
-            count = parseInt(@singletons.pilot?[pilot] ? 0)
-            row = $.parseHTML $.trim """
-                <div class="row">
-                    <div class="col">
-                        <label>
-                            <input class="singleton-count" type="number" size="3" value="#{count}" />
-                            <span class="pilot-name">#{if exportObj.pilots[pilot].display_name then exportObj.pilots[pilot].display_name else pilot}</span>
-                        </label>
-                    </div>
-                </div>
-            """
-            input = $ $(row).find('input')
-            input.data 'singletonType', 'pilot'
-            input.data 'singletonName', pilot
-            input.closest('div').css 'background-color', @countToBackgroundColor(input.val())
-            $(row).find('.pilot-name').data 'name', pilot
-            pilotcollection_content.append row
-
-
-
     destroyUI: ->
         @modal.modal 'hide'
         @modal.remove()

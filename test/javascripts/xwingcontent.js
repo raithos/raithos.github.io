@@ -24049,7 +24049,7 @@ exportObj.Collection = (function() {
   };
 
   Collection.prototype.setupUI = function() {
-    var collection_content, count, expansion, expname, input, item, items, name, names, pilot, pilotcollection_content, row, ship, shipcollection_content, singletonsByType, sorted_names, type, _i, _j, _k, _l, _len, _len1, _len2, _len3, _name, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8, _results;
+    var collection_content, count, expansion, expname, input, item, items, name, names, row, ship, shipcollection_content, singletonsByType, sorted_names, type, _i, _j, _k, _len, _len1, _len2, _name, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _results;
     singletonsByType = {};
     _ref = exportObj.manifestByExpansion;
     for (expname in _ref) {
@@ -24105,6 +24105,7 @@ exportObj.Collection = (function() {
     }
     shipcollection_content = $(this.modal.find('.collection-ship-content'));
     _ref3 = singletonsByType.ship;
+    _results = [];
     for (_k = 0, _len2 = _ref3.length; _k < _len2; _k++) {
       ship = _ref3[_k];
       count = parseInt((_ref4 = (_ref5 = this.singletons.ship) != null ? _ref5[ship] : void 0) != null ? _ref4 : 0);
@@ -24114,21 +24115,7 @@ exportObj.Collection = (function() {
       input.data('singletonName', ship);
       input.closest('div').css('background-color', this.countToBackgroundColor(input.val()));
       $(row).find('.ship-name').data('name', ship);
-      shipcollection_content.append(row);
-    }
-    pilotcollection_content = $(this.modal.find('.collection-pilot-content'));
-    _ref6 = singletonsByType.pilot;
-    _results = [];
-    for (_l = 0, _len3 = _ref6.length; _l < _len3; _l++) {
-      pilot = _ref6[_l];
-      count = parseInt((_ref7 = (_ref8 = this.singletons.pilot) != null ? _ref8[pilot] : void 0) != null ? _ref7 : 0);
-      row = $.parseHTML($.trim("<div class=\"row\">\n    <div class=\"col\">\n        <label>\n            <input class=\"singleton-count\" type=\"number\" size=\"3\" value=\"" + count + "\" />\n            <span class=\"pilot-name\">" + (exportObj.pilots[pilot].display_name ? exportObj.pilots[pilot].display_name : pilot) + "</span>\n        </label>\n    </div>\n</div>"));
-      input = $($(row).find('input'));
-      input.data('singletonType', 'pilot');
-      input.data('singletonName', pilot);
-      input.closest('div').css('background-color', this.countToBackgroundColor(input.val()));
-      $(row).find('.pilot-name').data('name', pilot);
-      _results.push(pilotcollection_content.append(row));
+      _results.push(shipcollection_content.append(row));
     }
     return _results;
   };
