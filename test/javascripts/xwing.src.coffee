@@ -5219,8 +5219,7 @@ class exportObj.SquadBuilder
         if Object.keys(@collection?.expansions ? {}).length == 0
             # console.log "collection not ready or is empty"
             return [true, []]
-        @collection.reset()
-        if @collection?.checks.collectioncheck != "true"
+        else if @collection?.checks.collectioncheck != "true"
             # console.log "collection check not enabled"
             return [true, []]
         @collection.reset()

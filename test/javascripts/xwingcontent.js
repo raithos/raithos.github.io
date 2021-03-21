@@ -23992,11 +23992,11 @@ exportObj.Collection = (function() {
   };
 
   Collection.prototype.checkShelf = function(type, name) {
-    return true;
+    return this.check(this.shelf, type, name);
   };
 
   Collection.prototype.checkTable = function(type, name) {
-    return true;
+    return this.check(this.table, type, name);
   };
 
   Collection.prototype.use = function(type, name) {

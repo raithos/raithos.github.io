@@ -31998,10 +31998,10 @@ class exportObj.Collection
         (((where[type] ? {})[name] ? []).length ? 0) != 0
 
     checkShelf: (type, name) ->
-        true
+        @check @shelf, type, name
 
     checkTable: (type, name) ->
-        true
+        @check @table, type, name
 
     use: (type, name) ->
         try
