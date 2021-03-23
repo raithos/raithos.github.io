@@ -9038,7 +9038,12 @@ exportObj.basicCardData = function() {
         id: 388,
         points: 2,
         slot: "Crew",
-        faction: ["Galactic Empire", "First Order", "Scum and Villainy"]
+        faction: ["Galactic Empire", "First Order", "Scum and Villainy"],
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'R-Coordinate') < 0) {
+            return stats.actions.push('R-Coordinate');
+          }
+        }
       }, {
         name: "R4-B11",
         id: 389,

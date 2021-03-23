@@ -13676,6 +13676,8 @@ exportObj.basicCardData = ->
             points: 2
             slot: "Crew"
             faction: ["Galactic Empire", "First Order", "Scum and Villainy"]
+            modifier_func: (stats) ->
+                stats.actions.push 'R-Coordinate' if 'R-Coordinate' not in stats.actions
         }
         {
             name: "R4-B11"
