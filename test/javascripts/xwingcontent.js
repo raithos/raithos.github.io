@@ -1,50 +1,7 @@
 var displayName, exportObj, sortWithoutQuotes, _base,
-  __slice = [].slice,
   __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   __hasProp = {}.hasOwnProperty;
-
-window.iced = {
-  Deferrals: (function() {
-    function _Class(_arg) {
-      this.continuation = _arg;
-      this.count = 1;
-      this.ret = null;
-    }
-
-    _Class.prototype._fulfill = function() {
-      if (!--this.count) {
-        return this.continuation(this.ret);
-      }
-    };
-
-    _Class.prototype.defer = function(defer_params) {
-      ++this.count;
-      return (function(_this) {
-        return function() {
-          var inner_params, _ref;
-          inner_params = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
-          if (defer_params != null) {
-            if ((_ref = defer_params.assign_fn) != null) {
-              _ref.apply(null, inner_params);
-            }
-          }
-          return _this._fulfill();
-        };
-      })(this);
-    };
-
-    return _Class;
-
-  })(),
-  findDeferral: function() {
-    return null;
-  },
-  trampoline: function(_fn) {
-    return _fn();
-  }
-};
-window.__iced_k = window.__iced_k_noop = function() {};
 
 exportObj = typeof exports !== "undefined" && exports !== null ? exports : this;
 
@@ -5289,6 +5246,7 @@ exportObj.basicCardData = function() {
         id: 450,
         unique: true,
         faction: "Rebel Alliance",
+        keyword: ["Spectre"],
         ship: "B-Wing",
         skill: 6,
         points: 55,
@@ -5300,6 +5258,7 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "Rebel Alliance",
         ship: "A-Wing",
+        keyword: ["Spectre"],
         skill: 6,
         points: 42,
         slots: ["Talent", "Talent", "Missile", "Configuration"]
@@ -5319,6 +5278,7 @@ exportObj.basicCardData = function() {
         id: 453,
         unique: true,
         faction: "Rebel Alliance",
+        keyword: ["Mandalorian"],
         ship: "A-Wing",
         skill: 3,
         points: 37,
@@ -5332,7 +5292,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         charge: 1,
         recurring: -1,
-        points: 200,
+        points: 82,
         slots: ["Talent", "Sensor", "Cannon", "Missile", "Configuration"]
       }, {
         name: "Ciena Ree",
@@ -5359,10 +5319,11 @@ exportObj.basicCardData = function() {
         id: 457,
         unique: true,
         faction: "Scum and Villainy",
+        keyword: ["Light Side", "Jedi"],
         ship: "HWK-290",
         skill: 3,
         force: 1,
-        points: 40,
+        points: 42,
         slots: ["Force", "Crew", "Device", "Illicit", "Modification", "Modification", "Title"]
       }, {
         name: "Leema Kai",
@@ -5371,8 +5332,8 @@ exportObj.basicCardData = function() {
         faction: "Scum and Villainy",
         ship: "Y-Wing",
         skill: 5,
-        points: 200,
-        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
+        points: 40,
+        slots: ["Talent", "Tech", "Turret", "Torpedo", "Gunner", "Astromech", "Device"]
       }, {
         name: "Arliz Hadrassian",
         id: 459,
@@ -5380,8 +5341,8 @@ exportObj.basicCardData = function() {
         faction: "Scum and Villainy",
         ship: "Y-Wing",
         skill: 4,
-        points: 200,
-        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
+        points: 39,
+        slots: ["Talent", "Tech", "Turret", "Torpedo", "Gunner", "Astromech", "Device"]
       }, {
         name: "Padric",
         id: 460,
@@ -5389,8 +5350,8 @@ exportObj.basicCardData = function() {
         faction: "Scum and Villainy",
         ship: "Y-Wing",
         skill: 3,
-        points: 200,
-        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
+        points: 36,
+        slots: ["Talent", "Tech", "Turret", "Torpedo", "Gunner", "Astromech", "Device"]
       }, {
         name: "Derek Klivian",
         id: 461,
@@ -5398,7 +5359,7 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         ship: "A-Wing",
         skill: 3,
-        points: 200,
+        points: 30,
         slots: ["Talent", "Talent", "Missile", "Configuration"]
       }, {
         name: "Shara Bey (A-Wing)",
@@ -5408,7 +5369,7 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         ship: "A-Wing",
         skill: 4,
-        points: 200,
+        points: 32,
         slots: ["Talent", "Talent", "Missile", "Configuration"]
       }, {
         name: "Ahsoka Tano (A-Wing)",
@@ -5417,10 +5378,11 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "Rebel Alliance",
         ship: "A-Wing",
+        keyword: ["Light Side"],
         skill: 5,
         force: 3,
         points: 49,
-        slots: ["Force", "Talent", "Missile", "Configuration"]
+        slots: ["Force", "Force", "Missile", "Configuration"]
       }, {
         name: "Netrem Pollard",
         id: 464,
@@ -5428,7 +5390,7 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         ship: "B-Wing",
         skill: 3,
-        points: 200,
+        points: 46,
         slots: ["Talent", "Sensor", "Cannon", "Cannon", "Torpedo", "Modification", "Configuration", "Title"]
       }, {
         name: "Commandant Goran",
@@ -5437,7 +5399,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         ship: "TIE Interceptor",
         skill: 4,
-        points: 200,
+        points: 43,
         slots: ["Talent", "Modification", "Modification", "Configuration"]
       }, {
         name: "Nash Windrider",
@@ -5446,8 +5408,8 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         ship: "TIE Interceptor",
         skill: 2,
-        points: 200,
-        slots: ["Modification", "Modification", "Configuration"]
+        points: 40,
+        slots: ["Talent", "Modification", "Modification", "Configuration"]
       }, {
         name: "Lieutenant Lorrir",
         id: 467,
@@ -5455,7 +5417,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         ship: "TIE Interceptor",
         skill: 3,
-        points: 200,
+        points: 41,
         slots: ["Talent", "Modification", "Modification", "Configuration"]
       }, {
         name: "Vult Skerris (TIE Interceptor)",
@@ -5465,7 +5427,9 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         ship: "TIE Interceptor",
         skill: 5,
-        points: 200,
+        charge: 1,
+        recurring: -1,
+        points: 46,
         slots: ["Talent", "Modification", "Modification", "Configuration"]
       }, {
         name: "Darth Vader (TIE Defender)",
@@ -5474,10 +5438,11 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: "Galactic Empire",
         ship: "TIE Defender",
+        keyword: ["Dark Side", "Sith"],
         skill: 6,
         force: 3,
         points: 115,
-        slots: ["Force", "Talent", "Cannon", "Missile", "Configuration"]
+        slots: ["Force", "Cannon", "Missile", "Configuration"]
       }, {
         name: "Captain Dobbs",
         id: 470,
@@ -5493,16 +5458,16 @@ exportObj.basicCardData = function() {
         faction: "Scum and Villainy",
         ship: "Y-Wing",
         skill: 2,
-        points: 200,
-        slots: ["Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
+        points: 31,
+        slots: ["Tech", "Turret", "Torpedo", "Gunner", "Astromech", "Device"]
       }, {
         name: "Amaxine Warrior",
         id: 472,
         faction: "Scum and Villainy",
         ship: "Y-Wing",
         skill: 3,
-        points: 200,
-        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
+        points: 33,
+        slots: ["Talent", "Tech", "Turret", "Torpedo", "Gunner", "Astromech", "Device"]
       }, {
         name: "Gamut Key",
         id: 473,
@@ -5512,7 +5477,7 @@ exportObj.basicCardData = function() {
         skill: 3,
         charge: 2,
         recurring: 1,
-        points: 200,
+        points: 34,
         slots: ["Talent", "Crew", "Device", "Illicit", "Modification", "Modification", "Title"]
       }, {
         name: "Tápusk",
@@ -5523,7 +5488,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         charge: 2,
         recurring: 1,
-        points: 39,
+        points: 36,
         slots: ["Talent", "Crew", "Device", "Illicit", "Modification", "Modification", "Title"]
       }
     ],
@@ -8910,14 +8875,14 @@ exportObj.basicCardData = function() {
       }, {
         name: "Vectored Cannons (RZ-1)",
         id: 371,
-        points: 200,
+        points: 1,
         slot: "Configuration",
         standardized: true,
         restrictions: [["Keyword", "Vectored Thrusters"]]
       }, {
         name: "B6 Blade Wing Prototype",
         id: 372,
-        points: 200,
+        points: 2,
         unique: true,
         slot: "Title",
         ship: "B-Wing",
@@ -8968,20 +8933,20 @@ exportObj.basicCardData = function() {
       }, {
         name: "Cutthroat",
         id: 375,
-        points: 200,
+        points: 1,
         slot: "Talent",
         faction: "Scum and Villainy"
       }, {
         name: "Tierfon Belly Run",
         id: 376,
-        points: 200,
+        points: 2,
         slot: "Talent",
         ship: "Y-Wing"
       }, {
         name: "B6 Blade Wing Prototype (Epic)",
         canonical_name: 'B6 Blade Wing Prototype'.canonicalize(),
         id: 377,
-        points: 200,
+        points: 12,
         unique: true,
         slot: "Command",
         ship: "B-Wing",
@@ -9008,14 +8973,14 @@ exportObj.basicCardData = function() {
         name: "Sabine Wren (Gunner)",
         canonical_name: 'Sabine Wren'.canonicalize(),
         id: 379,
-        points: 200,
+        points: 2,
         unique: true,
         slot: "Gunner",
         faction: "Rebel Alliance"
       }, {
         name: "Phoenix Squadron",
         id: 380,
-        points: 200,
+        points: 5,
         unique: true,
         slot: "Command",
         faction: "Rebel Alliance"
@@ -9028,14 +8993,14 @@ exportObj.basicCardData = function() {
       }, {
         name: "Skystrike Academy Class",
         id: 382,
-        points: 200,
+        points: 3,
         max_per_squad: 2,
         slot: "Command",
         faction: "Galactic Empire"
       }, {
         name: "Shadow Wing",
         id: 383,
-        points: 200,
+        points: 6,
         unique: true,
         slot: "Command",
         faction: "Galactic Empire",
@@ -9043,14 +9008,14 @@ exportObj.basicCardData = function() {
       }, {
         name: "In It For The Money",
         id: 384,
-        points: 200,
+        points: 5,
         slot: "Command",
         faction: "Scum and Villainy",
         restrictions: [["isUnique", true], ["Format", "Standard"]]
       }, {
         name: "Bounty",
         id: 385,
-        points: 200,
+        points: 5,
         slot: "Command",
         faction: "Scum and Villainy",
         restrictions: [["isUnique", true], ["Format", "Standard"]]
@@ -9058,7 +9023,7 @@ exportObj.basicCardData = function() {
         name: "Gamut Key",
         id: 386,
         unique: true,
-        points: 200,
+        points: 6,
         slot: "Crew",
         charge: 2,
         recurring: 1,
@@ -9066,20 +9031,25 @@ exportObj.basicCardData = function() {
       }, {
         name: "Interloper Turn",
         id: 387,
-        points: 200,
+        points: 1,
         slot: "Talent",
         recurring: 1,
         ship: "TIE Defender"
       }, {
         name: "Protectorate Gleb",
         id: 388,
-        points: 200,
+        points: 2,
         slot: "Crew",
-        faction: ["Galactic Empire", "First Order", "Scum and Villainy"]
+        faction: ["Galactic Empire", "First Order", "Scum and Villainy"],
+        modifier_func: function(stats) {
+          if (__indexOf.call(stats.actions, 'R-Coordinate') < 0) {
+            return stats.actions.push('R-Coordinate');
+          }
+        }
       }, {
         name: "R4-B11",
         id: 389,
-        points: 200,
+        points: 3,
         slot: "Astromech",
         faction: "Scum and Villainy"
       }
@@ -12997,6 +12967,9 @@ exportObj.hyperspaceShipInclusions = [
     name: 'Firespray-31',
     faction: 'Scum and Villainy'
   }, {
+    name: 'Y-Wing',
+    faction: 'Scum and Villainy'
+  }, {
     name: 'Mining Guild TIE Fighter',
     faction: 'Scum and Villainy'
   }, {
@@ -13019,6 +12992,9 @@ exportObj.hyperspaceShipInclusions = [
     faction: 'Scum and Villainy'
   }, {
     name: 'Z-95 Headhunter',
+    faction: 'Scum and Villainy'
+  }, {
+    name: 'HWK-290',
     faction: 'Scum and Villainy'
   }, {
     name: 'Fireball',
@@ -13101,9 +13077,9 @@ exportObj.hyperspaceShipInclusions = [
   }
 ];
 
-exportObj.hyperspacePilotExclusions = ['Wedge Antilles', 'Biggs Darklighter', 'Kullbee Sperado', 'Cavern Angels Zealot', 'Outer Rim Smuggler', '"Chopper"', 'Lothal Rebel', 'Fenn Rau (Sheathipede)', 'AP-5', 'Black Squadron Ace', 'Obsidian Squadron Pilot', 'Academy Pilot', 'Soontir Fel', 'Turr Phennir', 'Scarif Base Pilot', 'Grand Inquisitor', 'Fifth Brother', 'Seventh Sister', 'Scarif Base Pilot', 'Colonel Vessery', 'Countess Ryad', 'Rexler Brath', '"Rampage"', 'Lyttan Dree', '"Duchess"', '"Countdown"', '"Pure Sabacc"', '"Vagabond"', 'Darth Vader', 'Maarek Stele', 'Ved Foslo', 'Zertik Strom', 'Rear Admiral Chiraneau', 'Morna Kee', 'Captain Oicunn', 'Boba Fett', 'Kath Scarlet', 'Emon Azzameen', 'Koshka Frost', 'Krassis Trelix', 'Skull Squadron Pilot', 'Zealous Recruit', 'Foreman Proach', 'Captain Seevor', 'Freighter Captain', 'Trandoshan Slaver', "N'dru Suhlak", 'Bossk (Z-95 Headhunter)', "Kaa'to Leeachos", 'Nashtah Pup', 'Green Squadron Expert', 'Blue Squadron Recruit', 'Cova Nell', 'Pammich Nerro Goode', 'Nodin Chavdri', 'Kazuda Xiono', 'Jarek Yeager', 'R1-J5', 'Black Squadron Ace (T-70)', 'Red Squadron Expert', 'Blue Squadron Rookie', '"Quickdraw"', '"Backdraft"', 'Captain Phasma', 'Lieutenant LeHuse', 'First Order Test Pilot', 'Sienar-Jaemus Engineer', 'First Order Provocateur', 'Omega Squadron Ace', 'Zeta Squadron Pilot', 'Epsilon Squadron Cadet', 'First Order Courier', '"Sinker"', '"Wolffe"', '"Odd Ball" (ARC-170)', '"Jag"', 'Shadow Squadron Veteran', 'Red Squadron Bomber', 'Anakin Skywalker', 'Obi-Wan Kenobi', 'Mace Windu', 'Plo Koon', 'Ahsoka Tano', 'Luminara Unduli', 'Saesee Tiin', 'Barriss Offee', 'Jedi General', '212th Battalion Pilot', 'Bravo Flight Officer', 'Blue Squadron Protector', 'Gold Squadron Trooper', '"Odd Ball" (V-Wing)', 'Wilhuff Tarkin', '"Contrail"', '"Klick"', 'Darth Maul', 'Count Dooku', '0-66', 'Skakoan Ace', 'Feethan Ottraw Autopilot', 'Phlac-Arphocc Prototype', 'DIS-T81', 'Fearsome Predator', 'DIS-347', 'Separatist Racketeer', 'Separatist Predator', 'Baktoid Drone', 'Separatist Bomber', 'Techno Union Bomber', 'Petranaki Arena Ace', 'Stalgasin Hive Guard'];
+exportObj.hyperspacePilotExclusions = ['Wedge Antilles', 'Biggs Darklighter', 'Kullbee Sperado', 'Cavern Angels Zealot', 'Outer Rim Smuggler', '"Chopper"', 'Lothal Rebel', 'Fenn Rau (Sheathipede)', 'AP-5', 'Hera Syndulla (B-Wing)', 'Netrem Pollard', 'Green Squadron Pilot', 'Phoenix Squadron Pilot', 'Black Squadron Ace', 'Obsidian Squadron Pilot', 'Academy Pilot', 'Saber Squadron Ace', 'Alpha Squadron Pilot', 'Scarif Base Pilot', 'Grand Inquisitor', 'Fifth Brother', 'Seventh Sister', 'Scarif Base Pilot', 'Darth Vader (TIE Defender)', 'Colonel Vessery', 'Vult Skerris', 'Countess Ryad', 'Captain Dobbs', 'Rexler Brath', '"Rampage"', 'Lyttan Dree', '"Duchess"', '"Countdown"', '"Pure Sabacc"', '"Vagabond"', 'Darth Vader', 'Maarek Stele', 'Ved Foslo', 'Zertik Strom', 'Rear Admiral Chiraneau', 'Morna Kee', 'Captain Oicunn', 'Drea Renthal', 'Kavil', 'Leema Kai', 'Arliz Hadrassian', 'Padric', 'Hired Gun', 'Crymorah Goon', 'Boba Fett', 'Kath Scarlet', 'Emon Azzameen', 'Koshka Frost', 'Krassis Trelix', 'Skull Squadron Pilot', 'Zealous Recruit', 'Spice Runner', 'Contracted Scout', 'Tansarii Point Veteran', 'Cartel Spacer', 'Foreman Proach', 'Mining Guild Surveyor', 'Mining Guild Sentry', 'Freighter Captain', 'Trandoshan Slaver', "N'dru Suhlak", 'Bossk (Z-95 Headhunter)', "Kaa'to Leeachos", 'Nashtah Pup', 'Green Squadron Expert', 'Blue Squadron Recruit', 'Cova Nell', 'Pammich Nerro Goode', 'Nodin Chavdri', 'Kazuda Xiono', 'Jarek Yeager', 'R1-J5', 'Black Squadron Ace (T-70)', 'Red Squadron Expert', 'Blue Squadron Rookie', '"Quickdraw"', '"Backdraft"', 'Captain Phasma', 'Lieutenant LeHuse', 'First Order Test Pilot', 'Sienar-Jaemus Engineer', 'First Order Provocateur', 'Omega Squadron Ace', 'Zeta Squadron Pilot', 'Epsilon Squadron Cadet', 'First Order Courier', '"Sinker"', '"Wolffe"', '"Odd Ball" (ARC-170)', '"Jag"', 'Shadow Squadron Veteran', 'Red Squadron Bomber', 'Anakin Skywalker', 'Obi-Wan Kenobi', 'Mace Windu', 'Plo Koon', 'Ahsoka Tano', 'Luminara Unduli', 'Saesee Tiin', 'Barriss Offee', 'Jedi General', '212th Battalion Pilot', 'Bravo Flight Officer', 'Blue Squadron Protector', 'Gold Squadron Trooper', '"Odd Ball" (V-Wing)', 'Wilhuff Tarkin', '"Contrail"', '"Klick"', 'Darth Maul', 'Count Dooku', '0-66', 'Skakoan Ace', 'Feethan Ottraw Autopilot', 'Phlac-Arphocc Prototype', 'DIS-T81', 'Fearsome Predator', 'DIS-347', 'Separatist Racketeer', 'Separatist Predator', 'Baktoid Drone', 'Separatist Bomber', 'Techno Union Bomber', 'Petranaki Arena Ace', 'Stalgasin Hive Guard'];
 
-exportObj.hyperspaceUpgradeExclusions = ['Jyn Erso', 'Bistan', 'Ezra Bridger', '"Chopper" (Astromech)', 'Pivot Wing', '"Chopper" (Crew)', '"Zeb" Orrelios', 'Baze Malbus', 'Cassian Andor', 'Hera Syndulla', 'Jyn Erso', 'K-2SO', 'Kanan Jarrus', 'Lando Calrissian', 'Leia Organa', 'Magva Yarro', 'Maul', 'R2-D2 (Crew)', 'Sabine Wren', 'Saw Gerrera', 'Bistan', 'Ezra Bridger', 'Han Solo', 'Luke Skywalker', 'Modly Crow', 'Outrider', 'Admiral Sloane', 'Ciena Ree', 'Darth Vader', 'Director Krennic', 'Grand Inquisitor', 'Grand Moff Tarkin', 'Minister Tua', 'Moff Jerjerrod', 'Seventh Sister', 'ISB Slicer', 'Fifth Brother', 'ST-321', '"Genius"', '0-0-0', '4-LOM', 'Cad Bane', 'Cikatro Vizago', 'IG-88D', 'Chewbacca (Scum)', 'Ketsu Onyo', 'Lando Calrissian (Scum)', 'Maul', 'Unkar Plutt', 'Zuckuss', 'Jabba the Hutt', 'Dengar', 'Han Solo (Scum)', 'Fearless', 'Havoc', 'Mist Hunter', 'Modly Crow', 'Shadow Caster', 'Slave I', 'Virago', 'IG-2000', 'M9-G8', 'R2-HA', 'R5-X3', 'BB Astromech', 'Chewbacca (Resistance)', 'GA-97', 'Han Solo (Resistance)', 'Kaydel Connix', 'Finn', 'Paige Tico', 'Rey', 'Heroic', "Rey's Millennium Falcon", 'Captain Phasma', 'General Hux', 'Kylo Ren', 'Petty Officer Thanisson', 'Supreme Leader Snoke', 'Biohexacrypt Codes', 'Hyperspace Tracking Data', 'R2-A6', 'R2-C4', 'R4-P17', 'R4-P Astromech', 'C1-10P', 'Chancellor Palpatine', 'Battle Meditation', 'Ahsoka Tano', 'Clone Commander Cody', 'Seventh Fleet Gunner', 'Chancellor Palpatine', 'General Grievous', 'Discord Missiles', 'TA-175', 'TV-94', 'Ensnare', 'R5 Astromech', 'Autoblasters', 'Heavy Laser Cannon', 'Jamming Beam', 'Informant', 'GNK "Gonk" Droid', 'Perceptive Copilot', 'Tactical Officer', 'Brilliant Evasion', 'Precognitive Reflexes', 'Predictive Shot', 'Sense', 'Supernatural Reflexes', 'Hotshot Gunner', 'Veteran Tail Gunner', 'Veteran Turret Gunner', 'Cloaking Device', 'Coaxiium Hyperfuel', 'Feedback Array', 'Inertial Dampeners', 'Cluster Missiles', 'Cluster Missiles', 'Homing Missiles', 'Ion Missiles', 'Barrage Rockets', 'Ablative Plating', 'Advanced SLAM', 'Afterburners', 'Delayed Fuses', 'Munitions Failsafe', 'Shield Upgrade', 'Spare Parts Canisters', 'Static Discharge Vanes', 'Stealth Device', 'Tactical Scrambler', 'Targeting Computer', 'Ion Bombs', 'Proton Bombs', 'Proximity Mines', 'Seismic Charges', 'Electro-Proton Bomb', 'Bomblet Generator', 'Advanced Sensors', 'Collision Detector', 'Trajectory Simulator', 'Lone Wolf', 'Squad Leader', 'Composure', 'Crack Shot', 'Debris Gambit', 'Elusive', 'Intimidation', 'Marksmanship', 'Outmaneuver', 'Saturation Salvo', 'Swarm Tactics', 'Trick Shot', 'Advanced Optics', 'Pattern Analyzer', 'Plasma Torpedoes'];
+exportObj.hyperspaceUpgradeExclusions = ['Jyn Erso', 'Bistan', 'Ezra Bridger', '"Chopper" (Astromech)', 'Pivot Wing', '"Chopper" (Crew)', '"Zeb" Orrelios', 'Baze Malbus', 'Cassian Andor', 'Hera Syndulla', 'Jyn Erso', 'K-2SO', 'Kanan Jarrus', 'Lando Calrissian', 'Leia Organa', 'Magva Yarro', 'Maul', 'R2-D2 (Crew)', 'Sabine Wren', 'Saw Gerrera', 'Bistan', 'Ezra Bridger', 'Han Solo', 'Luke Skywalker', 'Outrider', 'Admiral Sloane', 'Ciena Ree', 'Director Krennic', 'Grand Inquisitor', 'Grand Moff Tarkin', 'Minister Tua', 'Moff Jerjerrod', 'Seventh Sister', 'ISB Slicer', 'Fifth Brother', 'ST-321', '"Genius"', '4-LOM', 'Cad Bane', 'Cikatro Vizago', 'IG-88D', 'Chewbacca (Scum)', 'Ketsu Onyo', 'Lando Calrissian (Scum)', 'Maul', 'Unkar Plutt', 'Zuckuss', 'Jabba the Hutt', 'Dengar', 'Han Solo (Scum)', 'Fearless', 'Havoc', 'Mist Hunter', 'Shadow Caster', 'Slave I', 'Virago', 'IG-2000', 'M9-G8', 'R2-HA', 'R5-X3', 'BB Astromech', 'Chewbacca (Resistance)', 'GA-97', 'Han Solo (Resistance)', 'Kaydel Connix', 'Finn', 'Paige Tico', 'Rey', 'Heroic', "Rey's Millennium Falcon", 'Captain Phasma', 'General Hux', 'Kylo Ren', 'Petty Officer Thanisson', 'Supreme Leader Snoke', 'Biohexacrypt Codes', 'Hyperspace Tracking Data', 'R2-A6', 'R2-C4', 'R4-P17', 'R4-P Astromech', 'C1-10P', 'Chancellor Palpatine', 'Battle Meditation', 'Ahsoka Tano', 'Clone Commander Cody', 'Seventh Fleet Gunner', 'Chancellor Palpatine', 'General Grievous', 'Discord Missiles', 'TA-175', 'TV-94', 'Ensnare', 'R5 Astromech', 'Autoblasters', 'Heavy Laser Cannon', 'Jamming Beam', 'Informant', 'GNK "Gonk" Droid', 'Perceptive Copilot', 'Tactical Officer', 'Brilliant Evasion', 'Precognitive Reflexes', 'Predictive Shot', 'Sense', 'Supernatural Reflexes', 'Hotshot Gunner', 'Veteran Tail Gunner', 'Veteran Turret Gunner', 'Cloaking Device', 'Coaxiium Hyperfuel', 'Feedback Array', 'Inertial Dampeners', 'Cluster Missiles', 'Cluster Missiles', 'Homing Missiles', 'Ion Missiles', 'Barrage Rockets', 'Ablative Plating', 'Advanced SLAM', 'Afterburners', 'Delayed Fuses', 'Munitions Failsafe', 'Shield Upgrade', 'Spare Parts Canisters', 'Static Discharge Vanes', 'Stealth Device', 'Tactical Scrambler', 'Targeting Computer', 'Ion Bombs', 'Proton Bombs', 'Proximity Mines', 'Seismic Charges', 'Electro-Proton Bomb', 'Bomblet Generator', 'Advanced Sensors', 'Collision Detector', 'Trajectory Simulator', 'Lone Wolf', 'Squad Leader', 'Composure', 'Crack Shot', 'Debris Gambit', 'Elusive', 'Intimidation', 'Marksmanship', 'Outmaneuver', 'Saturation Salvo', 'Swarm Tactics', 'Trick Shot', 'Advanced Optics', 'Pattern Analyzer', 'Plasma Torpedoes'];
 
 exportObj.epicExclusionsList = ['CR90 Corellian Corvette', 'Raider-class Corvette', 'GR-75 Medium Transport', 'Gozanti-class Cruiser', 'C-ROC Cruiser', 'Syliure-class Hyperspace Ring'];
 
@@ -15133,7 +15109,7 @@ exportObj.cardLoaders.English = function() {
       text: "At the start of the End Phase, you may spend 2 %CHARGE% to choose yourself or a ship in your %SINGLETURRETARC% with 1 or more circular tokens. During the End Phase, circular tokens are not removed from that ship."
     },
     "Arliz Hadrassian": {
-      text: "While you perform a %FRONTARC% attafck, if you are damaged, you may change 1 of your %FOCUS% results to a %CRIT% result. %LINEBREAK% While you defend, if you are damanged, you <b>must</b> change 1 of your %FOCUS% results to a blank result."
+      text: "While you perform a %FRONTARC% attack, if you are damaged, you may change 1 of your %FOCUS% results to a %CRIT% result. %LINEBREAK% While you defend, if you are damanged, you <b>must</b> change 1 of your %FOCUS% results to a blank result."
     },
     "Leema Kai": {
       text: "Before you engage, if you are not in any ship's %FRONTARC%, you may acquire a lock on an enemy ship in your %FULLFRONTARC%."
@@ -23916,32 +23892,16 @@ exportObj.manifestByExpansion = {
 
 exportObj.Collection = (function() {
   function Collection(args) {
-    var ___iced_passed_deferral, __iced_deferrals, __iced_k, _ref, _ref1, _ref2;
-    __iced_k = __iced_k_noop;
-    ___iced_passed_deferral = iced.findDeferral(arguments);
     this.onLanguageChange = __bind(this.onLanguageChange, this);
+    var _ref, _ref1, _ref2;
     this.expansions = (_ref = args.expansions) != null ? _ref : {};
     this.singletons = (_ref1 = args.singletons) != null ? _ref1 : {};
     this.checks = (_ref2 = args.checks) != null ? _ref2 : {};
     this.backend = args.backend;
+    this.setupUI();
     this.setupHandlers();
-    (function(_this) {
-      return (function(__iced_k) {
-        __iced_deferrals = new iced.Deferrals(__iced_k, {
-          parent: ___iced_passed_deferral,
-          funcname: "Collection"
-        });
-        $(exportObj).trigger('xwing:CollectionStartUI', _this, __iced_deferrals.defer({
-          lineno: 31924
-        }));
-        __iced_deferrals._fulfill();
-      });
-    })(this)((function(_this) {
-      return function() {
-        _this.reset();
-        return _this.language = 'English';
-      };
-    })(this));
+    this.reset();
+    this.language = 'English';
   }
 
   Collection.prototype.reset = function() {
@@ -24069,11 +24029,11 @@ exportObj.Collection = (function() {
   };
 
   Collection.prototype.checkShelf = function(type, name) {
-    return this.check(this.shelf, type, name);
+    return console.log("Check Shelf");
   };
 
   Collection.prototype.checkTable = function(type, name) {
-    return this.check(this.table, type, name);
+    return console.log("Check Table");
   };
 
   Collection.prototype.use = function(type, name) {
@@ -24244,15 +24204,7 @@ exportObj.Collection = (function() {
           return _this.modal_status.fadeOut(1000);
         });
       };
-    })(this)).on('xwing:languageChanged', this.onLanguageChange).on('xwing:CollectionCheck', this.onCollectionCheckSet).on('xwing:CollectionStartUI', (function(_this) {
-      return function(e, cb) {
-        if (cb == null) {
-          cb = $.noop;
-        }
-        _this.setupUI();
-        return cb();
-      };
-    })(this));
+    })(this)).on('xwing:languageChanged', this.onLanguageChange).on('xwing:CollectionCheck', this.onCollectionCheckSet);
     $(this.modal.find('input.expansion-count').change((function(_this) {
       return function(e) {
         var target, val;

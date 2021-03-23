@@ -1990,7 +1990,7 @@ exportObj.CardBrowser = (function() {
       }
       for (_o = 0, _len6 = required_slots.length; _o < _len6; _o++) {
         slot = required_slots[_o];
-        if (!(((slot === "Torpedo") || (slot === "Missile") || (slot === "Cannon")) && (__indexOf.call(slots, "HardpointShip") >= 0))) {
+        if (!(((slot === "Torpedo") || (slot === "Missile") || (slot === "Cannon")) && ((slots != null) && (__indexOf.call(slots, "HardpointShip") >= 0)))) {
           if (!((slots != null) && __indexOf.call(slots, slot) >= 0)) {
             return false;
           }
@@ -3689,7 +3689,7 @@ exportObj.SquadBuilder = (function() {
         if (_this.isEpic) {
           _this.printable_container.find('.squad-name').append(" <i class=\"xwing-miniatures-font xwing-miniatures-font-energy\"></i>");
         }
-        _this.printable_container.find('.printable-body').append($.trim("<div class=\"version\">Points Version: 1.8.0 November 2020</div>"));
+        _this.printable_container.find('.printable-body').append($.trim("<div class=\"version\">Points Version: 1.9.0 March 2021</div>"));
         if ($.trim(_this.notes.val()) !== '') {
           _this.printable_container.find('.printable-body').append($.trim("<h5 class=\"print-notes\">Notes:</h5>\n<pre class=\"print-notes\"></pre>"));
           _this.printable_container.find('.printable-body pre.print-notes').text(_this.notes.val());
@@ -6183,6 +6183,7 @@ exportObj.SquadBuilder = (function() {
     } else if (((_ref2 = this.collection) != null ? _ref2.checks.collectioncheck : void 0) !== "true") {
       return [true, []];
     }
+    this.collection.reset();
     validity = true;
     missingStuff = [];
     _ref3 = this.ships;

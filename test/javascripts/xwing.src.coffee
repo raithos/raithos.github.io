@@ -1701,7 +1701,7 @@ class exportObj.CardBrowser
             
             for slot in required_slots
                 # special case for hardpoints
-                if not(((slot == "Torpedo") or (slot == "Missile") or (slot == "Cannon")) and ("HardpointShip" in slots))
+                if not(((slot == "Torpedo") or (slot == "Missile") or (slot == "Cannon")) and (slots? and ("HardpointShip" in slots)))
                     return false unless slots? and slot in slots
                 # check for duplciates
                 if @duplicateslots.checked
@@ -3377,7 +3377,7 @@ class exportObj.SquadBuilder
                     
             # Notes, if present
             @printable_container.find('.printable-body').append $.trim """
-                <div class="version">Points Version: 1.8.0 November 2020</div>
+                <div class="version">Points Version: 1.9.0 March 2021</div>
             """            
             if $.trim(@notes.val()) != ''
                 @printable_container.find('.printable-body').append $.trim """
@@ -5221,7 +5221,7 @@ class exportObj.SquadBuilder
         else if @collection?.checks.collectioncheck != "true"
             # console.log "collection check not enabled"
             return [true, []]
-        # @collection.reset()
+        @collection.reset()
         validity = true
         missingStuff = []
         for ship in @ships
