@@ -2040,17 +2040,15 @@ exportObj.setupTranslationSupport = ->
                     if currentfaction == builder.faction
                         builder.container.trigger 'xwing:beforeLanguageLoad'
                     else
-                        builder.container.trigger 'xwing:beforeLanguageLoad'
+                        await builder.container.trigger 'xwing:beforeLanguageLoad', defer()
                 exportObj.loadCards language
                 for own selector, html of exportObj.translations[language].byCSSSelector
                     $(selector).html html
                 for builder in builders
                     if currentfaction == builder.faction
                         builder.container.trigger 'xwing:afterLanguageLoad', language
-                        console.log "#{builder.faction} is loading now"
                     else
-                        builder.container.trigger 'xwing:afterLanguageLoad', language
-                        console.log "#{builder.faction} is loading later"
+                        await builder.container.trigger 'xwing:afterLanguageLoad', language, defer()
 
     exportObj.loadCards DFL_LANGUAGE
     $(exportObj).trigger 'xwing:languageChanged', DFL_LANGUAGE
