@@ -2040,15 +2040,17 @@ exportObj.setupTranslationSupport = ->
                     if currentfaction == builder.faction
                         builder.container.trigger 'xwing:beforeLanguageLoad'
                     else
-                        await builder.container.trigger 'xwing:beforeLanguageLoad', defer()
+                        builder.container.trigger 'xwing:beforeLanguageLoad'
                 exportObj.loadCards language
                 for own selector, html of exportObj.translations[language].byCSSSelector
                     $(selector).html html
                 for builder in builders
                     if currentfaction == builder.faction
                         builder.container.trigger 'xwing:afterLanguageLoad', language
+                        console.log "#{builder.faction} is loading now"
                     else
-                        await builder.container.trigger 'xwing:afterLanguageLoad', language, defer()
+                        builder.container.trigger 'xwing:afterLanguageLoad', language
+                        console.log "#{builder.faction} is loading later"
 
     exportObj.loadCards DFL_LANGUAGE
     $(exportObj).trigger 'xwing:languageChanged', DFL_LANGUAGE
@@ -5221,7 +5223,7 @@ class exportObj.SquadBuilder
         else if @collection?.checks.collectioncheck != "true"
             # console.log "collection check not enabled"
             return [true, []]
-        console.log "get rid of reset"
+        # @collection.reset()
         validity = true
         missingStuff = []
         for ship in @ships
