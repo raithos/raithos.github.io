@@ -5271,7 +5271,7 @@ exportObj.basicCardData = function() {
         ship: "A-Wing",
         skill: 4,
         points: 35,
-        slots: ["Talent", "Talent", "Missile", "Configuration"]
+        slots: ["Talent", "Missile", "Configuration"]
       }, {
         name: "Sabine Wren (A-Wing)",
         canonical_name: 'Sabine Wren'.canonicalize(),
@@ -5282,7 +5282,7 @@ exportObj.basicCardData = function() {
         ship: "A-Wing",
         skill: 3,
         points: 37,
-        slots: ["Talent", "Talent", "Missile", "Configuration"]
+        slots: ["Talent", "Missile", "Configuration"]
       }, {
         name: "Vult Skerris",
         id: 454,
@@ -5360,7 +5360,7 @@ exportObj.basicCardData = function() {
         ship: "A-Wing",
         skill: 3,
         points: 30,
-        slots: ["Talent", "Talent", "Missile", "Configuration"]
+        slots: ["Talent", "Missile", "Configuration"]
       }, {
         name: "Shara Bey (A-Wing)",
         canonical_name: 'Shara Bey'.canonicalize(),
