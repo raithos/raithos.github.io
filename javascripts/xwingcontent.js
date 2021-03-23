@@ -12927,9 +12927,6 @@ exportObj.hyperspaceShipInclusions = [
     name: 'VCX-100',
     faction: 'Rebel Alliance'
   }, {
-    name: 'HWK-290',
-    faction: 'Rebel Alliance'
-  }, {
     name: 'Sheathipede-Class Shuttle',
     faction: 'Rebel Alliance'
   }, {
