@@ -2406,6 +2406,7 @@ exportObj.setupTranslationSupport = function() {
         }
         if (language in exportObj.translations) {
           $('.language-placeholder').text(language);
+          currentfaction = $.getParameterByName('f');
           (function(__iced_k) {
             var _i, _len, _ref, _results, _while;
             _ref = builders;
@@ -2434,7 +2435,7 @@ exportObj.setupTranslationSupport = function() {
                         parent: ___iced_passed_deferral
                       });
                       builder.container.trigger('xwing:beforeLanguageLoad', __iced_deferrals.defer({
-                        lineno: 2041
+                        lineno: 2042
                       }));
                       __iced_deferrals._fulfill();
                     })(__iced_k);
@@ -2452,7 +2453,6 @@ exportObj.setupTranslationSupport = function() {
               html = _ref[selector];
               $(selector).html(html);
             }
-            currentfaction = $.getParameterByName('f');
             (function(__iced_k) {
               var _i, _len, _ref1, _results, _while;
               _ref1 = builders;
