@@ -2035,6 +2035,7 @@ exportObj.setupTranslationSupport = ->
         $(exportObj).on 'xwing:languageChanged', (e, language, cb=$.noop) =>
             if language of exportObj.translations
                 $('.language-placeholder').text language
+                currentfaction = $.getParameterByName 'f'
                 for builder in builders
                     if currentfaction == builder.faction
                         builder.container.trigger 'xwing:beforeLanguageLoad'
@@ -2043,7 +2044,6 @@ exportObj.setupTranslationSupport = ->
                 exportObj.loadCards language
                 for own selector, html of exportObj.translations[language].byCSSSelector
                     $(selector).html html
-                currentfaction = $.getParameterByName 'f'
                 for builder in builders
                     if currentfaction == builder.faction
                         builder.container.trigger 'xwing:afterLanguageLoad', language
@@ -3377,7 +3377,7 @@ class exportObj.SquadBuilder
                     
             # Notes, if present
             @printable_container.find('.printable-body').append $.trim """
-                <div class="version">Points Version: 1.8.0 November 2020</div>
+                <div class="version">Points Version: 1.9.0 March 2021</div>
             """            
             if $.trim(@notes.val()) != ''
                 @printable_container.find('.printable-body').append $.trim """
@@ -5214,16 +5214,14 @@ class exportObj.SquadBuilder
         @current_obstacles
 
     isSquadPossibleWithCollection: ->
-        # console.log "#{@faction}: isSquadPossibleWithCollection()"
         # If the collection is uninitialized or empty, don't actually check it.
         if Object.keys(@collection?.expansions ? {}).length == 0
             # console.log "collection not ready or is empty"
             return [true, []]
-        @collection.reset()
-        if @collection?.checks.collectioncheck != "true"
+        else if @collection?.checks.collectioncheck != "true"
             # console.log "collection check not enabled"
             return [true, []]
-        @collection.reset()
+        # @collection.reset()
         validity = true
         missingStuff = []
         for ship in @ships
