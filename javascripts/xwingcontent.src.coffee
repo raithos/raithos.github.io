@@ -9330,6 +9330,7 @@ exportObj.basicCardData = ->
             id: 450
             unique: true
             faction: "Rebel Alliance"
+            keyword: ["Spectre"]
             ship: "B-Wing"
             skill: 6
             points: 55
@@ -9351,8 +9352,9 @@ exportObj.basicCardData = ->
             unique: true
             faction: "Rebel Alliance"
             ship: "A-Wing"
+            keyword: ["Spectre"]
             skill: 6
-            points: 41
+            points: 42
             slots: [
                 "Talent"
                 "Talent"
@@ -9382,9 +9384,10 @@ exportObj.basicCardData = ->
             id: 453
             unique: true
             faction: "Rebel Alliance"
+            keyword: ["Mandalorian"]
             ship: "A-Wing"
             skill: 3
-            points: 36
+            points: 37
             slots: [
                 "Talent"
                 "Talent"
@@ -9447,6 +9450,7 @@ exportObj.basicCardData = ->
             id: 457
             unique: true
             faction: "Scum and Villainy"
+            keyword: ["Light Side", "Jedi"]
             ship: "HWK-290"
             skill: 3
             force: 1
@@ -9553,12 +9557,13 @@ exportObj.basicCardData = ->
             unique: true
             faction: "Rebel Alliance"
             ship: "A-Wing"
+            keyword: ["Light Side"]
             skill: 5
             force: 3
             points: 49
             slots: [
                 "Force"
-                "Talent"
+                "Force"
                 "Missile"
                 "Configuration"
             ]
@@ -9649,6 +9654,7 @@ exportObj.basicCardData = ->
             unique: true
             faction: "Galactic Empire"
             ship: "TIE Defender"
+            keyword: ["Dark Side", "Sith"]
             skill: 6
             force: 3
             points: 115
