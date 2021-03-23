@@ -9339,7 +9339,7 @@ exportObj.basicCardData = ->
             faction: "Rebel Alliance"
             ship: "B-Wing"
             skill: 6
-            points: 200
+            points: 55
             slots: [
                 "Talent"
                 "Sensor"
@@ -9359,7 +9359,7 @@ exportObj.basicCardData = ->
             faction: "Rebel Alliance"
             ship: "A-Wing"
             skill: 6
-            points: 200
+            points: 42
             slots: [
                 "Talent"
                 "Talent"
@@ -9375,7 +9375,7 @@ exportObj.basicCardData = ->
             faction: "Rebel Alliance"
             ship: "A-Wing"
             skill: 4
-            points: 200
+            points: 35
             slots: [
                 "Talent"
                 "Talent"
@@ -9391,7 +9391,7 @@ exportObj.basicCardData = ->
             faction: "Rebel Alliance"
             ship: "A-Wing"
             skill: 3
-            points: 200
+            points: 37
             slots: [
                 "Talent"
                 "Talent"
@@ -9424,7 +9424,7 @@ exportObj.basicCardData = ->
             faction: "Galactic Empire"
             ship: "TIE Interceptor"
             skill: 6
-            points: 200
+            points: 48
             slots: [
                 "Talent"
                 "Modification"
@@ -9440,7 +9440,7 @@ exportObj.basicCardData = ->
             faction: "Galactic Empire"
             ship: "TIE Interceptor"
             skill: 4
-            points: 200
+            points: 48
             slots: [
                 "Talent"
                 "Modification"
@@ -9457,7 +9457,7 @@ exportObj.basicCardData = ->
             ship: "HWK-290"
             skill: 3
             force: 1
-            points: 200
+            points: 40
             slots: [
                 "Force"
                 "Crew"
@@ -9565,7 +9565,7 @@ exportObj.basicCardData = ->
             ship: "A-Wing"
             skill: 5
             force: 3
-            points: 200
+            points: 49
             slots: [
                 "Force"
                 "Talent"
@@ -9661,7 +9661,7 @@ exportObj.basicCardData = ->
             ship: "TIE Defender"
             skill: 6
             force: 3
-            points: 200
+            points: 115
             slots: [
                 "Force"
                 "Talent"
@@ -9677,7 +9677,7 @@ exportObj.basicCardData = ->
             faction: "Galactic Empire"
             ship: "TIE Defender"
             skill: 3
-            points: 200
+            points: 75
             slots: [
                 "Talent"
                 "Sensor"
@@ -9750,7 +9750,7 @@ exportObj.basicCardData = ->
             skill: 5
             charge: 2
             recurring: 1
-            points: 200
+            points: 39
             slots: [
                 "Talent"
                 "Crew"
@@ -13524,7 +13524,7 @@ exportObj.basicCardData = ->
         {
             name: "TIE Defender Elite"
             id: 373
-            points: 200
+            points: 2
             slot: "Configuration"
             faction: "Galactic Empire"
             ship: "TIE Defender"
@@ -13542,7 +13542,7 @@ exportObj.basicCardData = ->
         {
             name: "Sensitive Controls"
             id: 374
-            points: 200
+            points: 2
             slot: "Configuration"
             standardized: true
             restrictions: [
@@ -13587,7 +13587,7 @@ exportObj.basicCardData = ->
         {
             name: "Hopeful"
             id: 378
-            points: 200
+            points: 1
             slot: "Talent"
             faction: "Rebel Alliance"
         }
@@ -13611,7 +13611,7 @@ exportObj.basicCardData = ->
         {
             name: "Disciplined"
             id: 381
-            points: 200
+            points: 1
             slot: "Talent"
             faction: "Galactic Empire"
         }
@@ -13671,6 +13671,20 @@ exportObj.basicCardData = ->
             slot: "Talent"
             recurring: 1
             ship: "TIE Defender"
+        }
+        {
+            name: "Protectorate Gleb"
+            id: 388
+            points: 200
+            slot: "Crew"
+            faction: ["Galactic Empire", "First Order", "Scum and Villainy"]
+        }
+        {
+            name: "R4-B11"
+            id: 389
+            points: 200
+            slot: "Astromech"
+            faction: "Scum and Villainy"
         }
         
     ]
@@ -22819,6 +22833,10 @@ exportObj.cardLoaders.English = () ->
            text: """At the start of the End Phase, you may spend 2 %CHARGE% to choose a ship at range 0-1 with 1 or more circular tokens. During the End Phase, circular tokens are not removed from that ship."""
         "Interloper Turn":
            text: """Before you execute a speed 1-2 turn (%TURNLEFT% or %TURNRIGHT%) or speed 1-2 Koiogran Turn (%KTURN%), if you are at range 0-1 of an asteroid, structure, or huge ship, you may gain 1 tractor token."""
+        "Protectorate Gleb":
+           text: """After you coordinate, you may transfer 1 orange or red token to the ship you coordinated."""
+        "R4-B11":
+           text: """While you perform an attack, you may remove 1 orange or red token from the defender to reroll any number of defense dice"""
 
         # Epic upgrades
         "Admiral Ozzel":

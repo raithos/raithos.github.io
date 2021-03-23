@@ -5214,7 +5214,6 @@ class exportObj.SquadBuilder
         @current_obstacles
 
     isSquadPossibleWithCollection: ->
-        # console.log "#{@faction}: isSquadPossibleWithCollection()"
         # If the collection is uninitialized or empty, don't actually check it.
         if Object.keys(@collection?.expansions ? {}).length == 0
             # console.log "collection not ready or is empty"

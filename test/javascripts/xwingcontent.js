@@ -5248,7 +5248,7 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         ship: "B-Wing",
         skill: 6,
-        points: 200,
+        points: 55,
         slots: ["Talent", "Sensor", "Cannon", "Cannon", "Torpedo", "Modification", "Configuration", "Title"]
       }, {
         name: "Hera Syndulla (A-Wing)",
@@ -5258,7 +5258,7 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         ship: "A-Wing",
         skill: 6,
-        points: 200,
+        points: 42,
         slots: ["Talent", "Talent", "Missile", "Configuration"]
       }, {
         name: "Wedge Antilles (A-Wing)",
@@ -5268,7 +5268,7 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         ship: "A-Wing",
         skill: 4,
-        points: 200,
+        points: 35,
         slots: ["Talent", "Talent", "Missile", "Configuration"]
       }, {
         name: "Sabine Wren (A-Wing)",
@@ -5278,7 +5278,7 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         ship: "A-Wing",
         skill: 3,
-        points: 200,
+        points: 37,
         slots: ["Talent", "Talent", "Missile", "Configuration"]
       }, {
         name: "Vult Skerris",
@@ -5298,7 +5298,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         ship: "TIE Interceptor",
         skill: 6,
-        points: 200,
+        points: 48,
         slots: ["Talent", "Modification", "Modification", "Configuration"]
       }, {
         name: "Gideon Hask (TIE Interceptor)",
@@ -5308,7 +5308,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         ship: "TIE Interceptor",
         skill: 4,
-        points: 200,
+        points: 48,
         slots: ["Talent", "Modification", "Modification", "Configuration"]
       }, {
         name: "Kanan Jarrus (HWK-290)",
@@ -5319,7 +5319,7 @@ exportObj.basicCardData = function() {
         ship: "HWK-290",
         skill: 3,
         force: 1,
-        points: 200,
+        points: 40,
         slots: ["Force", "Crew", "Device", "Illicit", "Modification", "Modification", "Title"]
       }, {
         name: "Leema Kai",
@@ -5376,7 +5376,7 @@ exportObj.basicCardData = function() {
         ship: "A-Wing",
         skill: 5,
         force: 3,
-        points: 200,
+        points: 49,
         slots: ["Force", "Talent", "Missile", "Configuration"]
       }, {
         name: "Netrem Pollard",
@@ -5433,7 +5433,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Defender",
         skill: 6,
         force: 3,
-        points: 200,
+        points: 115,
         slots: ["Force", "Talent", "Cannon", "Missile", "Configuration"]
       }, {
         name: "Captain Dobbs",
@@ -5442,7 +5442,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         ship: "TIE Defender",
         skill: 3,
-        points: 200,
+        points: 75,
         slots: ["Talent", "Sensor", "Cannon", "Missile", "Configuration"]
       }, {
         name: "Jinta Security Officer",
@@ -5480,7 +5480,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         charge: 2,
         recurring: 1,
-        points: 200,
+        points: 39,
         slots: ["Talent", "Crew", "Device", "Illicit", "Modification", "Modification", "Title"]
       }
     ],
@@ -8888,7 +8888,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "TIE Defender Elite",
         id: 373,
-        points: 200,
+        points: 2,
         slot: "Configuration",
         faction: "Galactic Empire",
         ship: "TIE Defender",
@@ -8918,7 +8918,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Sensitive Controls",
         id: 374,
-        points: 200,
+        points: 2,
         slot: "Configuration",
         standardized: true,
         restrictions: [["Keyword", "Autothrusters"]]
@@ -8958,7 +8958,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Hopeful",
         id: 378,
-        points: 200,
+        points: 1,
         slot: "Talent",
         faction: "Rebel Alliance"
       }, {
@@ -8979,7 +8979,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Disciplined",
         id: 381,
-        points: 200,
+        points: 1,
         slot: "Talent",
         faction: "Galactic Empire"
       }, {
@@ -9027,6 +9027,18 @@ exportObj.basicCardData = function() {
         slot: "Talent",
         recurring: 1,
         ship: "TIE Defender"
+      }, {
+        name: "Protectorate Gleb",
+        id: 388,
+        points: 200,
+        slot: "Crew",
+        faction: ["Galactic Empire", "First Order", "Scum and Villainy"]
+      }, {
+        name: "R4-B11",
+        id: 389,
+        points: 200,
+        slot: "Astromech",
+        faction: "Scum and Villainy"
       }
     ],
     conditionsById: [
@@ -16379,6 +16391,12 @@ exportObj.cardLoaders.English = function() {
     },
     "Interloper Turn": {
       text: "Before you execute a speed 1-2 turn (%TURNLEFT% or %TURNRIGHT%) or speed 1-2 Koiogran Turn (%KTURN%), if you are at range 0-1 of an asteroid, structure, or huge ship, you may gain 1 tractor token."
+    },
+    "Protectorate Gleb": {
+      text: "After you coordinate, you may transfer 1 orange or red token to the ship you coordinated."
+    },
+    "R4-B11": {
+      text: "While you perform an attack, you may remove 1 orange or red token from the defender to reroll any number of defense dice"
     },
     "Admiral Ozzel": {
       display_name: "Admiral Ozzel",
