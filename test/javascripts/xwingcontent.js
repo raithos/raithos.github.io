@@ -1,9 +1,50 @@
-var displayName, exportObj, sortWithoutQuotes, __iced_k, __iced_k_noop, _base,
+var displayName, exportObj, sortWithoutQuotes, _base,
+  __slice = [].slice,
   __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   __hasProp = {}.hasOwnProperty;
 
-__iced_k = __iced_k_noop = function() {};
+window.iced = {
+  Deferrals: (function() {
+    function _Class(_arg) {
+      this.continuation = _arg;
+      this.count = 1;
+      this.ret = null;
+    }
+
+    _Class.prototype._fulfill = function() {
+      if (!--this.count) {
+        return this.continuation(this.ret);
+      }
+    };
+
+    _Class.prototype.defer = function(defer_params) {
+      ++this.count;
+      return (function(_this) {
+        return function() {
+          var inner_params, _ref;
+          inner_params = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+          if (defer_params != null) {
+            if ((_ref = defer_params.assign_fn) != null) {
+              _ref.apply(null, inner_params);
+            }
+          }
+          return _this._fulfill();
+        };
+      })(this);
+    };
+
+    return _Class;
+
+  })(),
+  findDeferral: function() {
+    return null;
+  },
+  trampoline: function(_fn) {
+    return _fn();
+  }
+};
+window.__iced_k = window.__iced_k_noop = function() {};
 
 exportObj = typeof exports !== "undefined" && exports !== null ? exports : this;
 
@@ -23883,28 +23924,22 @@ exportObj.Collection = (function() {
     this.singletons = (_ref1 = args.singletons) != null ? _ref1 : {};
     this.checks = (_ref2 = args.checks) != null ? _ref2 : {};
     this.backend = args.backend;
+    this.setupHandlers();
     (function(_this) {
       return (function(__iced_k) {
         __iced_deferrals = new iced.Deferrals(__iced_k, {
           parent: ___iced_passed_deferral,
           funcname: "Collection"
         });
-        _this.setupUI();
+        $(exportObj).trigger('xwing:CollectionStartUI', _this, __iced_deferrals.defer({
+          lineno: 31924
+        }));
         __iced_deferrals._fulfill();
       });
     })(this)((function(_this) {
       return function() {
-        (function(__iced_k) {
-          __iced_deferrals = new iced.Deferrals(__iced_k, {
-            parent: ___iced_passed_deferral,
-            funcname: "Collection"
-          });
-          _this.setupHandlers();
-          __iced_deferrals._fulfill();
-        })(function() {
-          _this.reset();
-          return _this.language = 'English';
-        });
+        _this.reset();
+        return _this.language = 'English';
       };
     })(this));
   }
@@ -24209,7 +24244,15 @@ exportObj.Collection = (function() {
           return _this.modal_status.fadeOut(1000);
         });
       };
-    })(this)).on('xwing:languageChanged', this.onLanguageChange).on('xwing:CollectionCheck', this.onCollectionCheckSet);
+    })(this)).on('xwing:languageChanged', this.onLanguageChange).on('xwing:CollectionCheck', this.onCollectionCheckSet).on('xwing:CollectionStartUI', (function(_this) {
+      return function(e, cb) {
+        if (cb == null) {
+          cb = $.noop;
+        }
+        _this.setupUI();
+        return cb();
+      };
+    })(this));
     $(this.modal.find('input.expansion-count').change((function(_this) {
       return function(e) {
         var target, val;

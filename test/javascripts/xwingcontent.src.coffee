@@ -31921,9 +31921,8 @@ class exportObj.Collection
         # To save collection (optional)
         @backend = args.backend
         
-        await @setupUI()
-        await @setupHandlers()
-
+        @setupHandlers()
+        await $(exportObj).trigger 'xwing:CollectionStartUI', this, defer()
         @reset()
         
         @language = 'English'
@@ -32209,6 +32208,10 @@ class exportObj.Collection
         .on 'xwing:languageChanged', @onLanguageChange
 
         .on 'xwing:CollectionCheck', @onCollectionCheckSet
+
+        .on 'xwing:CollectionStartUI', (e, cb=$.noop) =>
+            @setupUI()
+            cb()
 
         $ @modal.find('input.expansion-count').change (e) =>
             target = $(e.target)
