@@ -1990,7 +1990,7 @@ exportObj.CardBrowser = (function() {
       }
       for (_o = 0, _len6 = required_slots.length; _o < _len6; _o++) {
         slot = required_slots[_o];
-        if (!(((slot === "Torpedo") || (slot === "Missile") || (slot === "Cannon")) && (__indexOf.call(slots, "HardpointShip") >= 0))) {
+        if (!(((slot === "Torpedo") || (slot === "Missile") || (slot === "Cannon")) && ((slots != null) && (__indexOf.call(slots, "HardpointShip") >= 0)))) {
           if (!((slots != null) && __indexOf.call(slots, slot) >= 0)) {
             return false;
           }
