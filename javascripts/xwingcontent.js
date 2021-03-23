@@ -3209,7 +3209,7 @@ exportObj.basicCardData = function() {
         keyword: ["Dark Side"],
         points: 76,
         applies_condition: 'I\'ll Show You the Dark Side'.canonicalize(),
-        slots: ["Force", "Tech", "Torpedo", "Missile"]
+        slots: ["Force", "Tech", "Torpedo", "Missile", "Configuration"]
       }, {
         name: '"Blackout"',
         id: 237,
@@ -3218,7 +3218,7 @@ exportObj.basicCardData = function() {
         ship: "TIE/VN Silencer",
         skill: 5,
         points: 63,
-        slots: ["Talent", "Tech", "Torpedo", "Missile"]
+        slots: ["Talent", "Tech", "Torpedo", "Missile", "Configuration"]
       }, {
         name: "Lieutenant Dormitz",
         id: 238,
@@ -3647,7 +3647,7 @@ exportObj.basicCardData = function() {
         ship: "TIE/VN Silencer",
         skill: 3,
         points: 56,
-        slots: ["Talent", "Tech", "Torpedo", "Missile"]
+        slots: ["Talent", "Tech", "Torpedo", "Missile", "Configuration"]
       }, {
         name: '"Recoil"',
         id: 284,
@@ -3656,7 +3656,7 @@ exportObj.basicCardData = function() {
         ship: "TIE/VN Silencer",
         skill: 4,
         points: 57,
-        slots: ["Talent", "Tech", "Torpedo", "Missile"]
+        slots: ["Talent", "Tech", "Torpedo", "Missile", "Configuration"]
       }, {
         name: "Omega Squadron Expert",
         id: 285,
@@ -3672,7 +3672,7 @@ exportObj.basicCardData = function() {
         ship: "TIE/VN Silencer",
         skill: 1,
         points: 48,
-        slots: ["Tech", "Torpedo", "Missile"]
+        slots: ["Tech", "Torpedo", "Missile", "Configuration"]
       }, {
         name: "First Order Test Pilot",
         id: 287,
@@ -3680,7 +3680,7 @@ exportObj.basicCardData = function() {
         ship: "TIE/VN Silencer",
         skill: 4,
         points: 56,
-        slots: ["Talent", "Tech", "Torpedo", "Missile"]
+        slots: ["Talent", "Tech", "Torpedo", "Missile", "Configuration"]
       }, {
         name: "Starkiller Base Pilot",
         id: 288,
@@ -4618,7 +4618,7 @@ exportObj.basicCardData = function() {
         skill: 2,
         ship: "TIE/VN Silencer",
         points: 57,
-        slots: ["Tech", "Torpedo", "Missile"]
+        slots: ["Tech", "Torpedo", "Missile", "Configuration"]
       }, {
         name: "Zizi Tlo",
         id: 387,
@@ -5409,7 +5409,7 @@ exportObj.basicCardData = function() {
         ship: "TIE Interceptor",
         skill: 2,
         points: 40,
-        slots: ["Modification", "Modification", "Configuration"]
+        slots: ["Talent", "Modification", "Modification", "Configuration"]
       }, {
         name: "Lieutenant Lorrir",
         id: 467,
