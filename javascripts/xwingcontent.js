@@ -5243,6 +5243,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Hera Syndulla (B-Wing)",
         canonical_name: 'Hera Syndulla'.canonicalize(),
+        xws: "herasyndulla-asf01bwing",
         id: 450,
         unique: true,
         faction: "Rebel Alliance",
@@ -5266,6 +5267,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Wedge Antilles (A-Wing)",
         canonical_name: 'Wedge Antilles'.canonicalize(),
+        xws: "wedgeantilles-rz1awing",
         id: 452,
         unique: true,
         faction: "Rebel Alliance",
@@ -5276,6 +5278,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Sabine Wren (A-Wing)",
         canonical_name: 'Sabine Wren'.canonicalize(),
+        xws: "sabinewren-rz1awing",
         id: 453,
         unique: true,
         faction: "Rebel Alliance",
@@ -5307,6 +5310,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Gideon Hask (TIE Interceptor)",
         canonical_name: 'Gideon Hask'.canonicalize(),
+        xws: "gideonhask-tieininterceptor",
         id: 456,
         unique: true,
         faction: "Galactic Empire",
@@ -5459,7 +5463,7 @@ exportObj.basicCardData = function() {
         points: 75,
         slots: ["Talent", "Sensor", "Cannon", "Missile", "Configuration"]
       }, {
-        name: "Jinta Security Officer",
+        name: "Jinata Security Officer",
         id: 471,
         faction: "Scum and Villainy",
         ship: "Y-Wing",
@@ -5487,6 +5491,7 @@ exportObj.basicCardData = function() {
         slots: ["Talent", "Crew", "Device", "Illicit", "Modification", "Modification", "Title"]
       }, {
         name: "Tápusk",
+        xws: "tapusk",
         id: 474,
         unique: true,
         faction: "Scum and Villainy",
