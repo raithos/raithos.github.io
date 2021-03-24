@@ -1004,6 +1004,7 @@ exportObj.basicCardData = function() {
         id: 0,
         faction: "Rebel Alliance",
         ship: "X-Wing",
+        keyword: ["Partisan"],
         skill: 1,
         points: 38,
         slots: ["Illicit", "Torpedo", "Astromech", "Modification", "Configuration"]
@@ -1570,7 +1571,7 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         ship: "VCX-100",
         skill: 3,
-        keyword: ["Spectre"],
+        keyword: ["Light Side", "Jedi", "Spectre"],
         force: 2,
         points: 76,
         slots: ["Force", "Sensor", "Torpedo", "Turret", "Crew", "Crew", "Modification", "Gunner", "Title"]
@@ -5866,7 +5867,6 @@ exportObj.basicCardData = function() {
         name: "Kanan Jarrus",
         id: 41,
         slot: "Crew",
-        keyword: ["Light Side"],
         points: 12,
         force: 1,
         unique: true,
@@ -5928,7 +5928,6 @@ exportObj.basicCardData = function() {
         unique: true,
         faction: ["Scum and Villainy", "Rebel Alliance"],
         force: 1,
-        keyword: ["Dark Side"],
         restrictions: [["orUnique", "Ezra Bridger"], ["Faction", "Scum and Villainy"]],
         modifier_func: function(stats) {
           return stats.force += 1;
@@ -10206,7 +10205,6 @@ exportObj.basicCardData = function() {
         pilot: "Cavern Angels Zealot",
         ship: "X-Wing",
         threat: 2,
-        keyword: ["Partisan"],
         upgrades: ["R2 Astromech", "Deadman's Switch", "Servomotor S-Foils"]
       }, {
         id: 149,
