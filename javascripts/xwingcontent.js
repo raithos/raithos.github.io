@@ -8951,7 +8951,7 @@ exportObj.basicCardData = function() {
         id: 376,
         points: 2,
         slot: "Talent",
-        ship: "Y-Wing"
+        restrictions: [["Keyword", "Y-Wing"]]
       }, {
         name: "B6 Blade Wing Prototype (Epic)",
         canonical_name: 'B6 Blade Wing Prototype'.canonicalize(),
