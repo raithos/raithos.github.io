@@ -5926,6 +5926,7 @@ exportObj.basicCardData = function() {
         slot: "Crew",
         points: 10,
         unique: true,
+        keyword: ["Dark Side"],
         faction: ["Scum and Villainy", "Rebel Alliance"],
         force: 1,
         restrictions: [["orUnique", "Ezra Bridger"], ["Faction", "Scum and Villainy"]],
