@@ -6565,7 +6565,7 @@ class Ship
                             if not (@data.large?) then return false
                         when "Huge" 
                             if not (@data.huge?) then return false
-                        when "Standard Ship" 
+                        when "Standard" 
                             if @data.huge? then return false
                 when "Action"
                     if not ((r[1] in effective_stats.actions) or ("*#{r[1]}" in effective_stats.actions) or ("F-#{r[1]}" in effective_stats.actions) or ("R-#{r[1]}" in effective_stats.actions)) then return false

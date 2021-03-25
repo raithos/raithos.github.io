@@ -13660,7 +13660,7 @@ exportObj.basicCardData = ->
             faction: "Scum and Villainy"
             restrictions: [
                 ["isUnique", true]
-                ["Base", "Standard Ship"]
+                ["Base", "Standard"]
             ]
         }
         {
@@ -13671,7 +13671,7 @@ exportObj.basicCardData = ->
             faction: "Scum and Villainy"
             restrictions: [
                 ["isUnique", true]
-                ["Base", "Standard Ship"]
+                ["Base", "Standard"]
             ]
         }
         {

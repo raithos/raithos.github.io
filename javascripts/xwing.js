@@ -8074,7 +8074,7 @@ Ship = (function() {
                 return false;
               }
               break;
-            case "Standard Ship":
+            case "Standard":
               if (this.data.huge != null) {
                 return false;
               }

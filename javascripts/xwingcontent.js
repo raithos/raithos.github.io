@@ -9026,14 +9026,14 @@ exportObj.basicCardData = function() {
         points: 5,
         slot: "Command",
         faction: "Scum and Villainy",
-        restrictions: [["isUnique", true], ["Base", "Standard Ship"]]
+        restrictions: [["isUnique", true], ["Base", "Standard"]]
       }, {
         name: "Bounty",
         id: 385,
         points: 5,
         slot: "Command",
         faction: "Scum and Villainy",
-        restrictions: [["isUnique", true], ["Base", "Standard Ship"]]
+        restrictions: [["isUnique", true], ["Base", "Standard"]]
       }, {
         name: "Gamut Key",
         id: 386,
