@@ -8937,7 +8937,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Sensitive Controls",
         id: 374,
-        points: 2,
+        points: 0,
         slot: "Configuration",
         standardized: true,
         restrictions: [["Keyword", "Autothrusters"]]
