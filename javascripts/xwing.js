@@ -2439,12 +2439,12 @@ exportObj.setupTranslationSupport = function() {
             var _i, _len, _ref;
             if (language !== current_language) {
               exportObj.loadCards(language);
-              _ref = exportObj.translations[language].byCSSSelector;
-              for (selector in _ref) {
-                if (!__hasProp.call(_ref, selector)) continue;
-                html = _ref[selector];
-                $(selector).html(html);
-              }
+            }
+            _ref = exportObj.translations[language].byCSSSelector;
+            for (selector in _ref) {
+              if (!__hasProp.call(_ref, selector)) continue;
+              html = _ref[selector];
+              $(selector).html(html);
             }
             for (_i = 0, _len = builders.length; _i < _len; _i++) {
               builder = builders[_i];
