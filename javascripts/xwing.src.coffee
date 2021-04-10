@@ -1998,15 +1998,6 @@ builders = []
 exportObj = exports ? this
 
 exportObj.loadCards = (language) ->
-    # Load cards
-    if not exportObj.ships?
-        basic_cards = exportObj.basicCardData()
-        exportObj.canonicalizeShipNames basic_cards
-        exportObj.ships = basic_cards.ships
-
-        # Set up the common card data (e.g. stats)
-        exportObj.setupCommonCardData basic_cards
-
     exportObj.cardLoaders[language]()
 
 exportObj.translate = (language, category, what, args...) ->
@@ -2044,7 +2035,14 @@ exportObj.setupTranslationSupport = ->
                 for builder in builders
                     builder.container.trigger 'xwing:afterLanguageLoad', language
 
-    exportObj.loadCards DFL_LANGUAGE
+    # Load cards one time
+    basic_cards = exportObj.basicCardData()
+    exportObj.canonicalizeShipNames basic_cards
+    exportObj.ships = basic_cards.ships
+
+    # Set up the common card data (e.g. stats)
+    exportObj.setupCommonCardData basic_cards
+
     $(exportObj).trigger 'xwing:languageChanged', DFL_LANGUAGE
 
 exportObj.setupTranslationUI = (backend) ->
