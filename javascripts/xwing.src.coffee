@@ -1999,12 +1999,13 @@ exportObj = exports ? this
 
 exportObj.loadCards = (language) ->
     # Load cards
-    basic_cards = exportObj.basicCardData()
-    exportObj.canonicalizeShipNames basic_cards
-    exportObj.ships = basic_cards.ships
+    if not exportObj.ships?
+        basic_cards = exportObj.basicCardData()
+        exportObj.canonicalizeShipNames basic_cards
+        exportObj.ships = basic_cards.ships
 
-    # Set up the common card data (e.g. stats)
-    exportObj.setupCommonCardData basic_cards
+        # Set up the common card data (e.g. stats)
+        exportObj.setupCommonCardData basic_cards
 
     exportObj.cardLoaders[language]()
 
@@ -2035,20 +2036,13 @@ exportObj.setupTranslationSupport = ->
         $(exportObj).on 'xwing:languageChanged', (e, language, cb=$.noop) =>
             if language of exportObj.translations
                 $('.language-placeholder').text language
-                currentfaction = $.getParameterByName 'f'
                 for builder in builders
-                    if currentfaction == builder.faction
-                        builder.container.trigger 'xwing:beforeLanguageLoad'
-                    else
-                        await builder.container.trigger 'xwing:beforeLanguageLoad', defer()
+                    await builder.container.trigger 'xwing:beforeLanguageLoad', defer()
                 exportObj.loadCards language
                 for own selector, html of exportObj.translations[language].byCSSSelector
                     $(selector).html html
                 for builder in builders
-                    if currentfaction == builder.faction
-                        builder.container.trigger 'xwing:afterLanguageLoad', language
-                    else
-                        await builder.container.trigger 'xwing:afterLanguageLoad', language, defer()
+                    builder.container.trigger 'xwing:afterLanguageLoad', language
 
     exportObj.loadCards DFL_LANGUAGE
     $(exportObj).trigger 'xwing:languageChanged', DFL_LANGUAGE

@@ -12876,6 +12876,7 @@ exportObj.setupTranslationCardData = function(pilot_translations, upgrade_transl
       } catch (_error) {
         e = _error;
         console.error("Cannot find translation for attribute " + field + " for upgrade " + upgrade_name + ". Please report this Issue. ");
+        throw e;
       }
     }
   }
@@ -12889,6 +12890,7 @@ exportObj.setupTranslationCardData = function(pilot_translations, upgrade_transl
       } catch (_error) {
         e = _error;
         console.error("Cannot find translation for attribute " + field + " for condition " + condition_name + ". Please report this Issue. ");
+        throw e;
       }
     }
   }
@@ -12905,7 +12907,8 @@ exportObj.setupTranslationCardData = function(pilot_translations, upgrade_transl
           _results1.push(exportObj.pilots[pilot_name][field] = translation);
         } catch (_error) {
           e = _error;
-          _results1.push(console.error("Cannot find translation for attribute " + field + " for pilot " + pilot_name + ". Please report this Issue. "));
+          console.error("Cannot find translation for attribute " + field + " for pilot " + pilot_name + ". Please report this Issue. ");
+          throw e;
         }
       }
       return _results1;
