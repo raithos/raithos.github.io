@@ -4240,8 +4240,8 @@ class exportObj.SquadBuilder
         for action in actions
             color = ""
             prefix = seperation
-            # if "Droid" in keyword
-            #    action = action.replace('Focus', 'Calculate')
+            if "Droid" in keyword
+                action = action.replace('Focus', 'Calculate')
             # Search and filter each type of action by its prefix and then reformat it for html
             if action.search('> ') != -1
                 action = action.replace(/> /gi, '')
@@ -4543,7 +4543,10 @@ class exportObj.SquadBuilder
                     else
                         container.find('tr.info-charge').hide()
 
-                    container.find('tr.info-actions td.info-data').html @formatActions(data.ship_override?.actions ? (effective_stats?.actions ? ship.actions), ", ", data.keyword ? [])
+                    if effective_stats?.actions?
+                        container.find('tr.info-actions td.info-data').html @formatActions(data.ship_override?.actions ? effective_stats.actions, ", ")
+                    else
+                        container.find('tr.info-actions td.info-data').html @formatActions(data.ship_override?.actions ? ship.actions, ", ", data.keyword ? [])
                     
                     container.find('tr.info-actions').show()
                     if @isQuickbuild
@@ -5098,7 +5101,7 @@ class exportObj.SquadBuilder
                 text += comma + "%SHIELD% (#{statchange.shields})"
                 comma = ', '
             if statchange.actions.length > 0
-                text += comma + @formatActions(statchange.actions, ", ", [])
+                text += comma + @formatActions(statchange.actions, ", ")
                 comma = ', '
         if card.confersAddons
             for addonname in card.confersAddons
