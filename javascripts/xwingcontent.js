@@ -9066,6 +9066,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "Protectorate Gleb",
         id: 388,
+        unique: true,
         points: 2,
         slot: "Crew",
         faction: ["Galactic Empire", "First Order", "Scum and Villainy"],
