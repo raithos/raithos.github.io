@@ -1,5 +1,6 @@
 var displayName, exportObj, sortWithoutQuotes, _base,
   __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
+  __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   __hasProp = {}.hasOwnProperty;
 
 exportObj = typeof exports !== "undefined" && exports !== null ? exports : this;
@@ -12701,7 +12702,7 @@ exportObj.basicCardData = function() {
         pilot: "Hera Syndulla (B-Wing)",
         ship: "B-Wing",
         threat: 3,
-        upgrades: ["B6 Blade Wing Prototype (Epic)", "Passive Sensors", "Deadeye Shot", "Sabine Wren (Gunner)"]
+        upgrades: ["B6 Blade Wing Prototype", "Passive Sensors", "Deadeye Shot", "Sabine Wren (Gunner)"]
       }, {
         id: 488,
         faction: "Rebel Alliance",
@@ -12728,7 +12729,7 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         pilot: "Ahsoka Tano (A-Wing)",
         ship: "A-Wing",
-        threat: 2,
+        threat: 1,
         upgrades: ["Marg Sabl Closure", "Patience", "Sense"]
       }, {
         id: 492,
@@ -13833,7 +13834,7 @@ exportObj.translations.English = {
   faction: {
     "Rebel Alliance": "Rebel Alliance",
     "Galactic Empire": "Galactic Empire",
-    "Scum and Villainy": "Scum and Villainy",
+    "Scum and Villany": "Scum and Villany",
     "Resistance": "Resistance",
     "First Order": "First Order",
     "Galactic Republic": "Galactic Republic",
@@ -13859,11 +13860,7 @@ exportObj.translations.English = {
     "Device": "Payload",
     "Tech": "Tech",
     "Title": "Title",
-    "Tactical Relay": "Tactical Relay",
-    "Command": "Command",
-    "Hyperdrive": "Hyperdrive",
-    "Team": "Team",
-    "Cargo": "Cargo"
+    "Tactical Relay": "Tactical Relay"
   },
   sources: {
     "Second Edition Core Set": "Second Edition Core Set",
@@ -13878,93 +13875,84 @@ exportObj.translations.English = {
     "Fang Fighter Expansion Pack": "Fang Fighter Expansion Pack",
     "Lando's Millennium Falcon Expansion Pack": "Lando's Millennium Falcon Expansion Pack",
     "Saw's Renegades Expansion Pack": "Saw's Renegades Expansion Pack",
-    "TIE Reaper Expansion Pack": "TIE Reaper Expansion Pack",
-    "ARC-170 Starfighter Expansion": "ARC-170 Starfighter Expansion",
-    "Loose Ships": "Loose Ships",
-    "Fugitives and Collaborators Squadron Pack": "Fugitives and Collaborators Squadron Pack",
-    "First Order Conversion Kit": "First Order Conversion Kit",
-    "M3-A Interceptor Expansion Pack": "M3-A Interceptor Expansion Pack"
+    "TIE Reaper Expansion Pack": "TIE Reaper Expansion Pack"
   },
   ui: {
-    "shipSelectorPlaceholder": "Select a ship",
-    "pilotSelectorPlaceholder": "Select a pilot",
-    upgradePlaceholder: function(translator, slot) {
-      return "No " + (translator('slot', slot)) + " Upgrade";
+    shipSelectorPlaceholder: "Select a ship",
+    pilotSelectorPlaceholder: "Select a pilot",
+    upgradePlaceholder: function(translator, language, slot) {
+      return "No " + (translator(language, 'slot', slot)) + " Upgrade";
     },
-    "modificationPlaceholder": "No Modification",
-    "titlePlaceholder": "No Title",
-    upgradeHeader: function(translator, slot) {
-      return "" + (translator('slot', slot)) + " Upgrade";
+    modificationPlaceholder: "No Modification",
+    titlePlaceholder: "No Title",
+    upgradeHeader: function(translator, language, slot) {
+      return "" + (translator(language, 'slot', slot)) + " Upgrade";
     },
-    "unreleased": "unreleased",
-    "epic": "epic",
-    "Quickbuild": "Quick Build",
-    "limited": "limited",
-    "Unreleased content warning": "This squad uses unreleased content!",
-    "Broken squad link warning": "It appears that you followed a broken link. No squad could be loaded!",
-    "Collection warning": "You cannot field this list with your collection!",
-    "Ship number warning": "A tournament legal squad must contain 2-8 ships!",
-    "Multi-Faction warning": "Multi-Faction Lists are NEVER tournament legal!",
-    "XWS Import Dialog": "Import your list via XWS into YASB.<br><i>XWS is a common format to share lists between applications.</i>",
-    "Copy below simple text": "<p>Copy the below and paste it elsewhere.</p>",
-    "Copy below markdown": "<p>Copy the below and paste it into your reddit post.</p><p>Make sure that the post editor is set to markdown mode.</p>",
-    "Copy below TTS": "<p>Copy the below and paste it into the Tabletop Simulator.</p>",
-    "Copy below BBCode": "<p>Copy the BBCode below and paste it into your forum post.</p>",
-    "Copy below HTML": "<p>Copy the below and paste it elsewhere.</p>",
-    "Copy below XWS": "<p>Copy and paste this into an XWS-compliant application.</p>",
-    "Use INI prefix": "Put INI as prefix in front of names.",
-    "Choose obstacles dialog": "Choose up to three obstacles, to include in the permalink for use in external programs",
-    "Mark obstacles": "Mark the three obstacles you are using.",
-    "Scan QR-Code": "Scan to open this list in the builder",
-    "View in YASB": "View in Yet Another Squad Builder 2.0",
-    "YASB advertisment": "YASB 2.0 is a simple, fast, and easy to use squad builder for X-Wing Miniatures by Fantasy Flight Games.",
-    collectionContentShips: function(translator, number) {
-      return "You have " + number + " ship " + (number === 1 ? 'model' : 'models') + " in your collection.";
-    },
-    collectionContentShipsAndPilots: function(translator, ships, pilots) {
-      return "You have " + ships + " ship " + (ships === 1 ? 'model' : 'models') + " and " + pilots + " pilot " + (ships === 1 ? 'card' : 'cards') + " in your collection.";
-    },
-    collectionContentUpgrades: function(translator, number) {
-      return "You have " + number + " in your collection.";
-    },
-    varPointCostsPoints: function(translator, points) {
-      return "<b>Point cost:</b> " + points + " when ";
-    },
-    varPointCostsConditionAgility: function(translator, values) {
-      return "agility is " + values;
-    },
-    varPointCostsConditionIni: function(translator, values) {
-      return "initiative is " + values;
-    },
-    varPointCostsConditionBase: function(translator, values) {
-      return "base size is small, medium, large or huge";
-    },
-    "Missing Item List:": "To field this squad you need the following additional items:",
-    pilotFlyingShip: function(translator, pilot, ship) {
-      return "Pilot " + pilot + " flying " + ship;
-    },
-    "Placeholder Textsearch Browser": "Search for name, text or ship",
-    noXYselected: function(translator, xy) {
-      return "No " + (translator('ui', xy)) + " selected";
-    },
-    "Select a card": "Select a card from the list at the left.",
-    yourXYsquads: function(translator, faction) {
-      return "Your " + (translator('faction', faction)) + " Squads";
-    },
-    reallyDeleteSquadXY: function(translator, squadname) {
-      return "Really delete " + squadname + "?";
-    },
-    "No saved squads": "Nothing to see here. Go save a squad!",
-    "name required": "A name is required",
-    "Name in use": "You already have a squad with that name",
-    "select OAuth provider": "Select one of the OAuth providers below to log in and start saving squads.",
-    "OAuth explanation": "<p>\n    <a href=\"http://en.wikipedia.org/wiki/OAuth\" target=\"_blank\">OAuth</a> is an authorization system which lets you prove your identity at a web site without having to create a new account.  Instead, you tell some provider with whom you already have an account (e.g. Google or Facebook) to prove to this web site that you say who you are.  That way, the next time you visit, this site remembers that you're that user from Google.\n</p>\n<p>\n    The best part about this is that you don't have to come up with a new username and password to remember.  And don't worry, I'm not collecting any data from the providers about you.  I've tried to set the scope of data to be as small as possible, but some places send a bunch of data at minimum.  I throw it away.  All I look at is a unique identifier (usually some giant number).\n</p>\n<p>\n    For more information, check out this <a href=\"http://hueniverse.com/oauth/guide/intro/\" target=\"_blank\">introduction to OAuth</a>.\n</p>",
-    "Continue to OAuth provider": "This will open a new window to let you authenticate with the chosen provider. You may have to allow pop ups for this site.",
-    "iOS requires cross-site control": "Due to a new feature in iOS systems OAuth won't work unless you enable \"cross-site control\".",
-    "login in progress": "OAuth login is in progress. Please finish authorization at the specified provider using the window that was just created.",
-    "Squads reloaded": "All squads of that faction have been reloaded.",
-    "Sure to delete?": "Are you sure you want to delete this squad?",
-    "Unsaved Changes Warning": "You have not saved changes to this squad.  Do you want to go back and save?"
+    unreleased: "unreleased",
+    epic: "epic",
+    limited: "limited"
+  },
+  byCSSSelector: {
+    '.unreleased-content-used .translated': 'This squad uses unreleased content!',
+    '.loading-failed-container .translated': 'It appears that you followed a broken link. No squad could be loaded!',
+    '.collection-invalid .translated': 'You cannot field this list with your collection!',
+    '.ship-number-invalid-container .translated': 'A tournament legal squad must contain 2-8 ships!',
+    '.game-type-selector option[value="standard"]': 'Extended',
+    '.game-type-selector option[value="hyperspace"]': 'Hyperspace',
+    '.game-type-selector option[value="epic"]': 'Epic',
+    '.game-type-selector option[value="quickbuild"]': 'Quick Build',
+    '.xwing-card-browser option[value="name"]': 'Name',
+    '.xwing-card-browser option[value="source"]': 'Source',
+    '.xwing-card-browser option[value="type-by-points"]': 'Type (by Points)',
+    '.xwing-card-browser option[value="type-by-name"]': 'Type (by Name)',
+    '.xwing-card-browser .translate.select-a-card': 'Select a card from the list at the left.',
+    '.xwing-card-browser .translate.sort-cards-by': 'Sort cards by',
+    '.info-well .info-ship td.info-header': 'Ship',
+    '.info-well .info-skill td.info-header': 'Initiative',
+    '.info-well .info-actions td.info-header': 'Actions',
+    '.info-well .info-upgrades td.info-header': 'Upgrades',
+    '.info-well .info-range td.info-header': 'Range',
+    '.info-well .info-sources.info-header': 'Sources',
+    '.clear-squad': '<i class="fa fa-plus-circle"></i>&nbsp;New Squad',
+    '.save-list': '<i class="far fa-save"></i>&nbsp;Save',
+    '.save-list-as': '<i class="far fa-file"></i>&nbsp;Save as…',
+    '.delete-list': '<i class="fa fa-trash"></i>&nbsp;Delete',
+    '.backend-list-my-squads': '<i class="fa fa-download"></i>&nbsp;Load Squad',
+    '.import-squad': '<i class="fa fa-file-import"></i>&nbsp;Import',
+    '.view-as-text': '<span class="d-none d-lg-block"><i class="fa fa-print"></i>&nbsp;Print/Export List</span><span class="d-lg-none"><i class="fa fa-print"></i></span>',
+    '.collection': '<span class="d-none d-lg-block"><i class="fa fa-folder-open"></i> Your Collection</span><span class="d-lg-none"><i class="fa fa-folder-open"></i></span>',
+    '.randomize': '<span class="d-none d-lg-block"><i class="fa fa-random"></i> Randomize!</span><span class="d-lg-none"><i class="fa fa-random"></i></span>',
+    '.randomize-options': 'Randomizer options…',
+    '.notes-container .notes-name': 'Squad Notes:',
+    '.notes-container .tag-name': 'Tag:',
+    '.bbcode-list': 'Copy the BBCode below and paste it into your forum post.<textarea></textarea><button class="btn btn-copy">Copy</button>',
+    '.html-list': '<textarea></textarea><button class="btn btn-copy">Copy</button>',
+    '.vertical-space-checkbox': "Add space for cards <input type=\"checkbox\" class=\"toggle-vertical-space\" />",
+    '.color-print-checkbox': "Print color <input type=\"checkbox\" class=\"toggle-color-print\" checked=\"checked\" />",
+    '.print-list': '<i class="fa fa-print"></i>&nbsp;Print',
+    '.do-randomize': 'Randomize!',
+    '#browserTab': 'Card Browser',
+    '#aboutTab': 'About',
+    '.choose-obstacles': '<i class="fa fa-cloud"></i>&nbsp;Choose Obstacles',
+    '.choose-obstacles-description': 'Choose up to three obstacles to include in the permalink for use in external programs. (Support for displaying which obstacles were selected in the printout is not yet supported.)',
+    '.coreasteroid0-select': 'Core Asteroid 0',
+    '.coreasteroid1-select': 'Core Asteroid 1',
+    '.coreasteroid2-select': 'Core Asteroid 2',
+    '.coreasteroid3-select': 'Core Asteroid 3',
+    '.coreasteroid4-select': 'Core Asteroid 4',
+    '.coreasteroid5-select': 'Core Asteroid 5',
+    '.yt2400debris0-select': 'YT2400 Debris 0',
+    '.yt2400debris1-select': 'YT2400 Debris 1',
+    '.yt2400debris2-select': 'YT2400 Debris 2',
+    '.vt49decimatordebris0-select': 'VT49 Debris 0',
+    '.vt49decimatordebris1-select': 'VT49 Debris 1',
+    '.vt49decimatordebris2-select': 'VT49 Debris 2',
+    '.core2asteroid0-select': 'Force Awakens Asteroid 0',
+    '.core2asteroid1-select': 'Force Awakens Asteroid 1',
+    '.core2asteroid2-select': 'Force Awakens Asteroid 2',
+    '.core2asteroid3-select': 'Force Awakens Asteroid 3',
+    '.core2asteroid4-select': 'Force Awakens Asteroid 4',
+    '.core2asteroid5-select': 'Force Awakens Asteroid 5'
   },
   singular: {
     'pilots': 'Pilot',
@@ -13981,9 +13969,6 @@ exportObj.translations.English = {
   rulestypes: {
     'glossary': 'Glossary',
     'faq': 'FAQ'
-  },
-  action: {
-    'Boost': 'Boost'
   }
 };
 
@@ -25045,6 +25030,7 @@ exportObj.manifestByExpansion = {
 
 exportObj.Collection = (function() {
   function Collection(args) {
+    this.onLanguageChange = __bind(this.onLanguageChange, this);
     var _ref, _ref1, _ref2;
     this.expansions = (_ref = args.expansions) != null ? _ref : {};
     this.singletons = (_ref1 = args.singletons) != null ? _ref1 : {};
@@ -25356,7 +25342,7 @@ exportObj.Collection = (function() {
           return _this.modal_status.fadeOut(1000);
         });
       };
-    })(this)).on('xwing:CollectionCheck', this.onCollectionCheckSet);
+    })(this)).on('xwing:languageChanged', this.onLanguageChange).on('xwing:CollectionCheck', this.onCollectionCheckSet);
     $(this.modal.find('input.expansion-count').change((function(_this) {
       return function(e) {
         var target, val;
@@ -25415,6 +25401,29 @@ exportObj.Collection = (function() {
         return "rgb(" + i + ", 255, " + i + ")";
       default:
         return '';
+    }
+  };
+
+  Collection.prototype.onLanguageChange = function(e, language) {
+    this.language = language;
+    if (language !== this.old_language) {
+      this.old_language = language;
+      return (function(_this) {
+        return function(language) {
+          _this.modal.find('.expansion-name').each(function() {
+            return $(this).text(exportObj.translate(language, 'sources', $(this).data('name')));
+          });
+          _this.modal.find('.ship-name').each(function() {
+            return $(this).text((exportObj.ships[$(this).data('name')].display_name ? exportObj.ships[$(this).data('name')].display_name : $(this).data('name')));
+          });
+          _this.modal.find('.pilot-name').each(function() {
+            return $(this).text((exportObj.pilots[$(this).data('name')].display_name ? exportObj.pilots[$(this).data('name')].display_name : $(this).data('name')));
+          });
+          return _this.modal.find('.upgrade-name').each(function() {
+            return $(this).text((exportObj.upgrades[$(this).data('name')].display_name ? exportObj.upgrades[$(this).data('name')].display_name : $(this).data('name')));
+          });
+        };
+      })(this)(language);
     }
   };
 
