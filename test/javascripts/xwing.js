@@ -3532,7 +3532,6 @@ exportObj.SquadBuilder = (function() {
     })(this)).on('xwing-collection:created', (function(_this) {
       return function(e, collection) {
         _this.collection = collection;
-        _this.collection.onLanguageChange(null, _this.language);
         _this.checkCollection();
         return _this.collection_button.removeClass('d-none');
       };
@@ -5430,7 +5429,7 @@ exportObj.SquadBuilder = (function() {
           }
           if (((_ref69 = this.collection) != null ? _ref69.counts : void 0) != null) {
             addon_count = (_ref70 = (_ref71 = this.collection.counts) != null ? (_ref72 = _ref71['upgrade']) != null ? _ref72[data.name] : void 0 : void 0) != null ? _ref70 : 0;
-            container.find('.info-collection').text(this.uitranslation(collectionContentUpgrades, addon_count));
+            container.find('.info-collection').text(this.uitranslation("collectionContentUpgrades", addon_count));
             container.find('.info-collection').show();
           } else {
             container.find('.info-collection').hide();
