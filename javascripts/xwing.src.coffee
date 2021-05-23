@@ -3113,8 +3113,8 @@ class exportObj.SquadBuilder
         @container.append content_container
         content_container.append $.trim """
             <div class="row">
-                <div class="col-md-9 ship-container">
-                    <label class="notes-container show-authenticated col-md-10">
+                <div id="sort" class="col-md-9 ship-container">
+                    <label class="unsortable notes-container show-authenticated col-md-10">
                         <span class="notes-name translated" defaultText="Squad Notes:"></span>
                         <br />
                         <textarea class="squad-notes"></textarea>
@@ -3122,7 +3122,7 @@ class exportObj.SquadBuilder
                         <span class="tag-name translated" defaultText="Tag:"></span>
                         <input type="search" class="squad-tag"></input>
                     </label>
-                    <div class="obstacles-container">
+                    <div class="unsortable obstacles-container">
                             <button class="btn btn-info choose-obstacles"><i class="fa fa-cloud"></i>&nbsp;<span class="translated" defaultText="Choose Obstacles"</span></button>
                     </div>
                 </div>
@@ -3130,6 +3130,7 @@ class exportObj.SquadBuilder
                 </div>
             </div>
         """
+        
 
         @ship_container = $ content_container.find('div.ship-container')
         @info_container = $ content_container.find('div.info-container')
@@ -3137,6 +3138,7 @@ class exportObj.SquadBuilder
         @notes_container = $ content_container.find('.notes-container')
         @notes = $ @notes_container.find('textarea.squad-notes')
         @tag = $ @notes_container.find('input.squad-tag')
+
 
         @info_container.append $.trim @createInfoContainerUI()
         @info_container.hide()
@@ -3177,7 +3179,7 @@ class exportObj.SquadBuilder
         """       
         # translate all the UI we just created to current language
         exportObj.translateUIElements(@container) 
-        
+
     createInfoContainerUI: ->
         return """
             <div class="card info-well">
@@ -3502,6 +3504,12 @@ class exportObj.SquadBuilder
         return "?" + ("#{k}=#{v}" for k, v of params).join("&")
 
     getPermaLink: (params=@getPermaLinkParams()) => "#{URL_BASE}#{params}"
+
+    updateShipOrder: (oldpos, newpos) =>
+        selectedShip = @ships[oldpos]
+        @ships.splice(oldpos, 1)
+        @ships.splice(newpos, 0, selectedShip)
+        @updatePermaLink
 
     updatePermaLink: () =>
         return unless @container.is(':visible') # gross but couldn't make clearInterval work
@@ -5741,6 +5749,7 @@ class Ship
                         upgrade.setById id
             else
                 @copy_button.hide()
+            @row.removeClass('unsortable')
             @builder.container.trigger 'xwing:pointsUpdated'
             @builder.container.trigger 'xwing-backend:squadDirtinessChanged'
 
@@ -5881,7 +5890,7 @@ class Ship
 
     setupUI: ->
         @row = $ document.createElement 'DIV'
-        @row.addClass 'row ship mb-5 mb-sm-0'
+        @row.addClass 'row ship mb-5 mb-sm-0 unsortable'
         @row.insertBefore @builder.notes_container
 
         if @pilot?
