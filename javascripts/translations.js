@@ -307,6 +307,32 @@ exportObj.translations.Deutsch = {
       return "" + squadname + " wirklich löschen?";
     }
   },
+  byCSSSelector: {
+    '.coreasteroid0-select': 'Grundspiel Asteroid 0',
+    '.coreasteroid1-select': 'Grundspiel Asteroid 1',
+    '.coreasteroid2-select': 'Grundspiel Asteroid 2',
+    '.coreasteroid3-select': 'Grundspiel Asteroid 3',
+    '.coreasteroid4-select': 'Grundspiel Asteroid 4',
+    '.coreasteroid5-select': 'Grundspiel Asteroid 5',
+    '.yt2400debris0-select': 'YT2400 Trümmerwolke 0',
+    '.yt2400debris1-select': 'YT2400 Trümmerwolke 1',
+    '.yt2400debris2-select': 'YT2400 Trümmerwolke 2',
+    '.vt49decimatordebris0-select': 'VT49 Trümmerwolke 0',
+    '.vt49decimatordebris1-select': 'VT49 Trümmerwolke 1',
+    '.vt49decimatordebris2-select': 'VT49 Trümmerwolke 2',
+    '.core2asteroid0-select': 'Erwachen der Macht Asteroid 0',
+    '.core2asteroid1-select': 'Erwachen der Macht Asteroid 1',
+    '.core2asteroid2-select': 'Erwachen der Macht Asteroid 2',
+    '.core2asteroid3-select': 'Erwachen der Macht Asteroid 3',
+    '.core2asteroid4-select': 'Erwachen der Macht Asteroid 4',
+    '.core2asteroid5-select': 'Erwachen der Macht Asteroid 5',
+    '.gascloud1-select': 'Gas Cloud 1',
+    '.gascloud2-select': 'Gas Cloud 2',
+    '.gascloud3-select': 'Gas Cloud 3',
+    '.gascloud4-select': 'Gas Cloud 4',
+    '.gascloud5-select': 'Gas Cloud 5',
+    '.gascloud6-select': 'Gas Cloud 6'
+  },
   singular: {
     'pilots': 'Pilot',
     'modifications': 'Modifikation',
@@ -3044,6 +3070,32 @@ exportObj.translations['Español'] = {
     'Your Collection': 'Mi colección',
     'Check Collection': 'Comprobar coincidencia con colección'
   },
+  byCSSSelector: {
+    '.coreasteroid0-select': 'Asteroide del Core 0',
+    '.coreasteroid1-select': 'Asteroide del Core 1',
+    '.coreasteroid2-select': 'Asteroide del Core 2',
+    '.coreasteroid3-select': 'Asteroide del Core 3',
+    '.coreasteroid4-select': 'Asteroide del Core 4',
+    '.coreasteroid5-select': 'Asteroide del Core 5',
+    '.yt2400debris0-select': 'Desecho del YT2400 0',
+    '.yt2400debris1-select': 'Desecho del YT2400 1',
+    '.yt2400debris2-select': 'Desecho del YT2400 2',
+    '.vt49decimatordebris0-select': 'Desecho del VT49 0',
+    '.vt49decimatordebris1-select': 'Desecho del VT49 1',
+    '.vt49decimatordebris2-select': 'Desecho del VT49 2',
+    '.core2asteroid0-select': 'Asteroide del Despertar de la Fuerza 0',
+    '.core2asteroid1-select': 'Asteroide del Despertar de la Fuerza 1',
+    '.core2asteroid2-select': 'Asteroide del Despertar de la Fuerza 2',
+    '.core2asteroid3-select': 'Asteroide del Despertar de la Fuerza 3',
+    '.core2asteroid4-select': 'Asteroide del Despertar de la Fuerza 4',
+    '.core2asteroid5-select': 'Asteroide del Despertar de la Fuerza 5',
+    '.gascloud1-select': 'Gas Cloud 1',
+    '.gascloud2-select': 'Gas Cloud 2',
+    '.gascloud3-select': 'Gas Cloud 3',
+    '.gascloud4-select': 'Gas Cloud 4',
+    '.gascloud5-select': 'Gas Cloud 5',
+    '.gascloud6-select': 'Gas Cloud 6'
+  },
   singular: {
     'pilots': 'Piloto',
     'modifications': 'Modificación',
@@ -4848,6 +4900,31 @@ exportObj.translations['Français'] = {
     'YT2400 Debris': 'YT2400 Debris',
     'VT49 Debris': 'VT49 Debris',
     'Force Awakens Asteroid': 'Force Awakens Asteroid'
+  },
+  byCSSSelector: {
+    '.coreasteroid1-select': 'Core Asteroid 1',
+    '.coreasteroid2-select': 'Core Asteroid 2',
+    '.coreasteroid3-select': 'Core Asteroid 3',
+    '.coreasteroid4-select': 'Core Asteroid 4',
+    '.coreasteroid5-select': 'Core Asteroid 5',
+    '.yt2400debris0-select': 'YT2400 Debris 0',
+    '.yt2400debris1-select': 'YT2400 Debris 1',
+    '.yt2400debris2-select': 'YT2400 Debris 2',
+    '.vt49decimatordebris0-select': 'VT49 Debris 0',
+    '.vt49decimatordebris1-select': 'VT49 Debris 1',
+    '.vt49decimatordebris2-select': 'VT49 Debris 2',
+    '.core2asteroid0-select': 'Force Awakens Asteroid 0',
+    '.core2asteroid1-select': 'Force Awakens Asteroid 1',
+    '.core2asteroid2-select': 'Force Awakens Asteroid 2',
+    '.core2asteroid3-select': 'Force Awakens Asteroid 3',
+    '.core2asteroid4-select': 'Force Awakens Asteroid 4',
+    '.core2asteroid5-select': 'Force Awakens Asteroid 5',
+    '.gascloud1-select': 'Gas Cloud 1',
+    '.gascloud2-select': 'Gas Cloud 2',
+    '.gascloud3-select': 'Gas Cloud 3',
+    '.gascloud4-select': 'Gas Cloud 4',
+    '.gascloud5-select': 'Gas Cloud 5',
+    '.gascloud6-select': 'Gas Cloud 6'
   },
   singular: {
     'pilots': 'Pilote',
@@ -7645,6 +7722,31 @@ exportObj.translations.Magyar = {
     'Choose Obstacles': 'Válassz akadályt',
     'Choose obstacles dialog': 'Choose up to three obstacles to include in the permalink for use in external programs. (Support for displaying which obstacles were selected in the printout is not yet supported.)',
     'Your Collection': 'Gyűjteményed'
+  },
+  byCSSSelector: {
+    '.coreasteroid1-select': 'Core Asteroid 1',
+    '.coreasteroid2-select': 'Core Asteroid 2',
+    '.coreasteroid3-select': 'Core Asteroid 3',
+    '.coreasteroid4-select': 'Core Asteroid 4',
+    '.coreasteroid5-select': 'Core Asteroid 5',
+    '.yt2400debris0-select': 'YT2400 Debris 0',
+    '.yt2400debris1-select': 'YT2400 Debris 1',
+    '.yt2400debris2-select': 'YT2400 Debris 2',
+    '.vt49decimatordebris0-select': 'VT49 Debris 0',
+    '.vt49decimatordebris1-select': 'VT49 Debris 1',
+    '.vt49decimatordebris2-select': 'VT49 Debris 2',
+    '.core2asteroid0-select': 'Force Awakens Asteroid 0',
+    '.core2asteroid1-select': 'Force Awakens Asteroid 1',
+    '.core2asteroid2-select': 'Force Awakens Asteroid 2',
+    '.core2asteroid3-select': 'Force Awakens Asteroid 3',
+    '.core2asteroid4-select': 'Force Awakens Asteroid 4',
+    '.core2asteroid5-select': 'Force Awakens Asteroid 5',
+    '.gascloud1-select': 'Gas Cloud 1',
+    '.gascloud2-select': 'Gas Cloud 2',
+    '.gascloud3-select': 'Gas Cloud 3',
+    '.gascloud4-select': 'Gas Cloud 4',
+    '.gascloud5-select': 'Gas Cloud 5',
+    '.gascloud6-select': 'Gas Cloud 6'
   },
   singular: {
     'pilots': 'Pilóta',
@@ -12939,13 +13041,13 @@ exportObj.translations.日本語 = {
   ui: {
     shipSelectorPlaceholder: "宇宙船を選択",
     pilotSelectorPlaceholder: "パイロットを選択",
-    upgradePlaceholder: function(translator, language, slot) {
-      return "" + (translator(language, 'slot', slot)) + " アップグレード未設定";
+    upgradePlaceholder: function(translator, slot) {
+      return "" + (translator('slot', slot)) + " アップグレード未設定";
     },
     modificationPlaceholder: "改造未設定",
     titlePlaceholder: "称号未設定",
-    upgradeHeader: function(translator, language, slot) {
-      return "" + (translator(language, 'slot', slot)) + " アップグレード";
+    upgradeHeader: function(translator, slot) {
+      return "" + (translator('slot', slot)) + " アップグレード";
     },
     unreleased: "リリース前",
     epic: "エピック",
@@ -12998,6 +13100,32 @@ exportObj.translations.日本語 = {
     'YT2400 Debris': 'YT2400・デブリ',
     'VT49 Debris': 'VT49・デブリ',
     'Force Awakens Asteroid': 'フォースの覚醒・アステロイド'
+  },
+  byCSSSelector: {
+    '.coreasteroid0-select': 'コア・アステロイド 0',
+    '.coreasteroid1-select': 'コア・アステロイド 1',
+    '.coreasteroid2-select': 'コア・アステロイド 2',
+    '.coreasteroid3-select': 'コア・アステロイド 3',
+    '.coreasteroid4-select': 'コア・アステロイド 4',
+    '.coreasteroid5-select': 'コア・アステロイド 5',
+    '.yt2400debris0-select': 'YT2400 ・デブリ 0',
+    '.yt2400debris1-select': 'YT2400 ・デブリ 1',
+    '.yt2400debris2-select': 'YT2400 ・デブリ 2',
+    '.vt49decimatordebris0-select': 'VT49 ・デブリ 0',
+    '.vt49decimatordebris1-select': 'VT49 ・デブリ 1',
+    '.vt49decimatordebris2-select': 'VT49 ・デブリ 2',
+    '.core2asteroid0-select': 'フォースの覚醒・アステロイド 0',
+    '.core2asteroid1-select': 'フォースの覚醒・アステロイド 1',
+    '.core2asteroid2-select': 'フォースの覚醒・アステロイド 2',
+    '.core2asteroid3-select': 'フォースの覚醒・アステロイド 3',
+    '.core2asteroid4-select': 'フォースの覚醒・アステロイド 4',
+    '.core2asteroid5-select': 'フォースの覚醒・アステロイド 5',
+    '.gascloud1-select': 'Gas Cloud 1',
+    '.gascloud2-select': 'Gas Cloud 2',
+    '.gascloud3-select': 'Gas Cloud 3',
+    '.gascloud4-select': 'Gas Cloud 4',
+    '.gascloud5-select': 'Gas Cloud 5',
+    '.gascloud6-select': 'Gas Cloud 6'
   },
   singular: {
     'pilots': 'パイロット',
@@ -14750,14 +14878,14 @@ exportObj.cardLoaders.日本語 = function() {
     },
     "Hera Syndulla (B-Wing)": {
       display_name: "Hera Syndulla",
-      text: "他のレンジ1-2の友軍宇宙船が防御するか攻撃を実行する際、君は君のフォーカス・トークン、回避トークンあるいはロックのうち1つをその宇宙船に転送しても良い。"
+      text: "他のレンジ1-2の友軍宇宙船が防御するか攻撃を実行する際、ダイスの修正ステップの間、君は君のフォーカス・トークン、回避トークンあるいはロックのうち1つをその宇宙船に転送しても良い。"
     },
     "Netrem Pollard": {
       text: "君がバレル・ロールをした後、君はレンジ0-1の、ストレス状態ではない友軍宇宙船を1つ選んでも良い。その宇宙船はストレス・トークンを1つ得て、その後君は180度回転する。"
     },
     "Hera Syndulla (A-Wing)": {
       display_name: "Hera Syndulla",
-      text: "他のレンジ1-2の友軍宇宙船が防御するか攻撃を実行する際、君は君のフォーカス・トークン、回避トークンあるいはロックのうち1つをその宇宙船に転送しても良い。%LINEBREAK%<strong>Vectored Thrusters:</strong> 君がアクションを実行した後、君は赤の%BOOST%アクションを実行しても良い。"
+      text: "他のレンジ1-2の友軍宇宙船が防御するか攻撃を実行する際、ダイスの修正ステップの間、君は君のフォーカス・トークン、回避トークンあるいはロックのうち1つをその宇宙船に転送しても良い。%LINEBREAK%<strong>Vectored Thrusters:</strong> 君がアクションを実行した後、君は赤の%BOOST%アクションを実行しても良い。"
     },
     "Wedge Antilles (A-Wing)": {
       display_name: "Wedge Antilles",
@@ -14822,7 +14950,7 @@ exportObj.cardLoaders.日本語 = function() {
       text: "君が%FRONTARC%攻撃を実行する際、もし君がダメージ状態なら、君は君の%FOCUS%の結果1つを%CRIT%に変更しても良い。%LINEBREAK%君が防御する際、もし君がダメージ状態なら、君は君の%FOCUS%の結果1つを空白の結果に<b>変更しなければならない。</b>"
     },
     "Leema Kai": {
-      text: "君がエンゲージする前に、もし君がいずれの敵宇宙船の%FRONTARC%にもいないのなら、君は君の%FULLFRONTARC%内の敵宇宙船へのロックを得ても良い。"
+      text: "君がエンゲージする前に、もし君がいずれの敵宇宙船の%FRONTARC%内にもいないのなら、君は君の%FULLFRONTARC%内の敵宇宙船へのロックを得ても良い。"
     },
     "Padric": {
       text: "君がロックした友軍デバイスが爆発した後、そのデバイスのレンジ0-1の各敵宇宙船はストレイン・トークンを1つ得る。"
@@ -14875,7 +15003,7 @@ exportObj.cardLoaders.日本語 = function() {
     },
     "4-LOM": {
       display_name: "4-LOM",
-      text: "%LINEBREAK%君が攻撃を実行する際、攻撃ダイスを振った後、君は緑のトークンのタイプを1つ宣言しても良い。もしそうするなら、イオン・トークンを2つ得て、この攻撃の間、防御者は宣言したタイプのトークンを消費できない。"
+      text: "君が攻撃を実行する際、攻撃ダイスを振った後、君は緑のトークンのタイプを1つ宣言しても良い。もしそうするなら、イオン・トークンを2つ得て、この攻撃の間、防御者は宣言したタイプのトークンを消費できない。"
     },
     "Andrasta": {
       display_name: "Andrasta",
@@ -14895,7 +15023,7 @@ exportObj.cardLoaders.日本語 = function() {
     },
     "Havoc": {
       display_name: "Havoc",
-      text: "%CREW%スロットを取り除き、%SENSOR%および%ASTROMECH%スロットを追加する。"
+      text: " "
     },
     "Hound's Tooth": {
       display_name: "Hound’s Tooth",
@@ -15022,7 +15150,7 @@ exportObj.cardLoaders.日本語 = function() {
     },
     "Biohexacrypt Codes": {
       display_name: "Biohexacrypt Codes",
-      text: "君がコーディネートあるいはジャムを実行する際、もし君が宇宙船にロックを持っているなら、君はそのロックを消費し。距離の制限を無視してその宇宙船を選んでも良い。"
+      text: "君がコーディネートあるいはジャムを実行する際、もし君が宇宙船にロックを持っているなら、君はそのロックを消費し、距離の制限を無視してその宇宙船を選んでも良い。"
     },
     "Bistan": {
       display_name: "Bistan",
@@ -15110,7 +15238,7 @@ exportObj.cardLoaders.日本語 = function() {
     },
     "Composure": {
       display_name: "Composure",
-      text: "<i><r>%FOCUS%</r>あるいは%FOCUS%が必要</i>%LINEBREAK%君がアクションを失敗した後、もし君が緑のトークンを持っていなければ、君は%FOCUS%アクションを実行しても良い。もしそうするなら、君はこのラウンド追加のアクションを実行できない。"
+      text: "君がアクションを失敗した後、もし君が緑のトークンを持っていなければ、君は%FOCUS%アクションを実行しても良い。もしそうするなら、君はこのラウンド追加のアクションを実行できない。"
     },
     "Concussion Missiles": {
       display_name: "Concussion Missiles",
@@ -15162,7 +15290,7 @@ exportObj.cardLoaders.日本語 = function() {
     },
     "Delayed Fuses": {
       display_name: "Delayed Fuses",
-      text: "君が爆弾あるいは機雷を投下、投射あるいは設置した後、君はそのデバイスの上にヒューズ・マーカーを1つ置いても良い。"
+      text: "君が爆弾あるいは機雷を投下、射出あるいは設置した後、君はそのデバイスの上にヒューズ・マーカーを1つ置いても良い。"
     },
     "Delta-7B": {
       display_name: "Delta-7B",
@@ -15336,7 +15464,7 @@ exportObj.cardLoaders.日本語 = function() {
     },
     "Ion Bombs": {
       display_name: "Ion Bombs",
-      text: "システム・フェイズの間、君は%CHARGE%を1つ消費し、[1 %STRAIGHT%]テンプレートを使ってIon Bombを投下しても良い。"
+      text: "<b>爆弾</b>%LINEBREAK% システム・フェイズの間、君は%CHARGE%を1つ消費し、[1 %STRAIGHT%]テンプレートを使ってIon Bombを投下しても良い。"
     },
     "ISB Slicer": {
       display_name: "ISB Slicer",
@@ -15539,7 +15667,7 @@ exportObj.cardLoaders.日本語 = function() {
     },
     "Primed Thrusters": {
       display_name: "Primed Thrusters",
-      text: "君のストレス・トークンが2つ以下の際、君は%BARRELROLL%あるいはブーストアクションをたとえストレス状態でも実行できる。"
+      text: "君のストレス・トークンが2つ以下の際、君は%BARRELROLL%あるいは%BOOST%アクションをたとえストレス状態でも実行できる。"
     },
     "Proton Bombs": {
       display_name: "Proton Bombs",
@@ -15582,7 +15710,7 @@ exportObj.cardLoaders.日本語 = function() {
     },
     "R3 Astromech": {
       display_name: "R3 Astromech",
-      text: "君はロックを2つまで維持できる。それぞれのロックは違うオブジェクトに対してでなければならない。%LINEBREAK%君が%LOCK%アクションを実行した後、君はロックを1つ得る。"
+      text: "君はロックを2つまで維持できる。それぞれのロックは違うオブジェクトに対してでなければならない。%LINEBREAK%君が%LOCK%アクションを実行した後、君はロックを1つ得ても良い。"
     },
     "R4 Astromech": {
       display_name: "R4 Astromech",
@@ -15777,7 +15905,7 @@ exportObj.cardLoaders.日本語 = function() {
     },
     "Veteran Turret Gunner": {
       display_name: "Veteran Turret Gunner",
-      text: "<i><r>%ROTATEARC%</r>あるいは%ROTATEARC%が必要</i>%LINEBREAK%君が主武装による攻撃を実行した後、君はこのラウンド使用していない%SINGLETURRETARC%を使用して、ボーナスの%SINGLETURRETARC%攻撃を実行しても良い。"
+      text: "君が主武装による攻撃を実行した後、君はこのラウンド使用していない%SINGLETURRETARC%を使用して、ボーナスの%SINGLETURRETARC%攻撃を実行しても良い。"
     },
     "Xg-1 Assault Configuration": {
       display_name: "Xg-1 Assault Configuration",
@@ -15906,7 +16034,7 @@ exportObj.cardLoaders.日本語 = function() {
       text: "<strong>Proud Tradition</strong>%LINEBREAK%<b>セットアップ:</b> この面を表にして装備する。%LINEBREAK%君が2つ以下のストレス・トークンを持っている際、君はストレス状態でも%FOCUS%アクションを実行できる。君が攻撃を実行した後、もし君がストレス状態なら、防御者はフォーカス・トークンを1つ消費するか、%CRIT%ダメージを1つ受けこのカードを裏返しても良い。%LINEBREAK% <strong>False Tradition</strong>%LINEBREAK%君の%FOCUS%アクションは赤として扱う。"
     },
     "Cluster Mines": {
-      text: "システム・フェイズの間に、君は%CHARGE%を1つ消費し、1%STRAIGHT%テンプレートを使ってCluster Mineのセットを投下しても良い。%LINEBREAK%このカードの%CHARGE%は回復できない。"
+      text: "<b>機雷</b>%LINEBREAK% システム・フェイズの間に、君は%CHARGE%を1つ消費し、1%STRAIGHT%テンプレートを使ってCluster Mineのセットを投下しても良い。%LINEBREAK%このカードの%CHARGE%は回復できない。"
     },
     "Kaz's Fireball": {
       text: "<b>セットアップ:</b> 君が<strong>Explosion with Wings</strong>を解決する時、君はダメージ・デッキをサーチし、<b>宇宙船</b>特性のダメージ・カードを1枚選んでも良い: 君は代わりにそのカードを受ける。その後、ダメージ・デッキをシャッフルする。%LINEBREAK%君はイオン状態でもダメージ・カードのアクションを実行できる。"
@@ -16026,7 +16154,7 @@ exportObj.cardLoaders.日本語 = function() {
       text: "君が主武装による攻撃を実行する際、攻撃ダイスを振る前に、君は%CHARGE%を2つ消費しても良い。もしそうするなら、君の%CRIT%の結果はダメージの代わりにイオン・トークンを与える。"
     },
     "Thermal Detonators": {
-      text: "システム・フェイズの間、君は%CHARGE%を2つまで消費し、同じ数のThermal Detonatorを[1%STRAIGHT%]あるいは[2%STRAIGHT%]テンプレートを使って投下しても良い。それぞれは違うテンプレートを使って設置されなければならない。%LINEBREAK%君がこのカードをリロードする時、追加で%CHARGE%が1つ回復する。"
+      text: "<b>爆弾</b>%LINEBREAK% システム・フェイズの間、君は%CHARGE%を2つまで消費し、同じ数のThermal Detonatorを[1%STRAIGHT%]あるいは[2%STRAIGHT%]テンプレートを使って投下しても良い。それぞれは違うテンプレートを使って設置されなければならない。%LINEBREAK%君がこのカードをリロードする時、追加で%CHARGE%が1つ回復する。"
     },
     "R7-A7": {
       text: "君が攻撃を実行する際、君は%CHARGE%を1つ消費し、%HIT%の結果を%CRIT%の結果に変更しても良い。"

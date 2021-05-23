@@ -2072,6 +2072,8 @@ exportObj.setupTranslationSupport = ->
                     await builder.container.trigger 'xwing:beforeLanguageLoad', defer()
                 if language != current_language
                     exportObj.loadCards language
+                for own selector, html of exportObj.translations[language].byCSSSelector
+                    $(selector).html html
                 exportObj.translateUIElements()
                 for builder in builders
                     builder.container.trigger 'xwing:afterLanguageLoad', language
@@ -3013,30 +3015,30 @@ class exportObj.SquadBuilder
             <div class="modal-body">
                 <div class="obstacle-select-container" style="float:left">
                     <select multiple class='obstacle-select' size="18">
-                        <option class="coreasteroid0-select" value="coreasteroid0"><span class="translated" defaultText="Core Asteroid"</span> 0</option>
-                        <option class="coreasteroid1-select" value="coreasteroid1"><span class="translated" defaultText="Core Asteroid"</span> 1</option>
-                        <option class="coreasteroid2-select" value="coreasteroid2"><span class="translated" defaultText="Core Asteroid"</span> 2</option>
-                        <option class="coreasteroid3-select" value="coreasteroid3"><span class="translated" defaultText="Core Asteroid"</span> 3</option>
-                        <option class="coreasteroid4-select" value="coreasteroid4"><span class="translated" defaultText="Core Asteroid"</span> 4</option>
-                        <option class="coreasteroid5-select" value="coreasteroid5"><span class="translated" defaultText="Core Asteroid"</span> 5</option>
-                        <option class="yt2400debris0-select" value="yt2400debris0"><span class="translated" defaultText="YT2400 Debris"</span> 0</option>
-                        <option class="yt2400debris1-select" value="yt2400debris1"><span class="translated" defaultText="YT2400 Debris"</span> 1</option>
-                        <option class="yt2400debris2-select" value="yt2400debris2"><span class="translated" defaultText="YT2400 Debris"</span> 2</option>
-                        <option class="vt49decimatordebris0-select" value="vt49decimatordebris0"><span class="translated" defaultText="VT49 Debris"</span> 0</option>
-                        <option class="vt49decimatordebris1-select" value="vt49decimatordebris1"><span class="translated" defaultText="VT49 Debris"</span> 1</option>
-                        <option class="vt49decimatordebris2-select" value="vt49decimatordebris2"><span class="translated" defaultText="VT49 Debris"</span> 2</option>
-                        <option class="core2asteroid0-select" value="core2asteroid0"><span class="translated" defaultText="Force Awakens Asteroid"</span> 0</option>
-                        <option class="core2asteroid1-select" value="core2asteroid1"><span class="translated" defaultText="Force Awakens Asteroid"</span> 1</option>
-                        <option class="core2asteroid2-select" value="core2asteroid2"><span class="translated" defaultText="Force Awakens Asteroid"</span> 2</option>
-                        <option class="core2asteroid3-select" value="core2asteroid3"><span class="translated" defaultText="Force Awakens Asteroid"</span> 3</option>
-                        <option class="core2asteroid4-select" value="core2asteroid4"><span class="translated" defaultText="Force Awakens Asteroid"</span> 4</option>
-                        <option class="core2asteroid5-select" value="core2asteroid5"><span class="translated" defaultText="Force Awakens Asteroid"</span> 5</option>
-                        <option class="gascloud1-select" value="gascloud1"><span class="translated" defaultText="Gas Cloud"</span> 1</option>
-                        <option class="gascloud2-select" value="gascloud2"><span class="translated" defaultText="Gas Cloud"</span> 2</option>
-                        <option class="gascloud3-select" value="gascloud3"><span class="translated" defaultText="Gas Cloud"</span> 3</option>
-                        <option class="gascloud4-select" value="gascloud4"><span class="translated" defaultText="Gas Cloud"</span> 4</option>
-                        <option class="gascloud5-select" value="gascloud5"><span class="translated" defaultText="Gas Cloud"</span> 5</option>
-                        <option class="gascloud6-select" value="gascloud6"><span class="translated" defaultText="Gas Cloud"</span> 6</option>
+                        <option class="coreasteroid0-select" value="coreasteroid0">Core Asteroid 0</option>
+                        <option class="coreasteroid1-select" value="coreasteroid1">Core Asteroid 1</option>
+                        <option class="coreasteroid2-select" value="coreasteroid2">Core Asteroid 2</option>
+                        <option class="coreasteroid3-select" value="coreasteroid3">Core Asteroid 3</option>
+                        <option class="coreasteroid4-select" value="coreasteroid4">Core Asteroid 4</option>
+                        <option class="coreasteroid5-select" value="coreasteroid5">Core Asteroid 5</option>
+                        <option class="yt2400debris0-select" value="yt2400debris0">YT2400 Debris 0</option>
+                        <option class="yt2400debris1-select" value="yt2400debris1">YT2400 Debris 1</option>
+                        <option class="yt2400debris2-select" value="yt2400debris2">YT2400 Debris 2</option>
+                        <option class="vt49decimatordebris0-select" value="vt49decimatordebris0">VT49 Debris 0</option>
+                        <option class="vt49decimatordebris1-select" value="vt49decimatordebris1">VT49 Debris 1</option>
+                        <option class="vt49decimatordebris2-select" value="vt49decimatordebris2">VT49 Debris 2</option>
+                        <option class="core2asteroid0-select" value="core2asteroid0">Force Awakens Asteroid 0</option>
+                        <option class="core2asteroid1-select" value="core2asteroid1">Force Awakens Asteroid 2</option>
+                        <option class="core2asteroid2-select" value="core2asteroid2">Force Awakens Asteroid 3</option>
+                        <option class="core2asteroid3-select" value="core2asteroid3">Force Awakens Asteroid 4</option>
+                        <option class="core2asteroid4-select" value="core2asteroid4">Force Awakens Asteroid 5</option>
+                        <option class="core2asteroid5-select" value="core2asteroid5">Force Awakens Asteroid 6</option>
+                        <option class="gascloud1-select" value="gascloud1">Gas Cloud 1</option>
+                        <option class="gascloud2-select" value="gascloud2">Gas Cloud 2</option>
+                        <option class="gascloud3-select" value="gascloud3">Gas Cloud 3</option>
+                        <option class="gascloud4-select" value="gascloud4">Gas Cloud 4</option>
+                        <option class="gascloud5-select" value="gascloud5">Gas Cloud 5</option>
+                        <option class="gascloud6-select" value="gascloud6">Gas Cloud 6</option>
                     </select>
                 </div>
                 <div class="obstacle-image-container" style="display:none;">
@@ -5541,21 +5543,29 @@ class Ship
             else
                 @setPilotById other.pilot.id, true
 
-            # Can't just copy upgrades since slots may be different
+            # filter out upgrades that can be copied
             other_upgrades = {}
             for upgrade in other.upgrades
                 if upgrade?.data? and not upgrade.data.unique and ((not upgrade.data.max_per_squad?) or @builder.countUpgrades(upgrade.data.canonical_name) < upgrade.data.max_per_squad)
                     other_upgrades[upgrade.slot] ?= []
                     other_upgrades[upgrade.slot].push upgrade
+            # set them aside any upgrades that don't fill requirements due to additional slots and then attempt to fill them
             delayed_upgrades = {}
             for upgrade in @upgrades
                 other_upgrade = (other_upgrades[upgrade.slot] ? []).shift()
                 if other_upgrade?
                     upgrade.setById other_upgrade.data.id
-                    if not upgrades.lastSetValid
+                    if not upgrade.lastSetValid
                         delayed_upgrades[other_upgrade.data.id] = upgrade
             for id, upgrade of delayed_upgrades
                 upgrade.setById id
+            # Do one final pass on upgrades to see if there are any more upgrades we can assign
+            for upgrade in @upgrades
+                if not upgrade.isOccupied()
+                    other_upgrade = (other_upgrades[upgrade.slot] ? []).shift()
+                    if other_upgrade?
+                        upgrade.setById other_upgrade.data.id
+            
             @addStandardizedUpgrades()
         @updateSelections()
         @builder.container.trigger 'xwing:pointsUpdated'
@@ -6753,7 +6763,12 @@ class GenericAddon
         if @data?.unique?
             await @ship.builder.container.trigger 'xwing:releaseUnique', [ @data, @type, defer() ]
         if @data?.standardized?
-            @removeStandardized()
+            isLastShip = true
+            for ship in @ship.builder.ships
+                if ship.data? and (@ship.data.name == ship.data.name) and (@ship != ship)
+                    isLastShip = false
+            if isLastShip == true
+                @removeStandardized()
         @destroyed = true
         @rescindAddons()
         @deoccupyOtherUpgrades()

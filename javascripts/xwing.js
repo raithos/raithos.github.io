@@ -2399,7 +2399,7 @@ exportObj.setupTranslationSupport = function() {
   (function(builders) {
     return $(exportObj).on('xwing:languageChanged', (function(_this) {
       return function(e, language, cb) {
-        var builder, current_language, ___iced_passed_deferral, __iced_deferrals, __iced_k;
+        var builder, current_language, html, selector, ___iced_passed_deferral, __iced_deferrals, __iced_k;
         __iced_k = __iced_k_noop;
         ___iced_passed_deferral = iced.findDeferral(arguments);
         if (cb == null) {
@@ -2441,9 +2441,15 @@ exportObj.setupTranslationSupport = function() {
             };
             _while(__iced_k);
           })(function() {
-            var _i, _len;
+            var _i, _len, _ref;
             if (language !== current_language) {
               exportObj.loadCards(language);
+            }
+            _ref = exportObj.translations[language].byCSSSelector;
+            for (selector in _ref) {
+              if (!__hasProp.call(_ref, selector)) continue;
+              html = _ref[selector];
+              $(selector).html(html);
             }
             exportObj.translateUIElements();
             for (_i = 0, _len = builders.length; _i < _len; _i++) {
@@ -3327,7 +3333,7 @@ exportObj.SquadBuilder = (function() {
     this.choose_obstacles_modal.tabindex = "-1";
     this.choose_obstacles_modal.role = "dialog";
     this.container.append(this.choose_obstacles_modal);
-    this.choose_obstacles_modal.append($.trim("<div class=\"modal-dialog modal-dialog-centered modal-dialog-scrollable\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <label class='choose-obstacles-description translated' defaultText=\"Choose obstacles dialog\"></label>\n        </div>\n        <div class=\"modal-body\">\n            <div class=\"obstacle-select-container\" style=\"float:left\">\n                <select multiple class='obstacle-select' size=\"18\">\n                    <option class=\"coreasteroid0-select\" value=\"coreasteroid0\"><span class=\"translated\" defaultText=\"Core Asteroid\"</span> 0</option>\n                    <option class=\"coreasteroid1-select\" value=\"coreasteroid1\"><span class=\"translated\" defaultText=\"Core Asteroid\"</span> 1</option>\n                    <option class=\"coreasteroid2-select\" value=\"coreasteroid2\"><span class=\"translated\" defaultText=\"Core Asteroid\"</span> 2</option>\n                    <option class=\"coreasteroid3-select\" value=\"coreasteroid3\"><span class=\"translated\" defaultText=\"Core Asteroid\"</span> 3</option>\n                    <option class=\"coreasteroid4-select\" value=\"coreasteroid4\"><span class=\"translated\" defaultText=\"Core Asteroid\"</span> 4</option>\n                    <option class=\"coreasteroid5-select\" value=\"coreasteroid5\"><span class=\"translated\" defaultText=\"Core Asteroid\"</span> 5</option>\n                    <option class=\"yt2400debris0-select\" value=\"yt2400debris0\"><span class=\"translated\" defaultText=\"YT2400 Debris\"</span> 0</option>\n                    <option class=\"yt2400debris1-select\" value=\"yt2400debris1\"><span class=\"translated\" defaultText=\"YT2400 Debris\"</span> 1</option>\n                    <option class=\"yt2400debris2-select\" value=\"yt2400debris2\"><span class=\"translated\" defaultText=\"YT2400 Debris\"</span> 2</option>\n                    <option class=\"vt49decimatordebris0-select\" value=\"vt49decimatordebris0\"><span class=\"translated\" defaultText=\"VT49 Debris\"</span> 0</option>\n                    <option class=\"vt49decimatordebris1-select\" value=\"vt49decimatordebris1\"><span class=\"translated\" defaultText=\"VT49 Debris\"</span> 1</option>\n                    <option class=\"vt49decimatordebris2-select\" value=\"vt49decimatordebris2\"><span class=\"translated\" defaultText=\"VT49 Debris\"</span> 2</option>\n                    <option class=\"core2asteroid0-select\" value=\"core2asteroid0\"><span class=\"translated\" defaultText=\"Force Awakens Asteroid\"</span> 0</option>\n                    <option class=\"core2asteroid1-select\" value=\"core2asteroid1\"><span class=\"translated\" defaultText=\"Force Awakens Asteroid\"</span> 1</option>\n                    <option class=\"core2asteroid2-select\" value=\"core2asteroid2\"><span class=\"translated\" defaultText=\"Force Awakens Asteroid\"</span> 2</option>\n                    <option class=\"core2asteroid3-select\" value=\"core2asteroid3\"><span class=\"translated\" defaultText=\"Force Awakens Asteroid\"</span> 3</option>\n                    <option class=\"core2asteroid4-select\" value=\"core2asteroid4\"><span class=\"translated\" defaultText=\"Force Awakens Asteroid\"</span> 4</option>\n                    <option class=\"core2asteroid5-select\" value=\"core2asteroid5\"><span class=\"translated\" defaultText=\"Force Awakens Asteroid\"</span> 5</option>\n                    <option class=\"gascloud1-select\" value=\"gascloud1\"><span class=\"translated\" defaultText=\"Gas Cloud\"</span> 1</option>\n                    <option class=\"gascloud2-select\" value=\"gascloud2\"><span class=\"translated\" defaultText=\"Gas Cloud\"</span> 2</option>\n                    <option class=\"gascloud3-select\" value=\"gascloud3\"><span class=\"translated\" defaultText=\"Gas Cloud\"</span> 3</option>\n                    <option class=\"gascloud4-select\" value=\"gascloud4\"><span class=\"translated\" defaultText=\"Gas Cloud\"</span> 4</option>\n                    <option class=\"gascloud5-select\" value=\"gascloud5\"><span class=\"translated\" defaultText=\"Gas Cloud\"</span> 5</option>\n                    <option class=\"gascloud6-select\" value=\"gascloud6\"><span class=\"translated\" defaultText=\"Gas Cloud\"</span> 6</option>\n                </select>\n            </div>\n            <div class=\"obstacle-image-container\" style=\"display:none;\">\n                <img class=\"obstacle-image\" src=\"images/core2asteroid0.png\" />\n            </div>\n        </div>\n        <div class=\"modal-footer d-print-none\">\n            <button class=\"btn close-print-dialog translated\" data-dismiss=\"modal\" aria-hidden=\"true\" defaultText=\"Close\"></button>\n        </div>\n    </div>\n</div>"));
+    this.choose_obstacles_modal.append($.trim("<div class=\"modal-dialog modal-dialog-centered modal-dialog-scrollable\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <label class='choose-obstacles-description translated' defaultText=\"Choose obstacles dialog\"></label>\n        </div>\n        <div class=\"modal-body\">\n            <div class=\"obstacle-select-container\" style=\"float:left\">\n                <select multiple class='obstacle-select' size=\"18\">\n                    <option class=\"coreasteroid0-select\" value=\"coreasteroid0\">Core Asteroid 0</option>\n                    <option class=\"coreasteroid1-select\" value=\"coreasteroid1\">Core Asteroid 1</option>\n                    <option class=\"coreasteroid2-select\" value=\"coreasteroid2\">Core Asteroid 2</option>\n                    <option class=\"coreasteroid3-select\" value=\"coreasteroid3\">Core Asteroid 3</option>\n                    <option class=\"coreasteroid4-select\" value=\"coreasteroid4\">Core Asteroid 4</option>\n                    <option class=\"coreasteroid5-select\" value=\"coreasteroid5\">Core Asteroid 5</option>\n                    <option class=\"yt2400debris0-select\" value=\"yt2400debris0\">YT2400 Debris 0</option>\n                    <option class=\"yt2400debris1-select\" value=\"yt2400debris1\">YT2400 Debris 1</option>\n                    <option class=\"yt2400debris2-select\" value=\"yt2400debris2\">YT2400 Debris 2</option>\n                    <option class=\"vt49decimatordebris0-select\" value=\"vt49decimatordebris0\">VT49 Debris 0</option>\n                    <option class=\"vt49decimatordebris1-select\" value=\"vt49decimatordebris1\">VT49 Debris 1</option>\n                    <option class=\"vt49decimatordebris2-select\" value=\"vt49decimatordebris2\">VT49 Debris 2</option>\n                    <option class=\"core2asteroid0-select\" value=\"core2asteroid0\">Force Awakens Asteroid 0</option>\n                    <option class=\"core2asteroid1-select\" value=\"core2asteroid1\">Force Awakens Asteroid 2</option>\n                    <option class=\"core2asteroid2-select\" value=\"core2asteroid2\">Force Awakens Asteroid 3</option>\n                    <option class=\"core2asteroid3-select\" value=\"core2asteroid3\">Force Awakens Asteroid 4</option>\n                    <option class=\"core2asteroid4-select\" value=\"core2asteroid4\">Force Awakens Asteroid 5</option>\n                    <option class=\"core2asteroid5-select\" value=\"core2asteroid5\">Force Awakens Asteroid 6</option>\n                    <option class=\"gascloud1-select\" value=\"gascloud1\">Gas Cloud 1</option>\n                    <option class=\"gascloud2-select\" value=\"gascloud2\">Gas Cloud 2</option>\n                    <option class=\"gascloud3-select\" value=\"gascloud3\">Gas Cloud 3</option>\n                    <option class=\"gascloud4-select\" value=\"gascloud4\">Gas Cloud 4</option>\n                    <option class=\"gascloud5-select\" value=\"gascloud5\">Gas Cloud 5</option>\n                    <option class=\"gascloud6-select\" value=\"gascloud6\">Gas Cloud 6</option>\n                </select>\n            </div>\n            <div class=\"obstacle-image-container\" style=\"display:none;\">\n                <img class=\"obstacle-image\" src=\"images/core2asteroid0.png\" />\n            </div>\n        </div>\n        <div class=\"modal-footer d-print-none\">\n            <button class=\"btn close-print-dialog translated\" data-dismiss=\"modal\" aria-hidden=\"true\" defaultText=\"Close\"></button>\n        </div>\n    </div>\n</div>"));
     this.obstacles_select = this.choose_obstacles_modal.find('.obstacle-select');
     this.obstacles_select_image = this.choose_obstacles_modal.find('.obstacle-image-container');
     this.backend_list_squads_button = $(this.container.find('button.backend-list-my-squads'));
@@ -3368,7 +3374,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 3077
+              lineno: 3079
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -4268,7 +4274,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 3922
+              lineno: 3924
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -4278,7 +4284,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 3923
+                lineno: 3925
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -6484,7 +6490,7 @@ Ship = (function() {
                   funcname: "Ship.destroy"
                 });
                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                  lineno: 5507
+                  lineno: 5509
                 }));
                 __iced_deferrals._fulfill();
               })(__iced_k);
@@ -6502,7 +6508,7 @@ Ship = (function() {
   };
 
   Ship.prototype.copyFrom = function(other) {
-    var available_pilots, delayed_upgrades, id, no_uniques_involved, other_upgrade, other_upgrades, pilot_data, upgrade, _i, _j, _k, _len, _len1, _len2, _name, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6;
+    var available_pilots, delayed_upgrades, id, no_uniques_involved, other_upgrade, other_upgrades, pilot_data, upgrade, _i, _j, _k, _l, _len, _len1, _len2, _len3, _name, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7, _ref8;
     if (other === this) {
       throw new Error("Cannot copy from self");
     }
@@ -6581,7 +6587,7 @@ Ship = (function() {
         other_upgrade = ((_ref6 = other_upgrades[upgrade.slot]) != null ? _ref6 : []).shift();
         if (other_upgrade != null) {
           upgrade.setById(other_upgrade.data.id);
-          if (!upgrades.lastSetValid) {
+          if (!upgrade.lastSetValid) {
             delayed_upgrades[other_upgrade.data.id] = upgrade;
           }
         }
@@ -6589,6 +6595,16 @@ Ship = (function() {
       for (id in delayed_upgrades) {
         upgrade = delayed_upgrades[id];
         upgrade.setById(id);
+      }
+      _ref7 = this.upgrades;
+      for (_l = 0, _len3 = _ref7.length; _l < _len3; _l++) {
+        upgrade = _ref7[_l];
+        if (!upgrade.isOccupied()) {
+          other_upgrade = ((_ref8 = other_upgrades[upgrade.slot]) != null ? _ref8 : []).shift();
+          if (other_upgrade != null) {
+            upgrade.setById(other_upgrade.data.id);
+          }
+        }
       }
       this.addStandardizedUpgrades();
     }
@@ -6699,7 +6715,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 5617
+                          lineno: 5627
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -6749,7 +6765,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 5650
+                                  lineno: 5660
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -6847,7 +6863,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 5708
+                      lineno: 5718
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -6928,7 +6944,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 5738
+                lineno: 5748
               })
             ]);
             __iced_deferrals._fulfill();
@@ -6997,7 +7013,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 5767
+              lineno: 5777
             }));
           }
         }
@@ -7089,7 +7105,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 5823
+                lineno: 5833
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -8327,7 +8343,7 @@ GenericAddon = (function() {
   }
 
   GenericAddon.prototype.destroy = function() {
-    var args, cb, ___iced_passed_deferral, __iced_deferrals, __iced_k;
+    var args, cb, isLastShip, ship, ___iced_passed_deferral, __iced_deferrals, __iced_k;
     __iced_k = __iced_k_noop;
     ___iced_passed_deferral = iced.findDeferral(arguments);
     cb = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
@@ -8345,7 +8361,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 6753
+                lineno: 6763
               })
             ]);
             __iced_deferrals._fulfill();
@@ -8356,9 +8372,19 @@ GenericAddon = (function() {
       });
     })(this)((function(_this) {
       return function() {
-        var _ref;
+        var _i, _len, _ref, _ref1;
         if (((_ref = _this.data) != null ? _ref.standardized : void 0) != null) {
-          _this.removeStandardized();
+          isLastShip = true;
+          _ref1 = _this.ship.builder.ships;
+          for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+            ship = _ref1[_i];
+            if ((ship.data != null) && (_this.ship.data.name === ship.data.name) && (_this.ship !== ship)) {
+              isLastShip = false;
+            }
+          }
+          if (isLastShip === true) {
+            _this.removeStandardized();
+          }
         }
         _this.destroyed = true;
         _this.rescindAddons();
@@ -8494,7 +8520,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 6842
+                  lineno: 6857
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -8521,7 +8547,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 6849
+                      lineno: 6864
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -8664,7 +8690,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 6921
+            lineno: 6936
           }));
         }
         __iced_deferrals._fulfill();
