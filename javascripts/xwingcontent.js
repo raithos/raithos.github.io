@@ -13769,18 +13769,18 @@ exportObj.hyperspaceCheck = function(data, faction, shipCheck) {
     shipCheck = false;
   }
   if (shipCheck) {
-    if ((_ref = data.name, __indexOf.call(exportObj.hyperspacePilotExclusions, _ref) >= 0)) {
-      return false;
-    }
-    _ref1 = exportObj.hyperspaceShipInclusions;
-    for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
-      ship = _ref1[_i];
-      if (ship.faction === faction && (data.name === ship.name || data.ship === ship.name || (Array.isArray(data.ship) && (_ref2 = ship.name, __indexOf.call(data.ship, _ref2) >= 0)))) {
+    _ref = exportObj.hyperspaceShipInclusions;
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      ship = _ref[_i];
+      if (ship.faction === faction && (data.name === ship.name || data.ship === ship.name || (Array.isArray(data.ship) && (_ref1 = ship.name, __indexOf.call(data.ship, _ref1) >= 0)))) {
         return true;
       }
     }
     return false;
   } else {
+    if ((_ref2 = data.name, __indexOf.call(exportObj.hyperspacePilotExclusions, _ref2) >= 0)) {
+      return false;
+    }
     return _ref3 = data.name, __indexOf.call(exportObj.hyperspaceUpgradeExclusions, _ref3) < 0;
   }
 };
@@ -16978,7 +16978,7 @@ exportObj.cardLoaders.English = function() {
       text: "<strong>Setup:</strong> After placing forces, choose an enemy ship. It gains 2 stress tokens. %LINEBREAK% While you defend, if the attacker is stressed, you may reroll 1 defense die."
     },
     "Commander Malarus": {
-      text: "<strong>Setup:</strong> Equip this side face up. %LINEBREAK% While a friendly non-limited ship at range 0-1 performs a primary attack, that ship may reroll 1 blank result. If it does and the attack does not hit, you <b>must</b> flip thiss card. %LINEBREAK%<strong>Perfected:</strong> While you perform an attack, if the defender is in your %BULLSEYEARC%, you <b>must</b> convert all %FOCUS% results to %HIT% results and gain 1 stress token. Then, if you have 2 or more stress tokens, suffer 1 %HIT% damage."
+      text: "<strong>Setup:</strong> Equip this side face up. %LINEBREAK% While a friendly non-limited ship at range 0-1 performs a primary attack, that ship may reroll 1 blank result. If it does and the attack does not hit, you <b>must</b> flip this card. %LINEBREAK%<strong>Perfected:</strong> While you perform an attack, if the defender is in your %BULLSEYEARC%, you <b>must</b> convert all %FOCUS% results to %HIT% results and gain 1 stress token. Then, if you have 2 or more stress tokens, suffer 1 %HIT% damage."
     },
     "Automated Target Priority": {
       text: "While you perform an attack, you <b>must</b> choose a defender at the closest valid attack range. %LINEBREAK% After you perform an attack that missed, place 1 calculate token on this card. %LINEBREAK% Before you engage, you may remove 1 calculate token from this card to gain a matching token."
