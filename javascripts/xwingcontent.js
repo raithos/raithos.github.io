@@ -13921,8 +13921,8 @@ exportObj.translations.English = {
     collectionContentShips: function(translator, number) {
       return "You have " + number + " ship " + (number === 1 ? 'model' : 'models') + " in your collection.";
     },
-    collectionContentShipsAndPilots: function(translator, ships, pilots) {
-      return "You have " + ships + " ship " + (ships === 1 ? 'model' : 'models') + " and " + pilots + " pilot " + (pilots === 1 ? 'card' : 'cards') + " in your collection.";
+    collectionContentShipsAndPilots: function(translator, data) {
+      return "You have " + data[0] + " ship " + (data[0] === 1 ? 'model' : 'models') + " and " + data[1] + " pilot " + (data[1] === 1 ? 'card' : 'cards') + " in your collection.";
     },
     collectionContentUpgrades: function(translator, number) {
       return "You have " + number + " in your collection.";

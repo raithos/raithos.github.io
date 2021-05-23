@@ -273,8 +273,8 @@ exportObj.translations.Deutsch = {
     collectionContentShips: function(translator, number) {
       return "Du hast " + number + " " + (number === 1 ? 'Schiffsmodell' : 'Schiffsmodelle') + " in deiner Sammlung.";
     },
-    collectionContentShipsAndPilots: function(translator, ships, pilots) {
-      return "Du hast " + ships + " " + (ships === 1 ? 'Schiffsmodell' : 'Schiffsmodelle') + " und " + pilots + " " + (pilots === 1 ? 'Pilotenkarte' : 'Pilotenkarten') + " in deiner Sammlung.";
+    collectionContentShipsAndPilots: function(translator, data) {
+      return "Du hast " + data[0] + " " + (data[0] === 1 ? 'Schiffsmodell' : 'Schiffsmodelle') + " und " + data[1] + " " + (data[1] === 1 ? 'Pilotenkarte' : 'Pilotenkarten') + " in deiner Sammlung.";
     },
     collectionContentUpgrades: function(translator, number) {
       return "Du hast " + number + " in deiner Sammlung.";
