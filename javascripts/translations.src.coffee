@@ -276,7 +276,7 @@ is an authorization system which lets you prove your identity at a web site with
         collectionContentShips: (translator, number) ->
             "Du hast #{number} #{if number == 1 then 'Schiffsmodell' else 'Schiffsmodelle'} in deiner Sammlung."
         collectionContentShipsAndPilots: (translator, ships, pilots) ->
-            "Du hast #{ships} #{if ships == 1 then 'Schiffsmodell' else 'Schiffsmodelle'} und #{pilots} #{if ships == 1 then 'Pilotenkarte' else 'Pilotenkarten'} in deiner Sammlung."
+            "Du hast #{ships} #{if ships == 1 then 'Schiffsmodell' else 'Schiffsmodelle'} und #{pilots} #{if pilots == 1 then 'Pilotenkarte' else 'Pilotenkarten'} in deiner Sammlung."
         collectionContentUpgrades: (translator, number) ->
             "Du hast #{number} in deiner Sammlung."
         varPointCostsPoints: (translator, points) ->

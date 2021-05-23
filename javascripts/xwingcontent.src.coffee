@@ -21612,7 +21612,7 @@ exportObj.translations.English =
         collectionContentShips: (translator, number) ->
             "You have #{number} ship #{if number == 1 then 'model' else 'models'} in your collection."
         collectionContentShipsAndPilots: (translator, ships, pilots) ->
-            "You have #{ships} ship #{if ships == 1 then 'model' else 'models'} and #{pilots} pilot #{if ships == 1 then 'card' else 'cards'} in your collection."
+            "You have #{ships} ship #{if ships == 1 then 'model' else 'models'} and #{pilots} pilot #{if pilots == 1 then 'card' else 'cards'} in your collection."
         collectionContentUpgrades: (translator, number) ->
             "You have #{number} in your collection."
         varPointCostsPoints: (translator, points) ->

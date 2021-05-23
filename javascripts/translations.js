@@ -274,7 +274,7 @@ exportObj.translations.Deutsch = {
       return "Du hast " + number + " " + (number === 1 ? 'Schiffsmodell' : 'Schiffsmodelle') + " in deiner Sammlung.";
     },
     collectionContentShipsAndPilots: function(translator, ships, pilots) {
-      return "Du hast " + ships + " " + (ships === 1 ? 'Schiffsmodell' : 'Schiffsmodelle') + " und " + pilots + " " + (ships === 1 ? 'Pilotenkarte' : 'Pilotenkarten') + " in deiner Sammlung.";
+      return "Du hast " + ships + " " + (ships === 1 ? 'Schiffsmodell' : 'Schiffsmodelle') + " und " + pilots + " " + (pilots === 1 ? 'Pilotenkarte' : 'Pilotenkarten') + " in deiner Sammlung.";
     },
     collectionContentUpgrades: function(translator, number) {
       return "Du hast " + number + " in deiner Sammlung.";
