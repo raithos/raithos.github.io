@@ -3130,7 +3130,6 @@ class exportObj.SquadBuilder
                 </div>
             </div>
         """
-        
 
         @ship_container = $ content_container.find('div.ship-container')
         @info_container = $ content_container.find('div.info-container')
@@ -3139,6 +3138,8 @@ class exportObj.SquadBuilder
         @notes = $ @notes_container.find('textarea.squad-notes')
         @tag = $ @notes_container.find('input.squad-tag')
 
+        @ship_container.sortable
+            cancel: '.unsortable'
 
         @info_container.append $.trim @createInfoContainerUI()
         @info_container.hide()
@@ -3354,6 +3355,11 @@ class exportObj.SquadBuilder
             if @game_type_selector.val() != gameType
                 @game_type_selector.val(gameType).trigger('change')
 
+        @ship_container.on 'sortstart', (e, ui) =>
+            @oldIndex = ui.item.index()
+        .on 'sortstop', (e, ui) =>
+            @updateShipOrder(@oldIndex, ui.item.index())
+
         @obstacles_select.change (e) =>
             if @obstacles_select.val().length > 3
                 @obstacles_select.val(@current_squad.additional_data.obstacles)
@@ -3510,6 +3516,7 @@ class exportObj.SquadBuilder
         @ships.splice(oldpos, 1)
         @ships.splice(newpos, 0, selectedShip)
         @updatePermaLink
+        @container.trigger 'xwing-backend:squadDirtinessChanged'
 
     updatePermaLink: () =>
         return unless @container.is(':visible') # gross but couldn't make clearInterval work
