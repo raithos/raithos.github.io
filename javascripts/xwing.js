@@ -3408,7 +3408,7 @@ exportObj.SquadBuilder = (function() {
     content_container = $(document.createElement('DIV'));
     content_container.addClass('container-fluid');
     this.container.append(content_container);
-    content_container.append($.trim("<div class=\"row\">\n    <div id=\"sort\" class=\"col-md-9 ship-container\">\n        <label class=\"unsortable notes-container show-authenticated col-md-10\">\n            <span class=\"notes-name translated\" defaultText=\"Squad Notes:\"></span>\n            <br />\n            <textarea class=\"squad-notes\"></textarea>\n            <br />\n            <span class=\"tag-name translated\" defaultText=\"Tag:\"></span>\n            <input type=\"search\" class=\"squad-tag\"></input>\n        </label>\n        <div class=\"unsortable obstacles-container\">\n                <button class=\"btn btn-info choose-obstacles\"><i class=\"fa fa-cloud\"></i>&nbsp;<span class=\"translated\" defaultText=\"Choose Obstacles\"</span></button>\n        </div>\n    </div>\n    <div class=\"col-md-3 info-container\" id=\"info-container\">\n    </div>\n</div>"));
+    content_container.append($.trim("<div class=\"row\">\n    <div class=\"col-md-9 ship-container\">\n        <label class=\"unsortable notes-container show-authenticated col-md-10\">\n            <span class=\"notes-name translated\" defaultText=\"Squad Notes:\"></span>\n            <br />\n            <textarea class=\"squad-notes\"></textarea>\n            <br />\n            <span class=\"tag-name translated\" defaultText=\"Tag:\"></span>\n            <input type=\"search\" class=\"squad-tag\"></input>\n        </label>\n        <div class=\"unsortable obstacles-container\">\n                <button class=\"btn btn-info choose-obstacles\"><i class=\"fa fa-cloud\"></i>&nbsp;<span class=\"translated\" defaultText=\"Choose Obstacles\"</span></button>\n        </div>\n    </div>\n    <div class=\"col-md-3 info-container\" id=\"info-container\">\n    </div>\n</div>"));
     this.ship_container = $(content_container.find('div.ship-container'));
     this.info_container = $(content_container.find('div.info-container'));
     this.obstacles_container = content_container.find('.obstacles-container');
@@ -9142,7 +9142,7 @@ exportObj.fromXWSUpgrade = {
   'system': 'Sensor',
   'mod': 'Modification',
   'force-power': 'Force',
-  'tacticalrelay': 'Tactical Relay'
+  'tactical-relay': 'Tactical Relay'
 };
 
 SPEC_URL = 'https://github.com/elistevens/xws-spec';
