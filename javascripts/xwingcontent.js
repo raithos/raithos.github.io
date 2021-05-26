@@ -13768,10 +13768,31 @@ exportObj.hyperspaceCheck = function(data, faction, shipCheck) {
   if (shipCheck == null) {
     shipCheck = false;
   }
-  if ((_ref = data.name, __indexOf.call(exportObj.hyperspacePilotExclusions, _ref) >= 0)) {
-    return false;
-  }
   if (shipCheck) {
+    if ((_ref = data.name, __indexOf.call(exportObj.hyperspacePilotExclusions, _ref) >= 0)) {
+      return false;
+    }
+    _ref1 = exportObj.hyperspaceShipInclusions;
+    for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+      ship = _ref1[_i];
+      if (ship.faction === faction && (data.name === ship.name || data.ship === ship.name || (Array.isArray(data.ship) && (_ref2 = ship.name, __indexOf.call(data.ship, _ref2) >= 0)))) {
+        return true;
+      }
+    }
+    return false;
+  } else {
+    return _ref3 = data.name, __indexOf.call(exportObj.hyperspaceUpgradeExclusions, _ref3) < 0;
+  }
+};
+
+exportObj.hyperspaceCheckBrowser = function(data, faction, type) {
+  var ship, _i, _len, _ref, _ref1, _ref2, _ref3;
+  if (faction == null) {
+    faction = '';
+  }
+  if (type === 'Pilot') {
+    return _ref = data.name, __indexOf.call(exportObj.hyperspacePilotExclusions, _ref) < 0;
+  } else if (type === 'Ship') {
     _ref1 = exportObj.hyperspaceShipInclusions;
     for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
       ship = _ref1[_i];

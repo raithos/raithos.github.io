@@ -1933,7 +1933,7 @@ exportObj.CardBrowser = (function() {
         if (__indexOf.call(selected_factions, faction) < 0) {
           continue;
         }
-        hyperspace_legal = hyperspace_legal || exportObj.hyperspaceCheck(card.data, faction, card.orig_type === 'Ship');
+        hyperspace_legal = hyperspace_legal || exportObj.hyperspaceCheckBrowser(card.data, faction, card.orig_type);
       }
       if (!hyperspace_legal) {
         return false;
