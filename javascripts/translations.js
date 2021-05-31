@@ -4844,13 +4844,13 @@ exportObj.translations['Français'] = {
   ui: {
     shipSelectorPlaceholder: "Choisissez un vaisseau",
     pilotSelectorPlaceholder: "Choisissez un pilot",
-    upgradePlaceholder: function(translator, language, slot) {
-      return "" + (translator(language, 'slot', slot)) + " (sans amélioration)";
+    upgradePlaceholder: function(translator, slot) {
+      return "" + (translator('slot', slot)) + " (sans amélioration)";
     },
     modificationPlaceholder: "Pas de modification",
     titlePlaceholder: "Pas de titre",
-    upgradeHeader: function(translator, language, slot) {
-      return "" + (translator(language, 'slot', slot));
+    upgradeHeader: function(translator, slot) {
+      return "" + (translator('slot', slot));
     },
     unreleased: "inédit",
     epic: "épique",
@@ -7668,13 +7668,13 @@ exportObj.translations.Magyar = {
   ui: {
     shipSelectorPlaceholder: "Válassz egy hajót",
     pilotSelectorPlaceholder: "Válassz egy pilótát",
-    upgradePlaceholder: function(translator, language, slot) {
-      return "Nincs " + (translator(language, 'slot', slot)) + " fejlesztés";
+    upgradePlaceholder: function(translator, slot) {
+      return "Nincs " + (translator('slot', slot)) + " fejlesztés";
     },
     modificationPlaceholder: "Nincs módosítás",
     titlePlaceholder: "Nincs nevesítés",
-    upgradeHeader: function(translator, language, slot) {
-      return "" + (translator(language, 'slot', slot)) + " fejlesztés";
+    upgradeHeader: function(translator, slot) {
+      return "" + (translator('slot', slot)) + " fejlesztés";
     },
     unreleased: "kiadatlan",
     epic: "epikus",

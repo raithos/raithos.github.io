@@ -3800,12 +3800,12 @@ exportObj.translations['Français'] =
     ui:
         shipSelectorPlaceholder: "Choisissez un vaisseau"
         pilotSelectorPlaceholder: "Choisissez un pilot"
-        upgradePlaceholder: (translator, language, slot) ->
-            "#{translator language, 'slot', slot} (sans amélioration)"
+        upgradePlaceholder: (translator, slot) ->
+            "#{translator 'slot', slot} (sans amélioration)"
         modificationPlaceholder: "Pas de modification"
         titlePlaceholder: "Pas de titre"
-        upgradeHeader: (translator, language, slot) ->
-            "#{translator language, 'slot', slot}"
+        upgradeHeader: (translator, slot) ->
+            "#{translator 'slot', slot}"
         unreleased: "inédit"
         epic: "épique"
         limited: "limité"
@@ -5963,12 +5963,12 @@ exportObj.translations.Magyar =
     ui:
         shipSelectorPlaceholder: "Válassz egy hajót"
         pilotSelectorPlaceholder: "Válassz egy pilótát"
-        upgradePlaceholder: (translator, language, slot) ->
-            "Nincs #{translator language, 'slot', slot} fejlesztés"
+        upgradePlaceholder: (translator, slot) ->
+            "Nincs #{translator 'slot', slot} fejlesztés"
         modificationPlaceholder: "Nincs módosítás"
         titlePlaceholder: "Nincs nevesítés"
-        upgradeHeader: (translator, language, slot) ->
-            "#{translator language, 'slot', slot} fejlesztés"
+        upgradeHeader: (translator, slot) ->
+            "#{translator 'slot', slot} fejlesztés"
         unreleased: "kiadatlan"
         epic: "epikus"
         limited: "korlátozott"
