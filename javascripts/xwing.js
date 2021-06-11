@@ -2399,7 +2399,7 @@ exportObj.setupTranslationSupport = function() {
   (function(builders) {
     return $(exportObj).on('xwing:languageChanged', (function(_this) {
       return function(e, language, cb) {
-        var builder, current_language, html, selector, ___iced_passed_deferral, __iced_deferrals, __iced_k;
+        var builder, current_language, ___iced_passed_deferral, __iced_deferrals, __iced_k;
         __iced_k = __iced_k_noop;
         ___iced_passed_deferral = iced.findDeferral(arguments);
         if (cb == null) {
@@ -2441,15 +2441,9 @@ exportObj.setupTranslationSupport = function() {
             };
             _while(__iced_k);
           })(function() {
-            var _i, _len, _ref;
+            var _i, _len;
             if (language !== current_language) {
               exportObj.loadCards(language);
-            }
-            _ref = exportObj.translations[language].byCSSSelector;
-            for (selector in _ref) {
-              if (!__hasProp.call(_ref, selector)) continue;
-              html = _ref[selector];
-              $(selector).html(html);
             }
             exportObj.translateUIElements();
             for (_i = 0, _len = builders.length; _i < _len; _i++) {
@@ -3197,7 +3191,8 @@ exportObj.SquadBuilder = (function() {
     this.randomizer_options_modal.tabindex = "-1";
     this.randomizer_options_modal.role = "dialog";
     $('body').append(this.randomizer_options_modal);
-    this.randomizer_options_modal.append($.trim(("<div class=\"modal-dialog modal-dialog-scrollable modal-dialog-centered\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <h3 class=\"translated\" defaultText=\"Random Squad Builder Options\"></h3>\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n        </div>\n        <div class=\"modal-body\">\n            <form>\n                <label>\n                    <span class=\"translated\" defaultText=\"Maximal desired bid\"><span>\n                    <input type=\"number\" class=\"randomizer-bid-goal\" value=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" placeholder=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" />\n                </label><br />\n                <label>\n                    <span class=\"translated\" defaultText=\"Maximum Ship Count\"></span>\n                    <input type=\"number\" class=\"randomizer-ship-limit\" value=\"" + DEFAULT_RANDOMIZER_SHIP_LIMIT + "\" placeholder=\"" + DEFAULT_RANDOMIZER_SHIP_LIMIT + "\" />\n                </label><br />\n                <label>\n                    <span class=\"translated\" defaultText=\"More upgrades\"></span>\n                    <input type=\"range\" min=\"0\" max=\"10\" class=\"randomizer-ships-or-upgrades\" value=\"" + DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES + "\" placeholder=\"" + DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES + "\" />\n                    <span class=\"translated\" defaultText=\"Less upgrades\"></span>\n                </label><br />\n                <label>\n                    <input type=\"checkbox\" class=\"randomizer-collection-only\" checked=\"checked\"/> \n                    <span class=\"translated\" defaultText=\"Limit to collection\"></span>\n                </label><br />\n                <label>\n                    <span class=\"translated\" defaultText=\"Sets and Expansions\"></span>\n                    <select class=\"randomizer-sources\" multiple=\"1\" data-placeholder='") + this.uitranslation('All sets and expansions') + ("'>\n                    </select>\n                </label><br />\n                <label>\n                    <input type=\"checkbox\" class=\"randomizer-fill-zero-pts\" /> \n                    <span class=\"translated\" defaultText=\"Always fill 0-point slots\"></span>\n                </label><br />\n                <label>\n                    <span class=\"translated\" defaultText=\"Maximum Seconds to Spend Randomizing\"></span>\n                    <input type=\"number\" class=\"randomizer-timeout\" value=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" placeholder=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" />\n                </label>\n            </form>\n        </div>\n        <div class=\"modal-footer\">\n            <button class=\"btn btn-primary do-randomize translated\" aria-hidden=\"true\" defaultText=\"Roll!\"></button>\n            <button class=\"btn translated\" data-dismiss=\"modal\" aria-hidden=\"true\" defaultText=\"Close\"></button>\n        </div>\n    </div>\n</div>")));
+    this.randomizer_options_modal.append($.trim(("<div class=\"modal-dialog modal-dialog-scrollable modal-dialog-centered\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <h3 class=\"translated\" defaultText=\"Random Squad Builder Options\"></h3>\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n        </div>\n        <div class=\"modal-body\">\n            <form>\n                <label>\n                    <span class=\"translated\" defaultText=\"Maximal desired bid\"></span>\n                    <input type=\"number\" class=\"randomizer-bid-goal\" value=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" placeholder=\"" + DEFAULT_RANDOMIZER_BID_GOAL + "\" />\n                </label><br />\n                <label>\n                    <span class=\"translated\" defaultText=\"Maximum Ship Count\"></span>\n                    <input type=\"number\" class=\"randomizer-ship-limit\" value=\"" + DEFAULT_RANDOMIZER_SHIP_LIMIT + "\" placeholder=\"" + DEFAULT_RANDOMIZER_SHIP_LIMIT + "\" />\n                </label><br />\n                <label>\n                    <span class=\"translated\" defaultText=\"More upgrades\"></span>\n                    <input type=\"range\" min=\"0\" max=\"10\" class=\"randomizer-ships-or-upgrades\" value=\"" + DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES + "\" placeholder=\"" + DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES + "\" />\n                    <span class=\"translated\" defaultText=\"Less upgrades\"></span>\n                </label><br />\n                <label>\n                    <input type=\"checkbox\" class=\"randomizer-collection-only\" checked=\"checked\"/> \n                    <span class=\"translated\" defaultText=\"Limit to collection\"></span>\n                </label><br />\n                <label>\n                    <span class=\"translated\" defaultText=\"Sets and Expansions\"></span>\n                    <select class=\"randomizer-sources\" multiple=\"1\" data-placeholder='") + this.uitranslation('All sets and expansions') + ("'>\n                    </select>\n                </label><br />\n                <label>\n                    <input type=\"checkbox\" class=\"randomizer-fill-zero-pts\" /> \n                    <span class=\"translated\" defaultText=\"Always fill 0-point slots\"></span>\n                </label><br />\n                <label>\n                    <span class=\"translated\" defaultText=\"Maximum Seconds to Spend Randomizing\"></span>\n                    <input type=\"number\" class=\"randomizer-timeout\" value=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" placeholder=\"" + DEFAULT_RANDOMIZER_TIMEOUT_SEC + "\" />\n                </label>\n            </form>\n        </div>\n        <div class=\"modal-footer\">\n            <button class=\"btn btn-primary do-randomize translated\" aria-hidden=\"true\" defaultText=\"Roll!\"></button>\n            <button class=\"btn translated\" data-dismiss=\"modal\" aria-hidden=\"true\" defaultText=\"Close\"></button>\n        </div>\n    </div>\n</div>")));
+    exportObj.translateUIElements(this.randomizer_options_modal);
     this.randomizer_source_selector = $(this.randomizer_options_modal.find('select.randomizer-sources'));
     _ref = exportObj.expansions;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -3334,7 +3329,7 @@ exportObj.SquadBuilder = (function() {
     this.choose_obstacles_modal.tabindex = "-1";
     this.choose_obstacles_modal.role = "dialog";
     this.container.append(this.choose_obstacles_modal);
-    this.choose_obstacles_modal.append($.trim("<div class=\"modal-dialog modal-dialog-centered modal-dialog-scrollable\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <label class='choose-obstacles-description translated' defaultText=\"Choose obstacles dialog\"></label>\n        </div>\n        <div class=\"modal-body\">\n            <div class=\"obstacle-select-container\" style=\"float:left\">\n                <select multiple class='obstacle-select' size=\"18\">\n                    <option class=\"coreasteroid0-select\" value=\"coreasteroid0\">Core Asteroid 0</option>\n                    <option class=\"coreasteroid1-select\" value=\"coreasteroid1\">Core Asteroid 1</option>\n                    <option class=\"coreasteroid2-select\" value=\"coreasteroid2\">Core Asteroid 2</option>\n                    <option class=\"coreasteroid3-select\" value=\"coreasteroid3\">Core Asteroid 3</option>\n                    <option class=\"coreasteroid4-select\" value=\"coreasteroid4\">Core Asteroid 4</option>\n                    <option class=\"coreasteroid5-select\" value=\"coreasteroid5\">Core Asteroid 5</option>\n                    <option class=\"yt2400debris0-select\" value=\"yt2400debris0\">YT2400 Debris 0</option>\n                    <option class=\"yt2400debris1-select\" value=\"yt2400debris1\">YT2400 Debris 1</option>\n                    <option class=\"yt2400debris2-select\" value=\"yt2400debris2\">YT2400 Debris 2</option>\n                    <option class=\"vt49decimatordebris0-select\" value=\"vt49decimatordebris0\">VT49 Debris 0</option>\n                    <option class=\"vt49decimatordebris1-select\" value=\"vt49decimatordebris1\">VT49 Debris 1</option>\n                    <option class=\"vt49decimatordebris2-select\" value=\"vt49decimatordebris2\">VT49 Debris 2</option>\n                    <option class=\"core2asteroid0-select\" value=\"core2asteroid0\">Force Awakens Asteroid 0</option>\n                    <option class=\"core2asteroid1-select\" value=\"core2asteroid1\">Force Awakens Asteroid 2</option>\n                    <option class=\"core2asteroid2-select\" value=\"core2asteroid2\">Force Awakens Asteroid 3</option>\n                    <option class=\"core2asteroid3-select\" value=\"core2asteroid3\">Force Awakens Asteroid 4</option>\n                    <option class=\"core2asteroid4-select\" value=\"core2asteroid4\">Force Awakens Asteroid 5</option>\n                    <option class=\"core2asteroid5-select\" value=\"core2asteroid5\">Force Awakens Asteroid 6</option>\n                    <option class=\"gascloud1-select\" value=\"gascloud1\">Gas Cloud 1</option>\n                    <option class=\"gascloud2-select\" value=\"gascloud2\">Gas Cloud 2</option>\n                    <option class=\"gascloud3-select\" value=\"gascloud3\">Gas Cloud 3</option>\n                    <option class=\"gascloud4-select\" value=\"gascloud4\">Gas Cloud 4</option>\n                    <option class=\"gascloud5-select\" value=\"gascloud5\">Gas Cloud 5</option>\n                    <option class=\"gascloud6-select\" value=\"gascloud6\">Gas Cloud 6</option>\n                </select>\n            </div>\n            <div class=\"obstacle-image-container\" style=\"display:none;\">\n                <img class=\"obstacle-image\" src=\"images/core2asteroid0.png\" />\n            </div>\n        </div>\n        <div class=\"modal-footer d-print-none\">\n            <button class=\"btn close-print-dialog translated\" data-dismiss=\"modal\" aria-hidden=\"true\" defaultText=\"Close\"></button>\n        </div>\n    </div>\n</div>"));
+    this.choose_obstacles_modal.append($.trim("<div class=\"modal-dialog modal-dialog-centered modal-dialog-scrollable\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <label class='choose-obstacles-description translated' defaultText=\"Choose obstacles dialog\"></label>\n        </div>\n        <div class=\"modal-body\">\n            <div class=\"obstacle-select-container\" style=\"float:left\">\n                <select multiple class='obstacle-select' size=\"18\">\n                    <option class=\"coreasteroid0-select translated\" value=\"coreasteroid0\" defaultText=\"Core Asteroid 0\"></option>\n                    <option class=\"coreasteroid1-select translated\" value=\"coreasteroid1\" defaultText=\"Core Asteroid 1\"></option>\n                    <option class=\"coreasteroid2-select translated\" value=\"coreasteroid2\" defaultText=\"Core Asteroid 2\"></option>\n                    <option class=\"coreasteroid3-select translated\" value=\"coreasteroid3\" defaultText=\"Core Asteroid 3\"></option>\n                    <option class=\"coreasteroid4-select translated\" value=\"coreasteroid4\" defaultText=\"Core Asteroid 4\"></option>\n                    <option class=\"coreasteroid5-select translated\" value=\"coreasteroid5\" defaultText=\"Core Asteroid 5\"></option>\n                    <option class=\"yt2400debris0-select translated\" value=\"yt2400debris0\" defaultText=\"YT2400 Debris 0\"></option>\n                    <option class=\"yt2400debris1-select translated\" value=\"yt2400debris1\" defaultText=\"YT2400 Debris 1\"></option>\n                    <option class=\"yt2400debris2-select translated\" value=\"yt2400debris2\" defaultText=\"YT2400 Debris 2\"></option>\n                    <option class=\"vt49decimatordebris0-select translated\" value=\"vt49decimatordebris0\" defaultText=\"VT49 Debris 0\"></option>\n                    <option class=\"vt49decimatordebris1-select translated\" value=\"vt49decimatordebris1\" defaultText=\"VT49 Debris 1\"></option>\n                    <option class=\"vt49decimatordebris2-select translated\" value=\"vt49decimatordebris2\" defaultText=\"VT49 Debris 2\"></option>\n                    <option class=\"core2asteroid0-select translated\" value=\"core2asteroid0\" defaultText=\"Force Awakens Asteroid 0\"></option>\n                    <option class=\"core2asteroid1-select translated\" value=\"core2asteroid1\" defaultText=\"Force Awakens Asteroid 1\"></option>\n                    <option class=\"core2asteroid2-select translated\" value=\"core2asteroid2\" defaultText=\"Force Awakens Asteroid 2\"></option>\n                    <option class=\"core2asteroid3-select translated\" value=\"core2asteroid3\" defaultText=\"Force Awakens Asteroid 3\"></option>\n                    <option class=\"core2asteroid4-select translated\" value=\"core2asteroid4\" defaultText=\"Force Awakens Asteroid 4\"></option>\n                    <option class=\"core2asteroid5-select translated\" value=\"core2asteroid5\" defaultText=\"Force Awakens Asteroid 5\"></option>\n                    <option class=\"gascloud1-select translated\" value=\"gascloud1\"><span class=\"translated\" defaultText=\"Gas Cloud 1\"></span></option>\n                    <option class=\"gascloud2-select translated\" value=\"gascloud2\"><span class=\"translated\" defaultText=\"Gas Cloud 2\"></span></option>\n                    <option class=\"gascloud3-select translated\" value=\"gascloud3\"><span class=\"translated\" defaultText=\"Gas Cloud 3\"></span></option>\n                    <option class=\"gascloud4-select translated\" value=\"gascloud4\"><span class=\"translated\" defaultText=\"Gas Cloud 4\"></span></option>\n                    <option class=\"gascloud5-select translated\" value=\"gascloud5\"><span class=\"translated\" defaultText=\"Gas Cloud 5\"></span></option>\n                    <option class=\"gascloud6-select translated\" value=\"gascloud6\"><span class=\"translated\" defaultText=\"Gas Cloud 6\"></span></option>\n                </select>\n            </div>\n            <div class=\"obstacle-image-container\" style=\"display:none;\">\n                <img class=\"obstacle-image\" src=\"images/core2asteroid0.png\" />\n            </div>\n        </div>\n        <div class=\"modal-footer d-print-none\">\n            <button class=\"btn close-print-dialog translated\" data-dismiss=\"modal\" aria-hidden=\"true\" defaultText=\"Close\"></button>\n        </div>\n    </div>\n</div>"));
     this.obstacles_select = this.choose_obstacles_modal.find('.obstacle-select');
     this.obstacles_select_image = this.choose_obstacles_modal.find('.obstacle-image-container');
     this.backend_list_squads_button = $(this.container.find('button.backend-list-my-squads'));
@@ -3375,7 +3370,7 @@ exportObj.SquadBuilder = (function() {
                   return results = arguments[0];
                 };
               })(),
-              lineno: 3079
+              lineno: 3080
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -4299,7 +4294,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 3941
+              lineno: 3942
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -4309,7 +4304,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 3942
+                lineno: 3943
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -6515,7 +6510,7 @@ Ship = (function() {
                   funcname: "Ship.destroy"
                 });
                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                  lineno: 5526
+                  lineno: 5527
                 }));
                 __iced_deferrals._fulfill();
               })(__iced_k);
@@ -6740,7 +6735,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 5644
+                          lineno: 5645
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -6790,7 +6785,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 5677
+                                  lineno: 5678
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -6888,7 +6883,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 5735
+                      lineno: 5736
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -6970,7 +6965,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 5766
+                lineno: 5767
               })
             ]);
             __iced_deferrals._fulfill();
@@ -7039,7 +7034,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 5795
+              lineno: 5796
             }));
           }
         }
@@ -7131,7 +7126,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 5851
+                lineno: 5852
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -8387,7 +8382,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 6781
+                lineno: 6782
               })
             ]);
             __iced_deferrals._fulfill();
@@ -8546,7 +8541,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 6875
+                  lineno: 6876
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -8573,7 +8568,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 6882
+                      lineno: 6883
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -8716,7 +8711,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 6954
+            lineno: 6955
           }));
         }
         __iced_deferrals._fulfill();
