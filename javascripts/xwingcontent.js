@@ -15704,7 +15704,7 @@ exportObj.cardLoaders.English = function() {
     },
     "Commander Malarus (Xi Shuttle)": {
       display_name: "Commander Malarus",
-      text: "While a friendly ship at range 0-2 performs a primary attack, if it has 1 or more blank results, that ship <b>must</b> gain 1 strain token to reroll 1 blank result, if able."
+      text: "While a friendly ship at range 0-2 performs a primary attack, before the Modify Dice step, if it has 1 or more blank results, that ship <b>must</b> gain 1 strain token to reroll 1 blank result, if able. %LINEBREAK% <i>Errata (RR: 1.2.0 [06/14/2021]): Added a specific timing window to prevent players from circumventing the downsides of the Pilot Ability</i>"
     },
     "Gideon Hask (Xi Shuttle)": {
       display_name: "Gideon Hask",
@@ -15741,14 +15741,14 @@ exportObj.cardLoaders.English = function() {
     },
     "Hera Syndulla (B-Wing)": {
       display_name: "Hera Syndulla",
-      text: "While another friendly ship at range 1-2 defends or performs an attack, you may transfer 1 of your focus tokens, evade tokens, or locks to that ship."
+      text: "While another friendly ship at range 1-2 defends or performs an attack, during a Modify Dice step, you may transfer 1 of your focus tokens, evade tokens, or locks to that ship. %LINEBREAK% <i>Errata (RR: 1.2.0 [06/14/2021]): Added a specific timing window to prevent players from circumventing the downsides of the Pilot Ability</i>"
     },
     "Netrem Pollard": {
       text: "After you barrel roll, you may choose 1 friendly ship that is not stressed at range 0-1. That ship gain's 1 stress token, then you rotate 180º."
     },
     "Hera Syndulla (A-Wing)": {
       display_name: "Hera Syndulla",
-      text: "While another friendly ship at range 1-2 defends or performs an attack, you may transfer 1 of your focus tokens, evade tokens, or locks to that ship.%LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action."
+      text: "While another friendly ship at range 1-2 defends or performs an attack, during a Modify Dice step, you may transfer 1 of your focus tokens, evade tokens, or locks to that ship.%LINEBREAK%<strong>Vectored Thrusters:</strong> After you perform an action, you may perform a red %BOOST% action. %LINEBREAK% <i>Errata (RR: 1.2.0 [06/14/2021]): Added a specific timing window to prevent players from circumventing the downsides of the Pilot Ability</i>"
     },
     "Wedge Antilles (A-Wing)": {
       display_name: "Wedge Antilles",
@@ -15810,7 +15810,7 @@ exportObj.cardLoaders.English = function() {
       text: "At the start of the End Phase, you may spend 2 %CHARGE% to choose yourself or a ship in your %SINGLETURRETARC% with 1 or more circular tokens. During the End Phase, circular tokens are not removed from that ship."
     },
     "Arliz Hadrassian": {
-      text: "While you perform a %FRONTARC% attack, if you are damaged, you may change 1 of your %FOCUS% results to a %CRIT% result. %LINEBREAK% While you defend, if you are damaged, you <b>must</b> change 1 of your %FOCUS% results to a blank result."
+      text: "While you perform a %FRONTARC% attack, if you are damaged,before the Modify Dice step, you may change 1 of your %FOCUS% results to a %CRIT% result. %LINEBREAK% While you defend, if you are damaged, you <b>must</b> change 1 of your %FOCUS% results to a blank result. %LINEBREAK% <i>Errata (RR: 1.2.0 [06/14/2021]): Added a specific timing window to prevent players from circumventing the downsides of the Pilot Ability</i>"
     },
     "Leema Kai": {
       text: "Before you engage, if you are not in any enemy ship's %FRONTARC%, you may acquire a lock on an enemy ship in your %FULLFRONTARC%."
@@ -17113,7 +17113,7 @@ exportObj.cardLoaders.English = function() {
       text: "Before you execute a speed 1-2 turn (%TURNLEFT% or %TURNRIGHT%) or speed 1-2 Koiogran Turn (%KTURN%), if you are at range 0-1 of an asteroid, structure, or huge ship, you may gain 1 tractor token."
     },
     "Protectorate Gleb": {
-      text: "After you coordinate, you may transfer 1 orange or red token to the ship you coordinated."
+      text: "After you coordinate a friendly ship, you may transfer 1 orange or red token to the ship you coordinated. %LINEBREAK% <i>Errata (RR: 1.2.0 [06/14/2021]): Added restriction stipulating friendly ship</i>"
     },
     "R4-B11": {
       text: "While you perform an attack, you may remove 1 orange or red token from the defender to reroll any number of defense dice"
