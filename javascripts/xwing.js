@@ -7420,9 +7420,19 @@ Ship = (function() {
     this.copy_button = $(this.row.find('button.copy-pilot'));
     this.copy_button.click((function(_this) {
       return function(e) {
-        var clone;
-        clone = _this.builder.ships[_this.builder.ships.length - 1];
-        return clone.copyFrom(_this);
+        var ship, _i, _len, _ref, _results;
+        _ref = _this.builder.ships;
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          ship = _ref[_i];
+          if (ship.row.hasClass("unsortable")) {
+            ship.copyFrom(_this);
+            break;
+          } else {
+            _results.push(void 0);
+          }
+        }
+        return _results;
       };
     })(this));
     this.copy_button.hide();
@@ -8382,7 +8392,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 6782
+                lineno: 6784
               })
             ]);
             __iced_deferrals._fulfill();
@@ -8541,7 +8551,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 6876
+                  lineno: 6878
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -8568,7 +8578,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 6883
+                      lineno: 6885
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -8711,7 +8721,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 6955
+            lineno: 6957
           }));
         }
         __iced_deferrals._fulfill();
