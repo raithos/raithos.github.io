@@ -4,7 +4,7 @@
     Stephen Kim <raithos@gmail.com>
     https://raithos.github.io
  */
-var DFL_LANGUAGE, GenericAddon, SERIALIZATION_CODE_TO_CLASS, SHOW_DEBUG_OUT_MISSING_TRANSLATIONS, SPEC_URL, SQUAD_DISPLAY_NAME_MAX_LENGTH, Ship, TYPES, URL_BASE, all, builders, byName, byPoints, conditionToHTML, exportObj, getPrimaryFaction, statAndEffectiveStat,
+var DFL_LANGUAGE, GenericAddon, SERIALIZATION_CODE_TO_CLASS, SHOW_DEBUG_OUT_MISSING_TRANSLATIONS, SPEC_URL, SQUAD_DISPLAY_NAME_MAX_LENGTH, SQUAD_TO_XWS_URL, Ship, TYPES, URL_BASE, all, builders, byName, byPoints, conditionToHTML, exportObj, getPrimaryFaction, statAndEffectiveStat,
   __slice = [].slice,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
@@ -3329,7 +3329,7 @@ exportObj.SquadBuilder = (function() {
     this.choose_obstacles_modal.tabindex = "-1";
     this.choose_obstacles_modal.role = "dialog";
     this.container.append(this.choose_obstacles_modal);
-    this.choose_obstacles_modal.append($.trim("<div class=\"modal-dialog modal-dialog-centered modal-dialog-scrollable\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <label class='choose-obstacles-description translated' defaultText=\"Choose obstacles dialog\"></label>\n        </div>\n        <div class=\"modal-body\">\n            <div class=\"obstacle-select-container\" style=\"float:left\">\n                <select multiple class='obstacle-select' size=\"18\">\n                    <option class=\"coreasteroid0-select translated\" value=\"coreasteroid0\" defaultText=\"Core Asteroid 0\"></option>\n                    <option class=\"coreasteroid1-select translated\" value=\"coreasteroid1\" defaultText=\"Core Asteroid 1\"></option>\n                    <option class=\"coreasteroid2-select translated\" value=\"coreasteroid2\" defaultText=\"Core Asteroid 2\"></option>\n                    <option class=\"coreasteroid3-select translated\" value=\"coreasteroid3\" defaultText=\"Core Asteroid 3\"></option>\n                    <option class=\"coreasteroid4-select translated\" value=\"coreasteroid4\" defaultText=\"Core Asteroid 4\"></option>\n                    <option class=\"coreasteroid5-select translated\" value=\"coreasteroid5\" defaultText=\"Core Asteroid 5\"></option>\n                    <option class=\"yt2400debris0-select translated\" value=\"yt2400debris0\" defaultText=\"YT2400 Debris 0\"></option>\n                    <option class=\"yt2400debris1-select translated\" value=\"yt2400debris1\" defaultText=\"YT2400 Debris 1\"></option>\n                    <option class=\"yt2400debris2-select translated\" value=\"yt2400debris2\" defaultText=\"YT2400 Debris 2\"></option>\n                    <option class=\"vt49decimatordebris0-select translated\" value=\"vt49decimatordebris0\" defaultText=\"VT49 Debris 0\"></option>\n                    <option class=\"vt49decimatordebris1-select translated\" value=\"vt49decimatordebris1\" defaultText=\"VT49 Debris 1\"></option>\n                    <option class=\"vt49decimatordebris2-select translated\" value=\"vt49decimatordebris2\" defaultText=\"VT49 Debris 2\"></option>\n                    <option class=\"core2asteroid0-select translated\" value=\"core2asteroid0\" defaultText=\"Force Awakens Asteroid 0\"></option>\n                    <option class=\"core2asteroid1-select translated\" value=\"core2asteroid1\" defaultText=\"Force Awakens Asteroid 1\"></option>\n                    <option class=\"core2asteroid2-select translated\" value=\"core2asteroid2\" defaultText=\"Force Awakens Asteroid 2\"></option>\n                    <option class=\"core2asteroid3-select translated\" value=\"core2asteroid3\" defaultText=\"Force Awakens Asteroid 3\"></option>\n                    <option class=\"core2asteroid4-select translated\" value=\"core2asteroid4\" defaultText=\"Force Awakens Asteroid 4\"></option>\n                    <option class=\"core2asteroid5-select translated\" value=\"core2asteroid5\" defaultText=\"Force Awakens Asteroid 5\"></option>\n                    <option class=\"gascloud1-select translated\" value=\"gascloud1\"><span class=\"translated\" defaultText=\"Gas Cloud 1\"></span></option>\n                    <option class=\"gascloud2-select translated\" value=\"gascloud2\"><span class=\"translated\" defaultText=\"Gas Cloud 2\"></span></option>\n                    <option class=\"gascloud3-select translated\" value=\"gascloud3\"><span class=\"translated\" defaultText=\"Gas Cloud 3\"></span></option>\n                    <option class=\"gascloud4-select translated\" value=\"gascloud4\"><span class=\"translated\" defaultText=\"Gas Cloud 4\"></span></option>\n                    <option class=\"gascloud5-select translated\" value=\"gascloud5\"><span class=\"translated\" defaultText=\"Gas Cloud 5\"></span></option>\n                    <option class=\"gascloud6-select translated\" value=\"gascloud6\"><span class=\"translated\" defaultText=\"Gas Cloud 6\"></span></option>\n                </select>\n            </div>\n            <div class=\"obstacle-image-container\" style=\"display:none;\">\n                <img class=\"obstacle-image\" src=\"images/core2asteroid0.png\" />\n            </div>\n        </div>\n        <div class=\"modal-footer d-print-none\">\n            <button class=\"btn close-print-dialog translated\" data-dismiss=\"modal\" aria-hidden=\"true\" defaultText=\"Close\"></button>\n        </div>\n    </div>\n</div>"));
+    this.choose_obstacles_modal.append($.trim("<div class=\"modal-dialog modal-dialog-centered modal-dialog-scrollable\" role=\"document\">\n    <div class=\"modal-content\">\n        <div class=\"modal-header\">\n            <label class='choose-obstacles-description translated' defaultText=\"Choose obstacles dialog\"></label>\n        </div>\n        <div class=\"modal-body\">\n            <div class=\"obstacle-select-container\" style=\"float:left\">\n                <select multiple class='obstacle-select' size=\"18\">\n                    <option class=\"coreasteroid0-select translated\" value=\"coreasteroid0\" defaultText=\"Core Asteroid 0\"></option>\n                    <option class=\"coreasteroid1-select translated\" value=\"coreasteroid1\" defaultText=\"Core Asteroid 1\"></option>\n                    <option class=\"coreasteroid2-select translated\" value=\"coreasteroid2\" defaultText=\"Core Asteroid 2\"></option>\n                    <option class=\"coreasteroid3-select translated\" value=\"coreasteroid3\" defaultText=\"Core Asteroid 3\"></option>\n                    <option class=\"coreasteroid4-select translated\" value=\"coreasteroid4\" defaultText=\"Core Asteroid 4\"></option>\n                    <option class=\"coreasteroid5-select translated\" value=\"coreasteroid5\" defaultText=\"Core Asteroid 5\"></option>\n                    <option class=\"yt2400debris0-select translated\" value=\"yt2400debris0\" defaultText=\"YT2400 Debris 0\"></option>\n                    <option class=\"yt2400debris1-select translated\" value=\"yt2400debris1\" defaultText=\"YT2400 Debris 1\"></option>\n                    <option class=\"yt2400debris2-select translated\" value=\"yt2400debris2\" defaultText=\"YT2400 Debris 2\"></option>\n                    <option class=\"vt49decimatordebris0-select translated\" value=\"vt49decimatordebris0\" defaultText=\"VT49 Debris 0\"></option>\n                    <option class=\"vt49decimatordebris1-select translated\" value=\"vt49decimatordebris1\" defaultText=\"VT49 Debris 1\"></option>\n                    <option class=\"vt49decimatordebris2-select translated\" value=\"vt49decimatordebris2\" defaultText=\"VT49 Debris 2\"></option>\n                    <option class=\"core2asteroid0-select translated\" value=\"core2asteroid0\" defaultText=\"Force Awakens Asteroid 0\"></option>\n                    <option class=\"core2asteroid1-select translated\" value=\"core2asteroid1\" defaultText=\"Force Awakens Asteroid 1\"></option>\n                    <option class=\"core2asteroid2-select translated\" value=\"core2asteroid2\" defaultText=\"Force Awakens Asteroid 2\"></option>\n                    <option class=\"core2asteroid3-select translated\" value=\"core2asteroid3\" defaultText=\"Force Awakens Asteroid 3\"></option>\n                    <option class=\"core2asteroid4-select translated\" value=\"core2asteroid4\" defaultText=\"Force Awakens Asteroid 4\"></option>\n                    <option class=\"core2asteroid5-select translated\" value=\"core2asteroid5\" defaultText=\"Force Awakens Asteroid 5\"></option>\n                    <option class=\"gascloud1-select translated\" value=\"gascloud1\" defaultText=\"Gas Cloud 1\"></option>\n                    <option class=\"gascloud2-select translated\" value=\"gascloud2\" defaultText=\"Gas Cloud 2\"></option>\n                    <option class=\"gascloud3-select translated\" value=\"gascloud3\" defaultText=\"Gas Cloud 3\"></option>\n                    <option class=\"gascloud4-select translated\" value=\"gascloud4\" defaultText=\"Gas Cloud 4\"></option>\n                    <option class=\"gascloud5-select translated\" value=\"gascloud5\" defaultText=\"Gas Cloud 5\"></option>\n                    <option class=\"gascloud6-select translated\" value=\"gascloud6\" defaultText=\"Gas Cloud 6\"></option>\n                </select>\n            </div>\n            <div class=\"obstacle-image-container\" style=\"display:none;\">\n                <img class=\"obstacle-image\" src=\"images/core2asteroid0.png\" />\n            </div>\n        </div>\n        <div class=\"modal-footer d-print-none\">\n            <button class=\"btn close-print-dialog translated\" data-dismiss=\"modal\" aria-hidden=\"true\" defaultText=\"Close\"></button>\n        </div>\n    </div>\n</div>"));
     this.obstacles_select = this.choose_obstacles_modal.find('.obstacle-select');
     this.obstacles_select_image = this.choose_obstacles_modal.find('.obstacle-image-container');
     this.backend_list_squads_button = $(this.container.find('button.backend-list-my-squads'));
@@ -3944,6 +3944,14 @@ exportObj.SquadBuilder = (function() {
       tts_ships.push(tts_obstacles);
     }
     this.tts_textarea.val($.trim("" + (tts_ships.join(""))));
+    this.xws_textarea.val($.trim(JSON.stringify(this.toXWS())));
+    $('#xws-qrcode-container').text('');
+    $('#xws-qrcode-container').qrcode({
+      render: 'canvas',
+      text: JSON.stringify(this.toMinimalXWS()),
+      ec: 'L',
+      size: 128
+    });
     this.bbcode_container.find('textarea').val($.trim("" + (bbcode_ships.join("\n\n")) + "\n[b][i]" + (this.uitranslation('Total')) + ": " + this.total_points + "[/i][/b]\n\n[url=" + (this.getPermaLink()) + "]" + (this.uitranslation('View in YASB')) + "[/url]"));
     this.checkCollection();
     if (typeof Set !== "undefined" && Set !== null) {
@@ -4003,18 +4011,10 @@ exportObj.SquadBuilder = (function() {
     this.backend_save_list_as_button.toggleClass('disabled', this.total_points === 0);
     this.backend_delete_list_button.toggleClass('disabled', this.current_squad.id == null);
     if (this.ships.length > 1) {
-      $('meta[property="og:description"]').attr("content", this.uitranslation("X-Wing Squadron by YASB 2.0: ") + this.current_squad.name + ": " + this.describeSquad());
+      return $('meta[property="og:description"]').attr("content", this.uitranslation("X-Wing Squadron by YASB 2.0: ") + this.current_squad.name + ": " + this.describeSquad());
     } else {
-      $('meta[property="og:description"]').attr("content", this.uitranslation("YASB advertisment"));
+      return $('meta[property="og:description"]').attr("content", this.uitranslation("YASB advertisment"));
     }
-    this.xws_textarea.val($.trim(JSON.stringify(this.toXWS())));
-    $('#xws-qrcode-container').text('');
-    return $('#xws-qrcode-container').qrcode({
-      render: 'canvas',
-      text: JSON.stringify(this.toMinimalXWS()),
-      ec: 'L',
-      size: 128
-    });
   };
 
   SquadBuilder.prototype.onSquadNameChanged = function() {
@@ -4294,7 +4294,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 3942
+              lineno: 3943
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -4304,7 +4304,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 3943
+                lineno: 3944
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -6510,7 +6510,7 @@ Ship = (function() {
                   funcname: "Ship.destroy"
                 });
                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                  lineno: 5527
+                  lineno: 5528
                 }));
                 __iced_deferrals._fulfill();
               })(__iced_k);
@@ -6735,7 +6735,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 5645
+                          lineno: 5646
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -6785,7 +6785,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 5678
+                                  lineno: 5679
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -6883,7 +6883,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 5736
+                      lineno: 5737
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -6965,7 +6965,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 5767
+                lineno: 5768
               })
             ]);
             __iced_deferrals._fulfill();
@@ -7034,7 +7034,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 5796
+              lineno: 5797
             }));
           }
         }
@@ -7126,7 +7126,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 5852
+                lineno: 5853
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -8392,7 +8392,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 6784
+                lineno: 6785
               })
             ]);
             __iced_deferrals._fulfill();
@@ -8551,7 +8551,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 6878
+                  lineno: 6879
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -8578,7 +8578,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 6885
+                      lineno: 6886
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -8721,7 +8721,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 6957
+            lineno: 6958
           }));
         }
         __iced_deferrals._fulfill();
@@ -9152,21 +9152,16 @@ exportObj.fromXWSUpgrade = {
 
 SPEC_URL = 'https://github.com/elistevens/xws-spec';
 
+SQUAD_TO_XWS_URL = 'http://squad2xws.herokuapp.com/translate/';
+
 exportObj.loadXWSButton = function(xws_import_modal) {
   var import_status;
   import_status = $(xws_import_modal.find('.xws-import-status'));
   import_status.text(exportObj.translate('ui', 'Loading...'));
   return (function(_this) {
     return function(import_status) {
-      var e, xws;
-      try {
-        xws = JSON.parse(xws_import_modal.find('.xws-content').val());
-      } catch (_error) {
-        e = _error;
-        import_status.text('Invalid JSON');
-        return;
-      }
-      return (function(xws) {
+      var e, input, jsonurl, loadxws, uuid, xws;
+      loadxws = function(xws) {
         return $(window).trigger('xwing:activateBuilder', [
           exportObj.fromXWSFaction[xws.faction], function(builder) {
             if (builder.current_squad.dirty && (builder.backend != null)) {
@@ -9190,7 +9185,19 @@ exportObj.loadXWSButton = function(xws_import_modal) {
             }
           }
         ]);
-      })(xws);
+      };
+      input = xws_import_modal.find('.xws-content').val();
+      try {
+        xws = JSON.parse(input);
+        return loadxws(xws);
+      } catch (_error) {
+        e = _error;
+        uuid = input.split('/').pop();
+        jsonurl = SQUAD_TO_XWS_URL + uuid;
+        return ($.getJSON(jsonurl, loadxws))["catch"](function(e) {
+          return import_status.text('Invalid Input');
+        });
+      }
     };
   })(this)(import_status);
 };

@@ -994,7 +994,7 @@ exportObj.basicCardData = function() {
         energy: 3,
         energyrecurr: 2,
         actions: ["Focus", "R-Evade", "R-Reinforce", "Lock", "R-Coordinate"],
-        maneuvers: [[0, 3, 3, 3, 0], [0, 2, 1, 2, 0], [0, 2, 1, 2, 0], [0, 3, 2, 3, 0], [0, 0, 3, 0, 0], [0, 0, 3, 0, 0]]
+        maneuvers: [[0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0], [0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       }
     },
     pilotsById: [
@@ -5514,6 +5514,24 @@ exportObj.basicCardData = function() {
         recurring: 1,
         points: 36,
         slots: ["Talent", "Crew", "Device", "Illicit", "Modification", "Modification", "Title"]
+      }, {
+        name: "Colicoid Destroyer",
+        id: 475,
+        faction: "Separatist Alliance",
+        ship: "Trident-class Assault Ship",
+        skill: 8,
+        engagement: 0,
+        points: 90,
+        slots: ["Command", "Torpedo", "Hardpoint", "Hardpoint", "Crew", "Crew", "Gunner", "Team", "Cargo", "Title"]
+      }, {
+        name: "Lawless Pirates",
+        id: 476,
+        faction: "Scum and Villainy",
+        ship: "Trident-class Assault Ship",
+        skill: 8,
+        engagement: 0,
+        points: 90,
+        slots: ["Command", "Torpedo", "Hardpoint", "Hardpoint", "Crew", "Crew", "Gunner", "Team", "Cargo", "Title"]
       }
     ],
     upgradesById: [
@@ -9081,6 +9099,216 @@ exportObj.basicCardData = function() {
         unique: true,
         slot: "Astromech",
         faction: "Scum and Villainy"
+      }, {
+        name: "Asajj Ventress (Command)",
+        id: 390,
+        unique: true,
+        slot: "Command",
+        points: 8,
+        faction: ["Scum and Villainy", "Separatist Alliance"],
+        restrictions: [["Slot", "Crew"], ["Base", "Huge"]],
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Crew");
+        },
+        also_occupies_upgrades: ["Crew"],
+        force: 1,
+        modifier_func: function(stats) {
+          stats.force += 1;
+          stats.actions.push('*Focus');
+          return stats.actions.push('F-> Coordinate');
+        }
+      }, {
+        name: "General Grievous (Command)",
+        id: 391,
+        unique: true,
+        slot: "Command",
+        points: 5,
+        faction: "Separatist Alliance",
+        restrictions: [["Slot", "Crew"], ["Base", "Huge"]],
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Crew");
+        },
+        also_occupies_upgrades: ["Crew"]
+      }, {
+        name: "Hondo Ohnaka (Command)",
+        id: 392,
+        unique: true,
+        slot: "Command",
+        points: 7,
+        charge: 2,
+        restrictions: [["Slot", "Crew"], ["Base", "Huge"]],
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Crew");
+        },
+        also_occupies_upgrades: ["Crew"],
+        modifier_func: function(stats) {
+          stats.actions.push('*Coordinate');
+          return stats.actions.push('R-> Jam');
+        }
+      }, {
+        name: "Mar Tuuk",
+        id: 393,
+        unique: true,
+        slot: "Command",
+        points: 4,
+        faction: "Separatist Alliance",
+        restrictions: [["Slot", "Crew"], ["Base", "Huge"]],
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Crew");
+        },
+        also_occupies_upgrades: ["Crew"]
+      }, {
+        name: "Riff Tamson",
+        id: 394,
+        unique: true,
+        slot: "Command",
+        points: 6,
+        faction: "Separatist Alliance",
+        restrictions: [["Slot", "Crew"], ["Base", "Huge"]],
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Crew");
+        },
+        also_occupies_upgrades: ["Crew"]
+      }, {
+        name: "Zealous Captain",
+        id: 395,
+        unique: true,
+        slot: "Command",
+        points: 4,
+        restrictions: [["Slot", "Crew"], ["Base", "Huge"]],
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Crew");
+        },
+        also_occupies_upgrades: ["Crew"]
+      }, {
+        name: "Tractor Tentacles",
+        id: 396,
+        slot: "Hardpoint",
+        points: 0,
+        attackb: 2,
+        range: "1-2",
+        rangebonus: true,
+        ship: "Trident-class Assault Ship",
+        restrictions: [["Base", "Huge"]]
+      }, {
+        name: "Drill Beak",
+        id: 397,
+        slot: "Hardpoint",
+        points: 4,
+        attackb: 3,
+        range: "0-1",
+        rangebonus: true,
+        ship: "Trident-class Assault Ship",
+        restrictions: [["Slot", "Cargo"], ["Base", "Huge"]],
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Cargo");
+        },
+        also_occupies_upgrades: ["Cargo"]
+      }, {
+        name: "Enhanced Propulsion",
+        id: 398,
+        slot: "Hardpoint",
+        points: 4,
+        attackt: 3,
+        range: "3-5",
+        ship: "Trident-class Assault Ship",
+        restrictions: [["Slot", "Cargo"], ["Base", "Huge"]],
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Cargo");
+        },
+        also_occupies_upgrades: ["Cargo"]
+      }, {
+        name: "Proton Cannon Battery",
+        id: 399,
+        slot: "Hardpoint",
+        points: 10,
+        attackbull: 4,
+        range: "2-5",
+        restrictions: [["Slot", "Cargo"], ["Base", "Huge"]],
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Cargo");
+        },
+        also_occupies_upgrades: ["Cargo"]
+      }, {
+        name: "Droid Crew",
+        id: 400,
+        slot: "Team",
+        points: 5,
+        faction: "Separatist Alliance",
+        modifier_func: function(stats) {
+          stats.actions.push('*Calculate');
+          return stats.actions.push('R-> Lock');
+        }
+      }, {
+        name: "Tractor Technicians",
+        id: 401,
+        slot: "Team",
+        points: 2,
+        faction: "Separatist Alliance"
+      }, {
+        name: "Corsair Crew",
+        id: 402,
+        slot: "Team",
+        points: 5,
+        faction: "Separatist Alliance",
+        restrictions: [["Slot", "Gunner"]],
+        validation_func: function(ship, upgrade_obj) {
+          return upgrade_obj.occupiesAnUpgradeSlot("Gunner");
+        },
+        also_occupies_upgrades: ["Gunner"]
+      }, {
+        name: "Grappler",
+        id: 403,
+        unique: true,
+        slot: "Title",
+        ship: "Trident-class Assault Ship",
+        points: 3,
+        modifier_func: function(stats) {
+          stats.hull += 2;
+          return stats.shields -= 1;
+        }
+      }, {
+        name: "Nautolan's Revenge",
+        id: 404,
+        unique: true,
+        slot: "Title",
+        points: 2,
+        ship: "Trident-class Assault Ship",
+        faction: "Scum and Villainy",
+        modifier_func: function(stats) {
+          stats.hull -= 2;
+          stats.shields += 1;
+          return stats.energy += 1;
+        }
+      }, {
+        name: "Neimoidian Grasp",
+        id: 405,
+        unique: true,
+        slot: "Title",
+        points: 2,
+        ship: "Trident-class Assault Ship",
+        faction: "Separatist Alliance",
+        modifier_func: function(stats) {
+          return stats.shields -= 2;
+        }
+      }, {
+        name: "Trident",
+        id: 406,
+        unique: true,
+        slot: "Title",
+        points: 4,
+        ship: "Trident-class Assault Ship",
+        faction: "Separatist Alliance",
+        modifier_func: function(stats) {
+          return stats.energy += 1;
+        }
+      }, {
+        name: "Tracking Torpedoes",
+        id: 407,
+        slot: "Torpedo",
+        points: 8,
+        attack: 4,
+        charge: 3
       }
     ],
     conditionsById: [
@@ -15857,6 +16085,14 @@ exportObj.cardLoaders.English = function() {
     "Syndicate Smugglers": {
       display_name: "Syndicate Smugglers",
       text: "<i class = flavor_text>Vessels like the C-ROC Cruiser allow criminal operations across the Outer Rim to move massive amounts of illicit materials, or project power that can bully small colonies into compliance.</i> %LINEBREAK% <strong>Overdrive Burners:</strong> While you defend, if your revealed maneuver is speed 3-5, roll 1 additional defense die."
+    },
+    "Colicoid Destroyer": {
+      display_name: "Colicoid Destroyer",
+      text: "<i class = flavor_text>Designed by the Colicoid Creation Nest and equipped with powerful tentacles and a massive drill to tear through the hull of even the toughest starships and fortifications, the Trident-class Assault Ship is a terrifying testament to the threat posed by the Separatist Alliance.</i> %LINEBREAK% <strong>Tractor Grasp:</strong> After you perform a <b>Tractor Tentacles</b> attack that hits, the defender gains 1 tractor token."
+    },
+    "Lawless Pirates": {
+      display_name: "Lawless Pirates",
+      text: "<i class = flavor_text>The Separatist Alliance has close ties to certain mercenaries and criminal groups and, as the war rages on, its technology sometimes finds its way into unsavory hands.</i> %LINEBREAK% <strong>Tractor Grasp:</strong> After you perform a <b>Tractor Tentacles</b> attack that hits, the defender gains 1 tractor token."
     }
   };
   upgrade_translations = {
@@ -17325,6 +17561,78 @@ exportObj.cardLoaders.English = function() {
     "Corsair Refit": {
       display_name: "Corsair Refit",
       text: "Bonus Attack: Spend 1 %ENERGY% to perform a %CANNON%, %TURRET%, or %MISSILE% attack."
+    },
+    "Enhanced Propulsion": {
+      display_name: "Enhanced Propulsion",
+      text: "<strong>Setup:</strong> Equip this side faceup.%LINEBREAK% At the start of the End Phase, you may spend 2 %ENERGY% to execute a white [2 %STRAIGHT%], [1 %BANKLEFT%], or [1 %BANKRIGHT%] maneuver. %LINEBREAK% "
+    },
+    "Drill Beak": {
+      display_name: "Drill Beak",
+      text: "<strong>Setup:</strong> Equip this side faceup.%LINEBREAK% You can preform this attack at range 0.\n%LINEBREAK% <strong>Bonus Attack:</strong> Spend 1 %ENERGY%. If the attack range is 0, change all %HIT% results to %CRIT% results."
+    },
+    "Tractor Tentacles": {
+      display_name: "Tractor Tentacles",
+      text: "<strong>Setup:</strong> Equip this side faceup.\n%LINEBREAK% <strong>Bonus Attack</strong> %LINEBREAK% <strong>Bonus Attack:</strong> Spend 1 %ENERGY%. %LINEBREAK% <strong>Bonus Attack:</strong> Spend 1 %ENERGY%. %LINEBREAK% <strong>Bonus Attack:</strong> Spend 1 %ENERGY%."
+    },
+    "Tracking Torpedoes": {
+      display_name: "Tracking Torpedoes",
+      text: "During the System Phase, you may spend up to 3 %CHARGE% to launch that many tracking torpedoes using the [%BANKLEFT% 3], [%STRAIGHT% 4], and [%BANKRIGHT% 3] templates. Each device must use a seperate tempalte. Then each device may acquire a lock on an object you have locked, ignoring range restrictions."
+    },
+    "Proton Cannon Battery": {
+      display_name: "Proton Cannon Battery",
+      text: "<strong>Setup:</strong> Equip this side faceup.\n%LINEBREAK% <strong>Bonus Attack:</strong> Change 1 %HIT% result to a %CRIT% result. %LINEBREAK% <strong>Bonus Attack:</strong> Spend 1 %ENERGY%. Change 1 %HIT% result to a %CRIT% result."
+    },
+    "Tractor Technicians": {
+      display_name: "Tractor Technicians",
+      text: "During the End Phase, each other ship at range 0-1 cannot remove its tractor tokens. %LINEBREAK% Before a tractored enemy ship at range 0-1 reveals its dial, you may spend 1 %ENERGY%. If you do, while that ship executes its maneuver this activation, it reduces the speed of that maneuver by 1, to a minimum of 1."
+    },
+    "Asajj Ventress (Command)": {
+      display_name: "Asajj Ventress",
+      text: "During the System Phase, you may spend 1 %FORCE%. IF you do, each enemy ship in your %FRONTARC% at range 0-1 gains 1 strain token unless it chooses to gain 1 jam token."
+    },
+    "Hondo Ohnaka (Command)": {
+      display_name: "Hondo Ohnaka",
+      text: "During the System Phase, you may spend 1 %CHARGE% and choose 1 friendly shiop at range 0-1. Move 1 Victory Token or Objective Token from its ship card to your ship card, or from your ship card to its ship card."
+    },
+    "Zealous Captain": {
+      display_name: "Zealous Captain",
+      text: "During the Engagement Phase, at initiative 4, you may spend 1 %ENERGY% to perform a bonus %HARDPOINT% attack."
+    },
+    "General Grievous (Command)": {
+      display_name: "General Grievous",
+      text: "During the Engagement Phase, at initiative 4, you may spend 1 %ENERGY% to perform a bonus %HARDPOINT% attack. %LINEBREAK% You can perform attacks against friendly ships. %LINEBREAK% After you perform an attack, if the defender was destroyed, each friendly ship at range 0-2 of it may perform a %CALCULATE% action."
+    },
+    "Mar Tuuk": {
+      display_name: "Mar Tuuk",
+      text: "<strong>Setup:</strong> After placing forces, choose 1 friendly wing of ships with %CALCULATE% on their action bars and place that wing in reserve. %LINEBREAK% During the End Phase, you may place that wing within your deployment area or beyond range 2 of any enemy shp. Then you may choose 1 enemy ship at range 0-1 of you; each ship in that wing acquires a lock on it."
+    },
+    "Riff Tamson": {
+      display_name: "Riff Tamson",
+      text: "During the Engagement Phase, at initiative 5, you may spend 1 %ENERGY% to perform a bonus %HARDPOINT% attack. %LINEBREAK% After you perform an attack, if the defender was dealt 1 or more faceup damage cards, it gains 2 strain tokens."
+    },
+    "Corsair Crew": {
+      display_name: "Corsair Crew",
+      text: "While you perform an attack against a standard ship, you may spend 1 %HIT% result. If you do, the defender gains 1 deplete token."
+    },
+    "Grappler": {
+      display_name: "Grappler",
+      text: "While you perform a <b>Drill Beak</b> attack, at range 1, if the defender is tractored, treat it as being range 0 instead."
+    },
+    "Nautolan's Revenge": {
+      display_name: "Nautolan's Revenge",
+      text: "Before you engage, you may spend up to 2 calculate tokens. If you do, recover that many %ENERGY%."
+    },
+    "Droid Crew": {
+      display_name: "Droid Crew",
+      text: "While you perform a white %FOCUS% action, treat it as red instead. %LINEBREAK% At the start of the End Phase, repair all of your faceup <b>Crew</b> damage cards."
+    },
+    "Trident": {
+      display_name: "Trident",
+      text: "After you overlap a ship or a ship overlaps you, if it is not tractored, you may spend 1 %ENERGY%. If you do, it gains 3 tractor tokens."
+    },
+    "Neimoidian Grasp": {
+      display_name: "Neimoidian Grasp",
+      text: "After you perform an attack, you may perform a red  %EVADE% action. While you defend, if you are evading, you may roll 1 addtional defense die."
     }
   };
   condition_translations = {
