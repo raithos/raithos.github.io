@@ -9250,7 +9250,7 @@ exportObj.basicCardData = function() {
         id: 402,
         slot: "Team",
         points: 5,
-        faction: "Scum",
+        faction: "Scum and Villainy",
         restrictions: [["Slot", "Gunner"]],
         validation_func: function(ship, upgrade_obj) {
           return upgrade_obj.occupiesAnUpgradeSlot("Gunner");
