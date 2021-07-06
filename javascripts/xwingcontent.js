@@ -7784,6 +7784,7 @@ exportObj.basicCardData = function() {
         faction: "Galactic Empire",
         slot: "Command",
         points: 8,
+        charge: 4,
         restrictions: [["Slot", "Crew"], ["Base", "Huge"]],
         validation_func: function(ship, upgrade_obj) {
           return upgrade_obj.occupiesAnUpgradeSlot("Crew");
@@ -8719,8 +8720,7 @@ exportObj.basicCardData = function() {
         name: "Suppressive Gunner",
         id: 350,
         slot: "Gunner",
-        points: 8,
-        pointsarray: [8, 7, 6, 3],
+        pointsarray: [8, 7, 6, 5],
         variablebase: true
       }, {
         name: "Ghost Company",
@@ -9208,9 +9208,7 @@ exportObj.basicCardData = function() {
         name: "Enhanced Propulsion",
         id: 398,
         slot: "Hardpoint",
-        points: 4,
-        attackt: 3,
-        range: "3-5",
+        points: 6,
         ship: "Trident-class Assault Ship",
         restrictions: [["Slot", "Cargo"], ["Base", "Huge"]],
         validation_func: function(ship, upgrade_obj) {
