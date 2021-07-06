@@ -9306,7 +9306,8 @@ exportObj.basicCardData = function() {
         slot: "Torpedo",
         points: 8,
         attack: 4,
-        charge: 3
+        charge: 3,
+        restrictions: [["Base", "Huge"]]
       }
     ],
     conditionsById: [
