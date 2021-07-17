@@ -9241,8 +9241,7 @@ exportObj.basicCardData = function() {
         name: "Tractor Technicians",
         id: 401,
         slot: "Team",
-        points: 2,
-        faction: "Separatist Alliance"
+        points: 2
       }, {
         name: "Corsair Crew",
         id: 402,
@@ -15856,7 +15855,7 @@ exportObj.cardLoaders.English = function() {
       text: "At the start of the End Phase, you may spend any number of %FORCE% to choose that many friendly ships at range 0-2. Each chosen ship does not remove 1 focus or evade token during this End Phase. %LINEBREAK% <strong>Intuitive Controls:</strong> During the System Phase, you may perform a purple %BARRELROLL% or purple %BOOST% action."
     },
     "Aayla Secura": {
-      text: "While and enemy ship in your %FRONTARC% at range 0-1 performs an attack, the defender may change 1 blank result to a %FOCUS% result. %LINEBREAK% <strong>Intuitive Controls:</strong> During the System Phase, you may perform a purple %BARRELROLL% or purple %BOOST% action."
+      text: "While an enemy ship in your %FRONTARC% at range 0-1 performs an attack, the defender may change 1 blank result to a %FOCUS% result. %LINEBREAK% <strong>Intuitive Controls:</strong> During the System Phase, you may perform a purple %BARRELROLL% or purple %BOOST% action."
     },
     "Obi-Wan Kenobi (Eta-2)": {
       display_name: "Obi-Wan Kenobi",
@@ -17163,9 +17162,6 @@ exportObj.cardLoaders.English = function() {
     },
     "Plo Koon": {
       text: "At the start of the End Phase, if you are reinforced, you may choose 1 friendly ship at range 0 or in your %LEFTARC% or %RIGHTARC% at range 1. That ship removes 1 deplete or strain token, or repairs 1 faceup damage card."
-    },
-    "Aayla Secura": {
-      text: "While an enemy ship in your %BULLSEYEARC% performs an attack, if the defender is friendly and at range 0-2, the defender may change 1 blank result to a %FOCUS% result."
     },
     "Repulsorlift Stabilizers": {
       text: "<strong>Inactive: Setup:</strong> Equip this side faceup. Reduce the difficulty of your straight (%STRAIGHT%) maneuvers. %LINEBREAK% After you fully execute a maneuver, you may flip this card. %LINEBREAK%<strong>Active: </strong> After you reveal a bank (%BANKLEFT% or %BANKRIGHT%) or turn (%TURNLEFT% or %TURNRIGHT%), you <b>must</b> perform that maneuver as a slideslip, then flip this card. %LINEBREAK% After you fully execute a non-sideslip maneuver, you may flip this card."
