@@ -4782,7 +4782,7 @@ exportObj.SquadBuilder = (function() {
   };
 
   SquadBuilder.prototype.getManeuverTableHTML = function(maneuvers, baseManeuvers) {
-    var bearing, bearings, bearings_without_maneuvers, className, color, difficulty, haveManeuver, linePath, maneuverClass, maneuverClass2, outTable, outlineColor, speed, transform, trianglePath, turn, v, _i, _j, _k, _l, _len, _len1, _len2, _m, _n, _ref, _ref1, _ref2, _ref3, _results;
+    var bearing, bearings, bearings_without_maneuvers, className, color, difficulty, haveManeuver, innerPath, linePath, maneuverClass, maneuverClass2, outTable, outlineColor, speed, transform, trianglePath, turn, v, _i, _j, _k, _l, _len, _len1, _len2, _m, _n, _ref, _ref1, _ref2, _ref3, _results;
     if ((maneuvers == null) || maneuvers.length === 0) {
       return this.uitranslation("Missing maneuver info.");
     }
@@ -4853,73 +4853,86 @@ exportObj.SquadBuilder = (function() {
             maneuverClass2 = "svg-modified-maneuver";
           }
           if (speed === 0 && turn === 2) {
-            outTable += "<rect class=\"svg-maneuver-stop " + maneuverClass + " " + maneuverClass2 + "\" x=\"50\" y=\"50\" width=\"100\" height=\"100\" style=\"fill:" + color + "\" />";
+            outTable += "<rect class=\"svg-maneuver-stop " + maneuverClass + " " + maneuverClass2 + "\" x=\"50\" y=\"50\" width=\"100\" height=\"100\" style=\"fill:" + color + "; stroke-width:5; stroke:" + outlineColor + "\" />";
           } else {
             transform = "";
             className = "";
             switch (turn) {
               case 0:
                 linePath = "M160,180 L160,70 80,70";
+                innerPath = "M160,175 L160,70 70,70";
                 trianglePath = "M80,100 V40 L30,70 Z";
                 break;
               case 1:
                 linePath = "M150,180 S150,120 80,60";
+                innerPath = "M150,175 S150,120 80,60";
                 trianglePath = "M80,100 V40 L30,70 Z";
                 transform = "transform='translate(-5 -15) rotate(45 70 90)' ";
                 break;
               case 2:
                 linePath = "M100,180 L100,100 100,80";
+                innerPath = "M100,175 L100,120 100,70";
                 trianglePath = "M70,80 H130 L100,30 Z";
                 break;
               case 3:
                 linePath = "M50,180 S50,120 120,60";
+                innerPath = "M50,175 S50,120 120,60";
                 trianglePath = "M120,100 V40 L170,70 Z";
                 transform = "transform='translate(5 -15) rotate(-45 130 90)' ";
                 break;
               case 4:
                 linePath = "M40,180 L40,70 120,70";
+                innerPath = "M40,175 L40,70 130,70";
                 trianglePath = "M120,100 V40 L170,70 Z";
                 break;
               case 5:
                 linePath = "M50,180 L50,100 C50,10 140,10 140,100 L140,120";
+                innerPath = "M50,175 L50,100 C50,10 140,10 140,100 L140,130";
                 trianglePath = "M170,120 H110 L140,180 Z";
                 break;
               case 6:
                 linePath = "M150,180 S150,120 80,60";
+                innerPath = "M150,175 S150,120 85,65";
                 trianglePath = "M80,100 V40 L30,70 Z";
                 transform = "transform='translate(0 50)'";
                 break;
               case 7:
                 linePath = "M50,180 S50,120 120,60";
+                innerPath = "M50,175 S50,120 115,65";
                 trianglePath = "M120,100 V40 L170,70 Z";
                 transform = "transform='translate(0 50)'";
                 break;
               case 8:
                 linePath = "M160,180 L160,70 80,70";
+                innerPath = "M160,175 L160,70 85,70";
                 trianglePath = "M60,100 H100 L80,140 Z";
                 break;
               case 9:
                 linePath = "M40,180 L40,70 120,70";
+                innerPath = "M40,175 L40,70 115,70";
                 trianglePath = "M100,100 H140 L120,140 Z";
                 break;
               case 10:
                 linePath = "M50,180 S50,120 120,60";
+                innerPath = "M50,175 S50,120 120,60";
                 trianglePath = "M120,100 V40 L170,70 Z";
                 transform = "transform='translate(5 -15) rotate(-45 130 90)' ";
                 className = 'backwards';
                 break;
               case 11:
                 linePath = "M100,180 L100,100 100,80";
+                innerPath = "M100,175 L100,100 100,70";
                 trianglePath = "M70,80 H130 L100,30 Z";
                 className = 'backwards';
                 break;
               case 12:
                 linePath = "M150,180 S150,120 80,60";
+                innerPath = "M150,175 S150,120 80,60";
                 trianglePath = "M80,100 V40 L30,70 Z";
                 transform = "transform='translate(-5 -15) rotate(45 70 90)' ";
                 className = 'backwards';
             }
-            outTable += $.trim("<g class=\"maneuver " + className + "\">\n  <path class = 'svg-maneuver-outer " + maneuverClass + " " + maneuverClass2 + "' stroke-width='25' fill='none' stroke='" + outlineColor + "' d='" + linePath + "' />\n  <path class = 'svg-maneuver-triangle " + maneuverClass + " " + maneuverClass2 + "' d='" + trianglePath + "' fill='" + color + "' stroke-width='5' stroke='" + outlineColor + "' " + transform + "/>\n  <path class = 'svg-maneuver-inner " + maneuverClass + " " + maneuverClass2 + "' stroke-width='15' fill='none' stroke='" + color + "' d='" + linePath + "' />\n</g>");
+            outTable += $.trim("<g class=\"maneuver " + className + "\">\n  <path class = 'svg-maneuver-outer " + maneuverClass + " " + maneuverClass2 + "' stroke-width='25' fill='none' stroke='" + outlineColor + "' d='" + linePath + "' />\n  <path class = 'svg-maneuver-triangle " + maneuverClass + " " + maneuverClass2 + "' d='" + trianglePath + "' fill='" + color + "' stroke-width='5' stroke='" + outlineColor + "' " + transform + "/>\n  <path class = 'svg-maneuver-inner " + maneuverClass + " " + maneuverClass2 + "' stroke-width='15' fill='none' stroke='" + color + "' d='" + innerPath + "' />\n</g>");
           }
           outTable += "</svg>";
         }
@@ -6511,7 +6524,7 @@ Ship = (function() {
                   funcname: "Ship.destroy"
                 });
                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                  lineno: 5530
+                  lineno: 5543
                 }));
                 __iced_deferrals._fulfill();
               })(__iced_k);
@@ -6736,7 +6749,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 5648
+                          lineno: 5661
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -6786,7 +6799,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 5681
+                                  lineno: 5694
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -6884,7 +6897,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 5739
+                      lineno: 5752
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -6966,7 +6979,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 5770
+                lineno: 5783
               })
             ]);
             __iced_deferrals._fulfill();
@@ -7035,7 +7048,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 5799
+              lineno: 5812
             }));
           }
         }
@@ -7127,7 +7140,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 5855
+                lineno: 5868
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -8393,7 +8406,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 6787
+                lineno: 6800
               })
             ]);
             __iced_deferrals._fulfill();
@@ -8552,7 +8565,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 6881
+                  lineno: 6894
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -8579,7 +8592,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 6888
+                      lineno: 6901
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -8722,7 +8735,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 6960
+            lineno: 6973
           }));
         }
         __iced_deferrals._fulfill();
