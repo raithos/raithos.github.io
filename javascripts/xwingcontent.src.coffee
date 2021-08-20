@@ -9915,8 +9915,7 @@ exportObj.basicCardData = ->
             ship: "BTL-NR2 Y-Wing"
             keyword: ["Dark Side", "Sith"]
             skill: 6
-            force: 3
-            points: 115
+            points: 200
             slots: [
                 "Talent"
                 "Tech"
@@ -9939,7 +9938,7 @@ exportObj.basicCardData = ->
             skill: 5
             charge: 1
             recurring: -1
-            points: 46
+            points: 200
             slots: [
                 "Talent"
                 "Talent"
@@ -9959,7 +9958,7 @@ exportObj.basicCardData = ->
             skill: 5
             charge: 1
             recurring: -1
-            points: 46
+            points: 200
             slots: [
                 "Talent"
                 "Tech"

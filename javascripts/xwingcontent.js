@@ -5576,8 +5576,7 @@ exportObj.basicCardData = function() {
         ship: "BTL-NR2 Y-Wing",
         keyword: ["Dark Side", "Sith"],
         skill: 6,
-        force: 3,
-        points: 115,
+        points: 200,
         slots: ["Talent", "Tech", "Turret", "Astromech", "Device", "Modification", "Modification", "Configuration"]
       }, {
         name: "WHISPER",
@@ -5590,7 +5589,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         charge: 1,
         recurring: -1,
-        points: 46,
+        points: 200,
         slots: ["Talent", "Talent", "Missile", "Tech", "Configuration"]
       }, {
         name: "SEBOMBER",
@@ -5603,7 +5602,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         charge: 1,
         recurring: -1,
-        points: 46,
+        points: 200,
         slots: ["Talent", "Tech", "Torpedo", "Missile", "Gunner", "Device", "Modification"]
       }
     ],
