@@ -904,6 +904,40 @@ exportObj.basicCardData = function() {
         actions: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       },
+      "BTL-NR2 Y-Wing": {
+        name: "BTL-NR2 Y-Wing",
+        xws: "BTL-NR2 Y-Wing".canonicalize(),
+        factions: ["Resistance"],
+        attack: 2,
+        agility: 1,
+        hull: 4,
+        shields: 3,
+        actions: ["Focus", "R-Lock", "R-Barrel Roll", "R-Boost"],
+        maneuvers: [[0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 0, 0], [2, 2, 1, 2, 2, 0], [3, 2, 1, 2, 3, 0], [0, 0, 3, 0, 0, 0], [0, 0, 0, 0, 0, 3]]
+      },
+      "TIE/Wi Whisper Modified Interceptor": {
+        name: "TIE/Wi Whisper Modified Interceptor",
+        xws: "TIE/Wi Whisper Modified Interceptor".canonicalize(),
+        factions: ["First Order"],
+        attackbull: 3,
+        attackt: 2,
+        agility: 2,
+        hull: 3,
+        shields: 2,
+        actions: ["Focus", "> Rotate Arc", "Evade", "Lock", "Barrel Roll", "> Rotate Arc", "Boost", "> Rotate Arc"],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 3, 3, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
+      },
+      "TIE/Se Bomber": {
+        name: "TIE/Se Bomber",
+        xws: "TIE/Se Bomber".canonicalize(),
+        factions: ["First Order"],
+        attack: 2,
+        agility: 2,
+        hull: 4,
+        shields: 2,
+        actions: ["Focus", "Lock", "Barrel Roll", "R-> Lock", "R-Boost", "Reload", "R-> Evade"],
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 1, 2, 3, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 3, 3, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+      },
       "CR90 Corellian Corvette": {
         name: "CR90 Corellian Corvette",
         xws: "CR90 Corellian Corvette".canonicalize(),
@@ -5532,6 +5566,45 @@ exportObj.basicCardData = function() {
         engagement: 0,
         points: 90,
         slots: ["Command", "Torpedo", "Hardpoint", "Hardpoint", "Crew", "Crew", "Gunner", "Team", "Cargo", "Title"]
+      }, {
+        name: "YWING",
+        canonical_name: 'YWING'.canonicalize(),
+        xws: "YWING",
+        id: 477,
+        unique: true,
+        faction: "Resistance",
+        ship: "BTL-NR2 Y-Wing",
+        keyword: ["Dark Side", "Sith"],
+        skill: 6,
+        force: 3,
+        points: 115,
+        slots: ["Talent", "Tech", "Turret", "Astromech", "Device", "Modification", "Modification", "Configuration"]
+      }, {
+        name: "WHISPER",
+        canonical_name: 'WHISPER'.canonicalize(),
+        xws: "WHISPER",
+        id: 478,
+        unique: true,
+        faction: "First Order",
+        ship: "TIE/Wi Whisper Modified Interceptor",
+        skill: 5,
+        charge: 1,
+        recurring: -1,
+        points: 46,
+        slots: ["Talent", "Talent", "Missile", "Tech", "Configuration"]
+      }, {
+        name: "SEBOMBER",
+        canonical_name: 'SEBOMBER'.canonicalize(),
+        xws: "SEBOMBER",
+        id: 479,
+        unique: true,
+        faction: "First Order",
+        ship: "TIE/Se Bomber",
+        skill: 5,
+        charge: 1,
+        recurring: -1,
+        points: 46,
+        slots: ["Talent", "Tech", "Torpedo", "Missile", "Gunner", "Device", "Modification"]
       }
     ],
     upgradesById: [
@@ -8651,6 +8724,7 @@ exportObj.basicCardData = function() {
         id: 340,
         charge: 2,
         unique: true,
+        xws: "r2d2-republic",
         faction: "Galactic Republic",
         slot: "Astromech",
         pointsarray: [4, 6, 8, 10],
