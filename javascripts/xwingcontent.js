@@ -5576,7 +5576,8 @@ exportObj.basicCardData = function() {
         ship: "BTL-NR2 Y-Wing",
         keyword: ["Dark Side", "Sith"],
         skill: 6,
-        points: 200,
+        force: 3,
+        points: 115,
         slots: ["Talent", "Tech", "Turret", "Astromech", "Device", "Modification", "Modification", "Configuration"]
       }, {
         name: "WHISPER",
@@ -5589,7 +5590,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         charge: 1,
         recurring: -1,
-        points: 200,
+        points: 46,
         slots: ["Talent", "Talent", "Missile", "Tech", "Configuration"]
       }, {
         name: "SEBOMBER",
@@ -5602,7 +5603,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         charge: 1,
         recurring: -1,
-        points: 200,
+        points: 46,
         slots: ["Talent", "Tech", "Torpedo", "Missile", "Gunner", "Device", "Modification"]
       }
     ],
@@ -13578,6 +13579,97 @@ exportObj.basicCardData = function() {
         ship: "Firespray-31",
         threat: 3,
         upgrades: ["Debris Gambit", "Hondo Ohnaka", "Slave I"]
+      }, {
+        id: 568,
+        faction: "Separatist Alliance",
+        pilot: "Colicoid Interceptor",
+        ship: "Droid Tri-Fighter",
+        threat: 2,
+        upgrades: ["Fire-Control System", "Independent Calculations", "Hull Upgrade"]
+      }, {
+        id: 569,
+        faction: "Separatist Alliance",
+        pilot: "DIS-347",
+        ship: "Droid Tri-Fighter",
+        threat: 2,
+        upgrades: ["Fire-Control System", "Independent Calculations", "Elusive"]
+      }, {
+        id: 570,
+        faction: "Separatist Alliance",
+        pilot: "DIS-T81",
+        ship: "Droid Tri-Fighter",
+        threat: 2,
+        upgrades: ["Marg Sabl Closure", "Discord Missiles"]
+      }, {
+        id: 571,
+        faction: "Separatist Alliance",
+        pilot: "Fearsome Predator",
+        ship: "Droid Tri-Fighter",
+        threat: 2,
+        upgrades: ["Fire-Control System", "Intercept Booster"]
+      }, {
+        id: 572,
+        faction: "Separatist Alliance",
+        pilot: "Phlac-Arphocc Prototype",
+        ship: "Droid Tri-Fighter",
+        threat: 2,
+        upgrades: ["XX-23 S-Thread Tracers", "Intercept Booster"]
+      }, {
+        id: 573,
+        faction: "Separatist Alliance",
+        pilot: "Separatist Interceptor",
+        ship: "Droid Tri-Fighter",
+        threat: 2,
+        upgrades: ["Outmaneuver", "Discord Missiles", "Intercept Booster"]
+      }, {
+        id: 574,
+        faction: "Galactic Empire",
+        pilot: "Delta Squadron Pilot",
+        ship: "TIE Defender",
+        threat: 3,
+        upgrades: ["Tractor Beam", "Ion Missiles"]
+      }, {
+        id: 575,
+        faction: "Scum and Villainy",
+        pilot: "Lawless Pirates",
+        ship: "Trident-class Assault Ship",
+        threat: 9,
+        upgrades: ["Zealous Captain", "Tractor Tentacles", "Proton Cannon Battery", "Novice Technician", "Corsair Crew", "Tibanna Reserves", "Nautolan's Revenge"]
+      }, {
+        id: 576,
+        faction: "Scum and Villainy",
+        pilot: "Lawless Pirates",
+        ship: "Trident-class Assault Ship",
+        threat: 10,
+        upgrades: ["Hondo Ohnaka (Command)", "Tractor Tentacles", "Drill Beak", "Seasoned Navigator", "Corsair Crew", "Gunnery Specialists", "Boosted Scanners", "Grappler"]
+      }, {
+        id: 577,
+        faction: "Separatist Alliance",
+        pilot: "Colicoid Destroyer",
+        ship: "Trident-class Assault Ship",
+        threat: 8,
+        upgrades: ["Tractor Tentacles", "Drill Beak", "Optimized Power Core"]
+      }, {
+        id: 578,
+        faction: "Separatist Alliance",
+        pilot: "Colicoid Destroyer",
+        ship: "Trident-class Assault Ship",
+        threat: 9,
+        upgrades: ["Asajj Ventress (Command)", "Tractor Tentacles", "Enhanced Propulsion", "Seasoned Navigator", "Droid Crew", "Tractor Technicians", "Trident"]
+      }, {
+        id: 579,
+        faction: "Separatist Alliance",
+        pilot: "Colicoid Destroyer",
+        ship: "Trident-class Assault Ship",
+        threat: 10,
+        upgrades: ["Riff Tamson", "Tractor Tentacles", "Proton Cannon Battery", "Proton Torpedoes", "Novice Technician", "Hotshot Gunner", "Droid Crew", "Gunnery Specialists", "Tibanna Reserves", "Neimoidian Grasp"]
+      }, {
+        id: 580,
+        faction: "Galactic Empire",
+        pilot: "Onyx Squadron Sentry",
+        ship: "TIE/rb Heavy",
+        threat: 3,
+        upgrades: ["Ablative Plating", "Target-Assist MGK-300", "Ion Limiter Override", "Synced Laser Cannons"]
       }
     ]
   };
@@ -25097,6 +25189,169 @@ exportObj.manifestByExpansion = {
       count: 2
     }, {
       name: 'Engine Upgrade',
+      type: 'upgrade',
+      count: 1
+    }
+  ],
+  "Trident-class Assault Ship Expansion Pack": [
+    {
+      name: 'Trident-class Assault Ship',
+      type: 'ship',
+      count: 1
+    }, {
+      name: 'Colicoid Destroyer',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Lawless Pirates',
+      type: 'pilot',
+      count: 1
+    }, {
+      name: 'Strategic Commander',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Stalwart Captain',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Asajj Ventress (Command)',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Zealous Captain',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Hondo Ohnaka (Command)',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'General Grievous (Command)',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Mar Tuuk',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Riff Tamson',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Tractor Tentacles',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Ion Cannon Battery',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Targeting Battery',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Ordnance Tubes',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Point-Defense Battery',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Drill Beak',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Enhanced Propulsion',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Proton Cannon Battery',
+      type: 'upgrade',
+      count: 3
+    }, {
+      name: 'Tracking Torpedoes',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Novice Technician',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Seasoned Navigator',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Hotshot Gunner',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Agile Gunner',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Corsair Crew',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Tractor Technicians',
+      type: 'upgrade',
+      count: 3
+    }, {
+      name: 'Droid Crew',
+      type: 'upgrade',
+      count: 2
+    }, {
+      name: 'Bombardment Specialists',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Comms Team',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Damage Control Team',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Gunnery Specialists',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Ordnance Team',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Sensor Experts',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Adaptive Shields',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Optimized Power Core',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Tibanna Reserves',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Grappler',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: "Nautolan's Revenge",
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Neimoidian Grasp',
+      type: 'upgrade',
+      count: 1
+    }, {
+      name: 'Trident',
       type: 'upgrade',
       count: 1
     }
