@@ -904,9 +904,9 @@ exportObj.basicCardData = function() {
         actions: [],
         maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
       },
-      "BTL-NR2 Y-Wing": {
-        name: "BTL-NR2 Y-Wing",
-        xws: "BTL-NR2 Y-Wing".canonicalize(),
+      "BTA-NR2 Y-Wing": {
+        name: "BTA-NR2 Y-Wing",
+        xws: "BTA-NR2 Y-Wing".canonicalize(),
         factions: ["Resistance"],
         attack: 2,
         agility: 1,
@@ -5571,7 +5571,7 @@ exportObj.basicCardData = function() {
         id: 477,
         unique: true,
         faction: "Resistance",
-        ship: "BTL-NR2 Y-Wing",
+        ship: "BTA-NR2 Y-Wing",
         skill: 5,
         points: 40,
         charge: 1,
@@ -5582,7 +5582,7 @@ exportObj.basicCardData = function() {
         id: 478,
         unique: true,
         faction: "Resistance",
-        ship: "BTL-NR2 Y-Wing",
+        ship: "BTA-NR2 Y-Wing",
         skill: 4,
         points: 37,
         slots: ["Talent", "Tech", "Turret", "Astromech", "Device", "Modification", "Modification", "Configuration"]
@@ -5591,7 +5591,7 @@ exportObj.basicCardData = function() {
         id: 479,
         unique: true,
         faction: "Resistance",
-        ship: "BTL-NR2 Y-Wing",
+        ship: "BTA-NR2 Y-Wing",
         skill: 4,
         points: 34,
         slots: ["Turret", "Astromech", "Device", "Modification", "Modification", "Configuration"]
@@ -5600,7 +5600,7 @@ exportObj.basicCardData = function() {
         id: 480,
         unique: true,
         faction: "Resistance",
-        ship: "BTL-NR2 Y-Wing",
+        ship: "BTA-NR2 Y-Wing",
         skill: 3,
         points: 33,
         slots: ["Tech", "Turret", "Astromech", "Device", "Modification", "Modification", "Configuration"]
@@ -5609,7 +5609,7 @@ exportObj.basicCardData = function() {
         id: 481,
         unique: true,
         faction: "Resistance",
-        ship: "BTL-NR2 Y-Wing",
+        ship: "BTA-NR2 Y-Wing",
         skill: 3,
         points: 33,
         slots: ["Talent", "Tech", "Turret", "Astromech", "Device", "Modification", "Modification", "Configuration"]
@@ -5618,7 +5618,7 @@ exportObj.basicCardData = function() {
         id: 482,
         unique: true,
         faction: "Resistance",
-        ship: "BTL-NR2 Y-Wing",
+        ship: "BTA-NR2 Y-Wing",
         skill: 2,
         points: 34,
         slots: ["Talent", "Tech", "Turret", "Astromech", "Device", "Modification", "Modification", "Configuration"]
@@ -5627,18 +5627,18 @@ exportObj.basicCardData = function() {
         id: 483,
         unique: true,
         faction: "Resistance",
-        ship: "BTL-NR2 Y-Wing",
+        ship: "BTA-NR2 Y-Wing",
         skill: 1,
         points: 33,
         slots: ["Tech", "Turret", "Astromech", "Device", "Modification", "Illicit", "Configuration"]
       }, {
         name: "C'ai Threnalli (Y-Wing)",
         canonical_name: 'C\'ai Threnalli'.canonicalize(),
-        xws: "caithrenalli-btlnr2ywing",
+        xws: "caithrenalli-btanr2ywing",
         id: 484,
         unique: true,
         faction: "Resistance",
-        ship: "BTL-NR2 Y-Wing",
+        ship: "BTA-NR2 Y-Wing",
         skill: 2,
         points: 34,
         slots: ["Talent", "Tech", "Turret", "Astromech", "Device", "Modification", "Modification", "Configuration"]
@@ -5646,7 +5646,7 @@ exportObj.basicCardData = function() {
         name: "New Republic Patrol",
         id: 485,
         faction: "Resistance",
-        ship: "BTL-NR2 Y-Wing",
+        ship: "BTA-NR2 Y-Wing",
         skill: 3,
         points: 32,
         slots: ["Talent", "Tech", "Turret", "Astromech", "Device", "Modification", "Modification", "Configuration"]
@@ -5654,8 +5654,8 @@ exportObj.basicCardData = function() {
         name: "Kijimi Spice Runner",
         id: 486,
         faction: "Resistance",
-        ship: "BTL-NR2 Y-Wing",
-        skill: 6,
+        ship: "BTA-NR2 Y-Wing",
+        skill: 2,
         points: 31,
         slots: ["Tech", "Turret", "Astromech", "Device", "Modification", "Modification", "Configuration"]
       }, {
@@ -5670,7 +5670,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         force: 3,
         points: 63,
-        slots: ["Force", "Talent", "Missile", "Tech", "Configuration"]
+        slots: ["Force", "Talent", "Missile", "Tech", "Tech", "Configuration"]
       }, {
         name: '"Wrath"',
         id: 488,
@@ -5679,7 +5679,7 @@ exportObj.basicCardData = function() {
         ship: "TIE/WI Whisper",
         skill: 5,
         points: 53,
-        slots: ["Talent", "Missile", "Tech", "Configuration"]
+        slots: ["Talent", "Missile", "Tech", "Tech", "Configuration"]
       }, {
         name: '"Nightfall"',
         id: 489,
@@ -5688,7 +5688,7 @@ exportObj.basicCardData = function() {
         ship: "TIE/WI Whisper",
         skill: 4,
         points: 49,
-        slots: ["Talent", "Talent", "Missile", "Tech", "Configuration"]
+        slots: ["Talent", "Talent", "Missile", "Tech", "Tech", "Configuration"]
       }, {
         name: '"Whirlwind"',
         id: 490,
@@ -5697,7 +5697,7 @@ exportObj.basicCardData = function() {
         ship: "TIE/WI Whisper",
         skill: 3,
         points: 47,
-        slots: ["Talent", "Talent", "Missile", "Tech", "Configuration"]
+        slots: ["Talent", "Talent", "Missile", "Tech", "Tech", "Configuration"]
       }, {
         name: "709th Legion Ace",
         id: 491,
@@ -5705,7 +5705,7 @@ exportObj.basicCardData = function() {
         ship: "TIE/WI Whisper",
         skill: 4,
         points: 47,
-        slots: ["Talent", "Talent", "Missile", "Tech", "Configuration"]
+        slots: ["Talent", "Talent", "Missile", "Tech", "Tech", "Configuration"]
       }, {
         name: "Red Fury Zealot",
         id: 492,
@@ -5713,7 +5713,7 @@ exportObj.basicCardData = function() {
         ship: "TIE/WI Whisper",
         skill: 1,
         points: 44,
-        slots: ["Talent", "Missile", "Tech", "Configuration"]
+        slots: ["Talent", "Missile", "Tech", "Tech", "Configuration"]
       }, {
         name: '"Breach"',
         id: 493,
@@ -9557,6 +9557,7 @@ exportObj.basicCardData = function() {
         id: 409,
         slot: "Configuration",
         points: 6,
+        ship: "BTA-NR2 Y-Wing",
         restrictions: [["Slot", "Modification"]],
         validation_func: function(ship, upgrade_obj) {
           return upgrade_obj.occupiesAnUpgradeSlot("Modification");
@@ -9590,6 +9591,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "DT-798",
         id: 412,
+        unique: true,
         faction: "First Order",
         slot: "Gunner",
         points: 5
