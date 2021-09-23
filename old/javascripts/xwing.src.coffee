@@ -124,12 +124,9 @@ class exportObj.SquadBuilderBackend
         data.additional_data["archived"] = true
         @save(data.serialized, data.id, data.name, faction, data.additional_data, cb)
 
-    list: (builder, all=false) ->
+    list: (builder) ->
         # TODO: Pagination
-        if all
-            @squad_list_modal.find('.modal-header .squad-list-header-placeholder').text("Everyone's #{builder.faction} Squads")
-        else
-            @squad_list_modal.find('.modal-header .squad-list-header-placeholder').text("Your #{builder.faction} Squads")
+        @squad_list_modal.find('.modal-header .squad-list-header-placeholder').text(exportObj.translate('ui', "yourXYsquads", builder.faction))
         list_ul = $ @squad_list_modal.find('ul.squad-list')
         list_ul.text ''
         list_ul.hide()
@@ -144,7 +141,7 @@ class exportObj.SquadBuilderBackend
         #setup tag list
         tag_list = []
 
-        url = if all then "#{@server}/all" else "#{@server}/squads/list"
+        url = "#{@server}/squads/list"
         $.get url, (data, textStatus, jqXHR) =>
             hasNotArchivedSquads = false
             for squad in data[builder.faction]
@@ -170,7 +167,7 @@ class exportObj.SquadBuilderBackend
                             <h4>#{squad.name}</h4>
                         </div>
                         <div class="col-md-3">
-                            <h5>#{squad.additional_data?.points} Points</h5>
+                            <h5>#{squad.additional_data?.points} #{exportObj.translate('ui', "Points")}</h5>
                         </div>
                     </div>
                     <div class="row squad-description">
@@ -186,23 +183,22 @@ class exportObj.SquadBuilderBackend
                         </div>
                     </div>
                     <div class="row squad-convert-confirm">
-                        <div class="col-md-9">
-                            Convert to Extended?
+                        <div class="col-md-9 translated" defaultText="Convert to Extended?">
                         </div>
                         <div class="squad-buttons col-md-3">
-                            <button class="btn btn-danger confirm-convert-squad">Convert</button>
+                            <button class="btn btn-danger confirm-convert-squad translated" defaultText="Convert"></button>
                             &nbsp;
-                            <button class="btn btn-modal cancel-convert-squad">Cancel</button>
+                            <button class="btn btn-modal cancel-convert-squad translated" defaultText="Cancel"></button>
                         </div>
                     </div>
                     <div class="row squad-delete-confirm">
                         <div class="col-md-9">
-                            Really delete <em>#{squad.name}</em>?
+                            #{exportObj.translate('ui', 'reallyDeleteSquadXY', "<em>#{squad.name}</em>")}
                         </div>
                         <div class="col-md-3">
-                            <button class="btn btn-danger confirm-delete-squad">Delete</button>
+                            <button class="btn btn-danger confirm-delete-squad translated" defaultText="Delete"></button>
                             &nbsp;
-                            <button class="btn btn-modal cancel-delete-squad">Cancel</button>
+                            <button class="btn btn-modal cancel-delete-squad translated" defaultText="Cancel"></button>
                         </div>
                     </div>
                 """
@@ -330,7 +326,7 @@ class exportObj.SquadBuilderBackend
                             """
             if not hasNotArchivedSquads
                 list_ul.append $.trim """
-                    <li>Nothing to see here. Go save a squad!</li>
+                    <li class="translated" defaultText="No saved squads"></li>
                 """
                 
             #setup Tags
@@ -358,11 +354,13 @@ class exportObj.SquadBuilderBackend
                         else
                             $(elem).hide()
 
+            # some of the created html needs translation (e.g. buttons). Do that now.
+            exportObj.translateUIElements(list_ul)
             loading_pane.fadeOut 'fast'
             list_ul.fadeIn 'fast'
 
     authenticate: (cb=$.noop) ->
-        $(@auth_status.find('.payload')).text 'Checking auth status...'
+        $(@auth_status.find('.payload')).text exportObj.translate('ui', 'Checking auth status...')
         @auth_status.show()
         old_auth_state = @authenticated
 
@@ -392,7 +390,7 @@ class exportObj.SquadBuilderBackend
             @login_modal.modal 'show'
 
     logout: (cb=$.noop) ->
-        $(@auth_status.find('.payload')).text 'Logging out...'
+        $(@auth_status.find('.payload')).text exportObj.translate('ui', 'Logging out...')
         @auth_status.show()
         $.get "#{@server}/auth/logout", (data, textStatus, jqXHR) =>
             @authenticated = false
@@ -419,19 +417,19 @@ class exportObj.SquadBuilderBackend
         if name.length == 0
             @name_availability_container.text ''
             @name_availability_container.append $.trim """
-                <i class="fa fa-thumbs-down"></i> A name is required
+                <i class="fa fa-thumbs-down"></i> #{exportObj.translate('ui', "name required")}
             """
         else
             $.post "#{@server}/squads/namecheck", { name: name }, (data) =>
                 @name_availability_container.text ''
                 if data.available
                     @name_availability_container.append $.trim """
-                        <i class="fa fa-thumbs-up"></i> Name is available
+                        <i class="fa fa-thumbs-up"></i> #{exportObj.translate('ui', "Name is available")}
                     """
                     @save_as_save_button.removeClass 'disabled'
                 else
                     @name_availability_container.append $.trim """
-                        <i class="fa fa-thumbs-down"></i> You already have a squad with that name
+                        <i class="fa fa-thumbs-down"></i> #{exportObj.translate('ui', "Name in use")}
                     """
                     @save_as_save_button.addClass 'disabled'
 
@@ -454,32 +452,23 @@ class exportObj.SquadBuilderBackend
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Log in with OAuth</h3>
+                <h3 class="translated" defaultText="Log in with OAuth"></h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
                 <p>
-                    Select one of the OAuth providers below to log in and start saving squads.
-                    <a class="login-help" href="#">What's this?</a>
+                    <span class="translated" defaultText="select OAuth provider"></span>
+                    <a class="login-help translated" href="#" defaultText="What's this?"></a>
                 </p>
                 <div class="well well-small oauth-explanation">
-                    <p>
-                        <a href="http://en.wikipedia.org/wiki/OAuth" target="_blank">OAuth</a> is an authorization system which lets you prove your identity at a web site without having to create a new account.  Instead, you tell some provider with whom you already have an account (e.g. Google or Facebook) to prove to this web site that you say who you are.  That way, the next time you visit, this site remembers that you're that user from Google.
-                    </p>
-                    <p>
-                        The best part about this is that you don't have to come up with a new username and password to remember.  And don't worry, I'm not collecting any data from the providers about you.  I've tried to set the scope of data to be as small as possible, but some places send a bunch of data at minimum.  I throw it away.  All I look at is a unique identifier (usually some giant number).
-                    </p>
-                    <p>
-                        For more information, check out this <a href="http://hueniverse.com/oauth/guide/intro/" target="_blank">introduction to OAuth</a>.
-                    </p>
-                    <button class="btn btn-modal">Got it!</button>
+                    <span class="translated" defaultText="OAuth explanation"></span>
+                    <button class="btn btn-modal translated" defaultText="Got it!"></button>
                 </div>
                 <ul class="login-providers inline"></ul>
-                <p>
-                    This will open a new window to let you authenticate with the chosen provider.  You may have to allow pop ups for this site.  (Sorry.)
-                </p>
+                <p class="translated" defaultText="Continue to OAuth provider"></p>
+                <p class="translated" defaultText="iOS requires cross-site control"></p>
                 <p class="login-in-progress">
-                    <em>OAuth login is in progress.  Please finish authorization at the specified provider using the window that was just created.</em>
+                    <em class="translated" defaultText="login in progress"></em>
                 </p>
             </div>
         </div>
@@ -512,6 +501,9 @@ class exportObj.SquadBuilderBackend
                 methods_ul.append li
             @ui_ready = true
 
+        # this is dynamically created UI, so we need to translate it after creation
+        exportObj.translateUIElements(@login_modal)
+
         @reload_done_modal = $ document.createElement('DIV')
         @reload_done_modal.addClass 'modal fade d-print-none'
         @reload_done_modal.tabindex = "-1"
@@ -525,14 +517,17 @@ class exportObj.SquadBuilderBackend
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
-                <p>All squads of that faction have been reloaded.</p>
+                <p class="translated" defaultText="Squads reloaded"></p>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-modal btn-primary" aria-hidden="true" data-dismiss="modal">Well done!</button>
+                <button class="btn btn-modal btn-primary translated" aria-hidden="true" data-dismiss="modal" defaultText="Well done!"></button>
             </div>
         </div>
     </div>
         """
+
+        # this is dynamically created UI, so we need to translate it after creation
+        exportObj.translateUIElements(@reload_done_modal)
 
         @squad_list_modal = $ document.createElement('DIV')
         @squad_list_modal.addClass 'modal fade d-print-none squad-list'
@@ -552,23 +547,23 @@ class exportObj.SquadBuilderBackend
                 <p class="pagination-centered squad-list-loading">
                     <i class="fa fa-spinner fa-spin fa-3x"></i>
                     <br />
-                    Fetching squads...
+                    <span class="translated" defaultText="Fetching squads..."></span>
                 </p>
             </div>
             <div class="modal-footer">
                 <div class="btn-group delete-multiple-squads full-row">
-                    <button class="btn btn-modal select-all">Select All</button>
-                    <button class="btn btn-modal archive-selected">Archive Selected</button>
-                    <button class="btn btn-modal btn-danger delete-selected">Delete Selected</button>
+                    <button class="btn btn-modal select-all translated" defaultText="Select All"></button>
+                    <button class="btn btn-modal archive-selected translated" defaultText="Archive Selected"></button>
+                    <button class="btn btn-modal btn-danger delete-selected translated" defaultText="Delete Selected"></button>
                 </div>
                 <div class="btn-group squad-display-mode full-row">
-                    <button class="btn btn-modal btn-inverse show-all-squads">All</button>
-                    <button class="btn btn-modal show-extended-squads"><span class="d-none d-lg-block">Extended</span><span class="d-lg-none">Ext</span></button>
-                    <button class="btn btn-modal show-hyperspace-squads"><span class="d-none d-lg-block">Hyperspace</span><span class="d-lg-none">Hyper</span></button>
-                    <button class="btn btn-modal show-quickbuild-squads"><span class="d-none d-lg-block">Quickbuild</span><span class="d-lg-none">QB</span></button>
-                    <button class="btn btn-modal show-epic-squads">Epic</button>
-                    <button class="btn btn-modal show-archived-squads">Archived</button>
-                    <button class="btn btn-modal reload-all">Reload Squads (Long!)</button>
+                    <button class="btn btn-modal btn-inverse show-all-squads translated" defaultText="All"></button>
+                    <button class="btn btn-modal show-extended-squads"><span class="d-none d-lg-block translated" defaultText="Extended"></span><span class="d-lg-none translated" defaultText="Ext"></span></button>
+                    <button class="btn btn-modal show-hyperspace-squads"><span class="d-none d-lg-block translated" defaultText="Hyperspace"></span><span class="d-lg-none translated" defaultText="Hyper"></span></button>
+                    <button class="btn btn-modal show-quickbuild-squads"><span class="d-none d-lg-block translated" defaultText="Quickbuild"></span><span class="d-lg-none translated" defaultText="QB"></span></button>
+                    <button class="btn btn-modal show-epic-squads translated" defaultText="Epic"></button>
+                    <button class="btn btn-modal show-archived-squads translated" defaultText="Archived"></button>
+                    <button class="btn btn-modal reload-all translated" defaultText="Recalculate Points"></button>
                 </div>
                 <div class="btn-group tags-display full-row">
                 </div>
@@ -583,6 +578,9 @@ class exportObj.SquadBuilderBackend
         # The delete multiple section only appeares, when somebody hits the delete button of one squad. 
         @squad_list_modal.find('div.delete-multiple-squads').hide() 
 
+        # this is dynamically created UI, so we need to translate it after creation
+        exportObj.translateUIElements(@squad_list_modal)
+
         @delete_selected_button = $ @squad_list_modal.find('button.delete-selected')
         @delete_selected_button.click (e) =>
             ul = @squad_list_modal.find('ul.squad-list') 
@@ -592,7 +590,7 @@ class exportObj.SquadBuilderBackend
                     do (li) =>
                         li.find('.cancel-delete-squad').fadeOut 'fast'
                         li.find('.confirm-delete-squad').addClass 'disabled'
-                        li.find('.confirm-delete-squad').text 'Deleting...'
+                        li.find('.confirm-delete-squad').text exportObj.translate('ui', 'Deleting...')
                         @delete li.data('squad').id, (results) =>
                             if results.success
                                 li.slideUp 'fast', ->
@@ -615,13 +613,13 @@ class exportObj.SquadBuilderBackend
                 if li.data 'selectedForDeletion'
                     do (li) =>
                         li.find('.confirm-delete-squad').addClass 'disabled'
-                        li.find('.confirm-delete-squad').text 'Archiving...'
+                        li.find('.confirm-delete-squad').text exportObj.translate('ui', 'Archiving...')
                         @archive li.data('squad'), li.data('builder').faction, (results) =>
                             if results.success
                                 li.slideUp 'fast', ->
                                     $(li).hide()
                                     $(li).find('.confirm-delete-squad').removeClass 'disabled'
-                                    $(li).find('.confirm-delete-squad').text 'Delete'
+                                    $(li).find('.confirm-delete-squad').text exportObj.translate('ui', 'Delete')
                                     $(li).data 'selectedForDeletion', false
                                     $(li).find('.squad-delete-confirm').fadeOut 'fast', ->
                                         $(li).find('.squad-description').fadeIn 'fast'
@@ -746,18 +744,18 @@ class exportObj.SquadBuilderBackend
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Save Squad As...</h3>
+                <h3 class="translated" defaultText="Save Squad As..."></h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
                 <label for="xw-be-squad-save-as">
-                    New Squad Name
+                    <span class="translated" defaultText="New Squad Name"></span>
                     <input id="xw-be-squad-save-as"></input>
                 </label>
                 <span class="name-availability"></span>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary save" aria-hidden="true">Save</button>
+                <button class="btn btn-primary save translated" aria-hidden="true" defaultText="Save"></button>
             </div>
         </div>
     </div>
@@ -786,7 +784,7 @@ class exportObj.SquadBuilderBackend
                     tag: builder.getTag()
                 builder.backend_save_list_as_button.addClass 'disabled'
                 builder.backend_status.html $.trim """
-                    <i class="fa fa-sync fa-spin"></i>&nbsp;Saving squad...
+                    <i class="fa fa-sync fa-spin"></i>&nbsp;#{exportObj.translate('ui', 'Saving squad...')}
                 """
                 builder.backend_status.show()
                 new_name = $.trim @save_as_input.val()
@@ -798,7 +796,7 @@ class exportObj.SquadBuilderBackend
                         builder.container.trigger 'xwing-backend:squadDirtinessChanged'
                         builder.container.trigger 'xwing-backend:squadNameChanged'
                         builder.backend_status.html $.trim """
-                            <i class="fa fa-check"></i>&nbsp;New squad saved successfully.
+                            <i class="fa fa-check"></i>&nbsp;#{exportObj.translate('ui', 'New squad saved successfully.')}
                         """
                     else
                         builder.backend_status.html $.trim """
@@ -814,13 +812,16 @@ class exportObj.SquadBuilderBackend
             else
                 @name_availability_container.text ''
                 @name_availability_container.append $.trim """
-                    <i class="fa fa-spin fa-spinner"></i> Checking name availability...
+                    <i class="fa fa-spin fa-spinner"></i> #{exportObj.translate('ui', 'Checking name availability...')}
                 """
                 timer = @save_as_modal.data('timer')
                 window.clearInterval(timer) if timer?
                 @save_as_modal.data 'timer', window.setInterval(@nameCheck, 500)
 
         @name_availability_container = $ @save_as_modal.find('.name-availability')
+
+        # this is dynamically created UI, so we need to translate it after creation
+        exportObj.translateUIElements(@squad_list_modal)
 
         @delete_modal = $ document.createElement('DIV')
         @delete_modal.addClass 'modal fade d-print-none'
@@ -831,15 +832,15 @@ class exportObj.SquadBuilderBackend
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Really Delete <span class="squad-name-placeholder"></span>?</h3>
+                <h3><span class="translated" defaultText="Really Delete"></span> <span class="squad-name-placeholder"></span>?</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want to delete this squad?</p>
+                <p class="translated" defaultText="Sure to delete?"></p>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-danger delete" aria-hidden="true">Yes, Delete <i class="squad-name-placeholder"></i></button>
-                <button class="btn btn-modal" data-dismiss="modal" aria-hidden="true">Never Mind</button>
+                <button class="btn btn-danger delete" aria-hidden="true"><span class="translated" defaultText="Yes, Delete"></span> <i class="squad-name-placeholder"></i></button>
+                <button class="btn btn-modal translated" data-dismiss="modal" aria-hidden="true" defaultText="Never Mind"></button>
             </div>
         </div>
     </div>
@@ -851,7 +852,7 @@ class exportObj.SquadBuilderBackend
             e.preventDefault()
             builder = @delete_modal.data 'builder'
             builder.backend_status.html $.trim """
-                <i class="fa fa-sync fa-spin"></i>&nbsp;Deleting squad...
+                <i class="fa fa-sync fa-spin"></i>&nbsp;#{exportObj.translate('ui', "Deleting squad...")}
             """
             builder.backend_status.show()
             builder.backend_delete_list_button.addClass 'disabled'
@@ -862,7 +863,7 @@ class exportObj.SquadBuilderBackend
                     builder.current_squad.dirty = true
                     builder.container.trigger 'xwing-backend:squadDirtinessChanged'
                     builder.backend_status.html $.trim """
-                        <i class="fa fa-check"></i>&nbsp;Squad deleted.
+                        <i class="fa fa-check"></i>&nbsp;#{exportObj.translate('ui', "Squad deleted.")}
                     """
                 else
                     builder.backend_status.html $.trim """
@@ -870,6 +871,9 @@ class exportObj.SquadBuilderBackend
                     """
                     # Failed, so offer chance to delete again
                     builder.backend_delete_list_button.removeClass 'disabled'
+
+        # this is dynamically created UI, so we need to translate it after creation
+        exportObj.translateUIElements(@delete_modal)
 
         @unsaved_modal = $ document.createElement('DIV')
         @unsaved_modal.addClass 'modal fade d-print-none'
@@ -880,15 +884,15 @@ class exportObj.SquadBuilderBackend
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Unsaved Changes</h3>
+                <h3 class="translated" defaultText="Unsaved Changes"></h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
-                <p>You have not saved changes to this squad.  Do you want to go back and save?</p>
+                <p class="translated" defaultText="Unsaved Changes Warning"></p>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-modal btn-primary" aria-hidden="true" data-dismiss="modal">Go Back</button>
-                <button class="btn btn-danger discard" aria-hidden="true">Discard Changes</button>
+                <button class="btn btn-modal btn-primary translated" aria-hidden="true" data-dismiss="modal" defaultText="Go Back"></button>
+                <button class="btn btn-danger discard translated" aria-hidden="true" defaultText="Discard Changes"></button>
             </div>
         </div>
     </div>
@@ -899,6 +903,9 @@ class exportObj.SquadBuilderBackend
             @unsaved_modal.data('builder').current_squad.dirty = false
             @unsaved_modal.data('callback')()
             @unsaved_modal.modal 'hide'
+            
+        # this is dynamically created UI, so we need to translate it after creation
+        exportObj.translateUIElements(@unsaved_modal)
 
     setupHandlers: () ->
         $(window).on 'xwing-backend:authenticationChanged', (e, authenticated, backend) =>
@@ -956,9 +963,11 @@ class exportObj.SquadBuilderBackend
             cb data.headers
 
     getLanguagePreference: (settings, cb=$.noop) =>
-        # Check session, then headers
+        # check if user provided a language preference. If yes, this will override the browser preference queried in translate.coffee
         if settings?.language?
-            cb settings.language
+            # we found a language, provide it with priority 10
+            cb settings.language, 10
+        # otherwise we may parse a language out of the headers (reimplements commit d95bb5e93fbb75d0e6a4a7270f7a86cf86a62a0a)
         else
             await @getHeaders defer(headers)
             if headers?.HTTP_ACCEPT_LANGUAGE?
@@ -967,13 +976,22 @@ class exportObj.SquadBuilderBackend
                 for language_range in headers.HTTP_ACCEPT_LANGUAGE.split(',')
                     [ language_tag, quality ] = language_range.split ';'
                     if language_tag == '*'
-                        cb 'English'
+                        # let's give that half bullshit priority
+                        cb 'English', -0.5
                     else
                         language_code = language_tag.split('-')[0]
-                        cb(exportObj.codeToLanguage[language_code] ? 'English')
+                        # check if the language code is available
+                        if langc of exportObj.codeToLanguage
+                            # yep - use as language with reasonable priority
+                            cb(exportObj.codeToLanguage[language_code], 8)
+                        else
+                            # bullshit priority - we can't support what the user wants
+                            # (maybe he gave another option though in his browser settings)
+                            cb 'English', -1
                     break
             else
-                cb 'English'
+                # no headers, callback with bullshit priority
+                cb 'English', -1
 
     getCollectionCheck: (settings, cb=$.noop) =>
         if settings?.collectioncheck?
@@ -1047,7 +1065,7 @@ class exportObj.CardBrowser
 
         # internals
         @currently_selected = null
-        @language = 'English'
+        @language = exportObj.currentLanguage ? 'English'
 
         @prepareData()
 
@@ -1062,218 +1080,218 @@ class exportObj.CardBrowser
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card card-search-container">
-                        <h5 class="card-title">Card Search</h5>
+                        <h5 class="card-title translated" defaultText="Card Search"></h5>
                             <div class="advanced-search-container">
                                 <div class = "card search-container general-search-container">
-                                    <h6 class="card-subtitle mb-3 text-muted version">General</h6>
+                                    <h6 class="card-subtitle mb-3 text-muted version translated" defaultText="General"></h6>
                                     <label class = "text-search advanced-search-label">
-                                    <strong>Textsearch: </strong>
-                                        <input type="search" placeholder="Search for name, text or ship" class = "card-search-text">
+                                    <strong class="translated" defaultText="Textsearch:"></strong>
+                                        <input type="search" placeholder="#{exportObj.translate('ui', "Placeholder Textsearch Browser")}" class = "card-search-text">
                                     </label>
                                     <div class= "advanced-search-faction-selection-container">
                                         <label class = "advanced-search-label select-available-slots">
-                                            <strong>Factions: </strong>
-                                            <select class="advanced-search-selection faction-selection" multiple="1" data-placeholder="All factions"></select>
+                                            <strong class="translated" defaultText="Factions:"></strong>
+                                            <select class="advanced-search-selection faction-selection" multiple="1" data-placeholder="#{exportObj.translate('ui', "All factions")}"></select>
                                         </label>
                                     </div>
                                     <div class = "advanced-search-point-selection-container">
-                                        <strong>Point costs:</strong>
+                                        <strong class="translated" defaultText="Point costs:"></strong>
                                         <label class = "advanced-search-label set-minimum-points">
-                                            from <input type="number" class="minimum-point-cost advanced-search-number-input" value="0" /> 
+                                            <span class="translated" defaultText="from"></span> <input type="number" class="minimum-point-cost advanced-search-number-input" value="0" /> 
                                         </label>
                                         <label class = "advanced-search-label set-maximum-points">
-                                            to <input type="number" class="maximum-point-cost advanced-search-number-input" value="200" /> 
+                                            <span class="translated" defaultText="to"></span> <input type="number" class="maximum-point-cost advanced-search-number-input" value="200" /> 
                                         </label>
                                     </div>
                                     <div class = "advanced-search-collection-container">
-                                        <strong>Owned copies:</strong>
+                                        <strong class="translated" defaultText="Owned copies:"></strong>
                                         <label class = "advanced-search-label set-minimum-owned-copies">
-                                            from <input type="number" class="minimum-owned-copies advanced-search-number-input" value="0" /> 
+                                            <span class="translated" defaultText="from"></span> <input type="number" class="minimum-owned-copies advanced-search-number-input" value="0" /> 
                                         </label>
                                         <label class = "advanced-search-label set-maximum-owened-copies">
-                                            to <input type="number" class="maximum-owned-copies advanced-search-number-input" value="100" /> 
+                                            <span class="translated" defaultText="to"></span> <input type="number" class="maximum-owned-copies advanced-search-number-input" value="100" /> 
                                         </label>
                                     </div>
                                     <div class = "advanced-search-misc-container">
-                                        <strong>Misc:</strong>
+                                        <strong class="translated" defaultText="Misc:"></strong>
                                         <label class = "advanced-search-label toggle-unique">
-                                            <input type="checkbox" class="unique-checkbox advanced-search-checkbox" /> Is unique
+                                            <input type="checkbox" class="unique-checkbox advanced-search-checkbox" /> <span class="translated" defaultText="Is unique"></span>
                                         </label>
                                         <label class = "advanced-search-label toggle-non-unique">
-                                            <input type="checkbox" class="non-unique-checkbox advanced-search-checkbox" /> Is not unique
+                                            <input type="checkbox" class="non-unique-checkbox advanced-search-checkbox" /> <span class="translated" defaultText="Is not unique"></span>
                                         </label>
                                         <label class = "advanced-search-label toggle-hyperspace">
-                                            <input type="checkbox" class="hyperspace-checkbox advanced-search-checkbox" /> Hyperspace legal
+                                            <input type="checkbox" class="hyperspace-checkbox advanced-search-checkbox" />  <span class="translated" defaultText="Hyperspace legal"></span>
                                         </label>
                                     </div>
                                 </div>
                                 <div class = "card search-container ship-search-container">
-                                    <h6 class="card-subtitle mb-3 text-muted version">Ships and Pilots</h6>
+                                    <h6 class="card-subtitle mb-3 text-muted version translated" defaultText="Ships and Pilots"></h6>
                                     <div class = "advanced-search-slot-available-container">
                                         <label class = "advanced-search-label select-available-slots">
-                                            <strong>Slots: </strong>
-                                            <select class="advanced-search-selection slot-available-selection" multiple="1" data-placeholder="No slots selected"></select>
+                                            <strong class="translated" defaultText="Slots:"></strong>
+                                            <select class="advanced-search-selection slot-available-selection" multiple="1" data-placeholder="#{exportObj.translate('ui', "noXYselected", "slots")}"></select>
                                         </label>
                                         <br />
                                         <label class = "advanced-search-label toggle-unique">
-                                            <input type="checkbox" class="duplicate-slots-checkbox advanced-search-checkbox" /> Has multiple of the chosen slots
+                                            <input type="checkbox" class="duplicate-slots-checkbox advanced-search-checkbox" /> #{exportObj.translate('ui', "Has multiple of the chosen slots")}
                                         </label>
                                     </div>
                                     <div class = "advanced-search-actions-available-container">
                                         <label class = "advanced-search-label select-available-actions">
-                                            <strong>Actions: </strong>
-                                            <select class="advanced-search-selection action-available-selection" multiple="1" data-placeholder="No actions selected"></select>
+                                            <strong class="translated" defaultText="Actions:"></strong>
+                                            <select class="advanced-search-selection action-available-selection" multiple="1" data-placeholder="#{exportObj.translate('ui', "noXYselected", "actions")}"></select>
                                         </label>
                                     </div>
                                     <div class = "advanced-search-linkedactions-available-container">
                                         <label class = "advanced-search-label select-available-linkedactions">
-                                            <strong>Linked actions: </strong>
-                                            <select class="advanced-search-selection linkedaction-available-selection" multiple="1" data-placeholder="No actions selected"></select>
+                                            <strong class="translated" defaultText="Linked actions:"></strong>
+                                            <select class="advanced-search-selection linkedaction-available-selection" multiple="1" data-placeholder="#{exportObj.translate('ui', "noXYselected", "actions")}"></select>
                                         </label>
                                     </div>
                                     <div class = "advanced-search-ini-container">
-                                        <strong>Initiative:</strong>
+                                        <strong class="translated" defaultText="Initiative:"></strong>
                                         <label class = "advanced-search-label set-minimum-ini">
-                                            from <input type="number" class="minimum-ini advanced-search-number-input" value="0" /> 
+                                            <span class="translated" defaultText="from"></span> <input type="number" class="minimum-ini advanced-search-number-input" value="0" /> 
                                         </label>
                                         <label class = "advanced-search-label set-maximum-ini">
-                                            to <input type="number" class="maximum-ini advanced-search-number-input" value="6" /> 
+                                            <span class="translated" defaultText="to"></span> <input type="number" class="maximum-ini advanced-search-number-input" value="6" /> 
                                         </label>
                                     </div>
                                     <div class = "advanced-search-hull-container">
-                                        <strong>Hull:</strong>
+                                        <strong class="translated" defaultText="Hull:"></strong>
                                         <label class = "advanced-search-label set-minimum-hull">
-                                            from <input type="number" class="minimum-hull advanced-search-number-input" value="0" /> 
+                                            <span class="translated" defaultText="from"></span> <input type="number" class="minimum-hull advanced-search-number-input" value="0" /> 
                                         </label>
                                         <label class = "advanced-search-label set-maximum-hull">
-                                            to <input type="number" class="maximum-hull advanced-search-number-input" value="12" /> 
+                                            <span class="translated" defaultText="to"></span> <input type="number" class="maximum-hull advanced-search-number-input" value="12" /> 
                                         </label>
                                     </div>
                                     <div class = "advanced-search-shields-container">
-                                        <strong>Shields:</strong>
+                                        <strong class="translated" defaultText="Shields:"></strong>
                                         <label class = "advanced-search-label set-minimum-shields">
-                                            from <input type="number" class="minimum-shields advanced-search-number-input" value="0" /> 
+                                            <span class="translated" defaultText="from"></span> <input type="number" class="minimum-shields advanced-search-number-input" value="0" /> 
                                         </label>
                                         <label class = "advanced-search-label set-maximum-shields">
-                                            to <input type="number" class="maximum-shields advanced-search-number-input" value="6" /> 
+                                            <span class="translated" defaultText="to"></span> <input type="number" class="maximum-shields advanced-search-number-input" value="6" /> 
                                         </label>
                                     </div>
                                     <div class = "advanced-search-agility-container">
-                                        <strong>Agility:</strong>
+                                        <strong class="translated" defaultText="Agility:"></strong>
                                         <label class = "advanced-search-label set-minimum-agility">
-                                            from <input type="number" class="minimum-agility advanced-search-number-input" value="0" /> 
+                                            <span class="translated" defaultText="from"></span> <input type="number" class="minimum-agility advanced-search-number-input" value="0" /> 
                                         </label>
                                         <label class = "advanced-search-label set-maximum-agility">
-                                            to <input type="number" class="maximum-agility advanced-search-number-input" value="3" /> 
+                                            <span class="translated" defaultText="to"></span> <input type="number" class="maximum-agility advanced-search-number-input" value="3" /> 
                                         </label>
                                     </div>
                                     <div class = "advanced-search-base-size-container">
-                                        <strong>Base size:</strong>
+                                        <strong class="translated" defaultText="Base size:"></strong>
                                         <label class = "advanced-search-label toggle-small-base">
-                                            <input type="checkbox" class="small-base-checkbox advanced-search-checkbox" checked="checked"/> Small
+                                            <input type="checkbox" class="small-base-checkbox advanced-search-checkbox" checked="checked"/> <span class="translated" defaultText="Small"></span>
                                         </label>
                                         <label class = "advanced-search-label toggle-medium-base">
-                                            <input type="checkbox" class="medium-base-checkbox advanced-search-checkbox" checked="checked"/> Medium
+                                            <input type="checkbox" class="medium-base-checkbox advanced-search-checkbox" checked="checked"/> <span class="translated" defaultText="Medium"></span>
                                         </label>
                                         <label class = "advanced-search-label toggle-large-base">
-                                            <input type="checkbox" class="large-base-checkbox advanced-search-checkbox" checked="checked"/> Large
+                                            <input type="checkbox" class="large-base-checkbox advanced-search-checkbox" checked="checked"/> <span class="translated" defaultText="Large"></span>
                                         </label>
                                     </div>
                                     <div class = "advanced-search-attack-container">
-                                        <strong>Attack  <i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>:</strong>
+                                        <strong><i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>:</strong>
                                         <label class = "advanced-search-label set-minimum-attack">
-                                            from <input type="number" class="minimum-attack advanced-search-number-input" value="0" /> 
+                                            <span class="translated" defaultText="from"></span> <input type="number" class="minimum-attack advanced-search-number-input" value="0" /> 
                                         </label>
                                         <label class = "advanced-search-label set-maximum-attack">
-                                            to <input type="number" class="maximum-attack advanced-search-number-input" value="5" /> 
+                                            <span class="translated" defaultText="to"></span> <input type="number" class="maximum-attack advanced-search-number-input" value="5" /> 
                                         </label>
                                     </div>
                                     <div class = "advanced-search-attackt-container">
-                                        <strong>Attack  <i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>:</strong>
+                                        <strong><i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>:</strong>
                                         <label class = "advanced-search-label set-minimum-attackt">
-                                            from <input type="number" class="minimum-attackt advanced-search-number-input" value="0" /> 
+                                            <span class="translated" defaultText="from"></span> <input type="number" class="minimum-attackt advanced-search-number-input" value="0" /> 
                                         </label>
                                         <label class = "advanced-search-label set-maximum-attackt">
-                                            to <input type="number" class="maximum-attackt advanced-search-number-input" value="5" /> 
+                                            <span class="translated" defaultText="to"></span> <input type="number" class="maximum-attackt advanced-search-number-input" value="5" /> 
                                         </label>
                                     </div>
                                     <div class = "advanced-search-attackdt-container">
-                                        <strong>Attack <i class="xwing-miniatures-font xwing-miniatures-font-doubleturretarc"></i>:</strong>
+                                        <strong><i class="xwing-miniatures-font xwing-miniatures-font-doubleturretarc"></i>:</strong>
                                         <label class = "advanced-search-label set-minimum-attackdt">
-                                            from <input type="number" class="minimum-attackdt advanced-search-number-input" value="0" /> 
+                                            <span class="translated" defaultText="from"></span> <input type="number" class="minimum-attackdt advanced-search-number-input" value="0" /> 
                                         </label>
                                         <label class = "advanced-search-label set-maximum-attackdt">
-                                            to <input type="number" class="maximum-attackdt advanced-search-number-input" value="5" /> 
+                                            <span class="translated" defaultText="to"></span> <input type="number" class="maximum-attackdt advanced-search-number-input" value="5" /> 
                                         </label>
                                     </div>
                                     <div class = "advanced-search-attackf-container">
-                                        <strong>Attack <i class="xwing-miniatures-font xwing-miniatures-font-fullfrontarc"></i>:</strong>
+                                        <strong><i class="xwing-miniatures-font xwing-miniatures-font-fullfrontarc"></i>:</strong>
                                         <label class = "advanced-search-label set-minimum-attackf">
-                                            from <input type="number" class="minimum-attackf advanced-search-number-input" value="0" /> 
+                                            <span class="translated" defaultText="from"></span> <input type="number" class="minimum-attackf advanced-search-number-input" value="0" /> 
                                         </label>
                                         <label class = "advanced-search-label set-maximum-attackf">
-                                            to <input type="number" class="maximum-attackf advanced-search-number-input" value="5" /> 
+                                            <span class="translated" defaultText="to"></span> <input type="number" class="maximum-attackf advanced-search-number-input" value="5" /> 
                                         </label>
                                     </div>
                                     <div class = "advanced-search-attackb-container">
-                                        <strong>Attack <i class="xwing-miniatures-font xwing-miniatures-font-reararc"></i>:</strong>
+                                        <strong><i class="xwing-miniatures-font xwing-miniatures-font-reararc"></i>:</strong>
                                         <label class = "advanced-search-label set-minimum-attackb">
-                                            from <input type="number" class="minimum-attackb advanced-search-number-input" value="0" /> 
+                                            <span class="translated" defaultText="from"></span> <input type="number" class="minimum-attackb advanced-search-number-input" value="0" /> 
                                         </label>
                                         <label class = "advanced-search-label set-maximum-attackb">
-                                            to <input type="number" class="maximum-attackb advanced-search-number-input" value="5" /> 
+                                            <span class="translated" defaultText="to"></span> <input type="number" class="maximum-attackb advanced-search-number-input" value="5" /> 
                                         </label>
                                     </div>
                                     <div class = "advanced-search-attackbull-container">
-                                        <strong>Attack <i class="xwing-miniatures-font xwing-miniatures-font-bullseyearc"></i>:</strong>
+                                        <strong><i class="xwing-miniatures-font xwing-miniatures-font-bullseyearc"></i>:</strong>
                                         <label class = "advanced-search-label set-minimum-attackbull">
-                                            from <input type="number" class="minimum-attackbull advanced-search-number-input" value="0" /> 
+                                            <span class="translated" defaultText="from"></span> <input type="number" class="minimum-attackbull advanced-search-number-input" value="0" /> 
                                         </label>
                                         <label class = "advanced-search-label set-maximum-attackbull">
-                                            to <input type="number" class="maximum-attackbull advanced-search-number-input" value="5" /> 
+                                            <span class="translated" defaultText="to"></span> <input type="number" class="maximum-attackbull advanced-search-number-input" value="5" /> 
                                         </label>
                                     </div>
                                 </div>
                                 <div class = "card search-container other-stuff-search-container">
-                                    <h6 class="card-subtitle mb-3 text-muted version">Other Stuff</h6>
+                                    <h6 class="card-subtitle mb-3 text-muted version translated" defaultText="Other Stuff"></h6>
                                     <div class = "advanced-search-slot-used-container">
                                         <label class = "advanced-search-label select-used-slots">
-                                            <strong>Used slot: </strong>
-                                            <select class="advanced-search-selection slot-used-selection" multiple="1" data-placeholder="No slots selected"></select>
+                                            <strong class="translated" defaultText="Used slot:"></strong>
+                                            <select class="advanced-search-selection slot-used-selection" multiple="1" data-placeholder="#{exportObj.translate('ui', "noXYselected", "slots")}"></select>
                                         </label>
                                     </div>
                                     <div class = "advanced-search-slot-used-second-slot-container">
                                         <label class = "advanced-search-label select-used-second-slots">
-                                            <strong>Used second slot: </strong>
-                                            <select class="advanced-search-selection slot-used-second-selection" multiple="1" data-placeholder="No slots selected"></select>
+                                            <strong class="translated" defaultText="Used double-slot:"></strong>
+                                            <select class="advanced-search-selection slot-used-second-selection" multiple="1" data-placeholder="#{exportObj.translate('ui', "noXYselected", "slots")}"></select>
                                         </label>
                                         <br />
                                         <label class = "advanced-search-label has-a-second-slot">
-                                            <input type="checkbox" class="advanced-search-checkbox has-a-second-slot-checkbox" /> Show only upgrades with a second slot
+                                            <input type="checkbox" class="advanced-search-checkbox has-a-second-slot-checkbox" /> <span class="translated" defaultText="Only upgrades requiring multiple slots"></span>
                                         </label>
                                     </div>
                                     <div class = "advanced-search-charge-container">
-                                        <strong>Charges:</strong>
+                                        <strong class="translated" defaultText="Charges:"></strong>
                                         <label class = "advanced-search-label set-minimum-charge">
-                                            from <input type="number" class="minimum-charge advanced-search-number-input" value="0" /> 
+                                            <span class="translated" defaultText="from"></span> <input type="number" class="minimum-charge advanced-search-number-input" value="0" /> 
                                         </label>
                                         <label class = "advanced-search-label set-maximum-charge">
-                                            to <input type="number" class="maximum-charge advanced-search-number-input" value="5" /> 
+                                            <span class="translated" defaultText="to"></span> <input type="number" class="maximum-charge advanced-search-number-input" value="5" /> 
                                         </label>
                                         <br />
                                         <label class = "advanced-search-label has-recurring-charge">
-                                            <input type="checkbox" class="advanced-search-checkbox has-recurring-charge-checkbox" checked="checked"/> Recurring
+                                            <input type="checkbox" class="advanced-search-checkbox has-recurring-charge-checkbox" checked="checked"/> <span class="translated" defaultText="Recurring"></span>
                                         </label>
                                         <label class = "advanced-search-label has-not-recurring-charge">
-                                            <input type="checkbox" class="advanced-search-checkbox has-not-recurring-charge-checkbox" checked="checked"/> Not recurring
+                                            <input type="checkbox" class="advanced-search-checkbox has-not-recurring-charge-checkbox" checked="checked"/> <span class="translated" defaultText="Not recurring"></span>
                                         </label>
                                     <div class = "advanced-search-force-container">
-                                        <strong>Force:</strong>
+                                        <strong class="translated" defaultText="Force:"></strong>
                                         <label class = "advanced-search-label set-minimum-force">
-                                            from <input type="number" class="minimum-force advanced-search-number-input" value="0" /> 
+                                            <span class="translated" defaultText="from"></span> <input type="number" class="minimum-force advanced-search-number-input" value="0" /> 
                                         </label>
                                         <label class = "advanced-search-label set-maximum-force">
-                                            to <input type="number" class="maximum-force advanced-search-number-input" value="3" /> 
+                                            <span class="translated" defaultText="to"></span> <input type="number" class="maximum-force advanced-search-number-input" value="3" /> 
                                         </label>
                                     </div>
                                     </div>
@@ -1282,19 +1300,22 @@ class exportObj.CardBrowser
                         </div>
                     </div>
                     <div class="col-md-4 card-selecting-area">
-                        <span class="translate sort-cards-by">Sort cards by</span>: <select class="sort-by">
-                            <option value="name">Name</option>
-                            <option value="source">Source</option>
-                            <option value="type-by-points">Type (by Points)</option>
-                            <option value="type-by-name" selected="1">Type (by Name)</option>
+                        <span class="translate sort-cards-by" defaultText="Sort cards by"></span><span class="translated" defaultText="Sort by">:</span> <select class="sort-by">
+                            <option value="name" class="translated" defaultText="Name"></option>
+                            <option value="source" class="translated" defaultText="Source"></option>
+                            <option value="type-by-points" class="translated" defaultText="Type (by Points)"></option>
+                            <option value="type-by-name" selected="1" class="translated" defaultText="Type (by Name)" selected="selected">#{exportObj.translate('ui', 'Type (by Name)')}</option>
                         </select>
                         <div class="card-selector-container">
 
                         </div>
+                        <br>
+                        <div class="card-viewer-conditions-container">
+                        </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card card-viewer-placeholder info-well">
-                            <p class="translate select-a-card">Select a card from the list at the left.</p>
+                            <p class="translate select-a-card" defaultText="Select a card"></p>
                         </div>
                         <div class="card card-viewer-container">
                         </div>
@@ -1306,6 +1327,8 @@ class exportObj.CardBrowser
         @card_selector_container = $ @container.find('.xwing-card-browser .card-selector-container')
         @card_viewer_container = $ @container.find('.xwing-card-browser .card-viewer-container')
         @card_viewer_container.append $.trim exportObj.builders[0].createInfoContainerUI()
+        @card_viewer_container.hide()
+        @card_viewer_conditions_container = $ @container.find('.xwing-card-browser .card-viewer-conditions-container')
         @card_viewer_container.hide()
         @card_viewer_placeholder = $ @container.find('.xwing-card-browser .card-viewer-placeholder')
         @advanced_search_container = $ @container.find('.xwing-card-browser .advanced-search-container')
@@ -1320,10 +1343,12 @@ class exportObj.CardBrowser
         @faction_selection = ($ @container.find('.xwing-card-browser select.faction-selection'))
         for faction, pilot of exportObj.pilotsByFactionXWS
             opt = $ document.createElement('OPTION')
-            opt.text faction
+            opt.val faction
+            opt.text exportObj.translate('faction', faction)
             @faction_selection.append opt
         factionless_option = $ document.createElement('OPTION')
-        factionless_option.text "Factionless"
+        factionless_option.val "Factionless"
+        factionless_option.text exportObj.translate('faction',"Factionless")
         @faction_selection.append factionless_option
         @faction_selection.select2
             minimumResultsForSearch: if $.isMobile() then -1 else 0
@@ -1340,36 +1365,42 @@ class exportObj.CardBrowser
         @slot_available_selection = ($ @container.find('.xwing-card-browser select.slot-available-selection'))
         for slot of exportObj.upgradesBySlotCanonicalName
             opt = $ document.createElement('OPTION')
-            opt.text slot
+            opt.val slot
+            opt.text exportObj.translate('slot', slot)
             @slot_available_selection.append opt
         @slot_available_selection.select2
             minimumResultsForSearch: if $.isMobile() then -1 else 0
         @duplicateslots = ($ @container.find('.xwing-card-browser .duplicate-slots-checkbox'))[0]
         @action_available_selection = ($ @container.find('.xwing-card-browser select.action-available-selection'))
+        # ToDo: This does not seem like the correct place to have a list of all actions. Don't we have that elsewhere?!
         for action in ["Evade","Focus","Lock","Boost","Barrel Roll","Calculate","Reinforce","Rotate Arc","Coordinate","Slam","Reload","Jam"].sort()
             opt = $ document.createElement('OPTION')
-            opt.text action
+            opt.text exportObj.translate('action', action)
+            opt.val action
             @action_available_selection.append opt
         @action_available_selection.select2
             minimumResultsForSearch: if $.isMobile() then -1 else 0
         @linkedaction_available_selection = ($ @container.find('.xwing-card-browser select.linkedaction-available-selection'))
         for linkedaction in ["Evade","Focus","Lock","Boost","Barrel Roll","Calculate","Reinforce","Rotate Arc","Coordinate","Slam","Reload","Jam"].sort()
             opt = $ document.createElement('OPTION')
-            opt.text linkedaction
+            opt.text exportObj.translate('action', linkedaction)
+            opt.val linkedaction
             @linkedaction_available_selection.append opt
         @linkedaction_available_selection.select2
             minimumResultsForSearch: if $.isMobile() then -1 else 0
         @slot_used_selection = ($ @container.find('.xwing-card-browser select.slot-used-selection'))
         for slot of exportObj.upgradesBySlotCanonicalName
             opt = $ document.createElement('OPTION')
-            opt.text slot
+            opt.text exportObj.translate('slot', slot)
+            opt.val slot
             @slot_used_selection.append opt
         @slot_used_selection.select2
             minimumResultsForSearch: if $.isMobile() then -1 else 0
         @slot_used_second_selection = ($ @container.find('.xwing-card-browser select.slot-used-second-selection'))
         for slot of exportObj.upgradesBySlotCanonicalName
             opt = $ document.createElement('OPTION')
-            opt.text slot
+            opt.text exportObj.translate('slot', slot)
+            opt.val slot
             @slot_used_second_selection.append opt
         @slot_used_second_selection.select2
             minimumResultsForSearch: if $.isMobile() then -1 else 0
@@ -1402,6 +1433,8 @@ class exportObj.CardBrowser
         @not_recurring_charge = ($ @container.find('.xwing-card-browser .has-not-recurring-charge-checkbox'))[0]
         @minimum_owned_copies = ($ @container.find('.xwing-card-browser .minimum-owned-copies'))[0]
         @maximum_owned_copies = ($ @container.find('.xwing-card-browser .maximum-owned-copies'))[0]
+
+        exportObj.translateUIElements(@container)
 
 
 
@@ -1477,13 +1510,13 @@ class exportObj.CardBrowser
 
         for type in TYPES
             if type == 'upgrades'
-                @all_cards = @all_cards.concat ( { name: card_data.name, display_name: card_data.display_name, type: exportObj.translate(@language, 'ui', 'upgradeHeader', card_data.slot), data: card_data, orig_type: card_data.slot } for card_name, card_data of exportObj[type] )
+                @all_cards = @all_cards.concat ( { name: card_data.name, display_name: card_data.display_name, type: exportObj.translate('ui', 'upgradeHeader', card_data.slot), data: card_data, orig_type: card_data.slot } for card_name, card_data of exportObj[type] )
             else
-                @all_cards = @all_cards.concat ( { name: card_data.name, display_name: card_data.display_name, type: exportObj.translate(@language, 'singular', type), data: card_data, orig_type: exportObj.translate('English', 'singular', type) } for card_name, card_data of exportObj[type] )
+                @all_cards = @all_cards.concat ( { name: card_data.name, display_name: card_data.display_name, type: exportObj.translate('singular', type), data: card_data, orig_type: exportObj.translate('singular', type) } for card_name, card_data of exportObj[type] )
 
-        @types = (exportObj.translate(@language, 'types', type) for type in [ 'Pilot', 'Ship' ])
+        @types = (exportObj.translate('types', type) for type in [ 'Pilot', 'Ship' ])
         for card_name, card_data of exportObj.upgrades
-            upgrade_text = exportObj.translate @language, 'ui', 'upgradeHeader', card_data.slot
+            upgrade_text = exportObj.translate 'ui', 'upgradeHeader', card_data.slot
             @types.push upgrade_text if upgrade_text not in @types
 
         @all_cards.sort byName
@@ -1553,7 +1586,7 @@ class exportObj.CardBrowser
             when 'source'
                 for source in @sources
                     optgroup = $ document.createElement('OPTGROUP')
-                    optgroup.attr 'label', source
+                    optgroup.attr 'label', exportObj.translate('sources', source)
                     
                     card_added = false
                     for card in @cards_by_source[source]
@@ -1585,6 +1618,25 @@ class exportObj.CardBrowser
         exportObj.builders[0].showTooltip(orig_type, data, add_opts ? {}, @card_viewer_container) # we use the render method from the squad builder, cause it works.
 
         @card_viewer_container.show()
+
+        # Conditions
+        if data?.applies_condition?
+            conditions = new Set()
+            if data.applies_condition instanceof Array
+                for condition in data.applies_condition
+                    conditions.add(exportObj.conditionsByCanonicalName[condition])
+            else
+                conditions.add(exportObj.conditionsByCanonicalName[data.applies_condition])
+            @card_viewer_conditions_container.text ''
+            conditions.forEach (condition) =>
+                condition_container = $ document.createElement('div')
+                condition_container.addClass 'conditions-container d-flex flex-wrap'
+                condition_container.append conditionToHTML(condition)
+                @card_viewer_conditions_container.append condition_container
+            @card_viewer_conditions_container.show()
+        else
+            @card_viewer_conditions_container.hide()
+
         @card_viewer_placeholder.hide()
 
     addCardTo: (container, card) ->
@@ -1632,9 +1684,6 @@ class exportObj.CardBrowser
             else
                 return false unless ship.toLowerCase().indexOf(search_text) > -1 or (exportObj.ships[ship].display_name and exportObj.ships[ship].display_name.toLowerCase().indexOf(search_text) > -1)
     
-        # prevent the three virtual hardpoint cards from beeing displayed
-        return false unless card.data.slot != "Hardpoint"
-        
         all_factions = (faction for faction, pilot of exportObj.pilotsByFactionXWS)
         selected_factions = @faction_selection.val()
         if selected_factions.length > 0
@@ -1647,6 +1696,7 @@ class exportObj.CardBrowser
                    if faction in selected_factions
                        faction_matches = true
                        break
+               return false unless faction_matches
             if card.orig_type == 'Ship'
                faction_matches = false
                for faction in card.data.factions
@@ -1654,13 +1704,15 @@ class exportObj.CardBrowser
                        faction_matches = true
                        break
                return false unless faction_matches
+        else
+            selected_factions = all_factions
 
         # check if hyperspace only matches
         if @hyperspace_checkbox.checked
             # check all factions specified by the card (which might be a single faction or an array of factions), or all selected factions if card does not specify any
-            for faction in (if card.data.faction? then (if Array.isArray(card.data.faction) then card.data.faction else [card.data.faction]) else (selected_factions ? all_factions))
-                continue unless faction in (selected_factions ? all_factions) # e.g. ships should only be displayed if a legal faction is selected
-                hyperspace_legal = hyperspace_legal or exportObj.hyperspaceCheck(card.data, faction, card.orig_type == 'Ship' )
+            for faction in (if card.data.faction? then (if Array.isArray(card.data.faction) then card.data.faction else [card.data.faction]) else selected_factions)
+                continue unless faction in selected_factions # e.g. ships should only be displayed if a legal faction is selected
+                hyperspace_legal = hyperspace_legal or exportObj.hyperspaceCheckBrowser(card.data, faction, card.orig_type)
             return false unless hyperspace_legal
 
         # check for slot requirements
@@ -1669,15 +1721,17 @@ class exportObj.CardBrowser
             slots = card.data.slots
             if card.orig_type == 'Ship'
                 slots = []
-                for faction in selected_factions ? all_factions
+                for faction in selected_factions
                     if faction != undefined
                         for name, pilots of exportObj.pilotsByFactionCanonicalName[faction]
                             for pilot in pilots # there are sometimes multiple pilots with the same name, so we have another array layer here
-                                if pilot.ship == card.data.name
+                                if pilot.ship == card.data.name 
                                     slots.push.apply(slots, pilot.slots)
             
             for slot in required_slots
-                return false unless slots? and slot in slots
+                # special case for hardpoints
+                if not(((slot == "Torpedo") or (slot == "Missile") or (slot == "Cannon")) and (slots? and ("HardpointShip" in slots)))
+                    return false unless slots? and slot in slots
                 # check for duplciates
                 if @duplicateslots.checked
                     hasDuplicates = slots.filter (x, i, self) ->
@@ -1689,12 +1743,11 @@ class exportObj.CardBrowser
         required_linked_actions = @linkedaction_available_selection.val()
         if (required_actions.length > 0) or (required_linked_actions.length > 0)
             actions = card.data.actions ? []
-            actions = actions.concat (card.data.actionsred ? [])
             if card.orig_type == 'Pilot'
                 actions = card.data.ship_override?.actions ? exportObj.ships[card.data.ship].actions
                 actions = actions.concat (card.data.ship_override?.actionsred ? exportObj.ships[card.data.ship].actionsred)
         for action in required_actions ? []
-            return false unless actions? and ((action in actions) or (("F-" + action) in actions))
+            return false unless actions? and ((action in actions) or (("F-" + action) in actions) or (("R-" + action) in actions))
         for action in required_linked_actions ? []
             return false unless actions? and ((("R> " + action) in actions) or (("> " + action) in actions))
 
@@ -1710,7 +1763,7 @@ class exportObj.CardBrowser
                 return false unless matching_points
             if card.orig_type == 'Ship' # check if pilot matching points exist
                 matching_points = false
-                for faction in selected_factions ? all_factions
+                for faction in selected_factions
                     for name, pilots of exportObj.pilotsByFactionCanonicalName[faction]
                         for pilot in pilots
                             if pilot.ship == card.data.name
@@ -1825,6 +1878,7 @@ class exportObj.CardBrowser
         #TODO: Add logic of addiditional search criteria here. Have a look at card.data, to see what data is available. Add search inputs at the todo marks above. 
 
         return true
+
 ###
     X-Wing Rules Browser
     Stephen Kim <raithos@gmail.com>
@@ -1840,7 +1894,7 @@ class exportObj.RulesBrowser
         @container = $ args.container
 
         # internals
-        @language = 'English'
+        @language = exportObj.currentLanguage ? 'English'
 
         @prepareRulesData()
 
@@ -1853,12 +1907,12 @@ class exportObj.RulesBrowser
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card card-search-container">
-                            <h5 class="card-title">Rules Search</h5>
+                            <h5 class="card-title translated" defaultText="Rules Search"></h5>
                             <div class="advanced-search-container">
-                                <h6 class="card-subtitle mb-2 text-muted version">Version: </h6>
+                                <h6 class="card-subtitle mb-2 text-muted version"><span class="translated" defaultText="Version"></span>: </h6>
                                 <label class = "text-search advanced-search-label">
-                                    <strong>Term: </strong>
-                                    <input type="search" placeholder="Search for game term or card" class = "rule-search-text">
+                                    <strong class="translated" defaultText="Term:"></strong>
+                                    <input type="search" placeholder="#{exportObj.translate('ui', "Search for game term or card")}" class = "rule-search-text">
                                 </label>
                             </div>
                             <div class="rules-container card-selector-container">
@@ -1881,6 +1935,8 @@ class exportObj.RulesBrowser
         @rule_viewer_container = $ @container.find('.xwing-rules-browser .card-viewer-container')
         @rule_viewer_container.hide()
         @advanced_search_container = $ @container.find('.xwing-rules-browser .advanced-search-container')
+
+        exportObj.translateUIElements(@container)
 
         # TODO: Make added inputs easy accessible
         
@@ -1918,7 +1974,7 @@ class exportObj.RulesBrowser
         
         for type in @ruletype
             optgroup = $ document.createElement('OPTGROUP')
-            optgroup.attr 'label', exportObj.translate(@language, 'rulestypes', type)
+            optgroup.attr 'label', exportObj.translate('rulestypes', type)
 
             rule_added = false
             for rule_name, rule_data of @all_rules[type]
@@ -1959,21 +2015,114 @@ class exportObj.RulesBrowser
             return false
             
         return true
+
 ###
     X-Wing Squad Builder 2.0
     Stephen Kim <raithos@gmail.com>
     https://raithos.github.io
 ###
 
-DFL_LANGUAGE = 'English' # fallback and default language
-SND_LANGUAGE = 'Magyar' # second fallback
+DFL_LANGUAGE = 'English' # default language
+
+SHOW_DEBUG_OUT_MISSING_TRANSLATIONS = false
 
 builders = []
 
 exportObj = exports ? this
 
+# TODO: create a reasonable scope for this (e.g. a translation class), so vars like currentLanguage
+# and methods like translateToLang are not within exportObj scope
+
+# a language change event will only affect the current language, if it has higher priority than 
+# the current languagePriority.
+# -1: default language
+#  3: browser setting
+#  5: default priority (should not be used by now)
+#  8: parsed from html header (done in backend)
+# 10: backend setting
+# 100: manual selection
+exportObj.languagePriority = -1
+
+# try to set the current language according to the users choice
+try
+  (()->
+    # we'll guess language from browser settings - unless a better choice has already been made
+    if exportObj.languagePriority > 3
+        return
+    exportObj.currentLanguage = DFL_LANGUAGE
+    # some browses just provide a single navigator.language, some provide an array navigator.languages 
+    languageCodes = [navigator.language].concat(navigator.languages)
+    for langc in languageCodes
+        # strip stuff like -US from en-US
+        langc = langc.split('-')[0]
+        if langc of exportObj.codeToLanguage
+            # assume that exportObj already exists. If it does not, we don't know which languages YASB supports
+            exportObj.currentLanguage = exportObj.codeToLanguage[langc]
+            # we successfully found a language the user is somewhat happy with. that's cool
+            exportObj.languagePriority = 3
+            break
+   )()
+catch all
+    exportObj.currentLanguage = DFL_LANGUAGE
+    # throw all
+    
+
 exportObj.loadCards = (language) ->
-    # Load cards
+    exportObj.cardLoaders[language]()
+
+exportObj.translate = (category, what, args...) -> 
+    exportObj.translateToLang(exportObj.currentLanguage, category, what, args...)
+
+# this method should be somewhat private, and not be called outside this file
+exportObj.translateToLang = (language, category, what, args...) ->
+    try
+        translation = exportObj.translations[language][category][what]
+    catch all
+        # well, guess something went wrong - most likely some translation did not exist in the
+        # current language. If that isn't the default language, we'll try that next in belows else block
+        # otherwise we just use whatever is the in-code text of the requested translation.
+        # Anyway, we want to keep running, so better catch that exception and keep going...
+        translation = undefined
+    if translation?
+        if translation instanceof Function
+            # pass this function in case we need to do further translation inside the function
+            translation exportObj.translate, args...
+        else
+            translation
+    else
+        if language != DFL_LANGUAGE
+            if SHOW_DEBUG_OUT_MISSING_TRANSLATIONS
+                console.log(language + ' translation for ' + String(what) + ' (category ' + String(category) + ') missing')
+            exportObj.translateToLang DFL_LANGUAGE, category, what, args...
+        else
+            what
+
+exportObj.setupTranslationSupport = ->
+    do (builders) ->
+        $(exportObj).on 'xwing:languageChanged', (e, language, priority=5, cb=$.noop) =>
+            console.log("Change language to #{language} with priority #{priority} requested")
+            # check if priority is high enough to do anything
+            if priority == 'reload' # special case - just a reload, no priority change
+                null
+            # check if a better choice than the requested one has already been made
+            else if priority < exportObj.languagePriority
+                return
+            else
+                exportObj.languagePriority = priority
+                exportObj.currentLanguage = language
+            if language of exportObj.translations
+                $('.language-placeholder').text language
+                current_language = ""
+                for builder in builders
+                    current_language = builder.language
+                    await builder.container.trigger 'xwing:beforeLanguageLoad', defer()
+                if language != current_language
+                    exportObj.loadCards language
+                exportObj.translateUIElements()
+                for builder in builders
+                    builder.container.trigger 'xwing:afterLanguageLoad', language
+
+    # Load cards one time
     basic_cards = exportObj.basicCardData()
     exportObj.canonicalizeShipNames basic_cards
     exportObj.ships = basic_cards.ships
@@ -1981,51 +2130,15 @@ exportObj.loadCards = (language) ->
     # Set up the common card data (e.g. stats)
     exportObj.setupCommonCardData basic_cards
 
-    # Load languages in following order: polish, english, selected language. 
-    # This way it is assured, that if no data is available for the selected language, 
-    # english will be displayed instead, and if no english data is available polish. 
-    # This is the common order of spoiler/releases. 
-    exportObj.cardLoaders[SND_LANGUAGE]()
-    exportObj.cardLoaders[DFL_LANGUAGE]()
-    exportObj.cardLoaders[language]()
-
-exportObj.translate = (language, category, what, args...) ->
-    try
-        translation = exportObj.translations[language][category][what]
-    catch all
-        # Most likely some translation did not exist. If we are already in default language, that's bad. 
-        # Otherwise we just continue and try to get the english translation in belows else block.
-        if not all instanceof TypeError or language == DFL_LANGUAGE
-            console.log(category)
-            console.log(what)
-            throw all
-    if translation?
-        if translation instanceof Function
-            # pass this function in case we need to do further translation inside the function
-            translation exportObj.translate, language, args...
-        else
-            translation
-    else
-        if language != DFL_LANGUAGE
-            exportObj.translate DFL_LANGUAGE, category, what, args...
-        else
-            what
-
-exportObj.setupTranslationSupport = ->
-    do (builders) ->
-        $(exportObj).on 'xwing:languageChanged', (e, language, cb=$.noop) =>
-            if language of exportObj.translations
-                $('.language-placeholder').text language
-                for builder in builders
-                    await builder.container.trigger 'xwing:beforeLanguageLoad', defer()
-                exportObj.loadCards language
-                for own selector, html of exportObj.translations[language].byCSSSelector
-                    $(selector).html html
-                for builder in builders
-                    builder.container.trigger 'xwing:afterLanguageLoad', language
-
+    # do we need to load dfl as well? Not sure...
     exportObj.loadCards DFL_LANGUAGE
-    $(exportObj).trigger 'xwing:languageChanged', DFL_LANGUAGE
+    exportObj.loadCards exportObj.currentLanguage 
+    $(exportObj).trigger 'xwing:languageChanged', [exportObj.currentLanguage, 'reload']
+
+exportObj.translateUIElements = (context=undefined) ->
+    # translate all UI elements that are marked as translateable
+    for translateableNode in $('.translated', context)
+        translateableNode.innerHTML = (exportObj.translate('ui', translateableNode.getAttribute('defaultText')))
 
 exportObj.setupTranslationUI = (backend) ->
     for language in Object.keys(exportObj.cardLoaders).sort()
@@ -2034,12 +2147,12 @@ exportObj.setupTranslationUI = (backend) ->
         do (language, backend) ->
             li.click (e) ->
                 backend.set('language', language) if backend?
-                $(exportObj).trigger 'xwing:languageChanged', language
+                # setting a language manually has pretty high priority
+                $(exportObj).trigger 'xwing:languageChanged', [ language, 100 ]
         $('.language-picker .dropdown-menu').append li
 
 exportObj.registerBuilderForTranslation = (builder) ->
     builders.push(builder) if builder not in builders
-
 ###
     X-Wing Squad Builder 2.0
     Stephen Kim <raithos@gmail.com>
@@ -2105,13 +2218,6 @@ $.getParameterByName = (name) ->
     else
         return decodeURIComponent(results[1].replace(/\+/g, " "))
 
-#jQuery.event.special.touchstart = setup: (_, ns, handle) ->
-#  if ns.includes('noPreventDefault')
-#    @addEventListener 'touchstart', handle, passive: false
-#  else
-#    @addEventListener 'touchstart', handle, passive: true
-#  return
-    
 Array::intersects = (other) ->
     for item in this
         if item in other
@@ -2188,6 +2294,7 @@ class exportObj.SquadBuilder
             points: 200
             bid_goal: 5
             ships_or_upgrades: 3
+            ship_limit: 0
             collection_only: true
             fill_zero_pts: false
         @total_points = 0
@@ -2198,7 +2305,9 @@ class exportObj.SquadBuilder
 
         @backend = null
         @current_squad = {}
-        @language = 'English'
+
+        # todo: remove? The translation file should take care of languge management. 
+        @language = exportObj.currentLanguage ? 'English'
 
         @collection = null
 
@@ -2220,7 +2329,7 @@ class exportObj.SquadBuilder
             @addShip()
 
     resetCurrentSquad: (initial_load=false) ->
-        default_squad_name = 'Unnamed Squadron'
+        default_squad_name = @uitranslation('Unnamed Squadron')
 
         squad_name = $.trim(@squad_name_input.val()) or default_squad_name
         if initial_load and $.trim $.getParameterByName('sn')
@@ -2248,13 +2357,13 @@ class exportObj.SquadBuilder
 
         if @total_points > 0
             if squad_name == default_squad_name
-                @current_squad.name = 'Unsaved Squadron'
+                @current_squad.name = @uitranslation('Unsaved Squadron')
             @current_squad.dirty = true
 
         @container.trigger 'xwing-backend:squadNameChanged'
         @container.trigger 'xwing-backend:squadDirtinessChanged'
 
-    newSquadFromScratch: (squad_name = 'New Squadron') ->
+    newSquadFromScratch: (squad_name = @uitranslation('New Squadron')) ->
         @squad_name_input.val squad_name
         @removeAllShips()
         @addShip() if not @suppress_automatic_new_ship
@@ -2263,15 +2372,19 @@ class exportObj.SquadBuilder
         @notes.val ''
         @tag.val ''
 
+    uitranslation: (what, args...) ->
+        exportObj.translate('ui', what, args)
+
     setupUI: ->
         DEFAULT_RANDOMIZER_POINTS = 200
         DEFAULT_RANDOMIZER_TIMEOUT_SEC = 4
         DEFAULT_RANDOMIZER_BID_GOAL = 5
         DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES = 3
+        DEFAULT_RANDOMIZER_SHIP_LIMIT = 0
 
         @status_container = $ document.createElement 'DIV'
         @status_container.addClass 'container-fluid'
-        @status_container.append $.trim '''
+        @status_container.append $.trim """
             <div class="row squad-name-and-points-row">
                 <div class="col-md-3 squad-name-container">
                     <div class="display-name">
@@ -2279,38 +2392,39 @@ class exportObj.SquadBuilder
                         <i class="far fa-edit"></i>
                     </div>
                     <div class="input-append">
-                        <input type="text" maxlength="64" placeholder="Name your squad..." />
+                        <input type="text" maxlength="64" placeholder="#{@uitranslation("Name your squad...")}" />
                         <button class="btn save"><i class="fa fa-pen-square"></i></button>
                     </div>
                     <br />
                     <select class="game-type-selector">
-                        <option value="standard">Extended</option>
-                        <option value="hyperspace">Hyperspace</option>
-                        <option value="epic">Epic</option>
-                        <option value="quickbuild">Quickbuild</option>
+                        <option value="standard" class="translated" defaultText="Extended" selected="selected">#{@uitranslation("Extended")}</option>
+                        <option value="hyperspace" class="translated" defaultText="Hyperspace"></option>
+                        <option value="epic" class="translated" defaultText="Epic"></option>
+                        <option value="quickbuild" class="translated" defaultText="Quickbuild"></option>
                     </select>
                 </div>
                 <div class="col-md-4 points-display-container">
                     Points: <span class="total-points">0</span> / <input type="number" class="desired-points" value="200">
                     <span class="points-remaining-container">(<span class="points-remaining"></span>&nbsp;left) <span class="points-destroyed red"></span></span>
-                    <span class="content-warning unreleased-content-used d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>
-                    <span class="content-warning loading-failed-container d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>
-                    <span class="content-warning collection-invalid d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated"></span></span>
-                    <span class="content-warning ship-number-invalid-container d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated">A tournament legal squad must contain 2-8 ships!</span></span>
+                    <span class="content-warning unreleased-content-used d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated" defaultText="Unreleased content warning"></span></span>
+                    <span class="content-warning loading-failed-container d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated" defaultText="Broken squad link warning"></span></span>
+                    <span class="content-warning collection-invalid d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated" defaultText="Collection warning"></span></span>
+                    <span class="content-warning ship-number-invalid-container d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated" defaultText="Ship number warning"></span></span>
+                    <span class="content-warning multi-faction-warning-container d-none"><br /><i class="fa fa-exclamation-circle"></i>&nbsp;<span class="translated" defaultText="Multi-Faction warning"></span></span>
                 </div>
                 <div class="col-md-5 float-right button-container">
                     <div class="btn-group float-right">
 
-                        <button class="btn btn-info view-as-text"><span class="d-none d-lg-block"><i class="fa fa-print"></i>&nbsp;Print/Export</span><span class="d-lg-none"><i class="fa fa-print"></i></span></button>
-                        <a class="btn btn-primary d-none collection"><span class="d-none d-lg-block"><i class="fa fa-folder-open"></i> Your Collection</span><span class="d-lg-none"><i class="fa fa-folder-open"></i></span></a>
+                        <button class="btn btn-info view-as-text"><span class="d-none d-lg-block"><i class="fa fa-print"></i>&nbsp;<span class="translated" defaultText="Print/Export"></span></span><span class="d-lg-none"><i class="fa fa-print"></i></span></button>
+                        <a class="btn btn-primary d-none collection"><span class="d-none d-lg-block"><i class="fa fa-folder-open"></i> <span class="translated" defaultText="Your Collection"></span></span><span class="d-lg-none"><i class="fa fa-folder-open"></i></span></a>
                         <!-- Randomize button is marked as danger, since it creates a new squad -->
-                        <button class="btn btn-danger randomize"><span class="d-none d-lg-block"><i class="fa fa-random"></i> Randomize!</span><span class="d-lg-none"><i class="fa fa-random"></i></span></button>
+                        <button class="btn btn-danger randomize"><span class="d-none d-lg-block"><i class="fa fa-random"></i> <span class="translated" defaultText="Randomize!"></span></span><span class="d-lg-none"><i class="fa fa-random"></i></span></button>
                         <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item randomize-options">Randomizer Options</a></li>
-                            <li><a class="dropdown-item misc-settings">Misc Settings</a></li>
+                            <li><a class="dropdown-item randomize-options translated" defaultText="Randomizer Options"></a></li>
+                            <li><a class="dropdown-item misc-settings translated" defaultText="Misc Settings"></a></li>
                         </ul>
                         
 
@@ -2320,16 +2434,16 @@ class exportObj.SquadBuilder
 
             <div class="row squad-save-buttons">
                 <div class="col-md-12">
-                    <button class="show-authenticated btn btn-primary save-list"><i class="far fa-save"></i>&nbsp;Save</button>
-                    <button class="show-authenticated btn btn-primary save-list-as"><i class="far fa-file"></i>&nbsp;Save As...</button>
-                    <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash"></i>&nbsp;Delete</button>
-                    <button class="show-authenticated btn btn-info backend-list-my-squads show-authenticated"><i class="fa fa-download"></i>&nbsp;Load Squad</button>
-                    <button class="btn btn-info import-squad"><i class="fa fa-file-import"></i>&nbsp;Import</button>
-                    <button class="btn btn-danger clear-squad"><i class="fa fa-plus-circle"></i>&nbsp;New Squad</button>
+                    <button class="show-authenticated btn btn-primary save-list"><i class="far fa-save"></i>&nbsp;<span class="translated" defaultText="Save"></span></button>
+                    <button class="show-authenticated btn btn-primary save-list-as"><i class="far fa-file"></i>&nbsp;<span class="translated" defaultText="Save As..."></span></button>
+                    <button class="show-authenticated btn btn-primary delete-list disabled"><i class="fa fa-trash"></i>&nbsp;<span class="translated" defaultText="Delete"></span></button>
+                    <button class="show-authenticated btn btn-info backend-list-my-squads show-authenticated"><i class="fa fa-download"></i>&nbsp;<span class = "translated" defaultText="Load Squad"></span></button>
+                    <button class="btn btn-info import-squad"><i class="fa fa-file-import"></i>&nbsp;<span class="translated" defaultText="Import"></span></button>
+                    <button class="btn btn-danger clear-squad"><i class="fa fa-plus-circle"></i>&nbsp;<span class="translated" defaultText="New Squad"></span></button>
                     <span class="show-authenticated backend-status"></span>
                 </div>
             </div>
-        '''
+        """
         @container.append @status_container
 
         @xws_import_modal = $ document.createElement 'DIV'
@@ -2340,19 +2454,18 @@ class exportObj.SquadBuilder
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>XWS Import</h3>
+                <h3 class="translated" defaultText="XWS Import"></h3>
                 <button type="button" class="close d-print-none" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
-                Import your list via XWS into YASB.<br>
-                <i>XWS is a common format to share lists between applications.</i>
+                <span class="translated" defaultText="XWS Import Dialog"></span>
                 <div class="container-fluid">
-                    <textarea class="xws-content" placeholder="Paste XWS here"></textarea>
+                    <textarea class="xws-content" placeholder='"""+@uitranslation("Paste XWS here")+"""'></textarea>
                 </div>
             </div>
             <div class="modal-footer d-print-none">
                 <span class="xws-import-status"></span>&nbsp;
-                <button class="btn btn-danger import-xws">Import</button>
+                <button class="btn btn-danger import-xws translated" defaultText="Import"></button>
             </div>
         </div>
     </div>
@@ -2401,29 +2514,29 @@ class exportObj.SquadBuilder
                 <div class="fancy-list"></div>
                 <div class="simple-list"></div>
                 <div class="simplecopy-list">
-                    <p>Copy the below and paste it elsewhere.</p>
-                    <textarea></textarea><button class="btn btn-modal btn-copy">Copy</button>
+                    <span class="translated" defaultText="Copy below simple text"></span>
+                    <textarea></textarea><button class="btn btn-modal btn-copy translated" defaultText="Copy"></button>
                 </div>
                 <div class="reddit-list">
-                    <p>Copy the below and paste it into your reddit post.</p>
-                    <p>Make sure that the post editor is set to markdown mode.</p>
-                    <textarea></textarea><button class="btn btn-modal btn-copy">Copy</button>
+                    <span class="translated" defaultText="Copy below markdown"></span>
+                    <textarea></textarea><button class="btn btn-modal btn-copy translated" defaultText="Copy"></button>
                 </div>
                 <div class="tts-list">
-                    <p>Copy the below and paste it into the Tabletop Simulator.</p>
-                    <textarea></textarea><br /><button class="btn btn-modal btn-copy">Copy</button>
+                    <span class="translated" defaultText="Copy below TTS"></span>
+                    <textarea></textarea><button class="btn btn-modal btn-copy translated" defaultText="Copy"></button>
                 </div>
                 <div class="bbcode-list">
-                    <p>Copy the BBCode below and paste it into your forum post.</p>
-                    <textarea></textarea><button class="btn btn-modal btn-copy">Copy</button>
+                    <span class="translated" defaultText="Copy below BBCode"></span>
+                    <textarea></textarea><button class="btn btn-modal btn-copy translated" defaultText="Copy"></button>
                 </div>
                 <div class="html-list">
-                    <textarea></textarea><button class="btn btn-modal btn-copy">Copy</button>
+                    <span class="translated" defaultText="Copy below HTML"></span>
+                    <textarea></textarea><button class="btn btn-modal btn-copy translated" defaultText="Copy"></button>
                 </div>
                 <div class="xws-list">
-                    <p>Copy and paste this into an XWS-compliant application.
+                    <span class="translated" defaultText="Copy below XWS"></span>
                     <div class="row full-row">
-                        <div class="col d-inline-block d-none d-sm-block"><textarea></textarea><br /><button class="btn btn-modal btn-copy">Copy</button></div>
+                        <div class="col d-inline-block d-none d-sm-block"><textarea></textarea><br /><button class="btn btn-modal btn-copy translated" defaultText="Copy"></button></div>
                         <div class="col d-inline-block d-none d-sm-block qrcode-container" id="xws-qrcode-container"></div>
                     </div>
                 </div>
@@ -2432,41 +2545,41 @@ class exportObj.SquadBuilder
                 <div class="row full-row">
                     <div class="col d-inline-block d-none d-sm-block right-col">
                         <label class="color-skip-text-checkbox">
-                            Skip Card Text <input type="checkbox" class="toggle-skip-text-print" />
+                            <span class="translated" defaultText="Skip Card Text"></span> <input type="checkbox" class="toggle-skip-text-print" />
                         </label><br />
                         <label class="vertical-space-checkbox">
-                            Add Space for Cards <input type="checkbox" class="toggle-vertical-space" />
+                            <span class="translated" defaultText="Space for Cards"></span> <input type="checkbox" class="toggle-vertical-space" />
                         </label><br />
                         <label class="maneuver-print-checkbox">
-                            Include Maneuvers Chart <input type="checkbox" class="toggle-maneuver-print" />
+                            <span class="translated" defaultText="Include Maneuvers Chart"></span> <input type="checkbox" class="toggle-maneuver-print" />
                         </label><br />
                         <label class="expanded-shield-hull-print-checkbox">
-                            Expand Shield and Hull <input type="checkbox" class="toggle-expanded-shield-hull-print" />
+                            <span class="translated" defaultText="Expand Shield and Hull"></span> <input type="checkbox" class="toggle-expanded-shield-hull-print" />
                         </label>
                     </div>
                     <div class="col d-inline-block d-none d-sm-block right-col">
                         <label class="color-print-checkbox">
-                            Print Color <input type="checkbox" class="toggle-color-print" checked="checked" />
+                            <span class="translated" defaultText="Print Color"></span> <input type="checkbox" class="toggle-color-print" checked="checked" />
                         </label><br />
                         <label class="qrcode-checkbox">
-                            Include QR codes <input type="checkbox" class="toggle-juggler-qrcode" checked="checked" />
+                            <span class="translated" defaultText="Include QR codes"></span> <input type="checkbox" class="toggle-juggler-qrcode" checked="checked" />
                         </label><br />
                         <label class="obstacles-checkbox">
-                            Include Obstacle Choices <input type="checkbox" class="toggle-obstacles" />
+                            <span class="translated" defaultText="Include Obstacle Choices"></span> <input type="checkbox" class="toggle-obstacles" />
                         </label>
                     </div>
                 </div>
                 <div class="row btn-group list-display-mode">
-                    <button class="btn btn-modal select-simple-view">Simple</button>
-                    <button class="btn btn-modal select-fancy-view d-none d-sm-block">Fancy</button>
-                    <button class="btn btn-modal select-simplecopy-view">Text</button>
-                    <button class="btn btn-modal select-tts-view d-none d-sm-block">TTS</button>
-                    <button class="btn btn-modal select-reddit-view">Reddit</button>
-                    <button class="btn btn-modal select-bbcode-view">BBCode</button>
-                    <button class="btn btn-modal select-html-view">HTML</button>
-                    <button class="btn btn-modal select-xws-view">XWS</button>
+                    <button class="btn btn-modal select-simple-view translated" defaultText="Simple"></button>
+                    <button class="btn btn-modal select-fancy-view d-none d-sm-block translated" defaultText="Fancy"></button>
+                    <button class="btn btn-modal select-simplecopy-view translated" defaultText="Text"></button>
+                    <button class="btn btn-modal select-tts-view translated" defaultText="TTS"></button>
+                    <button class="btn btn-modal select-reddit-view translated" defaultText="Reddit"></button>
+                    <button class="btn btn-modal select-bbcode-view translated" defaultText="BBCode"></button>
+                    <button class="btn btn-modal select-html-view translated" defaultText="HTML"></button>
+                    <button class="btn btn-modal select-xws-view translated" defaultText="XWS"></button>
                 </div>
-                <button class="btn btn-modal print-list d-none d-sm-block"><i class="fa fa-print"></i>&nbsp;Print</button>
+                <button class="btn btn-modal print-list d-none d-sm-block"><i class="fa fa-print"></i>&nbsp;<span class="translated" defaultText="Print"></span></button>
             </div>
         </div>
     </div>
@@ -2731,6 +2844,7 @@ class exportObj.SquadBuilder
         @unreleased_content_used_container = $ @points_container.find('.unreleased-content-used')
         @loading_failed_container = $ @points_container.find('.loading-failed-container')
         @ship_number_invalid_container = $ @points_container.find('.ship-number-invalid-container')
+        @multi_faction_warning_container = $ @points_container.find('.multi-faction-warning-container')
         @collection_invalid_container = $ @points_container.find('.collection-invalid')
         @view_list_button = $ @status_container.find('div.button-container button.view-as-text')
         @randomize_button = $ @status_container.find('div.button-container button.randomize')
@@ -2786,46 +2900,53 @@ class exportObj.SquadBuilder
             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3>Random Squad Builder Options</h3>
+                        <h3 class="translated" defaultText="Random Squad Builder Options"></h3>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
                         <form>
                             <label>
-                                Maximal desired bid
+                                <span class="translated" defaultText="Maximal desired bid"></span>
                                 <input type="number" class="randomizer-bid-goal" value="#{DEFAULT_RANDOMIZER_BID_GOAL}" placeholder="#{DEFAULT_RANDOMIZER_BID_GOAL}" />
                             </label><br />
                             <label>
-                                More upgrades
+                                <span class="translated" defaultText="Maximum Ship Count"></span>
+                                <input type="number" class="randomizer-ship-limit" value="#{DEFAULT_RANDOMIZER_SHIP_LIMIT}" placeholder="#{DEFAULT_RANDOMIZER_SHIP_LIMIT}" />
+                            </label><br />
+                            <label>
+                                <span class="translated" defaultText="More upgrades"></span>
                                 <input type="range" min="0" max="10" class="randomizer-ships-or-upgrades" value="#{DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES}" placeholder="#{DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES}" />
-                                Less upgrades
+                                <span class="translated" defaultText="Less upgrades"></span>
                             </label><br />
                             <label>
                                 <input type="checkbox" class="randomizer-collection-only" checked="checked"/> 
-                                Only use items from collection
+                                <span class="translated" defaultText="Limit to collection"></span>
                             </label><br />
                             <label>
-                                Sets and Expansions (default all)
-                                <select class="randomizer-sources" multiple="1" data-placeholder="Use all sets and expansions">
+                                <span class="translated" defaultText="Sets and Expansions"></span>
+                                <select class="randomizer-sources" multiple="1" data-placeholder='""" + @uitranslation('All sets and expansions') + """'>
                                 </select>
                             </label><br />
                             <label>
                                 <input type="checkbox" class="randomizer-fill-zero-pts" /> 
-                                Always fill 0-point slots
+                                <span class="translated" defaultText="Always fill 0-point slots"></span>
                             </label><br />
                             <label>
-                                Maximum Seconds to Spend Randomizing
+                                <span class="translated" defaultText="Maximum Seconds to Spend Randomizing"></span>
                                 <input type="number" class="randomizer-timeout" value="#{DEFAULT_RANDOMIZER_TIMEOUT_SEC}" placeholder="#{DEFAULT_RANDOMIZER_TIMEOUT_SEC}" />
                             </label>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary do-randomize" aria-hidden="true">Randomize!</button>
-                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                        <button class="btn btn-primary do-randomize translated" aria-hidden="true" defaultText="Roll!"></button>
+                        <button class="btn translated" data-dismiss="modal" aria-hidden="true" defaultText="Close"></button>
                     </div>
                 </div>
             </div>
         """
+        # translate the UI we just created. 
+        exportObj.translateUIElements(@randomizer_options_modal)
+        
         @randomizer_source_selector = $ @randomizer_options_modal.find('select.randomizer-sources')
         for expansion in exportObj.expansions
             opt = $ document.createElement('OPTION')
@@ -2847,12 +2968,14 @@ class exportObj.SquadBuilder
                 points = DEFAULT_RANDOMIZER_POINTS if (isNaN(points) or points <= 0)
                 bid_goal = parseInt $(@randomizer_options_modal.find('.randomizer-bid-goal')).val()
                 bid_goal = DEFAULT_RANDOMIZER_BID_GOAL if (isNaN(bid_goal) or bid_goal < 0)
+                ship_limit = parseInt $(@randomizer_options_modal.find('.randomizer-ship-limit')).val()
+                ship_limit = DEFAULT_RANDOMIZER_SHIP_LIMIT if (isNaN(ship_limit) or ship_limit < 0)
                 ships_or_upgrades = parseInt $(@randomizer_options_modal.find('.randomizer-ships-or-upgrades')).val()
                 ships_or_upgrades = DEFAULT_RANDOMIZER_SHIPS_OR_UPGRADES if (isNaN(ships_or_upgrades) or ships_or_upgrades < 0)
                 timeout_sec = parseInt $(@randomizer_options_modal.find('.randomizer-timeout')).val()
                 timeout_sec = DEFAULT_RANDOMIZER_TIMEOUT_SEC if (isNaN(timeout_sec) or timeout_sec <= 0)
                 # console.log "points=#{points}, sources=#{@randomizer_source_selector.val()}, timeout=#{timeout_sec}"
-                @randomSquad(points, @randomizer_source_selector.val(), timeout_sec * 1000, bid_goal, ships_or_upgrades, @randomizer_collection_selector.checked, @randomizer_fill_zero_pts.checked)
+                @randomSquad(points, @randomizer_source_selector.val(), timeout_sec * 1000, bid_goal, ship_limit, ships_or_upgrades, @randomizer_collection_selector.checked, @randomizer_fill_zero_pts.checked)
 
         @randomizer_options_modal.find('button.do-randomize').click (e) =>
             e.preventDefault()
@@ -2872,21 +2995,18 @@ class exportObj.SquadBuilder
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Miscellaneous Settings</h3>
+                <h3 class="translated" defaultText="Miscellaneous Settings"></h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
                 <label class = "toggle-initiative-prefix-names misc-settings-label">
-                    <input type="checkbox" class="initiative-prefix-names-checkbox misc-settings-checkbox" /> Put INI as prefix in front of names. 
+                    <input type="checkbox" class="initiative-prefix-names-checkbox misc-settings-checkbox" /> <span class="translated" defaultText="Use INI prefix"></span> 
                 </label><br />
-                <label>
-                    <input type="checkbox" checked /> Is Dee Yun the worst?
-                </label>
             </div>
             <div class="modal-footer">
                 <span class="misc-settings-infoline"></span>
                 &nbsp;
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn translated" data-dismiss="modal" aria-hidden="true" defaultText="Close"></button>
             </div>
         </div>
     </div>
@@ -2914,12 +3034,12 @@ class exportObj.SquadBuilder
             if @backend? 
                 if @misc_settings_initiative_prefix.prop('checked')
                     @backend.set 'showInitiativeInFrontOfPilotName', '1', (ds) =>
-                        @misc_settings_infoline.text "Changes Saved"
+                        @misc_settings_infoline.text @uitranslation("Changes Saved")
                         @misc_settings_infoline.fadeIn 100, =>
                             @misc_settings_infoline.fadeOut 3000
                 else 
                     @backend.deleteSetting 'showInitiativeInFrontOfPilotName', (dd) =>
-                        @misc_settings_infoline.text "Changes Saved"
+                        @misc_settings_infoline.text @uitranslation("Changes Saved")
                         @misc_settings_infoline.fadeIn 100, =>
                             @misc_settings_infoline.fadeOut 3000
 
@@ -2927,6 +3047,8 @@ class exportObj.SquadBuilder
             e.preventDefault()
             @misc_settings_modal.modal()
             @misc_settings_initiative_prefix.prop('checked', exportObj.settings?.initiative_prefix? and exportObj.settings.initiative_prefix)
+
+        exportObj.translateUIElements(@misc_settings_modal) 
 
         @choose_obstacles_modal = $ document.createElement 'DIV'
         @choose_obstacles_modal.addClass 'modal fade choose-obstacles-modal'
@@ -2937,35 +3059,35 @@ class exportObj.SquadBuilder
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <label class='choose-obstacles-description'>Choose up to three obstacles, to include in the permalink for use in external programs</label>
+                <label class='choose-obstacles-description translated' defaultText="Choose obstacles dialog"></label>
             </div>
             <div class="modal-body">
                 <div class="obstacle-select-container" style="float:left">
                     <select multiple class='obstacle-select' size="18">
-                        <option class="coreasteroid0-select" value="coreasteroid0">Core Asteroid 0</option>
-                        <option class="coreasteroid1-select" value="coreasteroid1">Core Asteroid 1</option>
-                        <option class="coreasteroid2-select" value="coreasteroid2">Core Asteroid 2</option>
-                        <option class="coreasteroid3-select" value="coreasteroid3">Core Asteroid 3</option>
-                        <option class="coreasteroid4-select" value="coreasteroid4">Core Asteroid 4</option>
-                        <option class="coreasteroid5-select" value="coreasteroid5">Core Asteroid 5</option>
-                        <option class="yt2400debris0-select" value="yt2400debris0">YT2400 Debris 0</option>
-                        <option class="yt2400debris1-select" value="yt2400debris1">YT2400 Debris 1</option>
-                        <option class="yt2400debris2-select" value="yt2400debris2">YT2400 Debris 2</option>
-                        <option class="vt49decimatordebris0-select" value="vt49decimatordebris0">VT49 Debris 0</option>
-                        <option class="vt49decimatordebris1-select" value="vt49decimatordebris1">VT49 Debris 1</option>
-                        <option class="vt49decimatordebris2-select" value="vt49decimatordebris2">VT49 Debris 2</option>
-                        <option class="core2asteroid0-select" value="core2asteroid0">Force Awakens Asteroid 0</option>
-                        <option class="core2asteroid1-select" value="core2asteroid1">Force Awakens Asteroid 1</option>
-                        <option class="core2asteroid2-select" value="core2asteroid2">Force Awakens Asteroid 2</option>
-                        <option class="core2asteroid3-select" value="core2asteroid3">Force Awakens Asteroid 3</option>
-                        <option class="core2asteroid4-select" value="core2asteroid4">Force Awakens Asteroid 4</option>
-                        <option class="core2asteroid5-select" value="core2asteroid5">Force Awakens Asteroid 5</option>
-                        <option class="gascloud1-select" value="gascloud1">Gas Cloud 1</option>
-                        <option class="gascloud2-select" value="gascloud2">Gas Cloud 2</option>
-                        <option class="gascloud3-select" value="gascloud3">Gas Cloud 3</option>
-                        <option class="gascloud4-select" value="gascloud4">Gas Cloud 4</option>
-                        <option class="gascloud5-select" value="gascloud5">Gas Cloud 5</option>
-                        <option class="gascloud6-select" value="gascloud6">Gas Cloud 6</option>
+                        <option class="coreasteroid0-select translated" value="coreasteroid0" defaultText="Core Asteroid 0"></option>
+                        <option class="coreasteroid1-select translated" value="coreasteroid1" defaultText="Core Asteroid 1"></option>
+                        <option class="coreasteroid2-select translated" value="coreasteroid2" defaultText="Core Asteroid 2"></option>
+                        <option class="coreasteroid3-select translated" value="coreasteroid3" defaultText="Core Asteroid 3"></option>
+                        <option class="coreasteroid4-select translated" value="coreasteroid4" defaultText="Core Asteroid 4"></option>
+                        <option class="coreasteroid5-select translated" value="coreasteroid5" defaultText="Core Asteroid 5"></option>
+                        <option class="yt2400debris0-select translated" value="yt2400debris0" defaultText="YT2400 Debris 0"></option>
+                        <option class="yt2400debris1-select translated" value="yt2400debris1" defaultText="YT2400 Debris 1"></option>
+                        <option class="yt2400debris2-select translated" value="yt2400debris2" defaultText="YT2400 Debris 2"></option>
+                        <option class="vt49decimatordebris0-select translated" value="vt49decimatordebris0" defaultText="VT49 Debris 0"></option>
+                        <option class="vt49decimatordebris1-select translated" value="vt49decimatordebris1" defaultText="VT49 Debris 1"></option>
+                        <option class="vt49decimatordebris2-select translated" value="vt49decimatordebris2" defaultText="VT49 Debris 2"></option>
+                        <option class="core2asteroid0-select translated" value="core2asteroid0" defaultText="Force Awakens Asteroid 0"></option>
+                        <option class="core2asteroid1-select translated" value="core2asteroid1" defaultText="Force Awakens Asteroid 1"></option>
+                        <option class="core2asteroid2-select translated" value="core2asteroid2" defaultText="Force Awakens Asteroid 2"></option>
+                        <option class="core2asteroid3-select translated" value="core2asteroid3" defaultText="Force Awakens Asteroid 3"></option>
+                        <option class="core2asteroid4-select translated" value="core2asteroid4" defaultText="Force Awakens Asteroid 4"></option>
+                        <option class="core2asteroid5-select translated" value="core2asteroid5" defaultText="Force Awakens Asteroid 5"></option>
+                        <option class="gascloud1-select translated" value="gascloud1" defaultText="Gas Cloud 1"></option>
+                        <option class="gascloud2-select translated" value="gascloud2" defaultText="Gas Cloud 2"></option>
+                        <option class="gascloud3-select translated" value="gascloud3" defaultText="Gas Cloud 3"></option>
+                        <option class="gascloud4-select translated" value="gascloud4" defaultText="Gas Cloud 4"></option>
+                        <option class="gascloud5-select translated" value="gascloud5" defaultText="Gas Cloud 5"></option>
+                        <option class="gascloud6-select translated" value="gascloud6" defaultText="Gas Cloud 6"></option>
                     </select>
                 </div>
                 <div class="obstacle-image-container" style="display:none;">
@@ -2973,7 +3095,7 @@ class exportObj.SquadBuilder
                 </div>
             </div>
             <div class="modal-footer d-print-none">
-                <button class="btn close-print-dialog" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn close-print-dialog translated" data-dismiss="modal" aria-hidden="true" defaultText="Close"></button>
             </div>
         </div>
     </div>
@@ -3000,7 +3122,7 @@ class exportObj.SquadBuilder
                     obstacles: @getObstacles()
                     tag: @tag.val().substr(0, 1024)
                 @backend_status.html $.trim """
-                    <i class="fa fa-sync fa-spin"></i>&nbsp;Saving squad...
+                    <i class="fa fa-sync fa-spin"></i>&nbsp;<span class="translated" defaultText="Saving squad..."></span>
                 """
                 @backend_status.show()
                 @backend_save_list_button.addClass 'disabled'
@@ -3009,11 +3131,11 @@ class exportObj.SquadBuilder
                     @current_squad.dirty = false
                     if @current_squad.id?
                         @backend_status.html $.trim """
-                            <i class="fa fa-check"></i>&nbsp;Squad updated successfully.
+                            <i class="fa fa-check"></i>&nbsp;<span class="translated" defaultText="Squad updated successfully."></span>
                         """
                     else
                         @backend_status.html $.trim """
-                            <i class="fa fa-check"></i>&nbsp;New squad saved successfully.
+                            <i class="fa fa-check"></i>&nbsp;<span class="translated" defaultText="New squad saved successfully."></span>
                         """
                         @current_squad.id = results.id
                     @container.trigger 'xwing-backend:squadDirtinessChanged'
@@ -3041,16 +3163,16 @@ class exportObj.SquadBuilder
         content_container.append $.trim """
             <div class="row">
                 <div class="col-md-9 ship-container">
-                    <label class="notes-container show-authenticated col-md-10">
-                        <span class="notes-name">Squad Notes:</span>
+                    <label class="unsortable notes-container show-authenticated col-md-10">
+                        <span class="notes-name translated" defaultText="Squad Notes:"></span>
                         <br />
                         <textarea class="squad-notes"></textarea>
                         <br />
-                        <span class="tag-name">Tag:</span>
+                        <span class="tag-name translated" defaultText="Tag:"></span>
                         <input type="search" class="squad-tag"></input>
                     </label>
-                    <div class="obstacles-container">
-                            <button class="btn btn-info choose-obstacles"><i class="fa fa-cloud"></i>&nbsp;Choose Obstacles</button>
+                    <div class="unsortable obstacles-container">
+                            <button class="btn btn-info choose-obstacles"><i class="fa fa-cloud"></i>&nbsp;<span class="translated" defaultText="Choose Obstacles"</span></button>
                     </div>
                 </div>
                 <div class="col-md-3 info-container" id="info-container">
@@ -3064,6 +3186,9 @@ class exportObj.SquadBuilder
         @notes_container = $ content_container.find('.notes-container')
         @notes = $ @notes_container.find('textarea.squad-notes')
         @tag = $ @notes_container.find('input.squad-tag')
+
+        @ship_container.sortable
+            cancel: '.unsortable'
 
         @info_container.append $.trim @createInfoContainerUI()
         @info_container.hide()
@@ -3097,35 +3222,36 @@ class exportObj.SquadBuilder
                 """ + @createInfoContainerUI() + """
             </div>
             <div class="modal-footer">
-                <button class="btn btn-danger close-print-dialog" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-danger close-print-dialog translated" data-dismiss="modal" aria-hidden="true" defaultText="Close"></button>
             </div>
         </div>
     </div>
-        """        
-        
+        """       
+        # translate all the UI we just created to current language
+        exportObj.translateUIElements(@container) 
+
     createInfoContainerUI: ->
         return """
             <div class="card info-well">
                 <div class="info-name"></div>
                 <div class="info-type"></div>
                 <span class="info-collection"></span>
-                <span class="info-solitary"><br />Solitary</span>
                 <table class="table-sm">
                     <tbody>
                         <tr class="info-ship">
-                            <td class="info-header">Ship</td>
+                            <td class="info-header translated" defaultText="Ship"></td>
                             <td class="info-data"></td>
                         </tr>
                         <tr class="info-base">
-                            <td class="info-header">Base</td>
+                            <td class="info-header translated" defaultText="Base"></td>
                             <td class="info-data"></td> 
                         </tr>
                         <tr class="info-skill">
-                            <td class="info-header">Initiative</td>
+                            <td class="info-header translated" defaultText="Initiative"></td>
                             <td class="info-data info-skill"></td>
                         </tr>
                         <tr class="info-engagement">
-                            <td class="info-header">Engagement</td>
+                            <td class="info-header translated" defaultText="Engagement"></td>
                             <td class="info-data info-engagement"></td>
                         </tr>
                         <tr class="info-attack-bullseye">
@@ -3185,23 +3311,24 @@ class exportObj.SquadBuilder
                             <td class="info-data info-energy"></td>
                         </tr>
                         <tr class="info-range">
-                            <td class="info-header">Range</td>
+                            <td class="info-header translated" defaultText="Range"></td>
                             <td class="info-data info-range"></td><td class="info-rangebonus"><i class="xwing-miniatures-font red header-range xwing-miniatures-font-rangebonusindicator"></i></td>
                         </tr>
                         <tr class="info-actions">
-                            <td class="info-header">Actions</td>
+                            <td class="info-header translated" defaultText="Actions"></td>
                             <td class="info-data"></td>
                         </tr>
                         <tr class="info-upgrades">
-                            <td class="info-header">Upgrades</td>
+                            <td class="info-header translated" defaultText="Upgrades"></td>
                             <td class="info-data"></td>
                         </tr>
                     </tbody>
                 </table>
+                <p class="info-restrictions"></p>
                 <p class="info-text"></p>
                 <p class="info-maneuvers"></p>
                 <br />
-                <span class="info-header info-sources">Sources:</span> 
+                <span class="info-header info-sources translated" defaultText="Sources:"></span> 
                 <span class="info-data info-sources"></span>
             </div>
         """
@@ -3234,13 +3361,12 @@ class exportObj.SquadBuilder
                 @language = language
                 old_dirty = @current_squad.dirty
                 if @pretranslation_serialized.length?
-                    @removeAllShips()
                     @loadFromSerialized @pretranslation_serialized
                 for ship in @ships
                     ship.updateSelections()
                 @current_squad.dirty = old_dirty
                 @pretranslation_serialized = undefined
-                cb()
+            cb()
         # Recently moved this here.  Did this ever work?
         .on 'xwing:shipUpdated', (e, cb=$.noop) =>
             all_allocated = true
@@ -3258,8 +3384,8 @@ class exportObj.SquadBuilder
             # console.log "#{@faction}: collection was created"
             @collection = collection
             # console.log "#{@faction}: Collection created, checking squad"
-            @collection.onLanguageChange null, @language
-            # @checkCollection()
+            # @collection.onLanguageChange null, @language
+            @checkCollection()
             @collection_button.removeClass 'd-none'
         .on 'xwing-collection:changed', (e, collection) =>
             # console.log "#{@faction}: Collection changed, checking squad"
@@ -3277,6 +3403,11 @@ class exportObj.SquadBuilder
             @onGameTypeChanged gameType, cb
             if @game_type_selector.val() != gameType
                 @game_type_selector.val(gameType).trigger('change')
+
+        @ship_container.on 'sortstart', (e, ui) =>
+            @oldIndex = ui.item.index()
+        .on 'sortstop', (e, ui) =>
+            @updateShipOrder(@oldIndex, ui.item.index())
 
         @obstacles_select.change (e) =>
             if @obstacles_select.val().length > 3
@@ -3338,6 +3469,8 @@ class exportObj.SquadBuilder
                             'republic'
                         when 'Separatist Alliance'
                             'separatists'
+                        when 'All'
+                            'first-player-4'
                     @printable_container.find('.squad-faction').html """<i class="xwing-miniatures-font xwing-miniatures-font-#{faction}"></i>"""
             # List type
             if @isHyperspace
@@ -3348,11 +3481,11 @@ class exportObj.SquadBuilder
                     
             # Notes, if present
             @printable_container.find('.printable-body').append $.trim """
-                <div class="version">Points Version: 1.7.1 October 2020</div>
-            """            
+                <div class="version"><span class="translated" defaultText="Points Version:"></span> 2.0.0 Sept 2021</div>
+            """
             if $.trim(@notes.val()) != ''
                 @printable_container.find('.printable-body').append $.trim """
-                    <h5 class="print-notes">Notes:</h5>
+                    <h5 class="print-notes translated" defaultText="Notes:"></h5>
                     <pre class="print-notes"></pre>
                 """            
                 @printable_container.find('.printable-body pre.print-notes').text @notes.val()
@@ -3368,7 +3501,7 @@ class exportObj.SquadBuilder
             if @list_modal.find('.toggle-obstacles').prop('checked')
                 @printable_container.find('.printable-body').append $.trim """
                     <div class="obstacles">
-                        <div>Mark the three obstacles you are using.</div>
+                        <div class="translated" defaultText="Mark obstacles"></div>
                         <img class="obstacle-silhouettes" src="images/xws-obstacles.png" />
                     </div>
                 """
@@ -3380,11 +3513,11 @@ class exportObj.SquadBuilder
                 <div class="qrcode-container">
                     <div class="permalink-container">
                         <div class="qrcode"></div>
-                        <div class="qrcode-text">Scan to open this list in the builder</div>
+                        <div class="qrcode-text translated" defaultText="Scan QR-Code"></div>
                     </div>
                     <div class="juggler-container">
                         <div class="qrcode"></div>
-                        <div class="qrcode-text">For List Juggler (When it's updated for 2.0)</div>
+                        <div class="qrcode-text translated" defaultText="List Juggler QR-Code"></div>
                     </div>
                 </div>
                 """
@@ -3426,6 +3559,15 @@ class exportObj.SquadBuilder
         return "?" + ("#{k}=#{v}" for k, v of params).join("&")
 
     getPermaLink: (params=@getPermaLinkParams()) => "#{URL_BASE}#{params}"
+
+    updateShipOrder: (oldpos, newpos) =>
+        selectedShip = @ships[oldpos]
+        @ships.splice(oldpos, 1)
+        @ships.splice(newpos, 0, selectedShip)
+        @updatePermaLink
+        if oldpos != newpos
+            @current_squad.dirty = true
+            @container.trigger 'xwing-backend:squadDirtinessChanged'
 
     updatePermaLink: () =>
         return unless @container.is(':visible') # gross but couldn't make clearInterval work
@@ -3509,7 +3651,7 @@ class exportObj.SquadBuilder
         @unreleased_content_used_container.toggleClass 'd-none', not unreleased_content_used
 
         @fancy_total_points_container.text @total_points
-
+        
         # update text list
         @fancy_container.text ''
         @simple_container.html '<table class="simple-table"></table>'
@@ -3535,11 +3677,11 @@ class exportObj.SquadBuilder
 <br />
 <b><i>Total: #{@total_points}</i></b>
 <br />
-<a href="#{@getPermaLink()}">View in Yet Another Squad Builder 2.0</a>
+<a href="#{@getPermaLink()}">#{@uitranslation("View in YASB")}</a>
         """
 
-        @reddit_container.find('textarea').val $.trim """#{reddit_ships.join "    \n"}    \n**Total:** *#{@total_points}*    \n    \n[View in Yet Another Squad Builder 2.0](#{@getPermaLink()})"""
-        @simplecopy_container.find('textarea').val $.trim """#{simplecopy_ships.join ""}    \nTotal: #{@total_points}    \n    \nView in Yet Another Squad Builder 2.0: #{@getPermaLink()}"""
+        @reddit_container.find('textarea').val $.trim """#{reddit_ships.join "    \n"}    \n**#{@uitranslation('Total')}:** *#{@total_points}*    \n    \n[#{@uitranslation('View in YASB')}](#{@getPermaLink()})"""
+        @simplecopy_container.find('textarea').val $.trim """#{simplecopy_ships.join ""}    \n#{@uitranslation('Total')}: #{@total_points}    \n    \n#{@uitranslation('View in YASB')}: #{@getPermaLink()}"""
         
 
         #Additional code to add obstacles to TTS
@@ -3554,8 +3696,6 @@ class exportObj.SquadBuilder
             tts_ships.push tts_obstacles
 
         @tts_textarea.val $.trim """#{tts_ships.join ""}"""
-        
-        @bbcode_container.find('textarea').val $.trim """#{bbcode_ships.join "\n\n"}\n[b][i]Total: #{@total_points}[/i][/b]\n\n[url=#{@getPermaLink()}]View in Yet Another Squad Builder 2.0[/url]"""
 
         @xws_textarea.val $.trim JSON.stringify(@toXWS())
         $('#xws-qrcode-container').text ''
@@ -3564,6 +3704,8 @@ class exportObj.SquadBuilder
             text: JSON.stringify(@toMinimalXWS())
             ec: 'L'
             size: 128
+        
+        @bbcode_container.find('textarea').val $.trim """#{bbcode_ships.join "\n\n"}\n[b][i]#{@uitranslation('Total')}: #{@total_points}[/i][/b]\n\n[url=#{@getPermaLink()}]#{@uitranslation('View in YASB')}[/url]"""
 
         # console.log "#{@faction}: Squad updated, checking collection"
         @checkCollection()
@@ -3610,13 +3752,16 @@ class exportObj.SquadBuilder
         @container.trigger 'xwing-backend:squadNameChanged'
 
     onSquadDirtinessChanged: () =>
+        @current_squad.name = $.trim(@squad_name_input.val())
         @backend_save_list_button.toggleClass 'disabled', not (@current_squad.dirty and @total_points > 0)
         @backend_save_list_as_button.toggleClass 'disabled', @total_points == 0
         @backend_delete_list_button.toggleClass 'disabled', not @current_squad.id?
         if @ships.length > 1
-            $('meta[property="og:description"]').attr("content", "X-Wing Squadron by YASB 2.0: " + @current_squad.name + ": " + @describeSquad())
+            $('meta[property="og:description"]').attr("content", @uitranslation("X-Wing Squadron by YASB 2.0: ") + @current_squad.name + ": " + @describeSquad())
         else
-            $('meta[property="og:description"]').attr("content", "YASB 2.0 is a simple, fast, and easy to use squad builder for X-Wing Miniatures by Fantasy Flight Games.")
+            $('meta[property="og:description"]').attr("content", @uitranslation("YASB advertisment"))
+        
+
 
     onSquadNameChanged: () =>
         if @current_squad.name.length > SQUAD_DISPLAY_NAME_MAX_LENGTH
@@ -3627,7 +3772,7 @@ class exportObj.SquadBuilder
         @squad_name_placeholder.append short_name
         @squad_name_input.val @current_squad.name
         return unless $.getParameterByName('f') == @faction
-        if @current_squad.name != "Unnamed Squadron" and @current_squad.name != "Unsaved Squadron"
+        if @current_squad.name != @uitranslation("Unnamed Squadron") and @current_squad.name != @uitranslation("Unsaved Squadron")
             if (document.title != "YASB 2.0 - " + @current_squad.name) 
                 document.title = "YASB 2.0 - " + @current_squad.name
         else
@@ -3636,7 +3781,7 @@ class exportObj.SquadBuilder
     removeAllShips: ->
         while @ships.length > 0
             @removeShip @ships[0]
-        throw new Error("Ships not emptied") if @ships.length > 0
+        throw new Error(@uitranslation("Ships not emptied")) if @ships.length > 0
 
     showTextListModal: ->
         # Display print/text view modal
@@ -3839,6 +3984,7 @@ class exportObj.SquadBuilder
             container: @ship_container
         @ships.push new_ship
         @ship_number_invalid_container.toggleClass 'd-none', (@ships.length < 10 and @ships.length > 2) # bounds are 2..10 as we always have a "empty" ship at the bottom
+        @multi_faction_warning_container.toggleClass 'd-none', (@faction != "All")
         new_ship
 
     removeShip: (ship, cb=$.noop) ->
@@ -3848,19 +3994,26 @@ class exportObj.SquadBuilder
             @current_squad.dirty = true
             @container.trigger 'xwing-backend:squadDirtinessChanged'
             @ship_number_invalid_container.toggleClass 'd-none', (@ships.length < 10 and @ships.length > 2)
+            @multi_faction_warning_container.toggleClass 'd-none', (@faction != "All")
         cb()
     
     matcher: (item, term) ->
         item.toUpperCase().indexOf(term.toUpperCase()) >= 0
 
-    isOurFaction: (faction) ->
+    isOurFaction: (faction, alt_faction = '') ->
+        check_faction = @faction
+        if @faction == "All"
+            if alt_faction != ''
+                check_faction = alt_faction
+            else
+                return true
         if faction instanceof Array
             for f in faction
-                if getPrimaryFaction(f) == @faction
+                if getPrimaryFaction(f) == check_faction
                     return true
             false
         else
-            getPrimaryFaction(faction) == @faction
+            getPrimaryFaction(faction) == check_faction
 
     isItemAvailable: (item_data, shipCheck=false) ->
         # this method is not even invoked by most quickbuild stuff to check availability for quickbuild squads, as the method was formerly just telling apart extended/hyperspace
@@ -3878,16 +4031,15 @@ class exportObj.SquadBuilder
         for ship_name, ship_data of exportObj.ships
             if @isOurFaction(ship_data.factions) and (@matcher(ship_data.name, term) or (ship_data.display_name and @matcher(ship_data.display_name, term)))
                 if (@isItemAvailable(ship_data, true))
-                    if @isEpic or @isQuickbuild or (not @isEpic and not ship_data.huge)
-                        if (not collection_only or (@collection? and (@collection.checks.collectioncheck == "true") and @collection.checkShelf('ship', ship_data.name)))
-                            ships.push
-                                id: ship_data.name
-                                text: if ship_data.display_name then ship_data.display_name else ship_data.name
-                                name: ship_data.name
-                                display_name: ship_data.display_name
-                                canonical_name: ship_data.canonical_name
-                                xws: ship_data.xws
-                                icon: if ship_data.icon then ship_data.icon else ship_data.xws
+                    if (not collection_only or (@collection? and (@collection.checks.collectioncheck == "true") and @collection.checkShelf('ship', ship_data.name)))
+                        ships.push
+                            id: ship_data.name
+                            text: if ship_data.display_name then ship_data.display_name else ship_data.name
+                            name: ship_data.name
+                            display_name: ship_data.display_name
+                            canonical_name: ship_data.canonical_name
+                            xws: ship_data.xws
+                            icon: if ship_data.icon then ship_data.icon else ship_data.xws
         if sorted
             ships.sort exportObj.sortHelper
         return ships
@@ -4005,17 +4157,19 @@ class exportObj.SquadBuilder
             false
         else
             ship == name
-            
+
     getAvailableUpgradesIncluding: (slot, include_upgrade, ship, this_upgrade_obj, term='', filter_func=@dfl_filter_func, sorted=true) ->
         # Returns data formatted for Select2
         upgrades_in_use = (upgrade.data for upgrade in ship.upgrades)
 
-        available_upgrades = (upgrade for upgrade_name, upgrade of exportObj.upgrades when exportObj.slotsMatching(upgrade.slot, slot) and ( @matcher(upgrade_name, term) or (upgrade.display_name and @matcher(upgrade.display_name, term)) ) and (not upgrade.ship? or @isShip(upgrade.ship, ship.data.name)) and (not upgrade.faction? or @isOurFaction(upgrade.faction)) and (@isItemAvailable(upgrade)))
+        available_upgrades = (upgrade for upgrade_name, upgrade of exportObj.upgrades when exportObj.slotsMatching(upgrade.slot, slot) and ( @matcher(upgrade_name, term) or (upgrade.display_name and @matcher(upgrade.display_name, term)) ) and (not upgrade.ship? or @isShip(upgrade.ship, ship.data.name)) and (not upgrade.faction? or @isOurFaction(upgrade.faction, ship.pilot.faction)) and (@isItemAvailable(upgrade)))
+
+        # available_upgrades = (upgrade for upgrade_name, upgrade of exportObj.upgrades when exportObj.slotsMatching(upgrade.slot, slot) and ( @matcher(upgrade_name, term) or (upgrade.display_name and @matcher(upgrade.display_name, term)) ) and (not upgrade.ship? or @isShip(upgrade.ship, ship.data.name)) and (not upgrade.faction? or ((@faction != "All") and @isOurFaction(upgrade.faction)) or ((@faction == "All") and (not ship.pilot? or (ship.pilot.faction == upgrade.faction)))) and (@isItemAvailable(upgrade)))
 
         if filter_func != @dfl_filter_func
             available_upgrades = (upgrade for upgrade in available_upgrades when filter_func(upgrade))
 
-        eligible_upgrades = (upgrade for upgrade_name, upgrade of available_upgrades when (not upgrade.unique? or upgrade not in @uniques_in_use['Upgrade']) and (not (ship? and upgrade.restriction_func?) or upgrade.restriction_func(ship, this_upgrade_obj)) and upgrade not in upgrades_in_use and ((not upgrade.max_per_squad?) or ship.builder.countUpgrades(upgrade.canonical_name) < upgrade.max_per_squad) and (not upgrade.solitary? or (upgrade.slot not in @uniques_in_use['Slot'] or include_upgrade?.solitary?)))
+        eligible_upgrades = (upgrade for upgrade_name, upgrade of available_upgrades when (not upgrade.unique? or upgrade not in @uniques_in_use['Upgrade']) and (not (ship? and upgrade.restrictions?) or ship.restriction_check(upgrade.restrictions, this_upgrade_obj)) and upgrade not in upgrades_in_use and ((not upgrade.max_per_squad?) or ship.builder.countUpgrades(upgrade.canonical_name) < upgrade.max_per_squad) and (not upgrade.solitary? or (upgrade.slot not in @uniques_in_use['Slot'] or include_upgrade?.solitary?)))
         
         
 
@@ -4048,7 +4202,7 @@ class exportObj.SquadBuilder
                     added_dials[ship.data.name] = (added_dials[ship.data.name] ? []).concat [maneuvers_modified.toString()] # save maneuver as string, as that is easier to compare than arrays (if e.g. two ships of same type, one with and one without R4 are in a squad, we add 2 dials)
                     dialHTML += '<div class="fancy-dial">' + 
                                 """<h4 class="ship-name-dial">#{if ship.data.display_name? then ship.data.display_name else ship.data.name}""" +
-                                """#{if maneuvers_modified.toString() != maneuvers_unmodified.toString() then " (upgraded)" else ""}</h4>""" +
+                                """#{if maneuvers_modified.toString() != maneuvers_unmodified.toString() then " (" + @uitranslation(modified) + ")" else ""}</h4>""" +
                                 @getManeuverTableHTML(maneuvers_modified, maneuvers_unmodified) + '</div>'
 
         return """
@@ -4062,7 +4216,7 @@ class exportObj.SquadBuilder
     # Converts a maneuver table for into an HTML table.
     getManeuverTableHTML: (maneuvers, baseManeuvers) ->
         if not maneuvers? or maneuvers.length == 0
-            return "Missing maneuver info."
+            return @uitranslation("Missing maneuver info.")
 
         # Preprocess maneuvers to see which bearings are never used so we
         # don't render them.
@@ -4094,16 +4248,16 @@ class exportObj.SquadBuilder
                 if maneuvers[speed][turn] > 0
 
                     color = switch maneuvers[speed][turn]
-                        when 1 then "white"
-                        when 2 then "dodgerblue"
+                        when 1 then "dodgerblue"
+                        when 2 then "white"
                         when 3 then "red"
                         when 4 then "purple"
 
                      # we need this to change the color to b/w in case we want to print b/w
 
                     maneuverClass = switch maneuvers[speed][turn]
-                        when 1 then "svg-white-maneuver"
-                        when 2 then "svg-blue-maneuver"
+                        when 1 then "svg-blue-maneuver"
+                        when 2 then "svg-white-maneuver"
                         when 3 then "svg-red-maneuver"
                         when 4 then "svg-purple-maneuver"
 
@@ -4116,7 +4270,7 @@ class exportObj.SquadBuilder
                         maneuverClass2 = "svg-modified-maneuver"
 
                     if speed == 0 and turn == 2
-                        outTable += """<rect class="svg-maneuver-stop #{maneuverClass} #{maneuverClass2}" x="50" y="50" width="100" height="100" style="fill:#{color}" />"""
+                        outTable += """<rect class="svg-maneuver-stop #{maneuverClass} #{maneuverClass2}" x="50" y="50" width="100" height="100" style="fill:#{color}; stroke-width:5; stroke:#{outlineColor}" />"""
                     else
                         transform = ""
                         className = ""
@@ -4124,61 +4278,74 @@ class exportObj.SquadBuilder
                             when 0
                                 # turn left
                                 linePath = "M160,180 L160,70 80,70"
+                                innerPath = "M160,175 L160,70 70,70"
                                 trianglePath = "M80,100 V40 L30,70 Z"
                             when 1
                                 # bank left
                                 linePath = "M150,180 S150,120 80,60"
+                                innerPath = "M150,175 S150,120 80,60"
                                 trianglePath = "M80,100 V40 L30,70 Z"
                                 transform = "transform='translate(-5 -15) rotate(45 70 90)' "
                             when 2
                                 # straight
                                 linePath = "M100,180 L100,100 100,80"
+                                innerPath = "M100,175 L100,120 100,70"
                                 trianglePath = "M70,80 H130 L100,30 Z"
                             when 3
                                 # bank right
                                 linePath = "M50,180 S50,120 120,60"
+                                innerPath = "M50,175 S50,120 120,60"
                                 trianglePath = "M120,100 V40 L170,70 Z"
                                 transform = "transform='translate(5 -15) rotate(-45 130 90)' "
                             when 4
                                 # turn right
                                 linePath = "M40,180 L40,70 120,70"
+                                innerPath = "M40,175 L40,70 130,70"
                                 trianglePath = "M120,100 V40 L170,70 Z"
                             when 5
                                 # k-turn/u-turn
                                 linePath = "M50,180 L50,100 C50,10 140,10 140,100 L140,120"
+                                innerPath = "M50,175 L50,100 C50,10 140,10 140,100 L140,130"
                                 trianglePath = "M170,120 H110 L140,180 Z"
                             when 6
                                 # segnor's loop left
                                 linePath = "M150,180 S150,120 80,60"
+                                innerPath = "M150,175 S150,120 85,65"
                                 trianglePath = "M80,100 V40 L30,70 Z"
                                 transform = "transform='translate(0 50)'"
                             when 7
                                 # segnor's loop right
                                 linePath = "M50,180 S50,120 120,60"
+                                innerPath = "M50,175 S50,120 115,65"
                                 trianglePath = "M120,100 V40 L170,70 Z"
                                 transform = "transform='translate(0 50)'"
                             when 8
                                 # tallon roll left
                                 linePath = "M160,180 L160,70 80,70"
+                                innerPath = "M160,175 L160,70 85,70"
                                 trianglePath = "M60,100 H100 L80,140 Z"
                             when 9
                                 # tallon roll right
                                 linePath = "M40,180 L40,70 120,70"
+                                innerPath = "M40,175 L40,70 115,70"
                                 trianglePath = "M100,100 H140 L120,140 Z"
                             when 10
                                 # backward left
                                 linePath = "M50,180 S50,120 120,60"
+                                innerPath = "M50,175 S50,120 120,60"
                                 trianglePath = "M120,100 V40 L170,70 Z"
                                 transform = "transform='translate(5 -15) rotate(-45 130 90)' "
                                 className = 'backwards'
                             when 11
                                 # backward straight
                                 linePath = "M100,180 L100,100 100,80"
+                                innerPath = "M100,175 L100,100 100,70"
                                 trianglePath = "M70,80 H130 L100,30 Z"
                                 className = 'backwards'
                             when 12
                                 # backward right
                                 linePath = "M150,180 S150,120 80,60"
+                                innerPath = "M150,175 S150,120 80,60"
                                 trianglePath = "M80,100 V40 L30,70 Z"
                                 transform = "transform='translate(-5 -15) rotate(45 70 90)' "
                                 className = 'backwards'
@@ -4187,7 +4354,7 @@ class exportObj.SquadBuilder
                           <g class="maneuver #{className}">
                             <path class = 'svg-maneuver-outer #{maneuverClass} #{maneuverClass2}' stroke-width='25' fill='none' stroke='#{outlineColor}' d='#{linePath}' />
                             <path class = 'svg-maneuver-triangle #{maneuverClass} #{maneuverClass2}' d='#{trianglePath}' fill='#{color}' stroke-width='5' stroke='#{outlineColor}' #{transform}/>
-                            <path class = 'svg-maneuver-inner #{maneuverClass} #{maneuverClass2}' stroke-width='15' fill='none' stroke='#{color}' d='#{linePath}' />
+                            <path class = 'svg-maneuver-inner #{maneuverClass} #{maneuverClass2}' stroke-width='15' fill='none' stroke='#{color}' d='#{innerPath}' />
                           </g>
                         """
 
@@ -4211,6 +4378,9 @@ class exportObj.SquadBuilder
             if action.search('F-') != -1 
                 color = "force "
                 action = action.replace(/F-/gi, '')
+            if action.search('W-') != -1 
+                prefix = "White "
+                action = action.replace(/W-/gi, '')
             else if action.search('R-') != -1 
                 color = "red "
                 action = action.replace(/R-/gi, '')
@@ -4266,10 +4436,10 @@ class exportObj.SquadBuilder
                     possible_inis.sort()
         
                     container.find('.info-type').text type
-                    container.find('.info-name').html """#{if data.display_name then data.display_name else data.name}#{if exportObj.isReleased(data) then "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
+                    container.find('.info-name').html """#{if data.display_name then data.display_name else data.name}#{if exportObj.isReleased(data) then "" else " (#{@uitranslation('unreleased')})"}"""
                     if @collection?.counts?
                         ship_count = @collection.counts?.ship?[data.name] ? 0
-                        container.find('.info-collection').text """You have #{ship_count} ship model#{if ship_count > 1 then 's' else ''} in your collection."""
+                        container.find('.info-collection').text @uitranslation("collectionContentShips", ship_count)
                         container.find('.info-collection').show()
                     else
                         container.find('.info-collection').hide()
@@ -4303,15 +4473,14 @@ class exportObj.SquadBuilder
                     container.find('tr.info-attack-doubleturret').toggle(data.attackdt?)
                 
                     container.find('tr.info-ship').hide()        
-                    container.find('.info-solitary').hide()         
                     if data.large?
-                        container.find('tr.info-base td.info-data').text "Large"
+                        container.find('tr.info-base td.info-data').text exportObj.translate("gameterms", "Large")
                     else if data.medium?
-                        container.find('tr.info-base td.info-data').text "Medium"
+                        container.find('tr.info-base td.info-data').text exportObj.translate("gameterms", "Medium")
                     else if data.huge?
-                        container.find('tr.info-base td.info-data').text "Huge"
+                        container.find('tr.info-base td.info-data').text exportObj.translate("gameterms", "Huge")
                     else
-                        container.find('tr.info-base td.info-data').text "Small"
+                        container.find('tr.info-base td.info-data').text exportObj.translate("gameterms", "Small")
                     container.find('tr.info-base').show()
 
                 
@@ -4330,16 +4499,16 @@ class exportObj.SquadBuilder
                     if data.shieldrecurr?
                         count = 0
                         while count < data.shieldrecurr
-                            recurringicon += '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>'
+                            recurringicon += '<sup><i class="fas fa-caret-up"></i></sup>'
                             ++count
                     container.find('tr.info-shields td.info-data').html (data.shields + recurringicon)
-                    container.find('tr.info-shields').toggle(data.shields?)
+                    container.find('tr.info-shields').show()
 
                     recurringicon = ''
                     if data.energyrecurr?
                         count = 0
                         while count < data.energyrecurr
-                            recurringicon += '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>'
+                            recurringicon += '<sup><i class="fas fa-caret-up"></i></sup>'
                             ++count
                     container.find('tr.info-energy td.info-data').html (data.energy + recurringicon)
                     container.find('tr.info-energy').toggle(data.energy?)
@@ -4355,23 +4524,23 @@ class exportObj.SquadBuilder
 
                     # Display all available slots, put brackets around slots that are only available for some pilots
                     container.find('tr.info-upgrades').show()
-                    container.find('tr.info-upgrades td.info-data').html(((if state == 1 then exportObj.translate(@language, 'sloticon', slot) else (if state == 2 then '('+exportObj.translate(@language, 'sloticon', slot)+')' else (if state == 3 then (exportObj.translate(@language, 'sloticon', slot) + exportObj.translate(@language, 'sloticon', slot)) else (if state == 4 then (exportObj.translate(@language, 'sloticon', slot) + '(' + exportObj.translate(@language, 'sloticon', slot) + ')') else (if state == 5 then ('(' + exportObj.translate(@language, 'sloticon', slot) + exportObj.translate(@language, 'sloticon', slot) + ')') else (if state == 6 then (exportObj.translate(@language, 'sloticon',slot) + exportObj.translate(@language, 'sloticon',slot) + exportObj.translate(@language, 'sloticon',slot)))))))) for slot, state of slot_types).join(' ') or 'None')
+                    container.find('tr.info-upgrades td.info-data').html(((if state == 1 then exportObj.translate('sloticon', slot) else (if state == 2 then '('+exportObj.translate('sloticon', slot)+')' else (if state == 3 then (exportObj.translate('sloticon', slot) + exportObj.translate('sloticon', slot)) else (if state == 4 then (exportObj.translate('sloticon', slot) + '(' + exportObj.translate('sloticon', slot) + ')') else (if state == 5 then ('(' + exportObj.translate('sloticon', slot) + exportObj.translate('sloticon', slot) + ')') else (if state == 6 then (exportObj.translate('sloticon',slot) + exportObj.translate('sloticon',slot) + exportObj.translate('sloticon',slot)))))))) for slot, state of slot_types).join(' ') or 'None')
                 
                     container.find('p.info-text').hide()
                     container.find('p.info-maneuvers').show()
                     container.find('p.info-maneuvers').html(@getManeuverTableHTML(data.maneuvers, data.maneuvers))
                     
-                    sources = (exportObj.translate(@language, 'sources', source) for source in data.sources).sort()
-                    container.find('.info-sources.info-data').text if (sources.length > 1) or (not ('Loose Ships' in sources)) then (if sources.length > 0 then sources.join(', ') else exportObj.translate(@language, 'ui', 'unreleased')) else "Only available from 1st edition"
+                    sources = (exportObj.translate('sources', source) for source in data.sources).sort()
+                    container.find('.info-sources.info-data').text if (sources.length > 1) or (not ('Loose Ships' in sources)) then (if sources.length > 0 then sources.join(', ') else exportObj.translate('ui', 'unreleased')) else @uitranslation("Only available from 1st edition")
                     container.find('.info-sources').show()
                 when 'Pilot'
                     container.find('.info-type').text type
-                    container.find('.info-sources.info-data').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
+                    container.find('.info-sources.info-data').text (exportObj.translate('sources', source) for source in data.sources).sort().join(', ')
                     container.find('.info-sources').show()
                     if @collection?.counts?
                         pilot_count = @collection.counts?.pilot?[data.name] ? 0
                         ship_count = @collection.counts.ship?[data.ship] ? 0
-                        container.find('.info-collection').text """You have #{ship_count} ship model#{if ship_count > 1 then 's' else ''} and #{pilot_count} pilot card#{if pilot_count > 1 then 's' else ''} in your collection."""
+                        container.find('.info-collection').text @uitranslation("collectionContentShipsAndPilots", ship_count, pilot_count)
                         container.find('.info-collection').show()
                     else
                         container.find('.info-collection').hide()
@@ -4392,22 +4561,29 @@ class exportObj.SquadBuilder
                     else
                         uniquedots = ""
                         
-                    container.find('.info-name').html """#{uniquedots}#{if data.display_name then data.display_name else data.name}#{if exportObj.isReleased(data) then "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
+                    container.find('.info-name').html """#{uniquedots}#{if data.display_name then data.display_name else data.name}#{if exportObj.isReleased(data) then "" else " (#{exportObj.translate('ui', 'unreleased')})"}"""
+
+                    restriction_info = @restriction_text(data) + @upgrade_effect(data)
+                    if restriction_info != ''
+                        container.find('p.info-restrictions').html restriction_info ? ''
+                        container.find('p.info-restrictions').show()
+                    else
+                        container.find('p.info-restrictions').hide()
+
                     container.find('p.info-text').html data.text ? ''
                     container.find('p.info-text').show()
                     ship = exportObj.ships[data.ship]
                     container.find('tr.info-ship td.info-data').text data.ship
                     container.find('tr.info-ship').show()
-                    container.find('.info-solitary').hide()
                     
                     if ship.large?
-                        container.find('tr.info-base td.info-data').text "Large"
+                        container.find('tr.info-base td.info-data').text exportObj.translate("gameterms", "Large")
                     else if ship.medium?
-                        container.find('tr.info-base td.info-data').text "Medium"
+                        container.find('tr.info-base td.info-data').text exportObj.translate("gameterms", "Medium")
                     else if ship.huge?
-                        container.find('tr.info-base td.info-data').text "Huge"
+                        container.find('tr.info-base td.info-data').text exportObj.translate("gameterms", "Huge")
                     else
-                        container.find('tr.info-base td.info-data').text "Small"
+                        container.find('tr.info-base td.info-data').text exportObj.translate("gameterms", "Small")
                     container.find('tr.info-base').show()
 
                     
@@ -4459,48 +4635,61 @@ class exportObj.SquadBuilder
                     if ship.shieldrecurr?
                         count = 0
                         while count < ship.shieldrecurr
-                            recurringicon += '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>'
+                            recurringicon += '<sup><i class="fas fa-caret-up"></i></sup>'
                             ++count
                     container.find('tr.info-shields td.info-data').html (statAndEffectiveStat((data.ship_override?.shields ? ship.shields), effective_stats, 'shields') + recurringicon)
-                    container.find('tr.info-shields').toggle(data.ship_override?.shields? or ship.shields?)
+                    container.find('tr.info-shields').show()
 
                     recurringicon = ''
                     if ship.energyrecurr?
                         count = 0
                         while count < ship.energyrecurr
-                            recurringicon += '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>'
+                            recurringicon += '<sup><i class="fas fa-caret-up"></i></sup>'
                             ++count
                     container.find('tr.info-energy td.info-data').html (statAndEffectiveStat((data.ship_override?.energy ? ship.energy), effective_stats, 'energy') + recurringicon)
                     container.find('tr.info-energy').toggle(data.ship_override?.energy? or ship.energy?)
                     
                     
                     if (effective_stats?.force? and effective_stats.force > 0) or data.force?
-                        container.find('tr.info-force td.info-data').html (statAndEffectiveStat((data.ship_override?.force ? data.force), effective_stats, 'force') + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
+                        container.find('tr.info-force td.info-data').html (statAndEffectiveStat((data.ship_override?.force ? data.force), effective_stats, 'force') + '<sup><i class="fas fa-caret-up"></i></sup>')
                         container.find('tr.info-force').show()
                     else
                         container.find('tr.info-force').hide()
 
                     if data.charge?
+                        recurringicon = ''
                         if data.recurring?
-                            container.find('tr.info-charge td.info-data').html (data.charge + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
-                        else
-                            container.find('tr.info-charge td.info-data').text data.charge
+                            if data.recurring > 0
+                                count = 0
+                                while count < data.recurring
+                                    recurringicon += '<sup><i class="fas fa-caret-up"></i></sup>'
+                                    ++count
+                            else
+                                count = data.recurring
+                                while count < 0
+                                    recurringicon += '<sub><i class="fas fa-caret-down"></i></sub>'
+                                    ++count
+                        chargeHTML = $.trim """#{data.charge}#{recurringicon}"""
+                        container.find('tr.info-charge td.info-data').html (chargeHTML)
                         container.find('tr.info-charge').show()
                     else
                         container.find('tr.info-charge').hide()
 
-                    container.find('tr.info-actions td.info-data').html @formatActions(effective_stats?.actions ? ship.actions, ", ", data.keyword ? [])
+                    if effective_stats?.actions?
+                        container.find('tr.info-actions td.info-data').html @formatActions(data.ship_override?.actions ? effective_stats.actions, ", ")
+                    else
+                        container.find('tr.info-actions td.info-data').html @formatActions(data.ship_override?.actions ? ship.actions, ", ", data.keyword ? [])
                     
                     container.find('tr.info-actions').show()
                     if @isQuickbuild
                         container.find('tr.info-upgrades').hide()
                     else
                         container.find('tr.info-upgrades').show()
-                        container.find('tr.info-upgrades td.info-data').html((exportObj.translate(@language, 'sloticon', slot) for slot in data.slots).join(' ') or 'None')
+                        container.find('tr.info-upgrades td.info-data').html((exportObj.translate('sloticon', slot) for slot in data.slots).join(' ') or 'None')
                     container.find('p.info-maneuvers').show()
                     container.find('p.info-maneuvers').html(@getManeuverTableHTML(effective_stats?.maneuvers ? ship.maneuvers, ship.maneuvers))
                 when 'Quickbuild'
-                    container.find('.info-type').text 'Quickbuild'
+                    container.find('.info-type').text @uitranslation('Quickbuild')
                     container.find('.info-sources').hide() # there are different sources for the pilot and the upgrade cards, so we won't display any
                     container.find('.info-collection').hide() # same here, hard to give a single number telling a user how often he ownes all required cards
                     
@@ -4520,20 +4709,27 @@ class exportObj.SquadBuilder
                     else
                         uniquedots = ""
                         
-                    container.find('.info-name').html """#{uniquedots}#{if pilot.display_name then pilot.display_name else pilot.name}#{if data.suffix? then data.suffix else ""}#{if exportObj.isReleased(pilot) then "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
+                    container.find('.info-name').html """#{uniquedots}#{if pilot.display_name then pilot.display_name else pilot.name}#{if data.suffix? then data.suffix else ""}#{if exportObj.isReleased(pilot) then "" else " (#{exportObj.translate('ui', 'unreleased')})"}"""
+
+
+                    restriction_info = @restriction_text(data) + @upgrade_effect(data)
+                    if restriction_info != ''
+                        container.find('p.info-restrictions').html restriction_info ? ''
+                        container.find('p.info-restrictions').show()
+                    else
+                        container.find('p.info-restrictions').hide()
+
                     container.find('p.info-text').html pilot.text ? ''
                     container.find('p.info-text').show()
                     container.find('tr.info-ship td.info-data').text data.ship
                     container.find('tr.info-ship').show()
-                    container.find('.info-solitary').hide()
-
 
                     if ship.large?
-                        container.find('tr.info-base td.info-data').text "Large"
+                        container.find('tr.info-base td.info-data').text exportObj.translate("gameterms", "Large")
                     else if ship.medium?
-                        container.find('tr.info-base td.info-data').text "Medium"
+                        container.find('tr.info-base td.info-data').text exportObj.translate("gameterms", "Medium")
                     else
-                        container.find('tr.info-base td.info-data').text "Small"
+                        container.find('tr.info-base td.info-data').text exportObj.translate("gameterms", "Small")
                     container.find('tr.info-base').show()
 
                     container.find('tr.info-skill td.info-data').text pilot.skill
@@ -4549,14 +4745,13 @@ class exportObj.SquadBuilder
                     
                     container.find('tr.info-attack-bullseye td.info-data').text(ship.attackbull)
                     container.find('tr.info-attack-bullseye').toggle(ship.attackbull?)
-                    
                     container.find('tr.info-attack-left td.info-data').text(ship.attackl)
                     container.find('tr.info-attack-left').toggle(ship.attackl?)
-                    container.find('tr.info-attack-left td.info-data').text(ship.attackr)
-                    container.find('tr.info-attack-left').toggle(ship.attackr?)
-                    container.find('tr.info-attack-back td.info-data').text(ship.attackb)
+                    container.find('tr.info-attack-right td.info-data').text(ship.attackr)
+                    container.find('tr.info-attack-right').toggle(ship.attackr?)
+                    container.find('tr.info-attack-back td.info-data').text(ship.attackb?)
                     container.find('tr.info-attack-back').toggle(ship.attackb?)
-                    container.find('tr.info-attack-turret td.info-data').text(ship.attackt)
+                    container.find('tr.info-attack-turret td.info-data').text(ship.attackt?)
                     container.find('tr.info-attack-turret').toggle(ship.attackt?)
                     container.find('tr.info-attack-doubleturret td.info-data').text(ship.attackdt)
                     container.find('tr.info-attack-doubleturret').toggle(ship.attackdt?)
@@ -4577,16 +4772,26 @@ class exportObj.SquadBuilder
                     container.find('tr.info-shields').show()
 
                     if effective_stats?.force? or data.force?
-                        container.find('tr.info-force td.info-data').html ((pilot.ship_override?.force ? pilot.force)+ '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
+                        container.find('tr.info-force td.info-data').html ((pilot.ship_override?.force ? pilot.force)+ '<sup><i class="fas fa-caret-up"></i></sup>')
                         container.find('tr.info-force').show()
                     else
                         container.find('tr.info-force').hide()
 
                     if data.charge?
+                        recurringicon = ''
                         if data.recurring?
-                            container.find('tr.info-charge td.info-data').html (pilot.charge + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
-                        else
-                            container.find('tr.info-charge td.info-data').text pilot.charge
+                            if data.recurring > 0
+                                count = 0
+                                while count < data.recurring
+                                    recurringicon += '<sup><i class="fas fa-caret-up"></i></sup>'
+                                    ++count
+                            else
+                                count = data.recurring
+                                while count < 0
+                                    recurringicon += '<sub><i class="fas fa-caret-down"></i></sub>'
+                                    ++count
+                        chargeHTML = $.trim """#{data.charge}#{recurringicon}"""
+                        container.find('tr.info-charge td.info-data').html (chargeHTML)
                         container.find('tr.info-charge').show()
                     else
                         container.find('tr.info-charge').hide()
@@ -4600,7 +4805,7 @@ class exportObj.SquadBuilder
                     container.find('p.info-maneuvers').html(@getManeuverTableHTML(ship.maneuvers, ship.maneuvers))
                 when 'Addon'
                     container.find('.info-type').text additional_opts.addon_type
-                    container.find('.info-sources.info-data').text (exportObj.translate(@language, 'sources', source) for source in data.sources).sort().join(', ')
+                    container.find('.info-sources.info-data').text (exportObj.translate('sources', source) for source in data.sources).sort().join(', ')
                     container.find('.info-sources').show()
                     
                     #logic to determine how many dots to use for uniqueness
@@ -4619,27 +4824,31 @@ class exportObj.SquadBuilder
                     
                     if @collection?.counts?
                         addon_count = @collection.counts?['upgrade']?[data.name] ? 0
-                        container.find('.info-collection').text """You have #{addon_count} in your collection."""
+                        container.find('.info-collection').text @uitranslation("collectionContentUpgrades", addon_count)
                         container.find('.info-collection').show()
                     else
                         container.find('.info-collection').hide()
-                    container.find('.info-name').html """#{uniquedots}#{if data.display_name then data.display_name else data.name}#{if exportObj.isReleased(data) then  "" else " (#{exportObj.translate(@language, 'ui', 'unreleased')})"}"""
+                    container.find('.info-name').html """#{uniquedots}#{if data.display_name then data.display_name else data.name}#{if exportObj.isReleased(data) then  "" else " (#{@uitranslation('unreleased')})"}"""
                     if data.pointsarray? 
-                        point_info = "<i>Point cost " + data.pointsarray + " when "
+                        point_info = "<i>" + @uitranslation("varPointCostsPoints", data.pointsarray)
                         if data.variableagility? and data.variableagility
-                            point_info += "agility is " + [0..data.pointsarray.length-1]
+                            point_info += @uitranslation("varPointCostsConditionAgility", [0..data.pointsarray.length-1])
                         else if data.variableinit? and data.variableinit
-                            point_info += "initiative is " + [0..data.pointsarray.length-1]
+                            point_info += @uitranslation("varPointCostsConditionIni", [0..data.pointsarray.length-1])
                         else if data.variablebase? and data.variablebase
-                            point_info += " base size is small, medium, large or huge"
-                        point_info += "</i><br/><br/>"
+                            point_info += @uitranslation("varPointCostsConditionBase")
+                        point_info += "</i>"
 
-                    if data.solitary?
-                        container.find('.info-solitary').show()
+                    restriction_info = @restriction_text(data) + @upgrade_effect(data)
+                    if point_info? or (restriction_info != '')
+                        if point_info? and (restriction_info != '')
+                            point_info += "<br/>"
+                        container.find('p.info-restrictions').html (point_info ? '') + restriction_info
+                        container.find('p.info-restrictions').show()
                     else
-                        container.find('.info-solitary').hide()
+                        container.find('p.info-restrictions').hide()
 
-                    container.find('p.info-text').html (point_info ? '') + (data.text ? '')
+                    container.find('p.info-text').html (data.text ? '')
                     container.find('p.info-text').show()
                     container.find('tr.info-ship').hide()
                     container.find('tr.info-base').hide()
@@ -4663,13 +4872,13 @@ class exportObj.SquadBuilder
                         container.find('tr.info-attack-turret').hide()
 
                     if data.attackr?
-                        container.find('tr.info-attack-right td.info-data').text data.attackl
+                        container.find('tr.info-attack-right td.info-data').text data.attackr
                         container.find('tr.info-attack-right').show()
                     else
                         container.find('tr.info-attack-right').hide()
 
                     if data.attackl?
-                        container.find('tr.info-attack-left td.info-data').text data.attackr
+                        container.find('tr.info-attack-left td.info-data').text data.attackl
                         container.find('tr.info-attack-left').show()
                     else
                         container.find('tr.info-attack-right').hide()
@@ -4696,12 +4905,23 @@ class exportObj.SquadBuilder
                     container.find('tr.info-attack-left').hide()
                     container.find('tr.info-attack-back').hide()
 
-                    if data.recurring?
-                        container.find('tr.info-charge td.info-data').html (data.charge + """<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>""")
-                    else                
-                        container.find('tr.info-charge td.info-data').text data.charge
-                    container.find('tr.info-charge').toggle(data.charge?)                        
-                    
+                    if data.charge?
+                        recurringicon = ''
+                        if data.recurring?
+                            if data.recurring > 0
+                                count = 0
+                                while count < data.recurring
+                                    recurringicon += '<sup><i class="fas fa-caret-up"></i></sup>'
+                                    ++count
+                            else
+                                count = data.recurring
+                                while count < 0
+                                    recurringicon += '<sub><i class="fas fa-caret-down"></i></sub>'
+                                    ++count
+                        chargeHTML = $.trim """#{data.charge}#{recurringicon}"""
+                        container.find('tr.info-charge td.info-data').html (chargeHTML)
+                    container.find('tr.info-charge').toggle(data.charge?)
+
                     if data.range?
                         container.find('tr.info-range td.info-data').text data.range
                         container.find('tr.info-range').show()
@@ -4714,7 +4934,7 @@ class exportObj.SquadBuilder
                         container.find('td.info-rangebonus').hide()
                         
                         
-                    container.find('tr.info-force td.info-data').html (data.force + '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>')
+                    container.find('tr.info-force td.info-data').html (data.force + '<sup><i class="fas fa-caret-up"></i></sup>')
                     container.find('tr.info-force').toggle(data.force?)                        
 
                     container.find('tr.info-agility').hide()
@@ -4729,7 +4949,7 @@ class exportObj.SquadBuilder
                     container.find('.info-collection').hide()
                     container.find('.info-name').html data.name
                     container.find('.info-name').show()
-                    container.find('.info-solitary').hide()
+                    container.find('p.info-restrictions').hide()
                     container.find('p.info-text').html data.text
                     container.find('p.info-text').show()
                     container.find('tr.info-ship').hide()
@@ -4753,13 +4973,12 @@ class exportObj.SquadBuilder
                     container.find('tr.info-range').hide()
                     container.find('tr.info-force').hide()
                 when 'MissingStuff'
-                    container.find('.info-type').text "List of Missing items"
+                    container.find('.info-type').text @uitranslation("List of Missing items")
                     container.find('.info-sources').hide()
                     container.find('.info-collection').hide()
-                    container.find('.info-name').html "Missing items"
+                    container.find('.info-name').html @uitranslation("Missing items")
                     container.find('.info-name').show()
-                    container.find('.info-solitary').hide()
-                    missingStuffInfoText = "To field this squad you need the following additional items: <ul>"
+                    missingStuffInfoText = @uitranslation("Missing Item List:")+"<ul>"
                     for item in data
                         missingStuffInfoText += """<li><strong>#{(if item.display_name? then item.display_name else item.name)}</strong> ("""
                         first = true
@@ -4770,6 +4989,7 @@ class exportObj.SquadBuilder
                             first = false
                         missingStuffInfoText += ")</li>"
                     missingStuffInfoText +="</ul>"
+                    container.find('p.info-restrictions').hide()
                     container.find('p.info-text').html missingStuffInfoText
                     container.find('p.info-text').show()
                     container.find('tr.info-ship').hide()
@@ -4833,7 +5053,7 @@ class exportObj.SquadBuilder
                             idx = $.randomInt(unused_addons.length) + data.ships_or_upgrades
                         else 
                             available_ships = @getAvailableShipsMatching('', false, data.collection_only)
-                    if available_ships.length > 0
+                    if (available_ships.length > 0) and ((@ships.length < data.ship_limit) or (data.ship_limit == 0))
                         ship_type = available_ships[$.randomInt available_ships.length].name
                         available_pilots = @getAvailablePilotsForShipIncluding(ship_type)
                         if available_pilots.length == 0 
@@ -4920,7 +5140,7 @@ class exportObj.SquadBuilder
         () =>
             @_randomizerLoopBody(data)
 
-    randomSquad: (max_points=200, allowed_sources=null, timeout_ms=1000, bid_goal=5, ships_or_upgrades=3, collection_only=true, fill_zero_pts=false) ->
+    randomSquad: (max_points=200, allowed_sources=null, timeout_ms=1000, bid_goal=5, ship_limit=0, ships_or_upgrades=3, collection_only=true, fill_zero_pts=false) ->
         @backend_status.fadeOut 'slow'
         @suppress_automatic_new_ship = true
         
@@ -4934,6 +5154,7 @@ class exportObj.SquadBuilder
         data =
             max_points: max_points
             bid_goal: bid_goal
+            ship_limit: ship_limit
             ships_or_upgrades: ships_or_upgrades
             keep_running: true
             allowed_sources: allowed_sources ? exportObj.expansions
@@ -4946,7 +5167,7 @@ class exportObj.SquadBuilder
         #console.log "Timer set for #{timeout_ms}ms, timer is #{data.timer}"
         window.setTimeout @_makeRandomizerLoopFunc(data), 0
         @resetCurrentSquad()
-        @current_squad.name = 'Random Squad'
+        @current_squad.name = @uitranslation('Random Squad')
         @container.trigger 'xwing-backend:squadNameChanged'
 
     setBackend: (backend) ->
@@ -4954,6 +5175,157 @@ class exportObj.SquadBuilder
         if @waiting_for_backend?
             for meth in @waiting_for_backend
                 meth()
+
+    upgrade_effect: (card) ->
+        removestext = text = comma = ''
+        if card.modifier_func
+            statchange =
+                attack: 0
+                attackf: 0
+                attackbull: 0
+                attackb: 0
+                attackt: 0
+                attackl: 0
+                attackr: 0
+                attackdt: 0
+                energy: 0
+                agility: 0
+                hull: 0
+                shields: 0
+                force: 0
+                actions: []
+                maneuvers: [0, 0]
+            card.modifier_func(statchange)
+            if statchange.attack != 0
+                text += comma + "%FRONTARC% (#{statchange.attack})"
+                comma = ', '
+            if statchange.attackf != 0
+                text += comma + "%FULLFRONTARC% (#{statchange.attackf})"
+                comma = ', '
+            if statchange.attackbull != 0
+                text += comma + "%BULLSEYEARC% (#{statchange.attackbull})"
+                comma = ', '
+            if statchange.attackb != 0
+                text += comma + "%REARARC% (#{statchange.attackb})"
+                comma = ', '
+            if statchange.attackt != 0
+                text += comma + "%SINGLETURRETARC% (#{statchange.attackt})"
+                comma = ', '
+            if statchange.attackl != 0
+                text += comma + "%LEFTARC% (#{statchange.attackl})"
+                comma = ', '
+            if statchange.attackr != 0
+                text += comma + "%RIGHTARC% (#{statchange.attackr})"
+                comma = ', '
+            if statchange.attackdt != 0
+                text += comma + "%DOUBLETURRETARC% (#{statchange.attackdt})"
+                comma = ', '
+            if statchange.energy != 0
+                text += comma + "%ENERGY% (#{statchange.energy})"
+                comma = ', '
+            if statchange.agility != 0
+                text += comma + "%AGILITY% (#{statchange.agility})"
+                comma = ', '
+            if statchange.hull != 0
+                text += comma + "%HULL% (#{statchange.hull})"
+                comma = ', '
+            if statchange.shields != 0
+                text += comma + "%SHIELD% (#{statchange.shields})"
+                comma = ', '
+            if statchange.actions.length > 0
+                text += comma + @formatActions(statchange.actions, ", ")
+                comma = ', '
+        if card.confersAddons
+            for addonname in card.confersAddons
+                text += comma + "%#{addonname.slot.toUpperCase().replace(/[^a-z0-9]/gi, '')}%" 
+                comma = ', '
+        if card.unequips_upgrades
+            comma = ''
+            for slot in card.unequips_upgrades
+                removestext += comma + "%#{slot.toUpperCase().replace(/[^a-z0-9]/gi, '')}%" 
+                comma = ', '
+        if text != ''
+            data = 
+                text: "</br><b>#{@uitranslation("adds", text)}</b>"
+            if removestext != ''
+                data.text += "</br><b>#{@uitranslation("removes", removestext)}</b>"
+            return exportObj.fixIcons(data)
+        else
+            return ''
+
+    restriction_text: (card) ->
+        uniquetext = comma = othertext = text = ''
+        if card.restrictions
+            for r in card.restrictions
+                if r[0] == "orUnique"
+                    uniquetext = exportObj.translate('restrictions', " or Squad Including") + " #{r[1]}"
+                    continue
+                switch r[0]
+                    when "Base"
+                        text += comma + "#{r[1]} " + exportObj.translate('restrictions', "Ship")
+                    when "Action"
+                        array = [r[1]]
+                        text += comma + @formatActions(array,"", [])
+                    when "Equipped"
+                        text += comma + "%#{r[1].toUpperCase().replace(/[^a-z0-9]/gi, '')}% Equipped"
+                    when "Slot"
+                        text += comma + exportObj.translate('restrictions', "Extra") + " %#{r[1].toUpperCase().replace(/[^a-z0-9]/gi, '')}%"
+                    when "Keyword"
+                        text += comma + exportObj.translate('restrictions', "#{r[1]}")
+                    when "AttackArc"
+                        text += comma + "%REARARC%"
+                    when "ShieldsGreaterThan"
+                        text += comma + "%SHIELD% > #{r[1]}"
+                    when "EnergyGreatterThan"
+                        text += comma + "%ENERGY% > #{r[1]}"
+                    when "InitiativeGreaterThan"
+                        text += comma + exportObj.translate('restrictions', "Initiative") + " > #{r[1]}"
+                    when "InitiativeLessThan"
+                        text += comma + exportObj.translate('restrictions', "Initiative")+ " < #{r[1]}"
+                    when "AgilityEquals"
+                        text += comma + exportObj.translate('restrictions', "Agility") + " = #{r[1]}"
+                    when "isUnique"
+                        if r[1] == true
+                            text += comma + exportObj.translate('restrictions', "Limited")
+                        else
+                            text += comma + exportObj.translate('restrictions', "Non-Limited")
+                    when "Format"
+                        text += comma + exportObj.translate('restrictions', "#{r[1]} Ship")
+                    when "Faction"
+                        othertext += comma + exportObj.translate('faction', "#{r[1]}")
+                comma = ', '
+        if not card.skill
+            if othertext == ''
+                if card.faction
+                    if card.faction instanceof Array
+                        for factionitem in card.faction
+                            othertext += comma + exportObj.translate('faction', "#{factionitem}")
+                            comma = ' or '
+                    else
+                        othertext += comma + exportObj.translate('faction', "#{card.faction}")
+                    comma = ', '
+            if card.ship
+                if card.ship instanceof Array
+                    for shipname in card.ship
+                        othertext += comma + shipname
+                        comma = ' or '
+                else
+                    othertext += comma + card.ship
+                comma = ', '
+            if card.solitary
+                othertext += comma + exportObj.translate('faction', "Solitary")
+                comma = ', '
+            if card.standardized
+                othertext += comma + exportObj.translate('faction', "Standardized")
+                comma = ', '
+        text += othertext + uniquetext
+        if text != ''
+            data = 
+                text: "<i><b>" + exportObj.translate('restrictions', "Restrictions") + ":</b> " + text + "</i>"
+            return exportObj.fixIcons(data)
+        else
+            return ''
+
 
     describeSquad: ->
         if @getNotes().trim() == '' then  ((ship.pilot.name for ship in @ships when ship.pilot?).join ', ') else @getNotes()
@@ -4977,13 +5349,11 @@ class exportObj.SquadBuilder
         @current_obstacles
 
     isSquadPossibleWithCollection: ->
-        # console.log "#{@faction}: isSquadPossibleWithCollection()"
         # If the collection is uninitialized or empty, don't actually check it.
         if Object.keys(@collection?.expansions ? {}).length == 0
             # console.log "collection not ready or is empty"
             return [true, []]
-        @collection.reset()
-        if @collection?.checks.collectioncheck != "true"
+        else if @collection?.checks.collectioncheck != "true"
             # console.log "collection check not enabled"
             return [true, []]
         @collection.reset()
@@ -5014,8 +5384,6 @@ class exportObj.SquadBuilder
             @collection_invalid_container.toggleClass 'd-none', squadPossible
             @collection_invalid_container.on 'mouseover', (e) =>
                 @showTooltip 'MissingStuff', missingStuff
-            @collection_invalid_container.on 'touchstart', (e) =>
-                @showTooltip 'MissingStuff', missingStuff
 
     toXWS: ->
         # Often you will want JSON.stringify(builder.toXWS())
@@ -5027,10 +5395,11 @@ class exportObj.SquadBuilder
             points: @total_points
             vendor:
                 yasb:
-                    builder: 'Yet Another Squad Builder 2.0'
+                    builder: 'YASB 2.0'
                     builder_url: window.location.href.split('?')[0]
                     link: @getPermaLink()
             version: '2.0.0'
+            # there is no point to have this version identifier, if we never actually increase it, right?
 
         for ship in @ships
             if ship.pilot?
@@ -5197,6 +5566,7 @@ class Ship
         @upgrades = []
         @wingmates = [] # stores wingmates (quickbuild stuff only) 
         @destroystate = null
+        @uitranslation = @builder.uitranslation
 
         @setupUI()
 
@@ -5208,13 +5578,18 @@ class Ship
         if idx < 0
             throw new Error("Ship not registered with builder")
         @builder.ships.splice idx, 1
+        # remove all wingmates, if we are wingleader
         if @wingmates.length > 0
             @setWingmates(0)
-        else if @linkedShip != null
-            @linkedShip.linkedShip = null
-            if @linkedShip.wingmates?.length > 0
+        # check if there is a linked ship
+        if @linkedShip != null
+            # remove us from the wing, if we are part of a wing
+            if @linkedShip.wingmates?.length > 0 and this in @linkedShip.wingmates
                 @linkedShip.removeFromWing(this)
+            # we are not part of a wing, so we just want to also remove the linked ship
             else
+                # unlink us from the linked ship, so we are not in a infinite recursive trap (it will otherwise attempt to remove us)
+                @linkedShip.linkedShip = null
                 await @builder.removeShip @linkedShip, defer()
         cb()
 
@@ -5251,21 +5626,29 @@ class Ship
             else
                 @setPilotById other.pilot.id, true
 
-            # Can't just copy upgrades since slots may be different
+            # filter out upgrades that can be copied
             other_upgrades = {}
             for upgrade in other.upgrades
                 if upgrade?.data? and not upgrade.data.unique and ((not upgrade.data.max_per_squad?) or @builder.countUpgrades(upgrade.data.canonical_name) < upgrade.data.max_per_squad)
                     other_upgrades[upgrade.slot] ?= []
                     other_upgrades[upgrade.slot].push upgrade
+            # set them aside any upgrades that don't fill requirements due to additional slots and then attempt to fill them
             delayed_upgrades = {}
             for upgrade in @upgrades
                 other_upgrade = (other_upgrades[upgrade.slot] ? []).shift()
                 if other_upgrade?
                     upgrade.setById other_upgrade.data.id
-                    if not upgrades.lastSetValid
+                    if not upgrade.lastSetValid
                         delayed_upgrades[other_upgrade.data.id] = upgrade
             for id, upgrade of delayed_upgrades
                 upgrade.setById id
+            # Do one final pass on upgrades to see if there are any more upgrades we can assign
+            for upgrade in @upgrades
+                if not upgrade.isOccupied()
+                    other_upgrade = (other_upgrades[upgrade.slot] ? []).shift()
+                    if other_upgrade?
+                        upgrade.setById other_upgrade.data.id
+            
             @addStandardizedUpgrades()
         @updateSelections()
         @builder.container.trigger 'xwing:pointsUpdated'
@@ -5441,6 +5824,7 @@ class Ship
                         upgrade.setById id
             else
                 @copy_button.hide()
+            @row.removeClass('unsortable')
             @builder.container.trigger 'xwing:pointsUpdated'
             @builder.container.trigger 'xwing-backend:squadDirtinessChanged'
 
@@ -5508,8 +5892,8 @@ class Ship
             # nothing to do, we already have correct number of wingmates. 
             return
         if !@wingmates? || @wingmates.length == 0
-            # if no wingmates are set yet, use the linked buddy
-            @wingmates = [@linkedShip]
+            # if no wingmates are set yet, create an empty list
+            @wingmates = []
         quickbuild = exportObj.quickbuildsById[@quickbuildId]
         while @wingmates.length < wingmates 
             # create more wingmates
@@ -5522,7 +5906,7 @@ class Ship
                 @builder.addShip()
             newMate.linkedShip = this # link new mate to us
             @wingmates.push(newMate)
-            newMate.setPilotById quickbuild.linkedId
+            newMate.setPilotById quickbuild.wingmateId
             # for pairs the first selected ship is master, so as we have been created first, we set the other ship to false
             # for wings the wingleader is always master, so we don't set the other ship to false, if we are just a wingmate
             newMate.primary = false
@@ -5581,13 +5965,13 @@ class Ship
 
     setupUI: ->
         @row = $ document.createElement 'DIV'
-        @row.addClass 'row ship mb-5 mb-sm-0'
+        @row.addClass 'row ship mb-5 mb-sm-0 unsortable'
         @row.insertBefore @builder.notes_container
 
         if @pilot?
             shipicon = if exportObj.ships[@pilot.ship].icon then exportObj.ships[@pilot.ship].icon else exportObj.ships[@pilot.ship].xws
         
-        @row.append $.trim '''
+        @row.append $.trim """
             <div class="col-md-3">
                 <div class="form-group d-flex">
                     <input class="ship-selector-container" type="hidden"></input>
@@ -5604,7 +5988,7 @@ class Ship
                     </div>
                 </div>
                 <label class="wingmate-label">
-                Wingmates: 
+                #{@uitranslation("Wingmates")}: 
                     <input type="number" class="wingmate-selector"></input>
                 </label>
             </div>
@@ -5613,11 +5997,11 @@ class Ship
             </div>
             <div class="col-md-6 addon-container">  </div>
             <div class="col-md-2 button-container">
-                <button class="btn btn-danger remove-pilot side-button"><span class="d-none d-sm-block" data-toggle="tooltip" title="Remove Pilot"><i class="fa fa-times"></i></span><span class="d-block d-sm-none"> Remove Pilot</span></button>
-                <button class="btn btn-light copy-pilot side-button"><span class="d-none d-sm-block" data-toggle="tooltip" title="Clone Pilot"><i class="far fa-copy"></i></span><span class="d-block d-sm-none"> Clone Pilot</span></button>&nbsp;&nbsp;&nbsp;
-                <button class="btn btn-light points-destroyed side-button" points-state"><span class="destroyed-type" title="Points Destroyed"><i class="xwing-miniatures-font xwing-miniatures-font-title"></i></span></button>
+                <button class="btn btn-danger remove-pilot side-button"><span class="d-none d-sm-block" data-toggle="tooltip" title="#{@uitranslation("Remove Pilot")}"><i class="fa fa-times"></i></span><span class="d-block d-sm-none"> #{@uitranslation("Remove Pilot")}</span></button>
+                <button class="btn btn-light copy-pilot side-button"><span class="d-none d-sm-block" data-toggle="tooltip" title="#{@uitranslation("Clone Pilot")}"><i class="far fa-copy"></i></span><span class="d-block d-sm-none"> #{@uitranslation("Clone Pilot")}</span></button>&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-light points-destroyed side-button" points-state"><span class="destroyed-type" title="#{@uitranslation("Points Destroyed")}"><i class="xwing-miniatures-font xwing-miniatures-font-title"></i></span></button>
             </div>
-        '''
+        """
         @row.find('.button-container span').tooltip()
 
         @ship_selector = $ @row.find('input.ship-selector-container')
@@ -5646,7 +6030,7 @@ class Ship
             
         @ship_selector.select2
             width: '100%'
-            placeholder: exportObj.translate @builder.language, 'ui', 'shipSelectorPlaceholder'
+            placeholder: exportObj.translate 'ui', 'shipSelectorPlaceholder'
             query: (query) =>
                 data = {results: []}
                 data.results = @builder.getAvailableShipsMatching(query.term)
@@ -5680,12 +6064,10 @@ class Ship
             @builder.showTooltip 'Ship', exportObj.ships[select2_data.id] if select2_data?.id?
         @ship_selector.data('select2').container.on 'mouseover', (e) =>
             @builder.showTooltip 'Ship', exportObj.ships[@pilot.ship] if @pilot
-        @ship_selector.data('select2').container.on 'touchstart', (e) =>
-            @builder.showTooltip 'Ship', exportObj.ships[@pilot.ship] if @pilot
 
         @pilot_selector.select2
             width: '100%'
-            placeholder: exportObj.translate @builder.language, 'ui', 'pilotSelectorPlaceholder'
+            placeholder: exportObj.translate  'ui', 'pilotSelectorPlaceholder'
             query: (query) =>
                 data = {results: []}
                 data.results = @builder.getAvailablePilotsForShipIncluding(@ship_selector.val(), (if not @builder.isQuickbuild then @pilot else @quickbuildId), query.term, true, @)
@@ -5727,8 +6109,6 @@ class Ship
                 @builder.showTooltip 'Pilot', exportObj.pilotsById[select2_data.id] if select2_data?.id?
         @pilot_selector.data('select2').container.on 'mouseover', (e) =>
             @builder.showTooltip 'Pilot', @pilot, @ if @pilot
-        @pilot_selector.data('select2').container.on 'touchstart', (e) =>
-            @builder.showTooltip 'Pilot', @pilot, @ if @pilot
 
         @pilot_selector.data('select2').container.hide()
 
@@ -5748,8 +6128,6 @@ class Ship
 #                    @builder.showTooltip 'Pilot', exportObj.wingmatesById[select2_data.id] if select2_data?.id?
 #            @wingmate_selector.on 'mouseover', (e) =>
 #                @builder.showTooltip 'Pilot', @wingmate, @ if @wingmate
-#            @wingmate_selector.on 'touchstart', (e) =>
-#                @builder.showTooltip 'Pilot', @wingmate, @ if @wingmate
 #    
         @wingmate_selector.parent().hide()
 
@@ -5768,8 +6146,10 @@ class Ship
 
         @copy_button = $ @row.find('button.copy-pilot')
         @copy_button.click (e) =>
-            clone = @builder.ships[@builder.ships.length - 1]
-            clone.copyFrom(this)
+            for ship in @builder.ships
+                if ship.row.hasClass("unsortable")
+                    ship.copyFrom(this)
+                    break
                 
         @copy_button.hide()
 
@@ -5797,9 +6177,9 @@ class Ship
 
     toString: ->
         if @pilot?
-            "Pilot #{if @pilot.display_name then @pilot.display_name else @pilot.name} flying #{if @data.display_name then @data.display_name else @data.name}"
+            @uitranslation("PilotFlyingShip", (if @pilot.display_name then @pilot.display_name else @pilot.name), (if @data.display_name then @data.display_name else @data.name))
         else
-            "Ship without pilot"
+            if @data.display_name then @data.display_name else @data.name
 
     toHTML: ->
         effective_stats = @effectiveStats()
@@ -5863,7 +6243,7 @@ class Ship
         if @data.energyrecurr?
             count = 0
             while count < @data.energyrecurr
-                recurringicon += '<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>'
+                recurringicon += '<sup><i class="fas fa-caret-up"></i></sup>'
                 ++count
         
         energyHTML = if (@pilot.ship_override?.energy? or @data.energy?) then $.trim """
@@ -5874,13 +6254,22 @@ class Ship
     
         forceHTML = if (@pilot.force?) then $.trim """
             <i class="xwing-miniatures-font header-force xwing-miniatures-font-forcecharge"></i>
-            <span class="info-data info-force">#{statAndEffectiveStat((@pilot.ship_override?.force ? @pilot.force), effective_stats, 'force')}<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i></span>
+            <span class="info-data info-force">#{statAndEffectiveStat((@pilot.ship_override?.force ? @pilot.force), effective_stats, 'force')}<sup><i class="fas fa-caret-up"></i></sup></span>
         """ else ''
 
         if @pilot.charge?
             recurringicon = ''
-            if @pilot.recurring?
-                recurringicon = """<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>"""
+            if  @pilot.recurring?
+                if @pilot.recurring > 0
+                    count = 0
+                    while count < @pilot.recurring
+                        recurringicon += '<sup><i class="fas fa-caret-up"></i></sup>'
+                        ++count
+                else
+                    count = @pilot.recurring
+                    while count < 0
+                        recurringicon += '<sub><i class="fas fa-caret-down"></i></sub>'
+                        ++count
             chargeHTML = $.trim """<i class="xwing-miniatures-font header-charge xwing-miniatures-font-charge"></i><span class="info-data info-charge">#{statAndEffectiveStat((@pilot.ship_override?.charge ? @pilot.charge), effective_stats, 'charge')}#{recurringicon}</span>"""
         else 
             chargeHTML = ''
@@ -5889,18 +6278,18 @@ class Ship
         if @data.shieldrecurr?
             count = 0
             while count < @data.shieldrecurr
-                shieldRECUR += """<i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>"""
+                shieldRECUR += """<sup><i class="fas fa-caret-up"></i></sup>"""
                 ++count
             
         shieldIconHTML = ''
         if effective_stats.shields
-            for _ in [1..(effective_stats.shields - 1)]
+            for _ in [effective_stats.shields..2] by -1
                 shieldIconHTML += """<i class="xwing-miniatures-font header-shield xwing-miniatures-font-shield expanded-hull-or-shield"></i>"""
             shieldIconHTML += """<i class="xwing-miniatures-font header-shield xwing-miniatures-font-shield"></i>"""
 
         hullIconHTML = ''
         if effective_stats.hull
-            for _ in [1..(effective_stats.hull - 1)]
+            for _ in [effective_stats.hull..2] by -1
                 hullIconHTML += """<i class="xwing-miniatures-font header-hull xwing-miniatures-font-hull expanded-hull-or-shield"></i>"""
             hullIconHTML += """<i class="xwing-miniatures-font header-hull xwing-miniatures-font-hull"></i>"""
 
@@ -5940,14 +6329,6 @@ class Ship
             </div>
         """
         
-        #  Maneuver Dials have been moved at the bottom of the squad, rather than beeing added to each ship
-        # dialHTML = @builder.getManeuverTableHTML(effective_stats.maneuvers, @data.maneuvers)
-        # 
-        # html += $.trim """
-        #     <div class="fancy-dial">
-        #         #{dialHTML}
-        #     </div>
-        #     """
         
         if @pilot.text
             html += $.trim """
@@ -5975,7 +6356,7 @@ class Ship
         
         html += $.trim """
             <div class="ship-points-total">
-                <strong>Ship Total: #{@getPoints()}, Half Points: #{HalfPoints}, Threshold: #{Threshold}</strong> 
+                <strong>#{@uitranslation("Ship Total")}: #{@getPoints()}, #{@uitranslation("Half Points")}: #{HalfPoints}, #{@uitranslation("Threshold")}: #{Threshold}</strong> 
             </div>
         """
 
@@ -5996,12 +6377,12 @@ class Ship
                 table_html += upgrade.toTableRow points
 
         # if @getPoints() != @pilot.points
-        table_html += """<tr class="simple-ship-total"><td colspan="2">Ship Total: #{@getPoints()}</td></tr>"""
+        table_html += """<tr class="simple-ship-total"><td colspan="2">#{@uitranslation("Ship Total")}: #{@getPoints()}</td></tr>"""
         
         halfPoints = Math.ceil @getPoints() / 2        
         threshold = Math.ceil (@effectiveStats()['hull'] + @effectiveStats()['shields']) / 2
 
-        table_html += """<tr class="simple-ship-half-points"><td colspan="2">Half Points: #{halfPoints} Threshold: #{threshold}</td></tr>"""
+        table_html += """<tr class="simple-ship-half-points"><td colspan="2">#{@uitranslation("Half Points")}: #{halfPoints} #{@uitranslation("Threshold")}: #{threshold}</td></tr>"""
 
         table_html += '<tr><td>&nbsp;</td><td></td></tr>'
         table_html
@@ -6022,7 +6403,7 @@ class Ship
         halfPoints = Math.ceil @getPoints() / 2        
         threshold = Math.ceil (@effectiveStats()['hull'] + @effectiveStats()['shields']) / 2
 
-        simplecopy += """Ship total: #{@getPoints()}  Half Points: #{halfPoints}  Threshold: #{threshold}    \n    \n"""
+        simplecopy += """#{@uitranslation("Ship total")}: #{@getPoints()}  #{@uitranslation("Half Points")}: #{halfPoints}  #{@uitranslation("Threshold")}: #{threshold}    \n    \n"""
 
         simplecopy
         
@@ -6038,7 +6419,7 @@ class Ship
                 upgrade_reddit = upgrade.toRedditText points
                 reddit_upgrades.push upgrade_reddit if upgrade_reddit?
             reddit += reddit_upgrades.join "    "
-            reddit += """&nbsp;*Ship total: (#{@getPoints()})*    \n"""
+            reddit += """&nbsp;*#{@uitranslation("Ship total")}: (#{@getPoints()})*    \n"""
 
         reddit
 
@@ -6212,7 +6593,6 @@ class Ship
             shields: @pilot.ship_override?.shields ? @data.shields
             force: (@pilot.ship_override?.force ? @pilot.force) ? 0
             charge: @pilot.ship_override?.charge ? @pilot.charge
-            darkside: (@pilot.ship_override?.darkside ? @pilot.darkside) ? false
             actions: (@pilot.ship_override?.actions ? @data.actions).slice 0
 
         # need a deep copy of maneuvers array
@@ -6272,10 +6652,14 @@ class Ship
             # everything is limited in X-Wing 2.0, so we need to check if any upgrade is equipped more than once
             equipped_upgrades = []
             for upgrade in @upgrades
-                func = upgrade?.data?.validation_func ? upgrade?.data?.restriction_func ? undefined
+                func = upgrade?.data?.validation_func ? undefined
+                if func?
+                    func_result = upgrade?.data?.validation_func(this, upgrade)
+                else if upgrade?.data?.restrictions
+                    func_result = @restriction_check(upgrade.data.restrictions, upgrade)
                 # check if either a) validation func not met or b) upgrade already equipped (in 2.0 everything is limited) or c) upgrade is not available (e.g. not Hyperspace legal)
                 # ignore those checks if this is a quickbuild squad, as quickbuild does whatever it wants to do...
-                if ((func? and not func(this, upgrade)) or (upgrade?.data? and (upgrade.data in equipped_upgrades or not @builder.isItemAvailable(upgrade.data)))) and not @builder.isQuickbuild
+                if ((func_result? and not func_result) or (upgrade?.data? and (upgrade.data in equipped_upgrades or (upgrade.data.faction? and not @builder.isOurFaction(upgrade.data.faction,@pilot.faction)) or not @builder.isItemAvailable(upgrade.data)))) and not @builder.isQuickbuild
                     #console.log "Invalid upgrade: #{upgrade?.data?.name}"
                     upgrade.setById null
                     valid = false
@@ -6304,6 +6688,68 @@ class Ship
             continue if upgrade == upgrade_obj or upgrade.slot != upgradeslot
             return true unless upgrade.isOccupied()
         false
+
+    restriction_check: (restrictions, upgrade_obj) ->
+        effective_stats = @effectiveStats()
+        for r in restrictions
+            if r[0] == "orUnique"
+                if @checkListForUnique(r[1].toLowerCase().replace(/[^0-9a-z]/gi, '').replace(/\s+/g, '-'))
+                    return true
+            switch r[0]
+                when "Base"  
+                    switch r[1]
+                        when "Small"
+                            if @data.medium? or @data.large? or @data.huge? then return false
+                        when "Small or Medium"
+                            if @data.large? or @data.huge? then return false
+                        when "Medium" 
+                            if not (@data.medium?) then return false
+                        when "Medium or Large"
+                            if not (@data.medium? or @data.large?) then return false
+                        when "Large" 
+                            if not (@data.large?) then return false
+                        when "Huge" 
+                            if not (@data.huge?) then return false
+                        when "Standard" 
+                            if @data.huge? then return false
+                when "Action"
+                    if r[1].startsWith("W-")
+                        w = r[1].substring(2)
+                        if w in effective_stats.actions then return true
+                    else 
+                        for action in effective_stats.actions 
+                            if action.includes(r[1])
+                                return true
+                    return false
+                when "Keyword"
+                    if not (@checkKeyword(r[1])) then return false
+                when "Equipped"
+                    if not ((@doesSlotExist(r[1]) and not @hasAnotherUnoccupiedSlotLike(upgrade_obj, r[1]))) then return false
+                when "Slot"
+                    if not @hasAnotherUnoccupiedSlotLike(upgrade_obj, r[1]) then return false
+                when "AttackArc"
+                    if not @data.attackb? then return false
+                when "ShieldsGreaterThan"
+                    if not (@data.shields > r[1]) then return false
+                when "EnergyGreatterThan"
+                    if not (effective_stats.energy > r[1]) then return false
+                when "InitiativeGreaterThan"
+                    if not (@pilot.skill > r[1]) then return false
+                when "InitiativeLessThan"
+                    if not (@pilot.skill < r[1]) then return false
+                when "AgilityEquals"
+                    if not (effective_stats.agility == r[1]) then return false
+                when "isUnique"
+                    if r[1] != @pilot.unique? then return false
+                when "Format"
+                    switch r[1]
+                        when "Epic"
+                            if not (@data.name in exportObj.epicExclusionsList) then return false
+                        when "Standard"
+                            if @data.name in exportObj.epicExclusionsList then return false
+                when "Faction"
+                    if @pilot.faction != r[1] then return false
+        return true
 
     doesSlotExist: (slot) ->
         for upgrade in @upgrades
@@ -6410,7 +6856,12 @@ class GenericAddon
         if @data?.unique?
             await @ship.builder.container.trigger 'xwing:releaseUnique', [ @data, @type, defer() ]
         if @data?.standardized?
-            @removeStandardized()
+            isLastShip = true
+            for ship in @ship.builder.ships
+                if ship.data? and (@ship.data.name == ship.data.name) and (@ship != ship)
+                    isLastShip = false
+            if isLastShip == true
+                @removeStandardized()
         @destroyed = true
         @rescindAddons()
         @deoccupyOtherUpgrades()
@@ -6487,12 +6938,9 @@ class GenericAddon
             @ship.builder.showTooltip 'Addon', @dataById[select2_data.id], {addon_type: @type} if select2_data?.id?
         @selector.data('select2').container.on 'mouseover', (e) =>
             @ship.builder.showTooltip 'Addon', @data, {addon_type: @type} if @data?
-        @selector.data('select2').container.on 'touchstart', (e) =>
-            @ship.builder.showTooltip 'Addon', @data, {addon_type: @type} if @data?
 
     setById: (id) ->
         @setData @dataById[parseInt id]
-        
 
     setByName: (name) ->
         @setData @dataByName[$.trim name]
@@ -6645,6 +7093,9 @@ class GenericAddon
                 attackIcon = if (@data.attack?) then $.trim """
                         <span class="info-data info-attack">#{@data.attack}</span>
                         <i class="xwing-miniatures-font xwing-miniatures-font-frontarc"></i>
+                """ else if (@data.attackf?) then $.trim """
+                        <span class="info-data info-attack">#{@data.attackf}</span>
+                        <i class="xwing-miniatures-font xwing-miniatures-font-fullfrontarc"></i>
                 """ else if (@data.attackt?) then $.trim """
                         <span class="info-data info-attack">#{@data.attackt}</span>
                         <i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>
@@ -6668,28 +7119,32 @@ class GenericAddon
                     </div>
                 """
 
-            if (@data.charge?)
-                if  (@data.recurring?)
-                    chargeHTML = $.trim """
-                        <div class="upgrade-charge">
-                            <span class="info-data info-charge">#{@data.charge}</span>
-                            <i class="xwing-miniatures-font xwing-miniatures-font-charge"></i><i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>
-                        </div>
-                        """
-                else
-                    chargeHTML = $.trim """
-                        <div class="upgrade-charge">
-                            <span class="info-data info-charge">#{@data.charge}</span>
-                            <i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>
-                        </div>
-                        """
+            if @data.charge?
+                recurringicon = ''
+                if  @data.recurring?
+                    if @data.recurring > 0
+                        count = 0
+                        while count < @data.recurring
+                            recurringicon += '<sup><i class="fas fa-caret-up"></i></sup>'
+                            ++count
+                    else
+                        count = @data.recurring
+                        while count < 0
+                            recurringicon += '<sub><i class="fas fa-caret-down"></i></sub>'
+                            ++count
+                chargeHTML = $.trim """
+                    <div class="upgrade-charge">
+                        <span class="info-data info-charge">#{@data.charge}</span>
+                        <i class="xwing-miniatures-font xwing-miniatures-font-charge"></i>#{recurringicon}
+                    </div>
+                    """
             else chargeHTML = $.trim ''
 
             if (@data.force?)
                 forceHTML = $.trim """
                     <div class="upgrade-force">
                         <span class="info-data info-force">#{@data.force}</span>
-                        <i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i><i class="xwing-miniatures-font xwing-miniatures-font-recurring"></i>
+                        <i class="xwing-miniatures-font xwing-miniatures-font-forcecharge"></i><sup><i class="fas fa-caret-up"></i></sup>
                     </div>
                     """
             else forceHTML = $.trim ''
@@ -6814,7 +7269,7 @@ class exportObj.Upgrade extends GenericAddon
     setupSelector: ->
         super
             width: '100%'
-            placeholder: @placeholderMod_func(exportObj.translate @ship.builder.language, 'ui', 'upgradePlaceholder', @slot)
+            placeholder: @placeholderMod_func(exportObj.translate 'ui', 'upgradePlaceholder', @slot)
             allowClear: true
             query: (query) =>
                 data = {results: []}
@@ -6909,98 +7364,41 @@ exportObj.fromXWSUpgrade =
     'system': 'Sensor'
     'mod': 'Modification'
     'force-power':'Force'
-    'tacticalrelay':'Tactical Relay'
+    'tactical-relay':'Tactical Relay'
 
 SPEC_URL = 'https://github.com/elistevens/xws-spec'
-
-class exportObj.XWSManager
-    constructor: (args) ->
-        @container = $ args.container
-
-        # @setupUI()
-        # @setupHandlers()
-
-    setupUI: ->
-        @container.addClass 'd-print-none'
-        @container.html $.trim """
-            <div class="row col-md-12 xws-space">
-                <!-- Import is marked in red since it creates something new -->
-                <button class="btn btn-danger from-xws"><i class="fa fa-file-import"></i>&nbsp;Import from XWS</button>
-                <button class="btn btn-primary to-xws"><i class="fa fa-file-export"></i>&nbsp;Export to XWS</button>
-            </div>
-        """
-
-
-        @xws_import_modal = $ document.createElement 'DIV'
-        @xws_import_modal.addClass 'modal fade xws-modal d-print-none'
-        @xws_import_modal.tabindex = "-1"
-        @xws_import_modal.role = "dialog"
-        @container.append @xws_import_modal
-        @xws_import_modal.append $.trim """
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>XWS Import</h3>
-                <button type="button" class="close d-print-none" data-dismiss="modal" aria-hidden="true">&times;</button>
-            </div>
-            <div class="modal-body">
-                Paste XWS here to load a list exported from another application.
-                <i>XWS is a way to share X-Wing squads between applications, e.g. YASB and LaunchBay Next</i>
-                <div class="container-fluid">
-                    <textarea class="xws-content" placeholder="Paste XWS here..."></textarea>
-                </div>
-            </div>
-            <div class="modal-footer d-print-none">
-                <span class="xws-import-status"></span>&nbsp;
-                <button class="btn btn-danger import-xws">Import It!</button>
-            </div>
-        </div>
-    </div>
-        """
-
-    setupHandlers: ->
-        @from_xws_button = @container.find('button.from-xws')
-        @from_xws_button.click (e) =>
-            e.preventDefault()
-            @xws_import_modal.modal 'show'
-
-        @to_xws_button = @container.find('button.to-xws')
-        @to_xws_button.click (e) =>
-            e.preventDefault()
-            $(window).trigger 'xwing:pingActiveBuilder', (builder) =>
-                builder.showXWSModal 'bla'
-
-        $('#xws-qrcode-container').click (e) ->
-            window.open $('#xws-qrcode-container canvas')[0].toDataURL()
-
-        @load_xws_button = $ @xws_import_modal.find('button.import-xws')
-        @load_xws_button.click (e) =>
-            e.preventDefault()
-            exportObj.loadXWSButton(@xws_import_modal)
+SQUAD_TO_XWS_URL = 'http://squad2xws.herokuapp.com/translate/'
 
 exportObj.loadXWSButton = (xws_import_modal) ->
         import_status = $ xws_import_modal.find('.xws-import-status')
-        import_status.text 'Loading...'
+        import_status.text exportObj.translate('ui', 'Loading...')
         do (import_status) =>
-            try
-                xws = JSON.parse xws_import_modal.find('.xws-content').val()
-            catch e
-                import_status.text 'Invalid JSON'
-                return
-
-            do (xws) =>
+            loadxws = (xws) =>
                 $(window).trigger 'xwing:activateBuilder', [exportObj.fromXWSFaction[xws.faction], (builder) =>
                     if builder.current_squad.dirty and builder.backend?
                         xws_import_modal.modal 'hide'
                         builder.backend.warnUnsaved builder, =>
                             builder.loadFromXWS xws, (res) =>
                                 unless res.success
-                                    @xws_import_modal.modal 'show'
+                                    xws_import_modal.modal 'show'
                                     import_status.text res.error
                     else
                         builder.loadFromXWS xws, (res) =>
                             if res.success
-                                @xws_import_modal.modal 'hide'
+                                xws_import_modal.modal 'hide'
                             else
                                 import_status.text res.error
                 ]
+
+            input = xws_import_modal.find('.xws-content').val()
+            try
+                # try if we got a JSON input
+                xws = JSON.parse input
+                loadxws(xws)
+            catch e
+                # we did not get JSON. Maybe we got an official builder link/uid
+                # strip everything before the last /
+                uuid = input.split('/').pop()
+                jsonurl = SQUAD_TO_XWS_URL + uuid
+                # let squad2xws create an xws for us and read this
+                ($.getJSON jsonurl, loadxws).catch((e) => import_status.text 'Invalid Input')

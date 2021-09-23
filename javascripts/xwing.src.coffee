@@ -965,11 +965,33 @@ class exportObj.SquadBuilderBackend
     getLanguagePreference: (settings, cb=$.noop) =>
         # check if user provided a language preference. If yes, this will override the browser preference queried in translate.coffee
         if settings?.language?
-            cb settings.language
-        # it's hacky either way: we can either not call our cb if we don't have a language preference, or trust that
-        # calling it with an empty preference is handled properly. (which indeed the index.jade will do)
+            # we found a language, provide it with priority 10
+            cb settings.language, 10
+        # otherwise we may parse a language out of the headers (reimplements commit d95bb5e93fbb75d0e6a4a7270f7a86cf86a62a0a)
         else
-            cb ''
+            await @getHeaders defer(headers)
+            if headers?.HTTP_ACCEPT_LANGUAGE?
+                # Need to parse out language preferences
+                # I'm going to be lazy and only output the first one we encounter
+                for language_range in headers.HTTP_ACCEPT_LANGUAGE.split(',')
+                    [ language_tag, quality ] = language_range.split ';'
+                    if language_tag == '*'
+                        # let's give that half bullshit priority
+                        cb 'English', -0.5
+                    else
+                        language_code = language_tag.split('-')[0]
+                        # check if the language code is available
+                        if langc of exportObj.codeToLanguage
+                            # yep - use as language with reasonable priority
+                            cb(exportObj.codeToLanguage[language_code], 8)
+                        else
+                            # bullshit priority - we can't support what the user wants
+                            # (maybe he gave another option though in his browser settings)
+                            cb 'English', -1
+                    break
+            else
+                # no headers, callback with bullshit priority
+                cb 'English', -1
 
     getCollectionCheck: (settings, cb=$.noop) =>
         if settings?.collectioncheck?
@@ -2011,9 +2033,22 @@ exportObj = exports ? this
 # TODO: create a reasonable scope for this (e.g. a translation class), so vars like currentLanguage
 # and methods like translateToLang are not within exportObj scope
 
+# a language change event will only affect the current language, if it has higher priority than 
+# the current languagePriority.
+# -1: default language
+#  3: browser setting
+#  5: default priority (should not be used by now)
+#  8: parsed from html header (done in backend)
+# 10: backend setting
+# 100: manual selection
+exportObj.languagePriority = -1
+
 # try to set the current language according to the users choice
 try
   (()->
+    # we'll guess language from browser settings - unless a better choice has already been made
+    if exportObj.languagePriority > 3
+        return
     exportObj.currentLanguage = DFL_LANGUAGE
     # some browses just provide a single navigator.language, some provide an array navigator.languages 
     languageCodes = [navigator.language].concat(navigator.languages)
@@ -2023,11 +2058,13 @@ try
         if langc of exportObj.codeToLanguage
             # assume that exportObj already exists. If it does not, we don't know which languages YASB supports
             exportObj.currentLanguage = exportObj.codeToLanguage[langc]
+            # we successfully found a language the user is somewhat happy with. that's cool
+            exportObj.languagePriority = 3
             break
    )()
 catch all
     exportObj.currentLanguage = DFL_LANGUAGE
-    throw all
+    # throw all
     
 
 exportObj.loadCards = (language) ->
@@ -2053,16 +2090,26 @@ exportObj.translateToLang = (language, category, what, args...) ->
         else
             translation
     else
-        if SHOW_DEBUG_OUT_MISSING_TRANSLATIONS
-            console.log(language + ' translation for ' + String(what) + ' (category ' + String(category) + ') missing')
         if language != DFL_LANGUAGE
+            if SHOW_DEBUG_OUT_MISSING_TRANSLATIONS
+                console.log(language + ' translation for ' + String(what) + ' (category ' + String(category) + ') missing')
             exportObj.translateToLang DFL_LANGUAGE, category, what, args...
         else
             what
 
 exportObj.setupTranslationSupport = ->
     do (builders) ->
-        $(exportObj).on 'xwing:languageChanged', (e, language, cb=$.noop) =>
+        $(exportObj).on 'xwing:languageChanged', (e, language, priority=5, cb=$.noop) =>
+            console.log("Change language to #{language} with priority #{priority} requested")
+            # check if priority is high enough to do anything
+            if priority == 'reload' # special case - just a reload, no priority change
+                null
+            # check if a better choice than the requested one has already been made
+            else if priority < exportObj.languagePriority
+                return
+            else
+                exportObj.languagePriority = priority
+                exportObj.currentLanguage = language
             if language of exportObj.translations
                 $('.language-placeholder').text language
                 current_language = ""
@@ -2086,7 +2133,7 @@ exportObj.setupTranslationSupport = ->
     # do we need to load dfl as well? Not sure...
     exportObj.loadCards DFL_LANGUAGE
     exportObj.loadCards exportObj.currentLanguage 
-    $(exportObj).trigger 'xwing:languageChanged', exportObj.currentLanguage
+    $(exportObj).trigger 'xwing:languageChanged', [exportObj.currentLanguage, 'reload']
 
 exportObj.translateUIElements = (context=undefined) ->
     # translate all UI elements that are marked as translateable
@@ -2100,8 +2147,8 @@ exportObj.setupTranslationUI = (backend) ->
         do (language, backend) ->
             li.click (e) ->
                 backend.set('language', language) if backend?
-                exportObj.currentLanguage = language
-                $(exportObj).trigger 'xwing:languageChanged', language
+                # setting a language manually has pretty high priority
+                $(exportObj).trigger 'xwing:languageChanged', [ language, 100 ]
         $('.language-picker .dropdown-menu').append li
 
 exportObj.registerBuilderForTranslation = (builder) ->
@@ -3434,7 +3481,7 @@ class exportObj.SquadBuilder
                     
             # Notes, if present
             @printable_container.find('.printable-body').append $.trim """
-                <div class="version"><span class="translated" defaultText="Points Version:"></span> 1.9.0 March 2021</div>
+                <div class="version"><span class="translated" defaultText="Points Version:"></span> 2.0.0 Sept 2021</div>
             """
             if $.trim(@notes.val()) != ''
                 @printable_container.find('.printable-body').append $.trim """
@@ -4331,6 +4378,9 @@ class exportObj.SquadBuilder
             if action.search('F-') != -1 
                 color = "force "
                 action = action.replace(/F-/gi, '')
+            if action.search('W-') != -1 
+                prefix = "White "
+                action = action.replace(/W-/gi, '')
             else if action.search('R-') != -1 
                 color = "red "
                 action = action.replace(/R-/gi, '')
@@ -5196,9 +5246,9 @@ class exportObj.SquadBuilder
                 comma = ', '
         if text != ''
             data = 
-                text: "</br><b>#{@uitranslation("Adds")}:</b> #{text}"
+                text: "</br><b>#{@uitranslation("adds", text)}</b>"
             if removestext != ''
-                data.text += "</br><b>#{@uitranslation("Removes")}:</b> #{removestext}"
+                data.text += "</br><b>#{@uitranslation("removes", removestext)}</b>"
             return exportObj.fixIcons(data)
         else
             return ''
@@ -6663,7 +6713,14 @@ class Ship
                         when "Standard" 
                             if @data.huge? then return false
                 when "Action"
-                    if not ((r[1] in effective_stats.actions) or ("*#{r[1]}" in effective_stats.actions) or ("F-#{r[1]}" in effective_stats.actions) or ("R-#{r[1]}" in effective_stats.actions)) then return false
+                    if r[1].startsWith("W-")
+                        w = r[1].substring(2)
+                        if w in effective_stats.actions then return true
+                    else 
+                        for action in effective_stats.actions 
+                            if action.includes(r[1])
+                                return true
+                    return false
                 when "Keyword"
                     if not (@checkKeyword(r[1])) then return false
                 when "Equipped"
