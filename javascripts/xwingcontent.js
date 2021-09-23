@@ -1272,7 +1272,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 5,
         points: 40,
-        slots: ["Talent", "Turret", "Torpedo", "Missile", "Astromech", "Modification", "Device", "Gunner"]
+        slots: ["Talent", "Turret", "Torpedo", "Missile", "Astromech", "Modification", "Device"]
       }, {
         name: "Horton Salm",
         id: 26,
@@ -1281,7 +1281,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 4,
         points: 36,
-        slots: ["Talent", "Turret", "Torpedo", "Missile", "Astromech", "Modification", "Device", "Gunner"]
+        slots: ["Talent", "Turret", "Torpedo", "Missile", "Astromech", "Modification", "Device"]
       }, {
         name: '"Dutch" Vander',
         id: 27,
@@ -1290,7 +1290,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 4,
         points: 40,
-        slots: ["Talent", "Turret", "Torpedo", "Missile", "Astromech", "Modification", "Device", "Gunner"]
+        slots: ["Talent", "Turret", "Torpedo", "Missile", "Astromech", "Modification", "Device"]
       }, {
         name: "Evaan Verlaine",
         id: 28,
@@ -1299,7 +1299,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 3,
         points: 34,
-        slots: ["Talent", "Turret", "Torpedo", "Missile", "Astromech", "Modification", "Device", "Gunner"]
+        slots: ["Talent", "Turret", "Torpedo", "Missile", "Astromech", "Modification", "Device"]
       }, {
         name: "Gold Squadron Veteran",
         id: 29,
@@ -1307,7 +1307,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 3,
         points: 31,
-        slots: ["Talent", "Turret", "Torpedo", "Missile", "Astromech", "Modification", "Device", "Gunner"]
+        slots: ["Talent", "Turret", "Torpedo", "Missile", "Astromech", "Modification", "Device"]
       }, {
         name: "Gray Squadron Bomber",
         id: 30,
@@ -1315,7 +1315,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 2,
         points: 29,
-        slots: ["Turret", "Torpedo", "Missile", "Astromech", "Modification", "Device", "Gunner"]
+        slots: ["Turret", "Torpedo", "Missile", "Astromech", "Modification", "Device"]
       }, {
         name: "Bodhi Rook",
         id: 31,
@@ -1832,7 +1832,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 5,
         points: 41,
-        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
+        slots: ["Talent", "Turret", "Torpedo", "Astromech", "Device", "Illicit", "Modification"]
       }, {
         name: "Drea Renthal",
         id: 86,
@@ -1841,7 +1841,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 4,
         points: 46,
-        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
+        slots: ["Talent", "Turret", "Torpedo", "Astromech", "Device", "Illicit", "Modification"]
       }, {
         name: "Hired Gun",
         id: 87,
@@ -1849,7 +1849,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 2,
         points: 31,
-        slots: ["Talent", "Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
+        slots: ["Talent", "Turret", "Torpedo", "Astromech", "Device", "Illicit", "Modification"]
       }, {
         name: "Crymorah Goon",
         id: 88,
@@ -1857,7 +1857,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 1,
         points: 29,
-        slots: ["Turret", "Torpedo", "Gunner", "Astromech", "Device", "Illicit", "Modification"]
+        slots: ["Turret", "Torpedo", "Astromech", "Device", "Illicit", "Modification"]
       }, {
         name: "Han Solo (Scum)",
         id: 89,
@@ -5384,7 +5384,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 5,
         points: 39,
-        slots: ["Talent", "Tech", "Turret", "Torpedo", "Gunner", "Astromech", "Device"]
+        slots: ["Talent", "Tech", "Turret", "Torpedo", "Astromech", "Device"]
       }, {
         name: "Arliz Hadrassian",
         id: 459,
@@ -5393,7 +5393,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 4,
         points: 38,
-        slots: ["Talent", "Tech", "Turret", "Torpedo", "Gunner", "Astromech", "Device"]
+        slots: ["Talent", "Tech", "Turret", "Torpedo", "Astromech", "Device"]
       }, {
         name: "Padric",
         id: 460,
@@ -5402,7 +5402,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 3,
         points: 36,
-        slots: ["Talent", "Tech", "Turret", "Torpedo", "Gunner", "Astromech", "Device"]
+        slots: ["Talent", "Tech", "Turret", "Torpedo", "Astromech", "Device"]
       }, {
         name: "Derek Klivian",
         id: 461,
@@ -5516,7 +5516,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 2,
         points: 30,
-        slots: ["Tech", "Turret", "Torpedo", "Gunner", "Astromech", "Device"]
+        slots: ["Tech", "Turret", "Torpedo", "Astromech", "Device"]
       }, {
         name: "Amaxine Warrior",
         id: 472,
@@ -5524,7 +5524,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 3,
         points: 33,
-        slots: ["Talent", "Tech", "Turret", "Torpedo", "Gunner", "Astromech", "Device"]
+        slots: ["Talent", "Tech", "Turret", "Torpedo", "Astromech", "Device"]
       }, {
         name: "Gamut Key",
         id: 473,
@@ -9556,7 +9556,7 @@ exportObj.basicCardData = function() {
         name: "Wartime Loadout",
         id: 409,
         slot: "Configuration",
-        points: 6,
+        points: 4,
         ship: "BTA-NR2 Y-Wing",
         restrictions: [["Slot", "Modification"]],
         validation_func: function(ship, upgrade_obj) {
