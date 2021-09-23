@@ -14353,6 +14353,9 @@ exportObj.hyperspaceShipInclusions = [
     name: 'RZ-2 A-Wing',
     faction: 'Resistance'
   }, {
+    name: 'BTA-NR2 Y-Wing',
+    faction: 'Resistance'
+  }, {
     name: 'Resistance Transport',
     faction: 'Resistance'
   }, {
@@ -14369,6 +14372,12 @@ exportObj.hyperspaceShipInclusions = [
     faction: 'First Order'
   }, {
     name: 'TIE/SF Fighter',
+    faction: 'First Order'
+  }, {
+    name: 'TIE/se Bomber',
+    faction: 'First Order'
+  }, {
+    name: 'TIE/WI Whisper',
     faction: 'First Order'
   }, {
     name: 'Xi-class Light Shuttle',
