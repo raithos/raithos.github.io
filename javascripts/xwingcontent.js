@@ -2419,7 +2419,7 @@ exportObj.basicCardData = function() {
         skill: 5,
         points: 60,
         keyword: ["Droid"],
-        slots: ["Talent", "Sensor", "Torpedo", "Modification", "Title"]
+        slots: ["Talent", "Tech", "Torpedo", "Modification", "Title"]
       }, {
         name: "Prince Xizor",
         id: 148,
@@ -2428,7 +2428,7 @@ exportObj.basicCardData = function() {
         ship: "StarViper",
         skill: 4,
         points: 51,
-        slots: ["Talent", "Sensor", "Torpedo", "Modification", "Title"]
+        slots: ["Talent", "Tech", "Torpedo", "Modification", "Title"]
       }, {
         name: "Dalan Oberos (StarViper)",
         canonical_name: 'Dalan Oberos'.canonicalize(),
@@ -2440,7 +2440,7 @@ exportObj.basicCardData = function() {
         skill: 4,
         points: 51,
         keyword: ["Bounty Hunter"],
-        slots: ["Talent", "Sensor", "Torpedo", "Modification", "Title"]
+        slots: ["Talent", "Tech", "Torpedo", "Modification", "Title"]
       }, {
         name: "Black Sun Assassin",
         id: 150,
@@ -2448,7 +2448,7 @@ exportObj.basicCardData = function() {
         ship: "StarViper",
         skill: 3,
         points: 49,
-        slots: ["Talent", "Sensor", "Torpedo", "Modification", "Title"]
+        slots: ["Talent", "Tech", "Torpedo", "Modification", "Title"]
       }, {
         name: "Black Sun Enforcer",
         id: 151,
@@ -2456,7 +2456,7 @@ exportObj.basicCardData = function() {
         ship: "StarViper",
         skill: 2,
         points: 45,
-        slots: ["Sensor", "Torpedo", "Modification", "Title"]
+        slots: ["Tech", "Torpedo", "Modification", "Title"]
       }, {
         name: "Moralo Eval",
         id: 152,

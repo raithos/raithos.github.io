@@ -4440,7 +4440,7 @@ exportObj.basicCardData = ->
             keyword: ["Droid"]
             slots: [
                 "Talent"
-                "Sensor"
+                "Tech"
                 "Torpedo"
                 "Modification"
                 "Title"
@@ -4456,7 +4456,7 @@ exportObj.basicCardData = ->
             points: 51
             slots: [
                 "Talent"
-                "Sensor"
+                "Tech"
                 "Torpedo"
                 "Modification"
                 "Title"
@@ -4475,7 +4475,7 @@ exportObj.basicCardData = ->
             keyword: ["Bounty Hunter"]
             slots: [
                 "Talent"
-                "Sensor"
+                "Tech"
                 "Torpedo"
                 "Modification"
                 "Title"
@@ -4490,7 +4490,7 @@ exportObj.basicCardData = ->
             points: 49
             slots: [
                 "Talent"
-                "Sensor"
+                "Tech"
                 "Torpedo"
                 "Modification"
                 "Title"
@@ -4504,7 +4504,7 @@ exportObj.basicCardData = ->
             skill: 2
             points: 45
             slots: [
-                "Sensor"
+                "Tech"
                 "Torpedo"
                 "Modification"
                 "Title"
