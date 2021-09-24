@@ -8151,7 +8151,7 @@ Ship = (function() {
   };
 
   Ship.prototype.restriction_check = function(restrictions, upgrade_obj) {
-    var action, effective_stats, r, w, _i, _j, _len, _len1, _ref, _ref1, _ref2;
+    var action, check, effective_stats, r, w, _i, _j, _len, _len1, _ref, _ref1, _ref2;
     effective_stats = this.effectiveStats();
     for (_i = 0, _len = restrictions.length; _i < _len; _i++) {
       r = restrictions[_i];
@@ -8202,19 +8202,23 @@ Ship = (function() {
         case "Action":
           if (r[1].startsWith("W-")) {
             w = r[1].substring(2);
-            if (__indexOf.call(effective_stats.actions, w) >= 0) {
-              return true;
+            if (__indexOf.call(effective_stats.actions, w) < 0) {
+              return false;
             }
           } else {
+            check = false;
             _ref = effective_stats.actions;
             for (_j = 0, _len1 = _ref.length; _j < _len1; _j++) {
               action = _ref[_j];
               if (action.includes(r[1])) {
-                return true;
+                check = true;
               }
             }
+            if (check === false) {
+              return false;
+            }
           }
-          return false;
+          break;
         case "Keyword":
           if (!(this.checkKeyword(r[1]))) {
             return false;
@@ -8480,7 +8484,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 6856
+                lineno: 6857
               })
             ]);
             __iced_deferrals._fulfill();
@@ -8639,7 +8643,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 6950
+                  lineno: 6951
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -8666,7 +8670,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 6957
+                      lineno: 6958
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -8809,7 +8813,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 7029
+            lineno: 7030
           }));
         }
         __iced_deferrals._fulfill();
