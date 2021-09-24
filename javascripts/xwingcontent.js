@@ -1415,7 +1415,7 @@ exportObj.basicCardData = function() {
         faction: "Rebel Alliance",
         ship: "YT-2400",
         skill: 1,
-        points: 70,
+        points: 72,
         slots: ["Missile", "Crew", "Crew", "Modification", "Title", "Illicit"]
       }, {
         name: "Han Solo",
@@ -1832,7 +1832,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 5,
         points: 41,
-        slots: ["Talent", "Turret", "Torpedo", "Astromech", "Device", "Illicit", "Modification"]
+        slots: ["Talent", "Turret", "Torpedo", "Missile", "Astromech", "Device", "Illicit", "Modification"]
       }, {
         name: "Drea Renthal",
         id: 86,
@@ -1841,7 +1841,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 4,
         points: 46,
-        slots: ["Talent", "Turret", "Torpedo", "Astromech", "Device", "Illicit", "Modification"]
+        slots: ["Talent", "Turret", "Torpedo", "Missile", "Astromech", "Device", "Illicit", "Modification"]
       }, {
         name: "Hired Gun",
         id: 87,
@@ -1849,7 +1849,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 2,
         points: 31,
-        slots: ["Talent", "Turret", "Torpedo", "Astromech", "Device", "Illicit", "Modification"]
+        slots: ["Talent", "Turret", "Torpedo", "Missile", "Astromech", "Device", "Illicit", "Modification"]
       }, {
         name: "Crymorah Goon",
         id: 88,
@@ -1857,7 +1857,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 1,
         points: 29,
-        slots: ["Turret", "Torpedo", "Astromech", "Device", "Illicit", "Modification"]
+        slots: ["Turret", "Torpedo", "Missile", "Astromech", "Device", "Illicit", "Modification"]
       }, {
         name: "Han Solo (Scum)",
         id: 89,
@@ -4066,7 +4066,7 @@ exportObj.basicCardData = function() {
         faction: "Separatist Alliance",
         ship: "Hyena-Class Droid Bomber",
         skill: 1,
-        points: 25,
+        points: 26,
         keyword: ["Droid"],
         slots: ["Torpedo", "Missile", "Device", "Modification", "Configuration"]
       }, {
@@ -4744,7 +4744,7 @@ exportObj.basicCardData = function() {
         unique: true,
         skill: 2,
         ship: "TIE Striker",
-        points: 34,
+        points: 32,
         slots: ["Talent", "Gunner", "Device", "Modification"]
       }, {
         name: "Morna Kee",
@@ -5384,7 +5384,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 5,
         points: 39,
-        slots: ["Talent", "Tech", "Turret", "Torpedo", "Astromech", "Device"]
+        slots: ["Talent", "Tech", "Turret", "Torpedo", "Missile", "Astromech", "Device"]
       }, {
         name: "Arliz Hadrassian",
         id: 459,
@@ -5393,7 +5393,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 4,
         points: 38,
-        slots: ["Talent", "Tech", "Turret", "Torpedo", "Astromech", "Device"]
+        slots: ["Talent", "Tech", "Turret", "Torpedo", "Missile", "Astromech", "Device"]
       }, {
         name: "Padric",
         id: 460,
@@ -5402,7 +5402,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 3,
         points: 36,
-        slots: ["Talent", "Tech", "Turret", "Torpedo", "Astromech", "Device"]
+        slots: ["Talent", "Tech", "Turret", "Torpedo", "Missile", "Astromech", "Device"]
       }, {
         name: "Derek Klivian",
         id: 461,
@@ -5516,7 +5516,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 2,
         points: 30,
-        slots: ["Tech", "Turret", "Torpedo", "Astromech", "Device"]
+        slots: ["Tech", "Turret", "Torpedo", "Missile", "Astromech", "Device"]
       }, {
         name: "Amaxine Warrior",
         id: 472,
@@ -5524,7 +5524,7 @@ exportObj.basicCardData = function() {
         ship: "Y-Wing",
         skill: 3,
         points: 33,
-        slots: ["Talent", "Tech", "Turret", "Torpedo", "Astromech", "Device"]
+        slots: ["Talent", "Tech", "Turret", "Torpedo", "Missile", "Astromech", "Device"]
       }, {
         name: "Gamut Key",
         id: 473,
@@ -5711,7 +5711,7 @@ exportObj.basicCardData = function() {
         id: 492,
         faction: "First Order",
         ship: "TIE/WI Whisper",
-        skill: 1,
+        skill: 2,
         points: 44,
         slots: ["Talent", "Missile", "Tech", "Tech", "Configuration"]
       }, {
@@ -5765,7 +5765,7 @@ exportObj.basicCardData = function() {
         id: 498,
         faction: "First Order",
         ship: "TIE/Se Bomber",
-        skill: 1,
+        skill: 2,
         points: 31,
         slots: ["Tech", "Torpedo", "Missile", "Gunner", "Device", "Device", "Modification"]
       }
@@ -9544,6 +9544,7 @@ exportObj.basicCardData = function() {
       }, {
         name: "L4E-R5",
         id: 408,
+        unique: true,
         slot: "Astromech",
         points: 4,
         faction: "Resistance",
@@ -14374,7 +14375,7 @@ exportObj.hyperspaceShipInclusions = [
     name: 'TIE/SF Fighter',
     faction: 'First Order'
   }, {
-    name: 'TIE/se Bomber',
+    name: 'TIE/Se Bomber',
     faction: 'First Order'
   }, {
     name: 'TIE/WI Whisper',
