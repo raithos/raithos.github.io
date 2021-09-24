@@ -169,7 +169,8 @@ exportObj.basicCardData = function() {
         hull: 4,
         shields: 4,
         actions: ["Focus", "R-> Barrel Roll", "Lock", "Barrel Roll"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 3, 3], [2, 2, 1, 2, 2, 3, 0, 0, 0, 0], [0, 3, 1, 3, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 1, 1, 1, 3, 0, 0, 0, 3, 3], [2, 2, 1, 2, 2, 3, 0, 0, 0, 0], [0, 3, 1, 3, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]],
+        autoequip: ['Stabilized S-Foils']
       },
       "TIE Bomber": {
         name: "TIE Bomber",
@@ -708,7 +709,8 @@ exportObj.basicCardData = function() {
         shields: 0,
         keyword: ["Networked Calculations"],
         actions: ["Calculate", "Lock", "Barrel Roll", "R-> Calculate"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 3, 0, 0, 0, 0], [1, 2, 1, 2, 1, 0, 0, 0, 3, 3], [2, 3, 1, 3, 2, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 3, 0, 0, 0, 0], [1, 2, 1, 2, 1, 0, 0, 0, 3, 3], [2, 3, 1, 3, 2, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]],
+        autoequip: ['Grappling Struts']
       },
       "Belbullab-22 Starfighter": {
         name: "Belbullab-22 Starfighter",
@@ -742,7 +744,8 @@ exportObj.basicCardData = function() {
         shields: 0,
         keyword: ["Networked Calculations"],
         actions: ["Calculate", "Lock", "Barrel Roll", "R-> Lock", "R-Reload"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 3, 2, 3, 2, 0, 0, 0, 0, 0], [1, 2, 1, 2, 1, 3, 0, 0, 3, 3], [2, 0, 1, 0, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 3, 2, 3, 2, 0, 0, 0, 0, 0], [1, 2, 1, 2, 1, 3, 0, 0, 3, 3], [2, 0, 1, 0, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]],
+        autoequip: ['Landing Struts']
       },
       "Resistance Transport Pod": {
         name: "Resistance Transport Pod",
@@ -832,7 +835,8 @@ exportObj.basicCardData = function() {
         hull: 5,
         shields: 3,
         actions: ["Calculate", "Lock", "R-Barrel Roll", "Reload", "R-> Calculate"],
-        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 3, 1, 3, 0, 0, 0, 0, 0, 0], [1, 2, 1, 2, 1, 0, 0, 0, 0, 0], [2, 3, 2, 3, 2, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 3, 1, 3, 0, 0, 0, 0, 0, 0], [1, 2, 1, 2, 1, 0, 0, 0, 0, 0], [2, 3, 2, 3, 2, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 3, 0, 0, 0, 0, 0, 0, 0]],
+        autoequip: ['Repulsorlift Stabilizers']
       },
       "LAAT/i Gunship": {
         name: "LAAT/i Gunship",
@@ -856,7 +860,8 @@ exportObj.basicCardData = function() {
         shields: 0,
         medium: true,
         actions: ["Focus", "Reinforce", "Lock", "R-Barrel Roll", "Rotate Arc", "R-> Calculate"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 1, 2, 3, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [3, 2, 1, 2, 3, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [3, 2, 2, 2, 3, 0, 0, 0, 3, 3], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
+        autoequip: ['Maneuver-Assist MGK-300']
       },
       "Droid Tri-Fighter": {
         name: "Droid Tri-Fighter",
@@ -880,7 +885,8 @@ exportObj.basicCardData = function() {
         shields: 2,
         keyword: ["TIE"],
         actions: ["Focus", "Lock", "R-Barrel Roll", "Boost", "R-> Lock"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 3, 0, 3, 2, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 3, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 3, 0, 3, 2, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 3, 0, 0, 0, 0], [2, 2, 1, 2, 2, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 3, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]],
+        autoequip: ['Alpha-3E "Esk"']
       },
       "Eta-2 Actis": {
         name: "Eta-2 Actis",
@@ -925,7 +931,8 @@ exportObj.basicCardData = function() {
         hull: 3,
         shields: 2,
         actions: ["Focus", "> Rotate Arc", "Evade", "Lock", "Barrel Roll", "> Rotate Arc", "Boost", "> Rotate Arc"],
-        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 3, 3, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]]
+        maneuvers: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 0, 0, 0, 0], [2, 1, 1, 1, 2, 0, 3, 3, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0]],
+        autoequip: ["Enhanced Jamming Suite"]
       },
       "TIE/Se Bomber": {
         name: "TIE/Se Bomber",
@@ -1028,7 +1035,8 @@ exportObj.basicCardData = function() {
         energy: 3,
         energyrecurr: 2,
         actions: ["Focus", "R-Evade", "R-Reinforce", "Lock", "R-Coordinate"],
-        maneuvers: [[0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0], [0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        maneuvers: [[0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0], [0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0], [0, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0], [0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
+        autoequip: ['Tractor Tentacles']
       }
     },
     pilotsById: [
@@ -14713,7 +14721,7 @@ if (exportObj.cardLoaders == null) {
 }
 
 exportObj.cardLoaders.English = function() {
-  var condition_translations, pilot_translations, upgrade_translations;
+  var condition_translations, data, name, pilot_translations, upgrade_translations;
   exportObj.cardLanguage = 'English';
   exportObj.renameShip("YT-1300", "Modified YT-1300 Light Freighter");
   exportObj.renameShip("StarViper", "StarViper-class Attack Platform");
@@ -18298,6 +18306,24 @@ exportObj.cardLoaders.English = function() {
       text: 'This condition is assigned facedown. Reveal it after you defend. %LINEBREAK% After you defend, you may spend 2 %CHARGE% from <strong>Zam Wesell</strong>. If you do, perform a bonus attack against the attacker. %LINEBREAK% At the end of the Engagement Phase, if this card is facedown and you are in an enemy ship\'s firing arc, you may reveal this card. If you do, <strong>Zam Wesell</strong> recovers 2 %CHARGE%. %LINEBREAK% At the start of the System Phase, remove this condition.'
     }
   };
+  for (name in pilot_translations) {
+    data = pilot_translations[name];
+    if (__indexOf.call(data, 'display_name') < 0) {
+      data['display_name'] = name;
+    }
+  }
+  for (name in upgrade_translations) {
+    data = upgrade_translations[name];
+    if (__indexOf.call(data, 'display_name') < 0) {
+      data['display_name'] = name;
+    }
+  }
+  for (name in condition_translations) {
+    data = condition_translations[name];
+    if (__indexOf.call(data, 'display_name') < 0) {
+      data['display_name'] = name;
+    }
+  }
   return exportObj.setupTranslationCardData(pilot_translations, upgrade_translations, condition_translations);
 };
 

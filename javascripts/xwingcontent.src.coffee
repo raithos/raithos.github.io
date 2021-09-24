@@ -291,6 +291,9 @@ exportObj.basicCardData = ->
                 [ 0, 3, 1, 3, 0, 0, 0, 0, 0, 0]
                 [ 0, 0, 3, 0, 0, 0, 0, 0, 0, 0]
             ]
+            autoequip: [
+                'Stabilized S-Foils'
+            ]
         "TIE Bomber":
             name: "TIE Bomber"
             xws: "TIE/sa Bomber".canonicalize()
@@ -1315,6 +1318,9 @@ exportObj.basicCardData = ->
                 [ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
                 [ 0, 0, 2, 0, 0, 0, 0, 0, 0, 0]
             ]
+            autoequip: [
+                'Grappling Struts'
+            ]
         "Belbullab-22 Starfighter":
             name: "Belbullab-22 Starfighter"
             xws: "Belbullab-22 Starfighter".canonicalize()
@@ -1384,6 +1390,9 @@ exportObj.basicCardData = ->
                 [ 2, 0, 1, 0, 2, 0, 0, 0, 0, 0]
                 [ 0, 0, 2, 0, 0, 0, 0, 0, 0, 0]
                 [ 0, 0, 3, 0, 0, 0, 0, 0, 0, 0]
+            ]
+            autoequip: [
+                'Landing Struts'
             ]
         "Resistance Transport Pod":
             name: "Resistance Transport Pod"
@@ -1561,6 +1570,9 @@ exportObj.basicCardData = ->
                 [ 0, 0, 3, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 0, 0, 3, 0, 0, 0, 0, 0, 0, 0 ]
             ]
+            autoequip: [
+                'Repulsorlift Stabilizers'
+            ]
         "LAAT/i Gunship":
             name: "LAAT/i Gunship"
             xws: "LAAT/i Gunship".canonicalize()
@@ -1609,6 +1621,9 @@ exportObj.basicCardData = ->
                 [ 3, 2, 2, 2, 3, 0, 0, 0, 3, 3 ]
                 [ 0, 0, 2, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+            ]
+            autoequip: [
+                'Maneuver-Assist MGK-300'
             ]
         "Droid Tri-Fighter":
             name: "Droid Tri-Fighter"
@@ -1659,6 +1674,9 @@ exportObj.basicCardData = ->
                 [ 2, 2, 1, 2, 2, 0, 0, 0, 0, 0 ]
                 [ 0, 0, 2, 0, 0, 3, 0, 0, 0, 0 ]
                 [ 0, 0, 2, 0, 0, 0, 0, 0, 0, 0 ]
+            ]
+            autoequip: [
+                'Alpha-3E "Esk"'
             ]
         "Eta-2 Actis":
             name: "Eta-2 Actis"
@@ -1744,6 +1762,9 @@ exportObj.basicCardData = ->
                 [ 2, 1, 1, 1, 2, 0, 3, 3, 0, 0 ]
                 [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0 ]
                 [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0 ]
+            ]
+            autoequip: [
+                "Enhanced Jamming Suite"
             ]
         "TIE/Se Bomber":
             name: "TIE/Se Bomber"
@@ -1933,6 +1954,9 @@ exportObj.basicCardData = ->
                 [ 0, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 0, 0, 1, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0 ]
                 [ 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+            ]
+            autoequip: [
+                'Tractor Tentacles'
             ]
 
     # name field is for convenience only
@@ -25438,6 +25462,14 @@ exportObj.cardLoaders.English = () ->
            text: '''This condition is assigned facedown. Reveal it after you defend. %LINEBREAK% After you defend, <strong>Zam Wesell</strong> recovers 1 %CHARGE%. Then, you may acquire a lock on the attacker. %LINEBREAK% At the end of the Engagement Phase, if this card is facedown and you are in an enemy ship's firing arc, you may reveal this card and spend 2 %CHARGE% from <strong>Zam Wesell</strong>. If you do, you may perform a bonus attack. %LINEBREAK% At the start of the System Phase, remove this condition.'''
         '''You'd Better Mean Business''':
            text: '''This condition is assigned facedown. Reveal it after you defend. %LINEBREAK% After you defend, you may spend 2 %CHARGE% from <strong>Zam Wesell</strong>. If you do, perform a bonus attack against the attacker. %LINEBREAK% At the end of the Engagement Phase, if this card is facedown and you are in an enemy ship's firing arc, you may reveal this card. If you do, <strong>Zam Wesell</strong> recovers 2 %CHARGE%. %LINEBREAK% At the start of the System Phase, remove this condition.'''
+
+    # in this file the display_name is often omitted, if it is identical to the name. I am too lazy to add those manually (though running the translation script would automatically do so). As this will pop up with every new card, I add those tags here
+    for name, data of pilot_translations
+        data['display_name'] = name unless 'display_name' in data
+    for name, data of upgrade_translations
+        data['display_name'] = name unless 'display_name' in data
+    for name, data of condition_translations
+        data['display_name'] = name unless 'display_name' in data
 
     exportObj.setupTranslationCardData pilot_translations, upgrade_translations, condition_translations
 
