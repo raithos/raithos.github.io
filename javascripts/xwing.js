@@ -8210,7 +8210,9 @@ Ship = (function() {
             _ref = effective_stats.actions;
             for (_j = 0, _len1 = _ref.length; _j < _len1; _j++) {
               action = _ref[_j];
-              w = action.includes(r[1]) && !action.includes(">") ? check = true : void 0;
+              if (action.includes(r[1]) && !action.includes(">")) {
+                check = true;
+              }
             }
             if (check === false) {
               return false;
@@ -8482,7 +8484,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 6858
+                lineno: 6857
               })
             ]);
             __iced_deferrals._fulfill();
@@ -8641,7 +8643,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 6952
+                  lineno: 6951
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -8668,7 +8670,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 6959
+                      lineno: 6958
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -8811,7 +8813,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 7031
+            lineno: 7030
           }));
         }
         __iced_deferrals._fulfill();
