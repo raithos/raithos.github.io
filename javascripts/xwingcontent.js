@@ -18157,7 +18157,7 @@ exportObj.cardLoaders.English = function() {
     },
     "Tracking Torpedoes": {
       display_name: "Tracking Torpedoes",
-      text: "During the System Phase, you may spend up to 3 %CHARGE% to launch that many tracking torpedoes using the [%BANKLEFT% 3], [%STRAIGHT% 4], and [%BANKRIGHT% 3] templates. Each device must use a seperate tempalte. Then each device may acquire a lock on an object you have locked, ignoring range restrictions."
+      text: "During the System Phase, you may spend up to 3 %CHARGE% to launch that many tracking torpedoes using the [%BANKLEFT% 3], [%STRAIGHT% 4], and [%BANKRIGHT% 3] templates. Each device must use a seperate tempalte. Then each device may acquire a lock on an object you have locked, ignoring range restrictions.%LINEBREAK% This card's %CHARGE% cannot be recovered."
     },
     "Proton Cannon Battery": {
       display_name: "Proton Cannon Battery",
