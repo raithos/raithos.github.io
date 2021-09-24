@@ -5594,7 +5594,7 @@ exportObj.basicCardData = function() {
         ship: "BTA-NR2 Y-Wing",
         skill: 4,
         points: 34,
-        slots: ["Turret", "Astromech", "Device", "Modification", "Modification", "Configuration"]
+        slots: ["Tech", "Turret", "Astromech", "Device", "Modification", "Modification", "Configuration"]
       }, {
         name: "Shasa Zaro",
         id: 480,
@@ -5657,7 +5657,7 @@ exportObj.basicCardData = function() {
         ship: "BTA-NR2 Y-Wing",
         skill: 2,
         points: 31,
-        slots: ["Tech", "Turret", "Astromech", "Device", "Modification", "Modification", "Configuration"]
+        slots: ["Tech", "Turret", "Astromech", "Device", "Modification", "Illicit", "Configuration"]
       }, {
         name: "Kylo Ren (TIE Whisper)",
         canonical_name: 'Kylo Ren'.canonicalize(),
@@ -5742,7 +5742,7 @@ exportObj.basicCardData = function() {
         ship: "TIE/Se Bomber",
         skill: 3,
         points: 32,
-        slots: ["Talent", "Tech", "Torpedo", "Missile", "Gunner", "Device", "Device", "Modification"]
+        slots: ["Tech", "Torpedo", "Missile", "Gunner", "Device", "Device", "Modification"]
       }, {
         name: '"Grudge"',
         id: 496,
@@ -5751,7 +5751,7 @@ exportObj.basicCardData = function() {
         ship: "TIE/Se Bomber",
         skill: 2,
         points: 36,
-        slots: ["Talent", "Tech", "Torpedo", "Missile", "Gunner", "Device", "Device", "Modification"]
+        slots: ["Tech", "Torpedo", "Missile", "Gunner", "Device", "Device", "Modification"]
       }, {
         name: "First Order Cadet",
         id: 497,
@@ -7801,7 +7801,7 @@ exportObj.basicCardData = function() {
         slot: "Sensor",
         charge: 1,
         recurring: 1,
-        pointsarray: [4, 4, 4, 4, 5, 6, 7, 8, 9],
+        pointsarray: [4, 4, 4, 4, 5, 6, 7],
         variableinit: true
       }, {
         name: "R2-A6",
@@ -9041,6 +9041,7 @@ exportObj.basicCardData = function() {
         canonical_name: 'R2-D2'.canonicalize(),
         id: 358,
         slot: "Astromech",
+        xws: "r2d2-resistance",
         points: 6,
         unique: true,
         charge: 4,
@@ -9516,7 +9517,7 @@ exportObj.basicCardData = function() {
         id: 405,
         unique: true,
         slot: "Title",
-        points: 2,
+        points: 5,
         ship: "Trident-class Assault Ship",
         faction: "Separatist Alliance",
         modifier_func: function(stats) {
