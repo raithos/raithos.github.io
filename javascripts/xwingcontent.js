@@ -1370,7 +1370,7 @@ exportObj.basicCardData = function() {
         skill: 4,
         points: 52,
         keyword: ["Partisan"],
-        slots: ["Talent", "Sensor", "Crew", "Crew", "Modification", "Configuration", "Illicit"]
+        slots: ["Talent", "Sensor", "Crew", "Crew", "Illicit", "Modification", "Configuration"]
       }, {
         name: "Benthic Two Tubes",
         id: 36,
@@ -1380,7 +1380,7 @@ exportObj.basicCardData = function() {
         skill: 2,
         points: 46,
         keyword: ["Partisan"],
-        slots: ["Illicit", "Sensor", "Crew", "Crew", "Modification", "Configuration"]
+        slots: ["Talent", "Sensor", "Crew", "Crew", "Illicit", "Modification", "Configuration"]
       }, {
         name: "Blue Squadron Scout",
         id: 37,
@@ -1388,7 +1388,7 @@ exportObj.basicCardData = function() {
         ship: "U-Wing",
         skill: 2,
         points: 43,
-        slots: ["Sensor", "Crew", "Crew", "Modification", "Configuration"]
+        slots: ["Talent", "Sensor", "Crew", "Crew", "Modification", "Configuration"]
       }, {
         name: "Partisan Renegade",
         id: 38,
@@ -1397,7 +1397,7 @@ exportObj.basicCardData = function() {
         skill: 1,
         points: 43,
         keyword: ["Partisan"],
-        slots: ["Illicit", "Sensor", "Crew", "Crew", "Modification", "Configuration"]
+        slots: ["Sensor", "Crew", "Crew", "Illicit", "Modification", "Configuration"]
       }, {
         name: "Dash Rendar",
         id: 39,
@@ -4510,7 +4510,7 @@ exportObj.basicCardData = function() {
         skill: 8,
         engagement: 0,
         points: 134,
-        slots: ["Command", "Torpedo", "Missile", "Hardpoint", "Hardpoint", "Crew", "Team", "Team", "Cargo", "Title"]
+        slots: ["Command", "Torpedo", "Missile", "Hardpoint", "Hardpoint", "Crew", "Crew", "Team", "Team", "Cargo", "Title"]
       }, {
         name: "First Order Collaborators",
         id: 370,
@@ -4519,7 +4519,7 @@ exportObj.basicCardData = function() {
         skill: 8,
         engagement: 0,
         points: 131,
-        slots: ["Command", "Torpedo", "Missile", "Hardpoint", "Hardpoint", "Crew", "Team", "Team", "Cargo"]
+        slots: ["Command", "Torpedo", "Missile", "Hardpoint", "Hardpoint", "Crew", "Crew", "Team", "Team", "Cargo"]
       }, {
         name: "Echo Base Evacuees",
         id: 371,
@@ -4703,7 +4703,7 @@ exportObj.basicCardData = function() {
         ship: "U-Wing",
         points: 46,
         keyword: ["Droid"],
-        slots: ["Talent", "Sensor", "Crew", "Crew", "Modification", "Configuration"]
+        slots: ["Sensor", "Crew", "Crew", "Modification", "Configuration"]
       }, {
         name: "Gina Moonsong",
         id: 391,
@@ -17911,7 +17911,7 @@ exportObj.cardLoaders.English = function() {
       text: "Gain 1 %TORPEDO% slot and 1 %MISSILE% slot. Replace your ship ability with the following: %LINEBREAK%<strong>Devastating Barrage:</strong> While you perform a %TORPEDO% or %MISSILE% attack, if the defender is in your %BULLSEYEARC%, your %CRIT% results cannot be cancelled by %EVADE% results."
     },
     "Watchful Astromech": {
-      text: "After you perform a %RELOAD% or %ROTATEARC% aaction, if you are in an enemy ship's firing arc, you may perform a red %CALCULATE% action."
+      text: "After you perform a %RELOAD% or %ROTATEARC% action, if you are in an enemy ship's firing arc, you may perform a red %CALCULATE% action."
     },
     "L4E-R5": {
       text: "At the start of the Engagement Phase, you may transfer 1 calculate token to a friendly ship in your firing arc."
@@ -17941,7 +17941,7 @@ exportObj.cardLoaders.English = function() {
       text: "After an enemy ship executes a maneuver, if it is at range 0-1 of a friendly device, you may acquire a lock on that ship, ignoring range restrictions."
     },
     "Electro-Chaff Missiles": {
-      text: "During the System Phase, you may spend 1 %CHARGE% from this card to launch 1 electro-chaff cloud using the [3 %BANKLEFT%], [3 %STRAIGHT%], or [3 %BANKRIGHT%] template. %LINEBREAK% This card’s %CHARGE% cannot be recovered.."
+      text: "During the System Phase, you may spend 1 %CHARGE% from this card to launch 1 electro-chaff cloud using the [3 %BANKLEFT%], [3 %BANKRIGHT%], or [4 %STRAIGHT%] template. %LINEBREAK% This card’s %CHARGE% cannot be recovered.."
     },
     "Babu Frik": {
       text: "Before you would gain a non-lock red or orange token, you may spend 1 %CHARGE% to place it on this card instead. During the System Phase, if there are 1 or more tokens on this card, you <b>must</b> spend 1 %CHARGE%. If you cannot, remove those tokens and gain matching tokens."
