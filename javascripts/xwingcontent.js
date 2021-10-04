@@ -9237,7 +9237,7 @@ exportObj.basicCardData = function() {
         ship: "B-Wing",
         faction: "Rebel Alliance",
         attack: 3,
-        range: 2 - 4,
+        range: "2-4",
         confersAddons: [
           {
             type: exportObj.Upgrade,
@@ -9344,6 +9344,7 @@ exportObj.basicCardData = function() {
         faction: "Scum and Villainy"
       }, {
         name: "Asajj Ventress (Command)",
+        canonical_name: 'Asajj Ventress'.canonicalize(),
         id: 390,
         unique: true,
         slot: "Command",
@@ -9362,6 +9363,7 @@ exportObj.basicCardData = function() {
         }
       }, {
         name: "General Grievous (Command)",
+        canonical_name: 'General Grievous'.canonicalize(),
         id: 391,
         unique: true,
         slot: "Command",
@@ -9374,6 +9376,7 @@ exportObj.basicCardData = function() {
         also_occupies_upgrades: ["Crew"]
       }, {
         name: "Hondo Ohnaka (Command)",
+        canonical_name: 'Hondo Ohnaka'.canonicalize(),
         id: 392,
         unique: true,
         slot: "Command",
@@ -25776,7 +25779,7 @@ exportObj.manifestByExpansion = {
     }, {
       name: 'Enhanced Jamming Suite',
       type: 'upgrade',
-      count: 2
+      count: 1
     }
   ],
   "BTA-NR2 Y-Wing Pack": [
