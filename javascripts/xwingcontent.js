@@ -9571,6 +9571,7 @@ exportObj.basicCardData = function() {
         slot: "Configuration",
         points: 4,
         ship: "BTA-NR2 Y-Wing",
+        standardized: true,
         restrictions: [["Slot", "Modification"]],
         validation_func: function(ship, upgrade_obj) {
           return upgrade_obj.occupiesAnUpgradeSlot("Modification");
