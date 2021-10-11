@@ -3679,8 +3679,11 @@ class exportObj.SquadBuilder
 
 
     onSquadLoadRequested: (squad) =>
-        # console.log(squad.additional_data.obstacles)
+        console.log(squad)
+        console.log($.trim(@squad_name_input.val()))
         @current_squad = squad
+        console.log(@current_squad.name)
+        console.log($.trim(@squad_name_input.val()))
         @backend_delete_list_button.removeClass 'disabled'
         @current_obstacles = @current_squad.additional_data.obstacles
         @updateObstacleSelect(@current_squad.additional_data.obstacles)
@@ -3690,8 +3693,14 @@ class exportObj.SquadBuilder
         @tag.val(squad.additional_data.tag ? '')
         @backend_status.fadeOut 'slow'
         @current_squad.dirty = false
+        console.log(@current_squad.name)
+        console.log($.trim(@squad_name_input.val()))
         @container.trigger 'xwing-backend:squadNameChanged'
+        console.log(@current_squad.name)
+        console.log($.trim(@squad_name_input.val()))
         @container.trigger 'xwing-backend:squadDirtinessChanged'
+        console.log(@current_squad.name)
+        console.log($.trim(@squad_name_input.val()))
 
     onSquadDirtinessChanged: () =>
         #@current_squad.name = $.trim(@squad_name_input.val())

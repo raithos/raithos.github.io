@@ -3999,7 +3999,11 @@ exportObj.SquadBuilder = (function() {
 
   SquadBuilder.prototype.onSquadLoadRequested = function(squad) {
     var _ref, _ref1;
+    console.log(squad);
+    console.log($.trim(this.squad_name_input.val()));
     this.current_squad = squad;
+    console.log(this.current_squad.name);
+    console.log($.trim(this.squad_name_input.val()));
     this.backend_delete_list_button.removeClass('disabled');
     this.current_obstacles = this.current_squad.additional_data.obstacles;
     this.updateObstacleSelect(this.current_squad.additional_data.obstacles);
@@ -4010,8 +4014,14 @@ exportObj.SquadBuilder = (function() {
     this.tag.val((_ref1 = squad.additional_data.tag) != null ? _ref1 : '');
     this.backend_status.fadeOut('slow');
     this.current_squad.dirty = false;
+    console.log(this.current_squad.name);
+    console.log($.trim(this.squad_name_input.val()));
     this.container.trigger('xwing-backend:squadNameChanged');
-    return this.container.trigger('xwing-backend:squadDirtinessChanged');
+    console.log(this.current_squad.name);
+    console.log($.trim(this.squad_name_input.val()));
+    this.container.trigger('xwing-backend:squadDirtinessChanged');
+    console.log(this.current_squad.name);
+    return console.log($.trim(this.squad_name_input.val()));
   };
 
   SquadBuilder.prototype.onSquadDirtinessChanged = function() {
@@ -4353,7 +4363,7 @@ exportObj.SquadBuilder = (function() {
               funcname: "SquadBuilder.removeShip"
             });
             ship.destroy(__iced_deferrals.defer({
-              lineno: 3991
+              lineno: 4000
             }));
             __iced_deferrals._fulfill();
           })(function() {
@@ -4363,7 +4373,7 @@ exportObj.SquadBuilder = (function() {
                 funcname: "SquadBuilder.removeShip"
               });
               _this.container.trigger('xwing:pointsUpdated', __iced_deferrals.defer({
-                lineno: 3992
+                lineno: 4001
               }));
               __iced_deferrals._fulfill();
             })(function() {
@@ -6586,7 +6596,7 @@ Ship = (function() {
                   funcname: "Ship.destroy"
                 });
                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                  lineno: 5592
+                  lineno: 5601
                 }));
                 __iced_deferrals._fulfill();
               })(__iced_k);
@@ -6811,7 +6821,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 5710
+                          lineno: 5719
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -6861,7 +6871,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 5743
+                                  lineno: 5752
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -6959,7 +6969,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 5801
+                      lineno: 5810
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -7043,7 +7053,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 5837
+                lineno: 5846
               })
             ]);
             __iced_deferrals._fulfill();
@@ -7112,7 +7122,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 5866
+              lineno: 5875
             }));
           }
         }
@@ -7204,7 +7214,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 5922
+                lineno: 5931
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -8485,7 +8495,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 6862
+                lineno: 6871
               })
             ]);
             __iced_deferrals._fulfill();
@@ -8644,7 +8654,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 6956
+                  lineno: 6965
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -8671,7 +8681,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 6963
+                      lineno: 6972
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -8815,7 +8825,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 7038
+            lineno: 7047
           }));
         }
         __iced_deferrals._fulfill();
