@@ -247,18 +247,6 @@ class exportObj.SquadBuilderBackend
                             li.html $.trim """
                                 Error converting #{li.data('squad').name}: <em>#{results.error}</em>
                             """
-                
-                li.find('button.load-squad').click (e) =>
-                    e.preventDefault()
-                    button = $ e.target
-                    li = button.closest 'li'
-                    builder = li.data('builder')
-                    @squad_list_modal.modal 'hide'
-                    if builder.current_squad.dirty
-                        @warnUnsaved builder, () ->
-                            builder.container.trigger 'xwing-backend:squadLoadRequested', li.data('squad')
-                    else
-                        builder.container.trigger 'xwing-backend:squadLoadRequested', li.data('squad')
                     
                 li.find('button.load-squad').click (e) =>
                     e.preventDefault()
@@ -3706,7 +3694,7 @@ class exportObj.SquadBuilder
         @container.trigger 'xwing-backend:squadDirtinessChanged'
 
     onSquadDirtinessChanged: () =>
-        @current_squad.name = $.trim(@squad_name_input.val())
+        #@current_squad.name = $.trim(@squad_name_input.val())
         @backend_save_list_button.toggleClass 'disabled', not (@current_squad.dirty and @total_points > 0)
         @backend_save_list_as_button.toggleClass 'disabled', @total_points == 0
         @backend_delete_list_button.toggleClass 'disabled', not @current_squad.id?
