@@ -378,6 +378,21 @@
   background-repeat: no-repeat;
   background-position: 0px -20px; }
 
+.ship-tiewiwhisper {
+  background-image: url("../images/tiewhisper.png");
+  background-repeat: no-repeat;
+  background-position: 0px -40px; }
+
+.ship-tiesebomber {
+  background-image: url("../images/tiesebomber.png");
+  background-repeat: no-repeat;
+  background-position: 0px -20px; }
+
+.ship-btanr2ywing {
+  background-image: url("../images/btanr2ywing.png");
+  background-repeat: no-repeat;
+  background-position: 0px -40px; }
+  
 
 .ship-gr75mediumtransport {
   background-image: url("../images/gr75mediumtransport.png");
@@ -413,4 +428,4 @@
   background-image: url("../images/its_working.png");
   background-repeat: no-repeat;
   background-position: 0px -50px; }
-}
+
