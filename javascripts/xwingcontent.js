@@ -1388,7 +1388,7 @@ exportObj.basicCardData = function() {
         ship: "U-Wing",
         skill: 2,
         points: 43,
-        slots: ["Talent", "Sensor", "Crew", "Crew", "Modification", "Configuration"]
+        slots: ["Sensor", "Crew", "Crew", "Modification", "Configuration"]
       }, {
         name: "Partisan Renegade",
         id: 38,
@@ -4703,7 +4703,7 @@ exportObj.basicCardData = function() {
         ship: "U-Wing",
         points: 46,
         keyword: ["Droid"],
-        slots: ["Sensor", "Crew", "Crew", "Modification", "Configuration"]
+        slots: ["Talent", "Sensor", "Crew", "Crew", "Modification", "Configuration"]
       }, {
         name: "Gina Moonsong",
         id: 391,
