@@ -2022,7 +2022,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Nautolan's Revenge": {
       display_name: "Rache der Nautolaner",
-      text: "Bevor du kämpfst, darfst du bis zu 2 Berechnungsmarker ausgeben. Falls du das tust, stellst du ebenso viele <energycharge> wieder her."
+      text: "Bevor du kämpfst, darfst du bis zu 2 Berechnungsmarker ausgeben. Falls du das tust, stellst du ebenso viele %ENERGY% wieder her."
     },
     "Neimoidian Grasp": {
       display_name: "Neimoidianischer Griff",
@@ -2070,7 +2070,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Trident": {
       display_name: "Trident",
-      text: "Nachdem du ein Schiff überschnitten hast oder ein Schiff dich überschnitten hat, falls es nicht gefangen ist, darfst du 1 <energycharge> ausgeben. Falls du das tust, erhält es 3 Fangstrahlmarker."
+      text: "Nachdem du ein Schiff überschnitten hast oder ein Schiff dich überschnitten hat, falls es nicht gefangen ist, darfst du 1 %ENERGY% ausgeben. Falls du das tust, erhält es 3 Fangstrahlmarker."
     },
     "Virago": {
       display_name: "Virago",
@@ -2106,7 +2106,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Insatiable Worrt": {
       display_name: "Gefräßiger Worrt",
-      text: "Füge den&nbsp;<cargo>-Slot hinzu.%LINEBREAK%Während der Endphase darfst du 1 zusätzlichen&nbsp;additional schilde oder <energycharge> wiederherstellen."
+      text: "Füge den&nbsp;<cargo>-Slot hinzu.%LINEBREAK%Während der Endphase darfst du 1 zusätzlichen&nbsp;additional schilde oder %ENERGY% wiederherstellen."
     },
     "Instigator": {
       display_name: "Instigator",
@@ -2114,7 +2114,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Jaina's Light": {
       display_name: "Jainas Licht",
-      text: "Solange ein befreundetes Schiff in Reichweite 0-2 verteidigt, falls der Angriff durch ein Hindernis versperrt wird, darfst du 1 <energycharge> ausgeben. Falls du das tust, wirft der Verteidiger 1 zusätzlichen Verteidigungswürfel."
+      text: "Solange ein befreundetes Schiff in Reichweite 0-2 verteidigt, falls der Angriff durch ein Hindernis versperrt wird, darfst du 1 %ENERGY% ausgeben. Falls du das tust, wirft der Verteidiger 1 zusätzlichen Verteidigungswürfel."
     },
     "Liberator": {
       display_name: "Liberator",
@@ -2130,7 +2130,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Quantum Storm": {
       display_name: "Quantum Storm",
-      text: "Füge&nbsp;<team>- und <cargo>-Slots hinzu.%LINEBREAK%Nachdem du ein weißes Manöver voll - ständig ausgeführt hast, stelle 1<energycharge> wieder her."
+      text: "Füge&nbsp;<team>- und <cargo>-Slots hinzu.%LINEBREAK%Nachdem du ein weißes Manöver voll - ständig ausgeführt hast, stelle 1%ENERGY% wieder her."
     },
     "Requiem": {
       display_name: "Requiem",
@@ -2138,7 +2138,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Suppressor": {
       display_name: "Suppressor",
-      text: "Füge den&nbsp;%SENSOR%-Slot hinzu.%LINEBREAK%Nachdem du ein befreundetes Schiff koordiniert hast, darfst du 1 <energycharge> ausgeben, um einem feindlichen Schiff in Reichweite 0-2 jenes Schiffes ein Störsignal zu senden, wobei du Reich weiten-beschränkungen ignorierst."
+      text: "Füge den&nbsp;%SENSOR%-Slot hinzu.%LINEBREAK%Nachdem du ein befreundetes Schiff koordiniert hast, darfst du 1 %ENERGY% ausgeben, um einem feindlichen Schiff in Reichweite 0-2 jenes Schiffes ein Störsignal zu senden, wobei du Reich weiten-beschränkungen ignorierst."
     },
     "Tantive IV": {
       display_name: "Tantive IV",
@@ -2162,7 +2162,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Adaptive Shields": {
       display_name: "Adaptive Schilde",
-      text: "Solange ein anderes befreundetes Schiff in Reichweite 0-1 verteidigt, falls es kleiner ist als du, darfst du 1 schilde oder 2&nbsp;<energycharge> ausgeben, um 1&nbsp;%HIT%&nbsp;oder&nbsp;%CRIT%-Ergebnis zu negieren."
+      text: "Solange ein anderes befreundetes Schiff in Reichweite 0-1 verteidigt, falls es kleiner ist als du, darfst du 1 schilde oder 2&nbsp;%ENERGY% ausgeben, um 1&nbsp;%HIT%&nbsp;oder&nbsp;%CRIT%-Ergebnis zu negieren."
     },
     "Admiral Ozzel": {
       display_name: "Admiral Ozzel",
@@ -2292,7 +2292,7 @@ exportObj.cardLoaders.Deutsch = function() {
       display_name: "Boba Fett",
       text: "<strong>Aufbau:</strong> Beginne in der Reserve.%LINEBREAK%Am Ende des Aufbaus platziere dich selbst in Reichweite 0 eines Hindernisses und jenseits von Reichweite 3 aller feindlichen Schiffe."
     },
-    "Boba Fett": {
+    "Boba Fett (Separatist)": {
       display_name: "Boba Fett",
       text: "Solange du einen Angriff durchführst, falls keine anderen Schiffe im Angriffswinkel sind, darfst du 1&nbsp; deiner %FOCUS%Ergebnisse in ein %HIT%-Ergebnis ändern."
     },
@@ -2306,7 +2306,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Boosted Scanners": {
       display_name: "Boosted Scanners",
-      text: "Solange du ein Ziel erfasst, koordinierst oder ein Störsignal sendest, darfst du bis zu 3 &nbsp;<energycharge> ausgeben, um die Reichweite, in der du ein Objekt wählen darfst, um 1 pro ausgegebener <energycharge> zu erweitern, bis zu einem Maximum von Reichweite 5."
+      text: "Solange du ein Ziel erfasst, koordinierst oder ein Störsignal sendest, darfst du bis zu 3 &nbsp;%ENERGY% ausgeben, um die Reichweite, in der du ein Objekt wählen darfst, um 1 pro ausgegebener %ENERGY% zu erweitern, bis zu einem Maximum von Reichweite 5."
     },
     "Bossk": {
       display_name: "Bossk",
@@ -2418,7 +2418,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Comms Team": {
       display_name: "Kommunikationsteam",
-      text: "Nachdem du eine%COORDINATE%&nbsp;-\nAktion durchgeführt hast, darfst du bis zu 2&nbsp;<energycharge> ausgeben, um ebenso viele zusätzliche Schiffe in Reichweite 0-1 des Schiffes, das du koordiniert hast, zu koordinieren."
+      text: "Nachdem du eine%COORDINATE%&nbsp;-\nAktion durchgeführt hast, darfst du bis zu 2&nbsp;%ENERGY% ausgeben, um ebenso viele zusätzliche Schiffe in Reichweite 0-1 des Schiffes, das du koordiniert hast, zu koordinieren."
     },
     "Composure": {
       display_name: "Gelassenheit",
@@ -2462,7 +2462,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Damage Control Team": {
       display_name: "Schadensbegrenzungsteam",
-      text: "Bevor du kämpfst, darfst du 1 oder mehr<energycharge> ausgeben, um ebenso viele deiner <strong>Offline</strong>&nbsp;-Aufwertungen umzudrehen.%LINEBREAK%<strong>Aktion:</strong> Gib 1 oder mehr<energycharge> aus, um ebenso viele deiner offenen <strong>Schiff</strong>-Schadens-karten zu reparieren."
+      text: "Bevor du kämpfst, darfst du 1 oder mehr%ENERGY% ausgeben, um ebenso viele deiner <strong>Offline</strong>&nbsp;-Aufwertungen umzudrehen.%LINEBREAK%<strong>Aktion:</strong> Gib 1 oder mehr%ENERGY% aus, um ebenso viele deiner offenen <strong>Schiff</strong>-Schadens-karten zu reparieren."
     },
     "Daredevil": {
       display_name: "Draufgänger",
@@ -2530,7 +2530,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Drill Beak": {
       display_name: "Bohrschnabel",
-      text: "<b>Aufbau:</b> Rüste diese Seite offen aus.%LINEBREAK%Du kannst diesen Angriff in Reichweite 0 durchführen.%LINEBREAK%<strong>Bonusangriff:</strong> Gib 1 <energycharge> aus. Falls die Angriffsreichweite 0 ist, ändere alle %HIT%-Ergebnisse in %CRIT%-Ergebnisse."
+      text: "<b>Aufbau:</b> Rüste diese Seite offen aus.%LINEBREAK%Du kannst diesen Angriff in Reichweite 0 durchführen.%LINEBREAK%<strong>Bonusangriff:</strong> Gib 1 %ENERGY% aus. Falls die Angriffsreichweite 0 ist, ändere alle %HIT%-Ergebnisse in %CRIT%-Ergebnisse."
     },
     "Droid Crew": {
       display_name: "Droidenmannschaft",
@@ -2562,7 +2562,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Enhanced Propulsion": {
       display_name: "Verbesserter Antrieb",
-      text: "<b>Aufbau:</b> Rüste diese Seite offen aus.%LINEBREAK%Zu Beginn der Endphase darfst du 2 <energycharge> ausgeben, um ein weißes [2&nbsp;%STRAIGHT%]-, [1&nbsp;%BANKLEFT%]- oder [1&nbsp;%BANKRIGHT%]-Manöver auszuführen."
+      text: "<b>Aufbau:</b> Rüste diese Seite offen aus.%LINEBREAK%Zu Beginn der Endphase darfst du 2 %ENERGY% ausgeben, um ein weißes [2&nbsp;%STRAIGHT%]-, [1&nbsp;%BANKLEFT%]- oder [1&nbsp;%BANKRIGHT%]-Manöver auszuführen."
     },
     "Ensnare": {
       display_name: "Einfangen",
@@ -2646,7 +2646,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "General Grievous": {
       display_name: "General Grievous",
-      text: "Während der Kampfphase, bei Initiative 4, darfst du 1 <energycharge> ausgeben, um einen Bonus-<hardpoint>-Angriff durchzuführen.%LINEBREAK%Du kannst Angriffe gegen befreundete Schiffe durchführen.%LINEBREAK%Nachdem du einen Angriff durchgeführt hast, falls der Verteidiger zerstört worden ist, darf jedes befreundete Schiff in Reichweite 0-2 von ihm eine %CALCULATE%-Aktion durchführen."
+      text: "Während der Kampfphase, bei Initiative 4, darfst du 1 %ENERGY% ausgeben, um einen Bonus-<hardpoint>-Angriff durchzuführen.%LINEBREAK%Du kannst Angriffe gegen befreundete Schiffe durchführen.%LINEBREAK%Nachdem du einen Angriff durchgeführt hast, falls der Verteidiger zerstört worden ist, darf jedes befreundete Schiff in Reichweite 0-2 von ihm eine %CALCULATE%-Aktion durchführen."
     },
     "General Hux": {
       display_name: "General Hux",
@@ -2678,7 +2678,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Gunnery Specialists": {
       display_name: "Artillerie-Spezialisten",
-      text: "Solange du einen Primär- oder <hardpoint>-Angriff durchführst, darfst du 1 oder mehr <energycharge> ausgeben, um ebenso viele Angriffswürfel neu zu werfen."
+      text: "Solange du einen Primär- oder <hardpoint>-Angriff durchführst, darfst du 1 oder mehr %ENERGY% ausgeben, um ebenso viele Angriffswürfel neu zu werfen."
     },
     "Han Solo": {
       display_name: "Han Solo",
@@ -2720,7 +2720,7 @@ exportObj.cardLoaders.Deutsch = function() {
       display_name: "Hondo Ohnaka",
       text: "<strong>Aktion:</strong> Wähle 2 Schiffe in Reichweite 1-3, die miteinander befreundet sind. Koordiniere 1 der gewählten Schiffe und sende dann dem anderen ein Störsignal, wobei du Reichweitenbeschränkungen ignorierst."
     },
-    "Hondo Ohnaka": {
+    "Hondo Ohnaka (Command)": {
       display_name: "Hondo Ohnaka",
       text: "Während der Systemphase darfst du 1 %CHARGE% ausgeben und 1 befreundetes Schiff in Reichweite 0-1 wählen. Bewege 1 <victorymarker> oder <remote> von seiner Schiffskarte auf deine Schiffskarte oder von deiner Schiffskarte auf seine Schiffskarte."
     },
@@ -2802,7 +2802,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Ion Cannon Battery": {
       display_name: "Ionengeschütz-Batterie",
-      text: "<strong>Online:</strong>Setup: Equip this side faceup. Bonus Attack: Spend 1 %ENERGY%. If this attack hits, the defender suffers 1 %CRIT% damage, and all %HIT%/%CRIT% results inflict ion tokens instead of damage. %LINEBREAK%<strong>Offline (Rückseite)</strong>%LINEBREAK%Nachdem du gekämpft hast, darfst du 2 &nbsp;<energycharge> ausgeben, um diese Karte umzudrehen."
+      text: "<strong>Online:</strong>Setup: Equip this side faceup. Bonus Attack: Spend 1 %ENERGY%. If this attack hits, the defender suffers 1 %CRIT% damage, and all %HIT%/%CRIT% results inflict ion tokens instead of damage. %LINEBREAK%<strong>Offline (Rückseite)</strong>%LINEBREAK%Nachdem du gekämpft hast, darfst du 2 &nbsp;%ENERGY% ausgeben, um diese Karte umzudrehen."
     },
     "Ion Cannon Turret": {
       display_name: "Ionengeschütz",
@@ -2994,15 +2994,17 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Optimized Power Core": {
       display_name: "Optimierter Energiekern",
-      text: "Nachdem du ein blaues Manöver ausgeführt hast, stelle 1&nbsp;<energycharge> wieder her."
+      text: "Nachdem du ein blaues Manöver ausgeführt hast, stelle 1&nbsp;%ENERGY% wieder her."
     },
     "Ordnance Team": {
       display_name: "Munitionsteam",
-      text: "Solange du eine %RELOAD%-\nAktion durchführst, darfst du bis zu 3&nbsp;<energycharge> ausgeben, um ebenso viele zusätzliche %CHARGE% auf deinen aus-gerüsteten %MISSILE%/%TORPEDO%-Aufwertungen nachzuladen.%LINEBREAK%Nachdem du eine %RELOAD%-Aktion durchgeführt hast, darfst du 1&nbsp;<energycharge>ausgeben, um 1 Entwaffnet- Marker zu entfernen."
+      text: "Solange du eine %RELOAD%-\nAktion durchführst, darfst du bis zu 3&nbsp;%ENERGY% ausgeben, um ebenso viele zusätzliche %CHARGE% auf deinen aus-gerüsteten %MISSILE%/%TORPEDO%-Aufwertungen nachzuladen.%LINEBREAK%Nachdem du eine %RELOAD%-Aktion durchgeführt hast, darfst du 1&nbsp;%ENERGY%ausgeben, um 1 Entwaffnet- Marker zu entfernen."
     },
     "Ordnance Tubes": {
       display_name: "Abschussrohre",
-      text: "<strong>Online: </strong> Setup: Equip this side faceup. %LINEBREAK% You can perform %TORPEDO% and %MISSILE% attacks only as bonus attacks. You <strong>must</strong> treat the %FRONTARC% requirement of your equipped %TORPEDO% and %MISSILE% upgrades as %FULLFRONTARC%. %LINEBREAK% Bonus Attack: Perform a %TORPEDO% attack. %LINEBREAK% Bonus Attack: Perform a %MISSILE% attack. %LINEBREAK%<strong>Offline</strong>%LINEBREAK%Du musst die%FRONTARC%&nbsp;-Bedingung deiner ausgerüsteten %TORPEDO%&nbsp;- und %MISSILE%&nbsp;-Aufwertungen behandeln, als wäre sie %BULLSEYEARC%. %LINEBREAK%<strong>Aktion:</strong> Gib 2&nbsp;<energycharge> aus, um diese Karte umzudrehen.",
+      text: "<strong>Online: </strong> Setup: Equip this side faceup. %LINEBREAK% You can perform %TORPEDO% and %MISSILE% attacks only as bonus attacks. You <strong>must</strong> treat the %FRONTARC% requirement of your equipped %TORPEDO% and %MISSILE% upgrades as %FULLFRONTARC%. %LINEBREAK% Bonus Attack: Perform a %TORPEDO% attack. %LINEBREAK% Bonus Attack: Perform a %MISSILE% attack. %LINEBREAK%<strong>Offline</strong>%LINEBREAK%Du musst die%FRONTARC%&nbsp;-Bedingung deiner ausgerüsteten %TORPEDO%&nbsp;- und %MISSILE%&nbsp;-Aufwertungen behandeln, als wäre sie %BULLSEYEARC%. %LINEBREAK%<strong>Aktion:</strong> Gib 2&nbsp;%ENERGY% aus, um diese Karte umzudrehen."
+    },
+    "Os-1 Arsenal Loadout": {
       display_name: "Os-1-Waffenarsenal",
       text: "Solange du genau 1 Entwaffnet-Marker hast, kannst du trotzdem %TORPEDO%- und %MISSILE%-Angriffe gegen Ziele durchführen, die du als Ziel erfasst hast. Falls du das tust, kannst du während des Angriffs deine Zielerfassung nicht ausgeben.%LINEBREAK%Füge %TORPEDO%- und %MISSILE%-Slots hinzu."
     },
@@ -3060,7 +3062,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Point-Defense Battery": {
       display_name: "Punktverteidigungs-Batterie",
-      text: "<strong>Online: </strong> Setup: Equip this side faceup. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK%<strong>Offline</strong>%LINEBREAK%Nachdem du gekämpft hast, darfst du 2&nbsp;<energycharge> ausgeben, um diese Karte umzudrehen."
+      text: "<strong>Online: </strong> Setup: Equip this side faceup. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. %LINEBREAK%<strong>Offline</strong>%LINEBREAK%Nachdem du gekämpft hast, darfst du 2&nbsp;%ENERGY% ausgeben, um diese Karte umzudrehen."
     },
     "Precision Ion Engines": {
       display_name: "Präzisions-Ionenantrieb",
@@ -3092,7 +3094,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Proton Cannon Battery": {
       display_name: "Protonengeschütz-Batterie",
-      text: "<b>Aufbau:</b> Rüste diese Seite offen aus.%LINEBREAK%<strong>Bonusangriff:</strong> Ändere 1 %HIT%-Ergebnis in ein %CRIT%-Ergebnis.%LINEBREAK%<strong>Bonusangriff:</strong> Gib 1 <energycharge> aus. Ändere 1 %HIT%-Ergebnis in ein %CRIT%-Ergebnis."
+      text: "<b>Aufbau:</b> Rüste diese Seite offen aus.%LINEBREAK%<strong>Bonusangriff:</strong> Ändere 1 %HIT%-Ergebnis in ein %CRIT%-Ergebnis.%LINEBREAK%<strong>Bonusangriff:</strong> Gib 1 %ENERGY% aus. Ändere 1 %HIT%-Ergebnis in ein %CRIT%-Ergebnis."
     },
     "Proton Rockets": {
       display_name: "Protonenraketen",
@@ -3224,7 +3226,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Riff Tamson": {
       display_name: "Riff Tamson",
-      text: "Während der Kampfphase, bei Initiative 5, darfst du 1 <energycharge> ausgeben, um einen Bonus-<hardpoint>-Angriff durchzuführen.%LINEBREAK%Nachdem du einen Angriff durchgeführt hast, falls dem Verteidiger 1 oder mehrere offene Schadenskarten zugeteilt worden sind, erhält er 2 Anstrengungsmarker."
+      text: "Während der Kampfphase, bei Initiative 5, darfst du 1 %ENERGY% ausgeben, um einen Bonus-<hardpoint>-Angriff durchzuführen.%LINEBREAK%Nachdem du einen Angriff durchgeführt hast, falls dem Verteidiger 1 oder mehrere offene Schadenskarten zugeteilt worden sind, erhält er 2 Anstrengungsmarker."
     },
     "Rigged Cargo Chute": {
       display_name: "Manipulierte Frachtrampe",
@@ -3288,7 +3290,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Sensor Experts": {
       display_name: "Sensor-Experten",
-      text: "Du kannst bis zu 3 Zielerfassungen auf unterschiedlichen Objekte aufrechterhalten.Nachdem du eine %LOCK%&nbsp;Aktion durchgeführt hast, darfst du bis zu 2&nbsp;<energycharge> ausgeben, um ebenso viele andere Objekte in Reichweite 0-1 des Ziels als Ziel zu erfassen, wobei du Reich weiten beschränkungen ignorierst."
+      text: "Du kannst bis zu 3 Zielerfassungen auf unterschiedlichen Objekte aufrechterhalten.Nachdem du eine %LOCK%&nbsp;Aktion durchgeführt hast, darfst du bis zu 2&nbsp;%ENERGY% ausgeben, um ebenso viele andere Objekte in Reichweite 0-1 des Ziels als Ziel zu erfassen, wobei du Reich weiten beschränkungen ignorierst."
     },
     "Servomotor S-Foils": {
       display_name: "Servomotorische S-Flügel",
@@ -3404,7 +3406,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Targeting Battery": {
       display_name: "Zielbatterie",
-      text: "<strong>Online: </strong> Setup: Equip this side faceup.%LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. After you perform this attack, you may acquire a lock on the defender. %LINEBREAK%<strong>Offline</strong>%LINEBREAK%Nachdem du gekämpft hast, darfst du 2&nbsp;<energycharge> ausgeben, um diese Karte umzudrehen."
+      text: "<strong>Online: </strong> Setup: Equip this side faceup.%LINEBREAK% Bonus Attack: Spend 1 %ENERGY%. After you perform this attack, you may acquire a lock on the defender. %LINEBREAK%<strong>Offline</strong>%LINEBREAK%Nachdem du gekämpft hast, darfst du 2&nbsp;%ENERGY% ausgeben, um diese Karte umzudrehen."
     },
     "Targeting Computer": {
       display_name: "Zielcomputer",
@@ -3420,7 +3422,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Tibanna Reserves": {
       display_name: "Tibanna-Vorräte",
-      text: "<strong>Aktion:</strong> Gib 1 %CHARGE% aus, um 2 <energycharge> wiederherzustellen."
+      text: "<strong>Aktion:</strong> Gib 1 %CHARGE% aus, um 2 %ENERGY% wiederherzustellen."
     },
     "Tierfon Belly Run": {
       display_name: "Tierfon-Tiefflug",
@@ -3444,11 +3446,11 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Tractor Technicians": {
       display_name: "Fangstrahltechniker",
-      text: "Während der Endphase kann jedes andere Schiff in Reichweite 0-1 seine Fangstrahlmarker nicht entfernen.%LINEBREAK%Bevor ein gefangenes feindliches Schiff in Reichweite 0-1 sein Rad aufdeckt, darfst du 1 <energycharge> ausgeben. Falls du das tust, verringert jenes Schiff, solange es sein Manöver in dieser Aktivierung ausführt, die Geschwindigkeit jenes Manövers um 1 (Minimum: 1)."
+      text: "Während der Endphase kann jedes andere Schiff in Reichweite 0-1 seine Fangstrahlmarker nicht entfernen.%LINEBREAK%Bevor ein gefangenes feindliches Schiff in Reichweite 0-1 sein Rad aufdeckt, darfst du 1 %ENERGY% ausgeben. Falls du das tust, verringert jenes Schiff, solange es sein Manöver in dieser Aktivierung ausführt, die Geschwindigkeit jenes Manövers um 1 (Minimum: 1)."
     },
     "Tractor Tentacles": {
       display_name: "Fangtentakel",
-      text: "<b>Aufbau:</b> Rüste diese Seite offen aus.%LINEBREAK%<strong>Bonusangriff</strong>%LINEBREAK%<strong>Bonusangriff:</strong> Gib 1 <energycharge> aus.%LINEBREAK%<strong>Bonusangriff:</strong> Gib 1 <energycharge> aus.%LINEBREAK%<strong>Bonusangriff:</strong> Gib 1 <energycharge> aus."
+      text: "<b>Aufbau:</b> Rüste diese Seite offen aus.%LINEBREAK%<strong>Bonusangriff</strong>%LINEBREAK%<strong>Bonusangriff:</strong> Gib 1 %ENERGY% aus.%LINEBREAK%<strong>Bonusangriff:</strong> Gib 1 %ENERGY% aus.%LINEBREAK%<strong>Bonusangriff:</strong> Gib 1 %ENERGY% aus."
     },
     "Trajectory Simulator": {
       display_name: "Flugbahnsimulator",
@@ -3464,7 +3466,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Turbolaser Battery": {
       display_name: "Turbolaser-Batterie (Offline)",
-      text: "<strong>Offline</strong>%LINEBREAK%Nachdem du gekämpft hast, darfst du 2&nbsp;<energycharge> ausgeben, um diese Karte umzudrehen."
+      text: "<strong>Offline</strong>%LINEBREAK%Nachdem du gekämpft hast, darfst du 2&nbsp;%ENERGY% ausgeben, um diese Karte umzudrehen."
     },
     "Underslung Blaster Cannon": {
       display_name: "Unterbaute Blasterkanone",
@@ -3512,7 +3514,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Zealous Captain": {
       display_name: "Fanatischer Captain",
-      text: "Während der Kampfphase, bei Initiative 4, darfst du 1 <energycharge> ausgeben, um einen Bonus-<hardpoint>-Angriff durchzuführen."
+      text: "Während der Kampfphase, bei Initiative 4, darfst du 1 %ENERGY% ausgeben, um einen Bonus-<hardpoint>-Angriff durchzuführen."
     },
     "Zuckuss": {
       display_name: "Zuckuss",
@@ -3540,7 +3542,7 @@ exportObj.cardLoaders.Deutsch = function() {
     },
     "Corsair Refit": {
       display_name: "Kaperer-Aufrüstung",
-      text: "Füge&nbsp;%CANNON%-, %TURRET%-, und %MISSILE%-Slots hinzu.%LINEBREAK%<strong>Bonusangriff:</strong> Gib 1&nbsp;<energycharge> aus, um einen %CANNON%-, %TURRET%-, oder %MISSILE%-Angriff durchzuführen."
+      text: "Füge&nbsp;%CANNON%-, %TURRET%-, und %MISSILE%-Slots hinzu.%LINEBREAK%<strong>Bonusangriff:</strong> Gib 1&nbsp;%ENERGY% aus, um einen %CANNON%-, %TURRET%-, oder %MISSILE%-Angriff durchzuführen."
     },
     "Dreadnought Hunter": {
       display_name: "Dreadnought-Jäger",
