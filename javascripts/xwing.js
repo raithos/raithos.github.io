@@ -5583,6 +5583,12 @@ exportObj.SquadBuilder = (function() {
           } else {
             container.find('tr.info-attack').hide();
           }
+          if (data.attackb != null) {
+            container.find('tr.info-attack-back td.info-data').text(data.attackb);
+            container.find('tr.info-attack-back').show();
+          } else {
+            container.find('tr.info-attack-back').hide();
+          }
           if (data.attackt != null) {
             container.find('tr.info-attack-turret td.info-data').text(data.attackt);
             container.find('tr.info-attack-turret').show();
@@ -5599,7 +5605,7 @@ exportObj.SquadBuilder = (function() {
             container.find('tr.info-attack-left td.info-data').text(data.attackl);
             container.find('tr.info-attack-left').show();
           } else {
-            container.find('tr.info-attack-right').hide();
+            container.find('tr.info-attack-left').hide();
           }
           if (data.attackdt != null) {
             container.find('tr.info-attack-doubleturret td.info-data').text(data.attackdt);
@@ -5619,9 +5625,6 @@ exportObj.SquadBuilder = (function() {
           } else {
             container.find('tr.info-attack-fullfront').hide();
           }
-          container.find('tr.info-attack-right').hide();
-          container.find('tr.info-attack-left').hide();
-          container.find('tr.info-attack-back').hide();
           if (data.charge != null) {
             recurringicon = '';
             if (data.recurring != null) {
@@ -6587,7 +6590,7 @@ Ship = (function() {
                   funcname: "Ship.destroy"
                 });
                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                  lineno: 5592
+                  lineno: 5595
                 }));
                 __iced_deferrals._fulfill();
               })(__iced_k);
@@ -6814,7 +6817,7 @@ Ship = (function() {
                       });
                       _this.builder.container.trigger('xwing:claimUnique', [
                         new_pilot, 'Pilot', __iced_deferrals.defer({
-                          lineno: 5711
+                          lineno: 5714
                         })
                       ]);
                       __iced_deferrals._fulfill();
@@ -6864,7 +6867,7 @@ Ship = (function() {
                                   funcname: "Ship.setPilotById"
                                 });
                                 _this.builder.removeShip(_this.linkedShip, __iced_deferrals.defer({
-                                  lineno: 5744
+                                  lineno: 5747
                                 }));
                                 __iced_deferrals._fulfill();
                               })(__iced_k);
@@ -6962,7 +6965,7 @@ Ship = (function() {
                   });
                   _this.builder.container.trigger('xwing:claimUnique', [
                     new_pilot, 'Pilot', __iced_deferrals.defer({
-                      lineno: 5802
+                      lineno: 5805
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -7046,7 +7049,7 @@ Ship = (function() {
             });
             _this.builder.container.trigger('xwing:releaseUnique', [
               _this.pilot, 'Pilot', __iced_deferrals.defer({
-                lineno: 5838
+                lineno: 5841
               })
             ]);
             __iced_deferrals._fulfill();
@@ -7115,7 +7118,7 @@ Ship = (function() {
           upgrade = _ref[_i];
           if (upgrade != null) {
             upgrade.destroy(__iced_deferrals.defer({
-              lineno: 5867
+              lineno: 5870
             }));
           }
         }
@@ -7207,7 +7210,7 @@ Ship = (function() {
                 funcname: "Ship.setWingmates"
               });
               _this.builder.removeShip(dyingMate, __iced_deferrals.defer({
-                lineno: 5923
+                lineno: 5926
               }));
               __iced_deferrals._fulfill();
             })(_next);
@@ -8488,7 +8491,7 @@ GenericAddon = (function() {
             });
             _this.ship.builder.container.trigger('xwing:releaseUnique', [
               _this.data, _this.type, __iced_deferrals.defer({
-                lineno: 6863
+                lineno: 6866
               })
             ]);
             __iced_deferrals._fulfill();
@@ -8647,7 +8650,7 @@ GenericAddon = (function() {
               });
               _this.ship.builder.container.trigger('xwing:releaseUnique', [
                 _this.unadjusted_data, _this.type, __iced_deferrals.defer({
-                  lineno: 6957
+                  lineno: 6960
                 })
               ]);
               __iced_deferrals._fulfill();
@@ -8674,7 +8677,7 @@ GenericAddon = (function() {
                   });
                   _this.ship.builder.container.trigger('xwing:claimUnique', [
                     new_data, _this.type, __iced_deferrals.defer({
-                      lineno: 6964
+                      lineno: 6967
                     })
                   ]);
                   __iced_deferrals._fulfill();
@@ -8818,7 +8821,7 @@ GenericAddon = (function() {
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           addon = _ref[_i];
           addon.destroy(__iced_deferrals.defer({
-            lineno: 7039
+            lineno: 7042
           }));
         }
         __iced_deferrals._fulfill();
@@ -8906,7 +8909,7 @@ GenericAddon = (function() {
       if (this.data.range != null) {
         attackrangebonus = (this.data.rangebonus != null) ? "<span class=\"upgrade-attack-rangebonus\"><i class=\"xwing-miniatures-font xwing-miniatures-font-rangebonusindicator\"></i></span>" : '';
         attackStats = $.trim("<span class=\"upgrade-attack-range\">" + this.data.range + "</span>\n" + attackrangebonus);
-        attackIcon = (this.data.attack != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attack + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-frontarc\"></i>") : (this.data.attackf != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attackf + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-fullfrontarc\"></i>") : (this.data.attackt != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attackt + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-singleturretarc\"></i>") : (this.data.attackdt != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attackdt + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-doubleturretarc\"></i>") : (this.data.attackl != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attackl + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-leftarc\"></i>") : (this.data.attackr != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attackr + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-rightarc\"></i>") : (this.data.attackbull != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attackbull + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-bullseyearc\"></i>") : '';
+        attackIcon = (this.data.attack != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attack + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-frontarc\"></i>") : (this.data.attackf != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attackf + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-fullfrontarc\"></i>") : (this.data.attackb != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attackb + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-backarc\"></i>") : (this.data.attackt != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attackt + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-singleturretarc\"></i>") : (this.data.attackdt != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attackdt + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-doubleturretarc\"></i>") : (this.data.attackl != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attackl + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-leftarc\"></i>") : (this.data.attackr != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attackr + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-rightarc\"></i>") : (this.data.attackbull != null) ? $.trim("<span class=\"info-data info-attack\">" + this.data.attackbull + "</span>\n<i class=\"xwing-miniatures-font xwing-miniatures-font-bullseyearc\"></i>") : '';
         attackHTML = $.trim("<div class=\"upgrade-attack\">\n    " + attackStats + "\n    " + attackIcon + "\n</div>");
       }
       if (this.data.charge != null) {
