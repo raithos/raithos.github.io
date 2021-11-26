@@ -248,6 +248,7 @@ exportObj.translations.Deutsch = {
     "Rules Search": "Regelsuche",
     "Base": "Schiffsgröße",
     "Ship": "Schiff",
+    "Points": "Punkte",
     "Initiative": "Initiativewert",
     "Force:": "Machtwert:",
     "Name": "Name",
