@@ -14537,7 +14537,7 @@ exportObj.hyperspaceShipInclusions = [
     name: 'U-Wing',
     faction: 'Rebel Alliance'
   }, {
-    name: 'Arc-170',
+    name: 'ARC-170',
     faction: 'Rebel Alliance'
   }, {
     name: 'Fireball',
