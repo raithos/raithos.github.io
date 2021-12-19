@@ -7720,13 +7720,11 @@ exportObj.basicCardData = function() {
         recurring: 1,
         faction: "Resistance",
         unique: true,
+        applies_condition: 'It\'s The Resistance'.canonicalize(),
         modifier_func: function(stats) {
           if (__indexOf.call(stats.actions, 'Calculate') < 0) {
-            stats.actions.push('Calculate');
+            return stats.actions.push('Calculate');
           }
-          return {
-            applies_condition: 'It\'s the Resistance'.canonicalize()
-          };
         }
       }, {
         name: "Kaydel Connix",
