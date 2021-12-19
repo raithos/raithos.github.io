@@ -27,7 +27,7 @@
   src: url("../fonts/bankgthd.ttf"); }
 
 body {
-  background-color: #fedc00;
+  background-color: #202020;
   font-family: EurostileStandard;
   color: white;
   overflow-x: hidden;
@@ -464,7 +464,7 @@ svg > g.maneuver.backwards {
   padding-left: 30px; }
 
 .main-top-nav-bar {
-  background-color: #101010;
+  background-color: #fedc00;
   padding-bottom: 1px;
   padding-left: 4px;
   margin-bottom: 10px; }
