@@ -1314,10 +1314,10 @@ class exportObj.CardBrowser
 
         @card_selector_container = $ @container.find('.xwing-card-browser .card-selector-container')
         @card_viewer_container = $ @container.find('.xwing-card-browser .card-viewer-container')
-        @card_viewer_container.append $.trim exportObj.builders[0].createInfoContainerUI()
+        @card_viewer_container.append $.trim exportObj.builders[7].createInfoContainerUI()
         @card_viewer_container.hide()
         @card_viewer_conditions_container = $ @container.find('.xwing-card-browser .card-viewer-conditions-container')
-        @card_viewer_container.hide()
+        @card_viewer_conditions_container.hide()
         @card_viewer_placeholder = $ @container.find('.xwing-card-browser .card-viewer-placeholder')
         @advanced_search_container = $ @container.find('.xwing-card-browser .advanced-search-container')
 
@@ -1603,7 +1603,7 @@ class exportObj.CardBrowser
             add_opts = {addon_type: orig_type}
             orig_type = 'Addon'
 
-        exportObj.builders[0].showTooltip(orig_type, data, add_opts ? {}, @card_viewer_container) # we use the render method from the squad builder, cause it works.
+        exportObj.builders[7].showTooltip(orig_type, data, add_opts ? {}, @card_viewer_container) # we use the render method from the squad builder, cause it works.
 
         @card_viewer_container.show()
 
@@ -1641,16 +1641,16 @@ class exportObj.CardBrowser
 
     getCollectionNumber: (card) ->
         # returns number of copies of the given card in the collection, or -1 if no collection loaded
-        if not (exportObj.builders[0].collection? and exportObj.builders[0].collection.counts?)
+        if not (exportObj.builders[7].collection? and exportObj.builders[7].collection.counts?)
             return -1
         owned_copies = 0
         switch card.orig_type
             when 'Pilot'
-                owned_copies = exportObj.builders[0].collection.counts.pilot?[card.name] ? 0
+                owned_copies = exportObj.builders[7].collection.counts.pilot?[card.name] ? 0
             when 'Ship'
-                owned_copies = exportObj.builders[0].collection.counts.ship?[card.name] ? 0
+                owned_copies = exportObj.builders[7].collection.counts.ship?[card.name] ? 0
             else # type is e.g. astromech
-                owned_copies = exportObj.builders[0].collection.counts.upgrade?[card.name] ? 0
+                owned_copies = exportObj.builders[7].collection.counts.upgrade?[card.name] ? 0
         owned_copies
 
 
@@ -1805,7 +1805,7 @@ class exportObj.CardBrowser
         return false if card.data.charge and not card.data.recurring and not @not_recurring_charge.checked
 
         # check collection status
-        if exportObj.builders[0].collection?.counts? # ignore collection stuff, if no collection available
+        if exportObj.builders[7].collection?.counts? # ignore collection stuff, if no collection available
             owned_copies = @getCollectionNumber(card)
             return false unless owned_copies >= @minimum_owned_copies.value and owned_copies <= @maximum_owned_copies.value
 
@@ -1873,6 +1873,8 @@ class exportObj.CardBrowser
         #TODO: Add logic of addiditional search criteria here. Have a look at card.data, to see what data is available. Add search inputs at the todo marks above. 
 
         return true
+
+
 
 ###
     X-Wing Rules Browser
@@ -2095,7 +2097,6 @@ exportObj.translateToLang = (language, category, what, args...) ->
 exportObj.setupTranslationSupport = ->
     do (builders) ->
         $(exportObj).on 'xwing:languageChanged', (e, language, priority=5, cb=$.noop) =>
-            console.log("Change language to #{language} with priority #{priority} requested")
             # check if priority is high enough to do anything
             if priority == 'reload' # special case - just a reload, no priority change
                 null
@@ -2148,6 +2149,7 @@ exportObj.setupTranslationUI = (backend) ->
 
 exportObj.registerBuilderForTranslation = (builder) ->
     builders.push(builder) if builder not in builders
+
 ###
     X-Wing Squad Builder 2.0
     Stephen Kim <raithos@gmail.com>
@@ -2294,7 +2296,7 @@ class exportObj.SquadBuilder
             fill_zero_pts: false
         @total_points = 0
         # a squad given in the link is loaded on construction of that builder. It will set all gamemodes of already existing builders accordingly, but we did not exists back than. So we copy over the gamemode
-        @isHyperspace = exportObj.builders[0]?.isHyperspace ? false
+        @isHyperspace = exportObj.builders[0]?.isHyperspace ? true
         @isEpic = exportObj.builders[0]?.isEpic ? false
         @isQuickbuild = exportObj.builders[0]?.isQuickbuild ? false
 
@@ -2392,8 +2394,8 @@ class exportObj.SquadBuilder
                     </div>
                     <br />
                     <select class="game-type-selector">
-                        <option value="standard" class="translated" defaultText="Extended" selected="selected">#{@uitranslation("Extended")}</option>
-                        <option value="hyperspace" class="translated" defaultText="Hyperspace"></option>
+                        <option value="blackbox" class="translated" defaultText="Black Box" selected="selected">#{@uitranslation("Black Box")}</option>
+                        <option value="extended" class="translated" defaultText="Extended"></option>
                         <option value="epic" class="translated" defaultText="Epic"></option>
                         <option value="quickbuild" class="translated" defaultText="Quickbuild"></option>
                     </select>
@@ -3245,6 +3247,10 @@ class exportObj.SquadBuilder
                             <td class="info-header translated" defaultText="Initiative"></td>
                             <td class="info-data info-skill"></td>
                         </tr>
+                        <tr class="info-points">
+                            <td class="info-header translated" defaultText="Points"></td>
+                            <td class="info-data info-points"></td>
+                        </tr>
                         <tr class="info-engagement">
                             <td class="info-header translated" defaultText="Engagement"></td>
                             <td class="info-data info-engagement"></td>
@@ -3579,13 +3585,14 @@ class exportObj.SquadBuilder
         oldHyperspace = @isHyperspace
         oldEpic = @isEpic
         oldQuickbuild = @isQuickbuild
-        @isHyperspace = false
+        @isHyperspace = true
         @isEpic = false
         @isQuickbuild = false
         switch gametype
-            when 'standard'
+            when 'extended'
+                @isHyperspace = false
                 @desired_points_input.val 200
-            when 'hyperspace'
+            when 'blackbox'
                 @isHyperspace = true
                 @desired_points_input.val 200
             when 'epic'
@@ -3679,11 +3686,7 @@ class exportObj.SquadBuilder
 
 
     onSquadLoadRequested: (squad) =>
-        console.log(squad)
-        console.log($.trim(@squad_name_input.val()))
         @current_squad = squad
-        console.log(@current_squad.name)
-        console.log($.trim(@squad_name_input.val()))
         @backend_delete_list_button.removeClass 'disabled'
         @current_obstacles = @current_squad.additional_data.obstacles
         @updateObstacleSelect(@current_squad.additional_data.obstacles)
@@ -3693,14 +3696,8 @@ class exportObj.SquadBuilder
         @tag.val(squad.additional_data.tag ? '')
         @backend_status.fadeOut 'slow'
         @current_squad.dirty = false
-        console.log(@current_squad.name)
-        console.log($.trim(@squad_name_input.val()))
         @container.trigger 'xwing-backend:squadNameChanged'
-        console.log(@current_squad.name)
-        console.log($.trim(@squad_name_input.val()))
         @container.trigger 'xwing-backend:squadDirtinessChanged'
-        console.log(@current_squad.name)
-        console.log($.trim(@squad_name_input.val()))
 
     onSquadDirtinessChanged: () =>
         #@current_squad.name = $.trim(@squad_name_input.val())
@@ -3818,9 +3815,9 @@ class exportObj.SquadBuilder
 
         serialization_version = 8
         game_type_abbrev = switch @game_type_selector.val()
-            when 'standard'
+            when 'extended'
                 's'
-            when 'hyperspace'
+            when 'blackbox'
                 'h'
             when 'epic'
                 'e'
@@ -3871,9 +3868,9 @@ class exportObj.SquadBuilder
                 return
             switch game_type_abbrev
                 when 's'
-                    @changeGameTypeOnSquadLoad 'standard'
+                    @changeGameTypeOnSquadLoad 'extended'
                 when 'h'
-                    @changeGameTypeOnSquadLoad 'hyperspace'
+                    @changeGameTypeOnSquadLoad 'blackbox'
                 when 'e'
                     @changeGameTypeOnSquadLoad 'epic'
                 when 'q'
@@ -4405,14 +4402,17 @@ class exportObj.SquadBuilder
                 when 'Ship'
             # we get all pilots for the ship, to display stuff like available slots which are treated as pilot properties, not ship properties (which makes sense, as they depend on the pilot, e.g. talent or force slots)
                     possible_inis = []
+                    possible_costs = []
                     slot_types = {} # one number per slot: 0: not available for that ship. 1: always available for that ship. 2: available for some pilots on that ship. 3: slot two times availabel for that ship 4: slot one or two times available (depending on pilot) 5: slot zero to two times available 6: slot three times available (no mixed-case implemented) -1: undefined
                     for slot of exportObj.upgradesBySlotCanonicalName
                         slot_types[slot] = -1
                     for name, pilot of exportObj.pilots
-                        if pilot.ship != data.name 
+                        # skip all pilots with wrong ship or faction
+                        if pilot.ship != data.name or not @isOurFaction(pilot.faction) 
                             continue
                         if not (pilot.skill in possible_inis)
                             possible_inis.push(pilot.skill)
+                        possible_costs.push(pilot.points)
                         for slot, state of slot_types
                             switch pilot.slots.filter((item) => item == slot).length
                                 when 1
@@ -4460,6 +4460,15 @@ class exportObj.SquadBuilder
                         first = false
                     container.find('tr.info-skill td.info-data').text inis
                     container.find('tr.info-skill').show()
+
+                    # display point range for that ship (and faction) 
+                    point_range_text = "#{Math.min possible_costs...} - #{Math.max possible_costs...}"
+                    container.find('tr.info-points td.info-data').text point_range_text
+                    # don't display point range in Quickbuild (or ToDo: Display Threat range instead)
+                    if @isQuickbuild
+                        container.find('tr.info-points').hide()
+                    else
+                        container.find('tr.info-points').show()
                     
                     container.find('tr.info-engagement').hide()
                 
@@ -4603,6 +4612,7 @@ class exportObj.SquadBuilder
                         container.find('tr.info-engagement').show()
                     else
                         container.find('tr.info-engagement').hide()
+                    container.find('tr.info-points').hide()
                     
                     
 #                    for cls in container.find('tr.info-attack td.info-header i.xwing-miniatures-font')[0].classList
@@ -4743,6 +4753,7 @@ class exportObj.SquadBuilder
 
                     container.find('tr.info-skill td.info-data').text pilot.skill
                     container.find('tr.info-skill').show()
+                    container.find('tr.info-points').hide()
                     container.find('tr.info-engagement td.info-data').text pilot.skill
                     container.find('tr.info-engagement').show()
 
@@ -4862,6 +4873,7 @@ class exportObj.SquadBuilder
                     container.find('tr.info-ship').hide()
                     container.find('tr.info-base').hide()
                     container.find('tr.info-skill').hide()
+                    container.find('tr.info-points').hide()
                     container.find('tr.info-engagement').hide()
                     if data.energy?
                         container.find('tr.info-energy td.info-data').text data.energy
@@ -4873,6 +4885,12 @@ class exportObj.SquadBuilder
                         container.find('tr.info-attack').show()
                     else
                         container.find('tr.info-attack').hide()
+
+                    if data.attackb?
+                        container.find('tr.info-attack-back td.info-data').text data.attackb
+                        container.find('tr.info-attack-back').show()
+                    else
+                        container.find('tr.info-attack-back').hide()
 
                     if data.attackt?
                         container.find('tr.info-attack-turret td.info-data').text data.attackt
@@ -4890,7 +4908,7 @@ class exportObj.SquadBuilder
                         container.find('tr.info-attack-left td.info-data').text data.attackl
                         container.find('tr.info-attack-left').show()
                     else
-                        container.find('tr.info-attack-right').hide()
+                        container.find('tr.info-attack-left').hide()
 
                     if data.attackdt?
                         container.find('tr.info-attack-doubleturret td.info-data').text data.attackdt
@@ -4910,9 +4928,6 @@ class exportObj.SquadBuilder
                     else
                         container.find('tr.info-attack-fullfront').hide()
                         
-                    container.find('tr.info-attack-right').hide()
-                    container.find('tr.info-attack-left').hide()
-                    container.find('tr.info-attack-back').hide()
 
                     if data.charge?
                         recurringicon = ''
@@ -4964,6 +4979,7 @@ class exportObj.SquadBuilder
                     container.find('tr.info-ship').hide()
                     container.find('tr.info-base').hide()
                     container.find('tr.info-skill').hide()
+                    container.find('tr.info-points').hide()
                     container.find('tr.info-agility').hide()
                     container.find('tr.info-hull').hide()
                     container.find('tr.info-shields').hide()
@@ -5004,6 +5020,7 @@ class exportObj.SquadBuilder
                     container.find('tr.info-ship').hide()
                     container.find('tr.info-base').hide()
                     container.find('tr.info-skill').hide()
+                    container.find('tr.info-points').hide()
                     container.find('tr.info-agility').hide()
                     container.find('tr.info-hull').hide()
                     container.find('tr.info-shields').hide()
@@ -5539,14 +5556,15 @@ class exportObj.SquadBuilder
                             # console.log upgrade_type, upgrade_canonical
                             slot = null
                             slot = exportObj.fromXWSUpgrade[upgrade_type] ? upgrade_type.capitalize()
-                            upgrade = exportObj.upgradesBySlotXWSName[slot][upgrade_canonical] ?= exportObj.upgradesBySlotCanonicalName[slot][upgrade_canonical]
-                            if not upgrade?
-                                console.log("Failed to load xws upgrade: " + upgrade_canonical)
-                                error += "Skipped upgrade " + upgrade_canonical
-                                success = false
-                                continue
-                            serialized_squad += upgrade.id
-                            serialized_squad += "W"
+                            if upgrade_canonical?
+                                upgrade = exportObj.upgradesBySlotXWSName[slot][upgrade_canonical] ?= exportObj.upgradesBySlotCanonicalName[slot][upgrade_canonical]
+                                if not upgrade?
+                                    console.log("Failed to load xws upgrade: " + upgrade_canonical)
+                                    error += "Skipped upgrade " + upgrade_canonical
+                                    success = false
+                                    continue
+                                serialized_squad += upgrade.id
+                                serialized_squad += "W"
                     serialized_squad += "XY"
 
                 @loadFromSerialized(serialized_squad)
@@ -5644,11 +5662,12 @@ class Ship
             # set them aside any upgrades that don't fill requirements due to additional slots and then attempt to fill them
             delayed_upgrades = {}
             for upgrade in @upgrades
-                other_upgrade = (other_upgrades[upgrade.slot] ? []).shift()
-                if other_upgrade?
-                    upgrade.setById other_upgrade.data.id
-                    if not upgrade.lastSetValid
-                        delayed_upgrades[other_upgrade.data.id] = upgrade
+                if not upgrade.isOccupied() # an earlier set double-slot upgrade may already use this slot
+                    other_upgrade = (other_upgrades[upgrade.slot] ? []).shift()
+                    if other_upgrade?
+                        upgrade.setById other_upgrade.data.id
+                        if not upgrade.lastSetValid
+                            delayed_upgrades[other_upgrade.data.id] = upgrade
             for id, upgrade of delayed_upgrades
                 upgrade.setById id
             # Do one final pass on upgrades to see if there are any more upgrades we can assign
@@ -7114,6 +7133,9 @@ class GenericAddon
                 """ else if (@data.attackf?) then $.trim """
                         <span class="info-data info-attack">#{@data.attackf}</span>
                         <i class="xwing-miniatures-font xwing-miniatures-font-fullfrontarc"></i>
+                """ else if (@data.attackb?) then $.trim """
+                        <span class="info-data info-attack">#{@data.attackb}</span>
+                        <i class="xwing-miniatures-font xwing-miniatures-font-backarc"></i>
                 """ else if (@data.attackt?) then $.trim """
                         <span class="info-data info-attack">#{@data.attackt}</span>
                         <i class="xwing-miniatures-font xwing-miniatures-font-singleturretarc"></i>
