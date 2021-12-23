@@ -35654,13 +35654,14 @@ class exportObj.Collection
         
         collection_content = $ @modal.find('.collection-content')
         for expansion in exportObj.expansions
+
             count = parseInt(@expansions[expansion] ? 0)
             row = $.parseHTML $.trim """
                 <div class="row">
                     <div class="col">
                         <label>
                             <input class="expansion-count" type="number" size="3" value="#{count}" />
-                            <span class="expansion-name">#{expansion}</span>
+                            <span class="expansion-name">#{exportObj.translate('sources', expansion)}</span>
                         </label>
                     </div>
                 </div>
@@ -35693,6 +35694,7 @@ class exportObj.Collection
             shipcollection_content.append row
 
         pilotcollection_content = $ @modal.find('.collection-pilot-content')
+
         for pilot in singletonsByType.pilot
             count = parseInt(@singletons.pilot?[pilot] ? 0)
             row = $.parseHTML $.trim """
@@ -35731,8 +35733,6 @@ class exportObj.Collection
             input.closest('div').css 'background-color', @countToBackgroundColor(input.val())
             $(row).find('.upgrade-name').data 'name', upgrade
             upgradecollection_content.append row
-
-        exportObj.translateUIElements(@modal)
 
     destroyUI: ->
         @modal.modal 'hide'
